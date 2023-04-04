@@ -734,7 +734,7 @@ type GetInstancesInstance struct {
 	CoreDiskSize int `pulumi:"coreDiskSize"`
 	// Cloud_ssd or cloud_efficiency
 	CoreDiskType string `pulumi:"coreDiskType"`
-	// Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+	// Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
 	CoreInstanceType string `pulumi:"coreInstanceType"`
 	// Same with "coreInstanceQuantity"
 	CoreNodeCount int `pulumi:"coreNodeCount"`
@@ -750,7 +750,7 @@ type GetInstancesInstance struct {
 	ExpireTime string `pulumi:"expireTime"`
 	// The ID of the HBase instance.
 	Id string `pulumi:"id"`
-	// Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+	// Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
 	MasterInstanceType string `pulumi:"masterInstanceType"`
 	// The node count of master
 	MasterNodeCount int `pulumi:"masterNodeCount"`
@@ -792,7 +792,7 @@ type GetInstancesInstanceArgs struct {
 	CoreDiskSize pulumi.IntInput `pulumi:"coreDiskSize"`
 	// Cloud_ssd or cloud_efficiency
 	CoreDiskType pulumi.StringInput `pulumi:"coreDiskType"`
-	// Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+	// Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
 	CoreInstanceType pulumi.StringInput `pulumi:"coreInstanceType"`
 	// Same with "coreInstanceQuantity"
 	CoreNodeCount pulumi.IntInput `pulumi:"coreNodeCount"`
@@ -808,7 +808,7 @@ type GetInstancesInstanceArgs struct {
 	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
 	// The ID of the HBase instance.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+	// Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
 	MasterInstanceType pulumi.StringInput `pulumi:"masterInstanceType"`
 	// The node count of master
 	MasterNodeCount pulumi.IntInput `pulumi:"masterNodeCount"`
@@ -898,7 +898,7 @@ func (o GetInstancesInstanceOutput) CoreDiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.CoreDiskType }).(pulumi.StringOutput)
 }
 
-// Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+// Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
 func (o GetInstancesInstanceOutput) CoreInstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.CoreInstanceType }).(pulumi.StringOutput)
 }
@@ -938,7 +938,7 @@ func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+// Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
 func (o GetInstancesInstanceOutput) MasterInstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.MasterInstanceType }).(pulumi.StringOutput)
 }

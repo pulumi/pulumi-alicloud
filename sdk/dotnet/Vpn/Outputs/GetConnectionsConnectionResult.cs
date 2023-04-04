@@ -20,6 +20,14 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         public readonly string CustomerGatewayId;
         public readonly bool EffectImmediately;
         /// <summary>
+        /// Specifies whether to enable the dead peer detection (DPD) feature.
+        /// </summary>
+        public readonly bool EnableDpd;
+        /// <summary>
+        /// Specifies whether to enable NAT traversal.
+        /// </summary>
+        public readonly bool EnableNatTraversal;
+        /// <summary>
         /// ID of the VPN connection.
         /// </summary>
         public readonly string Id;
@@ -65,6 +73,10 @@ namespace Pulumi.AliCloud.Vpn.Outputs
 
             bool effectImmediately,
 
+            bool enableDpd,
+
+            bool enableNatTraversal,
+
             string id,
 
             ImmutableArray<Outputs.GetConnectionsConnectionIkeConfigResult> ikeConfigs,
@@ -88,6 +100,8 @@ namespace Pulumi.AliCloud.Vpn.Outputs
             CreateTime = createTime;
             CustomerGatewayId = customerGatewayId;
             EffectImmediately = effectImmediately;
+            EnableDpd = enableDpd;
+            EnableNatTraversal = enableNatTraversal;
             Id = id;
             IkeConfigs = ikeConfigs;
             IpsecConfigs = ipsecConfigs;

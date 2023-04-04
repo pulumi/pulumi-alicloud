@@ -43,10 +43,10 @@ import (
 //				CoreDiskSize:         pulumi.Int(400),
 //				CoreDiskType:         pulumi.String("cloud_efficiency"),
 //				CoreInstanceQuantity: pulumi.Int(2),
-//				CoreInstanceType:     pulumi.String("hbase.sn1.large"),
+//				CoreInstanceType:     pulumi.String("hbase.sn2.2xlarge"),
 //				Engine:               pulumi.String("hbaseue"),
 //				EngineVersion:        pulumi.String("2.0"),
-//				MasterInstanceType:   pulumi.String("hbase.sn1.large"),
+//				MasterInstanceType:   pulumi.String("hbase.sn2.2xlarge"),
 //				PayType:              pulumi.String("PostPaid"),
 //				VswitchId:            pulumi.String("vsw-123456"),
 //				ZoneId:               pulumi.String("cn-shenzhen-b"),
@@ -78,7 +78,7 @@ type Instance struct {
 	Account pulumi.StringPtrOutput `pulumi:"account"`
 	// Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
 	AutoRenew pulumi.BoolOutput `pulumi:"autoRenew"`
-	// 0 or [800, 1000000], step:10-GB increments. 0 means isColdStorage = false. [800, 1000000] means isColdStorage = true.
+	// 0 or [800, 100000000], step:10-GB increments. 0 means isColdStorage = false. [800, 100000000] means isColdStorage = true.
 	ColdStorageSize pulumi.IntPtrOutput `pulumi:"coldStorageSize"`
 	// User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
 	// - Custom storage space, value range: [20, 64000].
@@ -184,7 +184,7 @@ type instanceState struct {
 	Account *string `pulumi:"account"`
 	// Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// 0 or [800, 1000000], step:10-GB increments. 0 means isColdStorage = false. [800, 1000000] means isColdStorage = true.
+	// 0 or [800, 100000000], step:10-GB increments. 0 means isColdStorage = false. [800, 100000000] means isColdStorage = true.
 	ColdStorageSize *int `pulumi:"coldStorageSize"`
 	// User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
 	// - Custom storage space, value range: [20, 64000].
@@ -246,7 +246,7 @@ type InstanceState struct {
 	Account pulumi.StringPtrInput
 	// Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
 	AutoRenew pulumi.BoolPtrInput
-	// 0 or [800, 1000000], step:10-GB increments. 0 means isColdStorage = false. [800, 1000000] means isColdStorage = true.
+	// 0 or [800, 100000000], step:10-GB increments. 0 means isColdStorage = false. [800, 100000000] means isColdStorage = true.
 	ColdStorageSize pulumi.IntPtrInput
 	// User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
 	// - Custom storage space, value range: [20, 64000].
@@ -312,7 +312,7 @@ type instanceArgs struct {
 	Account *string `pulumi:"account"`
 	// Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// 0 or [800, 1000000], step:10-GB increments. 0 means isColdStorage = false. [800, 1000000] means isColdStorage = true.
+	// 0 or [800, 100000000], step:10-GB increments. 0 means isColdStorage = false. [800, 100000000] means isColdStorage = true.
 	ColdStorageSize *int `pulumi:"coldStorageSize"`
 	// User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
 	// - Custom storage space, value range: [20, 64000].
@@ -367,7 +367,7 @@ type InstanceArgs struct {
 	Account pulumi.StringPtrInput
 	// Valid values are `true`, `false`, system default to `false`, valid when payType = PrePaid.
 	AutoRenew pulumi.BoolPtrInput
-	// 0 or [800, 1000000], step:10-GB increments. 0 means isColdStorage = false. [800, 1000000] means isColdStorage = true.
+	// 0 or [800, 100000000], step:10-GB increments. 0 means isColdStorage = false. [800, 100000000] means isColdStorage = true.
 	ColdStorageSize pulumi.IntPtrInput
 	// User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
 	// - Custom storage space, value range: [20, 64000].
@@ -513,7 +513,7 @@ func (o InstanceOutput) AutoRenew() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.AutoRenew }).(pulumi.BoolOutput)
 }
 
-// 0 or [800, 1000000], step:10-GB increments. 0 means isColdStorage = false. [800, 1000000] means isColdStorage = true.
+// 0 or [800, 100000000], step:10-GB increments. 0 means isColdStorage = false. [800, 100000000] means isColdStorage = true.
 func (o InstanceOutput) ColdStorageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.ColdStorageSize }).(pulumi.IntPtrOutput)
 }

@@ -4,10 +4,13 @@
 package com.pulumi.alicloud.databasefilesystem;
 
 import com.pulumi.alicloud.Utilities;
+import com.pulumi.alicloud.databasefilesystem.inputs.GetAutoSnapShotPoliciesArgs;
+import com.pulumi.alicloud.databasefilesystem.inputs.GetAutoSnapShotPoliciesPlainArgs;
 import com.pulumi.alicloud.databasefilesystem.inputs.GetInstancesArgs;
 import com.pulumi.alicloud.databasefilesystem.inputs.GetInstancesPlainArgs;
 import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsArgs;
 import com.pulumi.alicloud.databasefilesystem.inputs.GetSnapshotsPlainArgs;
+import com.pulumi.alicloud.databasefilesystem.outputs.GetAutoSnapShotPoliciesResult;
 import com.pulumi.alicloud.databasefilesystem.outputs.GetInstancesResult;
 import com.pulumi.alicloud.databasefilesystem.outputs.GetSnapshotsResult;
 import com.pulumi.core.Output;
@@ -17,6 +20,246 @@ import com.pulumi.deployment.InvokeOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class DatabasefilesystemFunctions {
+    /**
+     * This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
+     * 
+     * &gt; **NOTE:** Available in 1.202.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.databasefilesystem.DatabasefilesystemFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetAutoSnapShotPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DatabasefilesystemFunctions.getAutoSnapShotPolicies(GetAutoSnapShotPoliciesArgs.builder()
+     *             .ids(alicloud_dbfs_auto_snap_shot_policy.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDbfsAutoSnapShotPolicyExampleId&#34;, default_.autoSnapShotPolicies()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAutoSnapShotPoliciesResult> getAutoSnapShotPolicies() {
+        return getAutoSnapShotPolicies(GetAutoSnapShotPoliciesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
+     * 
+     * &gt; **NOTE:** Available in 1.202.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.databasefilesystem.DatabasefilesystemFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetAutoSnapShotPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DatabasefilesystemFunctions.getAutoSnapShotPolicies(GetAutoSnapShotPoliciesArgs.builder()
+     *             .ids(alicloud_dbfs_auto_snap_shot_policy.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDbfsAutoSnapShotPolicyExampleId&#34;, default_.autoSnapShotPolicies()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAutoSnapShotPoliciesResult> getAutoSnapShotPoliciesPlain() {
+        return getAutoSnapShotPoliciesPlain(GetAutoSnapShotPoliciesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
+     * 
+     * &gt; **NOTE:** Available in 1.202.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.databasefilesystem.DatabasefilesystemFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetAutoSnapShotPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DatabasefilesystemFunctions.getAutoSnapShotPolicies(GetAutoSnapShotPoliciesArgs.builder()
+     *             .ids(alicloud_dbfs_auto_snap_shot_policy.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDbfsAutoSnapShotPolicyExampleId&#34;, default_.autoSnapShotPolicies()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAutoSnapShotPoliciesResult> getAutoSnapShotPolicies(GetAutoSnapShotPoliciesArgs args) {
+        return getAutoSnapShotPolicies(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
+     * 
+     * &gt; **NOTE:** Available in 1.202.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.databasefilesystem.DatabasefilesystemFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetAutoSnapShotPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DatabasefilesystemFunctions.getAutoSnapShotPolicies(GetAutoSnapShotPoliciesArgs.builder()
+     *             .ids(alicloud_dbfs_auto_snap_shot_policy.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDbfsAutoSnapShotPolicyExampleId&#34;, default_.autoSnapShotPolicies()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAutoSnapShotPoliciesResult> getAutoSnapShotPoliciesPlain(GetAutoSnapShotPoliciesPlainArgs args) {
+        return getAutoSnapShotPoliciesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
+     * 
+     * &gt; **NOTE:** Available in 1.202.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.databasefilesystem.DatabasefilesystemFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetAutoSnapShotPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DatabasefilesystemFunctions.getAutoSnapShotPolicies(GetAutoSnapShotPoliciesArgs.builder()
+     *             .ids(alicloud_dbfs_auto_snap_shot_policy.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDbfsAutoSnapShotPolicyExampleId&#34;, default_.autoSnapShotPolicies()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAutoSnapShotPoliciesResult> getAutoSnapShotPolicies(GetAutoSnapShotPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:databasefilesystem/getAutoSnapShotPolicies:getAutoSnapShotPolicies", TypeShape.of(GetAutoSnapShotPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
+     * 
+     * &gt; **NOTE:** Available in 1.202.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.databasefilesystem.DatabasefilesystemFunctions;
+     * import com.pulumi.alicloud.databasefilesystem.inputs.GetAutoSnapShotPoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = DatabasefilesystemFunctions.getAutoSnapShotPolicies(GetAutoSnapShotPoliciesArgs.builder()
+     *             .ids(alicloud_dbfs_auto_snap_shot_policy.default().id())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudDbfsAutoSnapShotPolicyExampleId&#34;, default_.autoSnapShotPolicies()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAutoSnapShotPoliciesResult> getAutoSnapShotPoliciesPlain(GetAutoSnapShotPoliciesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:databasefilesystem/getAutoSnapShotPolicies:getAutoSnapShotPolicies", TypeShape.of(GetAutoSnapShotPoliciesResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * This data source provides the DBFS Instances of the current Alibaba Cloud user.
      * 

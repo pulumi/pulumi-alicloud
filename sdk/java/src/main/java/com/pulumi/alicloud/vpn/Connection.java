@@ -151,28 +151,28 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.effectImmediately);
     }
     /**
-     * Whether to enable NAT traversal.
+     * Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
      * 
      */
     @Export(name="enableDpd", type=Boolean.class, parameters={})
     private Output<Boolean> enableDpd;
 
     /**
-     * @return Whether to enable NAT traversal.
+     * @return Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
      * 
      */
     public Output<Boolean> enableDpd() {
         return this.enableDpd;
     }
     /**
-     * Whether to enable NAT traversal.
+     * Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
      * 
      */
     @Export(name="enableNatTraversal", type=Boolean.class, parameters={})
     private Output<Boolean> enableNatTraversal;
 
     /**
-     * @return Whether to enable NAT traversal.
+     * @return Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
      * 
      */
     public Output<Boolean> enableNatTraversal() {

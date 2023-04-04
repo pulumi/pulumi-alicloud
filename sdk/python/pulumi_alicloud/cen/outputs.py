@@ -28,6 +28,7 @@ __all__ = [
     'GetRouteMapsMapResult',
     'GetRouteServicesServiceResult',
     'GetTrafficMarkingPoliciesPolicyResult',
+    'GetTransitRouteTableAggregationsTransitRouteTableAggregationResult',
     'GetTransitRouterAvailableResourcesResourceResult',
     'GetTransitRouterCidrsCidrResult',
     'GetTransitRouterMulticastDomainAssociationsAssociationResult',
@@ -1858,6 +1859,101 @@ class GetTrafficMarkingPoliciesPolicyResult(dict):
         The ID of the transit router.
         """
         return pulumi.get(self, "transit_router_id")
+
+
+@pulumi.output_type
+class GetTransitRouteTableAggregationsTransitRouteTableAggregationResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 route_type: str,
+                 status: str,
+                 transit_route_table_aggregation_cidr: str,
+                 transit_route_table_aggregation_description: str,
+                 transit_route_table_aggregation_name: str,
+                 transit_route_table_aggregation_scope: str,
+                 transit_route_table_id: str):
+        """
+        :param str id: The ID of the Transit Route Table Aggregation. It formats as `<transit_route_table_id>:<transit_route_table_aggregation_cidr>`.
+        :param str route_type: The route type of the aggregate route.
+        :param str status: The status of Transit Route Table Aggregation. Valid Values: `AllConfigured`, `Configuring`, `ConfigFailed`, `PartialConfigured`, `Deleting`.
+        :param str transit_route_table_aggregation_cidr: The destination CIDR block of the aggregate route.
+        :param str transit_route_table_aggregation_description: The description of the aggregate route.
+        :param str transit_route_table_aggregation_name: The name of the aggregate route.
+        :param str transit_route_table_aggregation_scope: The scope of networks that you want to advertise the aggregate route.
+        :param str transit_route_table_id: The ID of the route table of the Enterprise Edition transit router.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "route_type", route_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_route_table_aggregation_cidr", transit_route_table_aggregation_cidr)
+        pulumi.set(__self__, "transit_route_table_aggregation_description", transit_route_table_aggregation_description)
+        pulumi.set(__self__, "transit_route_table_aggregation_name", transit_route_table_aggregation_name)
+        pulumi.set(__self__, "transit_route_table_aggregation_scope", transit_route_table_aggregation_scope)
+        pulumi.set(__self__, "transit_route_table_id", transit_route_table_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Transit Route Table Aggregation. It formats as `<transit_route_table_id>:<transit_route_table_aggregation_cidr>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="routeType")
+    def route_type(self) -> str:
+        """
+        The route type of the aggregate route.
+        """
+        return pulumi.get(self, "route_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of Transit Route Table Aggregation. Valid Values: `AllConfigured`, `Configuring`, `ConfigFailed`, `PartialConfigured`, `Deleting`.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="transitRouteTableAggregationCidr")
+    def transit_route_table_aggregation_cidr(self) -> str:
+        """
+        The destination CIDR block of the aggregate route.
+        """
+        return pulumi.get(self, "transit_route_table_aggregation_cidr")
+
+    @property
+    @pulumi.getter(name="transitRouteTableAggregationDescription")
+    def transit_route_table_aggregation_description(self) -> str:
+        """
+        The description of the aggregate route.
+        """
+        return pulumi.get(self, "transit_route_table_aggregation_description")
+
+    @property
+    @pulumi.getter(name="transitRouteTableAggregationName")
+    def transit_route_table_aggregation_name(self) -> str:
+        """
+        The name of the aggregate route.
+        """
+        return pulumi.get(self, "transit_route_table_aggregation_name")
+
+    @property
+    @pulumi.getter(name="transitRouteTableAggregationScope")
+    def transit_route_table_aggregation_scope(self) -> str:
+        """
+        The scope of networks that you want to advertise the aggregate route.
+        """
+        return pulumi.get(self, "transit_route_table_aggregation_scope")
+
+    @property
+    @pulumi.getter(name="transitRouteTableId")
+    def transit_route_table_id(self) -> str:
+        """
+        The ID of the route table of the Enterprise Edition transit router.
+        """
+        return pulumi.get(self, "transit_route_table_id")
 
 
 @pulumi.output_type

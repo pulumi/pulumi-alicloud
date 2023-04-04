@@ -12,6 +12,7 @@ from . import outputs
 
 __all__ = [
     'InstanceEcsList',
+    'GetAutoSnapShotPoliciesAutoSnapShotPolicyResult',
     'GetInstancesInstanceResult',
     'GetInstancesInstanceEcsListResult',
     'GetSnapshotsSnapshotResult',
@@ -51,6 +52,134 @@ class InstanceEcsList(dict):
         The ID of the ECS instance.
         """
         return pulumi.get(self, "ecs_id")
+
+
+@pulumi.output_type
+class GetAutoSnapShotPoliciesAutoSnapShotPolicyResult(dict):
+    def __init__(__self__, *,
+                 applied_dbfs_number: int,
+                 create_time: str,
+                 id: str,
+                 last_modified: str,
+                 policy_id: str,
+                 policy_name: str,
+                 repeat_weekdays: Sequence[str],
+                 retention_days: int,
+                 status: str,
+                 status_detail: str,
+                 time_points: Sequence[str]):
+        """
+        :param int applied_dbfs_number: The number of database file systems set by the automatic snapshot policy.
+        :param str create_time: The creation time of the resource
+        :param str id: The ID of the policy.
+        :param str last_modified: Last modification time of automatic snapshot policy
+        :param str policy_id: Automatic snapshot policy ID
+        :param str policy_name: Automatic snapshot policy name
+        :param Sequence[str] repeat_weekdays: A collection of automatic snapshots performed on several days of the week.
+        :param int retention_days: Automatic snapshot retention days
+        :param str status: Automatic snapshot policy status
+        :param str status_detail: Automatic snapshot policy status details
+        :param Sequence[str] time_points: The set of times at which the snapshot is taken on the day the automatic snapshot is executed.
+        """
+        pulumi.set(__self__, "applied_dbfs_number", applied_dbfs_number)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_modified", last_modified)
+        pulumi.set(__self__, "policy_id", policy_id)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
+        pulumi.set(__self__, "retention_days", retention_days)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "status_detail", status_detail)
+        pulumi.set(__self__, "time_points", time_points)
+
+    @property
+    @pulumi.getter(name="appliedDbfsNumber")
+    def applied_dbfs_number(self) -> int:
+        """
+        The number of database file systems set by the automatic snapshot policy.
+        """
+        return pulumi.get(self, "applied_dbfs_number")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the policy.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lastModified")
+    def last_modified(self) -> str:
+        """
+        Last modification time of automatic snapshot policy
+        """
+        return pulumi.get(self, "last_modified")
+
+    @property
+    @pulumi.getter(name="policyId")
+    def policy_id(self) -> str:
+        """
+        Automatic snapshot policy ID
+        """
+        return pulumi.get(self, "policy_id")
+
+    @property
+    @pulumi.getter(name="policyName")
+    def policy_name(self) -> str:
+        """
+        Automatic snapshot policy name
+        """
+        return pulumi.get(self, "policy_name")
+
+    @property
+    @pulumi.getter(name="repeatWeekdays")
+    def repeat_weekdays(self) -> Sequence[str]:
+        """
+        A collection of automatic snapshots performed on several days of the week.
+        """
+        return pulumi.get(self, "repeat_weekdays")
+
+    @property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> int:
+        """
+        Automatic snapshot retention days
+        """
+        return pulumi.get(self, "retention_days")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Automatic snapshot policy status
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="statusDetail")
+    def status_detail(self) -> str:
+        """
+        Automatic snapshot policy status details
+        """
+        return pulumi.get(self, "status_detail")
+
+    @property
+    @pulumi.getter(name="timePoints")
+    def time_points(self) -> Sequence[str]:
+        """
+        The set of times at which the snapshot is taken on the day the automatic snapshot is executed.
+        """
+        return pulumi.get(self, "time_points")
 
 
 @pulumi.output_type

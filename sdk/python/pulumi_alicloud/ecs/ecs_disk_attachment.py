@@ -259,7 +259,7 @@ class EcsDiskAttachment(pulumi.CustomResource):
         # Create a new ECS disk-attachment and use it attach one disk to a new instance.
         ecs_sg = alicloud.ecs.SecurityGroup("ecsSg", description="New security group")
         ecs_disk = alicloud.ecs.EcsDisk("ecsDisk",
-            availability_zone="cn-beijing-a",
+            zone_id="cn-beijing-a",
             size=50,
             tags={
                 "Name": "TerraformTest-disk",
@@ -320,7 +320,7 @@ class EcsDiskAttachment(pulumi.CustomResource):
         # Create a new ECS disk-attachment and use it attach one disk to a new instance.
         ecs_sg = alicloud.ecs.SecurityGroup("ecsSg", description="New security group")
         ecs_disk = alicloud.ecs.EcsDisk("ecsDisk",
-            availability_zone="cn-beijing-a",
+            zone_id="cn-beijing-a",
             size=50,
             tags={
                 "Name": "TerraformTest-disk",

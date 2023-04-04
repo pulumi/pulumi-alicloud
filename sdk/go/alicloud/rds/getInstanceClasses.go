@@ -54,7 +54,7 @@ func GetInstanceClasses(ctx *pulumi.Context, args *GetInstanceClassesArgs, opts 
 
 // A collection of arguments for invoking getInstanceClasses.
 type GetInstanceClassesArgs struct {
-	// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+	// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
 	Category *string `pulumi:"category"`
 	// The commodity code of the instance. Valid values:
 	// * **bards**: The instance is a pay-as-you-go primary instance. This value is available on the China site (aliyun.com).
@@ -128,7 +128,7 @@ func GetInstanceClassesOutput(ctx *pulumi.Context, args GetInstanceClassesOutput
 
 // A collection of arguments for invoking getInstanceClasses.
 type GetInstanceClassesOutputArgs struct {
-	// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+	// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// The commodity code of the instance. Valid values:
 	// * **bards**: The instance is a pay-as-you-go primary instance. This value is available on the China site (aliyun.com).

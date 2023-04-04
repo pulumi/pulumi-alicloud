@@ -17,14 +17,14 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
     public static final GetInstanceClassesArgs Empty = new GetInstanceClassesArgs();
 
     /**
-     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+     * @return DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      * 
      */
     public Optional<Output<String>> category() {
@@ -252,7 +252,7 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param category DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+         * @param category DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param category DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+         * @param category DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
          * 
          * @return builder
          * 

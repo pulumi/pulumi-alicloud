@@ -2098,6 +2098,10 @@ type GetConnectionsConnection struct {
 	// Use the VPN customer gateway ID as the search key.
 	CustomerGatewayId string `pulumi:"customerGatewayId"`
 	EffectImmediately bool   `pulumi:"effectImmediately"`
+	// Specifies whether to enable the dead peer detection (DPD) feature.
+	EnableDpd bool `pulumi:"enableDpd"`
+	// Specifies whether to enable NAT traversal.
+	EnableNatTraversal bool `pulumi:"enableNatTraversal"`
 	// ID of the VPN connection.
 	Id string `pulumi:"id"`
 	// The configurations of phase-one negotiation.
@@ -2135,6 +2139,10 @@ type GetConnectionsConnectionArgs struct {
 	// Use the VPN customer gateway ID as the search key.
 	CustomerGatewayId pulumi.StringInput `pulumi:"customerGatewayId"`
 	EffectImmediately pulumi.BoolInput   `pulumi:"effectImmediately"`
+	// Specifies whether to enable the dead peer detection (DPD) feature.
+	EnableDpd pulumi.BoolInput `pulumi:"enableDpd"`
+	// Specifies whether to enable NAT traversal.
+	EnableNatTraversal pulumi.BoolInput `pulumi:"enableNatTraversal"`
 	// ID of the VPN connection.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The configurations of phase-one negotiation.
@@ -2218,6 +2226,16 @@ func (o GetConnectionsConnectionOutput) CustomerGatewayId() pulumi.StringOutput 
 
 func (o GetConnectionsConnectionOutput) EffectImmediately() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConnectionsConnection) bool { return v.EffectImmediately }).(pulumi.BoolOutput)
+}
+
+// Specifies whether to enable the dead peer detection (DPD) feature.
+func (o GetConnectionsConnectionOutput) EnableDpd() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionsConnection) bool { return v.EnableDpd }).(pulumi.BoolOutput)
+}
+
+// Specifies whether to enable NAT traversal.
+func (o GetConnectionsConnectionOutput) EnableNatTraversal() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionsConnection) bool { return v.EnableNatTraversal }).(pulumi.BoolOutput)
 }
 
 // ID of the VPN connection.

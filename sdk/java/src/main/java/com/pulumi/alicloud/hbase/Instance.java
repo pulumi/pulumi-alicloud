@@ -63,10 +63,10 @@ import javax.annotation.Nullable;
  *             .coreDiskSize(400)
  *             .coreDiskType(&#34;cloud_efficiency&#34;)
  *             .coreInstanceQuantity(2)
- *             .coreInstanceType(&#34;hbase.sn1.large&#34;)
+ *             .coreInstanceType(&#34;hbase.sn2.2xlarge&#34;)
  *             .engine(&#34;hbaseue&#34;)
  *             .engineVersion(&#34;2.0&#34;)
- *             .masterInstanceType(&#34;hbase.sn1.large&#34;)
+ *             .masterInstanceType(&#34;hbase.sn2.2xlarge&#34;)
  *             .payType(&#34;PostPaid&#34;)
  *             .vswitchId(&#34;vsw-123456&#34;)
  *             .zoneId(&#34;cn-shenzhen-b&#34;)
@@ -118,14 +118,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.autoRenew;
     }
     /**
-     * 0 or [800, 1000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 1000000] means is_cold_storage = true.
+     * 0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
      * 
      */
     @Export(name="coldStorageSize", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> coldStorageSize;
 
     /**
-     * @return 0 or [800, 1000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 1000000] means is_cold_storage = true.
+     * @return 0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
      * 
      */
     public Output<Optional<Integer>> coldStorageSize() {

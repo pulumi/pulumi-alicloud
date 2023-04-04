@@ -81,6 +81,21 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+     * 
+     */
+    @Import(name="hotTtl")
+    private @Nullable Output<Integer> hotTtl;
+
+    /**
+     * @return The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+     * 
+     */
+    public Optional<Output<Integer>> hotTtl() {
+        return Optional.ofNullable(this.hotTtl);
+    }
+
+    /**
      * The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
      * 
      */
@@ -93,6 +108,21 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> maxSplitShardCount() {
         return Optional.ofNullable(this.maxSplitShardCount);
+    }
+
+    /**
+     * The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can&#39;t be changed after created.
+     * 
+     */
+    @Import(name="mode")
+    private @Nullable Output<String> mode;
+
+    /**
+     * @return The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can&#39;t be changed after created.
+     * 
+     */
+    public Optional<Output<String>> mode() {
+        return Optional.ofNullable(this.mode);
     }
 
     /**
@@ -192,7 +222,9 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         this.autoSplit = $.autoSplit;
         this.enableWebTracking = $.enableWebTracking;
         this.encryptConf = $.encryptConf;
+        this.hotTtl = $.hotTtl;
         this.maxSplitShardCount = $.maxSplitShardCount;
+        this.mode = $.mode;
         this.name = $.name;
         this.project = $.project;
         this.retentionPeriod = $.retentionPeriod;
@@ -304,6 +336,27 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param hotTtl The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hotTtl(@Nullable Output<Integer> hotTtl) {
+            $.hotTtl = hotTtl;
+            return this;
+        }
+
+        /**
+         * @param hotTtl The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hotTtl(Integer hotTtl) {
+            return hotTtl(Output.of(hotTtl));
+        }
+
+        /**
          * @param maxSplitShardCount The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
          * 
          * @return builder
@@ -322,6 +375,27 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder maxSplitShardCount(Integer maxSplitShardCount) {
             return maxSplitShardCount(Output.of(maxSplitShardCount));
+        }
+
+        /**
+         * @param mode The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can&#39;t be changed after created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(@Nullable Output<String> mode) {
+            $.mode = mode;
+            return this;
+        }
+
+        /**
+         * @param mode The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can&#39;t be changed after created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(String mode) {
+            return mode(Output.of(mode));
         }
 
         /**

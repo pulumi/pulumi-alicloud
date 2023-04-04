@@ -78,6 +78,7 @@ namespace Pulumi.AliCloud.Rds
         /// * **AlwaysOn**: Cluster Edition.
         /// * **Finance**: Enterprise Edition.
         /// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+        /// * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
         /// </summary>
         [Output("category")]
         public Output<string> Category { get; private set; } = null!;
@@ -527,7 +528,7 @@ namespace Pulumi.AliCloud.Rds
         /// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         /// </summary>
         [Output("zoneIdSlaveB")]
-        public Output<string?> ZoneIdSlaveB { get; private set; } = null!;
+        public Output<string> ZoneIdSlaveB { get; private set; } = null!;
 
 
         /// <summary>
@@ -638,6 +639,7 @@ namespace Pulumi.AliCloud.Rds
         /// * **AlwaysOn**: Cluster Edition.
         /// * **Finance**: Enterprise Edition.
         /// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+        /// * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -1178,6 +1180,7 @@ namespace Pulumi.AliCloud.Rds
         /// * **AlwaysOn**: Cluster Edition.
         /// * **Finance**: Enterprise Edition.
         /// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+        /// * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }

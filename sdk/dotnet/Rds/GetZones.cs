@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Rds
     public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+        /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
         /// </summary>
         [Input("category")]
         public string? Category { get; set; }
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Rds
     public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+        /// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }

@@ -47,7 +47,7 @@ class InstanceArgs:
         :param pulumi.Input[str] master_instance_type: Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
         :param pulumi.Input[str] account: The account of the cluster web ui. Size [0-128].
         :param pulumi.Input[bool] auto_renew: Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
-        :param pulumi.Input[int] cold_storage_size: 0 or [800, 1000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 1000000] means is_cold_storage = true.
+        :param pulumi.Input[int] cold_storage_size: 0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
         :param pulumi.Input[int] core_disk_size: User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
                - Custom storage space, value range: [20, 64000].
                - Cluster [400, 64000], step:40-GB increments.
@@ -180,7 +180,7 @@ class InstanceArgs:
     @pulumi.getter(name="coldStorageSize")
     def cold_storage_size(self) -> Optional[pulumi.Input[int]]:
         """
-        0 or [800, 1000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 1000000] means is_cold_storage = true.
+        0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
         """
         return pulumi.get(self, "cold_storage_size")
 
@@ -443,7 +443,7 @@ class _InstanceState:
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] account: The account of the cluster web ui. Size [0-128].
         :param pulumi.Input[bool] auto_renew: Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
-        :param pulumi.Input[int] cold_storage_size: 0 or [800, 1000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 1000000] means is_cold_storage = true.
+        :param pulumi.Input[int] cold_storage_size: 0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
         :param pulumi.Input[int] core_disk_size: User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
                - Custom storage space, value range: [20, 64000].
                - Cluster [400, 64000], step:40-GB increments.
@@ -558,7 +558,7 @@ class _InstanceState:
     @pulumi.getter(name="coldStorageSize")
     def cold_storage_size(self) -> Optional[pulumi.Input[int]]:
         """
-        0 or [800, 1000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 1000000] means is_cold_storage = true.
+        0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
         """
         return pulumi.get(self, "cold_storage_size")
 
@@ -925,10 +925,10 @@ class Instance(pulumi.CustomResource):
             core_disk_size=400,
             core_disk_type="cloud_efficiency",
             core_instance_quantity=2,
-            core_instance_type="hbase.sn1.large",
+            core_instance_type="hbase.sn2.2xlarge",
             engine="hbaseue",
             engine_version="2.0",
-            master_instance_type="hbase.sn1.large",
+            master_instance_type="hbase.sn2.2xlarge",
             pay_type="PostPaid",
             vswitch_id="vsw-123456",
             zone_id="cn-shenzhen-b")
@@ -948,7 +948,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account: The account of the cluster web ui. Size [0-128].
         :param pulumi.Input[bool] auto_renew: Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
-        :param pulumi.Input[int] cold_storage_size: 0 or [800, 1000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 1000000] means is_cold_storage = true.
+        :param pulumi.Input[int] cold_storage_size: 0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
         :param pulumi.Input[int] core_disk_size: User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
                - Custom storage space, value range: [20, 64000].
                - Cluster [400, 64000], step:40-GB increments.
@@ -1005,10 +1005,10 @@ class Instance(pulumi.CustomResource):
             core_disk_size=400,
             core_disk_type="cloud_efficiency",
             core_instance_quantity=2,
-            core_instance_type="hbase.sn1.large",
+            core_instance_type="hbase.sn2.2xlarge",
             engine="hbaseue",
             engine_version="2.0",
-            master_instance_type="hbase.sn1.large",
+            master_instance_type="hbase.sn2.2xlarge",
             pay_type="PostPaid",
             vswitch_id="vsw-123456",
             zone_id="cn-shenzhen-b")
@@ -1155,7 +1155,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account: The account of the cluster web ui. Size [0-128].
         :param pulumi.Input[bool] auto_renew: Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
-        :param pulumi.Input[int] cold_storage_size: 0 or [800, 1000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 1000000] means is_cold_storage = true.
+        :param pulumi.Input[int] cold_storage_size: 0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
         :param pulumi.Input[int] core_disk_size: User-defined HBase instance one core node's storage. Valid when engine=hbase/hbaseue. Bds engine no need core_disk_size, space.Unit: GB. Value range:
                - Custom storage space, value range: [20, 64000].
                - Cluster [400, 64000], step:40-GB increments.
@@ -1239,7 +1239,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="coldStorageSize")
     def cold_storage_size(self) -> pulumi.Output[Optional[int]]:
         """
-        0 or [800, 1000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 1000000] means is_cold_storage = true.
+        0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
         """
         return pulumi.get(self, "cold_storage_size")
 

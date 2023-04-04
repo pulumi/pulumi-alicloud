@@ -31,8 +31,12 @@ type Store struct {
 	EnableWebTracking pulumi.BoolPtrOutput `pulumi:"enableWebTracking"`
 	// Encrypted storage of data, providing data static protection capability, `encryptConf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
 	EncryptConf StoreEncryptConfPtrOutput `pulumi:"encryptConf"`
+	// The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+	HotTtl pulumi.IntPtrOutput `pulumi:"hotTtl"`
 	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount pulumi.IntPtrOutput `pulumi:"maxSplitShardCount"`
+	// The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+	Mode pulumi.StringOutput `pulumi:"mode"`
 	// The log store, which is unique in the same project.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project name to the log store belongs.
@@ -87,8 +91,12 @@ type storeState struct {
 	EnableWebTracking *bool `pulumi:"enableWebTracking"`
 	// Encrypted storage of data, providing data static protection capability, `encryptConf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
 	EncryptConf *StoreEncryptConf `pulumi:"encryptConf"`
+	// The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+	HotTtl *int `pulumi:"hotTtl"`
 	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount *int `pulumi:"maxSplitShardCount"`
+	// The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+	Mode *string `pulumi:"mode"`
 	// The log store, which is unique in the same project.
 	Name *string `pulumi:"name"`
 	// The project name to the log store belongs.
@@ -112,8 +120,12 @@ type StoreState struct {
 	EnableWebTracking pulumi.BoolPtrInput
 	// Encrypted storage of data, providing data static protection capability, `encryptConf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
 	EncryptConf StoreEncryptConfPtrInput
+	// The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+	HotTtl pulumi.IntPtrInput
 	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount pulumi.IntPtrInput
+	// The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+	Mode pulumi.StringPtrInput
 	// The log store, which is unique in the same project.
 	Name pulumi.StringPtrInput
 	// The project name to the log store belongs.
@@ -141,8 +153,12 @@ type storeArgs struct {
 	EnableWebTracking *bool `pulumi:"enableWebTracking"`
 	// Encrypted storage of data, providing data static protection capability, `encryptConf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
 	EncryptConf *StoreEncryptConf `pulumi:"encryptConf"`
+	// The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+	HotTtl *int `pulumi:"hotTtl"`
 	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount *int `pulumi:"maxSplitShardCount"`
+	// The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+	Mode *string `pulumi:"mode"`
 	// The log store, which is unique in the same project.
 	Name *string `pulumi:"name"`
 	// The project name to the log store belongs.
@@ -165,8 +181,12 @@ type StoreArgs struct {
 	EnableWebTracking pulumi.BoolPtrInput
 	// Encrypted storage of data, providing data static protection capability, `encryptConf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
 	EncryptConf StoreEncryptConfPtrInput
+	// The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+	HotTtl pulumi.IntPtrInput
 	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount pulumi.IntPtrInput
+	// The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+	Mode pulumi.StringPtrInput
 	// The log store, which is unique in the same project.
 	Name pulumi.StringPtrInput
 	// The project name to the log store belongs.
@@ -286,9 +306,19 @@ func (o StoreOutput) EncryptConf() StoreEncryptConfPtrOutput {
 	return o.ApplyT(func(v *Store) StoreEncryptConfPtrOutput { return v.EncryptConf }).(StoreEncryptConfPtrOutput)
 }
 
+// The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+func (o StoreOutput) HotTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Store) pulumi.IntPtrOutput { return v.HotTtl }).(pulumi.IntPtrOutput)
+}
+
 // The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
 func (o StoreOutput) MaxSplitShardCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Store) pulumi.IntPtrOutput { return v.MaxSplitShardCount }).(pulumi.IntPtrOutput)
+}
+
+// The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+func (o StoreOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Store) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }
 
 // The log store, which is unique in the same project.

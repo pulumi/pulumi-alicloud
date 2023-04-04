@@ -40,8 +40,8 @@ import (
 //				return err
 //			}
 //			ecsDisk, err := ecs.NewEcsDisk(ctx, "ecsDisk", &ecs.EcsDiskArgs{
-//				AvailabilityZone: pulumi.String("cn-beijing-a"),
-//				Size:             pulumi.Int(50),
+//				ZoneId: pulumi.String("cn-beijing-a"),
+//				Size:   pulumi.Int(50),
 //				Tags: pulumi.AnyMap{
 //					"Name": pulumi.Any("TerraformTest-disk"),
 //				},

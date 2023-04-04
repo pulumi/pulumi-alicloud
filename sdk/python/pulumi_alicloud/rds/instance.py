@@ -119,6 +119,7 @@ class InstanceArgs:
                * **AlwaysOn**: Cluster Edition.
                * **Finance**: Enterprise Edition.
                * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+               * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
         :param pulumi.Input[str] client_ca_cert: The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
         :param pulumi.Input[int] client_ca_enabled: Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
                - 1: enables the public key
@@ -534,6 +535,7 @@ class InstanceArgs:
         * **AlwaysOn**: Cluster Edition.
         * **Finance**: Enterprise Edition.
         * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+        * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
         """
         return pulumi.get(self, "category")
 
@@ -1388,6 +1390,7 @@ class _InstanceState:
                * **AlwaysOn**: Cluster Edition.
                * **Finance**: Enterprise Edition.
                * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+               * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
         :param pulumi.Input[str] client_ca_cert: The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
         :param pulumi.Input[int] client_ca_enabled: Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
                - 1: enables the public key
@@ -1772,6 +1775,7 @@ class _InstanceState:
         * **AlwaysOn**: Cluster Edition.
         * **Finance**: Enterprise Edition.
         * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+        * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
         """
         return pulumi.get(self, "category")
 
@@ -2725,6 +2729,7 @@ class Instance(pulumi.CustomResource):
                * **AlwaysOn**: Cluster Edition.
                * **Finance**: Enterprise Edition.
                * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+               * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
         :param pulumi.Input[str] client_ca_cert: The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
         :param pulumi.Input[int] client_ca_enabled: Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
                - 1: enables the public key
@@ -3158,6 +3163,7 @@ class Instance(pulumi.CustomResource):
                * **AlwaysOn**: Cluster Edition.
                * **Finance**: Enterprise Edition.
                * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+               * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
         :param pulumi.Input[str] client_ca_cert: The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
         :param pulumi.Input[int] client_ca_enabled: Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. Valid values:
                - 1: enables the public key
@@ -3440,6 +3446,7 @@ class Instance(pulumi.CustomResource):
         * **AlwaysOn**: Cluster Edition.
         * **Finance**: Enterprise Edition.
         * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+        * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
         """
         return pulumi.get(self, "category")
 
@@ -4014,7 +4021,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneIdSlaveB")
-    def zone_id_slave_b(self) -> pulumi.Output[Optional[str]]:
+    def zone_id_slave_b(self) -> pulumi.Output[str]:
         """
         The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """

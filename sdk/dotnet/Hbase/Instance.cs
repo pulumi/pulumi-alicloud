@@ -38,10 +38,10 @@ namespace Pulumi.AliCloud.Hbase
     ///         CoreDiskSize = 400,
     ///         CoreDiskType = "cloud_efficiency",
     ///         CoreInstanceQuantity = 2,
-    ///         CoreInstanceType = "hbase.sn1.large",
+    ///         CoreInstanceType = "hbase.sn2.2xlarge",
     ///         Engine = "hbaseue",
     ///         EngineVersion = "2.0",
-    ///         MasterInstanceType = "hbase.sn1.large",
+    ///         MasterInstanceType = "hbase.sn2.2xlarge",
     ///         PayType = "PostPaid",
     ///         VswitchId = "vsw-123456",
     ///         ZoneId = "cn-shenzhen-b",
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Hbase
         public Output<bool> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// 0 or [800, 1000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 1000000] means is_cold_storage = true.
+        /// 0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
         /// </summary>
         [Output("coldStorageSize")]
         public Output<int?> ColdStorageSize { get; private set; } = null!;
@@ -297,7 +297,7 @@ namespace Pulumi.AliCloud.Hbase
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// 0 or [800, 1000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 1000000] means is_cold_storage = true.
+        /// 0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
         /// </summary>
         [Input("coldStorageSize")]
         public Input<int>? ColdStorageSize { get; set; }
@@ -474,7 +474,7 @@ namespace Pulumi.AliCloud.Hbase
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// 0 or [800, 1000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 1000000] means is_cold_storage = true.
+        /// 0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
         /// </summary>
         [Input("coldStorageSize")]
         public Input<int>? ColdStorageSize { get; set; }

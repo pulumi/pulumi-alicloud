@@ -5,6 +5,8 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .auto_snap_shot_policy import *
+from .get_auto_snap_shot_policies import *
 from .get_instances import *
 from .get_snapshots import *
 from .instance import *
