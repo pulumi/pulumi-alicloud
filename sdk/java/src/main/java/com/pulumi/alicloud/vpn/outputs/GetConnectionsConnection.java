@@ -24,6 +24,16 @@ public final class GetConnectionsConnection {
     private String customerGatewayId;
     private Boolean effectImmediately;
     /**
+     * @return Specifies whether to enable the dead peer detection (DPD) feature.
+     * 
+     */
+    private Boolean enableDpd;
+    /**
+     * @return Specifies whether to enable NAT traversal.
+     * 
+     */
+    private Boolean enableNatTraversal;
+    /**
      * @return ID of the VPN connection.
      * 
      */
@@ -83,6 +93,20 @@ public final class GetConnectionsConnection {
     }
     public Boolean effectImmediately() {
         return this.effectImmediately;
+    }
+    /**
+     * @return Specifies whether to enable the dead peer detection (DPD) feature.
+     * 
+     */
+    public Boolean enableDpd() {
+        return this.enableDpd;
+    }
+    /**
+     * @return Specifies whether to enable NAT traversal.
+     * 
+     */
+    public Boolean enableNatTraversal() {
+        return this.enableNatTraversal;
     }
     /**
      * @return ID of the VPN connection.
@@ -163,6 +187,8 @@ public final class GetConnectionsConnection {
         private String createTime;
         private String customerGatewayId;
         private Boolean effectImmediately;
+        private Boolean enableDpd;
+        private Boolean enableNatTraversal;
         private String id;
         private @Nullable List<GetConnectionsConnectionIkeConfig> ikeConfigs;
         private @Nullable List<GetConnectionsConnectionIpsecConfig> ipsecConfigs;
@@ -179,6 +205,8 @@ public final class GetConnectionsConnection {
     	      this.createTime = defaults.createTime;
     	      this.customerGatewayId = defaults.customerGatewayId;
     	      this.effectImmediately = defaults.effectImmediately;
+    	      this.enableDpd = defaults.enableDpd;
+    	      this.enableNatTraversal = defaults.enableNatTraversal;
     	      this.id = defaults.id;
     	      this.ikeConfigs = defaults.ikeConfigs;
     	      this.ipsecConfigs = defaults.ipsecConfigs;
@@ -204,6 +232,16 @@ public final class GetConnectionsConnection {
         @CustomType.Setter
         public Builder effectImmediately(Boolean effectImmediately) {
             this.effectImmediately = Objects.requireNonNull(effectImmediately);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableDpd(Boolean enableDpd) {
+            this.enableDpd = Objects.requireNonNull(enableDpd);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableNatTraversal(Boolean enableNatTraversal) {
+            this.enableNatTraversal = Objects.requireNonNull(enableNatTraversal);
             return this;
         }
         @CustomType.Setter
@@ -273,6 +311,8 @@ public final class GetConnectionsConnection {
             o.createTime = createTime;
             o.customerGatewayId = customerGatewayId;
             o.effectImmediately = effectImmediately;
+            o.enableDpd = enableDpd;
+            o.enableNatTraversal = enableNatTraversal;
             o.id = id;
             o.ikeConfigs = ikeConfigs;
             o.ipsecConfigs = ipsecConfigs;

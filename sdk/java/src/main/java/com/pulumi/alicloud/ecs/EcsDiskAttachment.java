@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ecsDisk = new EcsDisk(&#34;ecsDisk&#34;, EcsDiskArgs.builder()        
- *             .availabilityZone(&#34;cn-beijing-a&#34;)
+ *             .zoneId(&#34;cn-beijing-a&#34;)
  *             .size(&#34;50&#34;)
  *             .tags(Map.of(&#34;Name&#34;, &#34;TerraformTest-disk&#34;))
  *             .build());

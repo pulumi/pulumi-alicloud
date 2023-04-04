@@ -30,7 +30,7 @@ public final class GetInstancesInstance {
      */
     private String coreDiskType;
     /**
-     * @return Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+     * @return Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
      * 
      */
     private String coreInstanceType;
@@ -70,7 +70,7 @@ public final class GetInstancesInstance {
      */
     private String id;
     /**
-     * @return Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+     * @return Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
      * 
      */
     private String masterInstanceType;
@@ -148,7 +148,7 @@ public final class GetInstancesInstance {
         return this.coreDiskType;
     }
     /**
-     * @return Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+     * @return Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
      * 
      */
     public String coreInstanceType() {
@@ -204,7 +204,7 @@ public final class GetInstancesInstance {
         return this.id;
     }
     /**
-     * @return Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+     * @return Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
      * 
      */
     public String masterInstanceType() {

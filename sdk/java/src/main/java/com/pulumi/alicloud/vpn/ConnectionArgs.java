@@ -67,14 +67,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable NAT traversal.
+     * Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
      * 
      */
     @Import(name="enableDpd")
     private @Nullable Output<Boolean> enableDpd;
 
     /**
-     * @return Whether to enable NAT traversal.
+     * @return Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
      * 
      */
     public Optional<Output<Boolean>> enableDpd() {
@@ -82,14 +82,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable NAT traversal.
+     * Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
      * 
      */
     @Import(name="enableNatTraversal")
     private @Nullable Output<Boolean> enableNatTraversal;
 
     /**
-     * @return Whether to enable NAT traversal.
+     * @return Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
      * 
      */
     public Optional<Output<Boolean>> enableNatTraversal() {
@@ -300,7 +300,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableDpd Whether to enable NAT traversal.
+         * @param enableDpd Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableDpd Whether to enable NAT traversal.
+         * @param enableDpd Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableNatTraversal Whether to enable NAT traversal.
+         * @param enableNatTraversal Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableNatTraversal Whether to enable NAT traversal.
+         * @param enableNatTraversal Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
          * 
          * @return builder
          * 

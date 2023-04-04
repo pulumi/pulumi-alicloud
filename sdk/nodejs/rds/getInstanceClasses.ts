@@ -52,7 +52,7 @@ export function getInstanceClasses(args?: GetInstanceClassesArgs, opts?: pulumi.
  */
 export interface GetInstanceClassesArgs {
     /**
-     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      */
     category?: string;
     /**
@@ -168,7 +168,7 @@ export function getInstanceClassesOutput(args?: GetInstanceClassesOutputArgs, op
  */
 export interface GetInstanceClassesOutputArgs {
     /**
-     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+     * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      */
     category?: pulumi.Input<string>;
     /**

@@ -60,9 +60,17 @@ export class Store extends pulumi.CustomResource {
      */
     public readonly encryptConf!: pulumi.Output<outputs.log.StoreEncryptConf | undefined>;
     /**
+     * The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+     */
+    public readonly hotTtl!: pulumi.Output<number | undefined>;
+    /**
      * The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
      */
     public readonly maxSplitShardCount!: pulumi.Output<number | undefined>;
+    /**
+     * The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+     */
+    public readonly mode!: pulumi.Output<string>;
     /**
      * The log store, which is unique in the same project.
      */
@@ -105,7 +113,9 @@ export class Store extends pulumi.CustomResource {
             resourceInputs["autoSplit"] = state ? state.autoSplit : undefined;
             resourceInputs["enableWebTracking"] = state ? state.enableWebTracking : undefined;
             resourceInputs["encryptConf"] = state ? state.encryptConf : undefined;
+            resourceInputs["hotTtl"] = state ? state.hotTtl : undefined;
             resourceInputs["maxSplitShardCount"] = state ? state.maxSplitShardCount : undefined;
+            resourceInputs["mode"] = state ? state.mode : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["retentionPeriod"] = state ? state.retentionPeriod : undefined;
@@ -121,7 +131,9 @@ export class Store extends pulumi.CustomResource {
             resourceInputs["autoSplit"] = args ? args.autoSplit : undefined;
             resourceInputs["enableWebTracking"] = args ? args.enableWebTracking : undefined;
             resourceInputs["encryptConf"] = args ? args.encryptConf : undefined;
+            resourceInputs["hotTtl"] = args ? args.hotTtl : undefined;
             resourceInputs["maxSplitShardCount"] = args ? args.maxSplitShardCount : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["retentionPeriod"] = args ? args.retentionPeriod : undefined;
@@ -155,9 +167,17 @@ export interface StoreState {
      */
     encryptConf?: pulumi.Input<inputs.log.StoreEncryptConf>;
     /**
+     * The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+     */
+    hotTtl?: pulumi.Input<number>;
+    /**
      * The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
      */
     maxSplitShardCount?: pulumi.Input<number>;
+    /**
+     * The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+     */
+    mode?: pulumi.Input<string>;
     /**
      * The log store, which is unique in the same project.
      */
@@ -205,9 +225,17 @@ export interface StoreArgs {
      */
     encryptConf?: pulumi.Input<inputs.log.StoreEncryptConf>;
     /**
+     * The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+     */
+    hotTtl?: pulumi.Input<number>;
+    /**
      * The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
      */
     maxSplitShardCount?: pulumi.Input<number>;
+    /**
+     * The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+     */
+    mode?: pulumi.Input<string>;
     /**
      * The log store, which is unique in the same project.
      */

@@ -46,10 +46,22 @@ namespace Pulumi.AliCloud.Log
         public Output<Outputs.StoreEncryptConf?> EncryptConf { get; private set; } = null!;
 
         /// <summary>
+        /// The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+        /// </summary>
+        [Output("hotTtl")]
+        public Output<int?> HotTtl { get; private set; } = null!;
+
+        /// <summary>
         /// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
         /// </summary>
         [Output("maxSplitShardCount")]
         public Output<int?> MaxSplitShardCount { get; private set; } = null!;
+
+        /// <summary>
+        /// The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+        /// </summary>
+        [Output("mode")]
+        public Output<string> Mode { get; private set; } = null!;
 
         /// <summary>
         /// The log store, which is unique in the same project.
@@ -158,10 +170,22 @@ namespace Pulumi.AliCloud.Log
         public Input<Inputs.StoreEncryptConfArgs>? EncryptConf { get; set; }
 
         /// <summary>
+        /// The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+        /// </summary>
+        [Input("hotTtl")]
+        public Input<int>? HotTtl { get; set; }
+
+        /// <summary>
         /// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
         /// </summary>
         [Input("maxSplitShardCount")]
         public Input<int>? MaxSplitShardCount { get; set; }
+
+        /// <summary>
+        /// The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+        /// </summary>
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
 
         /// <summary>
         /// The log store, which is unique in the same project.
@@ -226,10 +250,22 @@ namespace Pulumi.AliCloud.Log
         public Input<Inputs.StoreEncryptConfGetArgs>? EncryptConf { get; set; }
 
         /// <summary>
+        /// The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+        /// </summary>
+        [Input("hotTtl")]
+        public Input<int>? HotTtl { get; set; }
+
+        /// <summary>
         /// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
         /// </summary>
         [Input("maxSplitShardCount")]
         public Input<int>? MaxSplitShardCount { get; set; }
+
+        /// <summary>
+        /// The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
+        /// </summary>
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
 
         /// <summary>
         /// The log store, which is unique in the same project.

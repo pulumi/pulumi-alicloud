@@ -152,6 +152,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * * **AlwaysOn**: Cluster Edition.
      * * **Finance**: Enterprise Edition.
      * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+     * * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
      * 
      */
     @Import(name="category")
@@ -164,6 +165,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * * **AlwaysOn**: Cluster Edition.
      * * **Finance**: Enterprise Edition.
      * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+     * * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
      * 
      */
     public Optional<Output<String>> category() {
@@ -1497,6 +1499,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * * **AlwaysOn**: Cluster Edition.
          * * **Finance**: Enterprise Edition.
          * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+         * * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
          * 
          * @return builder
          * 
@@ -1513,6 +1516,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * * **AlwaysOn**: Cluster Edition.
          * * **Finance**: Enterprise Edition.
          * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+         * * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
          * 
          * @return builder
          * 

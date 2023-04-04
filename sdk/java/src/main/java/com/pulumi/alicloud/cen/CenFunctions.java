@@ -32,6 +32,8 @@ import com.pulumi.alicloud.cen.inputs.GetRouteServicesArgs;
 import com.pulumi.alicloud.cen.inputs.GetRouteServicesPlainArgs;
 import com.pulumi.alicloud.cen.inputs.GetTrafficMarkingPoliciesArgs;
 import com.pulumi.alicloud.cen.inputs.GetTrafficMarkingPoliciesPlainArgs;
+import com.pulumi.alicloud.cen.inputs.GetTransitRouteTableAggregationsArgs;
+import com.pulumi.alicloud.cen.inputs.GetTransitRouteTableAggregationsPlainArgs;
 import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
 import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesPlainArgs;
 import com.pulumi.alicloud.cen.inputs.GetTransitRouterCidrsArgs;
@@ -84,6 +86,7 @@ import com.pulumi.alicloud.cen.outputs.GetRouteEntriesResult;
 import com.pulumi.alicloud.cen.outputs.GetRouteMapsResult;
 import com.pulumi.alicloud.cen.outputs.GetRouteServicesResult;
 import com.pulumi.alicloud.cen.outputs.GetTrafficMarkingPoliciesResult;
+import com.pulumi.alicloud.cen.outputs.GetTransitRouteTableAggregationsResult;
 import com.pulumi.alicloud.cen.outputs.GetTransitRouterAvailableResourcesResult;
 import com.pulumi.alicloud.cen.outputs.GetTransitRouterCidrsResult;
 import com.pulumi.alicloud.cen.outputs.GetTransitRouterMulticastDomainAssociationsResult;
@@ -2791,6 +2794,202 @@ public final class CenFunctions {
      */
     public static CompletableFuture<GetTrafficMarkingPoliciesResult> getTrafficMarkingPoliciesPlain(GetTrafficMarkingPoliciesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cen/getTrafficMarkingPolicies:getTrafficMarkingPolicies", TypeShape.of(GetTrafficMarkingPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cen Transit Route Table Aggregations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.202.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouteTableAggregationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .transitRouteTableId(&#34;your_transit_route_table_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouteTableAggregationsResult -&gt; getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         final var nameRegex = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
+     *             .nameRegex(&#34;^my-name&#34;)
+     *             .transitRouteTableId(&#34;your_transit_route_table_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterMulticastDomainId1&#34;, nameRegex.applyValue(getTransitRouteTableAggregationsResult -&gt; getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTransitRouteTableAggregationsResult> getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs args) {
+        return getTransitRouteTableAggregations(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cen Transit Route Table Aggregations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.202.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouteTableAggregationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .transitRouteTableId(&#34;your_transit_route_table_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouteTableAggregationsResult -&gt; getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         final var nameRegex = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
+     *             .nameRegex(&#34;^my-name&#34;)
+     *             .transitRouteTableId(&#34;your_transit_route_table_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterMulticastDomainId1&#34;, nameRegex.applyValue(getTransitRouteTableAggregationsResult -&gt; getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransitRouteTableAggregationsResult> getTransitRouteTableAggregationsPlain(GetTransitRouteTableAggregationsPlainArgs args) {
+        return getTransitRouteTableAggregationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cen Transit Route Table Aggregations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.202.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouteTableAggregationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .transitRouteTableId(&#34;your_transit_route_table_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouteTableAggregationsResult -&gt; getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         final var nameRegex = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
+     *             .nameRegex(&#34;^my-name&#34;)
+     *             .transitRouteTableId(&#34;your_transit_route_table_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterMulticastDomainId1&#34;, nameRegex.applyValue(getTransitRouteTableAggregationsResult -&gt; getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTransitRouteTableAggregationsResult> getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cen/getTransitRouteTableAggregations:getTransitRouteTableAggregations", TypeShape.of(GetTransitRouteTableAggregationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cen Transit Route Table Aggregations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.202.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouteTableAggregationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .transitRouteTableId(&#34;your_transit_route_table_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouteTableAggregationsResult -&gt; getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         final var nameRegex = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
+     *             .nameRegex(&#34;^my-name&#34;)
+     *             .transitRouteTableId(&#34;your_transit_route_table_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;cenTransitRouterMulticastDomainId1&#34;, nameRegex.applyValue(getTransitRouteTableAggregationsResult -&gt; getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransitRouteTableAggregationsResult> getTransitRouteTableAggregationsPlain(GetTransitRouteTableAggregationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cen/getTransitRouteTableAggregations:getTransitRouteTableAggregations", TypeShape.of(GetTransitRouteTableAggregationsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Cen Transit Router Available Resources of the current Alibaba Cloud user.

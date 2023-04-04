@@ -101,9 +101,9 @@ type Connection struct {
 	CustomerGatewayId pulumi.StringOutput `pulumi:"customerGatewayId"`
 	// Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
 	EffectImmediately pulumi.BoolPtrOutput `pulumi:"effectImmediately"`
-	// Whether to enable NAT traversal.
+	// Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
 	EnableDpd pulumi.BoolOutput `pulumi:"enableDpd"`
-	// Whether to enable NAT traversal.
+	// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
 	EnableNatTraversal pulumi.BoolOutput `pulumi:"enableNatTraversal"`
 	// The health check configurations. See the following `Block healthCheckConfig`.
 	HealthCheckConfig ConnectionHealthCheckConfigOutput `pulumi:"healthCheckConfig"`
@@ -170,9 +170,9 @@ type connectionState struct {
 	CustomerGatewayId *string `pulumi:"customerGatewayId"`
 	// Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
 	EffectImmediately *bool `pulumi:"effectImmediately"`
-	// Whether to enable NAT traversal.
+	// Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
 	EnableDpd *bool `pulumi:"enableDpd"`
-	// Whether to enable NAT traversal.
+	// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
 	EnableNatTraversal *bool `pulumi:"enableNatTraversal"`
 	// The health check configurations. See the following `Block healthCheckConfig`.
 	HealthCheckConfig *ConnectionHealthCheckConfig `pulumi:"healthCheckConfig"`
@@ -199,9 +199,9 @@ type ConnectionState struct {
 	CustomerGatewayId pulumi.StringPtrInput
 	// Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
 	EffectImmediately pulumi.BoolPtrInput
-	// Whether to enable NAT traversal.
+	// Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
 	EnableDpd pulumi.BoolPtrInput
-	// Whether to enable NAT traversal.
+	// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
 	EnableNatTraversal pulumi.BoolPtrInput
 	// The health check configurations. See the following `Block healthCheckConfig`.
 	HealthCheckConfig ConnectionHealthCheckConfigPtrInput
@@ -232,9 +232,9 @@ type connectionArgs struct {
 	CustomerGatewayId string `pulumi:"customerGatewayId"`
 	// Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
 	EffectImmediately *bool `pulumi:"effectImmediately"`
-	// Whether to enable NAT traversal.
+	// Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
 	EnableDpd *bool `pulumi:"enableDpd"`
-	// Whether to enable NAT traversal.
+	// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
 	EnableNatTraversal *bool `pulumi:"enableNatTraversal"`
 	// The health check configurations. See the following `Block healthCheckConfig`.
 	HealthCheckConfig *ConnectionHealthCheckConfig `pulumi:"healthCheckConfig"`
@@ -260,9 +260,9 @@ type ConnectionArgs struct {
 	CustomerGatewayId pulumi.StringInput
 	// Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
 	EffectImmediately pulumi.BoolPtrInput
-	// Whether to enable NAT traversal.
+	// Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
 	EnableDpd pulumi.BoolPtrInput
-	// Whether to enable NAT traversal.
+	// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
 	EnableNatTraversal pulumi.BoolPtrInput
 	// The health check configurations. See the following `Block healthCheckConfig`.
 	HealthCheckConfig ConnectionHealthCheckConfigPtrInput
@@ -382,12 +382,12 @@ func (o ConnectionOutput) EffectImmediately() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolPtrOutput { return v.EffectImmediately }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to enable NAT traversal.
+// Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
 func (o ConnectionOutput) EnableDpd() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.EnableDpd }).(pulumi.BoolOutput)
 }
 
-// Whether to enable NAT traversal.
+// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
 func (o ConnectionOutput) EnableNatTraversal() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.EnableNatTraversal }).(pulumi.BoolOutput)
 }

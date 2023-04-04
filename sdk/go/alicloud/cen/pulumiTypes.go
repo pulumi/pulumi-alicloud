@@ -2859,6 +2859,176 @@ func (o GetTrafficMarkingPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) Get
 	}).(GetTrafficMarkingPoliciesPolicyOutput)
 }
 
+type GetTransitRouteTableAggregationsTransitRouteTableAggregation struct {
+	// The ID of the Transit Route Table Aggregation. It formats as `<transit_route_table_id>:<transit_route_table_aggregation_cidr>`.
+	Id string `pulumi:"id"`
+	// The route type of the aggregate route.
+	RouteType string `pulumi:"routeType"`
+	// The status of Transit Route Table Aggregation. Valid Values: `AllConfigured`, `Configuring`, `ConfigFailed`, `PartialConfigured`, `Deleting`.
+	Status string `pulumi:"status"`
+	// The destination CIDR block of the aggregate route.
+	TransitRouteTableAggregationCidr string `pulumi:"transitRouteTableAggregationCidr"`
+	// The description of the aggregate route.
+	TransitRouteTableAggregationDescription string `pulumi:"transitRouteTableAggregationDescription"`
+	// The name of the aggregate route.
+	TransitRouteTableAggregationName string `pulumi:"transitRouteTableAggregationName"`
+	// The scope of networks that you want to advertise the aggregate route.
+	TransitRouteTableAggregationScope string `pulumi:"transitRouteTableAggregationScope"`
+	// The ID of the route table of the Enterprise Edition transit router.
+	TransitRouteTableId string `pulumi:"transitRouteTableId"`
+}
+
+// GetTransitRouteTableAggregationsTransitRouteTableAggregationInput is an input type that accepts GetTransitRouteTableAggregationsTransitRouteTableAggregationArgs and GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput values.
+// You can construct a concrete instance of `GetTransitRouteTableAggregationsTransitRouteTableAggregationInput` via:
+//
+//	GetTransitRouteTableAggregationsTransitRouteTableAggregationArgs{...}
+type GetTransitRouteTableAggregationsTransitRouteTableAggregationInput interface {
+	pulumi.Input
+
+	ToGetTransitRouteTableAggregationsTransitRouteTableAggregationOutput() GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput
+	ToGetTransitRouteTableAggregationsTransitRouteTableAggregationOutputWithContext(context.Context) GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput
+}
+
+type GetTransitRouteTableAggregationsTransitRouteTableAggregationArgs struct {
+	// The ID of the Transit Route Table Aggregation. It formats as `<transit_route_table_id>:<transit_route_table_aggregation_cidr>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The route type of the aggregate route.
+	RouteType pulumi.StringInput `pulumi:"routeType"`
+	// The status of Transit Route Table Aggregation. Valid Values: `AllConfigured`, `Configuring`, `ConfigFailed`, `PartialConfigured`, `Deleting`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The destination CIDR block of the aggregate route.
+	TransitRouteTableAggregationCidr pulumi.StringInput `pulumi:"transitRouteTableAggregationCidr"`
+	// The description of the aggregate route.
+	TransitRouteTableAggregationDescription pulumi.StringInput `pulumi:"transitRouteTableAggregationDescription"`
+	// The name of the aggregate route.
+	TransitRouteTableAggregationName pulumi.StringInput `pulumi:"transitRouteTableAggregationName"`
+	// The scope of networks that you want to advertise the aggregate route.
+	TransitRouteTableAggregationScope pulumi.StringInput `pulumi:"transitRouteTableAggregationScope"`
+	// The ID of the route table of the Enterprise Edition transit router.
+	TransitRouteTableId pulumi.StringInput `pulumi:"transitRouteTableId"`
+}
+
+func (GetTransitRouteTableAggregationsTransitRouteTableAggregationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouteTableAggregationsTransitRouteTableAggregation)(nil)).Elem()
+}
+
+func (i GetTransitRouteTableAggregationsTransitRouteTableAggregationArgs) ToGetTransitRouteTableAggregationsTransitRouteTableAggregationOutput() GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput {
+	return i.ToGetTransitRouteTableAggregationsTransitRouteTableAggregationOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouteTableAggregationsTransitRouteTableAggregationArgs) ToGetTransitRouteTableAggregationsTransitRouteTableAggregationOutputWithContext(ctx context.Context) GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput)
+}
+
+// GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayInput is an input type that accepts GetTransitRouteTableAggregationsTransitRouteTableAggregationArray and GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput values.
+// You can construct a concrete instance of `GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayInput` via:
+//
+//	GetTransitRouteTableAggregationsTransitRouteTableAggregationArray{ GetTransitRouteTableAggregationsTransitRouteTableAggregationArgs{...} }
+type GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayInput interface {
+	pulumi.Input
+
+	ToGetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput() GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput
+	ToGetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutputWithContext(context.Context) GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput
+}
+
+type GetTransitRouteTableAggregationsTransitRouteTableAggregationArray []GetTransitRouteTableAggregationsTransitRouteTableAggregationInput
+
+func (GetTransitRouteTableAggregationsTransitRouteTableAggregationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouteTableAggregationsTransitRouteTableAggregation)(nil)).Elem()
+}
+
+func (i GetTransitRouteTableAggregationsTransitRouteTableAggregationArray) ToGetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput() GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput {
+	return i.ToGetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouteTableAggregationsTransitRouteTableAggregationArray) ToGetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutputWithContext(ctx context.Context) GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput)
+}
+
+type GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouteTableAggregationsTransitRouteTableAggregation)(nil)).Elem()
+}
+
+func (o GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput) ToGetTransitRouteTableAggregationsTransitRouteTableAggregationOutput() GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput {
+	return o
+}
+
+func (o GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput) ToGetTransitRouteTableAggregationsTransitRouteTableAggregationOutputWithContext(ctx context.Context) GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput {
+	return o
+}
+
+// The ID of the Transit Route Table Aggregation. It formats as `<transit_route_table_id>:<transit_route_table_aggregation_cidr>`.
+func (o GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouteTableAggregationsTransitRouteTableAggregation) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The route type of the aggregate route.
+func (o GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput) RouteType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouteTableAggregationsTransitRouteTableAggregation) string { return v.RouteType }).(pulumi.StringOutput)
+}
+
+// The status of Transit Route Table Aggregation. Valid Values: `AllConfigured`, `Configuring`, `ConfigFailed`, `PartialConfigured`, `Deleting`.
+func (o GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouteTableAggregationsTransitRouteTableAggregation) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The destination CIDR block of the aggregate route.
+func (o GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput) TransitRouteTableAggregationCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouteTableAggregationsTransitRouteTableAggregation) string {
+		return v.TransitRouteTableAggregationCidr
+	}).(pulumi.StringOutput)
+}
+
+// The description of the aggregate route.
+func (o GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput) TransitRouteTableAggregationDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouteTableAggregationsTransitRouteTableAggregation) string {
+		return v.TransitRouteTableAggregationDescription
+	}).(pulumi.StringOutput)
+}
+
+// The name of the aggregate route.
+func (o GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput) TransitRouteTableAggregationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouteTableAggregationsTransitRouteTableAggregation) string {
+		return v.TransitRouteTableAggregationName
+	}).(pulumi.StringOutput)
+}
+
+// The scope of networks that you want to advertise the aggregate route.
+func (o GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput) TransitRouteTableAggregationScope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouteTableAggregationsTransitRouteTableAggregation) string {
+		return v.TransitRouteTableAggregationScope
+	}).(pulumi.StringOutput)
+}
+
+// The ID of the route table of the Enterprise Edition transit router.
+func (o GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput) TransitRouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouteTableAggregationsTransitRouteTableAggregation) string {
+		return v.TransitRouteTableId
+	}).(pulumi.StringOutput)
+}
+
+type GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouteTableAggregationsTransitRouteTableAggregation)(nil)).Elem()
+}
+
+func (o GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput) ToGetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput() GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput {
+	return o
+}
+
+func (o GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput) ToGetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutputWithContext(ctx context.Context) GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput {
+	return o
+}
+
+func (o GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput) Index(i pulumi.IntInput) GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTransitRouteTableAggregationsTransitRouteTableAggregation {
+		return vs[0].([]GetTransitRouteTableAggregationsTransitRouteTableAggregation)[vs[1].(int)]
+	}).(GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput)
+}
+
 type GetTransitRouterAvailableResourcesResource struct {
 	// The list of primary zones.
 	MasterZones []string `pulumi:"masterZones"`
@@ -5889,6 +6059,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouteServicesServiceArrayInput)(nil)).Elem(), GetRouteServicesServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTrafficMarkingPoliciesPolicyInput)(nil)).Elem(), GetTrafficMarkingPoliciesPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTrafficMarkingPoliciesPolicyArrayInput)(nil)).Elem(), GetTrafficMarkingPoliciesPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouteTableAggregationsTransitRouteTableAggregationInput)(nil)).Elem(), GetTransitRouteTableAggregationsTransitRouteTableAggregationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayInput)(nil)).Elem(), GetTransitRouteTableAggregationsTransitRouteTableAggregationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterAvailableResourcesResourceInput)(nil)).Elem(), GetTransitRouterAvailableResourcesResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterAvailableResourcesResourceArrayInput)(nil)).Elem(), GetTransitRouterAvailableResourcesResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterCidrsCidrInput)(nil)).Elem(), GetTransitRouterCidrsCidrArgs{})
@@ -5963,6 +6135,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRouteServicesServiceArrayOutput{})
 	pulumi.RegisterOutputType(GetTrafficMarkingPoliciesPolicyOutput{})
 	pulumi.RegisterOutputType(GetTrafficMarkingPoliciesPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetTransitRouteTableAggregationsTransitRouteTableAggregationOutput{})
+	pulumi.RegisterOutputType(GetTransitRouteTableAggregationsTransitRouteTableAggregationArrayOutput{})
 	pulumi.RegisterOutputType(GetTransitRouterAvailableResourcesResourceOutput{})
 	pulumi.RegisterOutputType(GetTransitRouterAvailableResourcesResourceArrayOutput{})
 	pulumi.RegisterOutputType(GetTransitRouterCidrsCidrOutput{})

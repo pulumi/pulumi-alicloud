@@ -36,8 +36,8 @@ class ConnectionArgs:
         :param pulumi.Input[str] vpn_gateway_id: The ID of the VPN gateway.
         :param pulumi.Input['ConnectionBgpConfigArgs'] bgp_config: The configurations of the BGP routing protocol. See the following `Block bgp_config`.
         :param pulumi.Input[bool] effect_immediately: Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
-        :param pulumi.Input[bool] enable_dpd: Whether to enable NAT traversal.
-        :param pulumi.Input[bool] enable_nat_traversal: Whether to enable NAT traversal.
+        :param pulumi.Input[bool] enable_dpd: Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+        :param pulumi.Input[bool] enable_nat_traversal: Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
         :param pulumi.Input['ConnectionHealthCheckConfigArgs'] health_check_config: The health check configurations. See the following `Block health_check_config`.
         :param pulumi.Input['ConnectionIkeConfigArgs'] ike_config: The configurations of phase-one negotiation. See the following `Block ike_config`.
         :param pulumi.Input['ConnectionIpsecConfigArgs'] ipsec_config: The configurations of phase-two negotiation. See the following `Block ipsec_config`.
@@ -140,7 +140,7 @@ class ConnectionArgs:
     @pulumi.getter(name="enableDpd")
     def enable_dpd(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable NAT traversal.
+        Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
         """
         return pulumi.get(self, "enable_dpd")
 
@@ -152,7 +152,7 @@ class ConnectionArgs:
     @pulumi.getter(name="enableNatTraversal")
     def enable_nat_traversal(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable NAT traversal.
+        Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
         """
         return pulumi.get(self, "enable_nat_traversal")
 
@@ -230,8 +230,8 @@ class _ConnectionState:
         :param pulumi.Input['ConnectionBgpConfigArgs'] bgp_config: The configurations of the BGP routing protocol. See the following `Block bgp_config`.
         :param pulumi.Input[str] customer_gateway_id: The ID of the customer gateway.
         :param pulumi.Input[bool] effect_immediately: Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
-        :param pulumi.Input[bool] enable_dpd: Whether to enable NAT traversal.
-        :param pulumi.Input[bool] enable_nat_traversal: Whether to enable NAT traversal.
+        :param pulumi.Input[bool] enable_dpd: Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+        :param pulumi.Input[bool] enable_nat_traversal: Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
         :param pulumi.Input['ConnectionHealthCheckConfigArgs'] health_check_config: The health check configurations. See the following `Block health_check_config`.
         :param pulumi.Input['ConnectionIkeConfigArgs'] ike_config: The configurations of phase-one negotiation. See the following `Block ike_config`.
         :param pulumi.Input['ConnectionIpsecConfigArgs'] ipsec_config: The configurations of phase-two negotiation. See the following `Block ipsec_config`.
@@ -308,7 +308,7 @@ class _ConnectionState:
     @pulumi.getter(name="enableDpd")
     def enable_dpd(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable NAT traversal.
+        Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
         """
         return pulumi.get(self, "enable_dpd")
 
@@ -320,7 +320,7 @@ class _ConnectionState:
     @pulumi.getter(name="enableNatTraversal")
     def enable_nat_traversal(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable NAT traversal.
+        Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
         """
         return pulumi.get(self, "enable_nat_traversal")
 
@@ -505,8 +505,8 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ConnectionBgpConfigArgs']] bgp_config: The configurations of the BGP routing protocol. See the following `Block bgp_config`.
         :param pulumi.Input[str] customer_gateway_id: The ID of the customer gateway.
         :param pulumi.Input[bool] effect_immediately: Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
-        :param pulumi.Input[bool] enable_dpd: Whether to enable NAT traversal.
-        :param pulumi.Input[bool] enable_nat_traversal: Whether to enable NAT traversal.
+        :param pulumi.Input[bool] enable_dpd: Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+        :param pulumi.Input[bool] enable_nat_traversal: Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
         :param pulumi.Input[pulumi.InputType['ConnectionHealthCheckConfigArgs']] health_check_config: The health check configurations. See the following `Block health_check_config`.
         :param pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']] ike_config: The configurations of phase-one negotiation. See the following `Block ike_config`.
         :param pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']] ipsec_config: The configurations of phase-two negotiation. See the following `Block ipsec_config`.
@@ -668,8 +668,8 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ConnectionBgpConfigArgs']] bgp_config: The configurations of the BGP routing protocol. See the following `Block bgp_config`.
         :param pulumi.Input[str] customer_gateway_id: The ID of the customer gateway.
         :param pulumi.Input[bool] effect_immediately: Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
-        :param pulumi.Input[bool] enable_dpd: Whether to enable NAT traversal.
-        :param pulumi.Input[bool] enable_nat_traversal: Whether to enable NAT traversal.
+        :param pulumi.Input[bool] enable_dpd: Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
+        :param pulumi.Input[bool] enable_nat_traversal: Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
         :param pulumi.Input[pulumi.InputType['ConnectionHealthCheckConfigArgs']] health_check_config: The health check configurations. See the following `Block health_check_config`.
         :param pulumi.Input[pulumi.InputType['ConnectionIkeConfigArgs']] ike_config: The configurations of phase-one negotiation. See the following `Block ike_config`.
         :param pulumi.Input[pulumi.InputType['ConnectionIpsecConfigArgs']] ipsec_config: The configurations of phase-two negotiation. See the following `Block ipsec_config`.
@@ -726,7 +726,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="enableDpd")
     def enable_dpd(self) -> pulumi.Output[bool]:
         """
-        Whether to enable NAT traversal.
+        Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
         """
         return pulumi.get(self, "enable_dpd")
 
@@ -734,7 +734,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="enableNatTraversal")
     def enable_nat_traversal(self) -> pulumi.Output[bool]:
         """
-        Whether to enable NAT traversal.
+        Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
         """
         return pulumi.get(self, "enable_nat_traversal")
 

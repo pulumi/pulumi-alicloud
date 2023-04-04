@@ -1000,6 +1000,8 @@ class GetConnectionsConnectionResult(dict):
                  create_time: str,
                  customer_gateway_id: str,
                  effect_immediately: bool,
+                 enable_dpd: bool,
+                 enable_nat_traversal: bool,
                  id: str,
                  local_subnet: str,
                  name: str,
@@ -1012,6 +1014,8 @@ class GetConnectionsConnectionResult(dict):
                  vpn_bgp_configs: Optional[Sequence['outputs.GetConnectionsConnectionVpnBgpConfigResult']] = None):
         """
         :param str customer_gateway_id: Use the VPN customer gateway ID as the search key.
+        :param bool enable_dpd: Specifies whether to enable the dead peer detection (DPD) feature.
+        :param bool enable_nat_traversal: Specifies whether to enable NAT traversal.
         :param str id: ID of the VPN connection.
         :param str local_subnet: The local subnet of the VPN connection.
         :param str name: The name of the VPN connection.
@@ -1025,6 +1029,8 @@ class GetConnectionsConnectionResult(dict):
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "customer_gateway_id", customer_gateway_id)
         pulumi.set(__self__, "effect_immediately", effect_immediately)
+        pulumi.set(__self__, "enable_dpd", enable_dpd)
+        pulumi.set(__self__, "enable_nat_traversal", enable_nat_traversal)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "local_subnet", local_subnet)
         pulumi.set(__self__, "name", name)
@@ -1057,6 +1063,22 @@ class GetConnectionsConnectionResult(dict):
     @pulumi.getter(name="effectImmediately")
     def effect_immediately(self) -> bool:
         return pulumi.get(self, "effect_immediately")
+
+    @property
+    @pulumi.getter(name="enableDpd")
+    def enable_dpd(self) -> bool:
+        """
+        Specifies whether to enable the dead peer detection (DPD) feature.
+        """
+        return pulumi.get(self, "enable_dpd")
+
+    @property
+    @pulumi.getter(name="enableNatTraversal")
+    def enable_nat_traversal(self) -> bool:
+        """
+        Specifies whether to enable NAT traversal.
+        """
+        return pulumi.get(self, "enable_nat_traversal")
 
     @property
     @pulumi.getter

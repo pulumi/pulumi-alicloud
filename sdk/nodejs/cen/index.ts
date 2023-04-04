@@ -100,6 +100,11 @@ export const getTrafficMarkingPolicies: typeof import("./getTrafficMarkingPolici
 export const getTrafficMarkingPoliciesOutput: typeof import("./getTrafficMarkingPolicies").getTrafficMarkingPoliciesOutput = null as any;
 utilities.lazyLoad(exports, ["getTrafficMarkingPolicies","getTrafficMarkingPoliciesOutput"], () => require("./getTrafficMarkingPolicies"));
 
+export { GetTransitRouteTableAggregationsArgs, GetTransitRouteTableAggregationsResult, GetTransitRouteTableAggregationsOutputArgs } from "./getTransitRouteTableAggregations";
+export const getTransitRouteTableAggregations: typeof import("./getTransitRouteTableAggregations").getTransitRouteTableAggregations = null as any;
+export const getTransitRouteTableAggregationsOutput: typeof import("./getTransitRouteTableAggregations").getTransitRouteTableAggregationsOutput = null as any;
+utilities.lazyLoad(exports, ["getTransitRouteTableAggregations","getTransitRouteTableAggregationsOutput"], () => require("./getTransitRouteTableAggregations"));
+
 export { GetTransitRouterAvailableResourcesArgs, GetTransitRouterAvailableResourcesResult, GetTransitRouterAvailableResourcesOutputArgs } from "./getTransitRouterAvailableResources";
 export const getTransitRouterAvailableResources: typeof import("./getTransitRouterAvailableResources").getTransitRouterAvailableResources = null as any;
 export const getTransitRouterAvailableResourcesOutput: typeof import("./getTransitRouterAvailableResources").getTransitRouterAvailableResourcesOutput = null as any;
@@ -245,6 +250,11 @@ export type TrafficMarkingPolicy = import("./trafficMarkingPolicy").TrafficMarki
 export const TrafficMarkingPolicy: typeof import("./trafficMarkingPolicy").TrafficMarkingPolicy = null as any;
 utilities.lazyLoad(exports, ["TrafficMarkingPolicy"], () => require("./trafficMarkingPolicy"));
 
+export { TransitRouteTableAggregationArgs, TransitRouteTableAggregationState } from "./transitRouteTableAggregation";
+export type TransitRouteTableAggregation = import("./transitRouteTableAggregation").TransitRouteTableAggregation;
+export const TransitRouteTableAggregation: typeof import("./transitRouteTableAggregation").TransitRouteTableAggregation = null as any;
+utilities.lazyLoad(exports, ["TransitRouteTableAggregation"], () => require("./transitRouteTableAggregation"));
+
 export { TransitRouterArgs, TransitRouterState } from "./transitRouter";
 export type TransitRouter = import("./transitRouter").TransitRouter;
 export const TransitRouter: typeof import("./transitRouter").TransitRouter = null as any;
@@ -370,6 +380,8 @@ const _module = {
                 return new RouteService(name, <any>undefined, { urn })
             case "alicloud:cen/trafficMarkingPolicy:TrafficMarkingPolicy":
                 return new TrafficMarkingPolicy(name, <any>undefined, { urn })
+            case "alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation":
+                return new TransitRouteTableAggregation(name, <any>undefined, { urn })
             case "alicloud:cen/transitRouter:TransitRouter":
                 return new TransitRouter(name, <any>undefined, { urn })
             case "alicloud:cen/transitRouterCidr:TransitRouterCidr":
@@ -426,6 +438,7 @@ pulumi.runtime.registerResourceModule("alicloud", "cen/routeEntry", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cen/routeMap", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cen/routeService", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cen/trafficMarkingPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cen/transitRouteTableAggregation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cen/transitRouter", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cen/transitRouterCidr", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cen/transitRouterGrantAttachment", _module)

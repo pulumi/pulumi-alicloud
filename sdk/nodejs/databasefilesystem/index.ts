@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AutoSnapShotPolicyArgs, AutoSnapShotPolicyState } from "./autoSnapShotPolicy";
+export type AutoSnapShotPolicy = import("./autoSnapShotPolicy").AutoSnapShotPolicy;
+export const AutoSnapShotPolicy: typeof import("./autoSnapShotPolicy").AutoSnapShotPolicy = null as any;
+utilities.lazyLoad(exports, ["AutoSnapShotPolicy"], () => require("./autoSnapShotPolicy"));
+
+export { GetAutoSnapShotPoliciesArgs, GetAutoSnapShotPoliciesResult, GetAutoSnapShotPoliciesOutputArgs } from "./getAutoSnapShotPolicies";
+export const getAutoSnapShotPolicies: typeof import("./getAutoSnapShotPolicies").getAutoSnapShotPolicies = null as any;
+export const getAutoSnapShotPoliciesOutput: typeof import("./getAutoSnapShotPolicies").getAutoSnapShotPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getAutoSnapShotPolicies","getAutoSnapShotPoliciesOutput"], () => require("./getAutoSnapShotPolicies"));
+
 export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./getInstances";
 export const getInstances: typeof import("./getInstances").getInstances = null as any;
 export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
@@ -40,6 +50,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:databasefilesystem/autoSnapShotPolicy:AutoSnapShotPolicy":
+                return new AutoSnapShotPolicy(name, <any>undefined, { urn })
             case "alicloud:databasefilesystem/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
             case "alicloud:databasefilesystem/instanceAttachment:InstanceAttachment":
@@ -53,6 +65,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "databasefilesystem/autoSnapShotPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "databasefilesystem/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "databasefilesystem/instanceAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "databasefilesystem/serviceLinkedRole", _module)

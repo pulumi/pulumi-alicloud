@@ -5672,6 +5672,41 @@ export namespace cen {
         transitRouterId: string;
     }
 
+    export interface GetTransitRouteTableAggregationsTransitRouteTableAggregation {
+        /**
+         * The ID of the Transit Route Table Aggregation. It formats as `<transit_route_table_id>:<transit_route_table_aggregation_cidr>`.
+         */
+        id: string;
+        /**
+         * The route type of the aggregate route.
+         */
+        routeType: string;
+        /**
+         * The status of Transit Route Table Aggregation. Valid Values: `AllConfigured`, `Configuring`, `ConfigFailed`, `PartialConfigured`, `Deleting`.
+         */
+        status: string;
+        /**
+         * The destination CIDR block of the aggregate route.
+         */
+        transitRouteTableAggregationCidr: string;
+        /**
+         * The description of the aggregate route.
+         */
+        transitRouteTableAggregationDescription: string;
+        /**
+         * The name of the aggregate route.
+         */
+        transitRouteTableAggregationName: string;
+        /**
+         * The scope of networks that you want to advertise the aggregate route.
+         */
+        transitRouteTableAggregationScope: string;
+        /**
+         * The ID of the route table of the Enterprise Edition transit router.
+         */
+        transitRouteTableId: string;
+    }
+
     export interface GetTransitRouterAvailableResourcesResource {
         /**
          * The list of primary zones.
@@ -12314,6 +12349,53 @@ export namespace cs {
 }
 
 export namespace databasefilesystem {
+    export interface GetAutoSnapShotPoliciesAutoSnapShotPolicy {
+        /**
+         * The number of database file systems set by the automatic snapshot policy.
+         */
+        appliedDbfsNumber: number;
+        /**
+         * The creation time of the resource
+         */
+        createTime: string;
+        /**
+         * The ID of the policy.
+         */
+        id: string;
+        /**
+         * Last modification time of automatic snapshot policy
+         */
+        lastModified: string;
+        /**
+         * Automatic snapshot policy ID
+         */
+        policyId: string;
+        /**
+         * Automatic snapshot policy name
+         */
+        policyName: string;
+        /**
+         * A collection of automatic snapshots performed on several days of the week.
+         */
+        repeatWeekdays: string[];
+        /**
+         * Automatic snapshot retention days
+         */
+        retentionDays: number;
+        /**
+         * Automatic snapshot policy status
+         */
+        status: string;
+        /**
+         * Automatic snapshot policy status details
+         */
+        statusDetail: string;
+        /**
+         * The set of times at which the snapshot is taken on the day the automatic snapshot is executed.
+         */
+        timePoints: string[];
+    }
+
     export interface GetInstancesInstance {
         /**
          * the number of nodes of the Database file system.
@@ -27987,7 +28069,7 @@ export namespace hbase {
          */
         coreDiskType: string;
         /**
-         * Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+         * Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
          */
         coreInstanceType: string;
         /**
@@ -28019,7 +28101,7 @@ export namespace hbase {
          */
         id: string;
         /**
-         * Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+         * Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
          */
         masterInstanceType: string;
         /**
@@ -44948,6 +45030,14 @@ export namespace vpn {
          */
         customerGatewayId: string;
         effectImmediately: boolean;
+        /**
+         * Specifies whether to enable the dead peer detection (DPD) feature.
+         */
+        enableDpd: boolean;
+        /**
+         * Specifies whether to enable NAT traversal.
+         */
+        enableNatTraversal: boolean;
         /**
          * ID of the VPN connection.
          */

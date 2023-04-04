@@ -385,7 +385,7 @@ class GetInstancesInstanceResult(dict):
         :param str backup_status: The Backup Status of the instance.
         :param int core_disk_size: Core node disk size, unit:GB.
         :param str core_disk_type: Cloud_ssd or cloud_efficiency
-        :param str core_instance_type: Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+        :param str core_instance_type: Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
         :param int core_node_count: Same with "core_instance_quantity"
         :param str created_time: The created time of the instance.
         :param bool deletion_protection: The switch of delete protection.
@@ -393,7 +393,7 @@ class GetInstancesInstanceResult(dict):
         :param str engine_version: The engine_version of the instance.
         :param str expire_time: The expire time of the instance.
         :param str id: The ID of the HBase instance.
-        :param str master_instance_type: Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+        :param str master_instance_type: Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
         :param int master_node_count: The node count of master
         :param str name: The name of the HBase instance.
         :param str network_type: Classic network or VPC.
@@ -457,7 +457,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="coreInstanceType")
     def core_instance_type(self) -> str:
         """
-        Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+        Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
         """
         return pulumi.get(self, "core_instance_type")
 
@@ -521,7 +521,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="masterInstanceType")
     def master_instance_type(self) -> str:
         """
-        Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+        Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
         """
         return pulumi.get(self, "master_instance_type")
 

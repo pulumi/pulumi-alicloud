@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Hbase.Outputs
         /// </summary>
         public readonly string CoreDiskType;
         /// <summary>
-        /// Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+        /// Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
         /// </summary>
         public readonly string CoreInstanceType;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Hbase.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Like hbase.sn1.large, hbase.sn1.large, hbase.n1.2xlarge and so on.
+        /// Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
         /// </summary>
         public readonly string MasterInstanceType;
         /// <summary>

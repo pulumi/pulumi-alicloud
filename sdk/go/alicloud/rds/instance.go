@@ -51,6 +51,7 @@ type Instance struct {
 	// * **AlwaysOn**: Cluster Edition.
 	// * **Finance**: Enterprise Edition.
 	// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+	// * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
 	Category pulumi.StringOutput `pulumi:"category"`
 	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
 	ClientCaCert pulumi.StringPtrOutput `pulumi:"clientCaCert"`
@@ -248,7 +249,7 @@ type Instance struct {
 	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
 	ZoneIdSlaveA pulumi.StringOutput `pulumi:"zoneIdSlaveA"`
 	// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-	ZoneIdSlaveB pulumi.StringPtrOutput `pulumi:"zoneIdSlaveB"`
+	ZoneIdSlaveB pulumi.StringOutput `pulumi:"zoneIdSlaveB"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -320,6 +321,7 @@ type instanceState struct {
 	// * **AlwaysOn**: Cluster Edition.
 	// * **Finance**: Enterprise Edition.
 	// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+	// * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
 	Category *string `pulumi:"category"`
 	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
 	ClientCaCert *string `pulumi:"clientCaCert"`
@@ -549,6 +551,7 @@ type InstanceState struct {
 	// * **AlwaysOn**: Cluster Edition.
 	// * **Finance**: Enterprise Edition.
 	// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+	// * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
 	Category pulumi.StringPtrInput
 	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
 	ClientCaCert pulumi.StringPtrInput
@@ -782,6 +785,7 @@ type instanceArgs struct {
 	// * **AlwaysOn**: Cluster Edition.
 	// * **Finance**: Enterprise Edition.
 	// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+	// * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
 	Category *string `pulumi:"category"`
 	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
 	ClientCaCert *string `pulumi:"clientCaCert"`
@@ -1006,6 +1010,7 @@ type InstanceArgs struct {
 	// * **AlwaysOn**: Cluster Edition.
 	// * **Finance**: Enterprise Edition.
 	// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+	// * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
 	Category pulumi.StringPtrInput
 	// The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
 	ClientCaCert pulumi.StringPtrInput
@@ -1336,6 +1341,7 @@ func (o InstanceOutput) CaType() pulumi.StringOutput {
 // * **AlwaysOn**: Cluster Edition.
 // * **Finance**: Enterprise Edition.
 // * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+// * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
 func (o InstanceOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
 }
@@ -1728,8 +1734,8 @@ func (o InstanceOutput) ZoneIdSlaveA() pulumi.StringOutput {
 }
 
 // The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-func (o InstanceOutput) ZoneIdSlaveB() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ZoneIdSlaveB }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) ZoneIdSlaveB() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ZoneIdSlaveB }).(pulumi.StringOutput)
 }
 
 type InstanceArrayOutput struct{ *pulumi.OutputState }

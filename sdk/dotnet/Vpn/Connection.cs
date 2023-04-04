@@ -105,13 +105,13 @@ namespace Pulumi.AliCloud.Vpn
         public Output<bool?> EffectImmediately { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable NAT traversal.
+        /// Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
         /// </summary>
         [Output("enableDpd")]
         public Output<bool> EnableDpd { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable NAT traversal.
+        /// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
         /// </summary>
         [Output("enableNatTraversal")]
         public Output<bool> EnableNatTraversal { get; private set; } = null!;
@@ -229,13 +229,13 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? EffectImmediately { get; set; }
 
         /// <summary>
-        /// Whether to enable NAT traversal.
+        /// Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
         /// </summary>
         [Input("enableDpd")]
         public Input<bool>? EnableDpd { get; set; }
 
         /// <summary>
-        /// Whether to enable NAT traversal.
+        /// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
         /// </summary>
         [Input("enableNatTraversal")]
         public Input<bool>? EnableNatTraversal { get; set; }
@@ -321,13 +321,13 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? EffectImmediately { get; set; }
 
         /// <summary>
-        /// Whether to enable NAT traversal.
+        /// Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
         /// </summary>
         [Input("enableDpd")]
         public Input<bool>? EnableDpd { get; set; }
 
         /// <summary>
-        /// Whether to enable NAT traversal.
+        /// Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
         /// </summary>
         [Input("enableNatTraversal")]
         public Input<bool>? EnableNatTraversal { get; set; }

@@ -88,6 +88,20 @@ public class Store extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encryptConf);
     }
     /**
+     * The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+     * 
+     */
+    @Export(name="hotTtl", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> hotTtl;
+
+    /**
+     * @return The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
+     * 
+     */
+    public Output<Optional<Integer>> hotTtl() {
+        return Codegen.optional(this.hotTtl);
+    }
+    /**
      * The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
      * 
      */
@@ -100,6 +114,20 @@ public class Store extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> maxSplitShardCount() {
         return Codegen.optional(this.maxSplitShardCount);
+    }
+    /**
+     * The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can&#39;t be changed after created.
+     * 
+     */
+    @Export(name="mode", type=String.class, parameters={})
+    private Output<String> mode;
+
+    /**
+     * @return The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can&#39;t be changed after created.
+     * 
+     */
+    public Output<String> mode() {
+        return this.mode;
     }
     /**
      * The log store, which is unique in the same project.

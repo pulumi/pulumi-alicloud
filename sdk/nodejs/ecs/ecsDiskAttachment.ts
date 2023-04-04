@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * // Create a new ECS disk-attachment and use it attach one disk to a new instance.
  * const ecsSg = new alicloud.ecs.SecurityGroup("ecsSg", {description: "New security group"});
  * const ecsDisk = new alicloud.ecs.EcsDisk("ecsDisk", {
- *     availabilityZone: "cn-beijing-a",
+ *     zoneId: "cn-beijing-a",
  *     size: 50,
  *     tags: {
  *         Name: "TerraformTest-disk",

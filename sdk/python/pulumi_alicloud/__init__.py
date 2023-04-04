@@ -1136,6 +1136,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cen/transitRouteTableAggregation",
+  "fqn": "pulumi_alicloud.cen",
+  "classes": {
+   "alicloud:cen/transitRouteTableAggregation:TransitRouteTableAggregation": "TransitRouteTableAggregation"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cen/transitRouter",
   "fqn": "pulumi_alicloud.cen",
   "classes": {
@@ -1916,6 +1924,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.das",
   "classes": {
    "alicloud:das/switchDasPro:SwitchDasPro": "SwitchDasPro"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "databasefilesystem/autoSnapShotPolicy",
+  "fqn": "pulumi_alicloud.databasefilesystem",
+  "classes": {
+   "alicloud:databasefilesystem/autoSnapShotPolicy:AutoSnapShotPolicy": "AutoSnapShotPolicy"
   }
  },
  {
@@ -4908,6 +4924,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.rds",
   "classes": {
    "alicloud:rds/database:Database": "Database"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "rds/dbNode",
+  "fqn": "pulumi_alicloud.rds",
+  "classes": {
+   "alicloud:rds/dbNode:DbNode": "DbNode"
   }
  },
  {

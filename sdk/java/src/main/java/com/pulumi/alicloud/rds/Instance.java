@@ -156,6 +156,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * * **AlwaysOn**: Cluster Edition.
      * * **Finance**: Enterprise Edition.
      * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+     * * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
      * 
      */
     @Export(name="category", type=String.class, parameters={})
@@ -168,6 +169,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * * **AlwaysOn**: Cluster Edition.
      * * **Finance**: Enterprise Edition.
      * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+     * * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
      * 
      */
     public Output<String> category() {
@@ -1190,14 +1192,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="zoneIdSlaveB", type=String.class, parameters={})
-    private Output</* @Nullable */ String> zoneIdSlaveB;
+    private Output<String> zoneIdSlaveB;
 
     /**
      * @return The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      * 
      */
-    public Output<Optional<String>> zoneIdSlaveB() {
-        return Codegen.optional(this.zoneIdSlaveB);
+    public Output<String> zoneIdSlaveB() {
+        return this.zoneIdSlaveB;
     }
 
     /**

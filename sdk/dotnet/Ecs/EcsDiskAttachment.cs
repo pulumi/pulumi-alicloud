@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     ///     var ecsDisk = new AliCloud.Ecs.EcsDisk("ecsDisk", new()
     ///     {
-    ///         AvailabilityZone = "cn-beijing-a",
+    ///         ZoneId = "cn-beijing-a",
     ///         Size = 50,
     ///         Tags = 
     ///         {

@@ -86,6 +86,7 @@ export class Instance extends pulumi.CustomResource {
      * * **AlwaysOn**: Cluster Edition.
      * * **Finance**: Enterprise Edition.
      * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+     * * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
      */
     public readonly category!: pulumi.Output<string>;
     /**
@@ -408,7 +409,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      */
-    public readonly zoneIdSlaveB!: pulumi.Output<string | undefined>;
+    public readonly zoneIdSlaveB!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -636,6 +637,7 @@ export interface InstanceState {
      * * **AlwaysOn**: Cluster Edition.
      * * **Finance**: Enterprise Edition.
      * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+     * * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
      */
     category?: pulumi.Input<string>;
     /**
@@ -1008,6 +1010,7 @@ export interface InstanceArgs {
      * * **AlwaysOn**: Cluster Edition.
      * * **Finance**: Enterprise Edition.
      * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+     * * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
      */
     category?: pulumi.Input<string>;
     /**

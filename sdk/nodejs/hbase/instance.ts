@@ -31,10 +31,10 @@ import * as utilities from "../utilities";
  *     coreDiskSize: 400,
  *     coreDiskType: "cloud_efficiency",
  *     coreInstanceQuantity: 2,
- *     coreInstanceType: "hbase.sn1.large",
+ *     coreInstanceType: "hbase.sn2.2xlarge",
  *     engine: "hbaseue",
  *     engineVersion: "2.0",
- *     masterInstanceType: "hbase.sn1.large",
+ *     masterInstanceType: "hbase.sn2.2xlarge",
  *     payType: "PostPaid",
  *     vswitchId: "vsw-123456",
  *     zoneId: "cn-shenzhen-b",
@@ -88,7 +88,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly autoRenew!: pulumi.Output<boolean>;
     /**
-     * 0 or [800, 1000000], step:10-GB increments. 0 means isColdStorage = false. [800, 1000000] means isColdStorage = true.
+     * 0 or [800, 100000000], step:10-GB increments. 0 means isColdStorage = false. [800, 100000000] means isColdStorage = true.
      */
     public readonly coldStorageSize!: pulumi.Output<number | undefined>;
     /**
@@ -296,7 +296,7 @@ export interface InstanceState {
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
-     * 0 or [800, 1000000], step:10-GB increments. 0 means isColdStorage = false. [800, 1000000] means isColdStorage = true.
+     * 0 or [800, 100000000], step:10-GB increments. 0 means isColdStorage = false. [800, 100000000] means isColdStorage = true.
      */
     coldStorageSize?: pulumi.Input<number>;
     /**
@@ -417,7 +417,7 @@ export interface InstanceArgs {
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
-     * 0 or [800, 1000000], step:10-GB increments. 0 means isColdStorage = false. [800, 1000000] means isColdStorage = true.
+     * 0 or [800, 100000000], step:10-GB increments. 0 means isColdStorage = false. [800, 100000000] means isColdStorage = true.
      */
     coldStorageSize?: pulumi.Input<number>;
     /**
