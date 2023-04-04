@@ -2527,14 +2527,19 @@ func Provider() tfbridge.ProviderInfo {
 	}
 
 	moduleNameMap := make(map[string]string, len(mappedMods))
-	for _, v := range mappedMods {
-		moduleNameMap[strings.ToLower(v)] = v
+	for k, v := range mappedMods {
+		k = strings.ReplaceAll(k, "_", "")
+		k = strings.ToLower(k)
+		moduleNameMap[k] = v
 	}
 
 	err := x.ComputeDefaults(&prov, x.TokensKnownModules("alicloud_", "", mappedModKeys,
 		func(mod, name string) (string, error) {
-			m, ok := moduleNameMap[strings.ToLower(mod)]
-			contract.Assertf(ok, "all mods must be mapped: '%s'", strings.ToLower(mod))
+			mod = strings.ToLower(mod)
+			m, ok := moduleNameMap[mod]
+			if !ok {
+				return "", fmt.Errorf("unmapped module '%s'", mod)
+			}
 			return resource(m, name).String(), nil
 		}))
 	contract.AssertNoError(err)
