@@ -16,6 +16,8 @@ package alicloud
 
 import (
 	"fmt"
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
 	"path/filepath"
 	"strings"
 	"unicode"
@@ -173,6 +175,7 @@ var mappedMods = map[string]string{
 	"cdn":                   cdnMod,
 	"cen":                   cenMod,
 	"cfg":                   cfgMod,
+	"chatbot":               "Chatbot",
 	"clickhouse":            clickHouseMod,
 	"cloud_connect":         cloudConnectMod,
 	"cloud_firewall":        cloudFirewallMod,
@@ -237,6 +240,7 @@ var mappedMods = map[string]string{
 	"mse":                   mseMod,
 	"nas":                   nasMod,
 	"nlb":                   nlbMod,
+	"ocean":                 "Ocean",
 	"ons":                   rocketMqMod,
 	"oos":                   oosMod,
 	"open_search":           openSearchMod,
@@ -2507,7 +2511,7 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi": "3.*",
 			},
 			Namespaces: namespaceMap,
-		},
+		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 	prov.RenameResourceWithAlias("alicloud_ddosbgp_instance", resource(dnsMod, "DdosBgpInstance"),
 		resource(ddosMod, "DdosBgpInstance"), dnsMod, ddosMod, nil)
@@ -2543,8 +2547,13 @@ func Provider() tfbridge.ProviderInfo {
 			return resource(m, name).String(), nil
 		}))
 	contract.AssertNoError(err)
+	err = x.AutoAliasing(&prov, prov.GetMetadata())
+	contract.AssertNoErrorf(err, "auto aliasing apply failed")
 
 	prov.SetAutonaming(255, "-")
 
 	return prov
 }
+
+//go:embed cmd/pulumi-resource-alicloud/bridge-metadata.json
+var metadata []byte
