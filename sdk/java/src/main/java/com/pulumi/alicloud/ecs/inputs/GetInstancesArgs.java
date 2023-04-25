@@ -65,6 +65,21 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * The name of the instance. Fuzzy search with the asterisk (*) wildcard characters is supported.
+     * 
+     */
+    @Import(name="instanceName")
+    private @Nullable Output<String> instanceName;
+
+    /**
+     * @return The name of the instance. Fuzzy search with the asterisk (*) wildcard characters is supported.
+     * 
+     */
+    public Optional<Output<String>> instanceName() {
+        return Optional.ofNullable(this.instanceName);
+    }
+
+    /**
      * A regex string to filter results by instance name.
      * 
      */
@@ -258,6 +273,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         this.availabilityZone = $.availabilityZone;
         this.ids = $.ids;
         this.imageId = $.imageId;
+        this.instanceName = $.instanceName;
         this.nameRegex = $.nameRegex;
         this.outputFile = $.outputFile;
         this.pageNumber = $.pageNumber;
@@ -359,6 +375,27 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder imageId(String imageId) {
             return imageId(Output.of(imageId));
+        }
+
+        /**
+         * @param instanceName The name of the instance. Fuzzy search with the asterisk (*) wildcard characters is supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceName(@Nullable Output<String> instanceName) {
+            $.instanceName = instanceName;
+            return this;
+        }
+
+        /**
+         * @param instanceName The name of the instance. Fuzzy search with the asterisk (*) wildcard characters is supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceName(String instanceName) {
+            return instanceName(Output.of(instanceName));
         }
 
         /**

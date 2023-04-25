@@ -21,6 +21,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
@@ -52,6 +53,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 

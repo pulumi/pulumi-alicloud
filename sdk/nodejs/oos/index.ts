@@ -15,6 +15,11 @@ export type ApplicationGroup = import("./applicationGroup").ApplicationGroup;
 export const ApplicationGroup: typeof import("./applicationGroup").ApplicationGroup = null as any;
 utilities.lazyLoad(exports, ["ApplicationGroup"], () => require("./applicationGroup"));
 
+export { DefaultPatchBaselineArgs, DefaultPatchBaselineState } from "./defaultPatchBaseline";
+export type DefaultPatchBaseline = import("./defaultPatchBaseline").DefaultPatchBaseline;
+export const DefaultPatchBaseline: typeof import("./defaultPatchBaseline").DefaultPatchBaseline = null as any;
+utilities.lazyLoad(exports, ["DefaultPatchBaseline"], () => require("./defaultPatchBaseline"));
+
 export { ExecutionArgs, ExecutionState } from "./execution";
 export type Execution = import("./execution").Execution;
 export const Execution: typeof import("./execution").Execution = null as any;
@@ -99,6 +104,8 @@ const _module = {
                 return new Application(name, <any>undefined, { urn })
             case "alicloud:oos/applicationGroup:ApplicationGroup":
                 return new ApplicationGroup(name, <any>undefined, { urn })
+            case "alicloud:oos/defaultPatchBaseline:DefaultPatchBaseline":
+                return new DefaultPatchBaseline(name, <any>undefined, { urn })
             case "alicloud:oos/execution:Execution":
                 return new Execution(name, <any>undefined, { urn })
             case "alicloud:oos/parameter:Parameter":
@@ -120,6 +127,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "oos/application", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oos/applicationGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oos/defaultPatchBaseline", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oos/execution", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oos/parameter", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oos/patchBaseline", _module)

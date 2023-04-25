@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -121,8 +121,8 @@ type Cluster struct {
 	CollectorStatus pulumi.StringOutput `pulumi:"collectorStatus"`
 	// (Available in 1.81.0+) PolarDB cluster connection string.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
-	// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-	// > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`.
+	// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+	// > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
 	CreationCategory pulumi.StringOutput `pulumi:"creationCategory"`
 	// The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
 	// > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
@@ -152,6 +152,8 @@ type Cluster struct {
 	// The ID of the global database network (GDN).
 	// > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 	GdnId pulumi.StringPtrOutput `pulumi:"gdnId"`
+	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+	HotStandbyCluster pulumi.StringOutput `pulumi:"hotStandbyCluster"`
 	// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
 	// **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
@@ -181,6 +183,11 @@ type Cluster struct {
 	SecurityIps pulumi.StringArrayOutput `pulumi:"securityIps"`
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
 	SourceResourceId pulumi.StringPtrOutput `pulumi:"sourceResourceId"`
+	// Storage space charged by space (monthly package). Unit: GB.
+	StorageSpace pulumi.IntPtrOutput `pulumi:"storageSpace"`
+	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
+	// > **NOTE:** Serverless cluster does not support this parameter.
+	StorageType pulumi.StringOutput `pulumi:"storageType"`
 	// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
 	SubCategory pulumi.StringOutput `pulumi:"subCategory"`
 	// A mapping of tags to assign to the resource.
@@ -252,8 +259,8 @@ type clusterState struct {
 	CollectorStatus *string `pulumi:"collectorStatus"`
 	// (Available in 1.81.0+) PolarDB cluster connection string.
 	ConnectionString *string `pulumi:"connectionString"`
-	// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-	// > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`.
+	// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+	// > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
 	CreationCategory *string `pulumi:"creationCategory"`
 	// The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
 	// > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
@@ -283,6 +290,8 @@ type clusterState struct {
 	// The ID of the global database network (GDN).
 	// > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 	GdnId *string `pulumi:"gdnId"`
+	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+	HotStandbyCluster *string `pulumi:"hotStandbyCluster"`
 	// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
 	// **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
@@ -312,6 +321,11 @@ type clusterState struct {
 	SecurityIps []string `pulumi:"securityIps"`
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// Storage space charged by space (monthly package). Unit: GB.
+	StorageSpace *int `pulumi:"storageSpace"`
+	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
+	// > **NOTE:** Serverless cluster does not support this parameter.
+	StorageType *string `pulumi:"storageType"`
 	// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
 	SubCategory *string `pulumi:"subCategory"`
 	// A mapping of tags to assign to the resource.
@@ -346,8 +360,8 @@ type ClusterState struct {
 	CollectorStatus pulumi.StringPtrInput
 	// (Available in 1.81.0+) PolarDB cluster connection string.
 	ConnectionString pulumi.StringPtrInput
-	// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-	// > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`.
+	// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+	// > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
 	CreationCategory pulumi.StringPtrInput
 	// The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
 	// > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
@@ -377,6 +391,8 @@ type ClusterState struct {
 	// The ID of the global database network (GDN).
 	// > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 	GdnId pulumi.StringPtrInput
+	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+	HotStandbyCluster pulumi.StringPtrInput
 	// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
 	// **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
@@ -406,6 +422,11 @@ type ClusterState struct {
 	SecurityIps pulumi.StringArrayInput
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
 	SourceResourceId pulumi.StringPtrInput
+	// Storage space charged by space (monthly package). Unit: GB.
+	StorageSpace pulumi.IntPtrInput
+	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
+	// > **NOTE:** Serverless cluster does not support this parameter.
+	StorageType pulumi.StringPtrInput
 	// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
 	SubCategory pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -442,8 +463,8 @@ type clusterArgs struct {
 	CloneDataPoint *string `pulumi:"cloneDataPoint"`
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus *string `pulumi:"collectorStatus"`
-	// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-	// > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`.
+	// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+	// > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
 	CreationCategory *string `pulumi:"creationCategory"`
 	// The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
 	// > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
@@ -473,6 +494,8 @@ type clusterArgs struct {
 	// The ID of the global database network (GDN).
 	// > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 	GdnId *string `pulumi:"gdnId"`
+	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+	HotStandbyCluster *string `pulumi:"hotStandbyCluster"`
 	// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
 	// **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
@@ -500,6 +523,11 @@ type clusterArgs struct {
 	SecurityIps []string `pulumi:"securityIps"`
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// Storage space charged by space (monthly package). Unit: GB.
+	StorageSpace *int `pulumi:"storageSpace"`
+	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
+	// > **NOTE:** Serverless cluster does not support this parameter.
+	StorageType *string `pulumi:"storageType"`
 	// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
 	SubCategory *string `pulumi:"subCategory"`
 	// A mapping of tags to assign to the resource.
@@ -529,8 +557,8 @@ type ClusterArgs struct {
 	CloneDataPoint pulumi.StringPtrInput
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus pulumi.StringPtrInput
-	// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-	// > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`.
+	// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+	// > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
 	CreationCategory pulumi.StringPtrInput
 	// The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
 	// > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
@@ -560,6 +588,8 @@ type ClusterArgs struct {
 	// The ID of the global database network (GDN).
 	// > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 	GdnId pulumi.StringPtrInput
+	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+	HotStandbyCluster pulumi.StringPtrInput
 	// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
 	// **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
@@ -587,6 +617,11 @@ type ClusterArgs struct {
 	SecurityIps pulumi.StringArrayInput
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
 	SourceResourceId pulumi.StringPtrInput
+	// Storage space charged by space (monthly package). Unit: GB.
+	StorageSpace pulumi.IntPtrInput
+	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
+	// > **NOTE:** Serverless cluster does not support this parameter.
+	StorageType pulumi.StringPtrInput
 	// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
 	SubCategory pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -718,8 +753,8 @@ func (o ClusterOutput) ConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
 }
 
-// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-// > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`.
+// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+// > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
 func (o ClusterOutput) CreationCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CreationCategory }).(pulumi.StringOutput)
 }
@@ -783,6 +818,11 @@ func (o ClusterOutput) EncryptionKey() pulumi.StringPtrOutput {
 // > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 func (o ClusterOutput) GdnId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.GdnId }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+func (o ClusterOutput) HotStandbyCluster() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.HotStandbyCluster }).(pulumi.StringOutput)
 }
 
 // Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
@@ -851,6 +891,17 @@ func (o ClusterOutput) SecurityIps() pulumi.StringArrayOutput {
 // The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
 func (o ClusterOutput) SourceResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Storage space charged by space (monthly package). Unit: GB.
+func (o ClusterOutput) StorageSpace() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.StorageSpace }).(pulumi.IntPtrOutput)
+}
+
+// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
+// > **NOTE:** Serverless cluster does not support this parameter.
+func (o ClusterOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.StorageType }).(pulumi.StringOutput)
 }
 
 // The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.

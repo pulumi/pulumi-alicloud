@@ -88,10 +88,10 @@ class InstanceArgs:
                  zone_id_slave_b: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+        :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[int] instance_storage: User-defined DB instance storage space. Value range:
-               - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+               - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
                - [20,1000] for MySQL 5.7 basic single node edition;
                - [10, 2000] for SQL Server 2008R2;
                - [20,2000] for SQL Server 2012 basic single node edition
@@ -232,7 +232,7 @@ class InstanceArgs:
                - MIX: standard whitelist mode
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
+               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
@@ -383,7 +383,7 @@ class InstanceArgs:
     @pulumi.getter
     def engine(self) -> pulumi.Input[str]:
         """
-        Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+        Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
         """
         return pulumi.get(self, "engine")
 
@@ -408,7 +408,7 @@ class InstanceArgs:
     def instance_storage(self) -> pulumi.Input[int]:
         """
         User-defined DB instance storage space. Value range:
-        - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+        - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
         - [20,1000] for MySQL 5.7 basic single node edition;
         - [10, 2000] for SQL Server 2008R2;
         - [20,2000] for SQL Server 2012 basic single node edition
@@ -1258,7 +1258,7 @@ class InstanceArgs:
         """
         The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
+        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """
         return pulumi.get(self, "zone_id")
 
@@ -1424,7 +1424,7 @@ class _InstanceState:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
-        :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+        :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] fresh_white_list_readins: The read-only instances to which you want to synchronize the IP address whitelist.
@@ -1436,7 +1436,7 @@ class _InstanceState:
         :param pulumi.Input[str] instance_charge_type: Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[int] instance_storage: User-defined DB instance storage space. Value range:
-               - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+               - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
                - [20,1000] for MySQL 5.7 basic single node edition;
                - [10, 2000] for SQL Server 2008R2;
                - [20,2000] for SQL Server 2012 basic single node edition
@@ -1516,7 +1516,7 @@ class _InstanceState:
                - MIX: standard whitelist mode
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
+               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
@@ -1983,7 +1983,7 @@ class _InstanceState:
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[str]]:
         """
-        Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+        Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
         """
         return pulumi.get(self, "engine")
 
@@ -2072,7 +2072,7 @@ class _InstanceState:
     def instance_storage(self) -> Optional[pulumi.Input[int]]:
         """
         User-defined DB instance storage space. Value range:
-        - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+        - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
         - [20,1000] for MySQL 5.7 basic single node edition;
         - [10, 2000] for SQL Server 2008R2;
         - [20,2000] for SQL Server 2012 basic single node edition
@@ -2588,7 +2588,7 @@ class _InstanceState:
         """
         The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
+        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """
         return pulumi.get(self, "zone_id")
 
@@ -2761,7 +2761,7 @@ class Instance(pulumi.CustomResource):
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
-        :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+        :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] fresh_white_list_readins: The read-only instances to which you want to synchronize the IP address whitelist.
@@ -2773,7 +2773,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_charge_type: Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[int] instance_storage: User-defined DB instance storage space. Value range:
-               - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+               - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
                - [20,1000] for MySQL 5.7 basic single node edition;
                - [10, 2000] for SQL Server 2008R2;
                - [20,2000] for SQL Server 2012 basic single node edition
@@ -2852,7 +2852,7 @@ class Instance(pulumi.CustomResource):
                - MIX: standard whitelist mode
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
+               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
@@ -3197,7 +3197,7 @@ class Instance(pulumi.CustomResource):
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
-        :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+        :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param pulumi.Input[bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
         :param pulumi.Input[str] fresh_white_list_readins: The read-only instances to which you want to synchronize the IP address whitelist.
@@ -3209,7 +3209,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_charge_type: Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
         :param pulumi.Input[str] instance_name: The name of DB instance. It a string of 2 to 256 characters.
         :param pulumi.Input[int] instance_storage: User-defined DB instance storage space. Value range:
-               - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+               - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
                - [20,1000] for MySQL 5.7 basic single node edition;
                - [10, 2000] for SQL Server 2008R2;
                - [20,2000] for SQL Server 2012 basic single node edition
@@ -3289,7 +3289,7 @@ class Instance(pulumi.CustomResource):
                - MIX: standard whitelist mode
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
+               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
@@ -3590,7 +3590,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def engine(self) -> pulumi.Output[str]:
         """
-        Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+        Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
         """
         return pulumi.get(self, "engine")
 
@@ -3651,7 +3651,7 @@ class Instance(pulumi.CustomResource):
     def instance_storage(self) -> pulumi.Output[int]:
         """
         User-defined DB instance storage space. Value range:
-        - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+        - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
         - [20,1000] for MySQL 5.7 basic single node edition;
         - [10, 2000] for SQL Server 2008R2;
         - [20,2000] for SQL Server 2012 basic single node edition
@@ -4007,7 +4007,7 @@ class Instance(pulumi.CustomResource):
         """
         The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
+        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """
         return pulumi.get(self, "zone_id")
 

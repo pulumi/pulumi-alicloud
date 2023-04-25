@@ -17,8 +17,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -28,25 +26,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
 //				Description: pulumi.String("this is a role test."),
-//				Document: pulumi.String(fmt.Sprintf(`  {
-//	    "Statement": [
-//	      {
-//	        "Action": "sts:AssumeRole",
-//	        "Effect": "Allow",
-//	        "Principal": {
-//	          "Service": [
-//	            "apigateway.aliyuncs.com",
-//	            "ecs.aliyuncs.com"
-//	          ]
-//	        }
-//	      }
-//	    ],
-//	    "Version": "1"
-//	  }
-//
-// `)),
-//
-//				Force: pulumi.Bool(true),
+//				Document:    pulumi.String("  {\n    \"Statement\": [\n      {\n        \"Action\": \"sts:AssumeRole\",\n        \"Effect\": \"Allow\",\n        \"Principal\": {\n          \"Service\": [\n            \"apigateway.aliyuncs.com\", \n            \"ecs.aliyuncs.com\"\n          ]\n        }\n      }\n    ],\n    \"Version\": \"1\"\n  }\n  \n"),
+//				Force:       pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

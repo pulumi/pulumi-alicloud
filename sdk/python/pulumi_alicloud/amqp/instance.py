@@ -505,8 +505,6 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.128.0+.
 
-        > **NOTE:** The AMQP Instance is not support to be purchase automatically in the international site.
-
         ## Example Usage
 
         Basic Usage
@@ -570,8 +568,6 @@ class Instance(pulumi.CustomResource):
         For information about RabbitMQ (AMQP) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/doc-detail/101631.htm).
 
         > **NOTE:** Available in v1.128.0+.
-
-        > **NOTE:** The AMQP Instance is not support to be purchase automatically in the international site.
 
         ## Example Usage
 

@@ -16,6 +16,7 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -78,6 +79,7 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -107,6 +109,7 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -136,6 +139,7 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -172,6 +176,7 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -205,6 +210,7 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -251,6 +257,7 @@ namespace Pulumi.AliCloud.CS
     /// Create a `PrePaid` node pool.
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -290,6 +297,7 @@ namespace Pulumi.AliCloud.CS
     /// Create a node pool with spot instance.
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -327,6 +335,7 @@ namespace Pulumi.AliCloud.CS
     /// Use Spot instances to create a node pool with auto-scaling enabled
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -369,6 +378,7 @@ namespace Pulumi.AliCloud.CS
     /// Create a node pool with platform as Windows
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -403,6 +413,7 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -438,6 +449,7 @@ namespace Pulumi.AliCloud.CS
     /// Create a node pool with customized kubelet parameters
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 

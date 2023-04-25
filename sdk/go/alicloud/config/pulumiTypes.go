@@ -88,6 +88,7 @@ type Endpoints struct {
 	Apigateway          *string `pulumi:"apigateway"`
 	Arms                *string `pulumi:"arms"`
 	Bastionhost         *string `pulumi:"bastionhost"`
+	Beebot              *string `pulumi:"beebot"`
 	Bpstudio            *string `pulumi:"bpstudio"`
 	BrainIndustrial     *string `pulumi:"brainIndustrial"`
 	Bssopenapi          *string `pulumi:"bssopenapi"`
@@ -168,6 +169,7 @@ type Endpoints struct {
 	Mse                 *string `pulumi:"mse"`
 	Nas                 *string `pulumi:"nas"`
 	Nlb                 *string `pulumi:"nlb"`
+	Oceanbase           *string `pulumi:"oceanbase"`
 	Ons                 *string `pulumi:"ons"`
 	Onsproxy            *string `pulumi:"onsproxy"`
 	Oos                 *string `pulumi:"oos"`
@@ -228,6 +230,7 @@ type EndpointsArgs struct {
 	Apigateway          pulumi.StringPtrInput `pulumi:"apigateway"`
 	Arms                pulumi.StringPtrInput `pulumi:"arms"`
 	Bastionhost         pulumi.StringPtrInput `pulumi:"bastionhost"`
+	Beebot              pulumi.StringPtrInput `pulumi:"beebot"`
 	Bpstudio            pulumi.StringPtrInput `pulumi:"bpstudio"`
 	BrainIndustrial     pulumi.StringPtrInput `pulumi:"brainIndustrial"`
 	Bssopenapi          pulumi.StringPtrInput `pulumi:"bssopenapi"`
@@ -308,6 +311,7 @@ type EndpointsArgs struct {
 	Mse                 pulumi.StringPtrInput `pulumi:"mse"`
 	Nas                 pulumi.StringPtrInput `pulumi:"nas"`
 	Nlb                 pulumi.StringPtrInput `pulumi:"nlb"`
+	Oceanbase           pulumi.StringPtrInput `pulumi:"oceanbase"`
 	Ons                 pulumi.StringPtrInput `pulumi:"ons"`
 	Onsproxy            pulumi.StringPtrInput `pulumi:"onsproxy"`
 	Oos                 pulumi.StringPtrInput `pulumi:"oos"`
@@ -435,6 +439,10 @@ func (o EndpointsOutput) Arms() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Bastionhost() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Bastionhost }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Beebot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Beebot }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Bpstudio() pulumi.StringPtrOutput {
@@ -755,6 +763,10 @@ func (o EndpointsOutput) Nas() pulumi.StringPtrOutput {
 
 func (o EndpointsOutput) Nlb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Endpoints) *string { return v.Nlb }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointsOutput) Oceanbase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Endpoints) *string { return v.Oceanbase }).(pulumi.StringPtrOutput)
 }
 
 func (o EndpointsOutput) Ons() pulumi.StringPtrOutput {

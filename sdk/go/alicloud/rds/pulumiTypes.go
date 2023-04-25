@@ -10,6 +10,106 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type DbInstanceEndpointNodeItem struct {
+	NodeId string `pulumi:"nodeId"`
+	Weight int    `pulumi:"weight"`
+}
+
+// DbInstanceEndpointNodeItemInput is an input type that accepts DbInstanceEndpointNodeItemArgs and DbInstanceEndpointNodeItemOutput values.
+// You can construct a concrete instance of `DbInstanceEndpointNodeItemInput` via:
+//
+//	DbInstanceEndpointNodeItemArgs{...}
+type DbInstanceEndpointNodeItemInput interface {
+	pulumi.Input
+
+	ToDbInstanceEndpointNodeItemOutput() DbInstanceEndpointNodeItemOutput
+	ToDbInstanceEndpointNodeItemOutputWithContext(context.Context) DbInstanceEndpointNodeItemOutput
+}
+
+type DbInstanceEndpointNodeItemArgs struct {
+	NodeId pulumi.StringInput `pulumi:"nodeId"`
+	Weight pulumi.IntInput    `pulumi:"weight"`
+}
+
+func (DbInstanceEndpointNodeItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbInstanceEndpointNodeItem)(nil)).Elem()
+}
+
+func (i DbInstanceEndpointNodeItemArgs) ToDbInstanceEndpointNodeItemOutput() DbInstanceEndpointNodeItemOutput {
+	return i.ToDbInstanceEndpointNodeItemOutputWithContext(context.Background())
+}
+
+func (i DbInstanceEndpointNodeItemArgs) ToDbInstanceEndpointNodeItemOutputWithContext(ctx context.Context) DbInstanceEndpointNodeItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstanceEndpointNodeItemOutput)
+}
+
+// DbInstanceEndpointNodeItemArrayInput is an input type that accepts DbInstanceEndpointNodeItemArray and DbInstanceEndpointNodeItemArrayOutput values.
+// You can construct a concrete instance of `DbInstanceEndpointNodeItemArrayInput` via:
+//
+//	DbInstanceEndpointNodeItemArray{ DbInstanceEndpointNodeItemArgs{...} }
+type DbInstanceEndpointNodeItemArrayInput interface {
+	pulumi.Input
+
+	ToDbInstanceEndpointNodeItemArrayOutput() DbInstanceEndpointNodeItemArrayOutput
+	ToDbInstanceEndpointNodeItemArrayOutputWithContext(context.Context) DbInstanceEndpointNodeItemArrayOutput
+}
+
+type DbInstanceEndpointNodeItemArray []DbInstanceEndpointNodeItemInput
+
+func (DbInstanceEndpointNodeItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DbInstanceEndpointNodeItem)(nil)).Elem()
+}
+
+func (i DbInstanceEndpointNodeItemArray) ToDbInstanceEndpointNodeItemArrayOutput() DbInstanceEndpointNodeItemArrayOutput {
+	return i.ToDbInstanceEndpointNodeItemArrayOutputWithContext(context.Background())
+}
+
+func (i DbInstanceEndpointNodeItemArray) ToDbInstanceEndpointNodeItemArrayOutputWithContext(ctx context.Context) DbInstanceEndpointNodeItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstanceEndpointNodeItemArrayOutput)
+}
+
+type DbInstanceEndpointNodeItemOutput struct{ *pulumi.OutputState }
+
+func (DbInstanceEndpointNodeItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbInstanceEndpointNodeItem)(nil)).Elem()
+}
+
+func (o DbInstanceEndpointNodeItemOutput) ToDbInstanceEndpointNodeItemOutput() DbInstanceEndpointNodeItemOutput {
+	return o
+}
+
+func (o DbInstanceEndpointNodeItemOutput) ToDbInstanceEndpointNodeItemOutputWithContext(ctx context.Context) DbInstanceEndpointNodeItemOutput {
+	return o
+}
+
+func (o DbInstanceEndpointNodeItemOutput) NodeId() pulumi.StringOutput {
+	return o.ApplyT(func(v DbInstanceEndpointNodeItem) string { return v.NodeId }).(pulumi.StringOutput)
+}
+
+func (o DbInstanceEndpointNodeItemOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v DbInstanceEndpointNodeItem) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type DbInstanceEndpointNodeItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DbInstanceEndpointNodeItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DbInstanceEndpointNodeItem)(nil)).Elem()
+}
+
+func (o DbInstanceEndpointNodeItemArrayOutput) ToDbInstanceEndpointNodeItemArrayOutput() DbInstanceEndpointNodeItemArrayOutput {
+	return o
+}
+
+func (o DbInstanceEndpointNodeItemArrayOutput) ToDbInstanceEndpointNodeItemArrayOutputWithContext(ctx context.Context) DbInstanceEndpointNodeItemArrayOutput {
+	return o
+}
+
+func (o DbInstanceEndpointNodeItemArrayOutput) Index(i pulumi.IntInput) DbInstanceEndpointNodeItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DbInstanceEndpointNodeItem {
+		return vs[0].([]DbInstanceEndpointNodeItem)[vs[1].(int)]
+	}).(DbInstanceEndpointNodeItemOutput)
+}
+
 type DdrInstanceParameter struct {
 	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
@@ -3059,7 +3159,7 @@ func (o GetInstanceClassesInstanceClassZoneIdArrayOutput) Index(i pulumi.IntInpu
 type GetInstanceEnginesInstanceEngine struct {
 	// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
 	Category string `pulumi:"category"`
-	// Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
+	// Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "MariaDB". If not set, it will match all of engines.
 	Engine string `pulumi:"engine"`
 	// Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion string `pulumi:"engineVersion"`
@@ -3081,7 +3181,7 @@ type GetInstanceEnginesInstanceEngineInput interface {
 type GetInstanceEnginesInstanceEngineArgs struct {
 	// DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
 	Category pulumi.StringInput `pulumi:"category"`
-	// Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
+	// Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "MariaDB". If not set, it will match all of engines.
 	Engine pulumi.StringInput `pulumi:"engine"`
 	// Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
@@ -3145,7 +3245,7 @@ func (o GetInstanceEnginesInstanceEngineOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceEnginesInstanceEngine) string { return v.Category }).(pulumi.StringOutput)
 }
 
-// Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
+// Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "MariaDB". If not set, it will match all of engines.
 func (o GetInstanceEnginesInstanceEngineOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceEnginesInstanceEngine) string { return v.Engine }).(pulumi.StringOutput)
 }
@@ -3334,7 +3434,7 @@ type GetInstancesInstance struct {
 	// - Enabled
 	// - Disabled
 	EncryptionKeyStatus string `pulumi:"encryptionKeyStatus"`
-	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
+	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`. If no value is specified, all types are returned.
 	Engine string `pulumi:"engine"`
 	// Database version.
 	EngineVersion string `pulumi:"engineVersion"`
@@ -3482,7 +3582,7 @@ type GetInstancesInstanceArgs struct {
 	// - Enabled
 	// - Disabled
 	EncryptionKeyStatus pulumi.StringInput `pulumi:"encryptionKeyStatus"`
-	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
+	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`. If no value is specified, all types are returned.
 	Engine pulumi.StringInput `pulumi:"engine"`
 	// Database version.
 	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
@@ -3726,7 +3826,7 @@ func (o GetInstancesInstanceOutput) EncryptionKeyStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.EncryptionKeyStatus }).(pulumi.StringOutput)
 }
 
-// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
+// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`. If no value is specified, all types are returned.
 func (o GetInstancesInstanceOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Engine }).(pulumi.StringOutput)
 }
@@ -4908,6 +5008,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DbInstanceEndpointNodeItemInput)(nil)).Elem(), DbInstanceEndpointNodeItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbInstanceEndpointNodeItemArrayInput)(nil)).Elem(), DbInstanceEndpointNodeItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DdrInstanceParameterInput)(nil)).Elem(), DdrInstanceParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DdrInstanceParameterArrayInput)(nil)).Elem(), DdrInstanceParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DdrInstancePgHbaConfInput)(nil)).Elem(), DdrInstancePgHbaConfArgs{})
@@ -4971,6 +5073,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRdsParameterGroupsGroupParamDetailArrayInput)(nil)).Elem(), GetRdsParameterGroupsGroupParamDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterOutputType(DbInstanceEndpointNodeItemOutput{})
+	pulumi.RegisterOutputType(DbInstanceEndpointNodeItemArrayOutput{})
 	pulumi.RegisterOutputType(DdrInstanceParameterOutput{})
 	pulumi.RegisterOutputType(DdrInstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(DdrInstancePgHbaConfOutput{})

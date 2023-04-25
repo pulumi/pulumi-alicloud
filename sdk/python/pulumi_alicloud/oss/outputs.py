@@ -424,7 +424,7 @@ class BucketLifecycleRuleNoncurrentVersionTransition(dict):
                  storage_class: str):
         """
         :param int days: Specifies the number of days after object creation when the specific rule action takes effect.
-        :param str storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
+        :param str storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
         """
         pulumi.set(__self__, "days", days)
         pulumi.set(__self__, "storage_class", storage_class)
@@ -441,7 +441,7 @@ class BucketLifecycleRuleNoncurrentVersionTransition(dict):
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> str:
         """
-        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
+        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
         """
         return pulumi.get(self, "storage_class")
 
@@ -474,7 +474,7 @@ class BucketLifecycleRuleTransition(dict):
         """
         :param str created_before_date: Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
         :param int days: Specifies the number of days after object creation when the specific rule action takes effect.
-        :param str storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
+        :param str storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
         """
         if created_before_date is not None:
             pulumi.set(__self__, "created_before_date", created_before_date)
@@ -503,7 +503,7 @@ class BucketLifecycleRuleTransition(dict):
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> Optional[str]:
         """
-        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
+        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
         """
         return pulumi.get(self, "storage_class")
 
@@ -981,7 +981,7 @@ class GetBucketObjectsObjectResult(dict):
         :param str last_modification_time: Last modification time of the object.
         :param str server_side_encryption: Server-side encryption of the object in OSS. It can be empty or `AES256`.
         :param str sse_kms_key_id: If present, specifies the ID of the Key Management Service(KMS) master encryption key that was used for the object.
-        :param str storage_class: Object storage type. Possible values: `Standard`, `IA` and `Archive`.
+        :param str storage_class: Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
         """
         pulumi.set(__self__, "acl", acl)
         pulumi.set(__self__, "cache_control", cache_control)
@@ -1106,7 +1106,7 @@ class GetBucketObjectsObjectResult(dict):
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> str:
         """
-        Object storage type. Possible values: `Standard`, `IA` and `Archive`.
+        Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
         """
         return pulumi.get(self, "storage_class")
 
@@ -1146,7 +1146,7 @@ class GetBucketsBucketResult(dict):
         :param str redundancy_type: Redundancy type. Possible values: `LRS`, and `ZRS`.
         :param 'GetBucketsBucketRefererConfigArgs' referer_config: A list of one element containing referer configuration. It contains the following attributes:
         :param 'GetBucketsBucketServerSideEncryptionRuleArgs' server_side_encryption_rule: A configuration of default encryption for a bucket. It contains the following attributes:
-        :param str storage_class: Object storage type. Possible values: `Standard`, `IA` and `Archive`.
+        :param str storage_class: Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
         :param Mapping[str, Any] tags: A mapping of tags.
         :param 'GetBucketsBucketVersioningArgs' versioning: If present , the versioning state has been set on the bucket. It contains the following attribute.
         :param 'GetBucketsBucketWebsiteArgs' website: A list of one element containing configuration parameters used when the bucket is used as a website. It contains the following attributes:
@@ -1279,7 +1279,7 @@ class GetBucketsBucketResult(dict):
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> str:
         """
-        Object storage type. Possible values: `Standard`, `IA` and `Archive`.
+        Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
         """
         return pulumi.get(self, "storage_class")
 

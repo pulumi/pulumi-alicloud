@@ -18,6 +18,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
@@ -47,6 +48,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
@@ -201,6 +203,7 @@ namespace Pulumi.AliCloud.Ecs
         /// A map of tags assigned to the disks. It must be in the format:
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
@@ -369,6 +372,7 @@ namespace Pulumi.AliCloud.Ecs
         /// A map of tags assigned to the disks. It must be in the format:
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 

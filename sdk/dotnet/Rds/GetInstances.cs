@@ -21,6 +21,7 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
@@ -59,6 +60,7 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
@@ -110,7 +112,7 @@ namespace Pulumi.AliCloud.Rds
         public bool? EnableDetails { get; set; }
 
         /// <summary>
-        /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
+        /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`. If no value is specified, all types are returned.
         /// </summary>
         [Input("engine")]
         public string? Engine { get; set; }
@@ -200,7 +202,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? EnableDetails { get; set; }
 
         /// <summary>
-        /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
+        /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`. If no value is specified, all types are returned.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -283,7 +285,7 @@ namespace Pulumi.AliCloud.Rds
         public readonly string? DbType;
         public readonly bool? EnableDetails;
         /// <summary>
-        /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
+        /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`. If no value is specified, all types are returned.
         /// </summary>
         public readonly string? Engine;
         /// <summary>

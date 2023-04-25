@@ -14,6 +14,13 @@ public final class GetNodeClassesPlainArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetNodeClassesPlainArgs Empty = new GetNodeClassesPlainArgs();
 
+    @Import(name="category")
+    private @Nullable String category;
+
+    public Optional<String> category() {
+        return Optional.ofNullable(this.category);
+    }
+
     /**
      * The PolarDB node class type by the user.
      * 
@@ -114,6 +121,7 @@ public final class GetNodeClassesPlainArgs extends com.pulumi.resources.InvokeAr
     private GetNodeClassesPlainArgs() {}
 
     private GetNodeClassesPlainArgs(GetNodeClassesPlainArgs $) {
+        this.category = $.category;
         this.dbNodeClass = $.dbNodeClass;
         this.dbType = $.dbType;
         this.dbVersion = $.dbVersion;
@@ -139,6 +147,11 @@ public final class GetNodeClassesPlainArgs extends com.pulumi.resources.InvokeAr
 
         public Builder(GetNodeClassesPlainArgs defaults) {
             $ = new GetNodeClassesPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder category(@Nullable String category) {
+            $.category = category;
+            return this;
         }
 
         /**

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,8 +26,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -36,19 +34,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ros.NewStack(ctx, "example", &ros.StackArgs{
-//				StackName: pulumi.String("tf-testaccstack"),
-//				StackPolicyBody: pulumi.String(fmt.Sprintf(`    {
-//	    	"Statement": [{
-//	    		"Action": "Update:Delete",
-//	    		"Resource": "*",
-//	    		"Effect": "Allow",
-//	    		"Principal": "*"
-//	    	}]
-//	    }
-//
-// `)),
-//
-//				TemplateBody: pulumi.String(fmt.Sprintf("    {\n    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n    }\n    \n")),
+//				StackName:       pulumi.String("tf-testaccstack"),
+//				StackPolicyBody: pulumi.String("    {\n    	\"Statement\": [{\n    		\"Action\": \"Update:Delete\",\n    		\"Resource\": \"*\",\n    		\"Effect\": \"Allow\",\n    		\"Principal\": \"*\"\n    	}]\n    }\n    \n"),
+//				TemplateBody:    pulumi.String("    {\n    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n    }\n    \n"),
 //			})
 //			if err != nil {
 //				return err

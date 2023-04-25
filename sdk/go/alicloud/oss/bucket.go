@@ -227,8 +227,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -239,16 +237,7 @@ import (
 //			_, err := oss.NewBucket(ctx, "bucket-policy", &oss.BucketArgs{
 //				Acl:    pulumi.String("private"),
 //				Bucket: pulumi.String("bucket-170309-policy"),
-//				Policy: pulumi.String(fmt.Sprintf(`  {"Statement":
-//	      [{"Action":
-//	          ["oss:PutObject", "oss:GetObject", "oss:DeleteBucket"],
-//	        "Effect":"Allow",
-//	        "Resource":
-//	            ["acs:oss:*:*:*"]}],
-//	   "Version":"1"}
-//
-// `)),
-//
+//				Policy: pulumi.String("  {\"Statement\":\n      [{\"Action\":\n          [\"oss:PutObject\", \"oss:GetObject\", \"oss:DeleteBucket\"],\n        \"Effect\":\"Allow\",\n        \"Resource\":\n            [\"acs:oss:*:*:*\"]}],\n   \"Version\":\"1\"}\n  \n"),
 //			})
 //			if err != nil {
 //				return err
@@ -479,7 +468,7 @@ type Bucket struct {
 	RefererConfig BucketRefererConfigPtrOutput `pulumi:"refererConfig"`
 	// A configuration of server-side encryption (documented below).
 	ServerSideEncryptionRule BucketServerSideEncryptionRulePtrOutput `pulumi:"serverSideEncryptionRule"`
-	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
+	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
 	StorageClass pulumi.StringPtrOutput `pulumi:"storageClass"`
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -553,7 +542,7 @@ type bucketState struct {
 	RefererConfig *BucketRefererConfig `pulumi:"refererConfig"`
 	// A configuration of server-side encryption (documented below).
 	ServerSideEncryptionRule *BucketServerSideEncryptionRule `pulumi:"serverSideEncryptionRule"`
-	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
+	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
 	StorageClass *string `pulumi:"storageClass"`
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -599,7 +588,7 @@ type BucketState struct {
 	RefererConfig BucketRefererConfigPtrInput
 	// A configuration of server-side encryption (documented below).
 	ServerSideEncryptionRule BucketServerSideEncryptionRulePtrInput
-	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
+	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
 	StorageClass pulumi.StringPtrInput
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
 	Tags pulumi.MapInput
@@ -639,7 +628,7 @@ type bucketArgs struct {
 	RefererConfig *BucketRefererConfig `pulumi:"refererConfig"`
 	// A configuration of server-side encryption (documented below).
 	ServerSideEncryptionRule *BucketServerSideEncryptionRule `pulumi:"serverSideEncryptionRule"`
-	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
+	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
 	StorageClass *string `pulumi:"storageClass"`
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -676,7 +665,7 @@ type BucketArgs struct {
 	RefererConfig BucketRefererConfigPtrInput
 	// A configuration of server-side encryption (documented below).
 	ServerSideEncryptionRule BucketServerSideEncryptionRulePtrInput
-	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
+	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
 	StorageClass pulumi.StringPtrInput
 	// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
 	Tags pulumi.MapInput
@@ -856,7 +845,7 @@ func (o BucketOutput) ServerSideEncryptionRule() BucketServerSideEncryptionRuleP
 	return o.ApplyT(func(v *Bucket) BucketServerSideEncryptionRulePtrOutput { return v.ServerSideEncryptionRule }).(BucketServerSideEncryptionRulePtrOutput)
 }
 
-// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
+// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
 func (o BucketOutput) StorageClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.StringPtrOutput { return v.StorageClass }).(pulumi.StringPtrOutput)
 }

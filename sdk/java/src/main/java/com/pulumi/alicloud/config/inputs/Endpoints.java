@@ -21,6 +21,7 @@ public final class Endpoints {
     private @Nullable String apigateway;
     private @Nullable String arms;
     private @Nullable String bastionhost;
+    private @Nullable String beebot;
     private @Nullable String bpstudio;
     private @Nullable String brainIndustrial;
     private @Nullable String bssopenapi;
@@ -101,6 +102,7 @@ public final class Endpoints {
     private @Nullable String mse;
     private @Nullable String nas;
     private @Nullable String nlb;
+    private @Nullable String oceanbase;
     private @Nullable String ons;
     private @Nullable String onsproxy;
     private @Nullable String oos;
@@ -168,6 +170,9 @@ public final class Endpoints {
     }
     public Optional<String> bastionhost() {
         return Optional.ofNullable(this.bastionhost);
+    }
+    public Optional<String> beebot() {
+        return Optional.ofNullable(this.beebot);
     }
     public Optional<String> bpstudio() {
         return Optional.ofNullable(this.bpstudio);
@@ -409,6 +414,9 @@ public final class Endpoints {
     public Optional<String> nlb() {
         return Optional.ofNullable(this.nlb);
     }
+    public Optional<String> oceanbase() {
+        return Optional.ofNullable(this.oceanbase);
+    }
     public Optional<String> ons() {
         return Optional.ofNullable(this.ons);
     }
@@ -537,6 +545,7 @@ public final class Endpoints {
         private @Nullable String apigateway;
         private @Nullable String arms;
         private @Nullable String bastionhost;
+        private @Nullable String beebot;
         private @Nullable String bpstudio;
         private @Nullable String brainIndustrial;
         private @Nullable String bssopenapi;
@@ -617,6 +626,7 @@ public final class Endpoints {
         private @Nullable String mse;
         private @Nullable String nas;
         private @Nullable String nlb;
+        private @Nullable String oceanbase;
         private @Nullable String ons;
         private @Nullable String onsproxy;
         private @Nullable String oos;
@@ -666,6 +676,7 @@ public final class Endpoints {
     	      this.apigateway = defaults.apigateway;
     	      this.arms = defaults.arms;
     	      this.bastionhost = defaults.bastionhost;
+    	      this.beebot = defaults.beebot;
     	      this.bpstudio = defaults.bpstudio;
     	      this.brainIndustrial = defaults.brainIndustrial;
     	      this.bssopenapi = defaults.bssopenapi;
@@ -746,6 +757,7 @@ public final class Endpoints {
     	      this.mse = defaults.mse;
     	      this.nas = defaults.nas;
     	      this.nlb = defaults.nlb;
+    	      this.oceanbase = defaults.oceanbase;
     	      this.ons = defaults.ons;
     	      this.onsproxy = defaults.onsproxy;
     	      this.oos = defaults.oos;
@@ -832,6 +844,11 @@ public final class Endpoints {
         @CustomType.Setter
         public Builder bastionhost(@Nullable String bastionhost) {
             this.bastionhost = bastionhost;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder beebot(@Nullable String beebot) {
+            this.beebot = beebot;
             return this;
         }
         @CustomType.Setter
@@ -1235,6 +1252,11 @@ public final class Endpoints {
             return this;
         }
         @CustomType.Setter
+        public Builder oceanbase(@Nullable String oceanbase) {
+            this.oceanbase = oceanbase;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ons(@Nullable String ons) {
             this.ons = ons;
             return this;
@@ -1426,6 +1448,7 @@ public final class Endpoints {
             o.apigateway = apigateway;
             o.arms = arms;
             o.bastionhost = bastionhost;
+            o.beebot = beebot;
             o.bpstudio = bpstudio;
             o.brainIndustrial = brainIndustrial;
             o.bssopenapi = bssopenapi;
@@ -1506,6 +1529,7 @@ public final class Endpoints {
             o.mse = mse;
             o.nas = nas;
             o.nlb = nlb;
+            o.oceanbase = oceanbase;
             o.ons = ons;
             o.onsproxy = onsproxy;
             o.oos = oos;

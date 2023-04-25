@@ -84,7 +84,8 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
      */
     public readonly internetChargeType!: pulumi.Output<string | undefined>;
     /**
-     * The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
+     * The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`.
+     * **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
      */
     public readonly isp!: pulumi.Output<string | undefined>;
     /**
@@ -195,7 +196,8 @@ export interface CommonBandwithPackageState {
      */
     internetChargeType?: pulumi.Input<string>;
     /**
-     * The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
+     * The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`.
+     * **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
      */
     isp?: pulumi.Input<string>;
     /**
@@ -257,7 +259,8 @@ export interface CommonBandwithPackageArgs {
      */
     internetChargeType?: pulumi.Input<string>;
     /**
-     * The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
+     * The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`.
+     * **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
      */
     isp?: pulumi.Input<string>;
     /**

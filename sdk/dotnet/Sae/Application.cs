@@ -22,6 +22,7 @@ namespace Pulumi.AliCloud.Sae
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -62,6 +63,7 @@ namespace Pulumi.AliCloud.Sae
     ///         NamespaceId = defaultNamespace.Id,
     ///         ImageUrl = "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
     ///         PackageType = "Image",
+    ///         VpcId = vsw.VpcId,
     ///         VswitchId = vsw.Id,
     ///         Timezone = "Asia/Beijing",
     ///         Replicas = 5,

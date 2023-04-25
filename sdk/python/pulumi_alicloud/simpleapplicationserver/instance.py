@@ -26,9 +26,9 @@ class InstanceArgs:
                  status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] image_id: The ID of the image.  You can use the _simpleapplicationserver_get_images_ to query the available images in the specified region. The value must be an integral multiple of 20.
+        :param pulumi.Input[str] image_id: The ID of the image.  You can use the `simpleapplicationserver_get_images` to query the available images in the specified region. The value must be an integral multiple of 20.
         :param pulumi.Input[int] period: The period. Unit: months. Valid values: `1`,`3`, `6`, `12`, `24`, `36`.
-        :param pulumi.Input[str] plan_id: The ID of the plan. You can use the _simpleapplicationserver_get_server_plans_  to query all the plans provided by Simple Application Server in the specified region.
+        :param pulumi.Input[str] plan_id: The ID of the plan. You can use the `simpleapplicationserver_get_server_plans`  to query all the plans provided by Simple Application Server in the specified region.
         :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal. Unit: months. Valid values: `true` and `false`.
         :param pulumi.Input[int] auto_renew_period: The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `auto_renew` is valid when the attribute is `true`.
         :param pulumi.Input[int] data_disk_size: The size of the data disk. Unit: GB. Valid values: `0` to `16380`.
@@ -59,7 +59,7 @@ class InstanceArgs:
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Input[str]:
         """
-        The ID of the image.  You can use the _simpleapplicationserver_get_images_ to query the available images in the specified region. The value must be an integral multiple of 20.
+        The ID of the image.  You can use the `simpleapplicationserver_get_images` to query the available images in the specified region. The value must be an integral multiple of 20.
         """
         return pulumi.get(self, "image_id")
 
@@ -83,7 +83,7 @@ class InstanceArgs:
     @pulumi.getter(name="planId")
     def plan_id(self) -> pulumi.Input[str]:
         """
-        The ID of the plan. You can use the _simpleapplicationserver_get_server_plans_  to query all the plans provided by Simple Application Server in the specified region.
+        The ID of the plan. You can use the `simpleapplicationserver_get_server_plans`  to query all the plans provided by Simple Application Server in the specified region.
         """
         return pulumi.get(self, "plan_id")
 
@@ -194,12 +194,12 @@ class _InstanceState:
         :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal. Unit: months. Valid values: `true` and `false`.
         :param pulumi.Input[int] auto_renew_period: The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `auto_renew` is valid when the attribute is `true`.
         :param pulumi.Input[int] data_disk_size: The size of the data disk. Unit: GB. Valid values: `0` to `16380`.
-        :param pulumi.Input[str] image_id: The ID of the image.  You can use the _simpleapplicationserver_get_images_ to query the available images in the specified region. The value must be an integral multiple of 20.
+        :param pulumi.Input[str] image_id: The ID of the image.  You can use the `simpleapplicationserver_get_images` to query the available images in the specified region. The value must be an integral multiple of 20.
         :param pulumi.Input[str] instance_name: The name of the simple application server.
         :param pulumi.Input[str] password: The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
         :param pulumi.Input[str] payment_type: The paymen type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[int] period: The period. Unit: months. Valid values: `1`,`3`, `6`, `12`, `24`, `36`.
-        :param pulumi.Input[str] plan_id: The ID of the plan. You can use the _simpleapplicationserver_get_server_plans_  to query all the plans provided by Simple Application Server in the specified region.
+        :param pulumi.Input[str] plan_id: The ID of the plan. You can use the `simpleapplicationserver_get_server_plans`  to query all the plans provided by Simple Application Server in the specified region.
         :param pulumi.Input[str] status: The status of the simple application server. Valid values: `Resetting`, `Running`, `Stopped`.
         """
         if auto_renew is not None:
@@ -263,7 +263,7 @@ class _InstanceState:
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the image.  You can use the _simpleapplicationserver_get_images_ to query the available images in the specified region. The value must be an integral multiple of 20.
+        The ID of the image.  You can use the `simpleapplicationserver_get_images` to query the available images in the specified region. The value must be an integral multiple of 20.
         """
         return pulumi.get(self, "image_id")
 
@@ -323,7 +323,7 @@ class _InstanceState:
     @pulumi.getter(name="planId")
     def plan_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the plan. You can use the _simpleapplicationserver_get_server_plans_  to query all the plans provided by Simple Application Server in the specified region.
+        The ID of the plan. You can use the `simpleapplicationserver_get_server_plans`  to query all the plans provided by Simple Application Server in the specified region.
         """
         return pulumi.get(self, "plan_id")
 
@@ -380,12 +380,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal. Unit: months. Valid values: `true` and `false`.
         :param pulumi.Input[int] auto_renew_period: The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `auto_renew` is valid when the attribute is `true`.
         :param pulumi.Input[int] data_disk_size: The size of the data disk. Unit: GB. Valid values: `0` to `16380`.
-        :param pulumi.Input[str] image_id: The ID of the image.  You can use the _simpleapplicationserver_get_images_ to query the available images in the specified region. The value must be an integral multiple of 20.
+        :param pulumi.Input[str] image_id: The ID of the image.  You can use the `simpleapplicationserver_get_images` to query the available images in the specified region. The value must be an integral multiple of 20.
         :param pulumi.Input[str] instance_name: The name of the simple application server.
         :param pulumi.Input[str] password: The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
         :param pulumi.Input[str] payment_type: The paymen type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[int] period: The period. Unit: months. Valid values: `1`,`3`, `6`, `12`, `24`, `36`.
-        :param pulumi.Input[str] plan_id: The ID of the plan. You can use the _simpleapplicationserver_get_server_plans_  to query all the plans provided by Simple Application Server in the specified region.
+        :param pulumi.Input[str] plan_id: The ID of the plan. You can use the `simpleapplicationserver_get_server_plans`  to query all the plans provided by Simple Application Server in the specified region.
         :param pulumi.Input[str] status: The status of the simple application server. Valid values: `Resetting`, `Running`, `Stopped`.
         """
         ...
@@ -489,12 +489,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal. Unit: months. Valid values: `true` and `false`.
         :param pulumi.Input[int] auto_renew_period: The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `auto_renew` is valid when the attribute is `true`.
         :param pulumi.Input[int] data_disk_size: The size of the data disk. Unit: GB. Valid values: `0` to `16380`.
-        :param pulumi.Input[str] image_id: The ID of the image.  You can use the _simpleapplicationserver_get_images_ to query the available images in the specified region. The value must be an integral multiple of 20.
+        :param pulumi.Input[str] image_id: The ID of the image.  You can use the `simpleapplicationserver_get_images` to query the available images in the specified region. The value must be an integral multiple of 20.
         :param pulumi.Input[str] instance_name: The name of the simple application server.
         :param pulumi.Input[str] password: The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ & * - + = | { } [ ] : ; < > , . ? /`.
         :param pulumi.Input[str] payment_type: The paymen type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[int] period: The period. Unit: months. Valid values: `1`,`3`, `6`, `12`, `24`, `36`.
-        :param pulumi.Input[str] plan_id: The ID of the plan. You can use the _simpleapplicationserver_get_server_plans_  to query all the plans provided by Simple Application Server in the specified region.
+        :param pulumi.Input[str] plan_id: The ID of the plan. You can use the `simpleapplicationserver_get_server_plans`  to query all the plans provided by Simple Application Server in the specified region.
         :param pulumi.Input[str] status: The status of the simple application server. Valid values: `Resetting`, `Running`, `Stopped`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -541,7 +541,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[str]:
         """
-        The ID of the image.  You can use the _simpleapplicationserver_get_images_ to query the available images in the specified region. The value must be an integral multiple of 20.
+        The ID of the image.  You can use the `simpleapplicationserver_get_images` to query the available images in the specified region. The value must be an integral multiple of 20.
         """
         return pulumi.get(self, "image_id")
 
@@ -581,7 +581,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="planId")
     def plan_id(self) -> pulumi.Output[str]:
         """
-        The ID of the plan. You can use the _simpleapplicationserver_get_server_plans_  to query all the plans provided by Simple Application Server in the specified region.
+        The ID of the plan. You can use the `simpleapplicationserver_get_server_plans`  to query all the plans provided by Simple Application Server in the specified region.
         """
         return pulumi.get(self, "plan_id")
 

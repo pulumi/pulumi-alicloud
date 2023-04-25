@@ -117,7 +117,7 @@ def get_clusters(ids: Optional[Sequence[str]] = None,
                  tags: Optional[Mapping[str, Any]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClustersResult:
     """
-    The _cassandra_get_clusters_ data source provides a collection of Cassandra clusters available in Alicloud account.
+    The `cassandra_get_clusters` data source provides a collection of Cassandra clusters available in Alicloud account.
     Filters support regular expression for the cluster name, ids or tags.
 
     > **NOTE:**  Available in 1.88.0+.
@@ -161,7 +161,7 @@ def get_clusters_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClustersResult]:
     """
-    The _cassandra_get_clusters_ data source provides a collection of Cassandra clusters available in Alicloud account.
+    The `cassandra_get_clusters` data source provides a collection of Cassandra clusters available in Alicloud account.
     Filters support regular expression for the cluster name, ids or tags.
 
     > **NOTE:**  Available in 1.88.0+.

@@ -154,7 +154,7 @@ def get_instance_types(cluster_type: Optional[str] = None,
                        zone_id: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceTypesResult:
     """
-    The _emr_get_instance_types_ data source provides a collection of ecs
+    The `emr_get_instance_types` data source provides a collection of ecs
     instance types available in Alibaba Cloud account when create a emr cluster.
 
     > **NOTE:** Available in 1.59.0+
@@ -224,7 +224,7 @@ def get_instance_types_output(cluster_type: Optional[pulumi.Input[str]] = None,
                               zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTypesResult]:
     """
-    The _emr_get_instance_types_ data source provides a collection of ecs
+    The `emr_get_instance_types` data source provides a collection of ecs
     instance types available in Alibaba Cloud account when create a emr cluster.
 
     > **NOTE:** Available in 1.59.0+

@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.mongodb.inputs;
 
+import com.pulumi.alicloud.mongodb.inputs.InstanceParameterArgs;
 import com.pulumi.alicloud.mongodb.inputs.InstanceReplicaSetArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -271,6 +272,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> orderType() {
         return Optional.ofNullable(this.orderType);
+    }
+
+    /**
+     * Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+     * 
+     */
+    @Import(name="parameters")
+    private @Nullable Output<List<InstanceParameterArgs>> parameters;
+
+    /**
+     * @return Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+     * 
+     */
+    public Optional<Output<List<InstanceParameterArgs>>> parameters() {
+        return Optional.ofNullable(this.parameters);
     }
 
     /**
@@ -581,6 +597,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.networkType = $.networkType;
         this.orderType = $.orderType;
+        this.parameters = $.parameters;
         this.period = $.period;
         this.readonlyReplicas = $.readonlyReplicas;
         this.replicaSetName = $.replicaSetName;
@@ -976,6 +993,37 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder orderType(String orderType) {
             return orderType(Output.of(orderType));
+        }
+
+        /**
+         * @param parameters Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(@Nullable Output<List<InstanceParameterArgs>> parameters) {
+            $.parameters = parameters;
+            return this;
+        }
+
+        /**
+         * @param parameters Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(List<InstanceParameterArgs> parameters) {
+            return parameters(Output.of(parameters));
+        }
+
+        /**
+         * @param parameters Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(InstanceParameterArgs... parameters) {
+            return parameters(List.of(parameters));
         }
 
         /**

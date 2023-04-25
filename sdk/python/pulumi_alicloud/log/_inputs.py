@@ -19,6 +19,7 @@ __all__ = [
     'AlertQueryListArgs',
     'AlertScheduleArgs',
     'AlertSeverityConfigurationArgs',
+    'AlertTemplateConfigurationArgs',
     'EtlEtlSinkArgs',
     'OssExportConfigColumnArgs',
     'OssShipperParquetConfigArgs',
@@ -689,6 +690,91 @@ class AlertSeverityConfigurationArgs:
     @severity.setter
     def severity(self, value: pulumi.Input[int]):
         pulumi.set(self, "severity", value)
+
+
+@pulumi.input_type
+class AlertTemplateConfigurationArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 lang: Optional[pulumi.Input[str]] = None,
+                 tokens: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] id: Alert template id.
+        :param pulumi.Input[str] type: including FixedRate,Hourly,Daily,Weekly,Cron.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Alert template annotations.
+        :param pulumi.Input[str] lang: Alert template language including `cn`, `en`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tokens: Alert template tokens.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if lang is not None:
+            pulumi.set(__self__, "lang", lang)
+        if tokens is not None:
+            pulumi.set(__self__, "tokens", tokens)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        Alert template id.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        including FixedRate,Hourly,Daily,Weekly,Cron.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Alert template annotations.
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def lang(self) -> Optional[pulumi.Input[str]]:
+        """
+        Alert template language including `cn`, `en`.
+        """
+        return pulumi.get(self, "lang")
+
+    @lang.setter
+    def lang(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lang", value)
+
+    @property
+    @pulumi.getter
+    def tokens(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Alert template tokens.
+        """
+        return pulumi.get(self, "tokens")
+
+    @tokens.setter
+    def tokens(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tokens", value)
 
 
 @pulumi.input_type

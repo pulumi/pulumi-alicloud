@@ -20,6 +20,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -38,6 +39,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -60,6 +62,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -88,6 +91,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -115,6 +119,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -195,6 +200,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -222,6 +228,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -240,6 +247,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -263,6 +271,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -286,6 +295,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -308,6 +318,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -326,6 +337,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -448,7 +460,7 @@ namespace Pulumi.AliCloud.Oss
         public Output<Outputs.BucketServerSideEncryptionRule?> ServerSideEncryptionRule { get; private set; } = null!;
 
         /// <summary>
-        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
+        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
         /// </summary>
         [Output("storageClass")]
         public Output<string?> StorageClass { get; private set; } = null!;
@@ -599,7 +611,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<Inputs.BucketServerSideEncryptionRuleArgs>? ServerSideEncryptionRule { get; set; }
 
         /// <summary>
-        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
+        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
         /// </summary>
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }
@@ -748,7 +760,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<Inputs.BucketServerSideEncryptionRuleGetArgs>? ServerSideEncryptionRule { get; set; }
 
         /// <summary>
-        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
+        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
         /// </summary>
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }

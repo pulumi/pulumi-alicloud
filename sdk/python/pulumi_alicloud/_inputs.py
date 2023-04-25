@@ -79,6 +79,7 @@ class ProviderEndpointArgs:
                  apigateway: Optional[pulumi.Input[str]] = None,
                  arms: Optional[pulumi.Input[str]] = None,
                  bastionhost: Optional[pulumi.Input[str]] = None,
+                 beebot: Optional[pulumi.Input[str]] = None,
                  bpstudio: Optional[pulumi.Input[str]] = None,
                  brain_industrial: Optional[pulumi.Input[str]] = None,
                  bssopenapi: Optional[pulumi.Input[str]] = None,
@@ -159,6 +160,7 @@ class ProviderEndpointArgs:
                  mse: Optional[pulumi.Input[str]] = None,
                  nas: Optional[pulumi.Input[str]] = None,
                  nlb: Optional[pulumi.Input[str]] = None,
+                 oceanbase: Optional[pulumi.Input[str]] = None,
                  ons: Optional[pulumi.Input[str]] = None,
                  onsproxy: Optional[pulumi.Input[str]] = None,
                  oos: Optional[pulumi.Input[str]] = None,
@@ -215,6 +217,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "arms", arms)
         if bastionhost is not None:
             pulumi.set(__self__, "bastionhost", bastionhost)
+        if beebot is not None:
+            pulumi.set(__self__, "beebot", beebot)
         if bpstudio is not None:
             pulumi.set(__self__, "bpstudio", bpstudio)
         if brain_industrial is not None:
@@ -375,6 +379,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "nas", nas)
         if nlb is not None:
             pulumi.set(__self__, "nlb", nlb)
+        if oceanbase is not None:
+            pulumi.set(__self__, "oceanbase", oceanbase)
         if ons is not None:
             pulumi.set(__self__, "ons", ons)
         if onsproxy is not None:
@@ -537,6 +543,15 @@ class ProviderEndpointArgs:
     @bastionhost.setter
     def bastionhost(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bastionhost", value)
+
+    @property
+    @pulumi.getter
+    def beebot(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "beebot")
+
+    @beebot.setter
+    def beebot(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "beebot", value)
 
     @property
     @pulumi.getter
@@ -1257,6 +1272,15 @@ class ProviderEndpointArgs:
     @nlb.setter
     def nlb(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "nlb", value)
+
+    @property
+    @pulumi.getter
+    def oceanbase(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "oceanbase")
+
+    @oceanbase.setter
+    def oceanbase(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oceanbase", value)
 
     @property
     @pulumi.getter

@@ -29,7 +29,7 @@ public final class GetInstancesResult {
     private @Nullable String dbType;
     private @Nullable Boolean enableDetails;
     /**
-     * @return Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
+     * @return Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`. If no value is specified, all types are returned.
      * 
      */
     private @Nullable String engine;
@@ -94,7 +94,7 @@ public final class GetInstancesResult {
         return Optional.ofNullable(this.enableDetails);
     }
     /**
-     * @return Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
+     * @return Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`. If no value is specified, all types are returned.
      * 
      */
     public Optional<String> engine() {

@@ -153,14 +153,16 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.internetChargeType);
     }
     /**
-     * The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
+     * The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`.
+     * **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
      * 
      */
     @Export(name="isp", type=String.class, parameters={})
     private Output</* @Nullable */ String> isp;
 
     /**
-     * @return The type of the Internet Service Provider. Valid values: `BGP` and `BGP_PRO`. Default to `BGP`.
+     * @return The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`.
+     * **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
      * 
      */
     public Output<Optional<String>> isp() {

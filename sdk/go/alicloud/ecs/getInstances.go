@@ -57,6 +57,8 @@ type GetInstancesArgs struct {
 	Ids []string `pulumi:"ids"`
 	// The image ID of some ECS instance used.
 	ImageId *string `pulumi:"imageId"`
+	// The name of the instance. Fuzzy search with the asterisk (*) wildcard characters is supported.
+	InstanceName *string `pulumi:"instanceName"`
 	// A regex string to filter results by instance name.
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
@@ -108,7 +110,8 @@ type GetInstancesResult struct {
 	// A list of ECS instance IDs.
 	Ids []string `pulumi:"ids"`
 	// Image ID the instance is using.
-	ImageId *string `pulumi:"imageId"`
+	ImageId      *string `pulumi:"imageId"`
+	InstanceName *string `pulumi:"instanceName"`
 	// A list of instances. Each element contains the following attributes:
 	Instances []GetInstancesInstance `pulumi:"instances"`
 	NameRegex *string                `pulumi:"nameRegex"`
@@ -153,6 +156,8 @@ type GetInstancesOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The image ID of some ECS instance used.
 	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
+	// The name of the instance. Fuzzy search with the asterisk (*) wildcard characters is supported.
+	InstanceName pulumi.StringPtrInput `pulumi:"instanceName"`
 	// A regex string to filter results by instance name.
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
@@ -232,6 +237,10 @@ func (o GetInstancesResultOutput) Ids() pulumi.StringArrayOutput {
 // Image ID the instance is using.
 func (o GetInstancesResultOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstancesResultOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.InstanceName }).(pulumi.StringPtrOutput)
 }
 
 // A list of instances. Each element contains the following attributes:

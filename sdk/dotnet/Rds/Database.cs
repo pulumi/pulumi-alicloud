@@ -12,12 +12,11 @@ namespace Pulumi.AliCloud.Rds
     /// <summary>
     /// Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases.
     /// 
-    /// &gt; **NOTE:** This resource does not support creating 'PPAS' database. You have to login RDS instance to create manually.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 

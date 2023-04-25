@@ -374,7 +374,7 @@ class Ipv4Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> pulumi.Output[Optional[bool]]:
+    def enabled(self) -> pulumi.Output[bool]:
         """
         Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
         """

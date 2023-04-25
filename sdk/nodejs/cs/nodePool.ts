@@ -291,9 +291,9 @@ import * as utilities from "../utilities";
  *         eventBurst: "5",
  *         evictionHard: {
  *             "memory.available": "1024Mi",
- *             "nodefs.available": `10%`,
+ *             "nodefs.available": "10%",
  *             "nodefs.inodesFree": "1000",
- *             "imagefs.available": `10%`,
+ *             "imagefs.available": "10%",
  *             "imagefs.inodesFree": "1000",
  *             "allocatableMemory.available": "2048",
  *             "pid.available": "1000",

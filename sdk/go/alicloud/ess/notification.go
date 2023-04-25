@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := fmt.Sprintf("tf-testAccEssNotification-%vd", "%")
+//			name := "tf-testAccEssNotification-%d"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}

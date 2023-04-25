@@ -57,6 +57,8 @@ if typing.TYPE_CHECKING:
     cen = __cen
     import pulumi_alicloud.cfg as __cfg
     cfg = __cfg
+    import pulumi_alicloud.chatbot as __chatbot
+    chatbot = __chatbot
     import pulumi_alicloud.clickhouse as __clickhouse
     clickhouse = __clickhouse
     import pulumi_alicloud.cloudauth as __cloudauth
@@ -187,6 +189,8 @@ if typing.TYPE_CHECKING:
     nas = __nas
     import pulumi_alicloud.nlb as __nlb
     nlb = __nlb
+    import pulumi_alicloud.ocean as __ocean
+    ocean = __ocean
     import pulumi_alicloud.oos as __oos
     oos = __oos
     import pulumi_alicloud.opensearch as __opensearch
@@ -277,6 +281,7 @@ else:
     cdn = _utilities.lazy_import('pulumi_alicloud.cdn')
     cen = _utilities.lazy_import('pulumi_alicloud.cen')
     cfg = _utilities.lazy_import('pulumi_alicloud.cfg')
+    chatbot = _utilities.lazy_import('pulumi_alicloud.chatbot')
     clickhouse = _utilities.lazy_import('pulumi_alicloud.clickhouse')
     cloudauth = _utilities.lazy_import('pulumi_alicloud.cloudauth')
     cloudconnect = _utilities.lazy_import('pulumi_alicloud.cloudconnect')
@@ -342,6 +347,7 @@ else:
     mse = _utilities.lazy_import('pulumi_alicloud.mse')
     nas = _utilities.lazy_import('pulumi_alicloud.nas')
     nlb = _utilities.lazy_import('pulumi_alicloud.nlb')
+    ocean = _utilities.lazy_import('pulumi_alicloud.ocean')
     oos = _utilities.lazy_import('pulumi_alicloud.oos')
     opensearch = _utilities.lazy_import('pulumi_alicloud.opensearch')
     oss = _utilities.lazy_import('pulumi_alicloud.oss')
@@ -756,6 +762,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.arms",
   "classes": {
    "alicloud:arms/dispatchRule:DispatchRule": "DispatchRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "arms/integrationExporter",
+  "fqn": "pulumi_alicloud.arms",
+  "classes": {
+   "alicloud:arms/integrationExporter:IntegrationExporter": "IntegrationExporter"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "arms/prometheus",
+  "fqn": "pulumi_alicloud.arms",
+  "classes": {
+   "alicloud:arms/prometheus:Prometheus": "Prometheus"
   }
  },
  {
@@ -1356,6 +1378,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cfg",
   "classes": {
    "alicloud:cfg/rule:Rule": "Rule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "chatbot/publishTask",
+  "fqn": "pulumi_alicloud.chatbot",
+  "classes": {
+   "alicloud:chatbot/publishTask:PublishTask": "PublishTask"
   }
  },
  {
@@ -4392,6 +4422,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "ocean/baseInstance",
+  "fqn": "pulumi_alicloud.ocean",
+  "classes": {
+   "alicloud:ocean/baseInstance:BaseInstance": "BaseInstance"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "oos/application",
   "fqn": "pulumi_alicloud.oos",
   "classes": {
@@ -4404,6 +4442,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.oos",
   "classes": {
    "alicloud:oos/applicationGroup:ApplicationGroup": "ApplicationGroup"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "oos/defaultPatchBaseline",
+  "fqn": "pulumi_alicloud.oos",
+  "classes": {
+   "alicloud:oos/defaultPatchBaseline:DefaultPatchBaseline": "DefaultPatchBaseline"
   }
  },
  {
@@ -4924,6 +4970,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.rds",
   "classes": {
    "alicloud:rds/database:Database": "Database"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "rds/dbInstanceEndpoint",
+  "fqn": "pulumi_alicloud.rds",
+  "classes": {
+   "alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint": "DbInstanceEndpoint"
   }
  },
  {
@@ -5628,6 +5682,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.sms",
   "classes": {
    "alicloud:sms/shortUrl:ShortUrl": "ShortUrl"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "tag/policy",
+  "fqn": "pulumi_alicloud.tag",
+  "classes": {
+   "alicloud:tag/policy:Policy": "Policy"
   }
  },
  {

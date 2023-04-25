@@ -47,12 +47,12 @@ import * as utilities from "../utilities";
  *           "encoding": "UTF-8",
  *           "endpoint": "oss-cn-hangzhou-internal.aliyuncs.com",
  *           "format": {
- *             "escapeChar": "\\",
+ *             "escapeChar": "\\\\",
  *             "fieldDelimiter": ",",
  *             "fieldNames": [],
  *             "firstRowAsHeader": true,
  *             "maxLines": 1,
- *             "quoteChar": "\"",
+ *             "quoteChar": "\\"",
  *             "skipLeadingRows": 0,
  *             "timeField": "",
  *             "type": "DelimitedText"

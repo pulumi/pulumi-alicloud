@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  *     bufferInterval: 300,
  *     bufferSize: 250,
  *     compressType: "none",
- *     pathFormat: `%Y/%m/%d/%H/%M`,
+ *     pathFormat: "%Y/%m/%d/%H/%M",
  *     contentType: "json",
  *     jsonEnableTag: true,
  *     roleArn: "role_arn_for_oss_write",

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,10 +29,12 @@ type EipAssociation struct {
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
+	// The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface`, `HaVip` and `IpAddress`.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// The private IP address in the network segment of the vswitch which has been assigned.
 	PrivateIpAddress pulumi.StringOutput `pulumi:"privateIpAddress"`
+	// The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instanceType` is set to IpAddress. In this case, the EIP is associated with an IP address.
+	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 }
 
 // NewEipAssociation registers a new resource with the given unique name, arguments, and options.
@@ -76,10 +78,12 @@ type eipAssociationState struct {
 	Force *bool `pulumi:"force"`
 	// The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
 	InstanceId *string `pulumi:"instanceId"`
-	// The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
+	// The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface`, `HaVip` and `IpAddress`.
 	InstanceType *string `pulumi:"instanceType"`
 	// The private IP address in the network segment of the vswitch which has been assigned.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
+	// The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instanceType` is set to IpAddress. In this case, the EIP is associated with an IP address.
+	VpcId *string `pulumi:"vpcId"`
 }
 
 type EipAssociationState struct {
@@ -89,10 +93,12 @@ type EipAssociationState struct {
 	Force pulumi.BoolPtrInput
 	// The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
 	InstanceId pulumi.StringPtrInput
-	// The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
+	// The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface`, `HaVip` and `IpAddress`.
 	InstanceType pulumi.StringPtrInput
 	// The private IP address in the network segment of the vswitch which has been assigned.
 	PrivateIpAddress pulumi.StringPtrInput
+	// The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instanceType` is set to IpAddress. In this case, the EIP is associated with an IP address.
+	VpcId pulumi.StringPtrInput
 }
 
 func (EipAssociationState) ElementType() reflect.Type {
@@ -106,10 +112,12 @@ type eipAssociationArgs struct {
 	Force *bool `pulumi:"force"`
 	// The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
 	InstanceId string `pulumi:"instanceId"`
-	// The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
+	// The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface`, `HaVip` and `IpAddress`.
 	InstanceType *string `pulumi:"instanceType"`
 	// The private IP address in the network segment of the vswitch which has been assigned.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
+	// The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instanceType` is set to IpAddress. In this case, the EIP is associated with an IP address.
+	VpcId *string `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a EipAssociation resource.
@@ -120,10 +128,12 @@ type EipAssociationArgs struct {
 	Force pulumi.BoolPtrInput
 	// The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
 	InstanceId pulumi.StringInput
-	// The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
+	// The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface`, `HaVip` and `IpAddress`.
 	InstanceType pulumi.StringPtrInput
 	// The private IP address in the network segment of the vswitch which has been assigned.
 	PrivateIpAddress pulumi.StringPtrInput
+	// The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instanceType` is set to IpAddress. In this case, the EIP is associated with an IP address.
+	VpcId pulumi.StringPtrInput
 }
 
 func (EipAssociationArgs) ElementType() reflect.Type {
@@ -228,7 +238,7 @@ func (o EipAssociationOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EipAssociation) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
+// The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface`, `HaVip` and `IpAddress`.
 func (o EipAssociationOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *EipAssociation) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
@@ -236,6 +246,11 @@ func (o EipAssociationOutput) InstanceType() pulumi.StringOutput {
 // The private IP address in the network segment of the vswitch which has been assigned.
 func (o EipAssociationOutput) PrivateIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *EipAssociation) pulumi.StringOutput { return v.PrivateIpAddress }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instanceType` is set to IpAddress. In this case, the EIP is associated with an IP address.
+func (o EipAssociationOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EipAssociation) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
 type EipAssociationArrayOutput struct{ *pulumi.OutputState }

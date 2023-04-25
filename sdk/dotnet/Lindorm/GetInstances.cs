@@ -24,6 +24,7 @@ namespace Pulumi.AliCloud.Lindorm
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
@@ -62,6 +63,7 @@ namespace Pulumi.AliCloud.Lindorm
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 

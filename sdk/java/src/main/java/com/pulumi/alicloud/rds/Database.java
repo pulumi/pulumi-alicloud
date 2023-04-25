@@ -17,8 +17,6 @@ import javax.annotation.Nullable;
 /**
  * Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases.
  * 
- * &gt; **NOTE:** This resource does not support creating &#39;PPAS&#39; database. You have to login RDS instance to create manually.
- * 
  * ## Example Usage
  * ```java
  * package generated_program;

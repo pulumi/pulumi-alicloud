@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -252,6 +252,79 @@ import (
 //
 // ```
 //
+// # Basic Usage for alert template
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+//				Description: pulumi.String("create by terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewStore(ctx, "exampleStore", &log.StoreArgs{
+//				Project:            exampleProject.Name,
+//				RetentionPeriod:    pulumi.Int(3650),
+//				ShardCount:         pulumi.Int(3),
+//				AutoSplit:          pulumi.Bool(true),
+//				MaxSplitShardCount: pulumi.Int(60),
+//				AppendMeta:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewAlert(ctx, "example-3", &log.AlertArgs{
+//				Version:          pulumi.String("2.0"),
+//				Type:             pulumi.String("tpl"),
+//				ProjectName:      exampleProject.Name,
+//				AlertName:        pulumi.String("tf-test-alert-3"),
+//				AlertDisplayname: pulumi.String("tf-test-alert-displayname-3"),
+//				MuteUntil:        pulumi.Int(1632486684),
+//				Schedule: &log.AlertScheduleArgs{
+//					Type:           pulumi.String("FixedRate"),
+//					Interval:       pulumi.String("5m"),
+//					Hour:           pulumi.Int(0),
+//					DayOfWeek:      pulumi.Int(0),
+//					Delay:          pulumi.Int(0),
+//					RunImmediately: pulumi.Bool(false),
+//				},
+//				TemplateConfiguration: &log.AlertTemplateConfigurationArgs{
+//					Id:          pulumi.String("sls.app.sls_ack.node.down"),
+//					Type:        pulumi.String("sys"),
+//					Lang:        pulumi.String("cn"),
+//					Annotations: nil,
+//					Tokens: pulumi.StringMap{
+//						"interval_minute":        pulumi.String("5"),
+//						"default.action_policy":  pulumi.String("sls.app.ack.builtin"),
+//						"default.severity":       pulumi.String("6"),
+//						"sendResolved":           pulumi.String("false"),
+//						"default.project":        exampleProject.Name,
+//						"default.logstore":       pulumi.String("k8s-event"),
+//						"default.repeatInterval": pulumi.String("4h"),
+//						"trigger_threshold":      pulumi.String("1"),
+//						"default.clusterId":      pulumi.String("test-cluster-id"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Log alert can be imported using the id, e.g.
@@ -270,7 +343,7 @@ type Alert struct {
 	AlertDisplayname pulumi.StringOutput `pulumi:"alertDisplayname"`
 	// Name of logstore for configuring alarm service.
 	AlertName pulumi.StringOutput `pulumi:"alertName"`
-	// Annotations for new alert.
+	// Alert template annotations.
 	Annotations AlertAnnotationArrayOutput `pulumi:"annotations"`
 	// whether to add automatic annotation, default is false.
 	AutoAnnotation pulumi.BoolPtrOutput `pulumi:"autoAnnotation"`
@@ -320,6 +393,8 @@ type Alert struct {
 	SendResolved pulumi.BoolPtrOutput `pulumi:"sendResolved"`
 	// Severity configuration for new alert.
 	SeverityConfigurations AlertSeverityConfigurationArrayOutput `pulumi:"severityConfigurations"`
+	// Template configuration for alert, when `type` is `tpl`.
+	TemplateConfiguration AlertTemplateConfigurationPtrOutput `pulumi:"templateConfiguration"`
 	// Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
 	Threshold pulumi.IntOutput `pulumi:"threshold"`
 	// Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
@@ -347,9 +422,6 @@ func NewAlert(ctx *pulumi.Context,
 	}
 	if args.ProjectName == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectName'")
-	}
-	if args.QueryLists == nil {
-		return nil, errors.New("invalid value for required argument 'QueryLists'")
 	}
 	var resource Alert
 	err := ctx.RegisterResource("alicloud:log/alert:Alert", name, args, &resource, opts...)
@@ -379,7 +451,7 @@ type alertState struct {
 	AlertDisplayname *string `pulumi:"alertDisplayname"`
 	// Name of logstore for configuring alarm service.
 	AlertName *string `pulumi:"alertName"`
-	// Annotations for new alert.
+	// Alert template annotations.
 	Annotations []AlertAnnotation `pulumi:"annotations"`
 	// whether to add automatic annotation, default is false.
 	AutoAnnotation *bool `pulumi:"autoAnnotation"`
@@ -429,6 +501,8 @@ type alertState struct {
 	SendResolved *bool `pulumi:"sendResolved"`
 	// Severity configuration for new alert.
 	SeverityConfigurations []AlertSeverityConfiguration `pulumi:"severityConfigurations"`
+	// Template configuration for alert, when `type` is `tpl`.
+	TemplateConfiguration *AlertTemplateConfiguration `pulumi:"templateConfiguration"`
 	// Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
 	Threshold *int `pulumi:"threshold"`
 	// Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
@@ -448,7 +522,7 @@ type AlertState struct {
 	AlertDisplayname pulumi.StringPtrInput
 	// Name of logstore for configuring alarm service.
 	AlertName pulumi.StringPtrInput
-	// Annotations for new alert.
+	// Alert template annotations.
 	Annotations AlertAnnotationArrayInput
 	// whether to add automatic annotation, default is false.
 	AutoAnnotation pulumi.BoolPtrInput
@@ -498,6 +572,8 @@ type AlertState struct {
 	SendResolved pulumi.BoolPtrInput
 	// Severity configuration for new alert.
 	SeverityConfigurations AlertSeverityConfigurationArrayInput
+	// Template configuration for alert, when `type` is `tpl`.
+	TemplateConfiguration AlertTemplateConfigurationPtrInput
 	// Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
 	Threshold pulumi.IntPtrInput
 	// Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
@@ -521,7 +597,7 @@ type alertArgs struct {
 	AlertDisplayname string `pulumi:"alertDisplayname"`
 	// Name of logstore for configuring alarm service.
 	AlertName string `pulumi:"alertName"`
-	// Annotations for new alert.
+	// Alert template annotations.
 	Annotations []AlertAnnotation `pulumi:"annotations"`
 	// whether to add automatic annotation, default is false.
 	AutoAnnotation *bool `pulumi:"autoAnnotation"`
@@ -571,6 +647,8 @@ type alertArgs struct {
 	SendResolved *bool `pulumi:"sendResolved"`
 	// Severity configuration for new alert.
 	SeverityConfigurations []AlertSeverityConfiguration `pulumi:"severityConfigurations"`
+	// Template configuration for alert, when `type` is `tpl`.
+	TemplateConfiguration *AlertTemplateConfiguration `pulumi:"templateConfiguration"`
 	// Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
 	Threshold *int `pulumi:"threshold"`
 	// Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
@@ -591,7 +669,7 @@ type AlertArgs struct {
 	AlertDisplayname pulumi.StringInput
 	// Name of logstore for configuring alarm service.
 	AlertName pulumi.StringInput
-	// Annotations for new alert.
+	// Alert template annotations.
 	Annotations AlertAnnotationArrayInput
 	// whether to add automatic annotation, default is false.
 	AutoAnnotation pulumi.BoolPtrInput
@@ -641,6 +719,8 @@ type AlertArgs struct {
 	SendResolved pulumi.BoolPtrInput
 	// Severity configuration for new alert.
 	SeverityConfigurations AlertSeverityConfigurationArrayInput
+	// Template configuration for alert, when `type` is `tpl`.
+	TemplateConfiguration AlertTemplateConfigurationPtrInput
 	// Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
 	Threshold pulumi.IntPtrInput
 	// Notification interval, default is no interval. Support number + unit type, for example 60s, 1h, Deprecated from 1.161.0+.
@@ -755,7 +835,7 @@ func (o AlertOutput) AlertName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringOutput { return v.AlertName }).(pulumi.StringOutput)
 }
 
-// Annotations for new alert.
+// Alert template annotations.
 func (o AlertOutput) Annotations() AlertAnnotationArrayOutput {
 	return o.ApplyT(func(v *Alert) AlertAnnotationArrayOutput { return v.Annotations }).(AlertAnnotationArrayOutput)
 }
@@ -863,6 +943,11 @@ func (o AlertOutput) SendResolved() pulumi.BoolPtrOutput {
 // Severity configuration for new alert.
 func (o AlertOutput) SeverityConfigurations() AlertSeverityConfigurationArrayOutput {
 	return o.ApplyT(func(v *Alert) AlertSeverityConfigurationArrayOutput { return v.SeverityConfigurations }).(AlertSeverityConfigurationArrayOutput)
+}
+
+// Template configuration for alert, when `type` is `tpl`.
+func (o AlertOutput) TemplateConfiguration() AlertTemplateConfigurationPtrOutput {
+	return o.ApplyT(func(v *Alert) AlertTemplateConfigurationPtrOutput { return v.TemplateConfiguration }).(AlertTemplateConfigurationPtrOutput)
 }
 
 // Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.

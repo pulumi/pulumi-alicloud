@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> EncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -237,7 +237,7 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// User-defined DB instance storage space. Value range:
-        /// - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+        /// - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
         /// - [20,1000] for MySQL 5.7 basic single node edition;
         /// - [10, 2000] for SQL Server 2008R2;
         /// - [20,2000] for SQL Server 2012 basic single node edition
@@ -739,7 +739,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? EncryptionKey { get; set; }
 
         /// <summary>
-        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
@@ -786,7 +786,7 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// User-defined DB instance storage space. Value range:
-        /// - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+        /// - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
         /// - [20,1000] for MySQL 5.7 basic single node edition;
         /// - [10, 2000] for SQL Server 2008R2;
         /// - [20,2000] for SQL Server 2012 basic single node edition
@@ -1292,7 +1292,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? EncryptionKey { get; set; }
 
         /// <summary>
-        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -1339,7 +1339,7 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// User-defined DB instance storage space. Value range:
-        /// - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+        /// - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
         /// - [20,1000] for MySQL 5.7 basic single node edition;
         /// - [10, 2000] for SQL Server 2008R2;
         /// - [20,2000] for SQL Server 2012 basic single node edition

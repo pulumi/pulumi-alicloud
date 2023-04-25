@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,8 +24,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -63,7 +61,7 @@ import (
 //				BufferInterval: pulumi.Int(300),
 //				BufferSize:     pulumi.Int(250),
 //				CompressType:   pulumi.String("none"),
-//				PathFormat:     pulumi.String(fmt.Sprintf("%vY/%vm/%vd/%vH/%vM", "%", "%", "%", "%", "%")),
+//				PathFormat:     pulumi.String("%Y/%m/%d/%H/%M"),
 //				Format:         pulumi.String("json"),
 //				JsonEnableTag:  pulumi.Bool(true),
 //			})

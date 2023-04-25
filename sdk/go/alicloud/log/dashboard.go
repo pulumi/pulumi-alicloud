@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,8 +24,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -49,37 +47,8 @@ import (
 //				return err
 //			}
 //			_, err = log.NewDashboard(ctx, "example", &log.DashboardArgs{
-//				Attribute: pulumi.String("{\"type\":\"grid\"}"),
-//				CharList: pulumi.String(fmt.Sprintf(`  [
-//	    {
-//	      "action": {},
-//	      "title":"new_title",
-//	      "type":"map",
-//	      "search":{
-//	        "logstore":"tf-logstore",
-//	        "topic":"new_topic",
-//	        "query":"* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product",
-//	        "start":"-86400s",
-//	        "end":"now"
-//	      },
-//	      "display":{
-//	        "xAxis":[
-//	          "ct_name"
-//	        ],
-//	        "yAxis":[
-//	          "ct_product"
-//	        ],
-//	        "xPos":0,
-//	        "yPos":0,
-//	        "width":10,
-//	        "height":12,
-//	        "displayName":"xixihaha911"
-//	      }
-//	    }
-//	  ]
-//
-// `)),
-//
+//				Attribute:     pulumi.String("{\"type\":\"grid\"}"),
+//				CharList:      pulumi.String("  [\n    {\n      \"action\": {},\n      \"title\":\"new_title\",\n      \"type\":\"map\",\n      \"search\":{\n        \"logstore\":\"tf-logstore\",\n        \"topic\":\"new_topic\",\n        \"query\":\"* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product\",\n        \"start\":\"-86400s\",\n        \"end\":\"now\"\n      },\n      \"display\":{\n        \"xAxis\":[\n          \"ct_name\"\n        ],\n        \"yAxis\":[\n          \"ct_product\"\n        ],\n        \"xPos\":0,\n        \"yPos\":0,\n        \"width\":10,\n        \"height\":12,\n        \"displayName\":\"xixihaha911\"\n      }\n    }\n  ]\n\n"),
 //				DashboardName: pulumi.String("tf-dashboard"),
 //				ProjectName:   pulumi.String("tf-project"),
 //			})

@@ -27,6 +27,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -116,7 +117,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> IpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
+        /// The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
         /// </summary>
         [Output("isp")]
         public Output<string> Isp { get; private set; } = null!;
@@ -289,7 +290,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
+        /// The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
         /// </summary>
         [Input("isp")]
         public Input<string>? Isp { get; set; }
@@ -436,7 +437,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
-        /// The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values: `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China. `BGP_PRO`:  BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
+        /// The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
         /// </summary>
         [Input("isp")]
         public Input<string>? Isp { get; set; }

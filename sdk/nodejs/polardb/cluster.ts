@@ -117,8 +117,8 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
-     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-     * > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`.
+     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+     * > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
      */
     public readonly creationCategory!: pulumi.Output<string>;
     /**
@@ -172,6 +172,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly gdnId!: pulumi.Output<string | undefined>;
     /**
+     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+     */
+    public readonly hotStandbyCluster!: pulumi.Output<string>;
+    /**
      * Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
      * > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
      * > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
@@ -224,6 +228,15 @@ export class Cluster extends pulumi.CustomResource {
      * The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
      */
     public readonly sourceResourceId!: pulumi.Output<string | undefined>;
+    /**
+     * Storage space charged by space (monthly package). Unit: GB.
+     */
+    public readonly storageSpace!: pulumi.Output<number | undefined>;
+    /**
+     * The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
+     * > **NOTE:** Serverless cluster does not support this parameter.
+     */
+    public readonly storageType!: pulumi.Output<string>;
     /**
      * The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
      */
@@ -289,6 +302,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["encryptNewTables"] = state ? state.encryptNewTables : undefined;
             resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
             resourceInputs["gdnId"] = state ? state.gdnId : undefined;
+            resourceInputs["hotStandbyCluster"] = state ? state.hotStandbyCluster : undefined;
             resourceInputs["imciSwitch"] = state ? state.imciSwitch : undefined;
             resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
             resourceInputs["modifyType"] = state ? state.modifyType : undefined;
@@ -302,6 +316,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             resourceInputs["securityIps"] = state ? state.securityIps : undefined;
             resourceInputs["sourceResourceId"] = state ? state.sourceResourceId : undefined;
+            resourceInputs["storageSpace"] = state ? state.storageSpace : undefined;
+            resourceInputs["storageType"] = state ? state.storageType : undefined;
             resourceInputs["subCategory"] = state ? state.subCategory : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tdeRegion"] = state ? state.tdeRegion : undefined;
@@ -336,6 +352,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["encryptNewTables"] = args ? args.encryptNewTables : undefined;
             resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
             resourceInputs["gdnId"] = args ? args.gdnId : undefined;
+            resourceInputs["hotStandbyCluster"] = args ? args.hotStandbyCluster : undefined;
             resourceInputs["imciSwitch"] = args ? args.imciSwitch : undefined;
             resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
             resourceInputs["modifyType"] = args ? args.modifyType : undefined;
@@ -348,6 +365,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             resourceInputs["securityIps"] = args ? args.securityIps : undefined;
             resourceInputs["sourceResourceId"] = args ? args.sourceResourceId : undefined;
+            resourceInputs["storageSpace"] = args ? args.storageSpace : undefined;
+            resourceInputs["storageType"] = args ? args.storageType : undefined;
             resourceInputs["subCategory"] = args ? args.subCategory : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tdeStatus"] = args ? args.tdeStatus : undefined;
@@ -389,8 +408,8 @@ export interface ClusterState {
      */
     connectionString?: pulumi.Input<string>;
     /**
-     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-     * > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`.
+     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+     * > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
      */
     creationCategory?: pulumi.Input<string>;
     /**
@@ -444,6 +463,10 @@ export interface ClusterState {
      */
     gdnId?: pulumi.Input<string>;
     /**
+     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+     */
+    hotStandbyCluster?: pulumi.Input<string>;
+    /**
      * Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
      * > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
      * > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
@@ -496,6 +519,15 @@ export interface ClusterState {
      * The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
      */
     sourceResourceId?: pulumi.Input<string>;
+    /**
+     * Storage space charged by space (monthly package). Unit: GB.
+     */
+    storageSpace?: pulumi.Input<number>;
+    /**
+     * The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
+     * > **NOTE:** Serverless cluster does not support this parameter.
+     */
+    storageType?: pulumi.Input<string>;
     /**
      * The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
      */
@@ -554,8 +586,8 @@ export interface ClusterArgs {
      */
     collectorStatus?: pulumi.Input<string>;
     /**
-     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-     * > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`.
+     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+     * > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
      */
     creationCategory?: pulumi.Input<string>;
     /**
@@ -609,6 +641,10 @@ export interface ClusterArgs {
      */
     gdnId?: pulumi.Input<string>;
     /**
+     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+     */
+    hotStandbyCluster?: pulumi.Input<string>;
+    /**
      * Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
      * > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
      * > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
@@ -657,6 +693,15 @@ export interface ClusterArgs {
      * The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
      */
     sourceResourceId?: pulumi.Input<string>;
+    /**
+     * Storage space charged by space (monthly package). Unit: GB.
+     */
+    storageSpace?: pulumi.Input<number>;
+    /**
+     * The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
+     * > **NOTE:** Serverless cluster does not support this parameter.
+     */
+    storageType?: pulumi.Input<string>;
     /**
      * The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
      */

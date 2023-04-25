@@ -28,6 +28,8 @@ __all__ = [
     'GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionResult',
     'GetDispatchRulesRuleNotifyRuleResult',
     'GetDispatchRulesRuleNotifyRuleNotifyObjectResult',
+    'GetIntegrationExportersIntegrationExporterResult',
+    'GetPrometheisPrometheiResult',
     'GetPrometheusAlertRulesRuleResult',
     'GetPrometheusAlertRulesRuleAnnotationResult',
     'GetPrometheusAlertRulesRuleLabelResult',
@@ -877,6 +879,240 @@ class GetDispatchRulesRuleNotifyRuleNotifyObjectResult(dict):
         The type of the alert contact.
         """
         return pulumi.get(self, "notify_type")
+
+
+@pulumi.output_type
+class GetIntegrationExportersIntegrationExporterResult(dict):
+    def __init__(__self__, *,
+                 cluster_id: str,
+                 exporter_type: str,
+                 id: str,
+                 instance_id: int,
+                 instance_name: str,
+                 integration_type: str,
+                 param: str,
+                 target: str,
+                 version: str):
+        """
+        :param str cluster_id: The ID of the Prometheus instance.
+        :param str exporter_type: Integration Exporter Type.
+        :param str id: The ID of the Integration Exporter. It formats as `<cluster_id>:<integration_type>:<instance_id>`.
+        :param int instance_id: The ID of the Integration Exporter instance.
+        :param str instance_name: The name of the instance.
+        :param str integration_type: The type of prometheus integration.
+        :param str param: Exporter configuration parameter json string.
+        :param str target: Monitor the target address.
+        :param str version: The version information.
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "exporter_type", exporter_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "integration_type", integration_type)
+        pulumi.set(__self__, "param", param)
+        pulumi.set(__self__, "target", target)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The ID of the Prometheus instance.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="exporterType")
+    def exporter_type(self) -> str:
+        """
+        Integration Exporter Type.
+        """
+        return pulumi.get(self, "exporter_type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Integration Exporter. It formats as `<cluster_id>:<integration_type>:<instance_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> int:
+        """
+        The ID of the Integration Exporter instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> str:
+        """
+        The name of the instance.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @property
+    @pulumi.getter(name="integrationType")
+    def integration_type(self) -> str:
+        """
+        The type of prometheus integration.
+        """
+        return pulumi.get(self, "integration_type")
+
+    @property
+    @pulumi.getter
+    def param(self) -> str:
+        """
+        Exporter configuration parameter json string.
+        """
+        return pulumi.get(self, "param")
+
+    @property
+    @pulumi.getter
+    def target(self) -> str:
+        """
+        Monitor the target address.
+        """
+        return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The version information.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetPrometheisPrometheiResult(dict):
+    def __init__(__self__, *,
+                 cluster_id: str,
+                 cluster_name: str,
+                 cluster_type: str,
+                 grafana_instance_id: str,
+                 id: str,
+                 resource_group_id: str,
+                 security_group_id: str,
+                 sub_clusters_json: str,
+                 tags: Mapping[str, Any],
+                 vpc_id: str,
+                 vswitch_id: str):
+        """
+        :param str cluster_id: The ID of the cluster.
+        :param str cluster_name: The name of the cluster.
+        :param str cluster_type: The type of the cluster.
+        :param str grafana_instance_id: The ID of the Grafana workspace.
+        :param str id: The ID of the Prometheus.
+        :param str resource_group_id: The ID of the resource group.
+        :param str security_group_id: The ID of the security group.
+        :param str sub_clusters_json: The child instance json string of the globalView instance.
+        :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+        :param str vpc_id: The ID of the VPC.
+        :param str vswitch_id: The ID of the VSwitch.
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "cluster_type", cluster_type)
+        pulumi.set(__self__, "grafana_instance_id", grafana_instance_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "sub_clusters_json", sub_clusters_json)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The ID of the cluster.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> str:
+        """
+        The name of the cluster.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter(name="clusterType")
+    def cluster_type(self) -> str:
+        """
+        The type of the cluster.
+        """
+        return pulumi.get(self, "cluster_type")
+
+    @property
+    @pulumi.getter(name="grafanaInstanceId")
+    def grafana_instance_id(self) -> str:
+        """
+        The ID of the Grafana workspace.
+        """
+        return pulumi.get(self, "grafana_instance_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Prometheus.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> str:
+        """
+        The ID of the security group.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @property
+    @pulumi.getter(name="subClustersJson")
+    def sub_clusters_json(self) -> str:
+        """
+        The child instance json string of the globalView instance.
+        """
+        return pulumi.get(self, "sub_clusters_json")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, Any]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> str:
+        """
+        The ID of the VSwitch.
+        """
+        return pulumi.get(self, "vswitch_id")
 
 
 @pulumi.output_type

@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || `tf-testAccEssNotification-%d`;
+ * const name = config.get("name") || "tf-testAccEssNotification-%d";
  * const defaultRegions = alicloud.getRegions({
  *     current: true,
  * });

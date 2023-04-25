@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,8 +26,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -45,24 +43,7 @@ import (
 //				ControlPolicyName: pulumi.String("tf-testAccName"),
 //				Description:       pulumi.String("tf-testAccRDControlPolicy"),
 //				EffectScope:       pulumi.String("RAM"),
-//				PolicyDocument: pulumi.String(fmt.Sprintf(`  {
-//	    "Version": "1",
-//	    "Statement": [
-//	      {
-//	        "Effect": "Deny",
-//	        "Action": [
-//	          "ram:UpdateRole",
-//	          "ram:DeleteRole",
-//	          "ram:AttachPolicyToRole",
-//	          "ram:DetachPolicyFromRole"
-//	        ],
-//	        "Resource": "acs:ram:*:*:role/ResourceDirectoryAccountAccessRole"
-//	      }
-//	    ]
-//	  }
-//
-// `)),
-//
+//				PolicyDocument:    pulumi.String("  {\n    \"Version\": \"1\",\n    \"Statement\": [\n      {\n        \"Effect\": \"Deny\",\n        \"Action\": [\n          \"ram:UpdateRole\",\n          \"ram:DeleteRole\",\n          \"ram:AttachPolicyToRole\",\n          \"ram:DetachPolicyFromRole\"\n        ],\n        \"Resource\": \"acs:ram:*:*:role/ResourceDirectoryAccountAccessRole\"\n      }\n    ]\n  }\n"),
 //			})
 //			if err != nil {
 //				return err

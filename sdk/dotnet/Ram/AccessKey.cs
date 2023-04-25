@@ -21,6 +21,7 @@ namespace Pulumi.AliCloud.Ram
     /// Output the secret to a file.
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -48,6 +49,7 @@ namespace Pulumi.AliCloud.Ram
     /// Using `pgp_key` to encrypt the secret.
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,8 +27,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -67,24 +65,12 @@ import (
 //				return err
 //			}
 //			testLogTailConfig, err := log.NewLogTailConfig(ctx, "testLogTailConfig", &log.LogTailConfigArgs{
-//				Project:    testProject.Name,
-//				Logstore:   testStore.Name,
-//				InputType:  pulumi.String("file"),
-//				LogSample:  pulumi.String("test"),
-//				OutputType: pulumi.String("LogService"),
-//				InputDetail: pulumi.String(fmt.Sprintf(`  	{
-//			"logPath": "/logPath",
-//			"filePattern": "access.log",
-//			"logType": "json_log",
-//			"topicFormat": "default",
-//			"discardUnmatch": false,
-//			"enableRawLog": true,
-//			"fileEncoding": "gbk",
-//			"maxDepth": 10
-//		}
-//
-// `)),
-//
+//				Project:     testProject.Name,
+//				Logstore:    testStore.Name,
+//				InputType:   pulumi.String("file"),
+//				LogSample:   pulumi.String("test"),
+//				OutputType:  pulumi.String("LogService"),
+//				InputDetail: pulumi.String("  	{\n		\"logPath\": \"/logPath\",\n		\"filePattern\": \"access.log\",\n		\"logType\": \"json_log\",\n		\"topicFormat\": \"default\",\n		\"discardUnmatch\": false,\n		\"enableRawLog\": true,\n		\"fileEncoding\": \"gbk\",\n		\"maxDepth\": 10\n	}\n	\n"),
 //			})
 //			if err != nil {
 //				return err

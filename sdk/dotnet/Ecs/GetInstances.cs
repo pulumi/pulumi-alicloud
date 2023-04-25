@@ -20,6 +20,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
@@ -53,6 +54,7 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
@@ -106,6 +108,12 @@ namespace Pulumi.AliCloud.Ecs
         public string? ImageId { get; set; }
 
         /// <summary>
+        /// The name of the instance. Fuzzy search with the asterisk (*) wildcard characters is supported.
+        /// </summary>
+        [Input("instanceName")]
+        public string? InstanceName { get; set; }
+
+        /// <summary>
         /// A regex string to filter results by instance name.
         /// </summary>
         [Input("nameRegex")]
@@ -145,6 +153,7 @@ namespace Pulumi.AliCloud.Ecs
         /// A map of tags assigned to the ECS instances. It must be in the format:
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
@@ -213,6 +222,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
+        /// The name of the instance. Fuzzy search with the asterisk (*) wildcard characters is supported.
+        /// </summary>
+        [Input("instanceName")]
+        public Input<string>? InstanceName { get; set; }
+
+        /// <summary>
         /// A regex string to filter results by instance name.
         /// </summary>
         [Input("nameRegex")]
@@ -252,6 +267,7 @@ namespace Pulumi.AliCloud.Ecs
         /// A map of tags assigned to the ECS instances. It must be in the format:
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
@@ -313,6 +329,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Image ID the instance is using.
         /// </summary>
         public readonly string? ImageId;
+        public readonly string? InstanceName;
         /// <summary>
         /// A list of instances. Each element contains the following attributes:
         /// </summary>
@@ -361,6 +378,8 @@ namespace Pulumi.AliCloud.Ecs
 
             string? imageId,
 
+            string? instanceName,
+
             ImmutableArray<Outputs.GetInstancesInstanceResult> instances,
 
             string? nameRegex,
@@ -391,6 +410,7 @@ namespace Pulumi.AliCloud.Ecs
             Id = id;
             Ids = ids;
             ImageId = imageId;
+            InstanceName = instanceName;
             Instances = instances;
             NameRegex = nameRegex;
             Names = names;

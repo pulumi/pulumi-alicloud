@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,8 +26,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fnf"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -37,29 +35,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
-//				Document: pulumi.String(fmt.Sprintf(`  {
-//	    "Statement": [
-//	      {
-//	        "Action": "sts:AssumeRole",
-//	        "Effect": "Allow",
-//	        "Principal": {
-//	          "Service": [
-//	            "fnf.aliyuncs.com"
-//	          ]
-//	        }
-//	      }
-//	    ],
-//	    "Version": "1"
-//	  }
-//
-// `)),
-//
+//				Document: pulumi.String("  {\n    \"Statement\": [\n      {\n        \"Action\": \"sts:AssumeRole\",\n        \"Effect\": \"Allow\",\n        \"Principal\": {\n          \"Service\": [\n            \"fnf.aliyuncs.com\"\n          ]\n        }\n      }\n    ],\n    \"Version\": \"1\"\n  }\n"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = fnf.NewFlow(ctx, "example", &fnf.FlowArgs{
-//				Definition:  pulumi.String(fmt.Sprintf("  version: v1beta1\n  type: flow\n  steps:\n    - type: pass\n      name: helloworld\n")),
+//				Definition:  pulumi.String("  version: v1beta1\n  type: flow\n  steps:\n    - type: pass\n      name: helloworld\n"),
 //				RoleArn:     _default.Arn,
 //				Description: pulumi.String("Test for terraform fnf_flow."),
 //				Type:        pulumi.String("FDL"),

@@ -15,6 +15,7 @@ import com.pulumi.alicloud.log.outputs.AlertPolicyConfiguration;
 import com.pulumi.alicloud.log.outputs.AlertQueryList;
 import com.pulumi.alicloud.log.outputs.AlertSchedule;
 import com.pulumi.alicloud.log.outputs.AlertSeverityConfiguration;
+import com.pulumi.alicloud.log.outputs.AlertTemplateConfiguration;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -273,6 +274,85 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * Basic Usage for alert template
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
+ * import com.pulumi.alicloud.log.Alert;
+ * import com.pulumi.alicloud.log.AlertArgs;
+ * import com.pulumi.alicloud.log.inputs.AlertScheduleArgs;
+ * import com.pulumi.alicloud.log.inputs.AlertTemplateConfigurationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
+ *             .description(&#34;create by terraform&#34;)
+ *             .build());
+ * 
+ *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
+ *             .project(exampleProject.name())
+ *             .retentionPeriod(3650)
+ *             .shardCount(3)
+ *             .autoSplit(true)
+ *             .maxSplitShardCount(60)
+ *             .appendMeta(true)
+ *             .build());
+ * 
+ *         var example_3 = new Alert(&#34;example-3&#34;, AlertArgs.builder()        
+ *             .version(&#34;2.0&#34;)
+ *             .type(&#34;tpl&#34;)
+ *             .projectName(exampleProject.name())
+ *             .alertName(&#34;tf-test-alert-3&#34;)
+ *             .alertDisplayname(&#34;tf-test-alert-displayname-3&#34;)
+ *             .muteUntil(&#34;1632486684&#34;)
+ *             .schedule(AlertScheduleArgs.builder()
+ *                 .type(&#34;FixedRate&#34;)
+ *                 .interval(&#34;5m&#34;)
+ *                 .hour(0)
+ *                 .dayOfWeek(0)
+ *                 .delay(0)
+ *                 .runImmediately(false)
+ *                 .build())
+ *             .templateConfiguration(AlertTemplateConfigurationArgs.builder()
+ *                 .id(&#34;sls.app.sls_ack.node.down&#34;)
+ *                 .type(&#34;sys&#34;)
+ *                 .lang(&#34;cn&#34;)
+ *                 .annotations()
+ *                 .tokens(Map.ofEntries(
+ *                     Map.entry(&#34;interval_minute&#34;, &#34;5&#34;),
+ *                     Map.entry(&#34;default.action_policy&#34;, &#34;sls.app.ack.builtin&#34;),
+ *                     Map.entry(&#34;default.severity&#34;, &#34;6&#34;),
+ *                     Map.entry(&#34;sendResolved&#34;, &#34;false&#34;),
+ *                     Map.entry(&#34;default.project&#34;, exampleProject.name()),
+ *                     Map.entry(&#34;default.logstore&#34;, &#34;k8s-event&#34;),
+ *                     Map.entry(&#34;default.repeatInterval&#34;, &#34;4h&#34;),
+ *                     Map.entry(&#34;trigger_threshold&#34;, &#34;1&#34;),
+ *                     Map.entry(&#34;default.clusterId&#34;, &#34;test-cluster-id&#34;)
+ *                 ))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Log alert can be imported using the id, e.g.
@@ -327,14 +407,14 @@ public class Alert extends com.pulumi.resources.CustomResource {
         return this.alertName;
     }
     /**
-     * Annotations for new alert.
+     * Alert template annotations.
      * 
      */
     @Export(name="annotations", type=List.class, parameters={AlertAnnotation.class})
     private Output</* @Nullable */ List<AlertAnnotation>> annotations;
 
     /**
-     * @return Annotations for new alert.
+     * @return Alert template annotations.
      * 
      */
     public Output<Optional<List<AlertAnnotation>>> annotations() {
@@ -537,14 +617,14 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="queryLists", type=List.class, parameters={AlertQueryList.class})
-    private Output<List<AlertQueryList>> queryLists;
+    private Output</* @Nullable */ List<AlertQueryList>> queryLists;
 
     /**
      * @return Multiple conditions for configured alarm query.
      * 
      */
-    public Output<List<AlertQueryList>> queryLists() {
-        return this.queryLists;
+    public Output<Optional<List<AlertQueryList>>> queryLists() {
+        return Codegen.optional(this.queryLists);
     }
     /**
      * schedule for alert.
@@ -623,6 +703,20 @@ public class Alert extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<AlertSeverityConfiguration>>> severityConfigurations() {
         return Codegen.optional(this.severityConfigurations);
+    }
+    /**
+     * Template configuration for alert, when `type` is `tpl`.
+     * 
+     */
+    @Export(name="templateConfiguration", type=AlertTemplateConfiguration.class, parameters={})
+    private Output</* @Nullable */ AlertTemplateConfiguration> templateConfiguration;
+
+    /**
+     * @return Template configuration for alert, when `type` is `tpl`.
+     * 
+     */
+    public Output<Optional<AlertTemplateConfiguration>> templateConfiguration() {
+        return Codegen.optional(this.templateConfiguration);
     }
     /**
      * Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.

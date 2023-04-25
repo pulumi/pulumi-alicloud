@@ -7,6 +7,7 @@ import typing
 # Export this package's modules as members:
 from .application import *
 from .application_group import *
+from .default_patch_baseline import *
 from .execution import *
 from .get_application_groups import *
 from .get_applications import *

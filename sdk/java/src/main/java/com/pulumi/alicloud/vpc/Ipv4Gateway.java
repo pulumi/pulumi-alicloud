@@ -91,14 +91,14 @@ public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="enabled", type=Boolean.class, parameters={})
-    private Output</* @Nullable */ Boolean> enabled;
+    private Output<Boolean> enabled;
 
     /**
      * @return Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
      * 
      */
-    public Output<Optional<Boolean>> enabled() {
-        return Codegen.optional(this.enabled);
+    public Output<Boolean> enabled() {
+        return this.enabled;
     }
     /**
      * The description of the IPv4 gateway. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,8 +26,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fnf"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -36,7 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			exampleFlow, err := fnf.NewFlow(ctx, "exampleFlow", &fnf.FlowArgs{
-//				Definition:  pulumi.String(fmt.Sprintf("  version: v1beta1\n  type: flow\n  steps:\n    - type: pass\n      name: helloworld\n")),
+//				Definition:  pulumi.String("  version: v1beta1\n  type: flow\n  steps:\n    - type: pass\n      name: helloworld\n"),
 //				Description: pulumi.String("tf-testaccFnFFlow983041"),
 //				Type:        pulumi.String("FDL"),
 //			})

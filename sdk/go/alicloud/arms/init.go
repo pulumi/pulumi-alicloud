@@ -27,6 +27,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AlertContactGroup{}
 	case "alicloud:arms/dispatchRule:DispatchRule":
 		r = &DispatchRule{}
+	case "alicloud:arms/integrationExporter:IntegrationExporter":
+		r = &IntegrationExporter{}
+	case "alicloud:arms/prometheus:Prometheus":
+		r = &Prometheus{}
 	case "alicloud:arms/prometheusAlertRule:PrometheusAlertRule":
 		r = &PrometheusAlertRule{}
 	default:
@@ -55,6 +59,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"arms/dispatchRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"arms/integrationExporter",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"arms/prometheus",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

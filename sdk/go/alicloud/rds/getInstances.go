@@ -61,7 +61,7 @@ type GetInstancesArgs struct {
 	DbType *string `pulumi:"dbType"`
 	// Default to `false`. Set it to `true` can output parameter template about resource attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
-	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
+	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`. If no value is specified, all types are returned.
 	Engine *string `pulumi:"engine"`
 	// A list of RDS instance IDs.
 	Ids []string `pulumi:"ids"`
@@ -88,7 +88,7 @@ type GetInstancesResult struct {
 	// `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
 	DbType        *string `pulumi:"dbType"`
 	EnableDetails *bool   `pulumi:"enableDetails"`
-	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
+	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`. If no value is specified, all types are returned.
 	Engine *string `pulumi:"engine"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -133,7 +133,7 @@ type GetInstancesOutputArgs struct {
 	DbType pulumi.StringPtrInput `pulumi:"dbType"`
 	// Default to `false`. Set it to `true` can output parameter template about resource attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
-	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
+	// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`. If no value is specified, all types are returned.
 	Engine pulumi.StringPtrInput `pulumi:"engine"`
 	// A list of RDS instance IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -186,7 +186,7 @@ func (o GetInstancesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
 }
 
-// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
+// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`. If no value is specified, all types are returned.
 func (o GetInstancesResultOutput) Engine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Engine }).(pulumi.StringPtrOutput)
 }

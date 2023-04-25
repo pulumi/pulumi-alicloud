@@ -15,6 +15,7 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 

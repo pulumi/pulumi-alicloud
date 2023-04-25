@@ -166,7 +166,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly encryptionKey!: pulumi.Output<string | undefined>;
     /**
-     * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+     * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
      */
     public readonly engine!: pulumi.Output<string>;
     /**
@@ -199,7 +199,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly instanceName!: pulumi.Output<string | undefined>;
     /**
      * User-defined DB instance storage space. Value range:
-     * - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+     * - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
      * - [20,1000] for MySQL 5.7 basic single node edition;
      * - [10, 2000] for SQL Server 2008R2;
      * - [20,2000] for SQL Server 2012 basic single node edition
@@ -717,7 +717,7 @@ export interface InstanceState {
      */
     encryptionKey?: pulumi.Input<string>;
     /**
-     * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+     * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
      */
     engine?: pulumi.Input<string>;
     /**
@@ -750,7 +750,7 @@ export interface InstanceState {
     instanceName?: pulumi.Input<string>;
     /**
      * User-defined DB instance storage space. Value range:
-     * - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+     * - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
      * - [20,1000] for MySQL 5.7 basic single node edition;
      * - [10, 2000] for SQL Server 2008R2;
      * - [20,2000] for SQL Server 2012 basic single node edition
@@ -1082,7 +1082,7 @@ export interface InstanceArgs {
      */
     encryptionKey?: pulumi.Input<string>;
     /**
-     * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+     * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
      */
     engine: pulumi.Input<string>;
     /**
@@ -1115,7 +1115,7 @@ export interface InstanceArgs {
     instanceName?: pulumi.Input<string>;
     /**
      * User-defined DB instance storage space. Value range:
-     * - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+     * - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
      * - [20,1000] for MySQL 5.7 basic single node edition;
      * - [10, 2000] for SQL Server 2008R2;
      * - [20,2000] for SQL Server 2012 basic single node edition

@@ -74,7 +74,7 @@ type GetInstanceClassesArgs struct {
 	DbInstanceId *string `pulumi:"dbInstanceId"`
 	// The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
-	// Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
+	// Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "MariaDB". If not set, it will match all of engines.
 	Engine *string `pulumi:"engine"`
 	// Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion *string `pulumi:"engineVersion"`
@@ -148,7 +148,7 @@ type GetInstanceClassesOutputArgs struct {
 	DbInstanceId pulumi.StringPtrInput `pulumi:"dbInstanceId"`
 	// The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
 	DbInstanceStorageType pulumi.StringPtrInput `pulumi:"dbInstanceStorageType"`
-	// Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
+	// Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "MariaDB". If not set, it will match all of engines.
 	Engine pulumi.StringPtrInput `pulumi:"engine"`
 	// Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion pulumi.StringPtrInput `pulumi:"engineVersion"`

@@ -12,6 +12,7 @@ import com.pulumi.alicloud.log.inputs.AlertPolicyConfigurationArgs;
 import com.pulumi.alicloud.log.inputs.AlertQueryListArgs;
 import com.pulumi.alicloud.log.inputs.AlertScheduleArgs;
 import com.pulumi.alicloud.log.inputs.AlertSeverityConfigurationArgs;
+import com.pulumi.alicloud.log.inputs.AlertTemplateConfigurationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -73,14 +74,14 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Annotations for new alert.
+     * Alert template annotations.
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<List<AlertAnnotationArgs>> annotations;
 
     /**
-     * @return Annotations for new alert.
+     * @return Alert template annotations.
      * 
      */
     public Optional<Output<List<AlertAnnotationArgs>>> annotations() {
@@ -314,15 +315,15 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
      * Multiple conditions for configured alarm query.
      * 
      */
-    @Import(name="queryLists", required=true)
-    private Output<List<AlertQueryListArgs>> queryLists;
+    @Import(name="queryLists")
+    private @Nullable Output<List<AlertQueryListArgs>> queryLists;
 
     /**
      * @return Multiple conditions for configured alarm query.
      * 
      */
-    public Output<List<AlertQueryListArgs>> queryLists() {
-        return this.queryLists;
+    public Optional<Output<List<AlertQueryListArgs>>> queryLists() {
+        return Optional.ofNullable(this.queryLists);
     }
 
     /**
@@ -414,6 +415,21 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<AlertSeverityConfigurationArgs>>> severityConfigurations() {
         return Optional.ofNullable(this.severityConfigurations);
+    }
+
+    /**
+     * Template configuration for alert, when `type` is `tpl`.
+     * 
+     */
+    @Import(name="templateConfiguration")
+    private @Nullable Output<AlertTemplateConfigurationArgs> templateConfiguration;
+
+    /**
+     * @return Template configuration for alert, when `type` is `tpl`.
+     * 
+     */
+    public Optional<Output<AlertTemplateConfigurationArgs>> templateConfiguration() {
+        return Optional.ofNullable(this.templateConfiguration);
     }
 
     /**
@@ -510,6 +526,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         this.scheduleType = $.scheduleType;
         this.sendResolved = $.sendResolved;
         this.severityConfigurations = $.severityConfigurations;
+        this.templateConfiguration = $.templateConfiguration;
         this.threshold = $.threshold;
         this.throttling = $.throttling;
         this.type = $.type;
@@ -598,7 +615,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Annotations for new alert.
+         * @param annotations Alert template annotations.
          * 
          * @return builder
          * 
@@ -609,7 +626,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Annotations for new alert.
+         * @param annotations Alert template annotations.
          * 
          * @return builder
          * 
@@ -619,7 +636,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Annotations for new alert.
+         * @param annotations Alert template annotations.
          * 
          * @return builder
          * 
@@ -969,7 +986,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder queryLists(Output<List<AlertQueryListArgs>> queryLists) {
+        public Builder queryLists(@Nullable Output<List<AlertQueryListArgs>> queryLists) {
             $.queryLists = queryLists;
             return this;
         }
@@ -1126,6 +1143,27 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param templateConfiguration Template configuration for alert, when `type` is `tpl`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateConfiguration(@Nullable Output<AlertTemplateConfigurationArgs> templateConfiguration) {
+            $.templateConfiguration = templateConfiguration;
+            return this;
+        }
+
+        /**
+         * @param templateConfiguration Template configuration for alert, when `type` is `tpl`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateConfiguration(AlertTemplateConfigurationArgs templateConfiguration) {
+            return templateConfiguration(Output.of(templateConfiguration));
+        }
+
+        /**
          * @param threshold Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
          * 
          * @return builder
@@ -1221,7 +1259,6 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
             $.alertDisplayname = Objects.requireNonNull($.alertDisplayname, "expected parameter 'alertDisplayname' to be non-null");
             $.alertName = Objects.requireNonNull($.alertName, "expected parameter 'alertName' to be non-null");
             $.projectName = Objects.requireNonNull($.projectName, "expected parameter 'projectName' to be non-null");
-            $.queryLists = Objects.requireNonNull($.queryLists, "expected parameter 'queryLists' to be non-null");
             return $;
         }
     }

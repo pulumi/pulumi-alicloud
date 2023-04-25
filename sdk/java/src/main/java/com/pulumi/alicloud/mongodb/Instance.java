@@ -6,6 +6,7 @@ package com.pulumi.alicloud.mongodb;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.mongodb.InstanceArgs;
 import com.pulumi.alicloud.mongodb.inputs.InstanceState;
+import com.pulumi.alicloud.mongodb.outputs.InstanceParameter;
 import com.pulumi.alicloud.mongodb.outputs.InstanceReplicaSet;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -267,6 +268,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> orderType() {
         return Codegen.optional(this.orderType);
+    }
+    /**
+     * Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+     * 
+     */
+    @Export(name="parameters", type=List.class, parameters={InstanceParameter.class})
+    private Output<List<InstanceParameter>> parameters;
+
+    /**
+     * @return Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+     * 
+     */
+    public Output<List<InstanceParameter>> parameters() {
+        return this.parameters;
     }
     /**
      * The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.

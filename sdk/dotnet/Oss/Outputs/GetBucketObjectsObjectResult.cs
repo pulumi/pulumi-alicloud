@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// </summary>
         public readonly string SseKmsKeyId;
         /// <summary>
-        /// Object storage type. Possible values: `Standard`, `IA` and `Archive`.
+        /// Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
         /// </summary>
         public readonly string StorageClass;
 

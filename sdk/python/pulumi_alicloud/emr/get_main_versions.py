@@ -104,7 +104,7 @@ def get_main_versions(cluster_types: Optional[Sequence[str]] = None,
                       output_file: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMainVersionsResult:
     """
-    The _emr_get_main_versions_ data source provides a collection of emr
+    The `emr_get_main_versions` data source provides a collection of emr
     main versions available in Alibaba Cloud account when create a emr cluster.
 
     > **NOTE:** Available in 1.59.0+
@@ -151,7 +151,7 @@ def get_main_versions_output(cluster_types: Optional[pulumi.Input[Optional[Seque
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMainVersionsResult]:
     """
-    The _emr_get_main_versions_ data source provides a collection of emr
+    The `emr_get_main_versions` data source provides a collection of emr
     main versions available in Alibaba Cloud account when create a emr cluster.
 
     > **NOTE:** Available in 1.59.0+

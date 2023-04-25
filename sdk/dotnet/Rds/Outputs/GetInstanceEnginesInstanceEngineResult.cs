@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// </summary>
         public readonly string Category;
         /// <summary>
-        /// Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
+        /// Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "MariaDB". If not set, it will match all of engines.
         /// </summary>
         public readonly string Engine;
         /// <summary>

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,7 +67,7 @@ type Ipv4Gateway struct {
 	// The dry run.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// The description of the IPv4 gateway. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
 	Ipv4GatewayDescription pulumi.StringPtrOutput `pulumi:"ipv4GatewayDescription"`
 	// The name of the IPv4 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
@@ -263,8 +263,8 @@ func (o Ipv4GatewayOutput) DryRun() pulumi.BoolPtrOutput {
 }
 
 // Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
-func (o Ipv4GatewayOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Ipv4Gateway) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o Ipv4GatewayOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Ipv4Gateway) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // The description of the IPv4 gateway. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.

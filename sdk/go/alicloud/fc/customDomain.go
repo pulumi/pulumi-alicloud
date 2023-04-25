@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -57,7 +57,7 @@ import (
 //			defaultBucketObject, err := oss.NewBucketObject(ctx, "defaultBucketObject", &oss.BucketObjectArgs{
 //				Bucket:  defaultBucket.ID(),
 //				Key:     pulumi.String("fc/hello.zip"),
-//				Content: pulumi.String(fmt.Sprintf("		# -*- coding: utf-8 -*-\n	def handler(event, context):\n		print \"hello world\"\n		return 'hello world'\n")),
+//				Content: pulumi.String("		# -*- coding: utf-8 -*-\n	def handler(event, context):\n		print \"hello world\"\n		return 'hello world'\n"),
 //			})
 //			if err != nil {
 //				return err

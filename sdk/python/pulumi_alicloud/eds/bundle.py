@@ -25,7 +25,7 @@ class BundleArgs:
                  user_disk_performance_level: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Bundle resource.
-        :param pulumi.Input[str] desktop_type: The desktop type. You can call _eds_get_desktop_types_ to query desktop type.
+        :param pulumi.Input[str] desktop_type: The desktop type. You can call `eds_get_desktop_types` to query desktop type.
         :param pulumi.Input[str] image_id: The ID of the image.
         :param pulumi.Input[int] root_disk_size_gib: The root disk size gib.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] user_disk_size_gibs: The size of the data disk. Currently, only one data disk can be set. Unit: GiB. 
@@ -56,7 +56,7 @@ class BundleArgs:
     @pulumi.getter(name="desktopType")
     def desktop_type(self) -> pulumi.Input[str]:
         """
-        The desktop type. You can call _eds_get_desktop_types_ to query desktop type.
+        The desktop type. You can call `eds_get_desktop_types` to query desktop type.
         """
         return pulumi.get(self, "desktop_type")
 
@@ -179,7 +179,7 @@ class _BundleState:
         Input properties used for looking up and filtering Bundle resources.
         :param pulumi.Input[str] bundle_name: The name of the bundle.
         :param pulumi.Input[str] description: The description of the bundle.
-        :param pulumi.Input[str] desktop_type: The desktop type. You can call _eds_get_desktop_types_ to query desktop type.
+        :param pulumi.Input[str] desktop_type: The desktop type. You can call `eds_get_desktop_types` to query desktop type.
         :param pulumi.Input[str] image_id: The ID of the image.
         :param pulumi.Input[str] language: The language. Valid values: `zh-CN`, `zh-HK`, `en-US`, `ja-JP`.
         :param pulumi.Input[str] root_disk_performance_level: The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
@@ -236,7 +236,7 @@ class _BundleState:
     @pulumi.getter(name="desktopType")
     def desktop_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The desktop type. You can call _eds_get_desktop_types_ to query desktop type.
+        The desktop type. You can call `eds_get_desktop_types` to query desktop type.
         """
         return pulumi.get(self, "desktop_type")
 
@@ -378,7 +378,7 @@ class Bundle(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bundle_name: The name of the bundle.
         :param pulumi.Input[str] description: The description of the bundle.
-        :param pulumi.Input[str] desktop_type: The desktop type. You can call _eds_get_desktop_types_ to query desktop type.
+        :param pulumi.Input[str] desktop_type: The desktop type. You can call `eds_get_desktop_types` to query desktop type.
         :param pulumi.Input[str] image_id: The ID of the image.
         :param pulumi.Input[str] language: The language. Valid values: `zh-CN`, `zh-HK`, `en-US`, `ja-JP`.
         :param pulumi.Input[str] root_disk_performance_level: The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
@@ -512,7 +512,7 @@ class Bundle(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bundle_name: The name of the bundle.
         :param pulumi.Input[str] description: The description of the bundle.
-        :param pulumi.Input[str] desktop_type: The desktop type. You can call _eds_get_desktop_types_ to query desktop type.
+        :param pulumi.Input[str] desktop_type: The desktop type. You can call `eds_get_desktop_types` to query desktop type.
         :param pulumi.Input[str] image_id: The ID of the image.
         :param pulumi.Input[str] language: The language. Valid values: `zh-CN`, `zh-HK`, `en-US`, `ja-JP`.
         :param pulumi.Input[str] root_disk_performance_level: The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
@@ -557,7 +557,7 @@ class Bundle(pulumi.CustomResource):
     @pulumi.getter(name="desktopType")
     def desktop_type(self) -> pulumi.Output[str]:
         """
-        The desktop type. You can call _eds_get_desktop_types_ to query desktop type.
+        The desktop type. You can call `eds_get_desktop_types` to query desktop type.
         """
         return pulumi.get(self, "desktop_type")
 

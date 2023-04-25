@@ -22,6 +22,7 @@ namespace Pulumi.AliCloud.Sms
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 

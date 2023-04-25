@@ -100,7 +100,7 @@ class GetInstancesResult:
     @pulumi.getter
     def engine(self) -> Optional[str]:
         """
-        Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
+        Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`. If no value is specified, all types are returned.
         """
         return pulumi.get(self, "engine")
 
@@ -231,7 +231,7 @@ def get_instances(connection_mode: Optional[str] = None,
                   vswitch_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    The _rds_get_instances_ data source provides a collection of RDS instances available in Alibaba Cloud account.
+    The `rds_get_instances` data source provides a collection of RDS instances available in Alibaba Cloud account.
     Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
 
     ## Example Usage
@@ -253,7 +253,7 @@ def get_instances(connection_mode: Optional[str] = None,
     :param str connection_mode: `Standard` for standard access mode and `Safe` for high security access mode.
     :param str db_type: `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
     :param bool enable_details: Default to `false`. Set it to `true` can output parameter template about resource attributes.
-    :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
+    :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`. If no value is specified, all types are returned.
     :param Sequence[str] ids: A list of RDS instance IDs.
     :param str name_regex: A regex string to filter results by instance name.
     :param str status: Status of the instance.
@@ -315,7 +315,7 @@ def get_instances_output(connection_mode: Optional[pulumi.Input[Optional[str]]] 
                          vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
     """
-    The _rds_get_instances_ data source provides a collection of RDS instances available in Alibaba Cloud account.
+    The `rds_get_instances` data source provides a collection of RDS instances available in Alibaba Cloud account.
     Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
 
     ## Example Usage
@@ -337,7 +337,7 @@ def get_instances_output(connection_mode: Optional[pulumi.Input[Optional[str]]] 
     :param str connection_mode: `Standard` for standard access mode and `Safe` for high security access mode.
     :param str db_type: `Primary` for primary instance, `Readonly` for read-only instance, `Guard` for disaster recovery instance, and `Temp` for temporary instance.
     :param bool enable_details: Default to `false`. Set it to `true` can output parameter template about resource attributes.
-    :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
+    :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`. If no value is specified, all types are returned.
     :param Sequence[str] ids: A list of RDS instance IDs.
     :param str name_regex: A regex string to filter results by instance name.
     :param str status: Status of the instance.

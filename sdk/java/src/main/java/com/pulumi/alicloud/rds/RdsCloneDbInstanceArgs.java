@@ -403,14 +403,14 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
+     * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
      * 
      */
     @Import(name="engine")
     private @Nullable Output<String> engine;
 
     /**
-     * @return Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
+     * @return Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
      * 
      */
     public Optional<Output<String>> engine() {
@@ -422,7 +422,6 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
      * * MySQL:**5.5/5.6/5.7/8.0**
      * * SQL Server:**2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent**
      * * PostgreSQL:**9.4/10.0/11.0/12.0/13.0**
-     * * PPAS:**9.3/10.0**
      * * MariaDB:**10.3**.
      * 
      */
@@ -434,7 +433,6 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
      * * MySQL:**5.5/5.6/5.7/8.0**
      * * SQL Server:**2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent**
      * * PostgreSQL:**9.4/10.0/11.0/12.0/13.0**
-     * * PPAS:**9.3/10.0**
      * * MariaDB:**10.3**.
      * 
      */
@@ -1586,7 +1584,7 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param engine Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
+         * @param engine Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
          * 
          * @return builder
          * 
@@ -1597,7 +1595,7 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param engine Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS.
+         * @param engine Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
          * 
          * @return builder
          * 
@@ -1611,7 +1609,6 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
          * * MySQL:**5.5/5.6/5.7/8.0**
          * * SQL Server:**2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent**
          * * PostgreSQL:**9.4/10.0/11.0/12.0/13.0**
-         * * PPAS:**9.3/10.0**
          * * MariaDB:**10.3**.
          * 
          * @return builder
@@ -1627,7 +1624,6 @@ public final class RdsCloneDbInstanceArgs extends com.pulumi.resources.ResourceA
          * * MySQL:**5.5/5.6/5.7/8.0**
          * * SQL Server:**2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent**
          * * PostgreSQL:**9.4/10.0/11.0/12.0/13.0**
-         * * PPAS:**9.3/10.0**
          * * MariaDB:**10.3**.
          * 
          * @return builder

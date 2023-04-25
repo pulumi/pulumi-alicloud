@@ -88,6 +88,7 @@ import javax.annotation.Nullable;
  *             .namespaceId(defaultNamespace.id())
  *             .imageUrl(&#34;registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5&#34;)
  *             .packageType(&#34;Image&#34;)
+ *             .vpcId(vsw.vpcId())
  *             .vswitchId(vsw.id())
  *             .timezone(&#34;Asia/Beijing&#34;)
  *             .replicas(&#34;5&#34;)

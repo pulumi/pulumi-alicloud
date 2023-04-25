@@ -10,11 +10,17 @@ import com.pulumi.alicloud.arms.inputs.GetAlertContactsArgs;
 import com.pulumi.alicloud.arms.inputs.GetAlertContactsPlainArgs;
 import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
 import com.pulumi.alicloud.arms.inputs.GetDispatchRulesPlainArgs;
+import com.pulumi.alicloud.arms.inputs.GetIntegrationExportersArgs;
+import com.pulumi.alicloud.arms.inputs.GetIntegrationExportersPlainArgs;
+import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
+import com.pulumi.alicloud.arms.inputs.GetPrometheisPlainArgs;
 import com.pulumi.alicloud.arms.inputs.GetPrometheusAlertRulesArgs;
 import com.pulumi.alicloud.arms.inputs.GetPrometheusAlertRulesPlainArgs;
 import com.pulumi.alicloud.arms.outputs.GetAlertContactGroupsResult;
 import com.pulumi.alicloud.arms.outputs.GetAlertContactsResult;
 import com.pulumi.alicloud.arms.outputs.GetDispatchRulesResult;
+import com.pulumi.alicloud.arms.outputs.GetIntegrationExportersResult;
+import com.pulumi.alicloud.arms.outputs.GetPrometheisResult;
 import com.pulumi.alicloud.arms.outputs.GetPrometheusAlertRulesResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -814,6 +820,464 @@ public final class ArmsFunctions {
      */
     public static CompletableFuture<GetDispatchRulesResult> getDispatchRulesPlain(GetDispatchRulesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:arms/getDispatchRules:getDispatchRules", TypeShape.of(GetDispatchRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Integration Exporters of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.203.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetIntegrationExportersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getIntegrationExporters(GetIntegrationExportersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .integrationType(&#34;kafka&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsIntegrationExportersId1&#34;, ids.applyValue(getIntegrationExportersResult -&gt; getIntegrationExportersResult.integrationExporters()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetIntegrationExportersResult> getIntegrationExporters(GetIntegrationExportersArgs args) {
+        return getIntegrationExporters(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Arms Integration Exporters of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.203.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetIntegrationExportersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getIntegrationExporters(GetIntegrationExportersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .integrationType(&#34;kafka&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsIntegrationExportersId1&#34;, ids.applyValue(getIntegrationExportersResult -&gt; getIntegrationExportersResult.integrationExporters()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetIntegrationExportersResult> getIntegrationExportersPlain(GetIntegrationExportersPlainArgs args) {
+        return getIntegrationExportersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Arms Integration Exporters of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.203.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetIntegrationExportersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getIntegrationExporters(GetIntegrationExportersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .integrationType(&#34;kafka&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsIntegrationExportersId1&#34;, ids.applyValue(getIntegrationExportersResult -&gt; getIntegrationExportersResult.integrationExporters()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetIntegrationExportersResult> getIntegrationExporters(GetIntegrationExportersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getIntegrationExporters:getIntegrationExporters", TypeShape.of(GetIntegrationExportersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Integration Exporters of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.203.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetIntegrationExportersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getIntegrationExporters(GetIntegrationExportersArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .integrationType(&#34;kafka&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsIntegrationExportersId1&#34;, ids.applyValue(getIntegrationExportersResult -&gt; getIntegrationExportersResult.integrationExporters()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetIntegrationExportersResult> getIntegrationExportersPlain(GetIntegrationExportersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:arms/getIntegrationExporters:getIntegrationExporters", TypeShape.of(GetIntegrationExportersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Prometheis of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.203.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheisId1&#34;, ids.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheisId2&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPrometheisResult> getPrometheis() {
+        return getPrometheis(GetPrometheisArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Arms Prometheis of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.203.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheisId1&#34;, ids.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheisId2&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPrometheisResult> getPrometheisPlain() {
+        return getPrometheisPlain(GetPrometheisPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Arms Prometheis of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.203.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheisId1&#34;, ids.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheisId2&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPrometheisResult> getPrometheis(GetPrometheisArgs args) {
+        return getPrometheis(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Arms Prometheis of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.203.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheisId1&#34;, ids.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheisId2&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPrometheisResult> getPrometheisPlain(GetPrometheisPlainArgs args) {
+        return getPrometheisPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Arms Prometheis of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.203.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheisId1&#34;, ids.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheisId2&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPrometheisResult> getPrometheis(GetPrometheisArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getPrometheis:getPrometheis", TypeShape.of(GetPrometheisResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Prometheis of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.203.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheisId1&#34;, ids.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getPrometheis(GetPrometheisArgs.builder()
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsPrometheisId2&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPrometheisResult> getPrometheisPlain(GetPrometheisPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:arms/getPrometheis:getPrometheis", TypeShape.of(GetPrometheisResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Arms Prometheus Alert Rules of the current Alibaba Cloud user.

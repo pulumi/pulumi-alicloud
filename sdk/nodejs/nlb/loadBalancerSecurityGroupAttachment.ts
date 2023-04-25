@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const defaultZones = alicloud.nlb.getZones({});
  * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: `^default-NODELETING$`,
+ *     nameRegex: "^default-NODELETING$",
  * });
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const default1 = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({

@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.Rds.Outputs
         /// </summary>
         public readonly string EncryptionKeyStatus;
         /// <summary>
-        /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
+        /// Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`. If no value is specified, all types are returned.
         /// </summary>
         public readonly string Engine;
         /// <summary>

@@ -23,6 +23,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -108,6 +109,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -260,6 +262,72 @@ namespace Pulumi.AliCloud.Log
     /// });
     /// ```
     /// 
+    /// Basic Usage for alert template
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     {
+    ///         Description = "create by terraform",
+    ///     });
+    /// 
+    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         RetentionPeriod = 3650,
+    ///         ShardCount = 3,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///     });
+    /// 
+    ///     var example_3 = new AliCloud.Log.Alert("example-3", new()
+    ///     {
+    ///         Version = "2.0",
+    ///         Type = "tpl",
+    ///         ProjectName = exampleProject.Name,
+    ///         AlertName = "tf-test-alert-3",
+    ///         AlertDisplayname = "tf-test-alert-displayname-3",
+    ///         MuteUntil = 1632486684,
+    ///         Schedule = new AliCloud.Log.Inputs.AlertScheduleArgs
+    ///         {
+    ///             Type = "FixedRate",
+    ///             Interval = "5m",
+    ///             Hour = 0,
+    ///             DayOfWeek = 0,
+    ///             Delay = 0,
+    ///             RunImmediately = false,
+    ///         },
+    ///         TemplateConfiguration = new AliCloud.Log.Inputs.AlertTemplateConfigurationArgs
+    ///         {
+    ///             Id = "sls.app.sls_ack.node.down",
+    ///             Type = "sys",
+    ///             Lang = "cn",
+    ///             Annotations = null,
+    ///             Tokens = 
+    ///             {
+    ///                 { "interval_minute", "5" },
+    ///                 { "default.action_policy", "sls.app.ack.builtin" },
+    ///                 { "default.severity", "6" },
+    ///                 { "sendResolved", "false" },
+    ///                 { "default.project", exampleProject.Name },
+    ///                 { "default.logstore", "k8s-event" },
+    ///                 { "default.repeatInterval", "4h" },
+    ///                 { "trigger_threshold", "1" },
+    ///                 { "default.clusterId", "test-cluster-id" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Log alert can be imported using the id, e.g.
@@ -290,7 +358,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string> AlertName { get; private set; } = null!;
 
         /// <summary>
-        /// Annotations for new alert.
+        /// Alert template annotations.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableArray<Outputs.AlertAnnotation>> Annotations { get; private set; } = null!;
@@ -407,6 +475,12 @@ namespace Pulumi.AliCloud.Log
         public Output<ImmutableArray<Outputs.AlertSeverityConfiguration>> SeverityConfigurations { get; private set; } = null!;
 
         /// <summary>
+        /// Template configuration for alert, when `type` is `tpl`.
+        /// </summary>
+        [Output("templateConfiguration")]
+        public Output<Outputs.AlertTemplateConfiguration?> TemplateConfiguration { get; private set; } = null!;
+
+        /// <summary>
         /// Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
         /// </summary>
         [Output("threshold")]
@@ -498,7 +572,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.AlertAnnotationArgs>? _annotations;
 
         /// <summary>
-        /// Annotations for new alert.
+        /// Alert template annotations.
         /// </summary>
         public InputList<Inputs.AlertAnnotationArgs> Annotations
         {
@@ -600,7 +674,7 @@ namespace Pulumi.AliCloud.Log
         [Input("projectName", required: true)]
         public Input<string> ProjectName { get; set; } = null!;
 
-        [Input("queryLists", required: true)]
+        [Input("queryLists")]
         private InputList<Inputs.AlertQueryListArgs>? _queryLists;
 
         /// <summary>
@@ -647,6 +721,12 @@ namespace Pulumi.AliCloud.Log
             get => _severityConfigurations ?? (_severityConfigurations = new InputList<Inputs.AlertSeverityConfigurationArgs>());
             set => _severityConfigurations = value;
         }
+
+        /// <summary>
+        /// Template configuration for alert, when `type` is `tpl`.
+        /// </summary>
+        [Input("templateConfiguration")]
+        public Input<Inputs.AlertTemplateConfigurationArgs>? TemplateConfiguration { get; set; }
 
         /// <summary>
         /// Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
@@ -702,7 +782,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.AlertAnnotationGetArgs>? _annotations;
 
         /// <summary>
-        /// Annotations for new alert.
+        /// Alert template annotations.
         /// </summary>
         public InputList<Inputs.AlertAnnotationGetArgs> Annotations
         {
@@ -851,6 +931,12 @@ namespace Pulumi.AliCloud.Log
             get => _severityConfigurations ?? (_severityConfigurations = new InputList<Inputs.AlertSeverityConfigurationGetArgs>());
             set => _severityConfigurations = value;
         }
+
+        /// <summary>
+        /// Template configuration for alert, when `type` is `tpl`.
+        /// </summary>
+        [Input("templateConfiguration")]
+        public Input<Inputs.AlertTemplateConfigurationGetArgs>? TemplateConfiguration { get; set; }
 
         /// <summary>
         /// Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.

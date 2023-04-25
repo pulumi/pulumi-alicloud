@@ -398,14 +398,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+     * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
      * 
      */
     @Import(name="engine", required=true)
     private Output<String> engine;
 
     /**
-     * @return Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+     * @return Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
      * 
      */
     public Output<String> engine() {
@@ -512,7 +512,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * User-defined DB instance storage space. Value range:
-     * - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+     * - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
      * - [20,1000] for MySQL 5.7 basic single node edition;
      * - [10, 2000] for SQL Server 2008R2;
      * - [20,2000] for SQL Server 2012 basic single node edition
@@ -525,7 +525,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return User-defined DB instance storage space. Value range:
-     * - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+     * - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
      * - [20,1000] for MySQL 5.7 basic single node edition;
      * - [10, 2000] for SQL Server 2008R2;
      * - [20,2000] for SQL Server 2012 basic single node edition
@@ -1825,7 +1825,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engine Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+         * @param engine Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
          * 
          * @return builder
          * 
@@ -1836,7 +1836,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engine Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+         * @param engine Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
          * 
          * @return builder
          * 
@@ -1981,7 +1981,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceStorage User-defined DB instance storage space. Value range:
-         * - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+         * - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
          * - [20,1000] for MySQL 5.7 basic single node edition;
          * - [10, 2000] for SQL Server 2008R2;
          * - [20,2000] for SQL Server 2012 basic single node edition
@@ -1998,7 +1998,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceStorage User-defined DB instance storage space. Value range:
-         * - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+         * - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
          * - [20,1000] for MySQL 5.7 basic single node edition;
          * - [10, 2000] for SQL Server 2008R2;
          * - [20,2000] for SQL Server 2012 basic single node edition
