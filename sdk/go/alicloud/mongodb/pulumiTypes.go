@@ -10,6 +10,112 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type InstanceParameter struct {
+	// The name of DB instance. It a string of 2 to 256 characters.
+	Name string `pulumi:"name"`
+	// The value of the parameter.
+	Value string `pulumi:"value"`
+}
+
+// InstanceParameterInput is an input type that accepts InstanceParameterArgs and InstanceParameterOutput values.
+// You can construct a concrete instance of `InstanceParameterInput` via:
+//
+//	InstanceParameterArgs{...}
+type InstanceParameterInput interface {
+	pulumi.Input
+
+	ToInstanceParameterOutput() InstanceParameterOutput
+	ToInstanceParameterOutputWithContext(context.Context) InstanceParameterOutput
+}
+
+type InstanceParameterArgs struct {
+	// The name of DB instance. It a string of 2 to 256 characters.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the parameter.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (InstanceParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceParameter)(nil)).Elem()
+}
+
+func (i InstanceParameterArgs) ToInstanceParameterOutput() InstanceParameterOutput {
+	return i.ToInstanceParameterOutputWithContext(context.Background())
+}
+
+func (i InstanceParameterArgs) ToInstanceParameterOutputWithContext(ctx context.Context) InstanceParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceParameterOutput)
+}
+
+// InstanceParameterArrayInput is an input type that accepts InstanceParameterArray and InstanceParameterArrayOutput values.
+// You can construct a concrete instance of `InstanceParameterArrayInput` via:
+//
+//	InstanceParameterArray{ InstanceParameterArgs{...} }
+type InstanceParameterArrayInput interface {
+	pulumi.Input
+
+	ToInstanceParameterArrayOutput() InstanceParameterArrayOutput
+	ToInstanceParameterArrayOutputWithContext(context.Context) InstanceParameterArrayOutput
+}
+
+type InstanceParameterArray []InstanceParameterInput
+
+func (InstanceParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceParameter)(nil)).Elem()
+}
+
+func (i InstanceParameterArray) ToInstanceParameterArrayOutput() InstanceParameterArrayOutput {
+	return i.ToInstanceParameterArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceParameterArray) ToInstanceParameterArrayOutputWithContext(ctx context.Context) InstanceParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceParameterArrayOutput)
+}
+
+type InstanceParameterOutput struct{ *pulumi.OutputState }
+
+func (InstanceParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceParameter)(nil)).Elem()
+}
+
+func (o InstanceParameterOutput) ToInstanceParameterOutput() InstanceParameterOutput {
+	return o
+}
+
+func (o InstanceParameterOutput) ToInstanceParameterOutputWithContext(ctx context.Context) InstanceParameterOutput {
+	return o
+}
+
+// The name of DB instance. It a string of 2 to 256 characters.
+func (o InstanceParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the parameter.
+func (o InstanceParameterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceParameter) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type InstanceParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceParameter)(nil)).Elem()
+}
+
+func (o InstanceParameterArrayOutput) ToInstanceParameterArrayOutput() InstanceParameterArrayOutput {
+	return o
+}
+
+func (o InstanceParameterArrayOutput) ToInstanceParameterArrayOutputWithContext(ctx context.Context) InstanceParameterArrayOutput {
+	return o
+}
+
+func (o InstanceParameterArrayOutput) Index(i pulumi.IntInput) InstanceParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceParameter {
+		return vs[0].([]InstanceParameter)[vs[1].(int)]
+	}).(InstanceParameterOutput)
+}
+
 type InstanceReplicaSet struct {
 	// The connection address of the node.
 	ConnectionDomain *string `pulumi:"connectionDomain"`
@@ -2739,6 +2845,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParameterInput)(nil)).Elem(), InstanceParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParameterArrayInput)(nil)).Elem(), InstanceParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReplicaSetInput)(nil)).Elem(), InstanceReplicaSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReplicaSetArrayInput)(nil)).Elem(), InstanceReplicaSetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessInstanceSecurityIpGroupInput)(nil)).Elem(), ServerlessInstanceSecurityIpGroupArgs{})
@@ -2773,6 +2881,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetShardingNetworkPublicAddressesAddressArrayInput)(nil)).Elem(), GetShardingNetworkPublicAddressesAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterOutputType(InstanceParameterOutput{})
+	pulumi.RegisterOutputType(InstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(InstanceReplicaSetOutput{})
 	pulumi.RegisterOutputType(InstanceReplicaSetArrayOutput{})
 	pulumi.RegisterOutputType(ServerlessInstanceSecurityIpGroupOutput{})

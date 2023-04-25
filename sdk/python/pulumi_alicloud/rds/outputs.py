@@ -11,6 +11,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'DbInstanceEndpointNodeItem',
     'DdrInstanceParameter',
     'DdrInstancePgHbaConf',
     'InstanceBabelfishConfig',
@@ -44,6 +45,42 @@ __all__ = [
     'GetRdsParameterGroupsGroupParamDetailResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class DbInstanceEndpointNodeItem(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeId":
+            suggest = "node_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DbInstanceEndpointNodeItem. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DbInstanceEndpointNodeItem.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DbInstanceEndpointNodeItem.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_id: str,
+                 weight: int):
+        pulumi.set(__self__, "node_id", node_id)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> str:
+        return pulumi.get(self, "node_id")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> int:
+        return pulumi.get(self, "weight")
+
 
 @pulumi.output_type
 class DdrInstanceParameter(dict):
@@ -1644,7 +1681,7 @@ class GetInstanceEnginesInstanceEngineResult(dict):
                  zone_ids: Sequence['outputs.GetInstanceEnginesInstanceEngineZoneIdResult']):
         """
         :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
-        :param str engine: Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
+        :param str engine: Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "MariaDB". If not set, it will match all of engines.
         :param str engine_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param Sequence['GetInstanceEnginesInstanceEngineZoneIdArgs'] zone_ids: A list of Zone to launch the DB instance.
         """
@@ -1665,7 +1702,7 @@ class GetInstanceEnginesInstanceEngineResult(dict):
     @pulumi.getter
     def engine(self) -> str:
         """
-        Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
+        Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "MariaDB". If not set, it will match all of engines.
         """
         return pulumi.get(self, "engine")
 
@@ -1802,7 +1839,7 @@ class GetInstancesInstanceResult(dict):
         :param str encryption_key_status: (Available in 1.124.3+) The status of the encryption key. Valid values:
                - Enabled
                - Disabled
-        :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
+        :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`. If no value is specified, all types are returned.
         :param str engine_version: Database version.
         :param str expire_time: Expiration time. Pay-As-You-Go instances never expire.
         :param str guard_instance_id: If a disaster recovery instance is attached to the current instance, the ID of the disaster recovery instance applies.
@@ -2073,7 +2110,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def engine(self) -> str:
         """
-        Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
+        Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`. If no value is specified, all types are returned.
         """
         return pulumi.get(self, "engine")
 

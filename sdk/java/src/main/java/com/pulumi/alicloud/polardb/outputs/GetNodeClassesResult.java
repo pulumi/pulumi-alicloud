@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNodeClassesResult {
+    private @Nullable String category;
     /**
      * @return A list of PolarDB node classes. Each element contains the following attributes:
      * 
@@ -40,6 +41,9 @@ public final class GetNodeClassesResult {
     private @Nullable String zoneId;
 
     private GetNodeClassesResult() {}
+    public Optional<String> category() {
+        return Optional.ofNullable(this.category);
+    }
     /**
      * @return A list of PolarDB node classes. Each element contains the following attributes:
      * 
@@ -93,6 +97,7 @@ public final class GetNodeClassesResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String category;
         private List<GetNodeClassesClass> classes;
         private @Nullable String dbNodeClass;
         private @Nullable String dbType;
@@ -105,6 +110,7 @@ public final class GetNodeClassesResult {
         public Builder() {}
         public Builder(GetNodeClassesResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.category = defaults.category;
     	      this.classes = defaults.classes;
     	      this.dbNodeClass = defaults.dbNodeClass;
     	      this.dbType = defaults.dbType;
@@ -116,6 +122,11 @@ public final class GetNodeClassesResult {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
+        public Builder category(@Nullable String category) {
+            this.category = category;
+            return this;
+        }
         @CustomType.Setter
         public Builder classes(List<GetNodeClassesClass> classes) {
             this.classes = Objects.requireNonNull(classes);
@@ -166,6 +177,7 @@ public final class GetNodeClassesResult {
         }
         public GetNodeClassesResult build() {
             final var o = new GetNodeClassesResult();
+            o.category = category;
             o.classes = classes;
             o.dbNodeClass = dbNodeClass;
             o.dbType = dbType;

@@ -88,7 +88,7 @@ public final class GetBucketsBucket {
      */
     private GetBucketsBucketServerSideEncryptionRule serverSideEncryptionRule;
     /**
-     * @return Object storage type. Possible values: `Standard`, `IA` and `Archive`.
+     * @return Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
      * 
      */
     private String storageClass;
@@ -204,7 +204,7 @@ public final class GetBucketsBucket {
         return this.serverSideEncryptionRule;
     }
     /**
-     * @return Object storage type. Possible values: `Standard`, `IA` and `Archive`.
+     * @return Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
      * 
      */
     public String storageClass() {

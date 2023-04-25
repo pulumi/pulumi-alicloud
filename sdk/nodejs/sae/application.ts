@@ -45,6 +45,7 @@ import * as utilities from "../utilities";
  *     namespaceId: defaultNamespace.id,
  *     imageUrl: "registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5",
  *     packageType: "Image",
+ *     vpcId: vsw.vpcId,
  *     vswitchId: vsw.id,
  *     timezone: "Asia/Beijing",
  *     replicas: 5,

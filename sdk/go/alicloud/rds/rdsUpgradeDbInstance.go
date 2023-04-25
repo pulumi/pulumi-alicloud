@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -165,13 +165,12 @@ type RdsUpgradeDbInstance struct {
 	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
 	// The ID of the private key.
 	EncryptionKey pulumi.StringPtrOutput `pulumi:"encryptionKey"`
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL.
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// Database version. Value:
 	// * MySQL: **5.5/5.6/5.7/8.0**.
 	// * SQL Server: **2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent**.
 	// * PostgreSQL: **9.4/10.0/11.0/12.0/13.0**.
-	// * PPAS: **9.3/10.0**.
 	// * MariaDB: **10.3**.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -371,13 +370,12 @@ type rdsUpgradeDbInstanceState struct {
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// The ID of the private key.
 	EncryptionKey *string `pulumi:"encryptionKey"`
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL.
 	Engine *string `pulumi:"engine"`
 	// Database version. Value:
 	// * MySQL: **5.5/5.6/5.7/8.0**.
 	// * SQL Server: **2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent**.
 	// * PostgreSQL: **9.4/10.0/11.0/12.0/13.0**.
-	// * PPAS: **9.3/10.0**.
 	// * MariaDB: **10.3**.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -522,13 +520,12 @@ type RdsUpgradeDbInstanceState struct {
 	EffectiveTime pulumi.StringPtrInput
 	// The ID of the private key.
 	EncryptionKey pulumi.StringPtrInput
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL.
 	Engine pulumi.StringPtrInput
 	// Database version. Value:
 	// * MySQL: **5.5/5.6/5.7/8.0**.
 	// * SQL Server: **2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent**.
 	// * PostgreSQL: **9.4/10.0/11.0/12.0/13.0**.
-	// * PPAS: **9.3/10.0**.
 	// * MariaDB: **10.3**.
 	EngineVersion pulumi.StringPtrInput
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -675,13 +672,12 @@ type rdsUpgradeDbInstanceArgs struct {
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// The ID of the private key.
 	EncryptionKey *string `pulumi:"encryptionKey"`
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL.
 	Engine *string `pulumi:"engine"`
 	// Database version. Value:
 	// * MySQL: **5.5/5.6/5.7/8.0**.
 	// * SQL Server: **2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent**.
 	// * PostgreSQL: **9.4/10.0/11.0/12.0/13.0**.
-	// * PPAS: **9.3/10.0**.
 	// * MariaDB: **10.3**.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -825,13 +821,12 @@ type RdsUpgradeDbInstanceArgs struct {
 	EffectiveTime pulumi.StringPtrInput
 	// The ID of the private key.
 	EncryptionKey pulumi.StringPtrInput
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL.
 	Engine pulumi.StringPtrInput
 	// Database version. Value:
 	// * MySQL: **5.5/5.6/5.7/8.0**.
 	// * SQL Server: **2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent**.
 	// * PostgreSQL: **9.4/10.0/11.0/12.0/13.0**.
-	// * PPAS: **9.3/10.0**.
 	// * MariaDB: **10.3**.
 	EngineVersion pulumi.StringPtrInput
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -1125,7 +1120,7 @@ func (o RdsUpgradeDbInstanceOutput) EncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringPtrOutput { return v.EncryptionKey }).(pulumi.StringPtrOutput)
 }
 
-// Database type. Value options: MySQL, SQLServer, PostgreSQL, and PPAS.
+// Database type. Value options: MySQL, SQLServer, PostgreSQL.
 func (o RdsUpgradeDbInstanceOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }
@@ -1134,7 +1129,6 @@ func (o RdsUpgradeDbInstanceOutput) Engine() pulumi.StringOutput {
 // * MySQL: **5.5/5.6/5.7/8.0**.
 // * SQL Server: **2008r2/08r2_ent_ha/2012/2012_ent_ha/2012_std_ha/2012_web/2014_std_ha/2016_ent_ha/2016_std_ha/2016_web/2017_std_ha/2017_ent/2019_std_ha/2019_ent**.
 // * PostgreSQL: **9.4/10.0/11.0/12.0/13.0**.
-// * PPAS: **9.3/10.0**.
 // * MariaDB: **10.3**.
 func (o RdsUpgradeDbInstanceOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)

@@ -114,6 +114,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly orderType!: pulumi.Output<string | undefined>;
     /**
+     * Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+     */
+    public readonly parameters!: pulumi.Output<outputs.mongodb.InstanceParameter[]>;
+    /**
      * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
      */
     public readonly period!: pulumi.Output<number>;
@@ -221,6 +225,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkType"] = state ? state.networkType : undefined;
             resourceInputs["orderType"] = state ? state.orderType : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["readonlyReplicas"] = state ? state.readonlyReplicas : undefined;
             resourceInputs["replicaSetName"] = state ? state.replicaSetName : undefined;
@@ -267,6 +272,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkType"] = args ? args.networkType : undefined;
             resourceInputs["orderType"] = args ? args.orderType : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["readonlyReplicas"] = args ? args.readonlyReplicas : undefined;
             resourceInputs["replicationFactor"] = args ? args.replicationFactor : undefined;
@@ -368,6 +374,10 @@ export interface InstanceState {
      * Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
      */
     orderType?: pulumi.Input<string>;
+    /**
+     * Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+     */
+    parameters?: pulumi.Input<pulumi.Input<inputs.mongodb.InstanceParameter>[]>;
     /**
      * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
      */
@@ -522,6 +532,10 @@ export interface InstanceArgs {
      * Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
      */
     orderType?: pulumi.Input<string>;
+    /**
+     * Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+     */
+    parameters?: pulumi.Input<pulumi.Input<inputs.mongodb.InstanceParameter>[]>;
     /**
      * The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
      */

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,8 +26,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ros"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -37,7 +35,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ros.NewStackGroup(ctx, "example", &ros.StackGroupArgs{
 //				StackGroupName: pulumi.String("example_value"),
-//				TemplateBody:   pulumi.String(fmt.Sprintf("    {\n    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n    }\n    \n")),
+//				TemplateBody:   pulumi.String("    {\n    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n    }\n    \n"),
 //			})
 //			if err != nil {
 //				return err

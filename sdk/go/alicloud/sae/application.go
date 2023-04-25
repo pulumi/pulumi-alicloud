@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,6 +77,7 @@ import (
 //				NamespaceId:    defaultNamespace.ID(),
 //				ImageUrl:       pulumi.String("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5"),
 //				PackageType:    pulumi.String("Image"),
+//				VpcId:          vsw.VpcId,
 //				VswitchId:      vsw.ID(),
 //				Timezone:       pulumi.String("Asia/Beijing"),
 //				Replicas:       pulumi.Int(5),

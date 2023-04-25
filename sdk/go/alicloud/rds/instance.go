@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -101,7 +101,7 @@ type Instance struct {
 	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey pulumi.StringPtrOutput `pulumi:"encryptionKey"`
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
@@ -120,7 +120,7 @@ type Instance struct {
 	// The name of DB instance. It a string of 2 to 256 characters.
 	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
 	// User-defined DB instance storage space. Value range:
-	// - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+	// - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
 	// - [20,1000] for MySQL 5.7 basic single node edition;
 	// - [10, 2000] for SQL Server 2008R2;
 	// - [20,2000] for SQL Server 2012 basic single node edition
@@ -371,7 +371,7 @@ type instanceState struct {
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey *string `pulumi:"encryptionKey"`
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
 	Engine *string `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion *string `pulumi:"engineVersion"`
@@ -390,7 +390,7 @@ type instanceState struct {
 	// The name of DB instance. It a string of 2 to 256 characters.
 	InstanceName *string `pulumi:"instanceName"`
 	// User-defined DB instance storage space. Value range:
-	// - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+	// - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
 	// - [20,1000] for MySQL 5.7 basic single node edition;
 	// - [10, 2000] for SQL Server 2008R2;
 	// - [20,2000] for SQL Server 2012 basic single node edition
@@ -601,7 +601,7 @@ type InstanceState struct {
 	EffectiveTime pulumi.StringPtrInput
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey pulumi.StringPtrInput
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
 	Engine pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion pulumi.StringPtrInput
@@ -620,7 +620,7 @@ type InstanceState struct {
 	// The name of DB instance. It a string of 2 to 256 characters.
 	InstanceName pulumi.StringPtrInput
 	// User-defined DB instance storage space. Value range:
-	// - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+	// - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
 	// - [20,1000] for MySQL 5.7 basic single node edition;
 	// - [10, 2000] for SQL Server 2008R2;
 	// - [20,2000] for SQL Server 2012 basic single node edition
@@ -831,7 +831,7 @@ type instanceArgs struct {
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey *string `pulumi:"encryptionKey"`
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
 	Engine string `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion string `pulumi:"engineVersion"`
@@ -850,7 +850,7 @@ type instanceArgs struct {
 	// The name of DB instance. It a string of 2 to 256 characters.
 	InstanceName *string `pulumi:"instanceName"`
 	// User-defined DB instance storage space. Value range:
-	// - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+	// - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
 	// - [20,1000] for MySQL 5.7 basic single node edition;
 	// - [10, 2000] for SQL Server 2008R2;
 	// - [20,2000] for SQL Server 2012 basic single node edition
@@ -1056,7 +1056,7 @@ type InstanceArgs struct {
 	EffectiveTime pulumi.StringPtrInput
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey pulumi.StringPtrInput
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
 	Engine pulumi.StringInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
 	EngineVersion pulumi.StringInput
@@ -1075,7 +1075,7 @@ type InstanceArgs struct {
 	// The name of DB instance. It a string of 2 to 256 characters.
 	InstanceName pulumi.StringPtrInput
 	// User-defined DB instance storage space. Value range:
-	// - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+	// - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
 	// - [20,1000] for MySQL 5.7 basic single node edition;
 	// - [10, 2000] for SQL Server 2008R2;
 	// - [20,2000] for SQL Server 2012 basic single node edition
@@ -1439,7 +1439,7 @@ func (o InstanceOutput) EncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.EncryptionKey }).(pulumi.StringPtrOutput)
 }
 
-// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB, and PPAS. Create a serverless instance, you must set this parameter to MySQL.
+// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
 func (o InstanceOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }
@@ -1479,7 +1479,7 @@ func (o InstanceOutput) InstanceName() pulumi.StringPtrOutput {
 }
 
 // User-defined DB instance storage space. Value range:
-//   - [5, 2000] for MySQL/PostgreSQL/PPAS HA dual node edition;
+//   - [5, 2000] for MySQL/PostgreSQL HA dual node edition;
 //   - [20,1000] for MySQL 5.7 basic single node edition;
 //   - [10, 2000] for SQL Server 2008R2;
 //   - [20,2000] for SQL Server 2012 basic single node edition

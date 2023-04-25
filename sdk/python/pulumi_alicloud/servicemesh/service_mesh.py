@@ -37,7 +37,7 @@ class ServiceMeshArgs:
         :param pulumi.Input['ServiceMeshLoadBalancerArgs'] load_balancer: The configuration of the Load Balancer. See the following `Block load_balancer`.
         :param pulumi.Input['ServiceMeshMeshConfigArgs'] mesh_config: The configuration of the Service grid. See the following `Block mesh_config`.
         :param pulumi.Input[str] service_mesh_name: The name of the resource.
-        :param pulumi.Input[str] version: The version of the resource. you can look up the version using _servicemesh_get_versions_. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istio_operator_version` in _servicemesh_get_service_meshes_.
+        :param pulumi.Input[str] version: The version of the resource. you can look up the version using `servicemesh_get_versions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istio_operator_version` in `servicemesh_get_service_meshes`.
         """
         pulumi.set(__self__, "network", network)
         if cluster_ids is not None:
@@ -171,7 +171,7 @@ class ServiceMeshArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of the resource. you can look up the version using _servicemesh_get_versions_. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istio_operator_version` in _servicemesh_get_service_meshes_.
+        The version of the resource. you can look up the version using `servicemesh_get_versions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istio_operator_version` in `servicemesh_get_service_meshes`.
         """
         return pulumi.get(self, "version")
 
@@ -206,7 +206,7 @@ class _ServiceMeshState:
         :param pulumi.Input['ServiceMeshNetworkArgs'] network: The network configuration of the Service grid. See the following `Block network`.
         :param pulumi.Input[str] service_mesh_name: The name of the resource.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `running` or `initial`.
-        :param pulumi.Input[str] version: The version of the resource. you can look up the version using _servicemesh_get_versions_. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istio_operator_version` in _servicemesh_get_service_meshes_.
+        :param pulumi.Input[str] version: The version of the resource. you can look up the version using `servicemesh_get_versions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istio_operator_version` in `servicemesh_get_service_meshes`.
         """
         if cluster_ids is not None:
             pulumi.set(__self__, "cluster_ids", cluster_ids)
@@ -355,7 +355,7 @@ class _ServiceMeshState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of the resource. you can look up the version using _servicemesh_get_versions_. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istio_operator_version` in _servicemesh_get_service_meshes_.
+        The version of the resource. you can look up the version using `servicemesh_get_versions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istio_operator_version` in `servicemesh_get_service_meshes`.
         """
         return pulumi.get(self, "version")
 
@@ -406,7 +406,7 @@ class ServiceMesh(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceMeshMeshConfigArgs']] mesh_config: The configuration of the Service grid. See the following `Block mesh_config`.
         :param pulumi.Input[pulumi.InputType['ServiceMeshNetworkArgs']] network: The network configuration of the Service grid. See the following `Block network`.
         :param pulumi.Input[str] service_mesh_name: The name of the resource.
-        :param pulumi.Input[str] version: The version of the resource. you can look up the version using _servicemesh_get_versions_. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istio_operator_version` in _servicemesh_get_service_meshes_.
+        :param pulumi.Input[str] version: The version of the resource. you can look up the version using `servicemesh_get_versions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istio_operator_version` in `servicemesh_get_service_meshes`.
         """
         ...
     @overload
@@ -514,7 +514,7 @@ class ServiceMesh(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceMeshNetworkArgs']] network: The network configuration of the Service grid. See the following `Block network`.
         :param pulumi.Input[str] service_mesh_name: The name of the resource.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `running` or `initial`.
-        :param pulumi.Input[str] version: The version of the resource. you can look up the version using _servicemesh_get_versions_. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istio_operator_version` in _servicemesh_get_service_meshes_.
+        :param pulumi.Input[str] version: The version of the resource. you can look up the version using `servicemesh_get_versions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istio_operator_version` in `servicemesh_get_service_meshes`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -617,7 +617,7 @@ class ServiceMesh(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[str]:
         """
-        The version of the resource. you can look up the version using _servicemesh_get_versions_. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istio_operator_version` in _servicemesh_get_service_meshes_.
+        The version of the resource. you can look up the version using `servicemesh_get_versions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istio_operator_version` in `servicemesh_get_service_meshes`.
         """
         return pulumi.get(self, "version")
 

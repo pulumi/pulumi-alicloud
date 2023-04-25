@@ -36,6 +36,7 @@ public final class GetInstancesResult {
      * 
      */
     private @Nullable String imageId;
+    private @Nullable String instanceName;
     /**
      * @return A list of instances. Each element contains the following attributes:
      * 
@@ -110,6 +111,9 @@ public final class GetInstancesResult {
      */
     public Optional<String> imageId() {
         return Optional.ofNullable(this.imageId);
+    }
+    public Optional<String> instanceName() {
+        return Optional.ofNullable(this.instanceName);
     }
     /**
      * @return A list of instances. Each element contains the following attributes:
@@ -196,6 +200,7 @@ public final class GetInstancesResult {
         private String id;
         private List<String> ids;
         private @Nullable String imageId;
+        private @Nullable String instanceName;
         private List<GetInstancesInstance> instances;
         private @Nullable String nameRegex;
         private List<String> names;
@@ -216,6 +221,7 @@ public final class GetInstancesResult {
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
     	      this.imageId = defaults.imageId;
+    	      this.instanceName = defaults.instanceName;
     	      this.instances = defaults.instances;
     	      this.nameRegex = defaults.nameRegex;
     	      this.names = defaults.names;
@@ -252,6 +258,11 @@ public final class GetInstancesResult {
         @CustomType.Setter
         public Builder imageId(@Nullable String imageId) {
             this.imageId = imageId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder instanceName(@Nullable String instanceName) {
+            this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
@@ -331,6 +342,7 @@ public final class GetInstancesResult {
             o.id = id;
             o.ids = ids;
             o.imageId = imageId;
+            o.instanceName = instanceName;
             o.instances = instances;
             o.nameRegex = nameRegex;
             o.names = names;

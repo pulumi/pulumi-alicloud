@@ -54,6 +54,7 @@ func GetNodeClasses(ctx *pulumi.Context, args *GetNodeClassesArgs, opts ...pulum
 
 // A collection of arguments for invoking getNodeClasses.
 type GetNodeClassesArgs struct {
+	Category *string `pulumi:"category"`
 	// The PolarDB node class type by the user.
 	DbNodeClass *string `pulumi:"dbNodeClass"`
 	// Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If dbType is set, dbVersion also needs to be set.
@@ -71,6 +72,7 @@ type GetNodeClassesArgs struct {
 
 // A collection of values returned by getNodeClasses.
 type GetNodeClassesResult struct {
+	Category *string `pulumi:"category"`
 	// A list of PolarDB node classes. Each element contains the following attributes:
 	Classes []GetNodeClassesClass `pulumi:"classes"`
 	// PolarDB node available class.
@@ -101,6 +103,7 @@ func GetNodeClassesOutput(ctx *pulumi.Context, args GetNodeClassesOutputArgs, op
 
 // A collection of arguments for invoking getNodeClasses.
 type GetNodeClassesOutputArgs struct {
+	Category pulumi.StringPtrInput `pulumi:"category"`
 	// The PolarDB node class type by the user.
 	DbNodeClass pulumi.StringPtrInput `pulumi:"dbNodeClass"`
 	// Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If dbType is set, dbVersion also needs to be set.
@@ -133,6 +136,10 @@ func (o GetNodeClassesResultOutput) ToGetNodeClassesResultOutput() GetNodeClasse
 
 func (o GetNodeClassesResultOutput) ToGetNodeClassesResultOutputWithContext(ctx context.Context) GetNodeClassesResultOutput {
 	return o
+}
+
+func (o GetNodeClassesResultOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNodeClassesResult) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
 // A list of PolarDB node classes. Each element contains the following attributes:

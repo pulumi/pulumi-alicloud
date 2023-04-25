@@ -21,6 +21,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -124,8 +125,8 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> ConnectionString { get; private set; } = null!;
 
         /// <summary>
-        /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-        /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`.
+        /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
         /// </summary>
         [Output("creationCategory")]
         public Output<string> CreationCategory { get; private set; } = null!;
@@ -201,6 +202,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Output("gdnId")]
         public Output<string?> GdnId { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+        /// </summary>
+        [Output("hotStandbyCluster")]
+        public Output<string> HotStandbyCluster { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
@@ -280,6 +287,19 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Output("sourceResourceId")]
         public Output<string?> SourceResourceId { get; private set; } = null!;
+
+        /// <summary>
+        /// Storage space charged by space (monthly package). Unit: GB.
+        /// </summary>
+        [Output("storageSpace")]
+        public Output<int?> StorageSpace { get; private set; } = null!;
+
+        /// <summary>
+        /// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
+        /// &gt; **NOTE:** Serverless cluster does not support this parameter.
+        /// </summary>
+        [Output("storageType")]
+        public Output<string> StorageType { get; private set; } = null!;
 
         /// <summary>
         /// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
@@ -401,8 +421,8 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? CollectorStatus { get; set; }
 
         /// <summary>
-        /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-        /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`.
+        /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
         /// </summary>
         [Input("creationCategory")]
         public Input<string>? CreationCategory { get; set; }
@@ -484,6 +504,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("gdnId")]
         public Input<string>? GdnId { get; set; }
+
+        /// <summary>
+        /// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+        /// </summary>
+        [Input("hotStandbyCluster")]
+        public Input<string>? HotStandbyCluster { get; set; }
 
         /// <summary>
         /// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
@@ -577,6 +603,19 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? SourceResourceId { get; set; }
 
         /// <summary>
+        /// Storage space charged by space (monthly package). Unit: GB.
+        /// </summary>
+        [Input("storageSpace")]
+        public Input<int>? StorageSpace { get; set; }
+
+        /// <summary>
+        /// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
+        /// &gt; **NOTE:** Serverless cluster does not support this parameter.
+        /// </summary>
+        [Input("storageType")]
+        public Input<string>? StorageType { get; set; }
+
+        /// <summary>
         /// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         /// </summary>
         [Input("subCategory")]
@@ -662,8 +701,8 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? ConnectionString { get; set; }
 
         /// <summary>
-        /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-        /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`.
+        /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+        /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
         /// </summary>
         [Input("creationCategory")]
         public Input<string>? CreationCategory { get; set; }
@@ -745,6 +784,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("gdnId")]
         public Input<string>? GdnId { get; set; }
+
+        /// <summary>
+        /// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+        /// </summary>
+        [Input("hotStandbyCluster")]
+        public Input<string>? HotStandbyCluster { get; set; }
 
         /// <summary>
         /// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
@@ -842,6 +887,19 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("sourceResourceId")]
         public Input<string>? SourceResourceId { get; set; }
+
+        /// <summary>
+        /// Storage space charged by space (monthly package). Unit: GB.
+        /// </summary>
+        [Input("storageSpace")]
+        public Input<int>? StorageSpace { get; set; }
+
+        /// <summary>
+        /// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
+        /// &gt; **NOTE:** Serverless cluster does not support this parameter.
+        /// </summary>
+        [Input("storageType")]
+        public Input<string>? StorageType { get; set; }
 
         /// <summary>
         /// The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.

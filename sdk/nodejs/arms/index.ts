@@ -35,10 +35,30 @@ export const getDispatchRules: typeof import("./getDispatchRules").getDispatchRu
 export const getDispatchRulesOutput: typeof import("./getDispatchRules").getDispatchRulesOutput = null as any;
 utilities.lazyLoad(exports, ["getDispatchRules","getDispatchRulesOutput"], () => require("./getDispatchRules"));
 
+export { GetIntegrationExportersArgs, GetIntegrationExportersResult, GetIntegrationExportersOutputArgs } from "./getIntegrationExporters";
+export const getIntegrationExporters: typeof import("./getIntegrationExporters").getIntegrationExporters = null as any;
+export const getIntegrationExportersOutput: typeof import("./getIntegrationExporters").getIntegrationExportersOutput = null as any;
+utilities.lazyLoad(exports, ["getIntegrationExporters","getIntegrationExportersOutput"], () => require("./getIntegrationExporters"));
+
+export { GetPrometheisArgs, GetPrometheisResult, GetPrometheisOutputArgs } from "./getPrometheis";
+export const getPrometheis: typeof import("./getPrometheis").getPrometheis = null as any;
+export const getPrometheisOutput: typeof import("./getPrometheis").getPrometheisOutput = null as any;
+utilities.lazyLoad(exports, ["getPrometheis","getPrometheisOutput"], () => require("./getPrometheis"));
+
 export { GetPrometheusAlertRulesArgs, GetPrometheusAlertRulesResult, GetPrometheusAlertRulesOutputArgs } from "./getPrometheusAlertRules";
 export const getPrometheusAlertRules: typeof import("./getPrometheusAlertRules").getPrometheusAlertRules = null as any;
 export const getPrometheusAlertRulesOutput: typeof import("./getPrometheusAlertRules").getPrometheusAlertRulesOutput = null as any;
 utilities.lazyLoad(exports, ["getPrometheusAlertRules","getPrometheusAlertRulesOutput"], () => require("./getPrometheusAlertRules"));
+
+export { IntegrationExporterArgs, IntegrationExporterState } from "./integrationExporter";
+export type IntegrationExporter = import("./integrationExporter").IntegrationExporter;
+export const IntegrationExporter: typeof import("./integrationExporter").IntegrationExporter = null as any;
+utilities.lazyLoad(exports, ["IntegrationExporter"], () => require("./integrationExporter"));
+
+export { PrometheusArgs, PrometheusState } from "./prometheus";
+export type Prometheus = import("./prometheus").Prometheus;
+export const Prometheus: typeof import("./prometheus").Prometheus = null as any;
+utilities.lazyLoad(exports, ["Prometheus"], () => require("./prometheus"));
 
 export { PrometheusAlertRuleArgs, PrometheusAlertRuleState } from "./prometheusAlertRule";
 export type PrometheusAlertRule = import("./prometheusAlertRule").PrometheusAlertRule;
@@ -56,6 +76,10 @@ const _module = {
                 return new AlertContactGroup(name, <any>undefined, { urn })
             case "alicloud:arms/dispatchRule:DispatchRule":
                 return new DispatchRule(name, <any>undefined, { urn })
+            case "alicloud:arms/integrationExporter:IntegrationExporter":
+                return new IntegrationExporter(name, <any>undefined, { urn })
+            case "alicloud:arms/prometheus:Prometheus":
+                return new Prometheus(name, <any>undefined, { urn })
             case "alicloud:arms/prometheusAlertRule:PrometheusAlertRule":
                 return new PrometheusAlertRule(name, <any>undefined, { urn })
             default:
@@ -66,4 +90,6 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "arms/alertContact", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/alertContactGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/dispatchRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "arms/integrationExporter", _module)
+pulumi.runtime.registerResourceModule("alicloud", "arms/prometheus", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/prometheusAlertRule", _module)

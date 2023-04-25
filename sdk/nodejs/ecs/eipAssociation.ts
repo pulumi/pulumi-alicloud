@@ -54,13 +54,17 @@ export class EipAssociation extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
+     * The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface`, `HaVip` and `IpAddress`.
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
      * The private IP address in the network segment of the vswitch which has been assigned.
      */
     public readonly privateIpAddress!: pulumi.Output<string>;
+    /**
+     * The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instanceType` is set to IpAddress. In this case, the EIP is associated with an IP address.
+     */
+    public readonly vpcId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a EipAssociation resource with the given unique name, arguments, and options.
@@ -80,6 +84,7 @@ export class EipAssociation extends pulumi.CustomResource {
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["instanceType"] = state ? state.instanceType : undefined;
             resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as EipAssociationArgs | undefined;
             if ((!args || args.allocationId === undefined) && !opts.urn) {
@@ -93,6 +98,7 @@ export class EipAssociation extends pulumi.CustomResource {
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["instanceType"] = args ? args.instanceType : undefined;
             resourceInputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EipAssociation.__pulumiType, name, resourceInputs, opts);
@@ -116,13 +122,17 @@ export interface EipAssociationState {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
+     * The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface`, `HaVip` and `IpAddress`.
      */
     instanceType?: pulumi.Input<string>;
     /**
      * The private IP address in the network segment of the vswitch which has been assigned.
      */
     privateIpAddress?: pulumi.Input<string>;
+    /**
+     * The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instanceType` is set to IpAddress. In this case, the EIP is associated with an IP address.
+     */
+    vpcId?: pulumi.Input<string>;
 }
 
 /**
@@ -142,11 +152,15 @@ export interface EipAssociationArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
-     * The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
+     * The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface`, `HaVip` and `IpAddress`.
      */
     instanceType?: pulumi.Input<string>;
     /**
      * The private IP address in the network segment of the vswitch which has been assigned.
      */
     privateIpAddress?: pulumi.Input<string>;
+    /**
+     * The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instanceType` is set to IpAddress. In this case, the EIP is associated with an IP address.
+     */
+    vpcId?: pulumi.Input<string>;
 }

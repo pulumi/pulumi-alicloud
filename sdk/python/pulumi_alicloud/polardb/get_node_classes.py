@@ -22,7 +22,10 @@ class GetNodeClassesResult:
     """
     A collection of values returned by getNodeClasses.
     """
-    def __init__(__self__, classes=None, db_node_class=None, db_type=None, db_version=None, id=None, output_file=None, pay_type=None, region_id=None, zone_id=None):
+    def __init__(__self__, category=None, classes=None, db_node_class=None, db_type=None, db_version=None, id=None, output_file=None, pay_type=None, region_id=None, zone_id=None):
+        if category and not isinstance(category, str):
+            raise TypeError("Expected argument 'category' to be a str")
+        pulumi.set(__self__, "category", category)
         if classes and not isinstance(classes, list):
             raise TypeError("Expected argument 'classes' to be a list")
         pulumi.set(__self__, "classes", classes)
@@ -50,6 +53,11 @@ class GetNodeClassesResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[str]:
+        return pulumi.get(self, "category")
 
     @property
     @pulumi.getter
@@ -115,6 +123,7 @@ class AwaitableGetNodeClassesResult(GetNodeClassesResult):
         if False:
             yield self
         return GetNodeClassesResult(
+            category=self.category,
             classes=self.classes,
             db_node_class=self.db_node_class,
             db_type=self.db_type,
@@ -126,7 +135,8 @@ class AwaitableGetNodeClassesResult(GetNodeClassesResult):
             zone_id=self.zone_id)
 
 
-def get_node_classes(db_node_class: Optional[str] = None,
+def get_node_classes(category: Optional[str] = None,
+                     db_node_class: Optional[str] = None,
                      db_type: Optional[str] = None,
                      db_version: Optional[str] = None,
                      output_file: Optional[str] = None,
@@ -161,6 +171,7 @@ def get_node_classes(db_node_class: Optional[str] = None,
     :param str zone_id: The Zone to launch the PolarDB cluster.
     """
     __args__ = dict()
+    __args__['category'] = category
     __args__['dbNodeClass'] = db_node_class
     __args__['dbType'] = db_type
     __args__['dbVersion'] = db_version
@@ -172,6 +183,7 @@ def get_node_classes(db_node_class: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:polardb/getNodeClasses:getNodeClasses', __args__, opts=opts, typ=GetNodeClassesResult).value
 
     return AwaitableGetNodeClassesResult(
+        category=__ret__.category,
         classes=__ret__.classes,
         db_node_class=__ret__.db_node_class,
         db_type=__ret__.db_type,
@@ -184,7 +196,8 @@ def get_node_classes(db_node_class: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_node_classes)
-def get_node_classes_output(db_node_class: Optional[pulumi.Input[Optional[str]]] = None,
+def get_node_classes_output(category: Optional[pulumi.Input[Optional[str]]] = None,
+                            db_node_class: Optional[pulumi.Input[Optional[str]]] = None,
                             db_type: Optional[pulumi.Input[Optional[str]]] = None,
                             db_version: Optional[pulumi.Input[Optional[str]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,

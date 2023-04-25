@@ -140,7 +140,7 @@ def get_clusters(db_type: Optional[str] = None,
                  tags: Optional[Mapping[str, Any]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClustersResult:
     """
-    The _polardb_get_clusters_ data source provides a collection of PolarDB clusters available in Alibaba Cloud account.
+    The `polardb_get_clusters` data source provides a collection of PolarDB clusters available in Alibaba Cloud account.
     Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
 
     > **NOTE:** Available in v1.66.0+.
@@ -196,7 +196,7 @@ def get_clusters_output(db_type: Optional[pulumi.Input[Optional[str]]] = None,
                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClustersResult]:
     """
-    The _polardb_get_clusters_ data source provides a collection of PolarDB clusters available in Alibaba Cloud account.
+    The `polardb_get_clusters` data source provides a collection of PolarDB clusters available in Alibaba Cloud account.
     Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
 
     > **NOTE:** Available in v1.66.0+.

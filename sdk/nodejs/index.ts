@@ -87,6 +87,7 @@ import * as cddc from "./cddc";
 import * as cdn from "./cdn";
 import * as cen from "./cen";
 import * as cfg from "./cfg";
+import * as chatbot from "./chatbot";
 import * as clickhouse from "./clickhouse";
 import * as cloudauth from "./cloudauth";
 import * as cloudconnect from "./cloudconnect";
@@ -152,6 +153,7 @@ import * as mongodb from "./mongodb";
 import * as mse from "./mse";
 import * as nas from "./nas";
 import * as nlb from "./nlb";
+import * as ocean from "./ocean";
 import * as oos from "./oos";
 import * as opensearch from "./opensearch";
 import * as oss from "./oss";
@@ -208,6 +210,7 @@ export {
     cdn,
     cen,
     cfg,
+    chatbot,
     clickhouse,
     cloudauth,
     cloudconnect,
@@ -273,6 +276,7 @@ export {
     mse,
     nas,
     nlb,
+    ocean,
     oos,
     opensearch,
     oss,

@@ -184,16 +184,16 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.connectionString;
     }
     /**
-     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-     * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`.
+     * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+     * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
      * 
      */
     @Export(name="creationCategory", type=String.class, parameters={})
     private Output<String> creationCategory;
 
     /**
-     * @return The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
-     * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`.
+     * @return The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
+     * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
      * 
      */
     public Output<String> creationCategory() {
@@ -364,6 +364,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> gdnId() {
         return Codegen.optional(this.gdnId);
+    }
+    /**
+     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+     * 
+     */
+    @Export(name="hotStandbyCluster", type=String.class, parameters={})
+    private Output<String> hotStandbyCluster;
+
+    /**
+     * @return Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+     * 
+     */
+    public Output<String> hotStandbyCluster() {
+        return this.hotStandbyCluster;
     }
     /**
      * Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
@@ -546,6 +560,36 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> sourceResourceId() {
         return Codegen.optional(this.sourceResourceId);
+    }
+    /**
+     * Storage space charged by space (monthly package). Unit: GB.
+     * 
+     */
+    @Export(name="storageSpace", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> storageSpace;
+
+    /**
+     * @return Storage space charged by space (monthly package). Unit: GB.
+     * 
+     */
+    public Output<Optional<Integer>> storageSpace() {
+        return Codegen.optional(this.storageSpace);
+    }
+    /**
+     * The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
+     * &gt; **NOTE:** Serverless cluster does not support this parameter.
+     * 
+     */
+    @Export(name="storageType", type=String.class, parameters={})
+    private Output<String> storageType;
+
+    /**
+     * @return The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
+     * &gt; **NOTE:** Serverless cluster does not support this parameter.
+     * 
+     */
+    public Output<String> storageType() {
+        return this.storageType;
     }
     /**
      * The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.

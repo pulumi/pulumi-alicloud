@@ -22,6 +22,7 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
@@ -58,6 +59,7 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
@@ -128,7 +130,7 @@ namespace Pulumi.AliCloud.Rds
         public string? DbInstanceStorageType { get; set; }
 
         /// <summary>
-        /// Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
+        /// Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "MariaDB". If not set, it will match all of engines.
         /// </summary>
         [Input("engine")]
         public string? Engine { get; set; }
@@ -218,7 +220,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DbInstanceStorageType { get; set; }
 
         /// <summary>
-        /// Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
+        /// Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "MariaDB". If not set, it will match all of engines.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }

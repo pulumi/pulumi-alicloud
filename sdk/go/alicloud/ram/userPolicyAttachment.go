@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,8 +19,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -40,25 +38,7 @@ import (
 //				return err
 //			}
 //			policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
-//				Document: pulumi.String(fmt.Sprintf(`  {
-//	    "Statement": [
-//	      {
-//	        "Action": [
-//	          "oss:ListObjects",
-//	          "oss:GetObject"
-//	        ],
-//	        "Effect": "Allow",
-//	        "Resource": [
-//	          "acs:oss:*:*:mybucket",
-//	          "acs:oss:*:*:mybucket/*"
-//	        ]
-//	      }
-//	    ],
-//	      "Version": "1"
-//	  }
-//
-// `)),
-//
+//				Document:    pulumi.String("  {\n    \"Statement\": [\n      {\n        \"Action\": [\n          \"oss:ListObjects\",\n          \"oss:GetObject\"\n        ],\n        \"Effect\": \"Allow\",\n        \"Resource\": [\n          \"acs:oss:*:*:mybucket\",\n          \"acs:oss:*:*:mybucket/*\"\n        ]\n      }\n    ],\n      \"Version\": \"1\"\n  }\n"),
 //				Description: pulumi.String("this is a policy test"),
 //				Force:       pulumi.Bool(true),
 //			})

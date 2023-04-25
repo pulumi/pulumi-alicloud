@@ -155,9 +155,9 @@ def get_security_group_rules(direction: Optional[str] = None,
                              policy: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecurityGroupRulesResult:
     """
-    The _ecs_get_security_group_rules_ data source provides a collection of security permissions of a specific security group.
+    The `ecs_get_security_group_rules` data source provides a collection of security permissions of a specific security group.
     Each collection item represents a single `ingress` or `egress` permission rule.
-    The ID of the security group can be provided via a variable or the result from the other data source _ecs_get_security_groups_.
+    The ID of the security group can be provided via a variable or the result from the other data source `ecs_get_security_groups`.
 
     ## Example Usage
 
@@ -217,9 +217,9 @@ def get_security_group_rules_output(direction: Optional[pulumi.Input[Optional[st
                                     policy: Optional[pulumi.Input[Optional[str]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecurityGroupRulesResult]:
     """
-    The _ecs_get_security_group_rules_ data source provides a collection of security permissions of a specific security group.
+    The `ecs_get_security_group_rules` data source provides a collection of security permissions of a specific security group.
     Each collection item represents a single `ingress` or `egress` permission rule.
-    The ID of the security group can be provided via a variable or the result from the other data source _ecs_get_security_groups_.
+    The ID of the security group can be provided via a variable or the result from the other data source `ecs_get_security_groups`.
 
     ## Example Usage
 

@@ -91,7 +91,7 @@ def get_databases(db_cluster_id: Optional[str] = None,
                   name_regex: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabasesResult:
     """
-    The _polardb_get_databases_ data source provides a collection of PolarDB cluster database available in Alibaba Cloud account.
+    The `polardb_get_databases` data source provides a collection of PolarDB cluster database available in Alibaba Cloud account.
     Filters support regular expression for the database name, searches by clusterId.
 
     > **NOTE:** Available in v1.70.0+.
@@ -131,7 +131,7 @@ def get_databases_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabasesResult]:
     """
-    The _polardb_get_databases_ data source provides a collection of PolarDB cluster database available in Alibaba Cloud account.
+    The `polardb_get_databases` data source provides a collection of PolarDB cluster database available in Alibaba Cloud account.
     Filters support regular expression for the database name, searches by clusterId.
 
     > **NOTE:** Available in v1.70.0+.

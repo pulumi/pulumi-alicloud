@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
         /// </summary>
         public readonly int? Days;
         /// <summary>
-        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
+        /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
         /// </summary>
         public readonly string? StorageClass;
 

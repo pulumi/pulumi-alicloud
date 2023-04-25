@@ -75,7 +75,7 @@ public final class GetBucketObjectsObject {
      */
     private String sseKmsKeyId;
     /**
-     * @return Object storage type. Possible values: `Standard`, `IA` and `Archive`.
+     * @return Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
      * 
      */
     private String storageClass;
@@ -173,7 +173,7 @@ public final class GetBucketObjectsObject {
         return this.sseKmsKeyId;
     }
     /**
-     * @return Object storage type. Possible values: `Standard`, `IA` and `Archive`.
+     * @return Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
      * 
      */
     public String storageClass() {

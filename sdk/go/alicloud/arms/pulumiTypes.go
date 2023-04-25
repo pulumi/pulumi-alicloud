@@ -2055,6 +2055,362 @@ func (o GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput) Index(i pulumi.In
 	}).(GetDispatchRulesRuleNotifyRuleNotifyObjectOutput)
 }
 
+type GetIntegrationExportersIntegrationExporter struct {
+	// The ID of the Prometheus instance.
+	ClusterId string `pulumi:"clusterId"`
+	// Integration Exporter Type.
+	ExporterType string `pulumi:"exporterType"`
+	// The ID of the Integration Exporter. It formats as `<cluster_id>:<integration_type>:<instance_id>`.
+	Id string `pulumi:"id"`
+	// The ID of the Integration Exporter instance.
+	InstanceId int `pulumi:"instanceId"`
+	// The name of the instance.
+	InstanceName string `pulumi:"instanceName"`
+	// The type of prometheus integration.
+	IntegrationType string `pulumi:"integrationType"`
+	// Exporter configuration parameter json string.
+	Param string `pulumi:"param"`
+	// Monitor the target address.
+	Target string `pulumi:"target"`
+	// The version information.
+	Version string `pulumi:"version"`
+}
+
+// GetIntegrationExportersIntegrationExporterInput is an input type that accepts GetIntegrationExportersIntegrationExporterArgs and GetIntegrationExportersIntegrationExporterOutput values.
+// You can construct a concrete instance of `GetIntegrationExportersIntegrationExporterInput` via:
+//
+//	GetIntegrationExportersIntegrationExporterArgs{...}
+type GetIntegrationExportersIntegrationExporterInput interface {
+	pulumi.Input
+
+	ToGetIntegrationExportersIntegrationExporterOutput() GetIntegrationExportersIntegrationExporterOutput
+	ToGetIntegrationExportersIntegrationExporterOutputWithContext(context.Context) GetIntegrationExportersIntegrationExporterOutput
+}
+
+type GetIntegrationExportersIntegrationExporterArgs struct {
+	// The ID of the Prometheus instance.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// Integration Exporter Type.
+	ExporterType pulumi.StringInput `pulumi:"exporterType"`
+	// The ID of the Integration Exporter. It formats as `<cluster_id>:<integration_type>:<instance_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the Integration Exporter instance.
+	InstanceId pulumi.IntInput `pulumi:"instanceId"`
+	// The name of the instance.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// The type of prometheus integration.
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Exporter configuration parameter json string.
+	Param pulumi.StringInput `pulumi:"param"`
+	// Monitor the target address.
+	Target pulumi.StringInput `pulumi:"target"`
+	// The version information.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetIntegrationExportersIntegrationExporterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIntegrationExportersIntegrationExporter)(nil)).Elem()
+}
+
+func (i GetIntegrationExportersIntegrationExporterArgs) ToGetIntegrationExportersIntegrationExporterOutput() GetIntegrationExportersIntegrationExporterOutput {
+	return i.ToGetIntegrationExportersIntegrationExporterOutputWithContext(context.Background())
+}
+
+func (i GetIntegrationExportersIntegrationExporterArgs) ToGetIntegrationExportersIntegrationExporterOutputWithContext(ctx context.Context) GetIntegrationExportersIntegrationExporterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIntegrationExportersIntegrationExporterOutput)
+}
+
+// GetIntegrationExportersIntegrationExporterArrayInput is an input type that accepts GetIntegrationExportersIntegrationExporterArray and GetIntegrationExportersIntegrationExporterArrayOutput values.
+// You can construct a concrete instance of `GetIntegrationExportersIntegrationExporterArrayInput` via:
+//
+//	GetIntegrationExportersIntegrationExporterArray{ GetIntegrationExportersIntegrationExporterArgs{...} }
+type GetIntegrationExportersIntegrationExporterArrayInput interface {
+	pulumi.Input
+
+	ToGetIntegrationExportersIntegrationExporterArrayOutput() GetIntegrationExportersIntegrationExporterArrayOutput
+	ToGetIntegrationExportersIntegrationExporterArrayOutputWithContext(context.Context) GetIntegrationExportersIntegrationExporterArrayOutput
+}
+
+type GetIntegrationExportersIntegrationExporterArray []GetIntegrationExportersIntegrationExporterInput
+
+func (GetIntegrationExportersIntegrationExporterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIntegrationExportersIntegrationExporter)(nil)).Elem()
+}
+
+func (i GetIntegrationExportersIntegrationExporterArray) ToGetIntegrationExportersIntegrationExporterArrayOutput() GetIntegrationExportersIntegrationExporterArrayOutput {
+	return i.ToGetIntegrationExportersIntegrationExporterArrayOutputWithContext(context.Background())
+}
+
+func (i GetIntegrationExportersIntegrationExporterArray) ToGetIntegrationExportersIntegrationExporterArrayOutputWithContext(ctx context.Context) GetIntegrationExportersIntegrationExporterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIntegrationExportersIntegrationExporterArrayOutput)
+}
+
+type GetIntegrationExportersIntegrationExporterOutput struct{ *pulumi.OutputState }
+
+func (GetIntegrationExportersIntegrationExporterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIntegrationExportersIntegrationExporter)(nil)).Elem()
+}
+
+func (o GetIntegrationExportersIntegrationExporterOutput) ToGetIntegrationExportersIntegrationExporterOutput() GetIntegrationExportersIntegrationExporterOutput {
+	return o
+}
+
+func (o GetIntegrationExportersIntegrationExporterOutput) ToGetIntegrationExportersIntegrationExporterOutputWithContext(ctx context.Context) GetIntegrationExportersIntegrationExporterOutput {
+	return o
+}
+
+// The ID of the Prometheus instance.
+func (o GetIntegrationExportersIntegrationExporterOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIntegrationExportersIntegrationExporter) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// Integration Exporter Type.
+func (o GetIntegrationExportersIntegrationExporterOutput) ExporterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIntegrationExportersIntegrationExporter) string { return v.ExporterType }).(pulumi.StringOutput)
+}
+
+// The ID of the Integration Exporter. It formats as `<cluster_id>:<integration_type>:<instance_id>`.
+func (o GetIntegrationExportersIntegrationExporterOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIntegrationExportersIntegrationExporter) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the Integration Exporter instance.
+func (o GetIntegrationExportersIntegrationExporterOutput) InstanceId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIntegrationExportersIntegrationExporter) int { return v.InstanceId }).(pulumi.IntOutput)
+}
+
+// The name of the instance.
+func (o GetIntegrationExportersIntegrationExporterOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIntegrationExportersIntegrationExporter) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The type of prometheus integration.
+func (o GetIntegrationExportersIntegrationExporterOutput) IntegrationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIntegrationExportersIntegrationExporter) string { return v.IntegrationType }).(pulumi.StringOutput)
+}
+
+// Exporter configuration parameter json string.
+func (o GetIntegrationExportersIntegrationExporterOutput) Param() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIntegrationExportersIntegrationExporter) string { return v.Param }).(pulumi.StringOutput)
+}
+
+// Monitor the target address.
+func (o GetIntegrationExportersIntegrationExporterOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIntegrationExportersIntegrationExporter) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// The version information.
+func (o GetIntegrationExportersIntegrationExporterOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIntegrationExportersIntegrationExporter) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetIntegrationExportersIntegrationExporterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIntegrationExportersIntegrationExporterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIntegrationExportersIntegrationExporter)(nil)).Elem()
+}
+
+func (o GetIntegrationExportersIntegrationExporterArrayOutput) ToGetIntegrationExportersIntegrationExporterArrayOutput() GetIntegrationExportersIntegrationExporterArrayOutput {
+	return o
+}
+
+func (o GetIntegrationExportersIntegrationExporterArrayOutput) ToGetIntegrationExportersIntegrationExporterArrayOutputWithContext(ctx context.Context) GetIntegrationExportersIntegrationExporterArrayOutput {
+	return o
+}
+
+func (o GetIntegrationExportersIntegrationExporterArrayOutput) Index(i pulumi.IntInput) GetIntegrationExportersIntegrationExporterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIntegrationExportersIntegrationExporter {
+		return vs[0].([]GetIntegrationExportersIntegrationExporter)[vs[1].(int)]
+	}).(GetIntegrationExportersIntegrationExporterOutput)
+}
+
+type GetPrometheisPromethei struct {
+	// The ID of the cluster.
+	ClusterId string `pulumi:"clusterId"`
+	// The name of the cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The type of the cluster.
+	ClusterType string `pulumi:"clusterType"`
+	// The ID of the Grafana workspace.
+	GrafanaInstanceId string `pulumi:"grafanaInstanceId"`
+	// The ID of the Prometheus.
+	Id string `pulumi:"id"`
+	// The ID of the resource group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The ID of the security group.
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// The child instance json string of the globalView instance.
+	SubClustersJson string `pulumi:"subClustersJson"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The ID of the VPC.
+	VpcId string `pulumi:"vpcId"`
+	// The ID of the VSwitch.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// GetPrometheisPrometheiInput is an input type that accepts GetPrometheisPrometheiArgs and GetPrometheisPrometheiOutput values.
+// You can construct a concrete instance of `GetPrometheisPrometheiInput` via:
+//
+//	GetPrometheisPrometheiArgs{...}
+type GetPrometheisPrometheiInput interface {
+	pulumi.Input
+
+	ToGetPrometheisPrometheiOutput() GetPrometheisPrometheiOutput
+	ToGetPrometheisPrometheiOutputWithContext(context.Context) GetPrometheisPrometheiOutput
+}
+
+type GetPrometheisPrometheiArgs struct {
+	// The ID of the cluster.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The name of the cluster.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The type of the cluster.
+	ClusterType pulumi.StringInput `pulumi:"clusterType"`
+	// The ID of the Grafana workspace.
+	GrafanaInstanceId pulumi.StringInput `pulumi:"grafanaInstanceId"`
+	// The ID of the Prometheus.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The ID of the security group.
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// The child instance json string of the globalView instance.
+	SubClustersJson pulumi.StringInput `pulumi:"subClustersJson"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput `pulumi:"tags"`
+	// The ID of the VPC.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The ID of the VSwitch.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (GetPrometheisPrometheiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrometheisPromethei)(nil)).Elem()
+}
+
+func (i GetPrometheisPrometheiArgs) ToGetPrometheisPrometheiOutput() GetPrometheisPrometheiOutput {
+	return i.ToGetPrometheisPrometheiOutputWithContext(context.Background())
+}
+
+func (i GetPrometheisPrometheiArgs) ToGetPrometheisPrometheiOutputWithContext(ctx context.Context) GetPrometheisPrometheiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheisPrometheiOutput)
+}
+
+// GetPrometheisPrometheiArrayInput is an input type that accepts GetPrometheisPrometheiArray and GetPrometheisPrometheiArrayOutput values.
+// You can construct a concrete instance of `GetPrometheisPrometheiArrayInput` via:
+//
+//	GetPrometheisPrometheiArray{ GetPrometheisPrometheiArgs{...} }
+type GetPrometheisPrometheiArrayInput interface {
+	pulumi.Input
+
+	ToGetPrometheisPrometheiArrayOutput() GetPrometheisPrometheiArrayOutput
+	ToGetPrometheisPrometheiArrayOutputWithContext(context.Context) GetPrometheisPrometheiArrayOutput
+}
+
+type GetPrometheisPrometheiArray []GetPrometheisPrometheiInput
+
+func (GetPrometheisPrometheiArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrometheisPromethei)(nil)).Elem()
+}
+
+func (i GetPrometheisPrometheiArray) ToGetPrometheisPrometheiArrayOutput() GetPrometheisPrometheiArrayOutput {
+	return i.ToGetPrometheisPrometheiArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrometheisPrometheiArray) ToGetPrometheisPrometheiArrayOutputWithContext(ctx context.Context) GetPrometheisPrometheiArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrometheisPrometheiArrayOutput)
+}
+
+type GetPrometheisPrometheiOutput struct{ *pulumi.OutputState }
+
+func (GetPrometheisPrometheiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrometheisPromethei)(nil)).Elem()
+}
+
+func (o GetPrometheisPrometheiOutput) ToGetPrometheisPrometheiOutput() GetPrometheisPrometheiOutput {
+	return o
+}
+
+func (o GetPrometheisPrometheiOutput) ToGetPrometheisPrometheiOutputWithContext(ctx context.Context) GetPrometheisPrometheiOutput {
+	return o
+}
+
+// The ID of the cluster.
+func (o GetPrometheisPrometheiOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The name of the cluster.
+func (o GetPrometheisPrometheiOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// The type of the cluster.
+func (o GetPrometheisPrometheiOutput) ClusterType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.ClusterType }).(pulumi.StringOutput)
+}
+
+// The ID of the Grafana workspace.
+func (o GetPrometheisPrometheiOutput) GrafanaInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.GrafanaInstanceId }).(pulumi.StringOutput)
+}
+
+// The ID of the Prometheus.
+func (o GetPrometheisPrometheiOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group.
+func (o GetPrometheisPrometheiOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The ID of the security group.
+func (o GetPrometheisPrometheiOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.SecurityGroupId }).(pulumi.StringOutput)
+}
+
+// The child instance json string of the globalView instance.
+func (o GetPrometheisPrometheiOutput) SubClustersJson() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.SubClustersJson }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GetPrometheisPrometheiOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetPrometheisPromethei) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The ID of the VPC.
+func (o GetPrometheisPrometheiOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The ID of the VSwitch.
+func (o GetPrometheisPrometheiOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrometheisPromethei) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+type GetPrometheisPrometheiArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrometheisPrometheiArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrometheisPromethei)(nil)).Elem()
+}
+
+func (o GetPrometheisPrometheiArrayOutput) ToGetPrometheisPrometheiArrayOutput() GetPrometheisPrometheiArrayOutput {
+	return o
+}
+
+func (o GetPrometheisPrometheiArrayOutput) ToGetPrometheisPrometheiArrayOutputWithContext(ctx context.Context) GetPrometheisPrometheiArrayOutput {
+	return o
+}
+
+func (o GetPrometheisPrometheiArrayOutput) Index(i pulumi.IntInput) GetPrometheisPrometheiOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrometheisPromethei {
+		return vs[0].([]GetPrometheisPromethei)[vs[1].(int)]
+	}).(GetPrometheisPrometheiOutput)
+}
+
 type GetPrometheusAlertRulesRule struct {
 	// The annotations of the alert rule.
 	Annotations []GetPrometheusAlertRulesRuleAnnotation `pulumi:"annotations"`
@@ -2507,6 +2863,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDispatchRulesRuleNotifyRuleArrayInput)(nil)).Elem(), GetDispatchRulesRuleNotifyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDispatchRulesRuleNotifyRuleNotifyObjectInput)(nil)).Elem(), GetDispatchRulesRuleNotifyRuleNotifyObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDispatchRulesRuleNotifyRuleNotifyObjectArrayInput)(nil)).Elem(), GetDispatchRulesRuleNotifyRuleNotifyObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIntegrationExportersIntegrationExporterInput)(nil)).Elem(), GetIntegrationExportersIntegrationExporterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIntegrationExportersIntegrationExporterArrayInput)(nil)).Elem(), GetIntegrationExportersIntegrationExporterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheisPrometheiInput)(nil)).Elem(), GetPrometheisPrometheiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheisPrometheiArrayInput)(nil)).Elem(), GetPrometheisPrometheiArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusAlertRulesRuleInput)(nil)).Elem(), GetPrometheusAlertRulesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusAlertRulesRuleArrayInput)(nil)).Elem(), GetPrometheusAlertRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusAlertRulesRuleAnnotationInput)(nil)).Elem(), GetPrometheusAlertRulesRuleAnnotationArgs{})
@@ -2547,6 +2907,10 @@ func init() {
 	pulumi.RegisterOutputType(GetDispatchRulesRuleNotifyRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetDispatchRulesRuleNotifyRuleNotifyObjectOutput{})
 	pulumi.RegisterOutputType(GetDispatchRulesRuleNotifyRuleNotifyObjectArrayOutput{})
+	pulumi.RegisterOutputType(GetIntegrationExportersIntegrationExporterOutput{})
+	pulumi.RegisterOutputType(GetIntegrationExportersIntegrationExporterArrayOutput{})
+	pulumi.RegisterOutputType(GetPrometheisPrometheiOutput{})
+	pulumi.RegisterOutputType(GetPrometheisPrometheiArrayOutput{})
 	pulumi.RegisterOutputType(GetPrometheusAlertRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetPrometheusAlertRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetPrometheusAlertRulesRuleAnnotationOutput{})

@@ -194,6 +194,56 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * Basic Usage for alert template
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "create by terraform"});
+ * const exampleStore = new alicloud.log.Store("exampleStore", {
+ *     project: exampleProject.name,
+ *     retentionPeriod: 3650,
+ *     shardCount: 3,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     appendMeta: true,
+ * });
+ * const example_3 = new alicloud.log.Alert("example-3", {
+ *     version: "2.0",
+ *     type: "tpl",
+ *     projectName: exampleProject.name,
+ *     alertName: "tf-test-alert-3",
+ *     alertDisplayname: "tf-test-alert-displayname-3",
+ *     muteUntil: 1632486684,
+ *     schedule: {
+ *         type: "FixedRate",
+ *         interval: "5m",
+ *         hour: 0,
+ *         dayOfWeek: 0,
+ *         delay: 0,
+ *         runImmediately: false,
+ *     },
+ *     templateConfiguration: {
+ *         id: "sls.app.sls_ack.node.down",
+ *         type: "sys",
+ *         lang: "cn",
+ *         annotations: {},
+ *         tokens: {
+ *             interval_minute: "5",
+ *             "default.action_policy": "sls.app.ack.builtin",
+ *             "default.severity": "6",
+ *             sendResolved: "false",
+ *             "default.project": exampleProject.name,
+ *             "default.logstore": "k8s-event",
+ *             "default.repeatInterval": "4h",
+ *             trigger_threshold: "1",
+ *             "default.clusterId": "test-cluster-id",
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Log alert can be imported using the id, e.g.
@@ -243,7 +293,7 @@ export class Alert extends pulumi.CustomResource {
      */
     public readonly alertName!: pulumi.Output<string>;
     /**
-     * Annotations for new alert.
+     * Alert template annotations.
      */
     public readonly annotations!: pulumi.Output<outputs.log.AlertAnnotation[] | undefined>;
     /**
@@ -307,7 +357,7 @@ export class Alert extends pulumi.CustomResource {
     /**
      * Multiple conditions for configured alarm query.
      */
-    public readonly queryLists!: pulumi.Output<outputs.log.AlertQueryList[]>;
+    public readonly queryLists!: pulumi.Output<outputs.log.AlertQueryList[] | undefined>;
     /**
      * schedule for alert.
      */
@@ -332,6 +382,10 @@ export class Alert extends pulumi.CustomResource {
      * Severity configuration for new alert.
      */
     public readonly severityConfigurations!: pulumi.Output<outputs.log.AlertSeverityConfiguration[] | undefined>;
+    /**
+     * Template configuration for alert, when `type` is `tpl`.
+     */
+    public readonly templateConfiguration!: pulumi.Output<outputs.log.AlertTemplateConfiguration | undefined>;
     /**
      * Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
      */
@@ -387,6 +441,7 @@ export class Alert extends pulumi.CustomResource {
             resourceInputs["scheduleType"] = state ? state.scheduleType : undefined;
             resourceInputs["sendResolved"] = state ? state.sendResolved : undefined;
             resourceInputs["severityConfigurations"] = state ? state.severityConfigurations : undefined;
+            resourceInputs["templateConfiguration"] = state ? state.templateConfiguration : undefined;
             resourceInputs["threshold"] = state ? state.threshold : undefined;
             resourceInputs["throttling"] = state ? state.throttling : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -401,9 +456,6 @@ export class Alert extends pulumi.CustomResource {
             }
             if ((!args || args.projectName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
-            }
-            if ((!args || args.queryLists === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'queryLists'");
             }
             resourceInputs["alertDescription"] = args ? args.alertDescription : undefined;
             resourceInputs["alertDisplayname"] = args ? args.alertDisplayname : undefined;
@@ -428,6 +480,7 @@ export class Alert extends pulumi.CustomResource {
             resourceInputs["scheduleType"] = args ? args.scheduleType : undefined;
             resourceInputs["sendResolved"] = args ? args.sendResolved : undefined;
             resourceInputs["severityConfigurations"] = args ? args.severityConfigurations : undefined;
+            resourceInputs["templateConfiguration"] = args ? args.templateConfiguration : undefined;
             resourceInputs["threshold"] = args ? args.threshold : undefined;
             resourceInputs["throttling"] = args ? args.throttling : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
@@ -455,7 +508,7 @@ export interface AlertState {
      */
     alertName?: pulumi.Input<string>;
     /**
-     * Annotations for new alert.
+     * Alert template annotations.
      */
     annotations?: pulumi.Input<pulumi.Input<inputs.log.AlertAnnotation>[]>;
     /**
@@ -545,6 +598,10 @@ export interface AlertState {
      */
     severityConfigurations?: pulumi.Input<pulumi.Input<inputs.log.AlertSeverityConfiguration>[]>;
     /**
+     * Template configuration for alert, when `type` is `tpl`.
+     */
+    templateConfiguration?: pulumi.Input<inputs.log.AlertTemplateConfiguration>;
+    /**
      * Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
      */
     threshold?: pulumi.Input<number>;
@@ -581,7 +638,7 @@ export interface AlertArgs {
      */
     alertName: pulumi.Input<string>;
     /**
-     * Annotations for new alert.
+     * Alert template annotations.
      */
     annotations?: pulumi.Input<pulumi.Input<inputs.log.AlertAnnotation>[]>;
     /**
@@ -645,7 +702,7 @@ export interface AlertArgs {
     /**
      * Multiple conditions for configured alarm query.
      */
-    queryLists: pulumi.Input<pulumi.Input<inputs.log.AlertQueryList>[]>;
+    queryLists?: pulumi.Input<pulumi.Input<inputs.log.AlertQueryList>[]>;
     /**
      * schedule for alert.
      */
@@ -670,6 +727,10 @@ export interface AlertArgs {
      * Severity configuration for new alert.
      */
     severityConfigurations?: pulumi.Input<pulumi.Input<inputs.log.AlertSeverityConfiguration>[]>;
+    /**
+     * Template configuration for alert, when `type` is `tpl`.
+     */
+    templateConfiguration?: pulumi.Input<inputs.log.AlertTemplateConfiguration>;
     /**
      * Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
      */

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,8 +25,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
@@ -81,24 +79,7 @@ import (
 //				return err
 //			}
 //			defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
-//				Document: pulumi.String(fmt.Sprintf(`    {
-//	        "Statement": [
-//	        {
-//	            "Action": "sts:AssumeRole",
-//	            "Effect": "Allow",
-//	            "Principal": {
-//	            "Service": [
-//	                "emr.aliyuncs.com",
-//	                "ecs.aliyuncs.com"
-//	            ]
-//	            }
-//	        }
-//	        ],
-//	        "Version": "1"
-//	    }
-//
-// `)),
-//
+//				Document:    pulumi.String("    {\n        \"Statement\": [\n        {\n            \"Action\": \"sts:AssumeRole\",\n            \"Effect\": \"Allow\",\n            \"Principal\": {\n            \"Service\": [\n                \"emr.aliyuncs.com\",\n                \"ecs.aliyuncs.com\"\n            ]\n            }\n        }\n        ],\n        \"Version\": \"1\"\n    }\n"),
 //				Description: pulumi.String("this is a role test."),
 //				Force:       pulumi.Bool(true),
 //			})

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -61,6 +61,8 @@ type Instance struct {
 	// * DOWNGRADE: The specifications are downgraded.
 	//   Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
 	OrderType pulumi.StringPtrOutput `pulumi:"orderType"`
+	// Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+	Parameters InstanceParameterArrayOutput `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period pulumi.IntOutput `pulumi:"period"`
 	// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
@@ -186,6 +188,8 @@ type instanceState struct {
 	// * DOWNGRADE: The specifications are downgraded.
 	//   Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
 	OrderType *string `pulumi:"orderType"`
+	// Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+	Parameters []InstanceParameter `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period *int `pulumi:"period"`
 	// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
@@ -267,6 +271,8 @@ type InstanceState struct {
 	// * DOWNGRADE: The specifications are downgraded.
 	//   Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
 	OrderType pulumi.StringPtrInput
+	// Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+	Parameters InstanceParameterArrayInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period pulumi.IntPtrInput
 	// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
@@ -352,6 +358,8 @@ type instanceArgs struct {
 	// * DOWNGRADE: The specifications are downgraded.
 	//   Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
 	OrderType *string `pulumi:"orderType"`
+	// Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+	Parameters []InstanceParameter `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period *int `pulumi:"period"`
 	// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
@@ -426,6 +434,8 @@ type InstanceArgs struct {
 	// * DOWNGRADE: The specifications are downgraded.
 	//   Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
 	OrderType pulumi.StringPtrInput
+	// Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+	Parameters InstanceParameterArrayInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period pulumi.IntPtrInput
 	// The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
@@ -631,6 +641,11 @@ func (o InstanceOutput) NetworkType() pulumi.StringOutput {
 //     Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
 func (o InstanceOutput) OrderType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.OrderType }).(pulumi.StringPtrOutput)
+}
+
+// Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+func (o InstanceOutput) Parameters() InstanceParameterArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceParameterArrayOutput { return v.Parameters }).(InstanceParameterArrayOutput)
 }
 
 // The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.

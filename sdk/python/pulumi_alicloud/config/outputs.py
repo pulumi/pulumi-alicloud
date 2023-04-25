@@ -63,6 +63,7 @@ class Endpoints(dict):
                  apigateway: Optional[str] = None,
                  arms: Optional[str] = None,
                  bastionhost: Optional[str] = None,
+                 beebot: Optional[str] = None,
                  bpstudio: Optional[str] = None,
                  brain_industrial: Optional[str] = None,
                  bssopenapi: Optional[str] = None,
@@ -143,6 +144,7 @@ class Endpoints(dict):
                  mse: Optional[str] = None,
                  nas: Optional[str] = None,
                  nlb: Optional[str] = None,
+                 oceanbase: Optional[str] = None,
                  ons: Optional[str] = None,
                  onsproxy: Optional[str] = None,
                  oos: Optional[str] = None,
@@ -199,6 +201,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "arms", arms)
         if bastionhost is not None:
             pulumi.set(__self__, "bastionhost", bastionhost)
+        if beebot is not None:
+            pulumi.set(__self__, "beebot", beebot)
         if bpstudio is not None:
             pulumi.set(__self__, "bpstudio", bpstudio)
         if brain_industrial is not None:
@@ -359,6 +363,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "nas", nas)
         if nlb is not None:
             pulumi.set(__self__, "nlb", nlb)
+        if oceanbase is not None:
+            pulumi.set(__self__, "oceanbase", oceanbase)
         if ons is not None:
             pulumi.set(__self__, "ons", ons)
         if onsproxy is not None:
@@ -481,6 +487,11 @@ class Endpoints(dict):
     @pulumi.getter
     def bastionhost(self) -> Optional[str]:
         return pulumi.get(self, "bastionhost")
+
+    @property
+    @pulumi.getter
+    def beebot(self) -> Optional[str]:
+        return pulumi.get(self, "beebot")
 
     @property
     @pulumi.getter
@@ -881,6 +892,11 @@ class Endpoints(dict):
     @pulumi.getter
     def nlb(self) -> Optional[str]:
         return pulumi.get(self, "nlb")
+
+    @property
+    @pulumi.getter
+    def oceanbase(self) -> Optional[str]:
+        return pulumi.get(self, "oceanbase")
 
     @property
     @pulumi.getter

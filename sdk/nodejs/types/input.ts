@@ -23,6 +23,7 @@ export interface ProviderEndpoint {
     apigateway?: pulumi.Input<string>;
     arms?: pulumi.Input<string>;
     bastionhost?: pulumi.Input<string>;
+    beebot?: pulumi.Input<string>;
     bpstudio?: pulumi.Input<string>;
     brainIndustrial?: pulumi.Input<string>;
     bssopenapi?: pulumi.Input<string>;
@@ -103,6 +104,7 @@ export interface ProviderEndpoint {
     mse?: pulumi.Input<string>;
     nas?: pulumi.Input<string>;
     nlb?: pulumi.Input<string>;
+    oceanbase?: pulumi.Input<string>;
     ons?: pulumi.Input<string>;
     onsproxy?: pulumi.Input<string>;
     oos?: pulumi.Input<string>;
@@ -1384,6 +1386,9 @@ export namespace cfg {
         configRuleId?: pulumi.Input<string>;
     }
 
+}
+
+export namespace chatbot {
 }
 
 export namespace clickhouse {
@@ -6863,6 +6868,29 @@ export namespace log {
         severity: pulumi.Input<number>;
     }
 
+    export interface AlertTemplateConfiguration {
+        /**
+         * Alert template annotations.
+         */
+        annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Alert template id.
+         */
+        id: pulumi.Input<string>;
+        /**
+         * Alert template language including `cn`, `en`.
+         */
+        lang?: pulumi.Input<string>;
+        /**
+         * Alert template tokens.
+         */
+        tokens?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * including FixedRate,Hourly,Daily,Weekly,Cron.
+         */
+        type: pulumi.Input<string>;
+    }
+
     export interface EtlEtlSink {
         /**
          * Delivery target logstore access key id.
@@ -7170,6 +7198,17 @@ export namespace mns {
 }
 
 export namespace mongodb {
+    export interface InstanceParameter {
+        /**
+         * The name of DB instance. It a string of 2 to 256 characters.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * The value of the parameter.
+         */
+        value: pulumi.Input<string>;
+    }
+
     export interface InstanceReplicaSet {
         /**
          * The connection address of the node.
@@ -7500,6 +7539,9 @@ export namespace nlb {
     }
 }
 
+export namespace ocean {
+}
+
 export namespace oos {
 }
 
@@ -7649,7 +7691,7 @@ export namespace oss {
          */
         days: pulumi.Input<number>;
         /**
-         * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
+         * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
          */
         storageClass: pulumi.Input<string>;
     }
@@ -7664,7 +7706,7 @@ export namespace oss {
          */
         days?: pulumi.Input<number>;
         /**
-         * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
+         * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
          */
         storageClass?: pulumi.Input<string>;
     }
@@ -8237,6 +8279,11 @@ export namespace rdc {
 }
 
 export namespace rds {
+    export interface DbInstanceEndpointNodeItem {
+        nodeId: pulumi.Input<string>;
+        weight: pulumi.Input<number>;
+    }
+
     export interface DdrInstanceParameter {
         name: pulumi.Input<string>;
         value: pulumi.Input<string>;

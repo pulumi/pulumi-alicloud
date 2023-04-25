@@ -46,6 +46,7 @@ namespace Pulumi.AliCloud.BastionHost.Outputs
         /// A map of tags assigned to the bastionhost instance. It must be in the format:
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 

@@ -64,13 +64,13 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 
-	if isZero(args.EcsRoleName) {
+	if args.EcsRoleName == nil {
 		args.EcsRoleName = pulumi.StringPtr(getEnvOrDefault("", nil, "ALICLOUD_ECS_ROLE_NAME").(string))
 	}
-	if isZero(args.Profile) {
+	if args.Profile == nil {
 		args.Profile = pulumi.StringPtr(getEnvOrDefault("", nil, "ALICLOUD_PROFILE").(string))
 	}
-	if isZero(args.Region) {
+	if args.Region == nil {
 		args.Region = pulumi.StringPtr(getEnvOrDefault("", nil, "ALICLOUD_REGION").(string))
 	}
 	var resource Provider

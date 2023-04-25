@@ -209,7 +209,7 @@ class DdrInstanceArgs:
                - MIX: standard whitelist mode
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. It supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
+               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """
         pulumi.set(__self__, "engine", engine)
         pulumi.set(__self__, "engine_version", engine_version)
@@ -1164,7 +1164,7 @@ class DdrInstanceArgs:
         """
         The Zone to launch the DB instance. It supports multiple zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
+        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """
         return pulumi.get(self, "zone_id")
 
@@ -1377,7 +1377,7 @@ class _DdrInstanceState:
                - MIX: standard whitelist mode
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. It supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
+               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance.
         :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance.
         """
@@ -2386,7 +2386,7 @@ class _DdrInstanceState:
         """
         The Zone to launch the DB instance. It supports multiple zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
+        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """
         return pulumi.get(self, "zone_id")
 
@@ -2627,7 +2627,7 @@ class DdrInstance(pulumi.CustomResource):
                - MIX: standard whitelist mode
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. It supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
+               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """
         ...
     @overload
@@ -3031,7 +3031,7 @@ class DdrInstance(pulumi.CustomResource):
                - MIX: standard whitelist mode
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. It supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
+               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance.
         :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance.
         """
@@ -3707,7 +3707,7 @@ class DdrInstance(pulumi.CustomResource):
         """
         The Zone to launch the DB instance. It supports multiple zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
-        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
+        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """
         return pulumi.get(self, "zone_id")
 

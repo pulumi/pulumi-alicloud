@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *     instanceChargeType: "PostPaid",
  * }));
  * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: `^default-NODELETING$`,
+ *     nameRegex: "^default-NODELETING$",
  * });
  * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
  *     vpcId: defaultNetworks.ids?.[0],

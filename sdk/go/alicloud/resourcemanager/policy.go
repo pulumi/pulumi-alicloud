@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,8 +25,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -35,18 +33,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := resourcemanager.NewPolicy(ctx, "example", &resourcemanager.PolicyArgs{
-//				PolicyDocument: pulumi.String(fmt.Sprintf(`		{
-//				"Statement": [{
-//					"Action": ["oss:*"],
-//					"Effect": "Allow",
-//					"Resource": ["acs:oss:*:*:*"]
-//				}],
-//				"Version": "1"
-//			}
-//
-// `)),
-//
-//				PolicyName: pulumi.String("abc12345"),
+//				PolicyDocument: pulumi.String("		{\n			\"Statement\": [{\n				\"Action\": [\"oss:*\"],\n				\"Effect\": \"Allow\",\n				\"Resource\": [\"acs:oss:*:*:*\"]\n			}],\n			\"Version\": \"1\"\n		}\n    \n"),
+//				PolicyName:     pulumi.String("abc12345"),
 //			})
 //			if err != nil {
 //				return err

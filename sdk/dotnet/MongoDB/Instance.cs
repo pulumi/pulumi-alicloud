@@ -124,6 +124,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string?> OrderType { get; private set; } = null!;
 
         /// <summary>
+        /// Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+        /// </summary>
+        [Output("parameters")]
+        public Output<ImmutableArray<Outputs.InstanceParameter>> Parameters { get; private set; } = null!;
+
+        /// <summary>
         /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         /// </summary>
         [Output("period")]
@@ -413,6 +419,18 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
 
+        [Input("parameters")]
+        private InputList<Inputs.InstanceParameterArgs>? _parameters;
+
+        /// <summary>
+        /// Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+        /// </summary>
+        public InputList<Inputs.InstanceParameterArgs> Parameters
+        {
+            get => _parameters ?? (_parameters = new InputList<Inputs.InstanceParameterArgs>());
+            set => _parameters = value;
+        }
+
         /// <summary>
         /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         /// </summary>
@@ -648,6 +666,18 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
+
+        [Input("parameters")]
+        private InputList<Inputs.InstanceParameterGetArgs>? _parameters;
+
+        /// <summary>
+        /// Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+        /// </summary>
+        public InputList<Inputs.InstanceParameterGetArgs> Parameters
+        {
+            get => _parameters ?? (_parameters = new InputList<Inputs.InstanceParameterGetArgs>());
+            set => _parameters = value;
+        }
 
         /// <summary>
         /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.

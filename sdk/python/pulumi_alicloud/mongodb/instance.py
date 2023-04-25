@@ -32,6 +32,7 @@ class InstanceArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  order_type: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  readonly_replicas: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
@@ -71,6 +72,7 @@ class InstanceArgs:
                * UPGRADE: The specifications are upgraded.
                * DOWNGRADE: The specifications are downgraded.
                Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
@@ -87,7 +89,7 @@ class InstanceArgs:
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
-               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
+               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """
         pulumi.set(__self__, "db_instance_class", db_instance_class)
         pulumi.set(__self__, "db_instance_storage", db_instance_storage)
@@ -118,6 +120,8 @@ class InstanceArgs:
             pulumi.set(__self__, "network_type", network_type)
         if order_type is not None:
             pulumi.set(__self__, "order_type", order_type)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if readonly_replicas is not None:
@@ -349,6 +353,18 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]]:
+        """
+        Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
         The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
@@ -521,7 +537,7 @@ class InstanceArgs:
         """
         The Zone to launch the DB instance. it supports multiple zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
-        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
+        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """
         return pulumi.get(self, "zone_id")
 
@@ -549,6 +565,7 @@ class _InstanceState:
                  name: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  order_type: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  readonly_replicas: Optional[pulumi.Input[int]] = None,
                  replica_set_name: Optional[pulumi.Input[str]] = None,
@@ -592,6 +609,7 @@ class _InstanceState:
                * UPGRADE: The specifications are upgraded.
                * DOWNGRADE: The specifications are downgraded.
                Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[str] replica_set_name: The name of the mongo replica set
@@ -612,7 +630,7 @@ class _InstanceState:
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
-               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
+               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """
         if account_password is not None:
             pulumi.set(__self__, "account_password", account_password)
@@ -646,6 +664,8 @@ class _InstanceState:
             pulumi.set(__self__, "network_type", network_type)
         if order_type is not None:
             pulumi.set(__self__, "order_type", order_type)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if readonly_replicas is not None:
@@ -885,6 +905,18 @@ class _InstanceState:
 
     @property
     @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]]:
+        """
+        Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
         The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
@@ -1105,7 +1137,7 @@ class _InstanceState:
         """
         The Zone to launch the DB instance. it supports multiple zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
-        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
+        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """
         return pulumi.get(self, "zone_id")
 
@@ -1135,6 +1167,7 @@ class Instance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  order_type: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  readonly_replicas: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
@@ -1184,6 +1217,7 @@ class Instance(pulumi.CustomResource):
                * UPGRADE: The specifications are upgraded.
                * DOWNGRADE: The specifications are downgraded.
                Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
@@ -1200,7 +1234,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
-               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
+               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """
         ...
     @overload
@@ -1248,6 +1282,7 @@ class Instance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_type: Optional[pulumi.Input[str]] = None,
                  order_type: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  readonly_replicas: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
@@ -1294,6 +1329,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network_type"] = network_type
             __props__.__dict__["order_type"] = order_type
+            __props__.__dict__["parameters"] = parameters
             __props__.__dict__["period"] = period
             __props__.__dict__["readonly_replicas"] = readonly_replicas
             __props__.__dict__["replication_factor"] = replication_factor
@@ -1341,6 +1377,7 @@ class Instance(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             network_type: Optional[pulumi.Input[str]] = None,
             order_type: Optional[pulumi.Input[str]] = None,
+            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]]] = None,
             period: Optional[pulumi.Input[int]] = None,
             readonly_replicas: Optional[pulumi.Input[int]] = None,
             replica_set_name: Optional[pulumi.Input[str]] = None,
@@ -1389,6 +1426,7 @@ class Instance(pulumi.CustomResource):
                * UPGRADE: The specifications are upgraded.
                * DOWNGRADE: The specifications are downgraded.
                Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[str] replica_set_name: The name of the mongo replica set
@@ -1409,7 +1447,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. it supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
-               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
+               The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1431,6 +1469,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["network_type"] = network_type
         __props__.__dict__["order_type"] = order_type
+        __props__.__dict__["parameters"] = parameters
         __props__.__dict__["period"] = period
         __props__.__dict__["readonly_replicas"] = readonly_replicas
         __props__.__dict__["replica_set_name"] = replica_set_name
@@ -1588,6 +1627,14 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def parameters(self) -> pulumi.Output[Sequence['outputs.InstanceParameter']]:
+        """
+        Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+        """
+        return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter
     def period(self) -> pulumi.Output[int]:
         """
         The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
@@ -1736,7 +1783,7 @@ class Instance(pulumi.CustomResource):
         """
         The Zone to launch the DB instance. it supports multiple zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
-        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source _get_zones_.
+        The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """
         return pulumi.get(self, "zone_id")
 

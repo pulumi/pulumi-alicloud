@@ -10,6 +10,7 @@ from .account_privilege import *
 from .backup_policy import *
 from .connection import *
 from .database import *
+from .db_instance_endpoint import *
 from .db_node import *
 from .ddr_instance import *
 from .get_accounts import *

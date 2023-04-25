@@ -42,6 +42,9 @@ namespace Pulumi.AliCloud.Inputs
         [Input("bastionhost")]
         public Input<string>? Bastionhost { get; set; }
 
+        [Input("beebot")]
+        public Input<string>? Beebot { get; set; }
+
         [Input("bpstudio")]
         public Input<string>? Bpstudio { get; set; }
 
@@ -281,6 +284,9 @@ namespace Pulumi.AliCloud.Inputs
 
         [Input("nlb")]
         public Input<string>? Nlb { get; set; }
+
+        [Input("oceanbase")]
+        public Input<string>? Oceanbase { get; set; }
 
         [Input("ons")]
         public Input<string>? Ons { get; set; }

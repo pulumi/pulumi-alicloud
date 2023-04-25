@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,8 +23,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -33,25 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := resourcemanager.NewRole(ctx, "example", &resourcemanager.RoleArgs{
-//				AssumeRolePolicyDocument: pulumi.String(fmt.Sprintf(`     {
-//	          "Statement": [
-//	               {
-//	                    "Action": "sts:AssumeRole",
-//	                    "Effect": "Allow",
-//	                    "Principal": {
-//	                        "RAM":[
-//	                                "acs:ram::103755469187****:root"，
-//	                                "acs:ram::104408977069****:root"
-//	                        ]
-//	                    }
-//	                }
-//	          ],
-//	          "Version": "1"
-//	     }
-//
-// `)),
-//
-//				RoleName: pulumi.String("testrd"),
+//				AssumeRolePolicyDocument: pulumi.String("     {\n          \"Statement\": [\n               {\n                    \"Action\": \"sts:AssumeRole\",\n                    \"Effect\": \"Allow\",\n                    \"Principal\": {\n                        \"RAM\":[\n                                \"acs:ram::103755469187****:root\"，\n                                \"acs:ram::104408977069****:root\"\n                        ]\n                    }\n                }\n          ],\n          \"Version\": \"1\"\n     }\n	 \n"),
+//				RoleName:                 pulumi.String("testrd"),
 //			})
 //			if err != nil {
 //				return err

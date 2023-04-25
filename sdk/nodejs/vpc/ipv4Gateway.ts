@@ -71,7 +71,7 @@ export class Ipv4Gateway extends pulumi.CustomResource {
     /**
      * Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean>;
     /**
      * The description of the IPv4 gateway. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      */

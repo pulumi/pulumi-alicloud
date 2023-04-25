@@ -31,6 +31,7 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
         "availabilityZone": args.availabilityZone,
         "ids": args.ids,
         "imageId": args.imageId,
+        "instanceName": args.instanceName,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "pageNumber": args.pageNumber,
@@ -60,6 +61,10 @@ export interface GetInstancesArgs {
      * The image ID of some ECS instance used.
      */
     imageId?: string;
+    /**
+     * The name of the instance. Fuzzy search with the asterisk (*) wildcard characters is supported.
+     */
+    instanceName?: string;
     /**
      * A regex string to filter results by instance name.
      */
@@ -124,6 +129,7 @@ export interface GetInstancesResult {
      * Image ID the instance is using.
      */
     readonly imageId?: string;
+    readonly instanceName?: string;
     /**
      * A list of instances. Each element contains the following attributes:
      */
@@ -199,6 +205,10 @@ export interface GetInstancesOutputArgs {
      * The image ID of some ECS instance used.
      */
     imageId?: pulumi.Input<string>;
+    /**
+     * The name of the instance. Fuzzy search with the asterisk (*) wildcard characters is supported.
+     */
+    instanceName?: pulumi.Input<string>;
     /**
      * A regex string to filter results by instance name.
      */

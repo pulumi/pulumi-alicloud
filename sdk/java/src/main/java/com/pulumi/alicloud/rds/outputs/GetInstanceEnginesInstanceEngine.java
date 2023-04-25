@@ -17,7 +17,7 @@ public final class GetInstanceEnginesInstanceEngine {
      */
     private String category;
     /**
-     * @return Database type. Valid values: &#34;MySQL&#34;, &#34;SQLServer&#34;, &#34;PostgreSQL&#34;, &#34;PPAS&#34;, &#34;MariaDB&#34;. If not set, it will match all of engines.
+     * @return Database type. Valid values: &#34;MySQL&#34;, &#34;SQLServer&#34;, &#34;PostgreSQL&#34;, &#34;MariaDB&#34;. If not set, it will match all of engines.
      * 
      */
     private String engine;
@@ -41,7 +41,7 @@ public final class GetInstanceEnginesInstanceEngine {
         return this.category;
     }
     /**
-     * @return Database type. Valid values: &#34;MySQL&#34;, &#34;SQLServer&#34;, &#34;PostgreSQL&#34;, &#34;PPAS&#34;, &#34;MariaDB&#34;. If not set, it will match all of engines.
+     * @return Database type. Valid values: &#34;MySQL&#34;, &#34;SQLServer&#34;, &#34;PostgreSQL&#34;, &#34;MariaDB&#34;. If not set, it will match all of engines.
      * 
      */
     public String engine() {

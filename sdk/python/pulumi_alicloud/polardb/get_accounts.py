@@ -91,7 +91,7 @@ def get_accounts(db_cluster_id: Optional[str] = None,
                  name_regex: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountsResult:
     """
-    The _polardb_get_accounts_ data source provides a collection of PolarDB cluster database account available in Alibaba Cloud account.
+    The `polardb_get_accounts` data source provides a collection of PolarDB cluster database account available in Alibaba Cloud account.
     Filters support regular expression for the account name, searches by clusterId.
 
     > **NOTE:** Available in v1.70.0+.
@@ -131,7 +131,7 @@ def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountsResult]:
     """
-    The _polardb_get_accounts_ data source provides a collection of PolarDB cluster database account available in Alibaba Cloud account.
+    The `polardb_get_accounts` data source provides a collection of PolarDB cluster database account available in Alibaba Cloud account.
     Filters support regular expression for the account name, searches by clusterId.
 
     > **NOTE:** Available in v1.70.0+.

@@ -85,6 +85,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.bastionhost);
     }
 
+    @Import(name="beebot")
+    private @Nullable Output<String> beebot;
+
+    public Optional<Output<String>> beebot() {
+        return Optional.ofNullable(this.beebot);
+    }
+
     @Import(name="bpstudio")
     private @Nullable Output<String> bpstudio;
 
@@ -645,6 +652,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.nlb);
     }
 
+    @Import(name="oceanbase")
+    private @Nullable Output<String> oceanbase;
+
+    public Optional<Output<String>> oceanbase() {
+        return Optional.ofNullable(this.oceanbase);
+    }
+
     @Import(name="ons")
     private @Nullable Output<String> ons;
 
@@ -910,6 +924,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.apigateway = $.apigateway;
         this.arms = $.arms;
         this.bastionhost = $.bastionhost;
+        this.beebot = $.beebot;
         this.bpstudio = $.bpstudio;
         this.brainIndustrial = $.brainIndustrial;
         this.bssopenapi = $.bssopenapi;
@@ -990,6 +1005,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.mse = $.mse;
         this.nas = $.nas;
         this.nlb = $.nlb;
+        this.oceanbase = $.oceanbase;
         this.ons = $.ons;
         this.onsproxy = $.onsproxy;
         this.oos = $.oos;
@@ -1134,6 +1150,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
 
         public Builder bastionhost(String bastionhost) {
             return bastionhost(Output.of(bastionhost));
+        }
+
+        public Builder beebot(@Nullable Output<String> beebot) {
+            $.beebot = beebot;
+            return this;
+        }
+
+        public Builder beebot(String beebot) {
+            return beebot(Output.of(beebot));
         }
 
         public Builder bpstudio(@Nullable Output<String> bpstudio) {
@@ -1854,6 +1879,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
 
         public Builder nlb(String nlb) {
             return nlb(Output.of(nlb));
+        }
+
+        public Builder oceanbase(@Nullable Output<String> oceanbase) {
+            $.oceanbase = oceanbase;
+            return this;
+        }
+
+        public Builder oceanbase(String oceanbase) {
+            return oceanbase(Output.of(oceanbase));
         }
 
         public Builder ons(@Nullable Output<String> ons) {

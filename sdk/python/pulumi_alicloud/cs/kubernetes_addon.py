@@ -22,7 +22,7 @@ class KubernetesAddonInitArgs:
         The set of arguments for constructing a KubernetesAddon resource.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[str] version: The current version of addon.
-        :param pulumi.Input[str] config: The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource _cs_get_kubernetes_addon_metadata_, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source _cs_get_kubernetes_addons_.
+        :param pulumi.Input[str] config: The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs_get_kubernetes_addon_metadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs_get_kubernetes_addons`.
         :param pulumi.Input[str] name: The name of addon.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -60,7 +60,7 @@ class KubernetesAddonInitArgs:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[str]]:
         """
-        The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource _cs_get_kubernetes_addon_metadata_, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source _cs_get_kubernetes_addons_.
+        The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs_get_kubernetes_addon_metadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs_get_kubernetes_addons`.
         """
         return pulumi.get(self, "config")
 
@@ -95,7 +95,7 @@ class _KubernetesAddonState:
         Input properties used for looking up and filtering KubernetesAddon resources.
         :param pulumi.Input[bool] can_upgrade: Is the addon ready for upgrade.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
-        :param pulumi.Input[str] config: The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource _cs_get_kubernetes_addon_metadata_, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source _cs_get_kubernetes_addons_.
+        :param pulumi.Input[str] config: The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs_get_kubernetes_addon_metadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs_get_kubernetes_addons`.
         :param pulumi.Input[str] name: The name of addon.
         :param pulumi.Input[str] next_version: The version which addon can be upgraded to.
         :param pulumi.Input[bool] required: Is it a mandatory addon to be installed.
@@ -144,7 +144,7 @@ class _KubernetesAddonState:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[str]]:
         """
-        The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource _cs_get_kubernetes_addon_metadata_, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source _cs_get_kubernetes_addons_.
+        The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs_get_kubernetes_addon_metadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs_get_kubernetes_addons`.
         """
         return pulumi.get(self, "config")
 
@@ -308,7 +308,7 @@ class KubernetesAddon(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
-        :param pulumi.Input[str] config: The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource _cs_get_kubernetes_addon_metadata_, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source _cs_get_kubernetes_addons_.
+        :param pulumi.Input[str] config: The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs_get_kubernetes_addon_metadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs_get_kubernetes_addons`.
         :param pulumi.Input[str] name: The name of addon.
         :param pulumi.Input[str] version: The current version of addon.
         """
@@ -477,7 +477,7 @@ class KubernetesAddon(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] can_upgrade: Is the addon ready for upgrade.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
-        :param pulumi.Input[str] config: The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource _cs_get_kubernetes_addon_metadata_, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source _cs_get_kubernetes_addons_.
+        :param pulumi.Input[str] config: The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs_get_kubernetes_addon_metadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs_get_kubernetes_addons`.
         :param pulumi.Input[str] name: The name of addon.
         :param pulumi.Input[str] next_version: The version which addon can be upgraded to.
         :param pulumi.Input[bool] required: Is it a mandatory addon to be installed.
@@ -516,7 +516,7 @@ class KubernetesAddon(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output[Optional[str]]:
         """
-        The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource _cs_get_kubernetes_addon_metadata_, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source _cs_get_kubernetes_addons_.
+        The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs_get_kubernetes_addon_metadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs_get_kubernetes_addons`.
         """
         return pulumi.get(self, "config")
 

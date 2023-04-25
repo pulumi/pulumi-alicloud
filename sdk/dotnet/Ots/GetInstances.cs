@@ -20,6 +20,7 @@ namespace Pulumi.AliCloud.Ots
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
@@ -52,6 +53,7 @@ namespace Pulumi.AliCloud.Ots
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
@@ -107,6 +109,7 @@ namespace Pulumi.AliCloud.Ots
         /// A map of tags assigned to the instance. It must be in the format:
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 
@@ -166,6 +169,7 @@ namespace Pulumi.AliCloud.Ots
         /// A map of tags assigned to the instance. It must be in the format:
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
         /// 

@@ -70,14 +70,14 @@ public class EipAssociation extends com.pulumi.resources.CustomResource {
         return this.instanceId;
     }
     /**
-     * The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
+     * The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface`, `HaVip` and `IpAddress`.
      * 
      */
     @Export(name="instanceType", type=String.class, parameters={})
     private Output<String> instanceType;
 
     /**
-     * @return The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface` and `HaVip`.
+     * @return The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface`, `HaVip` and `IpAddress`.
      * 
      */
     public Output<String> instanceType() {
@@ -96,6 +96,20 @@ public class EipAssociation extends com.pulumi.resources.CustomResource {
      */
     public Output<String> privateIpAddress() {
         return this.privateIpAddress;
+    }
+    /**
+     * The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to IpAddress. In this case, the EIP is associated with an IP address.
+     * 
+     */
+    @Export(name="vpcId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> vpcId;
+
+    /**
+     * @return The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to IpAddress. In this case, the EIP is associated with an IP address.
+     * 
+     */
+    public Output<Optional<String>> vpcId() {
+        return Codegen.optional(this.vpcId);
     }
 
     /**

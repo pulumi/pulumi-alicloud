@@ -10,6 +10,7 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'DbInstanceEndpointNodeItemArgs',
     'DdrInstanceParameterArgs',
     'DdrInstancePgHbaConfArgs',
     'InstanceBabelfishConfigArgs',
@@ -27,6 +28,33 @@ __all__ = [
     'GetCollationTimeZonesCollationTimeZoneArgs',
     'GetInstanceClassInfosInfoArgs',
 ]
+
+@pulumi.input_type
+class DbInstanceEndpointNodeItemArgs:
+    def __init__(__self__, *,
+                 node_id: pulumi.Input[str],
+                 weight: pulumi.Input[int]):
+        pulumi.set(__self__, "node_id", node_id)
+        pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "node_id")
+
+    @node_id.setter
+    def node_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "node_id", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: pulumi.Input[int]):
+        pulumi.set(self, "weight", value)
+
 
 @pulumi.input_type
 class DdrInstanceParameterArgs:

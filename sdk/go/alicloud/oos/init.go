@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Application{}
 	case "alicloud:oos/applicationGroup:ApplicationGroup":
 		r = &ApplicationGroup{}
+	case "alicloud:oos/defaultPatchBaseline:DefaultPatchBaseline":
+		r = &DefaultPatchBaseline{}
 	case "alicloud:oos/execution:Execution":
 		r = &Execution{}
 	case "alicloud:oos/parameter:Parameter":
@@ -60,6 +62,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"oos/applicationGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"oos/defaultPatchBaseline",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

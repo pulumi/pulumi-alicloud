@@ -276,6 +276,7 @@ namespace Pulumi.AliCloud
                 public string? Apigateway { get; set; } = null!;
                 public string? Arms { get; set; } = null!;
                 public string? Bastionhost { get; set; } = null!;
+                public string? Beebot { get; set; } = null!;
                 public string? Bpstudio { get; set; } = null!;
                 public string? BrainIndustrial { get; set; } = null!;
                 public string? Bssopenapi { get; set; } = null!;
@@ -356,6 +357,7 @@ namespace Pulumi.AliCloud
                 public string? Mse { get; set; } = null!;
                 public string? Nas { get; set; } = null!;
                 public string? Nlb { get; set; } = null!;
+                public string? Oceanbase { get; set; } = null!;
                 public string? Ons { get; set; } = null!;
                 public string? Onsproxy { get; set; } = null!;
                 public string? Oos { get; set; } = null!;

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -519,8 +519,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -547,9 +545,9 @@ import (
 //					EventBurst:      pulumi.String("5"),
 //					EvictionHard: pulumi.AnyMap{
 //						"memory.available":            pulumi.Any("1024Mi"),
-//						"nodefs.available":            pulumi.Any(fmt.Sprintf("10%v", "%")),
+//						"nodefs.available":            pulumi.Any("10%"),
 //						"nodefs.inodesFree":           pulumi.Any("1000"),
-//						"imagefs.available":           pulumi.Any(fmt.Sprintf("10%v", "%")),
+//						"imagefs.available":           pulumi.Any("10%"),
 //						"imagefs.inodesFree":          pulumi.Any("1000"),
 //						"allocatableMemory.available": pulumi.Any("2048"),
 //						"pid.available":               pulumi.Any("1000"),

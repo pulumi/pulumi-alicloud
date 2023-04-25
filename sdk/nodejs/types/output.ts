@@ -3585,6 +3585,92 @@ export namespace arms {
         notifyType: string;
     }
 
+    export interface GetIntegrationExportersIntegrationExporter {
+        /**
+         * The ID of the Prometheus instance.
+         */
+        clusterId: string;
+        /**
+         * Integration Exporter Type.
+         */
+        exporterType: string;
+        /**
+         * The ID of the Integration Exporter. It formats as `<cluster_id>:<integration_type>:<instance_id>`.
+         */
+        id: string;
+        /**
+         * The ID of the Integration Exporter instance.
+         */
+        instanceId: number;
+        /**
+         * The name of the instance.
+         */
+        instanceName: string;
+        /**
+         * The type of prometheus integration.
+         */
+        integrationType: string;
+        /**
+         * Exporter configuration parameter json string.
+         */
+        param: string;
+        /**
+         * Monitor the target address.
+         */
+        target: string;
+        /**
+         * The version information.
+         */
+        version: string;
+    }
+
+    export interface GetPrometheisPromethei {
+        /**
+         * The ID of the cluster.
+         */
+        clusterId: string;
+        /**
+         * The name of the cluster.
+         */
+        clusterName: string;
+        /**
+         * The type of the cluster.
+         */
+        clusterType: string;
+        /**
+         * The ID of the Grafana workspace.
+         */
+        grafanaInstanceId: string;
+        /**
+         * The ID of the Prometheus.
+         */
+        id: string;
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * The ID of the security group.
+         */
+        securityGroupId: string;
+        /**
+         * The child instance json string of the globalView instance.
+         */
+        subClustersJson: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The ID of the VPC.
+         */
+        vpcId: string;
+        /**
+         * The ID of the VSwitch.
+         */
+        vswitchId: string;
+    }
+
     export interface GetPrometheusAlertRulesRule {
         /**
          * The annotations of the alert rule.
@@ -6982,6 +7068,28 @@ export namespace cfg {
          * The number of resources with the specified compliance evaluation result.
          */
         count: number;
+    }
+
+}
+
+export namespace chatbot {
+    export interface GetAgentsAgent {
+        /**
+         * The agent id.
+         */
+        agentId: string;
+        /**
+         * Service space signature, which is used when PAAS interface specifies the service space.
+         */
+        agentKey: string;
+        /**
+         * The name of the agent.
+         */
+        agentName: string;
+        /**
+         * ID of the agent.
+         */
+        id: string;
     }
 
 }
@@ -10470,6 +10578,7 @@ export namespace config {
         apigateway?: string;
         arms?: string;
         bastionhost?: string;
+        beebot?: string;
         bpstudio?: string;
         brainIndustrial?: string;
         bssopenapi?: string;
@@ -10550,6 +10659,7 @@ export namespace config {
         mse?: string;
         nas?: string;
         nlb?: string;
+        oceanbase?: string;
         ons?: string;
         onsproxy?: string;
         oos?: string;
@@ -30395,6 +30505,29 @@ export namespace log {
         severity: number;
     }
 
+    export interface AlertTemplateConfiguration {
+        /**
+         * Alert template annotations.
+         */
+        annotations?: {[key: string]: string};
+        /**
+         * Alert template id.
+         */
+        id: string;
+        /**
+         * Alert template language including `cn`, `en`.
+         */
+        lang?: string;
+        /**
+         * Alert template tokens.
+         */
+        tokens?: {[key: string]: string};
+        /**
+         * including FixedRate,Hourly,Daily,Weekly,Cron.
+         */
+        type: string;
+    }
+
     export interface EtlEtlSink {
         /**
          * Delivery target logstore access key id.
@@ -31711,6 +31844,17 @@ export namespace mongodb {
          * A list of zone ids in which the multi zone.
          */
         multiZoneIds: string[];
+    }
+
+    export interface InstanceParameter {
+        /**
+         * The name of DB instance. It a string of 2 to 256 characters.
+         */
+        name: string;
+        /**
+         * The value of the parameter.
+         */
+        value: string;
     }
 
     export interface InstanceReplicaSet {
@@ -33093,6 +33237,68 @@ export namespace nlb {
 
 }
 
+export namespace ocean {
+    export interface GetBaseInstancesInstance {
+        /**
+         * The product code of the OceanBase cluster.
+         */
+        commodityCode: string;
+        /**
+         * The number of CPU cores of the cluster.
+         */
+        cpu: number;
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * The size of the storage space, in GB.
+         */
+        diskSize: string;
+        /**
+         * The ID of the Instance.
+         */
+        id: string;
+        /**
+         * Cluster specification information.
+         */
+        instanceClass: string;
+        /**
+         * OceanBase cluster ID.
+         */
+        instanceId: string;
+        /**
+         * OceanBase cluster name.
+         */
+        instanceName: string;
+        /**
+         * The number of nodes in the cluster.
+         */
+        nodeNum: string;
+        /**
+         * The payment method of the instance.
+         */
+        paymentType: string;
+        /**
+         * The ID of the enterprise resource group to which the instance resides.
+         */
+        resourceGroupId: string;
+        /**
+         * Series of OceanBase clusters.
+         */
+        series: string;
+        /**
+         * The status of the resource.
+         */
+        status: string;
+        /**
+         * Information about the zone where the cluster is deployed.
+         */
+        zones: string[];
+    }
+
+}
+
 export namespace oos {
     export interface GetApplicationGroupsGroup {
         /**
@@ -33832,7 +34038,7 @@ export namespace oss {
          */
         days: number;
         /**
-         * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
+         * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
          */
         storageClass: string;
     }
@@ -33847,7 +34053,7 @@ export namespace oss {
          */
         days?: number;
         /**
-         * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA" and "Archive". Defaults to "Standard".
+         * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
          */
         storageClass?: string;
     }
@@ -34015,7 +34221,7 @@ export namespace oss {
          */
         sseKmsKeyId: string;
         /**
-         * Object storage type. Possible values: `Standard`, `IA` and `Archive`.
+         * Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
          */
         storageClass: string;
     }
@@ -34075,7 +34281,7 @@ export namespace oss {
          */
         serverSideEncryptionRule: outputs.oss.GetBucketsBucketServerSideEncryptionRule;
         /**
-         * Object storage type. Possible values: `Standard`, `IA` and `Archive`.
+         * Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
          */
         storageClass: string;
         /**
@@ -36219,6 +36425,11 @@ export namespace rdc {
 }
 
 export namespace rds {
+    export interface DbInstanceEndpointNodeItem {
+        nodeId: string;
+        weight: number;
+    }
+
     export interface DdrInstanceParameter {
         name: string;
         value: string;
@@ -36519,7 +36730,7 @@ export namespace rds {
          */
         category: string;
         /**
-         * Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "PPAS", "MariaDB". If not set, it will match all of engines.
+         * Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "MariaDB". If not set, it will match all of engines.
          */
         engine: string;
         /**
@@ -36628,7 +36839,7 @@ export namespace rds {
          */
         encryptionKeyStatus: string;
         /**
-         * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB` and `PPAS`. If no value is specified, all types are returned.
+         * Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`. If no value is specified, all types are returned.
          */
         engine: string;
         /**
