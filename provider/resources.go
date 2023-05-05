@@ -15,6 +15,7 @@
 package alicloud
 
 import (
+	"bytes"
 	"fmt"
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
@@ -321,6 +322,17 @@ func resource(mod string, res string) tokens.Type {
 func Provider() tfbridge.ProviderInfo {
 	p := shimv1.NewProvider(alicloud.Provider().(*schema.Provider))
 
+	replaceAllWith := func(from, to string) tfbridge.ReplaceRule {
+		bFrom := []byte(from)
+		bTo := []byte(to)
+		return tfbridge.ReplaceRule{
+			Path: "*",
+			Replace: func(path string, contents []byte) ([]byte, error) {
+				return bytes.ReplaceAll(contents, bFrom, bTo), nil
+			},
+		}
+	}
+
 	prov := tfbridge.ProviderInfo{
 		P:           p,
 		Name:        "alicloud",
@@ -330,6 +342,26 @@ func Provider() tfbridge.ProviderInfo {
 		License:     "Apache-2.0",
 		GitHubOrg:   "aliyun",
 		Repository:  "https://github.com/pulumi/pulumi-alicloud",
+		DocRules: &tfbridge.DocRuleInfo{
+			ReplaceRules: []tfbridge.ReplaceRule{
+				replaceAllWith(
+					"The resource ID in terraform of ",
+					"The resource ID in Pulumi of ",
+				),
+				replaceAllWith(
+					"Use Terraform to",
+					"Use Pulumi to",
+				),
+				replaceAllWith(
+					"but Terraform cannot destroy it",
+					"but Pulumi cannot destroy it",
+				),
+				replaceAllWith(
+					"**NOTE:** Terraform will",
+					"**NOTE:** Pulumi will",
+				),
+			},
+		},
 		Config: map[string]*tfbridge.SchemaInfo{
 			"ecs_role_name": {
 				Default: &tfbridge.DefaultInfo{
