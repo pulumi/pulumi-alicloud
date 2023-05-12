@@ -628,6 +628,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_config_compliance_pack":           {Tok: resource(cfgMod, "CompliancePack")},
 			"alicloud_config_delivery":                  {Tok: resource(cfgMod, "Delivery")},
 			"alicloud_config_aggregate_delivery":        {Tok: resource(cfgMod, "AggregateDelivery")},
+			"alicloud_config_remediation":               {Tok: resource(cfgMod, "Remediation")},
 
 			// CR
 			"alicloud_cr_repo":                {Tok: resource(crMod, "Repo")},
