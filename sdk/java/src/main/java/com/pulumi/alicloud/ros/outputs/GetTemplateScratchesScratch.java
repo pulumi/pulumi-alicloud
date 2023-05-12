@@ -19,64 +19,91 @@ public final class GetTemplateScratchesScratch {
      * @return The creation time of the resource.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The description of the Template Scratch.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the Template Scratch.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The Logical ID generation strategy of the Template Scratch.
      * 
      */
-    private String logicalIdStrategy;
+    private final String logicalIdStrategy;
     /**
      * @return Priority parameter.
      * 
      */
-    private List<GetTemplateScratchesScratchPreferenceParameter> preferenceParameters;
+    private final List<GetTemplateScratchesScratchPreferenceParameter> preferenceParameters;
     /**
      * @return Source resource grouping.
      * 
      */
-    private List<GetTemplateScratchesScratchSourceResourceGroup> sourceResourceGroups;
+    private final List<GetTemplateScratchesScratchSourceResourceGroup> sourceResourceGroups;
     /**
      * @return Source resource.
      * 
      */
-    private List<GetTemplateScratchesScratchSourceResource> sourceResources;
+    private final List<GetTemplateScratchesScratchSourceResource> sourceResources;
     /**
      * @return The Source label list.
      * 
      */
-    private List<GetTemplateScratchesScratchSourceTag> sourceTags;
+    private final List<GetTemplateScratchesScratchSourceTag> sourceTags;
     /**
      * @return A list of resource stacks associated with the resource scene.
      * 
      */
-    private List<GetTemplateScratchesScratchStack> stacks;
+    private final List<GetTemplateScratchesScratchStack> stacks;
     /**
      * @return The status of the resource.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The ID of the Template Scratch.
      * 
      */
-    private String templateScratchId;
+    private final String templateScratchId;
     /**
      * @return The type of the Template Scratch.
      * 
      */
-    private String templateScratchType;
+    private final String templateScratchType;
 
-    private GetTemplateScratchesScratch() {}
+    @CustomType.Constructor
+    private GetTemplateScratchesScratch(
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("logicalIdStrategy") String logicalIdStrategy,
+        @CustomType.Parameter("preferenceParameters") List<GetTemplateScratchesScratchPreferenceParameter> preferenceParameters,
+        @CustomType.Parameter("sourceResourceGroups") List<GetTemplateScratchesScratchSourceResourceGroup> sourceResourceGroups,
+        @CustomType.Parameter("sourceResources") List<GetTemplateScratchesScratchSourceResource> sourceResources,
+        @CustomType.Parameter("sourceTags") List<GetTemplateScratchesScratchSourceTag> sourceTags,
+        @CustomType.Parameter("stacks") List<GetTemplateScratchesScratchStack> stacks,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("templateScratchId") String templateScratchId,
+        @CustomType.Parameter("templateScratchType") String templateScratchType) {
+        this.createTime = createTime;
+        this.description = description;
+        this.id = id;
+        this.logicalIdStrategy = logicalIdStrategy;
+        this.preferenceParameters = preferenceParameters;
+        this.sourceResourceGroups = sourceResourceGroups;
+        this.sourceResources = sourceResources;
+        this.sourceTags = sourceTags;
+        this.stacks = stacks;
+        this.status = status;
+        this.templateScratchId = templateScratchId;
+        this.templateScratchType = templateScratchType;
+    }
+
     /**
      * @return The creation time of the resource.
      * 
@@ -169,7 +196,7 @@ public final class GetTemplateScratchesScratch {
     public static Builder builder(GetTemplateScratchesScratch defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String createTime;
         private String description;
@@ -183,7 +210,11 @@ public final class GetTemplateScratchesScratch {
         private String status;
         private String templateScratchId;
         private String templateScratchType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTemplateScratchesScratch defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -200,27 +231,22 @@ public final class GetTemplateScratchesScratch {
     	      this.templateScratchType = defaults.templateScratchType;
         }
 
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder logicalIdStrategy(String logicalIdStrategy) {
             this.logicalIdStrategy = Objects.requireNonNull(logicalIdStrategy);
             return this;
         }
-        @CustomType.Setter
         public Builder preferenceParameters(List<GetTemplateScratchesScratchPreferenceParameter> preferenceParameters) {
             this.preferenceParameters = Objects.requireNonNull(preferenceParameters);
             return this;
@@ -228,7 +254,6 @@ public final class GetTemplateScratchesScratch {
         public Builder preferenceParameters(GetTemplateScratchesScratchPreferenceParameter... preferenceParameters) {
             return preferenceParameters(List.of(preferenceParameters));
         }
-        @CustomType.Setter
         public Builder sourceResourceGroups(List<GetTemplateScratchesScratchSourceResourceGroup> sourceResourceGroups) {
             this.sourceResourceGroups = Objects.requireNonNull(sourceResourceGroups);
             return this;
@@ -236,7 +261,6 @@ public final class GetTemplateScratchesScratch {
         public Builder sourceResourceGroups(GetTemplateScratchesScratchSourceResourceGroup... sourceResourceGroups) {
             return sourceResourceGroups(List.of(sourceResourceGroups));
         }
-        @CustomType.Setter
         public Builder sourceResources(List<GetTemplateScratchesScratchSourceResource> sourceResources) {
             this.sourceResources = Objects.requireNonNull(sourceResources);
             return this;
@@ -244,7 +268,6 @@ public final class GetTemplateScratchesScratch {
         public Builder sourceResources(GetTemplateScratchesScratchSourceResource... sourceResources) {
             return sourceResources(List.of(sourceResources));
         }
-        @CustomType.Setter
         public Builder sourceTags(List<GetTemplateScratchesScratchSourceTag> sourceTags) {
             this.sourceTags = Objects.requireNonNull(sourceTags);
             return this;
@@ -252,7 +275,6 @@ public final class GetTemplateScratchesScratch {
         public Builder sourceTags(GetTemplateScratchesScratchSourceTag... sourceTags) {
             return sourceTags(List.of(sourceTags));
         }
-        @CustomType.Setter
         public Builder stacks(List<GetTemplateScratchesScratchStack> stacks) {
             this.stacks = Objects.requireNonNull(stacks);
             return this;
@@ -260,36 +282,19 @@ public final class GetTemplateScratchesScratch {
         public Builder stacks(GetTemplateScratchesScratchStack... stacks) {
             return stacks(List.of(stacks));
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder templateScratchId(String templateScratchId) {
             this.templateScratchId = Objects.requireNonNull(templateScratchId);
             return this;
         }
-        @CustomType.Setter
         public Builder templateScratchType(String templateScratchType) {
             this.templateScratchType = Objects.requireNonNull(templateScratchType);
             return this;
-        }
-        public GetTemplateScratchesScratch build() {
-            final var o = new GetTemplateScratchesScratch();
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.logicalIdStrategy = logicalIdStrategy;
-            o.preferenceParameters = preferenceParameters;
-            o.sourceResourceGroups = sourceResourceGroups;
-            o.sourceResources = sourceResources;
-            o.sourceTags = sourceTags;
-            o.stacks = stacks;
-            o.status = status;
-            o.templateScratchId = templateScratchId;
-            o.templateScratchType = templateScratchType;
-            return o;
+        }        public GetTemplateScratchesScratch build() {
+            return new GetTemplateScratchesScratch(createTime, description, id, logicalIdStrategy, preferenceParameters, sourceResourceGroups, sourceResources, sourceTags, stacks, status, templateScratchId, templateScratchType);
         }
     }
 }

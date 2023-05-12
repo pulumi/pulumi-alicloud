@@ -54,8 +54,9 @@ func GetBackupPolicies(ctx *pulumi.Context, args *GetBackupPoliciesArgs, opts ..
 // A collection of arguments for invoking getBackupPolicies.
 type GetBackupPoliciesArgs struct {
 	// The db cluster id.
-	DbClusterId string  `pulumi:"dbClusterId"`
-	OutputFile  *string `pulumi:"outputFile"`
+	DbClusterId string `pulumi:"dbClusterId"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getBackupPolicies.
@@ -83,8 +84,9 @@ func GetBackupPoliciesOutput(ctx *pulumi.Context, args GetBackupPoliciesOutputAr
 // A collection of arguments for invoking getBackupPolicies.
 type GetBackupPoliciesOutputArgs struct {
 	// The db cluster id.
-	DbClusterId pulumi.StringInput    `pulumi:"dbClusterId"`
-	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
+	DbClusterId pulumi.StringInput `pulumi:"dbClusterId"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetBackupPoliciesOutputArgs) ElementType() reflect.Type {

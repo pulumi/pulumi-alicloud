@@ -11,6 +11,131 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a ESS scaling group resource which is a collection of ECS instances with the same application scenarios.
+//
+// It defines the maximum and minimum numbers of ECS instances in the group, and their associated Server Load Balancer instances, RDS instances, and other attributes.
+//
+// > **NOTE:** You can launch an ESS scaling group for a VPC network via specifying parameter `vswitchIds`.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "essscalinggroupconfig"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//				CpuCoreCount:     pulumi.IntRef(2),
+//				MemorySize:       pulumi.Float64Ref(4),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
+//				MostRecent: pulumi.BoolRef(true),
+//				Owners:     pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewSecurityGroupRule(ctx, "defaultSecurityGroupRule", &ecs.SecurityGroupRuleArgs{
+//				Type:            pulumi.String("ingress"),
+//				IpProtocol:      pulumi.String("tcp"),
+//				NicType:         pulumi.String("intranet"),
+//				Policy:          pulumi.String("accept"),
+//				PortRange:       pulumi.String("22/22"),
+//				Priority:        pulumi.Int(1),
+//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				CidrIp:          pulumi.String("172.16.0.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			default2, err := vpc.NewSwitch(ctx, "default2", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.1.0/24"),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(fmt.Sprintf("%v-bar", name)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ess.NewScalingGroup(ctx, "defaultScalingGroup", &ess.ScalingGroupArgs{
+//				MinSize:          pulumi.Int(1),
+//				MaxSize:          pulumi.Int(1),
+//				ScalingGroupName: pulumi.String(name),
+//				DefaultCooldown:  pulumi.Int(20),
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//					default2.ID(),
+//				},
+//				RemovalPolicies: pulumi.StringArray{
+//					pulumi.String("OldestInstance"),
+//					pulumi.String("NewestInstance"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Module Support
+//
+// You can use to the existing autoscaling module
+// to create a scaling group, configuration and lifecycle hook one-click.
+//
 // ## Import
 //
 // ESS scaling group can be imported using the id, e.g.
@@ -48,9 +173,11 @@ type ScalingGroup struct {
 	// - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
 	// - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
 	LoadbalancerIds pulumi.StringArrayOutput `pulumi:"loadbalancerIds"`
-	// Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+	// Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+	// **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
 	MaxSize pulumi.IntOutput `pulumi:"maxSize"`
-	// Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+	// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+	// **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
 	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
 	MultiAzPolicy pulumi.StringPtrOutput `pulumi:"multiAzPolicy"`
@@ -59,6 +186,12 @@ type ScalingGroup struct {
 	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity pulumi.IntOutput `pulumi:"onDemandPercentageAboveBaseCapacity"`
 	// Set or unset instances within group into protected status.
+	//
+	// > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+	//
+	// > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+	//
+	// > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
 	ProtectedInstances pulumi.StringArrayOutput `pulumi:"protectedInstances"`
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
 	// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
@@ -144,9 +277,11 @@ type scalingGroupState struct {
 	// - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
 	// - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
 	LoadbalancerIds []string `pulumi:"loadbalancerIds"`
-	// Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+	// Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+	// **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
 	MaxSize *int `pulumi:"maxSize"`
-	// Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+	// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+	// **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
 	MinSize *int `pulumi:"minSize"`
 	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
 	MultiAzPolicy *string `pulumi:"multiAzPolicy"`
@@ -155,6 +290,12 @@ type scalingGroupState struct {
 	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity *int `pulumi:"onDemandPercentageAboveBaseCapacity"`
 	// Set or unset instances within group into protected status.
+	//
+	// > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+	//
+	// > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+	//
+	// > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
 	ProtectedInstances []string `pulumi:"protectedInstances"`
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
 	// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
@@ -206,9 +347,11 @@ type ScalingGroupState struct {
 	// - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
 	// - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
 	LoadbalancerIds pulumi.StringArrayInput
-	// Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+	// Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+	// **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
 	MaxSize pulumi.IntPtrInput
-	// Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+	// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+	// **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
 	MinSize pulumi.IntPtrInput
 	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
 	MultiAzPolicy pulumi.StringPtrInput
@@ -217,6 +360,12 @@ type ScalingGroupState struct {
 	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity pulumi.IntPtrInput
 	// Set or unset instances within group into protected status.
+	//
+	// > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+	//
+	// > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+	//
+	// > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
 	ProtectedInstances pulumi.StringArrayInput
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
 	// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
@@ -272,9 +421,11 @@ type scalingGroupArgs struct {
 	// - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
 	// - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
 	LoadbalancerIds []string `pulumi:"loadbalancerIds"`
-	// Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+	// Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+	// **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
 	MaxSize int `pulumi:"maxSize"`
-	// Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+	// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+	// **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
 	MinSize int `pulumi:"minSize"`
 	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
 	MultiAzPolicy *string `pulumi:"multiAzPolicy"`
@@ -283,6 +434,12 @@ type scalingGroupArgs struct {
 	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity *int `pulumi:"onDemandPercentageAboveBaseCapacity"`
 	// Set or unset instances within group into protected status.
+	//
+	// > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+	//
+	// > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+	//
+	// > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
 	ProtectedInstances []string `pulumi:"protectedInstances"`
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
 	// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
@@ -335,9 +492,11 @@ type ScalingGroupArgs struct {
 	// - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
 	// - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
 	LoadbalancerIds pulumi.StringArrayInput
-	// Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+	// Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+	// **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
 	MaxSize pulumi.IntInput
-	// Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+	// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+	// **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
 	MinSize pulumi.IntInput
 	// Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
 	MultiAzPolicy pulumi.StringPtrInput
@@ -346,6 +505,12 @@ type ScalingGroupArgs struct {
 	// Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
 	OnDemandPercentageAboveBaseCapacity pulumi.IntPtrInput
 	// Set or unset instances within group into protected status.
+	//
+	// > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+	//
+	// > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+	//
+	// > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
 	ProtectedInstances pulumi.StringArrayInput
 	// RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
 	// - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
@@ -510,12 +675,14 @@ func (o ScalingGroupOutput) LoadbalancerIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.StringArrayOutput { return v.LoadbalancerIds }).(pulumi.StringArrayOutput)
 }
 
-// Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+// Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+// **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
 func (o ScalingGroupOutput) MaxSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.IntOutput { return v.MaxSize }).(pulumi.IntOutput)
 }
 
-// Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+// **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
 func (o ScalingGroupOutput) MinSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.IntOutput { return v.MinSize }).(pulumi.IntOutput)
 }
@@ -536,6 +703,12 @@ func (o ScalingGroupOutput) OnDemandPercentageAboveBaseCapacity() pulumi.IntOutp
 }
 
 // Set or unset instances within group into protected status.
+//
+// > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+//
+// > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+//
+// > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
 func (o ScalingGroupOutput) ProtectedInstances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.StringArrayOutput { return v.ProtectedInstances }).(pulumi.StringArrayOutput)
 }

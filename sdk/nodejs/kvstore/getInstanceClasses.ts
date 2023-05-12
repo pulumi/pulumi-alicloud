@@ -80,6 +80,9 @@ export interface GetInstanceClassesArgs {
      * The KVStore instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
      */
     nodeType?: string;
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     */
     outputFile?: string;
     /**
      * It has been deprecated from 1.68.0.
@@ -215,6 +218,9 @@ export interface GetInstanceClassesOutputArgs {
      * The KVStore instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
      */
     nodeType?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * It has been deprecated from 1.68.0.

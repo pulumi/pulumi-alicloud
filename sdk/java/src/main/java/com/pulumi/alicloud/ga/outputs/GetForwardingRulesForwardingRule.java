@@ -17,28 +17,28 @@ public final class GetForwardingRulesForwardingRule {
      * @return Forwarding Policy ID.
      * 
      */
-    private String forwardingRuleId;
+    private final String forwardingRuleId;
     /**
      * @return Forwarding policy name. The length of the name is 2-128 English or Chinese characters.
      * 
      */
-    private String forwardingRuleName;
+    private final String forwardingRuleName;
     /**
      * @return Forwarding Policy Status.
      * 
      */
-    private String forwardingRuleStatus;
-    private String id;
+    private final String forwardingRuleStatus;
+    private final String id;
     /**
      * @return The ID of the listener.
      * 
      */
-    private String listenerId;
+    private final String listenerId;
     /**
      * @return Forwarding policy priority.
      * 
      */
-    private Integer priority;
+    private final Integer priority;
     /**
      * @return The IP protocol used by the GA instance.
      * `order` - Forwarding priority.
@@ -48,7 +48,7 @@ public final class GetForwardingRulesForwardingRule {
      * `endpoint_group_id` - Terminal node group ID.
      * 
      */
-    private List<GetForwardingRulesForwardingRuleRuleAction> ruleActions;
+    private final List<GetForwardingRulesForwardingRuleRuleAction> ruleActions;
     /**
      * @return Forward action.
      * `rule_condition_type` - Forwarding condition type.
@@ -58,9 +58,28 @@ public final class GetForwardingRulesForwardingRule {
      * `values` - The domain name is 3-128 characters long.
      * 
      */
-    private List<GetForwardingRulesForwardingRuleRuleCondition> ruleConditions;
+    private final List<GetForwardingRulesForwardingRuleRuleCondition> ruleConditions;
 
-    private GetForwardingRulesForwardingRule() {}
+    @CustomType.Constructor
+    private GetForwardingRulesForwardingRule(
+        @CustomType.Parameter("forwardingRuleId") String forwardingRuleId,
+        @CustomType.Parameter("forwardingRuleName") String forwardingRuleName,
+        @CustomType.Parameter("forwardingRuleStatus") String forwardingRuleStatus,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("listenerId") String listenerId,
+        @CustomType.Parameter("priority") Integer priority,
+        @CustomType.Parameter("ruleActions") List<GetForwardingRulesForwardingRuleRuleAction> ruleActions,
+        @CustomType.Parameter("ruleConditions") List<GetForwardingRulesForwardingRuleRuleCondition> ruleConditions) {
+        this.forwardingRuleId = forwardingRuleId;
+        this.forwardingRuleName = forwardingRuleName;
+        this.forwardingRuleStatus = forwardingRuleStatus;
+        this.id = id;
+        this.listenerId = listenerId;
+        this.priority = priority;
+        this.ruleActions = ruleActions;
+        this.ruleConditions = ruleConditions;
+    }
+
     /**
      * @return Forwarding Policy ID.
      * 
@@ -131,7 +150,7 @@ public final class GetForwardingRulesForwardingRule {
     public static Builder builder(GetForwardingRulesForwardingRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String forwardingRuleId;
         private String forwardingRuleName;
@@ -141,7 +160,11 @@ public final class GetForwardingRulesForwardingRule {
         private Integer priority;
         private List<GetForwardingRulesForwardingRuleRuleAction> ruleActions;
         private List<GetForwardingRulesForwardingRuleRuleCondition> ruleConditions;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetForwardingRulesForwardingRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.forwardingRuleId = defaults.forwardingRuleId;
@@ -154,37 +177,30 @@ public final class GetForwardingRulesForwardingRule {
     	      this.ruleConditions = defaults.ruleConditions;
         }
 
-        @CustomType.Setter
         public Builder forwardingRuleId(String forwardingRuleId) {
             this.forwardingRuleId = Objects.requireNonNull(forwardingRuleId);
             return this;
         }
-        @CustomType.Setter
         public Builder forwardingRuleName(String forwardingRuleName) {
             this.forwardingRuleName = Objects.requireNonNull(forwardingRuleName);
             return this;
         }
-        @CustomType.Setter
         public Builder forwardingRuleStatus(String forwardingRuleStatus) {
             this.forwardingRuleStatus = Objects.requireNonNull(forwardingRuleStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder listenerId(String listenerId) {
             this.listenerId = Objects.requireNonNull(listenerId);
             return this;
         }
-        @CustomType.Setter
         public Builder priority(Integer priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
-        @CustomType.Setter
         public Builder ruleActions(List<GetForwardingRulesForwardingRuleRuleAction> ruleActions) {
             this.ruleActions = Objects.requireNonNull(ruleActions);
             return this;
@@ -192,25 +208,14 @@ public final class GetForwardingRulesForwardingRule {
         public Builder ruleActions(GetForwardingRulesForwardingRuleRuleAction... ruleActions) {
             return ruleActions(List.of(ruleActions));
         }
-        @CustomType.Setter
         public Builder ruleConditions(List<GetForwardingRulesForwardingRuleRuleCondition> ruleConditions) {
             this.ruleConditions = Objects.requireNonNull(ruleConditions);
             return this;
         }
         public Builder ruleConditions(GetForwardingRulesForwardingRuleRuleCondition... ruleConditions) {
             return ruleConditions(List.of(ruleConditions));
-        }
-        public GetForwardingRulesForwardingRule build() {
-            final var o = new GetForwardingRulesForwardingRule();
-            o.forwardingRuleId = forwardingRuleId;
-            o.forwardingRuleName = forwardingRuleName;
-            o.forwardingRuleStatus = forwardingRuleStatus;
-            o.id = id;
-            o.listenerId = listenerId;
-            o.priority = priority;
-            o.ruleActions = ruleActions;
-            o.ruleConditions = ruleConditions;
-            return o;
+        }        public GetForwardingRulesForwardingRule build() {
+            return new GetForwardingRulesForwardingRule(forwardingRuleId, forwardingRuleName, forwardingRuleStatus, id, listenerId, priority, ruleActions, ruleConditions);
         }
     }
 }

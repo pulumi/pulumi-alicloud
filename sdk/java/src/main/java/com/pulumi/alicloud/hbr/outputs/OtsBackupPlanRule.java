@@ -16,29 +16,42 @@ public final class OtsBackupPlanRule {
      * @return Backup type. Valid values: `COMPLETE`.
      * 
      */
-    private @Nullable String backupType;
+    private final @Nullable String backupType;
     /**
      * @return Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
      * 
      */
-    private @Nullable Boolean disabled;
+    private final @Nullable Boolean disabled;
     /**
      * @return Backup retention days, the minimum is 1.
      * 
      */
-    private @Nullable String retention;
+    private final @Nullable String retention;
     /**
      * @return The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
      * 
      */
-    private @Nullable String ruleName;
+    private final @Nullable String ruleName;
     /**
      * @return Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      * 
      */
-    private @Nullable String schedule;
+    private final @Nullable String schedule;
 
-    private OtsBackupPlanRule() {}
+    @CustomType.Constructor
+    private OtsBackupPlanRule(
+        @CustomType.Parameter("backupType") @Nullable String backupType,
+        @CustomType.Parameter("disabled") @Nullable Boolean disabled,
+        @CustomType.Parameter("retention") @Nullable String retention,
+        @CustomType.Parameter("ruleName") @Nullable String ruleName,
+        @CustomType.Parameter("schedule") @Nullable String schedule) {
+        this.backupType = backupType;
+        this.disabled = disabled;
+        this.retention = retention;
+        this.ruleName = ruleName;
+        this.schedule = schedule;
+    }
+
     /**
      * @return Backup type. Valid values: `COMPLETE`.
      * 
@@ -82,14 +95,18 @@ public final class OtsBackupPlanRule {
     public static Builder builder(OtsBackupPlanRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String backupType;
         private @Nullable Boolean disabled;
         private @Nullable String retention;
         private @Nullable String ruleName;
         private @Nullable String schedule;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(OtsBackupPlanRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupType = defaults.backupType;
@@ -99,39 +116,27 @@ public final class OtsBackupPlanRule {
     	      this.schedule = defaults.schedule;
         }
 
-        @CustomType.Setter
         public Builder backupType(@Nullable String backupType) {
             this.backupType = backupType;
             return this;
         }
-        @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
             this.disabled = disabled;
             return this;
         }
-        @CustomType.Setter
         public Builder retention(@Nullable String retention) {
             this.retention = retention;
             return this;
         }
-        @CustomType.Setter
         public Builder ruleName(@Nullable String ruleName) {
             this.ruleName = ruleName;
             return this;
         }
-        @CustomType.Setter
         public Builder schedule(@Nullable String schedule) {
             this.schedule = schedule;
             return this;
-        }
-        public OtsBackupPlanRule build() {
-            final var o = new OtsBackupPlanRule();
-            o.backupType = backupType;
-            o.disabled = disabled;
-            o.retention = retention;
-            o.ruleName = ruleName;
-            o.schedule = schedule;
-            return o;
+        }        public OtsBackupPlanRule build() {
+            return new OtsBackupPlanRule(backupType, disabled, retention, ruleName, schedule);
         }
     }
 }

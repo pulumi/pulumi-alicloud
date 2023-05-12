@@ -13,19 +13,36 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVirtualHostsResult {
-    private List<GetVirtualHostsHost> hosts;
+    private final List<GetVirtualHostsHost> hosts;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private String instanceId;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final String id;
+    private final List<String> ids;
+    private final String instanceId;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
 
-    private GetVirtualHostsResult() {}
+    @CustomType.Constructor
+    private GetVirtualHostsResult(
+        @CustomType.Parameter("hosts") List<GetVirtualHostsHost> hosts,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.hosts = hosts;
+        this.id = id;
+        this.ids = ids;
+        this.instanceId = instanceId;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+    }
+
     public List<GetVirtualHostsHost> hosts() {
         return this.hosts;
     }
@@ -59,7 +76,7 @@ public final class GetVirtualHostsResult {
     public static Builder builder(GetVirtualHostsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetVirtualHostsHost> hosts;
         private String id;
@@ -68,7 +85,11 @@ public final class GetVirtualHostsResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVirtualHostsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hosts = defaults.hosts;
@@ -80,7 +101,6 @@ public final class GetVirtualHostsResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder hosts(List<GetVirtualHostsHost> hosts) {
             this.hosts = Objects.requireNonNull(hosts);
             return this;
@@ -88,12 +108,10 @@ public final class GetVirtualHostsResult {
         public Builder hosts(GetVirtualHostsHost... hosts) {
             return hosts(List.of(hosts));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -101,17 +119,14 @@ public final class GetVirtualHostsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -119,21 +134,11 @@ public final class GetVirtualHostsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetVirtualHostsResult build() {
-            final var o = new GetVirtualHostsResult();
-            o.hosts = hosts;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetVirtualHostsResult build() {
+            return new GetVirtualHostsResult(hosts, id, ids, instanceId, nameRegex, names, outputFile);
         }
     }
 }

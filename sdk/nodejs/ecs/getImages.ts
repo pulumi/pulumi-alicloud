@@ -107,6 +107,11 @@ export interface GetImagesArgs {
      * The operating system type of the image. Valid values: `windows` and `linux`.
      */
     osType?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     *
+     * > **NOTE:** At least one of the `nameRegex`, `mostRecent` and `owners` must be set.
+     */
     outputFile?: string;
     /**
      * Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
@@ -257,6 +262,11 @@ export interface GetImagesOutputArgs {
      * The operating system type of the image. Valid values: `windows` and `linux`.
      */
     osType?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     *
+     * > **NOTE:** At least one of the `nameRegex`, `mostRecent` and `owners` must be set.
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.

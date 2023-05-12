@@ -15,14 +15,21 @@ public final class GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList {
      * @return The list of route entries of the local VPC.
      * 
      */
-    private List<GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList> localRouteEntryLists;
+    private final List<GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList> localRouteEntryLists;
     /**
      * @return The ID of the route table of the local VPC.
      * 
      */
-    private String localRouteTableId;
+    private final String localRouteTableId;
 
-    private GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList() {}
+    @CustomType.Constructor
+    private GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList(
+        @CustomType.Parameter("localRouteEntryLists") List<GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList> localRouteEntryLists,
+        @CustomType.Parameter("localRouteTableId") String localRouteTableId) {
+        this.localRouteEntryLists = localRouteEntryLists;
+        this.localRouteTableId = localRouteTableId;
+    }
+
     /**
      * @return The list of route entries of the local VPC.
      * 
@@ -45,18 +52,21 @@ public final class GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList {
     public static Builder builder(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList> localRouteEntryLists;
         private String localRouteTableId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.localRouteEntryLists = defaults.localRouteEntryLists;
     	      this.localRouteTableId = defaults.localRouteTableId;
         }
 
-        @CustomType.Setter
         public Builder localRouteEntryLists(List<GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList> localRouteEntryLists) {
             this.localRouteEntryLists = Objects.requireNonNull(localRouteEntryLists);
             return this;
@@ -64,16 +74,11 @@ public final class GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList {
         public Builder localRouteEntryLists(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList... localRouteEntryLists) {
             return localRouteEntryLists(List.of(localRouteEntryLists));
         }
-        @CustomType.Setter
         public Builder localRouteTableId(String localRouteTableId) {
             this.localRouteTableId = Objects.requireNonNull(localRouteTableId);
             return this;
-        }
-        public GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList build() {
-            final var o = new GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList();
-            o.localRouteEntryLists = localRouteEntryLists;
-            o.localRouteTableId = localRouteTableId;
-            return o;
+        }        public GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList build() {
+            return new GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList(localRouteEntryLists, localRouteTableId);
         }
     }
 }

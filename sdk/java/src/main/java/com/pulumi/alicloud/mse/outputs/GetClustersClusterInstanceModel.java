@@ -13,16 +13,35 @@ public final class GetClustersClusterInstanceModel {
      * @return The health status of MSE Cluster.
      * 
      */
-    private String healthStatus;
-    private String instanceType;
-    private String internetIp;
-    private String ip;
-    private String podName;
-    private String role;
-    private String singleTunnelVip;
-    private String vip;
+    private final String healthStatus;
+    private final String instanceType;
+    private final String internetIp;
+    private final String ip;
+    private final String podName;
+    private final String role;
+    private final String singleTunnelVip;
+    private final String vip;
 
-    private GetClustersClusterInstanceModel() {}
+    @CustomType.Constructor
+    private GetClustersClusterInstanceModel(
+        @CustomType.Parameter("healthStatus") String healthStatus,
+        @CustomType.Parameter("instanceType") String instanceType,
+        @CustomType.Parameter("internetIp") String internetIp,
+        @CustomType.Parameter("ip") String ip,
+        @CustomType.Parameter("podName") String podName,
+        @CustomType.Parameter("role") String role,
+        @CustomType.Parameter("singleTunnelVip") String singleTunnelVip,
+        @CustomType.Parameter("vip") String vip) {
+        this.healthStatus = healthStatus;
+        this.instanceType = instanceType;
+        this.internetIp = internetIp;
+        this.ip = ip;
+        this.podName = podName;
+        this.role = role;
+        this.singleTunnelVip = singleTunnelVip;
+        this.vip = vip;
+    }
+
     /**
      * @return The health status of MSE Cluster.
      * 
@@ -59,7 +78,7 @@ public final class GetClustersClusterInstanceModel {
     public static Builder builder(GetClustersClusterInstanceModel defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String healthStatus;
         private String instanceType;
@@ -69,7 +88,11 @@ public final class GetClustersClusterInstanceModel {
         private String role;
         private String singleTunnelVip;
         private String vip;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetClustersClusterInstanceModel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.healthStatus = defaults.healthStatus;
@@ -82,57 +105,39 @@ public final class GetClustersClusterInstanceModel {
     	      this.vip = defaults.vip;
         }
 
-        @CustomType.Setter
         public Builder healthStatus(String healthStatus) {
             this.healthStatus = Objects.requireNonNull(healthStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
-        @CustomType.Setter
         public Builder internetIp(String internetIp) {
             this.internetIp = Objects.requireNonNull(internetIp);
             return this;
         }
-        @CustomType.Setter
         public Builder ip(String ip) {
             this.ip = Objects.requireNonNull(ip);
             return this;
         }
-        @CustomType.Setter
         public Builder podName(String podName) {
             this.podName = Objects.requireNonNull(podName);
             return this;
         }
-        @CustomType.Setter
         public Builder role(String role) {
             this.role = Objects.requireNonNull(role);
             return this;
         }
-        @CustomType.Setter
         public Builder singleTunnelVip(String singleTunnelVip) {
             this.singleTunnelVip = Objects.requireNonNull(singleTunnelVip);
             return this;
         }
-        @CustomType.Setter
         public Builder vip(String vip) {
             this.vip = Objects.requireNonNull(vip);
             return this;
-        }
-        public GetClustersClusterInstanceModel build() {
-            final var o = new GetClustersClusterInstanceModel();
-            o.healthStatus = healthStatus;
-            o.instanceType = instanceType;
-            o.internetIp = internetIp;
-            o.ip = ip;
-            o.podName = podName;
-            o.role = role;
-            o.singleTunnelVip = singleTunnelVip;
-            o.vip = vip;
-            return o;
+        }        public GetClustersClusterInstanceModel build() {
+            return new GetClustersClusterInstanceModel(healthStatus, instanceType, internetIp, ip, podName, role, singleTunnelVip, vip);
         }
     }
 }

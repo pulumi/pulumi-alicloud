@@ -66,6 +66,9 @@ export interface GetBackupPoliciesArgs {
      * A regex string to filter results by Threat Detection Backup Policies name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     pageSize?: number;
     /**
@@ -150,6 +153,9 @@ export interface GetBackupPoliciesOutputArgs {
      * A regex string to filter results by Threat Detection Backup Policies name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     pageSize?: pulumi.Input<number>;
     /**

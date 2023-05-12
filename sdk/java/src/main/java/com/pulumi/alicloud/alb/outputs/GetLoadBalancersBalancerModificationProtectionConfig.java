@@ -13,14 +13,21 @@ public final class GetLoadBalancersBalancerModificationProtectionConfig {
      * @return The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
      * 
      */
-    private String reason;
+    private final String reason;
     /**
      * @return The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetLoadBalancersBalancerModificationProtectionConfig() {}
+    @CustomType.Constructor
+    private GetLoadBalancersBalancerModificationProtectionConfig(
+        @CustomType.Parameter("reason") String reason,
+        @CustomType.Parameter("status") String status) {
+        this.reason = reason;
+        this.status = status;
+    }
+
     /**
      * @return The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
      * 
@@ -43,32 +50,30 @@ public final class GetLoadBalancersBalancerModificationProtectionConfig {
     public static Builder builder(GetLoadBalancersBalancerModificationProtectionConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String reason;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetLoadBalancersBalancerModificationProtectionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.reason = defaults.reason;
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder reason(String reason) {
             this.reason = Objects.requireNonNull(reason);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetLoadBalancersBalancerModificationProtectionConfig build() {
-            final var o = new GetLoadBalancersBalancerModificationProtectionConfig();
-            o.reason = reason;
-            o.status = status;
-            return o;
+        }        public GetLoadBalancersBalancerModificationProtectionConfig build() {
+            return new GetLoadBalancersBalancerModificationProtectionConfig(reason, status);
         }
     }
 }

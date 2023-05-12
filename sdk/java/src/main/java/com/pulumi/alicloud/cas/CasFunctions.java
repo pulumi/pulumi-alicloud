@@ -18,6 +18,10 @@ import java.util.concurrent.CompletableFuture;
 
 public final class CasFunctions {
     /**
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
+     * 
+     * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -59,6 +63,10 @@ public final class CasFunctions {
         return getCertificates(GetCertificatesArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
+     * 
+     * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -100,6 +108,10 @@ public final class CasFunctions {
         return getCertificatesPlain(GetCertificatesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
+     * 
+     * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -141,6 +153,10 @@ public final class CasFunctions {
         return getCertificates(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
+     * 
+     * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -182,6 +198,10 @@ public final class CasFunctions {
         return getCertificatesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
+     * 
+     * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -223,6 +243,10 @@ public final class CasFunctions {
         return Deployment.getInstance().invoke("alicloud:cas/getCertificates:getCertificates", TypeShape.of(GetCertificatesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
+     * 
+     * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;

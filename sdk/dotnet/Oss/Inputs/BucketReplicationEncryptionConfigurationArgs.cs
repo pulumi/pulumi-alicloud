@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Oss.Inputs
     {
         /// <summary>
         /// The CMK ID used in SSE-KMS.
+        /// 
+        /// `NOTE`: If the status of sse_kms_encrypted_objects is set to Enabled, you must specify the replica_kms_key_id.
         /// </summary>
         [Input("replicaKmsKeyId", required: true)]
         public Input<string> ReplicaKmsKeyId { get; set; } = null!;

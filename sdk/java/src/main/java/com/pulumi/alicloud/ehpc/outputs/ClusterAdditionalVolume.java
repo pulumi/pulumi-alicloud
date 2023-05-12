@@ -17,56 +17,79 @@ public final class ClusterAdditionalVolume {
      * @return The queue to which the compute nodes are added.
      * 
      */
-    private @Nullable String jobQueue;
+    private final @Nullable String jobQueue;
     /**
      * @return The local directory on which the additional file system is mounted.
      * 
      */
-    private @Nullable String localDirectory;
+    private final @Nullable String localDirectory;
     /**
      * @return The type of the cluster. Valid value: `PublicCloud`.
      * 
      */
-    private @Nullable String location;
+    private final @Nullable String location;
     /**
      * @return The remote directory to which the file system is mounted.
      * 
      */
-    private @Nullable String remoteDirectory;
+    private final @Nullable String remoteDirectory;
     /**
      * @return The roles. See the following `Block roles`.
      * 
      */
-    private @Nullable List<ClusterAdditionalVolumeRole> roles;
+    private final @Nullable List<ClusterAdditionalVolumeRole> roles;
     /**
      * @return The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
      * 
      */
-    private @Nullable String volumeId;
+    private final @Nullable String volumeId;
     /**
      * @return The mount options of the file system.
      * 
      */
-    private @Nullable String volumeMountOption;
+    private final @Nullable String volumeMountOption;
     /**
      * @return The mount target of the file system. Take note of the following information:
      * - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
      * - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
      * 
      */
-    private @Nullable String volumeMountpoint;
+    private final @Nullable String volumeMountpoint;
     /**
      * @return The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
      * 
      */
-    private @Nullable String volumeProtocol;
+    private final @Nullable String volumeProtocol;
     /**
      * @return The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
      * 
      */
-    private @Nullable String volumeType;
+    private final @Nullable String volumeType;
 
-    private ClusterAdditionalVolume() {}
+    @CustomType.Constructor
+    private ClusterAdditionalVolume(
+        @CustomType.Parameter("jobQueue") @Nullable String jobQueue,
+        @CustomType.Parameter("localDirectory") @Nullable String localDirectory,
+        @CustomType.Parameter("location") @Nullable String location,
+        @CustomType.Parameter("remoteDirectory") @Nullable String remoteDirectory,
+        @CustomType.Parameter("roles") @Nullable List<ClusterAdditionalVolumeRole> roles,
+        @CustomType.Parameter("volumeId") @Nullable String volumeId,
+        @CustomType.Parameter("volumeMountOption") @Nullable String volumeMountOption,
+        @CustomType.Parameter("volumeMountpoint") @Nullable String volumeMountpoint,
+        @CustomType.Parameter("volumeProtocol") @Nullable String volumeProtocol,
+        @CustomType.Parameter("volumeType") @Nullable String volumeType) {
+        this.jobQueue = jobQueue;
+        this.localDirectory = localDirectory;
+        this.location = location;
+        this.remoteDirectory = remoteDirectory;
+        this.roles = roles;
+        this.volumeId = volumeId;
+        this.volumeMountOption = volumeMountOption;
+        this.volumeMountpoint = volumeMountpoint;
+        this.volumeProtocol = volumeProtocol;
+        this.volumeType = volumeType;
+    }
+
     /**
      * @return The queue to which the compute nodes are added.
      * 
@@ -147,7 +170,7 @@ public final class ClusterAdditionalVolume {
     public static Builder builder(ClusterAdditionalVolume defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String jobQueue;
         private @Nullable String localDirectory;
@@ -159,7 +182,11 @@ public final class ClusterAdditionalVolume {
         private @Nullable String volumeMountpoint;
         private @Nullable String volumeProtocol;
         private @Nullable String volumeType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ClusterAdditionalVolume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.jobQueue = defaults.jobQueue;
@@ -174,27 +201,22 @@ public final class ClusterAdditionalVolume {
     	      this.volumeType = defaults.volumeType;
         }
 
-        @CustomType.Setter
         public Builder jobQueue(@Nullable String jobQueue) {
             this.jobQueue = jobQueue;
             return this;
         }
-        @CustomType.Setter
         public Builder localDirectory(@Nullable String localDirectory) {
             this.localDirectory = localDirectory;
             return this;
         }
-        @CustomType.Setter
         public Builder location(@Nullable String location) {
             this.location = location;
             return this;
         }
-        @CustomType.Setter
         public Builder remoteDirectory(@Nullable String remoteDirectory) {
             this.remoteDirectory = remoteDirectory;
             return this;
         }
-        @CustomType.Setter
         public Builder roles(@Nullable List<ClusterAdditionalVolumeRole> roles) {
             this.roles = roles;
             return this;
@@ -202,44 +224,27 @@ public final class ClusterAdditionalVolume {
         public Builder roles(ClusterAdditionalVolumeRole... roles) {
             return roles(List.of(roles));
         }
-        @CustomType.Setter
         public Builder volumeId(@Nullable String volumeId) {
             this.volumeId = volumeId;
             return this;
         }
-        @CustomType.Setter
         public Builder volumeMountOption(@Nullable String volumeMountOption) {
             this.volumeMountOption = volumeMountOption;
             return this;
         }
-        @CustomType.Setter
         public Builder volumeMountpoint(@Nullable String volumeMountpoint) {
             this.volumeMountpoint = volumeMountpoint;
             return this;
         }
-        @CustomType.Setter
         public Builder volumeProtocol(@Nullable String volumeProtocol) {
             this.volumeProtocol = volumeProtocol;
             return this;
         }
-        @CustomType.Setter
         public Builder volumeType(@Nullable String volumeType) {
             this.volumeType = volumeType;
             return this;
-        }
-        public ClusterAdditionalVolume build() {
-            final var o = new ClusterAdditionalVolume();
-            o.jobQueue = jobQueue;
-            o.localDirectory = localDirectory;
-            o.location = location;
-            o.remoteDirectory = remoteDirectory;
-            o.roles = roles;
-            o.volumeId = volumeId;
-            o.volumeMountOption = volumeMountOption;
-            o.volumeMountpoint = volumeMountpoint;
-            o.volumeProtocol = volumeProtocol;
-            o.volumeType = volumeType;
-            return o;
+        }        public ClusterAdditionalVolume build() {
+            return new ClusterAdditionalVolume(jobQueue, localDirectory, location, remoteDirectory, roles, volumeId, volumeMountOption, volumeMountpoint, volumeProtocol, volumeType);
         }
     }
 }

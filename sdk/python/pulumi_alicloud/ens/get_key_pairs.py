@@ -134,6 +134,7 @@ def get_key_pairs(key_pair_name: Optional[str] = None,
 
     :param str key_pair_name: The name of the key pair.
     :param str name_regex: A regex string to filter results by Key Pair name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str version: The version number.
     """
     __args__ = dict()
@@ -182,6 +183,7 @@ def get_key_pairs_output(key_pair_name: Optional[pulumi.Input[Optional[str]]] = 
 
     :param str key_pair_name: The name of the key pair.
     :param str name_regex: A regex string to filter results by Key Pair name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str version: The version number.
     """
     ...

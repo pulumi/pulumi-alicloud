@@ -10,6 +10,58 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
+    /// Provides a security group resource.
+    /// 
+    /// &gt; **NOTE:** `alicloud.ecs.SecurityGroup` is used to build and manage a security group, and `alicloud.ecs.SecurityGroupRule` can define ingress or egress rules for it.
+    /// 
+    /// &gt; **NOTE:** From version 1.7.2, `alicloud.ecs.SecurityGroup` has supported to segregate different ECS instance in which the same security group.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @group = new AliCloud.Ecs.SecurityGroup("group", new()
+    ///     {
+    ///         Description = "New security group",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// Basic usage for vpc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     {
+    ///         CidrBlock = "10.1.0.0/21",
+    ///     });
+    /// 
+    ///     var @group = new AliCloud.Ecs.SecurityGroup("group", new()
+    ///     {
+    ///         VpcId = vpc.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Module Support
+    /// 
+    /// You can use the existing security-group module
+    /// to create a security group and add several rules one-click.
+    /// 
     /// ## Import
     /// 
     /// Security Group can be imported using the id, e.g.
@@ -61,6 +113,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
+        /// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -160,6 +214,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
+        /// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -224,6 +280,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
+        /// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         /// </summary>
         public InputMap<object> Tags
         {

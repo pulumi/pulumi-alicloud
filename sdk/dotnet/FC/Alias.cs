@@ -70,6 +70,8 @@ namespace Pulumi.AliCloud.FC
 
         /// <summary>
         /// The Function Compute alias' route configuration settings. Fields documented below.
+        /// 
+        /// **routing_config** includes the following arguments:
         /// </summary>
         [Output("routingConfig")]
         public Output<Outputs.AliasRoutingConfig?> RoutingConfig { get; private set; } = null!;
@@ -146,6 +148,8 @@ namespace Pulumi.AliCloud.FC
 
         /// <summary>
         /// The Function Compute alias' route configuration settings. Fields documented below.
+        /// 
+        /// **routing_config** includes the following arguments:
         /// </summary>
         [Input("routingConfig")]
         public Input<Inputs.AliasRoutingConfigArgs>? RoutingConfig { get; set; }
@@ -184,6 +188,8 @@ namespace Pulumi.AliCloud.FC
 
         /// <summary>
         /// The Function Compute alias' route configuration settings. Fields documented below.
+        /// 
+        /// **routing_config** includes the following arguments:
         /// </summary>
         [Input("routingConfig")]
         public Input<Inputs.AliasRoutingConfigGetArgs>? RoutingConfig { get; set; }

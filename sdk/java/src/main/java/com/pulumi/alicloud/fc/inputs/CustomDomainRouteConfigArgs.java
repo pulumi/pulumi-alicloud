@@ -34,12 +34,16 @@ public final class CustomDomainRouteConfigArgs extends com.pulumi.resources.Reso
     /**
      * The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, &#34;GET, HEAD&#34; methods indicate that only requests from GET and HEAD methods are routed.
      * 
+     * **cert_config** includes the following arguments:
+     * 
      */
     @Import(name="methods")
     private @Nullable Output<List<String>> methods;
 
     /**
      * @return The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, &#34;GET, HEAD&#34; methods indicate that only requests from GET and HEAD methods are routed.
+     * 
+     * **cert_config** includes the following arguments:
      * 
      */
     public Optional<Output<List<String>>> methods() {
@@ -135,6 +139,8 @@ public final class CustomDomainRouteConfigArgs extends com.pulumi.resources.Reso
         /**
          * @param methods The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, &#34;GET, HEAD&#34; methods indicate that only requests from GET and HEAD methods are routed.
          * 
+         * **cert_config** includes the following arguments:
+         * 
          * @return builder
          * 
          */
@@ -146,6 +152,8 @@ public final class CustomDomainRouteConfigArgs extends com.pulumi.resources.Reso
         /**
          * @param methods The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, &#34;GET, HEAD&#34; methods indicate that only requests from GET and HEAD methods are routed.
          * 
+         * **cert_config** includes the following arguments:
+         * 
          * @return builder
          * 
          */
@@ -155,6 +163,8 @@ public final class CustomDomainRouteConfigArgs extends com.pulumi.resources.Reso
 
         /**
          * @param methods The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, &#34;GET, HEAD&#34; methods indicate that only requests from GET and HEAD methods are routed.
+         * 
+         * **cert_config** includes the following arguments:
          * 
          * @return builder
          * 

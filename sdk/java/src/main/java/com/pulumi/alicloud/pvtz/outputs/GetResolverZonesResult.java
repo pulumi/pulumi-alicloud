@@ -17,12 +17,23 @@ public final class GetResolverZonesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private @Nullable String outputFile;
-    private @Nullable String status;
-    private List<GetResolverZonesZone> zones;
+    private final String id;
+    private final @Nullable String outputFile;
+    private final @Nullable String status;
+    private final List<GetResolverZonesZone> zones;
 
-    private GetResolverZonesResult() {}
+    @CustomType.Constructor
+    private GetResolverZonesResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("zones") List<GetResolverZonesZone> zones) {
+        this.id = id;
+        this.outputFile = outputFile;
+        this.status = status;
+        this.zones = zones;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -47,13 +58,17 @@ public final class GetResolverZonesResult {
     public static Builder builder(GetResolverZonesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private @Nullable String outputFile;
         private @Nullable String status;
         private List<GetResolverZonesZone> zones;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetResolverZonesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -62,36 +77,26 @@ public final class GetResolverZonesResult {
     	      this.zones = defaults.zones;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder zones(List<GetResolverZonesZone> zones) {
             this.zones = Objects.requireNonNull(zones);
             return this;
         }
         public Builder zones(GetResolverZonesZone... zones) {
             return zones(List.of(zones));
-        }
-        public GetResolverZonesResult build() {
-            final var o = new GetResolverZonesResult();
-            o.id = id;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.zones = zones;
-            return o;
+        }        public GetResolverZonesResult build() {
+            return new GetResolverZonesResult(id, outputFile, status, zones);
         }
     }
 }

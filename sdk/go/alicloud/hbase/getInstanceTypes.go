@@ -32,7 +32,8 @@ type GetInstanceTypesArgs struct {
 	Engine *string `pulumi:"engine"`
 	// The hbase instance type of create hbase cluster instance.
 	InstanceType *string `pulumi:"instanceType"`
-	OutputFile   *string `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The dest region id, default client region.
 	RegionId *string `pulumi:"regionId"`
 	// The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
@@ -89,7 +90,8 @@ type GetInstanceTypesOutputArgs struct {
 	Engine pulumi.StringPtrInput `pulumi:"engine"`
 	// The hbase instance type of create hbase cluster instance.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
-	OutputFile   pulumi.StringPtrInput `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The dest region id, default client region.
 	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
 	// The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.

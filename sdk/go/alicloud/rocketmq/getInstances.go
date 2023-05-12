@@ -71,7 +71,8 @@ type GetInstancesArgs struct {
 	// A list of instance IDs to filter results.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by the instance name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
 	Status *int `pulumi:"status"`
@@ -118,7 +119,8 @@ type GetInstancesOutputArgs struct {
 	// A list of instance IDs to filter results.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by the instance name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
 	Status pulumi.IntPtrInput `pulumi:"status"`

@@ -10,6 +10,108 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ess
 {
     /// <summary>
+    /// Provides a ESS scaling group resource which is a collection of ECS instances with the same application scenarios.
+    /// 
+    /// It defines the maximum and minimum numbers of ECS instances in the group, and their associated Server Load Balancer instances, RDS instances, and other attributes.
+    /// 
+    /// &gt; **NOTE:** You can launch an ESS scaling group for a VPC network via specifying parameter `vswitch_ids`.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "essscalinggroupconfig";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableDiskCategory = "cloud_efficiency",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 2,
+    ///         MemorySize = 4,
+    ///     });
+    /// 
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_18.*64",
+    ///         MostRecent = true,
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultSecurityGroupRule = new AliCloud.Ecs.SecurityGroupRule("defaultSecurityGroupRule", new()
+    ///     {
+    ///         Type = "ingress",
+    ///         IpProtocol = "tcp",
+    ///         NicType = "intranet",
+    ///         Policy = "accept",
+    ///         PortRange = "22/22",
+    ///         Priority = 1,
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         CidrIp = "172.16.0.0/24",
+    ///     });
+    /// 
+    ///     var default2 = new AliCloud.Vpc.Switch("default2", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.1.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = $"{name}-bar",
+    ///     });
+    /// 
+    ///     var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("defaultScalingGroup", new()
+    ///     {
+    ///         MinSize = 1,
+    ///         MaxSize = 1,
+    ///         ScalingGroupName = name,
+    ///         DefaultCooldown = 20,
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///             default2.Id,
+    ///         },
+    ///         RemovalPolicies = new[]
+    ///         {
+    ///             "OldestInstance",
+    ///             "NewestInstance",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Module Support
+    /// 
+    /// You can use to the existing autoscaling module
+    /// to create a scaling group, configuration and lifecycle hook one-click.
+    /// 
     /// ## Import
     /// 
     /// ESS scaling group can be imported using the id, e.g.
@@ -83,13 +185,15 @@ namespace Pulumi.AliCloud.Ess
         public Output<ImmutableArray<string>> LoadbalancerIds { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+        /// Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+        /// **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
         /// </summary>
         [Output("maxSize")]
         public Output<int> MaxSize { get; private set; } = null!;
 
         /// <summary>
-        /// Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+        /// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+        /// **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
         /// </summary>
         [Output("minSize")]
         public Output<int> MinSize { get; private set; } = null!;
@@ -114,6 +218,12 @@ namespace Pulumi.AliCloud.Ess
 
         /// <summary>
         /// Set or unset instances within group into protected status.
+        /// 
+        /// &gt; **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+        /// 
+        /// &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+        /// 
+        /// &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
         /// </summary>
         [Output("protectedInstances")]
         public Output<ImmutableArray<string>> ProtectedInstances { get; private set; } = null!;
@@ -286,13 +396,15 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
-        /// Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+        /// Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+        /// **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
         /// </summary>
         [Input("maxSize", required: true)]
         public Input<int> MaxSize { get; set; } = null!;
 
         /// <summary>
-        /// Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+        /// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+        /// **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
         /// </summary>
         [Input("minSize", required: true)]
         public Input<int> MinSize { get; set; } = null!;
@@ -320,6 +432,12 @@ namespace Pulumi.AliCloud.Ess
 
         /// <summary>
         /// Set or unset instances within group into protected status.
+        /// 
+        /// &gt; **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+        /// 
+        /// &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+        /// 
+        /// &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
         /// </summary>
         public InputList<string> ProtectedInstances
         {
@@ -475,13 +593,15 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
-        /// Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+        /// Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+        /// **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
         /// </summary>
         [Input("maxSize")]
         public Input<int>? MaxSize { get; set; }
 
         /// <summary>
-        /// Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+        /// Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+        /// **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
         /// </summary>
         [Input("minSize")]
         public Input<int>? MinSize { get; set; }
@@ -509,6 +629,12 @@ namespace Pulumi.AliCloud.Ess
 
         /// <summary>
         /// Set or unset instances within group into protected status.
+        /// 
+        /// &gt; **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+        /// 
+        /// &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+        /// 
+        /// &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
         /// </summary>
         public InputList<string> ProtectedInstances
         {

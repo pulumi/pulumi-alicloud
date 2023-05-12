@@ -16,74 +16,105 @@ public final class GetDomainsDomainListen {
      * @return The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
      * 
      */
-    private String certId;
+    private final String certId;
     /**
      * @return The type of encryption suite to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
      * 
      */
-    private Integer cipherSuite;
+    private final Integer cipherSuite;
     /**
      * @return The specific custom encryption suite to add.
      * 
      */
-    private List<String> customCiphers;
+    private final List<String> customCiphers;
     /**
      * @return Whether TSL1.3 version is supported. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
      * 
      */
-    private Boolean enableTlsv3;
+    private final Boolean enableTlsv3;
     /**
      * @return Whether to enable exclusive IP address. This parameter is used only when the value of **ipv6_enabled** is **false** (indicating that IPv6 is not enabled) and the value of **protection_resource** is **share** (indicating that a shared cluster is used).
      * 
      */
-    private Boolean exclusiveIp;
+    private final Boolean exclusiveIp;
     /**
      * @return Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `https_ports` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol).
      * 
      */
-    private Boolean focusHttps;
+    private final Boolean focusHttps;
     /**
      * @return Whether to turn on http2. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
      * 
      */
-    private Boolean http2Enabled;
+    private final Boolean http2Enabled;
     /**
      * @return The listening port of the HTTP protocol.
      * 
      */
-    private List<Integer> httpPorts;
+    private final List<Integer> httpPorts;
     /**
      * @return The listening port of the HTTPS protocol.
      * 
      */
-    private List<Integer> httpsPorts;
+    private final List<Integer> httpsPorts;
     /**
      * @return Whether IPv6 is turned on.
      * 
      */
-    private Boolean ipv6Enabled;
+    private final Boolean ipv6Enabled;
     /**
      * @return The type of protection resource to use.
      * 
      */
-    private String protectionResource;
+    private final String protectionResource;
     /**
      * @return The version of TLS to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
      * 
      */
-    private String tlsVersion;
+    private final String tlsVersion;
     /**
      * @return WAF obtains the real IP address of the client.
      * 
      */
-    private Integer xffHeaderMode;
+    private final Integer xffHeaderMode;
     /**
      * @return Set the list of custom fields used to obtain the client IP address.
      * 
      */
-    private List<String> xffHeaders;
+    private final List<String> xffHeaders;
 
-    private GetDomainsDomainListen() {}
+    @CustomType.Constructor
+    private GetDomainsDomainListen(
+        @CustomType.Parameter("certId") String certId,
+        @CustomType.Parameter("cipherSuite") Integer cipherSuite,
+        @CustomType.Parameter("customCiphers") List<String> customCiphers,
+        @CustomType.Parameter("enableTlsv3") Boolean enableTlsv3,
+        @CustomType.Parameter("exclusiveIp") Boolean exclusiveIp,
+        @CustomType.Parameter("focusHttps") Boolean focusHttps,
+        @CustomType.Parameter("http2Enabled") Boolean http2Enabled,
+        @CustomType.Parameter("httpPorts") List<Integer> httpPorts,
+        @CustomType.Parameter("httpsPorts") List<Integer> httpsPorts,
+        @CustomType.Parameter("ipv6Enabled") Boolean ipv6Enabled,
+        @CustomType.Parameter("protectionResource") String protectionResource,
+        @CustomType.Parameter("tlsVersion") String tlsVersion,
+        @CustomType.Parameter("xffHeaderMode") Integer xffHeaderMode,
+        @CustomType.Parameter("xffHeaders") List<String> xffHeaders) {
+        this.certId = certId;
+        this.cipherSuite = cipherSuite;
+        this.customCiphers = customCiphers;
+        this.enableTlsv3 = enableTlsv3;
+        this.exclusiveIp = exclusiveIp;
+        this.focusHttps = focusHttps;
+        this.http2Enabled = http2Enabled;
+        this.httpPorts = httpPorts;
+        this.httpsPorts = httpsPorts;
+        this.ipv6Enabled = ipv6Enabled;
+        this.protectionResource = protectionResource;
+        this.tlsVersion = tlsVersion;
+        this.xffHeaderMode = xffHeaderMode;
+        this.xffHeaders = xffHeaders;
+    }
+
     /**
      * @return The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
      * 
@@ -190,7 +221,7 @@ public final class GetDomainsDomainListen {
     public static Builder builder(GetDomainsDomainListen defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String certId;
         private Integer cipherSuite;
@@ -206,7 +237,11 @@ public final class GetDomainsDomainListen {
         private String tlsVersion;
         private Integer xffHeaderMode;
         private List<String> xffHeaders;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDomainsDomainListen defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certId = defaults.certId;
@@ -225,17 +260,14 @@ public final class GetDomainsDomainListen {
     	      this.xffHeaders = defaults.xffHeaders;
         }
 
-        @CustomType.Setter
         public Builder certId(String certId) {
             this.certId = Objects.requireNonNull(certId);
             return this;
         }
-        @CustomType.Setter
         public Builder cipherSuite(Integer cipherSuite) {
             this.cipherSuite = Objects.requireNonNull(cipherSuite);
             return this;
         }
-        @CustomType.Setter
         public Builder customCiphers(List<String> customCiphers) {
             this.customCiphers = Objects.requireNonNull(customCiphers);
             return this;
@@ -243,27 +275,22 @@ public final class GetDomainsDomainListen {
         public Builder customCiphers(String... customCiphers) {
             return customCiphers(List.of(customCiphers));
         }
-        @CustomType.Setter
         public Builder enableTlsv3(Boolean enableTlsv3) {
             this.enableTlsv3 = Objects.requireNonNull(enableTlsv3);
             return this;
         }
-        @CustomType.Setter
         public Builder exclusiveIp(Boolean exclusiveIp) {
             this.exclusiveIp = Objects.requireNonNull(exclusiveIp);
             return this;
         }
-        @CustomType.Setter
         public Builder focusHttps(Boolean focusHttps) {
             this.focusHttps = Objects.requireNonNull(focusHttps);
             return this;
         }
-        @CustomType.Setter
         public Builder http2Enabled(Boolean http2Enabled) {
             this.http2Enabled = Objects.requireNonNull(http2Enabled);
             return this;
         }
-        @CustomType.Setter
         public Builder httpPorts(List<Integer> httpPorts) {
             this.httpPorts = Objects.requireNonNull(httpPorts);
             return this;
@@ -271,7 +298,6 @@ public final class GetDomainsDomainListen {
         public Builder httpPorts(Integer... httpPorts) {
             return httpPorts(List.of(httpPorts));
         }
-        @CustomType.Setter
         public Builder httpsPorts(List<Integer> httpsPorts) {
             this.httpsPorts = Objects.requireNonNull(httpsPorts);
             return this;
@@ -279,51 +305,30 @@ public final class GetDomainsDomainListen {
         public Builder httpsPorts(Integer... httpsPorts) {
             return httpsPorts(List.of(httpsPorts));
         }
-        @CustomType.Setter
         public Builder ipv6Enabled(Boolean ipv6Enabled) {
             this.ipv6Enabled = Objects.requireNonNull(ipv6Enabled);
             return this;
         }
-        @CustomType.Setter
         public Builder protectionResource(String protectionResource) {
             this.protectionResource = Objects.requireNonNull(protectionResource);
             return this;
         }
-        @CustomType.Setter
         public Builder tlsVersion(String tlsVersion) {
             this.tlsVersion = Objects.requireNonNull(tlsVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder xffHeaderMode(Integer xffHeaderMode) {
             this.xffHeaderMode = Objects.requireNonNull(xffHeaderMode);
             return this;
         }
-        @CustomType.Setter
         public Builder xffHeaders(List<String> xffHeaders) {
             this.xffHeaders = Objects.requireNonNull(xffHeaders);
             return this;
         }
         public Builder xffHeaders(String... xffHeaders) {
             return xffHeaders(List.of(xffHeaders));
-        }
-        public GetDomainsDomainListen build() {
-            final var o = new GetDomainsDomainListen();
-            o.certId = certId;
-            o.cipherSuite = cipherSuite;
-            o.customCiphers = customCiphers;
-            o.enableTlsv3 = enableTlsv3;
-            o.exclusiveIp = exclusiveIp;
-            o.focusHttps = focusHttps;
-            o.http2Enabled = http2Enabled;
-            o.httpPorts = httpPorts;
-            o.httpsPorts = httpsPorts;
-            o.ipv6Enabled = ipv6Enabled;
-            o.protectionResource = protectionResource;
-            o.tlsVersion = tlsVersion;
-            o.xffHeaderMode = xffHeaderMode;
-            o.xffHeaders = xffHeaders;
-            return o;
+        }        public GetDomainsDomainListen build() {
+            return new GetDomainsDomainListen(certId, cipherSuite, customCiphers, enableTlsv3, exclusiveIp, focusHttps, http2Enabled, httpPorts, httpsPorts, ipv6Enabled, protectionResource, tlsVersion, xffHeaderMode, xffHeaders);
         }
     }
 }

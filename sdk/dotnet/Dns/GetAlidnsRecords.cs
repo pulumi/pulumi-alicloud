@@ -149,6 +149,9 @@ namespace Pulumi.AliCloud.Dns
         [Input("orderBy")]
         public string? OrderBy { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -262,6 +265,9 @@ namespace Pulumi.AliCloud.Dns
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

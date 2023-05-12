@@ -12,6 +12,10 @@ namespace Pulumi.AliCloud.Ecs
     public static class GetDisks
     {
         /// <summary>
+        /// &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsDisks from version 1.122.0.
+        /// 
+        /// This data source provides the disks of the current Alibaba Cloud user.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -42,6 +46,10 @@ namespace Pulumi.AliCloud.Ecs
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDisksResult>("alicloud:ecs/getDisks:getDisks", args ?? new GetDisksArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsDisks from version 1.122.0.
+        /// 
+        /// This data source provides the disks of the current Alibaba Cloud user.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -163,6 +171,9 @@ namespace Pulumi.AliCloud.Ecs
             set => _operationLocks = value;
         }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -332,6 +343,9 @@ namespace Pulumi.AliCloud.Ecs
             set => _operationLocks = value;
         }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

@@ -194,6 +194,7 @@ def get_users(display_name: Optional[str] = None,
     :param str instance_id: You Want to Query the User the Bastion Host ID of.
     :param str mobile: Specify the New of the User That Created a Different Mobile Phone Number from Your.
     :param str name_regex: A regex string to filter results by User name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str source: Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
     :param str source_user_id: Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
     :param str status: The status of the resource.
@@ -271,6 +272,7 @@ def get_users_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
     :param str instance_id: You Want to Query the User the Bastion Host ID of.
     :param str mobile: Specify the New of the User That Created a Different Mobile Phone Number from Your.
     :param str name_regex: A regex string to filter results by User name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str source: Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
     :param str source_user_id: Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
     :param str status: The status of the resource.

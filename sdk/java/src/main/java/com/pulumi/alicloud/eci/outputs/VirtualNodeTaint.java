@@ -15,19 +15,28 @@ public final class VirtualNodeTaint {
      * @return The effect of the taint. Valid values: `NoSchedule`, `NoExecute` and `PreferNoSchedule`.
      * 
      */
-    private @Nullable String effect;
+    private final @Nullable String effect;
     /**
      * @return The key of the taint.
      * 
      */
-    private @Nullable String key;
+    private final @Nullable String key;
     /**
      * @return The value of the taint.
      * 
      */
-    private @Nullable String value;
+    private final @Nullable String value;
 
-    private VirtualNodeTaint() {}
+    @CustomType.Constructor
+    private VirtualNodeTaint(
+        @CustomType.Parameter("effect") @Nullable String effect,
+        @CustomType.Parameter("key") @Nullable String key,
+        @CustomType.Parameter("value") @Nullable String value) {
+        this.effect = effect;
+        this.key = key;
+        this.value = value;
+    }
+
     /**
      * @return The effect of the taint. Valid values: `NoSchedule`, `NoExecute` and `PreferNoSchedule`.
      * 
@@ -57,12 +66,16 @@ public final class VirtualNodeTaint {
     public static Builder builder(VirtualNodeTaint defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String effect;
         private @Nullable String key;
         private @Nullable String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(VirtualNodeTaint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.effect = defaults.effect;
@@ -70,27 +83,19 @@ public final class VirtualNodeTaint {
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder effect(@Nullable String effect) {
             this.effect = effect;
             return this;
         }
-        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
-        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }
-        public VirtualNodeTaint build() {
-            final var o = new VirtualNodeTaint();
-            o.effect = effect;
-            o.key = key;
-            o.value = value;
-            return o;
+        }        public VirtualNodeTaint build() {
+            return new VirtualNodeTaint(effect, key, value);
         }
     }
 }

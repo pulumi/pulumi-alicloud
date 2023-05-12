@@ -125,6 +125,8 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
      * - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
      * - PostPaid: Pay-As-You-Go.
      * 
+     * Default value: PostPaid.
+     * 
      */
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
@@ -133,6 +135,8 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
      * @return Billing methods. Optional values:
      * - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
      * - PostPaid: Pay-As-You-Go.
+     * 
+     * Default value: PostPaid.
      * 
      */
     public Optional<Output<String>> instanceChargeType() {
@@ -866,6 +870,8 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
          * - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
          * - PostPaid: Pay-As-You-Go.
          * 
+         * Default value: PostPaid.
+         * 
          * @return builder
          * 
          */
@@ -878,6 +884,8 @@ public final class LaunchTemplateState extends com.pulumi.resources.ResourceArgs
          * @param instanceChargeType Billing methods. Optional values:
          * - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
          * - PostPaid: Pay-As-You-Go.
+         * 
+         * Default value: PostPaid.
          * 
          * @return builder
          * 

@@ -13,19 +13,36 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEndpointsResult {
-    private List<GetEndpointsEndpoint> endpoints;
+    private final List<GetEndpointsEndpoint> endpoints;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String status;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String status;
 
-    private GetEndpointsResult() {}
+    @CustomType.Constructor
+    private GetEndpointsResult(
+        @CustomType.Parameter("endpoints") List<GetEndpointsEndpoint> endpoints,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.endpoints = endpoints;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.status = status;
+    }
+
     public List<GetEndpointsEndpoint> endpoints() {
         return this.endpoints;
     }
@@ -59,7 +76,7 @@ public final class GetEndpointsResult {
     public static Builder builder(GetEndpointsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetEndpointsEndpoint> endpoints;
         private String id;
@@ -68,7 +85,11 @@ public final class GetEndpointsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEndpointsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endpoints = defaults.endpoints;
@@ -80,7 +101,6 @@ public final class GetEndpointsResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder endpoints(List<GetEndpointsEndpoint> endpoints) {
             this.endpoints = Objects.requireNonNull(endpoints);
             return this;
@@ -88,12 +108,10 @@ public final class GetEndpointsResult {
         public Builder endpoints(GetEndpointsEndpoint... endpoints) {
             return endpoints(List.of(endpoints));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -101,12 +119,10 @@ public final class GetEndpointsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -114,26 +130,15 @@ public final class GetEndpointsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetEndpointsResult build() {
-            final var o = new GetEndpointsResult();
-            o.endpoints = endpoints;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+        }        public GetEndpointsResult build() {
+            return new GetEndpointsResult(endpoints, id, ids, nameRegex, names, outputFile, status);
         }
     }
 }

@@ -13,32 +13,51 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTriggersResult {
-    private String functionName;
+    private final String functionName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of FC triggers ids.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of FC triggers names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
-    private String serviceName;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final String serviceName;
     /**
      * @return A list of FC triggers. Each element contains the following attributes:
      * 
      */
-    private List<GetTriggersTrigger> triggers;
+    private final List<GetTriggersTrigger> triggers;
 
-    private GetTriggersResult() {}
+    @CustomType.Constructor
+    private GetTriggersResult(
+        @CustomType.Parameter("functionName") String functionName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("serviceName") String serviceName,
+        @CustomType.Parameter("triggers") List<GetTriggersTrigger> triggers) {
+        this.functionName = functionName;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.serviceName = serviceName;
+        this.triggers = triggers;
+    }
+
     public String functionName() {
         return this.functionName;
     }
@@ -87,7 +106,7 @@ public final class GetTriggersResult {
     public static Builder builder(GetTriggersResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String functionName;
         private String id;
@@ -97,7 +116,11 @@ public final class GetTriggersResult {
         private @Nullable String outputFile;
         private String serviceName;
         private List<GetTriggersTrigger> triggers;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTriggersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.functionName = defaults.functionName;
@@ -110,17 +133,14 @@ public final class GetTriggersResult {
     	      this.triggers = defaults.triggers;
         }
 
-        @CustomType.Setter
         public Builder functionName(String functionName) {
             this.functionName = Objects.requireNonNull(functionName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -128,12 +148,10 @@ public final class GetTriggersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -141,35 +159,22 @@ public final class GetTriggersResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
         }
-        @CustomType.Setter
         public Builder triggers(List<GetTriggersTrigger> triggers) {
             this.triggers = Objects.requireNonNull(triggers);
             return this;
         }
         public Builder triggers(GetTriggersTrigger... triggers) {
             return triggers(List.of(triggers));
-        }
-        public GetTriggersResult build() {
-            final var o = new GetTriggersResult();
-            o.functionName = functionName;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.serviceName = serviceName;
-            o.triggers = triggers;
-            return o;
+        }        public GetTriggersResult build() {
+            return new GetTriggersResult(functionName, id, ids, nameRegex, names, outputFile, serviceName, triggers);
         }
     }
 }

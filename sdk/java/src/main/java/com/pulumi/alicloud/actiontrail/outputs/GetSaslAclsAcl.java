@@ -13,34 +13,49 @@ public final class GetSaslAclsAcl {
      * @return The operation type of the sasl acl.
      * 
      */
-    private String aclOperationType;
+    private final String aclOperationType;
     /**
      * @return Get results for the specified resource name.
      * 
      */
-    private String aclResourceName;
+    private final String aclResourceName;
     /**
      * @return The resource pattern type of the sasl acl.
      * 
      */
-    private String aclResourcePatternType;
+    private final String aclResourcePatternType;
     /**
      * @return Get results for the specified resource type.
      * 
      */
-    private String aclResourceType;
+    private final String aclResourceType;
     /**
      * @return The host of the sasl acl.
      * 
      */
-    private String host;
+    private final String host;
     /**
      * @return Get results for the specified username.
      * 
      */
-    private String username;
+    private final String username;
 
-    private GetSaslAclsAcl() {}
+    @CustomType.Constructor
+    private GetSaslAclsAcl(
+        @CustomType.Parameter("aclOperationType") String aclOperationType,
+        @CustomType.Parameter("aclResourceName") String aclResourceName,
+        @CustomType.Parameter("aclResourcePatternType") String aclResourcePatternType,
+        @CustomType.Parameter("aclResourceType") String aclResourceType,
+        @CustomType.Parameter("host") String host,
+        @CustomType.Parameter("username") String username) {
+        this.aclOperationType = aclOperationType;
+        this.aclResourceName = aclResourceName;
+        this.aclResourcePatternType = aclResourcePatternType;
+        this.aclResourceType = aclResourceType;
+        this.host = host;
+        this.username = username;
+    }
+
     /**
      * @return The operation type of the sasl acl.
      * 
@@ -91,7 +106,7 @@ public final class GetSaslAclsAcl {
     public static Builder builder(GetSaslAclsAcl defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String aclOperationType;
         private String aclResourceName;
@@ -99,7 +114,11 @@ public final class GetSaslAclsAcl {
         private String aclResourceType;
         private String host;
         private String username;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetSaslAclsAcl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aclOperationType = defaults.aclOperationType;
@@ -110,45 +129,31 @@ public final class GetSaslAclsAcl {
     	      this.username = defaults.username;
         }
 
-        @CustomType.Setter
         public Builder aclOperationType(String aclOperationType) {
             this.aclOperationType = Objects.requireNonNull(aclOperationType);
             return this;
         }
-        @CustomType.Setter
         public Builder aclResourceName(String aclResourceName) {
             this.aclResourceName = Objects.requireNonNull(aclResourceName);
             return this;
         }
-        @CustomType.Setter
         public Builder aclResourcePatternType(String aclResourcePatternType) {
             this.aclResourcePatternType = Objects.requireNonNull(aclResourcePatternType);
             return this;
         }
-        @CustomType.Setter
         public Builder aclResourceType(String aclResourceType) {
             this.aclResourceType = Objects.requireNonNull(aclResourceType);
             return this;
         }
-        @CustomType.Setter
         public Builder host(String host) {
             this.host = Objects.requireNonNull(host);
             return this;
         }
-        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }
-        public GetSaslAclsAcl build() {
-            final var o = new GetSaslAclsAcl();
-            o.aclOperationType = aclOperationType;
-            o.aclResourceName = aclResourceName;
-            o.aclResourcePatternType = aclResourcePatternType;
-            o.aclResourceType = aclResourceType;
-            o.host = host;
-            o.username = username;
-            return o;
+        }        public GetSaslAclsAcl build() {
+            return new GetSaslAclsAcl(aclOperationType, aclResourceName, aclResourcePatternType, aclResourceType, host, username);
         }
     }
 }

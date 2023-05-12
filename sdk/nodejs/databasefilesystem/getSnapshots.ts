@@ -57,6 +57,9 @@ export interface GetSnapshotsArgs {
      * A regex string to filter results by Snapshot name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
@@ -122,6 +125,9 @@ export interface GetSnapshotsOutputArgs {
      * A regex string to filter results by Snapshot name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.

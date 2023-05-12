@@ -79,7 +79,8 @@ type GetSecurityGroupRulesArgs struct {
 	// The IP protocol. Valid values are: `tcp`, `udp`, `icmp`, `gre` and `all`.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
-	NicType    *string `pulumi:"nicType"`
+	NicType *string `pulumi:"nicType"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
 	Policy *string `pulumi:"policy"`
@@ -129,7 +130,8 @@ type GetSecurityGroupRulesOutputArgs struct {
 	// The IP protocol. Valid values are: `tcp`, `udp`, `icmp`, `gre` and `all`.
 	IpProtocol pulumi.StringPtrInput `pulumi:"ipProtocol"`
 	// Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
-	NicType    pulumi.StringPtrInput `pulumi:"nicType"`
+	NicType pulumi.StringPtrInput `pulumi:"nicType"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
 	Policy pulumi.StringPtrInput `pulumi:"policy"`

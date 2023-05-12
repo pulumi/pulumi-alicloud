@@ -10,12 +10,23 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMongoInstancesInstanceShard {
-    private String class_;
-    private String description;
-    private String nodeId;
-    private Integer storage;
+    private final String class_;
+    private final String description;
+    private final String nodeId;
+    private final Integer storage;
 
-    private GetMongoInstancesInstanceShard() {}
+    @CustomType.Constructor
+    private GetMongoInstancesInstanceShard(
+        @CustomType.Parameter("class") String class_,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("nodeId") String nodeId,
+        @CustomType.Parameter("storage") Integer storage) {
+        this.class_ = class_;
+        this.description = description;
+        this.nodeId = nodeId;
+        this.storage = storage;
+    }
+
     public String class_() {
         return this.class_;
     }
@@ -36,13 +47,17 @@ public final class GetMongoInstancesInstanceShard {
     public static Builder builder(GetMongoInstancesInstanceShard defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String class_;
         private String description;
         private String nodeId;
         private Integer storage;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetMongoInstancesInstanceShard defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.class_ = defaults.class_;
@@ -51,33 +66,23 @@ public final class GetMongoInstancesInstanceShard {
     	      this.storage = defaults.storage;
         }
 
-        @CustomType.Setter("class")
         public Builder class_(String class_) {
             this.class_ = Objects.requireNonNull(class_);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder nodeId(String nodeId) {
             this.nodeId = Objects.requireNonNull(nodeId);
             return this;
         }
-        @CustomType.Setter
         public Builder storage(Integer storage) {
             this.storage = Objects.requireNonNull(storage);
             return this;
-        }
-        public GetMongoInstancesInstanceShard build() {
-            final var o = new GetMongoInstancesInstanceShard();
-            o.class_ = class_;
-            o.description = description;
-            o.nodeId = nodeId;
-            o.storage = storage;
-            return o;
+        }        public GetMongoInstancesInstanceShard build() {
+            return new GetMongoInstancesInstanceShard(class_, description, nodeId, storage);
         }
     }
 }

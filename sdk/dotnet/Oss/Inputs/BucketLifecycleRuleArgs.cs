@@ -65,6 +65,8 @@ namespace Pulumi.AliCloud.Oss.Inputs
 
         /// <summary>
         /// Specifies when noncurrent object versions transitions (documented below).
+        /// 
+        /// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
         /// </summary>
         public InputList<Inputs.BucketLifecycleRuleNoncurrentVersionTransitionArgs> NoncurrentVersionTransitions
         {

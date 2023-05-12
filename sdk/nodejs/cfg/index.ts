@@ -90,6 +90,11 @@ export const getRules: typeof import("./getRules").getRules = null as any;
 export const getRulesOutput: typeof import("./getRules").getRulesOutput = null as any;
 utilities.lazyLoad(exports, ["getRules","getRulesOutput"], () => require("./getRules"));
 
+export { RemediationArgs, RemediationState } from "./remediation";
+export type Remediation = import("./remediation").Remediation;
+export const Remediation: typeof import("./remediation").Remediation = null as any;
+utilities.lazyLoad(exports, ["Remediation"], () => require("./remediation"));
+
 export { RuleArgs, RuleState } from "./rule";
 export type Rule = import("./rule").Rule;
 export const Rule: typeof import("./rule").Rule = null as any;
@@ -116,6 +121,8 @@ const _module = {
                 return new Delivery(name, <any>undefined, { urn })
             case "alicloud:cfg/deliveryChannel:DeliveryChannel":
                 return new DeliveryChannel(name, <any>undefined, { urn })
+            case "alicloud:cfg/remediation:Remediation":
+                return new Remediation(name, <any>undefined, { urn })
             case "alicloud:cfg/rule:Rule":
                 return new Rule(name, <any>undefined, { urn })
             default:
@@ -131,4 +138,5 @@ pulumi.runtime.registerResourceModule("alicloud", "cfg/compliancePack", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cfg/configurationRecorder", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cfg/delivery", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cfg/deliveryChannel", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cfg/remediation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cfg/rule", _module)

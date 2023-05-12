@@ -187,6 +187,7 @@ def get_server_groups(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Server Group IDs.
     :param str name_regex: A regex string to filter results by Server Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param Sequence[str] server_group_ids: The server group ids.
     :param str server_group_name: The name of the resource.
@@ -258,6 +259,7 @@ def get_server_groups_output(enable_details: Optional[pulumi.Input[Optional[bool
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Server Group IDs.
     :param str name_regex: A regex string to filter results by Server Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param Sequence[str] server_group_ids: The server group ids.
     :param str server_group_name: The name of the resource.

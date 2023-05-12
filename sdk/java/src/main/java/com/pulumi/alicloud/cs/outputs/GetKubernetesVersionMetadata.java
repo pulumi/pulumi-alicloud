@@ -15,14 +15,21 @@ public final class GetKubernetesVersionMetadata {
      * @return The list of supported runtime.
      * 
      */
-    private List<GetKubernetesVersionMetadataRuntime> runtimes;
+    private final List<GetKubernetesVersionMetadataRuntime> runtimes;
     /**
      * @return The runtime version.
      * 
      */
-    private String version;
+    private final String version;
 
-    private GetKubernetesVersionMetadata() {}
+    @CustomType.Constructor
+    private GetKubernetesVersionMetadata(
+        @CustomType.Parameter("runtimes") List<GetKubernetesVersionMetadataRuntime> runtimes,
+        @CustomType.Parameter("version") String version) {
+        this.runtimes = runtimes;
+        this.version = version;
+    }
+
     /**
      * @return The list of supported runtime.
      * 
@@ -45,18 +52,21 @@ public final class GetKubernetesVersionMetadata {
     public static Builder builder(GetKubernetesVersionMetadata defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetKubernetesVersionMetadataRuntime> runtimes;
         private String version;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetKubernetesVersionMetadata defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.runtimes = defaults.runtimes;
     	      this.version = defaults.version;
         }
 
-        @CustomType.Setter
         public Builder runtimes(List<GetKubernetesVersionMetadataRuntime> runtimes) {
             this.runtimes = Objects.requireNonNull(runtimes);
             return this;
@@ -64,16 +74,11 @@ public final class GetKubernetesVersionMetadata {
         public Builder runtimes(GetKubernetesVersionMetadataRuntime... runtimes) {
             return runtimes(List.of(runtimes));
         }
-        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }
-        public GetKubernetesVersionMetadata build() {
-            final var o = new GetKubernetesVersionMetadata();
-            o.runtimes = runtimes;
-            o.version = version;
-            return o;
+        }        public GetKubernetesVersionMetadata build() {
+            return new GetKubernetesVersionMetadata(runtimes, version);
         }
     }
 }

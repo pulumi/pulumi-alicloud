@@ -17,17 +17,38 @@ public final class GetResourceSharesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String resourceShareName;
-    private String resourceShareOwner;
-    private List<GetResourceSharesShare> shares;
-    private @Nullable String status;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String resourceShareName;
+    private final String resourceShareOwner;
+    private final List<GetResourceSharesShare> shares;
+    private final @Nullable String status;
 
-    private GetResourceSharesResult() {}
+    @CustomType.Constructor
+    private GetResourceSharesResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("resourceShareName") @Nullable String resourceShareName,
+        @CustomType.Parameter("resourceShareOwner") String resourceShareOwner,
+        @CustomType.Parameter("shares") List<GetResourceSharesShare> shares,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.resourceShareName = resourceShareName;
+        this.resourceShareOwner = resourceShareOwner;
+        this.shares = shares;
+        this.status = status;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -67,7 +88,7 @@ public final class GetResourceSharesResult {
     public static Builder builder(GetResourceSharesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -78,7 +99,11 @@ public final class GetResourceSharesResult {
         private String resourceShareOwner;
         private List<GetResourceSharesShare> shares;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetResourceSharesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -92,12 +117,10 @@ public final class GetResourceSharesResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -105,12 +128,10 @@ public final class GetResourceSharesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -118,22 +139,18 @@ public final class GetResourceSharesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder resourceShareName(@Nullable String resourceShareName) {
             this.resourceShareName = resourceShareName;
             return this;
         }
-        @CustomType.Setter
         public Builder resourceShareOwner(String resourceShareOwner) {
             this.resourceShareOwner = Objects.requireNonNull(resourceShareOwner);
             return this;
         }
-        @CustomType.Setter
         public Builder shares(List<GetResourceSharesShare> shares) {
             this.shares = Objects.requireNonNull(shares);
             return this;
@@ -141,23 +158,11 @@ public final class GetResourceSharesResult {
         public Builder shares(GetResourceSharesShare... shares) {
             return shares(List.of(shares));
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetResourceSharesResult build() {
-            final var o = new GetResourceSharesResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.resourceShareName = resourceShareName;
-            o.resourceShareOwner = resourceShareOwner;
-            o.shares = shares;
-            o.status = status;
-            return o;
+        }        public GetResourceSharesResult build() {
+            return new GetResourceSharesResult(id, ids, nameRegex, names, outputFile, resourceShareName, resourceShareOwner, shares, status);
         }
     }
 }

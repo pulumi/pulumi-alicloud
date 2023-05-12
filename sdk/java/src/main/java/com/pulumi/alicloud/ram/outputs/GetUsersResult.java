@@ -13,33 +13,54 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetUsersResult {
-    private @Nullable String groupName;
+    private final @Nullable String groupName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of ram user IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of ram user names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String policyName;
-    private @Nullable String policyType;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String policyName;
+    private final @Nullable String policyType;
     /**
      * @return A list of users. Each element contains the following attributes:
      * 
      */
-    private List<GetUsersUser> users;
+    private final List<GetUsersUser> users;
 
-    private GetUsersResult() {}
+    @CustomType.Constructor
+    private GetUsersResult(
+        @CustomType.Parameter("groupName") @Nullable String groupName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("policyName") @Nullable String policyName,
+        @CustomType.Parameter("policyType") @Nullable String policyType,
+        @CustomType.Parameter("users") List<GetUsersUser> users) {
+        this.groupName = groupName;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.policyName = policyName;
+        this.policyType = policyType;
+        this.users = users;
+    }
+
     public Optional<String> groupName() {
         return Optional.ofNullable(this.groupName);
     }
@@ -91,7 +112,7 @@ public final class GetUsersResult {
     public static Builder builder(GetUsersResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String groupName;
         private String id;
@@ -102,7 +123,11 @@ public final class GetUsersResult {
         private @Nullable String policyName;
         private @Nullable String policyType;
         private List<GetUsersUser> users;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetUsersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groupName = defaults.groupName;
@@ -116,17 +141,14 @@ public final class GetUsersResult {
     	      this.users = defaults.users;
         }
 
-        @CustomType.Setter
         public Builder groupName(@Nullable String groupName) {
             this.groupName = groupName;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -134,12 +156,10 @@ public final class GetUsersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -147,41 +167,26 @@ public final class GetUsersResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder policyName(@Nullable String policyName) {
             this.policyName = policyName;
             return this;
         }
-        @CustomType.Setter
         public Builder policyType(@Nullable String policyType) {
             this.policyType = policyType;
             return this;
         }
-        @CustomType.Setter
         public Builder users(List<GetUsersUser> users) {
             this.users = Objects.requireNonNull(users);
             return this;
         }
         public Builder users(GetUsersUser... users) {
             return users(List.of(users));
-        }
-        public GetUsersResult build() {
-            final var o = new GetUsersResult();
-            o.groupName = groupName;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.policyName = policyName;
-            o.policyType = policyType;
-            o.users = users;
-            return o;
+        }        public GetUsersResult build() {
+            return new GetUsersResult(groupName, id, ids, nameRegex, names, outputFile, policyName, policyType, users);
         }
     }
 }

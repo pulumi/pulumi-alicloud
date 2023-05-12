@@ -55,7 +55,8 @@ type GetBucketObjectsArgs struct {
 	// Filter results by the given key prefix (such as "path/to/folder/logs-").
 	KeyPrefix *string `pulumi:"keyPrefix"`
 	// A regex string to filter results by key.
-	KeyRegex   *string `pulumi:"keyRegex"`
+	KeyRegex *string `pulumi:"keyRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -91,7 +92,8 @@ type GetBucketObjectsOutputArgs struct {
 	// Filter results by the given key prefix (such as "path/to/folder/logs-").
 	KeyPrefix pulumi.StringPtrInput `pulumi:"keyPrefix"`
 	// A regex string to filter results by key.
-	KeyRegex   pulumi.StringPtrInput `pulumi:"keyRegex"`
+	KeyRegex pulumi.StringPtrInput `pulumi:"keyRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

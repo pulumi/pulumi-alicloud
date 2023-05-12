@@ -143,6 +143,7 @@ def get_public_ip_address_pool_cidr_blocks(cidr_block: Optional[str] = None,
 
     :param str cidr_block: The CIDR block.
     :param Sequence[str] ids: A list of Vpc Public Ip Address Pool Cidr Block IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str public_ip_address_pool_id: The ID of the Vpc Public IP address pool.
     :param str status: The status of the CIDR block in the Vpc Public IP address pool. Valid values: `Created`, `Modifying`, `Deleting`.
     """
@@ -198,6 +199,7 @@ def get_public_ip_address_pool_cidr_blocks_output(cidr_block: Optional[pulumi.In
 
     :param str cidr_block: The CIDR block.
     :param Sequence[str] ids: A list of Vpc Public Ip Address Pool Cidr Block IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str public_ip_address_pool_id: The ID of the Vpc Public IP address pool.
     :param str status: The status of the CIDR block in the Vpc Public IP address pool. Valid values: `Created`, `Modifying`, `Deleting`.
     """

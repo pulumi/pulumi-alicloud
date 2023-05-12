@@ -18,89 +18,126 @@ public final class GetIpsecServersServer {
      * @return The CIDR block of the client, which is assigned an access address to the virtual NIC of the client.
      * 
      */
-    private String clientIpPool;
+    private final String clientIpPool;
     /**
      * @return The creation time of the IPsec server. T represents the delimiter, and Z represents UTC, which is World Standard Time.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return Indicates whether the current IPsec tunnel is deleted and negotiations are reinitiated.
      * 
      */
-    private Boolean effectImmediately;
+    private final Boolean effectImmediately;
     /**
      * @return The ID of the Ipsec Server.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the Identity as a Service (IDaaS) instance.
      * 
      */
-    private String idaasInstanceId;
+    private final String idaasInstanceId;
     /**
      * @return The configurations of Phase 1 negotiations.
      * 
      */
-    private List<GetIpsecServersServerIkeConfig> ikeConfigs;
+    private final List<GetIpsecServersServerIkeConfig> ikeConfigs;
     /**
      * @return The public IP address of the VPN gateway.
      * 
      */
-    private String internetIp;
+    private final String internetIp;
     /**
      * @return The configuration of Phase 2 negotiations.
      * 
      */
-    private List<GetIpsecServersServerIpsecConfig> ipsecConfigs;
+    private final List<GetIpsecServersServerIpsecConfig> ipsecConfigs;
     /**
      * @return The ID of the IPsec server.
      * 
      */
-    private String ipsecServerId;
+    private final String ipsecServerId;
     /**
      * @return The name of the IPsec server.
      * 
      */
-    private String ipsecServerName;
+    private final String ipsecServerName;
     /**
      * @return Local network segment: the network segment on The VPC side that needs to be interconnected with the client network segment.
      * 
      */
-    private String localSubnet;
+    private final String localSubnet;
     /**
      * @return The number of SSL connections of the VPN gateway. SSL-VPN the number of SSL connections shared with the IPsec server. For example, if the number of SSL connections is 5 and you have three SSL clients connected to the SSL-VPN, you can also use two clients to connect to the IPsec server.
      * 
      */
-    private Integer maxConnections;
+    private final Integer maxConnections;
     /**
      * @return Whether the two-factor authentication function has been turned on.
      * 
      */
-    private Boolean multiFactorAuthEnabled;
+    private final Boolean multiFactorAuthEnabled;
     /**
      * @return The number of clients that have connected to the IPsec server.
      * 
      */
-    private Integer onlineClientCount;
+    private final Integer onlineClientCount;
     /**
      * @return The pre-shared key.
      * 
      */
-    private String psk;
+    private final String psk;
     /**
      * @return Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
      * 
      */
-    private Boolean pskEnabled;
+    private final Boolean pskEnabled;
     /**
      * @return The ID of the VPN gateway.
      * 
      */
-    private String vpnGatewayId;
+    private final String vpnGatewayId;
 
-    private GetIpsecServersServer() {}
+    @CustomType.Constructor
+    private GetIpsecServersServer(
+        @CustomType.Parameter("clientIpPool") String clientIpPool,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("effectImmediately") Boolean effectImmediately,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("idaasInstanceId") String idaasInstanceId,
+        @CustomType.Parameter("ikeConfigs") List<GetIpsecServersServerIkeConfig> ikeConfigs,
+        @CustomType.Parameter("internetIp") String internetIp,
+        @CustomType.Parameter("ipsecConfigs") List<GetIpsecServersServerIpsecConfig> ipsecConfigs,
+        @CustomType.Parameter("ipsecServerId") String ipsecServerId,
+        @CustomType.Parameter("ipsecServerName") String ipsecServerName,
+        @CustomType.Parameter("localSubnet") String localSubnet,
+        @CustomType.Parameter("maxConnections") Integer maxConnections,
+        @CustomType.Parameter("multiFactorAuthEnabled") Boolean multiFactorAuthEnabled,
+        @CustomType.Parameter("onlineClientCount") Integer onlineClientCount,
+        @CustomType.Parameter("psk") String psk,
+        @CustomType.Parameter("pskEnabled") Boolean pskEnabled,
+        @CustomType.Parameter("vpnGatewayId") String vpnGatewayId) {
+        this.clientIpPool = clientIpPool;
+        this.createTime = createTime;
+        this.effectImmediately = effectImmediately;
+        this.id = id;
+        this.idaasInstanceId = idaasInstanceId;
+        this.ikeConfigs = ikeConfigs;
+        this.internetIp = internetIp;
+        this.ipsecConfigs = ipsecConfigs;
+        this.ipsecServerId = ipsecServerId;
+        this.ipsecServerName = ipsecServerName;
+        this.localSubnet = localSubnet;
+        this.maxConnections = maxConnections;
+        this.multiFactorAuthEnabled = multiFactorAuthEnabled;
+        this.onlineClientCount = onlineClientCount;
+        this.psk = psk;
+        this.pskEnabled = pskEnabled;
+        this.vpnGatewayId = vpnGatewayId;
+    }
+
     /**
      * @return The CIDR block of the client, which is assigned an access address to the virtual NIC of the client.
      * 
@@ -228,7 +265,7 @@ public final class GetIpsecServersServer {
     public static Builder builder(GetIpsecServersServer defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String clientIpPool;
         private String createTime;
@@ -247,7 +284,11 @@ public final class GetIpsecServersServer {
         private String psk;
         private Boolean pskEnabled;
         private String vpnGatewayId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetIpsecServersServer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientIpPool = defaults.clientIpPool;
@@ -269,32 +310,26 @@ public final class GetIpsecServersServer {
     	      this.vpnGatewayId = defaults.vpnGatewayId;
         }
 
-        @CustomType.Setter
         public Builder clientIpPool(String clientIpPool) {
             this.clientIpPool = Objects.requireNonNull(clientIpPool);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder effectImmediately(Boolean effectImmediately) {
             this.effectImmediately = Objects.requireNonNull(effectImmediately);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder idaasInstanceId(String idaasInstanceId) {
             this.idaasInstanceId = Objects.requireNonNull(idaasInstanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder ikeConfigs(List<GetIpsecServersServerIkeConfig> ikeConfigs) {
             this.ikeConfigs = Objects.requireNonNull(ikeConfigs);
             return this;
@@ -302,12 +337,10 @@ public final class GetIpsecServersServer {
         public Builder ikeConfigs(GetIpsecServersServerIkeConfig... ikeConfigs) {
             return ikeConfigs(List.of(ikeConfigs));
         }
-        @CustomType.Setter
         public Builder internetIp(String internetIp) {
             this.internetIp = Objects.requireNonNull(internetIp);
             return this;
         }
-        @CustomType.Setter
         public Builder ipsecConfigs(List<GetIpsecServersServerIpsecConfig> ipsecConfigs) {
             this.ipsecConfigs = Objects.requireNonNull(ipsecConfigs);
             return this;
@@ -315,71 +348,43 @@ public final class GetIpsecServersServer {
         public Builder ipsecConfigs(GetIpsecServersServerIpsecConfig... ipsecConfigs) {
             return ipsecConfigs(List.of(ipsecConfigs));
         }
-        @CustomType.Setter
         public Builder ipsecServerId(String ipsecServerId) {
             this.ipsecServerId = Objects.requireNonNull(ipsecServerId);
             return this;
         }
-        @CustomType.Setter
         public Builder ipsecServerName(String ipsecServerName) {
             this.ipsecServerName = Objects.requireNonNull(ipsecServerName);
             return this;
         }
-        @CustomType.Setter
         public Builder localSubnet(String localSubnet) {
             this.localSubnet = Objects.requireNonNull(localSubnet);
             return this;
         }
-        @CustomType.Setter
         public Builder maxConnections(Integer maxConnections) {
             this.maxConnections = Objects.requireNonNull(maxConnections);
             return this;
         }
-        @CustomType.Setter
         public Builder multiFactorAuthEnabled(Boolean multiFactorAuthEnabled) {
             this.multiFactorAuthEnabled = Objects.requireNonNull(multiFactorAuthEnabled);
             return this;
         }
-        @CustomType.Setter
         public Builder onlineClientCount(Integer onlineClientCount) {
             this.onlineClientCount = Objects.requireNonNull(onlineClientCount);
             return this;
         }
-        @CustomType.Setter
         public Builder psk(String psk) {
             this.psk = Objects.requireNonNull(psk);
             return this;
         }
-        @CustomType.Setter
         public Builder pskEnabled(Boolean pskEnabled) {
             this.pskEnabled = Objects.requireNonNull(pskEnabled);
             return this;
         }
-        @CustomType.Setter
         public Builder vpnGatewayId(String vpnGatewayId) {
             this.vpnGatewayId = Objects.requireNonNull(vpnGatewayId);
             return this;
-        }
-        public GetIpsecServersServer build() {
-            final var o = new GetIpsecServersServer();
-            o.clientIpPool = clientIpPool;
-            o.createTime = createTime;
-            o.effectImmediately = effectImmediately;
-            o.id = id;
-            o.idaasInstanceId = idaasInstanceId;
-            o.ikeConfigs = ikeConfigs;
-            o.internetIp = internetIp;
-            o.ipsecConfigs = ipsecConfigs;
-            o.ipsecServerId = ipsecServerId;
-            o.ipsecServerName = ipsecServerName;
-            o.localSubnet = localSubnet;
-            o.maxConnections = maxConnections;
-            o.multiFactorAuthEnabled = multiFactorAuthEnabled;
-            o.onlineClientCount = onlineClientCount;
-            o.psk = psk;
-            o.pskEnabled = pskEnabled;
-            o.vpnGatewayId = vpnGatewayId;
-            return o;
+        }        public GetIpsecServersServer build() {
+            return new GetIpsecServersServer(clientIpPool, createTime, effectImmediately, id, idaasInstanceId, ikeConfigs, internetIp, ipsecConfigs, ipsecServerId, ipsecServerName, localSubnet, maxConnections, multiFactorAuthEnabled, onlineClientCount, psk, pskEnabled, vpnGatewayId);
         }
     }
 }

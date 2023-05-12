@@ -57,6 +57,9 @@ export interface GetDomainsArgs {
      * A regex string to filter results by domain name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the resource group to which the queried domain belongs in Resource Management.
@@ -135,6 +138,9 @@ export interface GetDomainsOutputArgs {
      * A regex string to filter results by domain name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the resource group to which the queried domain belongs in Resource Management.

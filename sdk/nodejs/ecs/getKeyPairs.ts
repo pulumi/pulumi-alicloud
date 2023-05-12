@@ -7,6 +7,10 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsKeyPairs from version 1.121.0.
+ *
+ * This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -50,6 +54,9 @@ export interface GetKeyPairsArgs {
      * A regex string to apply to the resulting key pairs.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The Id of resource group which the key pair belongs.
@@ -97,6 +104,10 @@ export interface GetKeyPairsResult {
     readonly tags?: {[key: string]: any};
 }
 /**
+ * > **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsKeyPairs from version 1.121.0.
+ *
+ * This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -130,6 +141,9 @@ export interface GetKeyPairsOutputArgs {
      * A regex string to apply to the resulting key pairs.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The Id of resource group which the key pair belongs.

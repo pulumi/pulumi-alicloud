@@ -64,12 +64,16 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
     /**
      * Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
      * 
+     * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
+     * 
      */
     @Import(name="ipv6CidrIp")
     private @Nullable Output<String> ipv6CidrIp;
 
     /**
      * @return Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+     * 
+     * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
      * 
      */
     public Optional<Output<String>> ipv6CidrIp() {
@@ -315,6 +319,8 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
         /**
          * @param ipv6CidrIp Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
          * 
+         * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
+         * 
          * @return builder
          * 
          */
@@ -325,6 +331,8 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
 
         /**
          * @param ipv6CidrIp Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+         * 
+         * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
          * 
          * @return builder
          * 

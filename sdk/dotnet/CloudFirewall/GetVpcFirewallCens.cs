@@ -133,6 +133,9 @@ namespace Pulumi.AliCloud.CloudFirewall
         [Input("networkInstanceId")]
         public string? NetworkInstanceId { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -204,6 +207,9 @@ namespace Pulumi.AliCloud.CloudFirewall
         [Input("networkInstanceId")]
         public Input<string>? NetworkInstanceId { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

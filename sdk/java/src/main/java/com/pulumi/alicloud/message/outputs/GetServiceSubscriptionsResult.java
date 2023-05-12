@@ -18,34 +18,57 @@ public final class GetServiceSubscriptionsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of Subscription names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
     /**
      * @return The name of the subscription.
      * 
      */
-    private @Nullable String subscriptionName;
+    private final @Nullable String subscriptionName;
     /**
      * @return A list of Subscriptions. Each element contains the following attributes:
      * 
      */
-    private List<GetServiceSubscriptionsSubscription> subscriptions;
+    private final List<GetServiceSubscriptionsSubscription> subscriptions;
     /**
      * @return The name of the topic.
      * 
      */
-    private String topicName;
+    private final String topicName;
 
-    private GetServiceSubscriptionsResult() {}
+    @CustomType.Constructor
+    private GetServiceSubscriptionsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
+        @CustomType.Parameter("subscriptionName") @Nullable String subscriptionName,
+        @CustomType.Parameter("subscriptions") List<GetServiceSubscriptionsSubscription> subscriptions,
+        @CustomType.Parameter("topicName") String topicName) {
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+        this.subscriptionName = subscriptionName;
+        this.subscriptions = subscriptions;
+        this.topicName = topicName;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -104,7 +127,7 @@ public final class GetServiceSubscriptionsResult {
     public static Builder builder(GetServiceSubscriptionsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -116,7 +139,11 @@ public final class GetServiceSubscriptionsResult {
         private @Nullable String subscriptionName;
         private List<GetServiceSubscriptionsSubscription> subscriptions;
         private String topicName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServiceSubscriptionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -131,12 +158,10 @@ public final class GetServiceSubscriptionsResult {
     	      this.topicName = defaults.topicName;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -144,12 +169,10 @@ public final class GetServiceSubscriptionsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -157,27 +180,22 @@ public final class GetServiceSubscriptionsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
-        @CustomType.Setter
         public Builder subscriptionName(@Nullable String subscriptionName) {
             this.subscriptionName = subscriptionName;
             return this;
         }
-        @CustomType.Setter
         public Builder subscriptions(List<GetServiceSubscriptionsSubscription> subscriptions) {
             this.subscriptions = Objects.requireNonNull(subscriptions);
             return this;
@@ -185,24 +203,11 @@ public final class GetServiceSubscriptionsResult {
         public Builder subscriptions(GetServiceSubscriptionsSubscription... subscriptions) {
             return subscriptions(List.of(subscriptions));
         }
-        @CustomType.Setter
         public Builder topicName(String topicName) {
             this.topicName = Objects.requireNonNull(topicName);
             return this;
-        }
-        public GetServiceSubscriptionsResult build() {
-            final var o = new GetServiceSubscriptionsResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.subscriptionName = subscriptionName;
-            o.subscriptions = subscriptions;
-            o.topicName = topicName;
-            return o;
+        }        public GetServiceSubscriptionsResult build() {
+            return new GetServiceSubscriptionsResult(id, ids, nameRegex, names, outputFile, pageNumber, pageSize, subscriptionName, subscriptions, topicName);
         }
     }
 }

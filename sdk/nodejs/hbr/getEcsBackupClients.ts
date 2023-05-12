@@ -54,6 +54,9 @@ export interface GetEcsBackupClientsArgs {
      * A list of ECS Instance IDs.
      */
     instanceIds?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the resource.
@@ -115,6 +118,9 @@ export interface GetEcsBackupClientsOutputArgs {
      * A list of ECS Instance IDs.
      */
     instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the resource.

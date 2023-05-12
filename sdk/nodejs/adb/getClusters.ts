@@ -7,6 +7,13 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
+ * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+ *
+ * > **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
+ *
+ * > **NOTE:** Available in v1.71.0+.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -55,6 +62,9 @@ export interface GetClustersArgs {
      * A list of ADB cluster IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     pageNumber?: number;
     pageSize?: number;
@@ -109,6 +119,13 @@ export interface GetClustersResult {
     readonly totalCount: number;
 }
 /**
+ * The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
+ * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+ *
+ * > **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
+ *
+ * > **NOTE:** Available in v1.71.0+.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -143,6 +160,9 @@ export interface GetClustersOutputArgs {
      * A list of ADB cluster IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;

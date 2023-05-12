@@ -179,6 +179,7 @@ def get_registry_enterprise_sync_rules(ids: Optional[Sequence[str]] = None,
     :param str instance_id: ID of Container Registry Enterprise Edition local instance.
     :param str name_regex: A regex string to filter results by sync rule name.
     :param str namespace_name: Name of Container Registry Enterprise Edition local namespace.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str repo_name: Name of Container Registry Enterprise Edition local repo.
     :param str target_instance_id: ID of Container Registry Enterprise Edition target instance.
     """
@@ -239,6 +240,7 @@ def get_registry_enterprise_sync_rules_output(ids: Optional[pulumi.Input[Optiona
     :param str instance_id: ID of Container Registry Enterprise Edition local instance.
     :param str name_regex: A regex string to filter results by sync rule name.
     :param str namespace_name: Name of Container Registry Enterprise Edition local namespace.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str repo_name: Name of Container Registry Enterprise Edition local repo.
     :param str target_instance_id: ID of Container Registry Enterprise Edition target instance.
     """

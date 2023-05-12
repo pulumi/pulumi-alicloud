@@ -13,20 +13,31 @@ public final class GetZonesZoneBindVpc {
      * @return Binding the regionId of VPC.
      * 
      */
-    private String regionId;
+    private final String regionId;
     /**
      * @return Binding the regionName of VPC.
      * 
      */
-    private String regionName;
+    private final String regionName;
     /**
      * @return Binding the vpcId of VPC.
      * 
      */
-    private String vpcId;
-    private String vpcName;
+    private final String vpcId;
+    private final String vpcName;
 
-    private GetZonesZoneBindVpc() {}
+    @CustomType.Constructor
+    private GetZonesZoneBindVpc(
+        @CustomType.Parameter("regionId") String regionId,
+        @CustomType.Parameter("regionName") String regionName,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("vpcName") String vpcName) {
+        this.regionId = regionId;
+        this.regionName = regionName;
+        this.vpcId = vpcId;
+        this.vpcName = vpcName;
+    }
+
     /**
      * @return Binding the regionId of VPC.
      * 
@@ -59,13 +70,17 @@ public final class GetZonesZoneBindVpc {
     public static Builder builder(GetZonesZoneBindVpc defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String regionId;
         private String regionName;
         private String vpcId;
         private String vpcName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetZonesZoneBindVpc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.regionId = defaults.regionId;
@@ -74,33 +89,23 @@ public final class GetZonesZoneBindVpc {
     	      this.vpcName = defaults.vpcName;
         }
 
-        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
-        @CustomType.Setter
         public Builder regionName(String regionName) {
             this.regionName = Objects.requireNonNull(regionName);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcName(String vpcName) {
             this.vpcName = Objects.requireNonNull(vpcName);
             return this;
-        }
-        public GetZonesZoneBindVpc build() {
-            final var o = new GetZonesZoneBindVpc();
-            o.regionId = regionId;
-            o.regionName = regionName;
-            o.vpcId = vpcId;
-            o.vpcName = vpcName;
-            return o;
+        }        public GetZonesZoneBindVpc build() {
+            return new GetZonesZoneBindVpc(regionId, regionName, vpcId, vpcName);
         }
     }
 }

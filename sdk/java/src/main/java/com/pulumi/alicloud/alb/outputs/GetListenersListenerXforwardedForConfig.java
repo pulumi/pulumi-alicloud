@@ -14,69 +14,98 @@ public final class GetListenersListenerXforwardedForConfig {
      * @return The Custom Header Field Names Only When `xforwardedforclientcert_issuerdnenabled`, Which Evaluates to True When the Entry into Force of.
      * 
      */
-    private String xforwardedforclientcertIssuerdnalias;
+    private final String xforwardedforclientcertIssuerdnalias;
     /**
      * @return Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
      * 
      */
-    private Boolean xforwardedforclientcertIssuerdnenabled;
+    private final Boolean xforwardedforclientcertIssuerdnenabled;
     /**
      * @return The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
      * 
      */
-    private String xforwardedforclientcertclientverifyalias;
+    private final String xforwardedforclientcertclientverifyalias;
     /**
      * @return Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
      * 
      */
-    private Boolean xforwardedforclientcertclientverifyenabled;
+    private final Boolean xforwardedforclientcertclientverifyenabled;
     /**
      * @return The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
      * 
      */
-    private String xforwardedforclientcertfingerprintalias;
+    private final String xforwardedforclientcertfingerprintalias;
     /**
      * @return Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
      * 
      */
-    private Boolean xforwardedforclientcertfingerprintenabled;
+    private final Boolean xforwardedforclientcertfingerprintenabled;
     /**
      * @return The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
      * 
      */
-    private String xforwardedforclientcertsubjectdnalias;
+    private final String xforwardedforclientcertsubjectdnalias;
     /**
      * @return Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
      * 
      */
-    private Boolean xforwardedforclientcertsubjectdnenabled;
+    private final Boolean xforwardedforclientcertsubjectdnenabled;
     /**
      * @return Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
      * 
      */
-    private Boolean xforwardedforclientsrcportenabled;
+    private final Boolean xforwardedforclientsrcportenabled;
     /**
      * @return Indicates whether the X-Forwarded-For header field is used to obtain the real IP address of tqhe client. Valid values: true and false. Default value: true.
      * 
      */
-    private Boolean xforwardedforenabled;
+    private final Boolean xforwardedforenabled;
     /**
      * @return Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
      * 
      */
-    private Boolean xforwardedforprotoenabled;
+    private final Boolean xforwardedforprotoenabled;
     /**
      * @return Indicates whether the SLB-ID header field is used to obtain the ID of the ALB instance. Valid values: true and false. Default value: false.
      * 
      */
-    private Boolean xforwardedforslbidenabled;
+    private final Boolean xforwardedforslbidenabled;
     /**
      * @return Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
      * 
      */
-    private Boolean xforwardedforslbportenabled;
+    private final Boolean xforwardedforslbportenabled;
 
-    private GetListenersListenerXforwardedForConfig() {}
+    @CustomType.Constructor
+    private GetListenersListenerXforwardedForConfig(
+        @CustomType.Parameter("xforwardedforclientcertIssuerdnalias") String xforwardedforclientcertIssuerdnalias,
+        @CustomType.Parameter("xforwardedforclientcertIssuerdnenabled") Boolean xforwardedforclientcertIssuerdnenabled,
+        @CustomType.Parameter("xforwardedforclientcertclientverifyalias") String xforwardedforclientcertclientverifyalias,
+        @CustomType.Parameter("xforwardedforclientcertclientverifyenabled") Boolean xforwardedforclientcertclientverifyenabled,
+        @CustomType.Parameter("xforwardedforclientcertfingerprintalias") String xforwardedforclientcertfingerprintalias,
+        @CustomType.Parameter("xforwardedforclientcertfingerprintenabled") Boolean xforwardedforclientcertfingerprintenabled,
+        @CustomType.Parameter("xforwardedforclientcertsubjectdnalias") String xforwardedforclientcertsubjectdnalias,
+        @CustomType.Parameter("xforwardedforclientcertsubjectdnenabled") Boolean xforwardedforclientcertsubjectdnenabled,
+        @CustomType.Parameter("xforwardedforclientsrcportenabled") Boolean xforwardedforclientsrcportenabled,
+        @CustomType.Parameter("xforwardedforenabled") Boolean xforwardedforenabled,
+        @CustomType.Parameter("xforwardedforprotoenabled") Boolean xforwardedforprotoenabled,
+        @CustomType.Parameter("xforwardedforslbidenabled") Boolean xforwardedforslbidenabled,
+        @CustomType.Parameter("xforwardedforslbportenabled") Boolean xforwardedforslbportenabled) {
+        this.xforwardedforclientcertIssuerdnalias = xforwardedforclientcertIssuerdnalias;
+        this.xforwardedforclientcertIssuerdnenabled = xforwardedforclientcertIssuerdnenabled;
+        this.xforwardedforclientcertclientverifyalias = xforwardedforclientcertclientverifyalias;
+        this.xforwardedforclientcertclientverifyenabled = xforwardedforclientcertclientverifyenabled;
+        this.xforwardedforclientcertfingerprintalias = xforwardedforclientcertfingerprintalias;
+        this.xforwardedforclientcertfingerprintenabled = xforwardedforclientcertfingerprintenabled;
+        this.xforwardedforclientcertsubjectdnalias = xforwardedforclientcertsubjectdnalias;
+        this.xforwardedforclientcertsubjectdnenabled = xforwardedforclientcertsubjectdnenabled;
+        this.xforwardedforclientsrcportenabled = xforwardedforclientsrcportenabled;
+        this.xforwardedforenabled = xforwardedforenabled;
+        this.xforwardedforprotoenabled = xforwardedforprotoenabled;
+        this.xforwardedforslbidenabled = xforwardedforslbidenabled;
+        this.xforwardedforslbportenabled = xforwardedforslbportenabled;
+    }
+
     /**
      * @return The Custom Header Field Names Only When `xforwardedforclientcert_issuerdnenabled`, Which Evaluates to True When the Entry into Force of.
      * 
@@ -176,7 +205,7 @@ public final class GetListenersListenerXforwardedForConfig {
     public static Builder builder(GetListenersListenerXforwardedForConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String xforwardedforclientcertIssuerdnalias;
         private Boolean xforwardedforclientcertIssuerdnenabled;
@@ -191,7 +220,11 @@ public final class GetListenersListenerXforwardedForConfig {
         private Boolean xforwardedforprotoenabled;
         private Boolean xforwardedforslbidenabled;
         private Boolean xforwardedforslbportenabled;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetListenersListenerXforwardedForConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.xforwardedforclientcertIssuerdnalias = defaults.xforwardedforclientcertIssuerdnalias;
@@ -209,87 +242,59 @@ public final class GetListenersListenerXforwardedForConfig {
     	      this.xforwardedforslbportenabled = defaults.xforwardedforslbportenabled;
         }
 
-        @CustomType.Setter
         public Builder xforwardedforclientcertIssuerdnalias(String xforwardedforclientcertIssuerdnalias) {
             this.xforwardedforclientcertIssuerdnalias = Objects.requireNonNull(xforwardedforclientcertIssuerdnalias);
             return this;
         }
-        @CustomType.Setter
         public Builder xforwardedforclientcertIssuerdnenabled(Boolean xforwardedforclientcertIssuerdnenabled) {
             this.xforwardedforclientcertIssuerdnenabled = Objects.requireNonNull(xforwardedforclientcertIssuerdnenabled);
             return this;
         }
-        @CustomType.Setter
         public Builder xforwardedforclientcertclientverifyalias(String xforwardedforclientcertclientverifyalias) {
             this.xforwardedforclientcertclientverifyalias = Objects.requireNonNull(xforwardedforclientcertclientverifyalias);
             return this;
         }
-        @CustomType.Setter
         public Builder xforwardedforclientcertclientverifyenabled(Boolean xforwardedforclientcertclientverifyenabled) {
             this.xforwardedforclientcertclientverifyenabled = Objects.requireNonNull(xforwardedforclientcertclientverifyenabled);
             return this;
         }
-        @CustomType.Setter
         public Builder xforwardedforclientcertfingerprintalias(String xforwardedforclientcertfingerprintalias) {
             this.xforwardedforclientcertfingerprintalias = Objects.requireNonNull(xforwardedforclientcertfingerprintalias);
             return this;
         }
-        @CustomType.Setter
         public Builder xforwardedforclientcertfingerprintenabled(Boolean xforwardedforclientcertfingerprintenabled) {
             this.xforwardedforclientcertfingerprintenabled = Objects.requireNonNull(xforwardedforclientcertfingerprintenabled);
             return this;
         }
-        @CustomType.Setter
         public Builder xforwardedforclientcertsubjectdnalias(String xforwardedforclientcertsubjectdnalias) {
             this.xforwardedforclientcertsubjectdnalias = Objects.requireNonNull(xforwardedforclientcertsubjectdnalias);
             return this;
         }
-        @CustomType.Setter
         public Builder xforwardedforclientcertsubjectdnenabled(Boolean xforwardedforclientcertsubjectdnenabled) {
             this.xforwardedforclientcertsubjectdnenabled = Objects.requireNonNull(xforwardedforclientcertsubjectdnenabled);
             return this;
         }
-        @CustomType.Setter
         public Builder xforwardedforclientsrcportenabled(Boolean xforwardedforclientsrcportenabled) {
             this.xforwardedforclientsrcportenabled = Objects.requireNonNull(xforwardedforclientsrcportenabled);
             return this;
         }
-        @CustomType.Setter
         public Builder xforwardedforenabled(Boolean xforwardedforenabled) {
             this.xforwardedforenabled = Objects.requireNonNull(xforwardedforenabled);
             return this;
         }
-        @CustomType.Setter
         public Builder xforwardedforprotoenabled(Boolean xforwardedforprotoenabled) {
             this.xforwardedforprotoenabled = Objects.requireNonNull(xforwardedforprotoenabled);
             return this;
         }
-        @CustomType.Setter
         public Builder xforwardedforslbidenabled(Boolean xforwardedforslbidenabled) {
             this.xforwardedforslbidenabled = Objects.requireNonNull(xforwardedforslbidenabled);
             return this;
         }
-        @CustomType.Setter
         public Builder xforwardedforslbportenabled(Boolean xforwardedforslbportenabled) {
             this.xforwardedforslbportenabled = Objects.requireNonNull(xforwardedforslbportenabled);
             return this;
-        }
-        public GetListenersListenerXforwardedForConfig build() {
-            final var o = new GetListenersListenerXforwardedForConfig();
-            o.xforwardedforclientcertIssuerdnalias = xforwardedforclientcertIssuerdnalias;
-            o.xforwardedforclientcertIssuerdnenabled = xforwardedforclientcertIssuerdnenabled;
-            o.xforwardedforclientcertclientverifyalias = xforwardedforclientcertclientverifyalias;
-            o.xforwardedforclientcertclientverifyenabled = xforwardedforclientcertclientverifyenabled;
-            o.xforwardedforclientcertfingerprintalias = xforwardedforclientcertfingerprintalias;
-            o.xforwardedforclientcertfingerprintenabled = xforwardedforclientcertfingerprintenabled;
-            o.xforwardedforclientcertsubjectdnalias = xforwardedforclientcertsubjectdnalias;
-            o.xforwardedforclientcertsubjectdnenabled = xforwardedforclientcertsubjectdnenabled;
-            o.xforwardedforclientsrcportenabled = xforwardedforclientsrcportenabled;
-            o.xforwardedforenabled = xforwardedforenabled;
-            o.xforwardedforprotoenabled = xforwardedforprotoenabled;
-            o.xforwardedforslbidenabled = xforwardedforslbidenabled;
-            o.xforwardedforslbportenabled = xforwardedforslbportenabled;
-            return o;
+        }        public GetListenersListenerXforwardedForConfig build() {
+            return new GetListenersListenerXforwardedForConfig(xforwardedforclientcertIssuerdnalias, xforwardedforclientcertIssuerdnenabled, xforwardedforclientcertclientverifyalias, xforwardedforclientcertclientverifyenabled, xforwardedforclientcertfingerprintalias, xforwardedforclientcertfingerprintenabled, xforwardedforclientcertsubjectdnalias, xforwardedforclientcertsubjectdnenabled, xforwardedforclientsrcportenabled, xforwardedforenabled, xforwardedforprotoenabled, xforwardedforslbidenabled, xforwardedforslbportenabled);
         }
     }
 }

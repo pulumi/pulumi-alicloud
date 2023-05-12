@@ -13,54 +13,77 @@ public final class GetVpcFlowLogsLog {
      * @return The Description of flow log.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The flow log ID.
      * 
      */
-    private String flowLogId;
+    private final String flowLogId;
     /**
      * @return The flow log name.
      * 
      */
-    private String flowLogName;
+    private final String flowLogName;
     /**
      * @return The ID of the Flow Log.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The log store name.
      * 
      */
-    private String logStoreName;
+    private final String logStoreName;
     /**
      * @return The project name.
      * 
      */
-    private String projectName;
+    private final String projectName;
     /**
      * @return The resource id.
      * 
      */
-    private String resourceId;
+    private final String resourceId;
     /**
      * @return The resource type.
      * 
      */
-    private String resourceType;
+    private final String resourceType;
     /**
      * @return The status of flow log.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The traffic type.
      * 
      */
-    private String trafficType;
+    private final String trafficType;
 
-    private GetVpcFlowLogsLog() {}
+    @CustomType.Constructor
+    private GetVpcFlowLogsLog(
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("flowLogId") String flowLogId,
+        @CustomType.Parameter("flowLogName") String flowLogName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("logStoreName") String logStoreName,
+        @CustomType.Parameter("projectName") String projectName,
+        @CustomType.Parameter("resourceId") String resourceId,
+        @CustomType.Parameter("resourceType") String resourceType,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("trafficType") String trafficType) {
+        this.description = description;
+        this.flowLogId = flowLogId;
+        this.flowLogName = flowLogName;
+        this.id = id;
+        this.logStoreName = logStoreName;
+        this.projectName = projectName;
+        this.resourceId = resourceId;
+        this.resourceType = resourceType;
+        this.status = status;
+        this.trafficType = trafficType;
+    }
+
     /**
      * @return The Description of flow log.
      * 
@@ -139,7 +162,7 @@ public final class GetVpcFlowLogsLog {
     public static Builder builder(GetVpcFlowLogsLog defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String description;
         private String flowLogId;
@@ -151,7 +174,11 @@ public final class GetVpcFlowLogsLog {
         private String resourceType;
         private String status;
         private String trafficType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVpcFlowLogsLog defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -166,69 +193,47 @@ public final class GetVpcFlowLogsLog {
     	      this.trafficType = defaults.trafficType;
         }
 
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder flowLogId(String flowLogId) {
             this.flowLogId = Objects.requireNonNull(flowLogId);
             return this;
         }
-        @CustomType.Setter
         public Builder flowLogName(String flowLogName) {
             this.flowLogName = Objects.requireNonNull(flowLogName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder logStoreName(String logStoreName) {
             this.logStoreName = Objects.requireNonNull(logStoreName);
             return this;
         }
-        @CustomType.Setter
         public Builder projectName(String projectName) {
             this.projectName = Objects.requireNonNull(projectName);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceId(String resourceId) {
             this.resourceId = Objects.requireNonNull(resourceId);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceType(String resourceType) {
             this.resourceType = Objects.requireNonNull(resourceType);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder trafficType(String trafficType) {
             this.trafficType = Objects.requireNonNull(trafficType);
             return this;
-        }
-        public GetVpcFlowLogsLog build() {
-            final var o = new GetVpcFlowLogsLog();
-            o.description = description;
-            o.flowLogId = flowLogId;
-            o.flowLogName = flowLogName;
-            o.id = id;
-            o.logStoreName = logStoreName;
-            o.projectName = projectName;
-            o.resourceId = resourceId;
-            o.resourceType = resourceType;
-            o.status = status;
-            o.trafficType = trafficType;
-            return o;
+        }        public GetVpcFlowLogsLog build() {
+            return new GetVpcFlowLogsLog(description, flowLogId, flowLogName, id, logStoreName, projectName, resourceId, resourceType, status, trafficType);
         }
     }
 }

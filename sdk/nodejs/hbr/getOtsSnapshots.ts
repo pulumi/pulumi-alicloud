@@ -43,6 +43,9 @@ export interface GetOtsSnapshotsArgs {
      */
     endTime?: string;
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
@@ -93,6 +96,9 @@ export interface GetOtsSnapshotsOutputArgs {
      */
     endTime?: pulumi.Input<string>;
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.

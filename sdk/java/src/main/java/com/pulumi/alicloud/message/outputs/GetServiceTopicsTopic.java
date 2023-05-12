@@ -15,54 +15,77 @@ public final class GetServiceTopicsTopic {
      * @return The time when the topic was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
      * 
      */
-    private Integer createTime;
+    private final Integer createTime;
     /**
      * @return The id of the Topic. Its value is same as Topic Name.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The time when the topic was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
      * 
      */
-    private Integer lastModifyTime;
+    private final Integer lastModifyTime;
     /**
      * @return Indicates whether the log management feature is enabled.
      * 
      */
-    private Boolean loggingEnabled;
+    private final Boolean loggingEnabled;
     /**
      * @return The maximum size of a message body that can be sent to the topic. Unit: bytes.
      * 
      */
-    private Integer maxMessageSize;
+    private final Integer maxMessageSize;
     /**
      * @return The number of messages in the topic.
      * 
      */
-    private Integer messageCount;
+    private final Integer messageCount;
     /**
      * @return The maximum period for which a message can be retained in the topic. A message that is sent to the topic can be retained for a specified period. After the specified period ends, the message is deleted no matter whether it is pushed to the specified endpoints. Unit: seconds.
      * 
      */
-    private Integer messageRetentionPeriod;
+    private final Integer messageRetentionPeriod;
     /**
      * @return The inner url of the topic.
      * 
      */
-    private String topicInnerUrl;
+    private final String topicInnerUrl;
     /**
      * @return The name of the topic.
      * 
      */
-    private String topicName;
+    private final String topicName;
     /**
      * @return The url of the topic.
      * 
      */
-    private String topicUrl;
+    private final String topicUrl;
 
-    private GetServiceTopicsTopic() {}
+    @CustomType.Constructor
+    private GetServiceTopicsTopic(
+        @CustomType.Parameter("createTime") Integer createTime,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("lastModifyTime") Integer lastModifyTime,
+        @CustomType.Parameter("loggingEnabled") Boolean loggingEnabled,
+        @CustomType.Parameter("maxMessageSize") Integer maxMessageSize,
+        @CustomType.Parameter("messageCount") Integer messageCount,
+        @CustomType.Parameter("messageRetentionPeriod") Integer messageRetentionPeriod,
+        @CustomType.Parameter("topicInnerUrl") String topicInnerUrl,
+        @CustomType.Parameter("topicName") String topicName,
+        @CustomType.Parameter("topicUrl") String topicUrl) {
+        this.createTime = createTime;
+        this.id = id;
+        this.lastModifyTime = lastModifyTime;
+        this.loggingEnabled = loggingEnabled;
+        this.maxMessageSize = maxMessageSize;
+        this.messageCount = messageCount;
+        this.messageRetentionPeriod = messageRetentionPeriod;
+        this.topicInnerUrl = topicInnerUrl;
+        this.topicName = topicName;
+        this.topicUrl = topicUrl;
+    }
+
     /**
      * @return The time when the topic was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
      * 
@@ -141,7 +164,7 @@ public final class GetServiceTopicsTopic {
     public static Builder builder(GetServiceTopicsTopic defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer createTime;
         private String id;
@@ -153,7 +176,11 @@ public final class GetServiceTopicsTopic {
         private String topicInnerUrl;
         private String topicName;
         private String topicUrl;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServiceTopicsTopic defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -168,69 +195,47 @@ public final class GetServiceTopicsTopic {
     	      this.topicUrl = defaults.topicUrl;
         }
 
-        @CustomType.Setter
         public Builder createTime(Integer createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder lastModifyTime(Integer lastModifyTime) {
             this.lastModifyTime = Objects.requireNonNull(lastModifyTime);
             return this;
         }
-        @CustomType.Setter
         public Builder loggingEnabled(Boolean loggingEnabled) {
             this.loggingEnabled = Objects.requireNonNull(loggingEnabled);
             return this;
         }
-        @CustomType.Setter
         public Builder maxMessageSize(Integer maxMessageSize) {
             this.maxMessageSize = Objects.requireNonNull(maxMessageSize);
             return this;
         }
-        @CustomType.Setter
         public Builder messageCount(Integer messageCount) {
             this.messageCount = Objects.requireNonNull(messageCount);
             return this;
         }
-        @CustomType.Setter
         public Builder messageRetentionPeriod(Integer messageRetentionPeriod) {
             this.messageRetentionPeriod = Objects.requireNonNull(messageRetentionPeriod);
             return this;
         }
-        @CustomType.Setter
         public Builder topicInnerUrl(String topicInnerUrl) {
             this.topicInnerUrl = Objects.requireNonNull(topicInnerUrl);
             return this;
         }
-        @CustomType.Setter
         public Builder topicName(String topicName) {
             this.topicName = Objects.requireNonNull(topicName);
             return this;
         }
-        @CustomType.Setter
         public Builder topicUrl(String topicUrl) {
             this.topicUrl = Objects.requireNonNull(topicUrl);
             return this;
-        }
-        public GetServiceTopicsTopic build() {
-            final var o = new GetServiceTopicsTopic();
-            o.createTime = createTime;
-            o.id = id;
-            o.lastModifyTime = lastModifyTime;
-            o.loggingEnabled = loggingEnabled;
-            o.maxMessageSize = maxMessageSize;
-            o.messageCount = messageCount;
-            o.messageRetentionPeriod = messageRetentionPeriod;
-            o.topicInnerUrl = topicInnerUrl;
-            o.topicName = topicName;
-            o.topicUrl = topicUrl;
-            return o;
+        }        public GetServiceTopicsTopic build() {
+            return new GetServiceTopicsTopic(createTime, id, lastModifyTime, loggingEnabled, maxMessageSize, messageCount, messageRetentionPeriod, topicInnerUrl, topicName, topicUrl);
         }
     }
 }

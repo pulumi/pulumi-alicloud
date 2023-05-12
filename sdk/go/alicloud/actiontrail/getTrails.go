@@ -58,7 +58,8 @@ type GetTrailsArgs struct {
 	// Whether to show shadow tracking. Default to `false`.
 	IncludeShadowTrails *bool `pulumi:"includeShadowTrails"`
 	// A regex string to filter results by trail name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
 	Status *string `pulumi:"status"`
@@ -108,7 +109,8 @@ type GetTrailsOutputArgs struct {
 	// Whether to show shadow tracking. Default to `false`.
 	IncludeShadowTrails pulumi.BoolPtrInput `pulumi:"includeShadowTrails"`
 	// A regex string to filter results by trail name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

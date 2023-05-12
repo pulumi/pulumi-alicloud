@@ -12,54 +12,77 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectsProject {
-    private String comment;
+    private final String comment;
     /**
      * @return Default Computing Resource Group
      * 
      */
-    private String defaultQuota;
+    private final String defaultQuota;
     /**
      * @return Project ID. The value is the same as `project_name`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return IP whitelist
      * 
      */
-    private GetProjectsProjectIpWhiteList ipWhiteList;
+    private final GetProjectsProjectIpWhiteList ipWhiteList;
     /**
      * @return Project owner
      * 
      */
-    private String owner;
+    private final String owner;
     /**
      * @return The name of the resource
      * 
      */
-    private String projectName;
+    private final String projectName;
     /**
      * @return Project base attributes
      * 
      */
-    private GetProjectsProjectProperties properties;
+    private final GetProjectsProjectProperties properties;
     /**
      * @return Security-related attributes
      * 
      */
-    private GetProjectsProjectSecurityProperties securityProperties;
+    private final GetProjectsProjectSecurityProperties securityProperties;
     /**
      * @return The status of the resource
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return Project type
      * 
      */
-    private String type;
+    private final String type;
 
-    private GetProjectsProject() {}
+    @CustomType.Constructor
+    private GetProjectsProject(
+        @CustomType.Parameter("comment") String comment,
+        @CustomType.Parameter("defaultQuota") String defaultQuota,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ipWhiteList") GetProjectsProjectIpWhiteList ipWhiteList,
+        @CustomType.Parameter("owner") String owner,
+        @CustomType.Parameter("projectName") String projectName,
+        @CustomType.Parameter("properties") GetProjectsProjectProperties properties,
+        @CustomType.Parameter("securityProperties") GetProjectsProjectSecurityProperties securityProperties,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("type") String type) {
+        this.comment = comment;
+        this.defaultQuota = defaultQuota;
+        this.id = id;
+        this.ipWhiteList = ipWhiteList;
+        this.owner = owner;
+        this.projectName = projectName;
+        this.properties = properties;
+        this.securityProperties = securityProperties;
+        this.status = status;
+        this.type = type;
+    }
+
     public String comment() {
         return this.comment;
     }
@@ -134,7 +157,7 @@ public final class GetProjectsProject {
     public static Builder builder(GetProjectsProject defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String comment;
         private String defaultQuota;
@@ -146,7 +169,11 @@ public final class GetProjectsProject {
         private GetProjectsProjectSecurityProperties securityProperties;
         private String status;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetProjectsProject defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comment = defaults.comment;
@@ -161,69 +188,47 @@ public final class GetProjectsProject {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder comment(String comment) {
             this.comment = Objects.requireNonNull(comment);
             return this;
         }
-        @CustomType.Setter
         public Builder defaultQuota(String defaultQuota) {
             this.defaultQuota = Objects.requireNonNull(defaultQuota);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ipWhiteList(GetProjectsProjectIpWhiteList ipWhiteList) {
             this.ipWhiteList = Objects.requireNonNull(ipWhiteList);
             return this;
         }
-        @CustomType.Setter
         public Builder owner(String owner) {
             this.owner = Objects.requireNonNull(owner);
             return this;
         }
-        @CustomType.Setter
         public Builder projectName(String projectName) {
             this.projectName = Objects.requireNonNull(projectName);
             return this;
         }
-        @CustomType.Setter
         public Builder properties(GetProjectsProjectProperties properties) {
             this.properties = Objects.requireNonNull(properties);
             return this;
         }
-        @CustomType.Setter
         public Builder securityProperties(GetProjectsProjectSecurityProperties securityProperties) {
             this.securityProperties = Objects.requireNonNull(securityProperties);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetProjectsProject build() {
-            final var o = new GetProjectsProject();
-            o.comment = comment;
-            o.defaultQuota = defaultQuota;
-            o.id = id;
-            o.ipWhiteList = ipWhiteList;
-            o.owner = owner;
-            o.projectName = projectName;
-            o.properties = properties;
-            o.securityProperties = securityProperties;
-            o.status = status;
-            o.type = type;
-            return o;
+        }        public GetProjectsProject build() {
+            return new GetProjectsProject(comment, defaultQuota, id, ipWhiteList, owner, projectName, properties, securityProperties, status, type);
         }
     }
 }

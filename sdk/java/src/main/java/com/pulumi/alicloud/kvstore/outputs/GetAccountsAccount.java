@@ -13,39 +13,56 @@ public final class GetAccountsAccount {
      * @return The name of the account.
      * 
      */
-    private String accountName;
+    private final String accountName;
     /**
      * @return The privilege of account access database.
      * 
      */
-    private String accountPrivilege;
+    private final String accountPrivilege;
     /**
      * @return Privilege type of account.
      * 
      */
-    private String accountType;
+    private final String accountType;
     /**
      * @return The description of account.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the Account.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The Id of instance in which account belongs.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return The status of account.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetAccountsAccount() {}
+    @CustomType.Constructor
+    private GetAccountsAccount(
+        @CustomType.Parameter("accountName") String accountName,
+        @CustomType.Parameter("accountPrivilege") String accountPrivilege,
+        @CustomType.Parameter("accountType") String accountType,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("status") String status) {
+        this.accountName = accountName;
+        this.accountPrivilege = accountPrivilege;
+        this.accountType = accountType;
+        this.description = description;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.status = status;
+    }
+
     /**
      * @return The name of the account.
      * 
@@ -103,7 +120,7 @@ public final class GetAccountsAccount {
     public static Builder builder(GetAccountsAccount defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String accountName;
         private String accountPrivilege;
@@ -112,7 +129,11 @@ public final class GetAccountsAccount {
         private String id;
         private String instanceId;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAccountsAccount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountName = defaults.accountName;
@@ -124,51 +145,35 @@ public final class GetAccountsAccount {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder accountName(String accountName) {
             this.accountName = Objects.requireNonNull(accountName);
             return this;
         }
-        @CustomType.Setter
         public Builder accountPrivilege(String accountPrivilege) {
             this.accountPrivilege = Objects.requireNonNull(accountPrivilege);
             return this;
         }
-        @CustomType.Setter
         public Builder accountType(String accountType) {
             this.accountType = Objects.requireNonNull(accountType);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetAccountsAccount build() {
-            final var o = new GetAccountsAccount();
-            o.accountName = accountName;
-            o.accountPrivilege = accountPrivilege;
-            o.accountType = accountType;
-            o.description = description;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.status = status;
-            return o;
+        }        public GetAccountsAccount build() {
+            return new GetAccountsAccount(accountName, accountPrivilege, accountType, description, id, instanceId, status);
         }
     }
 }

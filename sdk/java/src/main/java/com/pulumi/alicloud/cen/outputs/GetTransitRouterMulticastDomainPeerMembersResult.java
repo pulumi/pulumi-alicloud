@@ -17,25 +17,46 @@ public final class GetTransitRouterMulticastDomainPeerMembersResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
+    private final String id;
+    private final List<String> ids;
     /**
      * @return A list of Transit Router Multicast Domain Peer Member Entries. Each element contains the following attributes:
      * 
      */
-    private List<GetTransitRouterMulticastDomainPeerMembersMember> members;
-    private @Nullable String outputFile;
-    private @Nullable List<String> peerTransitRouterMulticastDomains;
-    private @Nullable String resourceId;
-    private @Nullable String resourceType;
-    private @Nullable String transitRouterAttachmentId;
+    private final List<GetTransitRouterMulticastDomainPeerMembersMember> members;
+    private final @Nullable String outputFile;
+    private final @Nullable List<String> peerTransitRouterMulticastDomains;
+    private final @Nullable String resourceId;
+    private final @Nullable String resourceType;
+    private final @Nullable String transitRouterAttachmentId;
     /**
      * @return The ID of the multicast domain to which the multicast member belongs.
      * 
      */
-    private String transitRouterMulticastDomainId;
+    private final String transitRouterMulticastDomainId;
 
-    private GetTransitRouterMulticastDomainPeerMembersResult() {}
+    @CustomType.Constructor
+    private GetTransitRouterMulticastDomainPeerMembersResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("members") List<GetTransitRouterMulticastDomainPeerMembersMember> members,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("peerTransitRouterMulticastDomains") @Nullable List<String> peerTransitRouterMulticastDomains,
+        @CustomType.Parameter("resourceId") @Nullable String resourceId,
+        @CustomType.Parameter("resourceType") @Nullable String resourceType,
+        @CustomType.Parameter("transitRouterAttachmentId") @Nullable String transitRouterAttachmentId,
+        @CustomType.Parameter("transitRouterMulticastDomainId") String transitRouterMulticastDomainId) {
+        this.id = id;
+        this.ids = ids;
+        this.members = members;
+        this.outputFile = outputFile;
+        this.peerTransitRouterMulticastDomains = peerTransitRouterMulticastDomains;
+        this.resourceId = resourceId;
+        this.resourceType = resourceType;
+        this.transitRouterAttachmentId = transitRouterAttachmentId;
+        this.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -83,7 +104,7 @@ public final class GetTransitRouterMulticastDomainPeerMembersResult {
     public static Builder builder(GetTransitRouterMulticastDomainPeerMembersResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -94,7 +115,11 @@ public final class GetTransitRouterMulticastDomainPeerMembersResult {
         private @Nullable String resourceType;
         private @Nullable String transitRouterAttachmentId;
         private String transitRouterMulticastDomainId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTransitRouterMulticastDomainPeerMembersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -108,12 +133,10 @@ public final class GetTransitRouterMulticastDomainPeerMembersResult {
     	      this.transitRouterMulticastDomainId = defaults.transitRouterMulticastDomainId;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -121,7 +144,6 @@ public final class GetTransitRouterMulticastDomainPeerMembersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder members(List<GetTransitRouterMulticastDomainPeerMembersMember> members) {
             this.members = Objects.requireNonNull(members);
             return this;
@@ -129,12 +151,10 @@ public final class GetTransitRouterMulticastDomainPeerMembersResult {
         public Builder members(GetTransitRouterMulticastDomainPeerMembersMember... members) {
             return members(List.of(members));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder peerTransitRouterMulticastDomains(@Nullable List<String> peerTransitRouterMulticastDomains) {
             this.peerTransitRouterMulticastDomains = peerTransitRouterMulticastDomains;
             return this;
@@ -142,38 +162,23 @@ public final class GetTransitRouterMulticastDomainPeerMembersResult {
         public Builder peerTransitRouterMulticastDomains(String... peerTransitRouterMulticastDomains) {
             return peerTransitRouterMulticastDomains(List.of(peerTransitRouterMulticastDomains));
         }
-        @CustomType.Setter
         public Builder resourceId(@Nullable String resourceId) {
             this.resourceId = resourceId;
             return this;
         }
-        @CustomType.Setter
         public Builder resourceType(@Nullable String resourceType) {
             this.resourceType = resourceType;
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterAttachmentId(@Nullable String transitRouterAttachmentId) {
             this.transitRouterAttachmentId = transitRouterAttachmentId;
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterMulticastDomainId(String transitRouterMulticastDomainId) {
             this.transitRouterMulticastDomainId = Objects.requireNonNull(transitRouterMulticastDomainId);
             return this;
-        }
-        public GetTransitRouterMulticastDomainPeerMembersResult build() {
-            final var o = new GetTransitRouterMulticastDomainPeerMembersResult();
-            o.id = id;
-            o.ids = ids;
-            o.members = members;
-            o.outputFile = outputFile;
-            o.peerTransitRouterMulticastDomains = peerTransitRouterMulticastDomains;
-            o.resourceId = resourceId;
-            o.resourceType = resourceType;
-            o.transitRouterAttachmentId = transitRouterAttachmentId;
-            o.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
-            return o;
+        }        public GetTransitRouterMulticastDomainPeerMembersResult build() {
+            return new GetTransitRouterMulticastDomainPeerMembersResult(id, ids, members, outputFile, peerTransitRouterMulticastDomains, resourceId, resourceType, transitRouterAttachmentId, transitRouterMulticastDomainId);
         }
     }
 }

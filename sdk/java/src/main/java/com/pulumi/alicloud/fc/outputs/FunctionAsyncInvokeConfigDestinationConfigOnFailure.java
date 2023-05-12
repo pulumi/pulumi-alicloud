@@ -13,9 +13,13 @@ public final class FunctionAsyncInvokeConfigDestinationConfigOnFailure {
      * @return Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
      * 
      */
-    private String destination;
+    private final String destination;
 
-    private FunctionAsyncInvokeConfigDestinationConfigOnFailure() {}
+    @CustomType.Constructor
+    private FunctionAsyncInvokeConfigDestinationConfigOnFailure(@CustomType.Parameter("destination") String destination) {
+        this.destination = destination;
+    }
+
     /**
      * @return Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
      * 
@@ -31,24 +35,24 @@ public final class FunctionAsyncInvokeConfigDestinationConfigOnFailure {
     public static Builder builder(FunctionAsyncInvokeConfigDestinationConfigOnFailure defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String destination;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(FunctionAsyncInvokeConfigDestinationConfigOnFailure defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destination = defaults.destination;
         }
 
-        @CustomType.Setter
         public Builder destination(String destination) {
             this.destination = Objects.requireNonNull(destination);
             return this;
-        }
-        public FunctionAsyncInvokeConfigDestinationConfigOnFailure build() {
-            final var o = new FunctionAsyncInvokeConfigDestinationConfigOnFailure();
-            o.destination = destination;
-            return o;
+        }        public FunctionAsyncInvokeConfigDestinationConfigOnFailure build() {
+            return new FunctionAsyncInvokeConfigDestinationConfigOnFailure(destination);
         }
     }
 }

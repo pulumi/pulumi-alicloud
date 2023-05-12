@@ -14,20 +14,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetIpaDomainsResult {
-    private @Nullable String domainName;
-    private List<GetIpaDomainsDomain> domains;
-    private @Nullable Boolean enableDetails;
+    private final @Nullable String domainName;
+    private final List<GetIpaDomainsDomain> domains;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String status;
+    private final String id;
+    private final List<String> ids;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String status;
 
-    private GetIpaDomainsResult() {}
+    @CustomType.Constructor
+    private GetIpaDomainsResult(
+        @CustomType.Parameter("domainName") @Nullable String domainName,
+        @CustomType.Parameter("domains") List<GetIpaDomainsDomain> domains,
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.domainName = domainName;
+        this.domains = domains;
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.status = status;
+    }
+
     public Optional<String> domainName() {
         return Optional.ofNullable(this.domainName);
     }
@@ -64,7 +83,7 @@ public final class GetIpaDomainsResult {
     public static Builder builder(GetIpaDomainsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String domainName;
         private List<GetIpaDomainsDomain> domains;
@@ -74,7 +93,11 @@ public final class GetIpaDomainsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetIpaDomainsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domainName = defaults.domainName;
@@ -87,12 +110,10 @@ public final class GetIpaDomainsResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder domainName(@Nullable String domainName) {
             this.domainName = domainName;
             return this;
         }
-        @CustomType.Setter
         public Builder domains(List<GetIpaDomainsDomain> domains) {
             this.domains = Objects.requireNonNull(domains);
             return this;
@@ -100,17 +121,14 @@ public final class GetIpaDomainsResult {
         public Builder domains(GetIpaDomainsDomain... domains) {
             return domains(List.of(domains));
         }
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -118,7 +136,6 @@ public final class GetIpaDomainsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -126,27 +143,15 @@ public final class GetIpaDomainsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetIpaDomainsResult build() {
-            final var o = new GetIpaDomainsResult();
-            o.domainName = domainName;
-            o.domains = domains;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+        }        public GetIpaDomainsResult build() {
+            return new GetIpaDomainsResult(domainName, domains, enableDetails, id, ids, names, outputFile, status);
         }
     }
 }

@@ -98,6 +98,8 @@ public class Binding extends com.pulumi.resources.CustomResource {
      * * &#34;x-match:all&#34;: Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
      * * &#34;x-match:any&#34;: at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
      * 
+     * **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+     * 
      */
     @Export(name="argument", type=String.class, parameters={})
     private Output<String> argument;
@@ -106,6 +108,8 @@ public class Binding extends com.pulumi.resources.CustomResource {
      * @return X-match Attributes. Valid Values:
      * * &#34;x-match:all&#34;: Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
      * * &#34;x-match:any&#34;: at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
+     * 
+     * **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
      * 
      */
     public Output<String> argument() {

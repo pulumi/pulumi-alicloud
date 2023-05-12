@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Dns
 {
     /// <summary>
+    /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.84.0`. Please use new resource alicloud_alidns_domain_group.
+    /// 
+    /// Provides a DNS Group resource.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

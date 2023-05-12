@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Emr Clusters of the current Alibaba Cloud user.
  *
+ * > **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
+ *
  * > **NOTE:** Available in v1.146.0+.
  *
  * ## Example Usage
@@ -206,6 +208,9 @@ export interface GetClustersArgs {
      * A regex string to filter results by Cluster name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     pageNumber?: number;
     pageSize?: number;
@@ -253,6 +258,8 @@ export interface GetClustersResult {
 }
 /**
  * This data source provides the Emr Clusters of the current Alibaba Cloud user.
+ *
+ * > **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
  *
  * > **NOTE:** Available in v1.146.0+.
  *
@@ -431,6 +438,9 @@ export interface GetClustersOutputArgs {
      * A regex string to filter results by Cluster name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;

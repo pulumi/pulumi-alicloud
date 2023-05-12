@@ -12,6 +12,10 @@ namespace Pulumi.AliCloud.Mns
     public static class GetQueues
     {
         /// <summary>
+        /// This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
+        /// 
+        /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -42,6 +46,10 @@ namespace Pulumi.AliCloud.Mns
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQueuesResult>("alicloud:mns/getQueues:getQueues", args ?? new GetQueuesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
+        /// 
+        /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -81,6 +89,9 @@ namespace Pulumi.AliCloud.Mns
         [Input("namePrefix")]
         public string? NamePrefix { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -98,6 +109,9 @@ namespace Pulumi.AliCloud.Mns
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

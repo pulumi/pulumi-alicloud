@@ -52,6 +52,9 @@ export interface GetResourceSharesArgs {
      * A regex string to filter results by Resource Share name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The name of resource share.
@@ -121,6 +124,9 @@ export interface GetResourceSharesOutputArgs {
      * A regex string to filter results by Resource Share name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The name of resource share.

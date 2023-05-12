@@ -17,24 +17,35 @@ public final class GetDbInstancePlansPlanPlanConfig {
      * @return Pause instance plan config.
      * 
      */
-    private List<GetDbInstancePlansPlanPlanConfigPause> pauses;
+    private final List<GetDbInstancePlansPlanPlanConfigPause> pauses;
     /**
      * @return Resume instance plan config.
      * 
      */
-    private List<GetDbInstancePlansPlanPlanConfigResume> resumes;
+    private final List<GetDbInstancePlansPlanPlanConfigResume> resumes;
     /**
      * @return Scale In instance plan config.
      * 
      */
-    private List<GetDbInstancePlansPlanPlanConfigScaleIn> scaleIns;
+    private final List<GetDbInstancePlansPlanPlanConfigScaleIn> scaleIns;
     /**
      * @return Scale out instance plan config.
      * 
      */
-    private List<GetDbInstancePlansPlanPlanConfigScaleOut> scaleOuts;
+    private final List<GetDbInstancePlansPlanPlanConfigScaleOut> scaleOuts;
 
-    private GetDbInstancePlansPlanPlanConfig() {}
+    @CustomType.Constructor
+    private GetDbInstancePlansPlanPlanConfig(
+        @CustomType.Parameter("pauses") List<GetDbInstancePlansPlanPlanConfigPause> pauses,
+        @CustomType.Parameter("resumes") List<GetDbInstancePlansPlanPlanConfigResume> resumes,
+        @CustomType.Parameter("scaleIns") List<GetDbInstancePlansPlanPlanConfigScaleIn> scaleIns,
+        @CustomType.Parameter("scaleOuts") List<GetDbInstancePlansPlanPlanConfigScaleOut> scaleOuts) {
+        this.pauses = pauses;
+        this.resumes = resumes;
+        this.scaleIns = scaleIns;
+        this.scaleOuts = scaleOuts;
+    }
+
     /**
      * @return Pause instance plan config.
      * 
@@ -71,13 +82,17 @@ public final class GetDbInstancePlansPlanPlanConfig {
     public static Builder builder(GetDbInstancePlansPlanPlanConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetDbInstancePlansPlanPlanConfigPause> pauses;
         private List<GetDbInstancePlansPlanPlanConfigResume> resumes;
         private List<GetDbInstancePlansPlanPlanConfigScaleIn> scaleIns;
         private List<GetDbInstancePlansPlanPlanConfigScaleOut> scaleOuts;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDbInstancePlansPlanPlanConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pauses = defaults.pauses;
@@ -86,7 +101,6 @@ public final class GetDbInstancePlansPlanPlanConfig {
     	      this.scaleOuts = defaults.scaleOuts;
         }
 
-        @CustomType.Setter
         public Builder pauses(List<GetDbInstancePlansPlanPlanConfigPause> pauses) {
             this.pauses = Objects.requireNonNull(pauses);
             return this;
@@ -94,7 +108,6 @@ public final class GetDbInstancePlansPlanPlanConfig {
         public Builder pauses(GetDbInstancePlansPlanPlanConfigPause... pauses) {
             return pauses(List.of(pauses));
         }
-        @CustomType.Setter
         public Builder resumes(List<GetDbInstancePlansPlanPlanConfigResume> resumes) {
             this.resumes = Objects.requireNonNull(resumes);
             return this;
@@ -102,7 +115,6 @@ public final class GetDbInstancePlansPlanPlanConfig {
         public Builder resumes(GetDbInstancePlansPlanPlanConfigResume... resumes) {
             return resumes(List.of(resumes));
         }
-        @CustomType.Setter
         public Builder scaleIns(List<GetDbInstancePlansPlanPlanConfigScaleIn> scaleIns) {
             this.scaleIns = Objects.requireNonNull(scaleIns);
             return this;
@@ -110,21 +122,14 @@ public final class GetDbInstancePlansPlanPlanConfig {
         public Builder scaleIns(GetDbInstancePlansPlanPlanConfigScaleIn... scaleIns) {
             return scaleIns(List.of(scaleIns));
         }
-        @CustomType.Setter
         public Builder scaleOuts(List<GetDbInstancePlansPlanPlanConfigScaleOut> scaleOuts) {
             this.scaleOuts = Objects.requireNonNull(scaleOuts);
             return this;
         }
         public Builder scaleOuts(GetDbInstancePlansPlanPlanConfigScaleOut... scaleOuts) {
             return scaleOuts(List.of(scaleOuts));
-        }
-        public GetDbInstancePlansPlanPlanConfig build() {
-            final var o = new GetDbInstancePlansPlanPlanConfig();
-            o.pauses = pauses;
-            o.resumes = resumes;
-            o.scaleIns = scaleIns;
-            o.scaleOuts = scaleOuts;
-            return o;
+        }        public GetDbInstancePlansPlanPlanConfig build() {
+            return new GetDbInstancePlansPlanPlanConfig(pauses, resumes, scaleIns, scaleOuts);
         }
     }
 }

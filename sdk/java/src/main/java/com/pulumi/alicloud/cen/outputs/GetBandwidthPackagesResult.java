@@ -18,37 +18,58 @@ public final class GetBandwidthPackagesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of specific CEN Bandwidth Package IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable Boolean includeReservationData;
+    private final List<String> ids;
+    private final @Nullable Boolean includeReservationData;
     /**
      * @return The ID of the CEN instance that are associated with the bandwidth package.
      * 
      */
-    private @Nullable String instanceId;
-    private @Nullable String nameRegex;
+    private final @Nullable String instanceId;
+    private final @Nullable String nameRegex;
     /**
      * @return (Available in 1.98.0+) - A list of CEN Bandwidth Package Names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
     /**
      * @return A list of CEN bandwidth package. Each element contains the following attributes:
      * 
      */
-    private List<GetBandwidthPackagesPackage> packages;
+    private final List<GetBandwidthPackagesPackage> packages;
     /**
      * @return Status of the CEN Bandwidth Package in CEN instance, including `Idle` and `InUse`.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
 
-    private GetBandwidthPackagesResult() {}
+    @CustomType.Constructor
+    private GetBandwidthPackagesResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("includeReservationData") @Nullable Boolean includeReservationData,
+        @CustomType.Parameter("instanceId") @Nullable String instanceId,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("packages") List<GetBandwidthPackagesPackage> packages,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.id = id;
+        this.ids = ids;
+        this.includeReservationData = includeReservationData;
+        this.instanceId = instanceId;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.packages = packages;
+        this.status = status;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -108,7 +129,7 @@ public final class GetBandwidthPackagesResult {
     public static Builder builder(GetBandwidthPackagesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -119,7 +140,11 @@ public final class GetBandwidthPackagesResult {
         private @Nullable String outputFile;
         private List<GetBandwidthPackagesPackage> packages;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBandwidthPackagesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -133,12 +158,10 @@ public final class GetBandwidthPackagesResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -146,22 +169,18 @@ public final class GetBandwidthPackagesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder includeReservationData(@Nullable Boolean includeReservationData) {
             this.includeReservationData = includeReservationData;
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(@Nullable String instanceId) {
             this.instanceId = instanceId;
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -169,12 +188,10 @@ public final class GetBandwidthPackagesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder packages(List<GetBandwidthPackagesPackage> packages) {
             this.packages = Objects.requireNonNull(packages);
             return this;
@@ -182,23 +199,11 @@ public final class GetBandwidthPackagesResult {
         public Builder packages(GetBandwidthPackagesPackage... packages) {
             return packages(List.of(packages));
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetBandwidthPackagesResult build() {
-            final var o = new GetBandwidthPackagesResult();
-            o.id = id;
-            o.ids = ids;
-            o.includeReservationData = includeReservationData;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.packages = packages;
-            o.status = status;
-            return o;
+        }        public GetBandwidthPackagesResult build() {
+            return new GetBandwidthPackagesResult(id, ids, includeReservationData, instanceId, nameRegex, names, outputFile, packages, status);
         }
     }
 }

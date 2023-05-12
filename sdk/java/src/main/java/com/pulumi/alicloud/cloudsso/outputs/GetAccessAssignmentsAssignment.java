@@ -13,59 +13,84 @@ public final class GetAccessAssignmentsAssignment {
      * @return Access configuration ID.
      * 
      */
-    private String accessConfigurationId;
+    private final String accessConfigurationId;
     /**
      * @return The name of the access configuration.
      * 
      */
-    private String accessConfigurationName;
+    private final String accessConfigurationName;
     /**
      * @return Directory ID.
      * 
      */
-    private String directoryId;
+    private final String directoryId;
     /**
      * @return The ID of the Access Assignment.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the access assignment.
      * 
      */
-    private String principalId;
+    private final String principalId;
     /**
      * @return Cloud SSO identity name.
      * 
      */
-    private String principalName;
+    private final String principalName;
     /**
      * @return Create the identity type of the access assignment, which can be a user or a user group.
      * 
      */
-    private String principalType;
+    private final String principalType;
     /**
      * @return The ID of the target to create the resource range.
      * 
      */
-    private String targetId;
+    private final String targetId;
     /**
      * @return Task target name.
      * 
      */
-    private String targetName;
+    private final String targetName;
     /**
      * @return The path name of the task target in the resource directory.
      * 
      */
-    private String targetPathName;
+    private final String targetPathName;
     /**
      * @return The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
      * 
      */
-    private String targetType;
+    private final String targetType;
 
-    private GetAccessAssignmentsAssignment() {}
+    @CustomType.Constructor
+    private GetAccessAssignmentsAssignment(
+        @CustomType.Parameter("accessConfigurationId") String accessConfigurationId,
+        @CustomType.Parameter("accessConfigurationName") String accessConfigurationName,
+        @CustomType.Parameter("directoryId") String directoryId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("principalId") String principalId,
+        @CustomType.Parameter("principalName") String principalName,
+        @CustomType.Parameter("principalType") String principalType,
+        @CustomType.Parameter("targetId") String targetId,
+        @CustomType.Parameter("targetName") String targetName,
+        @CustomType.Parameter("targetPathName") String targetPathName,
+        @CustomType.Parameter("targetType") String targetType) {
+        this.accessConfigurationId = accessConfigurationId;
+        this.accessConfigurationName = accessConfigurationName;
+        this.directoryId = directoryId;
+        this.id = id;
+        this.principalId = principalId;
+        this.principalName = principalName;
+        this.principalType = principalType;
+        this.targetId = targetId;
+        this.targetName = targetName;
+        this.targetPathName = targetPathName;
+        this.targetType = targetType;
+    }
+
     /**
      * @return Access configuration ID.
      * 
@@ -151,7 +176,7 @@ public final class GetAccessAssignmentsAssignment {
     public static Builder builder(GetAccessAssignmentsAssignment defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String accessConfigurationId;
         private String accessConfigurationName;
@@ -164,7 +189,11 @@ public final class GetAccessAssignmentsAssignment {
         private String targetName;
         private String targetPathName;
         private String targetType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAccessAssignmentsAssignment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessConfigurationId = defaults.accessConfigurationId;
@@ -180,75 +209,51 @@ public final class GetAccessAssignmentsAssignment {
     	      this.targetType = defaults.targetType;
         }
 
-        @CustomType.Setter
         public Builder accessConfigurationId(String accessConfigurationId) {
             this.accessConfigurationId = Objects.requireNonNull(accessConfigurationId);
             return this;
         }
-        @CustomType.Setter
         public Builder accessConfigurationName(String accessConfigurationName) {
             this.accessConfigurationName = Objects.requireNonNull(accessConfigurationName);
             return this;
         }
-        @CustomType.Setter
         public Builder directoryId(String directoryId) {
             this.directoryId = Objects.requireNonNull(directoryId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder principalId(String principalId) {
             this.principalId = Objects.requireNonNull(principalId);
             return this;
         }
-        @CustomType.Setter
         public Builder principalName(String principalName) {
             this.principalName = Objects.requireNonNull(principalName);
             return this;
         }
-        @CustomType.Setter
         public Builder principalType(String principalType) {
             this.principalType = Objects.requireNonNull(principalType);
             return this;
         }
-        @CustomType.Setter
         public Builder targetId(String targetId) {
             this.targetId = Objects.requireNonNull(targetId);
             return this;
         }
-        @CustomType.Setter
         public Builder targetName(String targetName) {
             this.targetName = Objects.requireNonNull(targetName);
             return this;
         }
-        @CustomType.Setter
         public Builder targetPathName(String targetPathName) {
             this.targetPathName = Objects.requireNonNull(targetPathName);
             return this;
         }
-        @CustomType.Setter
         public Builder targetType(String targetType) {
             this.targetType = Objects.requireNonNull(targetType);
             return this;
-        }
-        public GetAccessAssignmentsAssignment build() {
-            final var o = new GetAccessAssignmentsAssignment();
-            o.accessConfigurationId = accessConfigurationId;
-            o.accessConfigurationName = accessConfigurationName;
-            o.directoryId = directoryId;
-            o.id = id;
-            o.principalId = principalId;
-            o.principalName = principalName;
-            o.principalType = principalType;
-            o.targetId = targetId;
-            o.targetName = targetName;
-            o.targetPathName = targetPathName;
-            o.targetType = targetType;
-            return o;
+        }        public GetAccessAssignmentsAssignment build() {
+            return new GetAccessAssignmentsAssignment(accessConfigurationId, accessConfigurationName, directoryId, id, principalId, principalName, principalType, targetId, targetName, targetPathName, targetType);
         }
     }
 }

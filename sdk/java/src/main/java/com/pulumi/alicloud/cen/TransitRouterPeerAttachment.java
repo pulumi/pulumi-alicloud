@@ -88,17 +88,15 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         var cnTransitRouter = new TransitRouter(&#34;cnTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .cenId(defaultInstance.id())
+ *             .cenId(defaultBandwidthPackageAttachment.instanceId())
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(alicloud.cn())
- *                 .dependsOn(defaultBandwidthPackageAttachment)
  *                 .build());
  * 
  *         var usTransitRouter = new TransitRouter(&#34;usTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .cenId(defaultInstance.id())
+ *             .cenId(cnTransitRouter.id())
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(alicloud.us())
- *                 .dependsOn(alicloud_cen_transit_router.default_0())
  *                 .build());
  * 
  *         var defaultTransitRouterPeerAttachment = new TransitRouterPeerAttachment(&#34;defaultTransitRouterPeerAttachment&#34;, TransitRouterPeerAttachmentArgs.builder()        

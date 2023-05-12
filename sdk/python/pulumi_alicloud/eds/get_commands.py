@@ -169,6 +169,7 @@ def get_commands(command_type: Optional[str] = None,
     :param str content_encoding: That Returns the Data Encoding Method. Valid values: `Base64`, `PlainText`.
     :param str desktop_id: The desktop id of the Desktop.
     :param Sequence[str] ids: A list of Command IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
     """
     __args__ = dict()
@@ -254,6 +255,7 @@ def get_commands_output(command_type: Optional[pulumi.Input[Optional[str]]] = No
     :param str content_encoding: That Returns the Data Encoding Method. Valid values: `Base64`, `PlainText`.
     :param str desktop_id: The desktop id of the Desktop.
     :param Sequence[str] ids: A list of Command IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
     """
     ...

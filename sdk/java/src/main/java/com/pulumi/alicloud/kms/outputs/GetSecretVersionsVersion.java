@@ -14,29 +14,42 @@ public final class GetSecretVersionsVersion {
      * @return The secret value. Secrets Manager decrypts the stored secret value in ciphertext and returns it. (Returned when `enable_details` is true).
      * 
      */
-    private String secretData;
+    private final String secretData;
     /**
      * @return The type of the secret value. (Returned when `enable_details` is true).
      * 
      */
-    private String secretDataType;
+    private final String secretDataType;
     /**
      * @return The name of the secret.
      * 
      */
-    private String secretName;
+    private final String secretName;
     /**
      * @return The version number of the secret value.
      * 
      */
-    private String versionId;
+    private final String versionId;
     /**
      * @return Stage labels that mark the secret version.
      * 
      */
-    private List<String> versionStages;
+    private final List<String> versionStages;
 
-    private GetSecretVersionsVersion() {}
+    @CustomType.Constructor
+    private GetSecretVersionsVersion(
+        @CustomType.Parameter("secretData") String secretData,
+        @CustomType.Parameter("secretDataType") String secretDataType,
+        @CustomType.Parameter("secretName") String secretName,
+        @CustomType.Parameter("versionId") String versionId,
+        @CustomType.Parameter("versionStages") List<String> versionStages) {
+        this.secretData = secretData;
+        this.secretDataType = secretDataType;
+        this.secretName = secretName;
+        this.versionId = versionId;
+        this.versionStages = versionStages;
+    }
+
     /**
      * @return The secret value. Secrets Manager decrypts the stored secret value in ciphertext and returns it. (Returned when `enable_details` is true).
      * 
@@ -80,14 +93,18 @@ public final class GetSecretVersionsVersion {
     public static Builder builder(GetSecretVersionsVersion defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String secretData;
         private String secretDataType;
         private String secretName;
         private String versionId;
         private List<String> versionStages;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetSecretVersionsVersion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.secretData = defaults.secretData;
@@ -97,42 +114,30 @@ public final class GetSecretVersionsVersion {
     	      this.versionStages = defaults.versionStages;
         }
 
-        @CustomType.Setter
         public Builder secretData(String secretData) {
             this.secretData = Objects.requireNonNull(secretData);
             return this;
         }
-        @CustomType.Setter
         public Builder secretDataType(String secretDataType) {
             this.secretDataType = Objects.requireNonNull(secretDataType);
             return this;
         }
-        @CustomType.Setter
         public Builder secretName(String secretName) {
             this.secretName = Objects.requireNonNull(secretName);
             return this;
         }
-        @CustomType.Setter
         public Builder versionId(String versionId) {
             this.versionId = Objects.requireNonNull(versionId);
             return this;
         }
-        @CustomType.Setter
         public Builder versionStages(List<String> versionStages) {
             this.versionStages = Objects.requireNonNull(versionStages);
             return this;
         }
         public Builder versionStages(String... versionStages) {
             return versionStages(List.of(versionStages));
-        }
-        public GetSecretVersionsVersion build() {
-            final var o = new GetSecretVersionsVersion();
-            o.secretData = secretData;
-            o.secretDataType = secretDataType;
-            o.secretName = secretName;
-            o.versionId = versionId;
-            o.versionStages = versionStages;
-            return o;
+        }        public GetSecretVersionsVersion build() {
+            return new GetSecretVersionsVersion(secretData, secretDataType, secretName, versionId, versionStages);
         }
     }
 }

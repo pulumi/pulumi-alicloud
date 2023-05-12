@@ -129,6 +129,7 @@ def get_vbr_pconn_associations(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Vbr Pconn Association IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str vbr_id: The ID of the VBR instance.
     """
     __args__ = dict()
@@ -175,6 +176,7 @@ def get_vbr_pconn_associations_output(ids: Optional[pulumi.Input[Optional[Sequen
 
 
     :param Sequence[str] ids: A list of Vbr Pconn Association IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str vbr_id: The ID of the VBR instance.
     """
     ...

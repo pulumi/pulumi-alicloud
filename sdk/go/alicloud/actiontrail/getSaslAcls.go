@@ -60,7 +60,8 @@ type GetSaslAclsArgs struct {
 	// Get results for the specified resource type.
 	AclResourceType string `pulumi:"aclResourceType"`
 	// ID of the ALIKAFKA Instance that owns the sasl acls.
-	InstanceId string  `pulumi:"instanceId"`
+	InstanceId string `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Get results for the specified username.
 	Username string `pulumi:"username"`
@@ -102,7 +103,8 @@ type GetSaslAclsOutputArgs struct {
 	// Get results for the specified resource type.
 	AclResourceType pulumi.StringInput `pulumi:"aclResourceType"`
 	// ID of the ALIKAFKA Instance that owns the sasl acls.
-	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Get results for the specified username.
 	Username pulumi.StringInput `pulumi:"username"`

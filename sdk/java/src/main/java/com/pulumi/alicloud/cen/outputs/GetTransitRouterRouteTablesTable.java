@@ -13,30 +13,45 @@ public final class GetTransitRouterRouteTablesTable {
      * @return ID of resource.
      * 
      */
-    private String id;
-    private String status;
+    private final String id;
+    private final String status;
     /**
      * @return The description of the transit router route table.
      * 
      */
-    private String transitRouterRouteTableDescription;
+    private final String transitRouterRouteTableDescription;
     /**
      * @return ID of the trabsit router route table.
      * 
      */
-    private String transitRouterRouteTableId;
+    private final String transitRouterRouteTableId;
     /**
      * @return Name of the transit router route table.
      * 
      */
-    private String transitRouterRouteTableName;
+    private final String transitRouterRouteTableName;
     /**
      * @return The type of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
      * 
      */
-    private String transitRouterRouteTableType;
+    private final String transitRouterRouteTableType;
 
-    private GetTransitRouterRouteTablesTable() {}
+    @CustomType.Constructor
+    private GetTransitRouterRouteTablesTable(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("transitRouterRouteTableDescription") String transitRouterRouteTableDescription,
+        @CustomType.Parameter("transitRouterRouteTableId") String transitRouterRouteTableId,
+        @CustomType.Parameter("transitRouterRouteTableName") String transitRouterRouteTableName,
+        @CustomType.Parameter("transitRouterRouteTableType") String transitRouterRouteTableType) {
+        this.id = id;
+        this.status = status;
+        this.transitRouterRouteTableDescription = transitRouterRouteTableDescription;
+        this.transitRouterRouteTableId = transitRouterRouteTableId;
+        this.transitRouterRouteTableName = transitRouterRouteTableName;
+        this.transitRouterRouteTableType = transitRouterRouteTableType;
+    }
+
     /**
      * @return ID of resource.
      * 
@@ -83,7 +98,7 @@ public final class GetTransitRouterRouteTablesTable {
     public static Builder builder(GetTransitRouterRouteTablesTable defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private String status;
@@ -91,7 +106,11 @@ public final class GetTransitRouterRouteTablesTable {
         private String transitRouterRouteTableId;
         private String transitRouterRouteTableName;
         private String transitRouterRouteTableType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTransitRouterRouteTablesTable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -102,45 +121,31 @@ public final class GetTransitRouterRouteTablesTable {
     	      this.transitRouterRouteTableType = defaults.transitRouterRouteTableType;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterRouteTableDescription(String transitRouterRouteTableDescription) {
             this.transitRouterRouteTableDescription = Objects.requireNonNull(transitRouterRouteTableDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterRouteTableId(String transitRouterRouteTableId) {
             this.transitRouterRouteTableId = Objects.requireNonNull(transitRouterRouteTableId);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterRouteTableName(String transitRouterRouteTableName) {
             this.transitRouterRouteTableName = Objects.requireNonNull(transitRouterRouteTableName);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterRouteTableType(String transitRouterRouteTableType) {
             this.transitRouterRouteTableType = Objects.requireNonNull(transitRouterRouteTableType);
             return this;
-        }
-        public GetTransitRouterRouteTablesTable build() {
-            final var o = new GetTransitRouterRouteTablesTable();
-            o.id = id;
-            o.status = status;
-            o.transitRouterRouteTableDescription = transitRouterRouteTableDescription;
-            o.transitRouterRouteTableId = transitRouterRouteTableId;
-            o.transitRouterRouteTableName = transitRouterRouteTableName;
-            o.transitRouterRouteTableType = transitRouterRouteTableType;
-            return o;
+        }        public GetTransitRouterRouteTablesTable build() {
+            return new GetTransitRouterRouteTablesTable(id, status, transitRouterRouteTableDescription, transitRouterRouteTableId, transitRouterRouteTableName, transitRouterRouteTableType);
         }
     }
 }

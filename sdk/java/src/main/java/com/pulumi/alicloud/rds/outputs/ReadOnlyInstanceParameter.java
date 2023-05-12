@@ -9,10 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class ReadOnlyInstanceParameter {
-    private String name;
-    private String value;
+    private final String name;
+    private final String value;
 
-    private ReadOnlyInstanceParameter() {}
+    @CustomType.Constructor
+    private ReadOnlyInstanceParameter(
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("value") String value) {
+        this.name = name;
+        this.value = value;
+    }
+
     public String name() {
         return this.name;
     }
@@ -27,32 +34,30 @@ public final class ReadOnlyInstanceParameter {
     public static Builder builder(ReadOnlyInstanceParameter defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String name;
         private String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ReadOnlyInstanceParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }
-        public ReadOnlyInstanceParameter build() {
-            final var o = new ReadOnlyInstanceParameter();
-            o.name = name;
-            o.value = value;
-            return o;
+        }        public ReadOnlyInstanceParameter build() {
+            return new ReadOnlyInstanceParameter(name, value);
         }
     }
 }

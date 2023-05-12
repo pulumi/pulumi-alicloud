@@ -17,16 +17,27 @@ public final class GetBandwidthLimitsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private @Nullable List<String> instanceIds;
+    private final String id;
+    private final @Nullable List<String> instanceIds;
     /**
      * @return A list of CEN Bandwidth Limits. Each element contains the following attributes:
      * 
      */
-    private List<GetBandwidthLimitsLimit> limits;
-    private @Nullable String outputFile;
+    private final List<GetBandwidthLimitsLimit> limits;
+    private final @Nullable String outputFile;
 
-    private GetBandwidthLimitsResult() {}
+    @CustomType.Constructor
+    private GetBandwidthLimitsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceIds") @Nullable List<String> instanceIds,
+        @CustomType.Parameter("limits") List<GetBandwidthLimitsLimit> limits,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.id = id;
+        this.instanceIds = instanceIds;
+        this.limits = limits;
+        this.outputFile = outputFile;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -55,13 +66,17 @@ public final class GetBandwidthLimitsResult {
     public static Builder builder(GetBandwidthLimitsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private @Nullable List<String> instanceIds;
         private List<GetBandwidthLimitsLimit> limits;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBandwidthLimitsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -70,12 +85,10 @@ public final class GetBandwidthLimitsResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceIds(@Nullable List<String> instanceIds) {
             this.instanceIds = instanceIds;
             return this;
@@ -83,7 +96,6 @@ public final class GetBandwidthLimitsResult {
         public Builder instanceIds(String... instanceIds) {
             return instanceIds(List.of(instanceIds));
         }
-        @CustomType.Setter
         public Builder limits(List<GetBandwidthLimitsLimit> limits) {
             this.limits = Objects.requireNonNull(limits);
             return this;
@@ -91,18 +103,11 @@ public final class GetBandwidthLimitsResult {
         public Builder limits(GetBandwidthLimitsLimit... limits) {
             return limits(List.of(limits));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetBandwidthLimitsResult build() {
-            final var o = new GetBandwidthLimitsResult();
-            o.id = id;
-            o.instanceIds = instanceIds;
-            o.limits = limits;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetBandwidthLimitsResult build() {
+            return new GetBandwidthLimitsResult(id, instanceIds, limits, outputFile);
         }
     }
 }

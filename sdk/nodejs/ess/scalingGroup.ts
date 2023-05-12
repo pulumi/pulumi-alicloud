@@ -5,6 +5,81 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a ESS scaling group resource which is a collection of ECS instances with the same application scenarios.
+ *
+ * It defines the maximum and minimum numbers of ECS instances in the group, and their associated Server Load Balancer instances, RDS instances, and other attributes.
+ *
+ * > **NOTE:** You can launch an ESS scaling group for a VPC network via specifying parameter `vswitchIds`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "essscalinggroupconfig";
+ * const defaultZones = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
+ *     cpuCoreCount: 2,
+ *     memorySize: 4,
+ * }));
+ * const defaultImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule", {
+ *     type: "ingress",
+ *     ipProtocol: "tcp",
+ *     nicType: "intranet",
+ *     policy: "accept",
+ *     portRange: "22/22",
+ *     priority: 1,
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     cidrIp: "172.16.0.0/24",
+ * });
+ * const default2 = new alicloud.vpc.Switch("default2", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.1.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: `${name}-bar`,
+ * });
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
+ *     minSize: 1,
+ *     maxSize: 1,
+ *     scalingGroupName: name,
+ *     defaultCooldown: 20,
+ *     vswitchIds: [
+ *         defaultSwitch.id,
+ *         default2.id,
+ *     ],
+ *     removalPolicies: [
+ *         "OldestInstance",
+ *         "NewestInstance",
+ *     ],
+ * });
+ * ```
+ * ## Module Support
+ *
+ * You can use to the existing autoscaling module
+ * to create a scaling group, configuration and lifecycle hook one-click.
+ *
  * ## Import
  *
  * ESS scaling group can be imported using the id, e.g.
@@ -85,11 +160,13 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly loadbalancerIds!: pulumi.Output<string[] | undefined>;
     /**
-     * Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+     * Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+     * **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
      */
     public readonly maxSize!: pulumi.Output<number>;
     /**
-     * Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+     * Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+     * **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
      */
     public readonly minSize!: pulumi.Output<number>;
     /**
@@ -106,6 +183,12 @@ export class ScalingGroup extends pulumi.CustomResource {
     public readonly onDemandPercentageAboveBaseCapacity!: pulumi.Output<number>;
     /**
      * Set or unset instances within group into protected status.
+     *
+     * > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+     *
+     * > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+     *
+     * > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
      */
     public readonly protectedInstances!: pulumi.Output<string[] | undefined>;
     /**
@@ -264,11 +347,13 @@ export interface ScalingGroupState {
      */
     loadbalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+     * Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+     * **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
      */
     maxSize?: pulumi.Input<number>;
     /**
-     * Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+     * Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+     * **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
      */
     minSize?: pulumi.Input<number>;
     /**
@@ -285,6 +370,12 @@ export interface ScalingGroupState {
     onDemandPercentageAboveBaseCapacity?: pulumi.Input<number>;
     /**
      * Set or unset instances within group into protected status.
+     *
+     * > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+     *
+     * > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+     *
+     * > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
      */
     protectedInstances?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -373,11 +464,13 @@ export interface ScalingGroupArgs {
      */
     loadbalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+     * Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+     * **NOTE:** From version 1.204.1, `maxSize` can be set to `2000`.
      */
     maxSize: pulumi.Input<number>;
     /**
-     * Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+     * Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+     * **NOTE:** From version 1.204.1, `minSize` can be set to `2000`.
      */
     minSize: pulumi.Input<number>;
     /**
@@ -394,6 +487,12 @@ export interface ScalingGroupArgs {
     onDemandPercentageAboveBaseCapacity?: pulumi.Input<number>;
     /**
      * Set or unset instances within group into protected status.
+     *
+     * > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+     *
+     * > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+     *
+     * > **NOTE:** `onDemandBaseCapacity`,`onDemandPercentageAboveBaseCapacity`,`spotInstancePools`,`spotInstanceRemedy` are valid only if `multiAzPolicy` is 'COST_OPTIMIZED'.
      */
     protectedInstances?: pulumi.Input<pulumi.Input<string>[]>;
     /**

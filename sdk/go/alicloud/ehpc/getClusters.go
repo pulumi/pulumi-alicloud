@@ -67,7 +67,8 @@ type GetClustersArgs struct {
 	// A list of Cluster IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Cluster name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
@@ -106,7 +107,8 @@ type GetClustersOutputArgs struct {
 	// A list of Cluster IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Cluster name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the resource.
 	Status pulumi.StringPtrInput `pulumi:"status"`

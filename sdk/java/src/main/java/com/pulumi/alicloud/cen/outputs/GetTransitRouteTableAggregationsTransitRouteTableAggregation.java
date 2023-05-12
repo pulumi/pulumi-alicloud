@@ -13,44 +13,63 @@ public final class GetTransitRouteTableAggregationsTransitRouteTableAggregation 
      * @return The ID of the Transit Route Table Aggregation. It formats as `&lt;transit_route_table_id&gt;:&lt;transit_route_table_aggregation_cidr&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The route type of the aggregate route.
      * 
      */
-    private String routeType;
+    private final String routeType;
     /**
      * @return The status of Transit Route Table Aggregation. Valid Values: `AllConfigured`, `Configuring`, `ConfigFailed`, `PartialConfigured`, `Deleting`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The destination CIDR block of the aggregate route.
      * 
      */
-    private String transitRouteTableAggregationCidr;
+    private final String transitRouteTableAggregationCidr;
     /**
      * @return The description of the aggregate route.
      * 
      */
-    private String transitRouteTableAggregationDescription;
+    private final String transitRouteTableAggregationDescription;
     /**
      * @return The name of the aggregate route.
      * 
      */
-    private String transitRouteTableAggregationName;
+    private final String transitRouteTableAggregationName;
     /**
      * @return The scope of networks that you want to advertise the aggregate route.
      * 
      */
-    private String transitRouteTableAggregationScope;
+    private final String transitRouteTableAggregationScope;
     /**
      * @return The ID of the route table of the Enterprise Edition transit router.
      * 
      */
-    private String transitRouteTableId;
+    private final String transitRouteTableId;
 
-    private GetTransitRouteTableAggregationsTransitRouteTableAggregation() {}
+    @CustomType.Constructor
+    private GetTransitRouteTableAggregationsTransitRouteTableAggregation(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("routeType") String routeType,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("transitRouteTableAggregationCidr") String transitRouteTableAggregationCidr,
+        @CustomType.Parameter("transitRouteTableAggregationDescription") String transitRouteTableAggregationDescription,
+        @CustomType.Parameter("transitRouteTableAggregationName") String transitRouteTableAggregationName,
+        @CustomType.Parameter("transitRouteTableAggregationScope") String transitRouteTableAggregationScope,
+        @CustomType.Parameter("transitRouteTableId") String transitRouteTableId) {
+        this.id = id;
+        this.routeType = routeType;
+        this.status = status;
+        this.transitRouteTableAggregationCidr = transitRouteTableAggregationCidr;
+        this.transitRouteTableAggregationDescription = transitRouteTableAggregationDescription;
+        this.transitRouteTableAggregationName = transitRouteTableAggregationName;
+        this.transitRouteTableAggregationScope = transitRouteTableAggregationScope;
+        this.transitRouteTableId = transitRouteTableId;
+    }
+
     /**
      * @return The ID of the Transit Route Table Aggregation. It formats as `&lt;transit_route_table_id&gt;:&lt;transit_route_table_aggregation_cidr&gt;`.
      * 
@@ -115,7 +134,7 @@ public final class GetTransitRouteTableAggregationsTransitRouteTableAggregation 
     public static Builder builder(GetTransitRouteTableAggregationsTransitRouteTableAggregation defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private String routeType;
@@ -125,7 +144,11 @@ public final class GetTransitRouteTableAggregationsTransitRouteTableAggregation 
         private String transitRouteTableAggregationName;
         private String transitRouteTableAggregationScope;
         private String transitRouteTableId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTransitRouteTableAggregationsTransitRouteTableAggregation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -138,57 +161,39 @@ public final class GetTransitRouteTableAggregationsTransitRouteTableAggregation 
     	      this.transitRouteTableId = defaults.transitRouteTableId;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder routeType(String routeType) {
             this.routeType = Objects.requireNonNull(routeType);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouteTableAggregationCidr(String transitRouteTableAggregationCidr) {
             this.transitRouteTableAggregationCidr = Objects.requireNonNull(transitRouteTableAggregationCidr);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouteTableAggregationDescription(String transitRouteTableAggregationDescription) {
             this.transitRouteTableAggregationDescription = Objects.requireNonNull(transitRouteTableAggregationDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouteTableAggregationName(String transitRouteTableAggregationName) {
             this.transitRouteTableAggregationName = Objects.requireNonNull(transitRouteTableAggregationName);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouteTableAggregationScope(String transitRouteTableAggregationScope) {
             this.transitRouteTableAggregationScope = Objects.requireNonNull(transitRouteTableAggregationScope);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouteTableId(String transitRouteTableId) {
             this.transitRouteTableId = Objects.requireNonNull(transitRouteTableId);
             return this;
-        }
-        public GetTransitRouteTableAggregationsTransitRouteTableAggregation build() {
-            final var o = new GetTransitRouteTableAggregationsTransitRouteTableAggregation();
-            o.id = id;
-            o.routeType = routeType;
-            o.status = status;
-            o.transitRouteTableAggregationCidr = transitRouteTableAggregationCidr;
-            o.transitRouteTableAggregationDescription = transitRouteTableAggregationDescription;
-            o.transitRouteTableAggregationName = transitRouteTableAggregationName;
-            o.transitRouteTableAggregationScope = transitRouteTableAggregationScope;
-            o.transitRouteTableId = transitRouteTableId;
-            return o;
+        }        public GetTransitRouteTableAggregationsTransitRouteTableAggregation build() {
+            return new GetTransitRouteTableAggregationsTransitRouteTableAggregation(id, routeType, status, transitRouteTableAggregationCidr, transitRouteTableAggregationDescription, transitRouteTableAggregationName, transitRouteTableAggregationScope, transitRouteTableId);
         }
     }
 }

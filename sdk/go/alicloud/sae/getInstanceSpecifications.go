@@ -52,8 +52,9 @@ func GetInstanceSpecifications(ctx *pulumi.Context, args *GetInstanceSpecificati
 // A collection of arguments for invoking getInstanceSpecifications.
 type GetInstanceSpecificationsArgs struct {
 	// A list of Instance Specification IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getInstanceSpecifications.
@@ -81,8 +82,9 @@ func GetInstanceSpecificationsOutput(ctx *pulumi.Context, args GetInstanceSpecif
 // A collection of arguments for invoking getInstanceSpecifications.
 type GetInstanceSpecificationsOutputArgs struct {
 	// A list of Instance Specification IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetInstanceSpecificationsOutputArgs) ElementType() reflect.Type {

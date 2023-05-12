@@ -29,6 +29,10 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The name of the bandwidth package. Defaults to null.
+        /// 
+        /// -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+        /// 
+        /// -&gt;**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
         /// </summary>
         [Output("cenBandwidthPackageName")]
         public Output<string> CenBandwidthPackageName { get; private set; } = null!;
@@ -81,6 +85,10 @@ namespace Pulumi.AliCloud.Cen
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
+        /// <summary>
+        /// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
@@ -144,6 +152,10 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The name of the bandwidth package. Defaults to null.
+        /// 
+        /// -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+        /// 
+        /// -&gt;**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
         /// </summary>
         [Input("cenBandwidthPackageName")]
         public Input<string>? CenBandwidthPackageName { get; set; }
@@ -197,6 +209,10 @@ namespace Pulumi.AliCloud.Cen
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
+        /// <summary>
+        /// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -216,6 +232,10 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The name of the bandwidth package. Defaults to null.
+        /// 
+        /// -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+        /// 
+        /// -&gt;**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
         /// </summary>
         [Input("cenBandwidthPackageName")]
         public Input<string>? CenBandwidthPackageName { get; set; }
@@ -275,6 +295,10 @@ namespace Pulumi.AliCloud.Cen
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
+        /// <summary>
+        /// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 

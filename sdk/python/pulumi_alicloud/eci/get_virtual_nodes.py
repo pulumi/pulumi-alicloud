@@ -179,6 +179,7 @@ def get_virtual_nodes(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Virtual Node IDs.
     :param str name_regex: A regex string to filter results by Virtual Node name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The resource group ID.
     :param str security_group_id: The security group ID.
     :param str status: The Status of the virtual node.
@@ -250,6 +251,7 @@ def get_virtual_nodes_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
 
     :param Sequence[str] ids: A list of Virtual Node IDs.
     :param str name_regex: A regex string to filter results by Virtual Node name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The resource group ID.
     :param str security_group_id: The security group ID.
     :param str status: The Status of the virtual node.

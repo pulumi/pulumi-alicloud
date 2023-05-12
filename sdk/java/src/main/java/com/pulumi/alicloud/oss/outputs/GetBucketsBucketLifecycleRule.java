@@ -15,24 +15,35 @@ public final class GetBucketsBucketLifecycleRule {
      * @return Indicate whether the rule is enabled or not.
      * 
      */
-    private Boolean enabled;
+    private final Boolean enabled;
     /**
      * @return A list of one element containing expiration attributes of an object. It contains the following attributes:
      * 
      */
-    private GetBucketsBucketLifecycleRuleExpiration expiration;
+    private final GetBucketsBucketLifecycleRuleExpiration expiration;
     /**
      * @return Unique ID of the rule.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Prefix applicable to a rule. Only those objects with a matching prefix can be affected by the rule.
      * 
      */
-    private String prefix;
+    private final String prefix;
 
-    private GetBucketsBucketLifecycleRule() {}
+    @CustomType.Constructor
+    private GetBucketsBucketLifecycleRule(
+        @CustomType.Parameter("enabled") Boolean enabled,
+        @CustomType.Parameter("expiration") GetBucketsBucketLifecycleRuleExpiration expiration,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("prefix") String prefix) {
+        this.enabled = enabled;
+        this.expiration = expiration;
+        this.id = id;
+        this.prefix = prefix;
+    }
+
     /**
      * @return Indicate whether the rule is enabled or not.
      * 
@@ -69,13 +80,17 @@ public final class GetBucketsBucketLifecycleRule {
     public static Builder builder(GetBucketsBucketLifecycleRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean enabled;
         private GetBucketsBucketLifecycleRuleExpiration expiration;
         private String id;
         private String prefix;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBucketsBucketLifecycleRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
@@ -84,33 +99,23 @@ public final class GetBucketsBucketLifecycleRule {
     	      this.prefix = defaults.prefix;
         }
 
-        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
-        @CustomType.Setter
         public Builder expiration(GetBucketsBucketLifecycleRuleExpiration expiration) {
             this.expiration = Objects.requireNonNull(expiration);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder prefix(String prefix) {
             this.prefix = Objects.requireNonNull(prefix);
             return this;
-        }
-        public GetBucketsBucketLifecycleRule build() {
-            final var o = new GetBucketsBucketLifecycleRule();
-            o.enabled = enabled;
-            o.expiration = expiration;
-            o.id = id;
-            o.prefix = prefix;
-            return o;
+        }        public GetBucketsBucketLifecycleRule build() {
+            return new GetBucketsBucketLifecycleRule(enabled, expiration, id, prefix);
         }
     }
 }

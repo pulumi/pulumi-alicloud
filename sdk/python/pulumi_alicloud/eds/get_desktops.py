@@ -202,6 +202,7 @@ def get_desktops(desktop_name: Optional[str] = None,
     :param Sequence[str] ids: A list of Desktop IDs.
     :param str name_regex: A regex string to filter results by Desktop name.
     :param str office_site_id: The ID of the Simple Office Site.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str policy_group_id: The policy group id of the Desktop.
     :param str status: The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
     """
@@ -299,6 +300,7 @@ def get_desktops_output(desktop_name: Optional[pulumi.Input[Optional[str]]] = No
     :param Sequence[str] ids: A list of Desktop IDs.
     :param str name_regex: A regex string to filter results by Desktop name.
     :param str office_site_id: The ID of the Simple Office Site.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str policy_group_id: The policy group id of the Desktop.
     :param str status: The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
     """

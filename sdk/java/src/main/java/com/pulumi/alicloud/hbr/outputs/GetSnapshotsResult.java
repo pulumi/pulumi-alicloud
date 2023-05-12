@@ -14,27 +14,60 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSnapshotsResult {
-    private @Nullable String bucket;
-    private @Nullable String completeTime;
-    private @Nullable String completeTimeChecker;
-    private @Nullable String createTime;
-    private @Nullable String fileSystemId;
+    private final @Nullable String bucket;
+    private final @Nullable String completeTime;
+    private final @Nullable String completeTimeChecker;
+    private final @Nullable String createTime;
+    private final @Nullable String fileSystemId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String instanceId;
-    private @Nullable Integer limit;
-    private @Nullable String outputFile;
-    private @Nullable String query;
-    private List<GetSnapshotsSnapshot> snapshots;
-    private String sourceType;
-    private @Nullable String status;
-    private String vaultId;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String instanceId;
+    private final @Nullable Integer limit;
+    private final @Nullable String outputFile;
+    private final @Nullable String query;
+    private final List<GetSnapshotsSnapshot> snapshots;
+    private final String sourceType;
+    private final @Nullable String status;
+    private final String vaultId;
 
-    private GetSnapshotsResult() {}
+    @CustomType.Constructor
+    private GetSnapshotsResult(
+        @CustomType.Parameter("bucket") @Nullable String bucket,
+        @CustomType.Parameter("completeTime") @Nullable String completeTime,
+        @CustomType.Parameter("completeTimeChecker") @Nullable String completeTimeChecker,
+        @CustomType.Parameter("createTime") @Nullable String createTime,
+        @CustomType.Parameter("fileSystemId") @Nullable String fileSystemId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceId") @Nullable String instanceId,
+        @CustomType.Parameter("limit") @Nullable Integer limit,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("query") @Nullable String query,
+        @CustomType.Parameter("snapshots") List<GetSnapshotsSnapshot> snapshots,
+        @CustomType.Parameter("sourceType") String sourceType,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("vaultId") String vaultId) {
+        this.bucket = bucket;
+        this.completeTime = completeTime;
+        this.completeTimeChecker = completeTimeChecker;
+        this.createTime = createTime;
+        this.fileSystemId = fileSystemId;
+        this.id = id;
+        this.ids = ids;
+        this.instanceId = instanceId;
+        this.limit = limit;
+        this.outputFile = outputFile;
+        this.query = query;
+        this.snapshots = snapshots;
+        this.sourceType = sourceType;
+        this.status = status;
+        this.vaultId = vaultId;
+    }
+
     public Optional<String> bucket() {
         return Optional.ofNullable(this.bucket);
     }
@@ -92,7 +125,7 @@ public final class GetSnapshotsResult {
     public static Builder builder(GetSnapshotsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String bucket;
         private @Nullable String completeTime;
@@ -109,7 +142,11 @@ public final class GetSnapshotsResult {
         private String sourceType;
         private @Nullable String status;
         private String vaultId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetSnapshotsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucket = defaults.bucket;
@@ -129,37 +166,30 @@ public final class GetSnapshotsResult {
     	      this.vaultId = defaults.vaultId;
         }
 
-        @CustomType.Setter
         public Builder bucket(@Nullable String bucket) {
             this.bucket = bucket;
             return this;
         }
-        @CustomType.Setter
         public Builder completeTime(@Nullable String completeTime) {
             this.completeTime = completeTime;
             return this;
         }
-        @CustomType.Setter
         public Builder completeTimeChecker(@Nullable String completeTimeChecker) {
             this.completeTimeChecker = completeTimeChecker;
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(@Nullable String createTime) {
             this.createTime = createTime;
             return this;
         }
-        @CustomType.Setter
         public Builder fileSystemId(@Nullable String fileSystemId) {
             this.fileSystemId = fileSystemId;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -167,27 +197,22 @@ public final class GetSnapshotsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceId(@Nullable String instanceId) {
             this.instanceId = instanceId;
             return this;
         }
-        @CustomType.Setter
         public Builder limit(@Nullable Integer limit) {
             this.limit = limit;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder query(@Nullable String query) {
             this.query = query;
             return this;
         }
-        @CustomType.Setter
         public Builder snapshots(List<GetSnapshotsSnapshot> snapshots) {
             this.snapshots = Objects.requireNonNull(snapshots);
             return this;
@@ -195,39 +220,19 @@ public final class GetSnapshotsResult {
         public Builder snapshots(GetSnapshotsSnapshot... snapshots) {
             return snapshots(List.of(snapshots));
         }
-        @CustomType.Setter
         public Builder sourceType(String sourceType) {
             this.sourceType = Objects.requireNonNull(sourceType);
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder vaultId(String vaultId) {
             this.vaultId = Objects.requireNonNull(vaultId);
             return this;
-        }
-        public GetSnapshotsResult build() {
-            final var o = new GetSnapshotsResult();
-            o.bucket = bucket;
-            o.completeTime = completeTime;
-            o.completeTimeChecker = completeTimeChecker;
-            o.createTime = createTime;
-            o.fileSystemId = fileSystemId;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.limit = limit;
-            o.outputFile = outputFile;
-            o.query = query;
-            o.snapshots = snapshots;
-            o.sourceType = sourceType;
-            o.status = status;
-            o.vaultId = vaultId;
-            return o;
+        }        public GetSnapshotsResult build() {
+            return new GetSnapshotsResult(bucket, completeTime, completeTimeChecker, createTime, fileSystemId, id, ids, instanceId, limit, outputFile, query, snapshots, sourceType, status, vaultId);
         }
     }
 }

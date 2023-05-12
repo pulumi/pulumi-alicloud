@@ -134,6 +134,7 @@ def get_baseline_strategies(custom_type: Optional[str] = None,
     :param str custom_type: The type of policy. Value:-**common**: standard policy-**custom**: custom policy
     :param Sequence[str] ids: A list of Baseline Strategy IDs.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['customType'] = custom_type
@@ -171,5 +172,6 @@ def get_baseline_strategies_output(custom_type: Optional[pulumi.Input[Optional[s
     :param str custom_type: The type of policy. Value:-**common**: standard policy-**custom**: custom policy
     :param Sequence[str] ids: A list of Baseline Strategy IDs.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

@@ -16,74 +16,105 @@ public final class GetAnycastEipAddressesAddress {
      * @return Anycast EIP instance account ID.
      * 
      */
-    private Integer aliUid;
+    private final Integer aliUid;
     /**
      * @return Anycast EIP instance name.
      * 
      */
-    private String anycastEipAddressName;
+    private final String anycastEipAddressName;
     /**
      * @return AnycastEip binding information.
      * 
      */
-    private List<GetAnycastEipAddressesAddressAnycastEipBindInfoList> anycastEipBindInfoLists;
+    private final List<GetAnycastEipAddressesAddressAnycastEipBindInfoList> anycastEipBindInfoLists;
     /**
      * @return Anycast EIP instance ID.
      * 
      */
-    private String anycastId;
+    private final String anycastId;
     /**
      * @return The peak bandwidth of the Anycast EIP instance, in Mbps.
      * 
      */
-    private Integer bandwidth;
+    private final Integer bandwidth;
     /**
      * @return Anycast EIP instance account BID.
      * 
      */
-    private String bid;
+    private final String bid;
     /**
      * @return The business status of the Anycast EIP instance. -`Normal`: Normal state. -`FinancialLocked`: The status of arrears locked.
      * 
      */
-    private String businessStatus;
+    private final String businessStatus;
     /**
      * @return Anycast EIP instance description.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the Anycast Eip Address.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic.
      * 
      */
-    private String internetChargeType;
+    private final String internetChargeType;
     /**
      * @return Anycast EIP instance IP address.
      * 
      */
-    private String ipAddress;
+    private final String ipAddress;
     /**
      * @return The payment model of Anycast EIP instance. &#34;PostPaid&#34;: Refers to the post-paid mode.
      * 
      */
-    private String paymentType;
+    private final String paymentType;
     /**
      * @return Anycast EIP instance access area. &#34;international&#34;: Refers to areas outside of Mainland China.
      * 
      */
-    private String serviceLocation;
+    private final String serviceLocation;
     /**
      * @return IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetAnycastEipAddressesAddress() {}
+    @CustomType.Constructor
+    private GetAnycastEipAddressesAddress(
+        @CustomType.Parameter("aliUid") Integer aliUid,
+        @CustomType.Parameter("anycastEipAddressName") String anycastEipAddressName,
+        @CustomType.Parameter("anycastEipBindInfoLists") List<GetAnycastEipAddressesAddressAnycastEipBindInfoList> anycastEipBindInfoLists,
+        @CustomType.Parameter("anycastId") String anycastId,
+        @CustomType.Parameter("bandwidth") Integer bandwidth,
+        @CustomType.Parameter("bid") String bid,
+        @CustomType.Parameter("businessStatus") String businessStatus,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("internetChargeType") String internetChargeType,
+        @CustomType.Parameter("ipAddress") String ipAddress,
+        @CustomType.Parameter("paymentType") String paymentType,
+        @CustomType.Parameter("serviceLocation") String serviceLocation,
+        @CustomType.Parameter("status") String status) {
+        this.aliUid = aliUid;
+        this.anycastEipAddressName = anycastEipAddressName;
+        this.anycastEipBindInfoLists = anycastEipBindInfoLists;
+        this.anycastId = anycastId;
+        this.bandwidth = bandwidth;
+        this.bid = bid;
+        this.businessStatus = businessStatus;
+        this.description = description;
+        this.id = id;
+        this.internetChargeType = internetChargeType;
+        this.ipAddress = ipAddress;
+        this.paymentType = paymentType;
+        this.serviceLocation = serviceLocation;
+        this.status = status;
+    }
+
     /**
      * @return Anycast EIP instance account ID.
      * 
@@ -190,7 +221,7 @@ public final class GetAnycastEipAddressesAddress {
     public static Builder builder(GetAnycastEipAddressesAddress defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer aliUid;
         private String anycastEipAddressName;
@@ -206,7 +237,11 @@ public final class GetAnycastEipAddressesAddress {
         private String paymentType;
         private String serviceLocation;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAnycastEipAddressesAddress defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aliUid = defaults.aliUid;
@@ -225,17 +260,14 @@ public final class GetAnycastEipAddressesAddress {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder aliUid(Integer aliUid) {
             this.aliUid = Objects.requireNonNull(aliUid);
             return this;
         }
-        @CustomType.Setter
         public Builder anycastEipAddressName(String anycastEipAddressName) {
             this.anycastEipAddressName = Objects.requireNonNull(anycastEipAddressName);
             return this;
         }
-        @CustomType.Setter
         public Builder anycastEipBindInfoLists(List<GetAnycastEipAddressesAddressAnycastEipBindInfoList> anycastEipBindInfoLists) {
             this.anycastEipBindInfoLists = Objects.requireNonNull(anycastEipBindInfoLists);
             return this;
@@ -243,78 +275,51 @@ public final class GetAnycastEipAddressesAddress {
         public Builder anycastEipBindInfoLists(GetAnycastEipAddressesAddressAnycastEipBindInfoList... anycastEipBindInfoLists) {
             return anycastEipBindInfoLists(List.of(anycastEipBindInfoLists));
         }
-        @CustomType.Setter
         public Builder anycastId(String anycastId) {
             this.anycastId = Objects.requireNonNull(anycastId);
             return this;
         }
-        @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
-        @CustomType.Setter
         public Builder bid(String bid) {
             this.bid = Objects.requireNonNull(bid);
             return this;
         }
-        @CustomType.Setter
         public Builder businessStatus(String businessStatus) {
             this.businessStatus = Objects.requireNonNull(businessStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder internetChargeType(String internetChargeType) {
             this.internetChargeType = Objects.requireNonNull(internetChargeType);
             return this;
         }
-        @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
             this.ipAddress = Objects.requireNonNull(ipAddress);
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
-        @CustomType.Setter
         public Builder serviceLocation(String serviceLocation) {
             this.serviceLocation = Objects.requireNonNull(serviceLocation);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetAnycastEipAddressesAddress build() {
-            final var o = new GetAnycastEipAddressesAddress();
-            o.aliUid = aliUid;
-            o.anycastEipAddressName = anycastEipAddressName;
-            o.anycastEipBindInfoLists = anycastEipBindInfoLists;
-            o.anycastId = anycastId;
-            o.bandwidth = bandwidth;
-            o.bid = bid;
-            o.businessStatus = businessStatus;
-            o.description = description;
-            o.id = id;
-            o.internetChargeType = internetChargeType;
-            o.ipAddress = ipAddress;
-            o.paymentType = paymentType;
-            o.serviceLocation = serviceLocation;
-            o.status = status;
-            return o;
+        }        public GetAnycastEipAddressesAddress build() {
+            return new GetAnycastEipAddressesAddress(aliUid, anycastEipAddressName, anycastEipBindInfoLists, anycastId, bandwidth, bid, businessStatus, description, id, internetChargeType, ipAddress, paymentType, serviceLocation, status);
         }
     }
 }

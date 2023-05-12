@@ -166,6 +166,7 @@ def get_enterprise_users(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of DMS Enterprise User IDs (UID).
     :param str name_regex: A regex string to filter the results by the DMS Enterprise User nick_name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str role: The role of the user to query.
     :param str search_key: The keyword used to query users.
     :param str status: The status of the user.
@@ -224,6 +225,7 @@ def get_enterprise_users_output(ids: Optional[pulumi.Input[Optional[Sequence[str
 
     :param Sequence[str] ids: A list of DMS Enterprise User IDs (UID).
     :param str name_regex: A regex string to filter the results by the DMS Enterprise User nick_name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str role: The role of the user to query.
     :param str search_key: The keyword used to query users.
     :param str status: The status of the user.

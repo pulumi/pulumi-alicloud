@@ -12,6 +12,12 @@ namespace Pulumi.AliCloud.Ecs
     public static class GetNetworkInterfaces
     {
         /// <summary>
+        /// &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsNetworkInterfaces from version 1.123.1.
+        /// 
+        /// Use this data source to get a list of elastic network interfaces according to the specified filters in an Alibaba Cloud account.
+        /// 
+        /// For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -134,6 +140,12 @@ namespace Pulumi.AliCloud.Ecs
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkInterfacesResult>("alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces", args ?? new GetNetworkInterfacesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsNetworkInterfaces from version 1.123.1.
+        /// 
+        /// Use this data source to get a list of elastic network interfaces according to the specified filters in an Alibaba Cloud account.
+        /// 
+        /// For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

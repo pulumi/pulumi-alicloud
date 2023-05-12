@@ -17,59 +17,84 @@ public final class GetTunnelsTunnel {
      * @return The channels of OTS tunnel. Each element contains the following attributes:
      * 
      */
-    private List<GetTunnelsTunnelChannel> channels;
+    private final List<GetTunnelsTunnelChannel> channels;
     /**
      * @return The creation time of the Tunnel.
      * 
      */
-    private Integer createTime;
+    private final Integer createTime;
     /**
      * @return Whether the tunnel has expired.
      * 
      */
-    private Boolean expired;
+    private final Boolean expired;
     /**
      * @return The resource ID. The value is `&lt;instance_name&gt;:&lt;table_name&gt;:&lt;tunnel_name&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The name of OTS instance.
      * 
      */
-    private String instanceName;
+    private final String instanceName;
     /**
      * @return The name of OTS table.
      * 
      */
-    private String tableName;
+    private final String tableName;
     /**
      * @return The tunnel id of the OTS which could not be changed.
      * 
      */
-    private String tunnelId;
+    private final String tunnelId;
     /**
      * @return The tunnel name of the OTS which could not be changed.
      * 
      */
-    private String tunnelName;
+    private final String tunnelName;
     /**
      * @return The latest consumption time of the tunnel, unix time in nanosecond.
      * 
      */
-    private Integer tunnelRpo;
+    private final Integer tunnelRpo;
     /**
      * @return The stage of OTS tunnel, valid values: `InitBaseDataAndStreamShard`, `ProcessBaseData`, `ProcessStream`.
      * 
      */
-    private String tunnelStage;
+    private final String tunnelStage;
     /**
      * @return The type of the OTS tunnel, valid values: `BaseAndStream`, `BaseData`, `Stream`.
      * 
      */
-    private String tunnelType;
+    private final String tunnelType;
 
-    private GetTunnelsTunnel() {}
+    @CustomType.Constructor
+    private GetTunnelsTunnel(
+        @CustomType.Parameter("channels") List<GetTunnelsTunnelChannel> channels,
+        @CustomType.Parameter("createTime") Integer createTime,
+        @CustomType.Parameter("expired") Boolean expired,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceName") String instanceName,
+        @CustomType.Parameter("tableName") String tableName,
+        @CustomType.Parameter("tunnelId") String tunnelId,
+        @CustomType.Parameter("tunnelName") String tunnelName,
+        @CustomType.Parameter("tunnelRpo") Integer tunnelRpo,
+        @CustomType.Parameter("tunnelStage") String tunnelStage,
+        @CustomType.Parameter("tunnelType") String tunnelType) {
+        this.channels = channels;
+        this.createTime = createTime;
+        this.expired = expired;
+        this.id = id;
+        this.instanceName = instanceName;
+        this.tableName = tableName;
+        this.tunnelId = tunnelId;
+        this.tunnelName = tunnelName;
+        this.tunnelRpo = tunnelRpo;
+        this.tunnelStage = tunnelStage;
+        this.tunnelType = tunnelType;
+    }
+
     /**
      * @return The channels of OTS tunnel. Each element contains the following attributes:
      * 
@@ -155,7 +180,7 @@ public final class GetTunnelsTunnel {
     public static Builder builder(GetTunnelsTunnel defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetTunnelsTunnelChannel> channels;
         private Integer createTime;
@@ -168,7 +193,11 @@ public final class GetTunnelsTunnel {
         private Integer tunnelRpo;
         private String tunnelStage;
         private String tunnelType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTunnelsTunnel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.channels = defaults.channels;
@@ -184,7 +213,6 @@ public final class GetTunnelsTunnel {
     	      this.tunnelType = defaults.tunnelType;
         }
 
-        @CustomType.Setter
         public Builder channels(List<GetTunnelsTunnelChannel> channels) {
             this.channels = Objects.requireNonNull(channels);
             return this;
@@ -192,70 +220,47 @@ public final class GetTunnelsTunnel {
         public Builder channels(GetTunnelsTunnelChannel... channels) {
             return channels(List.of(channels));
         }
-        @CustomType.Setter
         public Builder createTime(Integer createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder expired(Boolean expired) {
             this.expired = Objects.requireNonNull(expired);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
-        @CustomType.Setter
         public Builder tableName(String tableName) {
             this.tableName = Objects.requireNonNull(tableName);
             return this;
         }
-        @CustomType.Setter
         public Builder tunnelId(String tunnelId) {
             this.tunnelId = Objects.requireNonNull(tunnelId);
             return this;
         }
-        @CustomType.Setter
         public Builder tunnelName(String tunnelName) {
             this.tunnelName = Objects.requireNonNull(tunnelName);
             return this;
         }
-        @CustomType.Setter
         public Builder tunnelRpo(Integer tunnelRpo) {
             this.tunnelRpo = Objects.requireNonNull(tunnelRpo);
             return this;
         }
-        @CustomType.Setter
         public Builder tunnelStage(String tunnelStage) {
             this.tunnelStage = Objects.requireNonNull(tunnelStage);
             return this;
         }
-        @CustomType.Setter
         public Builder tunnelType(String tunnelType) {
             this.tunnelType = Objects.requireNonNull(tunnelType);
             return this;
-        }
-        public GetTunnelsTunnel build() {
-            final var o = new GetTunnelsTunnel();
-            o.channels = channels;
-            o.createTime = createTime;
-            o.expired = expired;
-            o.id = id;
-            o.instanceName = instanceName;
-            o.tableName = tableName;
-            o.tunnelId = tunnelId;
-            o.tunnelName = tunnelName;
-            o.tunnelRpo = tunnelRpo;
-            o.tunnelStage = tunnelStage;
-            o.tunnelType = tunnelType;
-            return o;
+        }        public GetTunnelsTunnel build() {
+            return new GetTunnelsTunnel(channels, createTime, expired, id, instanceName, tableName, tunnelId, tunnelName, tunnelRpo, tunnelStage, tunnelType);
         }
     }
 }

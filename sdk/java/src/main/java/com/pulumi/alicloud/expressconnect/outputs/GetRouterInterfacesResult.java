@@ -15,34 +15,57 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRouterInterfacesResult {
-    private @Nullable List<GetRouterInterfacesFilter> filters;
+    private final @Nullable List<GetRouterInterfacesFilter> filters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of Router Interface IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String includeReservationData;
+    private final List<String> ids;
+    private final @Nullable String includeReservationData;
     /**
      * @return A list of Router Interface Entries. Each element contains the following attributes:
      * 
      */
-    private List<GetRouterInterfacesInterface> interfaces;
-    private @Nullable String nameRegex;
+    private final List<GetRouterInterfacesInterface> interfaces;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of name of Router Interfaces.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
 
-    private GetRouterInterfacesResult() {}
+    @CustomType.Constructor
+    private GetRouterInterfacesResult(
+        @CustomType.Parameter("filters") @Nullable List<GetRouterInterfacesFilter> filters,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("includeReservationData") @Nullable String includeReservationData,
+        @CustomType.Parameter("interfaces") List<GetRouterInterfacesInterface> interfaces,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize) {
+        this.filters = filters;
+        this.id = id;
+        this.ids = ids;
+        this.includeReservationData = includeReservationData;
+        this.interfaces = interfaces;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+    }
+
     public List<GetRouterInterfacesFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
@@ -97,7 +120,7 @@ public final class GetRouterInterfacesResult {
     public static Builder builder(GetRouterInterfacesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<GetRouterInterfacesFilter> filters;
         private String id;
@@ -109,7 +132,11 @@ public final class GetRouterInterfacesResult {
         private @Nullable String outputFile;
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRouterInterfacesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filters = defaults.filters;
@@ -124,7 +151,6 @@ public final class GetRouterInterfacesResult {
     	      this.pageSize = defaults.pageSize;
         }
 
-        @CustomType.Setter
         public Builder filters(@Nullable List<GetRouterInterfacesFilter> filters) {
             this.filters = filters;
             return this;
@@ -132,12 +158,10 @@ public final class GetRouterInterfacesResult {
         public Builder filters(GetRouterInterfacesFilter... filters) {
             return filters(List.of(filters));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -145,12 +169,10 @@ public final class GetRouterInterfacesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder includeReservationData(@Nullable String includeReservationData) {
             this.includeReservationData = includeReservationData;
             return this;
         }
-        @CustomType.Setter
         public Builder interfaces(List<GetRouterInterfacesInterface> interfaces) {
             this.interfaces = Objects.requireNonNull(interfaces);
             return this;
@@ -158,12 +180,10 @@ public final class GetRouterInterfacesResult {
         public Builder interfaces(GetRouterInterfacesInterface... interfaces) {
             return interfaces(List.of(interfaces));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -171,34 +191,19 @@ public final class GetRouterInterfacesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
-        }
-        public GetRouterInterfacesResult build() {
-            final var o = new GetRouterInterfacesResult();
-            o.filters = filters;
-            o.id = id;
-            o.ids = ids;
-            o.includeReservationData = includeReservationData;
-            o.interfaces = interfaces;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            return o;
+        }        public GetRouterInterfacesResult build() {
+            return new GetRouterInterfacesResult(filters, id, ids, includeReservationData, interfaces, nameRegex, names, outputFile, pageNumber, pageSize);
         }
     }
 }

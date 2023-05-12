@@ -179,12 +179,16 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
     /**
      * The attribute of the IP address whitelist. By default, this parameter is empty.
      * 
+     * &gt; **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
+     * 
      */
     @Import(name="dbInstanceIpArrayAttribute")
     private @Nullable Output<String> dbInstanceIpArrayAttribute;
 
     /**
      * @return The attribute of the IP address whitelist. By default, this parameter is empty.
+     * 
+     * &gt; **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
      * 
      */
     public Optional<Output<String>> dbInstanceIpArrayAttribute() {
@@ -194,12 +198,16 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
     /**
      * The name of the IP address whitelist. Default value: Default.
      * 
+     * &gt; **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
+     * 
      */
     @Import(name="dbInstanceIpArrayName")
     private @Nullable Output<String> dbInstanceIpArrayName;
 
     /**
      * @return The name of the IP address whitelist. Default value: Default.
+     * 
+     * &gt; **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
      * 
      */
     public Optional<Output<String>> dbInstanceIpArrayName() {
@@ -558,12 +566,16 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
     /**
      * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
      * 
+     * &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
+     * 
      */
     @Import(name="switchTime")
     private @Nullable Output<String> switchTime;
 
     /**
      * @return The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+     * 
+     * &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
      * 
      */
     public Optional<Output<String>> switchTime() {
@@ -598,6 +610,8 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
      * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: &lt;Minor engine version&gt;. Example: 15.0.4073.23.
      * 
+     * &gt; **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
+     * 
      */
     @Import(name="targetMinorVersion")
     private @Nullable Output<String> targetMinorVersion;
@@ -610,6 +624,8 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
      * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
      * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: &lt;Minor engine version&gt;. Example: 15.0.4073.23.
+     * 
+     * &gt; **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
      * 
      */
     public Optional<Output<String>> targetMinorVersion() {
@@ -984,6 +1000,8 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
         /**
          * @param dbInstanceIpArrayAttribute The attribute of the IP address whitelist. By default, this parameter is empty.
          * 
+         * &gt; **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
+         * 
          * @return builder
          * 
          */
@@ -995,6 +1013,8 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
         /**
          * @param dbInstanceIpArrayAttribute The attribute of the IP address whitelist. By default, this parameter is empty.
          * 
+         * &gt; **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
+         * 
          * @return builder
          * 
          */
@@ -1004,6 +1024,8 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param dbInstanceIpArrayName The name of the IP address whitelist. Default value: Default.
+         * 
+         * &gt; **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
          * 
          * @return builder
          * 
@@ -1015,6 +1037,8 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param dbInstanceIpArrayName The name of the IP address whitelist. Default value: Default.
+         * 
+         * &gt; **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
          * 
          * @return builder
          * 
@@ -1521,6 +1545,8 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
         /**
          * @param switchTime The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
          * 
+         * &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
+         * 
          * @return builder
          * 
          */
@@ -1531,6 +1557,8 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param switchTime The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+         * 
+         * &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
          * 
          * @return builder
          * 
@@ -1573,6 +1601,8 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
          * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
          * - SQLServer: &lt;Minor engine version&gt;. Example: 15.0.4073.23.
          * 
+         * &gt; **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
+         * 
          * @return builder
          * 
          */
@@ -1589,6 +1619,8 @@ public final class ReadOnlyInstanceState extends com.pulumi.resources.ResourceAr
          * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
          * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
          * - SQLServer: &lt;Minor engine version&gt;. Example: 15.0.4073.23.
+         * 
+         * &gt; **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
          * 
          * @return builder
          * 

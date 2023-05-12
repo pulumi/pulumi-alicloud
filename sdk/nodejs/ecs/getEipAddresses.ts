@@ -104,6 +104,9 @@ export interface GetEipAddressesArgs {
      * A regex string to filter results by Address name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The billing method of the EIP.
@@ -239,6 +242,9 @@ export interface GetEipAddressesOutputArgs {
      * A regex string to filter results by Address name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The billing method of the EIP.

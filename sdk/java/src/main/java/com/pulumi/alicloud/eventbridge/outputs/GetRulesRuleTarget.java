@@ -13,19 +13,28 @@ public final class GetRulesRuleTarget {
      * @return The endpoint.
      * 
      */
-    private String endpoint;
+    private final String endpoint;
     /**
      * @return The id of target.
      * 
      */
-    private String targetId;
+    private final String targetId;
     /**
      * @return The type of target.
      * 
      */
-    private String type;
+    private final String type;
 
-    private GetRulesRuleTarget() {}
+    @CustomType.Constructor
+    private GetRulesRuleTarget(
+        @CustomType.Parameter("endpoint") String endpoint,
+        @CustomType.Parameter("targetId") String targetId,
+        @CustomType.Parameter("type") String type) {
+        this.endpoint = endpoint;
+        this.targetId = targetId;
+        this.type = type;
+    }
+
     /**
      * @return The endpoint.
      * 
@@ -55,12 +64,16 @@ public final class GetRulesRuleTarget {
     public static Builder builder(GetRulesRuleTarget defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String endpoint;
         private String targetId;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRulesRuleTarget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endpoint = defaults.endpoint;
@@ -68,27 +81,19 @@ public final class GetRulesRuleTarget {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
-        @CustomType.Setter
         public Builder targetId(String targetId) {
             this.targetId = Objects.requireNonNull(targetId);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetRulesRuleTarget build() {
-            final var o = new GetRulesRuleTarget();
-            o.endpoint = endpoint;
-            o.targetId = targetId;
-            o.type = type;
-            return o;
+        }        public GetRulesRuleTarget build() {
+            return new GetRulesRuleTarget(endpoint, targetId, type);
         }
     }
 }

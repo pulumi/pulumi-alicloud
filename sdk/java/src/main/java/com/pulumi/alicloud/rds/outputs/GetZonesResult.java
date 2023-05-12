@@ -14,32 +14,59 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZonesResult {
-    private @Nullable String category;
-    private @Nullable String dbInstanceClass;
-    private @Nullable String dbInstanceStorageType;
-    private @Nullable String engine;
-    private @Nullable String engineVersion;
+    private final @Nullable String category;
+    private final @Nullable String dbInstanceClass;
+    private final @Nullable String dbInstanceStorageType;
+    private final @Nullable String engine;
+    private final @Nullable String engineVersion;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of zone IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String instanceChargeType;
-    private @Nullable Boolean multi;
-    private @Nullable Boolean multiZone;
-    private @Nullable String outputFile;
+    private final List<String> ids;
+    private final @Nullable String instanceChargeType;
+    private final @Nullable Boolean multi;
+    private final @Nullable Boolean multiZone;
+    private final @Nullable String outputFile;
     /**
      * @return A list of availability zones. Each element contains the following attributes:
      * 
      */
-    private List<GetZonesZone> zones;
+    private final List<GetZonesZone> zones;
 
-    private GetZonesResult() {}
+    @CustomType.Constructor
+    private GetZonesResult(
+        @CustomType.Parameter("category") @Nullable String category,
+        @CustomType.Parameter("dbInstanceClass") @Nullable String dbInstanceClass,
+        @CustomType.Parameter("dbInstanceStorageType") @Nullable String dbInstanceStorageType,
+        @CustomType.Parameter("engine") @Nullable String engine,
+        @CustomType.Parameter("engineVersion") @Nullable String engineVersion,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceChargeType") @Nullable String instanceChargeType,
+        @CustomType.Parameter("multi") @Nullable Boolean multi,
+        @CustomType.Parameter("multiZone") @Nullable Boolean multiZone,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("zones") List<GetZonesZone> zones) {
+        this.category = category;
+        this.dbInstanceClass = dbInstanceClass;
+        this.dbInstanceStorageType = dbInstanceStorageType;
+        this.engine = engine;
+        this.engineVersion = engineVersion;
+        this.id = id;
+        this.ids = ids;
+        this.instanceChargeType = instanceChargeType;
+        this.multi = multi;
+        this.multiZone = multiZone;
+        this.outputFile = outputFile;
+        this.zones = zones;
+    }
+
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
@@ -96,7 +123,7 @@ public final class GetZonesResult {
     public static Builder builder(GetZonesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String category;
         private @Nullable String dbInstanceClass;
@@ -110,7 +137,11 @@ public final class GetZonesResult {
         private @Nullable Boolean multiZone;
         private @Nullable String outputFile;
         private List<GetZonesZone> zones;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetZonesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -127,37 +158,30 @@ public final class GetZonesResult {
     	      this.zones = defaults.zones;
         }
 
-        @CustomType.Setter
         public Builder category(@Nullable String category) {
             this.category = category;
             return this;
         }
-        @CustomType.Setter
         public Builder dbInstanceClass(@Nullable String dbInstanceClass) {
             this.dbInstanceClass = dbInstanceClass;
             return this;
         }
-        @CustomType.Setter
         public Builder dbInstanceStorageType(@Nullable String dbInstanceStorageType) {
             this.dbInstanceStorageType = dbInstanceStorageType;
             return this;
         }
-        @CustomType.Setter
         public Builder engine(@Nullable String engine) {
             this.engine = engine;
             return this;
         }
-        @CustomType.Setter
         public Builder engineVersion(@Nullable String engineVersion) {
             this.engineVersion = engineVersion;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -165,49 +189,30 @@ public final class GetZonesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceChargeType(@Nullable String instanceChargeType) {
             this.instanceChargeType = instanceChargeType;
             return this;
         }
-        @CustomType.Setter
         public Builder multi(@Nullable Boolean multi) {
             this.multi = multi;
             return this;
         }
-        @CustomType.Setter
         public Builder multiZone(@Nullable Boolean multiZone) {
             this.multiZone = multiZone;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder zones(List<GetZonesZone> zones) {
             this.zones = Objects.requireNonNull(zones);
             return this;
         }
         public Builder zones(GetZonesZone... zones) {
             return zones(List.of(zones));
-        }
-        public GetZonesResult build() {
-            final var o = new GetZonesResult();
-            o.category = category;
-            o.dbInstanceClass = dbInstanceClass;
-            o.dbInstanceStorageType = dbInstanceStorageType;
-            o.engine = engine;
-            o.engineVersion = engineVersion;
-            o.id = id;
-            o.ids = ids;
-            o.instanceChargeType = instanceChargeType;
-            o.multi = multi;
-            o.multiZone = multiZone;
-            o.outputFile = outputFile;
-            o.zones = zones;
-            return o;
+        }        public GetZonesResult build() {
+            return new GetZonesResult(category, dbInstanceClass, dbInstanceStorageType, engine, engineVersion, id, ids, instanceChargeType, multi, multiZone, outputFile, zones);
         }
     }
 }

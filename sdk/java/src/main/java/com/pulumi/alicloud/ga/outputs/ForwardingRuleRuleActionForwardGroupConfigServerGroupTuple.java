@@ -13,9 +13,13 @@ public final class ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
      * @return Terminal node group ID.
      * 
      */
-    private String endpointGroupId;
+    private final String endpointGroupId;
 
-    private ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple() {}
+    @CustomType.Constructor
+    private ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple(@CustomType.Parameter("endpointGroupId") String endpointGroupId) {
+        this.endpointGroupId = endpointGroupId;
+    }
+
     /**
      * @return Terminal node group ID.
      * 
@@ -31,24 +35,24 @@ public final class ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
     public static Builder builder(ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String endpointGroupId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endpointGroupId = defaults.endpointGroupId;
         }
 
-        @CustomType.Setter
         public Builder endpointGroupId(String endpointGroupId) {
             this.endpointGroupId = Objects.requireNonNull(endpointGroupId);
             return this;
-        }
-        public ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple build() {
-            final var o = new ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple();
-            o.endpointGroupId = endpointGroupId;
-            return o;
+        }        public ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple build() {
+            return new ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple(endpointGroupId);
         }
     }
 }

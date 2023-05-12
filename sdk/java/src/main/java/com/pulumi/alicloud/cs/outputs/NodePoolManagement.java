@@ -16,29 +16,42 @@ public final class NodePoolManagement {
      * @return Whether automatic repair, Default to `false`.
      * 
      */
-    private @Nullable Boolean autoRepair;
+    private final @Nullable Boolean autoRepair;
     /**
      * @return Whether auto upgrade, Default to `false`.
      * 
      */
-    private @Nullable Boolean autoUpgrade;
+    private final @Nullable Boolean autoUpgrade;
     /**
      * @return Max number of unavailable nodes. Default to `1`.
      * 
      */
-    private Integer maxUnavailable;
+    private final Integer maxUnavailable;
     /**
      * @return Number of additional nodes. You have to specify one of surge, surge_percentage.
      * 
      */
-    private @Nullable Integer surge;
+    private final @Nullable Integer surge;
     /**
      * @return Proportion of additional nodes. You have to specify one of surge, surge_percentage.
      * 
      */
-    private @Nullable Integer surgePercentage;
+    private final @Nullable Integer surgePercentage;
 
-    private NodePoolManagement() {}
+    @CustomType.Constructor
+    private NodePoolManagement(
+        @CustomType.Parameter("autoRepair") @Nullable Boolean autoRepair,
+        @CustomType.Parameter("autoUpgrade") @Nullable Boolean autoUpgrade,
+        @CustomType.Parameter("maxUnavailable") Integer maxUnavailable,
+        @CustomType.Parameter("surge") @Nullable Integer surge,
+        @CustomType.Parameter("surgePercentage") @Nullable Integer surgePercentage) {
+        this.autoRepair = autoRepair;
+        this.autoUpgrade = autoUpgrade;
+        this.maxUnavailable = maxUnavailable;
+        this.surge = surge;
+        this.surgePercentage = surgePercentage;
+    }
+
     /**
      * @return Whether automatic repair, Default to `false`.
      * 
@@ -82,14 +95,18 @@ public final class NodePoolManagement {
     public static Builder builder(NodePoolManagement defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean autoRepair;
         private @Nullable Boolean autoUpgrade;
         private Integer maxUnavailable;
         private @Nullable Integer surge;
         private @Nullable Integer surgePercentage;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(NodePoolManagement defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoRepair = defaults.autoRepair;
@@ -99,39 +116,27 @@ public final class NodePoolManagement {
     	      this.surgePercentage = defaults.surgePercentage;
         }
 
-        @CustomType.Setter
         public Builder autoRepair(@Nullable Boolean autoRepair) {
             this.autoRepair = autoRepair;
             return this;
         }
-        @CustomType.Setter
         public Builder autoUpgrade(@Nullable Boolean autoUpgrade) {
             this.autoUpgrade = autoUpgrade;
             return this;
         }
-        @CustomType.Setter
         public Builder maxUnavailable(Integer maxUnavailable) {
             this.maxUnavailable = Objects.requireNonNull(maxUnavailable);
             return this;
         }
-        @CustomType.Setter
         public Builder surge(@Nullable Integer surge) {
             this.surge = surge;
             return this;
         }
-        @CustomType.Setter
         public Builder surgePercentage(@Nullable Integer surgePercentage) {
             this.surgePercentage = surgePercentage;
             return this;
-        }
-        public NodePoolManagement build() {
-            final var o = new NodePoolManagement();
-            o.autoRepair = autoRepair;
-            o.autoUpgrade = autoUpgrade;
-            o.maxUnavailable = maxUnavailable;
-            o.surge = surge;
-            o.surgePercentage = surgePercentage;
-            return o;
+        }        public NodePoolManagement build() {
+            return new NodePoolManagement(autoRepair, autoUpgrade, maxUnavailable, surge, surgePercentage);
         }
     }
 }

@@ -14,29 +14,42 @@ public final class GetApplicationLoadBalancersBalancerListenerPortsAndProtocol {
      * @return The description of protocol.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The forward port.
      * 
      */
-    private Integer forwardPort;
+    private final Integer forwardPort;
     /**
      * @return The listener forward.
      * 
      */
-    private String listenerForward;
+    private final String listenerForward;
     /**
      * @return The listener port.
      * 
      */
-    private Integer listenerPort;
+    private final Integer listenerPort;
     /**
      * @return The listener protocol.
      * 
      */
-    private String listenerProtocol;
+    private final String listenerProtocol;
 
-    private GetApplicationLoadBalancersBalancerListenerPortsAndProtocol() {}
+    @CustomType.Constructor
+    private GetApplicationLoadBalancersBalancerListenerPortsAndProtocol(
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("forwardPort") Integer forwardPort,
+        @CustomType.Parameter("listenerForward") String listenerForward,
+        @CustomType.Parameter("listenerPort") Integer listenerPort,
+        @CustomType.Parameter("listenerProtocol") String listenerProtocol) {
+        this.description = description;
+        this.forwardPort = forwardPort;
+        this.listenerForward = listenerForward;
+        this.listenerPort = listenerPort;
+        this.listenerProtocol = listenerProtocol;
+    }
+
     /**
      * @return The description of protocol.
      * 
@@ -80,14 +93,18 @@ public final class GetApplicationLoadBalancersBalancerListenerPortsAndProtocol {
     public static Builder builder(GetApplicationLoadBalancersBalancerListenerPortsAndProtocol defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String description;
         private Integer forwardPort;
         private String listenerForward;
         private Integer listenerPort;
         private String listenerProtocol;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetApplicationLoadBalancersBalancerListenerPortsAndProtocol defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -97,39 +114,27 @@ public final class GetApplicationLoadBalancersBalancerListenerPortsAndProtocol {
     	      this.listenerProtocol = defaults.listenerProtocol;
         }
 
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder forwardPort(Integer forwardPort) {
             this.forwardPort = Objects.requireNonNull(forwardPort);
             return this;
         }
-        @CustomType.Setter
         public Builder listenerForward(String listenerForward) {
             this.listenerForward = Objects.requireNonNull(listenerForward);
             return this;
         }
-        @CustomType.Setter
         public Builder listenerPort(Integer listenerPort) {
             this.listenerPort = Objects.requireNonNull(listenerPort);
             return this;
         }
-        @CustomType.Setter
         public Builder listenerProtocol(String listenerProtocol) {
             this.listenerProtocol = Objects.requireNonNull(listenerProtocol);
             return this;
-        }
-        public GetApplicationLoadBalancersBalancerListenerPortsAndProtocol build() {
-            final var o = new GetApplicationLoadBalancersBalancerListenerPortsAndProtocol();
-            o.description = description;
-            o.forwardPort = forwardPort;
-            o.listenerForward = listenerForward;
-            o.listenerPort = listenerPort;
-            o.listenerProtocol = listenerProtocol;
-            return o;
+        }        public GetApplicationLoadBalancersBalancerListenerPortsAndProtocol build() {
+            return new GetApplicationLoadBalancersBalancerListenerPortsAndProtocol(description, forwardPort, listenerForward, listenerPort, listenerProtocol);
         }
     }
 }

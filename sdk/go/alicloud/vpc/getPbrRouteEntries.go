@@ -55,8 +55,9 @@ func GetPbrRouteEntries(ctx *pulumi.Context, args *GetPbrRouteEntriesArgs, opts 
 // A collection of arguments for invoking getPbrRouteEntries.
 type GetPbrRouteEntriesArgs struct {
 	// A list of VPN Pbr Route Entries IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the VPN gateway.
 	VpnGatewayId string `pulumi:"vpnGatewayId"`
 }
@@ -89,8 +90,9 @@ func GetPbrRouteEntriesOutput(ctx *pulumi.Context, args GetPbrRouteEntriesOutput
 // A collection of arguments for invoking getPbrRouteEntries.
 type GetPbrRouteEntriesOutputArgs struct {
 	// A list of VPN Pbr Route Entries IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the VPN gateway.
 	VpnGatewayId pulumi.StringInput `pulumi:"vpnGatewayId"`
 }

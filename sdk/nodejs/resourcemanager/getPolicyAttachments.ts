@@ -44,6 +44,9 @@ export interface GetPolicyAttachmentsArgs {
      * The language that is used to return the description of the system policy. Valid values:`en`: English, `zh-CN`: Chinese, `ja`: Japanese.
      */
     language?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The name of the policy. The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
@@ -133,6 +136,9 @@ export interface GetPolicyAttachmentsOutputArgs {
      * The language that is used to return the description of the system policy. Valid values:`en`: English, `zh-CN`: Chinese, `ja`: Japanese.
      */
     language?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The name of the policy. The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).

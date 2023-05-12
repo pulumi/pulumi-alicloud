@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Tag
         /// The type of the tag policy. Valid values: `USER`, `RD`.
         /// </summary>
         [Output("userType")]
-        public Output<string?> UserType { get; private set; } = null!;
+        public Output<string> UserType { get; private set; } = null!;
 
 
         /// <summary>

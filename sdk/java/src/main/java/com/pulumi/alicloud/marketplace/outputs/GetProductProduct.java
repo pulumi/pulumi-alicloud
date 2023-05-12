@@ -15,24 +15,35 @@ public final class GetProductProduct {
      * @return The code of the product.
      * 
      */
-    private String code;
+    private final String code;
     /**
      * @return The description of the product.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The name of the product.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return A list of one element containing sku attributes of an object. Each element contains the following attributes:
      * 
      */
-    private List<GetProductProductSkus> skuses;
+    private final List<GetProductProductSkus> skuses;
 
-    private GetProductProduct() {}
+    @CustomType.Constructor
+    private GetProductProduct(
+        @CustomType.Parameter("code") String code,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("skuses") List<GetProductProductSkus> skuses) {
+        this.code = code;
+        this.description = description;
+        this.name = name;
+        this.skuses = skuses;
+    }
+
     /**
      * @return The code of the product.
      * 
@@ -69,13 +80,17 @@ public final class GetProductProduct {
     public static Builder builder(GetProductProduct defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String code;
         private String description;
         private String name;
         private List<GetProductProductSkus> skuses;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetProductProduct defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.code = defaults.code;
@@ -84,36 +99,26 @@ public final class GetProductProduct {
     	      this.skuses = defaults.skuses;
         }
 
-        @CustomType.Setter
         public Builder code(String code) {
             this.code = Objects.requireNonNull(code);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder skuses(List<GetProductProductSkus> skuses) {
             this.skuses = Objects.requireNonNull(skuses);
             return this;
         }
         public Builder skuses(GetProductProductSkus... skuses) {
             return skuses(List.of(skuses));
-        }
-        public GetProductProduct build() {
-            final var o = new GetProductProduct();
-            o.code = code;
-            o.description = description;
-            o.name = name;
-            o.skuses = skuses;
-            return o;
+        }        public GetProductProduct build() {
+            return new GetProductProduct(code, description, name, skuses);
         }
     }
 }

@@ -16,24 +16,35 @@ public final class GatewayVpnAttachmentIpsecConfig {
      * @return The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
      * 
      */
-    private @Nullable String ipsecAuthAlg;
+    private final @Nullable String ipsecAuthAlg;
     /**
      * @return The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
      * 
      */
-    private @Nullable String ipsecEncAlg;
+    private final @Nullable String ipsecEncAlg;
     /**
      * @return The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
      * 
      */
-    private @Nullable Integer ipsecLifetime;
+    private final @Nullable Integer ipsecLifetime;
     /**
      * @return The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
      * 
      */
-    private @Nullable String ipsecPfs;
+    private final @Nullable String ipsecPfs;
 
-    private GatewayVpnAttachmentIpsecConfig() {}
+    @CustomType.Constructor
+    private GatewayVpnAttachmentIpsecConfig(
+        @CustomType.Parameter("ipsecAuthAlg") @Nullable String ipsecAuthAlg,
+        @CustomType.Parameter("ipsecEncAlg") @Nullable String ipsecEncAlg,
+        @CustomType.Parameter("ipsecLifetime") @Nullable Integer ipsecLifetime,
+        @CustomType.Parameter("ipsecPfs") @Nullable String ipsecPfs) {
+        this.ipsecAuthAlg = ipsecAuthAlg;
+        this.ipsecEncAlg = ipsecEncAlg;
+        this.ipsecLifetime = ipsecLifetime;
+        this.ipsecPfs = ipsecPfs;
+    }
+
     /**
      * @return The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
      * 
@@ -70,13 +81,17 @@ public final class GatewayVpnAttachmentIpsecConfig {
     public static Builder builder(GatewayVpnAttachmentIpsecConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String ipsecAuthAlg;
         private @Nullable String ipsecEncAlg;
         private @Nullable Integer ipsecLifetime;
         private @Nullable String ipsecPfs;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GatewayVpnAttachmentIpsecConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipsecAuthAlg = defaults.ipsecAuthAlg;
@@ -85,33 +100,23 @@ public final class GatewayVpnAttachmentIpsecConfig {
     	      this.ipsecPfs = defaults.ipsecPfs;
         }
 
-        @CustomType.Setter
         public Builder ipsecAuthAlg(@Nullable String ipsecAuthAlg) {
             this.ipsecAuthAlg = ipsecAuthAlg;
             return this;
         }
-        @CustomType.Setter
         public Builder ipsecEncAlg(@Nullable String ipsecEncAlg) {
             this.ipsecEncAlg = ipsecEncAlg;
             return this;
         }
-        @CustomType.Setter
         public Builder ipsecLifetime(@Nullable Integer ipsecLifetime) {
             this.ipsecLifetime = ipsecLifetime;
             return this;
         }
-        @CustomType.Setter
         public Builder ipsecPfs(@Nullable String ipsecPfs) {
             this.ipsecPfs = ipsecPfs;
             return this;
-        }
-        public GatewayVpnAttachmentIpsecConfig build() {
-            final var o = new GatewayVpnAttachmentIpsecConfig();
-            o.ipsecAuthAlg = ipsecAuthAlg;
-            o.ipsecEncAlg = ipsecEncAlg;
-            o.ipsecLifetime = ipsecLifetime;
-            o.ipsecPfs = ipsecPfs;
-            return o;
+        }        public GatewayVpnAttachmentIpsecConfig build() {
+            return new GatewayVpnAttachmentIpsecConfig(ipsecAuthAlg, ipsecEncAlg, ipsecLifetime, ipsecPfs);
         }
     }
 }

@@ -90,8 +90,12 @@ type MetricRuleTemplate struct {
 	// The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
 	NotifyLevel pulumi.StringPtrOutput `pulumi:"notifyLevel"`
 	// The version of the alert template to be modified.
+	//
+	// > **NOTE:** The version changes with the number of times that the alert template is modified.
 	RestVersion pulumi.StringOutput `pulumi:"restVersion"`
 	// The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
+	//
+	// > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
 	SilenceTime pulumi.IntPtrOutput `pulumi:"silenceTime"`
 	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
 	Webhook pulumi.StringPtrOutput `pulumi:"webhook"`
@@ -146,8 +150,12 @@ type metricRuleTemplateState struct {
 	// The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
 	NotifyLevel *string `pulumi:"notifyLevel"`
 	// The version of the alert template to be modified.
+	//
+	// > **NOTE:** The version changes with the number of times that the alert template is modified.
 	RestVersion *string `pulumi:"restVersion"`
 	// The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
+	//
+	// > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
 	SilenceTime *int `pulumi:"silenceTime"`
 	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
 	Webhook *string `pulumi:"webhook"`
@@ -171,8 +179,12 @@ type MetricRuleTemplateState struct {
 	// The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
 	NotifyLevel pulumi.StringPtrInput
 	// The version of the alert template to be modified.
+	//
+	// > **NOTE:** The version changes with the number of times that the alert template is modified.
 	RestVersion pulumi.StringPtrInput
 	// The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
+	//
+	// > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
 	SilenceTime pulumi.IntPtrInput
 	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
 	Webhook pulumi.StringPtrInput
@@ -200,8 +212,12 @@ type metricRuleTemplateArgs struct {
 	// The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
 	NotifyLevel *string `pulumi:"notifyLevel"`
 	// The version of the alert template to be modified.
+	//
+	// > **NOTE:** The version changes with the number of times that the alert template is modified.
 	RestVersion *string `pulumi:"restVersion"`
 	// The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
+	//
+	// > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
 	SilenceTime *int `pulumi:"silenceTime"`
 	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
 	Webhook *string `pulumi:"webhook"`
@@ -226,8 +242,12 @@ type MetricRuleTemplateArgs struct {
 	// The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
 	NotifyLevel pulumi.StringPtrInput
 	// The version of the alert template to be modified.
+	//
+	// > **NOTE:** The version changes with the number of times that the alert template is modified.
 	RestVersion pulumi.StringPtrInput
 	// The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
+	//
+	// > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
 	SilenceTime pulumi.IntPtrInput
 	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
 	Webhook pulumi.StringPtrInput
@@ -361,11 +381,15 @@ func (o MetricRuleTemplateOutput) NotifyLevel() pulumi.StringPtrOutput {
 }
 
 // The version of the alert template to be modified.
+//
+// > **NOTE:** The version changes with the number of times that the alert template is modified.
 func (o MetricRuleTemplateOutput) RestVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetricRuleTemplate) pulumi.StringOutput { return v.RestVersion }).(pulumi.StringOutput)
 }
 
 // The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
+//
+// > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
 func (o MetricRuleTemplateOutput) SilenceTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MetricRuleTemplate) pulumi.IntPtrOutput { return v.SilenceTime }).(pulumi.IntPtrOutput)
 }

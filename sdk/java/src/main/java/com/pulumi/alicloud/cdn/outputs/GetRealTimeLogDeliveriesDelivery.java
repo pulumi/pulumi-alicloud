@@ -13,34 +13,49 @@ public final class GetRealTimeLogDeliveriesDelivery {
      * @return Real-Time Log Service Domain.
      * 
      */
-    private String domain;
+    private final String domain;
     /**
      * @return The ID of the Real Time Log Delivery.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
      * 
      */
-    private String logstore;
+    private final String logstore;
     /**
      * @return The name of the Log Service project that is used for real-time log delivery.
      * 
      */
-    private String project;
+    private final String project;
     /**
      * @return The region where the Log Service project is deployed.
      * 
      */
-    private String slsRegion;
+    private final String slsRegion;
     /**
      * @return The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetRealTimeLogDeliveriesDelivery() {}
+    @CustomType.Constructor
+    private GetRealTimeLogDeliveriesDelivery(
+        @CustomType.Parameter("domain") String domain,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("logstore") String logstore,
+        @CustomType.Parameter("project") String project,
+        @CustomType.Parameter("slsRegion") String slsRegion,
+        @CustomType.Parameter("status") String status) {
+        this.domain = domain;
+        this.id = id;
+        this.logstore = logstore;
+        this.project = project;
+        this.slsRegion = slsRegion;
+        this.status = status;
+    }
+
     /**
      * @return Real-Time Log Service Domain.
      * 
@@ -91,7 +106,7 @@ public final class GetRealTimeLogDeliveriesDelivery {
     public static Builder builder(GetRealTimeLogDeliveriesDelivery defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String domain;
         private String id;
@@ -99,7 +114,11 @@ public final class GetRealTimeLogDeliveriesDelivery {
         private String project;
         private String slsRegion;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRealTimeLogDeliveriesDelivery defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domain = defaults.domain;
@@ -110,45 +129,31 @@ public final class GetRealTimeLogDeliveriesDelivery {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder logstore(String logstore) {
             this.logstore = Objects.requireNonNull(logstore);
             return this;
         }
-        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
-        @CustomType.Setter
         public Builder slsRegion(String slsRegion) {
             this.slsRegion = Objects.requireNonNull(slsRegion);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetRealTimeLogDeliveriesDelivery build() {
-            final var o = new GetRealTimeLogDeliveriesDelivery();
-            o.domain = domain;
-            o.id = id;
-            o.logstore = logstore;
-            o.project = project;
-            o.slsRegion = slsRegion;
-            o.status = status;
-            return o;
+        }        public GetRealTimeLogDeliveriesDelivery build() {
+            return new GetRealTimeLogDeliveriesDelivery(domain, id, logstore, project, slsRegion, status);
         }
     }
 }

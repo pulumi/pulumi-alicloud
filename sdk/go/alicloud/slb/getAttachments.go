@@ -52,8 +52,9 @@ type GetAttachmentsArgs struct {
 	// List of attached ECS instance IDs.
 	InstanceIds []string `pulumi:"instanceIds"`
 	// ID of the SLB with attachments.
-	LoadBalancerId string  `pulumi:"loadBalancerId"`
-	OutputFile     *string `pulumi:"outputFile"`
+	LoadBalancerId string `pulumi:"loadBalancerId"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getAttachments.
@@ -85,8 +86,9 @@ type GetAttachmentsOutputArgs struct {
 	// List of attached ECS instance IDs.
 	InstanceIds pulumi.StringArrayInput `pulumi:"instanceIds"`
 	// ID of the SLB with attachments.
-	LoadBalancerId pulumi.StringInput    `pulumi:"loadBalancerId"`
-	OutputFile     pulumi.StringPtrInput `pulumi:"outputFile"`
+	LoadBalancerId pulumi.StringInput `pulumi:"loadBalancerId"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetAttachmentsOutputArgs) ElementType() reflect.Type {

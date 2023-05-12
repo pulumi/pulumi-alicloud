@@ -17,19 +17,28 @@ public final class SearchIndexSchema {
      * @return A list of field schemas. Each field schema contains the following parameters:
      * 
      */
-    private List<SearchIndexSchemaFieldSchema> fieldSchemas;
+    private final List<SearchIndexSchemaFieldSchema> fieldSchemas;
     /**
      * @return The settings of the search index, including routingFields.
      * 
      */
-    private @Nullable List<SearchIndexSchemaIndexSetting> indexSettings;
+    private final @Nullable List<SearchIndexSchemaIndexSetting> indexSettings;
     /**
      * @return The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default.
      * 
      */
-    private @Nullable List<SearchIndexSchemaIndexSort> indexSorts;
+    private final @Nullable List<SearchIndexSchemaIndexSort> indexSorts;
 
-    private SearchIndexSchema() {}
+    @CustomType.Constructor
+    private SearchIndexSchema(
+        @CustomType.Parameter("fieldSchemas") List<SearchIndexSchemaFieldSchema> fieldSchemas,
+        @CustomType.Parameter("indexSettings") @Nullable List<SearchIndexSchemaIndexSetting> indexSettings,
+        @CustomType.Parameter("indexSorts") @Nullable List<SearchIndexSchemaIndexSort> indexSorts) {
+        this.fieldSchemas = fieldSchemas;
+        this.indexSettings = indexSettings;
+        this.indexSorts = indexSorts;
+    }
+
     /**
      * @return A list of field schemas. Each field schema contains the following parameters:
      * 
@@ -59,12 +68,16 @@ public final class SearchIndexSchema {
     public static Builder builder(SearchIndexSchema defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<SearchIndexSchemaFieldSchema> fieldSchemas;
         private @Nullable List<SearchIndexSchemaIndexSetting> indexSettings;
         private @Nullable List<SearchIndexSchemaIndexSort> indexSorts;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(SearchIndexSchema defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fieldSchemas = defaults.fieldSchemas;
@@ -72,7 +85,6 @@ public final class SearchIndexSchema {
     	      this.indexSorts = defaults.indexSorts;
         }
 
-        @CustomType.Setter
         public Builder fieldSchemas(List<SearchIndexSchemaFieldSchema> fieldSchemas) {
             this.fieldSchemas = Objects.requireNonNull(fieldSchemas);
             return this;
@@ -80,7 +92,6 @@ public final class SearchIndexSchema {
         public Builder fieldSchemas(SearchIndexSchemaFieldSchema... fieldSchemas) {
             return fieldSchemas(List.of(fieldSchemas));
         }
-        @CustomType.Setter
         public Builder indexSettings(@Nullable List<SearchIndexSchemaIndexSetting> indexSettings) {
             this.indexSettings = indexSettings;
             return this;
@@ -88,20 +99,14 @@ public final class SearchIndexSchema {
         public Builder indexSettings(SearchIndexSchemaIndexSetting... indexSettings) {
             return indexSettings(List.of(indexSettings));
         }
-        @CustomType.Setter
         public Builder indexSorts(@Nullable List<SearchIndexSchemaIndexSort> indexSorts) {
             this.indexSorts = indexSorts;
             return this;
         }
         public Builder indexSorts(SearchIndexSchemaIndexSort... indexSorts) {
             return indexSorts(List.of(indexSorts));
-        }
-        public SearchIndexSchema build() {
-            final var o = new SearchIndexSchema();
-            o.fieldSchemas = fieldSchemas;
-            o.indexSettings = indexSettings;
-            o.indexSorts = indexSorts;
-            return o;
+        }        public SearchIndexSchema build() {
+            return new SearchIndexSchema(fieldSchemas, indexSettings, indexSorts);
         }
     }
 }

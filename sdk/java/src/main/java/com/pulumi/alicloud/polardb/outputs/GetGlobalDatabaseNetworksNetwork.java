@@ -15,44 +15,63 @@ public final class GetGlobalDatabaseNetworksNetwork {
      * @return The time when the Global Database Network was created. The time is in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The details of each cluster in the Global Database Network.
      * 
      */
-    private List<GetGlobalDatabaseNetworksNetworkDbCluster> dbClusters;
+    private final List<GetGlobalDatabaseNetworksNetworkDbCluster> dbClusters;
     /**
      * @return The type of the database engine. Only MySQL is supported.
      * 
      */
-    private String dbType;
+    private final String dbType;
     /**
      * @return The version number of the database engine. Only the 8.0 version is supported.
      * 
      */
-    private String dbVersion;
+    private final String dbVersion;
     /**
      * @return The description of the Global Database Network.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the Global Database Network.
      * 
      */
-    private String gdnId;
+    private final String gdnId;
     /**
      * @return The ID of the Global Database Network.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The status of the Global Database Network.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetGlobalDatabaseNetworksNetwork() {}
+    @CustomType.Constructor
+    private GetGlobalDatabaseNetworksNetwork(
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("dbClusters") List<GetGlobalDatabaseNetworksNetworkDbCluster> dbClusters,
+        @CustomType.Parameter("dbType") String dbType,
+        @CustomType.Parameter("dbVersion") String dbVersion,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("gdnId") String gdnId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("status") String status) {
+        this.createTime = createTime;
+        this.dbClusters = dbClusters;
+        this.dbType = dbType;
+        this.dbVersion = dbVersion;
+        this.description = description;
+        this.gdnId = gdnId;
+        this.id = id;
+        this.status = status;
+    }
+
     /**
      * @return The time when the Global Database Network was created. The time is in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
      * 
@@ -117,7 +136,7 @@ public final class GetGlobalDatabaseNetworksNetwork {
     public static Builder builder(GetGlobalDatabaseNetworksNetwork defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String createTime;
         private List<GetGlobalDatabaseNetworksNetworkDbCluster> dbClusters;
@@ -127,7 +146,11 @@ public final class GetGlobalDatabaseNetworksNetwork {
         private String gdnId;
         private String id;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetGlobalDatabaseNetworksNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -140,12 +163,10 @@ public final class GetGlobalDatabaseNetworksNetwork {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder dbClusters(List<GetGlobalDatabaseNetworksNetworkDbCluster> dbClusters) {
             this.dbClusters = Objects.requireNonNull(dbClusters);
             return this;
@@ -153,47 +174,31 @@ public final class GetGlobalDatabaseNetworksNetwork {
         public Builder dbClusters(GetGlobalDatabaseNetworksNetworkDbCluster... dbClusters) {
             return dbClusters(List.of(dbClusters));
         }
-        @CustomType.Setter
         public Builder dbType(String dbType) {
             this.dbType = Objects.requireNonNull(dbType);
             return this;
         }
-        @CustomType.Setter
         public Builder dbVersion(String dbVersion) {
             this.dbVersion = Objects.requireNonNull(dbVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder gdnId(String gdnId) {
             this.gdnId = Objects.requireNonNull(gdnId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetGlobalDatabaseNetworksNetwork build() {
-            final var o = new GetGlobalDatabaseNetworksNetwork();
-            o.createTime = createTime;
-            o.dbClusters = dbClusters;
-            o.dbType = dbType;
-            o.dbVersion = dbVersion;
-            o.description = description;
-            o.gdnId = gdnId;
-            o.id = id;
-            o.status = status;
-            return o;
+        }        public GetGlobalDatabaseNetworksNetwork build() {
+            return new GetGlobalDatabaseNetworksNetwork(createTime, dbClusters, dbType, dbVersion, description, gdnId, id, status);
         }
     }
 }

@@ -125,6 +125,8 @@ type Key struct {
 	// For example, you can use either 7d or 604800s to specify a seven-day interval.
 	// The interval can range from 7 days to 730 days.
 	// **NOTE**: It is Required when `automaticRotation = "Enabled"`
+	//
+	// > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
 	RotationInterval pulumi.StringPtrOutput `pulumi:"rotationInterval"`
 	// The status of CMK. Valid Values:
 	// - Disabled
@@ -231,6 +233,8 @@ type keyState struct {
 	// For example, you can use either 7d or 604800s to specify a seven-day interval.
 	// The interval can range from 7 days to 730 days.
 	// **NOTE**: It is Required when `automaticRotation = "Enabled"`
+	//
+	// > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
 	RotationInterval *string `pulumi:"rotationInterval"`
 	// The status of CMK. Valid Values:
 	// - Disabled
@@ -309,6 +313,8 @@ type KeyState struct {
 	// For example, you can use either 7d or 604800s to specify a seven-day interval.
 	// The interval can range from 7 days to 730 days.
 	// **NOTE**: It is Required when `automaticRotation = "Enabled"`
+	//
+	// > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
 	RotationInterval pulumi.StringPtrInput
 	// The status of CMK. Valid Values:
 	// - Disabled
@@ -375,6 +381,8 @@ type keyArgs struct {
 	// For example, you can use either 7d or 604800s to specify a seven-day interval.
 	// The interval can range from 7 days to 730 days.
 	// **NOTE**: It is Required when `automaticRotation = "Enabled"`
+	//
+	// > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
 	RotationInterval *string `pulumi:"rotationInterval"`
 	// The status of CMK. Valid Values:
 	// - Disabled
@@ -438,6 +446,8 @@ type KeyArgs struct {
 	// For example, you can use either 7d or 604800s to specify a seven-day interval.
 	// The interval can range from 7 days to 730 days.
 	// **NOTE**: It is Required when `automaticRotation = "Enabled"`
+	//
+	// > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
 	RotationInterval pulumi.StringPtrInput
 	// The status of CMK. Valid Values:
 	// - Disabled
@@ -659,6 +669,8 @@ func (o KeyOutput) ProtectionLevel() pulumi.StringPtrOutput {
 // For example, you can use either 7d or 604800s to specify a seven-day interval.
 // The interval can range from 7 days to 730 days.
 // **NOTE**: It is Required when `automaticRotation = "Enabled"`
+//
+// > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
 func (o KeyOutput) RotationInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringPtrOutput { return v.RotationInterval }).(pulumi.StringPtrOutput)
 }

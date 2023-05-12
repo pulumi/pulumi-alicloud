@@ -62,6 +62,7 @@ type GetMainVersionsArgs struct {
 	ClusterTypes []string `pulumi:"clusterTypes"`
 	// The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
 	EmrVersion *string `pulumi:"emrVersion"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -99,6 +100,7 @@ type GetMainVersionsOutputArgs struct {
 	ClusterTypes pulumi.StringArrayInput `pulumi:"clusterTypes"`
 	// The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
 	EmrVersion pulumi.StringPtrInput `pulumi:"emrVersion"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

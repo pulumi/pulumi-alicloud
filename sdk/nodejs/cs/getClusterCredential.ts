@@ -31,6 +31,9 @@ export interface GetClusterCredentialArgs {
      * The id of target cluster.
      */
     clusterId: string;
+    /**
+     * File name where to save the returned KubeConfig (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Automatic expiration time of the returned credential. The valid value between `15` and `4320`, in minutes. When this field is omitted, the expiration time will be determined by the system automatically and the result will be in the attributed field `expiration`.
@@ -88,6 +91,9 @@ export interface GetClusterCredentialOutputArgs {
      * The id of target cluster.
      */
     clusterId: pulumi.Input<string>;
+    /**
+     * File name where to save the returned KubeConfig (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Automatic expiration time of the returned credential. The valid value between `15` and `4320`, in minutes. When this field is omitted, the expiration time will be determined by the system automatically and the result will be in the attributed field `expiration`.

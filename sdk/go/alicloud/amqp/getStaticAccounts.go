@@ -55,6 +55,7 @@ type GetStaticAccountsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// InstanceId
 	InstanceId *string `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -89,6 +90,7 @@ type GetStaticAccountsOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// InstanceId
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

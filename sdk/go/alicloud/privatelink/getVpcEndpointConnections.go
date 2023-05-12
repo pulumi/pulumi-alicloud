@@ -57,8 +57,9 @@ type GetVpcEndpointConnectionsArgs struct {
 	// The ID of the Vpc Endpoint.
 	EndpointId *string `pulumi:"endpointId"`
 	// The endpoint owner id.
-	EndpointOwnerId *int    `pulumi:"endpointOwnerId"`
-	OutputFile      *string `pulumi:"outputFile"`
+	EndpointOwnerId *int `pulumi:"endpointOwnerId"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the Vpc Endpoint Service.
 	ServiceId string `pulumi:"serviceId"`
 	// The status of Vpc Endpoint Connection.
@@ -96,8 +97,9 @@ type GetVpcEndpointConnectionsOutputArgs struct {
 	// The ID of the Vpc Endpoint.
 	EndpointId pulumi.StringPtrInput `pulumi:"endpointId"`
 	// The endpoint owner id.
-	EndpointOwnerId pulumi.IntPtrInput    `pulumi:"endpointOwnerId"`
-	OutputFile      pulumi.StringPtrInput `pulumi:"outputFile"`
+	EndpointOwnerId pulumi.IntPtrInput `pulumi:"endpointOwnerId"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the Vpc Endpoint Service.
 	ServiceId pulumi.StringInput `pulumi:"serviceId"`
 	// The status of Vpc Endpoint Connection.

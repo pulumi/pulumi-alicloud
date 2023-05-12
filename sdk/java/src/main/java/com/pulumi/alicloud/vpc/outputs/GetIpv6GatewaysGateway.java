@@ -13,59 +13,84 @@ public final class GetIpv6GatewaysGateway {
      * @return The status of the IPv6 gateway. Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`. `Normal`: working as expected. `FinancialLocked`: locked due to overdue payments. `SecurityLocked`: locked due to security reasons.
      * 
      */
-    private String businessStatus;
+    private final String businessStatus;
     /**
      * @return The creation time of the resource.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The description of the IPv6 gateway.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The time when the IPv6 gateway expires.
      * 
      */
-    private String expiredTime;
+    private final String expiredTime;
     /**
      * @return The ID of the Ipv6 Gateway.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The metering method of the IPv6 gateway. Valid values: `PayAsYouGo`.
      * 
      */
-    private String instanceChargeType;
+    private final String instanceChargeType;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private String ipv6GatewayId;
+    private final String ipv6GatewayId;
     /**
      * @return The name of the IPv6 gateway.
      * 
      */
-    private String ipv6GatewayName;
+    private final String ipv6GatewayName;
     /**
      * @return The specification of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
      * 
      */
-    private String spec;
+    private final String spec;
     /**
      * @return The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
 
-    private GetIpv6GatewaysGateway() {}
+    @CustomType.Constructor
+    private GetIpv6GatewaysGateway(
+        @CustomType.Parameter("businessStatus") String businessStatus,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("expiredTime") String expiredTime,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceChargeType") String instanceChargeType,
+        @CustomType.Parameter("ipv6GatewayId") String ipv6GatewayId,
+        @CustomType.Parameter("ipv6GatewayName") String ipv6GatewayName,
+        @CustomType.Parameter("spec") String spec,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("vpcId") String vpcId) {
+        this.businessStatus = businessStatus;
+        this.createTime = createTime;
+        this.description = description;
+        this.expiredTime = expiredTime;
+        this.id = id;
+        this.instanceChargeType = instanceChargeType;
+        this.ipv6GatewayId = ipv6GatewayId;
+        this.ipv6GatewayName = ipv6GatewayName;
+        this.spec = spec;
+        this.status = status;
+        this.vpcId = vpcId;
+    }
+
     /**
      * @return The status of the IPv6 gateway. Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`. `Normal`: working as expected. `FinancialLocked`: locked due to overdue payments. `SecurityLocked`: locked due to security reasons.
      * 
@@ -151,7 +176,7 @@ public final class GetIpv6GatewaysGateway {
     public static Builder builder(GetIpv6GatewaysGateway defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String businessStatus;
         private String createTime;
@@ -164,7 +189,11 @@ public final class GetIpv6GatewaysGateway {
         private String spec;
         private String status;
         private String vpcId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetIpv6GatewaysGateway defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.businessStatus = defaults.businessStatus;
@@ -180,75 +209,51 @@ public final class GetIpv6GatewaysGateway {
     	      this.vpcId = defaults.vpcId;
         }
 
-        @CustomType.Setter
         public Builder businessStatus(String businessStatus) {
             this.businessStatus = Objects.requireNonNull(businessStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceChargeType(String instanceChargeType) {
             this.instanceChargeType = Objects.requireNonNull(instanceChargeType);
             return this;
         }
-        @CustomType.Setter
         public Builder ipv6GatewayId(String ipv6GatewayId) {
             this.ipv6GatewayId = Objects.requireNonNull(ipv6GatewayId);
             return this;
         }
-        @CustomType.Setter
         public Builder ipv6GatewayName(String ipv6GatewayName) {
             this.ipv6GatewayName = Objects.requireNonNull(ipv6GatewayName);
             return this;
         }
-        @CustomType.Setter
         public Builder spec(String spec) {
             this.spec = Objects.requireNonNull(spec);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }
-        public GetIpv6GatewaysGateway build() {
-            final var o = new GetIpv6GatewaysGateway();
-            o.businessStatus = businessStatus;
-            o.createTime = createTime;
-            o.description = description;
-            o.expiredTime = expiredTime;
-            o.id = id;
-            o.instanceChargeType = instanceChargeType;
-            o.ipv6GatewayId = ipv6GatewayId;
-            o.ipv6GatewayName = ipv6GatewayName;
-            o.spec = spec;
-            o.status = status;
-            o.vpcId = vpcId;
-            return o;
+        }        public GetIpv6GatewaysGateway build() {
+            return new GetIpv6GatewaysGateway(businessStatus, createTime, description, expiredTime, id, instanceChargeType, ipv6GatewayId, ipv6GatewayName, spec, status, vpcId);
         }
     }
 }

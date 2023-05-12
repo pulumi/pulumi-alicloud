@@ -18,37 +18,58 @@ public final class GetCustomRoutingPortMappingsResult {
      * @return The ID of the GA instance.
      * 
      */
-    private String acceleratorId;
+    private final String acceleratorId;
     /**
      * @return A list of Custom Routing Port Mappings. Each element contains the following attributes:
      * 
      */
-    private List<GetCustomRoutingPortMappingsCustomRoutingPortMapping> customRoutingPortMappings;
+    private final List<GetCustomRoutingPortMappingsCustomRoutingPortMapping> customRoutingPortMappings;
     /**
      * @return The ID of the endpoint group.
      * 
      */
-    private @Nullable String endpointGroupId;
+    private final @Nullable String endpointGroupId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the listener.
      * 
      */
-    private @Nullable String listenerId;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
+    private final @Nullable String listenerId;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
     /**
      * @return The access policy of traffic for the backend instance.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
 
-    private GetCustomRoutingPortMappingsResult() {}
+    @CustomType.Constructor
+    private GetCustomRoutingPortMappingsResult(
+        @CustomType.Parameter("acceleratorId") String acceleratorId,
+        @CustomType.Parameter("customRoutingPortMappings") List<GetCustomRoutingPortMappingsCustomRoutingPortMapping> customRoutingPortMappings,
+        @CustomType.Parameter("endpointGroupId") @Nullable String endpointGroupId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("listenerId") @Nullable String listenerId,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.acceleratorId = acceleratorId;
+        this.customRoutingPortMappings = customRoutingPortMappings;
+        this.endpointGroupId = endpointGroupId;
+        this.id = id;
+        this.listenerId = listenerId;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+        this.status = status;
+    }
+
     /**
      * @return The ID of the GA instance.
      * 
@@ -108,7 +129,7 @@ public final class GetCustomRoutingPortMappingsResult {
     public static Builder builder(GetCustomRoutingPortMappingsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String acceleratorId;
         private List<GetCustomRoutingPortMappingsCustomRoutingPortMapping> customRoutingPortMappings;
@@ -119,7 +140,11 @@ public final class GetCustomRoutingPortMappingsResult {
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetCustomRoutingPortMappingsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorId = defaults.acceleratorId;
@@ -133,12 +158,10 @@ public final class GetCustomRoutingPortMappingsResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
             this.acceleratorId = Objects.requireNonNull(acceleratorId);
             return this;
         }
-        @CustomType.Setter
         public Builder customRoutingPortMappings(List<GetCustomRoutingPortMappingsCustomRoutingPortMapping> customRoutingPortMappings) {
             this.customRoutingPortMappings = Objects.requireNonNull(customRoutingPortMappings);
             return this;
@@ -146,53 +169,35 @@ public final class GetCustomRoutingPortMappingsResult {
         public Builder customRoutingPortMappings(GetCustomRoutingPortMappingsCustomRoutingPortMapping... customRoutingPortMappings) {
             return customRoutingPortMappings(List.of(customRoutingPortMappings));
         }
-        @CustomType.Setter
         public Builder endpointGroupId(@Nullable String endpointGroupId) {
             this.endpointGroupId = endpointGroupId;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder listenerId(@Nullable String listenerId) {
             this.listenerId = listenerId;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetCustomRoutingPortMappingsResult build() {
-            final var o = new GetCustomRoutingPortMappingsResult();
-            o.acceleratorId = acceleratorId;
-            o.customRoutingPortMappings = customRoutingPortMappings;
-            o.endpointGroupId = endpointGroupId;
-            o.id = id;
-            o.listenerId = listenerId;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.status = status;
-            return o;
+        }        public GetCustomRoutingPortMappingsResult build() {
+            return new GetCustomRoutingPortMappingsResult(acceleratorId, customRoutingPortMappings, endpointGroupId, id, listenerId, outputFile, pageNumber, pageSize, status);
         }
     }
 }

@@ -14,74 +14,105 @@ public final class GetSnapshotsSnapshot {
      * @return The type of the Snapshot.
      * 
      */
-    private String category;
+    private final String category;
     /**
      * @return The creation time of the snapshot.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The description of the snapshot.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the Snapshot.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the database file system.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return The last modification time of the snapshot.
      * 
      */
-    private String lastModifiedTime;
+    private final String lastModifiedTime;
     /**
      * @return The progress of the snapshot.
      * 
      */
-    private String progress;
+    private final String progress;
     /**
      * @return The remaining completion time of the snapshot being created, in seconds.
      * 
      */
-    private Integer remainTime;
+    private final Integer remainTime;
     /**
      * @return The retention days of the snapshot.
      * 
      */
-    private Integer retentionDays;
+    private final Integer retentionDays;
     /**
      * @return The ID of the snapshot.
      * 
      */
-    private String snapshotId;
+    private final String snapshotId;
     /**
      * @return The name of the snapshot.
      * 
      */
-    private String snapshotName;
+    private final String snapshotName;
     /**
      * @return The creation of the snapshot.
      * 
      */
-    private String snapshotType;
+    private final String snapshotType;
     /**
      * @return Source database file system capacity.
      * 
      */
-    private Integer sourceFsSize;
+    private final Integer sourceFsSize;
     /**
      * @return The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetSnapshotsSnapshot() {}
+    @CustomType.Constructor
+    private GetSnapshotsSnapshot(
+        @CustomType.Parameter("category") String category,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("lastModifiedTime") String lastModifiedTime,
+        @CustomType.Parameter("progress") String progress,
+        @CustomType.Parameter("remainTime") Integer remainTime,
+        @CustomType.Parameter("retentionDays") Integer retentionDays,
+        @CustomType.Parameter("snapshotId") String snapshotId,
+        @CustomType.Parameter("snapshotName") String snapshotName,
+        @CustomType.Parameter("snapshotType") String snapshotType,
+        @CustomType.Parameter("sourceFsSize") Integer sourceFsSize,
+        @CustomType.Parameter("status") String status) {
+        this.category = category;
+        this.createTime = createTime;
+        this.description = description;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.lastModifiedTime = lastModifiedTime;
+        this.progress = progress;
+        this.remainTime = remainTime;
+        this.retentionDays = retentionDays;
+        this.snapshotId = snapshotId;
+        this.snapshotName = snapshotName;
+        this.snapshotType = snapshotType;
+        this.sourceFsSize = sourceFsSize;
+        this.status = status;
+    }
+
     /**
      * @return The type of the Snapshot.
      * 
@@ -188,7 +219,7 @@ public final class GetSnapshotsSnapshot {
     public static Builder builder(GetSnapshotsSnapshot defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String category;
         private String createTime;
@@ -204,7 +235,11 @@ public final class GetSnapshotsSnapshot {
         private String snapshotType;
         private Integer sourceFsSize;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetSnapshotsSnapshot defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -223,93 +258,63 @@ public final class GetSnapshotsSnapshot {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder lastModifiedTime(String lastModifiedTime) {
             this.lastModifiedTime = Objects.requireNonNull(lastModifiedTime);
             return this;
         }
-        @CustomType.Setter
         public Builder progress(String progress) {
             this.progress = Objects.requireNonNull(progress);
             return this;
         }
-        @CustomType.Setter
         public Builder remainTime(Integer remainTime) {
             this.remainTime = Objects.requireNonNull(remainTime);
             return this;
         }
-        @CustomType.Setter
         public Builder retentionDays(Integer retentionDays) {
             this.retentionDays = Objects.requireNonNull(retentionDays);
             return this;
         }
-        @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
             this.snapshotId = Objects.requireNonNull(snapshotId);
             return this;
         }
-        @CustomType.Setter
         public Builder snapshotName(String snapshotName) {
             this.snapshotName = Objects.requireNonNull(snapshotName);
             return this;
         }
-        @CustomType.Setter
         public Builder snapshotType(String snapshotType) {
             this.snapshotType = Objects.requireNonNull(snapshotType);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceFsSize(Integer sourceFsSize) {
             this.sourceFsSize = Objects.requireNonNull(sourceFsSize);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetSnapshotsSnapshot build() {
-            final var o = new GetSnapshotsSnapshot();
-            o.category = category;
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.lastModifiedTime = lastModifiedTime;
-            o.progress = progress;
-            o.remainTime = remainTime;
-            o.retentionDays = retentionDays;
-            o.snapshotId = snapshotId;
-            o.snapshotName = snapshotName;
-            o.snapshotType = snapshotType;
-            o.sourceFsSize = sourceFsSize;
-            o.status = status;
-            return o;
+        }        public GetSnapshotsSnapshot build() {
+            return new GetSnapshotsSnapshot(category, createTime, description, id, instanceId, lastModifiedTime, progress, remainTime, retentionDays, snapshotId, snapshotName, snapshotType, sourceFsSize, status);
         }
     }
 }

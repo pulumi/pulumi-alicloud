@@ -115,6 +115,9 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        /// <summary>
+        /// The name of file that can save the collection of instances after running `pulumi preview`.
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -174,6 +177,9 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
+        /// <summary>
+        /// The name of file that can save the collection of instances after running `pulumi preview`.
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

@@ -13,16 +13,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDiskReplicaGroupsResult {
-    private List<GetDiskReplicaGroupsGroup> groups;
+    private final List<GetDiskReplicaGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String outputFile;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
 
-    private GetDiskReplicaGroupsResult() {}
+    @CustomType.Constructor
+    private GetDiskReplicaGroupsResult(
+        @CustomType.Parameter("groups") List<GetDiskReplicaGroupsGroup> groups,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.groups = groups;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+    }
+
     public List<GetDiskReplicaGroupsGroup> groups() {
         return this.groups;
     }
@@ -47,13 +58,17 @@ public final class GetDiskReplicaGroupsResult {
     public static Builder builder(GetDiskReplicaGroupsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetDiskReplicaGroupsGroup> groups;
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDiskReplicaGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groups = defaults.groups;
@@ -62,7 +77,6 @@ public final class GetDiskReplicaGroupsResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder groups(List<GetDiskReplicaGroupsGroup> groups) {
             this.groups = Objects.requireNonNull(groups);
             return this;
@@ -70,12 +84,10 @@ public final class GetDiskReplicaGroupsResult {
         public Builder groups(GetDiskReplicaGroupsGroup... groups) {
             return groups(List.of(groups));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -83,18 +95,11 @@ public final class GetDiskReplicaGroupsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetDiskReplicaGroupsResult build() {
-            final var o = new GetDiskReplicaGroupsResult();
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetDiskReplicaGroupsResult build() {
+            return new GetDiskReplicaGroupsResult(groups, id, ids, outputFile);
         }
     }
 }

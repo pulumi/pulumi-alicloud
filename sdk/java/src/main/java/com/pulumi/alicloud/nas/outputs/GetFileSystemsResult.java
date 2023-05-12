@@ -13,40 +13,59 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFileSystemsResult {
-    private @Nullable String descriptionRegex;
+    private final @Nullable String descriptionRegex;
     /**
      * @return A list of FileSystem descriptions.
      * 
      */
-    private List<String> descriptions;
+    private final List<String> descriptions;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of FileSystem Id.
      * 
      */
-    private List<String> ids;
-    private @Nullable String outputFile;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
     /**
      * @return ProtocolType block of the FileSystem
      * 
      */
-    private @Nullable String protocolType;
+    private final @Nullable String protocolType;
     /**
      * @return StorageType block of the FileSystem.
      * 
      */
-    private @Nullable String storageType;
+    private final @Nullable String storageType;
     /**
      * @return A list of VPCs. Each element contains the following attributes:
      * 
      */
-    private List<GetFileSystemsSystem> systems;
+    private final List<GetFileSystemsSystem> systems;
 
-    private GetFileSystemsResult() {}
+    @CustomType.Constructor
+    private GetFileSystemsResult(
+        @CustomType.Parameter("descriptionRegex") @Nullable String descriptionRegex,
+        @CustomType.Parameter("descriptions") List<String> descriptions,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("protocolType") @Nullable String protocolType,
+        @CustomType.Parameter("storageType") @Nullable String storageType,
+        @CustomType.Parameter("systems") List<GetFileSystemsSystem> systems) {
+        this.descriptionRegex = descriptionRegex;
+        this.descriptions = descriptions;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.protocolType = protocolType;
+        this.storageType = storageType;
+        this.systems = systems;
+    }
+
     public Optional<String> descriptionRegex() {
         return Optional.ofNullable(this.descriptionRegex);
     }
@@ -103,7 +122,7 @@ public final class GetFileSystemsResult {
     public static Builder builder(GetFileSystemsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String descriptionRegex;
         private List<String> descriptions;
@@ -113,7 +132,11 @@ public final class GetFileSystemsResult {
         private @Nullable String protocolType;
         private @Nullable String storageType;
         private List<GetFileSystemsSystem> systems;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetFileSystemsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.descriptionRegex = defaults.descriptionRegex;
@@ -126,12 +149,10 @@ public final class GetFileSystemsResult {
     	      this.systems = defaults.systems;
         }
 
-        @CustomType.Setter
         public Builder descriptionRegex(@Nullable String descriptionRegex) {
             this.descriptionRegex = descriptionRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder descriptions(List<String> descriptions) {
             this.descriptions = Objects.requireNonNull(descriptions);
             return this;
@@ -139,12 +160,10 @@ public final class GetFileSystemsResult {
         public Builder descriptions(String... descriptions) {
             return descriptions(List.of(descriptions));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -152,40 +171,26 @@ public final class GetFileSystemsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder protocolType(@Nullable String protocolType) {
             this.protocolType = protocolType;
             return this;
         }
-        @CustomType.Setter
         public Builder storageType(@Nullable String storageType) {
             this.storageType = storageType;
             return this;
         }
-        @CustomType.Setter
         public Builder systems(List<GetFileSystemsSystem> systems) {
             this.systems = Objects.requireNonNull(systems);
             return this;
         }
         public Builder systems(GetFileSystemsSystem... systems) {
             return systems(List.of(systems));
-        }
-        public GetFileSystemsResult build() {
-            final var o = new GetFileSystemsResult();
-            o.descriptionRegex = descriptionRegex;
-            o.descriptions = descriptions;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.protocolType = protocolType;
-            o.storageType = storageType;
-            o.systems = systems;
-            return o;
+        }        public GetFileSystemsResult build() {
+            return new GetFileSystemsResult(descriptionRegex, descriptions, id, ids, outputFile, protocolType, storageType, systems);
         }
     }
 }

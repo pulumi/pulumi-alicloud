@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * KMS secret can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:kms/secret:Secret default secret-foo
+ *  $ pulumi import alicloud:kms/secret:Secret default &lt;id&gt;
  * ```
  * 
  */
@@ -142,6 +142,20 @@ public class Secret extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encryptionKeyId);
     }
     /**
+     * The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+     * 
+     */
+    @Export(name="extendedConfig", type=String.class, parameters={})
+    private Output</* @Nullable */ String> extendedConfig;
+
+    /**
+     * @return The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+     * 
+     */
+    public Output<Optional<String>> extendedConfig() {
+        return Codegen.optional(this.extendedConfig);
+    }
+    /**
      * Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
      * 
      */
@@ -198,14 +212,14 @@ public class Secret extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rotationInterval);
     }
     /**
-     * The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
+     * The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
      * 
      */
     @Export(name="secretData", type=String.class, parameters={})
     private Output<String> secretData;
 
     /**
-     * @return The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
+     * @return The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
      * 
      */
     public Output<String> secretData() {
@@ -238,6 +252,20 @@ public class Secret extends com.pulumi.resources.CustomResource {
      */
     public Output<String> secretName() {
         return this.secretName;
+    }
+    /**
+     * The type of the secret. Valid values:
+     * 
+     */
+    @Export(name="secretType", type=String.class, parameters={})
+    private Output<String> secretType;
+
+    /**
+     * @return The type of the secret. Valid values:
+     * 
+     */
+    public Output<String> secretType() {
+        return this.secretType;
     }
     /**
      * A mapping of tags to assign to the resource.

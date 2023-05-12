@@ -18,225 +18,334 @@ public final class GetInstancesInstance {
      * @return The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
      * 
      */
-    private String architectureType;
-    private Boolean autoRenew;
-    private Integer autoRenewPeriod;
+    private final String architectureType;
+    private final Boolean autoRenew;
+    private final Integer autoRenewPeriod;
     /**
      * @return It has been deprecated from provider version 1.101.0 and `zone_id` instead.
      * 
      */
-    private String availabilityZone;
+    private final String availabilityZone;
     /**
      * @return Instance bandwidth limit. Unit: Mbit/s.
      * 
      */
-    private Integer bandwidth;
+    private final Integer bandwidth;
     /**
      * @return Capacity of the applied ApsaraDB for the instance. Unit: MB.
      * 
      */
-    private Integer capacity;
+    private final Integer capacity;
     /**
      * @return It has been deprecated from provider version 1.101.0 and `payment_type` instead.
      * 
      */
-    private String chargeType;
+    private final String chargeType;
     /**
      * @return The parameter configuration of the instance.
      * 
      */
-    private Map<String,Object> config;
+    private final Map<String,Object> config;
     /**
      * @return Instance connection domain (only Intranet access supported).
      * 
      */
-    private String connectionDomain;
+    private final String connectionDomain;
     /**
      * @return The connection mode of the instance.
      * 
      */
-    private String connectionMode;
+    private final String connectionMode;
     /**
      * @return IIt has been deprecated from provider version 1.101.0 and `max_connections` instead.
      * 
      */
-    private Integer connections;
+    private final Integer connections;
     /**
      * @return Creation time of the instance.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The ID of the instance.
      * 
      */
-    private String dbInstanceId;
+    private final String dbInstanceId;
     /**
      * @return The name of the instance.
      * 
      */
-    private String dbInstanceName;
+    private final String dbInstanceName;
     /**
      * @return The time when the instance was destroyed.
      * 
      */
-    private String destroyTime;
+    private final String destroyTime;
     /**
      * @return Expiration time. Pay-As-You-Go instances are never expire.
      * 
      */
-    private String endTime;
+    private final String endTime;
     /**
-     * @return The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+     * @return The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
      * 
      */
-    private String engineVersion;
+    private final String engineVersion;
     /**
      * @return It has been deprecated from provider version 1.101.0 and `end_time` instead.
      * 
      */
-    private String expireTime;
+    private final String expireTime;
     /**
      * @return Indicates whether there was an order of renewal with configuration change that had not taken effect.
      * 
      */
-    private Boolean hasRenewChangeOrder;
+    private final Boolean hasRenewChangeOrder;
     /**
      * @return The ID of the instance.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
      * 
      */
-    private String instanceClass;
-    private Boolean instanceReleaseProtection;
+    private final String instanceClass;
+    private final Boolean instanceReleaseProtection;
     /**
      * @return The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
      * 
      */
-    private String instanceType;
+    private final String instanceType;
     /**
      * @return Indicates whether the instance is managed by Relational Database Service (RDS).
      * 
      */
-    private Boolean isRds;
-    private String maintainEndTime;
-    private String maintainStartTime;
+    private final Boolean isRds;
+    private final String maintainEndTime;
+    private final String maintainStartTime;
     /**
      * @return Instance connection quantity limit. Unit: count.
      * 
      */
-    private Integer maxConnections;
+    private final Integer maxConnections;
     /**
      * @return It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The type of the network. Valid values: `CLASSIC`, `VPC`.
      * 
      */
-    private String networkType;
+    private final String networkType;
     /**
      * @return The node type of the instance.
      * 
      */
-    private String nodeType;
+    private final String nodeType;
     /**
      * @return The type of the package.
      * 
      */
-    private String packageType;
+    private final String packageType;
     /**
      * @return The payment type. Valid values: `PostPaid`, `PrePaid`.
      * 
      */
-    private String paymentType;
+    private final String paymentType;
     /**
      * @return The service port of the instance.
      * 
      */
-    private Integer port;
+    private final Integer port;
     /**
      * @return Private IP address of the instance.
      * 
      */
-    private String privateIp;
+    private final String privateIp;
     /**
      * @return The queries per second (QPS) supported by the instance.
      * 
      */
-    private Integer qps;
+    private final Integer qps;
     /**
      * @return Region ID the instance belongs to.
      * 
      */
-    private String regionId;
+    private final String regionId;
     /**
      * @return The logical ID of the replica instance.
      * 
      */
-    private String replacateId;
+    private final String replacateId;
     /**
      * @return The ID of the resource group.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return The name of the instance.
      * 
      */
-    private String searchKey;
+    private final String searchKey;
     /**
      * @return (Optional, Available in 1.128.0+) The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
      * 
      */
-    private String secondaryZoneId;
-    private String securityGroupId;
-    private String securityIpGroupAttribute;
-    private String securityIpGroupName;
-    private List<String> securityIps;
-    private String sslEnable;
+    private final String secondaryZoneId;
+    private final String securityGroupId;
+    private final String securityIpGroupAttribute;
+    private final String securityIpGroupName;
+    private final List<String> securityIps;
+    private final String sslEnable;
     /**
      * @return The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{&#34;key1&#34;:&#34;value1&#34;}`.
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
     /**
      * @return The username of the instance.
      * 
      */
-    private String userName;
-    private String vpcAuthMode;
+    private final String userName;
+    private final String vpcAuthMode;
     /**
      * @return Connection port of the instance.
      * 
      */
-    private String vpcCloudInstanceId;
+    private final String vpcCloudInstanceId;
     /**
      * @return Used to retrieve instances belong to specified VPC.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
     /**
      * @return Used to retrieve instances belong to specified `vswitch` resources.
      * 
      */
-    private String vswitchId;
+    private final String vswitchId;
     /**
      * @return The ID of the zone.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetInstancesInstance() {}
+    @CustomType.Constructor
+    private GetInstancesInstance(
+        @CustomType.Parameter("architectureType") String architectureType,
+        @CustomType.Parameter("autoRenew") Boolean autoRenew,
+        @CustomType.Parameter("autoRenewPeriod") Integer autoRenewPeriod,
+        @CustomType.Parameter("availabilityZone") String availabilityZone,
+        @CustomType.Parameter("bandwidth") Integer bandwidth,
+        @CustomType.Parameter("capacity") Integer capacity,
+        @CustomType.Parameter("chargeType") String chargeType,
+        @CustomType.Parameter("config") Map<String,Object> config,
+        @CustomType.Parameter("connectionDomain") String connectionDomain,
+        @CustomType.Parameter("connectionMode") String connectionMode,
+        @CustomType.Parameter("connections") Integer connections,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("dbInstanceId") String dbInstanceId,
+        @CustomType.Parameter("dbInstanceName") String dbInstanceName,
+        @CustomType.Parameter("destroyTime") String destroyTime,
+        @CustomType.Parameter("endTime") String endTime,
+        @CustomType.Parameter("engineVersion") String engineVersion,
+        @CustomType.Parameter("expireTime") String expireTime,
+        @CustomType.Parameter("hasRenewChangeOrder") Boolean hasRenewChangeOrder,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceClass") String instanceClass,
+        @CustomType.Parameter("instanceReleaseProtection") Boolean instanceReleaseProtection,
+        @CustomType.Parameter("instanceType") String instanceType,
+        @CustomType.Parameter("isRds") Boolean isRds,
+        @CustomType.Parameter("maintainEndTime") String maintainEndTime,
+        @CustomType.Parameter("maintainStartTime") String maintainStartTime,
+        @CustomType.Parameter("maxConnections") Integer maxConnections,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("networkType") String networkType,
+        @CustomType.Parameter("nodeType") String nodeType,
+        @CustomType.Parameter("packageType") String packageType,
+        @CustomType.Parameter("paymentType") String paymentType,
+        @CustomType.Parameter("port") Integer port,
+        @CustomType.Parameter("privateIp") String privateIp,
+        @CustomType.Parameter("qps") Integer qps,
+        @CustomType.Parameter("regionId") String regionId,
+        @CustomType.Parameter("replacateId") String replacateId,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("searchKey") String searchKey,
+        @CustomType.Parameter("secondaryZoneId") String secondaryZoneId,
+        @CustomType.Parameter("securityGroupId") String securityGroupId,
+        @CustomType.Parameter("securityIpGroupAttribute") String securityIpGroupAttribute,
+        @CustomType.Parameter("securityIpGroupName") String securityIpGroupName,
+        @CustomType.Parameter("securityIps") List<String> securityIps,
+        @CustomType.Parameter("sslEnable") String sslEnable,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("tags") Map<String,Object> tags,
+        @CustomType.Parameter("userName") String userName,
+        @CustomType.Parameter("vpcAuthMode") String vpcAuthMode,
+        @CustomType.Parameter("vpcCloudInstanceId") String vpcCloudInstanceId,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("vswitchId") String vswitchId,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.architectureType = architectureType;
+        this.autoRenew = autoRenew;
+        this.autoRenewPeriod = autoRenewPeriod;
+        this.availabilityZone = availabilityZone;
+        this.bandwidth = bandwidth;
+        this.capacity = capacity;
+        this.chargeType = chargeType;
+        this.config = config;
+        this.connectionDomain = connectionDomain;
+        this.connectionMode = connectionMode;
+        this.connections = connections;
+        this.createTime = createTime;
+        this.dbInstanceId = dbInstanceId;
+        this.dbInstanceName = dbInstanceName;
+        this.destroyTime = destroyTime;
+        this.endTime = endTime;
+        this.engineVersion = engineVersion;
+        this.expireTime = expireTime;
+        this.hasRenewChangeOrder = hasRenewChangeOrder;
+        this.id = id;
+        this.instanceClass = instanceClass;
+        this.instanceReleaseProtection = instanceReleaseProtection;
+        this.instanceType = instanceType;
+        this.isRds = isRds;
+        this.maintainEndTime = maintainEndTime;
+        this.maintainStartTime = maintainStartTime;
+        this.maxConnections = maxConnections;
+        this.name = name;
+        this.networkType = networkType;
+        this.nodeType = nodeType;
+        this.packageType = packageType;
+        this.paymentType = paymentType;
+        this.port = port;
+        this.privateIp = privateIp;
+        this.qps = qps;
+        this.regionId = regionId;
+        this.replacateId = replacateId;
+        this.resourceGroupId = resourceGroupId;
+        this.searchKey = searchKey;
+        this.secondaryZoneId = secondaryZoneId;
+        this.securityGroupId = securityGroupId;
+        this.securityIpGroupAttribute = securityIpGroupAttribute;
+        this.securityIpGroupName = securityIpGroupName;
+        this.securityIps = securityIps;
+        this.sslEnable = sslEnable;
+        this.status = status;
+        this.tags = tags;
+        this.userName = userName;
+        this.vpcAuthMode = vpcAuthMode;
+        this.vpcCloudInstanceId = vpcCloudInstanceId;
+        this.vpcId = vpcId;
+        this.vswitchId = vswitchId;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
      * 
@@ -342,7 +451,7 @@ public final class GetInstancesInstance {
         return this.endTime;
     }
     /**
-     * @return The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+     * @return The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
      * 
      */
     public String engineVersion() {
@@ -572,7 +681,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String architectureType;
         private Boolean autoRenew;
@@ -627,7 +736,11 @@ public final class GetInstancesInstance {
         private String vpcId;
         private String vswitchId;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.architectureType = defaults.architectureType;
@@ -685,222 +798,178 @@ public final class GetInstancesInstance {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder architectureType(String architectureType) {
             this.architectureType = Objects.requireNonNull(architectureType);
             return this;
         }
-        @CustomType.Setter
         public Builder autoRenew(Boolean autoRenew) {
             this.autoRenew = Objects.requireNonNull(autoRenew);
             return this;
         }
-        @CustomType.Setter
         public Builder autoRenewPeriod(Integer autoRenewPeriod) {
             this.autoRenewPeriod = Objects.requireNonNull(autoRenewPeriod);
             return this;
         }
-        @CustomType.Setter
         public Builder availabilityZone(String availabilityZone) {
             this.availabilityZone = Objects.requireNonNull(availabilityZone);
             return this;
         }
-        @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
-        @CustomType.Setter
         public Builder capacity(Integer capacity) {
             this.capacity = Objects.requireNonNull(capacity);
             return this;
         }
-        @CustomType.Setter
         public Builder chargeType(String chargeType) {
             this.chargeType = Objects.requireNonNull(chargeType);
             return this;
         }
-        @CustomType.Setter
         public Builder config(Map<String,Object> config) {
             this.config = Objects.requireNonNull(config);
             return this;
         }
-        @CustomType.Setter
         public Builder connectionDomain(String connectionDomain) {
             this.connectionDomain = Objects.requireNonNull(connectionDomain);
             return this;
         }
-        @CustomType.Setter
         public Builder connectionMode(String connectionMode) {
             this.connectionMode = Objects.requireNonNull(connectionMode);
             return this;
         }
-        @CustomType.Setter
         public Builder connections(Integer connections) {
             this.connections = Objects.requireNonNull(connections);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder dbInstanceId(String dbInstanceId) {
             this.dbInstanceId = Objects.requireNonNull(dbInstanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder dbInstanceName(String dbInstanceName) {
             this.dbInstanceName = Objects.requireNonNull(dbInstanceName);
             return this;
         }
-        @CustomType.Setter
         public Builder destroyTime(String destroyTime) {
             this.destroyTime = Objects.requireNonNull(destroyTime);
             return this;
         }
-        @CustomType.Setter
         public Builder endTime(String endTime) {
             this.endTime = Objects.requireNonNull(endTime);
             return this;
         }
-        @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
             this.engineVersion = Objects.requireNonNull(engineVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder expireTime(String expireTime) {
             this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
-        @CustomType.Setter
         public Builder hasRenewChangeOrder(Boolean hasRenewChangeOrder) {
             this.hasRenewChangeOrder = Objects.requireNonNull(hasRenewChangeOrder);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceClass(String instanceClass) {
             this.instanceClass = Objects.requireNonNull(instanceClass);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceReleaseProtection(Boolean instanceReleaseProtection) {
             this.instanceReleaseProtection = Objects.requireNonNull(instanceReleaseProtection);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
-        @CustomType.Setter
         public Builder isRds(Boolean isRds) {
             this.isRds = Objects.requireNonNull(isRds);
             return this;
         }
-        @CustomType.Setter
         public Builder maintainEndTime(String maintainEndTime) {
             this.maintainEndTime = Objects.requireNonNull(maintainEndTime);
             return this;
         }
-        @CustomType.Setter
         public Builder maintainStartTime(String maintainStartTime) {
             this.maintainStartTime = Objects.requireNonNull(maintainStartTime);
             return this;
         }
-        @CustomType.Setter
         public Builder maxConnections(Integer maxConnections) {
             this.maxConnections = Objects.requireNonNull(maxConnections);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
             return this;
         }
-        @CustomType.Setter
         public Builder nodeType(String nodeType) {
             this.nodeType = Objects.requireNonNull(nodeType);
             return this;
         }
-        @CustomType.Setter
         public Builder packageType(String packageType) {
             this.packageType = Objects.requireNonNull(packageType);
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
-        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
-        @CustomType.Setter
         public Builder privateIp(String privateIp) {
             this.privateIp = Objects.requireNonNull(privateIp);
             return this;
         }
-        @CustomType.Setter
         public Builder qps(Integer qps) {
             this.qps = Objects.requireNonNull(qps);
             return this;
         }
-        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
-        @CustomType.Setter
         public Builder replacateId(String replacateId) {
             this.replacateId = Objects.requireNonNull(replacateId);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder searchKey(String searchKey) {
             this.searchKey = Objects.requireNonNull(searchKey);
             return this;
         }
-        @CustomType.Setter
         public Builder secondaryZoneId(String secondaryZoneId) {
             this.secondaryZoneId = Objects.requireNonNull(secondaryZoneId);
             return this;
         }
-        @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
             this.securityGroupId = Objects.requireNonNull(securityGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder securityIpGroupAttribute(String securityIpGroupAttribute) {
             this.securityIpGroupAttribute = Objects.requireNonNull(securityIpGroupAttribute);
             return this;
         }
-        @CustomType.Setter
         public Builder securityIpGroupName(String securityIpGroupName) {
             this.securityIpGroupName = Objects.requireNonNull(securityIpGroupName);
             return this;
         }
-        @CustomType.Setter
         public Builder securityIps(List<String> securityIps) {
             this.securityIps = Objects.requireNonNull(securityIps);
             return this;
@@ -908,107 +977,43 @@ public final class GetInstancesInstance {
         public Builder securityIps(String... securityIps) {
             return securityIps(List.of(securityIps));
         }
-        @CustomType.Setter
         public Builder sslEnable(String sslEnable) {
             this.sslEnable = Objects.requireNonNull(sslEnable);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
-        @CustomType.Setter
         public Builder userName(String userName) {
             this.userName = Objects.requireNonNull(userName);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcAuthMode(String vpcAuthMode) {
             this.vpcAuthMode = Objects.requireNonNull(vpcAuthMode);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcCloudInstanceId(String vpcCloudInstanceId) {
             this.vpcCloudInstanceId = Objects.requireNonNull(vpcCloudInstanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.architectureType = architectureType;
-            o.autoRenew = autoRenew;
-            o.autoRenewPeriod = autoRenewPeriod;
-            o.availabilityZone = availabilityZone;
-            o.bandwidth = bandwidth;
-            o.capacity = capacity;
-            o.chargeType = chargeType;
-            o.config = config;
-            o.connectionDomain = connectionDomain;
-            o.connectionMode = connectionMode;
-            o.connections = connections;
-            o.createTime = createTime;
-            o.dbInstanceId = dbInstanceId;
-            o.dbInstanceName = dbInstanceName;
-            o.destroyTime = destroyTime;
-            o.endTime = endTime;
-            o.engineVersion = engineVersion;
-            o.expireTime = expireTime;
-            o.hasRenewChangeOrder = hasRenewChangeOrder;
-            o.id = id;
-            o.instanceClass = instanceClass;
-            o.instanceReleaseProtection = instanceReleaseProtection;
-            o.instanceType = instanceType;
-            o.isRds = isRds;
-            o.maintainEndTime = maintainEndTime;
-            o.maintainStartTime = maintainStartTime;
-            o.maxConnections = maxConnections;
-            o.name = name;
-            o.networkType = networkType;
-            o.nodeType = nodeType;
-            o.packageType = packageType;
-            o.paymentType = paymentType;
-            o.port = port;
-            o.privateIp = privateIp;
-            o.qps = qps;
-            o.regionId = regionId;
-            o.replacateId = replacateId;
-            o.resourceGroupId = resourceGroupId;
-            o.searchKey = searchKey;
-            o.secondaryZoneId = secondaryZoneId;
-            o.securityGroupId = securityGroupId;
-            o.securityIpGroupAttribute = securityIpGroupAttribute;
-            o.securityIpGroupName = securityIpGroupName;
-            o.securityIps = securityIps;
-            o.sslEnable = sslEnable;
-            o.status = status;
-            o.tags = tags;
-            o.userName = userName;
-            o.vpcAuthMode = vpcAuthMode;
-            o.vpcCloudInstanceId = vpcCloudInstanceId;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetInstancesInstance build() {
+            return new GetInstancesInstance(architectureType, autoRenew, autoRenewPeriod, availabilityZone, bandwidth, capacity, chargeType, config, connectionDomain, connectionMode, connections, createTime, dbInstanceId, dbInstanceName, destroyTime, endTime, engineVersion, expireTime, hasRenewChangeOrder, id, instanceClass, instanceReleaseProtection, instanceType, isRds, maintainEndTime, maintainStartTime, maxConnections, name, networkType, nodeType, packageType, paymentType, port, privateIp, qps, regionId, replacateId, resourceGroupId, searchKey, secondaryZoneId, securityGroupId, securityIpGroupAttribute, securityIpGroupName, securityIps, sslEnable, status, tags, userName, vpcAuthMode, vpcCloudInstanceId, vpcId, vswitchId, zoneId);
         }
     }
 }

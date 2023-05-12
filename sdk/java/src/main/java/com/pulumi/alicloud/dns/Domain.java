@@ -16,6 +16,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **DEPRECATED:** This resource has been renamed to alicloud.dns.AlidnsDomain from version 1.95.0.
+ * 
+ * Provides a DNS resource.
+ * 
+ * &gt; **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;

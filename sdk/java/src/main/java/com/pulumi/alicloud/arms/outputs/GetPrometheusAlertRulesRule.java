@@ -17,69 +17,98 @@ public final class GetPrometheusAlertRulesRule {
      * @return The annotations of the alert rule.
      * 
      */
-    private List<GetPrometheusAlertRulesRuleAnnotation> annotations;
+    private final List<GetPrometheusAlertRulesRuleAnnotation> annotations;
     /**
      * @return The ID of the cluster.
      * 
      */
-    private String clusterId;
+    private final String clusterId;
     /**
      * @return The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
      * 
      */
-    private String dispatchRuleId;
+    private final String dispatchRuleId;
     /**
      * @return The duration of the alert.
      * 
      */
-    private String duration;
+    private final String duration;
     /**
      * @return The alert rule expression that follows the PromQL syntax..
      * 
      */
-    private String expression;
+    private final String expression;
     /**
      * @return The ID of the Prometheus Alert Rule.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The labels of the resource.
      * 
      */
-    private List<GetPrometheusAlertRulesRuleLabel> labels;
+    private final List<GetPrometheusAlertRulesRuleLabel> labels;
     /**
      * @return The message of the alert notification.
      * 
      */
-    private String message;
+    private final String message;
     /**
      * @return The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
      * 
      */
-    private String notifyType;
+    private final String notifyType;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private String prometheusAlertRuleId;
+    private final String prometheusAlertRuleId;
     /**
      * @return The name of the resource.
      * 
      */
-    private String prometheusAlertRuleName;
+    private final String prometheusAlertRuleName;
     /**
      * @return The status of the resource. Valid values: `0`, `1`.
      * 
      */
-    private Integer status;
+    private final Integer status;
     /**
      * @return The type of the alert rule.
      * 
      */
-    private String type;
+    private final String type;
 
-    private GetPrometheusAlertRulesRule() {}
+    @CustomType.Constructor
+    private GetPrometheusAlertRulesRule(
+        @CustomType.Parameter("annotations") List<GetPrometheusAlertRulesRuleAnnotation> annotations,
+        @CustomType.Parameter("clusterId") String clusterId,
+        @CustomType.Parameter("dispatchRuleId") String dispatchRuleId,
+        @CustomType.Parameter("duration") String duration,
+        @CustomType.Parameter("expression") String expression,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("labels") List<GetPrometheusAlertRulesRuleLabel> labels,
+        @CustomType.Parameter("message") String message,
+        @CustomType.Parameter("notifyType") String notifyType,
+        @CustomType.Parameter("prometheusAlertRuleId") String prometheusAlertRuleId,
+        @CustomType.Parameter("prometheusAlertRuleName") String prometheusAlertRuleName,
+        @CustomType.Parameter("status") Integer status,
+        @CustomType.Parameter("type") String type) {
+        this.annotations = annotations;
+        this.clusterId = clusterId;
+        this.dispatchRuleId = dispatchRuleId;
+        this.duration = duration;
+        this.expression = expression;
+        this.id = id;
+        this.labels = labels;
+        this.message = message;
+        this.notifyType = notifyType;
+        this.prometheusAlertRuleId = prometheusAlertRuleId;
+        this.prometheusAlertRuleName = prometheusAlertRuleName;
+        this.status = status;
+        this.type = type;
+    }
+
     /**
      * @return The annotations of the alert rule.
      * 
@@ -179,7 +208,7 @@ public final class GetPrometheusAlertRulesRule {
     public static Builder builder(GetPrometheusAlertRulesRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetPrometheusAlertRulesRuleAnnotation> annotations;
         private String clusterId;
@@ -194,7 +223,11 @@ public final class GetPrometheusAlertRulesRule {
         private String prometheusAlertRuleName;
         private Integer status;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetPrometheusAlertRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -212,7 +245,6 @@ public final class GetPrometheusAlertRulesRule {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder annotations(List<GetPrometheusAlertRulesRuleAnnotation> annotations) {
             this.annotations = Objects.requireNonNull(annotations);
             return this;
@@ -220,32 +252,26 @@ public final class GetPrometheusAlertRulesRule {
         public Builder annotations(GetPrometheusAlertRulesRuleAnnotation... annotations) {
             return annotations(List.of(annotations));
         }
-        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder dispatchRuleId(String dispatchRuleId) {
             this.dispatchRuleId = Objects.requireNonNull(dispatchRuleId);
             return this;
         }
-        @CustomType.Setter
         public Builder duration(String duration) {
             this.duration = Objects.requireNonNull(duration);
             return this;
         }
-        @CustomType.Setter
         public Builder expression(String expression) {
             this.expression = Objects.requireNonNull(expression);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder labels(List<GetPrometheusAlertRulesRuleLabel> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
@@ -253,52 +279,31 @@ public final class GetPrometheusAlertRulesRule {
         public Builder labels(GetPrometheusAlertRulesRuleLabel... labels) {
             return labels(List.of(labels));
         }
-        @CustomType.Setter
         public Builder message(String message) {
             this.message = Objects.requireNonNull(message);
             return this;
         }
-        @CustomType.Setter
         public Builder notifyType(String notifyType) {
             this.notifyType = Objects.requireNonNull(notifyType);
             return this;
         }
-        @CustomType.Setter
         public Builder prometheusAlertRuleId(String prometheusAlertRuleId) {
             this.prometheusAlertRuleId = Objects.requireNonNull(prometheusAlertRuleId);
             return this;
         }
-        @CustomType.Setter
         public Builder prometheusAlertRuleName(String prometheusAlertRuleName) {
             this.prometheusAlertRuleName = Objects.requireNonNull(prometheusAlertRuleName);
             return this;
         }
-        @CustomType.Setter
         public Builder status(Integer status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetPrometheusAlertRulesRule build() {
-            final var o = new GetPrometheusAlertRulesRule();
-            o.annotations = annotations;
-            o.clusterId = clusterId;
-            o.dispatchRuleId = dispatchRuleId;
-            o.duration = duration;
-            o.expression = expression;
-            o.id = id;
-            o.labels = labels;
-            o.message = message;
-            o.notifyType = notifyType;
-            o.prometheusAlertRuleId = prometheusAlertRuleId;
-            o.prometheusAlertRuleName = prometheusAlertRuleName;
-            o.status = status;
-            o.type = type;
-            return o;
+        }        public GetPrometheusAlertRulesRule build() {
+            return new GetPrometheusAlertRulesRule(annotations, clusterId, dispatchRuleId, duration, expression, id, labels, message, notifyType, prometheusAlertRuleId, prometheusAlertRuleName, status, type);
         }
     }
 }

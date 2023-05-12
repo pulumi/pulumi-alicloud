@@ -122,6 +122,8 @@ import (
 type TransitRouterVpcAttachment struct {
 	pulumi.CustomResourceState
 
+	// Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+	AutoPublishRouteEnabled pulumi.BoolOutput `pulumi:"autoPublishRouteEnabled"`
 	// The ID of the CEN.
 	CenId pulumi.StringOutput `pulumi:"cenId"`
 	// The dry run.
@@ -130,8 +132,12 @@ type TransitRouterVpcAttachment struct {
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
 	ResourceType pulumi.StringPtrOutput `pulumi:"resourceType"`
+	// Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+	//
 	// Deprecated: Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.
 	RouteTableAssociationEnabled pulumi.BoolPtrOutput `pulumi:"routeTableAssociationEnabled"`
+	// Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+	//
 	// Deprecated: Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.
 	RouteTablePropagationEnabled pulumi.BoolPtrOutput `pulumi:"routeTablePropagationEnabled"`
 	// The associating status of the network.
@@ -193,6 +199,8 @@ func GetTransitRouterVpcAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TransitRouterVpcAttachment resources.
 type transitRouterVpcAttachmentState struct {
+	// Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+	AutoPublishRouteEnabled *bool `pulumi:"autoPublishRouteEnabled"`
 	// The ID of the CEN.
 	CenId *string `pulumi:"cenId"`
 	// The dry run.
@@ -201,8 +209,12 @@ type transitRouterVpcAttachmentState struct {
 	PaymentType *string `pulumi:"paymentType"`
 	// The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
 	ResourceType *string `pulumi:"resourceType"`
+	// Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+	//
 	// Deprecated: Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.
 	RouteTableAssociationEnabled *bool `pulumi:"routeTableAssociationEnabled"`
+	// Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+	//
 	// Deprecated: Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.
 	RouteTablePropagationEnabled *bool `pulumi:"routeTablePropagationEnabled"`
 	// The associating status of the network.
@@ -227,6 +239,8 @@ type transitRouterVpcAttachmentState struct {
 }
 
 type TransitRouterVpcAttachmentState struct {
+	// Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+	AutoPublishRouteEnabled pulumi.BoolPtrInput
 	// The ID of the CEN.
 	CenId pulumi.StringPtrInput
 	// The dry run.
@@ -235,8 +249,12 @@ type TransitRouterVpcAttachmentState struct {
 	PaymentType pulumi.StringPtrInput
 	// The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
 	ResourceType pulumi.StringPtrInput
+	// Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+	//
 	// Deprecated: Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.
 	RouteTableAssociationEnabled pulumi.BoolPtrInput
+	// Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+	//
 	// Deprecated: Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.
 	RouteTablePropagationEnabled pulumi.BoolPtrInput
 	// The associating status of the network.
@@ -265,6 +283,8 @@ func (TransitRouterVpcAttachmentState) ElementType() reflect.Type {
 }
 
 type transitRouterVpcAttachmentArgs struct {
+	// Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+	AutoPublishRouteEnabled *bool `pulumi:"autoPublishRouteEnabled"`
 	// The ID of the CEN.
 	CenId string `pulumi:"cenId"`
 	// The dry run.
@@ -273,8 +293,12 @@ type transitRouterVpcAttachmentArgs struct {
 	PaymentType *string `pulumi:"paymentType"`
 	// The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
 	ResourceType *string `pulumi:"resourceType"`
+	// Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+	//
 	// Deprecated: Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.
 	RouteTableAssociationEnabled *bool `pulumi:"routeTableAssociationEnabled"`
+	// Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+	//
 	// Deprecated: Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.
 	RouteTablePropagationEnabled *bool `pulumi:"routeTablePropagationEnabled"`
 	// A mapping of tags to assign to the resource.
@@ -296,6 +320,8 @@ type transitRouterVpcAttachmentArgs struct {
 
 // The set of arguments for constructing a TransitRouterVpcAttachment resource.
 type TransitRouterVpcAttachmentArgs struct {
+	// Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+	AutoPublishRouteEnabled pulumi.BoolPtrInput
 	// The ID of the CEN.
 	CenId pulumi.StringInput
 	// The dry run.
@@ -304,8 +330,12 @@ type TransitRouterVpcAttachmentArgs struct {
 	PaymentType pulumi.StringPtrInput
 	// The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
 	ResourceType pulumi.StringPtrInput
+	// Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+	//
 	// Deprecated: Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.
 	RouteTableAssociationEnabled pulumi.BoolPtrInput
+	// Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+	//
 	// Deprecated: Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.
 	RouteTablePropagationEnabled pulumi.BoolPtrInput
 	// A mapping of tags to assign to the resource.
@@ -412,6 +442,11 @@ func (o TransitRouterVpcAttachmentOutput) ToTransitRouterVpcAttachmentOutputWith
 	return o
 }
 
+// Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+func (o TransitRouterVpcAttachmentOutput) AutoPublishRouteEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.BoolOutput { return v.AutoPublishRouteEnabled }).(pulumi.BoolOutput)
+}
+
 // The ID of the CEN.
 func (o TransitRouterVpcAttachmentOutput) CenId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.StringOutput { return v.CenId }).(pulumi.StringOutput)
@@ -432,11 +467,15 @@ func (o TransitRouterVpcAttachmentOutput) ResourceType() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.StringPtrOutput { return v.ResourceType }).(pulumi.StringPtrOutput)
 }
 
+// Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+//
 // Deprecated: Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead.
 func (o TransitRouterVpcAttachmentOutput) RouteTableAssociationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.BoolPtrOutput { return v.RouteTableAssociationEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+//
 // Deprecated: Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead.
 func (o TransitRouterVpcAttachmentOutput) RouteTablePropagationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.BoolPtrOutput { return v.RouteTablePropagationEnabled }).(pulumi.BoolPtrOutput)

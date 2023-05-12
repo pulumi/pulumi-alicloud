@@ -146,6 +146,7 @@ def get_resource_shares(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Resource Share IDs.
     :param str name_regex: A regex string to filter results by Resource Share name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_share_name: The name of resource share.
     :param str resource_share_owner: The owner of resource share.
     :param str status: The status of resource share.
@@ -202,6 +203,7 @@ def get_resource_shares_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
 
     :param Sequence[str] ids: A list of Resource Share IDs.
     :param str name_regex: A regex string to filter results by Resource Share name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_share_name: The name of resource share.
     :param str resource_share_owner: The owner of resource share.
     :param str status: The status of resource share.

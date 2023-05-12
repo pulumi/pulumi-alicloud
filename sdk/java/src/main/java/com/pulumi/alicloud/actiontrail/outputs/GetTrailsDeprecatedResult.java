@@ -23,26 +23,49 @@ public final class GetTrailsDeprecatedResult {
      * 
      */
     @Deprecated /* Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead. */
-    private List<GetTrailsDeprecatedActiontrail> actiontrails;
+    private final List<GetTrailsDeprecatedActiontrail> actiontrails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable Boolean includeOrganizationTrail;
-    private @Nullable Boolean includeShadowTrails;
-    private @Nullable String nameRegex;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable Boolean includeOrganizationTrail;
+    private final @Nullable Boolean includeShadowTrails;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of trail names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String status;
-    private List<GetTrailsDeprecatedTrail> trails;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String status;
+    private final List<GetTrailsDeprecatedTrail> trails;
 
-    private GetTrailsDeprecatedResult() {}
+    @CustomType.Constructor
+    private GetTrailsDeprecatedResult(
+        @CustomType.Parameter("actiontrails") List<GetTrailsDeprecatedActiontrail> actiontrails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("includeOrganizationTrail") @Nullable Boolean includeOrganizationTrail,
+        @CustomType.Parameter("includeShadowTrails") @Nullable Boolean includeShadowTrails,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("trails") List<GetTrailsDeprecatedTrail> trails) {
+        this.actiontrails = actiontrails;
+        this.id = id;
+        this.ids = ids;
+        this.includeOrganizationTrail = includeOrganizationTrail;
+        this.includeShadowTrails = includeShadowTrails;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.status = status;
+        this.trails = trails;
+    }
+
     /**
      * @return A list of actiontrails. Each element contains the following attributes:
      * 
@@ -97,7 +120,7 @@ public final class GetTrailsDeprecatedResult {
     public static Builder builder(GetTrailsDeprecatedResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetTrailsDeprecatedActiontrail> actiontrails;
         private String id;
@@ -109,7 +132,11 @@ public final class GetTrailsDeprecatedResult {
         private @Nullable String outputFile;
         private @Nullable String status;
         private List<GetTrailsDeprecatedTrail> trails;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTrailsDeprecatedResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.actiontrails = defaults.actiontrails;
@@ -124,7 +151,6 @@ public final class GetTrailsDeprecatedResult {
     	      this.trails = defaults.trails;
         }
 
-        @CustomType.Setter
         public Builder actiontrails(List<GetTrailsDeprecatedActiontrail> actiontrails) {
             this.actiontrails = Objects.requireNonNull(actiontrails);
             return this;
@@ -132,12 +158,10 @@ public final class GetTrailsDeprecatedResult {
         public Builder actiontrails(GetTrailsDeprecatedActiontrail... actiontrails) {
             return actiontrails(List.of(actiontrails));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -145,22 +169,18 @@ public final class GetTrailsDeprecatedResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder includeOrganizationTrail(@Nullable Boolean includeOrganizationTrail) {
             this.includeOrganizationTrail = includeOrganizationTrail;
             return this;
         }
-        @CustomType.Setter
         public Builder includeShadowTrails(@Nullable Boolean includeShadowTrails) {
             this.includeShadowTrails = includeShadowTrails;
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -168,37 +188,22 @@ public final class GetTrailsDeprecatedResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder trails(List<GetTrailsDeprecatedTrail> trails) {
             this.trails = Objects.requireNonNull(trails);
             return this;
         }
         public Builder trails(GetTrailsDeprecatedTrail... trails) {
             return trails(List.of(trails));
-        }
-        public GetTrailsDeprecatedResult build() {
-            final var o = new GetTrailsDeprecatedResult();
-            o.actiontrails = actiontrails;
-            o.id = id;
-            o.ids = ids;
-            o.includeOrganizationTrail = includeOrganizationTrail;
-            o.includeShadowTrails = includeShadowTrails;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.trails = trails;
-            return o;
+        }        public GetTrailsDeprecatedResult build() {
+            return new GetTrailsDeprecatedResult(actiontrails, id, ids, includeOrganizationTrail, includeShadowTrails, nameRegex, names, outputFile, status, trails);
         }
     }
 }

@@ -15,14 +15,21 @@ public final class ClusterPostInstallScript {
      * @return The parameter that is used to run the script after the cluster is created.
      * 
      */
-    private @Nullable String args;
+    private final @Nullable String args;
     /**
      * @return The URL that is used to download the script after the cluster is created.
      * 
      */
-    private @Nullable String url;
+    private final @Nullable String url;
 
-    private ClusterPostInstallScript() {}
+    @CustomType.Constructor
+    private ClusterPostInstallScript(
+        @CustomType.Parameter("args") @Nullable String args,
+        @CustomType.Parameter("url") @Nullable String url) {
+        this.args = args;
+        this.url = url;
+    }
+
     /**
      * @return The parameter that is used to run the script after the cluster is created.
      * 
@@ -45,32 +52,30 @@ public final class ClusterPostInstallScript {
     public static Builder builder(ClusterPostInstallScript defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String args;
         private @Nullable String url;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ClusterPostInstallScript defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.args = defaults.args;
     	      this.url = defaults.url;
         }
 
-        @CustomType.Setter
         public Builder args(@Nullable String args) {
             this.args = args;
             return this;
         }
-        @CustomType.Setter
         public Builder url(@Nullable String url) {
             this.url = url;
             return this;
-        }
-        public ClusterPostInstallScript build() {
-            final var o = new ClusterPostInstallScript();
-            o.args = args;
-            o.url = url;
-            return o;
+        }        public ClusterPostInstallScript build() {
+            return new ClusterPostInstallScript(args, url);
         }
     }
 }

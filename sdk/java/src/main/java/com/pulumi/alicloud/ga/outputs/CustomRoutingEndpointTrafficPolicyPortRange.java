@@ -15,14 +15,21 @@ public final class CustomRoutingEndpointTrafficPolicyPortRange {
      * @return The start port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
      * 
      */
-    private @Nullable Integer fromPort;
+    private final @Nullable Integer fromPort;
     /**
      * @return The end port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
      * 
      */
-    private @Nullable Integer toPort;
+    private final @Nullable Integer toPort;
 
-    private CustomRoutingEndpointTrafficPolicyPortRange() {}
+    @CustomType.Constructor
+    private CustomRoutingEndpointTrafficPolicyPortRange(
+        @CustomType.Parameter("fromPort") @Nullable Integer fromPort,
+        @CustomType.Parameter("toPort") @Nullable Integer toPort) {
+        this.fromPort = fromPort;
+        this.toPort = toPort;
+    }
+
     /**
      * @return The start port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
      * 
@@ -45,32 +52,30 @@ public final class CustomRoutingEndpointTrafficPolicyPortRange {
     public static Builder builder(CustomRoutingEndpointTrafficPolicyPortRange defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Integer fromPort;
         private @Nullable Integer toPort;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(CustomRoutingEndpointTrafficPolicyPortRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fromPort = defaults.fromPort;
     	      this.toPort = defaults.toPort;
         }
 
-        @CustomType.Setter
         public Builder fromPort(@Nullable Integer fromPort) {
             this.fromPort = fromPort;
             return this;
         }
-        @CustomType.Setter
         public Builder toPort(@Nullable Integer toPort) {
             this.toPort = toPort;
             return this;
-        }
-        public CustomRoutingEndpointTrafficPolicyPortRange build() {
-            final var o = new CustomRoutingEndpointTrafficPolicyPortRange();
-            o.fromPort = fromPort;
-            o.toPort = toPort;
-            return o;
+        }        public CustomRoutingEndpointTrafficPolicyPortRange build() {
+            return new CustomRoutingEndpointTrafficPolicyPortRange(fromPort, toPort);
         }
     }
 }

@@ -10,9 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackupJobsJobOtsDetail {
-    private List<String> tableNames;
+    private final List<String> tableNames;
 
-    private GetBackupJobsJobOtsDetail() {}
+    @CustomType.Constructor
+    private GetBackupJobsJobOtsDetail(@CustomType.Parameter("tableNames") List<String> tableNames) {
+        this.tableNames = tableNames;
+    }
+
     public List<String> tableNames() {
         return this.tableNames;
     }
@@ -24,27 +28,27 @@ public final class GetBackupJobsJobOtsDetail {
     public static Builder builder(GetBackupJobsJobOtsDetail defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<String> tableNames;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBackupJobsJobOtsDetail defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.tableNames = defaults.tableNames;
         }
 
-        @CustomType.Setter
         public Builder tableNames(List<String> tableNames) {
             this.tableNames = Objects.requireNonNull(tableNames);
             return this;
         }
         public Builder tableNames(String... tableNames) {
             return tableNames(List.of(tableNames));
-        }
-        public GetBackupJobsJobOtsDetail build() {
-            final var o = new GetBackupJobsJobOtsDetail();
-            o.tableNames = tableNames;
-            return o;
+        }        public GetBackupJobsJobOtsDetail build() {
+            return new GetBackupJobsJobOtsDetail(tableNames);
         }
     }
 }

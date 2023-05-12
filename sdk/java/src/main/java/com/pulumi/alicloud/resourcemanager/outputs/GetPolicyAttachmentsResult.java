@@ -17,46 +17,69 @@ public final class GetPolicyAttachmentsResult {
      * @return A list of Resource Manager Policy Attachment. Each element contains the following attributes:
      * 
      */
-    private List<GetPolicyAttachmentsAttachment> attachments;
+    private final List<GetPolicyAttachmentsAttachment> attachments;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of Resource Manager Policy Attachment IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String language;
-    private @Nullable String outputFile;
+    private final List<String> ids;
+    private final @Nullable String language;
+    private final @Nullable String outputFile;
     /**
      * @return The name of the policy.
      * 
      */
-    private @Nullable String policyName;
+    private final @Nullable String policyName;
     /**
      * @return The type of the policy.
      * 
      */
-    private @Nullable String policyType;
+    private final @Nullable String policyType;
     /**
      * @return The name of the object to which the policy is attached.
      * 
      */
-    private @Nullable String principalName;
+    private final @Nullable String principalName;
     /**
      * @return The type of the object to which the policy is attached.
      * 
      */
-    private @Nullable String principalType;
+    private final @Nullable String principalType;
     /**
      * @return The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
      * 
      */
-    private @Nullable String resourceGroupId;
+    private final @Nullable String resourceGroupId;
 
-    private GetPolicyAttachmentsResult() {}
+    @CustomType.Constructor
+    private GetPolicyAttachmentsResult(
+        @CustomType.Parameter("attachments") List<GetPolicyAttachmentsAttachment> attachments,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("language") @Nullable String language,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("policyName") @Nullable String policyName,
+        @CustomType.Parameter("policyType") @Nullable String policyType,
+        @CustomType.Parameter("principalName") @Nullable String principalName,
+        @CustomType.Parameter("principalType") @Nullable String principalType,
+        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId) {
+        this.attachments = attachments;
+        this.id = id;
+        this.ids = ids;
+        this.language = language;
+        this.outputFile = outputFile;
+        this.policyName = policyName;
+        this.policyType = policyType;
+        this.principalName = principalName;
+        this.principalType = principalType;
+        this.resourceGroupId = resourceGroupId;
+    }
+
     /**
      * @return A list of Resource Manager Policy Attachment. Each element contains the following attributes:
      * 
@@ -127,7 +150,7 @@ public final class GetPolicyAttachmentsResult {
     public static Builder builder(GetPolicyAttachmentsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetPolicyAttachmentsAttachment> attachments;
         private String id;
@@ -139,7 +162,11 @@ public final class GetPolicyAttachmentsResult {
         private @Nullable String principalName;
         private @Nullable String principalType;
         private @Nullable String resourceGroupId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetPolicyAttachmentsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attachments = defaults.attachments;
@@ -154,7 +181,6 @@ public final class GetPolicyAttachmentsResult {
     	      this.resourceGroupId = defaults.resourceGroupId;
         }
 
-        @CustomType.Setter
         public Builder attachments(List<GetPolicyAttachmentsAttachment> attachments) {
             this.attachments = Objects.requireNonNull(attachments);
             return this;
@@ -162,12 +188,10 @@ public final class GetPolicyAttachmentsResult {
         public Builder attachments(GetPolicyAttachmentsAttachment... attachments) {
             return attachments(List.of(attachments));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -175,54 +199,35 @@ public final class GetPolicyAttachmentsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder language(@Nullable String language) {
             this.language = language;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder policyName(@Nullable String policyName) {
             this.policyName = policyName;
             return this;
         }
-        @CustomType.Setter
         public Builder policyType(@Nullable String policyType) {
             this.policyType = policyType;
             return this;
         }
-        @CustomType.Setter
         public Builder principalName(@Nullable String principalName) {
             this.principalName = principalName;
             return this;
         }
-        @CustomType.Setter
         public Builder principalType(@Nullable String principalType) {
             this.principalType = principalType;
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
-        }
-        public GetPolicyAttachmentsResult build() {
-            final var o = new GetPolicyAttachmentsResult();
-            o.attachments = attachments;
-            o.id = id;
-            o.ids = ids;
-            o.language = language;
-            o.outputFile = outputFile;
-            o.policyName = policyName;
-            o.policyType = policyType;
-            o.principalName = principalName;
-            o.principalType = principalType;
-            o.resourceGroupId = resourceGroupId;
-            return o;
+        }        public GetPolicyAttachmentsResult build() {
+            return new GetPolicyAttachmentsResult(attachments, id, ids, language, outputFile, policyName, policyType, principalName, principalType, resourceGroupId);
         }
     }
 }

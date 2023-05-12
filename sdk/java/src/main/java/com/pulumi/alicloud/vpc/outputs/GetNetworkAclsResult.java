@@ -13,23 +13,48 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNetworkAclsResult {
-    private List<GetNetworkAclsAcl> acls;
+    private final List<GetNetworkAclsAcl> acls;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String networkAclName;
-    private @Nullable String outputFile;
-    private @Nullable String resourceId;
-    private @Nullable String resourceType;
-    private @Nullable String status;
-    private @Nullable String vpcId;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String networkAclName;
+    private final @Nullable String outputFile;
+    private final @Nullable String resourceId;
+    private final @Nullable String resourceType;
+    private final @Nullable String status;
+    private final @Nullable String vpcId;
 
-    private GetNetworkAclsResult() {}
+    @CustomType.Constructor
+    private GetNetworkAclsResult(
+        @CustomType.Parameter("acls") List<GetNetworkAclsAcl> acls,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("networkAclName") @Nullable String networkAclName,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("resourceId") @Nullable String resourceId,
+        @CustomType.Parameter("resourceType") @Nullable String resourceType,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("vpcId") @Nullable String vpcId) {
+        this.acls = acls;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.networkAclName = networkAclName;
+        this.outputFile = outputFile;
+        this.resourceId = resourceId;
+        this.resourceType = resourceType;
+        this.status = status;
+        this.vpcId = vpcId;
+    }
+
     public List<GetNetworkAclsAcl> acls() {
         return this.acls;
     }
@@ -75,7 +100,7 @@ public final class GetNetworkAclsResult {
     public static Builder builder(GetNetworkAclsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetNetworkAclsAcl> acls;
         private String id;
@@ -88,7 +113,11 @@ public final class GetNetworkAclsResult {
         private @Nullable String resourceType;
         private @Nullable String status;
         private @Nullable String vpcId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetNetworkAclsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acls = defaults.acls;
@@ -104,7 +133,6 @@ public final class GetNetworkAclsResult {
     	      this.vpcId = defaults.vpcId;
         }
 
-        @CustomType.Setter
         public Builder acls(List<GetNetworkAclsAcl> acls) {
             this.acls = Objects.requireNonNull(acls);
             return this;
@@ -112,12 +140,10 @@ public final class GetNetworkAclsResult {
         public Builder acls(GetNetworkAclsAcl... acls) {
             return acls(List.of(acls));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -125,12 +151,10 @@ public final class GetNetworkAclsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -138,50 +162,31 @@ public final class GetNetworkAclsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder networkAclName(@Nullable String networkAclName) {
             this.networkAclName = networkAclName;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder resourceId(@Nullable String resourceId) {
             this.resourceId = resourceId;
             return this;
         }
-        @CustomType.Setter
         public Builder resourceType(@Nullable String resourceType) {
             this.resourceType = resourceType;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
-        }
-        public GetNetworkAclsResult build() {
-            final var o = new GetNetworkAclsResult();
-            o.acls = acls;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.networkAclName = networkAclName;
-            o.outputFile = outputFile;
-            o.resourceId = resourceId;
-            o.resourceType = resourceType;
-            o.status = status;
-            o.vpcId = vpcId;
-            return o;
+        }        public GetNetworkAclsResult build() {
+            return new GetNetworkAclsResult(acls, id, ids, nameRegex, names, networkAclName, outputFile, resourceId, resourceType, status, vpcId);
         }
     }
 }

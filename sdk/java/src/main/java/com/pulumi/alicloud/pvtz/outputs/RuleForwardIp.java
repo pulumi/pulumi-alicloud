@@ -14,14 +14,21 @@ public final class RuleForwardIp {
      * @return The ip of the forwarding destination.
      * 
      */
-    private String ip;
+    private final String ip;
     /**
      * @return The port of the forwarding destination.
      * 
      */
-    private Integer port;
+    private final Integer port;
 
-    private RuleForwardIp() {}
+    @CustomType.Constructor
+    private RuleForwardIp(
+        @CustomType.Parameter("ip") String ip,
+        @CustomType.Parameter("port") Integer port) {
+        this.ip = ip;
+        this.port = port;
+    }
+
     /**
      * @return The ip of the forwarding destination.
      * 
@@ -44,32 +51,30 @@ public final class RuleForwardIp {
     public static Builder builder(RuleForwardIp defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String ip;
         private Integer port;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(RuleForwardIp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ip = defaults.ip;
     	      this.port = defaults.port;
         }
 
-        @CustomType.Setter
         public Builder ip(String ip) {
             this.ip = Objects.requireNonNull(ip);
             return this;
         }
-        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
-        }
-        public RuleForwardIp build() {
-            final var o = new RuleForwardIp();
-            o.ip = ip;
-            o.port = port;
-            return o;
+        }        public RuleForwardIp build() {
+            return new RuleForwardIp(ip, port);
         }
     }
 }

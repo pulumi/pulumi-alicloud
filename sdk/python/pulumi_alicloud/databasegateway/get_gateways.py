@@ -147,6 +147,7 @@ def get_gateways(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Gateway IDs.
     :param str name_regex: A regex string to filter results by Gateway name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str search_key: The search key.
     :param str status: The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
     """
@@ -203,6 +204,7 @@ def get_gateways_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Gateway IDs.
     :param str name_regex: A regex string to filter results by Gateway name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str search_key: The search key.
     :param str status: The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
     """

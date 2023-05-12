@@ -17,18 +17,18 @@ public final class GetMountTargetsResult {
      * @return AccessGroup of The MountTarget.
      * 
      */
-    private @Nullable String accessGroupName;
-    private String fileSystemId;
+    private final @Nullable String accessGroupName;
+    private final String fileSystemId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of MountTargetDomain.
      * 
      */
-    private List<String> ids;
+    private final List<String> ids;
     /**
      * @return MountTargetDomain of the MountTarget.
      * 
@@ -37,23 +37,23 @@ public final class GetMountTargetsResult {
      * 
      */
     @Deprecated /* Field 'mount_target_domain' has been deprecated from provider version 1.53.0. New field 'ids' replaces it. */
-    private @Nullable String mountTargetDomain;
+    private final @Nullable String mountTargetDomain;
     /**
      * @return (Available 1.95.0+) NetworkType of The MountTarget.
      * 
      */
-    private @Nullable String networkType;
-    private @Nullable String outputFile;
+    private final @Nullable String networkType;
+    private final @Nullable String outputFile;
     /**
      * @return (Available 1.95.0+) The status of the mount target.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
     /**
      * @return A list of MountTargetDomains. Each element contains the following attributes:
      * 
      */
-    private List<GetMountTargetsTarget> targets;
+    private final List<GetMountTargetsTarget> targets;
     /**
      * @return Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
      * 
@@ -62,19 +62,46 @@ public final class GetMountTargetsResult {
      * 
      */
     @Deprecated /* Field 'type' has been deprecated from provider version 1.95.0. New field 'network_type' replaces it. */
-    private @Nullable String type;
+    private final @Nullable String type;
     /**
      * @return VpcId of The MountTarget.
      * 
      */
-    private @Nullable String vpcId;
+    private final @Nullable String vpcId;
     /**
      * @return VSwitchId of The MountTarget.
      * 
      */
-    private @Nullable String vswitchId;
+    private final @Nullable String vswitchId;
 
-    private GetMountTargetsResult() {}
+    @CustomType.Constructor
+    private GetMountTargetsResult(
+        @CustomType.Parameter("accessGroupName") @Nullable String accessGroupName,
+        @CustomType.Parameter("fileSystemId") String fileSystemId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("mountTargetDomain") @Nullable String mountTargetDomain,
+        @CustomType.Parameter("networkType") @Nullable String networkType,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("targets") List<GetMountTargetsTarget> targets,
+        @CustomType.Parameter("type") @Nullable String type,
+        @CustomType.Parameter("vpcId") @Nullable String vpcId,
+        @CustomType.Parameter("vswitchId") @Nullable String vswitchId) {
+        this.accessGroupName = accessGroupName;
+        this.fileSystemId = fileSystemId;
+        this.id = id;
+        this.ids = ids;
+        this.mountTargetDomain = mountTargetDomain;
+        this.networkType = networkType;
+        this.outputFile = outputFile;
+        this.status = status;
+        this.targets = targets;
+        this.type = type;
+        this.vpcId = vpcId;
+        this.vswitchId = vswitchId;
+    }
+
     /**
      * @return AccessGroup of The MountTarget.
      * 
@@ -167,7 +194,7 @@ public final class GetMountTargetsResult {
     public static Builder builder(GetMountTargetsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String accessGroupName;
         private String fileSystemId;
@@ -181,7 +208,11 @@ public final class GetMountTargetsResult {
         private @Nullable String type;
         private @Nullable String vpcId;
         private @Nullable String vswitchId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetMountTargetsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessGroupName = defaults.accessGroupName;
@@ -198,22 +229,18 @@ public final class GetMountTargetsResult {
     	      this.vswitchId = defaults.vswitchId;
         }
 
-        @CustomType.Setter
         public Builder accessGroupName(@Nullable String accessGroupName) {
             this.accessGroupName = accessGroupName;
             return this;
         }
-        @CustomType.Setter
         public Builder fileSystemId(String fileSystemId) {
             this.fileSystemId = Objects.requireNonNull(fileSystemId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -221,27 +248,22 @@ public final class GetMountTargetsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder mountTargetDomain(@Nullable String mountTargetDomain) {
             this.mountTargetDomain = mountTargetDomain;
             return this;
         }
-        @CustomType.Setter
         public Builder networkType(@Nullable String networkType) {
             this.networkType = networkType;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder targets(List<GetMountTargetsTarget> targets) {
             this.targets = Objects.requireNonNull(targets);
             return this;
@@ -249,36 +271,19 @@ public final class GetMountTargetsResult {
         public Builder targets(GetMountTargetsTarget... targets) {
             return targets(List.of(targets));
         }
-        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
             this.vswitchId = vswitchId;
             return this;
-        }
-        public GetMountTargetsResult build() {
-            final var o = new GetMountTargetsResult();
-            o.accessGroupName = accessGroupName;
-            o.fileSystemId = fileSystemId;
-            o.id = id;
-            o.ids = ids;
-            o.mountTargetDomain = mountTargetDomain;
-            o.networkType = networkType;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.targets = targets;
-            o.type = type;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+        }        public GetMountTargetsResult build() {
+            return new GetMountTargetsResult(accessGroupName, fileSystemId, id, ids, mountTargetDomain, networkType, outputFile, status, targets, type, vpcId, vswitchId);
         }
     }
 }

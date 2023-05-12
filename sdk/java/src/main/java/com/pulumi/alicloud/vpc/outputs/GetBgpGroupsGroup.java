@@ -15,69 +15,98 @@ public final class GetBgpGroupsGroup {
      * @return The key used by the BGP group.
      * 
      */
-    private String authKey;
+    private final String authKey;
     /**
      * @return The name of the BGP group.
      * 
      */
-    private String bgpGroupName;
+    private final String bgpGroupName;
     /**
      * @return Description of the BGP group.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The hold time to wait for the incoming BGP message. If no message has been passed in after the hold time, the BGP neighbor is considered disconnected.
      * 
      */
-    private String hold;
+    private final String hold;
     /**
      * @return The ID of the Bgp Group.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return IP version.
      * 
      */
-    private String ipVersion;
+    private final String ipVersion;
     /**
      * @return Whether the AS number is false.
      * 
      */
-    private Boolean isFakeAsn;
+    private final Boolean isFakeAsn;
     /**
      * @return The keepalive time.
      * 
      */
-    private String keepalive;
+    private final String keepalive;
     /**
      * @return The local AS number.
      * 
      */
-    private Integer localAsn;
+    private final Integer localAsn;
     /**
      * @return The autonomous system (AS) number of the BGP peer.
      * 
      */
-    private Integer peerAsn;
+    private final Integer peerAsn;
     /**
      * @return Routing limits.
      * 
      */
-    private String routeLimit;
+    private final String routeLimit;
     /**
      * @return The ID of the VBR.
      * 
      */
-    private String routerId;
+    private final String routerId;
     /**
      * @return The status of the resource.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetBgpGroupsGroup() {}
+    @CustomType.Constructor
+    private GetBgpGroupsGroup(
+        @CustomType.Parameter("authKey") String authKey,
+        @CustomType.Parameter("bgpGroupName") String bgpGroupName,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("hold") String hold,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ipVersion") String ipVersion,
+        @CustomType.Parameter("isFakeAsn") Boolean isFakeAsn,
+        @CustomType.Parameter("keepalive") String keepalive,
+        @CustomType.Parameter("localAsn") Integer localAsn,
+        @CustomType.Parameter("peerAsn") Integer peerAsn,
+        @CustomType.Parameter("routeLimit") String routeLimit,
+        @CustomType.Parameter("routerId") String routerId,
+        @CustomType.Parameter("status") String status) {
+        this.authKey = authKey;
+        this.bgpGroupName = bgpGroupName;
+        this.description = description;
+        this.hold = hold;
+        this.id = id;
+        this.ipVersion = ipVersion;
+        this.isFakeAsn = isFakeAsn;
+        this.keepalive = keepalive;
+        this.localAsn = localAsn;
+        this.peerAsn = peerAsn;
+        this.routeLimit = routeLimit;
+        this.routerId = routerId;
+        this.status = status;
+    }
+
     /**
      * @return The key used by the BGP group.
      * 
@@ -177,7 +206,7 @@ public final class GetBgpGroupsGroup {
     public static Builder builder(GetBgpGroupsGroup defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String authKey;
         private String bgpGroupName;
@@ -192,7 +221,11 @@ public final class GetBgpGroupsGroup {
         private String routeLimit;
         private String routerId;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBgpGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authKey = defaults.authKey;
@@ -210,87 +243,59 @@ public final class GetBgpGroupsGroup {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder authKey(String authKey) {
             this.authKey = Objects.requireNonNull(authKey);
             return this;
         }
-        @CustomType.Setter
         public Builder bgpGroupName(String bgpGroupName) {
             this.bgpGroupName = Objects.requireNonNull(bgpGroupName);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder hold(String hold) {
             this.hold = Objects.requireNonNull(hold);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ipVersion(String ipVersion) {
             this.ipVersion = Objects.requireNonNull(ipVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder isFakeAsn(Boolean isFakeAsn) {
             this.isFakeAsn = Objects.requireNonNull(isFakeAsn);
             return this;
         }
-        @CustomType.Setter
         public Builder keepalive(String keepalive) {
             this.keepalive = Objects.requireNonNull(keepalive);
             return this;
         }
-        @CustomType.Setter
         public Builder localAsn(Integer localAsn) {
             this.localAsn = Objects.requireNonNull(localAsn);
             return this;
         }
-        @CustomType.Setter
         public Builder peerAsn(Integer peerAsn) {
             this.peerAsn = Objects.requireNonNull(peerAsn);
             return this;
         }
-        @CustomType.Setter
         public Builder routeLimit(String routeLimit) {
             this.routeLimit = Objects.requireNonNull(routeLimit);
             return this;
         }
-        @CustomType.Setter
         public Builder routerId(String routerId) {
             this.routerId = Objects.requireNonNull(routerId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetBgpGroupsGroup build() {
-            final var o = new GetBgpGroupsGroup();
-            o.authKey = authKey;
-            o.bgpGroupName = bgpGroupName;
-            o.description = description;
-            o.hold = hold;
-            o.id = id;
-            o.ipVersion = ipVersion;
-            o.isFakeAsn = isFakeAsn;
-            o.keepalive = keepalive;
-            o.localAsn = localAsn;
-            o.peerAsn = peerAsn;
-            o.routeLimit = routeLimit;
-            o.routerId = routerId;
-            o.status = status;
-            return o;
+        }        public GetBgpGroupsGroup build() {
+            return new GetBgpGroupsGroup(authKey, bgpGroupName, description, hold, id, ipVersion, isFakeAsn, keepalive, localAsn, peerAsn, routeLimit, routerId, status);
         }
     }
 }

@@ -13,40 +13,59 @@ public final class GetExpressSyncsSync {
      * @return The name of the OSS Bucket.
      * 
      */
-    private String bucketName;
+    private final String bucketName;
     /**
      * @return The prefix of the OSS Bucket.
      * 
      */
-    private String bucketPrefix;
+    private final String bucketPrefix;
     /**
      * @return The region of the OSS Bucket.
      * 
      */
-    private String bucketRegion;
+    private final String bucketRegion;
     /**
      * @return The description of the Express Sync.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the Express Sync.
      * 
      */
-    private String expressSyncId;
+    private final String expressSyncId;
     /**
      * @return The name of the Express Sync.
      * 
      */
-    private String expressSyncName;
-    private String id;
+    private final String expressSyncName;
+    private final String id;
     /**
      * @return The name of the message topic (Topic) corresponding to the Express Sync in the Alibaba Cloud Message Service MNS.
      * 
      */
-    private String mnsTopic;
+    private final String mnsTopic;
 
-    private GetExpressSyncsSync() {}
+    @CustomType.Constructor
+    private GetExpressSyncsSync(
+        @CustomType.Parameter("bucketName") String bucketName,
+        @CustomType.Parameter("bucketPrefix") String bucketPrefix,
+        @CustomType.Parameter("bucketRegion") String bucketRegion,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("expressSyncId") String expressSyncId,
+        @CustomType.Parameter("expressSyncName") String expressSyncName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("mnsTopic") String mnsTopic) {
+        this.bucketName = bucketName;
+        this.bucketPrefix = bucketPrefix;
+        this.bucketRegion = bucketRegion;
+        this.description = description;
+        this.expressSyncId = expressSyncId;
+        this.expressSyncName = expressSyncName;
+        this.id = id;
+        this.mnsTopic = mnsTopic;
+    }
+
     /**
      * @return The name of the OSS Bucket.
      * 
@@ -107,7 +126,7 @@ public final class GetExpressSyncsSync {
     public static Builder builder(GetExpressSyncsSync defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String bucketName;
         private String bucketPrefix;
@@ -117,7 +136,11 @@ public final class GetExpressSyncsSync {
         private String expressSyncName;
         private String id;
         private String mnsTopic;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetExpressSyncsSync defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucketName = defaults.bucketName;
@@ -130,57 +153,39 @@ public final class GetExpressSyncsSync {
     	      this.mnsTopic = defaults.mnsTopic;
         }
 
-        @CustomType.Setter
         public Builder bucketName(String bucketName) {
             this.bucketName = Objects.requireNonNull(bucketName);
             return this;
         }
-        @CustomType.Setter
         public Builder bucketPrefix(String bucketPrefix) {
             this.bucketPrefix = Objects.requireNonNull(bucketPrefix);
             return this;
         }
-        @CustomType.Setter
         public Builder bucketRegion(String bucketRegion) {
             this.bucketRegion = Objects.requireNonNull(bucketRegion);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder expressSyncId(String expressSyncId) {
             this.expressSyncId = Objects.requireNonNull(expressSyncId);
             return this;
         }
-        @CustomType.Setter
         public Builder expressSyncName(String expressSyncName) {
             this.expressSyncName = Objects.requireNonNull(expressSyncName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder mnsTopic(String mnsTopic) {
             this.mnsTopic = Objects.requireNonNull(mnsTopic);
             return this;
-        }
-        public GetExpressSyncsSync build() {
-            final var o = new GetExpressSyncsSync();
-            o.bucketName = bucketName;
-            o.bucketPrefix = bucketPrefix;
-            o.bucketRegion = bucketRegion;
-            o.description = description;
-            o.expressSyncId = expressSyncId;
-            o.expressSyncName = expressSyncName;
-            o.id = id;
-            o.mnsTopic = mnsTopic;
-            return o;
+        }        public GetExpressSyncsSync build() {
+            return new GetExpressSyncsSync(bucketName, bucketPrefix, bucketRegion, description, expressSyncId, expressSyncName, id, mnsTopic);
         }
     }
 }

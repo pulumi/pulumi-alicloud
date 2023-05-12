@@ -15,54 +15,77 @@ public final class GetChainsChain {
      * @return The configuration of delivery chain.
      * 
      */
-    private List<GetChainsChainChainConfig> chainConfigs;
+    private final List<GetChainsChainChainConfig> chainConfigs;
     /**
      * @return The ID of delivery chain.
      * 
      */
-    private String chainId;
+    private final String chainId;
     /**
      * @return The name of delivery chain.
      * 
      */
-    private String chainName;
+    private final String chainName;
     /**
      * @return The creation time of delivery chain.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The description of delivery chain.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The resource ID of the delivery chain. The value formats as `&lt;instance_id&gt;:&lt;chain_id&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of CR Enterprise Edition instance.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return The modification time of delivery chain description.
      * 
      */
-    private String modifiedTime;
+    private final String modifiedTime;
     /**
      * @return Delivery chain scope ID.
      * 
      */
-    private String scopeId;
+    private final String scopeId;
     /**
      * @return Delivery chain scope type.
      * 
      */
-    private String scopeType;
+    private final String scopeType;
 
-    private GetChainsChain() {}
+    @CustomType.Constructor
+    private GetChainsChain(
+        @CustomType.Parameter("chainConfigs") List<GetChainsChainChainConfig> chainConfigs,
+        @CustomType.Parameter("chainId") String chainId,
+        @CustomType.Parameter("chainName") String chainName,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("modifiedTime") String modifiedTime,
+        @CustomType.Parameter("scopeId") String scopeId,
+        @CustomType.Parameter("scopeType") String scopeType) {
+        this.chainConfigs = chainConfigs;
+        this.chainId = chainId;
+        this.chainName = chainName;
+        this.createTime = createTime;
+        this.description = description;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.modifiedTime = modifiedTime;
+        this.scopeId = scopeId;
+        this.scopeType = scopeType;
+    }
+
     /**
      * @return The configuration of delivery chain.
      * 
@@ -141,7 +164,7 @@ public final class GetChainsChain {
     public static Builder builder(GetChainsChain defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetChainsChainChainConfig> chainConfigs;
         private String chainId;
@@ -153,7 +176,11 @@ public final class GetChainsChain {
         private String modifiedTime;
         private String scopeId;
         private String scopeType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetChainsChain defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.chainConfigs = defaults.chainConfigs;
@@ -168,7 +195,6 @@ public final class GetChainsChain {
     	      this.scopeType = defaults.scopeType;
         }
 
-        @CustomType.Setter
         public Builder chainConfigs(List<GetChainsChainChainConfig> chainConfigs) {
             this.chainConfigs = Objects.requireNonNull(chainConfigs);
             return this;
@@ -176,64 +202,43 @@ public final class GetChainsChain {
         public Builder chainConfigs(GetChainsChainChainConfig... chainConfigs) {
             return chainConfigs(List.of(chainConfigs));
         }
-        @CustomType.Setter
         public Builder chainId(String chainId) {
             this.chainId = Objects.requireNonNull(chainId);
             return this;
         }
-        @CustomType.Setter
         public Builder chainName(String chainName) {
             this.chainName = Objects.requireNonNull(chainName);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder modifiedTime(String modifiedTime) {
             this.modifiedTime = Objects.requireNonNull(modifiedTime);
             return this;
         }
-        @CustomType.Setter
         public Builder scopeId(String scopeId) {
             this.scopeId = Objects.requireNonNull(scopeId);
             return this;
         }
-        @CustomType.Setter
         public Builder scopeType(String scopeType) {
             this.scopeType = Objects.requireNonNull(scopeType);
             return this;
-        }
-        public GetChainsChain build() {
-            final var o = new GetChainsChain();
-            o.chainConfigs = chainConfigs;
-            o.chainId = chainId;
-            o.chainName = chainName;
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.modifiedTime = modifiedTime;
-            o.scopeId = scopeId;
-            o.scopeType = scopeType;
-            return o;
+        }        public GetChainsChain build() {
+            return new GetChainsChain(chainConfigs, chainId, chainName, createTime, description, id, instanceId, modifiedTime, scopeId, scopeType);
         }
     }
 }

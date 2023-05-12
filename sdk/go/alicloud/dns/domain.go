@@ -10,6 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:** This resource has been renamed to dns.AlidnsDomain from version 1.95.0.
+//
+// Provides a DNS resource.
+//
+// > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
+//
 // ## Example Usage
 //
 // ```go

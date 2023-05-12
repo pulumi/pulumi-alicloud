@@ -13,29 +13,42 @@ public final class GetAdditionalCertificatesCertificate {
      * @return The ID of the GA instance.
      * 
      */
-    private String acceleratorId;
+    private final String acceleratorId;
     /**
      * @return The Certificate ID.
      * 
      */
-    private String certificateId;
+    private final String certificateId;
     /**
      * @return The domain name specified by the certificate.
      * 
      */
-    private String domain;
+    private final String domain;
     /**
      * @return The ID of the Additional Certificate. The value formats as `&lt;accelerator_id&gt;:&lt;listener_id&gt;:&lt;domain&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the listener. Only HTTPS listeners support this parameter.
      * 
      */
-    private String listenerId;
+    private final String listenerId;
 
-    private GetAdditionalCertificatesCertificate() {}
+    @CustomType.Constructor
+    private GetAdditionalCertificatesCertificate(
+        @CustomType.Parameter("acceleratorId") String acceleratorId,
+        @CustomType.Parameter("certificateId") String certificateId,
+        @CustomType.Parameter("domain") String domain,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("listenerId") String listenerId) {
+        this.acceleratorId = acceleratorId;
+        this.certificateId = certificateId;
+        this.domain = domain;
+        this.id = id;
+        this.listenerId = listenerId;
+    }
+
     /**
      * @return The ID of the GA instance.
      * 
@@ -79,14 +92,18 @@ public final class GetAdditionalCertificatesCertificate {
     public static Builder builder(GetAdditionalCertificatesCertificate defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String acceleratorId;
         private String certificateId;
         private String domain;
         private String id;
         private String listenerId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAdditionalCertificatesCertificate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorId = defaults.acceleratorId;
@@ -96,39 +113,27 @@ public final class GetAdditionalCertificatesCertificate {
     	      this.listenerId = defaults.listenerId;
         }
 
-        @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
             this.acceleratorId = Objects.requireNonNull(acceleratorId);
             return this;
         }
-        @CustomType.Setter
         public Builder certificateId(String certificateId) {
             this.certificateId = Objects.requireNonNull(certificateId);
             return this;
         }
-        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder listenerId(String listenerId) {
             this.listenerId = Objects.requireNonNull(listenerId);
             return this;
-        }
-        public GetAdditionalCertificatesCertificate build() {
-            final var o = new GetAdditionalCertificatesCertificate();
-            o.acceleratorId = acceleratorId;
-            o.certificateId = certificateId;
-            o.domain = domain;
-            o.id = id;
-            o.listenerId = listenerId;
-            return o;
+        }        public GetAdditionalCertificatesCertificate build() {
+            return new GetAdditionalCertificatesCertificate(acceleratorId, certificateId, domain, id, listenerId);
         }
     }
 }

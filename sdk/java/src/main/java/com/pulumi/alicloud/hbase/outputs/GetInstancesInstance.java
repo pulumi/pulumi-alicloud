@@ -18,114 +18,161 @@ public final class GetInstancesInstance {
      * @return The Backup Status of the instance.
      * 
      */
-    private String backupStatus;
+    private final String backupStatus;
     /**
      * @return Core node disk size, unit:GB.
      * 
      */
-    private Integer coreDiskSize;
+    private final Integer coreDiskSize;
     /**
      * @return Cloud_ssd or cloud_efficiency
      * 
      */
-    private String coreDiskType;
+    private final String coreDiskType;
     /**
      * @return Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
      * 
      */
-    private String coreInstanceType;
+    private final String coreInstanceType;
     /**
      * @return Same with &#34;core_instance_quantity&#34;
      * 
      */
-    private Integer coreNodeCount;
+    private final Integer coreNodeCount;
     /**
      * @return The created time of the instance.
      * 
      */
-    private String createdTime;
+    private final String createdTime;
     /**
      * @return The switch of delete protection.
      * 
      */
-    private Boolean deletionProtection;
+    private final Boolean deletionProtection;
     /**
      * @return The engine of the instance.
      * 
      */
-    private String engine;
+    private final String engine;
     /**
      * @return The engine_version of the instance.
      * 
      */
-    private String engineVersion;
+    private final String engineVersion;
     /**
      * @return The expire time of the instance.
      * 
      */
-    private String expireTime;
+    private final String expireTime;
     /**
      * @return The ID of the HBase instance.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Like hbase.sn2.2xlarge, hbase.sn2.4xlarge, hbase.sn2.8xlarge and so on.
      * 
      */
-    private String masterInstanceType;
+    private final String masterInstanceType;
     /**
      * @return The node count of master
      * 
      */
-    private Integer masterNodeCount;
+    private final Integer masterNodeCount;
     /**
      * @return The name of the HBase instance.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return Classic network or VPC.
      * 
      */
-    private String networkType;
+    private final String networkType;
     /**
      * @return Billing method. Value options are `PostPaid` for  Pay-As-You-Go and `PrePaid` for yearly or monthly subscription.
      * 
      */
-    private String payType;
+    private final String payType;
     /**
      * @return Region ID the instance belongs to.
      * 
      */
-    private String regionId;
+    private final String regionId;
     /**
      * @return Status of the instance.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private final @Nullable Map<String,Object> tags;
     /**
      * @return VPC ID the instance belongs to.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
     /**
      * @return VSwitch ID the instance belongs to.
      * 
      */
-    private String vswitchId;
+    private final String vswitchId;
     /**
      * @return Zone ID the instance belongs to.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetInstancesInstance() {}
+    @CustomType.Constructor
+    private GetInstancesInstance(
+        @CustomType.Parameter("backupStatus") String backupStatus,
+        @CustomType.Parameter("coreDiskSize") Integer coreDiskSize,
+        @CustomType.Parameter("coreDiskType") String coreDiskType,
+        @CustomType.Parameter("coreInstanceType") String coreInstanceType,
+        @CustomType.Parameter("coreNodeCount") Integer coreNodeCount,
+        @CustomType.Parameter("createdTime") String createdTime,
+        @CustomType.Parameter("deletionProtection") Boolean deletionProtection,
+        @CustomType.Parameter("engine") String engine,
+        @CustomType.Parameter("engineVersion") String engineVersion,
+        @CustomType.Parameter("expireTime") String expireTime,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("masterInstanceType") String masterInstanceType,
+        @CustomType.Parameter("masterNodeCount") Integer masterNodeCount,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("networkType") String networkType,
+        @CustomType.Parameter("payType") String payType,
+        @CustomType.Parameter("regionId") String regionId,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("vswitchId") String vswitchId,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.backupStatus = backupStatus;
+        this.coreDiskSize = coreDiskSize;
+        this.coreDiskType = coreDiskType;
+        this.coreInstanceType = coreInstanceType;
+        this.coreNodeCount = coreNodeCount;
+        this.createdTime = createdTime;
+        this.deletionProtection = deletionProtection;
+        this.engine = engine;
+        this.engineVersion = engineVersion;
+        this.expireTime = expireTime;
+        this.id = id;
+        this.masterInstanceType = masterInstanceType;
+        this.masterNodeCount = masterNodeCount;
+        this.name = name;
+        this.networkType = networkType;
+        this.payType = payType;
+        this.regionId = regionId;
+        this.status = status;
+        this.tags = tags;
+        this.vpcId = vpcId;
+        this.vswitchId = vswitchId;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return The Backup Status of the instance.
      * 
@@ -288,7 +335,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String backupStatus;
         private Integer coreDiskSize;
@@ -312,7 +359,11 @@ public final class GetInstancesInstance {
         private String vpcId;
         private String vswitchId;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupStatus = defaults.backupStatus;
@@ -339,141 +390,95 @@ public final class GetInstancesInstance {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder backupStatus(String backupStatus) {
             this.backupStatus = Objects.requireNonNull(backupStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder coreDiskSize(Integer coreDiskSize) {
             this.coreDiskSize = Objects.requireNonNull(coreDiskSize);
             return this;
         }
-        @CustomType.Setter
         public Builder coreDiskType(String coreDiskType) {
             this.coreDiskType = Objects.requireNonNull(coreDiskType);
             return this;
         }
-        @CustomType.Setter
         public Builder coreInstanceType(String coreInstanceType) {
             this.coreInstanceType = Objects.requireNonNull(coreInstanceType);
             return this;
         }
-        @CustomType.Setter
         public Builder coreNodeCount(Integer coreNodeCount) {
             this.coreNodeCount = Objects.requireNonNull(coreNodeCount);
             return this;
         }
-        @CustomType.Setter
         public Builder createdTime(String createdTime) {
             this.createdTime = Objects.requireNonNull(createdTime);
             return this;
         }
-        @CustomType.Setter
         public Builder deletionProtection(Boolean deletionProtection) {
             this.deletionProtection = Objects.requireNonNull(deletionProtection);
             return this;
         }
-        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
         }
-        @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
             this.engineVersion = Objects.requireNonNull(engineVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder expireTime(String expireTime) {
             this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder masterInstanceType(String masterInstanceType) {
             this.masterInstanceType = Objects.requireNonNull(masterInstanceType);
             return this;
         }
-        @CustomType.Setter
         public Builder masterNodeCount(Integer masterNodeCount) {
             this.masterNodeCount = Objects.requireNonNull(masterNodeCount);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
             return this;
         }
-        @CustomType.Setter
         public Builder payType(String payType) {
             this.payType = Objects.requireNonNull(payType);
             return this;
         }
-        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.backupStatus = backupStatus;
-            o.coreDiskSize = coreDiskSize;
-            o.coreDiskType = coreDiskType;
-            o.coreInstanceType = coreInstanceType;
-            o.coreNodeCount = coreNodeCount;
-            o.createdTime = createdTime;
-            o.deletionProtection = deletionProtection;
-            o.engine = engine;
-            o.engineVersion = engineVersion;
-            o.expireTime = expireTime;
-            o.id = id;
-            o.masterInstanceType = masterInstanceType;
-            o.masterNodeCount = masterNodeCount;
-            o.name = name;
-            o.networkType = networkType;
-            o.payType = payType;
-            o.regionId = regionId;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetInstancesInstance build() {
+            return new GetInstancesInstance(backupStatus, coreDiskSize, coreDiskType, coreInstanceType, coreNodeCount, createdTime, deletionProtection, engine, engineVersion, expireTime, id, masterInstanceType, masterNodeCount, name, networkType, payType, regionId, status, tags, vpcId, vswitchId, zoneId);
         }
     }
 }

@@ -140,6 +140,7 @@ def get_traffic_mirror_filters(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Traffic Mirror Filter IDs.
     :param str name_regex: A regex string to filter results by Traffic Mirror Filter name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
     :param str traffic_mirror_filter_name: The name of the filter.
     """
@@ -196,6 +197,7 @@ def get_traffic_mirror_filters_output(ids: Optional[pulumi.Input[Optional[Sequen
 
     :param Sequence[str] ids: A list of Traffic Mirror Filter IDs.
     :param str name_regex: A regex string to filter results by Traffic Mirror Filter name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
     :param str traffic_mirror_filter_name: The name of the filter.
     """

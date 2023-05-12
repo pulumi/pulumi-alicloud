@@ -16,45 +16,66 @@ public final class GetEcsPrefixListsList {
      * @return The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
      * 
      */
-    private String addressFamily;
+    private final String addressFamily;
     /**
      * @return The amount of associated resources.
      * 
      */
-    private Integer associationCount;
+    private final Integer associationCount;
     /**
      * @return The time when the prefix list was created.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The description of the prefix list.
      * 
      */
-    private String description;
-    private List<GetEcsPrefixListsListEntry> entries;
+    private final String description;
+    private final List<GetEcsPrefixListsListEntry> entries;
     /**
      * @return The ID of the prefix list.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The maximum number of entries that the prefix list supports.
      * 
      */
-    private Integer maxEntries;
+    private final Integer maxEntries;
     /**
      * @return The ID of the prefix list.
      * 
      */
-    private String prefixListId;
+    private final String prefixListId;
     /**
      * @return The name of the prefix list.
      * 
      */
-    private String prefixListName;
+    private final String prefixListName;
 
-    private GetEcsPrefixListsList() {}
+    @CustomType.Constructor
+    private GetEcsPrefixListsList(
+        @CustomType.Parameter("addressFamily") String addressFamily,
+        @CustomType.Parameter("associationCount") Integer associationCount,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("entries") List<GetEcsPrefixListsListEntry> entries,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("maxEntries") Integer maxEntries,
+        @CustomType.Parameter("prefixListId") String prefixListId,
+        @CustomType.Parameter("prefixListName") String prefixListName) {
+        this.addressFamily = addressFamily;
+        this.associationCount = associationCount;
+        this.createTime = createTime;
+        this.description = description;
+        this.entries = entries;
+        this.id = id;
+        this.maxEntries = maxEntries;
+        this.prefixListId = prefixListId;
+        this.prefixListName = prefixListName;
+    }
+
     /**
      * @return The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
      * 
@@ -122,7 +143,7 @@ public final class GetEcsPrefixListsList {
     public static Builder builder(GetEcsPrefixListsList defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String addressFamily;
         private Integer associationCount;
@@ -133,7 +154,11 @@ public final class GetEcsPrefixListsList {
         private Integer maxEntries;
         private String prefixListId;
         private String prefixListName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEcsPrefixListsList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addressFamily = defaults.addressFamily;
@@ -147,27 +172,22 @@ public final class GetEcsPrefixListsList {
     	      this.prefixListName = defaults.prefixListName;
         }
 
-        @CustomType.Setter
         public Builder addressFamily(String addressFamily) {
             this.addressFamily = Objects.requireNonNull(addressFamily);
             return this;
         }
-        @CustomType.Setter
         public Builder associationCount(Integer associationCount) {
             this.associationCount = Objects.requireNonNull(associationCount);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder entries(List<GetEcsPrefixListsListEntry> entries) {
             this.entries = Objects.requireNonNull(entries);
             return this;
@@ -175,38 +195,23 @@ public final class GetEcsPrefixListsList {
         public Builder entries(GetEcsPrefixListsListEntry... entries) {
             return entries(List.of(entries));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder maxEntries(Integer maxEntries) {
             this.maxEntries = Objects.requireNonNull(maxEntries);
             return this;
         }
-        @CustomType.Setter
         public Builder prefixListId(String prefixListId) {
             this.prefixListId = Objects.requireNonNull(prefixListId);
             return this;
         }
-        @CustomType.Setter
         public Builder prefixListName(String prefixListName) {
             this.prefixListName = Objects.requireNonNull(prefixListName);
             return this;
-        }
-        public GetEcsPrefixListsList build() {
-            final var o = new GetEcsPrefixListsList();
-            o.addressFamily = addressFamily;
-            o.associationCount = associationCount;
-            o.createTime = createTime;
-            o.description = description;
-            o.entries = entries;
-            o.id = id;
-            o.maxEntries = maxEntries;
-            o.prefixListId = prefixListId;
-            o.prefixListName = prefixListName;
-            return o;
+        }        public GetEcsPrefixListsList build() {
+            return new GetEcsPrefixListsList(addressFamily, associationCount, createTime, description, entries, id, maxEntries, prefixListId, prefixListName);
         }
     }
 }

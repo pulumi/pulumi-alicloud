@@ -17,64 +17,91 @@ public final class InstanceAdAuthServer {
      * @return The username of the account that is used for the AD server.
      * 
      */
-    private String account;
+    private final String account;
     /**
      * @return The Base distinguished name (DN).
      * 
      */
-    private String baseDn;
+    private final String baseDn;
     /**
      * @return The domain on the AD server.
      * 
      */
-    private String domain;
+    private final String domain;
     /**
      * @return The field that is used to indicate the email address of a user on the AD server.
      * 
      */
-    private @Nullable String emailMapping;
+    private final @Nullable String emailMapping;
     /**
      * @return The condition that is used to filter users.
      * 
      */
-    private @Nullable String filter;
+    private final @Nullable String filter;
     /**
      * @return Specifies whether to support SSL.
      * 
      */
-    private Boolean isSsl;
+    private final Boolean isSsl;
     /**
      * @return The field that is used to indicate the mobile phone number of a user on the AD server.
      * 
      */
-    private @Nullable String mobileMapping;
+    private final @Nullable String mobileMapping;
     /**
      * @return The field that is used to indicate the name of a user on the AD server.
      * 
      */
-    private @Nullable String nameMapping;
+    private final @Nullable String nameMapping;
     /**
      * @return The password of the account that is used for the AD server.
      * 
      */
-    private String password;
+    private final String password;
     /**
      * @return The port that is used to access the AD server.
      * 
      */
-    private Integer port;
+    private final Integer port;
     /**
      * @return The address of the AD server.
      * 
      */
-    private String server;
+    private final String server;
     /**
      * @return The address of the secondary AD server.
      * 
      */
-    private @Nullable String standbyServer;
+    private final @Nullable String standbyServer;
 
-    private InstanceAdAuthServer() {}
+    @CustomType.Constructor
+    private InstanceAdAuthServer(
+        @CustomType.Parameter("account") String account,
+        @CustomType.Parameter("baseDn") String baseDn,
+        @CustomType.Parameter("domain") String domain,
+        @CustomType.Parameter("emailMapping") @Nullable String emailMapping,
+        @CustomType.Parameter("filter") @Nullable String filter,
+        @CustomType.Parameter("isSsl") Boolean isSsl,
+        @CustomType.Parameter("mobileMapping") @Nullable String mobileMapping,
+        @CustomType.Parameter("nameMapping") @Nullable String nameMapping,
+        @CustomType.Parameter("password") String password,
+        @CustomType.Parameter("port") Integer port,
+        @CustomType.Parameter("server") String server,
+        @CustomType.Parameter("standbyServer") @Nullable String standbyServer) {
+        this.account = account;
+        this.baseDn = baseDn;
+        this.domain = domain;
+        this.emailMapping = emailMapping;
+        this.filter = filter;
+        this.isSsl = isSsl;
+        this.mobileMapping = mobileMapping;
+        this.nameMapping = nameMapping;
+        this.password = password;
+        this.port = port;
+        this.server = server;
+        this.standbyServer = standbyServer;
+    }
+
     /**
      * @return The username of the account that is used for the AD server.
      * 
@@ -167,7 +194,7 @@ public final class InstanceAdAuthServer {
     public static Builder builder(InstanceAdAuthServer defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String account;
         private String baseDn;
@@ -181,7 +208,11 @@ public final class InstanceAdAuthServer {
         private Integer port;
         private String server;
         private @Nullable String standbyServer;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(InstanceAdAuthServer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.account = defaults.account;
@@ -198,81 +229,55 @@ public final class InstanceAdAuthServer {
     	      this.standbyServer = defaults.standbyServer;
         }
 
-        @CustomType.Setter
         public Builder account(String account) {
             this.account = Objects.requireNonNull(account);
             return this;
         }
-        @CustomType.Setter
         public Builder baseDn(String baseDn) {
             this.baseDn = Objects.requireNonNull(baseDn);
             return this;
         }
-        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
-        @CustomType.Setter
         public Builder emailMapping(@Nullable String emailMapping) {
             this.emailMapping = emailMapping;
             return this;
         }
-        @CustomType.Setter
         public Builder filter(@Nullable String filter) {
             this.filter = filter;
             return this;
         }
-        @CustomType.Setter
         public Builder isSsl(Boolean isSsl) {
             this.isSsl = Objects.requireNonNull(isSsl);
             return this;
         }
-        @CustomType.Setter
         public Builder mobileMapping(@Nullable String mobileMapping) {
             this.mobileMapping = mobileMapping;
             return this;
         }
-        @CustomType.Setter
         public Builder nameMapping(@Nullable String nameMapping) {
             this.nameMapping = nameMapping;
             return this;
         }
-        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
-        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
-        @CustomType.Setter
         public Builder server(String server) {
             this.server = Objects.requireNonNull(server);
             return this;
         }
-        @CustomType.Setter
         public Builder standbyServer(@Nullable String standbyServer) {
             this.standbyServer = standbyServer;
             return this;
-        }
-        public InstanceAdAuthServer build() {
-            final var o = new InstanceAdAuthServer();
-            o.account = account;
-            o.baseDn = baseDn;
-            o.domain = domain;
-            o.emailMapping = emailMapping;
-            o.filter = filter;
-            o.isSsl = isSsl;
-            o.mobileMapping = mobileMapping;
-            o.nameMapping = nameMapping;
-            o.password = password;
-            o.port = port;
-            o.server = server;
-            o.standbyServer = standbyServer;
-            return o;
+        }        public InstanceAdAuthServer build() {
+            return new InstanceAdAuthServer(account, baseDn, domain, emailMapping, filter, isSsl, mobileMapping, nameMapping, password, port, server, standbyServer);
         }
     }
 }

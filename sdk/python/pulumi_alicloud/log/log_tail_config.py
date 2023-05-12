@@ -260,6 +260,39 @@ class LogTailConfig(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        The Logtail access service is a log collection agent provided by Log Service.
+        You can use Logtail to collect logs from servers such as Alibaba Cloud Elastic
+        Compute Service (ECS) instances in real time in the Log Service console. [Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm)
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_project = alicloud.log.Project("exampleProject", description="create by terraform")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_log_tail_config = alicloud.log.LogTailConfig("exampleLogTailConfig",
+            project=example_project.name,
+            logstore=example_store.name,
+            input_type="file",
+            log_sample="test",
+            output_type="LogService",
+            input_detail=(lambda path: open(path).read())("config.json"))
+        ```
+        ## Module Support
+
+        You can use the existing sls-logtail module
+        to create logtail config, machine group, install logtail on ECS instances and join instances into machine group one-click.
+
         ## Import
 
         Logtial config can be imported using the id, e.g.
@@ -285,6 +318,39 @@ class LogTailConfig(pulumi.CustomResource):
                  args: LogTailConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The Logtail access service is a log collection agent provided by Log Service.
+        You can use Logtail to collect logs from servers such as Alibaba Cloud Elastic
+        Compute Service (ECS) instances in real time in the Log Service console. [Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm)
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_project = alicloud.log.Project("exampleProject", description="create by terraform")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            retention_period=3650,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_log_tail_config = alicloud.log.LogTailConfig("exampleLogTailConfig",
+            project=example_project.name,
+            logstore=example_store.name,
+            input_type="file",
+            log_sample="test",
+            output_type="LogService",
+            input_detail=(lambda path: open(path).read())("config.json"))
+        ```
+        ## Module Support
+
+        You can use the existing sls-logtail module
+        to create logtail config, machine group, install logtail on ECS instances and join instances into machine group one-click.
+
         ## Import
 
         Logtial config can be imported using the id, e.g.

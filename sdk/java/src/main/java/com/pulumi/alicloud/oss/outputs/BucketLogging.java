@@ -15,14 +15,21 @@ public final class BucketLogging {
      * @return The name of the bucket that will receive the log objects.
      * 
      */
-    private String targetBucket;
+    private final String targetBucket;
     /**
      * @return To specify a key prefix for log objects.
      * 
      */
-    private @Nullable String targetPrefix;
+    private final @Nullable String targetPrefix;
 
-    private BucketLogging() {}
+    @CustomType.Constructor
+    private BucketLogging(
+        @CustomType.Parameter("targetBucket") String targetBucket,
+        @CustomType.Parameter("targetPrefix") @Nullable String targetPrefix) {
+        this.targetBucket = targetBucket;
+        this.targetPrefix = targetPrefix;
+    }
+
     /**
      * @return The name of the bucket that will receive the log objects.
      * 
@@ -45,32 +52,30 @@ public final class BucketLogging {
     public static Builder builder(BucketLogging defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String targetBucket;
         private @Nullable String targetPrefix;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(BucketLogging defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.targetBucket = defaults.targetBucket;
     	      this.targetPrefix = defaults.targetPrefix;
         }
 
-        @CustomType.Setter
         public Builder targetBucket(String targetBucket) {
             this.targetBucket = Objects.requireNonNull(targetBucket);
             return this;
         }
-        @CustomType.Setter
         public Builder targetPrefix(@Nullable String targetPrefix) {
             this.targetPrefix = targetPrefix;
             return this;
-        }
-        public BucketLogging build() {
-            final var o = new BucketLogging();
-            o.targetBucket = targetBucket;
-            o.targetPrefix = targetPrefix;
-            return o;
+        }        public BucketLogging build() {
+            return new BucketLogging(targetBucket, targetPrefix);
         }
     }
 }

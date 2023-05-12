@@ -15,154 +15,217 @@ public final class GetDedicatedHostsHost {
      * @return Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
      * 
      */
-    private String allocationStatus;
+    private final String allocationStatus;
     /**
      * @return The ID of the bastion host with which the host is associated.
      * 
      */
-    private String bastionInstanceId;
+    private final String bastionInstanceId;
     /**
      * @return The numeric value of the CPU over commit ratio of the dedicated cluster.
      * 
      */
-    private String cpuAllocationRatio;
+    private final String cpuAllocationRatio;
     /**
      * @return The number of CPU cores used by the host.
      * 
      */
-    private String cpuUsed;
+    private final String cpuUsed;
     /**
      * @return The time when the host was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The ID of the dedicated cluster in which the host is created.
      * 
      */
-    private String dedicatedHostGroupId;
+    private final String dedicatedHostGroupId;
     /**
      * @return The ID of the host.
      * 
      */
-    private String dedicatedHostId;
+    private final String dedicatedHostId;
     /**
      * @return The disk usage in percentage.
      * 
      */
-    private String diskAllocationRatio;
+    private final String diskAllocationRatio;
     /**
      * @return The Elastic Compute Service (ECS) instance type.
      * 
      */
-    private String ecsClassCode;
+    private final String ecsClassCode;
     /**
      * @return The time when the host expires. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
      * 
      */
-    private String endTime;
+    private final String endTime;
     /**
      * @return The type of the database engine that is used by the host.
      * 
      */
-    private String engine;
+    private final String engine;
     /**
      * @return The time when the host expires. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
      * 
      */
-    private String expiredTime;
+    private final String expiredTime;
     /**
      * @return The instance type of the host.
      * 
      */
-    private String hostClass;
+    private final String hostClass;
     /**
      * @return The number of CPU cores specified for the host. Unit: `core`.
      * 
      */
-    private String hostCpu;
+    private final String hostCpu;
     /**
      * @return The memory of the host. Unit: `GB`.
      * 
      */
-    private String hostMem;
+    private final String hostMem;
     /**
      * @return The name of the host.
      * 
      */
-    private String hostName;
+    private final String hostName;
     /**
      * @return The total storage capacity of the host. Unit: `GB`.
      * 
      */
-    private String hostStorage;
+    private final String hostStorage;
     /**
      * @return The storage type of the host.
      * 
      */
-    private String hostType;
+    private final String hostType;
     /**
      * @return The ID of the Dedicated Host. The value formats as `&lt;dedicated_host_group_id&gt;:&lt;dedicated_host_id&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The image type of the host.
      * 
      */
-    private String imageCategory;
+    private final String imageCategory;
     /**
      * @return The IP address of the host.
      * 
      */
-    private String ipAddress;
+    private final String ipAddress;
     /**
      * @return The memory usage in percentage.
      * 
      */
-    private String memAllocationRatio;
+    private final String memAllocationRatio;
     /**
      * @return The amount of memory used by the host. Unit: `GB`.
      * 
      */
-    private String memoryUsed;
+    private final String memoryUsed;
     /**
      * @return Indicates whether you have the OS permissions on the host. Valid values: `0`: You do not have the OS permissions on the host. `1`: You have the OS permissions on the host.
      * 
      */
-    private String openPermission;
+    private final String openPermission;
     /**
      * @return The state of the host.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The storage usage of the host. Unit: `GB`.
      * 
      */
-    private String storageUsed;
+    private final String storageUsed;
     /**
      * @return The tag of the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
     /**
      * @return The ID of the virtual private cloud (VPC) to which the host is connected.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
     /**
      * @return The ID of the vSwitch.
      * 
      */
-    private String vswitchId;
+    private final String vswitchId;
     /**
      * @return The zone ID of the host.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetDedicatedHostsHost() {}
+    @CustomType.Constructor
+    private GetDedicatedHostsHost(
+        @CustomType.Parameter("allocationStatus") String allocationStatus,
+        @CustomType.Parameter("bastionInstanceId") String bastionInstanceId,
+        @CustomType.Parameter("cpuAllocationRatio") String cpuAllocationRatio,
+        @CustomType.Parameter("cpuUsed") String cpuUsed,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("dedicatedHostGroupId") String dedicatedHostGroupId,
+        @CustomType.Parameter("dedicatedHostId") String dedicatedHostId,
+        @CustomType.Parameter("diskAllocationRatio") String diskAllocationRatio,
+        @CustomType.Parameter("ecsClassCode") String ecsClassCode,
+        @CustomType.Parameter("endTime") String endTime,
+        @CustomType.Parameter("engine") String engine,
+        @CustomType.Parameter("expiredTime") String expiredTime,
+        @CustomType.Parameter("hostClass") String hostClass,
+        @CustomType.Parameter("hostCpu") String hostCpu,
+        @CustomType.Parameter("hostMem") String hostMem,
+        @CustomType.Parameter("hostName") String hostName,
+        @CustomType.Parameter("hostStorage") String hostStorage,
+        @CustomType.Parameter("hostType") String hostType,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("imageCategory") String imageCategory,
+        @CustomType.Parameter("ipAddress") String ipAddress,
+        @CustomType.Parameter("memAllocationRatio") String memAllocationRatio,
+        @CustomType.Parameter("memoryUsed") String memoryUsed,
+        @CustomType.Parameter("openPermission") String openPermission,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("storageUsed") String storageUsed,
+        @CustomType.Parameter("tags") Map<String,Object> tags,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("vswitchId") String vswitchId,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.allocationStatus = allocationStatus;
+        this.bastionInstanceId = bastionInstanceId;
+        this.cpuAllocationRatio = cpuAllocationRatio;
+        this.cpuUsed = cpuUsed;
+        this.createTime = createTime;
+        this.dedicatedHostGroupId = dedicatedHostGroupId;
+        this.dedicatedHostId = dedicatedHostId;
+        this.diskAllocationRatio = diskAllocationRatio;
+        this.ecsClassCode = ecsClassCode;
+        this.endTime = endTime;
+        this.engine = engine;
+        this.expiredTime = expiredTime;
+        this.hostClass = hostClass;
+        this.hostCpu = hostCpu;
+        this.hostMem = hostMem;
+        this.hostName = hostName;
+        this.hostStorage = hostStorage;
+        this.hostType = hostType;
+        this.id = id;
+        this.imageCategory = imageCategory;
+        this.ipAddress = ipAddress;
+        this.memAllocationRatio = memAllocationRatio;
+        this.memoryUsed = memoryUsed;
+        this.openPermission = openPermission;
+        this.status = status;
+        this.storageUsed = storageUsed;
+        this.tags = tags;
+        this.vpcId = vpcId;
+        this.vswitchId = vswitchId;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
      * 
@@ -381,7 +444,7 @@ public final class GetDedicatedHostsHost {
     public static Builder builder(GetDedicatedHostsHost defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String allocationStatus;
         private String bastionInstanceId;
@@ -413,7 +476,11 @@ public final class GetDedicatedHostsHost {
         private String vpcId;
         private String vswitchId;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDedicatedHostsHost defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allocationStatus = defaults.allocationStatus;
@@ -448,189 +515,127 @@ public final class GetDedicatedHostsHost {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder allocationStatus(String allocationStatus) {
             this.allocationStatus = Objects.requireNonNull(allocationStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder bastionInstanceId(String bastionInstanceId) {
             this.bastionInstanceId = Objects.requireNonNull(bastionInstanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder cpuAllocationRatio(String cpuAllocationRatio) {
             this.cpuAllocationRatio = Objects.requireNonNull(cpuAllocationRatio);
             return this;
         }
-        @CustomType.Setter
         public Builder cpuUsed(String cpuUsed) {
             this.cpuUsed = Objects.requireNonNull(cpuUsed);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder dedicatedHostGroupId(String dedicatedHostGroupId) {
             this.dedicatedHostGroupId = Objects.requireNonNull(dedicatedHostGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder dedicatedHostId(String dedicatedHostId) {
             this.dedicatedHostId = Objects.requireNonNull(dedicatedHostId);
             return this;
         }
-        @CustomType.Setter
         public Builder diskAllocationRatio(String diskAllocationRatio) {
             this.diskAllocationRatio = Objects.requireNonNull(diskAllocationRatio);
             return this;
         }
-        @CustomType.Setter
         public Builder ecsClassCode(String ecsClassCode) {
             this.ecsClassCode = Objects.requireNonNull(ecsClassCode);
             return this;
         }
-        @CustomType.Setter
         public Builder endTime(String endTime) {
             this.endTime = Objects.requireNonNull(endTime);
             return this;
         }
-        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
         }
-        @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
-        @CustomType.Setter
         public Builder hostClass(String hostClass) {
             this.hostClass = Objects.requireNonNull(hostClass);
             return this;
         }
-        @CustomType.Setter
         public Builder hostCpu(String hostCpu) {
             this.hostCpu = Objects.requireNonNull(hostCpu);
             return this;
         }
-        @CustomType.Setter
         public Builder hostMem(String hostMem) {
             this.hostMem = Objects.requireNonNull(hostMem);
             return this;
         }
-        @CustomType.Setter
         public Builder hostName(String hostName) {
             this.hostName = Objects.requireNonNull(hostName);
             return this;
         }
-        @CustomType.Setter
         public Builder hostStorage(String hostStorage) {
             this.hostStorage = Objects.requireNonNull(hostStorage);
             return this;
         }
-        @CustomType.Setter
         public Builder hostType(String hostType) {
             this.hostType = Objects.requireNonNull(hostType);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder imageCategory(String imageCategory) {
             this.imageCategory = Objects.requireNonNull(imageCategory);
             return this;
         }
-        @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
             this.ipAddress = Objects.requireNonNull(ipAddress);
             return this;
         }
-        @CustomType.Setter
         public Builder memAllocationRatio(String memAllocationRatio) {
             this.memAllocationRatio = Objects.requireNonNull(memAllocationRatio);
             return this;
         }
-        @CustomType.Setter
         public Builder memoryUsed(String memoryUsed) {
             this.memoryUsed = Objects.requireNonNull(memoryUsed);
             return this;
         }
-        @CustomType.Setter
         public Builder openPermission(String openPermission) {
             this.openPermission = Objects.requireNonNull(openPermission);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder storageUsed(String storageUsed) {
             this.storageUsed = Objects.requireNonNull(storageUsed);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetDedicatedHostsHost build() {
-            final var o = new GetDedicatedHostsHost();
-            o.allocationStatus = allocationStatus;
-            o.bastionInstanceId = bastionInstanceId;
-            o.cpuAllocationRatio = cpuAllocationRatio;
-            o.cpuUsed = cpuUsed;
-            o.createTime = createTime;
-            o.dedicatedHostGroupId = dedicatedHostGroupId;
-            o.dedicatedHostId = dedicatedHostId;
-            o.diskAllocationRatio = diskAllocationRatio;
-            o.ecsClassCode = ecsClassCode;
-            o.endTime = endTime;
-            o.engine = engine;
-            o.expiredTime = expiredTime;
-            o.hostClass = hostClass;
-            o.hostCpu = hostCpu;
-            o.hostMem = hostMem;
-            o.hostName = hostName;
-            o.hostStorage = hostStorage;
-            o.hostType = hostType;
-            o.id = id;
-            o.imageCategory = imageCategory;
-            o.ipAddress = ipAddress;
-            o.memAllocationRatio = memAllocationRatio;
-            o.memoryUsed = memoryUsed;
-            o.openPermission = openPermission;
-            o.status = status;
-            o.storageUsed = storageUsed;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetDedicatedHostsHost build() {
+            return new GetDedicatedHostsHost(allocationStatus, bastionInstanceId, cpuAllocationRatio, cpuUsed, createTime, dedicatedHostGroupId, dedicatedHostId, diskAllocationRatio, ecsClassCode, endTime, engine, expiredTime, hostClass, hostCpu, hostMem, hostName, hostStorage, hostType, id, imageCategory, ipAddress, memAllocationRatio, memoryUsed, openPermission, status, storageUsed, tags, vpcId, vswitchId, zoneId);
         }
     }
 }

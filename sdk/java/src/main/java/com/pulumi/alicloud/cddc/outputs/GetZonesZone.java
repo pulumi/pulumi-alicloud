@@ -13,19 +13,28 @@ public final class GetZonesZone {
      * @return The ID of the zone.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the region.
      * 
      */
-    private String regionId;
+    private final String regionId;
     /**
      * @return The ID of the zone.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetZonesZone() {}
+    @CustomType.Constructor
+    private GetZonesZone(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("regionId") String regionId,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.id = id;
+        this.regionId = regionId;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return The ID of the zone.
      * 
@@ -55,12 +64,16 @@ public final class GetZonesZone {
     public static Builder builder(GetZonesZone defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private String regionId;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetZonesZone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -68,27 +81,19 @@ public final class GetZonesZone {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetZonesZone build() {
-            final var o = new GetZonesZone();
-            o.id = id;
-            o.regionId = regionId;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetZonesZone build() {
+            return new GetZonesZone(id, regionId, zoneId);
         }
     }
 }

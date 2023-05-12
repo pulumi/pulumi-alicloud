@@ -16,39 +16,80 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetExecutionsResult {
-    private @Nullable String category;
-    private @Nullable String endDate;
-    private @Nullable String endDateAfter;
-    private @Nullable String executedBy;
+    private final @Nullable String category;
+    private final @Nullable String endDate;
+    private final @Nullable String endDateAfter;
+    private final @Nullable String executedBy;
     /**
      * @return A list of OOS Executions. Each element contains the following attributes:
      * 
      */
-    private List<GetExecutionsExecution> executions;
+    private final List<GetExecutionsExecution> executions;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of OOS Execution ids.
      * 
      */
-    private List<String> ids;
-    private @Nullable Boolean includeChildExecution;
-    private @Nullable String mode;
-    private @Nullable String outputFile;
-    private @Nullable String parentExecutionId;
-    private @Nullable String ramRole;
-    private @Nullable String sortField;
-    private @Nullable String sortOrder;
-    private @Nullable String startDateAfter;
-    private @Nullable String startDateBefore;
-    private @Nullable String status;
-    private @Nullable Map<String,Object> tags;
-    private @Nullable String templateName;
+    private final List<String> ids;
+    private final @Nullable Boolean includeChildExecution;
+    private final @Nullable String mode;
+    private final @Nullable String outputFile;
+    private final @Nullable String parentExecutionId;
+    private final @Nullable String ramRole;
+    private final @Nullable String sortField;
+    private final @Nullable String sortOrder;
+    private final @Nullable String startDateAfter;
+    private final @Nullable String startDateBefore;
+    private final @Nullable String status;
+    private final @Nullable Map<String,Object> tags;
+    private final @Nullable String templateName;
 
-    private GetExecutionsResult() {}
+    @CustomType.Constructor
+    private GetExecutionsResult(
+        @CustomType.Parameter("category") @Nullable String category,
+        @CustomType.Parameter("endDate") @Nullable String endDate,
+        @CustomType.Parameter("endDateAfter") @Nullable String endDateAfter,
+        @CustomType.Parameter("executedBy") @Nullable String executedBy,
+        @CustomType.Parameter("executions") List<GetExecutionsExecution> executions,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("includeChildExecution") @Nullable Boolean includeChildExecution,
+        @CustomType.Parameter("mode") @Nullable String mode,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("parentExecutionId") @Nullable String parentExecutionId,
+        @CustomType.Parameter("ramRole") @Nullable String ramRole,
+        @CustomType.Parameter("sortField") @Nullable String sortField,
+        @CustomType.Parameter("sortOrder") @Nullable String sortOrder,
+        @CustomType.Parameter("startDateAfter") @Nullable String startDateAfter,
+        @CustomType.Parameter("startDateBefore") @Nullable String startDateBefore,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
+        @CustomType.Parameter("templateName") @Nullable String templateName) {
+        this.category = category;
+        this.endDate = endDate;
+        this.endDateAfter = endDateAfter;
+        this.executedBy = executedBy;
+        this.executions = executions;
+        this.id = id;
+        this.ids = ids;
+        this.includeChildExecution = includeChildExecution;
+        this.mode = mode;
+        this.outputFile = outputFile;
+        this.parentExecutionId = parentExecutionId;
+        this.ramRole = ramRole;
+        this.sortField = sortField;
+        this.sortOrder = sortOrder;
+        this.startDateAfter = startDateAfter;
+        this.startDateBefore = startDateBefore;
+        this.status = status;
+        this.tags = tags;
+        this.templateName = templateName;
+    }
+
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
@@ -126,7 +167,7 @@ public final class GetExecutionsResult {
     public static Builder builder(GetExecutionsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String category;
         private @Nullable String endDate;
@@ -147,7 +188,11 @@ public final class GetExecutionsResult {
         private @Nullable String status;
         private @Nullable Map<String,Object> tags;
         private @Nullable String templateName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetExecutionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -171,27 +216,22 @@ public final class GetExecutionsResult {
     	      this.templateName = defaults.templateName;
         }
 
-        @CustomType.Setter
         public Builder category(@Nullable String category) {
             this.category = category;
             return this;
         }
-        @CustomType.Setter
         public Builder endDate(@Nullable String endDate) {
             this.endDate = endDate;
             return this;
         }
-        @CustomType.Setter
         public Builder endDateAfter(@Nullable String endDateAfter) {
             this.endDateAfter = endDateAfter;
             return this;
         }
-        @CustomType.Setter
         public Builder executedBy(@Nullable String executedBy) {
             this.executedBy = executedBy;
             return this;
         }
-        @CustomType.Setter
         public Builder executions(List<GetExecutionsExecution> executions) {
             this.executions = Objects.requireNonNull(executions);
             return this;
@@ -199,12 +239,10 @@ public final class GetExecutionsResult {
         public Builder executions(GetExecutionsExecution... executions) {
             return executions(List.of(executions));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -212,88 +250,55 @@ public final class GetExecutionsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder includeChildExecution(@Nullable Boolean includeChildExecution) {
             this.includeChildExecution = includeChildExecution;
             return this;
         }
-        @CustomType.Setter
         public Builder mode(@Nullable String mode) {
             this.mode = mode;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder parentExecutionId(@Nullable String parentExecutionId) {
             this.parentExecutionId = parentExecutionId;
             return this;
         }
-        @CustomType.Setter
         public Builder ramRole(@Nullable String ramRole) {
             this.ramRole = ramRole;
             return this;
         }
-        @CustomType.Setter
         public Builder sortField(@Nullable String sortField) {
             this.sortField = sortField;
             return this;
         }
-        @CustomType.Setter
         public Builder sortOrder(@Nullable String sortOrder) {
             this.sortOrder = sortOrder;
             return this;
         }
-        @CustomType.Setter
         public Builder startDateAfter(@Nullable String startDateAfter) {
             this.startDateAfter = startDateAfter;
             return this;
         }
-        @CustomType.Setter
         public Builder startDateBefore(@Nullable String startDateBefore) {
             this.startDateBefore = startDateBefore;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
-        @CustomType.Setter
         public Builder templateName(@Nullable String templateName) {
             this.templateName = templateName;
             return this;
-        }
-        public GetExecutionsResult build() {
-            final var o = new GetExecutionsResult();
-            o.category = category;
-            o.endDate = endDate;
-            o.endDateAfter = endDateAfter;
-            o.executedBy = executedBy;
-            o.executions = executions;
-            o.id = id;
-            o.ids = ids;
-            o.includeChildExecution = includeChildExecution;
-            o.mode = mode;
-            o.outputFile = outputFile;
-            o.parentExecutionId = parentExecutionId;
-            o.ramRole = ramRole;
-            o.sortField = sortField;
-            o.sortOrder = sortOrder;
-            o.startDateAfter = startDateAfter;
-            o.startDateBefore = startDateBefore;
-            o.status = status;
-            o.tags = tags;
-            o.templateName = templateName;
-            return o;
+        }        public GetExecutionsResult build() {
+            return new GetExecutionsResult(category, endDate, endDateAfter, executedBy, executions, id, ids, includeChildExecution, mode, outputFile, parentExecutionId, ramRole, sortField, sortOrder, startDateAfter, startDateBefore, status, tags, templateName);
         }
     }
 }

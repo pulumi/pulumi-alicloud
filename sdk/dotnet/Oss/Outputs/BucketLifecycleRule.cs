@@ -35,6 +35,8 @@ namespace Pulumi.AliCloud.Oss.Outputs
         public readonly ImmutableArray<Outputs.BucketLifecycleRuleNoncurrentVersionExpiration> NoncurrentVersionExpirations;
         /// <summary>
         /// Specifies when noncurrent object versions transitions (documented below).
+        /// 
+        /// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
         /// </summary>
         public readonly ImmutableArray<Outputs.BucketLifecycleRuleNoncurrentVersionTransition> NoncurrentVersionTransitions;
         /// <summary>

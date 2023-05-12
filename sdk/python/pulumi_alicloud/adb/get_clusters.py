@@ -189,6 +189,13 @@ def get_clusters(description: Optional[str] = None,
                  tags: Optional[Mapping[str, Any]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClustersResult:
     """
+    The `adb_get_clusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
+    Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+
+    > **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
+
+    > **NOTE:** Available in v1.71.0+.
+
     ## Example Usage
 
     ```python
@@ -204,6 +211,7 @@ def get_clusters(description: Optional[str] = None,
     :param str description: The description of the ADB cluster.
     :param str description_regex: A regex string to filter results by cluster description.
     :param Sequence[str] ids: A list of ADB cluster IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
            - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -253,6 +261,13 @@ def get_clusters_output(description: Optional[pulumi.Input[Optional[str]]] = Non
                         tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClustersResult]:
     """
+    The `adb_get_clusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
+    Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+
+    > **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
+
+    > **NOTE:** Available in v1.71.0+.
+
     ## Example Usage
 
     ```python
@@ -268,6 +283,7 @@ def get_clusters_output(description: Optional[pulumi.Input[Optional[str]]] = Non
     :param str description: The description of the ADB cluster.
     :param str description_regex: A regex string to filter results by cluster description.
     :param Sequence[str] ids: A list of ADB cluster IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
            - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.

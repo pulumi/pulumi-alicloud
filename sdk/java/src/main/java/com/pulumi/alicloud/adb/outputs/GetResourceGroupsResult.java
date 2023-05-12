@@ -17,26 +17,41 @@ public final class GetResourceGroupsResult {
      * @return DB cluster id.
      * 
      */
-    private String dbClusterId;
+    private final String dbClusterId;
     /**
      * @return The name of the resource pool.
      * 
      */
-    private @Nullable String groupName;
+    private final @Nullable String groupName;
     /**
      * @return A list of Resource Group Entries. Each element contains the following attributes:
      * 
      */
-    private List<GetResourceGroupsGroup> groups;
+    private final List<GetResourceGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String outputFile;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
 
-    private GetResourceGroupsResult() {}
+    @CustomType.Constructor
+    private GetResourceGroupsResult(
+        @CustomType.Parameter("dbClusterId") String dbClusterId,
+        @CustomType.Parameter("groupName") @Nullable String groupName,
+        @CustomType.Parameter("groups") List<GetResourceGroupsGroup> groups,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.dbClusterId = dbClusterId;
+        this.groupName = groupName;
+        this.groups = groups;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+    }
+
     /**
      * @return DB cluster id.
      * 
@@ -79,7 +94,7 @@ public final class GetResourceGroupsResult {
     public static Builder builder(GetResourceGroupsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String dbClusterId;
         private @Nullable String groupName;
@@ -87,7 +102,11 @@ public final class GetResourceGroupsResult {
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetResourceGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbClusterId = defaults.dbClusterId;
@@ -98,17 +117,14 @@ public final class GetResourceGroupsResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder dbClusterId(String dbClusterId) {
             this.dbClusterId = Objects.requireNonNull(dbClusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder groupName(@Nullable String groupName) {
             this.groupName = groupName;
             return this;
         }
-        @CustomType.Setter
         public Builder groups(List<GetResourceGroupsGroup> groups) {
             this.groups = Objects.requireNonNull(groups);
             return this;
@@ -116,12 +132,10 @@ public final class GetResourceGroupsResult {
         public Builder groups(GetResourceGroupsGroup... groups) {
             return groups(List.of(groups));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -129,20 +143,11 @@ public final class GetResourceGroupsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetResourceGroupsResult build() {
-            final var o = new GetResourceGroupsResult();
-            o.dbClusterId = dbClusterId;
-            o.groupName = groupName;
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetResourceGroupsResult build() {
+            return new GetResourceGroupsResult(dbClusterId, groupName, groups, id, ids, outputFile);
         }
     }
 }

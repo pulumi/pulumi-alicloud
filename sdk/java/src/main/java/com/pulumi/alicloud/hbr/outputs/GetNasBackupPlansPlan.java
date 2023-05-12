@@ -15,74 +15,105 @@ public final class GetNasBackupPlansPlan {
      * @return Backup type. Valid values: `COMPLETE`.
      * 
      */
-    private String backupType;
+    private final String backupType;
     /**
      * @return File System Creation Time. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST`.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The creation time of the backup plan. UNIX time in seconds.
      * 
      */
-    private String createdTime;
+    private final String createdTime;
     /**
      * @return Whether to be suspended. Valid values: `true`, `false`.
      * 
      */
-    private Boolean disabled;
+    private final Boolean disabled;
     /**
      * @return The File System ID of Nas.
      * 
      */
-    private String fileSystemId;
+    private final String fileSystemId;
     /**
      * @return The ID of Nas backup plan.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of Nas backup plan.
      * 
      */
-    private String nasBackupPlanId;
+    private final String nasBackupPlanId;
     /**
      * @return The name of the resource.
      * 
      */
-    private String nasBackupPlanName;
+    private final String nasBackupPlanName;
     /**
      * @return Options field of Nas backup plan.
      * 
      */
-    private String options;
+    private final String options;
     /**
      * @return List of backup path. Up to 65536 Characters. e.g.`[&#34;/home&#34;, &#34;/var&#34;]`
      * 
      */
-    private List<String> paths;
+    private final List<String> paths;
     /**
      * @return Backup retention days, the minimum is 1.
      * 
      */
-    private String retention;
+    private final String retention;
     /**
      * @return Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      * 
      */
-    private String schedule;
+    private final String schedule;
     /**
      * @return The update time of the backup plan. UNIX time in seconds.
      * 
      */
-    private String updatedTime;
+    private final String updatedTime;
     /**
      * @return The ID of backup vault.
      * 
      */
-    private String vaultId;
+    private final String vaultId;
 
-    private GetNasBackupPlansPlan() {}
+    @CustomType.Constructor
+    private GetNasBackupPlansPlan(
+        @CustomType.Parameter("backupType") String backupType,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("createdTime") String createdTime,
+        @CustomType.Parameter("disabled") Boolean disabled,
+        @CustomType.Parameter("fileSystemId") String fileSystemId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("nasBackupPlanId") String nasBackupPlanId,
+        @CustomType.Parameter("nasBackupPlanName") String nasBackupPlanName,
+        @CustomType.Parameter("options") String options,
+        @CustomType.Parameter("paths") List<String> paths,
+        @CustomType.Parameter("retention") String retention,
+        @CustomType.Parameter("schedule") String schedule,
+        @CustomType.Parameter("updatedTime") String updatedTime,
+        @CustomType.Parameter("vaultId") String vaultId) {
+        this.backupType = backupType;
+        this.createTime = createTime;
+        this.createdTime = createdTime;
+        this.disabled = disabled;
+        this.fileSystemId = fileSystemId;
+        this.id = id;
+        this.nasBackupPlanId = nasBackupPlanId;
+        this.nasBackupPlanName = nasBackupPlanName;
+        this.options = options;
+        this.paths = paths;
+        this.retention = retention;
+        this.schedule = schedule;
+        this.updatedTime = updatedTime;
+        this.vaultId = vaultId;
+    }
+
     /**
      * @return Backup type. Valid values: `COMPLETE`.
      * 
@@ -189,7 +220,7 @@ public final class GetNasBackupPlansPlan {
     public static Builder builder(GetNasBackupPlansPlan defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String backupType;
         private String createTime;
@@ -205,7 +236,11 @@ public final class GetNasBackupPlansPlan {
         private String schedule;
         private String updatedTime;
         private String vaultId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetNasBackupPlansPlan defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupType = defaults.backupType;
@@ -224,52 +259,42 @@ public final class GetNasBackupPlansPlan {
     	      this.vaultId = defaults.vaultId;
         }
 
-        @CustomType.Setter
         public Builder backupType(String backupType) {
             this.backupType = Objects.requireNonNull(backupType);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder createdTime(String createdTime) {
             this.createdTime = Objects.requireNonNull(createdTime);
             return this;
         }
-        @CustomType.Setter
         public Builder disabled(Boolean disabled) {
             this.disabled = Objects.requireNonNull(disabled);
             return this;
         }
-        @CustomType.Setter
         public Builder fileSystemId(String fileSystemId) {
             this.fileSystemId = Objects.requireNonNull(fileSystemId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder nasBackupPlanId(String nasBackupPlanId) {
             this.nasBackupPlanId = Objects.requireNonNull(nasBackupPlanId);
             return this;
         }
-        @CustomType.Setter
         public Builder nasBackupPlanName(String nasBackupPlanName) {
             this.nasBackupPlanName = Objects.requireNonNull(nasBackupPlanName);
             return this;
         }
-        @CustomType.Setter
         public Builder options(String options) {
             this.options = Objects.requireNonNull(options);
             return this;
         }
-        @CustomType.Setter
         public Builder paths(List<String> paths) {
             this.paths = Objects.requireNonNull(paths);
             return this;
@@ -277,43 +302,23 @@ public final class GetNasBackupPlansPlan {
         public Builder paths(String... paths) {
             return paths(List.of(paths));
         }
-        @CustomType.Setter
         public Builder retention(String retention) {
             this.retention = Objects.requireNonNull(retention);
             return this;
         }
-        @CustomType.Setter
         public Builder schedule(String schedule) {
             this.schedule = Objects.requireNonNull(schedule);
             return this;
         }
-        @CustomType.Setter
         public Builder updatedTime(String updatedTime) {
             this.updatedTime = Objects.requireNonNull(updatedTime);
             return this;
         }
-        @CustomType.Setter
         public Builder vaultId(String vaultId) {
             this.vaultId = Objects.requireNonNull(vaultId);
             return this;
-        }
-        public GetNasBackupPlansPlan build() {
-            final var o = new GetNasBackupPlansPlan();
-            o.backupType = backupType;
-            o.createTime = createTime;
-            o.createdTime = createdTime;
-            o.disabled = disabled;
-            o.fileSystemId = fileSystemId;
-            o.id = id;
-            o.nasBackupPlanId = nasBackupPlanId;
-            o.nasBackupPlanName = nasBackupPlanName;
-            o.options = options;
-            o.paths = paths;
-            o.retention = retention;
-            o.schedule = schedule;
-            o.updatedTime = updatedTime;
-            o.vaultId = vaultId;
-            return o;
+        }        public GetNasBackupPlansPlan build() {
+            return new GetNasBackupPlansPlan(backupType, createTime, createdTime, disabled, fileSystemId, id, nasBackupPlanId, nasBackupPlanName, options, paths, retention, schedule, updatedTime, vaultId);
         }
     }
 }

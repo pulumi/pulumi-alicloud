@@ -15,9 +15,13 @@ public final class NodePoolRolloutPolicy {
      * @return Maximum number of unavailable nodes during rolling upgrade. The value of this field should be greater than `0`, and if it&#39;s set to a number less than or equal to `0`, the default setting will be used. Please use `max_parallelism` to instead it from provider version 1.185.0.
      * 
      */
-    private @Nullable Integer maxUnavailable;
+    private final @Nullable Integer maxUnavailable;
 
-    private NodePoolRolloutPolicy() {}
+    @CustomType.Constructor
+    private NodePoolRolloutPolicy(@CustomType.Parameter("maxUnavailable") @Nullable Integer maxUnavailable) {
+        this.maxUnavailable = maxUnavailable;
+    }
+
     /**
      * @return Maximum number of unavailable nodes during rolling upgrade. The value of this field should be greater than `0`, and if it&#39;s set to a number less than or equal to `0`, the default setting will be used. Please use `max_parallelism` to instead it from provider version 1.185.0.
      * 
@@ -33,24 +37,24 @@ public final class NodePoolRolloutPolicy {
     public static Builder builder(NodePoolRolloutPolicy defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Integer maxUnavailable;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(NodePoolRolloutPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxUnavailable = defaults.maxUnavailable;
         }
 
-        @CustomType.Setter
         public Builder maxUnavailable(@Nullable Integer maxUnavailable) {
             this.maxUnavailable = maxUnavailable;
             return this;
-        }
-        public NodePoolRolloutPolicy build() {
-            final var o = new NodePoolRolloutPolicy();
-            o.maxUnavailable = maxUnavailable;
-            return o;
+        }        public NodePoolRolloutPolicy build() {
+            return new NodePoolRolloutPolicy(maxUnavailable);
         }
     }
 }

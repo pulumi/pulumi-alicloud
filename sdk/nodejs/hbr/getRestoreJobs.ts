@@ -49,6 +49,9 @@ export function getRestoreJobs(args: GetRestoreJobsArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getRestoreJobs.
  */
 export interface GetRestoreJobsArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The list of restore job IDs.
@@ -135,6 +138,9 @@ export function getRestoreJobsOutput(args: GetRestoreJobsOutputArgs, opts?: pulu
  * A collection of arguments for invoking getRestoreJobs.
  */
 export interface GetRestoreJobsOutputArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The list of restore job IDs.

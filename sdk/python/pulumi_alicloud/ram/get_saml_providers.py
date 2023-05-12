@@ -126,6 +126,7 @@ def get_saml_providers(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of SAML Provider IDs.
     :param str name_regex: A regex string to filter results by SAML Provider name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -173,5 +174,6 @@ def get_saml_providers_output(enable_details: Optional[pulumi.Input[Optional[boo
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of SAML Provider IDs.
     :param str name_regex: A regex string to filter results by SAML Provider name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

@@ -67,6 +67,9 @@ export interface GetListenersArgs {
      * ID of the SLB with listeners.
      */
     loadBalancerId: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
@@ -151,6 +154,9 @@ export interface GetListenersOutputArgs {
      * ID of the SLB with listeners.
      */
     loadBalancerId: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.

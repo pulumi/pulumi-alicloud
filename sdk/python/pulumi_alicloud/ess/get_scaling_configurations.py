@@ -137,6 +137,7 @@ def get_scaling_configurations(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of scaling configuration IDs.
     :param str name_regex: A regex string to filter resulting scaling configurations by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str scaling_group_id: Scaling group id the scaling configurations belong to.
     """
     __args__ = dict()
@@ -184,6 +185,7 @@ def get_scaling_configurations_output(ids: Optional[pulumi.Input[Optional[Sequen
 
     :param Sequence[str] ids: A list of scaling configuration IDs.
     :param str name_regex: A regex string to filter resulting scaling configurations by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str scaling_group_id: Scaling group id the scaling configurations belong to.
     """
     ...

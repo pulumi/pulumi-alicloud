@@ -13,14 +13,21 @@ public final class GetAclsAclAclEntry {
      * @return The IP entry that you want to add to the ACL.
      * 
      */
-    private String entry;
+    private final String entry;
     /**
      * @return The description of the IP entry.
      * 
      */
-    private String entryDescription;
+    private final String entryDescription;
 
-    private GetAclsAclAclEntry() {}
+    @CustomType.Constructor
+    private GetAclsAclAclEntry(
+        @CustomType.Parameter("entry") String entry,
+        @CustomType.Parameter("entryDescription") String entryDescription) {
+        this.entry = entry;
+        this.entryDescription = entryDescription;
+    }
+
     /**
      * @return The IP entry that you want to add to the ACL.
      * 
@@ -43,32 +50,30 @@ public final class GetAclsAclAclEntry {
     public static Builder builder(GetAclsAclAclEntry defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String entry;
         private String entryDescription;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAclsAclAclEntry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.entry = defaults.entry;
     	      this.entryDescription = defaults.entryDescription;
         }
 
-        @CustomType.Setter
         public Builder entry(String entry) {
             this.entry = Objects.requireNonNull(entry);
             return this;
         }
-        @CustomType.Setter
         public Builder entryDescription(String entryDescription) {
             this.entryDescription = Objects.requireNonNull(entryDescription);
             return this;
-        }
-        public GetAclsAclAclEntry build() {
-            final var o = new GetAclsAclAclEntry();
-            o.entry = entry;
-            o.entryDescription = entryDescription;
-            return o;
+        }        public GetAclsAclAclEntry build() {
+            return new GetAclsAclAclEntry(entry, entryDescription);
         }
     }
 }

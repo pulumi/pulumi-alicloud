@@ -16,12 +16,12 @@ public final class UserPermissionPermission {
      * @return Whether the grant object is a RAM role.
      * 
      */
-    private @Nullable Boolean isCustom;
+    private final @Nullable Boolean isCustom;
     /**
      * @return Whether the grant object is an entity.
      * 
      */
-    private @Nullable Boolean isRamRole;
+    private final @Nullable Boolean isRamRole;
     /**
      * @return The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
      * - `istio-admin`:  The administrator.
@@ -29,19 +29,32 @@ public final class UserPermissionPermission {
      * - `istio-readonly`: The read only permission.
      * 
      */
-    private @Nullable String roleName;
+    private final @Nullable String roleName;
     /**
      * @return The role type. Valid Value: `custom`.
      * 
      */
-    private @Nullable String roleType;
+    private final @Nullable String roleType;
     /**
      * @return The service mesh id.
      * 
      */
-    private @Nullable String serviceMeshId;
+    private final @Nullable String serviceMeshId;
 
-    private UserPermissionPermission() {}
+    @CustomType.Constructor
+    private UserPermissionPermission(
+        @CustomType.Parameter("isCustom") @Nullable Boolean isCustom,
+        @CustomType.Parameter("isRamRole") @Nullable Boolean isRamRole,
+        @CustomType.Parameter("roleName") @Nullable String roleName,
+        @CustomType.Parameter("roleType") @Nullable String roleType,
+        @CustomType.Parameter("serviceMeshId") @Nullable String serviceMeshId) {
+        this.isCustom = isCustom;
+        this.isRamRole = isRamRole;
+        this.roleName = roleName;
+        this.roleType = roleType;
+        this.serviceMeshId = serviceMeshId;
+    }
+
     /**
      * @return Whether the grant object is a RAM role.
      * 
@@ -88,14 +101,18 @@ public final class UserPermissionPermission {
     public static Builder builder(UserPermissionPermission defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean isCustom;
         private @Nullable Boolean isRamRole;
         private @Nullable String roleName;
         private @Nullable String roleType;
         private @Nullable String serviceMeshId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(UserPermissionPermission defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.isCustom = defaults.isCustom;
@@ -105,39 +122,27 @@ public final class UserPermissionPermission {
     	      this.serviceMeshId = defaults.serviceMeshId;
         }
 
-        @CustomType.Setter
         public Builder isCustom(@Nullable Boolean isCustom) {
             this.isCustom = isCustom;
             return this;
         }
-        @CustomType.Setter
         public Builder isRamRole(@Nullable Boolean isRamRole) {
             this.isRamRole = isRamRole;
             return this;
         }
-        @CustomType.Setter
         public Builder roleName(@Nullable String roleName) {
             this.roleName = roleName;
             return this;
         }
-        @CustomType.Setter
         public Builder roleType(@Nullable String roleType) {
             this.roleType = roleType;
             return this;
         }
-        @CustomType.Setter
         public Builder serviceMeshId(@Nullable String serviceMeshId) {
             this.serviceMeshId = serviceMeshId;
             return this;
-        }
-        public UserPermissionPermission build() {
-            final var o = new UserPermissionPermission();
-            o.isCustom = isCustom;
-            o.isRamRole = isRamRole;
-            o.roleName = roleName;
-            o.roleType = roleType;
-            o.serviceMeshId = serviceMeshId;
-            return o;
+        }        public UserPermissionPermission build() {
+            return new UserPermissionPermission(isCustom, isRamRole, roleName, roleType, serviceMeshId);
         }
     }
 }

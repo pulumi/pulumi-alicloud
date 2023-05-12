@@ -35,6 +35,9 @@ export interface GetTransitRouterVpcAttachmentsArgs {
      * A list of resource id. The element value is same as `transitRouterId`.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
@@ -91,6 +94,9 @@ export interface GetTransitRouterVpcAttachmentsOutputArgs {
      * A list of resource id. The element value is same as `transitRouterId`.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.

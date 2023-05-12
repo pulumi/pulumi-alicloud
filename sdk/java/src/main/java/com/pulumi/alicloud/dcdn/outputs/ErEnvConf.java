@@ -51,189 +51,266 @@ public final class ErEnvConf {
      * @return The configuration of a presetCanaryAnhui environment. The `Block preset_canary_anhui` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryAnhui presetCanaryAnhui;
+    private final @Nullable ErEnvConfPresetCanaryAnhui presetCanaryAnhui;
     /**
      * @return The configuration of a presetCanaryBeijing environment. The `Block preset_canary_beijing` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryBeijing presetCanaryBeijing;
+    private final @Nullable ErEnvConfPresetCanaryBeijing presetCanaryBeijing;
     /**
      * @return The configuration of a presetCanaryChongqing environment. The `Block preset_canary_chongqing` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryChongqing presetCanaryChongqing;
+    private final @Nullable ErEnvConfPresetCanaryChongqing presetCanaryChongqing;
     /**
      * @return The configuration of a presetCanaryFujian environment. The `Block preset_canary_fujian` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryFujian presetCanaryFujian;
+    private final @Nullable ErEnvConfPresetCanaryFujian presetCanaryFujian;
     /**
      * @return The configuration of a presetCanaryGansu environment. The `Block preset_canary_gansu` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryGansu presetCanaryGansu;
+    private final @Nullable ErEnvConfPresetCanaryGansu presetCanaryGansu;
     /**
      * @return The configuration of a presetCanaryGuangdong environment. The `Block preset_canary_guangdong` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryGuangdong presetCanaryGuangdong;
+    private final @Nullable ErEnvConfPresetCanaryGuangdong presetCanaryGuangdong;
     /**
      * @return The configuration of a presetCanaryGuangxi environment. The `Block preset_canary_guangxi` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryGuangxi presetCanaryGuangxi;
+    private final @Nullable ErEnvConfPresetCanaryGuangxi presetCanaryGuangxi;
     /**
      * @return The configuration of a presetCanaryGuizhou environment. The `Block preset_canary_guizhou` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryGuizhou presetCanaryGuizhou;
+    private final @Nullable ErEnvConfPresetCanaryGuizhou presetCanaryGuizhou;
     /**
      * @return The configuration of a presetCanaryHainan environment. The `Block preset_canary_hainan` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryHainan presetCanaryHainan;
+    private final @Nullable ErEnvConfPresetCanaryHainan presetCanaryHainan;
     /**
      * @return The configuration of a presetCanaryHebei environment. The `Block preset_canary_hebei` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryHebei presetCanaryHebei;
+    private final @Nullable ErEnvConfPresetCanaryHebei presetCanaryHebei;
     /**
      * @return The configuration of a presetCanaryHeilongjiang environment. The `Block preset_canary_heilongjiang` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryHeilongjiang presetCanaryHeilongjiang;
+    private final @Nullable ErEnvConfPresetCanaryHeilongjiang presetCanaryHeilongjiang;
     /**
      * @return The configuration of a presetCanaryHenan environment. The `Block preset_canary_henan` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryHenan presetCanaryHenan;
+    private final @Nullable ErEnvConfPresetCanaryHenan presetCanaryHenan;
     /**
      * @return The configuration of a presetCanaryHongKong environment. The `Block preset_canary_hong_kong` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryHongKong presetCanaryHongKong;
+    private final @Nullable ErEnvConfPresetCanaryHongKong presetCanaryHongKong;
     /**
      * @return The configuration of a presetCanaryHubei environment. The `Block preset_canary_hubei` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryHubei presetCanaryHubei;
+    private final @Nullable ErEnvConfPresetCanaryHubei presetCanaryHubei;
     /**
      * @return The configuration of a presetCanaryHunan environment. The `Block preset_canary_hunan` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryHunan presetCanaryHunan;
+    private final @Nullable ErEnvConfPresetCanaryHunan presetCanaryHunan;
     /**
      * @return The configuration of a presetCanaryJiangsu environment. The `Block preset_canary_jiangsu` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryJiangsu presetCanaryJiangsu;
+    private final @Nullable ErEnvConfPresetCanaryJiangsu presetCanaryJiangsu;
     /**
      * @return The configuration of a presetCanaryJiangxi environment. The `Block preset_canary_jiangxi` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryJiangxi presetCanaryJiangxi;
+    private final @Nullable ErEnvConfPresetCanaryJiangxi presetCanaryJiangxi;
     /**
      * @return The configuration of a presetCanaryJilin environment. The `Block preset_canary_jilin` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryJilin presetCanaryJilin;
+    private final @Nullable ErEnvConfPresetCanaryJilin presetCanaryJilin;
     /**
      * @return The configuration of a presetCanaryLiaoning environment. The `Block preset_canary_liaoning` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryLiaoning presetCanaryLiaoning;
+    private final @Nullable ErEnvConfPresetCanaryLiaoning presetCanaryLiaoning;
     /**
      * @return The configuration of a presetCanaryMacau environment. The `Block preset_canary_macau` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryMacau presetCanaryMacau;
+    private final @Nullable ErEnvConfPresetCanaryMacau presetCanaryMacau;
     /**
      * @return The configuration of a presetCanaryNeimenggu environment. The `Block preset_canary_neimenggu` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryNeimenggu presetCanaryNeimenggu;
+    private final @Nullable ErEnvConfPresetCanaryNeimenggu presetCanaryNeimenggu;
     /**
      * @return The configuration of a presetCanaryNingxia environment. The `Block preset_canary_ningxia` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryNingxia presetCanaryNingxia;
+    private final @Nullable ErEnvConfPresetCanaryNingxia presetCanaryNingxia;
     /**
      * @return The configuration of a presetCanaryOverseas environment. The `Block preset_canary_overseas` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryOverseas presetCanaryOverseas;
+    private final @Nullable ErEnvConfPresetCanaryOverseas presetCanaryOverseas;
     /**
      * @return The configuration of a presetCanaryQinghai environment. The `Block preset_canary_qinghai` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryQinghai presetCanaryQinghai;
+    private final @Nullable ErEnvConfPresetCanaryQinghai presetCanaryQinghai;
     /**
      * @return The configuration of a presetCanaryShaanxi environment. The `Block preset_canary_shaanxi` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryShaanxi presetCanaryShaanxi;
+    private final @Nullable ErEnvConfPresetCanaryShaanxi presetCanaryShaanxi;
     /**
      * @return The configuration of a presetCanaryShandong environment. The `Block preset_canary_shandong` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryShandong presetCanaryShandong;
+    private final @Nullable ErEnvConfPresetCanaryShandong presetCanaryShandong;
     /**
      * @return The configuration of a presetCanaryShanghai environment. The `Block preset_canary_shanghai` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryShanghai presetCanaryShanghai;
+    private final @Nullable ErEnvConfPresetCanaryShanghai presetCanaryShanghai;
     /**
      * @return The configuration of a presetCanaryShanxi environment. The `Block preset_canary_shanxi` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryShanxi presetCanaryShanxi;
+    private final @Nullable ErEnvConfPresetCanaryShanxi presetCanaryShanxi;
     /**
      * @return The configuration of a presetCanarySichuan environment. The `Block preset_canary_sichuan` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanarySichuan presetCanarySichuan;
+    private final @Nullable ErEnvConfPresetCanarySichuan presetCanarySichuan;
     /**
      * @return The configuration of a presetCanaryTaiwan environment. The `Block preset_canary_taiwan` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryTaiwan presetCanaryTaiwan;
+    private final @Nullable ErEnvConfPresetCanaryTaiwan presetCanaryTaiwan;
     /**
      * @return The configuration of a presetCanaryTianjin environment. The `Block preset_canary_tianjin` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryTianjin presetCanaryTianjin;
+    private final @Nullable ErEnvConfPresetCanaryTianjin presetCanaryTianjin;
     /**
      * @return The configuration of a presetCanaryXinjiang environment. The `Block preset_canary_xinjiang` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryXinjiang presetCanaryXinjiang;
+    private final @Nullable ErEnvConfPresetCanaryXinjiang presetCanaryXinjiang;
     /**
      * @return The configuration of a presetCanaryXizang environment. The `Block preset_canary_xizang` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryXizang presetCanaryXizang;
+    private final @Nullable ErEnvConfPresetCanaryXizang presetCanaryXizang;
     /**
      * @return The configuration of a presetCanaryYunnan environment. The `Block preset_canary_yunnan` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryYunnan presetCanaryYunnan;
+    private final @Nullable ErEnvConfPresetCanaryYunnan presetCanaryYunnan;
     /**
      * @return The configuration of a presetCanaryZhejiang environment. The `Block preset_canary_zhejiang` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfPresetCanaryZhejiang presetCanaryZhejiang;
+    private final @Nullable ErEnvConfPresetCanaryZhejiang presetCanaryZhejiang;
     /**
      * @return The configuration of a production environment. The `Block production` is same as `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfProduction production;
+    private final @Nullable ErEnvConfProduction production;
     /**
      * @return The configuration of a staging environment. See the following `Block staging`.
      * 
      */
-    private @Nullable ErEnvConfStaging staging;
+    private final @Nullable ErEnvConfStaging staging;
 
-    private ErEnvConf() {}
+    @CustomType.Constructor
+    private ErEnvConf(
+        @CustomType.Parameter("presetCanaryAnhui") @Nullable ErEnvConfPresetCanaryAnhui presetCanaryAnhui,
+        @CustomType.Parameter("presetCanaryBeijing") @Nullable ErEnvConfPresetCanaryBeijing presetCanaryBeijing,
+        @CustomType.Parameter("presetCanaryChongqing") @Nullable ErEnvConfPresetCanaryChongqing presetCanaryChongqing,
+        @CustomType.Parameter("presetCanaryFujian") @Nullable ErEnvConfPresetCanaryFujian presetCanaryFujian,
+        @CustomType.Parameter("presetCanaryGansu") @Nullable ErEnvConfPresetCanaryGansu presetCanaryGansu,
+        @CustomType.Parameter("presetCanaryGuangdong") @Nullable ErEnvConfPresetCanaryGuangdong presetCanaryGuangdong,
+        @CustomType.Parameter("presetCanaryGuangxi") @Nullable ErEnvConfPresetCanaryGuangxi presetCanaryGuangxi,
+        @CustomType.Parameter("presetCanaryGuizhou") @Nullable ErEnvConfPresetCanaryGuizhou presetCanaryGuizhou,
+        @CustomType.Parameter("presetCanaryHainan") @Nullable ErEnvConfPresetCanaryHainan presetCanaryHainan,
+        @CustomType.Parameter("presetCanaryHebei") @Nullable ErEnvConfPresetCanaryHebei presetCanaryHebei,
+        @CustomType.Parameter("presetCanaryHeilongjiang") @Nullable ErEnvConfPresetCanaryHeilongjiang presetCanaryHeilongjiang,
+        @CustomType.Parameter("presetCanaryHenan") @Nullable ErEnvConfPresetCanaryHenan presetCanaryHenan,
+        @CustomType.Parameter("presetCanaryHongKong") @Nullable ErEnvConfPresetCanaryHongKong presetCanaryHongKong,
+        @CustomType.Parameter("presetCanaryHubei") @Nullable ErEnvConfPresetCanaryHubei presetCanaryHubei,
+        @CustomType.Parameter("presetCanaryHunan") @Nullable ErEnvConfPresetCanaryHunan presetCanaryHunan,
+        @CustomType.Parameter("presetCanaryJiangsu") @Nullable ErEnvConfPresetCanaryJiangsu presetCanaryJiangsu,
+        @CustomType.Parameter("presetCanaryJiangxi") @Nullable ErEnvConfPresetCanaryJiangxi presetCanaryJiangxi,
+        @CustomType.Parameter("presetCanaryJilin") @Nullable ErEnvConfPresetCanaryJilin presetCanaryJilin,
+        @CustomType.Parameter("presetCanaryLiaoning") @Nullable ErEnvConfPresetCanaryLiaoning presetCanaryLiaoning,
+        @CustomType.Parameter("presetCanaryMacau") @Nullable ErEnvConfPresetCanaryMacau presetCanaryMacau,
+        @CustomType.Parameter("presetCanaryNeimenggu") @Nullable ErEnvConfPresetCanaryNeimenggu presetCanaryNeimenggu,
+        @CustomType.Parameter("presetCanaryNingxia") @Nullable ErEnvConfPresetCanaryNingxia presetCanaryNingxia,
+        @CustomType.Parameter("presetCanaryOverseas") @Nullable ErEnvConfPresetCanaryOverseas presetCanaryOverseas,
+        @CustomType.Parameter("presetCanaryQinghai") @Nullable ErEnvConfPresetCanaryQinghai presetCanaryQinghai,
+        @CustomType.Parameter("presetCanaryShaanxi") @Nullable ErEnvConfPresetCanaryShaanxi presetCanaryShaanxi,
+        @CustomType.Parameter("presetCanaryShandong") @Nullable ErEnvConfPresetCanaryShandong presetCanaryShandong,
+        @CustomType.Parameter("presetCanaryShanghai") @Nullable ErEnvConfPresetCanaryShanghai presetCanaryShanghai,
+        @CustomType.Parameter("presetCanaryShanxi") @Nullable ErEnvConfPresetCanaryShanxi presetCanaryShanxi,
+        @CustomType.Parameter("presetCanarySichuan") @Nullable ErEnvConfPresetCanarySichuan presetCanarySichuan,
+        @CustomType.Parameter("presetCanaryTaiwan") @Nullable ErEnvConfPresetCanaryTaiwan presetCanaryTaiwan,
+        @CustomType.Parameter("presetCanaryTianjin") @Nullable ErEnvConfPresetCanaryTianjin presetCanaryTianjin,
+        @CustomType.Parameter("presetCanaryXinjiang") @Nullable ErEnvConfPresetCanaryXinjiang presetCanaryXinjiang,
+        @CustomType.Parameter("presetCanaryXizang") @Nullable ErEnvConfPresetCanaryXizang presetCanaryXizang,
+        @CustomType.Parameter("presetCanaryYunnan") @Nullable ErEnvConfPresetCanaryYunnan presetCanaryYunnan,
+        @CustomType.Parameter("presetCanaryZhejiang") @Nullable ErEnvConfPresetCanaryZhejiang presetCanaryZhejiang,
+        @CustomType.Parameter("production") @Nullable ErEnvConfProduction production,
+        @CustomType.Parameter("staging") @Nullable ErEnvConfStaging staging) {
+        this.presetCanaryAnhui = presetCanaryAnhui;
+        this.presetCanaryBeijing = presetCanaryBeijing;
+        this.presetCanaryChongqing = presetCanaryChongqing;
+        this.presetCanaryFujian = presetCanaryFujian;
+        this.presetCanaryGansu = presetCanaryGansu;
+        this.presetCanaryGuangdong = presetCanaryGuangdong;
+        this.presetCanaryGuangxi = presetCanaryGuangxi;
+        this.presetCanaryGuizhou = presetCanaryGuizhou;
+        this.presetCanaryHainan = presetCanaryHainan;
+        this.presetCanaryHebei = presetCanaryHebei;
+        this.presetCanaryHeilongjiang = presetCanaryHeilongjiang;
+        this.presetCanaryHenan = presetCanaryHenan;
+        this.presetCanaryHongKong = presetCanaryHongKong;
+        this.presetCanaryHubei = presetCanaryHubei;
+        this.presetCanaryHunan = presetCanaryHunan;
+        this.presetCanaryJiangsu = presetCanaryJiangsu;
+        this.presetCanaryJiangxi = presetCanaryJiangxi;
+        this.presetCanaryJilin = presetCanaryJilin;
+        this.presetCanaryLiaoning = presetCanaryLiaoning;
+        this.presetCanaryMacau = presetCanaryMacau;
+        this.presetCanaryNeimenggu = presetCanaryNeimenggu;
+        this.presetCanaryNingxia = presetCanaryNingxia;
+        this.presetCanaryOverseas = presetCanaryOverseas;
+        this.presetCanaryQinghai = presetCanaryQinghai;
+        this.presetCanaryShaanxi = presetCanaryShaanxi;
+        this.presetCanaryShandong = presetCanaryShandong;
+        this.presetCanaryShanghai = presetCanaryShanghai;
+        this.presetCanaryShanxi = presetCanaryShanxi;
+        this.presetCanarySichuan = presetCanarySichuan;
+        this.presetCanaryTaiwan = presetCanaryTaiwan;
+        this.presetCanaryTianjin = presetCanaryTianjin;
+        this.presetCanaryXinjiang = presetCanaryXinjiang;
+        this.presetCanaryXizang = presetCanaryXizang;
+        this.presetCanaryYunnan = presetCanaryYunnan;
+        this.presetCanaryZhejiang = presetCanaryZhejiang;
+        this.production = production;
+        this.staging = staging;
+    }
+
     /**
      * @return The configuration of a presetCanaryAnhui environment. The `Block preset_canary_anhui` is same as `Block staging`.
      * 
@@ -501,7 +578,7 @@ public final class ErEnvConf {
     public static Builder builder(ErEnvConf defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable ErEnvConfPresetCanaryAnhui presetCanaryAnhui;
         private @Nullable ErEnvConfPresetCanaryBeijing presetCanaryBeijing;
@@ -540,7 +617,11 @@ public final class ErEnvConf {
         private @Nullable ErEnvConfPresetCanaryZhejiang presetCanaryZhejiang;
         private @Nullable ErEnvConfProduction production;
         private @Nullable ErEnvConfStaging staging;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ErEnvConf defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.presetCanaryAnhui = defaults.presetCanaryAnhui;
@@ -582,231 +663,155 @@ public final class ErEnvConf {
     	      this.staging = defaults.staging;
         }
 
-        @CustomType.Setter
         public Builder presetCanaryAnhui(@Nullable ErEnvConfPresetCanaryAnhui presetCanaryAnhui) {
             this.presetCanaryAnhui = presetCanaryAnhui;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryBeijing(@Nullable ErEnvConfPresetCanaryBeijing presetCanaryBeijing) {
             this.presetCanaryBeijing = presetCanaryBeijing;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryChongqing(@Nullable ErEnvConfPresetCanaryChongqing presetCanaryChongqing) {
             this.presetCanaryChongqing = presetCanaryChongqing;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryFujian(@Nullable ErEnvConfPresetCanaryFujian presetCanaryFujian) {
             this.presetCanaryFujian = presetCanaryFujian;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryGansu(@Nullable ErEnvConfPresetCanaryGansu presetCanaryGansu) {
             this.presetCanaryGansu = presetCanaryGansu;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryGuangdong(@Nullable ErEnvConfPresetCanaryGuangdong presetCanaryGuangdong) {
             this.presetCanaryGuangdong = presetCanaryGuangdong;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryGuangxi(@Nullable ErEnvConfPresetCanaryGuangxi presetCanaryGuangxi) {
             this.presetCanaryGuangxi = presetCanaryGuangxi;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryGuizhou(@Nullable ErEnvConfPresetCanaryGuizhou presetCanaryGuizhou) {
             this.presetCanaryGuizhou = presetCanaryGuizhou;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryHainan(@Nullable ErEnvConfPresetCanaryHainan presetCanaryHainan) {
             this.presetCanaryHainan = presetCanaryHainan;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryHebei(@Nullable ErEnvConfPresetCanaryHebei presetCanaryHebei) {
             this.presetCanaryHebei = presetCanaryHebei;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryHeilongjiang(@Nullable ErEnvConfPresetCanaryHeilongjiang presetCanaryHeilongjiang) {
             this.presetCanaryHeilongjiang = presetCanaryHeilongjiang;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryHenan(@Nullable ErEnvConfPresetCanaryHenan presetCanaryHenan) {
             this.presetCanaryHenan = presetCanaryHenan;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryHongKong(@Nullable ErEnvConfPresetCanaryHongKong presetCanaryHongKong) {
             this.presetCanaryHongKong = presetCanaryHongKong;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryHubei(@Nullable ErEnvConfPresetCanaryHubei presetCanaryHubei) {
             this.presetCanaryHubei = presetCanaryHubei;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryHunan(@Nullable ErEnvConfPresetCanaryHunan presetCanaryHunan) {
             this.presetCanaryHunan = presetCanaryHunan;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryJiangsu(@Nullable ErEnvConfPresetCanaryJiangsu presetCanaryJiangsu) {
             this.presetCanaryJiangsu = presetCanaryJiangsu;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryJiangxi(@Nullable ErEnvConfPresetCanaryJiangxi presetCanaryJiangxi) {
             this.presetCanaryJiangxi = presetCanaryJiangxi;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryJilin(@Nullable ErEnvConfPresetCanaryJilin presetCanaryJilin) {
             this.presetCanaryJilin = presetCanaryJilin;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryLiaoning(@Nullable ErEnvConfPresetCanaryLiaoning presetCanaryLiaoning) {
             this.presetCanaryLiaoning = presetCanaryLiaoning;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryMacau(@Nullable ErEnvConfPresetCanaryMacau presetCanaryMacau) {
             this.presetCanaryMacau = presetCanaryMacau;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryNeimenggu(@Nullable ErEnvConfPresetCanaryNeimenggu presetCanaryNeimenggu) {
             this.presetCanaryNeimenggu = presetCanaryNeimenggu;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryNingxia(@Nullable ErEnvConfPresetCanaryNingxia presetCanaryNingxia) {
             this.presetCanaryNingxia = presetCanaryNingxia;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryOverseas(@Nullable ErEnvConfPresetCanaryOverseas presetCanaryOverseas) {
             this.presetCanaryOverseas = presetCanaryOverseas;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryQinghai(@Nullable ErEnvConfPresetCanaryQinghai presetCanaryQinghai) {
             this.presetCanaryQinghai = presetCanaryQinghai;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryShaanxi(@Nullable ErEnvConfPresetCanaryShaanxi presetCanaryShaanxi) {
             this.presetCanaryShaanxi = presetCanaryShaanxi;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryShandong(@Nullable ErEnvConfPresetCanaryShandong presetCanaryShandong) {
             this.presetCanaryShandong = presetCanaryShandong;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryShanghai(@Nullable ErEnvConfPresetCanaryShanghai presetCanaryShanghai) {
             this.presetCanaryShanghai = presetCanaryShanghai;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryShanxi(@Nullable ErEnvConfPresetCanaryShanxi presetCanaryShanxi) {
             this.presetCanaryShanxi = presetCanaryShanxi;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanarySichuan(@Nullable ErEnvConfPresetCanarySichuan presetCanarySichuan) {
             this.presetCanarySichuan = presetCanarySichuan;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryTaiwan(@Nullable ErEnvConfPresetCanaryTaiwan presetCanaryTaiwan) {
             this.presetCanaryTaiwan = presetCanaryTaiwan;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryTianjin(@Nullable ErEnvConfPresetCanaryTianjin presetCanaryTianjin) {
             this.presetCanaryTianjin = presetCanaryTianjin;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryXinjiang(@Nullable ErEnvConfPresetCanaryXinjiang presetCanaryXinjiang) {
             this.presetCanaryXinjiang = presetCanaryXinjiang;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryXizang(@Nullable ErEnvConfPresetCanaryXizang presetCanaryXizang) {
             this.presetCanaryXizang = presetCanaryXizang;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryYunnan(@Nullable ErEnvConfPresetCanaryYunnan presetCanaryYunnan) {
             this.presetCanaryYunnan = presetCanaryYunnan;
             return this;
         }
-        @CustomType.Setter
         public Builder presetCanaryZhejiang(@Nullable ErEnvConfPresetCanaryZhejiang presetCanaryZhejiang) {
             this.presetCanaryZhejiang = presetCanaryZhejiang;
             return this;
         }
-        @CustomType.Setter
         public Builder production(@Nullable ErEnvConfProduction production) {
             this.production = production;
             return this;
         }
-        @CustomType.Setter
         public Builder staging(@Nullable ErEnvConfStaging staging) {
             this.staging = staging;
             return this;
-        }
-        public ErEnvConf build() {
-            final var o = new ErEnvConf();
-            o.presetCanaryAnhui = presetCanaryAnhui;
-            o.presetCanaryBeijing = presetCanaryBeijing;
-            o.presetCanaryChongqing = presetCanaryChongqing;
-            o.presetCanaryFujian = presetCanaryFujian;
-            o.presetCanaryGansu = presetCanaryGansu;
-            o.presetCanaryGuangdong = presetCanaryGuangdong;
-            o.presetCanaryGuangxi = presetCanaryGuangxi;
-            o.presetCanaryGuizhou = presetCanaryGuizhou;
-            o.presetCanaryHainan = presetCanaryHainan;
-            o.presetCanaryHebei = presetCanaryHebei;
-            o.presetCanaryHeilongjiang = presetCanaryHeilongjiang;
-            o.presetCanaryHenan = presetCanaryHenan;
-            o.presetCanaryHongKong = presetCanaryHongKong;
-            o.presetCanaryHubei = presetCanaryHubei;
-            o.presetCanaryHunan = presetCanaryHunan;
-            o.presetCanaryJiangsu = presetCanaryJiangsu;
-            o.presetCanaryJiangxi = presetCanaryJiangxi;
-            o.presetCanaryJilin = presetCanaryJilin;
-            o.presetCanaryLiaoning = presetCanaryLiaoning;
-            o.presetCanaryMacau = presetCanaryMacau;
-            o.presetCanaryNeimenggu = presetCanaryNeimenggu;
-            o.presetCanaryNingxia = presetCanaryNingxia;
-            o.presetCanaryOverseas = presetCanaryOverseas;
-            o.presetCanaryQinghai = presetCanaryQinghai;
-            o.presetCanaryShaanxi = presetCanaryShaanxi;
-            o.presetCanaryShandong = presetCanaryShandong;
-            o.presetCanaryShanghai = presetCanaryShanghai;
-            o.presetCanaryShanxi = presetCanaryShanxi;
-            o.presetCanarySichuan = presetCanarySichuan;
-            o.presetCanaryTaiwan = presetCanaryTaiwan;
-            o.presetCanaryTianjin = presetCanaryTianjin;
-            o.presetCanaryXinjiang = presetCanaryXinjiang;
-            o.presetCanaryXizang = presetCanaryXizang;
-            o.presetCanaryYunnan = presetCanaryYunnan;
-            o.presetCanaryZhejiang = presetCanaryZhejiang;
-            o.production = production;
-            o.staging = staging;
-            return o;
+        }        public ErEnvConf build() {
+            return new ErEnvConf(presetCanaryAnhui, presetCanaryBeijing, presetCanaryChongqing, presetCanaryFujian, presetCanaryGansu, presetCanaryGuangdong, presetCanaryGuangxi, presetCanaryGuizhou, presetCanaryHainan, presetCanaryHebei, presetCanaryHeilongjiang, presetCanaryHenan, presetCanaryHongKong, presetCanaryHubei, presetCanaryHunan, presetCanaryJiangsu, presetCanaryJiangxi, presetCanaryJilin, presetCanaryLiaoning, presetCanaryMacau, presetCanaryNeimenggu, presetCanaryNingxia, presetCanaryOverseas, presetCanaryQinghai, presetCanaryShaanxi, presetCanaryShandong, presetCanaryShanghai, presetCanaryShanxi, presetCanarySichuan, presetCanaryTaiwan, presetCanaryTianjin, presetCanaryXinjiang, presetCanaryXizang, presetCanaryYunnan, presetCanaryZhejiang, production, staging);
         }
     }
 }

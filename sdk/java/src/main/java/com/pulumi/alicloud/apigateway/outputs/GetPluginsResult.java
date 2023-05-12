@@ -20,19 +20,44 @@ public final class GetPluginsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
-    private @Nullable String pluginName;
-    private @Nullable String pluginType;
-    private List<GetPluginsPlugin> plugins;
-    private @Nullable Map<String,Object> tags;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
+    private final @Nullable String pluginName;
+    private final @Nullable String pluginType;
+    private final List<GetPluginsPlugin> plugins;
+    private final @Nullable Map<String,Object> tags;
 
-    private GetPluginsResult() {}
+    @CustomType.Constructor
+    private GetPluginsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
+        @CustomType.Parameter("pluginName") @Nullable String pluginName,
+        @CustomType.Parameter("pluginType") @Nullable String pluginType,
+        @CustomType.Parameter("plugins") List<GetPluginsPlugin> plugins,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+        this.pluginName = pluginName;
+        this.pluginType = pluginType;
+        this.plugins = plugins;
+        this.tags = tags;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -78,7 +103,7 @@ public final class GetPluginsResult {
     public static Builder builder(GetPluginsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -91,7 +116,11 @@ public final class GetPluginsResult {
         private @Nullable String pluginType;
         private List<GetPluginsPlugin> plugins;
         private @Nullable Map<String,Object> tags;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetPluginsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -107,12 +136,10 @@ public final class GetPluginsResult {
     	      this.tags = defaults.tags;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -120,12 +147,10 @@ public final class GetPluginsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -133,32 +158,26 @@ public final class GetPluginsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
-        @CustomType.Setter
         public Builder pluginName(@Nullable String pluginName) {
             this.pluginName = pluginName;
             return this;
         }
-        @CustomType.Setter
         public Builder pluginType(@Nullable String pluginType) {
             this.pluginType = pluginType;
             return this;
         }
-        @CustomType.Setter
         public Builder plugins(List<GetPluginsPlugin> plugins) {
             this.plugins = Objects.requireNonNull(plugins);
             return this;
@@ -166,25 +185,11 @@ public final class GetPluginsResult {
         public Builder plugins(GetPluginsPlugin... plugins) {
             return plugins(List.of(plugins));
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }
-        public GetPluginsResult build() {
-            final var o = new GetPluginsResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.pluginName = pluginName;
-            o.pluginType = pluginType;
-            o.plugins = plugins;
-            o.tags = tags;
-            return o;
+        }        public GetPluginsResult build() {
+            return new GetPluginsResult(id, ids, nameRegex, names, outputFile, pageNumber, pageSize, pluginName, pluginType, plugins, tags);
         }
     }
 }

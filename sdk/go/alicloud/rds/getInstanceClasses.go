@@ -67,10 +67,14 @@ type GetInstanceClassesArgs struct {
 	// * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
 	// * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
 	// * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
+	//
+	// > **NOTE**: The field `dbInstanceId` will be ignored when `commodityCode` is not a read-only type.
 	CommodityCode *string `pulumi:"commodityCode"`
 	// The DB instance class type by the user.
 	DbInstanceClass *string `pulumi:"dbInstanceClass"`
 	// The ID of the instance.
+	//
+	// > **NOTE**: The field `dbInstanceId` will be ignored when `commodityCode` is not a read-only type.
 	DbInstanceId *string `pulumi:"dbInstanceId"`
 	// The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
@@ -81,7 +85,8 @@ type GetInstanceClassesArgs struct {
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Whether to show multi available zone. Default false to not show multi availability zone.
-	MultiZone  *bool   `pulumi:"multiZone"`
+	MultiZone *bool `pulumi:"multiZone"`
+	// File name where to save data source results (after running `pulumi up`).
 	OutputFile *string `pulumi:"outputFile"`
 	SortedBy   *string `pulumi:"sortedBy"`
 	// It has been deprecated from version 1.134.0+ and using `dbInstanceStorageType` instead.
@@ -141,10 +146,14 @@ type GetInstanceClassesOutputArgs struct {
 	// * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
 	// * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
 	// * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
+	//
+	// > **NOTE**: The field `dbInstanceId` will be ignored when `commodityCode` is not a read-only type.
 	CommodityCode pulumi.StringPtrInput `pulumi:"commodityCode"`
 	// The DB instance class type by the user.
 	DbInstanceClass pulumi.StringPtrInput `pulumi:"dbInstanceClass"`
 	// The ID of the instance.
+	//
+	// > **NOTE**: The field `dbInstanceId` will be ignored when `commodityCode` is not a read-only type.
 	DbInstanceId pulumi.StringPtrInput `pulumi:"dbInstanceId"`
 	// The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
 	DbInstanceStorageType pulumi.StringPtrInput `pulumi:"dbInstanceStorageType"`
@@ -155,7 +164,8 @@ type GetInstanceClassesOutputArgs struct {
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
 	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`
 	// Whether to show multi available zone. Default false to not show multi availability zone.
-	MultiZone  pulumi.BoolPtrInput   `pulumi:"multiZone"`
+	MultiZone pulumi.BoolPtrInput `pulumi:"multiZone"`
+	// File name where to save data source results (after running `pulumi up`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	SortedBy   pulumi.StringPtrInput `pulumi:"sortedBy"`
 	// It has been deprecated from version 1.134.0+ and using `dbInstanceStorageType` instead.

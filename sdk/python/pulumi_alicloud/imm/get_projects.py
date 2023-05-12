@@ -94,6 +94,7 @@ def get_projects(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Project IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -131,5 +132,6 @@ def get_projects_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
 
 
     :param Sequence[str] ids: A list of Project IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

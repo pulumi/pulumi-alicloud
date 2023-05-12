@@ -13,24 +13,35 @@ public final class GetAcceleratorSpareIpAttachmentsAttachment {
      * @return The ID of the global acceleration instance.
      * 
      */
-    private String acceleratorId;
+    private final String acceleratorId;
     /**
      * @return The ID of the Accelerator Spare Ip Attachment.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
      * 
      */
-    private String spareIp;
+    private final String spareIp;
     /**
      * @return The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetAcceleratorSpareIpAttachmentsAttachment() {}
+    @CustomType.Constructor
+    private GetAcceleratorSpareIpAttachmentsAttachment(
+        @CustomType.Parameter("acceleratorId") String acceleratorId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("spareIp") String spareIp,
+        @CustomType.Parameter("status") String status) {
+        this.acceleratorId = acceleratorId;
+        this.id = id;
+        this.spareIp = spareIp;
+        this.status = status;
+    }
+
     /**
      * @return The ID of the global acceleration instance.
      * 
@@ -67,13 +78,17 @@ public final class GetAcceleratorSpareIpAttachmentsAttachment {
     public static Builder builder(GetAcceleratorSpareIpAttachmentsAttachment defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String acceleratorId;
         private String id;
         private String spareIp;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAcceleratorSpareIpAttachmentsAttachment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorId = defaults.acceleratorId;
@@ -82,33 +97,23 @@ public final class GetAcceleratorSpareIpAttachmentsAttachment {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
             this.acceleratorId = Objects.requireNonNull(acceleratorId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder spareIp(String spareIp) {
             this.spareIp = Objects.requireNonNull(spareIp);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetAcceleratorSpareIpAttachmentsAttachment build() {
-            final var o = new GetAcceleratorSpareIpAttachmentsAttachment();
-            o.acceleratorId = acceleratorId;
-            o.id = id;
-            o.spareIp = spareIp;
-            o.status = status;
-            return o;
+        }        public GetAcceleratorSpareIpAttachmentsAttachment build() {
+            return new GetAcceleratorSpareIpAttachmentsAttachment(acceleratorId, id, spareIp, status);
         }
     }
 }

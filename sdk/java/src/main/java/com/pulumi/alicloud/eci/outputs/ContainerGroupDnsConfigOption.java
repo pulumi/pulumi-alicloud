@@ -15,14 +15,21 @@ public final class ContainerGroupDnsConfigOption {
      * @return The name of the volume.
      * 
      */
-    private @Nullable String name;
+    private final @Nullable String name;
     /**
      * @return The value of the variable. The value can be 0 to 256 characters in length.
      * 
      */
-    private @Nullable String value;
+    private final @Nullable String value;
 
-    private ContainerGroupDnsConfigOption() {}
+    @CustomType.Constructor
+    private ContainerGroupDnsConfigOption(
+        @CustomType.Parameter("name") @Nullable String name,
+        @CustomType.Parameter("value") @Nullable String value) {
+        this.name = name;
+        this.value = value;
+    }
+
     /**
      * @return The name of the volume.
      * 
@@ -45,32 +52,30 @@ public final class ContainerGroupDnsConfigOption {
     public static Builder builder(ContainerGroupDnsConfigOption defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String name;
         private @Nullable String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ContainerGroupDnsConfigOption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
-        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }
-        public ContainerGroupDnsConfigOption build() {
-            final var o = new ContainerGroupDnsConfigOption();
-            o.name = name;
-            o.value = value;
-            return o;
+        }        public ContainerGroupDnsConfigOption build() {
+            return new ContainerGroupDnsConfigOption(name, value);
         }
     }
 }

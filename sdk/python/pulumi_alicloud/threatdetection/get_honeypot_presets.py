@@ -203,6 +203,7 @@ def get_honeypot_presets(current_page: Optional[int] = None,
     :param str honeypot_image_name: Honeypot mirror name
     :param Sequence[str] ids: A list of Honeypot Preset IDs.
     :param str node_id: Unique id of management node
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str preset_name: Honeypot template custom name
     """
     __args__ = dict()
@@ -272,6 +273,7 @@ def get_honeypot_presets_output(current_page: Optional[pulumi.Input[Optional[int
     :param str honeypot_image_name: Honeypot mirror name
     :param Sequence[str] ids: A list of Honeypot Preset IDs.
     :param str node_id: Unique id of management node
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str preset_name: Honeypot template custom name
     """
     ...

@@ -51,6 +51,9 @@ export interface GetEnterpriseDatabasesArgs {
      * A regex string to filter the results by the database Schema Name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -115,5 +118,8 @@ export interface GetEnterpriseDatabasesOutputArgs {
      * A regex string to filter the results by the database Schema Name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

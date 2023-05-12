@@ -123,6 +123,8 @@ namespace Pulumi.AliCloud.ResourceManager
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
+        /// &gt; **NOTE:** The member name must be unique within the resource directory.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -222,6 +224,8 @@ namespace Pulumi.AliCloud.ResourceManager
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
+        /// &gt; **NOTE:** The member name must be unique within the resource directory.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -310,6 +314,8 @@ namespace Pulumi.AliCloud.ResourceManager
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
+        /// &gt; **NOTE:** The member name must be unique within the resource directory.
         /// </summary>
         public InputMap<object> Tags
         {

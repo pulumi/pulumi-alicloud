@@ -155,6 +155,7 @@ def get_product_versions(enable_details: Optional[bool] = None,
 
     :param Sequence[str] ids: A list of Product Version IDs.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_id: Product ID
     """
     __args__ = dict()
@@ -204,6 +205,7 @@ def get_product_versions_output(enable_details: Optional[pulumi.Input[Optional[b
 
     :param Sequence[str] ids: A list of Product Version IDs.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_id: Product ID
     """
     ...

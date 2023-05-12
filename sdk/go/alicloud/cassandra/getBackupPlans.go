@@ -54,7 +54,8 @@ func GetBackupPlans(ctx *pulumi.Context, args *GetBackupPlansArgs, opts ...pulum
 // A collection of arguments for invoking getBackupPlans.
 type GetBackupPlansArgs struct {
 	// The ID of the cluster for the backup.
-	ClusterId  string  `pulumi:"clusterId"`
+	ClusterId string `pulumi:"clusterId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -84,7 +85,8 @@ func GetBackupPlansOutput(ctx *pulumi.Context, args GetBackupPlansOutputArgs, op
 // A collection of arguments for invoking getBackupPlans.
 type GetBackupPlansOutputArgs struct {
 	// The ID of the cluster for the backup.
-	ClusterId  pulumi.StringInput    `pulumi:"clusterId"`
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

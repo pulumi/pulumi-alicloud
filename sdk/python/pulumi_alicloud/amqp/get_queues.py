@@ -144,6 +144,7 @@ def get_queues(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Queue IDs. Its element value is same as Queue Name.
     :param str instance_id: The ID of the instance.
     :param str name_regex: A regex string to filter results by Queue name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str virtual_host_name: The name of the virtual host.
     """
     __args__ = dict()
@@ -203,6 +204,7 @@ def get_queues_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
     :param Sequence[str] ids: A list of Queue IDs. Its element value is same as Queue Name.
     :param str instance_id: The ID of the instance.
     :param str name_regex: A regex string to filter results by Queue name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str virtual_host_name: The name of the virtual host.
     """
     ...

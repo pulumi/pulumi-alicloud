@@ -18,40 +18,67 @@ public final class GetProductsResult {
      * @return The category id of the product.
      * 
      */
-    private @Nullable String categoryId;
+    private final @Nullable String categoryId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of product codes.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private @Nullable String outputFile;
-    private @Nullable String productType;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final @Nullable String outputFile;
+    private final @Nullable String productType;
     /**
      * @return A list of products. Each element contains the following attributes:
      * 
      */
-    private List<GetProductsProduct> products;
-    private @Nullable String searchTerm;
-    private @Nullable String sort;
+    private final List<GetProductsProduct> products;
+    private final @Nullable String searchTerm;
+    private final @Nullable String sort;
     /**
      * @return The suggested price of the product.
      * 
      */
-    private @Nullable Double suggestedPrice;
+    private final @Nullable Double suggestedPrice;
     /**
      * @return The supplier id of the product.
      * 
      */
-    private @Nullable String supplierId;
-    private @Nullable String supplierNameKeyword;
+    private final @Nullable String supplierId;
+    private final @Nullable String supplierNameKeyword;
 
-    private GetProductsResult() {}
+    @CustomType.Constructor
+    private GetProductsResult(
+        @CustomType.Parameter("categoryId") @Nullable String categoryId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("productType") @Nullable String productType,
+        @CustomType.Parameter("products") List<GetProductsProduct> products,
+        @CustomType.Parameter("searchTerm") @Nullable String searchTerm,
+        @CustomType.Parameter("sort") @Nullable String sort,
+        @CustomType.Parameter("suggestedPrice") @Nullable Double suggestedPrice,
+        @CustomType.Parameter("supplierId") @Nullable String supplierId,
+        @CustomType.Parameter("supplierNameKeyword") @Nullable String supplierNameKeyword) {
+        this.categoryId = categoryId;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.outputFile = outputFile;
+        this.productType = productType;
+        this.products = products;
+        this.searchTerm = searchTerm;
+        this.sort = sort;
+        this.suggestedPrice = suggestedPrice;
+        this.supplierId = supplierId;
+        this.supplierNameKeyword = supplierNameKeyword;
+    }
+
     /**
      * @return The category id of the product.
      * 
@@ -120,7 +147,7 @@ public final class GetProductsResult {
     public static Builder builder(GetProductsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String categoryId;
         private String id;
@@ -134,7 +161,11 @@ public final class GetProductsResult {
         private @Nullable Double suggestedPrice;
         private @Nullable String supplierId;
         private @Nullable String supplierNameKeyword;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetProductsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.categoryId = defaults.categoryId;
@@ -151,17 +182,14 @@ public final class GetProductsResult {
     	      this.supplierNameKeyword = defaults.supplierNameKeyword;
         }
 
-        @CustomType.Setter
         public Builder categoryId(@Nullable String categoryId) {
             this.categoryId = categoryId;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -169,22 +197,18 @@ public final class GetProductsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder productType(@Nullable String productType) {
             this.productType = productType;
             return this;
         }
-        @CustomType.Setter
         public Builder products(List<GetProductsProduct> products) {
             this.products = Objects.requireNonNull(products);
             return this;
@@ -192,46 +216,27 @@ public final class GetProductsResult {
         public Builder products(GetProductsProduct... products) {
             return products(List.of(products));
         }
-        @CustomType.Setter
         public Builder searchTerm(@Nullable String searchTerm) {
             this.searchTerm = searchTerm;
             return this;
         }
-        @CustomType.Setter
         public Builder sort(@Nullable String sort) {
             this.sort = sort;
             return this;
         }
-        @CustomType.Setter
         public Builder suggestedPrice(@Nullable Double suggestedPrice) {
             this.suggestedPrice = suggestedPrice;
             return this;
         }
-        @CustomType.Setter
         public Builder supplierId(@Nullable String supplierId) {
             this.supplierId = supplierId;
             return this;
         }
-        @CustomType.Setter
         public Builder supplierNameKeyword(@Nullable String supplierNameKeyword) {
             this.supplierNameKeyword = supplierNameKeyword;
             return this;
-        }
-        public GetProductsResult build() {
-            final var o = new GetProductsResult();
-            o.categoryId = categoryId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.outputFile = outputFile;
-            o.productType = productType;
-            o.products = products;
-            o.searchTerm = searchTerm;
-            o.sort = sort;
-            o.suggestedPrice = suggestedPrice;
-            o.supplierId = supplierId;
-            o.supplierNameKeyword = supplierNameKeyword;
-            return o;
+        }        public GetProductsResult build() {
+            return new GetProductsResult(categoryId, id, ids, nameRegex, outputFile, productType, products, searchTerm, sort, suggestedPrice, supplierId, supplierNameKeyword);
         }
     }
 }

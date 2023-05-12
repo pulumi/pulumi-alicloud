@@ -577,7 +577,7 @@ import (
 //
 // ## Import
 //
-// Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
+// Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `pulumi preview`.
 //
 // ```sh
 //
@@ -661,7 +661,7 @@ type NodePool struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
 	RollingPolicy NodePoolRollingPolicyPtrOutput `pulumi:"rollingPolicy"`
-	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
 	//
 	// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 	RolloutPolicy NodePoolRolloutPolicyPtrOutput `pulumi:"rolloutPolicy"`
@@ -835,7 +835,7 @@ type nodePoolState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
 	RollingPolicy *NodePoolRollingPolicy `pulumi:"rollingPolicy"`
-	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
 	//
 	// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 	RolloutPolicy *NodePoolRolloutPolicy `pulumi:"rolloutPolicy"`
@@ -965,7 +965,7 @@ type NodePoolState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
 	RollingPolicy NodePoolRollingPolicyPtrInput
-	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
 	//
 	// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 	RolloutPolicy NodePoolRolloutPolicyPtrInput
@@ -1099,7 +1099,7 @@ type nodePoolArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
 	RollingPolicy *NodePoolRollingPolicy `pulumi:"rollingPolicy"`
-	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
 	//
 	// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 	RolloutPolicy *NodePoolRolloutPolicy `pulumi:"rolloutPolicy"`
@@ -1226,7 +1226,7 @@ type NodePoolArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
 	RollingPolicy NodePoolRollingPolicyPtrInput
-	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+	// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
 	//
 	// Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 	RolloutPolicy NodePoolRolloutPolicyPtrInput
@@ -1543,7 +1543,7 @@ func (o NodePoolOutput) RollingPolicy() NodePoolRollingPolicyPtrOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolRollingPolicyPtrOutput { return v.RollingPolicy }).(NodePoolRollingPolicyPtrOutput)
 }
 
-// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+// Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
 //
 // Deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
 func (o NodePoolOutput) RolloutPolicy() NodePoolRolloutPolicyPtrOutput {

@@ -226,6 +226,7 @@ def get_snapshots(bucket: Optional[str] = None,
     :param str file_system_id: The ID of NAS File system.
     :param Sequence[str] ids: A list of Snapshot IDs.
     :param str instance_id: The ID of ECS instance.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str source_type: Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
     :param str status: The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
     :param str vault_id: The ID of Vault.
@@ -321,6 +322,7 @@ def get_snapshots_output(bucket: Optional[pulumi.Input[Optional[str]]] = None,
     :param str file_system_id: The ID of NAS File system.
     :param Sequence[str] ids: A list of Snapshot IDs.
     :param str instance_id: The ID of ECS instance.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str source_type: Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
     :param str status: The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
     :param str vault_id: The ID of Vault.

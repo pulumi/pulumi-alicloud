@@ -48,6 +48,9 @@ export interface GetPolicyVersionsArgs {
      * A list of policy version IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The name of the policy.
@@ -114,6 +117,9 @@ export interface GetPolicyVersionsOutputArgs {
      * A list of policy version IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The name of the policy.

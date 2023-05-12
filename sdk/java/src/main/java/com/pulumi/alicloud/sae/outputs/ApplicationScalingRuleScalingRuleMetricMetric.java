@@ -16,7 +16,7 @@ public final class ApplicationScalingRuleScalingRuleMetricMetric {
      * @return According to different `metric_type`, set the target value of the corresponding monitoring index.
      * 
      */
-    private @Nullable Integer metricTargetAverageUtilization;
+    private final @Nullable Integer metricTargetAverageUtilization;
     /**
      * @return Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `SLB_QPS` and `SLB_RT`. The values are described as follows:
      * - CPU: CPU usage.
@@ -26,9 +26,16 @@ public final class ApplicationScalingRuleScalingRuleMetricMetric {
      * - SLB_RT: the average response time of public network SLB within 15 seconds.
      * 
      */
-    private @Nullable String metricType;
+    private final @Nullable String metricType;
 
-    private ApplicationScalingRuleScalingRuleMetricMetric() {}
+    @CustomType.Constructor
+    private ApplicationScalingRuleScalingRuleMetricMetric(
+        @CustomType.Parameter("metricTargetAverageUtilization") @Nullable Integer metricTargetAverageUtilization,
+        @CustomType.Parameter("metricType") @Nullable String metricType) {
+        this.metricTargetAverageUtilization = metricTargetAverageUtilization;
+        this.metricType = metricType;
+    }
+
     /**
      * @return According to different `metric_type`, set the target value of the corresponding monitoring index.
      * 
@@ -56,32 +63,30 @@ public final class ApplicationScalingRuleScalingRuleMetricMetric {
     public static Builder builder(ApplicationScalingRuleScalingRuleMetricMetric defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Integer metricTargetAverageUtilization;
         private @Nullable String metricType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ApplicationScalingRuleScalingRuleMetricMetric defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.metricTargetAverageUtilization = defaults.metricTargetAverageUtilization;
     	      this.metricType = defaults.metricType;
         }
 
-        @CustomType.Setter
         public Builder metricTargetAverageUtilization(@Nullable Integer metricTargetAverageUtilization) {
             this.metricTargetAverageUtilization = metricTargetAverageUtilization;
             return this;
         }
-        @CustomType.Setter
         public Builder metricType(@Nullable String metricType) {
             this.metricType = metricType;
             return this;
-        }
-        public ApplicationScalingRuleScalingRuleMetricMetric build() {
-            final var o = new ApplicationScalingRuleScalingRuleMetricMetric();
-            o.metricTargetAverageUtilization = metricTargetAverageUtilization;
-            o.metricType = metricType;
-            return o;
+        }        public ApplicationScalingRuleScalingRuleMetricMetric build() {
+            return new ApplicationScalingRuleScalingRuleMetricMetric(metricTargetAverageUtilization, metricType);
         }
     }
 }

@@ -84,6 +84,9 @@ export interface GetHostsArgs {
      * Specify the new create the host's operating system. Valid values: Linux Windows.
      */
     osType?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
@@ -185,6 +188,9 @@ export interface GetHostsOutputArgs {
      * Specify the new create the host's operating system. Valid values: Linux Windows.
      */
     osType?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.

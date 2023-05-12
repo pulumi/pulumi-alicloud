@@ -14,69 +14,98 @@ public final class GetClustersCluster {
      * @return The ID of the cluster that you want to create the application.
      * 
      */
-    private String clusterId;
+    private final String clusterId;
     /**
      * @return The name of the cluster.
      * 
      */
-    private String clusterName;
+    private final String clusterName;
     /**
      * @return The type of the cluster, Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
      * 
      */
-    private Integer clusterType;
+    private final Integer clusterType;
     /**
      * @return The total number of CPUs in the cluster.
      * 
      */
-    private Integer cpu;
+    private final Integer cpu;
     /**
      * @return The number of used CPUs in the cluster.
      * 
      */
-    private Integer cpuUsed;
+    private final Integer cpuUsed;
     /**
      * @return Cluster&#39;s creation time.
      * 
      */
-    private Integer createTime;
+    private final Integer createTime;
     /**
      * @return The total amount of memory in the cluser. Unit: MB.
      * 
      */
-    private Integer mem;
+    private final Integer mem;
     /**
      * @return The amount of used memory in the cluser. Unit: MB.
      * 
      */
-    private Integer memUsed;
+    private final Integer memUsed;
     /**
      * @return The network type of the cluster. Valid values: 1: classic network. 2: VPC.
      * 
      */
-    private Integer networkMode;
+    private final Integer networkMode;
     /**
      * @return The number of the Elastic Compute Service (ECS) instances that are deployed to the cluster.
      * 
      */
-    private Integer nodeNum;
+    private final Integer nodeNum;
     /**
      * @return The ID of the namespace the application belongs to.
      * 
      */
-    private String regionId;
+    private final String regionId;
     /**
      * @return The time when the cluster was last updated.
      * 
      */
-    private Integer updateTime;
+    private final Integer updateTime;
     /**
      * @return The ID of the Virtual Private Cloud (VPC) for the cluster.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
 
-    private GetClustersCluster() {}
+    @CustomType.Constructor
+    private GetClustersCluster(
+        @CustomType.Parameter("clusterId") String clusterId,
+        @CustomType.Parameter("clusterName") String clusterName,
+        @CustomType.Parameter("clusterType") Integer clusterType,
+        @CustomType.Parameter("cpu") Integer cpu,
+        @CustomType.Parameter("cpuUsed") Integer cpuUsed,
+        @CustomType.Parameter("createTime") Integer createTime,
+        @CustomType.Parameter("mem") Integer mem,
+        @CustomType.Parameter("memUsed") Integer memUsed,
+        @CustomType.Parameter("networkMode") Integer networkMode,
+        @CustomType.Parameter("nodeNum") Integer nodeNum,
+        @CustomType.Parameter("regionId") String regionId,
+        @CustomType.Parameter("updateTime") Integer updateTime,
+        @CustomType.Parameter("vpcId") String vpcId) {
+        this.clusterId = clusterId;
+        this.clusterName = clusterName;
+        this.clusterType = clusterType;
+        this.cpu = cpu;
+        this.cpuUsed = cpuUsed;
+        this.createTime = createTime;
+        this.mem = mem;
+        this.memUsed = memUsed;
+        this.networkMode = networkMode;
+        this.nodeNum = nodeNum;
+        this.regionId = regionId;
+        this.updateTime = updateTime;
+        this.vpcId = vpcId;
+    }
+
     /**
      * @return The ID of the cluster that you want to create the application.
      * 
@@ -176,7 +205,7 @@ public final class GetClustersCluster {
     public static Builder builder(GetClustersCluster defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String clusterId;
         private String clusterName;
@@ -191,7 +220,11 @@ public final class GetClustersCluster {
         private String regionId;
         private Integer updateTime;
         private String vpcId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetClustersCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterId = defaults.clusterId;
@@ -209,87 +242,59 @@ public final class GetClustersCluster {
     	      this.vpcId = defaults.vpcId;
         }
 
-        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder clusterName(String clusterName) {
             this.clusterName = Objects.requireNonNull(clusterName);
             return this;
         }
-        @CustomType.Setter
         public Builder clusterType(Integer clusterType) {
             this.clusterType = Objects.requireNonNull(clusterType);
             return this;
         }
-        @CustomType.Setter
         public Builder cpu(Integer cpu) {
             this.cpu = Objects.requireNonNull(cpu);
             return this;
         }
-        @CustomType.Setter
         public Builder cpuUsed(Integer cpuUsed) {
             this.cpuUsed = Objects.requireNonNull(cpuUsed);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(Integer createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder mem(Integer mem) {
             this.mem = Objects.requireNonNull(mem);
             return this;
         }
-        @CustomType.Setter
         public Builder memUsed(Integer memUsed) {
             this.memUsed = Objects.requireNonNull(memUsed);
             return this;
         }
-        @CustomType.Setter
         public Builder networkMode(Integer networkMode) {
             this.networkMode = Objects.requireNonNull(networkMode);
             return this;
         }
-        @CustomType.Setter
         public Builder nodeNum(Integer nodeNum) {
             this.nodeNum = Objects.requireNonNull(nodeNum);
             return this;
         }
-        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
-        @CustomType.Setter
         public Builder updateTime(Integer updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }
-        public GetClustersCluster build() {
-            final var o = new GetClustersCluster();
-            o.clusterId = clusterId;
-            o.clusterName = clusterName;
-            o.clusterType = clusterType;
-            o.cpu = cpu;
-            o.cpuUsed = cpuUsed;
-            o.createTime = createTime;
-            o.mem = mem;
-            o.memUsed = memUsed;
-            o.networkMode = networkMode;
-            o.nodeNum = nodeNum;
-            o.regionId = regionId;
-            o.updateTime = updateTime;
-            o.vpcId = vpcId;
-            return o;
+        }        public GetClustersCluster build() {
+            return new GetClustersCluster(clusterId, clusterName, clusterType, cpu, cpuUsed, createTime, mem, memUsed, networkMode, nodeNum, regionId, updateTime, vpcId);
         }
     }
 }

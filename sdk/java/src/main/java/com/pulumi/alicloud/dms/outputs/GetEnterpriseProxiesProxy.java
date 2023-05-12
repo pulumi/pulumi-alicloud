@@ -15,64 +15,91 @@ public final class GetEnterpriseProxiesProxy {
      * @return The ID of the user who enabled the secure access proxy feature.
      * 
      */
-    private String creatorId;
+    private final String creatorId;
     /**
      * @return The nickname of the user who enabled the secure access proxy feature.
      * 
      */
-    private String creatorName;
+    private final String creatorName;
     /**
      * @return The port that was used by HTTPS clients to connect to the database instance.
      * 
      */
-    private Integer httpsPort;
+    private final Integer httpsPort;
     /**
      * @return The ID of the Proxy.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the database instance.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return Indicates whether the internal endpoint is enabled. Default value: true.
      * 
      */
-    private Boolean privateEnable;
+    private final Boolean privateEnable;
     /**
      * @return The internal endpoint.
      * 
      */
-    private String privateHost;
+    private final String privateHost;
     /**
      * @return Database protocol connection port number.
      * 
      */
-    private Integer protocolPort;
+    private final Integer protocolPort;
     /**
      * @return Database protocol type, for example, MYSQL.
      * 
      */
-    private String protocolType;
+    private final String protocolType;
     /**
      * @return The ID of the secure access proxy.
      * 
      */
-    private String proxyId;
+    private final String proxyId;
     /**
      * @return Indicates whether the public endpoint is enabled.
      * 
      */
-    private Boolean publicEnable;
+    private final Boolean publicEnable;
     /**
      * @return The public endpoint. A public endpoint is returned no matter whether the public endpoint is enabled or disabled. **Note:** When the public network address is in the **true** state, the returned public network address is a valid address with DNS resolution capability. When the public address is in the **false** state, the returned Public address is an invalid address without DNS resolution.
      * 
      */
-    private String publicHost;
+    private final String publicHost;
 
-    private GetEnterpriseProxiesProxy() {}
+    @CustomType.Constructor
+    private GetEnterpriseProxiesProxy(
+        @CustomType.Parameter("creatorId") String creatorId,
+        @CustomType.Parameter("creatorName") String creatorName,
+        @CustomType.Parameter("httpsPort") Integer httpsPort,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("privateEnable") Boolean privateEnable,
+        @CustomType.Parameter("privateHost") String privateHost,
+        @CustomType.Parameter("protocolPort") Integer protocolPort,
+        @CustomType.Parameter("protocolType") String protocolType,
+        @CustomType.Parameter("proxyId") String proxyId,
+        @CustomType.Parameter("publicEnable") Boolean publicEnable,
+        @CustomType.Parameter("publicHost") String publicHost) {
+        this.creatorId = creatorId;
+        this.creatorName = creatorName;
+        this.httpsPort = httpsPort;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.privateEnable = privateEnable;
+        this.privateHost = privateHost;
+        this.protocolPort = protocolPort;
+        this.protocolType = protocolType;
+        this.proxyId = proxyId;
+        this.publicEnable = publicEnable;
+        this.publicHost = publicHost;
+    }
+
     /**
      * @return The ID of the user who enabled the secure access proxy feature.
      * 
@@ -165,7 +192,7 @@ public final class GetEnterpriseProxiesProxy {
     public static Builder builder(GetEnterpriseProxiesProxy defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String creatorId;
         private String creatorName;
@@ -179,7 +206,11 @@ public final class GetEnterpriseProxiesProxy {
         private String proxyId;
         private Boolean publicEnable;
         private String publicHost;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEnterpriseProxiesProxy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.creatorId = defaults.creatorId;
@@ -196,81 +227,55 @@ public final class GetEnterpriseProxiesProxy {
     	      this.publicHost = defaults.publicHost;
         }
 
-        @CustomType.Setter
         public Builder creatorId(String creatorId) {
             this.creatorId = Objects.requireNonNull(creatorId);
             return this;
         }
-        @CustomType.Setter
         public Builder creatorName(String creatorName) {
             this.creatorName = Objects.requireNonNull(creatorName);
             return this;
         }
-        @CustomType.Setter
         public Builder httpsPort(Integer httpsPort) {
             this.httpsPort = Objects.requireNonNull(httpsPort);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder privateEnable(Boolean privateEnable) {
             this.privateEnable = Objects.requireNonNull(privateEnable);
             return this;
         }
-        @CustomType.Setter
         public Builder privateHost(String privateHost) {
             this.privateHost = Objects.requireNonNull(privateHost);
             return this;
         }
-        @CustomType.Setter
         public Builder protocolPort(Integer protocolPort) {
             this.protocolPort = Objects.requireNonNull(protocolPort);
             return this;
         }
-        @CustomType.Setter
         public Builder protocolType(String protocolType) {
             this.protocolType = Objects.requireNonNull(protocolType);
             return this;
         }
-        @CustomType.Setter
         public Builder proxyId(String proxyId) {
             this.proxyId = Objects.requireNonNull(proxyId);
             return this;
         }
-        @CustomType.Setter
         public Builder publicEnable(Boolean publicEnable) {
             this.publicEnable = Objects.requireNonNull(publicEnable);
             return this;
         }
-        @CustomType.Setter
         public Builder publicHost(String publicHost) {
             this.publicHost = Objects.requireNonNull(publicHost);
             return this;
-        }
-        public GetEnterpriseProxiesProxy build() {
-            final var o = new GetEnterpriseProxiesProxy();
-            o.creatorId = creatorId;
-            o.creatorName = creatorName;
-            o.httpsPort = httpsPort;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.privateEnable = privateEnable;
-            o.privateHost = privateHost;
-            o.protocolPort = protocolPort;
-            o.protocolType = protocolType;
-            o.proxyId = proxyId;
-            o.publicEnable = publicEnable;
-            o.publicHost = publicHost;
-            return o;
+        }        public GetEnterpriseProxiesProxy build() {
+            return new GetEnterpriseProxiesProxy(creatorId, creatorName, httpsPort, id, instanceId, privateEnable, privateHost, protocolPort, protocolType, proxyId, publicEnable, publicHost);
         }
     }
 }

@@ -163,12 +163,16 @@ public class RouteService extends com.pulumi.resources.CustomResource {
     /**
      * The VPC associated with the cloud service.
      * 
+     * &gt; **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
+     * 
      */
     @Export(name="hostVpcId", type=String.class, parameters={})
     private Output<String> hostVpcId;
 
     /**
      * @return The VPC associated with the cloud service.
+     * 
+     * &gt; **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
      * 
      */
     public Output<String> hostVpcId() {

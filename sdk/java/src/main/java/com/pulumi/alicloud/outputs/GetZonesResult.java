@@ -14,38 +14,69 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZonesResult {
-    private @Nullable String availableDiskCategory;
-    private @Nullable String availableInstanceType;
+    private final @Nullable String availableDiskCategory;
+    private final @Nullable String availableInstanceType;
     /**
      * @return Type of resources that can be created.
      * 
      */
-    private @Nullable String availableResourceCreation;
-    private @Nullable String availableSlbAddressIpVersion;
-    private @Nullable String availableSlbAddressType;
-    private @Nullable Boolean enableDetails;
+    private final @Nullable String availableResourceCreation;
+    private final @Nullable String availableSlbAddressIpVersion;
+    private final @Nullable String availableSlbAddressType;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of zone IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String instanceChargeType;
-    private @Nullable Boolean multi;
-    private @Nullable String networkType;
-    private @Nullable String outputFile;
-    private @Nullable String spotStrategy;
+    private final List<String> ids;
+    private final @Nullable String instanceChargeType;
+    private final @Nullable Boolean multi;
+    private final @Nullable String networkType;
+    private final @Nullable String outputFile;
+    private final @Nullable String spotStrategy;
     /**
      * @return A list of availability zones. Each element contains the following attributes:
      * 
      */
-    private List<GetZonesZone> zones;
+    private final List<GetZonesZone> zones;
 
-    private GetZonesResult() {}
+    @CustomType.Constructor
+    private GetZonesResult(
+        @CustomType.Parameter("availableDiskCategory") @Nullable String availableDiskCategory,
+        @CustomType.Parameter("availableInstanceType") @Nullable String availableInstanceType,
+        @CustomType.Parameter("availableResourceCreation") @Nullable String availableResourceCreation,
+        @CustomType.Parameter("availableSlbAddressIpVersion") @Nullable String availableSlbAddressIpVersion,
+        @CustomType.Parameter("availableSlbAddressType") @Nullable String availableSlbAddressType,
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceChargeType") @Nullable String instanceChargeType,
+        @CustomType.Parameter("multi") @Nullable Boolean multi,
+        @CustomType.Parameter("networkType") @Nullable String networkType,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("spotStrategy") @Nullable String spotStrategy,
+        @CustomType.Parameter("zones") List<GetZonesZone> zones) {
+        this.availableDiskCategory = availableDiskCategory;
+        this.availableInstanceType = availableInstanceType;
+        this.availableResourceCreation = availableResourceCreation;
+        this.availableSlbAddressIpVersion = availableSlbAddressIpVersion;
+        this.availableSlbAddressType = availableSlbAddressType;
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.instanceChargeType = instanceChargeType;
+        this.multi = multi;
+        this.networkType = networkType;
+        this.outputFile = outputFile;
+        this.spotStrategy = spotStrategy;
+        this.zones = zones;
+    }
+
     public Optional<String> availableDiskCategory() {
         return Optional.ofNullable(this.availableDiskCategory);
     }
@@ -112,7 +143,7 @@ public final class GetZonesResult {
     public static Builder builder(GetZonesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String availableDiskCategory;
         private @Nullable String availableInstanceType;
@@ -128,7 +159,11 @@ public final class GetZonesResult {
         private @Nullable String outputFile;
         private @Nullable String spotStrategy;
         private List<GetZonesZone> zones;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetZonesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availableDiskCategory = defaults.availableDiskCategory;
@@ -147,42 +182,34 @@ public final class GetZonesResult {
     	      this.zones = defaults.zones;
         }
 
-        @CustomType.Setter
         public Builder availableDiskCategory(@Nullable String availableDiskCategory) {
             this.availableDiskCategory = availableDiskCategory;
             return this;
         }
-        @CustomType.Setter
         public Builder availableInstanceType(@Nullable String availableInstanceType) {
             this.availableInstanceType = availableInstanceType;
             return this;
         }
-        @CustomType.Setter
         public Builder availableResourceCreation(@Nullable String availableResourceCreation) {
             this.availableResourceCreation = availableResourceCreation;
             return this;
         }
-        @CustomType.Setter
         public Builder availableSlbAddressIpVersion(@Nullable String availableSlbAddressIpVersion) {
             this.availableSlbAddressIpVersion = availableSlbAddressIpVersion;
             return this;
         }
-        @CustomType.Setter
         public Builder availableSlbAddressType(@Nullable String availableSlbAddressType) {
             this.availableSlbAddressType = availableSlbAddressType;
             return this;
         }
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -190,56 +217,34 @@ public final class GetZonesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceChargeType(@Nullable String instanceChargeType) {
             this.instanceChargeType = instanceChargeType;
             return this;
         }
-        @CustomType.Setter
         public Builder multi(@Nullable Boolean multi) {
             this.multi = multi;
             return this;
         }
-        @CustomType.Setter
         public Builder networkType(@Nullable String networkType) {
             this.networkType = networkType;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder spotStrategy(@Nullable String spotStrategy) {
             this.spotStrategy = spotStrategy;
             return this;
         }
-        @CustomType.Setter
         public Builder zones(List<GetZonesZone> zones) {
             this.zones = Objects.requireNonNull(zones);
             return this;
         }
         public Builder zones(GetZonesZone... zones) {
             return zones(List.of(zones));
-        }
-        public GetZonesResult build() {
-            final var o = new GetZonesResult();
-            o.availableDiskCategory = availableDiskCategory;
-            o.availableInstanceType = availableInstanceType;
-            o.availableResourceCreation = availableResourceCreation;
-            o.availableSlbAddressIpVersion = availableSlbAddressIpVersion;
-            o.availableSlbAddressType = availableSlbAddressType;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.instanceChargeType = instanceChargeType;
-            o.multi = multi;
-            o.networkType = networkType;
-            o.outputFile = outputFile;
-            o.spotStrategy = spotStrategy;
-            o.zones = zones;
-            return o;
+        }        public GetZonesResult build() {
+            return new GetZonesResult(availableDiskCategory, availableInstanceType, availableResourceCreation, availableSlbAddressIpVersion, availableSlbAddressType, enableDetails, id, ids, instanceChargeType, multi, networkType, outputFile, spotStrategy, zones);
         }
     }
 }

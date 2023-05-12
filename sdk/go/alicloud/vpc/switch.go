@@ -11,6 +11,138 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a VPC switch resource.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("tf_test_foo"),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewSwitch(ctx, "vsw", &vpc.SwitchArgs{
+//				VpcId:     vpc.ID(),
+//				CidrBlock: pulumi.String("172.16.0.0/21"),
+//				ZoneId:    pulumi.String("cn-beijing-b"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("tf_test_foo"),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cidrBlocks, err := vpc.NewIpv4CidrBlock(ctx, "cidrBlocks", &vpc.Ipv4CidrBlockArgs{
+//				VpcId:              vpc.ID(),
+//				SecondaryCidrBlock: pulumi.String("192.163.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewSwitch(ctx, "island-nat", &vpc.SwitchArgs{
+//				VpcId:       cidrBlocks.VpcId,
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//				ZoneId:      pulumi.String("cn-beijing-b"),
+//				VswitchName: pulumi.String("example_value"),
+//				Tags: pulumi.AnyMap{
+//					"BuiltBy":     pulumi.Any("example_value"),
+//					"cnm_version": pulumi.Any("example_value"),
+//					"Environment": pulumi.Any("example_value"),
+//					"ManagedBy":   pulumi.Any("example_value"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Create a switch associated with the additional network segment
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("tf_test_foo"),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			example, err := vpc.NewIpv4CidrBlock(ctx, "example", &vpc.Ipv4CidrBlockArgs{
+//				VpcId:              pulumi.Any(alicloud_vpc.Default.Id),
+//				SecondaryCidrBlock: pulumi.String("192.163.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewSwitch(ctx, "vsw", &vpc.SwitchArgs{
+//				VpcId:     example.VpcId,
+//				CidrBlock: pulumi.String("192.163.0.0/24"),
+//				ZoneId:    pulumi.String("cn-beijing-b"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Module Support
+//
+// You can use to the existing vpc module
+// to create a VPC and several VSwitches one-click.
+//
 // ## Import
 //
 // Vswitch can be imported using the id, e.g.

@@ -13,19 +13,28 @@ public final class CustomDomainCertConfig {
      * @return The name of the certificate, used to distinguish different certificates.
      * 
      */
-    private String certName;
+    private final String certName;
     /**
      * @return Certificate data of the HTTPS certificates, follow the &#39;pem&#39; format.
      * 
      */
-    private String certificate;
+    private final String certificate;
     /**
      * @return Private key of the HTTPS certificates, follow the &#39;pem&#39; format.
      * 
      */
-    private String privateKey;
+    private final String privateKey;
 
-    private CustomDomainCertConfig() {}
+    @CustomType.Constructor
+    private CustomDomainCertConfig(
+        @CustomType.Parameter("certName") String certName,
+        @CustomType.Parameter("certificate") String certificate,
+        @CustomType.Parameter("privateKey") String privateKey) {
+        this.certName = certName;
+        this.certificate = certificate;
+        this.privateKey = privateKey;
+    }
+
     /**
      * @return The name of the certificate, used to distinguish different certificates.
      * 
@@ -55,12 +64,16 @@ public final class CustomDomainCertConfig {
     public static Builder builder(CustomDomainCertConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String certName;
         private String certificate;
         private String privateKey;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(CustomDomainCertConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certName = defaults.certName;
@@ -68,27 +81,19 @@ public final class CustomDomainCertConfig {
     	      this.privateKey = defaults.privateKey;
         }
 
-        @CustomType.Setter
         public Builder certName(String certName) {
             this.certName = Objects.requireNonNull(certName);
             return this;
         }
-        @CustomType.Setter
         public Builder certificate(String certificate) {
             this.certificate = Objects.requireNonNull(certificate);
             return this;
         }
-        @CustomType.Setter
         public Builder privateKey(String privateKey) {
             this.privateKey = Objects.requireNonNull(privateKey);
             return this;
-        }
-        public CustomDomainCertConfig build() {
-            final var o = new CustomDomainCertConfig();
-            o.certName = certName;
-            o.certificate = certificate;
-            o.privateKey = privateKey;
-            return o;
+        }        public CustomDomainCertConfig build() {
+            return new CustomDomainCertConfig(certName, certificate, privateKey);
         }
     }
 }

@@ -13,24 +13,35 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEndpointsResult {
-    private String dbClusterId;
+    private final String dbClusterId;
     /**
      * @return The endpoint ID.
      * 
      */
-    private @Nullable String dbEndpointId;
+    private final @Nullable String dbEndpointId;
     /**
      * @return A list of PolarDB cluster endpoints. Each element contains the following attributes:
      * 
      */
-    private List<GetEndpointsEndpoint> endpoints;
+    private final List<GetEndpointsEndpoint> endpoints;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
 
-    private GetEndpointsResult() {}
+    @CustomType.Constructor
+    private GetEndpointsResult(
+        @CustomType.Parameter("dbClusterId") String dbClusterId,
+        @CustomType.Parameter("dbEndpointId") @Nullable String dbEndpointId,
+        @CustomType.Parameter("endpoints") List<GetEndpointsEndpoint> endpoints,
+        @CustomType.Parameter("id") String id) {
+        this.dbClusterId = dbClusterId;
+        this.dbEndpointId = dbEndpointId;
+        this.endpoints = endpoints;
+        this.id = id;
+    }
+
     public String dbClusterId() {
         return this.dbClusterId;
     }
@@ -63,13 +74,17 @@ public final class GetEndpointsResult {
     public static Builder builder(GetEndpointsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String dbClusterId;
         private @Nullable String dbEndpointId;
         private List<GetEndpointsEndpoint> endpoints;
         private String id;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEndpointsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbClusterId = defaults.dbClusterId;
@@ -78,17 +93,14 @@ public final class GetEndpointsResult {
     	      this.id = defaults.id;
         }
 
-        @CustomType.Setter
         public Builder dbClusterId(String dbClusterId) {
             this.dbClusterId = Objects.requireNonNull(dbClusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder dbEndpointId(@Nullable String dbEndpointId) {
             this.dbEndpointId = dbEndpointId;
             return this;
         }
-        @CustomType.Setter
         public Builder endpoints(List<GetEndpointsEndpoint> endpoints) {
             this.endpoints = Objects.requireNonNull(endpoints);
             return this;
@@ -96,18 +108,11 @@ public final class GetEndpointsResult {
         public Builder endpoints(GetEndpointsEndpoint... endpoints) {
             return endpoints(List.of(endpoints));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }
-        public GetEndpointsResult build() {
-            final var o = new GetEndpointsResult();
-            o.dbClusterId = dbClusterId;
-            o.dbEndpointId = dbEndpointId;
-            o.endpoints = endpoints;
-            o.id = id;
-            return o;
+        }        public GetEndpointsResult build() {
+            return new GetEndpointsResult(dbClusterId, dbEndpointId, endpoints, id);
         }
     }
 }

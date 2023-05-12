@@ -15,69 +15,98 @@ public final class GetSslVpnServersServer {
      * @return The encryption algorithm used.
      * 
      */
-    private String cipher;
+    private final String cipher;
     /**
      * @return The IP address pool of the client.
      * 
      */
-    private String clientIpPool;
+    private final String clientIpPool;
     /**
      * @return Whether to compress.
      * 
      */
-    private Boolean compress;
+    private final Boolean compress;
     /**
      * @return The number of current connections.
      * 
      */
-    private Integer connections;
+    private final Integer connections;
     /**
      * @return The time of creation.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The ID of the SSL-VPN server.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The public IP.
      * 
      */
-    private String internetIp;
+    private final String internetIp;
     /**
      * @return The local subnet of the VPN connection.
      * 
      */
-    private String localSubnet;
+    private final String localSubnet;
     /**
      * @return The maximum number of connections.
      * 
      */
-    private Integer maxConnections;
+    private final Integer maxConnections;
     /**
      * @return The name of the SSL-VPN server.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The port used by the SSL-VPN server.
      * 
      */
-    private Integer port;
+    private final Integer port;
     /**
      * @return The protocol used by the SSL-VPN server.
      * 
      */
-    private String proto;
+    private final String proto;
     /**
      * @return Use the VPN gateway ID as the search key.
      * 
      */
-    private String vpnGatewayId;
+    private final String vpnGatewayId;
 
-    private GetSslVpnServersServer() {}
+    @CustomType.Constructor
+    private GetSslVpnServersServer(
+        @CustomType.Parameter("cipher") String cipher,
+        @CustomType.Parameter("clientIpPool") String clientIpPool,
+        @CustomType.Parameter("compress") Boolean compress,
+        @CustomType.Parameter("connections") Integer connections,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("internetIp") String internetIp,
+        @CustomType.Parameter("localSubnet") String localSubnet,
+        @CustomType.Parameter("maxConnections") Integer maxConnections,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("port") Integer port,
+        @CustomType.Parameter("proto") String proto,
+        @CustomType.Parameter("vpnGatewayId") String vpnGatewayId) {
+        this.cipher = cipher;
+        this.clientIpPool = clientIpPool;
+        this.compress = compress;
+        this.connections = connections;
+        this.createTime = createTime;
+        this.id = id;
+        this.internetIp = internetIp;
+        this.localSubnet = localSubnet;
+        this.maxConnections = maxConnections;
+        this.name = name;
+        this.port = port;
+        this.proto = proto;
+        this.vpnGatewayId = vpnGatewayId;
+    }
+
     /**
      * @return The encryption algorithm used.
      * 
@@ -177,7 +206,7 @@ public final class GetSslVpnServersServer {
     public static Builder builder(GetSslVpnServersServer defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String cipher;
         private String clientIpPool;
@@ -192,7 +221,11 @@ public final class GetSslVpnServersServer {
         private Integer port;
         private String proto;
         private String vpnGatewayId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetSslVpnServersServer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cipher = defaults.cipher;
@@ -210,87 +243,59 @@ public final class GetSslVpnServersServer {
     	      this.vpnGatewayId = defaults.vpnGatewayId;
         }
 
-        @CustomType.Setter
         public Builder cipher(String cipher) {
             this.cipher = Objects.requireNonNull(cipher);
             return this;
         }
-        @CustomType.Setter
         public Builder clientIpPool(String clientIpPool) {
             this.clientIpPool = Objects.requireNonNull(clientIpPool);
             return this;
         }
-        @CustomType.Setter
         public Builder compress(Boolean compress) {
             this.compress = Objects.requireNonNull(compress);
             return this;
         }
-        @CustomType.Setter
         public Builder connections(Integer connections) {
             this.connections = Objects.requireNonNull(connections);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder internetIp(String internetIp) {
             this.internetIp = Objects.requireNonNull(internetIp);
             return this;
         }
-        @CustomType.Setter
         public Builder localSubnet(String localSubnet) {
             this.localSubnet = Objects.requireNonNull(localSubnet);
             return this;
         }
-        @CustomType.Setter
         public Builder maxConnections(Integer maxConnections) {
             this.maxConnections = Objects.requireNonNull(maxConnections);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
-        @CustomType.Setter
         public Builder proto(String proto) {
             this.proto = Objects.requireNonNull(proto);
             return this;
         }
-        @CustomType.Setter
         public Builder vpnGatewayId(String vpnGatewayId) {
             this.vpnGatewayId = Objects.requireNonNull(vpnGatewayId);
             return this;
-        }
-        public GetSslVpnServersServer build() {
-            final var o = new GetSslVpnServersServer();
-            o.cipher = cipher;
-            o.clientIpPool = clientIpPool;
-            o.compress = compress;
-            o.connections = connections;
-            o.createTime = createTime;
-            o.id = id;
-            o.internetIp = internetIp;
-            o.localSubnet = localSubnet;
-            o.maxConnections = maxConnections;
-            o.name = name;
-            o.port = port;
-            o.proto = proto;
-            o.vpnGatewayId = vpnGatewayId;
-            return o;
+        }        public GetSslVpnServersServer build() {
+            return new GetSslVpnServersServer(cipher, clientIpPool, compress, connections, createTime, id, internetIp, localSubnet, maxConnections, name, port, proto, vpnGatewayId);
         }
     }
 }

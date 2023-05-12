@@ -13,20 +13,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSnapshotsResult {
-    private @Nullable String desktopId;
+    private final @Nullable String desktopId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String snapshotId;
-    private List<GetSnapshotsSnapshot> snapshots;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String snapshotId;
+    private final List<GetSnapshotsSnapshot> snapshots;
 
-    private GetSnapshotsResult() {}
+    @CustomType.Constructor
+    private GetSnapshotsResult(
+        @CustomType.Parameter("desktopId") @Nullable String desktopId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("snapshotId") @Nullable String snapshotId,
+        @CustomType.Parameter("snapshots") List<GetSnapshotsSnapshot> snapshots) {
+        this.desktopId = desktopId;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.snapshotId = snapshotId;
+        this.snapshots = snapshots;
+    }
+
     public Optional<String> desktopId() {
         return Optional.ofNullable(this.desktopId);
     }
@@ -63,7 +82,7 @@ public final class GetSnapshotsResult {
     public static Builder builder(GetSnapshotsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String desktopId;
         private String id;
@@ -73,7 +92,11 @@ public final class GetSnapshotsResult {
         private @Nullable String outputFile;
         private @Nullable String snapshotId;
         private List<GetSnapshotsSnapshot> snapshots;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetSnapshotsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.desktopId = defaults.desktopId;
@@ -86,17 +109,14 @@ public final class GetSnapshotsResult {
     	      this.snapshots = defaults.snapshots;
         }
 
-        @CustomType.Setter
         public Builder desktopId(@Nullable String desktopId) {
             this.desktopId = desktopId;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -104,12 +124,10 @@ public final class GetSnapshotsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -117,35 +135,22 @@ public final class GetSnapshotsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder snapshotId(@Nullable String snapshotId) {
             this.snapshotId = snapshotId;
             return this;
         }
-        @CustomType.Setter
         public Builder snapshots(List<GetSnapshotsSnapshot> snapshots) {
             this.snapshots = Objects.requireNonNull(snapshots);
             return this;
         }
         public Builder snapshots(GetSnapshotsSnapshot... snapshots) {
             return snapshots(List.of(snapshots));
-        }
-        public GetSnapshotsResult build() {
-            final var o = new GetSnapshotsResult();
-            o.desktopId = desktopId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.snapshotId = snapshotId;
-            o.snapshots = snapshots;
-            return o;
+        }        public GetSnapshotsResult build() {
+            return new GetSnapshotsResult(desktopId, id, ids, nameRegex, names, outputFile, snapshotId, snapshots);
         }
     }
 }

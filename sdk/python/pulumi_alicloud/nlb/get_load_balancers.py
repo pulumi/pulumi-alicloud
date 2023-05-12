@@ -232,6 +232,7 @@ def get_load_balancers(address_ip_version: Optional[str] = None,
     :param str load_balancer_business_status: The business status of the NLB instance.
     :param Sequence[str] load_balancer_names: The name of the NLB instance. You can specify at most 10 names.
     :param str name_regex: A regex string to filter results by Load Balancer name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param str status: The status of the NLB instance.
     :param Mapping[str, Any] tags: The tag of the resource.
@@ -320,6 +321,7 @@ def get_load_balancers_output(address_ip_version: Optional[pulumi.Input[Optional
     :param str load_balancer_business_status: The business status of the NLB instance.
     :param Sequence[str] load_balancer_names: The name of the NLB instance. You can specify at most 10 names.
     :param str name_regex: A regex string to filter results by Load Balancer name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param str status: The status of the NLB instance.
     :param Mapping[str, Any] tags: The tag of the resource.

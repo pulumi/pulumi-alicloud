@@ -16,29 +16,42 @@ public final class GetConsumerGroupsGroup {
      * @return The name of the consumer group.
      * 
      */
-    private String consumerId;
+    private final String consumerId;
     /**
      * @return The ID of the consumer group, It is formatted to `&lt;instance_id&gt;:&lt;consumer_id&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return ID of the ALIKAFKA Instance that owns the consumer groups.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return The remark of the consumer group.
      * 
      */
-    private String remark;
+    private final String remark;
     /**
      * @return A mapping of tags to assign to the consumer group.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private final @Nullable Map<String,Object> tags;
 
-    private GetConsumerGroupsGroup() {}
+    @CustomType.Constructor
+    private GetConsumerGroupsGroup(
+        @CustomType.Parameter("consumerId") String consumerId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("remark") String remark,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
+        this.consumerId = consumerId;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.remark = remark;
+        this.tags = tags;
+    }
+
     /**
      * @return The name of the consumer group.
      * 
@@ -82,14 +95,18 @@ public final class GetConsumerGroupsGroup {
     public static Builder builder(GetConsumerGroupsGroup defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String consumerId;
         private String id;
         private String instanceId;
         private String remark;
         private @Nullable Map<String,Object> tags;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetConsumerGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.consumerId = defaults.consumerId;
@@ -99,39 +116,27 @@ public final class GetConsumerGroupsGroup {
     	      this.tags = defaults.tags;
         }
 
-        @CustomType.Setter
         public Builder consumerId(String consumerId) {
             this.consumerId = Objects.requireNonNull(consumerId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder remark(String remark) {
             this.remark = Objects.requireNonNull(remark);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }
-        public GetConsumerGroupsGroup build() {
-            final var o = new GetConsumerGroupsGroup();
-            o.consumerId = consumerId;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.remark = remark;
-            o.tags = tags;
-            return o;
+        }        public GetConsumerGroupsGroup build() {
+            return new GetConsumerGroupsGroup(consumerId, id, instanceId, remark, tags);
         }
     }
 }

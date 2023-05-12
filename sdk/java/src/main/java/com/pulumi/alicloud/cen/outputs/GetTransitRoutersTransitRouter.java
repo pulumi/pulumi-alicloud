@@ -13,49 +13,70 @@ public final class GetTransitRoutersTransitRouter {
      * @return The UID of the Aliyun.
      * 
      */
-    private String aliUid;
+    private final String aliUid;
     /**
      * @return The ID of the CEN instance.
      * 
      */
-    private String cenId;
+    private final String cenId;
     /**
      * @return The ID of the resource, It is formatted to `&lt;cen_id&gt;:&lt;transit_router_id&gt;`. **NOTE:** Before 1.151.0, It is formatted to `&lt;transit_router_id&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The description of the transit router.
      * 
      */
-    private String transitRouterDescription;
+    private final String transitRouterDescription;
     /**
      * @return The ID of the transit router.
      * 
      */
-    private String transitRouterId;
+    private final String transitRouterId;
     /**
      * @return The name of the transit router.
      * 
      */
-    private String transitRouterName;
+    private final String transitRouterName;
     /**
      * @return The Type of the transit router.
      * 
      */
-    private String type;
+    private final String type;
     /**
      * @return The vip of the XGW.
      * 
      */
-    private String xgwVip;
+    private final String xgwVip;
 
-    private GetTransitRoutersTransitRouter() {}
+    @CustomType.Constructor
+    private GetTransitRoutersTransitRouter(
+        @CustomType.Parameter("aliUid") String aliUid,
+        @CustomType.Parameter("cenId") String cenId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("transitRouterDescription") String transitRouterDescription,
+        @CustomType.Parameter("transitRouterId") String transitRouterId,
+        @CustomType.Parameter("transitRouterName") String transitRouterName,
+        @CustomType.Parameter("type") String type,
+        @CustomType.Parameter("xgwVip") String xgwVip) {
+        this.aliUid = aliUid;
+        this.cenId = cenId;
+        this.id = id;
+        this.status = status;
+        this.transitRouterDescription = transitRouterDescription;
+        this.transitRouterId = transitRouterId;
+        this.transitRouterName = transitRouterName;
+        this.type = type;
+        this.xgwVip = xgwVip;
+    }
+
     /**
      * @return The UID of the Aliyun.
      * 
@@ -127,7 +148,7 @@ public final class GetTransitRoutersTransitRouter {
     public static Builder builder(GetTransitRoutersTransitRouter defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String aliUid;
         private String cenId;
@@ -138,7 +159,11 @@ public final class GetTransitRoutersTransitRouter {
         private String transitRouterName;
         private String type;
         private String xgwVip;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTransitRoutersTransitRouter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aliUid = defaults.aliUid;
@@ -152,63 +177,43 @@ public final class GetTransitRoutersTransitRouter {
     	      this.xgwVip = defaults.xgwVip;
         }
 
-        @CustomType.Setter
         public Builder aliUid(String aliUid) {
             this.aliUid = Objects.requireNonNull(aliUid);
             return this;
         }
-        @CustomType.Setter
         public Builder cenId(String cenId) {
             this.cenId = Objects.requireNonNull(cenId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterDescription(String transitRouterDescription) {
             this.transitRouterDescription = Objects.requireNonNull(transitRouterDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
             this.transitRouterId = Objects.requireNonNull(transitRouterId);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterName(String transitRouterName) {
             this.transitRouterName = Objects.requireNonNull(transitRouterName);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
-        @CustomType.Setter
         public Builder xgwVip(String xgwVip) {
             this.xgwVip = Objects.requireNonNull(xgwVip);
             return this;
-        }
-        public GetTransitRoutersTransitRouter build() {
-            final var o = new GetTransitRoutersTransitRouter();
-            o.aliUid = aliUid;
-            o.cenId = cenId;
-            o.id = id;
-            o.status = status;
-            o.transitRouterDescription = transitRouterDescription;
-            o.transitRouterId = transitRouterId;
-            o.transitRouterName = transitRouterName;
-            o.type = type;
-            o.xgwVip = xgwVip;
-            return o;
+        }        public GetTransitRoutersTransitRouter build() {
+            return new GetTransitRoutersTransitRouter(aliUid, cenId, id, status, transitRouterDescription, transitRouterId, transitRouterName, type, xgwVip);
         }
     }
 }

@@ -19,6 +19,150 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a VPC switch resource.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;tf_test_foo&#34;)
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build());
+ * 
+ *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
+ *             .vpcId(vpc.id())
+ *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+ *             .zoneId(&#34;cn-beijing-b&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Ipv4CidrBlock;
+ * import com.pulumi.alicloud.vpc.Ipv4CidrBlockArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;tf_test_foo&#34;)
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build());
+ * 
+ *         var cidrBlocks = new Ipv4CidrBlock(&#34;cidrBlocks&#34;, Ipv4CidrBlockArgs.builder()        
+ *             .vpcId(vpc.id())
+ *             .secondaryCidrBlock(&#34;192.163.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var island_nat = new Switch(&#34;island-nat&#34;, SwitchArgs.builder()        
+ *             .vpcId(cidrBlocks.vpcId())
+ *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+ *             .zoneId(&#34;cn-beijing-b&#34;)
+ *             .vswitchName(&#34;example_value&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;BuiltBy&#34;, &#34;example_value&#34;),
+ *                 Map.entry(&#34;cnm_version&#34;, &#34;example_value&#34;),
+ *                 Map.entry(&#34;Environment&#34;, &#34;example_value&#34;),
+ *                 Map.entry(&#34;ManagedBy&#34;, &#34;example_value&#34;)
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Create a switch associated with the additional network segment
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Ipv4CidrBlock;
+ * import com.pulumi.alicloud.vpc.Ipv4CidrBlockArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;tf_test_foo&#34;)
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build());
+ * 
+ *         var example = new Ipv4CidrBlock(&#34;example&#34;, Ipv4CidrBlockArgs.builder()        
+ *             .vpcId(alicloud_vpc.default().id())
+ *             .secondaryCidrBlock(&#34;192.163.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
+ *             .vpcId(example.vpcId())
+ *             .cidrBlock(&#34;192.163.0.0/24&#34;)
+ *             .zoneId(&#34;cn-beijing-b&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Module Support
+ * 
+ * You can use to the existing vpc module
+ * to create a VPC and several VSwitches one-click.
+ * 
  * ## Import
  * 
  * Vswitch can be imported using the id, e.g.

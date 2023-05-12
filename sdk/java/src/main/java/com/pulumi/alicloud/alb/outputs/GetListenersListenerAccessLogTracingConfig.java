@@ -14,22 +14,39 @@ public final class GetListenersListenerAccessLogTracingConfig {
     /**
      * @return Xtrace Function. Value: True Or False. Default Value: False.
      * 
+     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
+     * 
      */
-    private Boolean tracingEnabled;
+    private final Boolean tracingEnabled;
     /**
      * @return Xtrace Sampling Rate. Value: **1~10000**.
      * 
+     * &gt; **NOTE:** This attribute is valid when **tracingenabled** is **true**.
+     * 
      */
-    private Integer tracingSample;
+    private final Integer tracingSample;
     /**
      * @return Xtrace Type Value Is **Zipkin**.
      * 
+     * &gt; **NOTE:** This attribute is valid when **tracingenabled** is **true**.
+     * 
      */
-    private String tracingType;
+    private final String tracingType;
 
-    private GetListenersListenerAccessLogTracingConfig() {}
+    @CustomType.Constructor
+    private GetListenersListenerAccessLogTracingConfig(
+        @CustomType.Parameter("tracingEnabled") Boolean tracingEnabled,
+        @CustomType.Parameter("tracingSample") Integer tracingSample,
+        @CustomType.Parameter("tracingType") String tracingType) {
+        this.tracingEnabled = tracingEnabled;
+        this.tracingSample = tracingSample;
+        this.tracingType = tracingType;
+    }
+
     /**
      * @return Xtrace Function. Value: True Or False. Default Value: False.
+     * 
+     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
      * 
      */
     public Boolean tracingEnabled() {
@@ -38,12 +55,16 @@ public final class GetListenersListenerAccessLogTracingConfig {
     /**
      * @return Xtrace Sampling Rate. Value: **1~10000**.
      * 
+     * &gt; **NOTE:** This attribute is valid when **tracingenabled** is **true**.
+     * 
      */
     public Integer tracingSample() {
         return this.tracingSample;
     }
     /**
      * @return Xtrace Type Value Is **Zipkin**.
+     * 
+     * &gt; **NOTE:** This attribute is valid when **tracingenabled** is **true**.
      * 
      */
     public String tracingType() {
@@ -57,12 +78,16 @@ public final class GetListenersListenerAccessLogTracingConfig {
     public static Builder builder(GetListenersListenerAccessLogTracingConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean tracingEnabled;
         private Integer tracingSample;
         private String tracingType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetListenersListenerAccessLogTracingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.tracingEnabled = defaults.tracingEnabled;
@@ -70,27 +95,19 @@ public final class GetListenersListenerAccessLogTracingConfig {
     	      this.tracingType = defaults.tracingType;
         }
 
-        @CustomType.Setter
         public Builder tracingEnabled(Boolean tracingEnabled) {
             this.tracingEnabled = Objects.requireNonNull(tracingEnabled);
             return this;
         }
-        @CustomType.Setter
         public Builder tracingSample(Integer tracingSample) {
             this.tracingSample = Objects.requireNonNull(tracingSample);
             return this;
         }
-        @CustomType.Setter
         public Builder tracingType(String tracingType) {
             this.tracingType = Objects.requireNonNull(tracingType);
             return this;
-        }
-        public GetListenersListenerAccessLogTracingConfig build() {
-            final var o = new GetListenersListenerAccessLogTracingConfig();
-            o.tracingEnabled = tracingEnabled;
-            o.tracingSample = tracingSample;
-            o.tracingType = tracingType;
-            return o;
+        }        public GetListenersListenerAccessLogTracingConfig build() {
+            return new GetListenersListenerAccessLogTracingConfig(tracingEnabled, tracingSample, tracingType);
         }
     }
 }

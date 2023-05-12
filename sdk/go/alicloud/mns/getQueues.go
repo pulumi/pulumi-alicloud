@@ -10,6 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
+//
+// > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
+//
 // ## Example Usage
 //
 // ```go
@@ -49,6 +53,7 @@ func GetQueues(ctx *pulumi.Context, args *GetQueuesArgs, opts ...pulumi.InvokeOp
 type GetQueuesArgs struct {
 	// A string to filter resulting queues by their name prefixs.
 	NamePrefix *string `pulumi:"namePrefix"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -81,6 +86,7 @@ func GetQueuesOutput(ctx *pulumi.Context, args GetQueuesOutputArgs, opts ...pulu
 type GetQueuesOutputArgs struct {
 	// A string to filter resulting queues by their name prefixs.
 	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

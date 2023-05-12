@@ -160,6 +160,7 @@ def get_clusters(db_type: Optional[str] = None,
     :param str db_type: Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
     :param str description_regex: A regex string to filter results by cluster description.
     :param Sequence[str] ids: A list of PolarDB cluster IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: status of the cluster.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
            - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -216,6 +217,7 @@ def get_clusters_output(db_type: Optional[pulumi.Input[Optional[str]]] = None,
     :param str db_type: Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
     :param str description_regex: A regex string to filter results by cluster description.
     :param Sequence[str] ids: A list of PolarDB cluster IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: status of the cluster.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
            - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.

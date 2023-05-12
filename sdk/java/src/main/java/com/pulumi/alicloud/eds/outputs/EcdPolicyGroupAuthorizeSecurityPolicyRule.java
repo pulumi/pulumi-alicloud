@@ -15,39 +15,56 @@ public final class EcdPolicyGroupAuthorizeSecurityPolicyRule {
      * @return The cidrip of security rules.
      * 
      */
-    private @Nullable String cidrIp;
+    private final @Nullable String cidrIp;
     /**
      * @return The description of security rules.
      * 
      */
-    private @Nullable String description;
+    private final @Nullable String description;
     /**
      * @return The ip protocol of security rules.
      * 
      */
-    private @Nullable String ipProtocol;
+    private final @Nullable String ipProtocol;
     /**
      * @return The policy of security rules.
      * 
      */
-    private @Nullable String policy;
+    private final @Nullable String policy;
     /**
      * @return The port range of security rules.
      * 
      */
-    private @Nullable String portRange;
+    private final @Nullable String portRange;
     /**
      * @return The priority of security rules.
      * 
      */
-    private @Nullable String priority;
+    private final @Nullable String priority;
     /**
      * @return The type of security rules.
      * 
      */
-    private @Nullable String type;
+    private final @Nullable String type;
 
-    private EcdPolicyGroupAuthorizeSecurityPolicyRule() {}
+    @CustomType.Constructor
+    private EcdPolicyGroupAuthorizeSecurityPolicyRule(
+        @CustomType.Parameter("cidrIp") @Nullable String cidrIp,
+        @CustomType.Parameter("description") @Nullable String description,
+        @CustomType.Parameter("ipProtocol") @Nullable String ipProtocol,
+        @CustomType.Parameter("policy") @Nullable String policy,
+        @CustomType.Parameter("portRange") @Nullable String portRange,
+        @CustomType.Parameter("priority") @Nullable String priority,
+        @CustomType.Parameter("type") @Nullable String type) {
+        this.cidrIp = cidrIp;
+        this.description = description;
+        this.ipProtocol = ipProtocol;
+        this.policy = policy;
+        this.portRange = portRange;
+        this.priority = priority;
+        this.type = type;
+    }
+
     /**
      * @return The cidrip of security rules.
      * 
@@ -105,7 +122,7 @@ public final class EcdPolicyGroupAuthorizeSecurityPolicyRule {
     public static Builder builder(EcdPolicyGroupAuthorizeSecurityPolicyRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String cidrIp;
         private @Nullable String description;
@@ -114,7 +131,11 @@ public final class EcdPolicyGroupAuthorizeSecurityPolicyRule {
         private @Nullable String portRange;
         private @Nullable String priority;
         private @Nullable String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(EcdPolicyGroupAuthorizeSecurityPolicyRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrIp = defaults.cidrIp;
@@ -126,51 +147,35 @@ public final class EcdPolicyGroupAuthorizeSecurityPolicyRule {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder cidrIp(@Nullable String cidrIp) {
             this.cidrIp = cidrIp;
             return this;
         }
-        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
-        @CustomType.Setter
         public Builder ipProtocol(@Nullable String ipProtocol) {
             this.ipProtocol = ipProtocol;
             return this;
         }
-        @CustomType.Setter
         public Builder policy(@Nullable String policy) {
             this.policy = policy;
             return this;
         }
-        @CustomType.Setter
         public Builder portRange(@Nullable String portRange) {
             this.portRange = portRange;
             return this;
         }
-        @CustomType.Setter
         public Builder priority(@Nullable String priority) {
             this.priority = priority;
             return this;
         }
-        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }
-        public EcdPolicyGroupAuthorizeSecurityPolicyRule build() {
-            final var o = new EcdPolicyGroupAuthorizeSecurityPolicyRule();
-            o.cidrIp = cidrIp;
-            o.description = description;
-            o.ipProtocol = ipProtocol;
-            o.policy = policy;
-            o.portRange = portRange;
-            o.priority = priority;
-            o.type = type;
-            return o;
+        }        public EcdPolicyGroupAuthorizeSecurityPolicyRule build() {
+            return new EcdPolicyGroupAuthorizeSecurityPolicyRule(cidrIp, description, ipProtocol, policy, portRange, priority, type);
         }
     }
 }

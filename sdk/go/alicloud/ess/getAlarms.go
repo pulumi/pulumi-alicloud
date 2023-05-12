@@ -29,7 +29,8 @@ type GetAlarmsArgs struct {
 	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
 	MetricType *string `pulumi:"metricType"`
 	// A regex string to filter resulting alarms by name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Scaling group id the alarms belong to.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
@@ -73,7 +74,8 @@ type GetAlarmsOutputArgs struct {
 	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
 	MetricType pulumi.StringPtrInput `pulumi:"metricType"`
 	// A regex string to filter resulting alarms by name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Scaling group id the alarms belong to.
 	ScalingGroupId pulumi.StringPtrInput `pulumi:"scalingGroupId"`

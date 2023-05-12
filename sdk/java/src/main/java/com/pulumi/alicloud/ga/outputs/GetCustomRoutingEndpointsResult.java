@@ -18,33 +18,54 @@ public final class GetCustomRoutingEndpointsResult {
      * @return The ID of the GA instance with which the endpoint is associated.
      * 
      */
-    private String acceleratorId;
+    private final String acceleratorId;
     /**
      * @return A list of Custom Routing Endpoints. Each element contains the following attributes:
      * 
      */
-    private List<GetCustomRoutingEndpointsCustomRoutingEndpoint> customRoutingEndpoints;
+    private final List<GetCustomRoutingEndpointsCustomRoutingEndpoint> customRoutingEndpoints;
     /**
      * @return The ID of the Custom Routing Endpoint Group.
      * 
      */
-    private @Nullable String endpointGroupId;
+    private final @Nullable String endpointGroupId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
+    private final String id;
+    private final List<String> ids;
     /**
      * @return The ID of the listener with which the endpoint is associated.
      * 
      */
-    private @Nullable String listenerId;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
+    private final @Nullable String listenerId;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
 
-    private GetCustomRoutingEndpointsResult() {}
+    @CustomType.Constructor
+    private GetCustomRoutingEndpointsResult(
+        @CustomType.Parameter("acceleratorId") String acceleratorId,
+        @CustomType.Parameter("customRoutingEndpoints") List<GetCustomRoutingEndpointsCustomRoutingEndpoint> customRoutingEndpoints,
+        @CustomType.Parameter("endpointGroupId") @Nullable String endpointGroupId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("listenerId") @Nullable String listenerId,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize) {
+        this.acceleratorId = acceleratorId;
+        this.customRoutingEndpoints = customRoutingEndpoints;
+        this.endpointGroupId = endpointGroupId;
+        this.id = id;
+        this.ids = ids;
+        this.listenerId = listenerId;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+    }
+
     /**
      * @return The ID of the GA instance with which the endpoint is associated.
      * 
@@ -100,7 +121,7 @@ public final class GetCustomRoutingEndpointsResult {
     public static Builder builder(GetCustomRoutingEndpointsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String acceleratorId;
         private List<GetCustomRoutingEndpointsCustomRoutingEndpoint> customRoutingEndpoints;
@@ -111,7 +132,11 @@ public final class GetCustomRoutingEndpointsResult {
         private @Nullable String outputFile;
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetCustomRoutingEndpointsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorId = defaults.acceleratorId;
@@ -125,12 +150,10 @@ public final class GetCustomRoutingEndpointsResult {
     	      this.pageSize = defaults.pageSize;
         }
 
-        @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
             this.acceleratorId = Objects.requireNonNull(acceleratorId);
             return this;
         }
-        @CustomType.Setter
         public Builder customRoutingEndpoints(List<GetCustomRoutingEndpointsCustomRoutingEndpoint> customRoutingEndpoints) {
             this.customRoutingEndpoints = Objects.requireNonNull(customRoutingEndpoints);
             return this;
@@ -138,17 +161,14 @@ public final class GetCustomRoutingEndpointsResult {
         public Builder customRoutingEndpoints(GetCustomRoutingEndpointsCustomRoutingEndpoint... customRoutingEndpoints) {
             return customRoutingEndpoints(List.of(customRoutingEndpoints));
         }
-        @CustomType.Setter
         public Builder endpointGroupId(@Nullable String endpointGroupId) {
             this.endpointGroupId = endpointGroupId;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -156,38 +176,23 @@ public final class GetCustomRoutingEndpointsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder listenerId(@Nullable String listenerId) {
             this.listenerId = listenerId;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
-        }
-        public GetCustomRoutingEndpointsResult build() {
-            final var o = new GetCustomRoutingEndpointsResult();
-            o.acceleratorId = acceleratorId;
-            o.customRoutingEndpoints = customRoutingEndpoints;
-            o.endpointGroupId = endpointGroupId;
-            o.id = id;
-            o.ids = ids;
-            o.listenerId = listenerId;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            return o;
+        }        public GetCustomRoutingEndpointsResult build() {
+            return new GetCustomRoutingEndpointsResult(acceleratorId, customRoutingEndpoints, endpointGroupId, id, ids, listenerId, outputFile, pageNumber, pageSize);
         }
     }
 }

@@ -19,36 +19,55 @@ public final class GetElasticityAssurancesResult {
      * @return A list of Elasticity Assurance Entries. Each element contains the following attributes:
      * 
      */
-    private List<GetElasticityAssurancesAssurance> assurances;
+    private final List<GetElasticityAssurancesAssurance> assurances;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of Elasticity Assurance IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String outputFile;
-    private @Nullable List<String> privatePoolOptionsIds;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
+    private final @Nullable List<String> privatePoolOptionsIds;
     /**
      * @return The ID of the resource group.
      * 
      */
-    private @Nullable String resourceGroupId;
+    private final @Nullable String resourceGroupId;
     /**
      * @return The status of flexible guarantee services. Possible values:-Preparing: in preparation.-Prepared: to take effect.-Active: in effect.-Released: Released.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
     /**
      * @return A mapping of tags to assign to the Capacity Reservation.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private final @Nullable Map<String,Object> tags;
 
-    private GetElasticityAssurancesResult() {}
+    @CustomType.Constructor
+    private GetElasticityAssurancesResult(
+        @CustomType.Parameter("assurances") List<GetElasticityAssurancesAssurance> assurances,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("privatePoolOptionsIds") @Nullable List<String> privatePoolOptionsIds,
+        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
+        this.assurances = assurances;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.privatePoolOptionsIds = privatePoolOptionsIds;
+        this.resourceGroupId = resourceGroupId;
+        this.status = status;
+        this.tags = tags;
+    }
+
     /**
      * @return A list of Elasticity Assurance Entries. Each element contains the following attributes:
      * 
@@ -105,7 +124,7 @@ public final class GetElasticityAssurancesResult {
     public static Builder builder(GetElasticityAssurancesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetElasticityAssurancesAssurance> assurances;
         private String id;
@@ -115,7 +134,11 @@ public final class GetElasticityAssurancesResult {
         private @Nullable String resourceGroupId;
         private @Nullable String status;
         private @Nullable Map<String,Object> tags;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetElasticityAssurancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.assurances = defaults.assurances;
@@ -128,7 +151,6 @@ public final class GetElasticityAssurancesResult {
     	      this.tags = defaults.tags;
         }
 
-        @CustomType.Setter
         public Builder assurances(List<GetElasticityAssurancesAssurance> assurances) {
             this.assurances = Objects.requireNonNull(assurances);
             return this;
@@ -136,12 +158,10 @@ public final class GetElasticityAssurancesResult {
         public Builder assurances(GetElasticityAssurancesAssurance... assurances) {
             return assurances(List.of(assurances));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -149,12 +169,10 @@ public final class GetElasticityAssurancesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder privatePoolOptionsIds(@Nullable List<String> privatePoolOptionsIds) {
             this.privatePoolOptionsIds = privatePoolOptionsIds;
             return this;
@@ -162,32 +180,19 @@ public final class GetElasticityAssurancesResult {
         public Builder privatePoolOptionsIds(String... privatePoolOptionsIds) {
             return privatePoolOptionsIds(List.of(privatePoolOptionsIds));
         }
-        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }
-        public GetElasticityAssurancesResult build() {
-            final var o = new GetElasticityAssurancesResult();
-            o.assurances = assurances;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.privatePoolOptionsIds = privatePoolOptionsIds;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.tags = tags;
-            return o;
+        }        public GetElasticityAssurancesResult build() {
+            return new GetElasticityAssurancesResult(assurances, id, ids, outputFile, privatePoolOptionsIds, resourceGroupId, status, tags);
         }
     }
 }

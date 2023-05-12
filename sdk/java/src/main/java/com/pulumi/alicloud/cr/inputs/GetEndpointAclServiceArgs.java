@@ -64,12 +64,20 @@ public final class GetEndpointAclServiceArgs extends com.pulumi.resources.Invoke
     /**
      * The ModuleName. Valid values: `Registry`.
      * 
+     * &gt; **NOTE:** After You enable access over the Internet, the Classless Inter-Domain Routing (CIDR) block `127.0.0.1/32` is automatically added to the whitelist.
+     * 
+     * &gt; **NOTE:** You may want to allow all ECS instances to access the Container Registry Enterprise Edition instance over the Internet. To achieve this purpose, you can enable access over the Internet and delete all IP addresses from the whitelist for Internet access. After you perform the preceding operation, the Container Registry Enterprise Edition instance is completely exposed to the Internet and may be attacked.
+     * 
      */
     @Import(name="moduleName")
     private @Nullable Output<String> moduleName;
 
     /**
      * @return The ModuleName. Valid values: `Registry`.
+     * 
+     * &gt; **NOTE:** After You enable access over the Internet, the Classless Inter-Domain Routing (CIDR) block `127.0.0.1/32` is automatically added to the whitelist.
+     * 
+     * &gt; **NOTE:** You may want to allow all ECS instances to access the Container Registry Enterprise Edition instance over the Internet. To achieve this purpose, you can enable access over the Internet and delete all IP addresses from the whitelist for Internet access. After you perform the preceding operation, the Container Registry Enterprise Edition instance is completely exposed to the Internet and may be attacked.
      * 
      */
     public Optional<Output<String>> moduleName() {
@@ -169,6 +177,10 @@ public final class GetEndpointAclServiceArgs extends com.pulumi.resources.Invoke
         /**
          * @param moduleName The ModuleName. Valid values: `Registry`.
          * 
+         * &gt; **NOTE:** After You enable access over the Internet, the Classless Inter-Domain Routing (CIDR) block `127.0.0.1/32` is automatically added to the whitelist.
+         * 
+         * &gt; **NOTE:** You may want to allow all ECS instances to access the Container Registry Enterprise Edition instance over the Internet. To achieve this purpose, you can enable access over the Internet and delete all IP addresses from the whitelist for Internet access. After you perform the preceding operation, the Container Registry Enterprise Edition instance is completely exposed to the Internet and may be attacked.
+         * 
          * @return builder
          * 
          */
@@ -179,6 +191,10 @@ public final class GetEndpointAclServiceArgs extends com.pulumi.resources.Invoke
 
         /**
          * @param moduleName The ModuleName. Valid values: `Registry`.
+         * 
+         * &gt; **NOTE:** After You enable access over the Internet, the Classless Inter-Domain Routing (CIDR) block `127.0.0.1/32` is automatically added to the whitelist.
+         * 
+         * &gt; **NOTE:** You may want to allow all ECS instances to access the Container Registry Enterprise Edition instance over the Internet. To achieve this purpose, you can enable access over the Internet and delete all IP addresses from the whitelist for Internet access. After you perform the preceding operation, the Container Registry Enterprise Edition instance is completely exposed to the Internet and may be attacked.
          * 
          * @return builder
          * 

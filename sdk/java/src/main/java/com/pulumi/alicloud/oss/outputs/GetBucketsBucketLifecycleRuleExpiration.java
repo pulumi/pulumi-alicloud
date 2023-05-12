@@ -16,14 +16,21 @@ public final class GetBucketsBucketLifecycleRuleExpiration {
      * @return Date after which the rule to take effect. The format is like 2017-03-09.
      * 
      */
-    private @Nullable String date;
+    private final @Nullable String date;
     /**
      * @return Indicate the number of days after the last object update until the rules take effect.
      * 
      */
-    private @Nullable Integer days;
+    private final @Nullable Integer days;
 
-    private GetBucketsBucketLifecycleRuleExpiration() {}
+    @CustomType.Constructor
+    private GetBucketsBucketLifecycleRuleExpiration(
+        @CustomType.Parameter("date") @Nullable String date,
+        @CustomType.Parameter("days") @Nullable Integer days) {
+        this.date = date;
+        this.days = days;
+    }
+
     /**
      * @return Date after which the rule to take effect. The format is like 2017-03-09.
      * 
@@ -46,32 +53,30 @@ public final class GetBucketsBucketLifecycleRuleExpiration {
     public static Builder builder(GetBucketsBucketLifecycleRuleExpiration defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String date;
         private @Nullable Integer days;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBucketsBucketLifecycleRuleExpiration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.date = defaults.date;
     	      this.days = defaults.days;
         }
 
-        @CustomType.Setter
         public Builder date(@Nullable String date) {
             this.date = date;
             return this;
         }
-        @CustomType.Setter
         public Builder days(@Nullable Integer days) {
             this.days = days;
             return this;
-        }
-        public GetBucketsBucketLifecycleRuleExpiration build() {
-            final var o = new GetBucketsBucketLifecycleRuleExpiration();
-            o.date = date;
-            o.days = days;
-            return o;
+        }        public GetBucketsBucketLifecycleRuleExpiration build() {
+            return new GetBucketsBucketLifecycleRuleExpiration(date, days);
         }
     }
 }

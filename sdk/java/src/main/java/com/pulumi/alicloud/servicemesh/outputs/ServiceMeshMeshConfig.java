@@ -24,69 +24,98 @@ public final class ServiceMeshMeshConfig {
      * @return The configuration of the access logging.
      * 
      */
-    private @Nullable ServiceMeshMeshConfigAccessLog accessLog;
+    private final @Nullable ServiceMeshMeshConfigAccessLog accessLog;
     /**
      * @return The configuration of the audit. See the following `Block audit`.
      * 
      */
-    private @Nullable ServiceMeshMeshConfigAudit audit;
+    private final @Nullable ServiceMeshMeshConfigAudit audit;
     /**
      * @return The configuration of the control plane logging.
      * 
      */
-    private @Nullable ServiceMeshMeshConfigControlPlaneLog controlPlaneLog;
+    private final @Nullable ServiceMeshMeshConfigControlPlaneLog controlPlaneLog;
     /**
      * @return Whether to enable the use of a custom zipkin.
      * 
      */
-    private @Nullable Boolean customizedZipkin;
+    private final @Nullable Boolean customizedZipkin;
     /**
      * @return The enable locality lb.
      * 
      */
-    private @Nullable Boolean enableLocalityLb;
+    private final @Nullable Boolean enableLocalityLb;
     /**
      * @return The configuration of the Kiali. See the following `Block kiali`.
      * 
      */
-    private @Nullable ServiceMeshMeshConfigKiali kiali;
+    private final @Nullable ServiceMeshMeshConfigKiali kiali;
     /**
      * @return The open-door policy of agent (OPA) plug-in information. See the following `Block opa`.
      * 
      */
-    private @Nullable ServiceMeshMeshConfigOpa opa;
+    private final @Nullable ServiceMeshMeshConfigOpa opa;
     /**
      * @return The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
      * 
      */
-    private @Nullable String outboundTrafficPolicy;
+    private final @Nullable String outboundTrafficPolicy;
     /**
      * @return The configuration of the Link trace sampling. See the following `Block pilot`.
      * 
      */
-    private @Nullable ServiceMeshMeshConfigPilot pilot;
+    private final @Nullable ServiceMeshMeshConfigPilot pilot;
     /**
      * @return The configuration of the Proxy. See the following `Block proxy`.
      * 
      */
-    private @Nullable ServiceMeshMeshConfigProxy proxy;
+    private final @Nullable ServiceMeshMeshConfigProxy proxy;
     /**
      * @return The configuration of the Sidecar injector. See the following `Block sidecar_injector`.
      * 
      */
-    private @Nullable ServiceMeshMeshConfigSidecarInjector sidecarInjector;
+    private final @Nullable ServiceMeshMeshConfigSidecarInjector sidecarInjector;
     /**
      * @return Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
      * 
      */
-    private @Nullable Boolean telemetry;
+    private final @Nullable Boolean telemetry;
     /**
      * @return Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
      * 
      */
-    private @Nullable Boolean tracing;
+    private final @Nullable Boolean tracing;
 
-    private ServiceMeshMeshConfig() {}
+    @CustomType.Constructor
+    private ServiceMeshMeshConfig(
+        @CustomType.Parameter("accessLog") @Nullable ServiceMeshMeshConfigAccessLog accessLog,
+        @CustomType.Parameter("audit") @Nullable ServiceMeshMeshConfigAudit audit,
+        @CustomType.Parameter("controlPlaneLog") @Nullable ServiceMeshMeshConfigControlPlaneLog controlPlaneLog,
+        @CustomType.Parameter("customizedZipkin") @Nullable Boolean customizedZipkin,
+        @CustomType.Parameter("enableLocalityLb") @Nullable Boolean enableLocalityLb,
+        @CustomType.Parameter("kiali") @Nullable ServiceMeshMeshConfigKiali kiali,
+        @CustomType.Parameter("opa") @Nullable ServiceMeshMeshConfigOpa opa,
+        @CustomType.Parameter("outboundTrafficPolicy") @Nullable String outboundTrafficPolicy,
+        @CustomType.Parameter("pilot") @Nullable ServiceMeshMeshConfigPilot pilot,
+        @CustomType.Parameter("proxy") @Nullable ServiceMeshMeshConfigProxy proxy,
+        @CustomType.Parameter("sidecarInjector") @Nullable ServiceMeshMeshConfigSidecarInjector sidecarInjector,
+        @CustomType.Parameter("telemetry") @Nullable Boolean telemetry,
+        @CustomType.Parameter("tracing") @Nullable Boolean tracing) {
+        this.accessLog = accessLog;
+        this.audit = audit;
+        this.controlPlaneLog = controlPlaneLog;
+        this.customizedZipkin = customizedZipkin;
+        this.enableLocalityLb = enableLocalityLb;
+        this.kiali = kiali;
+        this.opa = opa;
+        this.outboundTrafficPolicy = outboundTrafficPolicy;
+        this.pilot = pilot;
+        this.proxy = proxy;
+        this.sidecarInjector = sidecarInjector;
+        this.telemetry = telemetry;
+        this.tracing = tracing;
+    }
+
     /**
      * @return The configuration of the access logging.
      * 
@@ -186,7 +215,7 @@ public final class ServiceMeshMeshConfig {
     public static Builder builder(ServiceMeshMeshConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable ServiceMeshMeshConfigAccessLog accessLog;
         private @Nullable ServiceMeshMeshConfigAudit audit;
@@ -201,7 +230,11 @@ public final class ServiceMeshMeshConfig {
         private @Nullable ServiceMeshMeshConfigSidecarInjector sidecarInjector;
         private @Nullable Boolean telemetry;
         private @Nullable Boolean tracing;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ServiceMeshMeshConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessLog = defaults.accessLog;
@@ -219,87 +252,59 @@ public final class ServiceMeshMeshConfig {
     	      this.tracing = defaults.tracing;
         }
 
-        @CustomType.Setter
         public Builder accessLog(@Nullable ServiceMeshMeshConfigAccessLog accessLog) {
             this.accessLog = accessLog;
             return this;
         }
-        @CustomType.Setter
         public Builder audit(@Nullable ServiceMeshMeshConfigAudit audit) {
             this.audit = audit;
             return this;
         }
-        @CustomType.Setter
         public Builder controlPlaneLog(@Nullable ServiceMeshMeshConfigControlPlaneLog controlPlaneLog) {
             this.controlPlaneLog = controlPlaneLog;
             return this;
         }
-        @CustomType.Setter
         public Builder customizedZipkin(@Nullable Boolean customizedZipkin) {
             this.customizedZipkin = customizedZipkin;
             return this;
         }
-        @CustomType.Setter
         public Builder enableLocalityLb(@Nullable Boolean enableLocalityLb) {
             this.enableLocalityLb = enableLocalityLb;
             return this;
         }
-        @CustomType.Setter
         public Builder kiali(@Nullable ServiceMeshMeshConfigKiali kiali) {
             this.kiali = kiali;
             return this;
         }
-        @CustomType.Setter
         public Builder opa(@Nullable ServiceMeshMeshConfigOpa opa) {
             this.opa = opa;
             return this;
         }
-        @CustomType.Setter
         public Builder outboundTrafficPolicy(@Nullable String outboundTrafficPolicy) {
             this.outboundTrafficPolicy = outboundTrafficPolicy;
             return this;
         }
-        @CustomType.Setter
         public Builder pilot(@Nullable ServiceMeshMeshConfigPilot pilot) {
             this.pilot = pilot;
             return this;
         }
-        @CustomType.Setter
         public Builder proxy(@Nullable ServiceMeshMeshConfigProxy proxy) {
             this.proxy = proxy;
             return this;
         }
-        @CustomType.Setter
         public Builder sidecarInjector(@Nullable ServiceMeshMeshConfigSidecarInjector sidecarInjector) {
             this.sidecarInjector = sidecarInjector;
             return this;
         }
-        @CustomType.Setter
         public Builder telemetry(@Nullable Boolean telemetry) {
             this.telemetry = telemetry;
             return this;
         }
-        @CustomType.Setter
         public Builder tracing(@Nullable Boolean tracing) {
             this.tracing = tracing;
             return this;
-        }
-        public ServiceMeshMeshConfig build() {
-            final var o = new ServiceMeshMeshConfig();
-            o.accessLog = accessLog;
-            o.audit = audit;
-            o.controlPlaneLog = controlPlaneLog;
-            o.customizedZipkin = customizedZipkin;
-            o.enableLocalityLb = enableLocalityLb;
-            o.kiali = kiali;
-            o.opa = opa;
-            o.outboundTrafficPolicy = outboundTrafficPolicy;
-            o.pilot = pilot;
-            o.proxy = proxy;
-            o.sidecarInjector = sidecarInjector;
-            o.telemetry = telemetry;
-            o.tracing = tracing;
-            return o;
+        }        public ServiceMeshMeshConfig build() {
+            return new ServiceMeshMeshConfig(accessLog, audit, controlPlaneLog, customizedZipkin, enableLocalityLb, kiali, opa, outboundTrafficPolicy, pilot, proxy, sidecarInjector, telemetry, tracing);
         }
     }
 }

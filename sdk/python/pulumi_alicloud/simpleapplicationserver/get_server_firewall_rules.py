@@ -109,6 +109,7 @@ def get_server_firewall_rules(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Firewall Rule IDs.
     :param str instance_id: Alibaba Cloud simple application server instance ID.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -154,5 +155,6 @@ def get_server_firewall_rules_output(ids: Optional[pulumi.Input[Optional[Sequenc
 
     :param Sequence[str] ids: A list of Firewall Rule IDs.
     :param str instance_id: Alibaba Cloud simple application server instance ID.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

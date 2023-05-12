@@ -78,7 +78,8 @@ type GetHostsArgs struct {
 	// A regex string to filter results by Host name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// Specify the new create the host's operating system. Valid values: Linux Windows.
-	OsType     *string `pulumi:"osType"`
+	OsType *string `pulumi:"osType"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
 	Source *string `pulumi:"source"`
@@ -135,7 +136,8 @@ type GetHostsOutputArgs struct {
 	// A regex string to filter results by Host name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// Specify the new create the host's operating system. Valid values: Linux Windows.
-	OsType     pulumi.StringPtrInput `pulumi:"osType"`
+	OsType pulumi.StringPtrInput `pulumi:"osType"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
 	Source pulumi.StringPtrInput `pulumi:"source"`

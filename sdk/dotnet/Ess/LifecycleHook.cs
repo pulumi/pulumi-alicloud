@@ -10,6 +10,75 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ess
 {
     /// <summary>
+    /// Provides a ESS lifecycle hook resource. More about Ess lifecycle hook, see [LifecycleHook](https://www.alibabacloud.com/help/doc-detail/73839.htm).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableDiskCategory = "cloud_efficiency",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
+    ///     {
+    ///         VpcId = fooNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///     });
+    /// 
+    ///     var bar = new AliCloud.Vpc.Switch("bar", new()
+    ///     {
+    ///         VpcId = fooNetwork.Id,
+    ///         CidrBlock = "172.16.1.0/24",
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///     });
+    /// 
+    ///     var fooScalingGroup = new AliCloud.Ess.ScalingGroup("fooScalingGroup", new()
+    ///     {
+    ///         MinSize = 1,
+    ///         MaxSize = 1,
+    ///         ScalingGroupName = "testAccEssScaling_group",
+    ///         RemovalPolicies = new[]
+    ///         {
+    ///             "OldestInstance",
+    ///             "NewestInstance",
+    ///         },
+    ///         VswitchIds = new[]
+    ///         {
+    ///             fooSwitch.Id,
+    ///             bar.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var fooLifecycleHook = new AliCloud.Ess.LifecycleHook("fooLifecycleHook", new()
+    ///     {
+    ///         ScalingGroupId = fooScalingGroup.Id,
+    ///         LifecycleTransition = "SCALE_OUT",
+    ///         HeartbeatTimeout = 400,
+    ///         NotificationMetadata = "helloworld",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Module Support
+    /// 
+    /// You can use to the existing autoscaling module
+    /// to create a lifecycle hook, scaling group and configuration one-click.
+    /// 
     /// ## Import
     /// 
     /// Ess lifecycle hook can be imported using the id, e.g.

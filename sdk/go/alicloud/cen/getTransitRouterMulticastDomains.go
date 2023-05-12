@@ -67,7 +67,8 @@ type GetTransitRouterMulticastDomainsArgs struct {
 	// A list of Transit Router Multicast Domain IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Transit Router Multicast Domain name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the multicast domain. Valid Value: `Active`.
 	Status *string `pulumi:"status"`
@@ -114,7 +115,8 @@ type GetTransitRouterMulticastDomainsOutputArgs struct {
 	// A list of Transit Router Multicast Domain IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Transit Router Multicast Domain name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the multicast domain. Valid Value: `Active`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

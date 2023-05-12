@@ -51,7 +51,8 @@ func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOpti
 type GetZonesArgs struct {
 	// The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
 	FileSystemType *string `pulumi:"fileSystemType"`
-	OutputFile     *string `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getZones.
@@ -81,7 +82,8 @@ func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi
 type GetZonesOutputArgs struct {
 	// The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
 	FileSystemType pulumi.StringPtrInput `pulumi:"fileSystemType"`
-	OutputFile     pulumi.StringPtrInput `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetZonesOutputArgs) ElementType() reflect.Type {

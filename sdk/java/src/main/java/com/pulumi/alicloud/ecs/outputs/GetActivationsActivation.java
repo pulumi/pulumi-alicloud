@@ -15,59 +15,84 @@ public final class GetActivationsActivation {
      * @return The ID of the activation code.
      * 
      */
-    private String activationId;
+    private final String activationId;
     /**
      * @return The time when the activation code was created.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The number of instances that have been logged out.
      * 
      */
-    private Integer deregisteredCount;
+    private final Integer deregisteredCount;
     /**
      * @return Description of the corresponding activation code.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return Indicates whether the activation code is disabled.
      * 
      */
-    private Boolean disabled;
+    private final Boolean disabled;
     /**
      * @return The ID of the Activation.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The maximum number of times the activation code is used to register a managed instance.
      * 
      */
-    private Integer instanceCount;
+    private final Integer instanceCount;
     /**
      * @return The default prefix of the instance name.
      * 
      */
-    private String instanceName;
+    private final String instanceName;
     /**
      * @return The IP address of the host that allows the activation code to be used.
      * 
      */
-    private String ipAddressRange;
+    private final String ipAddressRange;
     /**
      * @return The number of instances that were registered.
      * 
      */
-    private Integer registeredCount;
+    private final Integer registeredCount;
     /**
      * @return The validity period of the activation code. Unit: hours.
      * 
      */
-    private Integer timeToLiveInHours;
+    private final Integer timeToLiveInHours;
 
-    private GetActivationsActivation() {}
+    @CustomType.Constructor
+    private GetActivationsActivation(
+        @CustomType.Parameter("activationId") String activationId,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("deregisteredCount") Integer deregisteredCount,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("disabled") Boolean disabled,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceCount") Integer instanceCount,
+        @CustomType.Parameter("instanceName") String instanceName,
+        @CustomType.Parameter("ipAddressRange") String ipAddressRange,
+        @CustomType.Parameter("registeredCount") Integer registeredCount,
+        @CustomType.Parameter("timeToLiveInHours") Integer timeToLiveInHours) {
+        this.activationId = activationId;
+        this.createTime = createTime;
+        this.deregisteredCount = deregisteredCount;
+        this.description = description;
+        this.disabled = disabled;
+        this.id = id;
+        this.instanceCount = instanceCount;
+        this.instanceName = instanceName;
+        this.ipAddressRange = ipAddressRange;
+        this.registeredCount = registeredCount;
+        this.timeToLiveInHours = timeToLiveInHours;
+    }
+
     /**
      * @return The ID of the activation code.
      * 
@@ -153,7 +178,7 @@ public final class GetActivationsActivation {
     public static Builder builder(GetActivationsActivation defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String activationId;
         private String createTime;
@@ -166,7 +191,11 @@ public final class GetActivationsActivation {
         private String ipAddressRange;
         private Integer registeredCount;
         private Integer timeToLiveInHours;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetActivationsActivation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.activationId = defaults.activationId;
@@ -182,75 +211,51 @@ public final class GetActivationsActivation {
     	      this.timeToLiveInHours = defaults.timeToLiveInHours;
         }
 
-        @CustomType.Setter
         public Builder activationId(String activationId) {
             this.activationId = Objects.requireNonNull(activationId);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder deregisteredCount(Integer deregisteredCount) {
             this.deregisteredCount = Objects.requireNonNull(deregisteredCount);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder disabled(Boolean disabled) {
             this.disabled = Objects.requireNonNull(disabled);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceCount(Integer instanceCount) {
             this.instanceCount = Objects.requireNonNull(instanceCount);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
-        @CustomType.Setter
         public Builder ipAddressRange(String ipAddressRange) {
             this.ipAddressRange = Objects.requireNonNull(ipAddressRange);
             return this;
         }
-        @CustomType.Setter
         public Builder registeredCount(Integer registeredCount) {
             this.registeredCount = Objects.requireNonNull(registeredCount);
             return this;
         }
-        @CustomType.Setter
         public Builder timeToLiveInHours(Integer timeToLiveInHours) {
             this.timeToLiveInHours = Objects.requireNonNull(timeToLiveInHours);
             return this;
-        }
-        public GetActivationsActivation build() {
-            final var o = new GetActivationsActivation();
-            o.activationId = activationId;
-            o.createTime = createTime;
-            o.deregisteredCount = deregisteredCount;
-            o.description = description;
-            o.disabled = disabled;
-            o.id = id;
-            o.instanceCount = instanceCount;
-            o.instanceName = instanceName;
-            o.ipAddressRange = ipAddressRange;
-            o.registeredCount = registeredCount;
-            o.timeToLiveInHours = timeToLiveInHours;
-            return o;
+        }        public GetActivationsActivation build() {
+            return new GetActivationsActivation(activationId, createTime, deregisteredCount, description, disabled, id, instanceCount, instanceName, ipAddressRange, registeredCount, timeToLiveInHours);
         }
     }
 }

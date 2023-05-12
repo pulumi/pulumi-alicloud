@@ -66,6 +66,12 @@ export class Alias extends pulumi.CustomResource {
     public readonly aliasName!: pulumi.Output<string>;
     /**
      * The id of the key.
+     *
+     * > **NOTE:** Each alias represents only one master key(CMK).
+     *
+     * > **NOTE:** Within an area of the same user, alias is not reproducible.
+     *
+     * > **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
      */
     public readonly keyId!: pulumi.Output<string>;
 
@@ -110,6 +116,12 @@ export interface AliasState {
     aliasName?: pulumi.Input<string>;
     /**
      * The id of the key.
+     *
+     * > **NOTE:** Each alias represents only one master key(CMK).
+     *
+     * > **NOTE:** Within an area of the same user, alias is not reproducible.
+     *
+     * > **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
      */
     keyId?: pulumi.Input<string>;
 }
@@ -124,6 +136,12 @@ export interface AliasArgs {
     aliasName: pulumi.Input<string>;
     /**
      * The id of the key.
+     *
+     * > **NOTE:** Each alias represents only one master key(CMK).
+     *
+     * > **NOTE:** Within an area of the same user, alias is not reproducible.
+     *
+     * > **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
      */
     keyId: pulumi.Input<string>;
 }

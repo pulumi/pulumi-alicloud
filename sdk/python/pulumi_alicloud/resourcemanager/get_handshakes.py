@@ -122,6 +122,7 @@ def get_handshakes(enable_details: Optional[bool] = None,
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of Resource Manager Handshake IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of handshake, valid values: `Accepted`, `Cancelled`, `Declined`, `Deleted`, `Expired` and `Pending`.
     """
     __args__ = dict()
@@ -165,6 +166,7 @@ def get_handshakes_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of Resource Manager Handshake IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of handshake, valid values: `Accepted`, `Cancelled`, `Declined`, `Deleted`, `Expired` and `Pending`.
     """
     ...

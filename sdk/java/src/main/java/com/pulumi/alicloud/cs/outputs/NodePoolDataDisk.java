@@ -12,41 +12,62 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolDataDisk {
-    private @Nullable String autoSnapshotPolicyId;
+    private final @Nullable String autoSnapshotPolicyId;
     /**
      * @return The type of the data disks. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`.
      * 
      */
-    private @Nullable String category;
-    private @Nullable String device;
+    private final @Nullable String category;
+    private final @Nullable String device;
     /**
      * @return Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
      * 
      */
-    private @Nullable String encrypted;
+    private final @Nullable String encrypted;
     /**
      * @return The kms key id used to encrypt the data disk. It takes effect when `encrypted` is true.
      * 
      */
-    private @Nullable String kmsKeyId;
+    private final @Nullable String kmsKeyId;
     /**
      * @return The name of node pool.
      * 
      */
-    private @Nullable String name;
+    private final @Nullable String name;
     /**
      * @return Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
-    private @Nullable String performanceLevel;
+    private final @Nullable String performanceLevel;
     /**
      * @return The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
      * 
      */
-    private @Nullable Integer size;
-    private @Nullable String snapshotId;
+    private final @Nullable Integer size;
+    private final @Nullable String snapshotId;
 
-    private NodePoolDataDisk() {}
+    @CustomType.Constructor
+    private NodePoolDataDisk(
+        @CustomType.Parameter("autoSnapshotPolicyId") @Nullable String autoSnapshotPolicyId,
+        @CustomType.Parameter("category") @Nullable String category,
+        @CustomType.Parameter("device") @Nullable String device,
+        @CustomType.Parameter("encrypted") @Nullable String encrypted,
+        @CustomType.Parameter("kmsKeyId") @Nullable String kmsKeyId,
+        @CustomType.Parameter("name") @Nullable String name,
+        @CustomType.Parameter("performanceLevel") @Nullable String performanceLevel,
+        @CustomType.Parameter("size") @Nullable Integer size,
+        @CustomType.Parameter("snapshotId") @Nullable String snapshotId) {
+        this.autoSnapshotPolicyId = autoSnapshotPolicyId;
+        this.category = category;
+        this.device = device;
+        this.encrypted = encrypted;
+        this.kmsKeyId = kmsKeyId;
+        this.name = name;
+        this.performanceLevel = performanceLevel;
+        this.size = size;
+        this.snapshotId = snapshotId;
+    }
+
     public Optional<String> autoSnapshotPolicyId() {
         return Optional.ofNullable(this.autoSnapshotPolicyId);
     }
@@ -106,7 +127,7 @@ public final class NodePoolDataDisk {
     public static Builder builder(NodePoolDataDisk defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String autoSnapshotPolicyId;
         private @Nullable String category;
@@ -117,7 +138,11 @@ public final class NodePoolDataDisk {
         private @Nullable String performanceLevel;
         private @Nullable Integer size;
         private @Nullable String snapshotId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(NodePoolDataDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoSnapshotPolicyId = defaults.autoSnapshotPolicyId;
@@ -131,63 +156,43 @@ public final class NodePoolDataDisk {
     	      this.snapshotId = defaults.snapshotId;
         }
 
-        @CustomType.Setter
         public Builder autoSnapshotPolicyId(@Nullable String autoSnapshotPolicyId) {
             this.autoSnapshotPolicyId = autoSnapshotPolicyId;
             return this;
         }
-        @CustomType.Setter
         public Builder category(@Nullable String category) {
             this.category = category;
             return this;
         }
-        @CustomType.Setter
         public Builder device(@Nullable String device) {
             this.device = device;
             return this;
         }
-        @CustomType.Setter
         public Builder encrypted(@Nullable String encrypted) {
             this.encrypted = encrypted;
             return this;
         }
-        @CustomType.Setter
         public Builder kmsKeyId(@Nullable String kmsKeyId) {
             this.kmsKeyId = kmsKeyId;
             return this;
         }
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
-        @CustomType.Setter
         public Builder performanceLevel(@Nullable String performanceLevel) {
             this.performanceLevel = performanceLevel;
             return this;
         }
-        @CustomType.Setter
         public Builder size(@Nullable Integer size) {
             this.size = size;
             return this;
         }
-        @CustomType.Setter
         public Builder snapshotId(@Nullable String snapshotId) {
             this.snapshotId = snapshotId;
             return this;
-        }
-        public NodePoolDataDisk build() {
-            final var o = new NodePoolDataDisk();
-            o.autoSnapshotPolicyId = autoSnapshotPolicyId;
-            o.category = category;
-            o.device = device;
-            o.encrypted = encrypted;
-            o.kmsKeyId = kmsKeyId;
-            o.name = name;
-            o.performanceLevel = performanceLevel;
-            o.size = size;
-            o.snapshotId = snapshotId;
-            return o;
+        }        public NodePoolDataDisk build() {
+            return new NodePoolDataDisk(autoSnapshotPolicyId, category, device, encrypted, kmsKeyId, name, performanceLevel, size, snapshotId);
         }
     }
 }

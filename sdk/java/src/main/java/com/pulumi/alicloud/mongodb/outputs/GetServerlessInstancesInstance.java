@@ -19,144 +19,203 @@ public final class GetServerlessInstancesInstance {
      * @return The read/write throughput consumed by the instance.
      * 
      */
-    private Integer capacityUnit;
+    private final Integer capacityUnit;
     /**
      * @return The db instance class.
      * 
      */
-    private String dbInstanceClass;
+    private final String dbInstanceClass;
     /**
      * @return The db instance description.
      * 
      */
-    private String dbInstanceDescription;
+    private final String dbInstanceDescription;
     /**
      * @return The db instance id.
      * 
      */
-    private String dbInstanceId;
+    private final String dbInstanceId;
     /**
      * @return The db instance release protection.
      * 
      */
-    private Boolean dbInstanceReleaseProtection;
+    private final Boolean dbInstanceReleaseProtection;
     /**
      * @return The db instance storage.
      * 
      */
-    private Integer dbInstanceStorage;
+    private final Integer dbInstanceStorage;
     /**
      * @return The database engine of the instance.
      * 
      */
-    private String engine;
+    private final String engine;
     /**
      * @return The database version number. Valid values: `4.2`.
      * 
      */
-    private String engineVersion;
+    private final String engineVersion;
     /**
      * @return The time when the subscription instance expires. The time is in the `yyyy-MM-ddTHH:mmZ` format. The time is displayed in UTC.
      * 
      */
-    private String expireTime;
+    private final String expireTime;
     /**
      * @return The ID of the Serverless Instance.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Indicates the type of the instance. Valid values: `0`: physical machine. `1`: ECS. `2`: DOCKER. `18`: k8s new architecture instance.
      * 
      */
-    private String kindCode;
+    private final String kindCode;
     /**
      * @return The locked status of the instance.
      * 
      */
-    private String lockMode;
+    private final String lockMode;
     /**
      * @return The start time of the maintenance window. The time is in the `HH:mmZ` format. The time is displayed in UTC.
      * 
      */
-    private String maintainEndTime;
+    private final String maintainEndTime;
     /**
      * @return The end time of the maintenance window. The time is in the `HH:mmZ` format. The time is displayed in UTC.
      * 
      */
-    private String maintainStartTime;
+    private final String maintainStartTime;
     /**
      * @return Instance maximum connections.
      * 
      */
-    private Integer maxConnections;
+    private final Integer maxConnections;
     /**
      * @return The maximum IOPS of the instance.
      * 
      */
-    private Integer maxIops;
+    private final Integer maxIops;
     /**
      * @return The network type of the instance.
      * 
      */
-    private String networkType;
+    private final String networkType;
     /**
      * @return The Payment type of the instance.
      * 
      */
-    private String paymentType;
+    private final String paymentType;
     /**
      * @return The access protocol type of the instance. Valid values: `mongodb`, `dynamodb`.
      * 
      */
-    private String protocolType;
+    private final String protocolType;
     /**
      * @return The ID of the resource group.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return The security ip list.
      * 
      */
-    private List<GetServerlessInstancesInstanceSecurityIpGroup> securityIpGroups;
+    private final List<GetServerlessInstancesInstanceSecurityIpGroup> securityIpGroups;
     /**
      * @return The status of the instance.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The storage engine used by the instance.
      * 
      */
-    private String storageEngine;
+    private final String storageEngine;
     /**
      * @return The tag of the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
     /**
      * @return Intranet secret free access mode.
      * 
      */
-    private String vpcAuthMode;
+    private final String vpcAuthMode;
     /**
      * @return The ID of the VPC network.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
     /**
      * @return The id of the vswitch.
      * 
      */
-    private String vswitchId;
+    private final String vswitchId;
     /**
      * @return The ID of the zone.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetServerlessInstancesInstance() {}
+    @CustomType.Constructor
+    private GetServerlessInstancesInstance(
+        @CustomType.Parameter("capacityUnit") Integer capacityUnit,
+        @CustomType.Parameter("dbInstanceClass") String dbInstanceClass,
+        @CustomType.Parameter("dbInstanceDescription") String dbInstanceDescription,
+        @CustomType.Parameter("dbInstanceId") String dbInstanceId,
+        @CustomType.Parameter("dbInstanceReleaseProtection") Boolean dbInstanceReleaseProtection,
+        @CustomType.Parameter("dbInstanceStorage") Integer dbInstanceStorage,
+        @CustomType.Parameter("engine") String engine,
+        @CustomType.Parameter("engineVersion") String engineVersion,
+        @CustomType.Parameter("expireTime") String expireTime,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("kindCode") String kindCode,
+        @CustomType.Parameter("lockMode") String lockMode,
+        @CustomType.Parameter("maintainEndTime") String maintainEndTime,
+        @CustomType.Parameter("maintainStartTime") String maintainStartTime,
+        @CustomType.Parameter("maxConnections") Integer maxConnections,
+        @CustomType.Parameter("maxIops") Integer maxIops,
+        @CustomType.Parameter("networkType") String networkType,
+        @CustomType.Parameter("paymentType") String paymentType,
+        @CustomType.Parameter("protocolType") String protocolType,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("securityIpGroups") List<GetServerlessInstancesInstanceSecurityIpGroup> securityIpGroups,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("storageEngine") String storageEngine,
+        @CustomType.Parameter("tags") Map<String,Object> tags,
+        @CustomType.Parameter("vpcAuthMode") String vpcAuthMode,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("vswitchId") String vswitchId,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.capacityUnit = capacityUnit;
+        this.dbInstanceClass = dbInstanceClass;
+        this.dbInstanceDescription = dbInstanceDescription;
+        this.dbInstanceId = dbInstanceId;
+        this.dbInstanceReleaseProtection = dbInstanceReleaseProtection;
+        this.dbInstanceStorage = dbInstanceStorage;
+        this.engine = engine;
+        this.engineVersion = engineVersion;
+        this.expireTime = expireTime;
+        this.id = id;
+        this.kindCode = kindCode;
+        this.lockMode = lockMode;
+        this.maintainEndTime = maintainEndTime;
+        this.maintainStartTime = maintainStartTime;
+        this.maxConnections = maxConnections;
+        this.maxIops = maxIops;
+        this.networkType = networkType;
+        this.paymentType = paymentType;
+        this.protocolType = protocolType;
+        this.resourceGroupId = resourceGroupId;
+        this.securityIpGroups = securityIpGroups;
+        this.status = status;
+        this.storageEngine = storageEngine;
+        this.tags = tags;
+        this.vpcAuthMode = vpcAuthMode;
+        this.vpcId = vpcId;
+        this.vswitchId = vswitchId;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return The read/write throughput consumed by the instance.
      * 
@@ -361,7 +420,7 @@ public final class GetServerlessInstancesInstance {
     public static Builder builder(GetServerlessInstancesInstance defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer capacityUnit;
         private String dbInstanceClass;
@@ -391,7 +450,11 @@ public final class GetServerlessInstancesInstance {
         private String vpcId;
         private String vswitchId;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServerlessInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.capacityUnit = defaults.capacityUnit;
@@ -424,107 +487,86 @@ public final class GetServerlessInstancesInstance {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder capacityUnit(Integer capacityUnit) {
             this.capacityUnit = Objects.requireNonNull(capacityUnit);
             return this;
         }
-        @CustomType.Setter
         public Builder dbInstanceClass(String dbInstanceClass) {
             this.dbInstanceClass = Objects.requireNonNull(dbInstanceClass);
             return this;
         }
-        @CustomType.Setter
         public Builder dbInstanceDescription(String dbInstanceDescription) {
             this.dbInstanceDescription = Objects.requireNonNull(dbInstanceDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder dbInstanceId(String dbInstanceId) {
             this.dbInstanceId = Objects.requireNonNull(dbInstanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder dbInstanceReleaseProtection(Boolean dbInstanceReleaseProtection) {
             this.dbInstanceReleaseProtection = Objects.requireNonNull(dbInstanceReleaseProtection);
             return this;
         }
-        @CustomType.Setter
         public Builder dbInstanceStorage(Integer dbInstanceStorage) {
             this.dbInstanceStorage = Objects.requireNonNull(dbInstanceStorage);
             return this;
         }
-        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
         }
-        @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
             this.engineVersion = Objects.requireNonNull(engineVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder expireTime(String expireTime) {
             this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder kindCode(String kindCode) {
             this.kindCode = Objects.requireNonNull(kindCode);
             return this;
         }
-        @CustomType.Setter
         public Builder lockMode(String lockMode) {
             this.lockMode = Objects.requireNonNull(lockMode);
             return this;
         }
-        @CustomType.Setter
         public Builder maintainEndTime(String maintainEndTime) {
             this.maintainEndTime = Objects.requireNonNull(maintainEndTime);
             return this;
         }
-        @CustomType.Setter
         public Builder maintainStartTime(String maintainStartTime) {
             this.maintainStartTime = Objects.requireNonNull(maintainStartTime);
             return this;
         }
-        @CustomType.Setter
         public Builder maxConnections(Integer maxConnections) {
             this.maxConnections = Objects.requireNonNull(maxConnections);
             return this;
         }
-        @CustomType.Setter
         public Builder maxIops(Integer maxIops) {
             this.maxIops = Objects.requireNonNull(maxIops);
             return this;
         }
-        @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
-        @CustomType.Setter
         public Builder protocolType(String protocolType) {
             this.protocolType = Objects.requireNonNull(protocolType);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder securityIpGroups(List<GetServerlessInstancesInstanceSecurityIpGroup> securityIpGroups) {
             this.securityIpGroups = Objects.requireNonNull(securityIpGroups);
             return this;
@@ -532,72 +574,35 @@ public final class GetServerlessInstancesInstance {
         public Builder securityIpGroups(GetServerlessInstancesInstanceSecurityIpGroup... securityIpGroups) {
             return securityIpGroups(List.of(securityIpGroups));
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder storageEngine(String storageEngine) {
             this.storageEngine = Objects.requireNonNull(storageEngine);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcAuthMode(String vpcAuthMode) {
             this.vpcAuthMode = Objects.requireNonNull(vpcAuthMode);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetServerlessInstancesInstance build() {
-            final var o = new GetServerlessInstancesInstance();
-            o.capacityUnit = capacityUnit;
-            o.dbInstanceClass = dbInstanceClass;
-            o.dbInstanceDescription = dbInstanceDescription;
-            o.dbInstanceId = dbInstanceId;
-            o.dbInstanceReleaseProtection = dbInstanceReleaseProtection;
-            o.dbInstanceStorage = dbInstanceStorage;
-            o.engine = engine;
-            o.engineVersion = engineVersion;
-            o.expireTime = expireTime;
-            o.id = id;
-            o.kindCode = kindCode;
-            o.lockMode = lockMode;
-            o.maintainEndTime = maintainEndTime;
-            o.maintainStartTime = maintainStartTime;
-            o.maxConnections = maxConnections;
-            o.maxIops = maxIops;
-            o.networkType = networkType;
-            o.paymentType = paymentType;
-            o.protocolType = protocolType;
-            o.resourceGroupId = resourceGroupId;
-            o.securityIpGroups = securityIpGroups;
-            o.status = status;
-            o.storageEngine = storageEngine;
-            o.tags = tags;
-            o.vpcAuthMode = vpcAuthMode;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetServerlessInstancesInstance build() {
+            return new GetServerlessInstancesInstance(capacityUnit, dbInstanceClass, dbInstanceDescription, dbInstanceId, dbInstanceReleaseProtection, dbInstanceStorage, engine, engineVersion, expireTime, id, kindCode, lockMode, maintainEndTime, maintainStartTime, maxConnections, maxIops, networkType, paymentType, protocolType, resourceGroupId, securityIpGroups, status, storageEngine, tags, vpcAuthMode, vpcId, vswitchId, zoneId);
         }
     }
 }

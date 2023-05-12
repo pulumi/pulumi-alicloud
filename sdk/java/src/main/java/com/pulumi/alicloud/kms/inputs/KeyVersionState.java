@@ -18,12 +18,16 @@ public final class KeyVersionState extends com.pulumi.resources.ResourceArgs {
     /**
      * The id of the master key (CMK).
      * 
+     * &gt; **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
+     * 
      */
     @Import(name="keyId")
     private @Nullable Output<String> keyId;
 
     /**
      * @return The id of the master key (CMK).
+     * 
+     * &gt; **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
      * 
      */
     public Optional<Output<String>> keyId() {
@@ -73,6 +77,8 @@ public final class KeyVersionState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param keyId The id of the master key (CMK).
          * 
+         * &gt; **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
+         * 
          * @return builder
          * 
          */
@@ -83,6 +89,8 @@ public final class KeyVersionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param keyId The id of the master key (CMK).
+         * 
+         * &gt; **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
          * 
          * @return builder
          * 

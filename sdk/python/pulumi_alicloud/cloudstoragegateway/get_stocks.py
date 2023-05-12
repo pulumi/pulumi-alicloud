@@ -94,6 +94,7 @@ def get_stocks(gateway_class: Optional[str] = None,
 
 
     :param str gateway_class: The gateway class. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['gatewayClass'] = gateway_class
@@ -131,5 +132,6 @@ def get_stocks_output(gateway_class: Optional[pulumi.Input[Optional[str]]] = Non
 
 
     :param str gateway_class: The gateway class. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

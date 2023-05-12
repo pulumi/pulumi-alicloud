@@ -214,6 +214,7 @@ def get_snat_entries(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Snat Entries IDs.
     :param str name_regex: A regex string to filter results by the resource name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str snat_entry_name: The name of snat entry.
     :param str snat_ip: The public IP of the Snat Entry.
     :param str snat_table_id: The ID of the Snat table.
@@ -299,6 +300,7 @@ def get_snat_entries_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     :param Sequence[str] ids: A list of Snat Entries IDs.
     :param str name_regex: A regex string to filter results by the resource name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str snat_entry_name: The name of snat entry.
     :param str snat_ip: The public IP of the Snat Entry.
     :param str snat_table_id: The ID of the Snat table.

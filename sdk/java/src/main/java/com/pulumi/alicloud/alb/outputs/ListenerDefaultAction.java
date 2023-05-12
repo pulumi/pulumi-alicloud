@@ -14,14 +14,21 @@ public final class ListenerDefaultAction {
      * @return The configurations of the actions. This parameter is required if Type is set to FowardGroup.
      * 
      */
-    private ListenerDefaultActionForwardGroupConfig forwardGroupConfig;
+    private final ListenerDefaultActionForwardGroupConfig forwardGroupConfig;
     /**
      * @return Action Type.
      * 
      */
-    private String type;
+    private final String type;
 
-    private ListenerDefaultAction() {}
+    @CustomType.Constructor
+    private ListenerDefaultAction(
+        @CustomType.Parameter("forwardGroupConfig") ListenerDefaultActionForwardGroupConfig forwardGroupConfig,
+        @CustomType.Parameter("type") String type) {
+        this.forwardGroupConfig = forwardGroupConfig;
+        this.type = type;
+    }
+
     /**
      * @return The configurations of the actions. This parameter is required if Type is set to FowardGroup.
      * 
@@ -44,32 +51,30 @@ public final class ListenerDefaultAction {
     public static Builder builder(ListenerDefaultAction defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private ListenerDefaultActionForwardGroupConfig forwardGroupConfig;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ListenerDefaultAction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.forwardGroupConfig = defaults.forwardGroupConfig;
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder forwardGroupConfig(ListenerDefaultActionForwardGroupConfig forwardGroupConfig) {
             this.forwardGroupConfig = Objects.requireNonNull(forwardGroupConfig);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public ListenerDefaultAction build() {
-            final var o = new ListenerDefaultAction();
-            o.forwardGroupConfig = forwardGroupConfig;
-            o.type = type;
-            return o;
+        }        public ListenerDefaultAction build() {
+            return new ListenerDefaultAction(forwardGroupConfig, type);
         }
     }
 }

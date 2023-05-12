@@ -13,21 +13,42 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetIpv6AddressesResult {
-    private List<GetIpv6AddressesAddress> addresses;
-    private @Nullable String associatedInstanceId;
+    private final List<GetIpv6AddressesAddress> addresses;
+    private final @Nullable String associatedInstanceId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String status;
-    private @Nullable String vpcId;
-    private @Nullable String vswitchId;
+    private final String id;
+    private final List<String> ids;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String status;
+    private final @Nullable String vpcId;
+    private final @Nullable String vswitchId;
 
-    private GetIpv6AddressesResult() {}
+    @CustomType.Constructor
+    private GetIpv6AddressesResult(
+        @CustomType.Parameter("addresses") List<GetIpv6AddressesAddress> addresses,
+        @CustomType.Parameter("associatedInstanceId") @Nullable String associatedInstanceId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("vpcId") @Nullable String vpcId,
+        @CustomType.Parameter("vswitchId") @Nullable String vswitchId) {
+        this.addresses = addresses;
+        this.associatedInstanceId = associatedInstanceId;
+        this.id = id;
+        this.ids = ids;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.status = status;
+        this.vpcId = vpcId;
+        this.vswitchId = vswitchId;
+    }
+
     public List<GetIpv6AddressesAddress> addresses() {
         return this.addresses;
     }
@@ -67,7 +88,7 @@ public final class GetIpv6AddressesResult {
     public static Builder builder(GetIpv6AddressesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetIpv6AddressesAddress> addresses;
         private @Nullable String associatedInstanceId;
@@ -78,7 +99,11 @@ public final class GetIpv6AddressesResult {
         private @Nullable String status;
         private @Nullable String vpcId;
         private @Nullable String vswitchId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetIpv6AddressesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addresses = defaults.addresses;
@@ -92,7 +117,6 @@ public final class GetIpv6AddressesResult {
     	      this.vswitchId = defaults.vswitchId;
         }
 
-        @CustomType.Setter
         public Builder addresses(List<GetIpv6AddressesAddress> addresses) {
             this.addresses = Objects.requireNonNull(addresses);
             return this;
@@ -100,17 +124,14 @@ public final class GetIpv6AddressesResult {
         public Builder addresses(GetIpv6AddressesAddress... addresses) {
             return addresses(List.of(addresses));
         }
-        @CustomType.Setter
         public Builder associatedInstanceId(@Nullable String associatedInstanceId) {
             this.associatedInstanceId = associatedInstanceId;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -118,7 +139,6 @@ public final class GetIpv6AddressesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -126,38 +146,23 @@ public final class GetIpv6AddressesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
             this.vswitchId = vswitchId;
             return this;
-        }
-        public GetIpv6AddressesResult build() {
-            final var o = new GetIpv6AddressesResult();
-            o.addresses = addresses;
-            o.associatedInstanceId = associatedInstanceId;
-            o.id = id;
-            o.ids = ids;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+        }        public GetIpv6AddressesResult build() {
+            return new GetIpv6AddressesResult(addresses, associatedInstanceId, id, ids, names, outputFile, status, vpcId, vswitchId);
         }
     }
 }

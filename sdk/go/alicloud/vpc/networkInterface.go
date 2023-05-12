@@ -11,6 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:** This resource has been renamed to ecs.EcsNetworkInterface from version 1.123.1.
+//
+// Provides an ECS Elastic Network Interface resource.
+//
+// For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
+//
+// > **NOTE** Only one of privateIps or privateIpsCount can be specified when assign private IPs.
+//
 // ## Example Usage
 //
 // ```go

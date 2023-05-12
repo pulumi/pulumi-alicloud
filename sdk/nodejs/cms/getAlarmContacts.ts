@@ -63,6 +63,11 @@ export interface GetAlarmContactsArgs {
      * A regex string to filter results by alarm contact name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`). 
+     *
+     * > **NOTE:** Specify at least one of the following alarm notification targets: phone number, email address, webhook URL of the DingTalk chatbot, and TradeManager ID.
+     */
     outputFile?: string;
 }
 
@@ -139,5 +144,10 @@ export interface GetAlarmContactsOutputArgs {
      * A regex string to filter results by alarm contact name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`). 
+     *
+     * > **NOTE:** Specify at least one of the following alarm notification targets: phone number, email address, webhook URL of the DingTalk chatbot, and TradeManager ID.
+     */
     outputFile?: pulumi.Input<string>;
 }

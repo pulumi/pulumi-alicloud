@@ -13,34 +13,49 @@ public final class GetResourceDirectoriesDirectory {
      * @return The ID of resource directory.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the master account.
      * 
      */
-    private String masterAccountId;
+    private final String masterAccountId;
     /**
      * @return The name of the master account.
      * 
      */
-    private String masterAccountName;
+    private final String masterAccountName;
     /**
      * @return The ID of the resource directory.
      * 
      */
-    private String resourceDirectoryId;
+    private final String resourceDirectoryId;
     /**
      * @return The ID of the root folder.
      * 
      */
-    private String rootFolderId;
+    private final String rootFolderId;
     /**
      * @return (Available in 1.120.0+.) The status of the control policy.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetResourceDirectoriesDirectory() {}
+    @CustomType.Constructor
+    private GetResourceDirectoriesDirectory(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("masterAccountId") String masterAccountId,
+        @CustomType.Parameter("masterAccountName") String masterAccountName,
+        @CustomType.Parameter("resourceDirectoryId") String resourceDirectoryId,
+        @CustomType.Parameter("rootFolderId") String rootFolderId,
+        @CustomType.Parameter("status") String status) {
+        this.id = id;
+        this.masterAccountId = masterAccountId;
+        this.masterAccountName = masterAccountName;
+        this.resourceDirectoryId = resourceDirectoryId;
+        this.rootFolderId = rootFolderId;
+        this.status = status;
+    }
+
     /**
      * @return The ID of resource directory.
      * 
@@ -91,7 +106,7 @@ public final class GetResourceDirectoriesDirectory {
     public static Builder builder(GetResourceDirectoriesDirectory defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private String masterAccountId;
@@ -99,7 +114,11 @@ public final class GetResourceDirectoriesDirectory {
         private String resourceDirectoryId;
         private String rootFolderId;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetResourceDirectoriesDirectory defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -110,45 +129,31 @@ public final class GetResourceDirectoriesDirectory {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder masterAccountId(String masterAccountId) {
             this.masterAccountId = Objects.requireNonNull(masterAccountId);
             return this;
         }
-        @CustomType.Setter
         public Builder masterAccountName(String masterAccountName) {
             this.masterAccountName = Objects.requireNonNull(masterAccountName);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceDirectoryId(String resourceDirectoryId) {
             this.resourceDirectoryId = Objects.requireNonNull(resourceDirectoryId);
             return this;
         }
-        @CustomType.Setter
         public Builder rootFolderId(String rootFolderId) {
             this.rootFolderId = Objects.requireNonNull(rootFolderId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetResourceDirectoriesDirectory build() {
-            final var o = new GetResourceDirectoriesDirectory();
-            o.id = id;
-            o.masterAccountId = masterAccountId;
-            o.masterAccountName = masterAccountName;
-            o.resourceDirectoryId = resourceDirectoryId;
-            o.rootFolderId = rootFolderId;
-            o.status = status;
-            return o;
+        }        public GetResourceDirectoriesDirectory build() {
+            return new GetResourceDirectoriesDirectory(id, masterAccountId, masterAccountName, resourceDirectoryId, rootFolderId, status);
         }
     }
 }

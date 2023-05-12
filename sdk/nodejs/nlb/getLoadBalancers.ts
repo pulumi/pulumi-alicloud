@@ -87,6 +87,9 @@ export interface GetLoadBalancersArgs {
      * A regex string to filter results by Load Balancer name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the resource group.
@@ -198,6 +201,9 @@ export interface GetLoadBalancersOutputArgs {
      * A regex string to filter results by Load Balancer name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the resource group.

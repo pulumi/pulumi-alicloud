@@ -14,34 +14,49 @@ public final class GetChartNamespacesNamespace {
      * @return Indicates whether a repository is automatically created when an image is pushed to the namespace.
      * 
      */
-    private Boolean autoCreateRepo;
+    private final Boolean autoCreateRepo;
     /**
      * @return The ID of the namespace.
      * 
      */
-    private String chartNamespaceId;
+    private final String chartNamespaceId;
     /**
      * @return The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
      * 
      */
-    private String defaultRepoType;
+    private final String defaultRepoType;
     /**
      * @return The ID of the Chart Namespace.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the namespace.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return The name of the namespace.
      * 
      */
-    private String namespaceName;
+    private final String namespaceName;
 
-    private GetChartNamespacesNamespace() {}
+    @CustomType.Constructor
+    private GetChartNamespacesNamespace(
+        @CustomType.Parameter("autoCreateRepo") Boolean autoCreateRepo,
+        @CustomType.Parameter("chartNamespaceId") String chartNamespaceId,
+        @CustomType.Parameter("defaultRepoType") String defaultRepoType,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("namespaceName") String namespaceName) {
+        this.autoCreateRepo = autoCreateRepo;
+        this.chartNamespaceId = chartNamespaceId;
+        this.defaultRepoType = defaultRepoType;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.namespaceName = namespaceName;
+    }
+
     /**
      * @return Indicates whether a repository is automatically created when an image is pushed to the namespace.
      * 
@@ -92,7 +107,7 @@ public final class GetChartNamespacesNamespace {
     public static Builder builder(GetChartNamespacesNamespace defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean autoCreateRepo;
         private String chartNamespaceId;
@@ -100,7 +115,11 @@ public final class GetChartNamespacesNamespace {
         private String id;
         private String instanceId;
         private String namespaceName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetChartNamespacesNamespace defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoCreateRepo = defaults.autoCreateRepo;
@@ -111,45 +130,31 @@ public final class GetChartNamespacesNamespace {
     	      this.namespaceName = defaults.namespaceName;
         }
 
-        @CustomType.Setter
         public Builder autoCreateRepo(Boolean autoCreateRepo) {
             this.autoCreateRepo = Objects.requireNonNull(autoCreateRepo);
             return this;
         }
-        @CustomType.Setter
         public Builder chartNamespaceId(String chartNamespaceId) {
             this.chartNamespaceId = Objects.requireNonNull(chartNamespaceId);
             return this;
         }
-        @CustomType.Setter
         public Builder defaultRepoType(String defaultRepoType) {
             this.defaultRepoType = Objects.requireNonNull(defaultRepoType);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder namespaceName(String namespaceName) {
             this.namespaceName = Objects.requireNonNull(namespaceName);
             return this;
-        }
-        public GetChartNamespacesNamespace build() {
-            final var o = new GetChartNamespacesNamespace();
-            o.autoCreateRepo = autoCreateRepo;
-            o.chartNamespaceId = chartNamespaceId;
-            o.defaultRepoType = defaultRepoType;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.namespaceName = namespaceName;
-            return o;
+        }        public GetChartNamespacesNamespace build() {
+            return new GetChartNamespacesNamespace(autoCreateRepo, chartNamespaceId, defaultRepoType, id, instanceId, namespaceName);
         }
     }
 }

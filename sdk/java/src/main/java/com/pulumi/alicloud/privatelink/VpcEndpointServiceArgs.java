@@ -80,12 +80,16 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
     /**
      * The description of the terminal node service.
      * 
+     * &gt; **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+     * 
      */
     @Import(name="serviceDescription")
     private @Nullable Output<String> serviceDescription;
 
     /**
      * @return The description of the terminal node service.
+     * 
+     * &gt; **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
      * 
      */
     public Optional<Output<String>> serviceDescription() {
@@ -207,6 +211,8 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
         /**
          * @param serviceDescription The description of the terminal node service.
          * 
+         * &gt; **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+         * 
          * @return builder
          * 
          */
@@ -217,6 +223,8 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param serviceDescription The description of the terminal node service.
+         * 
+         * &gt; **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
          * 
          * @return builder
          * 

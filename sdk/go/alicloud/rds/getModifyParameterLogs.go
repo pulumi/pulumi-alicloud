@@ -57,7 +57,8 @@ type GetModifyParameterLogsArgs struct {
 	// The db instance id.
 	DbInstanceId string `pulumi:"dbInstanceId"`
 	// The end time.
-	EndTime    string  `pulumi:"endTime"`
+	EndTime string `pulumi:"endTime"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The start time.
 	StartTime string `pulumi:"startTime"`
@@ -92,7 +93,8 @@ type GetModifyParameterLogsOutputArgs struct {
 	// The db instance id.
 	DbInstanceId pulumi.StringInput `pulumi:"dbInstanceId"`
 	// The end time.
-	EndTime    pulumi.StringInput    `pulumi:"endTime"`
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The start time.
 	StartTime pulumi.StringInput `pulumi:"startTime"`

@@ -83,6 +83,8 @@ namespace Pulumi.AliCloud.Vpn
         /// The network type of the VPN gateway. Value:
         /// - public (default): Public VPN gateway.
         /// - private: Private VPN gateway.
+        /// 
+        /// &gt; **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
         /// </summary>
         [Output("networkType")]
         public Output<string> NetworkType { get; private set; } = null!;
@@ -220,6 +222,8 @@ namespace Pulumi.AliCloud.Vpn
         /// The network type of the VPN gateway. Value:
         /// - public (default): Public VPN gateway.
         /// - private: Private VPN gateway.
+        /// 
+        /// &gt; **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
@@ -331,6 +335,8 @@ namespace Pulumi.AliCloud.Vpn
         /// The network type of the VPN gateway. Value:
         /// - public (default): Public VPN gateway.
         /// - private: Private VPN gateway.
+        /// 
+        /// &gt; **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }

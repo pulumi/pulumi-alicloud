@@ -61,8 +61,9 @@ type GetEngineNamespacesArgs struct {
 	// The id of the cluster.
 	ClusterId string `pulumi:"clusterId"`
 	// A list of Engine Namespace IDs. It is formatted to `<cluster_id>:<namespace_id>`.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getEngineNamespaces.
@@ -96,8 +97,9 @@ type GetEngineNamespacesOutputArgs struct {
 	// The id of the cluster.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// A list of Engine Namespace IDs. It is formatted to `<cluster_id>:<namespace_id>`.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetEngineNamespacesOutputArgs) ElementType() reflect.Type {

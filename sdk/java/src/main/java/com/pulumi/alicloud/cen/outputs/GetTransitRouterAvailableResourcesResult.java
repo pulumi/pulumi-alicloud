@@ -17,11 +17,20 @@ public final class GetTransitRouterAvailableResourcesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private @Nullable String outputFile;
-    private List<GetTransitRouterAvailableResourcesResource> resources;
+    private final String id;
+    private final @Nullable String outputFile;
+    private final List<GetTransitRouterAvailableResourcesResource> resources;
 
-    private GetTransitRouterAvailableResourcesResult() {}
+    @CustomType.Constructor
+    private GetTransitRouterAvailableResourcesResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("resources") List<GetTransitRouterAvailableResourcesResource> resources) {
+        this.id = id;
+        this.outputFile = outputFile;
+        this.resources = resources;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -43,12 +52,16 @@ public final class GetTransitRouterAvailableResourcesResult {
     public static Builder builder(GetTransitRouterAvailableResourcesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private @Nullable String outputFile;
         private List<GetTransitRouterAvailableResourcesResource> resources;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTransitRouterAvailableResourcesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -56,30 +69,22 @@ public final class GetTransitRouterAvailableResourcesResult {
     	      this.resources = defaults.resources;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder resources(List<GetTransitRouterAvailableResourcesResource> resources) {
             this.resources = Objects.requireNonNull(resources);
             return this;
         }
         public Builder resources(GetTransitRouterAvailableResourcesResource... resources) {
             return resources(List.of(resources));
-        }
-        public GetTransitRouterAvailableResourcesResult build() {
-            final var o = new GetTransitRouterAvailableResourcesResult();
-            o.id = id;
-            o.outputFile = outputFile;
-            o.resources = resources;
-            return o;
+        }        public GetTransitRouterAvailableResourcesResult build() {
+            return new GetTransitRouterAvailableResourcesResult(id, outputFile, resources);
         }
     }
 }

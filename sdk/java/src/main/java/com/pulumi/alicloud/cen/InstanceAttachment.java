@@ -83,12 +83,16 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
     /**
      * The account ID to which the CEN instance belongs.
      * 
+     * -&gt;**NOTE:** Ensure that the child instance is not used in Express Connect.
+     * 
      */
     @Export(name="cenOwnerId", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> cenOwnerId;
 
     /**
      * @return The account ID to which the CEN instance belongs.
+     * 
+     * -&gt;**NOTE:** Ensure that the child instance is not used in Express Connect.
      * 
      */
     public Output<Optional<Integer>> cenOwnerId() {

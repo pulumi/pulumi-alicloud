@@ -14,49 +14,70 @@ public final class GetHoneyPotsPot {
      * @return Honeypot ID.
      * 
      */
-    private String honeypotId;
+    private final String honeypotId;
     /**
      * @return The image ID of the honeypot.
      * 
      */
-    private String honeypotImageId;
+    private final String honeypotImageId;
     /**
      * @return Honeypot mirror name.
      * 
      */
-    private String honeypotImageName;
+    private final String honeypotImageName;
     /**
      * @return Honeypot custom name.
      * 
      */
-    private String honeypotName;
+    private final String honeypotName;
     /**
      * @return Honeypot ID. The value is the same as `honeypot_id`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the honeypot management node.
      * 
      */
-    private String nodeId;
+    private final String nodeId;
     /**
      * @return The custom parameter ID of honeypot.
      * 
      */
-    private String presetId;
+    private final String presetId;
     /**
      * @return Honeypot status.
      * 
      */
-    private List<String> states;
+    private final List<String> states;
     /**
      * @return The status of the resource
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetHoneyPotsPot() {}
+    @CustomType.Constructor
+    private GetHoneyPotsPot(
+        @CustomType.Parameter("honeypotId") String honeypotId,
+        @CustomType.Parameter("honeypotImageId") String honeypotImageId,
+        @CustomType.Parameter("honeypotImageName") String honeypotImageName,
+        @CustomType.Parameter("honeypotName") String honeypotName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("nodeId") String nodeId,
+        @CustomType.Parameter("presetId") String presetId,
+        @CustomType.Parameter("states") List<String> states,
+        @CustomType.Parameter("status") String status) {
+        this.honeypotId = honeypotId;
+        this.honeypotImageId = honeypotImageId;
+        this.honeypotImageName = honeypotImageName;
+        this.honeypotName = honeypotName;
+        this.id = id;
+        this.nodeId = nodeId;
+        this.presetId = presetId;
+        this.states = states;
+        this.status = status;
+    }
+
     /**
      * @return Honeypot ID.
      * 
@@ -128,7 +149,7 @@ public final class GetHoneyPotsPot {
     public static Builder builder(GetHoneyPotsPot defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String honeypotId;
         private String honeypotImageId;
@@ -139,7 +160,11 @@ public final class GetHoneyPotsPot {
         private String presetId;
         private List<String> states;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetHoneyPotsPot defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.honeypotId = defaults.honeypotId;
@@ -153,42 +178,34 @@ public final class GetHoneyPotsPot {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder honeypotId(String honeypotId) {
             this.honeypotId = Objects.requireNonNull(honeypotId);
             return this;
         }
-        @CustomType.Setter
         public Builder honeypotImageId(String honeypotImageId) {
             this.honeypotImageId = Objects.requireNonNull(honeypotImageId);
             return this;
         }
-        @CustomType.Setter
         public Builder honeypotImageName(String honeypotImageName) {
             this.honeypotImageName = Objects.requireNonNull(honeypotImageName);
             return this;
         }
-        @CustomType.Setter
         public Builder honeypotName(String honeypotName) {
             this.honeypotName = Objects.requireNonNull(honeypotName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder nodeId(String nodeId) {
             this.nodeId = Objects.requireNonNull(nodeId);
             return this;
         }
-        @CustomType.Setter
         public Builder presetId(String presetId) {
             this.presetId = Objects.requireNonNull(presetId);
             return this;
         }
-        @CustomType.Setter
         public Builder states(List<String> states) {
             this.states = Objects.requireNonNull(states);
             return this;
@@ -196,23 +213,11 @@ public final class GetHoneyPotsPot {
         public Builder states(String... states) {
             return states(List.of(states));
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetHoneyPotsPot build() {
-            final var o = new GetHoneyPotsPot();
-            o.honeypotId = honeypotId;
-            o.honeypotImageId = honeypotImageId;
-            o.honeypotImageName = honeypotImageName;
-            o.honeypotName = honeypotName;
-            o.id = id;
-            o.nodeId = nodeId;
-            o.presetId = presetId;
-            o.states = states;
-            o.status = status;
-            return o;
+        }        public GetHoneyPotsPot build() {
+            return new GetHoneyPotsPot(honeypotId, honeypotImageId, honeypotImageName, honeypotName, id, nodeId, presetId, states, status);
         }
     }
 }

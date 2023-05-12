@@ -295,6 +295,24 @@ type RuleTargetParamList struct {
 	// The resource key of param.  For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
 	ResourceKey string `pulumi:"resourceKey"`
 	// The template of param.
+	//
+	// > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	// In order to fix the diff, from version 1.160.0,
+	// this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
+	// If you want to set `resourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.
 	Template *string `pulumi:"template"`
 	// The value of param.
 	Value *string `pulumi:"value"`
@@ -317,6 +335,24 @@ type RuleTargetParamListArgs struct {
 	// The resource key of param.  For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
 	ResourceKey pulumi.StringInput `pulumi:"resourceKey"`
 	// The template of param.
+	//
+	// > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	// In order to fix the diff, from version 1.160.0,
+	// this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
+	// If you want to set `resourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.
 	Template pulumi.StringPtrInput `pulumi:"template"`
 	// The value of param.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -384,6 +420,27 @@ func (o RuleTargetParamListOutput) ResourceKey() pulumi.StringOutput {
 }
 
 // The template of param.
+//
+// > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+// In order to fix the diff, from version 1.160.0,
+// this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
+// If you want to set `resourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.
 func (o RuleTargetParamListOutput) Template() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleTargetParamList) *string { return v.Template }).(pulumi.StringPtrOutput)
 }

@@ -16,49 +16,70 @@ public final class GetQuotaAlarmsAlarm {
      * @return The first ID of the resource.
      * 
      */
-    private String alarmId;
+    private final String alarmId;
     /**
      * @return The ID of the Quota Alarm.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The Product Code.
      * 
      */
-    private String productCode;
+    private final String productCode;
     /**
      * @return The Quota Action Code.
      * 
      */
-    private String quotaActionCode;
+    private final String quotaActionCode;
     /**
      * @return The name of Quota Alarm.
      * 
      */
-    private String quotaAlarmName;
+    private final String quotaAlarmName;
     /**
      * @return The Quota Dimensions.
      * 
      */
-    private List<GetQuotaAlarmsAlarmQuotaDimension> quotaDimensions;
+    private final List<GetQuotaAlarmsAlarmQuotaDimension> quotaDimensions;
     /**
      * @return The threshold of Quota Alarm.
      * 
      */
-    private Double threshold;
+    private final Double threshold;
     /**
      * @return The threshold percent of Quota Alarm.
      * 
      */
-    private Double thresholdPercent;
+    private final Double thresholdPercent;
     /**
      * @return The WebHook of Quota Alarm.
      * 
      */
-    private String webHook;
+    private final String webHook;
 
-    private GetQuotaAlarmsAlarm() {}
+    @CustomType.Constructor
+    private GetQuotaAlarmsAlarm(
+        @CustomType.Parameter("alarmId") String alarmId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("productCode") String productCode,
+        @CustomType.Parameter("quotaActionCode") String quotaActionCode,
+        @CustomType.Parameter("quotaAlarmName") String quotaAlarmName,
+        @CustomType.Parameter("quotaDimensions") List<GetQuotaAlarmsAlarmQuotaDimension> quotaDimensions,
+        @CustomType.Parameter("threshold") Double threshold,
+        @CustomType.Parameter("thresholdPercent") Double thresholdPercent,
+        @CustomType.Parameter("webHook") String webHook) {
+        this.alarmId = alarmId;
+        this.id = id;
+        this.productCode = productCode;
+        this.quotaActionCode = quotaActionCode;
+        this.quotaAlarmName = quotaAlarmName;
+        this.quotaDimensions = quotaDimensions;
+        this.threshold = threshold;
+        this.thresholdPercent = thresholdPercent;
+        this.webHook = webHook;
+    }
+
     /**
      * @return The first ID of the resource.
      * 
@@ -130,7 +151,7 @@ public final class GetQuotaAlarmsAlarm {
     public static Builder builder(GetQuotaAlarmsAlarm defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String alarmId;
         private String id;
@@ -141,7 +162,11 @@ public final class GetQuotaAlarmsAlarm {
         private Double threshold;
         private Double thresholdPercent;
         private String webHook;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetQuotaAlarmsAlarm defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alarmId = defaults.alarmId;
@@ -155,32 +180,26 @@ public final class GetQuotaAlarmsAlarm {
     	      this.webHook = defaults.webHook;
         }
 
-        @CustomType.Setter
         public Builder alarmId(String alarmId) {
             this.alarmId = Objects.requireNonNull(alarmId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder productCode(String productCode) {
             this.productCode = Objects.requireNonNull(productCode);
             return this;
         }
-        @CustomType.Setter
         public Builder quotaActionCode(String quotaActionCode) {
             this.quotaActionCode = Objects.requireNonNull(quotaActionCode);
             return this;
         }
-        @CustomType.Setter
         public Builder quotaAlarmName(String quotaAlarmName) {
             this.quotaAlarmName = Objects.requireNonNull(quotaAlarmName);
             return this;
         }
-        @CustomType.Setter
         public Builder quotaDimensions(List<GetQuotaAlarmsAlarmQuotaDimension> quotaDimensions) {
             this.quotaDimensions = Objects.requireNonNull(quotaDimensions);
             return this;
@@ -188,33 +207,19 @@ public final class GetQuotaAlarmsAlarm {
         public Builder quotaDimensions(GetQuotaAlarmsAlarmQuotaDimension... quotaDimensions) {
             return quotaDimensions(List.of(quotaDimensions));
         }
-        @CustomType.Setter
         public Builder threshold(Double threshold) {
             this.threshold = Objects.requireNonNull(threshold);
             return this;
         }
-        @CustomType.Setter
         public Builder thresholdPercent(Double thresholdPercent) {
             this.thresholdPercent = Objects.requireNonNull(thresholdPercent);
             return this;
         }
-        @CustomType.Setter
         public Builder webHook(String webHook) {
             this.webHook = Objects.requireNonNull(webHook);
             return this;
-        }
-        public GetQuotaAlarmsAlarm build() {
-            final var o = new GetQuotaAlarmsAlarm();
-            o.alarmId = alarmId;
-            o.id = id;
-            o.productCode = productCode;
-            o.quotaActionCode = quotaActionCode;
-            o.quotaAlarmName = quotaAlarmName;
-            o.quotaDimensions = quotaDimensions;
-            o.threshold = threshold;
-            o.thresholdPercent = thresholdPercent;
-            o.webHook = webHook;
-            return o;
+        }        public GetQuotaAlarmsAlarm build() {
+            return new GetQuotaAlarmsAlarm(alarmId, id, productCode, quotaActionCode, quotaAlarmName, quotaDimensions, threshold, thresholdPercent, webHook);
         }
     }
 }

@@ -197,6 +197,32 @@ class MachineGroup(pulumi.CustomResource):
                  topic: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Log Service manages all the ECS instances whose logs need to be collected by using the Logtail client in the form of machine groups.
+         [Refer to details](https://www.alibabacloud.com/help/doc-detail/28966.htm)
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_project = alicloud.log.Project("exampleProject", description="created by terraform")
+        example_machine_group = alicloud.log.MachineGroup("exampleMachineGroup",
+            project=example_project.name,
+            identify_type="ip",
+            topic="terraform",
+            identify_lists=[
+                "10.0.0.1",
+                "10.0.0.2",
+            ])
+        ```
+        ## Module Support
+
+        You can use the existing sls-logtail module
+        to create logtail config, machine group, install logtail on ECS instances and join instances into machine group one-click.
+
         ## Import
 
         Log machine group can be imported using the id, e.g.
@@ -220,6 +246,32 @@ class MachineGroup(pulumi.CustomResource):
                  args: MachineGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Log Service manages all the ECS instances whose logs need to be collected by using the Logtail client in the form of machine groups.
+         [Refer to details](https://www.alibabacloud.com/help/doc-detail/28966.htm)
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_project = alicloud.log.Project("exampleProject", description="created by terraform")
+        example_machine_group = alicloud.log.MachineGroup("exampleMachineGroup",
+            project=example_project.name,
+            identify_type="ip",
+            topic="terraform",
+            identify_lists=[
+                "10.0.0.1",
+                "10.0.0.2",
+            ])
+        ```
+        ## Module Support
+
+        You can use the existing sls-logtail module
+        to create logtail config, machine group, install logtail on ECS instances and join instances into machine group one-click.
+
         ## Import
 
         Log machine group can be imported using the id, e.g.

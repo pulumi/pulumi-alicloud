@@ -15,14 +15,21 @@ public final class ResourceGroupRegionStatus {
      * @return The region ID.
      * 
      */
-    private @Nullable String regionId;
+    private final @Nullable String regionId;
     /**
      * @return The status of the regional resource group.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
 
-    private ResourceGroupRegionStatus() {}
+    @CustomType.Constructor
+    private ResourceGroupRegionStatus(
+        @CustomType.Parameter("regionId") @Nullable String regionId,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.regionId = regionId;
+        this.status = status;
+    }
+
     /**
      * @return The region ID.
      * 
@@ -45,32 +52,30 @@ public final class ResourceGroupRegionStatus {
     public static Builder builder(ResourceGroupRegionStatus defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String regionId;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ResourceGroupRegionStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.regionId = defaults.regionId;
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder regionId(@Nullable String regionId) {
             this.regionId = regionId;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public ResourceGroupRegionStatus build() {
-            final var o = new ResourceGroupRegionStatus();
-            o.regionId = regionId;
-            o.status = status;
-            return o;
+        }        public ResourceGroupRegionStatus build() {
+            return new ResourceGroupRegionStatus(regionId, status);
         }
     }
 }

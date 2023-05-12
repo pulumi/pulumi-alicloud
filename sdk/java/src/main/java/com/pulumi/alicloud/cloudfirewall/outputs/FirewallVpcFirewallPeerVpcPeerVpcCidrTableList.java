@@ -15,14 +15,21 @@ public final class FirewallVpcFirewallPeerVpcPeerVpcCidrTableList {
      * @return Peer VPC route entry list information.See the following `Block PeerRouteEntryList`.
      * 
      */
-    private List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList> peerRouteEntryLists;
+    private final List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList> peerRouteEntryLists;
     /**
      * @return The ID of the route table of the peer VPC.
      * 
      */
-    private String peerRouteTableId;
+    private final String peerRouteTableId;
 
-    private FirewallVpcFirewallPeerVpcPeerVpcCidrTableList() {}
+    @CustomType.Constructor
+    private FirewallVpcFirewallPeerVpcPeerVpcCidrTableList(
+        @CustomType.Parameter("peerRouteEntryLists") List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList> peerRouteEntryLists,
+        @CustomType.Parameter("peerRouteTableId") String peerRouteTableId) {
+        this.peerRouteEntryLists = peerRouteEntryLists;
+        this.peerRouteTableId = peerRouteTableId;
+    }
+
     /**
      * @return Peer VPC route entry list information.See the following `Block PeerRouteEntryList`.
      * 
@@ -45,18 +52,21 @@ public final class FirewallVpcFirewallPeerVpcPeerVpcCidrTableList {
     public static Builder builder(FirewallVpcFirewallPeerVpcPeerVpcCidrTableList defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList> peerRouteEntryLists;
         private String peerRouteTableId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(FirewallVpcFirewallPeerVpcPeerVpcCidrTableList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.peerRouteEntryLists = defaults.peerRouteEntryLists;
     	      this.peerRouteTableId = defaults.peerRouteTableId;
         }
 
-        @CustomType.Setter
         public Builder peerRouteEntryLists(List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList> peerRouteEntryLists) {
             this.peerRouteEntryLists = Objects.requireNonNull(peerRouteEntryLists);
             return this;
@@ -64,16 +74,11 @@ public final class FirewallVpcFirewallPeerVpcPeerVpcCidrTableList {
         public Builder peerRouteEntryLists(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList... peerRouteEntryLists) {
             return peerRouteEntryLists(List.of(peerRouteEntryLists));
         }
-        @CustomType.Setter
         public Builder peerRouteTableId(String peerRouteTableId) {
             this.peerRouteTableId = Objects.requireNonNull(peerRouteTableId);
             return this;
-        }
-        public FirewallVpcFirewallPeerVpcPeerVpcCidrTableList build() {
-            final var o = new FirewallVpcFirewallPeerVpcPeerVpcCidrTableList();
-            o.peerRouteEntryLists = peerRouteEntryLists;
-            o.peerRouteTableId = peerRouteTableId;
-            return o;
+        }        public FirewallVpcFirewallPeerVpcPeerVpcCidrTableList build() {
+            return new FirewallVpcFirewallPeerVpcPeerVpcCidrTableList(peerRouteEntryLists, peerRouteTableId);
         }
     }
 }

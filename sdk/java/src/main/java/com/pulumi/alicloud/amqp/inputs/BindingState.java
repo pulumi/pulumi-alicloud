@@ -20,6 +20,8 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
      * * &#34;x-match:all&#34;: Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
      * * &#34;x-match:any&#34;: at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
      * 
+     * **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+     * 
      */
     @Import(name="argument")
     private @Nullable Output<String> argument;
@@ -28,6 +30,8 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
      * @return X-match Attributes. Valid Values:
      * * &#34;x-match:all&#34;: Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
      * * &#34;x-match:any&#34;: at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
+     * 
+     * **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
      * 
      */
     public Optional<Output<String>> argument() {
@@ -169,6 +173,8 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
          * * &#34;x-match:all&#34;: Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
          * * &#34;x-match:any&#34;: at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
          * 
+         * **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
+         * 
          * @return builder
          * 
          */
@@ -181,6 +187,8 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
          * @param argument X-match Attributes. Valid Values:
          * * &#34;x-match:all&#34;: Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
          * * &#34;x-match:any&#34;: at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
+         * 
+         * **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
          * 
          * @return builder
          * 

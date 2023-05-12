@@ -15,64 +15,91 @@ public final class GetIpaDomainsDomain {
      * @return CertName.
      * 
      */
-    private String certName;
+    private final String certName;
     /**
      * @return The CNAME assigned to the domain name.
      * 
      */
-    private String cname;
+    private final String cname;
     /**
      * @return The time when the accelerated domain name was created.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The description.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The accelerated domain names.
      * 
      */
-    private String domainName;
+    private final String domainName;
     /**
      * @return The ID of the Ipa Domain.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the resource group.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return The accelerated region.
      * 
      */
-    private String scope;
+    private final String scope;
     /**
      * @return The information about the origin server.
      * 
      */
-    private List<GetIpaDomainsDomainSource> sources;
+    private final List<GetIpaDomainsDomainSource> sources;
     /**
      * @return Indicates whether the Security Socket Layer (SSL) certificate is enabled.
      * 
      */
-    private String sslProtocol;
+    private final String sslProtocol;
     /**
      * @return Indicates the public key of the certificate if the HTTPS protocol is enabled.
      * 
      */
-    private String sslPub;
+    private final String sslPub;
     /**
      * @return The status of the accelerated domain name.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetIpaDomainsDomain() {}
+    @CustomType.Constructor
+    private GetIpaDomainsDomain(
+        @CustomType.Parameter("certName") String certName,
+        @CustomType.Parameter("cname") String cname,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("domainName") String domainName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("scope") String scope,
+        @CustomType.Parameter("sources") List<GetIpaDomainsDomainSource> sources,
+        @CustomType.Parameter("sslProtocol") String sslProtocol,
+        @CustomType.Parameter("sslPub") String sslPub,
+        @CustomType.Parameter("status") String status) {
+        this.certName = certName;
+        this.cname = cname;
+        this.createTime = createTime;
+        this.description = description;
+        this.domainName = domainName;
+        this.id = id;
+        this.resourceGroupId = resourceGroupId;
+        this.scope = scope;
+        this.sources = sources;
+        this.sslProtocol = sslProtocol;
+        this.sslPub = sslPub;
+        this.status = status;
+    }
+
     /**
      * @return CertName.
      * 
@@ -165,7 +192,7 @@ public final class GetIpaDomainsDomain {
     public static Builder builder(GetIpaDomainsDomain defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String certName;
         private String cname;
@@ -179,7 +206,11 @@ public final class GetIpaDomainsDomain {
         private String sslProtocol;
         private String sslPub;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetIpaDomainsDomain defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certName = defaults.certName;
@@ -196,47 +227,38 @@ public final class GetIpaDomainsDomain {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder certName(String certName) {
             this.certName = Objects.requireNonNull(certName);
             return this;
         }
-        @CustomType.Setter
         public Builder cname(String cname) {
             this.cname = Objects.requireNonNull(cname);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder scope(String scope) {
             this.scope = Objects.requireNonNull(scope);
             return this;
         }
-        @CustomType.Setter
         public Builder sources(List<GetIpaDomainsDomainSource> sources) {
             this.sources = Objects.requireNonNull(sources);
             return this;
@@ -244,36 +266,19 @@ public final class GetIpaDomainsDomain {
         public Builder sources(GetIpaDomainsDomainSource... sources) {
             return sources(List.of(sources));
         }
-        @CustomType.Setter
         public Builder sslProtocol(String sslProtocol) {
             this.sslProtocol = Objects.requireNonNull(sslProtocol);
             return this;
         }
-        @CustomType.Setter
         public Builder sslPub(String sslPub) {
             this.sslPub = Objects.requireNonNull(sslPub);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetIpaDomainsDomain build() {
-            final var o = new GetIpaDomainsDomain();
-            o.certName = certName;
-            o.cname = cname;
-            o.createTime = createTime;
-            o.description = description;
-            o.domainName = domainName;
-            o.id = id;
-            o.resourceGroupId = resourceGroupId;
-            o.scope = scope;
-            o.sources = sources;
-            o.sslProtocol = sslProtocol;
-            o.sslPub = sslPub;
-            o.status = status;
-            return o;
+        }        public GetIpaDomainsDomain build() {
+            return new GetIpaDomainsDomain(certName, cname, createTime, description, domainName, id, resourceGroupId, scope, sources, sslProtocol, sslPub, status);
         }
     }
 }

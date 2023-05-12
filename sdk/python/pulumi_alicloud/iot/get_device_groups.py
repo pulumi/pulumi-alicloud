@@ -148,6 +148,7 @@ def get_device_groups(enable_details: Optional[bool] = None,
     :param Sequence[str] ids: A list of device group IDs.
     :param str iot_instance_id: The id of the Iot Instance.
     :param str name_regex: A regex string to filter CEN instances by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str super_group_id: The id of the SuperGroup.
     """
     __args__ = dict()
@@ -205,6 +206,7 @@ def get_device_groups_output(enable_details: Optional[pulumi.Input[Optional[bool
     :param Sequence[str] ids: A list of device group IDs.
     :param str iot_instance_id: The id of the Iot Instance.
     :param str name_regex: A regex string to filter CEN instances by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str super_group_id: The id of the SuperGroup.
     """
     ...

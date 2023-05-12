@@ -25,8 +25,9 @@ func GetDiskReplicaPairs(ctx *pulumi.Context, args *GetDiskReplicaPairsArgs, opt
 // A collection of arguments for invoking getDiskReplicaPairs.
 type GetDiskReplicaPairsArgs struct {
 	// A list of Disk Replica Pair IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// Consistent Replication Group ID, you can specify a consistent replication group ID to query the replication pairs within the group.
 	ReplicaGroupId *string `pulumi:"replicaGroupId"`
 	// Get data for replication pairs where this Region is the production site or the disaster recovery site.
@@ -62,8 +63,9 @@ func GetDiskReplicaPairsOutput(ctx *pulumi.Context, args GetDiskReplicaPairsOutp
 // A collection of arguments for invoking getDiskReplicaPairs.
 type GetDiskReplicaPairsOutputArgs struct {
 	// A list of Disk Replica Pair IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Consistent Replication Group ID, you can specify a consistent replication group ID to query the replication pairs within the group.
 	ReplicaGroupId pulumi.StringPtrInput `pulumi:"replicaGroupId"`
 	// Get data for replication pairs where this Region is the production site or the disaster recovery site.

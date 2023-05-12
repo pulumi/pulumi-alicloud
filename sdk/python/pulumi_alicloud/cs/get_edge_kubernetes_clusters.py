@@ -132,6 +132,7 @@ def get_edge_kubernetes_clusters(enable_details: Optional[bool] = None,
 
     :param Sequence[str] ids: Cluster IDs to filter.
     :param str name_regex: A regex string to filter results by cluster name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -176,5 +177,6 @@ def get_edge_kubernetes_clusters_output(enable_details: Optional[pulumi.Input[Op
 
     :param Sequence[str] ids: Cluster IDs to filter.
     :param str name_regex: A regex string to filter results by cluster name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

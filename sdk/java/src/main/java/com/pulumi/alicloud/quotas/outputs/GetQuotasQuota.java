@@ -16,69 +16,98 @@ public final class GetQuotasQuota {
      * @return Is the quota adjustable.
      * 
      */
-    private Boolean adjustable;
+    private final Boolean adjustable;
     /**
      * @return The range of quota adjustment.
      * 
      */
-    private List<String> applicableRanges;
+    private final List<String> applicableRanges;
     /**
      * @return The type of quota.
      * 
      */
-    private String applicableType;
+    private final String applicableType;
     /**
      * @return Show used quota.
      * 
      */
-    private Boolean consumable;
+    private final Boolean consumable;
     /**
      * @return The ID of the Quota.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The quota action code.
      * 
      */
-    private String quotaActionCode;
+    private final String quotaActionCode;
     /**
      * @return The quota description.
      * 
      */
-    private String quotaDescription;
+    private final String quotaDescription;
     /**
      * @return The quota name.
      * 
      */
-    private String quotaName;
+    private final String quotaName;
     /**
      * @return The quota type.
      * 
      */
-    private String quotaType;
+    private final String quotaType;
     /**
      * @return The quota unit.
      * 
      */
-    private String quotaUnit;
+    private final String quotaUnit;
     /**
      * @return TotalQuota.
      * 
      */
-    private Double totalQuota;
+    private final Double totalQuota;
     /**
      * @return The total of usage.
      * 
      */
-    private Double totalUsage;
+    private final Double totalUsage;
     /**
      * @return The unadjustable detail.
      * 
      */
-    private String unadjustableDetail;
+    private final String unadjustableDetail;
 
-    private GetQuotasQuota() {}
+    @CustomType.Constructor
+    private GetQuotasQuota(
+        @CustomType.Parameter("adjustable") Boolean adjustable,
+        @CustomType.Parameter("applicableRanges") List<String> applicableRanges,
+        @CustomType.Parameter("applicableType") String applicableType,
+        @CustomType.Parameter("consumable") Boolean consumable,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("quotaActionCode") String quotaActionCode,
+        @CustomType.Parameter("quotaDescription") String quotaDescription,
+        @CustomType.Parameter("quotaName") String quotaName,
+        @CustomType.Parameter("quotaType") String quotaType,
+        @CustomType.Parameter("quotaUnit") String quotaUnit,
+        @CustomType.Parameter("totalQuota") Double totalQuota,
+        @CustomType.Parameter("totalUsage") Double totalUsage,
+        @CustomType.Parameter("unadjustableDetail") String unadjustableDetail) {
+        this.adjustable = adjustable;
+        this.applicableRanges = applicableRanges;
+        this.applicableType = applicableType;
+        this.consumable = consumable;
+        this.id = id;
+        this.quotaActionCode = quotaActionCode;
+        this.quotaDescription = quotaDescription;
+        this.quotaName = quotaName;
+        this.quotaType = quotaType;
+        this.quotaUnit = quotaUnit;
+        this.totalQuota = totalQuota;
+        this.totalUsage = totalUsage;
+        this.unadjustableDetail = unadjustableDetail;
+    }
+
     /**
      * @return Is the quota adjustable.
      * 
@@ -178,7 +207,7 @@ public final class GetQuotasQuota {
     public static Builder builder(GetQuotasQuota defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean adjustable;
         private List<String> applicableRanges;
@@ -193,7 +222,11 @@ public final class GetQuotasQuota {
         private Double totalQuota;
         private Double totalUsage;
         private String unadjustableDetail;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetQuotasQuota defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adjustable = defaults.adjustable;
@@ -211,12 +244,10 @@ public final class GetQuotasQuota {
     	      this.unadjustableDetail = defaults.unadjustableDetail;
         }
 
-        @CustomType.Setter
         public Builder adjustable(Boolean adjustable) {
             this.adjustable = Objects.requireNonNull(adjustable);
             return this;
         }
-        @CustomType.Setter
         public Builder applicableRanges(List<String> applicableRanges) {
             this.applicableRanges = Objects.requireNonNull(applicableRanges);
             return this;
@@ -224,77 +255,51 @@ public final class GetQuotasQuota {
         public Builder applicableRanges(String... applicableRanges) {
             return applicableRanges(List.of(applicableRanges));
         }
-        @CustomType.Setter
         public Builder applicableType(String applicableType) {
             this.applicableType = Objects.requireNonNull(applicableType);
             return this;
         }
-        @CustomType.Setter
         public Builder consumable(Boolean consumable) {
             this.consumable = Objects.requireNonNull(consumable);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder quotaActionCode(String quotaActionCode) {
             this.quotaActionCode = Objects.requireNonNull(quotaActionCode);
             return this;
         }
-        @CustomType.Setter
         public Builder quotaDescription(String quotaDescription) {
             this.quotaDescription = Objects.requireNonNull(quotaDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder quotaName(String quotaName) {
             this.quotaName = Objects.requireNonNull(quotaName);
             return this;
         }
-        @CustomType.Setter
         public Builder quotaType(String quotaType) {
             this.quotaType = Objects.requireNonNull(quotaType);
             return this;
         }
-        @CustomType.Setter
         public Builder quotaUnit(String quotaUnit) {
             this.quotaUnit = Objects.requireNonNull(quotaUnit);
             return this;
         }
-        @CustomType.Setter
         public Builder totalQuota(Double totalQuota) {
             this.totalQuota = Objects.requireNonNull(totalQuota);
             return this;
         }
-        @CustomType.Setter
         public Builder totalUsage(Double totalUsage) {
             this.totalUsage = Objects.requireNonNull(totalUsage);
             return this;
         }
-        @CustomType.Setter
         public Builder unadjustableDetail(String unadjustableDetail) {
             this.unadjustableDetail = Objects.requireNonNull(unadjustableDetail);
             return this;
-        }
-        public GetQuotasQuota build() {
-            final var o = new GetQuotasQuota();
-            o.adjustable = adjustable;
-            o.applicableRanges = applicableRanges;
-            o.applicableType = applicableType;
-            o.consumable = consumable;
-            o.id = id;
-            o.quotaActionCode = quotaActionCode;
-            o.quotaDescription = quotaDescription;
-            o.quotaName = quotaName;
-            o.quotaType = quotaType;
-            o.quotaUnit = quotaUnit;
-            o.totalQuota = totalQuota;
-            o.totalUsage = totalUsage;
-            o.unadjustableDetail = unadjustableDetail;
-            return o;
+        }        public GetQuotasQuota build() {
+            return new GetQuotasQuota(adjustable, applicableRanges, applicableType, consumable, id, quotaActionCode, quotaDescription, quotaName, quotaType, quotaUnit, totalQuota, totalUsage, unadjustableDetail);
         }
     }
 }

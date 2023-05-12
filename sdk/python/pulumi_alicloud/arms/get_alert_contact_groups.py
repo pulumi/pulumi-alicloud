@@ -147,6 +147,7 @@ def get_alert_contact_groups(alert_contact_group_name: Optional[str] = None,
     :param str contact_name: The contact name.
     :param Sequence[str] ids: A list of Alert Contact Group IDs.
     :param str name_regex: A regex string to filter results by Alert Contact Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['alertContactGroupName'] = alert_contact_group_name
@@ -201,5 +202,6 @@ def get_alert_contact_groups_output(alert_contact_group_name: Optional[pulumi.In
     :param str contact_name: The contact name.
     :param Sequence[str] ids: A list of Alert Contact Group IDs.
     :param str name_regex: A regex string to filter results by Alert Contact Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

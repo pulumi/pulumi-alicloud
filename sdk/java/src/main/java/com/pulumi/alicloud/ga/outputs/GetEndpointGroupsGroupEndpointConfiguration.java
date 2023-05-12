@@ -15,34 +15,49 @@ public final class GetEndpointGroupsGroupEndpointConfiguration {
      * @return Indicates whether client IP addresses are reserved.
      * 
      */
-    private Boolean enableClientipPreservation;
+    private final Boolean enableClientipPreservation;
     /**
      * @return The IP address or domain name of Endpoint N in the endpoint group.
      * 
      */
-    private String endpoint;
+    private final String endpoint;
     /**
      * @return Probe Port.
      * 
      */
-    private Integer probePort;
+    private final Integer probePort;
     /**
      * @return Probe Protocol.
      * 
      */
-    private String probeProtocol;
+    private final String probeProtocol;
     /**
      * @return The type of Endpoint N in the endpoint group.
      * 
      */
-    private String type;
+    private final String type;
     /**
      * @return The weight of Endpoint N in the endpoint group.
      * 
      */
-    private Integer weight;
+    private final Integer weight;
 
-    private GetEndpointGroupsGroupEndpointConfiguration() {}
+    @CustomType.Constructor
+    private GetEndpointGroupsGroupEndpointConfiguration(
+        @CustomType.Parameter("enableClientipPreservation") Boolean enableClientipPreservation,
+        @CustomType.Parameter("endpoint") String endpoint,
+        @CustomType.Parameter("probePort") Integer probePort,
+        @CustomType.Parameter("probeProtocol") String probeProtocol,
+        @CustomType.Parameter("type") String type,
+        @CustomType.Parameter("weight") Integer weight) {
+        this.enableClientipPreservation = enableClientipPreservation;
+        this.endpoint = endpoint;
+        this.probePort = probePort;
+        this.probeProtocol = probeProtocol;
+        this.type = type;
+        this.weight = weight;
+    }
+
     /**
      * @return Indicates whether client IP addresses are reserved.
      * 
@@ -93,7 +108,7 @@ public final class GetEndpointGroupsGroupEndpointConfiguration {
     public static Builder builder(GetEndpointGroupsGroupEndpointConfiguration defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean enableClientipPreservation;
         private String endpoint;
@@ -101,7 +116,11 @@ public final class GetEndpointGroupsGroupEndpointConfiguration {
         private String probeProtocol;
         private String type;
         private Integer weight;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEndpointGroupsGroupEndpointConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableClientipPreservation = defaults.enableClientipPreservation;
@@ -112,45 +131,31 @@ public final class GetEndpointGroupsGroupEndpointConfiguration {
     	      this.weight = defaults.weight;
         }
 
-        @CustomType.Setter
         public Builder enableClientipPreservation(Boolean enableClientipPreservation) {
             this.enableClientipPreservation = Objects.requireNonNull(enableClientipPreservation);
             return this;
         }
-        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
-        @CustomType.Setter
         public Builder probePort(Integer probePort) {
             this.probePort = Objects.requireNonNull(probePort);
             return this;
         }
-        @CustomType.Setter
         public Builder probeProtocol(String probeProtocol) {
             this.probeProtocol = Objects.requireNonNull(probeProtocol);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
-        @CustomType.Setter
         public Builder weight(Integer weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
-        }
-        public GetEndpointGroupsGroupEndpointConfiguration build() {
-            final var o = new GetEndpointGroupsGroupEndpointConfiguration();
-            o.enableClientipPreservation = enableClientipPreservation;
-            o.endpoint = endpoint;
-            o.probePort = probePort;
-            o.probeProtocol = probeProtocol;
-            o.type = type;
-            o.weight = weight;
-            return o;
+        }        public GetEndpointGroupsGroupEndpointConfiguration build() {
+            return new GetEndpointGroupsGroupEndpointConfiguration(enableClientipPreservation, endpoint, probePort, probeProtocol, type, weight);
         }
     }
 }

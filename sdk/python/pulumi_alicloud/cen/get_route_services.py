@@ -181,6 +181,7 @@ def get_route_services(access_region_id: Optional[str] = None,
     :param str host: The domain name or IP address of the cloud service.
     :param str host_region_id: The region of the cloud service.
     :param str host_vpc_id: The VPC associated with the cloud service.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
     """
     __args__ = dict()
@@ -239,6 +240,7 @@ def get_route_services_output(access_region_id: Optional[pulumi.Input[Optional[s
     :param str host: The domain name or IP address of the cloud service.
     :param str host_region_id: The region of the cloud service.
     :param str host_vpc_id: The VPC associated with the cloud service.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
     """
     ...

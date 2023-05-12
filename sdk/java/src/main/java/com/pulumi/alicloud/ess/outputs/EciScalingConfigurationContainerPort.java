@@ -16,14 +16,21 @@ public final class EciScalingConfigurationContainerPort {
      * @return The port number. Valid values: 1 to 65535.
      * 
      */
-    private @Nullable Integer port;
+    private final @Nullable Integer port;
     /**
      * @return Valid values: TCP and UDP.
      * 
      */
-    private @Nullable String protocol;
+    private final @Nullable String protocol;
 
-    private EciScalingConfigurationContainerPort() {}
+    @CustomType.Constructor
+    private EciScalingConfigurationContainerPort(
+        @CustomType.Parameter("port") @Nullable Integer port,
+        @CustomType.Parameter("protocol") @Nullable String protocol) {
+        this.port = port;
+        this.protocol = protocol;
+    }
+
     /**
      * @return The port number. Valid values: 1 to 65535.
      * 
@@ -46,32 +53,30 @@ public final class EciScalingConfigurationContainerPort {
     public static Builder builder(EciScalingConfigurationContainerPort defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Integer port;
         private @Nullable String protocol;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(EciScalingConfigurationContainerPort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.port = defaults.port;
     	      this.protocol = defaults.protocol;
         }
 
-        @CustomType.Setter
         public Builder port(@Nullable Integer port) {
             this.port = port;
             return this;
         }
-        @CustomType.Setter
         public Builder protocol(@Nullable String protocol) {
             this.protocol = protocol;
             return this;
-        }
-        public EciScalingConfigurationContainerPort build() {
-            final var o = new EciScalingConfigurationContainerPort();
-            o.port = port;
-            o.protocol = protocol;
-            return o;
+        }        public EciScalingConfigurationContainerPort build() {
+            return new EciScalingConfigurationContainerPort(port, protocol);
         }
     }
 }

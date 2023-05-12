@@ -142,6 +142,7 @@ def get_roles(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of ram role IDs.
     :param str name_regex: A regex string to filter results by the role name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str policy_name: Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
     :param str policy_type: Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
     """
@@ -191,6 +192,7 @@ def get_roles_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None
 
     :param Sequence[str] ids: A list of ram role IDs.
     :param str name_regex: A regex string to filter results by the role name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str policy_name: Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
     :param str policy_type: Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
     """

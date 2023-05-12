@@ -19,6 +19,8 @@ namespace Pulumi.AliCloud.FC.Outputs
         public readonly string FunctionName;
         /// <summary>
         /// The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+        /// 
+        /// **cert_config** includes the following arguments:
         /// </summary>
         public readonly ImmutableArray<string> Methods;
         /// <summary>

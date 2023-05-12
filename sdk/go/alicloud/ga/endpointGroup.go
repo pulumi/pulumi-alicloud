@@ -131,8 +131,12 @@ type EndpointGroup struct {
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion pulumi.StringOutput `pulumi:"endpointGroupRegion"`
 	// The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+	//
+	// > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
 	EndpointGroupType pulumi.StringOutput `pulumi:"endpointGroupType"`
 	// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
+	//
+	// > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
 	EndpointRequestProtocol pulumi.StringPtrOutput `pulumi:"endpointRequestProtocol"`
 	// The interval between two consecutive health checks. Unit: seconds.
 	HealthCheckIntervalSeconds pulumi.IntPtrOutput `pulumi:"healthCheckIntervalSeconds"`
@@ -147,6 +151,8 @@ type EndpointGroup struct {
 	// The name of the endpoint group.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
+	//
+	// > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
 	PortOverrides EndpointGroupPortOverridesPtrOutput `pulumi:"portOverrides"`
 	// The status of the endpoint group.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -206,8 +212,12 @@ type endpointGroupState struct {
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion *string `pulumi:"endpointGroupRegion"`
 	// The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+	//
+	// > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
 	EndpointGroupType *string `pulumi:"endpointGroupType"`
 	// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
+	//
+	// > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
 	EndpointRequestProtocol *string `pulumi:"endpointRequestProtocol"`
 	// The interval between two consecutive health checks. Unit: seconds.
 	HealthCheckIntervalSeconds *int `pulumi:"healthCheckIntervalSeconds"`
@@ -222,6 +232,8 @@ type endpointGroupState struct {
 	// The name of the endpoint group.
 	Name *string `pulumi:"name"`
 	// Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
+	//
+	// > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
 	PortOverrides *EndpointGroupPortOverrides `pulumi:"portOverrides"`
 	// The status of the endpoint group.
 	Status *string `pulumi:"status"`
@@ -241,8 +253,12 @@ type EndpointGroupState struct {
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion pulumi.StringPtrInput
 	// The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+	//
+	// > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
 	EndpointGroupType pulumi.StringPtrInput
 	// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
+	//
+	// > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
 	EndpointRequestProtocol pulumi.StringPtrInput
 	// The interval between two consecutive health checks. Unit: seconds.
 	HealthCheckIntervalSeconds pulumi.IntPtrInput
@@ -257,6 +273,8 @@ type EndpointGroupState struct {
 	// The name of the endpoint group.
 	Name pulumi.StringPtrInput
 	// Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
+	//
+	// > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
 	PortOverrides EndpointGroupPortOverridesPtrInput
 	// The status of the endpoint group.
 	Status pulumi.StringPtrInput
@@ -280,8 +298,12 @@ type endpointGroupArgs struct {
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion string `pulumi:"endpointGroupRegion"`
 	// The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+	//
+	// > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
 	EndpointGroupType *string `pulumi:"endpointGroupType"`
 	// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
+	//
+	// > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
 	EndpointRequestProtocol *string `pulumi:"endpointRequestProtocol"`
 	// The interval between two consecutive health checks. Unit: seconds.
 	HealthCheckIntervalSeconds *int `pulumi:"healthCheckIntervalSeconds"`
@@ -296,6 +318,8 @@ type endpointGroupArgs struct {
 	// The name of the endpoint group.
 	Name *string `pulumi:"name"`
 	// Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
+	//
+	// > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
 	PortOverrides *EndpointGroupPortOverrides `pulumi:"portOverrides"`
 	// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
 	ThresholdCount *int `pulumi:"thresholdCount"`
@@ -314,8 +338,12 @@ type EndpointGroupArgs struct {
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion pulumi.StringInput
 	// The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+	//
+	// > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
 	EndpointGroupType pulumi.StringPtrInput
 	// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
+	//
+	// > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
 	EndpointRequestProtocol pulumi.StringPtrInput
 	// The interval between two consecutive health checks. Unit: seconds.
 	HealthCheckIntervalSeconds pulumi.IntPtrInput
@@ -330,6 +358,8 @@ type EndpointGroupArgs struct {
 	// The name of the endpoint group.
 	Name pulumi.StringPtrInput
 	// Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
+	//
+	// > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
 	PortOverrides EndpointGroupPortOverridesPtrInput
 	// The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
 	ThresholdCount pulumi.IntPtrInput
@@ -445,11 +475,15 @@ func (o EndpointGroupOutput) EndpointGroupRegion() pulumi.StringOutput {
 }
 
 // The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+//
+// > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
 func (o EndpointGroupOutput) EndpointGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointGroup) pulumi.StringOutput { return v.EndpointGroupType }).(pulumi.StringOutput)
 }
 
 // The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
+//
+// > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
 func (o EndpointGroupOutput) EndpointRequestProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EndpointGroup) pulumi.StringPtrOutput { return v.EndpointRequestProtocol }).(pulumi.StringPtrOutput)
 }
@@ -485,6 +519,8 @@ func (o EndpointGroupOutput) Name() pulumi.StringOutput {
 }
 
 // Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
+//
+// > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
 func (o EndpointGroupOutput) PortOverrides() EndpointGroupPortOverridesPtrOutput {
 	return o.ApplyT(func(v *EndpointGroup) EndpointGroupPortOverridesPtrOutput { return v.PortOverrides }).(EndpointGroupPortOverridesPtrOutput)
 }

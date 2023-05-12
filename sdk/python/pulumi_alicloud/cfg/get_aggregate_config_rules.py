@@ -187,6 +187,7 @@ def get_aggregate_config_rules(aggregate_config_rule_name: Optional[str] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Aggregate Config Rule IDs.
     :param str name_regex: A regex string to filter results by Aggregate Config Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int risk_level: Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
     :param str status: The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
     """
@@ -251,6 +252,7 @@ def get_aggregate_config_rules_output(aggregate_config_rule_name: Optional[pulum
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Aggregate Config Rule IDs.
     :param str name_regex: A regex string to filter results by Aggregate Config Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int risk_level: Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
     :param str status: The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
     """

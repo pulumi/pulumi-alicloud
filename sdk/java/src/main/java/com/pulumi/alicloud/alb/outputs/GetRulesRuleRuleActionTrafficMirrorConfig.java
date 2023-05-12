@@ -15,14 +15,21 @@ public final class GetRulesRuleRuleActionTrafficMirrorConfig {
      * @return The Traffic is mirrored to the server group.
      * 
      */
-    private List<GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig> mirrorGroupConfigs;
+    private final List<GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig> mirrorGroupConfigs;
     /**
      * @return The Mirror target type.
      * 
      */
-    private String targetType;
+    private final String targetType;
 
-    private GetRulesRuleRuleActionTrafficMirrorConfig() {}
+    @CustomType.Constructor
+    private GetRulesRuleRuleActionTrafficMirrorConfig(
+        @CustomType.Parameter("mirrorGroupConfigs") List<GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig> mirrorGroupConfigs,
+        @CustomType.Parameter("targetType") String targetType) {
+        this.mirrorGroupConfigs = mirrorGroupConfigs;
+        this.targetType = targetType;
+    }
+
     /**
      * @return The Traffic is mirrored to the server group.
      * 
@@ -45,18 +52,21 @@ public final class GetRulesRuleRuleActionTrafficMirrorConfig {
     public static Builder builder(GetRulesRuleRuleActionTrafficMirrorConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig> mirrorGroupConfigs;
         private String targetType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRulesRuleRuleActionTrafficMirrorConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mirrorGroupConfigs = defaults.mirrorGroupConfigs;
     	      this.targetType = defaults.targetType;
         }
 
-        @CustomType.Setter
         public Builder mirrorGroupConfigs(List<GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig> mirrorGroupConfigs) {
             this.mirrorGroupConfigs = Objects.requireNonNull(mirrorGroupConfigs);
             return this;
@@ -64,16 +74,11 @@ public final class GetRulesRuleRuleActionTrafficMirrorConfig {
         public Builder mirrorGroupConfigs(GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfig... mirrorGroupConfigs) {
             return mirrorGroupConfigs(List.of(mirrorGroupConfigs));
         }
-        @CustomType.Setter
         public Builder targetType(String targetType) {
             this.targetType = Objects.requireNonNull(targetType);
             return this;
-        }
-        public GetRulesRuleRuleActionTrafficMirrorConfig build() {
-            final var o = new GetRulesRuleRuleActionTrafficMirrorConfig();
-            o.mirrorGroupConfigs = mirrorGroupConfigs;
-            o.targetType = targetType;
-            return o;
+        }        public GetRulesRuleRuleActionTrafficMirrorConfig build() {
+            return new GetRulesRuleRuleActionTrafficMirrorConfig(mirrorGroupConfigs, targetType);
         }
     }
 }

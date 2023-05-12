@@ -154,6 +154,7 @@ def get_users(group_name: Optional[str] = None,
     :param str group_name: Filter results by a specific group name. Returned users are in the specified group.
     :param Sequence[str] ids: A list of ram user IDs.
     :param str name_regex: A regex string to filter resulting users by their names.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str policy_name: Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
     :param str policy_type: Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
     """
@@ -208,6 +209,7 @@ def get_users_output(group_name: Optional[pulumi.Input[Optional[str]]] = None,
     :param str group_name: Filter results by a specific group name. Returned users are in the specified group.
     :param Sequence[str] ids: A list of ram user IDs.
     :param str name_regex: A regex string to filter resulting users by their names.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str policy_name: Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
     :param str policy_type: Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
     """

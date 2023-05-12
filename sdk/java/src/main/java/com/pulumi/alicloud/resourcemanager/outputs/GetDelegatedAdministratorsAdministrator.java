@@ -13,24 +13,35 @@ public final class GetDelegatedAdministratorsAdministrator {
      * @return The ID of the member account.
      * 
      */
-    private String accountId;
+    private final String accountId;
     /**
      * @return The time when the member was specified as a delegated administrator account.
      * 
      */
-    private String delegationEnabledTime;
+    private final String delegationEnabledTime;
     /**
      * @return The ID of the Delegated Administrator.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The identity of the trusted service.
      * 
      */
-    private String servicePrincipal;
+    private final String servicePrincipal;
 
-    private GetDelegatedAdministratorsAdministrator() {}
+    @CustomType.Constructor
+    private GetDelegatedAdministratorsAdministrator(
+        @CustomType.Parameter("accountId") String accountId,
+        @CustomType.Parameter("delegationEnabledTime") String delegationEnabledTime,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("servicePrincipal") String servicePrincipal) {
+        this.accountId = accountId;
+        this.delegationEnabledTime = delegationEnabledTime;
+        this.id = id;
+        this.servicePrincipal = servicePrincipal;
+    }
+
     /**
      * @return The ID of the member account.
      * 
@@ -67,13 +78,17 @@ public final class GetDelegatedAdministratorsAdministrator {
     public static Builder builder(GetDelegatedAdministratorsAdministrator defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String accountId;
         private String delegationEnabledTime;
         private String id;
         private String servicePrincipal;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDelegatedAdministratorsAdministrator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -82,33 +97,23 @@ public final class GetDelegatedAdministratorsAdministrator {
     	      this.servicePrincipal = defaults.servicePrincipal;
         }
 
-        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
-        @CustomType.Setter
         public Builder delegationEnabledTime(String delegationEnabledTime) {
             this.delegationEnabledTime = Objects.requireNonNull(delegationEnabledTime);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder servicePrincipal(String servicePrincipal) {
             this.servicePrincipal = Objects.requireNonNull(servicePrincipal);
             return this;
-        }
-        public GetDelegatedAdministratorsAdministrator build() {
-            final var o = new GetDelegatedAdministratorsAdministrator();
-            o.accountId = accountId;
-            o.delegationEnabledTime = delegationEnabledTime;
-            o.id = id;
-            o.servicePrincipal = servicePrincipal;
-            return o;
+        }        public GetDelegatedAdministratorsAdministrator build() {
+            return new GetDelegatedAdministratorsAdministrator(accountId, delegationEnabledTime, id, servicePrincipal);
         }
     }
 }

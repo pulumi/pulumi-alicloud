@@ -100,6 +100,9 @@ export interface GetRouteEntriesArgs {
      * The instance ID of the next hop.
      */
     instanceId?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the router table to which the route entry belongs.
@@ -227,6 +230,9 @@ export interface GetRouteEntriesOutputArgs {
      * The instance ID of the next hop.
      */
     instanceId?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the router table to which the route entry belongs.

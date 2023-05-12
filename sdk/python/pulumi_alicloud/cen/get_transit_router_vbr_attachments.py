@@ -122,6 +122,7 @@ def get_transit_router_vbr_attachments(cen_id: Optional[str] = None,
 
     :param str cen_id: ID of the CEN instance.
     :param Sequence[str] ids: A list of resource id. The element value is same as `transit_router_id`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
     :param str transit_router_id: ID of the transit router.
     """
@@ -159,6 +160,7 @@ def get_transit_router_vbr_attachments_output(cen_id: Optional[pulumi.Input[str]
 
     :param str cen_id: ID of the CEN instance.
     :param Sequence[str] ids: A list of resource id. The element value is same as `transit_router_id`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
     :param str transit_router_id: ID of the transit router.
     """

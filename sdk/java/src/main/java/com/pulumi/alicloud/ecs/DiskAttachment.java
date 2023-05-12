@@ -16,6 +16,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDiskAttachment from version 1.122.0.
+ * 
+ * Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
+ * 
  * ## Example Usage
  * 
  * Basic usage

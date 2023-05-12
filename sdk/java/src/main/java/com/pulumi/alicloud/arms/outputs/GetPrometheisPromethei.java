@@ -15,59 +15,84 @@ public final class GetPrometheisPromethei {
      * @return The ID of the cluster.
      * 
      */
-    private String clusterId;
+    private final String clusterId;
     /**
      * @return The name of the cluster.
      * 
      */
-    private String clusterName;
+    private final String clusterName;
     /**
      * @return The type of the cluster.
      * 
      */
-    private String clusterType;
+    private final String clusterType;
     /**
      * @return The ID of the Grafana workspace.
      * 
      */
-    private String grafanaInstanceId;
+    private final String grafanaInstanceId;
     /**
      * @return The ID of the Prometheus.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the resource group.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return The ID of the security group.
      * 
      */
-    private String securityGroupId;
+    private final String securityGroupId;
     /**
      * @return The child instance json string of the globalView instance.
      * 
      */
-    private String subClustersJson;
+    private final String subClustersJson;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
     /**
      * @return The ID of the VPC.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
     /**
      * @return The ID of the VSwitch.
      * 
      */
-    private String vswitchId;
+    private final String vswitchId;
 
-    private GetPrometheisPromethei() {}
+    @CustomType.Constructor
+    private GetPrometheisPromethei(
+        @CustomType.Parameter("clusterId") String clusterId,
+        @CustomType.Parameter("clusterName") String clusterName,
+        @CustomType.Parameter("clusterType") String clusterType,
+        @CustomType.Parameter("grafanaInstanceId") String grafanaInstanceId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("securityGroupId") String securityGroupId,
+        @CustomType.Parameter("subClustersJson") String subClustersJson,
+        @CustomType.Parameter("tags") Map<String,Object> tags,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("vswitchId") String vswitchId) {
+        this.clusterId = clusterId;
+        this.clusterName = clusterName;
+        this.clusterType = clusterType;
+        this.grafanaInstanceId = grafanaInstanceId;
+        this.id = id;
+        this.resourceGroupId = resourceGroupId;
+        this.securityGroupId = securityGroupId;
+        this.subClustersJson = subClustersJson;
+        this.tags = tags;
+        this.vpcId = vpcId;
+        this.vswitchId = vswitchId;
+    }
+
     /**
      * @return The ID of the cluster.
      * 
@@ -153,7 +178,7 @@ public final class GetPrometheisPromethei {
     public static Builder builder(GetPrometheisPromethei defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String clusterId;
         private String clusterName;
@@ -166,7 +191,11 @@ public final class GetPrometheisPromethei {
         private Map<String,Object> tags;
         private String vpcId;
         private String vswitchId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetPrometheisPromethei defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterId = defaults.clusterId;
@@ -182,75 +211,51 @@ public final class GetPrometheisPromethei {
     	      this.vswitchId = defaults.vswitchId;
         }
 
-        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder clusterName(String clusterName) {
             this.clusterName = Objects.requireNonNull(clusterName);
             return this;
         }
-        @CustomType.Setter
         public Builder clusterType(String clusterType) {
             this.clusterType = Objects.requireNonNull(clusterType);
             return this;
         }
-        @CustomType.Setter
         public Builder grafanaInstanceId(String grafanaInstanceId) {
             this.grafanaInstanceId = Objects.requireNonNull(grafanaInstanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
             this.securityGroupId = Objects.requireNonNull(securityGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder subClustersJson(String subClustersJson) {
             this.subClustersJson = Objects.requireNonNull(subClustersJson);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }
-        public GetPrometheisPromethei build() {
-            final var o = new GetPrometheisPromethei();
-            o.clusterId = clusterId;
-            o.clusterName = clusterName;
-            o.clusterType = clusterType;
-            o.grafanaInstanceId = grafanaInstanceId;
-            o.id = id;
-            o.resourceGroupId = resourceGroupId;
-            o.securityGroupId = securityGroupId;
-            o.subClustersJson = subClustersJson;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+        }        public GetPrometheisPromethei build() {
+            return new GetPrometheisPromethei(clusterId, clusterName, clusterType, grafanaInstanceId, id, resourceGroupId, securityGroupId, subClustersJson, tags, vpcId, vswitchId);
         }
     }
 }

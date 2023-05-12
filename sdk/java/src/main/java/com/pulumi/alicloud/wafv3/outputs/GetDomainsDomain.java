@@ -16,34 +16,49 @@ public final class GetDomainsDomain {
      * @return The name of the domain name to query.
      * 
      */
-    private String domain;
+    private final String domain;
     /**
      * @return The ID of the domain. The value is formulated as `&lt;instance_id&gt;:&lt;domain&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Configure listening information
      * 
      */
-    private List<GetDomainsDomainListen> listens;
+    private final List<GetDomainsDomainListen> listens;
     /**
      * @return Configure forwarding information.
      * 
      */
-    private List<GetDomainsDomainRedirect> redirects;
+    private final List<GetDomainsDomainRedirect> redirects;
     /**
      * @return The ID of the resource group
      * 
      */
-    private String resourceManagerResourceGroupId;
+    private final String resourceManagerResourceGroupId;
     /**
      * @return The status of the domain.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetDomainsDomain() {}
+    @CustomType.Constructor
+    private GetDomainsDomain(
+        @CustomType.Parameter("domain") String domain,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("listens") List<GetDomainsDomainListen> listens,
+        @CustomType.Parameter("redirects") List<GetDomainsDomainRedirect> redirects,
+        @CustomType.Parameter("resourceManagerResourceGroupId") String resourceManagerResourceGroupId,
+        @CustomType.Parameter("status") String status) {
+        this.domain = domain;
+        this.id = id;
+        this.listens = listens;
+        this.redirects = redirects;
+        this.resourceManagerResourceGroupId = resourceManagerResourceGroupId;
+        this.status = status;
+    }
+
     /**
      * @return The name of the domain name to query.
      * 
@@ -94,7 +109,7 @@ public final class GetDomainsDomain {
     public static Builder builder(GetDomainsDomain defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String domain;
         private String id;
@@ -102,7 +117,11 @@ public final class GetDomainsDomain {
         private List<GetDomainsDomainRedirect> redirects;
         private String resourceManagerResourceGroupId;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDomainsDomain defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domain = defaults.domain;
@@ -113,17 +132,14 @@ public final class GetDomainsDomain {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder listens(List<GetDomainsDomainListen> listens) {
             this.listens = Objects.requireNonNull(listens);
             return this;
@@ -131,7 +147,6 @@ public final class GetDomainsDomain {
         public Builder listens(GetDomainsDomainListen... listens) {
             return listens(List.of(listens));
         }
-        @CustomType.Setter
         public Builder redirects(List<GetDomainsDomainRedirect> redirects) {
             this.redirects = Objects.requireNonNull(redirects);
             return this;
@@ -139,25 +154,15 @@ public final class GetDomainsDomain {
         public Builder redirects(GetDomainsDomainRedirect... redirects) {
             return redirects(List.of(redirects));
         }
-        @CustomType.Setter
         public Builder resourceManagerResourceGroupId(String resourceManagerResourceGroupId) {
             this.resourceManagerResourceGroupId = Objects.requireNonNull(resourceManagerResourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetDomainsDomain build() {
-            final var o = new GetDomainsDomain();
-            o.domain = domain;
-            o.id = id;
-            o.listens = listens;
-            o.redirects = redirects;
-            o.resourceManagerResourceGroupId = resourceManagerResourceGroupId;
-            o.status = status;
-            return o;
+        }        public GetDomainsDomain build() {
+            return new GetDomainsDomain(domain, id, listens, redirects, resourceManagerResourceGroupId, status);
         }
     }
 }

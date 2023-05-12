@@ -226,12 +226,16 @@ public class Account extends com.pulumi.resources.CustomResource {
     /**
      * A mapping of tags to assign to the resource.
      * 
+     * &gt; **NOTE:** The member name must be unique within the resource directory.
+     * 
      */
     @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
      * @return A mapping of tags to assign to the resource.
+     * 
+     * &gt; **NOTE:** The member name must be unique within the resource directory.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {

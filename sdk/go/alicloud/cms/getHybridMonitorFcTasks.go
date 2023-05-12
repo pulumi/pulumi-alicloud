@@ -58,7 +58,8 @@ type GetHybridMonitorFcTasksArgs struct {
 	// A list of Hybrid Monitor Fc Task IDs.
 	Ids []string `pulumi:"ids"`
 	// The index warehouse where the host belongs.
-	Namespace  *string `pulumi:"namespace"`
+	Namespace *string `pulumi:"namespace"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
@@ -94,7 +95,8 @@ type GetHybridMonitorFcTasksOutputArgs struct {
 	// A list of Hybrid Monitor Fc Task IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The index warehouse where the host belongs.
-	Namespace  pulumi.StringPtrInput `pulumi:"namespace"`
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`

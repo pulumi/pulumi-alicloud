@@ -15,14 +15,21 @@ public final class GetChainsChainChainConfig {
      * @return Each node in the delivery chain.
      * 
      */
-    private List<GetChainsChainChainConfigNode> nodes;
+    private final List<GetChainsChainChainConfigNode> nodes;
     /**
      * @return Execution sequence relationship between delivery chain nodes.
      * 
      */
-    private List<GetChainsChainChainConfigRouter> routers;
+    private final List<GetChainsChainChainConfigRouter> routers;
 
-    private GetChainsChainChainConfig() {}
+    @CustomType.Constructor
+    private GetChainsChainChainConfig(
+        @CustomType.Parameter("nodes") List<GetChainsChainChainConfigNode> nodes,
+        @CustomType.Parameter("routers") List<GetChainsChainChainConfigRouter> routers) {
+        this.nodes = nodes;
+        this.routers = routers;
+    }
+
     /**
      * @return Each node in the delivery chain.
      * 
@@ -45,18 +52,21 @@ public final class GetChainsChainChainConfig {
     public static Builder builder(GetChainsChainChainConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetChainsChainChainConfigNode> nodes;
         private List<GetChainsChainChainConfigRouter> routers;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetChainsChainChainConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.nodes = defaults.nodes;
     	      this.routers = defaults.routers;
         }
 
-        @CustomType.Setter
         public Builder nodes(List<GetChainsChainChainConfigNode> nodes) {
             this.nodes = Objects.requireNonNull(nodes);
             return this;
@@ -64,19 +74,14 @@ public final class GetChainsChainChainConfig {
         public Builder nodes(GetChainsChainChainConfigNode... nodes) {
             return nodes(List.of(nodes));
         }
-        @CustomType.Setter
         public Builder routers(List<GetChainsChainChainConfigRouter> routers) {
             this.routers = Objects.requireNonNull(routers);
             return this;
         }
         public Builder routers(GetChainsChainChainConfigRouter... routers) {
             return routers(List.of(routers));
-        }
-        public GetChainsChainChainConfig build() {
-            final var o = new GetChainsChainChainConfig();
-            o.nodes = nodes;
-            o.routers = routers;
-            return o;
+        }        public GetChainsChainChainConfig build() {
+            return new GetChainsChainChainConfig(nodes, routers);
         }
     }
 }

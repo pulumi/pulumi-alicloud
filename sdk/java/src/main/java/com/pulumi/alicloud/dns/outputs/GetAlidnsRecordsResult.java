@@ -14,55 +14,96 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAlidnsRecordsResult {
-    private @Nullable String direction;
+    private final @Nullable String direction;
     /**
      * @return Name of the domain record belongs to.
      * 
      */
-    private String domainName;
-    private @Nullable Integer groupId;
+    private final String domainName;
+    private final @Nullable Integer groupId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of record IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String keyWord;
-    private @Nullable String lang;
+    private final List<String> ids;
+    private final @Nullable String keyWord;
+    private final @Nullable String lang;
     /**
      * @return ISP line of the record.
      * 
      */
-    private @Nullable String line;
-    private @Nullable String orderBy;
-    private @Nullable String outputFile;
+    private final @Nullable String line;
+    private final @Nullable String orderBy;
+    private final @Nullable String outputFile;
     /**
      * @return A list of records. Each element contains the following attributes:
      * 
      */
-    private List<GetAlidnsRecordsRecord> records;
-    private @Nullable String rrKeyWord;
-    private @Nullable String rrRegex;
-    private @Nullable String searchMode;
+    private final List<GetAlidnsRecordsRecord> records;
+    private final @Nullable String rrKeyWord;
+    private final @Nullable String rrRegex;
+    private final @Nullable String searchMode;
     /**
      * @return Status of the record.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
     /**
      * @return Type of the record.
      * 
      */
-    private @Nullable String type;
-    private @Nullable String typeKeyWord;
-    private @Nullable String valueKeyWord;
-    private @Nullable String valueRegex;
+    private final @Nullable String type;
+    private final @Nullable String typeKeyWord;
+    private final @Nullable String valueKeyWord;
+    private final @Nullable String valueRegex;
 
-    private GetAlidnsRecordsResult() {}
+    @CustomType.Constructor
+    private GetAlidnsRecordsResult(
+        @CustomType.Parameter("direction") @Nullable String direction,
+        @CustomType.Parameter("domainName") String domainName,
+        @CustomType.Parameter("groupId") @Nullable Integer groupId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("keyWord") @Nullable String keyWord,
+        @CustomType.Parameter("lang") @Nullable String lang,
+        @CustomType.Parameter("line") @Nullable String line,
+        @CustomType.Parameter("orderBy") @Nullable String orderBy,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("records") List<GetAlidnsRecordsRecord> records,
+        @CustomType.Parameter("rrKeyWord") @Nullable String rrKeyWord,
+        @CustomType.Parameter("rrRegex") @Nullable String rrRegex,
+        @CustomType.Parameter("searchMode") @Nullable String searchMode,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("type") @Nullable String type,
+        @CustomType.Parameter("typeKeyWord") @Nullable String typeKeyWord,
+        @CustomType.Parameter("valueKeyWord") @Nullable String valueKeyWord,
+        @CustomType.Parameter("valueRegex") @Nullable String valueRegex) {
+        this.direction = direction;
+        this.domainName = domainName;
+        this.groupId = groupId;
+        this.id = id;
+        this.ids = ids;
+        this.keyWord = keyWord;
+        this.lang = lang;
+        this.line = line;
+        this.orderBy = orderBy;
+        this.outputFile = outputFile;
+        this.records = records;
+        this.rrKeyWord = rrKeyWord;
+        this.rrRegex = rrRegex;
+        this.searchMode = searchMode;
+        this.status = status;
+        this.type = type;
+        this.typeKeyWord = typeKeyWord;
+        this.valueKeyWord = valueKeyWord;
+        this.valueRegex = valueRegex;
+    }
+
     public Optional<String> direction() {
         return Optional.ofNullable(this.direction);
     }
@@ -156,7 +197,7 @@ public final class GetAlidnsRecordsResult {
     public static Builder builder(GetAlidnsRecordsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String direction;
         private String domainName;
@@ -177,7 +218,11 @@ public final class GetAlidnsRecordsResult {
         private @Nullable String typeKeyWord;
         private @Nullable String valueKeyWord;
         private @Nullable String valueRegex;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAlidnsRecordsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.direction = defaults.direction;
@@ -201,27 +246,22 @@ public final class GetAlidnsRecordsResult {
     	      this.valueRegex = defaults.valueRegex;
         }
 
-        @CustomType.Setter
         public Builder direction(@Nullable String direction) {
             this.direction = direction;
             return this;
         }
-        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
-        @CustomType.Setter
         public Builder groupId(@Nullable Integer groupId) {
             this.groupId = groupId;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -229,32 +269,26 @@ public final class GetAlidnsRecordsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder keyWord(@Nullable String keyWord) {
             this.keyWord = keyWord;
             return this;
         }
-        @CustomType.Setter
         public Builder lang(@Nullable String lang) {
             this.lang = lang;
             return this;
         }
-        @CustomType.Setter
         public Builder line(@Nullable String line) {
             this.line = line;
             return this;
         }
-        @CustomType.Setter
         public Builder orderBy(@Nullable String orderBy) {
             this.orderBy = orderBy;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder records(List<GetAlidnsRecordsRecord> records) {
             this.records = Objects.requireNonNull(records);
             return this;
@@ -262,68 +296,39 @@ public final class GetAlidnsRecordsResult {
         public Builder records(GetAlidnsRecordsRecord... records) {
             return records(List.of(records));
         }
-        @CustomType.Setter
         public Builder rrKeyWord(@Nullable String rrKeyWord) {
             this.rrKeyWord = rrKeyWord;
             return this;
         }
-        @CustomType.Setter
         public Builder rrRegex(@Nullable String rrRegex) {
             this.rrRegex = rrRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder searchMode(@Nullable String searchMode) {
             this.searchMode = searchMode;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
         }
-        @CustomType.Setter
         public Builder typeKeyWord(@Nullable String typeKeyWord) {
             this.typeKeyWord = typeKeyWord;
             return this;
         }
-        @CustomType.Setter
         public Builder valueKeyWord(@Nullable String valueKeyWord) {
             this.valueKeyWord = valueKeyWord;
             return this;
         }
-        @CustomType.Setter
         public Builder valueRegex(@Nullable String valueRegex) {
             this.valueRegex = valueRegex;
             return this;
-        }
-        public GetAlidnsRecordsResult build() {
-            final var o = new GetAlidnsRecordsResult();
-            o.direction = direction;
-            o.domainName = domainName;
-            o.groupId = groupId;
-            o.id = id;
-            o.ids = ids;
-            o.keyWord = keyWord;
-            o.lang = lang;
-            o.line = line;
-            o.orderBy = orderBy;
-            o.outputFile = outputFile;
-            o.records = records;
-            o.rrKeyWord = rrKeyWord;
-            o.rrRegex = rrRegex;
-            o.searchMode = searchMode;
-            o.status = status;
-            o.type = type;
-            o.typeKeyWord = typeKeyWord;
-            o.valueKeyWord = valueKeyWord;
-            o.valueRegex = valueRegex;
-            return o;
+        }        public GetAlidnsRecordsResult build() {
+            return new GetAlidnsRecordsResult(direction, domainName, groupId, id, ids, keyWord, lang, line, orderBy, outputFile, records, rrKeyWord, rrRegex, searchMode, status, type, typeKeyWord, valueKeyWord, valueRegex);
         }
     }
 }

@@ -163,6 +163,7 @@ def get_server_plans(bandwidth: Optional[int] = None,
     :param int flow: The monthly data transfer quota. Unit: GB.
     :param Sequence[str] ids: A list of Instance Plan IDs.
     :param int memory: The memory size. Unit: GB.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str platform: The platform of Plan supported. Valid values: ["Linux", "Windows"].
     """
     __args__ = dict()
@@ -228,6 +229,7 @@ def get_server_plans_output(bandwidth: Optional[pulumi.Input[Optional[int]]] = N
     :param int flow: The monthly data transfer quota. Unit: GB.
     :param Sequence[str] ids: A list of Instance Plan IDs.
     :param int memory: The memory size. Unit: GB.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str platform: The platform of Plan supported. Valid values: ["Linux", "Windows"].
     """
     ...

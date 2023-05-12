@@ -14,49 +14,70 @@ public final class GetScalingRulesRule {
      * @return Adjustment type of the scaling rule.
      * 
      */
-    private String adjustmentType;
+    private final String adjustmentType;
     /**
      * @return Adjustment value of the scaling rule.
      * 
      */
-    private Integer adjustmentValue;
+    private final Integer adjustmentValue;
     /**
      * @return Cooldown time of the scaling rule.
      * 
      */
-    private Integer cooldown;
+    private final Integer cooldown;
     /**
      * @return ID of the scaling rule.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Min adjustment magnitude of scaling rule.
      * 
      */
-    private Integer minAdjustmentMagnitude;
+    private final Integer minAdjustmentMagnitude;
     /**
      * @return Name of the scaling rule.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return Scaling group id the scaling rules belong to.
      * 
      */
-    private String scalingGroupId;
+    private final String scalingGroupId;
     /**
      * @return Ari of scaling rule.
      * 
      */
-    private String scalingRuleAri;
+    private final String scalingRuleAri;
     /**
      * @return Type of scaling rule.
      * 
      */
-    private String type;
+    private final String type;
 
-    private GetScalingRulesRule() {}
+    @CustomType.Constructor
+    private GetScalingRulesRule(
+        @CustomType.Parameter("adjustmentType") String adjustmentType,
+        @CustomType.Parameter("adjustmentValue") Integer adjustmentValue,
+        @CustomType.Parameter("cooldown") Integer cooldown,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("minAdjustmentMagnitude") Integer minAdjustmentMagnitude,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("scalingGroupId") String scalingGroupId,
+        @CustomType.Parameter("scalingRuleAri") String scalingRuleAri,
+        @CustomType.Parameter("type") String type) {
+        this.adjustmentType = adjustmentType;
+        this.adjustmentValue = adjustmentValue;
+        this.cooldown = cooldown;
+        this.id = id;
+        this.minAdjustmentMagnitude = minAdjustmentMagnitude;
+        this.name = name;
+        this.scalingGroupId = scalingGroupId;
+        this.scalingRuleAri = scalingRuleAri;
+        this.type = type;
+    }
+
     /**
      * @return Adjustment type of the scaling rule.
      * 
@@ -128,7 +149,7 @@ public final class GetScalingRulesRule {
     public static Builder builder(GetScalingRulesRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String adjustmentType;
         private Integer adjustmentValue;
@@ -139,7 +160,11 @@ public final class GetScalingRulesRule {
         private String scalingGroupId;
         private String scalingRuleAri;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetScalingRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adjustmentType = defaults.adjustmentType;
@@ -153,63 +178,43 @@ public final class GetScalingRulesRule {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder adjustmentType(String adjustmentType) {
             this.adjustmentType = Objects.requireNonNull(adjustmentType);
             return this;
         }
-        @CustomType.Setter
         public Builder adjustmentValue(Integer adjustmentValue) {
             this.adjustmentValue = Objects.requireNonNull(adjustmentValue);
             return this;
         }
-        @CustomType.Setter
         public Builder cooldown(Integer cooldown) {
             this.cooldown = Objects.requireNonNull(cooldown);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder minAdjustmentMagnitude(Integer minAdjustmentMagnitude) {
             this.minAdjustmentMagnitude = Objects.requireNonNull(minAdjustmentMagnitude);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder scalingGroupId(String scalingGroupId) {
             this.scalingGroupId = Objects.requireNonNull(scalingGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder scalingRuleAri(String scalingRuleAri) {
             this.scalingRuleAri = Objects.requireNonNull(scalingRuleAri);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetScalingRulesRule build() {
-            final var o = new GetScalingRulesRule();
-            o.adjustmentType = adjustmentType;
-            o.adjustmentValue = adjustmentValue;
-            o.cooldown = cooldown;
-            o.id = id;
-            o.minAdjustmentMagnitude = minAdjustmentMagnitude;
-            o.name = name;
-            o.scalingGroupId = scalingGroupId;
-            o.scalingRuleAri = scalingRuleAri;
-            o.type = type;
-            return o;
+        }        public GetScalingRulesRule build() {
+            return new GetScalingRulesRule(adjustmentType, adjustmentValue, cooldown, id, minAdjustmentMagnitude, name, scalingGroupId, scalingRuleAri, type);
         }
     }
 }

@@ -14,21 +14,42 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGatewaysResult {
-    private @Nullable Boolean enableDetails;
-    private List<GetGatewaysGateway> gateways;
+    private final @Nullable Boolean enableDetails;
+    private final List<GetGatewaysGateway> gateways;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String searchKey;
-    private @Nullable String status;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String searchKey;
+    private final @Nullable String status;
 
-    private GetGatewaysResult() {}
+    @CustomType.Constructor
+    private GetGatewaysResult(
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("gateways") List<GetGatewaysGateway> gateways,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("searchKey") @Nullable String searchKey,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.enableDetails = enableDetails;
+        this.gateways = gateways;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.searchKey = searchKey;
+        this.status = status;
+    }
+
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -68,7 +89,7 @@ public final class GetGatewaysResult {
     public static Builder builder(GetGatewaysResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private List<GetGatewaysGateway> gateways;
@@ -79,7 +100,11 @@ public final class GetGatewaysResult {
         private @Nullable String outputFile;
         private @Nullable String searchKey;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetGatewaysResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -93,12 +118,10 @@ public final class GetGatewaysResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder gateways(List<GetGatewaysGateway> gateways) {
             this.gateways = Objects.requireNonNull(gateways);
             return this;
@@ -106,12 +129,10 @@ public final class GetGatewaysResult {
         public Builder gateways(GetGatewaysGateway... gateways) {
             return gateways(List.of(gateways));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -119,12 +140,10 @@ public final class GetGatewaysResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -132,33 +151,19 @@ public final class GetGatewaysResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder searchKey(@Nullable String searchKey) {
             this.searchKey = searchKey;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetGatewaysResult build() {
-            final var o = new GetGatewaysResult();
-            o.enableDetails = enableDetails;
-            o.gateways = gateways;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.searchKey = searchKey;
-            o.status = status;
-            return o;
+        }        public GetGatewaysResult build() {
+            return new GetGatewaysResult(enableDetails, gateways, id, ids, nameRegex, names, outputFile, searchKey, status);
         }
     }
 }

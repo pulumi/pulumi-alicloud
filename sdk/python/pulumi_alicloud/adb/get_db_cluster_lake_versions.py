@@ -145,6 +145,7 @@ def get_db_cluster_lake_versions(enable_details: Optional[bool] = None,
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of DBCluster IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param str status: The status of the resource.
     """
@@ -200,6 +201,7 @@ def get_db_cluster_lake_versions_output(enable_details: Optional[pulumi.Input[Op
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of DBCluster IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param str status: The status of the resource.
     """

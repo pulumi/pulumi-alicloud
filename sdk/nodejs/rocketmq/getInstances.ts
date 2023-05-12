@@ -58,6 +58,9 @@ export interface GetInstancesArgs {
      * A regex string to filter results by the instance name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
@@ -143,6 +146,9 @@ export interface GetInstancesOutputArgs {
      * A regex string to filter results by the instance name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.

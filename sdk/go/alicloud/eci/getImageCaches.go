@@ -31,7 +31,8 @@ type GetImageCachesArgs struct {
 	// The name of ECI Image Cache.
 	ImageCacheName *string `pulumi:"imageCacheName"`
 	// A regex string to filter results by the image cache name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The id of snapshot.
 	SnapshotId *string `pulumi:"snapshotId"`
@@ -82,7 +83,8 @@ type GetImageCachesOutputArgs struct {
 	// The name of ECI Image Cache.
 	ImageCacheName pulumi.StringPtrInput `pulumi:"imageCacheName"`
 	// A regex string to filter results by the image cache name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The id of snapshot.
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`

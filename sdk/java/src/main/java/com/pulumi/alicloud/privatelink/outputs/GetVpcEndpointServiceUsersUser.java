@@ -13,14 +13,21 @@ public final class GetVpcEndpointServiceUsersUser {
      * @return The ID of the Vpc Endpoint Service User.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The Id of Ram User.
      * 
      */
-    private String userId;
+    private final String userId;
 
-    private GetVpcEndpointServiceUsersUser() {}
+    @CustomType.Constructor
+    private GetVpcEndpointServiceUsersUser(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("userId") String userId) {
+        this.id = id;
+        this.userId = userId;
+    }
+
     /**
      * @return The ID of the Vpc Endpoint Service User.
      * 
@@ -43,32 +50,30 @@ public final class GetVpcEndpointServiceUsersUser {
     public static Builder builder(GetVpcEndpointServiceUsersUser defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private String userId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVpcEndpointServiceUsersUser defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.userId = defaults.userId;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder userId(String userId) {
             this.userId = Objects.requireNonNull(userId);
             return this;
-        }
-        public GetVpcEndpointServiceUsersUser build() {
-            final var o = new GetVpcEndpointServiceUsersUser();
-            o.id = id;
-            o.userId = userId;
-            return o;
+        }        public GetVpcEndpointServiceUsersUser build() {
+            return new GetVpcEndpointServiceUsersUser(id, userId);
         }
     }
 }

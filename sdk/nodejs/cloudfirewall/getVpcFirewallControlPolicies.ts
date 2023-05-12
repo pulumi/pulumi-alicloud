@@ -82,6 +82,9 @@ export interface GetVpcFirewallControlPoliciesArgs {
      * The UID of the member account of the current Alibaba cloud account.
      */
     memberUid?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     pageNumber?: number;
     pageSize?: number;
@@ -186,6 +189,9 @@ export interface GetVpcFirewallControlPoliciesOutputArgs {
      * The UID of the member account of the current Alibaba cloud account.
      */
     memberUid?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;

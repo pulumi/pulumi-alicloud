@@ -14,19 +14,28 @@ public final class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacit
      * @return The available capacity of the local disk. Unit: `GiB`.
      * 
      */
-    private Integer availableDisk;
+    private final Integer availableDisk;
     /**
      * @return The category of the data disk. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`, `cloud_essd`.
      * 
      */
-    private String dataDiskCategory;
+    private final String dataDiskCategory;
     /**
      * @return The total capacity of the local disk. Unit: `GiB`.
      * 
      */
-    private Integer totalDisk;
+    private final Integer totalDisk;
 
-    private GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity() {}
+    @CustomType.Constructor
+    private GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity(
+        @CustomType.Parameter("availableDisk") Integer availableDisk,
+        @CustomType.Parameter("dataDiskCategory") String dataDiskCategory,
+        @CustomType.Parameter("totalDisk") Integer totalDisk) {
+        this.availableDisk = availableDisk;
+        this.dataDiskCategory = dataDiskCategory;
+        this.totalDisk = totalDisk;
+    }
+
     /**
      * @return The available capacity of the local disk. Unit: `GiB`.
      * 
@@ -56,12 +65,16 @@ public final class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacit
     public static Builder builder(GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer availableDisk;
         private String dataDiskCategory;
         private Integer totalDisk;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availableDisk = defaults.availableDisk;
@@ -69,27 +82,19 @@ public final class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacit
     	      this.totalDisk = defaults.totalDisk;
         }
 
-        @CustomType.Setter
         public Builder availableDisk(Integer availableDisk) {
             this.availableDisk = Objects.requireNonNull(availableDisk);
             return this;
         }
-        @CustomType.Setter
         public Builder dataDiskCategory(String dataDiskCategory) {
             this.dataDiskCategory = Objects.requireNonNull(dataDiskCategory);
             return this;
         }
-        @CustomType.Setter
         public Builder totalDisk(Integer totalDisk) {
             this.totalDisk = Objects.requireNonNull(totalDisk);
             return this;
-        }
-        public GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity build() {
-            final var o = new GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity();
-            o.availableDisk = availableDisk;
-            o.dataDiskCategory = dataDiskCategory;
-            o.totalDisk = totalDisk;
-            return o;
+        }        public GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity build() {
+            return new GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity(availableDisk, dataDiskCategory, totalDisk);
         }
     }
 }

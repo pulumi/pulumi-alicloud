@@ -17,41 +17,62 @@ public final class GetRouteMapsResult {
      * @return The ID of the CEN instance.
      * 
      */
-    private String cenId;
+    private final String cenId;
     /**
      * @return The ID of the region to which the CEN instance belongs.
      * 
      */
-    private @Nullable String cenRegionId;
-    private @Nullable String descriptionRegex;
+    private final @Nullable String cenRegionId;
+    private final @Nullable String descriptionRegex;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of CEN route map IDs. Each item formats as `&lt;cen_id&gt;:&lt;route_map_id&gt;`. Before 1.161.0, its element is `route_map_id`.
      * 
      */
-    private List<String> ids;
+    private final List<String> ids;
     /**
      * @return A list of CEN instances. Each element contains the following attributes:
      * 
      */
-    private List<GetRouteMapsMap> maps;
-    private @Nullable String outputFile;
+    private final List<GetRouteMapsMap> maps;
+    private final @Nullable String outputFile;
     /**
      * @return The status of the route map.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
     /**
      * @return The direction in which the route map is applied.
      * 
      */
-    private @Nullable String transmitDirection;
+    private final @Nullable String transmitDirection;
 
-    private GetRouteMapsResult() {}
+    @CustomType.Constructor
+    private GetRouteMapsResult(
+        @CustomType.Parameter("cenId") String cenId,
+        @CustomType.Parameter("cenRegionId") @Nullable String cenRegionId,
+        @CustomType.Parameter("descriptionRegex") @Nullable String descriptionRegex,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("maps") List<GetRouteMapsMap> maps,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("transmitDirection") @Nullable String transmitDirection) {
+        this.cenId = cenId;
+        this.cenRegionId = cenRegionId;
+        this.descriptionRegex = descriptionRegex;
+        this.id = id;
+        this.ids = ids;
+        this.maps = maps;
+        this.outputFile = outputFile;
+        this.status = status;
+        this.transmitDirection = transmitDirection;
+    }
+
     /**
      * @return The ID of the CEN instance.
      * 
@@ -115,7 +136,7 @@ public final class GetRouteMapsResult {
     public static Builder builder(GetRouteMapsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String cenId;
         private @Nullable String cenRegionId;
@@ -126,7 +147,11 @@ public final class GetRouteMapsResult {
         private @Nullable String outputFile;
         private @Nullable String status;
         private @Nullable String transmitDirection;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRouteMapsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cenId = defaults.cenId;
@@ -140,27 +165,22 @@ public final class GetRouteMapsResult {
     	      this.transmitDirection = defaults.transmitDirection;
         }
 
-        @CustomType.Setter
         public Builder cenId(String cenId) {
             this.cenId = Objects.requireNonNull(cenId);
             return this;
         }
-        @CustomType.Setter
         public Builder cenRegionId(@Nullable String cenRegionId) {
             this.cenRegionId = cenRegionId;
             return this;
         }
-        @CustomType.Setter
         public Builder descriptionRegex(@Nullable String descriptionRegex) {
             this.descriptionRegex = descriptionRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -168,7 +188,6 @@ public final class GetRouteMapsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder maps(List<GetRouteMapsMap> maps) {
             this.maps = Objects.requireNonNull(maps);
             return this;
@@ -176,33 +195,19 @@ public final class GetRouteMapsResult {
         public Builder maps(GetRouteMapsMap... maps) {
             return maps(List.of(maps));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder transmitDirection(@Nullable String transmitDirection) {
             this.transmitDirection = transmitDirection;
             return this;
-        }
-        public GetRouteMapsResult build() {
-            final var o = new GetRouteMapsResult();
-            o.cenId = cenId;
-            o.cenRegionId = cenRegionId;
-            o.descriptionRegex = descriptionRegex;
-            o.id = id;
-            o.ids = ids;
-            o.maps = maps;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.transmitDirection = transmitDirection;
-            return o;
+        }        public GetRouteMapsResult build() {
+            return new GetRouteMapsResult(cenId, cenRegionId, descriptionRegex, id, ids, maps, outputFile, status, transmitDirection);
         }
     }
 }

@@ -164,6 +164,7 @@ def get_router_interfaces(filters: Optional[Sequence[pulumi.InputType['GetRouter
     :param Sequence[str] ids: A list of Router Interface IDs.
     :param str include_reservation_data: Does it contain renewal data. Valid values: `true`, `false`.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -218,5 +219,6 @@ def get_router_interfaces_output(filters: Optional[pulumi.Input[Optional[Sequenc
     :param Sequence[str] ids: A list of Router Interface IDs.
     :param str include_reservation_data: Does it contain renewal data. Valid values: `true`, `false`.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

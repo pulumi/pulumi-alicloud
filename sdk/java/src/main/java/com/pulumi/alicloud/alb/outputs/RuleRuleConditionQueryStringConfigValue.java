@@ -15,14 +15,21 @@ public final class RuleRuleConditionQueryStringConfigValue {
      * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
      * 
      */
-    private @Nullable String key;
+    private final @Nullable String key;
     /**
      * @return The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | &lt; &gt; &amp;.
      * 
      */
-    private @Nullable String value;
+    private final @Nullable String value;
 
-    private RuleRuleConditionQueryStringConfigValue() {}
+    @CustomType.Constructor
+    private RuleRuleConditionQueryStringConfigValue(
+        @CustomType.Parameter("key") @Nullable String key,
+        @CustomType.Parameter("value") @Nullable String value) {
+        this.key = key;
+        this.value = value;
+    }
+
     /**
      * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
      * 
@@ -45,32 +52,30 @@ public final class RuleRuleConditionQueryStringConfigValue {
     public static Builder builder(RuleRuleConditionQueryStringConfigValue defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String key;
         private @Nullable String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(RuleRuleConditionQueryStringConfigValue defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
-        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }
-        public RuleRuleConditionQueryStringConfigValue build() {
-            final var o = new RuleRuleConditionQueryStringConfigValue();
-            o.key = key;
-            o.value = value;
-            return o;
+        }        public RuleRuleConditionQueryStringConfigValue build() {
+            return new RuleRuleConditionQueryStringConfigValue(key, value);
         }
     }
 }

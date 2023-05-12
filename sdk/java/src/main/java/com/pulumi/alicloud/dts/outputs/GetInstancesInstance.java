@@ -16,70 +16,101 @@ public final class GetInstancesInstance {
      * @return Instance creation time
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The target database engine type.
      * 
      */
-    private String destinationEndpointEngineName;
+    private final String destinationEndpointEngineName;
     /**
      * @return The destination instance region.
      * 
      */
-    private String destinationRegion;
+    private final String destinationRegion;
     /**
      * @return The ID of the subscription instance.
      * 
      */
-    private String dtsInstanceId;
+    private final String dtsInstanceId;
     /**
      * @return The ID of the instance.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The type of the migration or synchronization instance.- The specifications of the migration instance: **xxlarge**, **xlarge**, **large**, **medium**, **small**.- The types of synchronization instances: **large**, **medium**, **small**, **micro**.
      * 
      */
-    private String instanceClass;
-    private String instanceName;
+    private final String instanceClass;
+    private final String instanceName;
     /**
      * @return The payment type of the resource.
      * 
      */
-    private String paymentType;
+    private final String paymentType;
     /**
      * @return Resource Group ID
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return Source instance database engine type.
      * 
      */
-    private String sourceEndpointEngineName;
+    private final String sourceEndpointEngineName;
     /**
      * @return The source instance region.
      * 
      */
-    private String sourceRegion;
+    private final String sourceRegion;
     /**
      * @return Instance status.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The tag value corresponding to the tag key.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private final @Nullable Map<String,Object> tags;
     /**
      * @return The instance type. Valid values: -**MIGRATION**: MIGRATION.-**SYNC**: synchronization.-**SUBSCRIBE**: SUBSCRIBE.
      * 
      */
-    private String type;
+    private final String type;
 
-    private GetInstancesInstance() {}
+    @CustomType.Constructor
+    private GetInstancesInstance(
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("destinationEndpointEngineName") String destinationEndpointEngineName,
+        @CustomType.Parameter("destinationRegion") String destinationRegion,
+        @CustomType.Parameter("dtsInstanceId") String dtsInstanceId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceClass") String instanceClass,
+        @CustomType.Parameter("instanceName") String instanceName,
+        @CustomType.Parameter("paymentType") String paymentType,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("sourceEndpointEngineName") String sourceEndpointEngineName,
+        @CustomType.Parameter("sourceRegion") String sourceRegion,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
+        @CustomType.Parameter("type") String type) {
+        this.createTime = createTime;
+        this.destinationEndpointEngineName = destinationEndpointEngineName;
+        this.destinationRegion = destinationRegion;
+        this.dtsInstanceId = dtsInstanceId;
+        this.id = id;
+        this.instanceClass = instanceClass;
+        this.instanceName = instanceName;
+        this.paymentType = paymentType;
+        this.resourceGroupId = resourceGroupId;
+        this.sourceEndpointEngineName = sourceEndpointEngineName;
+        this.sourceRegion = sourceRegion;
+        this.status = status;
+        this.tags = tags;
+        this.type = type;
+    }
+
     /**
      * @return Instance creation time
      * 
@@ -182,7 +213,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String createTime;
         private String destinationEndpointEngineName;
@@ -198,7 +229,11 @@ public final class GetInstancesInstance {
         private String status;
         private @Nullable Map<String,Object> tags;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -217,93 +252,63 @@ public final class GetInstancesInstance {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder destinationEndpointEngineName(String destinationEndpointEngineName) {
             this.destinationEndpointEngineName = Objects.requireNonNull(destinationEndpointEngineName);
             return this;
         }
-        @CustomType.Setter
         public Builder destinationRegion(String destinationRegion) {
             this.destinationRegion = Objects.requireNonNull(destinationRegion);
             return this;
         }
-        @CustomType.Setter
         public Builder dtsInstanceId(String dtsInstanceId) {
             this.dtsInstanceId = Objects.requireNonNull(dtsInstanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceClass(String instanceClass) {
             this.instanceClass = Objects.requireNonNull(instanceClass);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceEndpointEngineName(String sourceEndpointEngineName) {
             this.sourceEndpointEngineName = Objects.requireNonNull(sourceEndpointEngineName);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceRegion(String sourceRegion) {
             this.sourceRegion = Objects.requireNonNull(sourceRegion);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.createTime = createTime;
-            o.destinationEndpointEngineName = destinationEndpointEngineName;
-            o.destinationRegion = destinationRegion;
-            o.dtsInstanceId = dtsInstanceId;
-            o.id = id;
-            o.instanceClass = instanceClass;
-            o.instanceName = instanceName;
-            o.paymentType = paymentType;
-            o.resourceGroupId = resourceGroupId;
-            o.sourceEndpointEngineName = sourceEndpointEngineName;
-            o.sourceRegion = sourceRegion;
-            o.status = status;
-            o.tags = tags;
-            o.type = type;
-            return o;
+        }        public GetInstancesInstance build() {
+            return new GetInstancesInstance(createTime, destinationEndpointEngineName, destinationRegion, dtsInstanceId, id, instanceClass, instanceName, paymentType, resourceGroupId, sourceEndpointEngineName, sourceRegion, status, tags, type);
         }
     }
 }

@@ -25,8 +25,9 @@ func GetEnterpriseLogicDatabases(ctx *pulumi.Context, args *GetEnterpriseLogicDa
 // A collection of arguments for invoking getEnterpriseLogicDatabases.
 type GetEnterpriseLogicDatabasesArgs struct {
 	// A list of Logic Database IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getEnterpriseLogicDatabases.
@@ -56,8 +57,9 @@ func GetEnterpriseLogicDatabasesOutput(ctx *pulumi.Context, args GetEnterpriseLo
 // A collection of arguments for invoking getEnterpriseLogicDatabases.
 type GetEnterpriseLogicDatabasesOutputArgs struct {
 	// A list of Logic Database IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetEnterpriseLogicDatabasesOutputArgs) ElementType() reflect.Type {

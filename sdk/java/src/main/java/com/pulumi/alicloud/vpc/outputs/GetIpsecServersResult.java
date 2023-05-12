@@ -17,16 +17,35 @@ public final class GetIpsecServersResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String ipsecServerName;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private List<GetIpsecServersServer> servers;
-    private @Nullable String vpnGatewayId;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String ipsecServerName;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final List<GetIpsecServersServer> servers;
+    private final @Nullable String vpnGatewayId;
 
-    private GetIpsecServersResult() {}
+    @CustomType.Constructor
+    private GetIpsecServersResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("ipsecServerName") @Nullable String ipsecServerName,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("servers") List<GetIpsecServersServer> servers,
+        @CustomType.Parameter("vpnGatewayId") @Nullable String vpnGatewayId) {
+        this.id = id;
+        this.ids = ids;
+        this.ipsecServerName = ipsecServerName;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.servers = servers;
+        this.vpnGatewayId = vpnGatewayId;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -63,7 +82,7 @@ public final class GetIpsecServersResult {
     public static Builder builder(GetIpsecServersResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -73,7 +92,11 @@ public final class GetIpsecServersResult {
         private @Nullable String outputFile;
         private List<GetIpsecServersServer> servers;
         private @Nullable String vpnGatewayId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetIpsecServersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -86,12 +109,10 @@ public final class GetIpsecServersResult {
     	      this.vpnGatewayId = defaults.vpnGatewayId;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -99,17 +120,14 @@ public final class GetIpsecServersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder ipsecServerName(@Nullable String ipsecServerName) {
             this.ipsecServerName = ipsecServerName;
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -117,12 +135,10 @@ public final class GetIpsecServersResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder servers(List<GetIpsecServersServer> servers) {
             this.servers = Objects.requireNonNull(servers);
             return this;
@@ -130,22 +146,11 @@ public final class GetIpsecServersResult {
         public Builder servers(GetIpsecServersServer... servers) {
             return servers(List.of(servers));
         }
-        @CustomType.Setter
         public Builder vpnGatewayId(@Nullable String vpnGatewayId) {
             this.vpnGatewayId = vpnGatewayId;
             return this;
-        }
-        public GetIpsecServersResult build() {
-            final var o = new GetIpsecServersResult();
-            o.id = id;
-            o.ids = ids;
-            o.ipsecServerName = ipsecServerName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.servers = servers;
-            o.vpnGatewayId = vpnGatewayId;
-            return o;
+        }        public GetIpsecServersResult build() {
+            return new GetIpsecServersResult(id, ids, ipsecServerName, nameRegex, names, outputFile, servers, vpnGatewayId);
         }
     }
 }

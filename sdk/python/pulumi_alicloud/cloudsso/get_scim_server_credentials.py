@@ -121,6 +121,7 @@ def get_scim_server_credentials(directory_id: Optional[str] = None,
 
     :param str directory_id: The ID of the Directory.
     :param Sequence[str] ids: A list of SCIM Server Credential IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The Status of the resource. Valid values: `Disabled`, `Enabled`.
     """
     __args__ = dict()
@@ -172,6 +173,7 @@ def get_scim_server_credentials_output(directory_id: Optional[pulumi.Input[str]]
 
     :param str directory_id: The ID of the Directory.
     :param Sequence[str] ids: A list of SCIM Server Credential IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The Status of the resource. Valid values: `Disabled`, `Enabled`.
     """
     ...

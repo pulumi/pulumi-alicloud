@@ -77,12 +77,16 @@ public class CustomImage extends com.pulumi.resources.CustomResource {
     /**
      * The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
      * 
+     * **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
+     * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output</* @Nullable */ String> status;
 
     /**
      * @return The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
+     * 
+     * **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
      * 
      */
     public Output<Optional<String>> status() {

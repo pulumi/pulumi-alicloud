@@ -61,6 +61,9 @@ export interface GetAccessAssignmentsArgs {
      * A list of Access Assignment IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Create the identity type of the access assignment, which can be a user or a user group.
@@ -138,6 +141,9 @@ export interface GetAccessAssignmentsOutputArgs {
      * A list of Access Assignment IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Create the identity type of the access assignment, which can be a user or a user group.

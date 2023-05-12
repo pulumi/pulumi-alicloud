@@ -13,20 +13,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHealthCheckTemplatesResult {
-    private @Nullable List<String> healthCheckTemplateIds;
-    private @Nullable String healthCheckTemplateName;
+    private final @Nullable List<String> healthCheckTemplateIds;
+    private final @Nullable String healthCheckTemplateName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private List<GetHealthCheckTemplatesTemplate> templates;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final List<GetHealthCheckTemplatesTemplate> templates;
 
-    private GetHealthCheckTemplatesResult() {}
+    @CustomType.Constructor
+    private GetHealthCheckTemplatesResult(
+        @CustomType.Parameter("healthCheckTemplateIds") @Nullable List<String> healthCheckTemplateIds,
+        @CustomType.Parameter("healthCheckTemplateName") @Nullable String healthCheckTemplateName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("templates") List<GetHealthCheckTemplatesTemplate> templates) {
+        this.healthCheckTemplateIds = healthCheckTemplateIds;
+        this.healthCheckTemplateName = healthCheckTemplateName;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.templates = templates;
+    }
+
     public List<String> healthCheckTemplateIds() {
         return this.healthCheckTemplateIds == null ? List.of() : this.healthCheckTemplateIds;
     }
@@ -63,7 +82,7 @@ public final class GetHealthCheckTemplatesResult {
     public static Builder builder(GetHealthCheckTemplatesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<String> healthCheckTemplateIds;
         private @Nullable String healthCheckTemplateName;
@@ -73,7 +92,11 @@ public final class GetHealthCheckTemplatesResult {
         private List<String> names;
         private @Nullable String outputFile;
         private List<GetHealthCheckTemplatesTemplate> templates;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetHealthCheckTemplatesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.healthCheckTemplateIds = defaults.healthCheckTemplateIds;
@@ -86,7 +109,6 @@ public final class GetHealthCheckTemplatesResult {
     	      this.templates = defaults.templates;
         }
 
-        @CustomType.Setter
         public Builder healthCheckTemplateIds(@Nullable List<String> healthCheckTemplateIds) {
             this.healthCheckTemplateIds = healthCheckTemplateIds;
             return this;
@@ -94,17 +116,14 @@ public final class GetHealthCheckTemplatesResult {
         public Builder healthCheckTemplateIds(String... healthCheckTemplateIds) {
             return healthCheckTemplateIds(List.of(healthCheckTemplateIds));
         }
-        @CustomType.Setter
         public Builder healthCheckTemplateName(@Nullable String healthCheckTemplateName) {
             this.healthCheckTemplateName = healthCheckTemplateName;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -112,12 +131,10 @@ public final class GetHealthCheckTemplatesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -125,30 +142,18 @@ public final class GetHealthCheckTemplatesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder templates(List<GetHealthCheckTemplatesTemplate> templates) {
             this.templates = Objects.requireNonNull(templates);
             return this;
         }
         public Builder templates(GetHealthCheckTemplatesTemplate... templates) {
             return templates(List.of(templates));
-        }
-        public GetHealthCheckTemplatesResult build() {
-            final var o = new GetHealthCheckTemplatesResult();
-            o.healthCheckTemplateIds = healthCheckTemplateIds;
-            o.healthCheckTemplateName = healthCheckTemplateName;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.templates = templates;
-            return o;
+        }        public GetHealthCheckTemplatesResult build() {
+            return new GetHealthCheckTemplatesResult(healthCheckTemplateIds, healthCheckTemplateName, id, ids, nameRegex, names, outputFile, templates);
         }
     }
 }

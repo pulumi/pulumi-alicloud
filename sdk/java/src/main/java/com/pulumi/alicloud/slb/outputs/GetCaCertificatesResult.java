@@ -19,36 +19,55 @@ public final class GetCaCertificatesResult {
      * @return A list of SLB ca certificates. Each element contains the following attributes:
      * 
      */
-    private List<GetCaCertificatesCertificate> certificates;
+    private final List<GetCaCertificatesCertificate> certificates;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of SLB ca certificates IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of SLB ca certificates names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
     /**
      * @return The resource group Id of CA certificate.
      * 
      */
-    private @Nullable String resourceGroupId;
+    private final @Nullable String resourceGroupId;
     /**
      * @return (Available in v1.66.0+) A mapping of tags to assign to the resource.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private final @Nullable Map<String,Object> tags;
 
-    private GetCaCertificatesResult() {}
+    @CustomType.Constructor
+    private GetCaCertificatesResult(
+        @CustomType.Parameter("certificates") List<GetCaCertificatesCertificate> certificates,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
+        this.certificates = certificates;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.resourceGroupId = resourceGroupId;
+        this.tags = tags;
+    }
+
     /**
      * @return A list of SLB ca certificates. Each element contains the following attributes:
      * 
@@ -105,7 +124,7 @@ public final class GetCaCertificatesResult {
     public static Builder builder(GetCaCertificatesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetCaCertificatesCertificate> certificates;
         private String id;
@@ -115,7 +134,11 @@ public final class GetCaCertificatesResult {
         private @Nullable String outputFile;
         private @Nullable String resourceGroupId;
         private @Nullable Map<String,Object> tags;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetCaCertificatesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificates = defaults.certificates;
@@ -128,7 +151,6 @@ public final class GetCaCertificatesResult {
     	      this.tags = defaults.tags;
         }
 
-        @CustomType.Setter
         public Builder certificates(List<GetCaCertificatesCertificate> certificates) {
             this.certificates = Objects.requireNonNull(certificates);
             return this;
@@ -136,12 +158,10 @@ public final class GetCaCertificatesResult {
         public Builder certificates(GetCaCertificatesCertificate... certificates) {
             return certificates(List.of(certificates));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -149,12 +169,10 @@ public final class GetCaCertificatesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -162,32 +180,19 @@ public final class GetCaCertificatesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }
-        public GetCaCertificatesResult build() {
-            final var o = new GetCaCertificatesResult();
-            o.certificates = certificates;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.resourceGroupId = resourceGroupId;
-            o.tags = tags;
-            return o;
+        }        public GetCaCertificatesResult build() {
+            return new GetCaCertificatesResult(certificates, id, ids, nameRegex, names, outputFile, resourceGroupId, tags);
         }
     }
 }

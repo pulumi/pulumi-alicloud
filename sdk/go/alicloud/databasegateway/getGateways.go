@@ -67,7 +67,8 @@ type GetGatewaysArgs struct {
 	// A list of Gateway IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Gateway name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The search key.
 	SearchKey *string `pulumi:"searchKey"`
@@ -109,7 +110,8 @@ type GetGatewaysOutputArgs struct {
 	// A list of Gateway IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Gateway name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The search key.
 	SearchKey pulumi.StringPtrInput `pulumi:"searchKey"`

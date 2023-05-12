@@ -119,12 +119,16 @@ public class Listener extends com.pulumi.resources.CustomResource {
     /**
      * The certificates of the listener.
      * 
+     * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
+     * 
      */
     @Export(name="certificates", type=List.class, parameters={ListenerCertificate.class})
     private Output</* @Nullable */ List<ListenerCertificate>> certificates;
 
     /**
      * @return The certificates of the listener.
+     * 
+     * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
      * 
      */
     public Output<Optional<List<ListenerCertificate>>> certificates() {
@@ -193,12 +197,16 @@ public class Listener extends com.pulumi.resources.CustomResource {
     /**
      * The portRanges of the listener.
      * 
+     * &gt; **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
+     * 
      */
     @Export(name="portRanges", type=List.class, parameters={ListenerPortRange.class})
     private Output<List<ListenerPortRange>> portRanges;
 
     /**
      * @return The portRanges of the listener.
+     * 
+     * &gt; **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
      * 
      */
     public Output<List<ListenerPortRange>> portRanges() {
@@ -207,12 +215,16 @@ public class Listener extends com.pulumi.resources.CustomResource {
     /**
      * Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
      * 
+     * &gt; **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
+     * 
      */
     @Export(name="protocol", type=String.class, parameters={})
     private Output</* @Nullable */ String> protocol;
 
     /**
      * @return Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
+     * 
+     * &gt; **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
      * 
      */
     public Output<Optional<String>> protocol() {

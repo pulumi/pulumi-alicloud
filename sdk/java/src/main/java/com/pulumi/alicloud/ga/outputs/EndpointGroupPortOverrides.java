@@ -15,14 +15,21 @@ public final class EndpointGroupPortOverrides {
      * @return Forwarding port.
      * 
      */
-    private @Nullable Integer endpointPort;
+    private final @Nullable Integer endpointPort;
     /**
      * @return Listener port.
      * 
      */
-    private @Nullable Integer listenerPort;
+    private final @Nullable Integer listenerPort;
 
-    private EndpointGroupPortOverrides() {}
+    @CustomType.Constructor
+    private EndpointGroupPortOverrides(
+        @CustomType.Parameter("endpointPort") @Nullable Integer endpointPort,
+        @CustomType.Parameter("listenerPort") @Nullable Integer listenerPort) {
+        this.endpointPort = endpointPort;
+        this.listenerPort = listenerPort;
+    }
+
     /**
      * @return Forwarding port.
      * 
@@ -45,32 +52,30 @@ public final class EndpointGroupPortOverrides {
     public static Builder builder(EndpointGroupPortOverrides defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Integer endpointPort;
         private @Nullable Integer listenerPort;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(EndpointGroupPortOverrides defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endpointPort = defaults.endpointPort;
     	      this.listenerPort = defaults.listenerPort;
         }
 
-        @CustomType.Setter
         public Builder endpointPort(@Nullable Integer endpointPort) {
             this.endpointPort = endpointPort;
             return this;
         }
-        @CustomType.Setter
         public Builder listenerPort(@Nullable Integer listenerPort) {
             this.listenerPort = listenerPort;
             return this;
-        }
-        public EndpointGroupPortOverrides build() {
-            final var o = new EndpointGroupPortOverrides();
-            o.endpointPort = endpointPort;
-            o.listenerPort = listenerPort;
-            return o;
+        }        public EndpointGroupPortOverrides build() {
+            return new EndpointGroupPortOverrides(endpointPort, listenerPort);
         }
     }
 }

@@ -30,6 +30,8 @@ class AlarmContactArgs:
         :param pulumi.Input[str] channels_mail: The email address of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
         :param pulumi.Input[str] channels_sms: The phone number of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
         :param pulumi.Input[str] lang: The language type of the alarm. Valid values: `en`, `zh-cn`.
+               
+               > **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
         """
         pulumi.set(__self__, "alarm_contact_name", alarm_contact_name)
         pulumi.set(__self__, "describe", describe)
@@ -121,6 +123,8 @@ class AlarmContactArgs:
     def lang(self) -> Optional[pulumi.Input[str]]:
         """
         The language type of the alarm. Valid values: `en`, `zh-cn`.
+
+        > **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
         """
         return pulumi.get(self, "lang")
 
@@ -148,6 +152,8 @@ class _AlarmContactState:
         :param pulumi.Input[str] channels_sms: The phone number of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
         :param pulumi.Input[str] describe: The description of the alarm contact.
         :param pulumi.Input[str] lang: The language type of the alarm. Valid values: `en`, `zh-cn`.
+               
+               > **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
         """
         if alarm_contact_name is not None:
             pulumi.set(__self__, "alarm_contact_name", alarm_contact_name)
@@ -241,6 +247,8 @@ class _AlarmContactState:
     def lang(self) -> Optional[pulumi.Input[str]]:
         """
         The language type of the alarm. Valid values: `en`, `zh-cn`.
+
+        > **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
         """
         return pulumi.get(self, "lang")
 
@@ -310,6 +318,8 @@ class AlarmContact(pulumi.CustomResource):
         :param pulumi.Input[str] channels_sms: The phone number of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
         :param pulumi.Input[str] describe: The description of the alarm contact.
         :param pulumi.Input[str] lang: The language type of the alarm. Valid values: `en`, `zh-cn`.
+               
+               > **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
         """
         ...
     @overload
@@ -429,6 +439,8 @@ class AlarmContact(pulumi.CustomResource):
         :param pulumi.Input[str] channels_sms: The phone number of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
         :param pulumi.Input[str] describe: The description of the alarm contact.
         :param pulumi.Input[str] lang: The language type of the alarm. Valid values: `en`, `zh-cn`.
+               
+               > **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -496,6 +508,8 @@ class AlarmContact(pulumi.CustomResource):
     def lang(self) -> pulumi.Output[Optional[str]]:
         """
         The language type of the alarm. Valid values: `en`, `zh-cn`.
+
+        > **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
         """
         return pulumi.get(self, "lang")
 

@@ -48,6 +48,9 @@ export interface GetActivationsArgs {
      * The default prefix of the instance name.
      */
     instanceName?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     pageNumber?: number;
     pageSize?: number;
@@ -102,6 +105,9 @@ export interface GetActivationsOutputArgs {
      * The default prefix of the instance name.
      */
     instanceName?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;

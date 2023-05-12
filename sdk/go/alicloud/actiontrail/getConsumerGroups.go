@@ -58,7 +58,8 @@ type GetConsumerGroupsArgs struct {
 	// A list of ALIKAFKA Consumer Groups IDs, It is formatted to `<instance_id>:<consumer_id>`.
 	Ids []string `pulumi:"ids"`
 	// ID of the ALIKAFKA Instance that owns the consumer groups.
-	InstanceId string  `pulumi:"instanceId"`
+	InstanceId string `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -98,7 +99,8 @@ type GetConsumerGroupsOutputArgs struct {
 	// A list of ALIKAFKA Consumer Groups IDs, It is formatted to `<instance_id>:<consumer_id>`.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// ID of the ALIKAFKA Instance that owns the consumer groups.
-	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

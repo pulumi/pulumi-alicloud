@@ -16,14 +16,21 @@ public final class ServiceMeshMeshConfigAudit {
      * @return Whether to enable of the access logging. Valid values: `true` and `false`.
      * 
      */
-    private @Nullable Boolean enabled;
+    private final @Nullable Boolean enabled;
     /**
      * @return The SLS Project of the access logging.
      * 
      */
-    private @Nullable String project;
+    private final @Nullable String project;
 
-    private ServiceMeshMeshConfigAudit() {}
+    @CustomType.Constructor
+    private ServiceMeshMeshConfigAudit(
+        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
+        @CustomType.Parameter("project") @Nullable String project) {
+        this.enabled = enabled;
+        this.project = project;
+    }
+
     /**
      * @return Whether to enable of the access logging. Valid values: `true` and `false`.
      * 
@@ -46,32 +53,30 @@ public final class ServiceMeshMeshConfigAudit {
     public static Builder builder(ServiceMeshMeshConfigAudit defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean enabled;
         private @Nullable String project;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ServiceMeshMeshConfigAudit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.project = defaults.project;
         }
 
-        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
-        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
-        }
-        public ServiceMeshMeshConfigAudit build() {
-            final var o = new ServiceMeshMeshConfigAudit();
-            o.enabled = enabled;
-            o.project = project;
-            return o;
+        }        public ServiceMeshMeshConfigAudit build() {
+            return new ServiceMeshMeshConfigAudit(enabled, project);
         }
     }
 }

@@ -13,19 +13,28 @@ public final class GetFaceConfigsConfig {
      * @return Scene name.
      * 
      */
-    private String bizName;
+    private final String bizName;
     /**
      * @return Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
      * 
      */
-    private String bizType;
+    private final String bizType;
     /**
      * @return The Update Time.
      * 
      */
-    private String gmtUpdated;
+    private final String gmtUpdated;
 
-    private GetFaceConfigsConfig() {}
+    @CustomType.Constructor
+    private GetFaceConfigsConfig(
+        @CustomType.Parameter("bizName") String bizName,
+        @CustomType.Parameter("bizType") String bizType,
+        @CustomType.Parameter("gmtUpdated") String gmtUpdated) {
+        this.bizName = bizName;
+        this.bizType = bizType;
+        this.gmtUpdated = gmtUpdated;
+    }
+
     /**
      * @return Scene name.
      * 
@@ -55,12 +64,16 @@ public final class GetFaceConfigsConfig {
     public static Builder builder(GetFaceConfigsConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String bizName;
         private String bizType;
         private String gmtUpdated;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetFaceConfigsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bizName = defaults.bizName;
@@ -68,27 +81,19 @@ public final class GetFaceConfigsConfig {
     	      this.gmtUpdated = defaults.gmtUpdated;
         }
 
-        @CustomType.Setter
         public Builder bizName(String bizName) {
             this.bizName = Objects.requireNonNull(bizName);
             return this;
         }
-        @CustomType.Setter
         public Builder bizType(String bizType) {
             this.bizType = Objects.requireNonNull(bizType);
             return this;
         }
-        @CustomType.Setter
         public Builder gmtUpdated(String gmtUpdated) {
             this.gmtUpdated = Objects.requireNonNull(gmtUpdated);
             return this;
-        }
-        public GetFaceConfigsConfig build() {
-            final var o = new GetFaceConfigsConfig();
-            o.bizName = bizName;
-            o.bizType = bizType;
-            o.gmtUpdated = gmtUpdated;
-            return o;
+        }        public GetFaceConfigsConfig build() {
+            return new GetFaceConfigsConfig(bizName, bizType, gmtUpdated);
         }
     }
 }

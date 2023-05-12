@@ -15,14 +15,21 @@ public final class AddressBookEcsTag {
      * @return The key of ECS tag that to be matched.
      * 
      */
-    private @Nullable String tagKey;
+    private final @Nullable String tagKey;
     /**
      * @return The value of ECS tag that to be matched.
      * 
      */
-    private @Nullable String tagValue;
+    private final @Nullable String tagValue;
 
-    private AddressBookEcsTag() {}
+    @CustomType.Constructor
+    private AddressBookEcsTag(
+        @CustomType.Parameter("tagKey") @Nullable String tagKey,
+        @CustomType.Parameter("tagValue") @Nullable String tagValue) {
+        this.tagKey = tagKey;
+        this.tagValue = tagValue;
+    }
+
     /**
      * @return The key of ECS tag that to be matched.
      * 
@@ -45,32 +52,30 @@ public final class AddressBookEcsTag {
     public static Builder builder(AddressBookEcsTag defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String tagKey;
         private @Nullable String tagValue;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(AddressBookEcsTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.tagKey = defaults.tagKey;
     	      this.tagValue = defaults.tagValue;
         }
 
-        @CustomType.Setter
         public Builder tagKey(@Nullable String tagKey) {
             this.tagKey = tagKey;
             return this;
         }
-        @CustomType.Setter
         public Builder tagValue(@Nullable String tagValue) {
             this.tagValue = tagValue;
             return this;
-        }
-        public AddressBookEcsTag build() {
-            final var o = new AddressBookEcsTag();
-            o.tagKey = tagKey;
-            o.tagValue = tagValue;
-            return o;
+        }        public AddressBookEcsTag build() {
+            return new AddressBookEcsTag(tagKey, tagValue);
         }
     }
 }

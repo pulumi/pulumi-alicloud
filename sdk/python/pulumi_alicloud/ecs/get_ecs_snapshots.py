@@ -249,6 +249,7 @@ def get_ecs_snapshots(category: Optional[str] = None,
     :param Sequence[str] ids: A list of Snapshot IDs.
     :param str kms_key_id: The kms key id.
     :param str name_regex: A regex string to filter results by Snapshot name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The resource group id.
     :param str snapshot_link_id: The snapshot link id.
     :param str snapshot_name: Snapshot Display Name.
@@ -343,6 +344,7 @@ def get_ecs_snapshots_output(category: Optional[pulumi.Input[Optional[str]]] = N
     :param Sequence[str] ids: A list of Snapshot IDs.
     :param str kms_key_id: The kms key id.
     :param str name_regex: A regex string to filter results by Snapshot name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The resource group id.
     :param str snapshot_link_id: The snapshot link id.
     :param str snapshot_name: Snapshot Display Name.

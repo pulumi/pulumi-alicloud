@@ -52,8 +52,9 @@ func GetTransitRouterMulticastDomainPeerMembers(ctx *pulumi.Context, args *GetTr
 // A collection of arguments for invoking getTransitRouterMulticastDomainPeerMembers.
 type GetTransitRouterMulticastDomainPeerMembersArgs struct {
 	// A list of Cen Transit Router Multicast Domain Peer Member IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The IDs of the inter-region multicast domains.
 	PeerTransitRouterMulticastDomains []string `pulumi:"peerTransitRouterMulticastDomains"`
 	// The ID of the resource associated with the multicast resource.
@@ -100,8 +101,9 @@ func GetTransitRouterMulticastDomainPeerMembersOutput(ctx *pulumi.Context, args 
 // A collection of arguments for invoking getTransitRouterMulticastDomainPeerMembers.
 type GetTransitRouterMulticastDomainPeerMembersOutputArgs struct {
 	// A list of Cen Transit Router Multicast Domain Peer Member IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The IDs of the inter-region multicast domains.
 	PeerTransitRouterMulticastDomains pulumi.StringArrayInput `pulumi:"peerTransitRouterMulticastDomains"`
 	// The ID of the resource associated with the multicast resource.

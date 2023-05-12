@@ -89,6 +89,8 @@ namespace Pulumi.AliCloud.CR
 
         /// <summary>
         /// The user password. The password must be 8 to 32 characters in length, and must contain at least two of the following character types: letters, special characters, and digits.
+        /// 
+        /// &gt; **NOTE:** Setting `enable = "On"` to open the Container Registry (CR) service that means you have read and agreed the [Container Registry (CR) Terms of Service](https://help.aliyun.com/document_detail/190602.html). The service can not closed once it is opened.
         /// </summary>
         [Input("password", required: true)]
         public string Password { get; set; } = null!;
@@ -109,6 +111,8 @@ namespace Pulumi.AliCloud.CR
 
         /// <summary>
         /// The user password. The password must be 8 to 32 characters in length, and must contain at least two of the following character types: letters, special characters, and digits.
+        /// 
+        /// &gt; **NOTE:** Setting `enable = "On"` to open the Container Registry (CR) service that means you have read and agreed the [Container Registry (CR) Terms of Service](https://help.aliyun.com/document_detail/190602.html). The service can not closed once it is opened.
         /// </summary>
         [Input("password", required: true)]
         public Input<string> Password { get; set; } = null!;

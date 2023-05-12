@@ -17,14 +17,21 @@ public final class BucketRefererConfig {
      * @return Allows referer to be empty. Defaults false.
      * 
      */
-    private @Nullable Boolean allowEmpty;
+    private final @Nullable Boolean allowEmpty;
     /**
      * @return The list of referer.
      * 
      */
-    private List<String> referers;
+    private final List<String> referers;
 
-    private BucketRefererConfig() {}
+    @CustomType.Constructor
+    private BucketRefererConfig(
+        @CustomType.Parameter("allowEmpty") @Nullable Boolean allowEmpty,
+        @CustomType.Parameter("referers") List<String> referers) {
+        this.allowEmpty = allowEmpty;
+        this.referers = referers;
+    }
+
     /**
      * @return Allows referer to be empty. Defaults false.
      * 
@@ -47,35 +54,33 @@ public final class BucketRefererConfig {
     public static Builder builder(BucketRefererConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean allowEmpty;
         private List<String> referers;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(BucketRefererConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowEmpty = defaults.allowEmpty;
     	      this.referers = defaults.referers;
         }
 
-        @CustomType.Setter
         public Builder allowEmpty(@Nullable Boolean allowEmpty) {
             this.allowEmpty = allowEmpty;
             return this;
         }
-        @CustomType.Setter
         public Builder referers(List<String> referers) {
             this.referers = Objects.requireNonNull(referers);
             return this;
         }
         public Builder referers(String... referers) {
             return referers(List.of(referers));
-        }
-        public BucketRefererConfig build() {
-            final var o = new BucketRefererConfig();
-            o.allowEmpty = allowEmpty;
-            o.referers = referers;
-            return o;
+        }        public BucketRefererConfig build() {
+            return new BucketRefererConfig(allowEmpty, referers);
         }
     }
 }

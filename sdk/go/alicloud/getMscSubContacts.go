@@ -61,7 +61,8 @@ type GetMscSubContactsArgs struct {
 	// A list of Contact IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Contact name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -94,7 +95,8 @@ type GetMscSubContactsOutputArgs struct {
 	// A list of Contact IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Contact name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

@@ -51,6 +51,9 @@ export interface GetTrafficMirrorFilterEgressRulesArgs {
      * A list of Traffic Mirror Filter Egress Rule IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
@@ -114,6 +117,9 @@ export interface GetTrafficMirrorFilterEgressRulesOutputArgs {
      * A list of Traffic Mirror Filter Egress Rule IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.

@@ -135,6 +135,7 @@ def get_lifecycle_hooks(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of lifecycle hook IDs.
     :param str name_regex: A regex string to filter resulting lifecycle hook by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str scaling_group_id: Scaling group id the lifecycle hooks belong to.
     """
     __args__ = dict()
@@ -180,6 +181,7 @@ def get_lifecycle_hooks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
 
     :param Sequence[str] ids: A list of lifecycle hook IDs.
     :param str name_regex: A regex string to filter resulting lifecycle hook by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str scaling_group_id: Scaling group id the lifecycle hooks belong to.
     """
     ...

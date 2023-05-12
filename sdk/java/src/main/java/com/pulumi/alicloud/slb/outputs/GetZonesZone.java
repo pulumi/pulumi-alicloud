@@ -15,17 +15,17 @@ public final class GetZonesZone {
      * @return ID of the zone. It is same as `master_zone_id`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The primary zone.
      * 
      */
-    private String masterZoneId;
+    private final String masterZoneId;
     /**
      * @return The secondary zone.
      * 
      */
-    private String slaveZoneId;
+    private final String slaveZoneId;
     /**
      * @return (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone.
      * It has been deprecated from v1.157.0 and use `slave_zone_id` instead.
@@ -35,14 +35,27 @@ public final class GetZonesZone {
      * 
      */
     @Deprecated /* the attribute slb_slave_zone_ids has been deprecated from version 1.157.0 and use slave_zone_id instead. */
-    private List<String> slbSlaveZoneIds;
+    private final List<String> slbSlaveZoneIds;
     /**
      * @return (Available in 1.154.0+)A list of available resource which the slb master zone supported.
      * 
      */
-    private List<GetZonesZoneSupportedResource> supportedResources;
+    private final List<GetZonesZoneSupportedResource> supportedResources;
 
-    private GetZonesZone() {}
+    @CustomType.Constructor
+    private GetZonesZone(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("masterZoneId") String masterZoneId,
+        @CustomType.Parameter("slaveZoneId") String slaveZoneId,
+        @CustomType.Parameter("slbSlaveZoneIds") List<String> slbSlaveZoneIds,
+        @CustomType.Parameter("supportedResources") List<GetZonesZoneSupportedResource> supportedResources) {
+        this.id = id;
+        this.masterZoneId = masterZoneId;
+        this.slaveZoneId = slaveZoneId;
+        this.slbSlaveZoneIds = slbSlaveZoneIds;
+        this.supportedResources = supportedResources;
+    }
+
     /**
      * @return ID of the zone. It is same as `master_zone_id`.
      * 
@@ -91,14 +104,18 @@ public final class GetZonesZone {
     public static Builder builder(GetZonesZone defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private String masterZoneId;
         private String slaveZoneId;
         private List<String> slbSlaveZoneIds;
         private List<GetZonesZoneSupportedResource> supportedResources;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetZonesZone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -108,22 +125,18 @@ public final class GetZonesZone {
     	      this.supportedResources = defaults.supportedResources;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder masterZoneId(String masterZoneId) {
             this.masterZoneId = Objects.requireNonNull(masterZoneId);
             return this;
         }
-        @CustomType.Setter
         public Builder slaveZoneId(String slaveZoneId) {
             this.slaveZoneId = Objects.requireNonNull(slaveZoneId);
             return this;
         }
-        @CustomType.Setter
         public Builder slbSlaveZoneIds(List<String> slbSlaveZoneIds) {
             this.slbSlaveZoneIds = Objects.requireNonNull(slbSlaveZoneIds);
             return this;
@@ -131,22 +144,14 @@ public final class GetZonesZone {
         public Builder slbSlaveZoneIds(String... slbSlaveZoneIds) {
             return slbSlaveZoneIds(List.of(slbSlaveZoneIds));
         }
-        @CustomType.Setter
         public Builder supportedResources(List<GetZonesZoneSupportedResource> supportedResources) {
             this.supportedResources = Objects.requireNonNull(supportedResources);
             return this;
         }
         public Builder supportedResources(GetZonesZoneSupportedResource... supportedResources) {
             return supportedResources(List.of(supportedResources));
-        }
-        public GetZonesZone build() {
-            final var o = new GetZonesZone();
-            o.id = id;
-            o.masterZoneId = masterZoneId;
-            o.slaveZoneId = slaveZoneId;
-            o.slbSlaveZoneIds = slbSlaveZoneIds;
-            o.supportedResources = supportedResources;
-            return o;
+        }        public GetZonesZone build() {
+            return new GetZonesZone(id, masterZoneId, slaveZoneId, slbSlaveZoneIds, supportedResources);
         }
     }
 }

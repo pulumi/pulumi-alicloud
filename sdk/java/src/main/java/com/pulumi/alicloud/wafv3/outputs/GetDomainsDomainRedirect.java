@@ -17,69 +17,98 @@ public final class GetDomainsDomainRedirect {
      * @return The IP address of the origin server corresponding to the domain name or the back-to-origin domain name of the server.
      * 
      */
-    private List<String> backends;
+    private final List<String> backends;
     /**
      * @return Connection timeout, Unit: seconds, value range: 5~120.
      * 
      */
-    private Integer connectTimeout;
+    private final Integer connectTimeout;
     /**
      * @return Whether to enable forced HTTP back-to-origin. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
      * 
      */
-    private Boolean focusHttpBackend;
+    private final Boolean focusHttpBackend;
     /**
      * @return Open long connection, default true.
      * 
      */
-    private Boolean keepalive;
+    private final Boolean keepalive;
     /**
      * @return Number of long connections, default: `60`. range :60-1000.
      * 
      */
-    private Integer keepaliveRequests;
+    private final Integer keepaliveRequests;
     /**
      * @return Long connection over time, default: `15`. Range: 1-60.
      * 
      */
-    private Integer keepaliveTimeout;
+    private final Integer keepaliveTimeout;
     /**
      * @return The load balancing algorithm used when returning to the source.
      * 
      */
-    private String loadbalance;
+    private final String loadbalance;
     /**
      * @return Read timeout duration. Unit: seconds, Value range: 5~1800.
      * 
      */
-    private Integer readTimeout;
+    private final Integer readTimeout;
     /**
      * @return The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{&#34; k &#34;:&#34;_key_&#34;,&#34; v &#34;:&#34;_value_&#34;}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
      * 
      */
-    private List<GetDomainsDomainRedirectRequestHeader> requestHeaders;
+    private final List<GetDomainsDomainRedirectRequestHeader> requestHeaders;
     /**
      * @return Back to Source Retry. default `true`, retry 3 times by default.
      * 
      */
-    private Boolean retry;
+    private final Boolean retry;
     /**
      * @return Whether to enable back-to-source SNI. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
      * 
      */
-    private Boolean sniEnabled;
+    private final Boolean sniEnabled;
     /**
      * @return Sets the value of the custom SNI extension field. If this parameter is not set, the value of the **Host** field in the request header is used as the value of the SNI extension field by default.In general, you do not need to customize SNI unless your business has special configuration requirements. You want WAF to use SNI that is inconsistent with the actual request Host in the back-to-origin request (that is, the custom SNI set here).&gt; This parameter is required only when **sni_enalbed** is set to **true** (indicating that back-to-source SNI is enabled).
      * 
      */
-    private String sniHost;
+    private final String sniHost;
     /**
      * @return Write timeout duration. **Unit**: seconds, **Value range**:5~1800.
      * 
      */
-    private Integer writeTimeout;
+    private final Integer writeTimeout;
 
-    private GetDomainsDomainRedirect() {}
+    @CustomType.Constructor
+    private GetDomainsDomainRedirect(
+        @CustomType.Parameter("backends") List<String> backends,
+        @CustomType.Parameter("connectTimeout") Integer connectTimeout,
+        @CustomType.Parameter("focusHttpBackend") Boolean focusHttpBackend,
+        @CustomType.Parameter("keepalive") Boolean keepalive,
+        @CustomType.Parameter("keepaliveRequests") Integer keepaliveRequests,
+        @CustomType.Parameter("keepaliveTimeout") Integer keepaliveTimeout,
+        @CustomType.Parameter("loadbalance") String loadbalance,
+        @CustomType.Parameter("readTimeout") Integer readTimeout,
+        @CustomType.Parameter("requestHeaders") List<GetDomainsDomainRedirectRequestHeader> requestHeaders,
+        @CustomType.Parameter("retry") Boolean retry,
+        @CustomType.Parameter("sniEnabled") Boolean sniEnabled,
+        @CustomType.Parameter("sniHost") String sniHost,
+        @CustomType.Parameter("writeTimeout") Integer writeTimeout) {
+        this.backends = backends;
+        this.connectTimeout = connectTimeout;
+        this.focusHttpBackend = focusHttpBackend;
+        this.keepalive = keepalive;
+        this.keepaliveRequests = keepaliveRequests;
+        this.keepaliveTimeout = keepaliveTimeout;
+        this.loadbalance = loadbalance;
+        this.readTimeout = readTimeout;
+        this.requestHeaders = requestHeaders;
+        this.retry = retry;
+        this.sniEnabled = sniEnabled;
+        this.sniHost = sniHost;
+        this.writeTimeout = writeTimeout;
+    }
+
     /**
      * @return The IP address of the origin server corresponding to the domain name or the back-to-origin domain name of the server.
      * 
@@ -179,7 +208,7 @@ public final class GetDomainsDomainRedirect {
     public static Builder builder(GetDomainsDomainRedirect defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<String> backends;
         private Integer connectTimeout;
@@ -194,7 +223,11 @@ public final class GetDomainsDomainRedirect {
         private Boolean sniEnabled;
         private String sniHost;
         private Integer writeTimeout;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDomainsDomainRedirect defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backends = defaults.backends;
@@ -212,7 +245,6 @@ public final class GetDomainsDomainRedirect {
     	      this.writeTimeout = defaults.writeTimeout;
         }
 
-        @CustomType.Setter
         public Builder backends(List<String> backends) {
             this.backends = Objects.requireNonNull(backends);
             return this;
@@ -220,42 +252,34 @@ public final class GetDomainsDomainRedirect {
         public Builder backends(String... backends) {
             return backends(List.of(backends));
         }
-        @CustomType.Setter
         public Builder connectTimeout(Integer connectTimeout) {
             this.connectTimeout = Objects.requireNonNull(connectTimeout);
             return this;
         }
-        @CustomType.Setter
         public Builder focusHttpBackend(Boolean focusHttpBackend) {
             this.focusHttpBackend = Objects.requireNonNull(focusHttpBackend);
             return this;
         }
-        @CustomType.Setter
         public Builder keepalive(Boolean keepalive) {
             this.keepalive = Objects.requireNonNull(keepalive);
             return this;
         }
-        @CustomType.Setter
         public Builder keepaliveRequests(Integer keepaliveRequests) {
             this.keepaliveRequests = Objects.requireNonNull(keepaliveRequests);
             return this;
         }
-        @CustomType.Setter
         public Builder keepaliveTimeout(Integer keepaliveTimeout) {
             this.keepaliveTimeout = Objects.requireNonNull(keepaliveTimeout);
             return this;
         }
-        @CustomType.Setter
         public Builder loadbalance(String loadbalance) {
             this.loadbalance = Objects.requireNonNull(loadbalance);
             return this;
         }
-        @CustomType.Setter
         public Builder readTimeout(Integer readTimeout) {
             this.readTimeout = Objects.requireNonNull(readTimeout);
             return this;
         }
-        @CustomType.Setter
         public Builder requestHeaders(List<GetDomainsDomainRedirectRequestHeader> requestHeaders) {
             this.requestHeaders = Objects.requireNonNull(requestHeaders);
             return this;
@@ -263,42 +287,23 @@ public final class GetDomainsDomainRedirect {
         public Builder requestHeaders(GetDomainsDomainRedirectRequestHeader... requestHeaders) {
             return requestHeaders(List.of(requestHeaders));
         }
-        @CustomType.Setter
         public Builder retry(Boolean retry) {
             this.retry = Objects.requireNonNull(retry);
             return this;
         }
-        @CustomType.Setter
         public Builder sniEnabled(Boolean sniEnabled) {
             this.sniEnabled = Objects.requireNonNull(sniEnabled);
             return this;
         }
-        @CustomType.Setter
         public Builder sniHost(String sniHost) {
             this.sniHost = Objects.requireNonNull(sniHost);
             return this;
         }
-        @CustomType.Setter
         public Builder writeTimeout(Integer writeTimeout) {
             this.writeTimeout = Objects.requireNonNull(writeTimeout);
             return this;
-        }
-        public GetDomainsDomainRedirect build() {
-            final var o = new GetDomainsDomainRedirect();
-            o.backends = backends;
-            o.connectTimeout = connectTimeout;
-            o.focusHttpBackend = focusHttpBackend;
-            o.keepalive = keepalive;
-            o.keepaliveRequests = keepaliveRequests;
-            o.keepaliveTimeout = keepaliveTimeout;
-            o.loadbalance = loadbalance;
-            o.readTimeout = readTimeout;
-            o.requestHeaders = requestHeaders;
-            o.retry = retry;
-            o.sniEnabled = sniEnabled;
-            o.sniHost = sniHost;
-            o.writeTimeout = writeTimeout;
-            return o;
+        }        public GetDomainsDomainRedirect build() {
+            return new GetDomainsDomainRedirect(backends, connectTimeout, focusHttpBackend, keepalive, keepaliveRequests, keepaliveTimeout, loadbalance, readTimeout, requestHeaders, retry, sniEnabled, sniHost, writeTimeout);
         }
     }
 }

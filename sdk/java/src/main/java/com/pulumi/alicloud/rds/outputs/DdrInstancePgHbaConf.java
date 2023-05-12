@@ -16,47 +16,68 @@ public final class DdrInstancePgHbaConf {
      * @return The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
      * 
      */
-    private String address;
+    private final String address;
     /**
      * @return The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
      * 
      */
-    private String database;
+    private final String database;
     /**
      * @return The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
      * 
      */
-    private @Nullable String mask;
+    private final @Nullable String mask;
     /**
      * @return The authentication method of Lightweight Directory Access Protocol (LDAP). Valid values: `trust`, `reject`, `scram-sha-256`, `md5`, `password`, `gss`, `sspi`, `ldap`, `radius`, `cert`, `pam`.
      * 
      */
-    private String method;
+    private final String method;
     /**
      * @return Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
      * 
      */
-    private @Nullable String option;
+    private final @Nullable String option;
     /**
      * @return The priority of an AD domain. If you set this parameter to 0, the AD domain has the highest priority. Valid values: 0 to 10000. This parameter is used to identify each AD domain. When you add an AD domain, the value of the PriorityId parameter of the new AD domain cannot be the same as the value of the PriorityId parameter for any existing AD domain. When you modify or delete an AD domain, you must also modify or delete the value of the PriorityId parameter for this AD domain.
      * 
      */
-    private Integer priorityId;
+    private final Integer priorityId;
     /**
      * @return The type of connection to the instance. Valid values:
      * * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
      * * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
      * * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
      * 
+     * &gt; **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
+     * 
      */
-    private String type;
+    private final String type;
     /**
      * @return The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
      * 
      */
-    private String user;
+    private final String user;
 
-    private DdrInstancePgHbaConf() {}
+    @CustomType.Constructor
+    private DdrInstancePgHbaConf(
+        @CustomType.Parameter("address") String address,
+        @CustomType.Parameter("database") String database,
+        @CustomType.Parameter("mask") @Nullable String mask,
+        @CustomType.Parameter("method") String method,
+        @CustomType.Parameter("option") @Nullable String option,
+        @CustomType.Parameter("priorityId") Integer priorityId,
+        @CustomType.Parameter("type") String type,
+        @CustomType.Parameter("user") String user) {
+        this.address = address;
+        this.database = database;
+        this.mask = mask;
+        this.method = method;
+        this.option = option;
+        this.priorityId = priorityId;
+        this.type = type;
+        this.user = user;
+    }
+
     /**
      * @return The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
      * 
@@ -105,6 +126,8 @@ public final class DdrInstancePgHbaConf {
      * * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
      * * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
      * 
+     * &gt; **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
+     * 
      */
     public String type() {
         return this.type;
@@ -124,7 +147,7 @@ public final class DdrInstancePgHbaConf {
     public static Builder builder(DdrInstancePgHbaConf defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String address;
         private String database;
@@ -134,7 +157,11 @@ public final class DdrInstancePgHbaConf {
         private Integer priorityId;
         private String type;
         private String user;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(DdrInstancePgHbaConf defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
@@ -147,57 +174,39 @@ public final class DdrInstancePgHbaConf {
     	      this.user = defaults.user;
         }
 
-        @CustomType.Setter
         public Builder address(String address) {
             this.address = Objects.requireNonNull(address);
             return this;
         }
-        @CustomType.Setter
         public Builder database(String database) {
             this.database = Objects.requireNonNull(database);
             return this;
         }
-        @CustomType.Setter
         public Builder mask(@Nullable String mask) {
             this.mask = mask;
             return this;
         }
-        @CustomType.Setter
         public Builder method(String method) {
             this.method = Objects.requireNonNull(method);
             return this;
         }
-        @CustomType.Setter
         public Builder option(@Nullable String option) {
             this.option = option;
             return this;
         }
-        @CustomType.Setter
         public Builder priorityId(Integer priorityId) {
             this.priorityId = Objects.requireNonNull(priorityId);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
-        @CustomType.Setter
         public Builder user(String user) {
             this.user = Objects.requireNonNull(user);
             return this;
-        }
-        public DdrInstancePgHbaConf build() {
-            final var o = new DdrInstancePgHbaConf();
-            o.address = address;
-            o.database = database;
-            o.mask = mask;
-            o.method = method;
-            o.option = option;
-            o.priorityId = priorityId;
-            o.type = type;
-            o.user = user;
-            return o;
+        }        public DdrInstancePgHbaConf build() {
+            return new DdrInstancePgHbaConf(address, database, mask, method, option, priorityId, type, user);
         }
     }
 }

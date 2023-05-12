@@ -14,64 +14,91 @@ public final class GetRegistryEnterpriseInstancesInstance {
      * @return The password that was used to log on to the registry.
      * 
      */
-    private String authorizationToken;
+    private final String authorizationToken;
     /**
      * @return ID of Container Registry Enterprise Edition instance.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Name of Container Registry Enterprise Edition instance.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The max number of namespaces that an instance can create.
      * 
      */
-    private String namespaceQuota;
+    private final String namespaceQuota;
     /**
      * @return The number of namespaces already created.
      * 
      */
-    private String namespaceUsage;
+    private final String namespaceUsage;
     /**
      * @return A list of domains for access on internet network.
      * 
      */
-    private List<String> publicEndpoints;
+    private final List<String> publicEndpoints;
     /**
      * @return Region of Container Registry Enterprise Edition instance.
      * 
      */
-    private String region;
+    private final String region;
     /**
      * @return The max number of repos that an instance can create.
      * 
      */
-    private String repoQuota;
+    private final String repoQuota;
     /**
      * @return The number of repos already created.
      * 
      */
-    private String repoUsage;
+    private final String repoUsage;
     /**
      * @return Specification of Container Registry Enterprise Edition instance.
      * 
      */
-    private String specification;
+    private final String specification;
     /**
      * @return The username that was used to log on to the registry.
      * 
      */
-    private String tempUsername;
+    private final String tempUsername;
     /**
      * @return A list of domains for access on vpc network.
      * 
      */
-    private List<String> vpcEndpoints;
+    private final List<String> vpcEndpoints;
 
-    private GetRegistryEnterpriseInstancesInstance() {}
+    @CustomType.Constructor
+    private GetRegistryEnterpriseInstancesInstance(
+        @CustomType.Parameter("authorizationToken") String authorizationToken,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("namespaceQuota") String namespaceQuota,
+        @CustomType.Parameter("namespaceUsage") String namespaceUsage,
+        @CustomType.Parameter("publicEndpoints") List<String> publicEndpoints,
+        @CustomType.Parameter("region") String region,
+        @CustomType.Parameter("repoQuota") String repoQuota,
+        @CustomType.Parameter("repoUsage") String repoUsage,
+        @CustomType.Parameter("specification") String specification,
+        @CustomType.Parameter("tempUsername") String tempUsername,
+        @CustomType.Parameter("vpcEndpoints") List<String> vpcEndpoints) {
+        this.authorizationToken = authorizationToken;
+        this.id = id;
+        this.name = name;
+        this.namespaceQuota = namespaceQuota;
+        this.namespaceUsage = namespaceUsage;
+        this.publicEndpoints = publicEndpoints;
+        this.region = region;
+        this.repoQuota = repoQuota;
+        this.repoUsage = repoUsage;
+        this.specification = specification;
+        this.tempUsername = tempUsername;
+        this.vpcEndpoints = vpcEndpoints;
+    }
+
     /**
      * @return The password that was used to log on to the registry.
      * 
@@ -164,7 +191,7 @@ public final class GetRegistryEnterpriseInstancesInstance {
     public static Builder builder(GetRegistryEnterpriseInstancesInstance defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String authorizationToken;
         private String id;
@@ -178,7 +205,11 @@ public final class GetRegistryEnterpriseInstancesInstance {
         private String specification;
         private String tempUsername;
         private List<String> vpcEndpoints;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRegistryEnterpriseInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authorizationToken = defaults.authorizationToken;
@@ -195,32 +226,26 @@ public final class GetRegistryEnterpriseInstancesInstance {
     	      this.vpcEndpoints = defaults.vpcEndpoints;
         }
 
-        @CustomType.Setter
         public Builder authorizationToken(String authorizationToken) {
             this.authorizationToken = Objects.requireNonNull(authorizationToken);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder namespaceQuota(String namespaceQuota) {
             this.namespaceQuota = Objects.requireNonNull(namespaceQuota);
             return this;
         }
-        @CustomType.Setter
         public Builder namespaceUsage(String namespaceUsage) {
             this.namespaceUsage = Objects.requireNonNull(namespaceUsage);
             return this;
         }
-        @CustomType.Setter
         public Builder publicEndpoints(List<String> publicEndpoints) {
             this.publicEndpoints = Objects.requireNonNull(publicEndpoints);
             return this;
@@ -228,54 +253,34 @@ public final class GetRegistryEnterpriseInstancesInstance {
         public Builder publicEndpoints(String... publicEndpoints) {
             return publicEndpoints(List.of(publicEndpoints));
         }
-        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
-        @CustomType.Setter
         public Builder repoQuota(String repoQuota) {
             this.repoQuota = Objects.requireNonNull(repoQuota);
             return this;
         }
-        @CustomType.Setter
         public Builder repoUsage(String repoUsage) {
             this.repoUsage = Objects.requireNonNull(repoUsage);
             return this;
         }
-        @CustomType.Setter
         public Builder specification(String specification) {
             this.specification = Objects.requireNonNull(specification);
             return this;
         }
-        @CustomType.Setter
         public Builder tempUsername(String tempUsername) {
             this.tempUsername = Objects.requireNonNull(tempUsername);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcEndpoints(List<String> vpcEndpoints) {
             this.vpcEndpoints = Objects.requireNonNull(vpcEndpoints);
             return this;
         }
         public Builder vpcEndpoints(String... vpcEndpoints) {
             return vpcEndpoints(List.of(vpcEndpoints));
-        }
-        public GetRegistryEnterpriseInstancesInstance build() {
-            final var o = new GetRegistryEnterpriseInstancesInstance();
-            o.authorizationToken = authorizationToken;
-            o.id = id;
-            o.name = name;
-            o.namespaceQuota = namespaceQuota;
-            o.namespaceUsage = namespaceUsage;
-            o.publicEndpoints = publicEndpoints;
-            o.region = region;
-            o.repoQuota = repoQuota;
-            o.repoUsage = repoUsage;
-            o.specification = specification;
-            o.tempUsername = tempUsername;
-            o.vpcEndpoints = vpcEndpoints;
-            return o;
+        }        public GetRegistryEnterpriseInstancesInstance build() {
+            return new GetRegistryEnterpriseInstancesInstance(authorizationToken, id, name, namespaceQuota, namespaceUsage, publicEndpoints, region, repoQuota, repoUsage, specification, tempUsername, vpcEndpoints);
         }
     }
 }

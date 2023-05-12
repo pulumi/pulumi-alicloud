@@ -18,29 +18,50 @@ public final class GetServiceTopicsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of Topic names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
     /**
      * @return The name of the topic.
      * 
      */
-    private @Nullable String topicName;
+    private final @Nullable String topicName;
     /**
      * @return A list of Topics. Each element contains the following attributes:
      * 
      */
-    private List<GetServiceTopicsTopic> topics;
+    private final List<GetServiceTopicsTopic> topics;
 
-    private GetServiceTopicsResult() {}
+    @CustomType.Constructor
+    private GetServiceTopicsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
+        @CustomType.Parameter("topicName") @Nullable String topicName,
+        @CustomType.Parameter("topics") List<GetServiceTopicsTopic> topics) {
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+        this.topicName = topicName;
+        this.topics = topics;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -92,7 +113,7 @@ public final class GetServiceTopicsResult {
     public static Builder builder(GetServiceTopicsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -103,7 +124,11 @@ public final class GetServiceTopicsResult {
         private @Nullable Integer pageSize;
         private @Nullable String topicName;
         private List<GetServiceTopicsTopic> topics;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServiceTopicsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -117,12 +142,10 @@ public final class GetServiceTopicsResult {
     	      this.topics = defaults.topics;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -130,12 +153,10 @@ public final class GetServiceTopicsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -143,46 +164,30 @@ public final class GetServiceTopicsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
-        @CustomType.Setter
         public Builder topicName(@Nullable String topicName) {
             this.topicName = topicName;
             return this;
         }
-        @CustomType.Setter
         public Builder topics(List<GetServiceTopicsTopic> topics) {
             this.topics = Objects.requireNonNull(topics);
             return this;
         }
         public Builder topics(GetServiceTopicsTopic... topics) {
             return topics(List.of(topics));
-        }
-        public GetServiceTopicsResult build() {
-            final var o = new GetServiceTopicsResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.topicName = topicName;
-            o.topics = topics;
-            return o;
+        }        public GetServiceTopicsResult build() {
+            return new GetServiceTopicsResult(id, ids, nameRegex, names, outputFile, pageNumber, pageSize, topicName, topics);
         }
     }
 }

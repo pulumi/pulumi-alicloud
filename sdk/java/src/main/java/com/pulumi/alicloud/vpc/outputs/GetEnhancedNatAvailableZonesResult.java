@@ -17,12 +17,23 @@ public final class GetEnhancedNatAvailableZonesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String outputFile;
-    private List<GetEnhancedNatAvailableZonesZone> zones;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
+    private final List<GetEnhancedNatAvailableZonesZone> zones;
 
-    private GetEnhancedNatAvailableZonesResult() {}
+    @CustomType.Constructor
+    private GetEnhancedNatAvailableZonesResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("zones") List<GetEnhancedNatAvailableZonesZone> zones) {
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.zones = zones;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -47,13 +58,17 @@ public final class GetEnhancedNatAvailableZonesResult {
     public static Builder builder(GetEnhancedNatAvailableZonesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
         private List<GetEnhancedNatAvailableZonesZone> zones;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEnhancedNatAvailableZonesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -62,12 +77,10 @@ public final class GetEnhancedNatAvailableZonesResult {
     	      this.zones = defaults.zones;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -75,26 +88,18 @@ public final class GetEnhancedNatAvailableZonesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder zones(List<GetEnhancedNatAvailableZonesZone> zones) {
             this.zones = Objects.requireNonNull(zones);
             return this;
         }
         public Builder zones(GetEnhancedNatAvailableZonesZone... zones) {
             return zones(List.of(zones));
-        }
-        public GetEnhancedNatAvailableZonesResult build() {
-            final var o = new GetEnhancedNatAvailableZonesResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.zones = zones;
-            return o;
+        }        public GetEnhancedNatAvailableZonesResult build() {
+            return new GetEnhancedNatAvailableZonesResult(id, ids, outputFile, zones);
         }
     }
 }

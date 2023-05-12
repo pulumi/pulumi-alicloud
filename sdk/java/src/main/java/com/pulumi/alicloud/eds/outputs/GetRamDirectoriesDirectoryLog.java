@@ -13,24 +13,35 @@ public final class GetRamDirectoriesDirectoryLog {
      * @return The level of log.
      * 
      */
-    private String level;
+    private final String level;
     /**
      * @return The message of log.
      * 
      */
-    private String message;
+    private final String message;
     /**
      * @return The step of log.
      * 
      */
-    private String step;
+    private final String step;
     /**
      * @return The time stamp of log.
      * 
      */
-    private String timeStamp;
+    private final String timeStamp;
 
-    private GetRamDirectoriesDirectoryLog() {}
+    @CustomType.Constructor
+    private GetRamDirectoriesDirectoryLog(
+        @CustomType.Parameter("level") String level,
+        @CustomType.Parameter("message") String message,
+        @CustomType.Parameter("step") String step,
+        @CustomType.Parameter("timeStamp") String timeStamp) {
+        this.level = level;
+        this.message = message;
+        this.step = step;
+        this.timeStamp = timeStamp;
+    }
+
     /**
      * @return The level of log.
      * 
@@ -67,13 +78,17 @@ public final class GetRamDirectoriesDirectoryLog {
     public static Builder builder(GetRamDirectoriesDirectoryLog defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String level;
         private String message;
         private String step;
         private String timeStamp;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRamDirectoriesDirectoryLog defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.level = defaults.level;
@@ -82,33 +97,23 @@ public final class GetRamDirectoriesDirectoryLog {
     	      this.timeStamp = defaults.timeStamp;
         }
 
-        @CustomType.Setter
         public Builder level(String level) {
             this.level = Objects.requireNonNull(level);
             return this;
         }
-        @CustomType.Setter
         public Builder message(String message) {
             this.message = Objects.requireNonNull(message);
             return this;
         }
-        @CustomType.Setter
         public Builder step(String step) {
             this.step = Objects.requireNonNull(step);
             return this;
         }
-        @CustomType.Setter
         public Builder timeStamp(String timeStamp) {
             this.timeStamp = Objects.requireNonNull(timeStamp);
             return this;
-        }
-        public GetRamDirectoriesDirectoryLog build() {
-            final var o = new GetRamDirectoriesDirectoryLog();
-            o.level = level;
-            o.message = message;
-            o.step = step;
-            o.timeStamp = timeStamp;
-            return o;
+        }        public GetRamDirectoriesDirectoryLog build() {
+            return new GetRamDirectoriesDirectoryLog(level, message, step, timeStamp);
         }
     }
 }

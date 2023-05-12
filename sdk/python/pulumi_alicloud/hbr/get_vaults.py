@@ -134,6 +134,7 @@ def get_vaults(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Vault IDs.
     :param str name_regex: A regex string to filter results by Vault name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
     :param str vault_type: The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
     """
@@ -184,6 +185,7 @@ def get_vaults_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
 
     :param Sequence[str] ids: A list of Vault IDs.
     :param str name_regex: A regex string to filter results by Vault name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
     :param str vault_type: The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
     """

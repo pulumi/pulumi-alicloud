@@ -5,7 +5,11 @@ package com.pulumi.alicloud.vpc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,18 +20,48 @@ public final class PublicIpAddressPoolState extends com.pulumi.resources.Resourc
     public static final PublicIpAddressPoolState Empty = new PublicIpAddressPoolState();
 
     /**
-     * The description of the VPC Public IP address pool.
+     * The creation time of the resource.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the VPC Public IP address pool.
+     * @return Description.
      * 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Whether there is a free IP address.
+     * 
+     */
+    @Import(name="ipAddressRemaining")
+    private @Nullable Output<Boolean> ipAddressRemaining;
+
+    /**
+     * @return Whether there is a free IP address.
+     * 
+     */
+    public Optional<Output<Boolean>> ipAddressRemaining() {
+        return Optional.ofNullable(this.ipAddressRemaining);
     }
 
     /**
@@ -43,6 +77,13 @@ public final class PublicIpAddressPoolState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> isp() {
         return Optional.ofNullable(this.isp);
+    }
+
+    @Import(name="publicIpAddressPoolId")
+    private @Nullable Output<String> publicIpAddressPoolId;
+
+    public Optional<Output<String>> publicIpAddressPoolId() {
+        return Optional.ofNullable(this.publicIpAddressPoolId);
     }
 
     /**
@@ -61,6 +102,21 @@ public final class PublicIpAddressPoolState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The resource group ID of the VPC Public IP address pool.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The resource group ID of the VPC Public IP address pool.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
      * The status of the VPC Public IP address pool.
      * 
      */
@@ -75,13 +131,65 @@ public final class PublicIpAddressPoolState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * The tags of PrefixList.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return The tags of PrefixList.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The total number of public IP address pools.
+     * 
+     */
+    @Import(name="totalIpNum")
+    private @Nullable Output<Integer> totalIpNum;
+
+    /**
+     * @return The total number of public IP address pools.
+     * 
+     */
+    public Optional<Output<Integer>> totalIpNum() {
+        return Optional.ofNullable(this.totalIpNum);
+    }
+
+    /**
+     * The number of used IP addresses in the public IP address pool.
+     * 
+     */
+    @Import(name="usedIpNum")
+    private @Nullable Output<Integer> usedIpNum;
+
+    /**
+     * @return The number of used IP addresses in the public IP address pool.
+     * 
+     */
+    public Optional<Output<Integer>> usedIpNum() {
+        return Optional.ofNullable(this.usedIpNum);
+    }
+
     private PublicIpAddressPoolState() {}
 
     private PublicIpAddressPoolState(PublicIpAddressPoolState $) {
+        this.createTime = $.createTime;
         this.description = $.description;
+        this.ipAddressRemaining = $.ipAddressRemaining;
         this.isp = $.isp;
+        this.publicIpAddressPoolId = $.publicIpAddressPoolId;
         this.publicIpAddressPoolName = $.publicIpAddressPoolName;
+        this.resourceGroupId = $.resourceGroupId;
         this.status = $.status;
+        this.tags = $.tags;
+        this.totalIpNum = $.totalIpNum;
+        this.usedIpNum = $.usedIpNum;
     }
 
     public static Builder builder() {
@@ -103,7 +211,28 @@ public final class PublicIpAddressPoolState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description The description of the VPC Public IP address pool.
+         * @param createTime The creation time of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation time of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param description Description.
          * 
          * @return builder
          * 
@@ -114,13 +243,34 @@ public final class PublicIpAddressPoolState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description The description of the VPC Public IP address pool.
+         * @param description Description.
          * 
          * @return builder
          * 
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param ipAddressRemaining Whether there is a free IP address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddressRemaining(@Nullable Output<Boolean> ipAddressRemaining) {
+            $.ipAddressRemaining = ipAddressRemaining;
+            return this;
+        }
+
+        /**
+         * @param ipAddressRemaining Whether there is a free IP address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddressRemaining(Boolean ipAddressRemaining) {
+            return ipAddressRemaining(Output.of(ipAddressRemaining));
         }
 
         /**
@@ -142,6 +292,15 @@ public final class PublicIpAddressPoolState extends com.pulumi.resources.Resourc
          */
         public Builder isp(String isp) {
             return isp(Output.of(isp));
+        }
+
+        public Builder publicIpAddressPoolId(@Nullable Output<String> publicIpAddressPoolId) {
+            $.publicIpAddressPoolId = publicIpAddressPoolId;
+            return this;
+        }
+
+        public Builder publicIpAddressPoolId(String publicIpAddressPoolId) {
+            return publicIpAddressPoolId(Output.of(publicIpAddressPoolId));
         }
 
         /**
@@ -166,6 +325,27 @@ public final class PublicIpAddressPoolState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param resourceGroupId The resource group ID of the VPC Public IP address pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The resource group ID of the VPC Public IP address pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
          * @param status The status of the VPC Public IP address pool.
          * 
          * @return builder
@@ -184,6 +364,69 @@ public final class PublicIpAddressPoolState extends com.pulumi.resources.Resourc
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags The tags of PrefixList.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tags of PrefixList.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param totalIpNum The total number of public IP address pools.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder totalIpNum(@Nullable Output<Integer> totalIpNum) {
+            $.totalIpNum = totalIpNum;
+            return this;
+        }
+
+        /**
+         * @param totalIpNum The total number of public IP address pools.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder totalIpNum(Integer totalIpNum) {
+            return totalIpNum(Output.of(totalIpNum));
+        }
+
+        /**
+         * @param usedIpNum The number of used IP addresses in the public IP address pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usedIpNum(@Nullable Output<Integer> usedIpNum) {
+            $.usedIpNum = usedIpNum;
+            return this;
+        }
+
+        /**
+         * @param usedIpNum The number of used IP addresses in the public IP address pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usedIpNum(Integer usedIpNum) {
+            return usedIpNum(Output.of(usedIpNum));
         }
 
         public PublicIpAddressPoolState build() {

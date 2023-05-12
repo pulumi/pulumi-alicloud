@@ -220,6 +220,7 @@ def get_enterprise_instances(env_type: Optional[str] = None,
     :param str instance_type: The ID of the database instance.
     :param str name_regex: A regex string to filter the results by the DMS Enterprise Instance instance_alias.
     :param str net_type: The network type of the database instance. Valid values: CLASSIC and VPC. For more information about the valid values, see the description of the RegisterInstance operation.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str search_key: The keyword used to query database instances.
     :param str status: Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.
     :param int tid: The ID of the tenant in Data Management (DMS) Enterprise.
@@ -293,6 +294,7 @@ def get_enterprise_instances_output(env_type: Optional[pulumi.Input[Optional[str
     :param str instance_type: The ID of the database instance.
     :param str name_regex: A regex string to filter the results by the DMS Enterprise Instance instance_alias.
     :param str net_type: The network type of the database instance. Valid values: CLASSIC and VPC. For more information about the valid values, see the description of the RegisterInstance operation.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str search_key: The keyword used to query database instances.
     :param str status: Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.
     :param int tid: The ID of the tenant in Data Management (DMS) Enterprise.

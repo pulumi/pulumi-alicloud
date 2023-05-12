@@ -16,49 +16,70 @@ public final class GetPrefixListsList {
      * @return The time when the prefix list was created.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The CIDR address block list of the prefix list.
      * 
      */
-    private List<GetPrefixListsListEntry> entrys;
+    private final List<GetPrefixListsListEntry> entrys;
     /**
      * @return The ID of the Prefix List.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The IP version of the prefix list.
      * 
      */
-    private String ipVersion;
+    private final String ipVersion;
     /**
      * @return The maximum number of entries for CIDR address blocks in the prefix list.
      * 
      */
-    private Integer maxEntries;
+    private final Integer maxEntries;
     /**
      * @return The description of the prefix list.
      * 
      */
-    private String prefixListDescription;
+    private final String prefixListDescription;
     /**
      * @return The ID of the query Prefix List.
      * 
      */
-    private String prefixListId;
+    private final String prefixListId;
     /**
      * @return The name of the prefix list.
      * 
      */
-    private String prefixListName;
+    private final String prefixListName;
     /**
      * @return The share type of the prefix list.
      * 
      */
-    private String shareType;
+    private final String shareType;
 
-    private GetPrefixListsList() {}
+    @CustomType.Constructor
+    private GetPrefixListsList(
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("entrys") List<GetPrefixListsListEntry> entrys,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ipVersion") String ipVersion,
+        @CustomType.Parameter("maxEntries") Integer maxEntries,
+        @CustomType.Parameter("prefixListDescription") String prefixListDescription,
+        @CustomType.Parameter("prefixListId") String prefixListId,
+        @CustomType.Parameter("prefixListName") String prefixListName,
+        @CustomType.Parameter("shareType") String shareType) {
+        this.createTime = createTime;
+        this.entrys = entrys;
+        this.id = id;
+        this.ipVersion = ipVersion;
+        this.maxEntries = maxEntries;
+        this.prefixListDescription = prefixListDescription;
+        this.prefixListId = prefixListId;
+        this.prefixListName = prefixListName;
+        this.shareType = shareType;
+    }
+
     /**
      * @return The time when the prefix list was created.
      * 
@@ -130,7 +151,7 @@ public final class GetPrefixListsList {
     public static Builder builder(GetPrefixListsList defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String createTime;
         private List<GetPrefixListsListEntry> entrys;
@@ -141,7 +162,11 @@ public final class GetPrefixListsList {
         private String prefixListId;
         private String prefixListName;
         private String shareType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetPrefixListsList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -155,12 +180,10 @@ public final class GetPrefixListsList {
     	      this.shareType = defaults.shareType;
         }
 
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder entrys(List<GetPrefixListsListEntry> entrys) {
             this.entrys = Objects.requireNonNull(entrys);
             return this;
@@ -168,53 +191,35 @@ public final class GetPrefixListsList {
         public Builder entrys(GetPrefixListsListEntry... entrys) {
             return entrys(List.of(entrys));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ipVersion(String ipVersion) {
             this.ipVersion = Objects.requireNonNull(ipVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder maxEntries(Integer maxEntries) {
             this.maxEntries = Objects.requireNonNull(maxEntries);
             return this;
         }
-        @CustomType.Setter
         public Builder prefixListDescription(String prefixListDescription) {
             this.prefixListDescription = Objects.requireNonNull(prefixListDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder prefixListId(String prefixListId) {
             this.prefixListId = Objects.requireNonNull(prefixListId);
             return this;
         }
-        @CustomType.Setter
         public Builder prefixListName(String prefixListName) {
             this.prefixListName = Objects.requireNonNull(prefixListName);
             return this;
         }
-        @CustomType.Setter
         public Builder shareType(String shareType) {
             this.shareType = Objects.requireNonNull(shareType);
             return this;
-        }
-        public GetPrefixListsList build() {
-            final var o = new GetPrefixListsList();
-            o.createTime = createTime;
-            o.entrys = entrys;
-            o.id = id;
-            o.ipVersion = ipVersion;
-            o.maxEntries = maxEntries;
-            o.prefixListDescription = prefixListDescription;
-            o.prefixListId = prefixListId;
-            o.prefixListName = prefixListName;
-            o.shareType = shareType;
-            return o;
+        }        public GetPrefixListsList build() {
+            return new GetPrefixListsList(createTime, entrys, id, ipVersion, maxEntries, prefixListDescription, prefixListId, prefixListName, shareType);
         }
     }
 }

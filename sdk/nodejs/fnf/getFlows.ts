@@ -54,6 +54,9 @@ export interface GetFlowsArgs {
      * A regex string to filter results by Flow name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -112,5 +115,8 @@ export interface GetFlowsOutputArgs {
      * A regex string to filter results by Flow name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

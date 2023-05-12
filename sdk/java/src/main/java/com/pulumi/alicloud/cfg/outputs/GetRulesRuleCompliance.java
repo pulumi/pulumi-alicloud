@@ -14,14 +14,21 @@ public final class GetRulesRuleCompliance {
      * @return The compliance evaluation result of the target resources.
      * 
      */
-    private String complianceType;
+    private final String complianceType;
     /**
      * @return The number of resources with the specified compliance evaluation result.
      * 
      */
-    private Integer count;
+    private final Integer count;
 
-    private GetRulesRuleCompliance() {}
+    @CustomType.Constructor
+    private GetRulesRuleCompliance(
+        @CustomType.Parameter("complianceType") String complianceType,
+        @CustomType.Parameter("count") Integer count) {
+        this.complianceType = complianceType;
+        this.count = count;
+    }
+
     /**
      * @return The compliance evaluation result of the target resources.
      * 
@@ -44,32 +51,30 @@ public final class GetRulesRuleCompliance {
     public static Builder builder(GetRulesRuleCompliance defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String complianceType;
         private Integer count;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRulesRuleCompliance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.complianceType = defaults.complianceType;
     	      this.count = defaults.count;
         }
 
-        @CustomType.Setter
         public Builder complianceType(String complianceType) {
             this.complianceType = Objects.requireNonNull(complianceType);
             return this;
         }
-        @CustomType.Setter
         public Builder count(Integer count) {
             this.count = Objects.requireNonNull(count);
             return this;
-        }
-        public GetRulesRuleCompliance build() {
-            final var o = new GetRulesRuleCompliance();
-            o.complianceType = complianceType;
-            o.count = count;
-            return o;
+        }        public GetRulesRuleCompliance build() {
+            return new GetRulesRuleCompliance(complianceType, count);
         }
     }
 }

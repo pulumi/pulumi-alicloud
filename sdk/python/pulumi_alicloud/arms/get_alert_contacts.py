@@ -148,6 +148,7 @@ def get_alert_contacts(alert_contact_name: Optional[str] = None,
     :param str email: The email address of the alert contact.
     :param Sequence[str] ids: A list of Alert Contact IDs.
     :param str name_regex: A regex string to filter results by Alert Contact name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str phone_num: The mobile number of the alert contact.
     """
     __args__ = dict()
@@ -204,6 +205,7 @@ def get_alert_contacts_output(alert_contact_name: Optional[pulumi.Input[Optional
     :param str email: The email address of the alert contact.
     :param Sequence[str] ids: A list of Alert Contact IDs.
     :param str name_regex: A regex string to filter results by Alert Contact name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str phone_num: The mobile number of the alert contact.
     """
     ...

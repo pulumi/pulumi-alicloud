@@ -17,36 +17,55 @@ public final class AlertSchedule {
      * @return Cron expression when type is Cron.
      * 
      */
-    private @Nullable String cronExpression;
+    private final @Nullable String cronExpression;
     /**
      * @return Day of week when type is Weekly, including 0,1,2,3,4,5,6, 0 for Sunday, 1 for Monday
      * 
      */
-    private @Nullable Integer dayOfWeek;
-    private @Nullable Integer delay;
+    private final @Nullable Integer dayOfWeek;
+    private final @Nullable Integer delay;
     /**
      * @return Hour of day when type is Weekly/Daily.
      * 
      */
-    private @Nullable Integer hour;
+    private final @Nullable Integer hour;
     /**
      * @return Execution interval. 60 seconds minimum, such as 60s, 1h. used when type is FixedRate.
      * 
      */
-    private @Nullable String interval;
-    private @Nullable Boolean runImmediately;
+    private final @Nullable String interval;
+    private final @Nullable Boolean runImmediately;
     /**
      * @return Time zone for schedule.
      * 
      */
-    private @Nullable String timeZone;
+    private final @Nullable String timeZone;
     /**
      * @return including FixedRate,Hourly,Daily,Weekly,Cron.
      * 
      */
-    private String type;
+    private final String type;
 
-    private AlertSchedule() {}
+    @CustomType.Constructor
+    private AlertSchedule(
+        @CustomType.Parameter("cronExpression") @Nullable String cronExpression,
+        @CustomType.Parameter("dayOfWeek") @Nullable Integer dayOfWeek,
+        @CustomType.Parameter("delay") @Nullable Integer delay,
+        @CustomType.Parameter("hour") @Nullable Integer hour,
+        @CustomType.Parameter("interval") @Nullable String interval,
+        @CustomType.Parameter("runImmediately") @Nullable Boolean runImmediately,
+        @CustomType.Parameter("timeZone") @Nullable String timeZone,
+        @CustomType.Parameter("type") String type) {
+        this.cronExpression = cronExpression;
+        this.dayOfWeek = dayOfWeek;
+        this.delay = delay;
+        this.hour = hour;
+        this.interval = interval;
+        this.runImmediately = runImmediately;
+        this.timeZone = timeZone;
+        this.type = type;
+    }
+
     /**
      * @return Cron expression when type is Cron.
      * 
@@ -103,7 +122,7 @@ public final class AlertSchedule {
     public static Builder builder(AlertSchedule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String cronExpression;
         private @Nullable Integer dayOfWeek;
@@ -113,7 +132,11 @@ public final class AlertSchedule {
         private @Nullable Boolean runImmediately;
         private @Nullable String timeZone;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(AlertSchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cronExpression = defaults.cronExpression;
@@ -126,57 +149,39 @@ public final class AlertSchedule {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder cronExpression(@Nullable String cronExpression) {
             this.cronExpression = cronExpression;
             return this;
         }
-        @CustomType.Setter
         public Builder dayOfWeek(@Nullable Integer dayOfWeek) {
             this.dayOfWeek = dayOfWeek;
             return this;
         }
-        @CustomType.Setter
         public Builder delay(@Nullable Integer delay) {
             this.delay = delay;
             return this;
         }
-        @CustomType.Setter
         public Builder hour(@Nullable Integer hour) {
             this.hour = hour;
             return this;
         }
-        @CustomType.Setter
         public Builder interval(@Nullable String interval) {
             this.interval = interval;
             return this;
         }
-        @CustomType.Setter
         public Builder runImmediately(@Nullable Boolean runImmediately) {
             this.runImmediately = runImmediately;
             return this;
         }
-        @CustomType.Setter
         public Builder timeZone(@Nullable String timeZone) {
             this.timeZone = timeZone;
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public AlertSchedule build() {
-            final var o = new AlertSchedule();
-            o.cronExpression = cronExpression;
-            o.dayOfWeek = dayOfWeek;
-            o.delay = delay;
-            o.hour = hour;
-            o.interval = interval;
-            o.runImmediately = runImmediately;
-            o.timeZone = timeZone;
-            o.type = type;
-            return o;
+        }        public AlertSchedule build() {
+            return new AlertSchedule(cronExpression, dayOfWeek, delay, hour, interval, runImmediately, timeZone, type);
         }
     }
 }

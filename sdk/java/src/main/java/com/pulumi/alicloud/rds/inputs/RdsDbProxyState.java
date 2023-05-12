@@ -98,6 +98,8 @@ public final class RdsDbProxyState extends com.pulumi.resources.ResourceArgs {
      * - ReadWrite: The proxy terminal connects to the primary instance and can receive both read and write requests.
      * - ReadOnly: The proxy terminal does not connect to the primary instance and can receive only read requests. This is the default value.
      * 
+     * &gt; **NOTE:** Note This setting causes your instance to restart. Proceed with caution.
+     * 
      */
     @Import(name="dbProxyEndpointReadWriteMode")
     private @Nullable Output<String> dbProxyEndpointReadWriteMode;
@@ -106,6 +108,8 @@ public final class RdsDbProxyState extends com.pulumi.resources.ResourceArgs {
      * @return The read and write attributes of the proxy terminal. Valid values:
      * - ReadWrite: The proxy terminal connects to the primary instance and can receive both read and write requests.
      * - ReadOnly: The proxy terminal does not connect to the primary instance and can receive only read requests. This is the default value.
+     * 
+     * &gt; **NOTE:** Note This setting causes your instance to restart. Proceed with caution.
      * 
      */
     public Optional<Output<String>> dbProxyEndpointReadWriteMode() {
@@ -121,6 +125,8 @@ public final class RdsDbProxyState extends com.pulumi.resources.ResourceArgs {
      * - 1: enabled.
      * - 0: disabled.
      * 
+     * &gt; **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
+     * 
      */
     @Import(name="dbProxyFeatures")
     private @Nullable Output<String> dbProxyFeatures;
@@ -133,6 +139,8 @@ public final class RdsDbProxyState extends com.pulumi.resources.ResourceArgs {
      *   Valid status values:
      * - 1: enabled.
      * - 0: disabled.
+     * 
+     * &gt; **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
      * 
      */
     public Optional<Output<String>> dbProxyFeatures() {
@@ -196,6 +204,8 @@ public final class RdsDbProxyState extends com.pulumi.resources.ResourceArgs {
      * - MaintainTime: ApsaraDB RDS applies the new settings during the maintenance window that you specified. For more information, see Modify the maintenance window.
      * - SpecificTime: ApsaraDB RDS applies the new settings at a specified point in time.
      * 
+     * &gt; **NOTE:** Note If you set the EffectiveTime parameter to SpecificTime, you must specify the EffectiveSpecificTime parameter.
+     * 
      */
     @Import(name="effectiveTime")
     private @Nullable Output<String> effectiveTime;
@@ -205,6 +215,8 @@ public final class RdsDbProxyState extends com.pulumi.resources.ResourceArgs {
      * - Immediate: ApsaraDB RDS immediately applies the new settings.
      * - MaintainTime: ApsaraDB RDS applies the new settings during the maintenance window that you specified. For more information, see Modify the maintenance window.
      * - SpecificTime: ApsaraDB RDS applies the new settings at a specified point in time.
+     * 
+     * &gt; **NOTE:** Note If you set the EffectiveTime parameter to SpecificTime, you must specify the EffectiveSpecificTime parameter.
      * 
      */
     public Optional<Output<String>> effectiveTime() {
@@ -261,6 +273,8 @@ public final class RdsDbProxyState extends com.pulumi.resources.ResourceArgs {
      * - Standard: ApsaraDB RDS automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
      * - Custom: You must manually allocate read weights to the instance and its read-only instances.
      * 
+     * &gt; **NOTE:** Note If you set the ReadOnlyInstanceDistributionType parameter to Custom, you must specify the ReadOnlyInstanceWeight parameter.
+     * 
      */
     @Import(name="readOnlyInstanceDistributionType")
     private @Nullable Output<String> readOnlyInstanceDistributionType;
@@ -270,6 +284,8 @@ public final class RdsDbProxyState extends com.pulumi.resources.ResourceArgs {
      * - Standard: ApsaraDB RDS automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
      * - Custom: You must manually allocate read weights to the instance and its read-only instances.
      * 
+     * &gt; **NOTE:** Note If you set the ReadOnlyInstanceDistributionType parameter to Custom, you must specify the ReadOnlyInstanceWeight parameter.
+     * 
      */
     public Optional<Output<String>> readOnlyInstanceDistributionType() {
         return Optional.ofNullable(this.readOnlyInstanceDistributionType);
@@ -278,12 +294,16 @@ public final class RdsDbProxyState extends com.pulumi.resources.ResourceArgs {
     /**
      * The maximum latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, ApsaraDB RDS no longer forwards read requests to the read-only instance. If you do not specify this parameter, the default value of this parameter is retained. Unit: seconds. Valid values: 0 to 3600.
      * 
+     * &gt; **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
+     * 
      */
     @Import(name="readOnlyInstanceMaxDelayTime")
     private @Nullable Output<Integer> readOnlyInstanceMaxDelayTime;
 
     /**
      * @return The maximum latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, ApsaraDB RDS no longer forwards read requests to the read-only instance. If you do not specify this parameter, the default value of this parameter is retained. Unit: seconds. Valid values: 0 to 3600.
+     * 
+     * &gt; **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
      * 
      */
     public Optional<Output<Integer>> readOnlyInstanceMaxDelayTime() {
@@ -557,6 +577,8 @@ public final class RdsDbProxyState extends com.pulumi.resources.ResourceArgs {
          * - ReadWrite: The proxy terminal connects to the primary instance and can receive both read and write requests.
          * - ReadOnly: The proxy terminal does not connect to the primary instance and can receive only read requests. This is the default value.
          * 
+         * &gt; **NOTE:** Note This setting causes your instance to restart. Proceed with caution.
+         * 
          * @return builder
          * 
          */
@@ -569,6 +591,8 @@ public final class RdsDbProxyState extends com.pulumi.resources.ResourceArgs {
          * @param dbProxyEndpointReadWriteMode The read and write attributes of the proxy terminal. Valid values:
          * - ReadWrite: The proxy terminal connects to the primary instance and can receive both read and write requests.
          * - ReadOnly: The proxy terminal does not connect to the primary instance and can receive only read requests. This is the default value.
+         * 
+         * &gt; **NOTE:** Note This setting causes your instance to restart. Proceed with caution.
          * 
          * @return builder
          * 
@@ -586,6 +610,8 @@ public final class RdsDbProxyState extends com.pulumi.resources.ResourceArgs {
          * - 1: enabled.
          * - 0: disabled.
          * 
+         * &gt; **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
+         * 
          * @return builder
          * 
          */
@@ -602,6 +628,8 @@ public final class RdsDbProxyState extends com.pulumi.resources.ResourceArgs {
          *   Valid status values:
          * - 1: enabled.
          * - 0: disabled.
+         * 
+         * &gt; **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
          * 
          * @return builder
          * 
@@ -685,6 +713,8 @@ public final class RdsDbProxyState extends com.pulumi.resources.ResourceArgs {
          * - MaintainTime: ApsaraDB RDS applies the new settings during the maintenance window that you specified. For more information, see Modify the maintenance window.
          * - SpecificTime: ApsaraDB RDS applies the new settings at a specified point in time.
          * 
+         * &gt; **NOTE:** Note If you set the EffectiveTime parameter to SpecificTime, you must specify the EffectiveSpecificTime parameter.
+         * 
          * @return builder
          * 
          */
@@ -698,6 +728,8 @@ public final class RdsDbProxyState extends com.pulumi.resources.ResourceArgs {
          * - Immediate: ApsaraDB RDS immediately applies the new settings.
          * - MaintainTime: ApsaraDB RDS applies the new settings during the maintenance window that you specified. For more information, see Modify the maintenance window.
          * - SpecificTime: ApsaraDB RDS applies the new settings at a specified point in time.
+         * 
+         * &gt; **NOTE:** Note If you set the EffectiveTime parameter to SpecificTime, you must specify the EffectiveSpecificTime parameter.
          * 
          * @return builder
          * 
@@ -774,6 +806,8 @@ public final class RdsDbProxyState extends com.pulumi.resources.ResourceArgs {
          * - Standard: ApsaraDB RDS automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
          * - Custom: You must manually allocate read weights to the instance and its read-only instances.
          * 
+         * &gt; **NOTE:** Note If you set the ReadOnlyInstanceDistributionType parameter to Custom, you must specify the ReadOnlyInstanceWeight parameter.
+         * 
          * @return builder
          * 
          */
@@ -787,6 +821,8 @@ public final class RdsDbProxyState extends com.pulumi.resources.ResourceArgs {
          * - Standard: ApsaraDB RDS automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
          * - Custom: You must manually allocate read weights to the instance and its read-only instances.
          * 
+         * &gt; **NOTE:** Note If you set the ReadOnlyInstanceDistributionType parameter to Custom, you must specify the ReadOnlyInstanceWeight parameter.
+         * 
          * @return builder
          * 
          */
@@ -796,6 +832,8 @@ public final class RdsDbProxyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param readOnlyInstanceMaxDelayTime The maximum latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, ApsaraDB RDS no longer forwards read requests to the read-only instance. If you do not specify this parameter, the default value of this parameter is retained. Unit: seconds. Valid values: 0 to 3600.
+         * 
+         * &gt; **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
          * 
          * @return builder
          * 
@@ -807,6 +845,8 @@ public final class RdsDbProxyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param readOnlyInstanceMaxDelayTime The maximum latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, ApsaraDB RDS no longer forwards read requests to the read-only instance. If you do not specify this parameter, the default value of this parameter is retained. Unit: seconds. Valid values: 0 to 3600.
+         * 
+         * &gt; **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
          * 
          * @return builder
          * 

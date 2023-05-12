@@ -13,29 +13,50 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDiskTypesResult {
-    private String clusterType;
-    private String destinationResource;
+    private final String clusterType;
+    private final String destinationResource;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of data disk and system disk type IDs.
      * 
      */
-    private List<String> ids;
-    private String instanceChargeType;
-    private String instanceType;
-    private @Nullable String outputFile;
+    private final List<String> ids;
+    private final String instanceChargeType;
+    private final String instanceType;
+    private final @Nullable String outputFile;
     /**
      * @return A list of emr instance types. Each element contains the following attributes:
      * 
      */
-    private List<GetDiskTypesType> types;
-    private @Nullable String zoneId;
+    private final List<GetDiskTypesType> types;
+    private final @Nullable String zoneId;
 
-    private GetDiskTypesResult() {}
+    @CustomType.Constructor
+    private GetDiskTypesResult(
+        @CustomType.Parameter("clusterType") String clusterType,
+        @CustomType.Parameter("destinationResource") String destinationResource,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceChargeType") String instanceChargeType,
+        @CustomType.Parameter("instanceType") String instanceType,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("types") List<GetDiskTypesType> types,
+        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
+        this.clusterType = clusterType;
+        this.destinationResource = destinationResource;
+        this.id = id;
+        this.ids = ids;
+        this.instanceChargeType = instanceChargeType;
+        this.instanceType = instanceType;
+        this.outputFile = outputFile;
+        this.types = types;
+        this.zoneId = zoneId;
+    }
+
     public String clusterType() {
         return this.clusterType;
     }
@@ -83,7 +104,7 @@ public final class GetDiskTypesResult {
     public static Builder builder(GetDiskTypesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String clusterType;
         private String destinationResource;
@@ -94,7 +115,11 @@ public final class GetDiskTypesResult {
         private @Nullable String outputFile;
         private List<GetDiskTypesType> types;
         private @Nullable String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDiskTypesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterType = defaults.clusterType;
@@ -108,22 +133,18 @@ public final class GetDiskTypesResult {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder clusterType(String clusterType) {
             this.clusterType = Objects.requireNonNull(clusterType);
             return this;
         }
-        @CustomType.Setter
         public Builder destinationResource(String destinationResource) {
             this.destinationResource = Objects.requireNonNull(destinationResource);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -131,22 +152,18 @@ public final class GetDiskTypesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceChargeType(String instanceChargeType) {
             this.instanceChargeType = Objects.requireNonNull(instanceChargeType);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder types(List<GetDiskTypesType> types) {
             this.types = Objects.requireNonNull(types);
             return this;
@@ -154,23 +171,11 @@ public final class GetDiskTypesResult {
         public Builder types(GetDiskTypesType... types) {
             return types(List.of(types));
         }
-        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }
-        public GetDiskTypesResult build() {
-            final var o = new GetDiskTypesResult();
-            o.clusterType = clusterType;
-            o.destinationResource = destinationResource;
-            o.id = id;
-            o.ids = ids;
-            o.instanceChargeType = instanceChargeType;
-            o.instanceType = instanceType;
-            o.outputFile = outputFile;
-            o.types = types;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetDiskTypesResult build() {
+            return new GetDiskTypesResult(clusterType, destinationResource, id, ids, instanceChargeType, instanceType, outputFile, types, zoneId);
         }
     }
 }

@@ -14,9 +14,17 @@ public final class GetMscSubSubscriptionsPlainArgs extends com.pulumi.resources.
 
     public static final GetMscSubSubscriptionsPlainArgs Empty = new GetMscSubSubscriptionsPlainArgs();
 
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable String outputFile;
 
+    /**
+     * @return File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -45,6 +53,12 @@ public final class GetMscSubSubscriptionsPlainArgs extends com.pulumi.resources.
             $ = new GetMscSubSubscriptionsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
             return this;

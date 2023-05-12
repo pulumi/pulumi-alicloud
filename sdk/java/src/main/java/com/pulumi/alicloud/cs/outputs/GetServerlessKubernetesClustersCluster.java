@@ -17,46 +17,69 @@ public final class GetServerlessKubernetesClustersCluster {
      * @return Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
      * 
      */
-    private GetServerlessKubernetesClustersClusterConnections connections;
+    private final GetServerlessKubernetesClustersClusterConnections connections;
     /**
      * @return Whether the cluster support delete protection.
      * 
      */
-    private Boolean deletionProtection;
-    private Boolean endpointPublicAccessEnabled;
+    private final Boolean deletionProtection;
+    private final Boolean endpointPublicAccessEnabled;
     /**
      * @return The ID of the container cluster.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The name of the container cluster.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The ID of nat gateway used to launch kubernetes cluster.
      * 
      */
-    private String natGatewayId;
+    private final String natGatewayId;
     /**
      * @return The ID of security group where the current cluster  is located.
      * 
      */
-    private String securityGroupId;
-    private Map<String,Object> tags;
+    private final String securityGroupId;
+    private final Map<String,Object> tags;
     /**
      * @return The ID of VPC where the current cluster is located.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
     /**
      * @return The ID of VSwitch where the current cluster is located.
      * 
      */
-    private String vswitchId;
+    private final String vswitchId;
 
-    private GetServerlessKubernetesClustersCluster() {}
+    @CustomType.Constructor
+    private GetServerlessKubernetesClustersCluster(
+        @CustomType.Parameter("connections") GetServerlessKubernetesClustersClusterConnections connections,
+        @CustomType.Parameter("deletionProtection") Boolean deletionProtection,
+        @CustomType.Parameter("endpointPublicAccessEnabled") Boolean endpointPublicAccessEnabled,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("natGatewayId") String natGatewayId,
+        @CustomType.Parameter("securityGroupId") String securityGroupId,
+        @CustomType.Parameter("tags") Map<String,Object> tags,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("vswitchId") String vswitchId) {
+        this.connections = connections;
+        this.deletionProtection = deletionProtection;
+        this.endpointPublicAccessEnabled = endpointPublicAccessEnabled;
+        this.id = id;
+        this.name = name;
+        this.natGatewayId = natGatewayId;
+        this.securityGroupId = securityGroupId;
+        this.tags = tags;
+        this.vpcId = vpcId;
+        this.vswitchId = vswitchId;
+    }
+
     /**
      * @return Map of serverless cluster connection information. It contains several attributes to `Block Connections`.
      * 
@@ -127,7 +150,7 @@ public final class GetServerlessKubernetesClustersCluster {
     public static Builder builder(GetServerlessKubernetesClustersCluster defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private GetServerlessKubernetesClustersClusterConnections connections;
         private Boolean deletionProtection;
@@ -139,7 +162,11 @@ public final class GetServerlessKubernetesClustersCluster {
         private Map<String,Object> tags;
         private String vpcId;
         private String vswitchId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServerlessKubernetesClustersCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connections = defaults.connections;
@@ -154,69 +181,47 @@ public final class GetServerlessKubernetesClustersCluster {
     	      this.vswitchId = defaults.vswitchId;
         }
 
-        @CustomType.Setter
         public Builder connections(GetServerlessKubernetesClustersClusterConnections connections) {
             this.connections = Objects.requireNonNull(connections);
             return this;
         }
-        @CustomType.Setter
         public Builder deletionProtection(Boolean deletionProtection) {
             this.deletionProtection = Objects.requireNonNull(deletionProtection);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointPublicAccessEnabled(Boolean endpointPublicAccessEnabled) {
             this.endpointPublicAccessEnabled = Objects.requireNonNull(endpointPublicAccessEnabled);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder natGatewayId(String natGatewayId) {
             this.natGatewayId = Objects.requireNonNull(natGatewayId);
             return this;
         }
-        @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
             this.securityGroupId = Objects.requireNonNull(securityGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }
-        public GetServerlessKubernetesClustersCluster build() {
-            final var o = new GetServerlessKubernetesClustersCluster();
-            o.connections = connections;
-            o.deletionProtection = deletionProtection;
-            o.endpointPublicAccessEnabled = endpointPublicAccessEnabled;
-            o.id = id;
-            o.name = name;
-            o.natGatewayId = natGatewayId;
-            o.securityGroupId = securityGroupId;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+        }        public GetServerlessKubernetesClustersCluster build() {
+            return new GetServerlessKubernetesClustersCluster(connections, deletionProtection, endpointPublicAccessEnabled, id, name, natGatewayId, securityGroupId, tags, vpcId, vswitchId);
         }
     }
 }

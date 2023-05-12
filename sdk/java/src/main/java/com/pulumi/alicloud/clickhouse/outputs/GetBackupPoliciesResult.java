@@ -13,16 +13,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBackupPoliciesResult {
-    private String dbClusterId;
+    private final String dbClusterId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private @Nullable String outputFile;
-    private List<GetBackupPoliciesPolicy> policies;
+    private final String id;
+    private final @Nullable String outputFile;
+    private final List<GetBackupPoliciesPolicy> policies;
 
-    private GetBackupPoliciesResult() {}
+    @CustomType.Constructor
+    private GetBackupPoliciesResult(
+        @CustomType.Parameter("dbClusterId") String dbClusterId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("policies") List<GetBackupPoliciesPolicy> policies) {
+        this.dbClusterId = dbClusterId;
+        this.id = id;
+        this.outputFile = outputFile;
+        this.policies = policies;
+    }
+
     public String dbClusterId() {
         return this.dbClusterId;
     }
@@ -47,13 +58,17 @@ public final class GetBackupPoliciesResult {
     public static Builder builder(GetBackupPoliciesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String dbClusterId;
         private String id;
         private @Nullable String outputFile;
         private List<GetBackupPoliciesPolicy> policies;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBackupPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbClusterId = defaults.dbClusterId;
@@ -62,36 +77,26 @@ public final class GetBackupPoliciesResult {
     	      this.policies = defaults.policies;
         }
 
-        @CustomType.Setter
         public Builder dbClusterId(String dbClusterId) {
             this.dbClusterId = Objects.requireNonNull(dbClusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder policies(List<GetBackupPoliciesPolicy> policies) {
             this.policies = Objects.requireNonNull(policies);
             return this;
         }
         public Builder policies(GetBackupPoliciesPolicy... policies) {
             return policies(List.of(policies));
-        }
-        public GetBackupPoliciesResult build() {
-            final var o = new GetBackupPoliciesResult();
-            o.dbClusterId = dbClusterId;
-            o.id = id;
-            o.outputFile = outputFile;
-            o.policies = policies;
-            return o;
+        }        public GetBackupPoliciesResult build() {
+            return new GetBackupPoliciesResult(dbClusterId, id, outputFile, policies);
         }
     }
 }

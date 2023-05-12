@@ -54,7 +54,8 @@ func GetControlPolicyAttachments(ctx *pulumi.Context, args *GetControlPolicyAtta
 // A collection of arguments for invoking getControlPolicyAttachments.
 type GetControlPolicyAttachmentsArgs struct {
 	// The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`
-	Language   *string `pulumi:"language"`
+	Language *string `pulumi:"language"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The type of policy.
 	PolicyType *string `pulumi:"policyType"`
@@ -90,7 +91,8 @@ func GetControlPolicyAttachmentsOutput(ctx *pulumi.Context, args GetControlPolic
 // A collection of arguments for invoking getControlPolicyAttachments.
 type GetControlPolicyAttachmentsOutputArgs struct {
 	// The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`
-	Language   pulumi.StringPtrInput `pulumi:"language"`
+	Language pulumi.StringPtrInput `pulumi:"language"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The type of policy.
 	PolicyType pulumi.StringPtrInput `pulumi:"policyType"`

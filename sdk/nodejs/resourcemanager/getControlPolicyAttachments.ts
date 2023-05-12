@@ -44,6 +44,9 @@ export interface GetControlPolicyAttachmentsArgs {
      * The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`
      */
     language?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The type of policy.
@@ -101,6 +104,9 @@ export interface GetControlPolicyAttachmentsOutputArgs {
      * The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`
      */
     language?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The type of policy.

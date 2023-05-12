@@ -58,7 +58,8 @@ type GetDeliveriesArgs struct {
 	// A list of Delivery IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by delivery channel name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
 	Status *int `pulumi:"status"`
@@ -94,7 +95,8 @@ type GetDeliveriesOutputArgs struct {
 	// A list of Delivery IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by delivery channel name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
 	Status pulumi.IntPtrInput `pulumi:"status"`

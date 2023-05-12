@@ -18,35 +18,60 @@ public final class GetTopicsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
+    private final String id;
+    private final List<String> ids;
     /**
      * @return The instance_id of the instance.
      * 
      */
-    private String instanceId;
-    private @Nullable String nameRegex;
+    private final String instanceId;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of topic names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
     /**
      * @return The name of the topic.
      * 
      */
-    private @Nullable String topic;
+    private final @Nullable String topic;
     /**
      * @return A list of topics. Each element contains the following attributes:
      * 
      */
-    private List<GetTopicsTopic> topics;
-    private Integer totalCount;
+    private final List<GetTopicsTopic> topics;
+    private final Integer totalCount;
 
-    private GetTopicsResult() {}
+    @CustomType.Constructor
+    private GetTopicsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
+        @CustomType.Parameter("topic") @Nullable String topic,
+        @CustomType.Parameter("topics") List<GetTopicsTopic> topics,
+        @CustomType.Parameter("totalCount") Integer totalCount) {
+        this.id = id;
+        this.ids = ids;
+        this.instanceId = instanceId;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+        this.topic = topic;
+        this.topics = topics;
+        this.totalCount = totalCount;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -108,7 +133,7 @@ public final class GetTopicsResult {
     public static Builder builder(GetTopicsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -121,7 +146,11 @@ public final class GetTopicsResult {
         private @Nullable String topic;
         private List<GetTopicsTopic> topics;
         private Integer totalCount;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTopicsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -137,12 +166,10 @@ public final class GetTopicsResult {
     	      this.totalCount = defaults.totalCount;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -150,17 +177,14 @@ public final class GetTopicsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -168,27 +192,22 @@ public final class GetTopicsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
-        @CustomType.Setter
         public Builder topic(@Nullable String topic) {
             this.topic = topic;
             return this;
         }
-        @CustomType.Setter
         public Builder topics(List<GetTopicsTopic> topics) {
             this.topics = Objects.requireNonNull(topics);
             return this;
@@ -196,25 +215,11 @@ public final class GetTopicsResult {
         public Builder topics(GetTopicsTopic... topics) {
             return topics(List.of(topics));
         }
-        @CustomType.Setter
         public Builder totalCount(Integer totalCount) {
             this.totalCount = Objects.requireNonNull(totalCount);
             return this;
-        }
-        public GetTopicsResult build() {
-            final var o = new GetTopicsResult();
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.topic = topic;
-            o.topics = topics;
-            o.totalCount = totalCount;
-            return o;
+        }        public GetTopicsResult build() {
+            return new GetTopicsResult(id, ids, instanceId, nameRegex, names, outputFile, pageNumber, pageSize, topic, topics, totalCount);
         }
     }
 }

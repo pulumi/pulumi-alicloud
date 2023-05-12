@@ -78,6 +78,12 @@ export class DomainResource extends pulumi.CustomResource {
      * The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
      */
     public readonly httpsExt!: pulumi.Output<string>;
+    /**
+     * A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+     * **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite.
+     * So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     */
     public readonly instanceIds!: pulumi.Output<string[]>;
     /**
      * Protocol type and port number information.
@@ -152,6 +158,12 @@ export interface DomainResourceState {
      * The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
      */
     httpsExt?: pulumi.Input<string>;
+    /**
+     * A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+     * **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite.
+     * So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     */
     instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Protocol type and port number information.
@@ -179,6 +191,12 @@ export interface DomainResourceArgs {
      * The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
      */
     httpsExt?: pulumi.Input<string>;
+    /**
+     * A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+     * **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite.
+     * So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     */
     instanceIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Protocol type and port number information.

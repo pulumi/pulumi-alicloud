@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string RegionId;
         /// <summary>
-        /// The Id of resource group which the instance belongs.
+        /// The ID of resource group which the instance belongs.
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>

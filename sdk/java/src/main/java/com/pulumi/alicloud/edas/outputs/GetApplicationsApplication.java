@@ -14,39 +14,56 @@ public final class GetApplicationsApplication {
      * @return The ID of the application that you want to deploy.
      * 
      */
-    private String appId;
+    private final String appId;
     /**
      * @return The name of your EDAS application. Only letters &#39;-&#39; &#39;_&#39; and numbers are allowed. The length cannot exceed 36 characters.
      * 
      */
-    private String appName;
+    private final String appName;
     /**
      * @return The type of the package for the deployment of the application that you want to create. The valid values are: WAR and JAR. We strongly recommend you to set this parameter when creating the application.
      * 
      */
-    private String applicationType;
+    private final String applicationType;
     /**
      * @return The package ID of Enterprise Distributed Application Service (EDAS) Container.
      * 
      */
-    private Integer buildPackageId;
+    private final Integer buildPackageId;
     /**
      * @return The ID of the cluster that you want to create the application.
      * 
      */
-    private String clusterId;
+    private final String clusterId;
     /**
      * @return The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
      * 
      */
-    private Integer clusterType;
+    private final Integer clusterType;
     /**
      * @return The ID of the namespace the application belongs to.
      * 
      */
-    private String regionId;
+    private final String regionId;
 
-    private GetApplicationsApplication() {}
+    @CustomType.Constructor
+    private GetApplicationsApplication(
+        @CustomType.Parameter("appId") String appId,
+        @CustomType.Parameter("appName") String appName,
+        @CustomType.Parameter("applicationType") String applicationType,
+        @CustomType.Parameter("buildPackageId") Integer buildPackageId,
+        @CustomType.Parameter("clusterId") String clusterId,
+        @CustomType.Parameter("clusterType") Integer clusterType,
+        @CustomType.Parameter("regionId") String regionId) {
+        this.appId = appId;
+        this.appName = appName;
+        this.applicationType = applicationType;
+        this.buildPackageId = buildPackageId;
+        this.clusterId = clusterId;
+        this.clusterType = clusterType;
+        this.regionId = regionId;
+    }
+
     /**
      * @return The ID of the application that you want to deploy.
      * 
@@ -104,7 +121,7 @@ public final class GetApplicationsApplication {
     public static Builder builder(GetApplicationsApplication defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String appId;
         private String appName;
@@ -113,7 +130,11 @@ public final class GetApplicationsApplication {
         private String clusterId;
         private Integer clusterType;
         private String regionId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetApplicationsApplication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appId = defaults.appId;
@@ -125,51 +146,35 @@ public final class GetApplicationsApplication {
     	      this.regionId = defaults.regionId;
         }
 
-        @CustomType.Setter
         public Builder appId(String appId) {
             this.appId = Objects.requireNonNull(appId);
             return this;
         }
-        @CustomType.Setter
         public Builder appName(String appName) {
             this.appName = Objects.requireNonNull(appName);
             return this;
         }
-        @CustomType.Setter
         public Builder applicationType(String applicationType) {
             this.applicationType = Objects.requireNonNull(applicationType);
             return this;
         }
-        @CustomType.Setter
         public Builder buildPackageId(Integer buildPackageId) {
             this.buildPackageId = Objects.requireNonNull(buildPackageId);
             return this;
         }
-        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder clusterType(Integer clusterType) {
             this.clusterType = Objects.requireNonNull(clusterType);
             return this;
         }
-        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
-        }
-        public GetApplicationsApplication build() {
-            final var o = new GetApplicationsApplication();
-            o.appId = appId;
-            o.appName = appName;
-            o.applicationType = applicationType;
-            o.buildPackageId = buildPackageId;
-            o.clusterId = clusterId;
-            o.clusterType = clusterType;
-            o.regionId = regionId;
-            return o;
+        }        public GetApplicationsApplication build() {
+            return new GetApplicationsApplication(appId, appName, applicationType, buildPackageId, clusterId, clusterType, regionId);
         }
     }
 }

@@ -13,14 +13,21 @@ public final class GetContainerGroupsGroupInitContainerEnvironmentVar {
      * @return The name of the variable.
      * 
      */
-    private String key;
+    private final String key;
     /**
      * @return The value of the variable.
      * 
      */
-    private String value;
+    private final String value;
 
-    private GetContainerGroupsGroupInitContainerEnvironmentVar() {}
+    @CustomType.Constructor
+    private GetContainerGroupsGroupInitContainerEnvironmentVar(
+        @CustomType.Parameter("key") String key,
+        @CustomType.Parameter("value") String value) {
+        this.key = key;
+        this.value = value;
+    }
+
     /**
      * @return The name of the variable.
      * 
@@ -43,32 +50,30 @@ public final class GetContainerGroupsGroupInitContainerEnvironmentVar {
     public static Builder builder(GetContainerGroupsGroupInitContainerEnvironmentVar defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String key;
         private String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetContainerGroupsGroupInitContainerEnvironmentVar defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
-        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }
-        public GetContainerGroupsGroupInitContainerEnvironmentVar build() {
-            final var o = new GetContainerGroupsGroupInitContainerEnvironmentVar();
-            o.key = key;
-            o.value = value;
-            return o;
+        }        public GetContainerGroupsGroupInitContainerEnvironmentVar build() {
+            return new GetContainerGroupsGroupInitContainerEnvironmentVar(key, value);
         }
     }
 }

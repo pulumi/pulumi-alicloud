@@ -147,6 +147,7 @@ def get_control_policies(enable_details: Optional[bool] = None,
     :param Sequence[str] ids: A list of Control Policy IDs.
     :param str language: The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`.
     :param str name_regex: A regex string to filter results by Control Policy name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str policy_type: The type of policy.
     """
     __args__ = dict()
@@ -202,6 +203,7 @@ def get_control_policies_output(enable_details: Optional[pulumi.Input[Optional[b
     :param Sequence[str] ids: A list of Control Policy IDs.
     :param str language: The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`.
     :param str name_regex: A regex string to filter results by Control Policy name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str policy_type: The type of policy.
     """
     ...

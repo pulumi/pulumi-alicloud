@@ -10,6 +10,110 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
+    /// Provides a VPC switch resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     {
+    ///         VpcName = "tf_test_foo",
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var vsw = new AliCloud.Vpc.Switch("vsw", new()
+    ///     {
+    ///         VpcId = vpc.Id,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         ZoneId = "cn-beijing-b",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     {
+    ///         VpcName = "tf_test_foo",
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var cidrBlocks = new AliCloud.Vpc.Ipv4CidrBlock("cidrBlocks", new()
+    ///     {
+    ///         VpcId = vpc.Id,
+    ///         SecondaryCidrBlock = "192.163.0.0/16",
+    ///     });
+    /// 
+    ///     var island_nat = new AliCloud.Vpc.Switch("island-nat", new()
+    ///     {
+    ///         VpcId = cidrBlocks.VpcId,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         ZoneId = "cn-beijing-b",
+    ///         VswitchName = "example_value",
+    ///         Tags = 
+    ///         {
+    ///             { "BuiltBy", "example_value" },
+    ///             { "cnm_version", "example_value" },
+    ///             { "Environment", "example_value" },
+    ///             { "ManagedBy", "example_value" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Create a switch associated with the additional network segment
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     {
+    ///         VpcName = "tf_test_foo",
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var example = new AliCloud.Vpc.Ipv4CidrBlock("example", new()
+    ///     {
+    ///         VpcId = alicloud_vpc.Default.Id,
+    ///         SecondaryCidrBlock = "192.163.0.0/16",
+    ///     });
+    /// 
+    ///     var vsw = new AliCloud.Vpc.Switch("vsw", new()
+    ///     {
+    ///         VpcId = example.VpcId,
+    ///         CidrBlock = "192.163.0.0/24",
+    ///         ZoneId = "cn-beijing-b",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Module Support
+    /// 
+    /// You can use to the existing vpc module
+    /// to create a VPC and several VSwitches one-click.
+    /// 
     /// ## Import
     /// 
     /// Vswitch can be imported using the id, e.g.

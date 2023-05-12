@@ -27,8 +27,9 @@ type GetTransitRouterVpcAttachmentsArgs struct {
 	// ID of the CEN instance.
 	CenId string `pulumi:"cenId"`
 	// A list of resource id. The element value is same as `transitRouterId`.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
 	Status *string `pulumi:"status"`
 	// The transit router ID.
@@ -68,8 +69,9 @@ type GetTransitRouterVpcAttachmentsOutputArgs struct {
 	// ID of the CEN instance.
 	CenId pulumi.StringInput `pulumi:"cenId"`
 	// A list of resource id. The element value is same as `transitRouterId`.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The transit router ID.

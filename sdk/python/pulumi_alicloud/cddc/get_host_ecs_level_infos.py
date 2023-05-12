@@ -113,6 +113,7 @@ def get_host_ecs_level_infos(db_type: Optional[str] = None,
 
     :param str db_type: The database engine of the host. Valid values: `mysql`, `mssql`, `pgsql`, `redis`.
     :param str image_category: Host image. Valid values: `WindowsWithMssqlEntAlwaysonLicense`, `WindowsWithMssqlStdLicense`, `WindowsWithMssqlEntLicense`, `WindowsWithMssqlWebLicense`, `AliLinux`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str storage_type: The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
     :param str zone_id: The ID of the zone in the region.
     """
@@ -150,6 +151,7 @@ def get_host_ecs_level_infos_output(db_type: Optional[pulumi.Input[str]] = None,
 
     :param str db_type: The database engine of the host. Valid values: `mysql`, `mssql`, `pgsql`, `redis`.
     :param str image_category: Host image. Valid values: `WindowsWithMssqlEntAlwaysonLicense`, `WindowsWithMssqlStdLicense`, `WindowsWithMssqlEntLicense`, `WindowsWithMssqlWebLicense`, `AliLinux`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str storage_type: The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
     :param str zone_id: The ID of the zone in the region.
     """

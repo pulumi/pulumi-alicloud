@@ -16,64 +16,91 @@ public final class GetSecretsSecret {
      * @return (Available in 1.124.0+) A mapping of tags to assign to the resource.
      * 
      */
-    private String arn;
+    private final String arn;
     /**
      * @return (Available in 1.124.0+)  The description of the secret.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return (Available in 1.124.0+)  The ID of the KMS CMK that is used to encrypt the secret value.
      * 
      */
-    private String encryptionKeyId;
+    private final String encryptionKeyId;
     /**
      * @return ID of the Kms Secret. The value is same as KMS secret_name.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Schedule deletion time.
      * 
      */
-    private String plannedDeleteTime;
+    private final String plannedDeleteTime;
     /**
      * @return (Available in 1.124.0+)  The value of the secret that you want to create.
      * 
      */
-    private String secretData;
+    private final String secretData;
     /**
      * @return (Available in 1.124.0+)  The type of the secret data value.
      * 
      */
-    private String secretDataType;
+    private final String secretDataType;
     /**
      * @return Name of the KMS Secret.
      * 
      */
-    private String secretName;
+    private final String secretName;
     /**
      * @return (Available in 1.124.0+)  The type of the secret.
      * 
      */
-    private String secretType;
+    private final String secretType;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
     /**
      * @return (Available in 1.124.0+)  The version number of the initial version.
      * 
      */
-    private String versionId;
+    private final String versionId;
     /**
      * @return (Available in 1.124.0+)  The stage labels that mark the new secret version.
      * 
      */
-    private List<String> versionStages;
+    private final List<String> versionStages;
 
-    private GetSecretsSecret() {}
+    @CustomType.Constructor
+    private GetSecretsSecret(
+        @CustomType.Parameter("arn") String arn,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("encryptionKeyId") String encryptionKeyId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("plannedDeleteTime") String plannedDeleteTime,
+        @CustomType.Parameter("secretData") String secretData,
+        @CustomType.Parameter("secretDataType") String secretDataType,
+        @CustomType.Parameter("secretName") String secretName,
+        @CustomType.Parameter("secretType") String secretType,
+        @CustomType.Parameter("tags") Map<String,Object> tags,
+        @CustomType.Parameter("versionId") String versionId,
+        @CustomType.Parameter("versionStages") List<String> versionStages) {
+        this.arn = arn;
+        this.description = description;
+        this.encryptionKeyId = encryptionKeyId;
+        this.id = id;
+        this.plannedDeleteTime = plannedDeleteTime;
+        this.secretData = secretData;
+        this.secretDataType = secretDataType;
+        this.secretName = secretName;
+        this.secretType = secretType;
+        this.tags = tags;
+        this.versionId = versionId;
+        this.versionStages = versionStages;
+    }
+
     /**
      * @return (Available in 1.124.0+) A mapping of tags to assign to the resource.
      * 
@@ -166,7 +193,7 @@ public final class GetSecretsSecret {
     public static Builder builder(GetSecretsSecret defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String arn;
         private String description;
@@ -180,7 +207,11 @@ public final class GetSecretsSecret {
         private Map<String,Object> tags;
         private String versionId;
         private List<String> versionStages;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetSecretsSecret defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arn = defaults.arn;
@@ -197,84 +228,58 @@ public final class GetSecretsSecret {
     	      this.versionStages = defaults.versionStages;
         }
 
-        @CustomType.Setter
         public Builder arn(String arn) {
             this.arn = Objects.requireNonNull(arn);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder encryptionKeyId(String encryptionKeyId) {
             this.encryptionKeyId = Objects.requireNonNull(encryptionKeyId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder plannedDeleteTime(String plannedDeleteTime) {
             this.plannedDeleteTime = Objects.requireNonNull(plannedDeleteTime);
             return this;
         }
-        @CustomType.Setter
         public Builder secretData(String secretData) {
             this.secretData = Objects.requireNonNull(secretData);
             return this;
         }
-        @CustomType.Setter
         public Builder secretDataType(String secretDataType) {
             this.secretDataType = Objects.requireNonNull(secretDataType);
             return this;
         }
-        @CustomType.Setter
         public Builder secretName(String secretName) {
             this.secretName = Objects.requireNonNull(secretName);
             return this;
         }
-        @CustomType.Setter
         public Builder secretType(String secretType) {
             this.secretType = Objects.requireNonNull(secretType);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
-        @CustomType.Setter
         public Builder versionId(String versionId) {
             this.versionId = Objects.requireNonNull(versionId);
             return this;
         }
-        @CustomType.Setter
         public Builder versionStages(List<String> versionStages) {
             this.versionStages = Objects.requireNonNull(versionStages);
             return this;
         }
         public Builder versionStages(String... versionStages) {
             return versionStages(List.of(versionStages));
-        }
-        public GetSecretsSecret build() {
-            final var o = new GetSecretsSecret();
-            o.arn = arn;
-            o.description = description;
-            o.encryptionKeyId = encryptionKeyId;
-            o.id = id;
-            o.plannedDeleteTime = plannedDeleteTime;
-            o.secretData = secretData;
-            o.secretDataType = secretDataType;
-            o.secretName = secretName;
-            o.secretType = secretType;
-            o.tags = tags;
-            o.versionId = versionId;
-            o.versionStages = versionStages;
-            return o;
+        }        public GetSecretsSecret build() {
+            return new GetSecretsSecret(arn, description, encryptionKeyId, id, plannedDeleteTime, secretData, secretDataType, secretName, secretType, tags, versionId, versionStages);
         }
     }
 }

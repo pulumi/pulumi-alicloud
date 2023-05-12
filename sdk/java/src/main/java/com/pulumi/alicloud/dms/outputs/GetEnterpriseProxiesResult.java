@@ -17,13 +17,26 @@ public final class GetEnterpriseProxiesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String outputFile;
-    private List<GetEnterpriseProxiesProxy> proxies;
-    private @Nullable String tid;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
+    private final List<GetEnterpriseProxiesProxy> proxies;
+    private final @Nullable String tid;
 
-    private GetEnterpriseProxiesResult() {}
+    @CustomType.Constructor
+    private GetEnterpriseProxiesResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("proxies") List<GetEnterpriseProxiesProxy> proxies,
+        @CustomType.Parameter("tid") @Nullable String tid) {
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.proxies = proxies;
+        this.tid = tid;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -51,14 +64,18 @@ public final class GetEnterpriseProxiesResult {
     public static Builder builder(GetEnterpriseProxiesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
         private List<GetEnterpriseProxiesProxy> proxies;
         private @Nullable String tid;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEnterpriseProxiesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -68,12 +85,10 @@ public final class GetEnterpriseProxiesResult {
     	      this.tid = defaults.tid;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -81,12 +96,10 @@ public final class GetEnterpriseProxiesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder proxies(List<GetEnterpriseProxiesProxy> proxies) {
             this.proxies = Objects.requireNonNull(proxies);
             return this;
@@ -94,19 +107,11 @@ public final class GetEnterpriseProxiesResult {
         public Builder proxies(GetEnterpriseProxiesProxy... proxies) {
             return proxies(List.of(proxies));
         }
-        @CustomType.Setter
         public Builder tid(@Nullable String tid) {
             this.tid = tid;
             return this;
-        }
-        public GetEnterpriseProxiesResult build() {
-            final var o = new GetEnterpriseProxiesResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.proxies = proxies;
-            o.tid = tid;
-            return o;
+        }        public GetEnterpriseProxiesResult build() {
+            return new GetEnterpriseProxiesResult(id, ids, outputFile, proxies, tid);
         }
     }
 }

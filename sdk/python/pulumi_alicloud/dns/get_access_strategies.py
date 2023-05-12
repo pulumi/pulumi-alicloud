@@ -163,6 +163,7 @@ def get_access_strategies(enable_details: Optional[bool] = None,
     :param str instance_id: The Id of the associated instance.
     :param str lang: The lang.
     :param str name_regex: A regex string to filter results by Access Strategy name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str strategy_mode: The type of the access policy.
     """
     __args__ = dict()
@@ -227,6 +228,7 @@ def get_access_strategies_output(enable_details: Optional[pulumi.Input[Optional[
     :param str instance_id: The Id of the associated instance.
     :param str lang: The lang.
     :param str name_regex: A regex string to filter results by Access Strategy name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str strategy_mode: The type of the access policy.
     """
     ...

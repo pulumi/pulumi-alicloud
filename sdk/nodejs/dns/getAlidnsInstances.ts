@@ -52,6 +52,9 @@ export interface GetAlidnsInstancesArgs {
      * Language.
      */
     lang?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The IP address of the client.
@@ -117,6 +120,9 @@ export interface GetAlidnsInstancesOutputArgs {
      * Language.
      */
     lang?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The IP address of the client.

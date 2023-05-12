@@ -17,36 +17,55 @@ public final class GetConnectionsResult {
      * @return A list of VPN connections. Each element contains the following attributes:
      * 
      */
-    private List<GetConnectionsConnection> connections;
+    private final List<GetConnectionsConnection> connections;
     /**
      * @return ID of the VPN customer gateway.
      * 
      */
-    private @Nullable String customerGatewayId;
+    private final @Nullable String customerGatewayId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return (Optional) IDs of the VPN connections.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return (Optional) names of the VPN connections.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
     /**
      * @return ID of the VPN gateway.
      * 
      */
-    private @Nullable String vpnGatewayId;
+    private final @Nullable String vpnGatewayId;
 
-    private GetConnectionsResult() {}
+    @CustomType.Constructor
+    private GetConnectionsResult(
+        @CustomType.Parameter("connections") List<GetConnectionsConnection> connections,
+        @CustomType.Parameter("customerGatewayId") @Nullable String customerGatewayId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("vpnGatewayId") @Nullable String vpnGatewayId) {
+        this.connections = connections;
+        this.customerGatewayId = customerGatewayId;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.vpnGatewayId = vpnGatewayId;
+    }
+
     /**
      * @return A list of VPN connections. Each element contains the following attributes:
      * 
@@ -103,7 +122,7 @@ public final class GetConnectionsResult {
     public static Builder builder(GetConnectionsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetConnectionsConnection> connections;
         private @Nullable String customerGatewayId;
@@ -113,7 +132,11 @@ public final class GetConnectionsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable String vpnGatewayId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetConnectionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connections = defaults.connections;
@@ -126,7 +149,6 @@ public final class GetConnectionsResult {
     	      this.vpnGatewayId = defaults.vpnGatewayId;
         }
 
-        @CustomType.Setter
         public Builder connections(List<GetConnectionsConnection> connections) {
             this.connections = Objects.requireNonNull(connections);
             return this;
@@ -134,17 +156,14 @@ public final class GetConnectionsResult {
         public Builder connections(GetConnectionsConnection... connections) {
             return connections(List.of(connections));
         }
-        @CustomType.Setter
         public Builder customerGatewayId(@Nullable String customerGatewayId) {
             this.customerGatewayId = customerGatewayId;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -152,12 +171,10 @@ public final class GetConnectionsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -165,27 +182,15 @@ public final class GetConnectionsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder vpnGatewayId(@Nullable String vpnGatewayId) {
             this.vpnGatewayId = vpnGatewayId;
             return this;
-        }
-        public GetConnectionsResult build() {
-            final var o = new GetConnectionsResult();
-            o.connections = connections;
-            o.customerGatewayId = customerGatewayId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.vpnGatewayId = vpnGatewayId;
-            return o;
+        }        public GetConnectionsResult build() {
+            return new GetConnectionsResult(connections, customerGatewayId, id, ids, nameRegex, names, outputFile, vpnGatewayId);
         }
     }
 }

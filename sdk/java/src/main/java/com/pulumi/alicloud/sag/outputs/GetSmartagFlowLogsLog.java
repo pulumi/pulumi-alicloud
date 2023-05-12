@@ -14,84 +14,119 @@ public final class GetSmartagFlowLogsLog {
      * @return The time interval at which log data of active connections is collected. Valid values: 60 to 6000. Default value: 300. Unit: second.
      * 
      */
-    private Integer activeAging;
+    private final Integer activeAging;
     /**
      * @return The description of the flow log.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the flow log.
      * 
      */
-    private String flowLogId;
+    private final String flowLogId;
     /**
      * @return The name of the flow log.
      * 
      */
-    private String flowLogName;
+    private final String flowLogName;
     /**
      * @return The ID of the Flow Log.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The time interval at which log data of inactive connections is connected. Valid values: 10 to 600. Default value: 15. Unit: second.
      * 
      */
-    private Integer inactiveAging;
+    private final Integer inactiveAging;
     /**
      * @return The name of the Log Service Logstore.
      * 
      */
-    private String logstoreName;
+    private final String logstoreName;
     /**
      * @return The IP address of the NetFlow collector where the flow log is stored.
      * 
      */
-    private String netflowServerIp;
+    private final String netflowServerIp;
     /**
      * @return The port of the NetFlow collector. Default value: 9995.
      * 
      */
-    private Integer netflowServerPort;
+    private final Integer netflowServerPort;
     /**
      * @return The NetFlow version. Default value: V9.
      * 
      */
-    private String netflowVersion;
+    private final String netflowVersion;
     /**
      * @return The location where the flow log is stored. Valid values:  sls: The flow log is stored in Log Service. netflow: The flow log is stored on a NetFlow collector. all: The flow log is stored both in Log Service and on a NetFlow collector.
      * 
      */
-    private String outputType;
+    private final String outputType;
     /**
      * @return The name of the Log Service project.
      * 
      */
-    private String projectName;
+    private final String projectName;
     /**
      * @return The ID of the resource group.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return The ID of the region where Log Service is deployed.
      * 
      */
-    private String slsRegionId;
+    private final String slsRegionId;
     /**
      * @return The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The number of Smart Access gateway (SAG) instances with which the flow log is associated.
      * 
      */
-    private Integer totalSagNum;
+    private final Integer totalSagNum;
 
-    private GetSmartagFlowLogsLog() {}
+    @CustomType.Constructor
+    private GetSmartagFlowLogsLog(
+        @CustomType.Parameter("activeAging") Integer activeAging,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("flowLogId") String flowLogId,
+        @CustomType.Parameter("flowLogName") String flowLogName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("inactiveAging") Integer inactiveAging,
+        @CustomType.Parameter("logstoreName") String logstoreName,
+        @CustomType.Parameter("netflowServerIp") String netflowServerIp,
+        @CustomType.Parameter("netflowServerPort") Integer netflowServerPort,
+        @CustomType.Parameter("netflowVersion") String netflowVersion,
+        @CustomType.Parameter("outputType") String outputType,
+        @CustomType.Parameter("projectName") String projectName,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("slsRegionId") String slsRegionId,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("totalSagNum") Integer totalSagNum) {
+        this.activeAging = activeAging;
+        this.description = description;
+        this.flowLogId = flowLogId;
+        this.flowLogName = flowLogName;
+        this.id = id;
+        this.inactiveAging = inactiveAging;
+        this.logstoreName = logstoreName;
+        this.netflowServerIp = netflowServerIp;
+        this.netflowServerPort = netflowServerPort;
+        this.netflowVersion = netflowVersion;
+        this.outputType = outputType;
+        this.projectName = projectName;
+        this.resourceGroupId = resourceGroupId;
+        this.slsRegionId = slsRegionId;
+        this.status = status;
+        this.totalSagNum = totalSagNum;
+    }
+
     /**
      * @return The time interval at which log data of active connections is collected. Valid values: 60 to 6000. Default value: 300. Unit: second.
      * 
@@ -212,7 +247,7 @@ public final class GetSmartagFlowLogsLog {
     public static Builder builder(GetSmartagFlowLogsLog defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer activeAging;
         private String description;
@@ -230,7 +265,11 @@ public final class GetSmartagFlowLogsLog {
         private String slsRegionId;
         private String status;
         private Integer totalSagNum;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetSmartagFlowLogsLog defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.activeAging = defaults.activeAging;
@@ -251,105 +290,71 @@ public final class GetSmartagFlowLogsLog {
     	      this.totalSagNum = defaults.totalSagNum;
         }
 
-        @CustomType.Setter
         public Builder activeAging(Integer activeAging) {
             this.activeAging = Objects.requireNonNull(activeAging);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder flowLogId(String flowLogId) {
             this.flowLogId = Objects.requireNonNull(flowLogId);
             return this;
         }
-        @CustomType.Setter
         public Builder flowLogName(String flowLogName) {
             this.flowLogName = Objects.requireNonNull(flowLogName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder inactiveAging(Integer inactiveAging) {
             this.inactiveAging = Objects.requireNonNull(inactiveAging);
             return this;
         }
-        @CustomType.Setter
         public Builder logstoreName(String logstoreName) {
             this.logstoreName = Objects.requireNonNull(logstoreName);
             return this;
         }
-        @CustomType.Setter
         public Builder netflowServerIp(String netflowServerIp) {
             this.netflowServerIp = Objects.requireNonNull(netflowServerIp);
             return this;
         }
-        @CustomType.Setter
         public Builder netflowServerPort(Integer netflowServerPort) {
             this.netflowServerPort = Objects.requireNonNull(netflowServerPort);
             return this;
         }
-        @CustomType.Setter
         public Builder netflowVersion(String netflowVersion) {
             this.netflowVersion = Objects.requireNonNull(netflowVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder outputType(String outputType) {
             this.outputType = Objects.requireNonNull(outputType);
             return this;
         }
-        @CustomType.Setter
         public Builder projectName(String projectName) {
             this.projectName = Objects.requireNonNull(projectName);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder slsRegionId(String slsRegionId) {
             this.slsRegionId = Objects.requireNonNull(slsRegionId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder totalSagNum(Integer totalSagNum) {
             this.totalSagNum = Objects.requireNonNull(totalSagNum);
             return this;
-        }
-        public GetSmartagFlowLogsLog build() {
-            final var o = new GetSmartagFlowLogsLog();
-            o.activeAging = activeAging;
-            o.description = description;
-            o.flowLogId = flowLogId;
-            o.flowLogName = flowLogName;
-            o.id = id;
-            o.inactiveAging = inactiveAging;
-            o.logstoreName = logstoreName;
-            o.netflowServerIp = netflowServerIp;
-            o.netflowServerPort = netflowServerPort;
-            o.netflowVersion = netflowVersion;
-            o.outputType = outputType;
-            o.projectName = projectName;
-            o.resourceGroupId = resourceGroupId;
-            o.slsRegionId = slsRegionId;
-            o.status = status;
-            o.totalSagNum = totalSagNum;
-            return o;
+        }        public GetSmartagFlowLogsLog build() {
+            return new GetSmartagFlowLogsLog(activeAging, description, flowLogId, flowLogName, id, inactiveAging, logstoreName, netflowServerIp, netflowServerPort, netflowVersion, outputType, projectName, resourceGroupId, slsRegionId, status, totalSagNum);
         }
     }
 }

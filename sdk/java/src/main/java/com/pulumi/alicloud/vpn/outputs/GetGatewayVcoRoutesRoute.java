@@ -14,49 +14,70 @@ public final class GetGatewayVcoRoutesRoute {
      * @return List of autonomous system numbers through which BGP routing entries pass.
      * 
      */
-    private String asPath;
+    private final String asPath;
     /**
      * @return The creation time of the VPN destination route.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The ID of the Vpn Gateway Vco Routes.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The next hop of the destination route.
      * 
      */
-    private String nextHop;
+    private final String nextHop;
     /**
      * @return The destination network segment of the destination route.
      * 
      */
-    private String routeDest;
+    private final String routeDest;
     /**
      * @return The source CIDR block of the destination route.
      * 
      */
-    private String source;
+    private final String source;
     /**
      * @return The status of the vpn route entry.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The id of the vpn connection.
      * 
      */
-    private String vpnConnectionId;
+    private final String vpnConnectionId;
     /**
      * @return The weight value of the destination route.
      * 
      */
-    private Integer weight;
+    private final Integer weight;
 
-    private GetGatewayVcoRoutesRoute() {}
+    @CustomType.Constructor
+    private GetGatewayVcoRoutesRoute(
+        @CustomType.Parameter("asPath") String asPath,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("nextHop") String nextHop,
+        @CustomType.Parameter("routeDest") String routeDest,
+        @CustomType.Parameter("source") String source,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("vpnConnectionId") String vpnConnectionId,
+        @CustomType.Parameter("weight") Integer weight) {
+        this.asPath = asPath;
+        this.createTime = createTime;
+        this.id = id;
+        this.nextHop = nextHop;
+        this.routeDest = routeDest;
+        this.source = source;
+        this.status = status;
+        this.vpnConnectionId = vpnConnectionId;
+        this.weight = weight;
+    }
+
     /**
      * @return List of autonomous system numbers through which BGP routing entries pass.
      * 
@@ -128,7 +149,7 @@ public final class GetGatewayVcoRoutesRoute {
     public static Builder builder(GetGatewayVcoRoutesRoute defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String asPath;
         private String createTime;
@@ -139,7 +160,11 @@ public final class GetGatewayVcoRoutesRoute {
         private String status;
         private String vpnConnectionId;
         private Integer weight;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetGatewayVcoRoutesRoute defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.asPath = defaults.asPath;
@@ -153,63 +178,43 @@ public final class GetGatewayVcoRoutesRoute {
     	      this.weight = defaults.weight;
         }
 
-        @CustomType.Setter
         public Builder asPath(String asPath) {
             this.asPath = Objects.requireNonNull(asPath);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder nextHop(String nextHop) {
             this.nextHop = Objects.requireNonNull(nextHop);
             return this;
         }
-        @CustomType.Setter
         public Builder routeDest(String routeDest) {
             this.routeDest = Objects.requireNonNull(routeDest);
             return this;
         }
-        @CustomType.Setter
         public Builder source(String source) {
             this.source = Objects.requireNonNull(source);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder vpnConnectionId(String vpnConnectionId) {
             this.vpnConnectionId = Objects.requireNonNull(vpnConnectionId);
             return this;
         }
-        @CustomType.Setter
         public Builder weight(Integer weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
-        }
-        public GetGatewayVcoRoutesRoute build() {
-            final var o = new GetGatewayVcoRoutesRoute();
-            o.asPath = asPath;
-            o.createTime = createTime;
-            o.id = id;
-            o.nextHop = nextHop;
-            o.routeDest = routeDest;
-            o.source = source;
-            o.status = status;
-            o.vpnConnectionId = vpnConnectionId;
-            o.weight = weight;
-            return o;
+        }        public GetGatewayVcoRoutesRoute build() {
+            return new GetGatewayVcoRoutesRoute(asPath, createTime, id, nextHop, routeDest, source, status, vpnConnectionId, weight);
         }
     }
 }

@@ -119,6 +119,7 @@ def get_accelerator_spare_ip_attachments(accelerator_id: Optional[str] = None,
 
     :param str accelerator_id: The ID of the global acceleration instance.
     :param Sequence[str] ids: A list of Accelerator Spare Ip Attachment IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
     """
     __args__ = dict()
@@ -168,6 +169,7 @@ def get_accelerator_spare_ip_attachments_output(accelerator_id: Optional[pulumi.
 
     :param str accelerator_id: The ID of the global acceleration instance.
     :param Sequence[str] ids: A list of Accelerator Spare Ip Attachment IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
     """
     ...

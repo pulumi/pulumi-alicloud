@@ -166,6 +166,7 @@ def get_network_acls(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Network Acl ID.
     :param str name_regex: A regex string to filter results by Network Acl name.
     :param str network_acl_name: The name of the network ACL.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_id: The ID of the associated resource.
     :param str resource_type: The type of the associated resource.
     :param str status: The state of the network ACL.
@@ -229,6 +230,7 @@ def get_network_acls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     :param Sequence[str] ids: A list of Network Acl ID.
     :param str name_regex: A regex string to filter results by Network Acl name.
     :param str network_acl_name: The name of the network ACL.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_id: The ID of the associated resource.
     :param str resource_type: The type of the associated resource.
     :param str status: The state of the network ACL.

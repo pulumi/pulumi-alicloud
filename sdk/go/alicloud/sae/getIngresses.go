@@ -29,8 +29,9 @@ type GetIngressesArgs struct {
 	// A list of Ingress IDs.
 	Ids []string `pulumi:"ids"`
 	// The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
-	NamespaceId string  `pulumi:"namespaceId"`
-	OutputFile  *string `pulumi:"outputFile"`
+	NamespaceId string `pulumi:"namespaceId"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getIngresses.
@@ -64,8 +65,9 @@ type GetIngressesOutputArgs struct {
 	// A list of Ingress IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
-	NamespaceId pulumi.StringInput    `pulumi:"namespaceId"`
-	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
+	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetIngressesOutputArgs) ElementType() reflect.Type {

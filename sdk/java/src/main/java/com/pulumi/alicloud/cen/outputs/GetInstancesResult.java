@@ -19,36 +19,55 @@ public final class GetInstancesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of CEN instances IDs.
      * 
      */
-    private List<String> ids;
+    private final List<String> ids;
     /**
      * @return A list of CEN instances. Each element contains the following attributes:
      * 
      */
-    private List<GetInstancesInstance> instances;
-    private @Nullable String nameRegex;
+    private final List<GetInstancesInstance> instances;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of CEN instances names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
     /**
      * @return Status of the CEN instance, including &#34;Creating&#34;, &#34;Active&#34; and &#34;Deleting&#34;.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
     /**
      * @return A map of tags assigned to the Cen Instance.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private final @Nullable Map<String,Object> tags;
 
-    private GetInstancesResult() {}
+    @CustomType.Constructor
+    private GetInstancesResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instances") List<GetInstancesInstance> instances,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
+        this.id = id;
+        this.ids = ids;
+        this.instances = instances;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.status = status;
+        this.tags = tags;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -105,7 +124,7 @@ public final class GetInstancesResult {
     public static Builder builder(GetInstancesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -115,7 +134,11 @@ public final class GetInstancesResult {
         private @Nullable String outputFile;
         private @Nullable String status;
         private @Nullable Map<String,Object> tags;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -128,12 +151,10 @@ public final class GetInstancesResult {
     	      this.tags = defaults.tags;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -141,7 +162,6 @@ public final class GetInstancesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instances(List<GetInstancesInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -149,12 +169,10 @@ public final class GetInstancesResult {
         public Builder instances(GetInstancesInstance... instances) {
             return instances(List.of(instances));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -162,32 +180,19 @@ public final class GetInstancesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }
-        public GetInstancesResult build() {
-            final var o = new GetInstancesResult();
-            o.id = id;
-            o.ids = ids;
-            o.instances = instances;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.tags = tags;
-            return o;
+        }        public GetInstancesResult build() {
+            return new GetInstancesResult(id, ids, instances, nameRegex, names, outputFile, status, tags);
         }
     }
 }

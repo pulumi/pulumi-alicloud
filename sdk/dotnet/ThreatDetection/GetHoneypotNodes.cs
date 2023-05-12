@@ -119,6 +119,9 @@ namespace Pulumi.AliCloud.ThreatDetection
         [Input("nodeName")]
         public string? NodeName { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -166,6 +169,9 @@ namespace Pulumi.AliCloud.ThreatDetection
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

@@ -38,6 +38,9 @@ export function getVpcEndpointServiceResources(args: GetVpcEndpointServiceResour
  * A collection of arguments for invoking getVpcEndpointServiceResources.
  */
 export interface GetVpcEndpointServiceResourcesArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of Vpc Endpoint Service.
@@ -85,6 +88,9 @@ export function getVpcEndpointServiceResourcesOutput(args: GetVpcEndpointService
  * A collection of arguments for invoking getVpcEndpointServiceResources.
  */
 export interface GetVpcEndpointServiceResourcesOutputArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of Vpc Endpoint Service.

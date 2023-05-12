@@ -15,6 +15,120 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a route entry resource. A route entry represents a route item of one VPC route table.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroupRule;
+ * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.vpc.RouteEntry;
+ * import com.pulumi.alicloud.vpc.RouteEntryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cpuCoreCount(1)
+ *             .memorySize(2)
+ *             .build());
+ * 
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .mostRecent(true)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;RouteEntryConfig&#34;);
+ *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.1.0.0/21&#34;)
+ *             .build());
+ * 
+ *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(fooNetwork.id())
+ *             .cidrBlock(&#34;10.1.1.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var tfTestFoo = new SecurityGroup(&#34;tfTestFoo&#34;, SecurityGroupArgs.builder()        
+ *             .description(&#34;foo&#34;)
+ *             .vpcId(fooNetwork.id())
+ *             .build());
+ * 
+ *         var ingress = new SecurityGroupRule(&#34;ingress&#34;, SecurityGroupRuleArgs.builder()        
+ *             .type(&#34;ingress&#34;)
+ *             .ipProtocol(&#34;tcp&#34;)
+ *             .nicType(&#34;intranet&#34;)
+ *             .policy(&#34;accept&#34;)
+ *             .portRange(&#34;22/22&#34;)
+ *             .priority(1)
+ *             .securityGroupId(tfTestFoo.id())
+ *             .cidrIp(&#34;0.0.0.0/0&#34;)
+ *             .build());
+ * 
+ *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
+ *             .securityGroups(tfTestFoo.id())
+ *             .vswitchId(fooSwitch.id())
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .internetChargeType(&#34;PayByTraffic&#34;)
+ *             .internetMaxBandwidthOut(5)
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceName(name)
+ *             .build());
+ * 
+ *         var fooRouteEntry = new RouteEntry(&#34;fooRouteEntry&#34;, RouteEntryArgs.builder()        
+ *             .routeTableId(fooNetwork.routeTableId())
+ *             .destinationCidrblock(&#34;172.11.1.1/32&#34;)
+ *             .nexthopType(&#34;Instance&#34;)
+ *             .nexthopId(fooInstance.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Module Support
+ * 
+ * You can use to the existing vpc module
+ * to create a VPC, several VSwitches and add several route entries one-click.
+ * 
  * ## Import
  * 
  * Router entry can be imported using the id, e.g (formatted as&lt;route_table_id:router_id:destination_cidrblock:nexthop_type:nexthop_id&gt;).

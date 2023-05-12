@@ -14,9 +14,13 @@ public final class GetRulesRuleRuleConditionCookieConfig {
      * @return Add one or more IP addresses or IP address segments.
      * 
      */
-    private List<GetRulesRuleRuleConditionCookieConfigValue> values;
+    private final List<GetRulesRuleRuleConditionCookieConfigValue> values;
 
-    private GetRulesRuleRuleConditionCookieConfig() {}
+    @CustomType.Constructor
+    private GetRulesRuleRuleConditionCookieConfig(@CustomType.Parameter("values") List<GetRulesRuleRuleConditionCookieConfigValue> values) {
+        this.values = values;
+    }
+
     /**
      * @return Add one or more IP addresses or IP address segments.
      * 
@@ -32,27 +36,27 @@ public final class GetRulesRuleRuleConditionCookieConfig {
     public static Builder builder(GetRulesRuleRuleConditionCookieConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetRulesRuleRuleConditionCookieConfigValue> values;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRulesRuleRuleConditionCookieConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.values = defaults.values;
         }
 
-        @CustomType.Setter
         public Builder values(List<GetRulesRuleRuleConditionCookieConfigValue> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(GetRulesRuleRuleConditionCookieConfigValue... values) {
             return values(List.of(values));
-        }
-        public GetRulesRuleRuleConditionCookieConfig build() {
-            final var o = new GetRulesRuleRuleConditionCookieConfig();
-            o.values = values;
-            return o;
+        }        public GetRulesRuleRuleConditionCookieConfig build() {
+            return new GetRulesRuleRuleConditionCookieConfig(values);
         }
     }
 }

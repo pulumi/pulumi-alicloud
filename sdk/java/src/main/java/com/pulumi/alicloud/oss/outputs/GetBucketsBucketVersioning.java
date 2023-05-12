@@ -13,9 +13,13 @@ public final class GetBucketsBucketVersioning {
      * @return A bucket versioning state. Possible values:`Enabled` and `Suspended`.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetBucketsBucketVersioning() {}
+    @CustomType.Constructor
+    private GetBucketsBucketVersioning(@CustomType.Parameter("status") String status) {
+        this.status = status;
+    }
+
     /**
      * @return A bucket versioning state. Possible values:`Enabled` and `Suspended`.
      * 
@@ -31,24 +35,24 @@ public final class GetBucketsBucketVersioning {
     public static Builder builder(GetBucketsBucketVersioning defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBucketsBucketVersioning defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetBucketsBucketVersioning build() {
-            final var o = new GetBucketsBucketVersioning();
-            o.status = status;
-            return o;
+        }        public GetBucketsBucketVersioning build() {
+            return new GetBucketsBucketVersioning(status);
         }
     }
 }

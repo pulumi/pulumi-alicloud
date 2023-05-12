@@ -69,10 +69,11 @@ type GetGlobalDatabaseNetworksArgs struct {
 	// The ID of the Global Database Network.
 	GdnId *string `pulumi:"gdnId"`
 	// A list of Global Database Network IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
-	PageNumber *int     `pulumi:"pageNumber"`
-	PageSize   *int     `pulumi:"pageSize"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
 	// The status of the Global Database Network.
 	Status *string `pulumi:"status"`
 }
@@ -114,10 +115,11 @@ type GetGlobalDatabaseNetworksOutputArgs struct {
 	// The ID of the Global Database Network.
 	GdnId pulumi.StringPtrInput `pulumi:"gdnId"`
 	// A list of Global Database Network IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
-	PageNumber pulumi.IntPtrInput      `pulumi:"pageNumber"`
-	PageSize   pulumi.IntPtrInput      `pulumi:"pageSize"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 	// The status of the Global Database Network.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }

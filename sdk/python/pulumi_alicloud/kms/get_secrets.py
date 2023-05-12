@@ -173,6 +173,7 @@ def get_secrets(enable_details: Optional[bool] = None,
            More details see API [ListSecrets](https://www.alibabacloud.com/help/en/key-management-service/latest/listsecrets).
     :param Sequence[str] ids: A list of KMS Secret ids. The value is same as KMS secret_name.
     :param str name_regex: A regex string to filter the results by the KMS secret_name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
@@ -235,6 +236,7 @@ def get_secrets_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
            More details see API [ListSecrets](https://www.alibabacloud.com/help/en/key-management-service/latest/listsecrets).
     :param Sequence[str] ids: A list of KMS Secret ids. The value is same as KMS secret_name.
     :param str name_regex: A regex string to filter the results by the KMS secret_name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     ...

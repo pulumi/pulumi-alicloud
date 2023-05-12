@@ -15,9 +15,13 @@ public final class SearchIndexSchemaIndexSetting {
      * @return Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
      * 
      */
-    private @Nullable List<String> routingFields;
+    private final @Nullable List<String> routingFields;
 
-    private SearchIndexSchemaIndexSetting() {}
+    @CustomType.Constructor
+    private SearchIndexSchemaIndexSetting(@CustomType.Parameter("routingFields") @Nullable List<String> routingFields) {
+        this.routingFields = routingFields;
+    }
+
     /**
      * @return Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
      * 
@@ -33,27 +37,27 @@ public final class SearchIndexSchemaIndexSetting {
     public static Builder builder(SearchIndexSchemaIndexSetting defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<String> routingFields;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(SearchIndexSchemaIndexSetting defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.routingFields = defaults.routingFields;
         }
 
-        @CustomType.Setter
         public Builder routingFields(@Nullable List<String> routingFields) {
             this.routingFields = routingFields;
             return this;
         }
         public Builder routingFields(String... routingFields) {
             return routingFields(List.of(routingFields));
-        }
-        public SearchIndexSchemaIndexSetting build() {
-            final var o = new SearchIndexSchemaIndexSetting();
-            o.routingFields = routingFields;
-            return o;
+        }        public SearchIndexSchemaIndexSetting build() {
+            return new SearchIndexSchemaIndexSetting(routingFields);
         }
     }
 }

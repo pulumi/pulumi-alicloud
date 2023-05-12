@@ -191,12 +191,16 @@ public class VbrHealthCheck extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the region to which the VBR belongs.
      * 
+     * -&gt;**NOTE:** The `alicloud.cen.VbrHealthCheck` resource depends on the related `alicloud.cen.InstanceAttachment` resource.
+     * 
      */
     @Export(name="vbrInstanceRegionId", type=String.class, parameters={})
     private Output<String> vbrInstanceRegionId;
 
     /**
      * @return The ID of the region to which the VBR belongs.
+     * 
+     * -&gt;**NOTE:** The `alicloud.cen.VbrHealthCheck` resource depends on the related `alicloud.cen.InstanceAttachment` resource.
      * 
      */
     public Output<String> vbrInstanceRegionId() {

@@ -50,6 +50,11 @@ export const getPrometheusAlertRules: typeof import("./getPrometheusAlertRules")
 export const getPrometheusAlertRulesOutput: typeof import("./getPrometheusAlertRules").getPrometheusAlertRulesOutput = null as any;
 utilities.lazyLoad(exports, ["getPrometheusAlertRules","getPrometheusAlertRulesOutput"], () => require("./getPrometheusAlertRules"));
 
+export { GetRemoteWritesArgs, GetRemoteWritesResult, GetRemoteWritesOutputArgs } from "./getRemoteWrites";
+export const getRemoteWrites: typeof import("./getRemoteWrites").getRemoteWrites = null as any;
+export const getRemoteWritesOutput: typeof import("./getRemoteWrites").getRemoteWritesOutput = null as any;
+utilities.lazyLoad(exports, ["getRemoteWrites","getRemoteWritesOutput"], () => require("./getRemoteWrites"));
+
 export { IntegrationExporterArgs, IntegrationExporterState } from "./integrationExporter";
 export type IntegrationExporter = import("./integrationExporter").IntegrationExporter;
 export const IntegrationExporter: typeof import("./integrationExporter").IntegrationExporter = null as any;
@@ -64,6 +69,11 @@ export { PrometheusAlertRuleArgs, PrometheusAlertRuleState } from "./prometheusA
 export type PrometheusAlertRule = import("./prometheusAlertRule").PrometheusAlertRule;
 export const PrometheusAlertRule: typeof import("./prometheusAlertRule").PrometheusAlertRule = null as any;
 utilities.lazyLoad(exports, ["PrometheusAlertRule"], () => require("./prometheusAlertRule"));
+
+export { RemoteWriteArgs, RemoteWriteState } from "./remoteWrite";
+export type RemoteWrite = import("./remoteWrite").RemoteWrite;
+export const RemoteWrite: typeof import("./remoteWrite").RemoteWrite = null as any;
+utilities.lazyLoad(exports, ["RemoteWrite"], () => require("./remoteWrite"));
 
 
 const _module = {
@@ -82,6 +92,8 @@ const _module = {
                 return new Prometheus(name, <any>undefined, { urn })
             case "alicloud:arms/prometheusAlertRule:PrometheusAlertRule":
                 return new PrometheusAlertRule(name, <any>undefined, { urn })
+            case "alicloud:arms/remoteWrite:RemoteWrite":
+                return new RemoteWrite(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -93,3 +105,4 @@ pulumi.runtime.registerResourceModule("alicloud", "arms/dispatchRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/integrationExporter", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/prometheus", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/prometheusAlertRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "arms/remoteWrite", _module)

@@ -13,14 +13,21 @@ public final class RdsParameterGroupParamDetail {
      * @return The name of a parameter.
      * 
      */
-    private String paramName;
+    private final String paramName;
     /**
      * @return The value of a parameter.
      * 
      */
-    private String paramValue;
+    private final String paramValue;
 
-    private RdsParameterGroupParamDetail() {}
+    @CustomType.Constructor
+    private RdsParameterGroupParamDetail(
+        @CustomType.Parameter("paramName") String paramName,
+        @CustomType.Parameter("paramValue") String paramValue) {
+        this.paramName = paramName;
+        this.paramValue = paramValue;
+    }
+
     /**
      * @return The name of a parameter.
      * 
@@ -43,32 +50,30 @@ public final class RdsParameterGroupParamDetail {
     public static Builder builder(RdsParameterGroupParamDetail defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String paramName;
         private String paramValue;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(RdsParameterGroupParamDetail defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.paramName = defaults.paramName;
     	      this.paramValue = defaults.paramValue;
         }
 
-        @CustomType.Setter
         public Builder paramName(String paramName) {
             this.paramName = Objects.requireNonNull(paramName);
             return this;
         }
-        @CustomType.Setter
         public Builder paramValue(String paramValue) {
             this.paramValue = Objects.requireNonNull(paramValue);
             return this;
-        }
-        public RdsParameterGroupParamDetail build() {
-            final var o = new RdsParameterGroupParamDetail();
-            o.paramName = paramName;
-            o.paramValue = paramValue;
-            return o;
+        }        public RdsParameterGroupParamDetail build() {
+            return new RdsParameterGroupParamDetail(paramName, paramValue);
         }
     }
 }

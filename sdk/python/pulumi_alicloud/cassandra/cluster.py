@@ -54,6 +54,8 @@ class ClusterArgs:
         :param pulumi.Input[str] maintain_end_time: The end time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[str] maintain_start_time: The start time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of security group ids to associate with.
+               
+               > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
@@ -306,6 +308,8 @@ class ClusterArgs:
     def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of security group ids to associate with.
+
+        > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
         """
         return pulumi.get(self, "security_groups")
 
@@ -382,6 +386,8 @@ class _ClusterState:
         :param pulumi.Input[int] node_count: The node count of Cassandra dataCenter-1 default to 2.
         :param pulumi.Input[str] pay_type: The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of security group ids to associate with.
+               
+               > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of dataCenter-1, can not empty.
         :param pulumi.Input[str] zone_id: The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be "" or consistent.
@@ -641,6 +647,8 @@ class _ClusterState:
     def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of security group ids to associate with.
+
+        > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
         """
         return pulumi.get(self, "security_groups")
 
@@ -784,6 +792,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[int] node_count: The node count of Cassandra dataCenter-1 default to 2.
         :param pulumi.Input[str] pay_type: The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of security group ids to associate with.
+               
+               > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of dataCenter-1, can not empty.
         :param pulumi.Input[str] zone_id: The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be "" or consistent.
@@ -975,6 +985,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[int] node_count: The node count of Cassandra dataCenter-1 default to 2.
         :param pulumi.Input[str] pay_type: The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of security group ids to associate with.
+               
+               > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of dataCenter-1, can not empty.
         :param pulumi.Input[str] zone_id: The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be "" or consistent.
@@ -1144,6 +1156,8 @@ class Cluster(pulumi.CustomResource):
     def security_groups(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of security group ids to associate with.
+
+        > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
         """
         return pulumi.get(self, "security_groups")
 

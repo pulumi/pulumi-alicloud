@@ -52,8 +52,9 @@ func GetEnterpriseProxies(ctx *pulumi.Context, args *GetEnterpriseProxiesArgs, o
 // A collection of arguments for invoking getEnterpriseProxies.
 type GetEnterpriseProxiesArgs struct {
 	// A list of Proxy IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the tenant.
 	Tid *string `pulumi:"tid"`
 }
@@ -84,8 +85,9 @@ func GetEnterpriseProxiesOutput(ctx *pulumi.Context, args GetEnterpriseProxiesOu
 // A collection of arguments for invoking getEnterpriseProxies.
 type GetEnterpriseProxiesOutputArgs struct {
 	// A list of Proxy IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the tenant.
 	Tid pulumi.StringPtrInput `pulumi:"tid"`
 }

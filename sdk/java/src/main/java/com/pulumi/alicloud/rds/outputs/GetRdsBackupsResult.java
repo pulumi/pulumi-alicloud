@@ -13,21 +13,42 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRdsBackupsResult {
-    private @Nullable String backupMode;
-    private @Nullable String backupStatus;
-    private List<GetRdsBackupsBackup> backups;
-    private String dbInstanceId;
-    private @Nullable String endTime;
+    private final @Nullable String backupMode;
+    private final @Nullable String backupStatus;
+    private final List<GetRdsBackupsBackup> backups;
+    private final String dbInstanceId;
+    private final @Nullable String endTime;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String outputFile;
-    private @Nullable String startTime;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
+    private final @Nullable String startTime;
 
-    private GetRdsBackupsResult() {}
+    @CustomType.Constructor
+    private GetRdsBackupsResult(
+        @CustomType.Parameter("backupMode") @Nullable String backupMode,
+        @CustomType.Parameter("backupStatus") @Nullable String backupStatus,
+        @CustomType.Parameter("backups") List<GetRdsBackupsBackup> backups,
+        @CustomType.Parameter("dbInstanceId") String dbInstanceId,
+        @CustomType.Parameter("endTime") @Nullable String endTime,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("startTime") @Nullable String startTime) {
+        this.backupMode = backupMode;
+        this.backupStatus = backupStatus;
+        this.backups = backups;
+        this.dbInstanceId = dbInstanceId;
+        this.endTime = endTime;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.startTime = startTime;
+    }
+
     public Optional<String> backupMode() {
         return Optional.ofNullable(this.backupMode);
     }
@@ -67,7 +88,7 @@ public final class GetRdsBackupsResult {
     public static Builder builder(GetRdsBackupsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String backupMode;
         private @Nullable String backupStatus;
@@ -78,7 +99,11 @@ public final class GetRdsBackupsResult {
         private List<String> ids;
         private @Nullable String outputFile;
         private @Nullable String startTime;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRdsBackupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupMode = defaults.backupMode;
@@ -92,17 +117,14 @@ public final class GetRdsBackupsResult {
     	      this.startTime = defaults.startTime;
         }
 
-        @CustomType.Setter
         public Builder backupMode(@Nullable String backupMode) {
             this.backupMode = backupMode;
             return this;
         }
-        @CustomType.Setter
         public Builder backupStatus(@Nullable String backupStatus) {
             this.backupStatus = backupStatus;
             return this;
         }
-        @CustomType.Setter
         public Builder backups(List<GetRdsBackupsBackup> backups) {
             this.backups = Objects.requireNonNull(backups);
             return this;
@@ -110,22 +132,18 @@ public final class GetRdsBackupsResult {
         public Builder backups(GetRdsBackupsBackup... backups) {
             return backups(List.of(backups));
         }
-        @CustomType.Setter
         public Builder dbInstanceId(String dbInstanceId) {
             this.dbInstanceId = Objects.requireNonNull(dbInstanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder endTime(@Nullable String endTime) {
             this.endTime = endTime;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -133,28 +151,15 @@ public final class GetRdsBackupsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
             this.startTime = startTime;
             return this;
-        }
-        public GetRdsBackupsResult build() {
-            final var o = new GetRdsBackupsResult();
-            o.backupMode = backupMode;
-            o.backupStatus = backupStatus;
-            o.backups = backups;
-            o.dbInstanceId = dbInstanceId;
-            o.endTime = endTime;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.startTime = startTime;
-            return o;
+        }        public GetRdsBackupsResult build() {
+            return new GetRdsBackupsResult(backupMode, backupStatus, backups, dbInstanceId, endTime, id, ids, outputFile, startTime);
         }
     }
 }

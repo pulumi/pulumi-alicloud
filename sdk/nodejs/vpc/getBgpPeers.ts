@@ -65,6 +65,9 @@ export interface GetBgpPeersArgs {
      * A list of Bgp Peer IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the router.
@@ -141,6 +144,9 @@ export interface GetBgpPeersOutputArgs {
      * A list of Bgp Peer IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the router.

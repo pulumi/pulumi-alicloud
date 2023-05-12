@@ -59,6 +59,9 @@ export interface GetBasicAccelerateIpEndpointRelationsArgs {
      * A list of Global Accelerator Basic Accelerate Ip Endpoint Relations IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.
@@ -141,6 +144,9 @@ export interface GetBasicAccelerateIpEndpointRelationsOutputArgs {
      * A list of Global Accelerator Basic Accelerate Ip Endpoint Relations IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.

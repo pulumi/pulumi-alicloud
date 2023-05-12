@@ -83,6 +83,9 @@ export interface GetTemplatesArgs {
      * A regex string to filter the results by the template_name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The sharing type of the template. Valid values: `Private`, `Public`.
@@ -203,6 +206,9 @@ export interface GetTemplatesOutputArgs {
      * A regex string to filter the results by the template_name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The sharing type of the template. Valid values: `Private`, `Public`.

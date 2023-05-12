@@ -11,6 +11,88 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a ESS lifecycle hook resource. More about Ess lifecycle hook, see [LifecycleHook](https://www.alibabacloud.com/help/doc-detail/73839.htm).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
+//				VpcId:     fooNetwork.ID(),
+//				CidrBlock: pulumi.String("172.16.0.0/24"),
+//				ZoneId:    *pulumi.String(_default.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bar, err := vpc.NewSwitch(ctx, "bar", &vpc.SwitchArgs{
+//				VpcId:     fooNetwork.ID(),
+//				CidrBlock: pulumi.String("172.16.1.0/24"),
+//				ZoneId:    *pulumi.String(_default.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooScalingGroup, err := ess.NewScalingGroup(ctx, "fooScalingGroup", &ess.ScalingGroupArgs{
+//				MinSize:          pulumi.Int(1),
+//				MaxSize:          pulumi.Int(1),
+//				ScalingGroupName: pulumi.String("testAccEssScaling_group"),
+//				RemovalPolicies: pulumi.StringArray{
+//					pulumi.String("OldestInstance"),
+//					pulumi.String("NewestInstance"),
+//				},
+//				VswitchIds: pulumi.StringArray{
+//					fooSwitch.ID(),
+//					bar.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ess.NewLifecycleHook(ctx, "fooLifecycleHook", &ess.LifecycleHookArgs{
+//				ScalingGroupId:       fooScalingGroup.ID(),
+//				LifecycleTransition:  pulumi.String("SCALE_OUT"),
+//				HeartbeatTimeout:     pulumi.Int(400),
+//				NotificationMetadata: pulumi.String("helloworld"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Module Support
+//
+// You can use to the existing autoscaling module
+// to create a lifecycle hook, scaling group and configuration one-click.
+//
 // ## Import
 //
 // Ess lifecycle hook can be imported using the id, e.g.

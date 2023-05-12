@@ -14,34 +14,49 @@ public final class GetZnodesZnode {
      * @return The ID of the Cluster.
      * 
      */
-    private String clusterId;
+    private final String clusterId;
     /**
      * @return The Node data.
      * 
      */
-    private String data;
+    private final String data;
     /**
      * @return Node list information, the value is as follows:
      * 
      */
-    private Boolean dir;
+    private final Boolean dir;
     /**
      * @return The ID of the Znode. The value formats as `&lt;cluster_id&gt;:&lt;path&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The Node path.
      * 
      */
-    private String path;
+    private final String path;
     /**
      * @return The Node name.
      * 
      */
-    private String znodeName;
+    private final String znodeName;
 
-    private GetZnodesZnode() {}
+    @CustomType.Constructor
+    private GetZnodesZnode(
+        @CustomType.Parameter("clusterId") String clusterId,
+        @CustomType.Parameter("data") String data,
+        @CustomType.Parameter("dir") Boolean dir,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("path") String path,
+        @CustomType.Parameter("znodeName") String znodeName) {
+        this.clusterId = clusterId;
+        this.data = data;
+        this.dir = dir;
+        this.id = id;
+        this.path = path;
+        this.znodeName = znodeName;
+    }
+
     /**
      * @return The ID of the Cluster.
      * 
@@ -92,7 +107,7 @@ public final class GetZnodesZnode {
     public static Builder builder(GetZnodesZnode defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String clusterId;
         private String data;
@@ -100,7 +115,11 @@ public final class GetZnodesZnode {
         private String id;
         private String path;
         private String znodeName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetZnodesZnode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterId = defaults.clusterId;
@@ -111,45 +130,31 @@ public final class GetZnodesZnode {
     	      this.znodeName = defaults.znodeName;
         }
 
-        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder data(String data) {
             this.data = Objects.requireNonNull(data);
             return this;
         }
-        @CustomType.Setter
         public Builder dir(Boolean dir) {
             this.dir = Objects.requireNonNull(dir);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
-        @CustomType.Setter
         public Builder znodeName(String znodeName) {
             this.znodeName = Objects.requireNonNull(znodeName);
             return this;
-        }
-        public GetZnodesZnode build() {
-            final var o = new GetZnodesZnode();
-            o.clusterId = clusterId;
-            o.data = data;
-            o.dir = dir;
-            o.id = id;
-            o.path = path;
-            o.znodeName = znodeName;
-            return o;
+        }        public GetZnodesZnode build() {
+            return new GetZnodesZnode(clusterId, data, dir, id, path, znodeName);
         }
     }
 }

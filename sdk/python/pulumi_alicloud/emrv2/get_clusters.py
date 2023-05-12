@@ -196,6 +196,7 @@ def get_clusters(cluster_name: Optional[str] = None,
     :param int max_results: The max results is used to list clusters for next page.
     :param str name_regex: A regex string to filter results by Cluster name.
     :param str next_token: The next token is used to list clusters for next page.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] payment_types: The cluster payment types.
     :param str resource_group_id: The resource group id of the resource.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
@@ -259,6 +260,7 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
     :param int max_results: The max results is used to list clusters for next page.
     :param str name_regex: A regex string to filter results by Cluster name.
     :param str next_token: The next token is used to list clusters for next page.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] payment_types: The cluster payment types.
     :param str resource_group_id: The resource group id of the resource.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.

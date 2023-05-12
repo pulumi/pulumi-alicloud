@@ -13,20 +13,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBundlesResult {
-    private List<String> bundleIds;
-    private @Nullable String bundleType;
-    private List<GetBundlesBundle> bundles;
+    private final List<String> bundleIds;
+    private final @Nullable String bundleType;
+    private final List<GetBundlesBundle> bundles;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
 
-    private GetBundlesResult() {}
+    @CustomType.Constructor
+    private GetBundlesResult(
+        @CustomType.Parameter("bundleIds") List<String> bundleIds,
+        @CustomType.Parameter("bundleType") @Nullable String bundleType,
+        @CustomType.Parameter("bundles") List<GetBundlesBundle> bundles,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.bundleIds = bundleIds;
+        this.bundleType = bundleType;
+        this.bundles = bundles;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+    }
+
     public List<String> bundleIds() {
         return this.bundleIds;
     }
@@ -63,7 +82,7 @@ public final class GetBundlesResult {
     public static Builder builder(GetBundlesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<String> bundleIds;
         private @Nullable String bundleType;
@@ -73,7 +92,11 @@ public final class GetBundlesResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBundlesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bundleIds = defaults.bundleIds;
@@ -86,7 +109,6 @@ public final class GetBundlesResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder bundleIds(List<String> bundleIds) {
             this.bundleIds = Objects.requireNonNull(bundleIds);
             return this;
@@ -94,12 +116,10 @@ public final class GetBundlesResult {
         public Builder bundleIds(String... bundleIds) {
             return bundleIds(List.of(bundleIds));
         }
-        @CustomType.Setter
         public Builder bundleType(@Nullable String bundleType) {
             this.bundleType = bundleType;
             return this;
         }
-        @CustomType.Setter
         public Builder bundles(List<GetBundlesBundle> bundles) {
             this.bundles = Objects.requireNonNull(bundles);
             return this;
@@ -107,12 +127,10 @@ public final class GetBundlesResult {
         public Builder bundles(GetBundlesBundle... bundles) {
             return bundles(List.of(bundles));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -120,12 +138,10 @@ public final class GetBundlesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -133,22 +149,11 @@ public final class GetBundlesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetBundlesResult build() {
-            final var o = new GetBundlesResult();
-            o.bundleIds = bundleIds;
-            o.bundleType = bundleType;
-            o.bundles = bundles;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetBundlesResult build() {
+            return new GetBundlesResult(bundleIds, bundleType, bundles, id, ids, nameRegex, names, outputFile);
         }
     }
 }

@@ -155,6 +155,7 @@ def get_resolution_lines(domain_name: Optional[str] = None,
     :param str lang: language.
     :param Sequence[str] line_codes: A list of lines codes.
     :param Sequence[str] line_display_names: A list of line display names.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str user_client_ip: The ip of user client.
     """
     __args__ = dict()
@@ -210,6 +211,7 @@ def get_resolution_lines_output(domain_name: Optional[pulumi.Input[Optional[str]
     :param str lang: language.
     :param Sequence[str] line_codes: A list of lines codes.
     :param Sequence[str] line_display_names: A list of line display names.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str user_client_ip: The ip of user client.
     """
     ...

@@ -15,28 +15,63 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVpcFirewallControlPoliciesResult {
-    private @Nullable String aclAction;
-    private @Nullable String aclUuid;
-    private @Nullable String description;
-    private @Nullable String destination;
+    private final @Nullable String aclAction;
+    private final @Nullable String aclUuid;
+    private final @Nullable String description;
+    private final @Nullable String destination;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String lang;
-    private @Nullable String memberUid;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
-    private List<GetVpcFirewallControlPoliciesPolicy> policies;
-    private @Nullable String proto;
-    private @Nullable Boolean release;
-    private @Nullable String source;
-    private String vpcFirewallId;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String lang;
+    private final @Nullable String memberUid;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
+    private final List<GetVpcFirewallControlPoliciesPolicy> policies;
+    private final @Nullable String proto;
+    private final @Nullable Boolean release;
+    private final @Nullable String source;
+    private final String vpcFirewallId;
 
-    private GetVpcFirewallControlPoliciesResult() {}
+    @CustomType.Constructor
+    private GetVpcFirewallControlPoliciesResult(
+        @CustomType.Parameter("aclAction") @Nullable String aclAction,
+        @CustomType.Parameter("aclUuid") @Nullable String aclUuid,
+        @CustomType.Parameter("description") @Nullable String description,
+        @CustomType.Parameter("destination") @Nullable String destination,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("lang") @Nullable String lang,
+        @CustomType.Parameter("memberUid") @Nullable String memberUid,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
+        @CustomType.Parameter("policies") List<GetVpcFirewallControlPoliciesPolicy> policies,
+        @CustomType.Parameter("proto") @Nullable String proto,
+        @CustomType.Parameter("release") @Nullable Boolean release,
+        @CustomType.Parameter("source") @Nullable String source,
+        @CustomType.Parameter("vpcFirewallId") String vpcFirewallId) {
+        this.aclAction = aclAction;
+        this.aclUuid = aclUuid;
+        this.description = description;
+        this.destination = destination;
+        this.id = id;
+        this.ids = ids;
+        this.lang = lang;
+        this.memberUid = memberUid;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+        this.policies = policies;
+        this.proto = proto;
+        this.release = release;
+        this.source = source;
+        this.vpcFirewallId = vpcFirewallId;
+    }
+
     public Optional<String> aclAction() {
         return Optional.ofNullable(this.aclAction);
     }
@@ -97,7 +132,7 @@ public final class GetVpcFirewallControlPoliciesResult {
     public static Builder builder(GetVpcFirewallControlPoliciesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String aclAction;
         private @Nullable String aclUuid;
@@ -115,7 +150,11 @@ public final class GetVpcFirewallControlPoliciesResult {
         private @Nullable Boolean release;
         private @Nullable String source;
         private String vpcFirewallId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVpcFirewallControlPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aclAction = defaults.aclAction;
@@ -136,32 +175,26 @@ public final class GetVpcFirewallControlPoliciesResult {
     	      this.vpcFirewallId = defaults.vpcFirewallId;
         }
 
-        @CustomType.Setter
         public Builder aclAction(@Nullable String aclAction) {
             this.aclAction = aclAction;
             return this;
         }
-        @CustomType.Setter
         public Builder aclUuid(@Nullable String aclUuid) {
             this.aclUuid = aclUuid;
             return this;
         }
-        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
-        @CustomType.Setter
         public Builder destination(@Nullable String destination) {
             this.destination = destination;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -169,32 +202,26 @@ public final class GetVpcFirewallControlPoliciesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder lang(@Nullable String lang) {
             this.lang = lang;
             return this;
         }
-        @CustomType.Setter
         public Builder memberUid(@Nullable String memberUid) {
             this.memberUid = memberUid;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
-        @CustomType.Setter
         public Builder policies(List<GetVpcFirewallControlPoliciesPolicy> policies) {
             this.policies = Objects.requireNonNull(policies);
             return this;
@@ -202,45 +229,23 @@ public final class GetVpcFirewallControlPoliciesResult {
         public Builder policies(GetVpcFirewallControlPoliciesPolicy... policies) {
             return policies(List.of(policies));
         }
-        @CustomType.Setter
         public Builder proto(@Nullable String proto) {
             this.proto = proto;
             return this;
         }
-        @CustomType.Setter
         public Builder release(@Nullable Boolean release) {
             this.release = release;
             return this;
         }
-        @CustomType.Setter
         public Builder source(@Nullable String source) {
             this.source = source;
             return this;
         }
-        @CustomType.Setter
         public Builder vpcFirewallId(String vpcFirewallId) {
             this.vpcFirewallId = Objects.requireNonNull(vpcFirewallId);
             return this;
-        }
-        public GetVpcFirewallControlPoliciesResult build() {
-            final var o = new GetVpcFirewallControlPoliciesResult();
-            o.aclAction = aclAction;
-            o.aclUuid = aclUuid;
-            o.description = description;
-            o.destination = destination;
-            o.id = id;
-            o.ids = ids;
-            o.lang = lang;
-            o.memberUid = memberUid;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.policies = policies;
-            o.proto = proto;
-            o.release = release;
-            o.source = source;
-            o.vpcFirewallId = vpcFirewallId;
-            return o;
+        }        public GetVpcFirewallControlPoliciesResult build() {
+            return new GetVpcFirewallControlPoliciesResult(aclAction, aclUuid, description, destination, id, ids, lang, memberUid, outputFile, pageNumber, pageSize, policies, proto, release, source, vpcFirewallId);
         }
     }
 }

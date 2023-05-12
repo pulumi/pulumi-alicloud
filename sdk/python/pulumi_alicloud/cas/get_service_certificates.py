@@ -137,6 +137,7 @@ def get_service_certificates(enable_details: Optional[bool] = None,
     :param Sequence[str] ids: A list of Certificate IDs.
     :param str lang: The lang.
     :param str name_regex: A regex string to filter results by Certificate name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -188,5 +189,6 @@ def get_service_certificates_output(enable_details: Optional[pulumi.Input[Option
     :param Sequence[str] ids: A list of Certificate IDs.
     :param str lang: The lang.
     :param str name_regex: A regex string to filter results by Certificate name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

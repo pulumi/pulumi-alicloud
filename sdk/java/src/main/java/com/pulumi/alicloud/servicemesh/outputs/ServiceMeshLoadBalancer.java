@@ -12,20 +12,31 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceMeshLoadBalancer {
-    private @Nullable String apiServerLoadbalancerId;
+    private final @Nullable String apiServerLoadbalancerId;
     /**
      * @return Whether to use the IP address of a public network exposed the API Server.
      * 
      */
-    private @Nullable Boolean apiServerPublicEip;
+    private final @Nullable Boolean apiServerPublicEip;
     /**
      * @return Whether to use the IP address of a public network exposure the Istio Pilot.
      * 
      */
-    private @Nullable Boolean pilotPublicEip;
-    private @Nullable String pilotPublicLoadbalancerId;
+    private final @Nullable Boolean pilotPublicEip;
+    private final @Nullable String pilotPublicLoadbalancerId;
 
-    private ServiceMeshLoadBalancer() {}
+    @CustomType.Constructor
+    private ServiceMeshLoadBalancer(
+        @CustomType.Parameter("apiServerLoadbalancerId") @Nullable String apiServerLoadbalancerId,
+        @CustomType.Parameter("apiServerPublicEip") @Nullable Boolean apiServerPublicEip,
+        @CustomType.Parameter("pilotPublicEip") @Nullable Boolean pilotPublicEip,
+        @CustomType.Parameter("pilotPublicLoadbalancerId") @Nullable String pilotPublicLoadbalancerId) {
+        this.apiServerLoadbalancerId = apiServerLoadbalancerId;
+        this.apiServerPublicEip = apiServerPublicEip;
+        this.pilotPublicEip = pilotPublicEip;
+        this.pilotPublicLoadbalancerId = pilotPublicLoadbalancerId;
+    }
+
     public Optional<String> apiServerLoadbalancerId() {
         return Optional.ofNullable(this.apiServerLoadbalancerId);
     }
@@ -54,13 +65,17 @@ public final class ServiceMeshLoadBalancer {
     public static Builder builder(ServiceMeshLoadBalancer defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String apiServerLoadbalancerId;
         private @Nullable Boolean apiServerPublicEip;
         private @Nullable Boolean pilotPublicEip;
         private @Nullable String pilotPublicLoadbalancerId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ServiceMeshLoadBalancer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiServerLoadbalancerId = defaults.apiServerLoadbalancerId;
@@ -69,33 +84,23 @@ public final class ServiceMeshLoadBalancer {
     	      this.pilotPublicLoadbalancerId = defaults.pilotPublicLoadbalancerId;
         }
 
-        @CustomType.Setter
         public Builder apiServerLoadbalancerId(@Nullable String apiServerLoadbalancerId) {
             this.apiServerLoadbalancerId = apiServerLoadbalancerId;
             return this;
         }
-        @CustomType.Setter
         public Builder apiServerPublicEip(@Nullable Boolean apiServerPublicEip) {
             this.apiServerPublicEip = apiServerPublicEip;
             return this;
         }
-        @CustomType.Setter
         public Builder pilotPublicEip(@Nullable Boolean pilotPublicEip) {
             this.pilotPublicEip = pilotPublicEip;
             return this;
         }
-        @CustomType.Setter
         public Builder pilotPublicLoadbalancerId(@Nullable String pilotPublicLoadbalancerId) {
             this.pilotPublicLoadbalancerId = pilotPublicLoadbalancerId;
             return this;
-        }
-        public ServiceMeshLoadBalancer build() {
-            final var o = new ServiceMeshLoadBalancer();
-            o.apiServerLoadbalancerId = apiServerLoadbalancerId;
-            o.apiServerPublicEip = apiServerPublicEip;
-            o.pilotPublicEip = pilotPublicEip;
-            o.pilotPublicLoadbalancerId = pilotPublicLoadbalancerId;
-            return o;
+        }        public ServiceMeshLoadBalancer build() {
+            return new ServiceMeshLoadBalancer(apiServerLoadbalancerId, apiServerPublicEip, pilotPublicEip, pilotPublicLoadbalancerId);
         }
     }
 }

@@ -260,6 +260,7 @@ def get_policy_document(output_file: Optional[str] = None,
     ```
 
 
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[pulumi.InputType['GetPolicyDocumentStatementArgs']] statements: Statement of the RAM policy document. See the following `Block statement`.
     :param str version: Version of the RAM policy document. Valid value is `1`. Default value is `1`.
     """
@@ -454,6 +455,7 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
     ```
 
 
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[pulumi.InputType['GetPolicyDocumentStatementArgs']] statements: Statement of the RAM policy document. See the following `Block statement`.
     :param str version: Version of the RAM policy document. Valid value is `1`. Default value is `1`.
     """

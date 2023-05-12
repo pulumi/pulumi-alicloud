@@ -16,49 +16,70 @@ public final class GetCustomDomainsDomain {
      * @return The account id.
      * 
      */
-    private String accountId;
+    private final String accountId;
     /**
      * @return The API version of the Function Compute service.
      * 
      */
-    private String apiVersion;
+    private final String apiVersion;
     /**
      * @return The configuration of HTTPS certificate.
      * 
      */
-    private GetCustomDomainsDomainCertConfig certConfig;
+    private final GetCustomDomainsDomainCertConfig certConfig;
     /**
      * @return The created time of the custom domain.
      * 
      */
-    private String createdTime;
+    private final String createdTime;
     /**
      * @return The custom domain name.
      * 
      */
-    private String domainName;
+    private final String domainName;
     /**
      * @return The custom domain id, same as domain name.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The last modified time of the custom domain.
      * 
      */
-    private String lastModifiedTime;
+    private final String lastModifiedTime;
     /**
      * @return The custom domain protocol.
      * 
      */
-    private String protocol;
+    private final String protocol;
     /**
      * @return The configuration of domain route, mapping the path and Function Compute function.
      * 
      */
-    private List<GetCustomDomainsDomainRouteConfig> routeConfigs;
+    private final List<GetCustomDomainsDomainRouteConfig> routeConfigs;
 
-    private GetCustomDomainsDomain() {}
+    @CustomType.Constructor
+    private GetCustomDomainsDomain(
+        @CustomType.Parameter("accountId") String accountId,
+        @CustomType.Parameter("apiVersion") String apiVersion,
+        @CustomType.Parameter("certConfig") GetCustomDomainsDomainCertConfig certConfig,
+        @CustomType.Parameter("createdTime") String createdTime,
+        @CustomType.Parameter("domainName") String domainName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("lastModifiedTime") String lastModifiedTime,
+        @CustomType.Parameter("protocol") String protocol,
+        @CustomType.Parameter("routeConfigs") List<GetCustomDomainsDomainRouteConfig> routeConfigs) {
+        this.accountId = accountId;
+        this.apiVersion = apiVersion;
+        this.certConfig = certConfig;
+        this.createdTime = createdTime;
+        this.domainName = domainName;
+        this.id = id;
+        this.lastModifiedTime = lastModifiedTime;
+        this.protocol = protocol;
+        this.routeConfigs = routeConfigs;
+    }
+
     /**
      * @return The account id.
      * 
@@ -130,7 +151,7 @@ public final class GetCustomDomainsDomain {
     public static Builder builder(GetCustomDomainsDomain defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String accountId;
         private String apiVersion;
@@ -141,7 +162,11 @@ public final class GetCustomDomainsDomain {
         private String lastModifiedTime;
         private String protocol;
         private List<GetCustomDomainsDomainRouteConfig> routeConfigs;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetCustomDomainsDomain defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -155,66 +180,46 @@ public final class GetCustomDomainsDomain {
     	      this.routeConfigs = defaults.routeConfigs;
         }
 
-        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
-        @CustomType.Setter
         public Builder apiVersion(String apiVersion) {
             this.apiVersion = Objects.requireNonNull(apiVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder certConfig(GetCustomDomainsDomainCertConfig certConfig) {
             this.certConfig = Objects.requireNonNull(certConfig);
             return this;
         }
-        @CustomType.Setter
         public Builder createdTime(String createdTime) {
             this.createdTime = Objects.requireNonNull(createdTime);
             return this;
         }
-        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder lastModifiedTime(String lastModifiedTime) {
             this.lastModifiedTime = Objects.requireNonNull(lastModifiedTime);
             return this;
         }
-        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
         }
-        @CustomType.Setter
         public Builder routeConfigs(List<GetCustomDomainsDomainRouteConfig> routeConfigs) {
             this.routeConfigs = Objects.requireNonNull(routeConfigs);
             return this;
         }
         public Builder routeConfigs(GetCustomDomainsDomainRouteConfig... routeConfigs) {
             return routeConfigs(List.of(routeConfigs));
-        }
-        public GetCustomDomainsDomain build() {
-            final var o = new GetCustomDomainsDomain();
-            o.accountId = accountId;
-            o.apiVersion = apiVersion;
-            o.certConfig = certConfig;
-            o.createdTime = createdTime;
-            o.domainName = domainName;
-            o.id = id;
-            o.lastModifiedTime = lastModifiedTime;
-            o.protocol = protocol;
-            o.routeConfigs = routeConfigs;
-            return o;
+        }        public GetCustomDomainsDomain build() {
+            return new GetCustomDomainsDomain(accountId, apiVersion, certConfig, createdTime, domainName, id, lastModifiedTime, protocol, routeConfigs);
         }
     }
 }

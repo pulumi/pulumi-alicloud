@@ -13,39 +13,56 @@ public final class GetInterRegionTrafficQosPoliciesPolicy {
      * @return The ID of the Inter Region Traffic Qos Policy.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The description of the Inter Region Traffic Qos Policy.
      * 
      */
-    private String interRegionTrafficQosPolicyDescription;
+    private final String interRegionTrafficQosPolicyDescription;
     /**
      * @return The ID of the Inter Region Traffic Qos Policy.
      * 
      */
-    private String interRegionTrafficQosPolicyId;
+    private final String interRegionTrafficQosPolicyId;
     /**
      * @return The name of the Inter Region Traffic Qos Policy.
      * 
      */
-    private String interRegionTrafficQosPolicyName;
+    private final String interRegionTrafficQosPolicyName;
     /**
      * @return The status of the traffic scheduling policy. Valid Value: `Creating`, `Active`, `Modifying`, `Deleting`, `Deleted`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The ID of the inter-region connection.
      * 
      */
-    private String transitRouterAttachmentId;
+    private final String transitRouterAttachmentId;
     /**
      * @return The ID of the transit router.
      * 
      */
-    private String transitRouterId;
+    private final String transitRouterId;
 
-    private GetInterRegionTrafficQosPoliciesPolicy() {}
+    @CustomType.Constructor
+    private GetInterRegionTrafficQosPoliciesPolicy(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("interRegionTrafficQosPolicyDescription") String interRegionTrafficQosPolicyDescription,
+        @CustomType.Parameter("interRegionTrafficQosPolicyId") String interRegionTrafficQosPolicyId,
+        @CustomType.Parameter("interRegionTrafficQosPolicyName") String interRegionTrafficQosPolicyName,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("transitRouterAttachmentId") String transitRouterAttachmentId,
+        @CustomType.Parameter("transitRouterId") String transitRouterId) {
+        this.id = id;
+        this.interRegionTrafficQosPolicyDescription = interRegionTrafficQosPolicyDescription;
+        this.interRegionTrafficQosPolicyId = interRegionTrafficQosPolicyId;
+        this.interRegionTrafficQosPolicyName = interRegionTrafficQosPolicyName;
+        this.status = status;
+        this.transitRouterAttachmentId = transitRouterAttachmentId;
+        this.transitRouterId = transitRouterId;
+    }
+
     /**
      * @return The ID of the Inter Region Traffic Qos Policy.
      * 
@@ -103,7 +120,7 @@ public final class GetInterRegionTrafficQosPoliciesPolicy {
     public static Builder builder(GetInterRegionTrafficQosPoliciesPolicy defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private String interRegionTrafficQosPolicyDescription;
@@ -112,7 +129,11 @@ public final class GetInterRegionTrafficQosPoliciesPolicy {
         private String status;
         private String transitRouterAttachmentId;
         private String transitRouterId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInterRegionTrafficQosPoliciesPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -124,51 +145,35 @@ public final class GetInterRegionTrafficQosPoliciesPolicy {
     	      this.transitRouterId = defaults.transitRouterId;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder interRegionTrafficQosPolicyDescription(String interRegionTrafficQosPolicyDescription) {
             this.interRegionTrafficQosPolicyDescription = Objects.requireNonNull(interRegionTrafficQosPolicyDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder interRegionTrafficQosPolicyId(String interRegionTrafficQosPolicyId) {
             this.interRegionTrafficQosPolicyId = Objects.requireNonNull(interRegionTrafficQosPolicyId);
             return this;
         }
-        @CustomType.Setter
         public Builder interRegionTrafficQosPolicyName(String interRegionTrafficQosPolicyName) {
             this.interRegionTrafficQosPolicyName = Objects.requireNonNull(interRegionTrafficQosPolicyName);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
             this.transitRouterAttachmentId = Objects.requireNonNull(transitRouterAttachmentId);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
             this.transitRouterId = Objects.requireNonNull(transitRouterId);
             return this;
-        }
-        public GetInterRegionTrafficQosPoliciesPolicy build() {
-            final var o = new GetInterRegionTrafficQosPoliciesPolicy();
-            o.id = id;
-            o.interRegionTrafficQosPolicyDescription = interRegionTrafficQosPolicyDescription;
-            o.interRegionTrafficQosPolicyId = interRegionTrafficQosPolicyId;
-            o.interRegionTrafficQosPolicyName = interRegionTrafficQosPolicyName;
-            o.status = status;
-            o.transitRouterAttachmentId = transitRouterAttachmentId;
-            o.transitRouterId = transitRouterId;
-            return o;
+        }        public GetInterRegionTrafficQosPoliciesPolicy build() {
+            return new GetInterRegionTrafficQosPoliciesPolicy(id, interRegionTrafficQosPolicyDescription, interRegionTrafficQosPolicyId, interRegionTrafficQosPolicyName, status, transitRouterAttachmentId, transitRouterId);
         }
     }
 }

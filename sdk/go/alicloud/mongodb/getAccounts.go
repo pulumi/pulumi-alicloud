@@ -57,7 +57,8 @@ type GetAccountsArgs struct {
 	// The name of the account.
 	AccountName *string `pulumi:"accountName"`
 	// The id of the instance to which the account belongs.
-	InstanceId string  `pulumi:"instanceId"`
+	InstanceId string `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -89,7 +90,8 @@ type GetAccountsOutputArgs struct {
 	// The name of the account.
 	AccountName pulumi.StringPtrInput `pulumi:"accountName"`
 	// The id of the instance to which the account belongs.
-	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

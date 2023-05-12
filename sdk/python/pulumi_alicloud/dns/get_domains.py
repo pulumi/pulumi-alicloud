@@ -239,6 +239,10 @@ def get_domains(ali_domain: Optional[bool] = None,
                 version_code: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainsResult:
     """
+    > **DEPRECATED:**  This resource has been renamed to dns_get_alidns_domains from version 1.95.0.
+
+    This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
+
     ## Example Usage
 
     ```python
@@ -259,6 +263,7 @@ def get_domains(ali_domain: Optional[bool] = None,
     :param str instance_id: Cloud analysis product ID.
     :param str key_word: The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
     :param str lang: User language.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the dns belongs.
     :param str search_mode: Search mode, `LIKE` fuzzy search, `EXACT` exact search.
     :param bool starmark: Whether to query the domain name star.
@@ -323,6 +328,10 @@ def get_domains_output(ali_domain: Optional[pulumi.Input[Optional[bool]]] = None
                        version_code: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainsResult]:
     """
+    > **DEPRECATED:**  This resource has been renamed to dns_get_alidns_domains from version 1.95.0.
+
+    This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
+
     ## Example Usage
 
     ```python
@@ -343,6 +352,7 @@ def get_domains_output(ali_domain: Optional[pulumi.Input[Optional[bool]]] = None
     :param str instance_id: Cloud analysis product ID.
     :param str key_word: The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
     :param str lang: User language.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the dns belongs.
     :param str search_mode: Search mode, `LIKE` fuzzy search, `EXACT` exact search.
     :param bool starmark: Whether to query the domain name star.

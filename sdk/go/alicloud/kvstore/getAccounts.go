@@ -58,6 +58,7 @@ type GetAccountsArgs struct {
 	// The Id of instance in which account belongs.
 	InstanceId string  `pulumi:"instanceId"`
 	NameRegex  *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of account.
 	Status *string `pulumi:"status"`
@@ -97,6 +98,7 @@ type GetAccountsOutputArgs struct {
 	// The Id of instance in which account belongs.
 	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of account.
 	Status pulumi.StringPtrInput `pulumi:"status"`

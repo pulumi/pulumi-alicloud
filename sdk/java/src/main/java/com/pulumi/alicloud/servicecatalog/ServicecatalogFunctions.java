@@ -8,6 +8,8 @@ import com.pulumi.alicloud.servicecatalog.inputs.GetEndUserProductsArgs;
 import com.pulumi.alicloud.servicecatalog.inputs.GetEndUserProductsPlainArgs;
 import com.pulumi.alicloud.servicecatalog.inputs.GetLaunchOptionsArgs;
 import com.pulumi.alicloud.servicecatalog.inputs.GetLaunchOptionsPlainArgs;
+import com.pulumi.alicloud.servicecatalog.inputs.GetPortfoliosArgs;
+import com.pulumi.alicloud.servicecatalog.inputs.GetPortfoliosPlainArgs;
 import com.pulumi.alicloud.servicecatalog.inputs.GetProductAsEndUsersArgs;
 import com.pulumi.alicloud.servicecatalog.inputs.GetProductAsEndUsersPlainArgs;
 import com.pulumi.alicloud.servicecatalog.inputs.GetProductVersionsArgs;
@@ -16,6 +18,7 @@ import com.pulumi.alicloud.servicecatalog.inputs.GetProvisionedProductsArgs;
 import com.pulumi.alicloud.servicecatalog.inputs.GetProvisionedProductsPlainArgs;
 import com.pulumi.alicloud.servicecatalog.outputs.GetEndUserProductsResult;
 import com.pulumi.alicloud.servicecatalog.outputs.GetLaunchOptionsResult;
+import com.pulumi.alicloud.servicecatalog.outputs.GetPortfoliosResult;
 import com.pulumi.alicloud.servicecatalog.outputs.GetProductAsEndUsersResult;
 import com.pulumi.alicloud.servicecatalog.outputs.GetProductVersionsResult;
 import com.pulumi.alicloud.servicecatalog.outputs.GetProvisionedProductsResult;
@@ -447,6 +450,259 @@ public final class ServicecatalogFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:servicecatalog/getLaunchOptions:getLaunchOptions", TypeShape.of(GetLaunchOptionsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-createportfolio)
+     * 
+     * &gt; **NOTE:** Available in 1.204.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
+     * import com.pulumi.alicloud.servicecatalog.inputs.GetPortfoliosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ServicecatalogFunctions.getPortfolios(GetPortfoliosArgs.builder()
+     *             .ids(alicloud_service_catalog_portfolio.default().id())
+     *             .nameRegex(alicloud_service_catalog_portfolio.default().name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudServiceCatalogPortfolioExampleId&#34;, default_.portfolios()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPortfoliosResult> getPortfolios() {
+        return getPortfolios(GetPortfoliosArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-createportfolio)
+     * 
+     * &gt; **NOTE:** Available in 1.204.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
+     * import com.pulumi.alicloud.servicecatalog.inputs.GetPortfoliosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ServicecatalogFunctions.getPortfolios(GetPortfoliosArgs.builder()
+     *             .ids(alicloud_service_catalog_portfolio.default().id())
+     *             .nameRegex(alicloud_service_catalog_portfolio.default().name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudServiceCatalogPortfolioExampleId&#34;, default_.portfolios()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPortfoliosResult> getPortfoliosPlain() {
+        return getPortfoliosPlain(GetPortfoliosPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-createportfolio)
+     * 
+     * &gt; **NOTE:** Available in 1.204.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
+     * import com.pulumi.alicloud.servicecatalog.inputs.GetPortfoliosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ServicecatalogFunctions.getPortfolios(GetPortfoliosArgs.builder()
+     *             .ids(alicloud_service_catalog_portfolio.default().id())
+     *             .nameRegex(alicloud_service_catalog_portfolio.default().name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudServiceCatalogPortfolioExampleId&#34;, default_.portfolios()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPortfoliosResult> getPortfolios(GetPortfoliosArgs args) {
+        return getPortfolios(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-createportfolio)
+     * 
+     * &gt; **NOTE:** Available in 1.204.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
+     * import com.pulumi.alicloud.servicecatalog.inputs.GetPortfoliosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ServicecatalogFunctions.getPortfolios(GetPortfoliosArgs.builder()
+     *             .ids(alicloud_service_catalog_portfolio.default().id())
+     *             .nameRegex(alicloud_service_catalog_portfolio.default().name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudServiceCatalogPortfolioExampleId&#34;, default_.portfolios()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPortfoliosResult> getPortfoliosPlain(GetPortfoliosPlainArgs args) {
+        return getPortfoliosPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-createportfolio)
+     * 
+     * &gt; **NOTE:** Available in 1.204.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
+     * import com.pulumi.alicloud.servicecatalog.inputs.GetPortfoliosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ServicecatalogFunctions.getPortfolios(GetPortfoliosArgs.builder()
+     *             .ids(alicloud_service_catalog_portfolio.default().id())
+     *             .nameRegex(alicloud_service_catalog_portfolio.default().name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudServiceCatalogPortfolioExampleId&#34;, default_.portfolios()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetPortfoliosResult> getPortfolios(GetPortfoliosArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:servicecatalog/getPortfolios:getPortfolios", TypeShape.of(GetPortfoliosResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-createportfolio)
+     * 
+     * &gt; **NOTE:** Available in 1.204.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.servicecatalog.ServicecatalogFunctions;
+     * import com.pulumi.alicloud.servicecatalog.inputs.GetPortfoliosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ServicecatalogFunctions.getPortfolios(GetPortfoliosArgs.builder()
+     *             .ids(alicloud_service_catalog_portfolio.default().id())
+     *             .nameRegex(alicloud_service_catalog_portfolio.default().name())
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudServiceCatalogPortfolioExampleId&#34;, default_.portfolios()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetPortfoliosResult> getPortfoliosPlain(GetPortfoliosPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:servicecatalog/getPortfolios:getPortfolios", TypeShape.of(GetPortfoliosResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **DEPRECATED:** It has been deprecated from version `1.197.0`.
+     * Please use new datasource alicloud.servicecatalog.getEndUserProducts instead.
+     * 
+     * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -483,6 +739,13 @@ public final class ServicecatalogFunctions {
         return getProductAsEndUsers(GetProductAsEndUsersArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** It has been deprecated from version `1.197.0`.
+     * Please use new datasource alicloud.servicecatalog.getEndUserProducts instead.
+     * 
+     * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -519,6 +782,13 @@ public final class ServicecatalogFunctions {
         return getProductAsEndUsersPlain(GetProductAsEndUsersPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** It has been deprecated from version `1.197.0`.
+     * Please use new datasource alicloud.servicecatalog.getEndUserProducts instead.
+     * 
+     * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -555,6 +825,13 @@ public final class ServicecatalogFunctions {
         return getProductAsEndUsers(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** It has been deprecated from version `1.197.0`.
+     * Please use new datasource alicloud.servicecatalog.getEndUserProducts instead.
+     * 
+     * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -591,6 +868,13 @@ public final class ServicecatalogFunctions {
         return getProductAsEndUsersPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** It has been deprecated from version `1.197.0`.
+     * Please use new datasource alicloud.servicecatalog.getEndUserProducts instead.
+     * 
+     * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -627,6 +911,13 @@ public final class ServicecatalogFunctions {
         return Deployment.getInstance().invoke("alicloud:servicecatalog/getProductAsEndUsers:getProductAsEndUsers", TypeShape.of(GetProductAsEndUsersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:** It has been deprecated from version `1.197.0`.
+     * Please use new datasource alicloud.servicecatalog.getEndUserProducts instead.
+     * 
+     * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+     * 
+     * &gt; **NOTE:** Available in 1.196.0+
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;

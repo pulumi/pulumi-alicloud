@@ -14,24 +14,35 @@ public final class GetElasticityAssurancesAssuranceAllocatedResource {
      * @return Instance type.
      * 
      */
-    private String instanceType;
+    private final String instanceType;
     /**
      * @return The total number of instances that need to be reserved within an instance type.
      * 
      */
-    private Integer totalAmount;
+    private final Integer totalAmount;
     /**
      * @return The number of instances that have been used.
      * 
      */
-    private Integer usedAmount;
+    private final Integer usedAmount;
     /**
      * @return The zone ID.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetElasticityAssurancesAssuranceAllocatedResource() {}
+    @CustomType.Constructor
+    private GetElasticityAssurancesAssuranceAllocatedResource(
+        @CustomType.Parameter("instanceType") String instanceType,
+        @CustomType.Parameter("totalAmount") Integer totalAmount,
+        @CustomType.Parameter("usedAmount") Integer usedAmount,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.instanceType = instanceType;
+        this.totalAmount = totalAmount;
+        this.usedAmount = usedAmount;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return Instance type.
      * 
@@ -68,13 +79,17 @@ public final class GetElasticityAssurancesAssuranceAllocatedResource {
     public static Builder builder(GetElasticityAssurancesAssuranceAllocatedResource defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String instanceType;
         private Integer totalAmount;
         private Integer usedAmount;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetElasticityAssurancesAssuranceAllocatedResource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instanceType = defaults.instanceType;
@@ -83,33 +98,23 @@ public final class GetElasticityAssurancesAssuranceAllocatedResource {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
-        @CustomType.Setter
         public Builder totalAmount(Integer totalAmount) {
             this.totalAmount = Objects.requireNonNull(totalAmount);
             return this;
         }
-        @CustomType.Setter
         public Builder usedAmount(Integer usedAmount) {
             this.usedAmount = Objects.requireNonNull(usedAmount);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetElasticityAssurancesAssuranceAllocatedResource build() {
-            final var o = new GetElasticityAssurancesAssuranceAllocatedResource();
-            o.instanceType = instanceType;
-            o.totalAmount = totalAmount;
-            o.usedAmount = usedAmount;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetElasticityAssurancesAssuranceAllocatedResource build() {
+            return new GetElasticityAssurancesAssuranceAllocatedResource(instanceType, totalAmount, usedAmount, zoneId);
         }
     }
 }

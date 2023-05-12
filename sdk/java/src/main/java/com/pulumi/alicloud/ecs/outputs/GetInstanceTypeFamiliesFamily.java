@@ -14,19 +14,28 @@ public final class GetInstanceTypeFamiliesFamily {
      * @return The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
      * 
      */
-    private String generation;
+    private final String generation;
     /**
      * @return ID of the instance type family.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of Zone to launch the instance.
      * 
      */
-    private List<String> zoneIds;
+    private final List<String> zoneIds;
 
-    private GetInstanceTypeFamiliesFamily() {}
+    @CustomType.Constructor
+    private GetInstanceTypeFamiliesFamily(
+        @CustomType.Parameter("generation") String generation,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("zoneIds") List<String> zoneIds) {
+        this.generation = generation;
+        this.id = id;
+        this.zoneIds = zoneIds;
+    }
+
     /**
      * @return The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
      * 
@@ -56,12 +65,16 @@ public final class GetInstanceTypeFamiliesFamily {
     public static Builder builder(GetInstanceTypeFamiliesFamily defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String generation;
         private String id;
         private List<String> zoneIds;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstanceTypeFamiliesFamily defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.generation = defaults.generation;
@@ -69,30 +82,22 @@ public final class GetInstanceTypeFamiliesFamily {
     	      this.zoneIds = defaults.zoneIds;
         }
 
-        @CustomType.Setter
         public Builder generation(String generation) {
             this.generation = Objects.requireNonNull(generation);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneIds(List<String> zoneIds) {
             this.zoneIds = Objects.requireNonNull(zoneIds);
             return this;
         }
         public Builder zoneIds(String... zoneIds) {
             return zoneIds(List.of(zoneIds));
-        }
-        public GetInstanceTypeFamiliesFamily build() {
-            final var o = new GetInstanceTypeFamiliesFamily();
-            o.generation = generation;
-            o.id = id;
-            o.zoneIds = zoneIds;
-            return o;
+        }        public GetInstanceTypeFamiliesFamily build() {
+            return new GetInstanceTypeFamiliesFamily(generation, id, zoneIds);
         }
     }
 }

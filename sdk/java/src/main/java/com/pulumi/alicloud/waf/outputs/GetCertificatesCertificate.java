@@ -15,36 +15,55 @@ public final class GetCertificatesCertificate {
      * @return Certificate recording ID.
      * 
      */
-    private String certificateId;
+    private final String certificateId;
     /**
      * @return Your certificate name.
      * 
      */
-    private String certificateName;
+    private final String certificateName;
     /**
      * @return Certificate bound to the domain name.
      * 
      */
-    private String commonName;
+    private final String commonName;
     /**
      * @return The domain that you want to add to WAF.
      * 
      */
-    private String domain;
+    private final String domain;
     /**
      * @return The ID of the Certificate.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return WAF instance ID.
      * 
      */
-    private String instanceId;
-    private Boolean isUsing;
-    private List<String> sans;
+    private final String instanceId;
+    private final Boolean isUsing;
+    private final List<String> sans;
 
-    private GetCertificatesCertificate() {}
+    @CustomType.Constructor
+    private GetCertificatesCertificate(
+        @CustomType.Parameter("certificateId") String certificateId,
+        @CustomType.Parameter("certificateName") String certificateName,
+        @CustomType.Parameter("commonName") String commonName,
+        @CustomType.Parameter("domain") String domain,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("isUsing") Boolean isUsing,
+        @CustomType.Parameter("sans") List<String> sans) {
+        this.certificateId = certificateId;
+        this.certificateName = certificateName;
+        this.commonName = commonName;
+        this.domain = domain;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.isUsing = isUsing;
+        this.sans = sans;
+    }
+
     /**
      * @return Certificate recording ID.
      * 
@@ -101,7 +120,7 @@ public final class GetCertificatesCertificate {
     public static Builder builder(GetCertificatesCertificate defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String certificateId;
         private String certificateName;
@@ -111,7 +130,11 @@ public final class GetCertificatesCertificate {
         private String instanceId;
         private Boolean isUsing;
         private List<String> sans;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetCertificatesCertificate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificateId = defaults.certificateId;
@@ -124,60 +147,42 @@ public final class GetCertificatesCertificate {
     	      this.sans = defaults.sans;
         }
 
-        @CustomType.Setter
         public Builder certificateId(String certificateId) {
             this.certificateId = Objects.requireNonNull(certificateId);
             return this;
         }
-        @CustomType.Setter
         public Builder certificateName(String certificateName) {
             this.certificateName = Objects.requireNonNull(certificateName);
             return this;
         }
-        @CustomType.Setter
         public Builder commonName(String commonName) {
             this.commonName = Objects.requireNonNull(commonName);
             return this;
         }
-        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder isUsing(Boolean isUsing) {
             this.isUsing = Objects.requireNonNull(isUsing);
             return this;
         }
-        @CustomType.Setter
         public Builder sans(List<String> sans) {
             this.sans = Objects.requireNonNull(sans);
             return this;
         }
         public Builder sans(String... sans) {
             return sans(List.of(sans));
-        }
-        public GetCertificatesCertificate build() {
-            final var o = new GetCertificatesCertificate();
-            o.certificateId = certificateId;
-            o.certificateName = certificateName;
-            o.commonName = commonName;
-            o.domain = domain;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.isUsing = isUsing;
-            o.sans = sans;
-            return o;
+        }        public GetCertificatesCertificate build() {
+            return new GetCertificatesCertificate(certificateId, certificateName, commonName, domain, id, instanceId, isUsing, sans);
         }
     }
 }

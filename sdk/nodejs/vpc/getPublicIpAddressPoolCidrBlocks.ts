@@ -57,6 +57,9 @@ export interface GetPublicIpAddressPoolCidrBlocksArgs {
      * A list of Vpc Public Ip Address Pool Cidr Block IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the Vpc Public IP address pool.
@@ -138,6 +141,9 @@ export interface GetPublicIpAddressPoolCidrBlocksOutputArgs {
      * A list of Vpc Public Ip Address Pool Cidr Block IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the Vpc Public IP address pool.

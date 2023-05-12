@@ -25,90 +25,129 @@ public final class GetBucketsBucket {
      * @return Bucket access control list. Possible values: `private`, `public-read` and `public-read-write`.
      * 
      */
-    private String acl;
+    private final String acl;
     /**
      * @return A list of CORS rule configurations. Each element contains the following attributes:
      * 
      */
-    private List<GetBucketsBucketCorsRule> corsRules;
+    private final List<GetBucketsBucketCorsRule> corsRules;
     /**
      * @return Bucket creation date.
      * 
      */
-    private String creationDate;
+    private final String creationDate;
     /**
      * @return Internet domain name for accessing the bucket from outside.
      * 
      */
-    private String extranetEndpoint;
+    private final String extranetEndpoint;
     /**
      * @return Intranet domain name for accessing the bucket from an ECS instance in the same region.
      * 
      */
-    private String intranetEndpoint;
+    private final String intranetEndpoint;
     /**
      * @return A list CORS of lifecycle configurations. When Lifecycle is enabled, OSS automatically deletes the objects or transitions the objects (to another storage class) corresponding the lifecycle rules on a regular basis. Each element contains the following attributes:
      * 
      */
-    private List<GetBucketsBucketLifecycleRule> lifecycleRules;
+    private final List<GetBucketsBucketLifecycleRule> lifecycleRules;
     /**
      * @return Region of the data center where the bucket is located.
      * 
      */
-    private String location;
+    private final String location;
     /**
      * @return A list of one element containing configuration parameters used for storing access log information. It contains the following attributes:
      * 
      */
-    private GetBucketsBucketLogging logging;
+    private final GetBucketsBucketLogging logging;
     /**
      * @return Bucket name.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return Bucket owner.
      * 
      */
-    private String owner;
-    private @Nullable String policy;
+    private final String owner;
+    private final @Nullable String policy;
     /**
      * @return Redundancy type. Possible values: `LRS`, and `ZRS`.
      * 
      */
-    private String redundancyType;
+    private final String redundancyType;
     /**
      * @return A list of one element containing referer configuration. It contains the following attributes:
      * 
      */
-    private GetBucketsBucketRefererConfig refererConfig;
+    private final GetBucketsBucketRefererConfig refererConfig;
     /**
      * @return A configuration of default encryption for a bucket. It contains the following attributes:
      * 
      */
-    private GetBucketsBucketServerSideEncryptionRule serverSideEncryptionRule;
+    private final GetBucketsBucketServerSideEncryptionRule serverSideEncryptionRule;
     /**
      * @return Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
      * 
      */
-    private String storageClass;
+    private final String storageClass;
     /**
      * @return A mapping of tags.
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
     /**
      * @return If present , the versioning state has been set on the bucket. It contains the following attribute.
      * 
      */
-    private GetBucketsBucketVersioning versioning;
+    private final GetBucketsBucketVersioning versioning;
     /**
      * @return A list of one element containing configuration parameters used when the bucket is used as a website. It contains the following attributes:
      * 
      */
-    private GetBucketsBucketWebsite website;
+    private final GetBucketsBucketWebsite website;
 
-    private GetBucketsBucket() {}
+    @CustomType.Constructor
+    private GetBucketsBucket(
+        @CustomType.Parameter("acl") String acl,
+        @CustomType.Parameter("corsRules") List<GetBucketsBucketCorsRule> corsRules,
+        @CustomType.Parameter("creationDate") String creationDate,
+        @CustomType.Parameter("extranetEndpoint") String extranetEndpoint,
+        @CustomType.Parameter("intranetEndpoint") String intranetEndpoint,
+        @CustomType.Parameter("lifecycleRules") List<GetBucketsBucketLifecycleRule> lifecycleRules,
+        @CustomType.Parameter("location") String location,
+        @CustomType.Parameter("logging") GetBucketsBucketLogging logging,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("owner") String owner,
+        @CustomType.Parameter("policy") @Nullable String policy,
+        @CustomType.Parameter("redundancyType") String redundancyType,
+        @CustomType.Parameter("refererConfig") GetBucketsBucketRefererConfig refererConfig,
+        @CustomType.Parameter("serverSideEncryptionRule") GetBucketsBucketServerSideEncryptionRule serverSideEncryptionRule,
+        @CustomType.Parameter("storageClass") String storageClass,
+        @CustomType.Parameter("tags") Map<String,Object> tags,
+        @CustomType.Parameter("versioning") GetBucketsBucketVersioning versioning,
+        @CustomType.Parameter("website") GetBucketsBucketWebsite website) {
+        this.acl = acl;
+        this.corsRules = corsRules;
+        this.creationDate = creationDate;
+        this.extranetEndpoint = extranetEndpoint;
+        this.intranetEndpoint = intranetEndpoint;
+        this.lifecycleRules = lifecycleRules;
+        this.location = location;
+        this.logging = logging;
+        this.name = name;
+        this.owner = owner;
+        this.policy = policy;
+        this.redundancyType = redundancyType;
+        this.refererConfig = refererConfig;
+        this.serverSideEncryptionRule = serverSideEncryptionRule;
+        this.storageClass = storageClass;
+        this.tags = tags;
+        this.versioning = versioning;
+        this.website = website;
+    }
+
     /**
      * @return Bucket access control list. Possible values: `private`, `public-read` and `public-read-write`.
      * 
@@ -239,7 +278,7 @@ public final class GetBucketsBucket {
     public static Builder builder(GetBucketsBucket defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String acl;
         private List<GetBucketsBucketCorsRule> corsRules;
@@ -259,7 +298,11 @@ public final class GetBucketsBucket {
         private Map<String,Object> tags;
         private GetBucketsBucketVersioning versioning;
         private GetBucketsBucketWebsite website;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBucketsBucket defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acl = defaults.acl;
@@ -282,12 +325,10 @@ public final class GetBucketsBucket {
     	      this.website = defaults.website;
         }
 
-        @CustomType.Setter
         public Builder acl(String acl) {
             this.acl = Objects.requireNonNull(acl);
             return this;
         }
-        @CustomType.Setter
         public Builder corsRules(List<GetBucketsBucketCorsRule> corsRules) {
             this.corsRules = Objects.requireNonNull(corsRules);
             return this;
@@ -295,22 +336,18 @@ public final class GetBucketsBucket {
         public Builder corsRules(GetBucketsBucketCorsRule... corsRules) {
             return corsRules(List.of(corsRules));
         }
-        @CustomType.Setter
         public Builder creationDate(String creationDate) {
             this.creationDate = Objects.requireNonNull(creationDate);
             return this;
         }
-        @CustomType.Setter
         public Builder extranetEndpoint(String extranetEndpoint) {
             this.extranetEndpoint = Objects.requireNonNull(extranetEndpoint);
             return this;
         }
-        @CustomType.Setter
         public Builder intranetEndpoint(String intranetEndpoint) {
             this.intranetEndpoint = Objects.requireNonNull(intranetEndpoint);
             return this;
         }
-        @CustomType.Setter
         public Builder lifecycleRules(List<GetBucketsBucketLifecycleRule> lifecycleRules) {
             this.lifecycleRules = Objects.requireNonNull(lifecycleRules);
             return this;
@@ -318,87 +355,55 @@ public final class GetBucketsBucket {
         public Builder lifecycleRules(GetBucketsBucketLifecycleRule... lifecycleRules) {
             return lifecycleRules(List.of(lifecycleRules));
         }
-        @CustomType.Setter
         public Builder location(String location) {
             this.location = Objects.requireNonNull(location);
             return this;
         }
-        @CustomType.Setter
         public Builder logging(GetBucketsBucketLogging logging) {
             this.logging = Objects.requireNonNull(logging);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder owner(String owner) {
             this.owner = Objects.requireNonNull(owner);
             return this;
         }
-        @CustomType.Setter
         public Builder policy(@Nullable String policy) {
             this.policy = policy;
             return this;
         }
-        @CustomType.Setter
         public Builder redundancyType(String redundancyType) {
             this.redundancyType = Objects.requireNonNull(redundancyType);
             return this;
         }
-        @CustomType.Setter
         public Builder refererConfig(GetBucketsBucketRefererConfig refererConfig) {
             this.refererConfig = Objects.requireNonNull(refererConfig);
             return this;
         }
-        @CustomType.Setter
         public Builder serverSideEncryptionRule(GetBucketsBucketServerSideEncryptionRule serverSideEncryptionRule) {
             this.serverSideEncryptionRule = Objects.requireNonNull(serverSideEncryptionRule);
             return this;
         }
-        @CustomType.Setter
         public Builder storageClass(String storageClass) {
             this.storageClass = Objects.requireNonNull(storageClass);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
-        @CustomType.Setter
         public Builder versioning(GetBucketsBucketVersioning versioning) {
             this.versioning = Objects.requireNonNull(versioning);
             return this;
         }
-        @CustomType.Setter
         public Builder website(GetBucketsBucketWebsite website) {
             this.website = Objects.requireNonNull(website);
             return this;
-        }
-        public GetBucketsBucket build() {
-            final var o = new GetBucketsBucket();
-            o.acl = acl;
-            o.corsRules = corsRules;
-            o.creationDate = creationDate;
-            o.extranetEndpoint = extranetEndpoint;
-            o.intranetEndpoint = intranetEndpoint;
-            o.lifecycleRules = lifecycleRules;
-            o.location = location;
-            o.logging = logging;
-            o.name = name;
-            o.owner = owner;
-            o.policy = policy;
-            o.redundancyType = redundancyType;
-            o.refererConfig = refererConfig;
-            o.serverSideEncryptionRule = serverSideEncryptionRule;
-            o.storageClass = storageClass;
-            o.tags = tags;
-            o.versioning = versioning;
-            o.website = website;
-            return o;
+        }        public GetBucketsBucket build() {
+            return new GetBucketsBucket(acl, corsRules, creationDate, extranetEndpoint, intranetEndpoint, lifecycleRules, location, logging, name, owner, policy, redundancyType, refererConfig, serverSideEncryptionRule, storageClass, tags, versioning, website);
         }
     }
 }

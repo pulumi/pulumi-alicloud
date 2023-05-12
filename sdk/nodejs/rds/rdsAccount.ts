@@ -151,6 +151,8 @@ export class RdsAccount extends pulumi.CustomResource {
     /**
      * The attribute has been deprecated from 1.120.0 and using `accountType` instead.
      *
+     * > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
+     *
      * @deprecated Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
      */
     public readonly type!: pulumi.Output<string>;
@@ -275,6 +277,8 @@ export interface RdsAccountState {
     /**
      * The attribute has been deprecated from 1.120.0 and using `accountType` instead.
      *
+     * > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
+     *
      * @deprecated Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
      */
     type?: pulumi.Input<string>;
@@ -344,6 +348,8 @@ export interface RdsAccountArgs {
     resetPermissionFlag?: pulumi.Input<boolean>;
     /**
      * The attribute has been deprecated from 1.120.0 and using `accountType` instead.
+     *
+     * > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
      *
      * @deprecated Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
      */

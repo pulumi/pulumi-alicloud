@@ -94,6 +94,7 @@ def get_instance_specifications(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Instance Specification IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -131,5 +132,6 @@ def get_instance_specifications_output(ids: Optional[pulumi.Input[Optional[Seque
 
 
     :param Sequence[str] ids: A list of Instance Specification IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

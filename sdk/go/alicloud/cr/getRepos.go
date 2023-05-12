@@ -57,7 +57,8 @@ type GetReposArgs struct {
 	// A regex string to filter results by repository name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// Name of container registry namespace where the repositories are located in.
-	Namespace  *string `pulumi:"namespace"`
+	Namespace *string `pulumi:"namespace"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -98,7 +99,8 @@ type GetReposOutputArgs struct {
 	// A regex string to filter results by repository name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// Name of container registry namespace where the repositories are located in.
-	Namespace  pulumi.StringPtrInput `pulumi:"namespace"`
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

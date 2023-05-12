@@ -15,14 +15,21 @@ public final class QuotaAlarmQuotaDimension {
      * @return The Key of quota_dimensions.
      * 
      */
-    private @Nullable String key;
+    private final @Nullable String key;
     /**
      * @return The Value of quota_dimensions.
      * 
      */
-    private @Nullable String value;
+    private final @Nullable String value;
 
-    private QuotaAlarmQuotaDimension() {}
+    @CustomType.Constructor
+    private QuotaAlarmQuotaDimension(
+        @CustomType.Parameter("key") @Nullable String key,
+        @CustomType.Parameter("value") @Nullable String value) {
+        this.key = key;
+        this.value = value;
+    }
+
     /**
      * @return The Key of quota_dimensions.
      * 
@@ -45,32 +52,30 @@ public final class QuotaAlarmQuotaDimension {
     public static Builder builder(QuotaAlarmQuotaDimension defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String key;
         private @Nullable String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(QuotaAlarmQuotaDimension defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
-        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }
-        public QuotaAlarmQuotaDimension build() {
-            final var o = new QuotaAlarmQuotaDimension();
-            o.key = key;
-            o.value = value;
-            return o;
+        }        public QuotaAlarmQuotaDimension build() {
+            return new QuotaAlarmQuotaDimension(key, value);
         }
     }
 }

@@ -38,7 +38,8 @@ type GetZonesArgs struct {
 	// It has been deprecated from version 1.137.0 and using `multiZone` instead.
 	Multi *bool `pulumi:"multi"`
 	// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
-	MultiZone  *bool   `pulumi:"multiZone"`
+	MultiZone *bool `pulumi:"multiZone"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -90,7 +91,8 @@ type GetZonesOutputArgs struct {
 	// It has been deprecated from version 1.137.0 and using `multiZone` instead.
 	Multi pulumi.BoolPtrInput `pulumi:"multi"`
 	// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
-	MultiZone  pulumi.BoolPtrInput   `pulumi:"multiZone"`
+	MultiZone pulumi.BoolPtrInput `pulumi:"multiZone"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

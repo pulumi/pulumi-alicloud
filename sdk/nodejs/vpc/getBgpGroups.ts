@@ -54,6 +54,9 @@ export interface GetBgpGroupsArgs {
      * A regex string to filter results by Bgp Group name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the VBR.
@@ -120,6 +123,9 @@ export interface GetBgpGroupsOutputArgs {
      * A regex string to filter results by Bgp Group name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the VBR.

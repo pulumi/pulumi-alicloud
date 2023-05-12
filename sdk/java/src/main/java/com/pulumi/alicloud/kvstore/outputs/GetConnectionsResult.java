@@ -17,20 +17,31 @@ public final class GetConnectionsResult {
      * @return Public network details of the specified resource. contains the following attributes:
      * 
      */
-    private List<GetConnectionsConnection> connections;
+    private final List<GetConnectionsConnection> connections;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of KVStore DBInstance ids.
      * 
      */
-    private String ids;
-    private @Nullable String outputFile;
+    private final String ids;
+    private final @Nullable String outputFile;
 
-    private GetConnectionsResult() {}
+    @CustomType.Constructor
+    private GetConnectionsResult(
+        @CustomType.Parameter("connections") List<GetConnectionsConnection> connections,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") String ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.connections = connections;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+    }
+
     /**
      * @return Public network details of the specified resource. contains the following attributes:
      * 
@@ -63,13 +74,17 @@ public final class GetConnectionsResult {
     public static Builder builder(GetConnectionsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetConnectionsConnection> connections;
         private String id;
         private String ids;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetConnectionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connections = defaults.connections;
@@ -78,7 +93,6 @@ public final class GetConnectionsResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder connections(List<GetConnectionsConnection> connections) {
             this.connections = Objects.requireNonNull(connections);
             return this;
@@ -86,28 +100,19 @@ public final class GetConnectionsResult {
         public Builder connections(GetConnectionsConnection... connections) {
             return connections(List.of(connections));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(String ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetConnectionsResult build() {
-            final var o = new GetConnectionsResult();
-            o.connections = connections;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetConnectionsResult build() {
+            return new GetConnectionsResult(connections, id, ids, outputFile);
         }
     }
 }

@@ -85,6 +85,8 @@ export class Topic extends pulumi.CustomResource {
 
     /**
      * Comment of the datahub topic. It cannot be longer than 255 characters.
+     *
+     * **Notes:** Currently `lifeCycle` can not be modified and it will be supported in the next future.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
@@ -173,6 +175,8 @@ export class Topic extends pulumi.CustomResource {
 export interface TopicState {
     /**
      * Comment of the datahub topic. It cannot be longer than 255 characters.
+     *
+     * **Notes:** Currently `lifeCycle` can not be modified and it will be supported in the next future.
      */
     comment?: pulumi.Input<string>;
     /**
@@ -220,6 +224,8 @@ export interface TopicState {
 export interface TopicArgs {
     /**
      * Comment of the datahub topic. It cannot be longer than 255 characters.
+     *
+     * **Notes:** Currently `lifeCycle` can not be modified and it will be supported in the next future.
      */
     comment?: pulumi.Input<string>;
     /**

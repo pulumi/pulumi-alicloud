@@ -15,99 +15,140 @@ public final class GetJobTemplatesTemplate {
      * @return Queue Jobs, Is of the Form: 1-10:2.
      * 
      */
-    private String arrayRequest;
+    private final String arrayRequest;
     /**
      * @return Job Maximum Run Time.
      * 
      */
-    private String clockTime;
+    private final String clockTime;
     /**
      * @return Job Commands.
      * 
      */
-    private String commandLine;
+    private final String commandLine;
     /**
      * @return A Single Compute Node Using the GPU Number.Possible Values: 1~20000.
      * 
      */
-    private Integer gpu;
+    private final Integer gpu;
     /**
      * @return The ID of the Job Template.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private String jobTemplateId;
+    private final String jobTemplateId;
     /**
      * @return A Job Template Name.
      * 
      */
-    private String jobTemplateName;
+    private final String jobTemplateName;
     /**
      * @return A Single Compute Node Maximum Memory.
      * 
      */
-    private String mem;
+    private final String mem;
     /**
      * @return Submit a Task Is Required for Computing the Number of Data Nodes to Be. Possible Values: 1~5000 .
      * 
      */
-    private Integer node;
+    private final Integer node;
     /**
      * @return Job Commands the Directory.
      * 
      */
-    private String packagePath;
+    private final String packagePath;
     /**
      * @return The Job Priority.Possible Values: 0~9.
      * 
      */
-    private Integer priority;
+    private final Integer priority;
     /**
      * @return The Job Queue.
      * 
      */
-    private String queue;
+    private final String queue;
     /**
      * @return If the Job Is Support for the Re-Run.
      * 
      */
-    private Boolean reRunable;
+    private final Boolean reRunable;
     /**
      * @return The name of the user who performed the job.
      * 
      */
-    private String runasUser;
+    private final String runasUser;
     /**
      * @return Error Output Path.
      * 
      */
-    private String stderrRedirectPath;
+    private final String stderrRedirectPath;
     /**
      * @return Standard Output Path and.
      * 
      */
-    private String stdoutRedirectPath;
+    private final String stdoutRedirectPath;
     /**
      * @return A Single Compute Node Required Number of Tasks. Possible Values: 1~20000 .
      * 
      */
-    private Integer task;
+    private final Integer task;
     /**
      * @return A Single Task and the Number of Required Threads.Possible Values: 1~20000.
      * 
      */
-    private Integer thread;
+    private final Integer thread;
     /**
      * @return The Job of the Environment Variable.
      * 
      */
-    private String variables;
+    private final String variables;
 
-    private GetJobTemplatesTemplate() {}
+    @CustomType.Constructor
+    private GetJobTemplatesTemplate(
+        @CustomType.Parameter("arrayRequest") String arrayRequest,
+        @CustomType.Parameter("clockTime") String clockTime,
+        @CustomType.Parameter("commandLine") String commandLine,
+        @CustomType.Parameter("gpu") Integer gpu,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("jobTemplateId") String jobTemplateId,
+        @CustomType.Parameter("jobTemplateName") String jobTemplateName,
+        @CustomType.Parameter("mem") String mem,
+        @CustomType.Parameter("node") Integer node,
+        @CustomType.Parameter("packagePath") String packagePath,
+        @CustomType.Parameter("priority") Integer priority,
+        @CustomType.Parameter("queue") String queue,
+        @CustomType.Parameter("reRunable") Boolean reRunable,
+        @CustomType.Parameter("runasUser") String runasUser,
+        @CustomType.Parameter("stderrRedirectPath") String stderrRedirectPath,
+        @CustomType.Parameter("stdoutRedirectPath") String stdoutRedirectPath,
+        @CustomType.Parameter("task") Integer task,
+        @CustomType.Parameter("thread") Integer thread,
+        @CustomType.Parameter("variables") String variables) {
+        this.arrayRequest = arrayRequest;
+        this.clockTime = clockTime;
+        this.commandLine = commandLine;
+        this.gpu = gpu;
+        this.id = id;
+        this.jobTemplateId = jobTemplateId;
+        this.jobTemplateName = jobTemplateName;
+        this.mem = mem;
+        this.node = node;
+        this.packagePath = packagePath;
+        this.priority = priority;
+        this.queue = queue;
+        this.reRunable = reRunable;
+        this.runasUser = runasUser;
+        this.stderrRedirectPath = stderrRedirectPath;
+        this.stdoutRedirectPath = stdoutRedirectPath;
+        this.task = task;
+        this.thread = thread;
+        this.variables = variables;
+    }
+
     /**
      * @return Queue Jobs, Is of the Form: 1-10:2.
      * 
@@ -249,7 +290,7 @@ public final class GetJobTemplatesTemplate {
     public static Builder builder(GetJobTemplatesTemplate defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String arrayRequest;
         private String clockTime;
@@ -270,7 +311,11 @@ public final class GetJobTemplatesTemplate {
         private Integer task;
         private Integer thread;
         private String variables;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetJobTemplatesTemplate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arrayRequest = defaults.arrayRequest;
@@ -294,123 +339,83 @@ public final class GetJobTemplatesTemplate {
     	      this.variables = defaults.variables;
         }
 
-        @CustomType.Setter
         public Builder arrayRequest(String arrayRequest) {
             this.arrayRequest = Objects.requireNonNull(arrayRequest);
             return this;
         }
-        @CustomType.Setter
         public Builder clockTime(String clockTime) {
             this.clockTime = Objects.requireNonNull(clockTime);
             return this;
         }
-        @CustomType.Setter
         public Builder commandLine(String commandLine) {
             this.commandLine = Objects.requireNonNull(commandLine);
             return this;
         }
-        @CustomType.Setter
         public Builder gpu(Integer gpu) {
             this.gpu = Objects.requireNonNull(gpu);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder jobTemplateId(String jobTemplateId) {
             this.jobTemplateId = Objects.requireNonNull(jobTemplateId);
             return this;
         }
-        @CustomType.Setter
         public Builder jobTemplateName(String jobTemplateName) {
             this.jobTemplateName = Objects.requireNonNull(jobTemplateName);
             return this;
         }
-        @CustomType.Setter
         public Builder mem(String mem) {
             this.mem = Objects.requireNonNull(mem);
             return this;
         }
-        @CustomType.Setter
         public Builder node(Integer node) {
             this.node = Objects.requireNonNull(node);
             return this;
         }
-        @CustomType.Setter
         public Builder packagePath(String packagePath) {
             this.packagePath = Objects.requireNonNull(packagePath);
             return this;
         }
-        @CustomType.Setter
         public Builder priority(Integer priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
-        @CustomType.Setter
         public Builder queue(String queue) {
             this.queue = Objects.requireNonNull(queue);
             return this;
         }
-        @CustomType.Setter
         public Builder reRunable(Boolean reRunable) {
             this.reRunable = Objects.requireNonNull(reRunable);
             return this;
         }
-        @CustomType.Setter
         public Builder runasUser(String runasUser) {
             this.runasUser = Objects.requireNonNull(runasUser);
             return this;
         }
-        @CustomType.Setter
         public Builder stderrRedirectPath(String stderrRedirectPath) {
             this.stderrRedirectPath = Objects.requireNonNull(stderrRedirectPath);
             return this;
         }
-        @CustomType.Setter
         public Builder stdoutRedirectPath(String stdoutRedirectPath) {
             this.stdoutRedirectPath = Objects.requireNonNull(stdoutRedirectPath);
             return this;
         }
-        @CustomType.Setter
         public Builder task(Integer task) {
             this.task = Objects.requireNonNull(task);
             return this;
         }
-        @CustomType.Setter
         public Builder thread(Integer thread) {
             this.thread = Objects.requireNonNull(thread);
             return this;
         }
-        @CustomType.Setter
         public Builder variables(String variables) {
             this.variables = Objects.requireNonNull(variables);
             return this;
-        }
-        public GetJobTemplatesTemplate build() {
-            final var o = new GetJobTemplatesTemplate();
-            o.arrayRequest = arrayRequest;
-            o.clockTime = clockTime;
-            o.commandLine = commandLine;
-            o.gpu = gpu;
-            o.id = id;
-            o.jobTemplateId = jobTemplateId;
-            o.jobTemplateName = jobTemplateName;
-            o.mem = mem;
-            o.node = node;
-            o.packagePath = packagePath;
-            o.priority = priority;
-            o.queue = queue;
-            o.reRunable = reRunable;
-            o.runasUser = runasUser;
-            o.stderrRedirectPath = stderrRedirectPath;
-            o.stdoutRedirectPath = stdoutRedirectPath;
-            o.task = task;
-            o.thread = thread;
-            o.variables = variables;
-            return o;
+        }        public GetJobTemplatesTemplate build() {
+            return new GetJobTemplatesTemplate(arrayRequest, clockTime, commandLine, gpu, id, jobTemplateId, jobTemplateName, mem, node, packagePath, priority, queue, reRunable, runasUser, stderrRedirectPath, stdoutRedirectPath, task, thread, variables);
         }
     }
 }

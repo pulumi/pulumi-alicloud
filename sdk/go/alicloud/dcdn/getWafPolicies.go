@@ -52,9 +52,10 @@ func GetWafPolicies(ctx *pulumi.Context, args *GetWafPoliciesArgs, opts ...pulum
 // A collection of arguments for invoking getWafPolicies.
 type GetWafPoliciesArgs struct {
 	// A list of Waf Policy IDs.
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The query conditions. The value is a string in the JSON format. Format: `{"PolicyIds":"The ID of the proteuleIds":"Thection policy","R range of protection rule IDs","PolicyNameLike":"The name of the protection policy","DomainNames":"The protected domain names","PolicyType":"default","DefenseScenes":"wafGroup","PolicyStatus":"on","OrderBy":"GmtModified","Desc":"false"}`.
 	QueryArgs *string `pulumi:"queryArgs"`
 	// The status of the resource.
@@ -90,9 +91,10 @@ func GetWafPoliciesOutput(ctx *pulumi.Context, args GetWafPoliciesOutputArgs, op
 // A collection of arguments for invoking getWafPolicies.
 type GetWafPoliciesOutputArgs struct {
 	// A list of Waf Policy IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	NameRegex  pulumi.StringPtrInput   `pulumi:"nameRegex"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids       pulumi.StringArrayInput `pulumi:"ids"`
+	NameRegex pulumi.StringPtrInput   `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The query conditions. The value is a string in the JSON format. Format: `{"PolicyIds":"The ID of the proteuleIds":"Thection policy","R range of protection rule IDs","PolicyNameLike":"The name of the protection policy","DomainNames":"The protected domain names","PolicyType":"default","DefenseScenes":"wafGroup","PolicyStatus":"on","OrderBy":"GmtModified","Desc":"false"}`.
 	QueryArgs pulumi.StringPtrInput `pulumi:"queryArgs"`
 	// The status of the resource.

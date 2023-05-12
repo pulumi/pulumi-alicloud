@@ -13,24 +13,35 @@ public final class GetBgpNetworksNetwork {
      * @return Advertised BGP networks.
      * 
      */
-    private String dstCidrBlock;
+    private final String dstCidrBlock;
     /**
      * @return The ID of the Bgp Network. The value formats as `&lt;router_id&gt;:&lt;dst_cidr_block&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the vRouter.
      * 
      */
-    private String routerId;
+    private final String routerId;
     /**
      * @return The state of the advertised BGP network.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetBgpNetworksNetwork() {}
+    @CustomType.Constructor
+    private GetBgpNetworksNetwork(
+        @CustomType.Parameter("dstCidrBlock") String dstCidrBlock,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("routerId") String routerId,
+        @CustomType.Parameter("status") String status) {
+        this.dstCidrBlock = dstCidrBlock;
+        this.id = id;
+        this.routerId = routerId;
+        this.status = status;
+    }
+
     /**
      * @return Advertised BGP networks.
      * 
@@ -67,13 +78,17 @@ public final class GetBgpNetworksNetwork {
     public static Builder builder(GetBgpNetworksNetwork defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String dstCidrBlock;
         private String id;
         private String routerId;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBgpNetworksNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dstCidrBlock = defaults.dstCidrBlock;
@@ -82,33 +97,23 @@ public final class GetBgpNetworksNetwork {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder dstCidrBlock(String dstCidrBlock) {
             this.dstCidrBlock = Objects.requireNonNull(dstCidrBlock);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder routerId(String routerId) {
             this.routerId = Objects.requireNonNull(routerId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetBgpNetworksNetwork build() {
-            final var o = new GetBgpNetworksNetwork();
-            o.dstCidrBlock = dstCidrBlock;
-            o.id = id;
-            o.routerId = routerId;
-            o.status = status;
-            return o;
+        }        public GetBgpNetworksNetwork build() {
+            return new GetBgpNetworksNetwork(dstCidrBlock, id, routerId, status);
         }
     }
 }

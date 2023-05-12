@@ -16,24 +16,51 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStacksResult {
-    private @Nullable Boolean enableDetails;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String parentStackId;
-    private @Nullable Boolean showNestedStack;
-    private @Nullable String stackName;
-    private List<GetStacksStack> stacks;
-    private @Nullable String status;
-    private @Nullable Map<String,Object> tags;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String parentStackId;
+    private final @Nullable Boolean showNestedStack;
+    private final @Nullable String stackName;
+    private final List<GetStacksStack> stacks;
+    private final @Nullable String status;
+    private final @Nullable Map<String,Object> tags;
 
-    private GetStacksResult() {}
+    @CustomType.Constructor
+    private GetStacksResult(
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("parentStackId") @Nullable String parentStackId,
+        @CustomType.Parameter("showNestedStack") @Nullable Boolean showNestedStack,
+        @CustomType.Parameter("stackName") @Nullable String stackName,
+        @CustomType.Parameter("stacks") List<GetStacksStack> stacks,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.parentStackId = parentStackId;
+        this.showNestedStack = showNestedStack;
+        this.stackName = stackName;
+        this.stacks = stacks;
+        this.status = status;
+        this.tags = tags;
+    }
+
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -82,7 +109,7 @@ public final class GetStacksResult {
     public static Builder builder(GetStacksResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private String id;
@@ -96,7 +123,11 @@ public final class GetStacksResult {
         private List<GetStacksStack> stacks;
         private @Nullable String status;
         private @Nullable Map<String,Object> tags;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetStacksResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -113,17 +144,14 @@ public final class GetStacksResult {
     	      this.tags = defaults.tags;
         }
 
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -131,12 +159,10 @@ public final class GetStacksResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -144,27 +170,22 @@ public final class GetStacksResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder parentStackId(@Nullable String parentStackId) {
             this.parentStackId = parentStackId;
             return this;
         }
-        @CustomType.Setter
         public Builder showNestedStack(@Nullable Boolean showNestedStack) {
             this.showNestedStack = showNestedStack;
             return this;
         }
-        @CustomType.Setter
         public Builder stackName(@Nullable String stackName) {
             this.stackName = stackName;
             return this;
         }
-        @CustomType.Setter
         public Builder stacks(List<GetStacksStack> stacks) {
             this.stacks = Objects.requireNonNull(stacks);
             return this;
@@ -172,31 +193,15 @@ public final class GetStacksResult {
         public Builder stacks(GetStacksStack... stacks) {
             return stacks(List.of(stacks));
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }
-        public GetStacksResult build() {
-            final var o = new GetStacksResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.parentStackId = parentStackId;
-            o.showNestedStack = showNestedStack;
-            o.stackName = stackName;
-            o.stacks = stacks;
-            o.status = status;
-            o.tags = tags;
-            return o;
+        }        public GetStacksResult build() {
+            return new GetStacksResult(enableDetails, id, ids, nameRegex, names, outputFile, parentStackId, showNestedStack, stackName, stacks, status, tags);
         }
     }
 }

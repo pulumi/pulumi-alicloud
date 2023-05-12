@@ -117,6 +117,7 @@ def get_engine_namespaces(accept_language: Optional[str] = None,
     :param str accept_language: The language type of the returned information. Valid values: `zh`, `en`.
     :param str cluster_id: The id of the cluster.
     :param Sequence[str] ids: A list of Engine Namespace IDs. It is formatted to `<cluster_id>:<namespace_id>`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['acceptLanguage'] = accept_language
@@ -163,5 +164,6 @@ def get_engine_namespaces_output(accept_language: Optional[pulumi.Input[Optional
     :param str accept_language: The language type of the returned information. Valid values: `zh`, `en`.
     :param str cluster_id: The id of the cluster.
     :param Sequence[str] ids: A list of Engine Namespace IDs. It is formatted to `<cluster_id>:<namespace_id>`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

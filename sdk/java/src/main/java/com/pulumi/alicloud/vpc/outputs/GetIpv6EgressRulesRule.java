@@ -13,44 +13,63 @@ public final class GetIpv6EgressRulesRule {
      * @return The description of the egress-only rule.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the Ipv6 Egress Rule. The value formats as `&lt;ipv6_gateway_id&gt;:&lt;ipv6_egress_rule_id&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the instance to which the egress-only rule is applied.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return The type of the instance to which the egress-only rule is applied.
      * 
      */
-    private String instanceType;
+    private final String instanceType;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private String ipv6EgressRuleId;
+    private final String ipv6EgressRuleId;
     /**
      * @return The name of the resource.
      * 
      */
-    private String ipv6EgressRuleName;
+    private final String ipv6EgressRuleName;
     /**
      * @return The ID of the IPv6 gateway.
      * 
      */
-    private String ipv6GatewayId;
+    private final String ipv6GatewayId;
     /**
      * @return The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetIpv6EgressRulesRule() {}
+    @CustomType.Constructor
+    private GetIpv6EgressRulesRule(
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("instanceType") String instanceType,
+        @CustomType.Parameter("ipv6EgressRuleId") String ipv6EgressRuleId,
+        @CustomType.Parameter("ipv6EgressRuleName") String ipv6EgressRuleName,
+        @CustomType.Parameter("ipv6GatewayId") String ipv6GatewayId,
+        @CustomType.Parameter("status") String status) {
+        this.description = description;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.instanceType = instanceType;
+        this.ipv6EgressRuleId = ipv6EgressRuleId;
+        this.ipv6EgressRuleName = ipv6EgressRuleName;
+        this.ipv6GatewayId = ipv6GatewayId;
+        this.status = status;
+    }
+
     /**
      * @return The description of the egress-only rule.
      * 
@@ -115,7 +134,7 @@ public final class GetIpv6EgressRulesRule {
     public static Builder builder(GetIpv6EgressRulesRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String description;
         private String id;
@@ -125,7 +144,11 @@ public final class GetIpv6EgressRulesRule {
         private String ipv6EgressRuleName;
         private String ipv6GatewayId;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetIpv6EgressRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -138,57 +161,39 @@ public final class GetIpv6EgressRulesRule {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
-        @CustomType.Setter
         public Builder ipv6EgressRuleId(String ipv6EgressRuleId) {
             this.ipv6EgressRuleId = Objects.requireNonNull(ipv6EgressRuleId);
             return this;
         }
-        @CustomType.Setter
         public Builder ipv6EgressRuleName(String ipv6EgressRuleName) {
             this.ipv6EgressRuleName = Objects.requireNonNull(ipv6EgressRuleName);
             return this;
         }
-        @CustomType.Setter
         public Builder ipv6GatewayId(String ipv6GatewayId) {
             this.ipv6GatewayId = Objects.requireNonNull(ipv6GatewayId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetIpv6EgressRulesRule build() {
-            final var o = new GetIpv6EgressRulesRule();
-            o.description = description;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.instanceType = instanceType;
-            o.ipv6EgressRuleId = ipv6EgressRuleId;
-            o.ipv6EgressRuleName = ipv6EgressRuleName;
-            o.ipv6GatewayId = ipv6GatewayId;
-            o.status = status;
-            return o;
+        }        public GetIpv6EgressRulesRule build() {
+            return new GetIpv6EgressRulesRule(description, id, instanceId, instanceType, ipv6EgressRuleId, ipv6EgressRuleName, ipv6GatewayId, status);
         }
     }
 }

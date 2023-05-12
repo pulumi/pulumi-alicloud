@@ -17,13 +17,26 @@ public final class GetUsersResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String outputFile;
-    private @Nullable String status;
-    private List<GetUsersUser> users;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
+    private final @Nullable String status;
+    private final List<GetUsersUser> users;
 
-    private GetUsersResult() {}
+    @CustomType.Constructor
+    private GetUsersResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("users") List<GetUsersUser> users) {
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.status = status;
+        this.users = users;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -51,14 +64,18 @@ public final class GetUsersResult {
     public static Builder builder(GetUsersResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
         private @Nullable String status;
         private List<GetUsersUser> users;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetUsersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -68,12 +85,10 @@ public final class GetUsersResult {
     	      this.users = defaults.users;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -81,32 +96,22 @@ public final class GetUsersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder users(List<GetUsersUser> users) {
             this.users = Objects.requireNonNull(users);
             return this;
         }
         public Builder users(GetUsersUser... users) {
             return users(List.of(users));
-        }
-        public GetUsersResult build() {
-            final var o = new GetUsersResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.users = users;
-            return o;
+        }        public GetUsersResult build() {
+            return new GetUsersResult(id, ids, outputFile, status, users);
         }
     }
 }

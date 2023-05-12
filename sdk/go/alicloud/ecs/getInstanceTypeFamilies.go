@@ -56,7 +56,8 @@ type GetInstanceTypeFamiliesArgs struct {
 	Generation *string `pulumi:"generation"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	OutputFile         *string `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The Zone to launch the instance.
@@ -97,7 +98,8 @@ type GetInstanceTypeFamiliesOutputArgs struct {
 	Generation pulumi.StringPtrInput `pulumi:"generation"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`
-	OutputFile         pulumi.StringPtrInput `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
 	SpotStrategy pulumi.StringPtrInput `pulumi:"spotStrategy"`
 	// The Zone to launch the instance.

@@ -60,7 +60,8 @@ type GetUsersArgs struct {
 	// A list of User IDs.
 	Ids []string `pulumi:"ids"`
 	// The keywords of the nicknames or usernames of the members of the organization.
-	Keyword    *string `pulumi:"keyword"`
+	Keyword *string `pulumi:"keyword"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -95,7 +96,8 @@ type GetUsersOutputArgs struct {
 	// A list of User IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The keywords of the nicknames or usernames of the members of the organization.
-	Keyword    pulumi.StringPtrInput `pulumi:"keyword"`
+	Keyword pulumi.StringPtrInput `pulumi:"keyword"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

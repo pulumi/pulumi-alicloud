@@ -135,6 +135,9 @@ namespace Pulumi.AliCloud.Oss
 
         /// <summary>
         /// Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
+        /// 
+        /// Either `source` or `content` must be provided to specify the bucket content.
+        /// These two arguments are mutually-exclusive.
         /// </summary>
         [Output("kmsKeyId")]
         public Output<string?> KmsKeyId { get; private set; } = null!;
@@ -265,6 +268,9 @@ namespace Pulumi.AliCloud.Oss
 
         /// <summary>
         /// Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
+        /// 
+        /// Either `source` or `content` must be provided to specify the bucket content.
+        /// These two arguments are mutually-exclusive.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
@@ -363,6 +369,9 @@ namespace Pulumi.AliCloud.Oss
 
         /// <summary>
         /// Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
+        /// 
+        /// Either `source` or `content` must be provided to specify the bucket content.
+        /// These two arguments are mutually-exclusive.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }

@@ -16,44 +16,63 @@ public final class GetGroupsGroup {
      * @return The name of the group.
      * 
      */
-    private String groupName;
+    private final String groupName;
     /**
      * @return Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
      * 
      */
-    private String groupType;
+    private final String groupType;
     /**
      * @return The name of the group.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Indicates whether namespaces are available. Read [Fields in SubscribeInfoDo](https://www.alibabacloud.com/help/doc-detail/29619.html) for further details.
      * 
      */
-    private Boolean independentNaming;
+    private final Boolean independentNaming;
     /**
      * @return ID of the ONS Instance that owns the groups.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return The ID of the group owner, which is the Alibaba Cloud UID.
      * 
      */
-    private String owner;
+    private final String owner;
     /**
      * @return Remark of the group.
      * 
      */
-    private String remark;
+    private final String remark;
     /**
      * @return A map of tags assigned to the Ons instance.
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
 
-    private GetGroupsGroup() {}
+    @CustomType.Constructor
+    private GetGroupsGroup(
+        @CustomType.Parameter("groupName") String groupName,
+        @CustomType.Parameter("groupType") String groupType,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("independentNaming") Boolean independentNaming,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("owner") String owner,
+        @CustomType.Parameter("remark") String remark,
+        @CustomType.Parameter("tags") Map<String,Object> tags) {
+        this.groupName = groupName;
+        this.groupType = groupType;
+        this.id = id;
+        this.independentNaming = independentNaming;
+        this.instanceId = instanceId;
+        this.owner = owner;
+        this.remark = remark;
+        this.tags = tags;
+    }
+
     /**
      * @return The name of the group.
      * 
@@ -118,7 +137,7 @@ public final class GetGroupsGroup {
     public static Builder builder(GetGroupsGroup defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String groupName;
         private String groupType;
@@ -128,7 +147,11 @@ public final class GetGroupsGroup {
         private String owner;
         private String remark;
         private Map<String,Object> tags;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groupName = defaults.groupName;
@@ -141,57 +164,39 @@ public final class GetGroupsGroup {
     	      this.tags = defaults.tags;
         }
 
-        @CustomType.Setter
         public Builder groupName(String groupName) {
             this.groupName = Objects.requireNonNull(groupName);
             return this;
         }
-        @CustomType.Setter
         public Builder groupType(String groupType) {
             this.groupType = Objects.requireNonNull(groupType);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder independentNaming(Boolean independentNaming) {
             this.independentNaming = Objects.requireNonNull(independentNaming);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder owner(String owner) {
             this.owner = Objects.requireNonNull(owner);
             return this;
         }
-        @CustomType.Setter
         public Builder remark(String remark) {
             this.remark = Objects.requireNonNull(remark);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
-        }
-        public GetGroupsGroup build() {
-            final var o = new GetGroupsGroup();
-            o.groupName = groupName;
-            o.groupType = groupType;
-            o.id = id;
-            o.independentNaming = independentNaming;
-            o.instanceId = instanceId;
-            o.owner = owner;
-            o.remark = remark;
-            o.tags = tags;
-            return o;
+        }        public GetGroupsGroup build() {
+            return new GetGroupsGroup(groupName, groupType, id, independentNaming, instanceId, owner, remark, tags);
         }
     }
 }

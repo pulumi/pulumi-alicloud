@@ -15,39 +15,56 @@ public final class GetRulesRule {
      * @return The description of rule.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The name of event bus.
      * 
      */
-    private String eventBusName;
+    private final String eventBusName;
     /**
      * @return The pattern to match interested events.
      * 
      */
-    private String filterPattern;
+    private final String filterPattern;
     /**
      * @return The ID of the Rule.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The name of rule.
      * 
      */
-    private String ruleName;
+    private final String ruleName;
     /**
      * @return Rule status, either Enable or Disable.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The target for rule.
      * 
      */
-    private List<GetRulesRuleTarget> targets;
+    private final List<GetRulesRuleTarget> targets;
 
-    private GetRulesRule() {}
+    @CustomType.Constructor
+    private GetRulesRule(
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("eventBusName") String eventBusName,
+        @CustomType.Parameter("filterPattern") String filterPattern,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ruleName") String ruleName,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("targets") List<GetRulesRuleTarget> targets) {
+        this.description = description;
+        this.eventBusName = eventBusName;
+        this.filterPattern = filterPattern;
+        this.id = id;
+        this.ruleName = ruleName;
+        this.status = status;
+        this.targets = targets;
+    }
+
     /**
      * @return The description of rule.
      * 
@@ -105,7 +122,7 @@ public final class GetRulesRule {
     public static Builder builder(GetRulesRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String description;
         private String eventBusName;
@@ -114,7 +131,11 @@ public final class GetRulesRule {
         private String ruleName;
         private String status;
         private List<GetRulesRuleTarget> targets;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -126,54 +147,38 @@ public final class GetRulesRule {
     	      this.targets = defaults.targets;
         }
 
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder eventBusName(String eventBusName) {
             this.eventBusName = Objects.requireNonNull(eventBusName);
             return this;
         }
-        @CustomType.Setter
         public Builder filterPattern(String filterPattern) {
             this.filterPattern = Objects.requireNonNull(filterPattern);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ruleName(String ruleName) {
             this.ruleName = Objects.requireNonNull(ruleName);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder targets(List<GetRulesRuleTarget> targets) {
             this.targets = Objects.requireNonNull(targets);
             return this;
         }
         public Builder targets(GetRulesRuleTarget... targets) {
             return targets(List.of(targets));
-        }
-        public GetRulesRule build() {
-            final var o = new GetRulesRule();
-            o.description = description;
-            o.eventBusName = eventBusName;
-            o.filterPattern = filterPattern;
-            o.id = id;
-            o.ruleName = ruleName;
-            o.status = status;
-            o.targets = targets;
-            return o;
+        }        public GetRulesRule build() {
+            return new GetRulesRule(description, eventBusName, filterPattern, id, ruleName, status, targets);
         }
     }
 }

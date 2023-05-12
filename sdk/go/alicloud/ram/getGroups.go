@@ -52,7 +52,8 @@ func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOp
 // A collection of arguments for invoking getGroups.
 type GetGroupsArgs struct {
 	// A regex string to filter the returned groups by their names.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Filter the results by a specific policy name. If you set this parameter without setting `policyType`, it will be automatically set to `System`.
 	PolicyName *string `pulumi:"policyName"`
@@ -93,7 +94,8 @@ func GetGroupsOutput(ctx *pulumi.Context, args GetGroupsOutputArgs, opts ...pulu
 // A collection of arguments for invoking getGroups.
 type GetGroupsOutputArgs struct {
 	// A regex string to filter the returned groups by their names.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Filter the results by a specific policy name. If you set this parameter without setting `policyType`, it will be automatically set to `System`.
 	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`

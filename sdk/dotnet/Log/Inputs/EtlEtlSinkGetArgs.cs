@@ -88,6 +88,8 @@ namespace Pulumi.AliCloud.Log.Inputs
 
         /// <summary>
         /// ETL sinks type, the default value is AliyunLOG.
+        /// 
+        /// &gt; **Note:** `from_time` and `to_time` no modification allowed after successful creation.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

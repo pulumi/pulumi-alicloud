@@ -14,20 +14,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGatewayBlockVolumesResult {
-    private String gatewayId;
+    private final String gatewayId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable Integer status;
-    private List<GetGatewayBlockVolumesVolume> volumes;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer status;
+    private final List<GetGatewayBlockVolumesVolume> volumes;
 
-    private GetGatewayBlockVolumesResult() {}
+    @CustomType.Constructor
+    private GetGatewayBlockVolumesResult(
+        @CustomType.Parameter("gatewayId") String gatewayId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable Integer status,
+        @CustomType.Parameter("volumes") List<GetGatewayBlockVolumesVolume> volumes) {
+        this.gatewayId = gatewayId;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.status = status;
+        this.volumes = volumes;
+    }
+
     public String gatewayId() {
         return this.gatewayId;
     }
@@ -64,7 +83,7 @@ public final class GetGatewayBlockVolumesResult {
     public static Builder builder(GetGatewayBlockVolumesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String gatewayId;
         private String id;
@@ -74,7 +93,11 @@ public final class GetGatewayBlockVolumesResult {
         private @Nullable String outputFile;
         private @Nullable Integer status;
         private List<GetGatewayBlockVolumesVolume> volumes;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetGatewayBlockVolumesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gatewayId = defaults.gatewayId;
@@ -87,17 +110,14 @@ public final class GetGatewayBlockVolumesResult {
     	      this.volumes = defaults.volumes;
         }
 
-        @CustomType.Setter
         public Builder gatewayId(String gatewayId) {
             this.gatewayId = Objects.requireNonNull(gatewayId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -105,12 +125,10 @@ public final class GetGatewayBlockVolumesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -118,35 +136,22 @@ public final class GetGatewayBlockVolumesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable Integer status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder volumes(List<GetGatewayBlockVolumesVolume> volumes) {
             this.volumes = Objects.requireNonNull(volumes);
             return this;
         }
         public Builder volumes(GetGatewayBlockVolumesVolume... volumes) {
             return volumes(List.of(volumes));
-        }
-        public GetGatewayBlockVolumesResult build() {
-            final var o = new GetGatewayBlockVolumesResult();
-            o.gatewayId = gatewayId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.volumes = volumes;
-            return o;
+        }        public GetGatewayBlockVolumesResult build() {
+            return new GetGatewayBlockVolumesResult(gatewayId, id, ids, nameRegex, names, outputFile, status, volumes);
         }
     }
 }

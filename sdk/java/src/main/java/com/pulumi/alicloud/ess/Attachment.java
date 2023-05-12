@@ -171,12 +171,32 @@ public class Attachment extends com.pulumi.resources.CustomResource {
     /**
      * Whether to remove forcibly &#34;AutoCreated&#34; ECS instances in order to release scaling group capacity &#34;MaxSize&#34; for attaching ECS instances. Default to false.
      * 
+     * &gt; **NOTE:** &#34;AutoCreated&#34; ECS instance will be deleted after it is removed from scaling group, but &#34;Attached&#34; will be not.
+     * 
+     * &gt; **NOTE:** Restrictions on attaching ECS instances:
+     * 
+     * - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+     * - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+     * - The attached ECS instances must in the running state.
+     * - The attached ECS instances has not been attached to other scaling groups.
+     * - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+     * 
      */
     @Export(name="force", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> force;
 
     /**
      * @return Whether to remove forcibly &#34;AutoCreated&#34; ECS instances in order to release scaling group capacity &#34;MaxSize&#34; for attaching ECS instances. Default to false.
+     * 
+     * &gt; **NOTE:** &#34;AutoCreated&#34; ECS instance will be deleted after it is removed from scaling group, but &#34;Attached&#34; will be not.
+     * 
+     * &gt; **NOTE:** Restrictions on attaching ECS instances:
+     * 
+     * - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+     * - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+     * - The attached ECS instances must in the running state.
+     * - The attached ECS instances has not been attached to other scaling groups.
+     * - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
      * 
      */
     public Output<Optional<Boolean>> force() {

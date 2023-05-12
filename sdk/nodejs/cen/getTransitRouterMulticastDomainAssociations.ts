@@ -49,6 +49,9 @@ export interface GetTransitRouterMulticastDomainAssociationsArgs {
      * A list of Transit Router Multicast Domain Association IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the resource associated with the multicast domain.
@@ -147,6 +150,9 @@ export interface GetTransitRouterMulticastDomainAssociationsOutputArgs {
      * A list of Transit Router Multicast Domain Association IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the resource associated with the multicast domain.

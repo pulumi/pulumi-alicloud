@@ -17,17 +17,30 @@ public final class GetRegionRouteEntriesResult {
      * @return A list of CEN Route Entries. Each element contains the following attributes:
      * 
      */
-    private List<GetRegionRouteEntriesEntry> entries;
+    private final List<GetRegionRouteEntriesEntry> entries;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private String instanceId;
-    private @Nullable String outputFile;
-    private String regionId;
+    private final String id;
+    private final String instanceId;
+    private final @Nullable String outputFile;
+    private final String regionId;
 
-    private GetRegionRouteEntriesResult() {}
+    @CustomType.Constructor
+    private GetRegionRouteEntriesResult(
+        @CustomType.Parameter("entries") List<GetRegionRouteEntriesEntry> entries,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("regionId") String regionId) {
+        this.entries = entries;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.outputFile = outputFile;
+        this.regionId = regionId;
+    }
+
     /**
      * @return A list of CEN Route Entries. Each element contains the following attributes:
      * 
@@ -59,14 +72,18 @@ public final class GetRegionRouteEntriesResult {
     public static Builder builder(GetRegionRouteEntriesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetRegionRouteEntriesEntry> entries;
         private String id;
         private String instanceId;
         private @Nullable String outputFile;
         private String regionId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRegionRouteEntriesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.entries = defaults.entries;
@@ -76,7 +93,6 @@ public final class GetRegionRouteEntriesResult {
     	      this.regionId = defaults.regionId;
         }
 
-        @CustomType.Setter
         public Builder entries(List<GetRegionRouteEntriesEntry> entries) {
             this.entries = Objects.requireNonNull(entries);
             return this;
@@ -84,34 +100,23 @@ public final class GetRegionRouteEntriesResult {
         public Builder entries(GetRegionRouteEntriesEntry... entries) {
             return entries(List.of(entries));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
-        }
-        public GetRegionRouteEntriesResult build() {
-            final var o = new GetRegionRouteEntriesResult();
-            o.entries = entries;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.outputFile = outputFile;
-            o.regionId = regionId;
-            return o;
+        }        public GetRegionRouteEntriesResult build() {
+            return new GetRegionRouteEntriesResult(entries, id, instanceId, outputFile, regionId);
         }
     }
 }

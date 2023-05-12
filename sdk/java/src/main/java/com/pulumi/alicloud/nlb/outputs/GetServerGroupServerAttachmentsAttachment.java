@@ -14,54 +14,77 @@ public final class GetServerGroupServerAttachmentsAttachment {
      * @return The description of the backend server.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the server group.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The port used by the backend server.
      * 
      */
-    private Integer port;
+    private final Integer port;
     /**
      * @return The ID of the server group.
      * 
      */
-    private String serverGroupId;
+    private final String serverGroupId;
     /**
      * @return The ID of the server.
      * 
      */
-    private String serverId;
+    private final String serverId;
     /**
      * @return The IP address of the backend server.
      * 
      */
-    private String serverIp;
+    private final String serverIp;
     /**
      * @return The type of the backend server.
      * 
      */
-    private String serverType;
+    private final String serverType;
     /**
      * @return Indicates the status of the backend server.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The weight of the backend server.
      * 
      */
-    private Integer weight;
+    private final Integer weight;
     /**
      * @return The zone ID of the server.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetServerGroupServerAttachmentsAttachment() {}
+    @CustomType.Constructor
+    private GetServerGroupServerAttachmentsAttachment(
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("port") Integer port,
+        @CustomType.Parameter("serverGroupId") String serverGroupId,
+        @CustomType.Parameter("serverId") String serverId,
+        @CustomType.Parameter("serverIp") String serverIp,
+        @CustomType.Parameter("serverType") String serverType,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("weight") Integer weight,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.description = description;
+        this.id = id;
+        this.port = port;
+        this.serverGroupId = serverGroupId;
+        this.serverId = serverId;
+        this.serverIp = serverIp;
+        this.serverType = serverType;
+        this.status = status;
+        this.weight = weight;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return The description of the backend server.
      * 
@@ -140,7 +163,7 @@ public final class GetServerGroupServerAttachmentsAttachment {
     public static Builder builder(GetServerGroupServerAttachmentsAttachment defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String description;
         private String id;
@@ -152,7 +175,11 @@ public final class GetServerGroupServerAttachmentsAttachment {
         private String status;
         private Integer weight;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServerGroupServerAttachmentsAttachment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -167,69 +194,47 @@ public final class GetServerGroupServerAttachmentsAttachment {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
-        @CustomType.Setter
         public Builder serverGroupId(String serverGroupId) {
             this.serverGroupId = Objects.requireNonNull(serverGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder serverId(String serverId) {
             this.serverId = Objects.requireNonNull(serverId);
             return this;
         }
-        @CustomType.Setter
         public Builder serverIp(String serverIp) {
             this.serverIp = Objects.requireNonNull(serverIp);
             return this;
         }
-        @CustomType.Setter
         public Builder serverType(String serverType) {
             this.serverType = Objects.requireNonNull(serverType);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder weight(Integer weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetServerGroupServerAttachmentsAttachment build() {
-            final var o = new GetServerGroupServerAttachmentsAttachment();
-            o.description = description;
-            o.id = id;
-            o.port = port;
-            o.serverGroupId = serverGroupId;
-            o.serverId = serverId;
-            o.serverIp = serverIp;
-            o.serverType = serverType;
-            o.status = status;
-            o.weight = weight;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetServerGroupServerAttachmentsAttachment build() {
+            return new GetServerGroupServerAttachmentsAttachment(description, id, port, serverGroupId, serverId, serverIp, serverType, status, weight, zoneId);
         }
     }
 }

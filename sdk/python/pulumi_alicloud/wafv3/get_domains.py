@@ -163,6 +163,7 @@ def get_domains(backend: Optional[str] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of domain IDs.
     :param str instance_id: The WAF instance ID.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['backend'] = backend
@@ -221,5 +222,6 @@ def get_domains_output(backend: Optional[pulumi.Input[Optional[str]]] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of domain IDs.
     :param str instance_id: The WAF instance ID.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

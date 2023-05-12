@@ -15,44 +15,63 @@ public final class GetEcsLaunchTemplatesTemplateDataDisk {
      * @return The category of the system disk.
      * 
      */
-    private String category;
+    private final String category;
     /**
      * @return Specifies whether to release the system disk when the instance is released.
      * 
      */
-    private Boolean deleteWithInstance;
+    private final Boolean deleteWithInstance;
     /**
      * @return System disk description.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return Encrypted the data in this disk.
      * 
      */
-    private Boolean encrypted;
+    private final Boolean encrypted;
     /**
      * @return System disk name.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The performance level of the ESSD used as the system disk.
      * 
      */
-    private String performanceLevel;
+    private final String performanceLevel;
     /**
      * @return Size of the system disk, measured in GB.
      * 
      */
-    private Integer size;
+    private final Integer size;
     /**
      * @return The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
      * 
      */
-    private String snapshotId;
+    private final String snapshotId;
 
-    private GetEcsLaunchTemplatesTemplateDataDisk() {}
+    @CustomType.Constructor
+    private GetEcsLaunchTemplatesTemplateDataDisk(
+        @CustomType.Parameter("category") String category,
+        @CustomType.Parameter("deleteWithInstance") Boolean deleteWithInstance,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("encrypted") Boolean encrypted,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("performanceLevel") String performanceLevel,
+        @CustomType.Parameter("size") Integer size,
+        @CustomType.Parameter("snapshotId") String snapshotId) {
+        this.category = category;
+        this.deleteWithInstance = deleteWithInstance;
+        this.description = description;
+        this.encrypted = encrypted;
+        this.name = name;
+        this.performanceLevel = performanceLevel;
+        this.size = size;
+        this.snapshotId = snapshotId;
+    }
+
     /**
      * @return The category of the system disk.
      * 
@@ -117,7 +136,7 @@ public final class GetEcsLaunchTemplatesTemplateDataDisk {
     public static Builder builder(GetEcsLaunchTemplatesTemplateDataDisk defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String category;
         private Boolean deleteWithInstance;
@@ -127,7 +146,11 @@ public final class GetEcsLaunchTemplatesTemplateDataDisk {
         private String performanceLevel;
         private Integer size;
         private String snapshotId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEcsLaunchTemplatesTemplateDataDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -140,57 +163,39 @@ public final class GetEcsLaunchTemplatesTemplateDataDisk {
     	      this.snapshotId = defaults.snapshotId;
         }
 
-        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
-        @CustomType.Setter
         public Builder deleteWithInstance(Boolean deleteWithInstance) {
             this.deleteWithInstance = Objects.requireNonNull(deleteWithInstance);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder encrypted(Boolean encrypted) {
             this.encrypted = Objects.requireNonNull(encrypted);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder performanceLevel(String performanceLevel) {
             this.performanceLevel = Objects.requireNonNull(performanceLevel);
             return this;
         }
-        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
-        @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
             this.snapshotId = Objects.requireNonNull(snapshotId);
             return this;
-        }
-        public GetEcsLaunchTemplatesTemplateDataDisk build() {
-            final var o = new GetEcsLaunchTemplatesTemplateDataDisk();
-            o.category = category;
-            o.deleteWithInstance = deleteWithInstance;
-            o.description = description;
-            o.encrypted = encrypted;
-            o.name = name;
-            o.performanceLevel = performanceLevel;
-            o.size = size;
-            o.snapshotId = snapshotId;
-            return o;
+        }        public GetEcsLaunchTemplatesTemplateDataDisk build() {
+            return new GetEcsLaunchTemplatesTemplateDataDisk(category, deleteWithInstance, description, encrypted, name, performanceLevel, size, snapshotId);
         }
     }
 }

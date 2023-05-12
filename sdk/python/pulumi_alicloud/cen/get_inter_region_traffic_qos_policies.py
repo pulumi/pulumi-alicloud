@@ -195,6 +195,7 @@ def get_inter_region_traffic_qos_policies(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Inter Region Traffic Qos Policy IDs.
     :param str name_regex: A regex string to filter results by Inter Region Traffic Qos Policy name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the traffic scheduling policy. Valid Value: `Creating`, `Active`, `Modifying`, `Deleting`, `Deleted`.
     :param str traffic_qos_policy_description: The description of the QoS policy.
     :param str traffic_qos_policy_id: The ID of the QoS policy.
@@ -267,6 +268,7 @@ def get_inter_region_traffic_qos_policies_output(ids: Optional[pulumi.Input[Opti
 
     :param Sequence[str] ids: A list of Inter Region Traffic Qos Policy IDs.
     :param str name_regex: A regex string to filter results by Inter Region Traffic Qos Policy name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the traffic scheduling policy. Valid Value: `Creating`, `Active`, `Modifying`, `Deleting`, `Deleted`.
     :param str traffic_qos_policy_description: The description of the QoS policy.
     :param str traffic_qos_policy_id: The ID of the QoS policy.

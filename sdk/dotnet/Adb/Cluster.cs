@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Adb
 {
     /// <summary>
+    /// Provides a ADB cluster resource. An ADB cluster is an isolated database
+    /// environment in the cloud. An ADB cluster can contain multiple user-created
+    /// databases.
+    /// 
+    /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new resource alicloud_adb_db_cluster.
+    /// 
+    /// &gt; **NOTE:** Available in v1.71.0+.
+    /// 
     /// ## Example Usage
     /// ### Create a ADB MySQL cluster
     /// 
@@ -184,6 +192,8 @@ namespace Pulumi.AliCloud.Adb
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// 
+        /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -358,6 +368,8 @@ namespace Pulumi.AliCloud.Adb
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// 
+        /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -512,6 +524,8 @@ namespace Pulumi.AliCloud.Adb
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// 
+        /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
         /// </summary>
         public InputMap<object> Tags
         {

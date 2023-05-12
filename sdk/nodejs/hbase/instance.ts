@@ -180,6 +180,9 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly uiProxyConnAddrs!: pulumi.Output<outputs.hbase.InstanceUiProxyConnAddr[]>;
     /**
      * The id of the VPC.
+     *
+     *
+     * > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
      */
     public readonly vpcId!: pulumi.Output<string | undefined>;
     /**
@@ -388,6 +391,9 @@ export interface InstanceState {
     uiProxyConnAddrs?: pulumi.Input<pulumi.Input<inputs.hbase.InstanceUiProxyConnAddr>[]>;
     /**
      * The id of the VPC.
+     *
+     *
+     * > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
      */
     vpcId?: pulumi.Input<string>;
     /**
@@ -497,6 +503,9 @@ export interface InstanceArgs {
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The id of the VPC.
+     *
+     *
+     * > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
      */
     vpcId?: pulumi.Input<string>;
     /**

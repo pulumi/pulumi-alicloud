@@ -13,18 +13,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDynamicTagGroupsResult {
-    private List<GetDynamicTagGroupsGroup> groups;
+    private final List<GetDynamicTagGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String outputFile;
-    private @Nullable String status;
-    private @Nullable String tagKey;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
+    private final @Nullable String status;
+    private final @Nullable String tagKey;
 
-    private GetDynamicTagGroupsResult() {}
+    @CustomType.Constructor
+    private GetDynamicTagGroupsResult(
+        @CustomType.Parameter("groups") List<GetDynamicTagGroupsGroup> groups,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("tagKey") @Nullable String tagKey) {
+        this.groups = groups;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.status = status;
+        this.tagKey = tagKey;
+    }
+
     public List<GetDynamicTagGroupsGroup> groups() {
         return this.groups;
     }
@@ -55,7 +70,7 @@ public final class GetDynamicTagGroupsResult {
     public static Builder builder(GetDynamicTagGroupsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetDynamicTagGroupsGroup> groups;
         private String id;
@@ -63,7 +78,11 @@ public final class GetDynamicTagGroupsResult {
         private @Nullable String outputFile;
         private @Nullable String status;
         private @Nullable String tagKey;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDynamicTagGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groups = defaults.groups;
@@ -74,7 +93,6 @@ public final class GetDynamicTagGroupsResult {
     	      this.tagKey = defaults.tagKey;
         }
 
-        @CustomType.Setter
         public Builder groups(List<GetDynamicTagGroupsGroup> groups) {
             this.groups = Objects.requireNonNull(groups);
             return this;
@@ -82,12 +100,10 @@ public final class GetDynamicTagGroupsResult {
         public Builder groups(GetDynamicTagGroupsGroup... groups) {
             return groups(List.of(groups));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -95,30 +111,19 @@ public final class GetDynamicTagGroupsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder tagKey(@Nullable String tagKey) {
             this.tagKey = tagKey;
             return this;
-        }
-        public GetDynamicTagGroupsResult build() {
-            final var o = new GetDynamicTagGroupsResult();
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.tagKey = tagKey;
-            return o;
+        }        public GetDynamicTagGroupsResult build() {
+            return new GetDynamicTagGroupsResult(groups, id, ids, outputFile, status, tagKey);
         }
     }
 }

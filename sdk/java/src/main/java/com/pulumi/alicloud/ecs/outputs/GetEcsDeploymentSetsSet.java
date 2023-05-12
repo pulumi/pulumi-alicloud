@@ -15,54 +15,77 @@ public final class GetEcsDeploymentSetsSet {
      * @return The time when the deployment set was created.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The ID of the Deployment Set.
      * 
      */
-    private String deploymentSetId;
+    private final String deploymentSetId;
     /**
      * @return The name of the deployment set.
      * 
      */
-    private String deploymentSetName;
+    private final String deploymentSetName;
     /**
      * @return The description of the deployment set.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The deployment domain.
      * 
      */
-    private String domain;
+    private final String domain;
     /**
      * @return The deployment granularity.
      * 
      */
-    private String granularity;
+    private final String granularity;
     /**
      * @return The ID of the Deployment Set.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The number of instances in the deployment set.
      * 
      */
-    private Integer instanceAmount;
+    private final Integer instanceAmount;
     /**
      * @return The IDs of the instances in the deployment set.
      * 
      */
-    private List<String> instanceIds;
+    private final List<String> instanceIds;
     /**
      * @return The deployment strategy.
      * 
      */
-    private String strategy;
+    private final String strategy;
 
-    private GetEcsDeploymentSetsSet() {}
+    @CustomType.Constructor
+    private GetEcsDeploymentSetsSet(
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("deploymentSetId") String deploymentSetId,
+        @CustomType.Parameter("deploymentSetName") String deploymentSetName,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("domain") String domain,
+        @CustomType.Parameter("granularity") String granularity,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceAmount") Integer instanceAmount,
+        @CustomType.Parameter("instanceIds") List<String> instanceIds,
+        @CustomType.Parameter("strategy") String strategy) {
+        this.createTime = createTime;
+        this.deploymentSetId = deploymentSetId;
+        this.deploymentSetName = deploymentSetName;
+        this.description = description;
+        this.domain = domain;
+        this.granularity = granularity;
+        this.id = id;
+        this.instanceAmount = instanceAmount;
+        this.instanceIds = instanceIds;
+        this.strategy = strategy;
+    }
+
     /**
      * @return The time when the deployment set was created.
      * 
@@ -141,7 +164,7 @@ public final class GetEcsDeploymentSetsSet {
     public static Builder builder(GetEcsDeploymentSetsSet defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String createTime;
         private String deploymentSetId;
@@ -153,7 +176,11 @@ public final class GetEcsDeploymentSetsSet {
         private Integer instanceAmount;
         private List<String> instanceIds;
         private String strategy;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEcsDeploymentSetsSet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -168,47 +195,38 @@ public final class GetEcsDeploymentSetsSet {
     	      this.strategy = defaults.strategy;
         }
 
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder deploymentSetId(String deploymentSetId) {
             this.deploymentSetId = Objects.requireNonNull(deploymentSetId);
             return this;
         }
-        @CustomType.Setter
         public Builder deploymentSetName(String deploymentSetName) {
             this.deploymentSetName = Objects.requireNonNull(deploymentSetName);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
-        @CustomType.Setter
         public Builder granularity(String granularity) {
             this.granularity = Objects.requireNonNull(granularity);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceAmount(Integer instanceAmount) {
             this.instanceAmount = Objects.requireNonNull(instanceAmount);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceIds(List<String> instanceIds) {
             this.instanceIds = Objects.requireNonNull(instanceIds);
             return this;
@@ -216,24 +234,11 @@ public final class GetEcsDeploymentSetsSet {
         public Builder instanceIds(String... instanceIds) {
             return instanceIds(List.of(instanceIds));
         }
-        @CustomType.Setter
         public Builder strategy(String strategy) {
             this.strategy = Objects.requireNonNull(strategy);
             return this;
-        }
-        public GetEcsDeploymentSetsSet build() {
-            final var o = new GetEcsDeploymentSetsSet();
-            o.createTime = createTime;
-            o.deploymentSetId = deploymentSetId;
-            o.deploymentSetName = deploymentSetName;
-            o.description = description;
-            o.domain = domain;
-            o.granularity = granularity;
-            o.id = id;
-            o.instanceAmount = instanceAmount;
-            o.instanceIds = instanceIds;
-            o.strategy = strategy;
-            return o;
+        }        public GetEcsDeploymentSetsSet build() {
+            return new GetEcsDeploymentSetsSet(createTime, deploymentSetId, deploymentSetName, description, domain, granularity, id, instanceAmount, instanceIds, strategy);
         }
     }
 }

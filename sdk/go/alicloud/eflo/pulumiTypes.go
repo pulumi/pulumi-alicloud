@@ -10,6 +10,211 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type GetSubnetsSubnet struct {
+	// Network segment
+	Cidr string `pulumi:"cidr"`
+	// The creation time of the resource
+	CreateTime string `pulumi:"createTime"`
+	// Modification time
+	GmtModified string `pulumi:"gmtModified"`
+	// The ID of the resource.
+	Id string `pulumi:"id"`
+	// Error message
+	Message string `pulumi:"message"`
+	// Resource Group ID.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// The status of the resource.
+	Status string `pulumi:"status"`
+	// Primary key ID.
+	SubnetId string `pulumi:"subnetId"`
+	// The Subnet name.
+	SubnetName string `pulumi:"subnetName"`
+	// Eflo subnet usage type, optional value:
+	// - General type is not filled in
+	// - OOB:OOB type
+	// - LB: LB type
+	Type string `pulumi:"type"`
+	// The Eflo VPD ID.
+	VpdId string `pulumi:"vpdId"`
+	// The zone ID of the resource.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetSubnetsSubnetInput is an input type that accepts GetSubnetsSubnetArgs and GetSubnetsSubnetOutput values.
+// You can construct a concrete instance of `GetSubnetsSubnetInput` via:
+//
+//	GetSubnetsSubnetArgs{...}
+type GetSubnetsSubnetInput interface {
+	pulumi.Input
+
+	ToGetSubnetsSubnetOutput() GetSubnetsSubnetOutput
+	ToGetSubnetsSubnetOutputWithContext(context.Context) GetSubnetsSubnetOutput
+}
+
+type GetSubnetsSubnetArgs struct {
+	// Network segment
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+	// The creation time of the resource
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Modification time
+	GmtModified pulumi.StringInput `pulumi:"gmtModified"`
+	// The ID of the resource.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Error message
+	Message pulumi.StringInput `pulumi:"message"`
+	// Resource Group ID.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// The status of the resource.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Primary key ID.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+	// The Subnet name.
+	SubnetName pulumi.StringInput `pulumi:"subnetName"`
+	// Eflo subnet usage type, optional value:
+	// - General type is not filled in
+	// - OOB:OOB type
+	// - LB: LB type
+	Type pulumi.StringInput `pulumi:"type"`
+	// The Eflo VPD ID.
+	VpdId pulumi.StringInput `pulumi:"vpdId"`
+	// The zone ID of the resource.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetSubnetsSubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubnetsSubnet)(nil)).Elem()
+}
+
+func (i GetSubnetsSubnetArgs) ToGetSubnetsSubnetOutput() GetSubnetsSubnetOutput {
+	return i.ToGetSubnetsSubnetOutputWithContext(context.Background())
+}
+
+func (i GetSubnetsSubnetArgs) ToGetSubnetsSubnetOutputWithContext(ctx context.Context) GetSubnetsSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubnetsSubnetOutput)
+}
+
+// GetSubnetsSubnetArrayInput is an input type that accepts GetSubnetsSubnetArray and GetSubnetsSubnetArrayOutput values.
+// You can construct a concrete instance of `GetSubnetsSubnetArrayInput` via:
+//
+//	GetSubnetsSubnetArray{ GetSubnetsSubnetArgs{...} }
+type GetSubnetsSubnetArrayInput interface {
+	pulumi.Input
+
+	ToGetSubnetsSubnetArrayOutput() GetSubnetsSubnetArrayOutput
+	ToGetSubnetsSubnetArrayOutputWithContext(context.Context) GetSubnetsSubnetArrayOutput
+}
+
+type GetSubnetsSubnetArray []GetSubnetsSubnetInput
+
+func (GetSubnetsSubnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubnetsSubnet)(nil)).Elem()
+}
+
+func (i GetSubnetsSubnetArray) ToGetSubnetsSubnetArrayOutput() GetSubnetsSubnetArrayOutput {
+	return i.ToGetSubnetsSubnetArrayOutputWithContext(context.Background())
+}
+
+func (i GetSubnetsSubnetArray) ToGetSubnetsSubnetArrayOutputWithContext(ctx context.Context) GetSubnetsSubnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubnetsSubnetArrayOutput)
+}
+
+type GetSubnetsSubnetOutput struct{ *pulumi.OutputState }
+
+func (GetSubnetsSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubnetsSubnet)(nil)).Elem()
+}
+
+func (o GetSubnetsSubnetOutput) ToGetSubnetsSubnetOutput() GetSubnetsSubnetOutput {
+	return o
+}
+
+func (o GetSubnetsSubnetOutput) ToGetSubnetsSubnetOutputWithContext(ctx context.Context) GetSubnetsSubnetOutput {
+	return o
+}
+
+// Network segment
+func (o GetSubnetsSubnetOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// The creation time of the resource
+func (o GetSubnetsSubnetOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Modification time
+func (o GetSubnetsSubnetOutput) GmtModified() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.GmtModified }).(pulumi.StringOutput)
+}
+
+// The ID of the resource.
+func (o GetSubnetsSubnetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Error message
+func (o GetSubnetsSubnetOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Resource Group ID.
+func (o GetSubnetsSubnetOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
+func (o GetSubnetsSubnetOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Primary key ID.
+func (o GetSubnetsSubnetOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// The Subnet name.
+func (o GetSubnetsSubnetOutput) SubnetName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.SubnetName }).(pulumi.StringOutput)
+}
+
+// Eflo subnet usage type, optional value:
+// - General type is not filled in
+// - OOB:OOB type
+// - LB: LB type
+func (o GetSubnetsSubnetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The Eflo VPD ID.
+func (o GetSubnetsSubnetOutput) VpdId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.VpdId }).(pulumi.StringOutput)
+}
+
+// The zone ID of the resource.
+func (o GetSubnetsSubnetOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetSubnetsSubnetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSubnetsSubnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubnetsSubnet)(nil)).Elem()
+}
+
+func (o GetSubnetsSubnetArrayOutput) ToGetSubnetsSubnetArrayOutput() GetSubnetsSubnetArrayOutput {
+	return o
+}
+
+func (o GetSubnetsSubnetArrayOutput) ToGetSubnetsSubnetArrayOutputWithContext(ctx context.Context) GetSubnetsSubnetArrayOutput {
+	return o
+}
+
+func (o GetSubnetsSubnetArrayOutput) Index(i pulumi.IntInput) GetSubnetsSubnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubnetsSubnet {
+		return vs[0].([]GetSubnetsSubnet)[vs[1].(int)]
+	}).(GetSubnetsSubnetOutput)
+}
+
 type GetVpdsVpd struct {
 	// CIDR network segment
 	Cidr string `pulumi:"cidr"`
@@ -171,8 +376,12 @@ func (o GetVpdsVpdArrayOutput) Index(i pulumi.IntInput) GetVpdsVpdOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetsSubnetInput)(nil)).Elem(), GetSubnetsSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetsSubnetArrayInput)(nil)).Elem(), GetSubnetsSubnetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpdsVpdInput)(nil)).Elem(), GetVpdsVpdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpdsVpdArrayInput)(nil)).Elem(), GetVpdsVpdArray{})
+	pulumi.RegisterOutputType(GetSubnetsSubnetOutput{})
+	pulumi.RegisterOutputType(GetSubnetsSubnetArrayOutput{})
 	pulumi.RegisterOutputType(GetVpdsVpdOutput{})
 	pulumi.RegisterOutputType(GetVpdsVpdArrayOutput{})
 }

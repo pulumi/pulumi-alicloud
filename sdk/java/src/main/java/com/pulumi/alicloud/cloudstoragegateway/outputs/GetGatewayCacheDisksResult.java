@@ -14,18 +14,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGatewayCacheDisksResult {
-    private List<GetGatewayCacheDisksDisk> disks;
-    private String gatewayId;
+    private final List<GetGatewayCacheDisksDisk> disks;
+    private final String gatewayId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String outputFile;
-    private @Nullable Integer status;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer status;
 
-    private GetGatewayCacheDisksResult() {}
+    @CustomType.Constructor
+    private GetGatewayCacheDisksResult(
+        @CustomType.Parameter("disks") List<GetGatewayCacheDisksDisk> disks,
+        @CustomType.Parameter("gatewayId") String gatewayId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable Integer status) {
+        this.disks = disks;
+        this.gatewayId = gatewayId;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.status = status;
+    }
+
     public List<GetGatewayCacheDisksDisk> disks() {
         return this.disks;
     }
@@ -56,7 +71,7 @@ public final class GetGatewayCacheDisksResult {
     public static Builder builder(GetGatewayCacheDisksResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetGatewayCacheDisksDisk> disks;
         private String gatewayId;
@@ -64,7 +79,11 @@ public final class GetGatewayCacheDisksResult {
         private List<String> ids;
         private @Nullable String outputFile;
         private @Nullable Integer status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetGatewayCacheDisksResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disks = defaults.disks;
@@ -75,7 +94,6 @@ public final class GetGatewayCacheDisksResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder disks(List<GetGatewayCacheDisksDisk> disks) {
             this.disks = Objects.requireNonNull(disks);
             return this;
@@ -83,17 +101,14 @@ public final class GetGatewayCacheDisksResult {
         public Builder disks(GetGatewayCacheDisksDisk... disks) {
             return disks(List.of(disks));
         }
-        @CustomType.Setter
         public Builder gatewayId(String gatewayId) {
             this.gatewayId = Objects.requireNonNull(gatewayId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -101,25 +116,15 @@ public final class GetGatewayCacheDisksResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable Integer status) {
             this.status = status;
             return this;
-        }
-        public GetGatewayCacheDisksResult build() {
-            final var o = new GetGatewayCacheDisksResult();
-            o.disks = disks;
-            o.gatewayId = gatewayId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+        }        public GetGatewayCacheDisksResult build() {
+            return new GetGatewayCacheDisksResult(disks, gatewayId, id, ids, outputFile, status);
         }
     }
 }

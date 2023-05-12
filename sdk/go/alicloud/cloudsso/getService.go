@@ -57,6 +57,8 @@ func GetService(ctx *pulumi.Context, args *GetServiceArgs, opts ...pulumi.Invoke
 // A collection of arguments for invoking getService.
 type GetServiceArgs struct {
 	// Setting the value to `On` to enable the service. Valid values: `On` or `Off`.
+	//
+	// > **NOTE:** Setting `enable = "On"` to open the Cloud Sso service that means you have read and agreed the [Cloud Sso Terms of Service](https://help.aliyun.com/document_detail/299998.html). When there is no directory in Cloud SSO, you can set `enable = "Off"` to turn off Cloud SSO as needed. After it is closed, you can also open it at any time.
 	Enable string `pulumi:"enable"`
 }
 
@@ -85,6 +87,8 @@ func GetServiceOutput(ctx *pulumi.Context, args GetServiceOutputArgs, opts ...pu
 // A collection of arguments for invoking getService.
 type GetServiceOutputArgs struct {
 	// Setting the value to `On` to enable the service. Valid values: `On` or `Off`.
+	//
+	// > **NOTE:** Setting `enable = "On"` to open the Cloud Sso service that means you have read and agreed the [Cloud Sso Terms of Service](https://help.aliyun.com/document_detail/299998.html). When there is no directory in Cloud SSO, you can set `enable = "Off"` to turn off Cloud SSO as needed. After it is closed, you can also open it at any time.
 	Enable pulumi.StringInput `pulumi:"enable"`
 }
 

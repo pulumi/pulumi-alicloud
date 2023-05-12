@@ -299,7 +299,7 @@ class KubernetesAddon(pulumi.CustomResource):
 
         ## Import
 
-        Cluster addon can be imported by cluster id and addon name. Then write the addon.tf file according to the result of `terraform plan`.
+        Cluster addon can be imported by cluster id and addon name. Then write the addon.tf file according to the result of `pulumi preview`.
 
         ```sh
          $ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon my_addon <cluster_id>:<addon_name>
@@ -406,7 +406,7 @@ class KubernetesAddon(pulumi.CustomResource):
 
         ## Import
 
-        Cluster addon can be imported by cluster id and addon name. Then write the addon.tf file according to the result of `terraform plan`.
+        Cluster addon can be imported by cluster id and addon name. Then write the addon.tf file according to the result of `pulumi preview`.
 
         ```sh
          $ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon my_addon <cluster_id>:<addon_name>
@@ -514,7 +514,7 @@ class KubernetesAddon(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Output[Optional[str]]:
+    def config(self) -> pulumi.Output[str]:
         """
         The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs_get_kubernetes_addon_metadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs_get_kubernetes_addons`.
         """

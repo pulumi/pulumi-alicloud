@@ -213,6 +213,9 @@ namespace Pulumi.AliCloud.Hbase
 
         /// <summary>
         /// The id of the VPC.
+        /// 
+        /// 
+        /// &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         /// </summary>
         [Output("vpcId")]
         public Output<string?> VpcId { get; private set; } = null!;
@@ -438,6 +441,9 @@ namespace Pulumi.AliCloud.Hbase
 
         /// <summary>
         /// The id of the VPC.
+        /// 
+        /// 
+        /// &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -645,6 +651,9 @@ namespace Pulumi.AliCloud.Hbase
 
         /// <summary>
         /// The id of the VPC.
+        /// 
+        /// 
+        /// &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

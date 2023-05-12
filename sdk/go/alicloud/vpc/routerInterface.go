@@ -11,6 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a VPC router interface resource aim to build a connection between two VPCs.
+//
+// > **DEPRECATED:**  This resource  has been deprecated from version `1.199.0`. Please use new resource alicloud_express_connect_router_interface.
+//
+// > **NOTE:** Only one pair of connected router interfaces can exist between two routers. Up to 5 router interfaces can be created for each router and each account.
+//
+// > **NOTE:** The router interface is not connected when it is created. It can be connected by means of resource alicloud_router_interface_connection.
+//
 // ## Example Usage
 //
 // ```go
@@ -98,7 +106,9 @@ type RouterInterface struct {
 	//
 	// Deprecated: Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.
 	OppositeRouterType pulumi.StringOutput `pulumi:"oppositeRouterType"`
-	Period             pulumi.IntPtrOutput `pulumi:"period"`
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
 	Role pulumi.StringOutput `pulumi:"role"`
 	// The Router ID.
@@ -187,7 +197,9 @@ type routerInterfaceState struct {
 	//
 	// Deprecated: Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.
 	OppositeRouterType *string `pulumi:"oppositeRouterType"`
-	Period             *int    `pulumi:"period"`
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period *int `pulumi:"period"`
 	// The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
 	Role *string `pulumi:"role"`
 	// The Router ID.
@@ -236,7 +248,9 @@ type RouterInterfaceState struct {
 	//
 	// Deprecated: Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.
 	OppositeRouterType pulumi.StringPtrInput
-	Period             pulumi.IntPtrInput
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period pulumi.IntPtrInput
 	// The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
 	Role pulumi.StringPtrInput
 	// The Router ID.
@@ -269,7 +283,9 @@ type routerInterfaceArgs struct {
 	OppositeAccessPointId *string `pulumi:"oppositeAccessPointId"`
 	// The Region of peer side.
 	OppositeRegion string `pulumi:"oppositeRegion"`
-	Period         *int   `pulumi:"period"`
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period *int `pulumi:"period"`
 	// The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
 	Role string `pulumi:"role"`
 	// The Router ID.
@@ -299,7 +315,9 @@ type RouterInterfaceArgs struct {
 	OppositeAccessPointId pulumi.StringPtrInput
 	// The Region of peer side.
 	OppositeRegion pulumi.StringInput
-	Period         pulumi.IntPtrInput
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period pulumi.IntPtrInput
 	// The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
 	Role pulumi.StringInput
 	// The Router ID.
@@ -470,6 +488,8 @@ func (o RouterInterfaceOutput) OppositeRouterType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.OppositeRouterType }).(pulumi.StringOutput)
 }
 
+// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 func (o RouterInterfaceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }

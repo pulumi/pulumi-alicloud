@@ -18,17 +18,38 @@ public final class GetEcsNetworkInterfacePermissionsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private String networkInterfaceId;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
-    private List<GetEcsNetworkInterfacePermissionsPermission> permissions;
-    private @Nullable String status;
-    private Integer totalCount;
+    private final String id;
+    private final List<String> ids;
+    private final String networkInterfaceId;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
+    private final List<GetEcsNetworkInterfacePermissionsPermission> permissions;
+    private final @Nullable String status;
+    private final Integer totalCount;
 
-    private GetEcsNetworkInterfacePermissionsResult() {}
+    @CustomType.Constructor
+    private GetEcsNetworkInterfacePermissionsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("networkInterfaceId") String networkInterfaceId,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
+        @CustomType.Parameter("permissions") List<GetEcsNetworkInterfacePermissionsPermission> permissions,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("totalCount") Integer totalCount) {
+        this.id = id;
+        this.ids = ids;
+        this.networkInterfaceId = networkInterfaceId;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+        this.permissions = permissions;
+        this.status = status;
+        this.totalCount = totalCount;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -68,7 +89,7 @@ public final class GetEcsNetworkInterfacePermissionsResult {
     public static Builder builder(GetEcsNetworkInterfacePermissionsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -79,7 +100,11 @@ public final class GetEcsNetworkInterfacePermissionsResult {
         private List<GetEcsNetworkInterfacePermissionsPermission> permissions;
         private @Nullable String status;
         private Integer totalCount;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEcsNetworkInterfacePermissionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -93,12 +118,10 @@ public final class GetEcsNetworkInterfacePermissionsResult {
     	      this.totalCount = defaults.totalCount;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -106,27 +129,22 @@ public final class GetEcsNetworkInterfacePermissionsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder networkInterfaceId(String networkInterfaceId) {
             this.networkInterfaceId = Objects.requireNonNull(networkInterfaceId);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
-        @CustomType.Setter
         public Builder permissions(List<GetEcsNetworkInterfacePermissionsPermission> permissions) {
             this.permissions = Objects.requireNonNull(permissions);
             return this;
@@ -134,28 +152,15 @@ public final class GetEcsNetworkInterfacePermissionsResult {
         public Builder permissions(GetEcsNetworkInterfacePermissionsPermission... permissions) {
             return permissions(List.of(permissions));
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder totalCount(Integer totalCount) {
             this.totalCount = Objects.requireNonNull(totalCount);
             return this;
-        }
-        public GetEcsNetworkInterfacePermissionsResult build() {
-            final var o = new GetEcsNetworkInterfacePermissionsResult();
-            o.id = id;
-            o.ids = ids;
-            o.networkInterfaceId = networkInterfaceId;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.permissions = permissions;
-            o.status = status;
-            o.totalCount = totalCount;
-            return o;
+        }        public GetEcsNetworkInterfacePermissionsResult build() {
+            return new GetEcsNetworkInterfacePermissionsResult(id, ids, networkInterfaceId, outputFile, pageNumber, pageSize, permissions, status, totalCount);
         }
     }
 }

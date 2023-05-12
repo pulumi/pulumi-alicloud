@@ -15,39 +15,56 @@ public final class NetworkAclEntriesEgress {
      * @return The description of the ingress entry.
      * 
      */
-    private @Nullable String description;
+    private final @Nullable String description;
     /**
      * @return The destination ip of the egress entry.
      * 
      */
-    private @Nullable String destinationCidrIp;
+    private final @Nullable String destinationCidrIp;
     /**
      * @return The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
      * 
      */
-    private @Nullable String entryType;
+    private final @Nullable String entryType;
     /**
      * @return The name of the ingress entry.
      * 
      */
-    private @Nullable String name;
+    private final @Nullable String name;
     /**
      * @return The policy of the ingress entry. It must be `accept` or `drop`.
      * 
      */
-    private @Nullable String policy;
+    private final @Nullable String policy;
     /**
      * @return The port of the ingress entry.
      * 
      */
-    private @Nullable String port;
+    private final @Nullable String port;
     /**
      * @return The protocol of the ingress entry.
      * 
      */
-    private @Nullable String protocol;
+    private final @Nullable String protocol;
 
-    private NetworkAclEntriesEgress() {}
+    @CustomType.Constructor
+    private NetworkAclEntriesEgress(
+        @CustomType.Parameter("description") @Nullable String description,
+        @CustomType.Parameter("destinationCidrIp") @Nullable String destinationCidrIp,
+        @CustomType.Parameter("entryType") @Nullable String entryType,
+        @CustomType.Parameter("name") @Nullable String name,
+        @CustomType.Parameter("policy") @Nullable String policy,
+        @CustomType.Parameter("port") @Nullable String port,
+        @CustomType.Parameter("protocol") @Nullable String protocol) {
+        this.description = description;
+        this.destinationCidrIp = destinationCidrIp;
+        this.entryType = entryType;
+        this.name = name;
+        this.policy = policy;
+        this.port = port;
+        this.protocol = protocol;
+    }
+
     /**
      * @return The description of the ingress entry.
      * 
@@ -105,7 +122,7 @@ public final class NetworkAclEntriesEgress {
     public static Builder builder(NetworkAclEntriesEgress defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String description;
         private @Nullable String destinationCidrIp;
@@ -114,7 +131,11 @@ public final class NetworkAclEntriesEgress {
         private @Nullable String policy;
         private @Nullable String port;
         private @Nullable String protocol;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(NetworkAclEntriesEgress defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -126,51 +147,35 @@ public final class NetworkAclEntriesEgress {
     	      this.protocol = defaults.protocol;
         }
 
-        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
-        @CustomType.Setter
         public Builder destinationCidrIp(@Nullable String destinationCidrIp) {
             this.destinationCidrIp = destinationCidrIp;
             return this;
         }
-        @CustomType.Setter
         public Builder entryType(@Nullable String entryType) {
             this.entryType = entryType;
             return this;
         }
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
-        @CustomType.Setter
         public Builder policy(@Nullable String policy) {
             this.policy = policy;
             return this;
         }
-        @CustomType.Setter
         public Builder port(@Nullable String port) {
             this.port = port;
             return this;
         }
-        @CustomType.Setter
         public Builder protocol(@Nullable String protocol) {
             this.protocol = protocol;
             return this;
-        }
-        public NetworkAclEntriesEgress build() {
-            final var o = new NetworkAclEntriesEgress();
-            o.description = description;
-            o.destinationCidrIp = destinationCidrIp;
-            o.entryType = entryType;
-            o.name = name;
-            o.policy = policy;
-            o.port = port;
-            o.protocol = protocol;
-            return o;
+        }        public NetworkAclEntriesEgress build() {
+            return new NetworkAclEntriesEgress(description, destinationCidrIp, entryType, name, policy, port, protocol);
         }
     }
 }

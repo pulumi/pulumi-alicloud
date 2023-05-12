@@ -13,21 +13,42 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetIpv4GatewaysResult {
-    private List<GetIpv4GatewaysGateway> gateways;
+    private final List<GetIpv4GatewaysGateway> gateways;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String ipv4GatewayName;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String status;
-    private @Nullable String vpcId;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String ipv4GatewayName;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String status;
+    private final @Nullable String vpcId;
 
-    private GetIpv4GatewaysResult() {}
+    @CustomType.Constructor
+    private GetIpv4GatewaysResult(
+        @CustomType.Parameter("gateways") List<GetIpv4GatewaysGateway> gateways,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("ipv4GatewayName") @Nullable String ipv4GatewayName,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("vpcId") @Nullable String vpcId) {
+        this.gateways = gateways;
+        this.id = id;
+        this.ids = ids;
+        this.ipv4GatewayName = ipv4GatewayName;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.status = status;
+        this.vpcId = vpcId;
+    }
+
     public List<GetIpv4GatewaysGateway> gateways() {
         return this.gateways;
     }
@@ -67,7 +88,7 @@ public final class GetIpv4GatewaysResult {
     public static Builder builder(GetIpv4GatewaysResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetIpv4GatewaysGateway> gateways;
         private String id;
@@ -78,7 +99,11 @@ public final class GetIpv4GatewaysResult {
         private @Nullable String outputFile;
         private @Nullable String status;
         private @Nullable String vpcId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetIpv4GatewaysResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gateways = defaults.gateways;
@@ -92,7 +117,6 @@ public final class GetIpv4GatewaysResult {
     	      this.vpcId = defaults.vpcId;
         }
 
-        @CustomType.Setter
         public Builder gateways(List<GetIpv4GatewaysGateway> gateways) {
             this.gateways = Objects.requireNonNull(gateways);
             return this;
@@ -100,12 +124,10 @@ public final class GetIpv4GatewaysResult {
         public Builder gateways(GetIpv4GatewaysGateway... gateways) {
             return gateways(List.of(gateways));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -113,17 +135,14 @@ public final class GetIpv4GatewaysResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder ipv4GatewayName(@Nullable String ipv4GatewayName) {
             this.ipv4GatewayName = ipv4GatewayName;
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -131,33 +150,19 @@ public final class GetIpv4GatewaysResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
-        }
-        public GetIpv4GatewaysResult build() {
-            final var o = new GetIpv4GatewaysResult();
-            o.gateways = gateways;
-            o.id = id;
-            o.ids = ids;
-            o.ipv4GatewayName = ipv4GatewayName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.vpcId = vpcId;
-            return o;
+        }        public GetIpv4GatewaysResult build() {
+            return new GetIpv4GatewaysResult(gateways, id, ids, ipv4GatewayName, nameRegex, names, outputFile, status, vpcId);
         }
     }
 }

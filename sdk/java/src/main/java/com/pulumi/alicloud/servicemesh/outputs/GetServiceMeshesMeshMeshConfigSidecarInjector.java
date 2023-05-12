@@ -16,44 +16,63 @@ public final class GetServiceMeshesMeshMeshConfigSidecarInjector {
      * @return Whether to enable by Pod Annotations automatic injection Sidecar.
      * 
      */
-    private Boolean autoInjectionPolicyEnabled;
+    private final Boolean autoInjectionPolicyEnabled;
     /**
      * @return Whether it is the all namespaces you turn on the auto injection capabilities.
      * 
      */
-    private Boolean enableNamespacesByDefault;
+    private final Boolean enableNamespacesByDefault;
     /**
      * @return The configuration of the CNI
      * 
      */
-    private List<GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration> initCniConfigurations;
+    private final List<GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration> initCniConfigurations;
     /**
      * @return Sidecar injector Pods on the throttle.
      * 
      */
-    private String limitCpu;
+    private final String limitCpu;
     /**
      * @return The memory limit  of the Sidecar injector Pods.
      * 
      */
-    private String limitMemory;
+    private final String limitMemory;
     /**
      * @return The requested cpu the Sidecar injector Pods.
      * 
      */
-    private String requestCpu;
+    private final String requestCpu;
     /**
      * @return The requested memory the Sidecar injector Pods.
      * 
      */
-    private String requestMemory;
+    private final String requestMemory;
     /**
      * @return Other automatic injection Sidecar configuration (in YAML format).
      * 
      */
-    private String sidecarInjectorWebhookAsYaml;
+    private final String sidecarInjectorWebhookAsYaml;
 
-    private GetServiceMeshesMeshMeshConfigSidecarInjector() {}
+    @CustomType.Constructor
+    private GetServiceMeshesMeshMeshConfigSidecarInjector(
+        @CustomType.Parameter("autoInjectionPolicyEnabled") Boolean autoInjectionPolicyEnabled,
+        @CustomType.Parameter("enableNamespacesByDefault") Boolean enableNamespacesByDefault,
+        @CustomType.Parameter("initCniConfigurations") List<GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration> initCniConfigurations,
+        @CustomType.Parameter("limitCpu") String limitCpu,
+        @CustomType.Parameter("limitMemory") String limitMemory,
+        @CustomType.Parameter("requestCpu") String requestCpu,
+        @CustomType.Parameter("requestMemory") String requestMemory,
+        @CustomType.Parameter("sidecarInjectorWebhookAsYaml") String sidecarInjectorWebhookAsYaml) {
+        this.autoInjectionPolicyEnabled = autoInjectionPolicyEnabled;
+        this.enableNamespacesByDefault = enableNamespacesByDefault;
+        this.initCniConfigurations = initCniConfigurations;
+        this.limitCpu = limitCpu;
+        this.limitMemory = limitMemory;
+        this.requestCpu = requestCpu;
+        this.requestMemory = requestMemory;
+        this.sidecarInjectorWebhookAsYaml = sidecarInjectorWebhookAsYaml;
+    }
+
     /**
      * @return Whether to enable by Pod Annotations automatic injection Sidecar.
      * 
@@ -118,7 +137,7 @@ public final class GetServiceMeshesMeshMeshConfigSidecarInjector {
     public static Builder builder(GetServiceMeshesMeshMeshConfigSidecarInjector defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean autoInjectionPolicyEnabled;
         private Boolean enableNamespacesByDefault;
@@ -128,7 +147,11 @@ public final class GetServiceMeshesMeshMeshConfigSidecarInjector {
         private String requestCpu;
         private String requestMemory;
         private String sidecarInjectorWebhookAsYaml;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServiceMeshesMeshMeshConfigSidecarInjector defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoInjectionPolicyEnabled = defaults.autoInjectionPolicyEnabled;
@@ -141,17 +164,14 @@ public final class GetServiceMeshesMeshMeshConfigSidecarInjector {
     	      this.sidecarInjectorWebhookAsYaml = defaults.sidecarInjectorWebhookAsYaml;
         }
 
-        @CustomType.Setter
         public Builder autoInjectionPolicyEnabled(Boolean autoInjectionPolicyEnabled) {
             this.autoInjectionPolicyEnabled = Objects.requireNonNull(autoInjectionPolicyEnabled);
             return this;
         }
-        @CustomType.Setter
         public Builder enableNamespacesByDefault(Boolean enableNamespacesByDefault) {
             this.enableNamespacesByDefault = Objects.requireNonNull(enableNamespacesByDefault);
             return this;
         }
-        @CustomType.Setter
         public Builder initCniConfigurations(List<GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration> initCniConfigurations) {
             this.initCniConfigurations = Objects.requireNonNull(initCniConfigurations);
             return this;
@@ -159,42 +179,27 @@ public final class GetServiceMeshesMeshMeshConfigSidecarInjector {
         public Builder initCniConfigurations(GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration... initCniConfigurations) {
             return initCniConfigurations(List.of(initCniConfigurations));
         }
-        @CustomType.Setter
         public Builder limitCpu(String limitCpu) {
             this.limitCpu = Objects.requireNonNull(limitCpu);
             return this;
         }
-        @CustomType.Setter
         public Builder limitMemory(String limitMemory) {
             this.limitMemory = Objects.requireNonNull(limitMemory);
             return this;
         }
-        @CustomType.Setter
         public Builder requestCpu(String requestCpu) {
             this.requestCpu = Objects.requireNonNull(requestCpu);
             return this;
         }
-        @CustomType.Setter
         public Builder requestMemory(String requestMemory) {
             this.requestMemory = Objects.requireNonNull(requestMemory);
             return this;
         }
-        @CustomType.Setter
         public Builder sidecarInjectorWebhookAsYaml(String sidecarInjectorWebhookAsYaml) {
             this.sidecarInjectorWebhookAsYaml = Objects.requireNonNull(sidecarInjectorWebhookAsYaml);
             return this;
-        }
-        public GetServiceMeshesMeshMeshConfigSidecarInjector build() {
-            final var o = new GetServiceMeshesMeshMeshConfigSidecarInjector();
-            o.autoInjectionPolicyEnabled = autoInjectionPolicyEnabled;
-            o.enableNamespacesByDefault = enableNamespacesByDefault;
-            o.initCniConfigurations = initCniConfigurations;
-            o.limitCpu = limitCpu;
-            o.limitMemory = limitMemory;
-            o.requestCpu = requestCpu;
-            o.requestMemory = requestMemory;
-            o.sidecarInjectorWebhookAsYaml = sidecarInjectorWebhookAsYaml;
-            return o;
+        }        public GetServiceMeshesMeshMeshConfigSidecarInjector build() {
+            return new GetServiceMeshesMeshMeshConfigSidecarInjector(autoInjectionPolicyEnabled, enableNamespacesByDefault, initCniConfigurations, limitCpu, limitMemory, requestCpu, requestMemory, sidecarInjectorWebhookAsYaml);
         }
     }
 }

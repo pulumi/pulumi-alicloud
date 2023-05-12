@@ -52,6 +52,7 @@ func GetTransitRouterAvailableResources(ctx *pulumi.Context, args *GetTransitRou
 
 // A collection of arguments for invoking getTransitRouterAvailableResources.
 type GetTransitRouterAvailableResourcesArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -78,6 +79,7 @@ func GetTransitRouterAvailableResourcesOutput(ctx *pulumi.Context, args GetTrans
 
 // A collection of arguments for invoking getTransitRouterAvailableResources.
 type GetTransitRouterAvailableResourcesOutputArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

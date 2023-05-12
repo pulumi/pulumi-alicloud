@@ -55,8 +55,9 @@ func GetTransitRouterPrefixListAssociations(ctx *pulumi.Context, args *GetTransi
 // A collection of arguments for invoking getTransitRouterPrefixListAssociations.
 type GetTransitRouterPrefixListAssociationsArgs struct {
 	// A list of Cen Transit Router Prefix List Association IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the Alibaba Cloud account to which the prefix list belongs.
 	OwnerUid   *int `pulumi:"ownerUid"`
 	PageNumber *int `pulumi:"pageNumber"`
@@ -103,8 +104,9 @@ func GetTransitRouterPrefixListAssociationsOutput(ctx *pulumi.Context, args GetT
 // A collection of arguments for invoking getTransitRouterPrefixListAssociations.
 type GetTransitRouterPrefixListAssociationsOutputArgs struct {
 	// A list of Cen Transit Router Prefix List Association IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the Alibaba Cloud account to which the prefix list belongs.
 	OwnerUid   pulumi.IntPtrInput `pulumi:"ownerUid"`
 	PageNumber pulumi.IntPtrInput `pulumi:"pageNumber"`

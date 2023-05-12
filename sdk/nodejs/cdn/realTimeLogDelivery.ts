@@ -77,6 +77,8 @@ export class RealTimeLogDelivery extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The region where the Log Service project is deployed.
+     *
+     * > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
      */
     public readonly slsRegion!: pulumi.Output<string>;
     /**
@@ -145,6 +147,8 @@ export interface RealTimeLogDeliveryState {
     project?: pulumi.Input<string>;
     /**
      * The region where the Log Service project is deployed.
+     *
+     * > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
      */
     slsRegion?: pulumi.Input<string>;
     /**
@@ -171,6 +175,8 @@ export interface RealTimeLogDeliveryArgs {
     project: pulumi.Input<string>;
     /**
      * The region where the Log Service project is deployed.
+     *
+     * > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
      */
     slsRegion: pulumi.Input<string>;
 }

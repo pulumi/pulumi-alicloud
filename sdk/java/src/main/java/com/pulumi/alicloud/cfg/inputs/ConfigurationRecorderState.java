@@ -18,9 +18,17 @@ public final class ConfigurationRecorderState extends com.pulumi.resources.Resou
 
     public static final ConfigurationRecorderState Empty = new ConfigurationRecorderState();
 
+    /**
+     * Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
+     * 
+     */
     @Import(name="enterpriseEdition")
     private @Nullable Output<Boolean> enterpriseEdition;
 
+    /**
+     * @return Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
+     * 
+     */
     public Optional<Output<Boolean>> enterpriseEdition() {
         return Optional.ofNullable(this.enterpriseEdition);
     }
@@ -117,11 +125,23 @@ public final class ConfigurationRecorderState extends com.pulumi.resources.Resou
             $ = new ConfigurationRecorderState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enterpriseEdition Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enterpriseEdition(@Nullable Output<Boolean> enterpriseEdition) {
             $.enterpriseEdition = enterpriseEdition;
             return this;
         }
 
+        /**
+         * @param enterpriseEdition Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enterpriseEdition(Boolean enterpriseEdition) {
             return enterpriseEdition(Output.of(enterpriseEdition));
         }

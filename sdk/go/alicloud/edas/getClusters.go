@@ -60,7 +60,8 @@ type GetClustersArgs struct {
 	// ID of the namespace in EDAS.
 	LogicalRegionId string `pulumi:"logicalRegionId"`
 	// A regex string to filter results by the cluster name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -99,7 +100,8 @@ type GetClustersOutputArgs struct {
 	// ID of the namespace in EDAS.
 	LogicalRegionId pulumi.StringInput `pulumi:"logicalRegionId"`
 	// A regex string to filter results by the cluster name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

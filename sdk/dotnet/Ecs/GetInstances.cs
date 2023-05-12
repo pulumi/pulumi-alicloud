@@ -89,6 +89,12 @@ namespace Pulumi.AliCloud.Ecs
         [Input("availabilityZone")]
         public string? AvailabilityZone { get; set; }
 
+        /// <summary>
+        /// Default to `true`. If false, the attributes `ram_role_name` and `disk_device_mappings` will not be fetched and output.
+        /// </summary>
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -119,6 +125,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -135,7 +144,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? RamRoleName { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the instance belongs.
+        /// The ID of resource group which the instance belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
@@ -203,6 +212,12 @@ namespace Pulumi.AliCloud.Ecs
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
+        /// <summary>
+        /// Default to `true`. If false, the attributes `ram_role_name` and `disk_device_mappings` will not be fetched and output.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
+
         [Input("ids")]
         private InputList<string>? _ids;
 
@@ -233,6 +248,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
@@ -249,7 +267,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? RamRoleName { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the instance belongs.
+        /// The ID of resource group which the instance belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -317,6 +335,7 @@ namespace Pulumi.AliCloud.Ecs
         /// Availability zone the instance belongs to.
         /// </summary>
         public readonly string? AvailabilityZone;
+        public readonly bool? EnableDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -372,6 +391,8 @@ namespace Pulumi.AliCloud.Ecs
         private GetInstancesResult(
             string? availabilityZone,
 
+            bool? enableDetails,
+
             string id,
 
             ImmutableArray<string> ids,
@@ -407,6 +428,7 @@ namespace Pulumi.AliCloud.Ecs
             string? vswitchId)
         {
             AvailabilityZone = availabilityZone;
+            EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
             ImageId = imageId;

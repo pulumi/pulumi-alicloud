@@ -15,74 +15,105 @@ public final class GetBaseInstancesInstance {
      * @return The product code of the OceanBase cluster.
      * 
      */
-    private String commodityCode;
+    private final String commodityCode;
     /**
      * @return The number of CPU cores of the cluster.
      * 
      */
-    private Integer cpu;
+    private final Integer cpu;
     /**
      * @return The creation time of the resource.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The size of the storage space, in GB.
      * 
      */
-    private String diskSize;
+    private final String diskSize;
     /**
      * @return The ID of the Instance.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Cluster specification information.
      * 
      */
-    private String instanceClass;
+    private final String instanceClass;
     /**
      * @return OceanBase cluster ID.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return OceanBase cluster name.
      * 
      */
-    private String instanceName;
+    private final String instanceName;
     /**
      * @return The number of nodes in the cluster.
      * 
      */
-    private String nodeNum;
+    private final String nodeNum;
     /**
      * @return The payment method of the instance.
      * 
      */
-    private String paymentType;
+    private final String paymentType;
     /**
      * @return The ID of the enterprise resource group to which the instance resides.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return Series of OceanBase clusters.
      * 
      */
-    private String series;
+    private final String series;
     /**
      * @return The status of the resource.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return Information about the zone where the cluster is deployed.
      * 
      */
-    private List<String> zones;
+    private final List<String> zones;
 
-    private GetBaseInstancesInstance() {}
+    @CustomType.Constructor
+    private GetBaseInstancesInstance(
+        @CustomType.Parameter("commodityCode") String commodityCode,
+        @CustomType.Parameter("cpu") Integer cpu,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("diskSize") String diskSize,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceClass") String instanceClass,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("instanceName") String instanceName,
+        @CustomType.Parameter("nodeNum") String nodeNum,
+        @CustomType.Parameter("paymentType") String paymentType,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("series") String series,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("zones") List<String> zones) {
+        this.commodityCode = commodityCode;
+        this.cpu = cpu;
+        this.createTime = createTime;
+        this.diskSize = diskSize;
+        this.id = id;
+        this.instanceClass = instanceClass;
+        this.instanceId = instanceId;
+        this.instanceName = instanceName;
+        this.nodeNum = nodeNum;
+        this.paymentType = paymentType;
+        this.resourceGroupId = resourceGroupId;
+        this.series = series;
+        this.status = status;
+        this.zones = zones;
+    }
+
     /**
      * @return The product code of the OceanBase cluster.
      * 
@@ -189,7 +220,7 @@ public final class GetBaseInstancesInstance {
     public static Builder builder(GetBaseInstancesInstance defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String commodityCode;
         private Integer cpu;
@@ -205,7 +236,11 @@ public final class GetBaseInstancesInstance {
         private String series;
         private String status;
         private List<String> zones;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBaseInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.commodityCode = defaults.commodityCode;
@@ -224,96 +259,66 @@ public final class GetBaseInstancesInstance {
     	      this.zones = defaults.zones;
         }
 
-        @CustomType.Setter
         public Builder commodityCode(String commodityCode) {
             this.commodityCode = Objects.requireNonNull(commodityCode);
             return this;
         }
-        @CustomType.Setter
         public Builder cpu(Integer cpu) {
             this.cpu = Objects.requireNonNull(cpu);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder diskSize(String diskSize) {
             this.diskSize = Objects.requireNonNull(diskSize);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceClass(String instanceClass) {
             this.instanceClass = Objects.requireNonNull(instanceClass);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
-        @CustomType.Setter
         public Builder nodeNum(String nodeNum) {
             this.nodeNum = Objects.requireNonNull(nodeNum);
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder series(String series) {
             this.series = Objects.requireNonNull(series);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder zones(List<String> zones) {
             this.zones = Objects.requireNonNull(zones);
             return this;
         }
         public Builder zones(String... zones) {
             return zones(List.of(zones));
-        }
-        public GetBaseInstancesInstance build() {
-            final var o = new GetBaseInstancesInstance();
-            o.commodityCode = commodityCode;
-            o.cpu = cpu;
-            o.createTime = createTime;
-            o.diskSize = diskSize;
-            o.id = id;
-            o.instanceClass = instanceClass;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.nodeNum = nodeNum;
-            o.paymentType = paymentType;
-            o.resourceGroupId = resourceGroupId;
-            o.series = series;
-            o.status = status;
-            o.zones = zones;
-            return o;
+        }        public GetBaseInstancesInstance build() {
+            return new GetBaseInstancesInstance(commodityCode, cpu, createTime, diskSize, id, instanceClass, instanceId, instanceName, nodeNum, paymentType, resourceGroupId, series, status, zones);
         }
     }
 }

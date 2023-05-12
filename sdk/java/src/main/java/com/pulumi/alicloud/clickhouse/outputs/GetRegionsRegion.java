@@ -15,14 +15,21 @@ public final class GetRegionsRegion {
      * @return The Region ID.
      * 
      */
-    private String regionId;
+    private final String regionId;
     /**
      * @return A list of available zone ids in the region_id.
      * 
      */
-    private List<GetRegionsRegionZoneId> zoneIds;
+    private final List<GetRegionsRegionZoneId> zoneIds;
 
-    private GetRegionsRegion() {}
+    @CustomType.Constructor
+    private GetRegionsRegion(
+        @CustomType.Parameter("regionId") String regionId,
+        @CustomType.Parameter("zoneIds") List<GetRegionsRegionZoneId> zoneIds) {
+        this.regionId = regionId;
+        this.zoneIds = zoneIds;
+    }
+
     /**
      * @return The Region ID.
      * 
@@ -45,35 +52,33 @@ public final class GetRegionsRegion {
     public static Builder builder(GetRegionsRegion defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String regionId;
         private List<GetRegionsRegionZoneId> zoneIds;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRegionsRegion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.regionId = defaults.regionId;
     	      this.zoneIds = defaults.zoneIds;
         }
 
-        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneIds(List<GetRegionsRegionZoneId> zoneIds) {
             this.zoneIds = Objects.requireNonNull(zoneIds);
             return this;
         }
         public Builder zoneIds(GetRegionsRegionZoneId... zoneIds) {
             return zoneIds(List.of(zoneIds));
-        }
-        public GetRegionsRegion build() {
-            final var o = new GetRegionsRegion();
-            o.regionId = regionId;
-            o.zoneIds = zoneIds;
-            return o;
+        }        public GetRegionsRegion build() {
+            return new GetRegionsRegion(regionId, zoneIds);
         }
     }
 }

@@ -13,34 +13,49 @@ public final class GetHybridMonitorFcTasksTask {
      * @return Create the timestamp of the monitoring task. Unit: milliseconds.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The ID of the monitoring task.
      * 
      */
-    private String hybridMonitorFcTaskId;
+    private final String hybridMonitorFcTaskId;
     /**
      * @return The ID of the Hybrid Monitor Fc Task. The value formats as `&lt;hybrid_monitor_fc_task_id&gt;:&lt;namespace&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The index warehouse where the host belongs.
      * 
      */
-    private String namespace;
+    private final String namespace;
     /**
      * @return The ID of the member account.
      * 
      */
-    private String targetUserId;
+    private final String targetUserId;
     /**
      * @return The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
      * 
      */
-    private String yarmConfig;
+    private final String yarmConfig;
 
-    private GetHybridMonitorFcTasksTask() {}
+    @CustomType.Constructor
+    private GetHybridMonitorFcTasksTask(
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("hybridMonitorFcTaskId") String hybridMonitorFcTaskId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("namespace") String namespace,
+        @CustomType.Parameter("targetUserId") String targetUserId,
+        @CustomType.Parameter("yarmConfig") String yarmConfig) {
+        this.createTime = createTime;
+        this.hybridMonitorFcTaskId = hybridMonitorFcTaskId;
+        this.id = id;
+        this.namespace = namespace;
+        this.targetUserId = targetUserId;
+        this.yarmConfig = yarmConfig;
+    }
+
     /**
      * @return Create the timestamp of the monitoring task. Unit: milliseconds.
      * 
@@ -91,7 +106,7 @@ public final class GetHybridMonitorFcTasksTask {
     public static Builder builder(GetHybridMonitorFcTasksTask defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String createTime;
         private String hybridMonitorFcTaskId;
@@ -99,7 +114,11 @@ public final class GetHybridMonitorFcTasksTask {
         private String namespace;
         private String targetUserId;
         private String yarmConfig;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetHybridMonitorFcTasksTask defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -110,45 +129,31 @@ public final class GetHybridMonitorFcTasksTask {
     	      this.yarmConfig = defaults.yarmConfig;
         }
 
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder hybridMonitorFcTaskId(String hybridMonitorFcTaskId) {
             this.hybridMonitorFcTaskId = Objects.requireNonNull(hybridMonitorFcTaskId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder namespace(String namespace) {
             this.namespace = Objects.requireNonNull(namespace);
             return this;
         }
-        @CustomType.Setter
         public Builder targetUserId(String targetUserId) {
             this.targetUserId = Objects.requireNonNull(targetUserId);
             return this;
         }
-        @CustomType.Setter
         public Builder yarmConfig(String yarmConfig) {
             this.yarmConfig = Objects.requireNonNull(yarmConfig);
             return this;
-        }
-        public GetHybridMonitorFcTasksTask build() {
-            final var o = new GetHybridMonitorFcTasksTask();
-            o.createTime = createTime;
-            o.hybridMonitorFcTaskId = hybridMonitorFcTaskId;
-            o.id = id;
-            o.namespace = namespace;
-            o.targetUserId = targetUserId;
-            o.yarmConfig = yarmConfig;
-            return o;
+        }        public GetHybridMonitorFcTasksTask build() {
+            return new GetHybridMonitorFcTasksTask(createTime, hybridMonitorFcTaskId, id, namespace, targetUserId, yarmConfig);
         }
     }
 }

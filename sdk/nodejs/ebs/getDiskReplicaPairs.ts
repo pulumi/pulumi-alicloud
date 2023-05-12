@@ -43,6 +43,9 @@ export interface GetDiskReplicaPairsArgs {
      * A list of Disk Replica Pair IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Consistent Replication Group ID, you can specify a consistent replication group ID to query the replication pairs within the group.
@@ -103,6 +106,9 @@ export interface GetDiskReplicaPairsOutputArgs {
      * A list of Disk Replica Pair IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Consistent Replication Group ID, you can specify a consistent replication group ID to query the replication pairs within the group.

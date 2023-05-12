@@ -14,44 +14,63 @@ public final class GetInstanceAttachmentsAttachment {
      * @return The time when the network is associated with the CEN instance.
      * 
      */
-    private String childInstanceAttachTime;
+    private final String childInstanceAttachTime;
     /**
      * @return The ID of the network.
      * 
      */
-    private String childInstanceId;
+    private final String childInstanceId;
     /**
      * @return The ID of the account to which the network belongs.
      * 
      */
-    private Integer childInstanceOwnerId;
+    private final Integer childInstanceOwnerId;
     /**
      * @return The region to which the network to be queried belongs.
      * 
      */
-    private String childInstanceRegionId;
+    private final String childInstanceRegionId;
     /**
      * @return The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
      * 
      */
-    private String childInstanceType;
+    private final String childInstanceType;
     /**
      * @return The ID of the CEN Instance Attachment.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the CEN instance.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetInstanceAttachmentsAttachment() {}
+    @CustomType.Constructor
+    private GetInstanceAttachmentsAttachment(
+        @CustomType.Parameter("childInstanceAttachTime") String childInstanceAttachTime,
+        @CustomType.Parameter("childInstanceId") String childInstanceId,
+        @CustomType.Parameter("childInstanceOwnerId") Integer childInstanceOwnerId,
+        @CustomType.Parameter("childInstanceRegionId") String childInstanceRegionId,
+        @CustomType.Parameter("childInstanceType") String childInstanceType,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("status") String status) {
+        this.childInstanceAttachTime = childInstanceAttachTime;
+        this.childInstanceId = childInstanceId;
+        this.childInstanceOwnerId = childInstanceOwnerId;
+        this.childInstanceRegionId = childInstanceRegionId;
+        this.childInstanceType = childInstanceType;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.status = status;
+    }
+
     /**
      * @return The time when the network is associated with the CEN instance.
      * 
@@ -116,7 +135,7 @@ public final class GetInstanceAttachmentsAttachment {
     public static Builder builder(GetInstanceAttachmentsAttachment defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String childInstanceAttachTime;
         private String childInstanceId;
@@ -126,7 +145,11 @@ public final class GetInstanceAttachmentsAttachment {
         private String id;
         private String instanceId;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstanceAttachmentsAttachment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.childInstanceAttachTime = defaults.childInstanceAttachTime;
@@ -139,57 +162,39 @@ public final class GetInstanceAttachmentsAttachment {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder childInstanceAttachTime(String childInstanceAttachTime) {
             this.childInstanceAttachTime = Objects.requireNonNull(childInstanceAttachTime);
             return this;
         }
-        @CustomType.Setter
         public Builder childInstanceId(String childInstanceId) {
             this.childInstanceId = Objects.requireNonNull(childInstanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder childInstanceOwnerId(Integer childInstanceOwnerId) {
             this.childInstanceOwnerId = Objects.requireNonNull(childInstanceOwnerId);
             return this;
         }
-        @CustomType.Setter
         public Builder childInstanceRegionId(String childInstanceRegionId) {
             this.childInstanceRegionId = Objects.requireNonNull(childInstanceRegionId);
             return this;
         }
-        @CustomType.Setter
         public Builder childInstanceType(String childInstanceType) {
             this.childInstanceType = Objects.requireNonNull(childInstanceType);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetInstanceAttachmentsAttachment build() {
-            final var o = new GetInstanceAttachmentsAttachment();
-            o.childInstanceAttachTime = childInstanceAttachTime;
-            o.childInstanceId = childInstanceId;
-            o.childInstanceOwnerId = childInstanceOwnerId;
-            o.childInstanceRegionId = childInstanceRegionId;
-            o.childInstanceType = childInstanceType;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.status = status;
-            return o;
+        }        public GetInstanceAttachmentsAttachment build() {
+            return new GetInstanceAttachmentsAttachment(childInstanceAttachTime, childInstanceId, childInstanceOwnerId, childInstanceRegionId, childInstanceType, id, instanceId, status);
         }
     }
 }

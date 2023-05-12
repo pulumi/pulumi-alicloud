@@ -63,12 +63,16 @@ public final class CustomImageArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
      * 
+     * **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
+     * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
      * @return The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
+     * 
+     * **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
      * 
      */
     public Optional<Output<String>> status() {
@@ -184,6 +188,8 @@ public final class CustomImageArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param status The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
          * 
+         * **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
+         * 
          * @return builder
          * 
          */
@@ -194,6 +200,8 @@ public final class CustomImageArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
+         * 
+         * **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
          * 
          * @return builder
          * 

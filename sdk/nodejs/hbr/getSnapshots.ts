@@ -104,6 +104,9 @@ export interface GetSnapshotsArgs {
      */
     instanceId?: string;
     limit?: number;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     query?: string;
     /**
@@ -225,6 +228,9 @@ export interface GetSnapshotsOutputArgs {
      */
     instanceId?: pulumi.Input<string>;
     limit?: pulumi.Input<number>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     query?: pulumi.Input<string>;
     /**

@@ -11,20 +11,31 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAckServiceResult {
-    private @Nullable String enable;
+    private final @Nullable String enable;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The current service enable status.
      * 
      */
-    private String status;
-    private String type;
+    private final String status;
+    private final String type;
 
-    private GetAckServiceResult() {}
+    @CustomType.Constructor
+    private GetAckServiceResult(
+        @CustomType.Parameter("enable") @Nullable String enable,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("type") String type) {
+        this.enable = enable;
+        this.id = id;
+        this.status = status;
+        this.type = type;
+    }
+
     public Optional<String> enable() {
         return Optional.ofNullable(this.enable);
     }
@@ -53,13 +64,17 @@ public final class GetAckServiceResult {
     public static Builder builder(GetAckServiceResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String enable;
         private String id;
         private String status;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAckServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
@@ -68,33 +83,23 @@ public final class GetAckServiceResult {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder enable(@Nullable String enable) {
             this.enable = enable;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetAckServiceResult build() {
-            final var o = new GetAckServiceResult();
-            o.enable = enable;
-            o.id = id;
-            o.status = status;
-            o.type = type;
-            return o;
+        }        public GetAckServiceResult build() {
+            return new GetAckServiceResult(enable, id, status, type);
         }
     }
 }

@@ -67,12 +67,16 @@ public class KeyVersion extends com.pulumi.resources.CustomResource {
     /**
      * The id of the master key (CMK).
      * 
+     * &gt; **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
+     * 
      */
     @Export(name="keyId", type=String.class, parameters={})
     private Output<String> keyId;
 
     /**
      * @return The id of the master key (CMK).
+     * 
+     * &gt; **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
      * 
      */
     public Output<String> keyId() {

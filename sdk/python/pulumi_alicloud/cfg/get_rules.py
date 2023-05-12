@@ -192,6 +192,7 @@ def get_rules(config_rule_state: Optional[str] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Config Rule IDs.
     :param str name_regex: A regex string to filter results by rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int risk_level: The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
     :param str rule_name: The name of config rule.
     :param str status: The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
@@ -255,6 +256,7 @@ def get_rules_output(config_rule_state: Optional[pulumi.Input[Optional[str]]] = 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Config Rule IDs.
     :param str name_regex: A regex string to filter results by rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int risk_level: The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
     :param str rule_name: The name of config rule.
     :param str status: The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.

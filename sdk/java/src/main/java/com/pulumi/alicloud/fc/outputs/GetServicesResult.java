@@ -17,26 +17,41 @@ public final class GetServicesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of FC services ids.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of FC services names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
     /**
      * @return A list of FC services. Each element contains the following attributes:
      * 
      */
-    private List<GetServicesService> services;
+    private final List<GetServicesService> services;
 
-    private GetServicesResult() {}
+    @CustomType.Constructor
+    private GetServicesResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("services") List<GetServicesService> services) {
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.services = services;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -79,7 +94,7 @@ public final class GetServicesResult {
     public static Builder builder(GetServicesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -87,7 +102,11 @@ public final class GetServicesResult {
         private List<String> names;
         private @Nullable String outputFile;
         private List<GetServicesService> services;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServicesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -98,12 +117,10 @@ public final class GetServicesResult {
     	      this.services = defaults.services;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -111,12 +128,10 @@ public final class GetServicesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -124,28 +139,18 @@ public final class GetServicesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder services(List<GetServicesService> services) {
             this.services = Objects.requireNonNull(services);
             return this;
         }
         public Builder services(GetServicesService... services) {
             return services(List.of(services));
-        }
-        public GetServicesResult build() {
-            final var o = new GetServicesResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.services = services;
-            return o;
+        }        public GetServicesResult build() {
+            return new GetServicesResult(id, ids, nameRegex, names, outputFile, services);
         }
     }
 }

@@ -270,6 +270,12 @@ class Instance(pulumi.CustomResource):
                  version_code: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Create an DNS Instance resource.
+
+        > **DEPRECATED:** This resource has been renamed to dns.AlidnsInstance from version 1.95.0.
+
+        > **NOTE:** Available in v1.80.0+.
+
         ## Example Usage
 
         Basic Usage
@@ -311,6 +317,12 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Create an DNS Instance resource.
+
+        > **DEPRECATED:** This resource has been renamed to dns.AlidnsInstance from version 1.95.0.
+
+        > **NOTE:** Available in v1.80.0+.
+
         ## Example Usage
 
         Basic Usage

@@ -15,14 +15,21 @@ public final class DispatchRuleNotifyRule {
      * @return The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
      * 
      */
-    private List<String> notifyChannels;
+    private final List<String> notifyChannels;
     /**
      * @return Sets the notification object. See the following `Block notify_objects`.
      * 
      */
-    private List<DispatchRuleNotifyRuleNotifyObject> notifyObjects;
+    private final List<DispatchRuleNotifyRuleNotifyObject> notifyObjects;
 
-    private DispatchRuleNotifyRule() {}
+    @CustomType.Constructor
+    private DispatchRuleNotifyRule(
+        @CustomType.Parameter("notifyChannels") List<String> notifyChannels,
+        @CustomType.Parameter("notifyObjects") List<DispatchRuleNotifyRuleNotifyObject> notifyObjects) {
+        this.notifyChannels = notifyChannels;
+        this.notifyObjects = notifyObjects;
+    }
+
     /**
      * @return The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
      * 
@@ -45,18 +52,21 @@ public final class DispatchRuleNotifyRule {
     public static Builder builder(DispatchRuleNotifyRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<String> notifyChannels;
         private List<DispatchRuleNotifyRuleNotifyObject> notifyObjects;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(DispatchRuleNotifyRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.notifyChannels = defaults.notifyChannels;
     	      this.notifyObjects = defaults.notifyObjects;
         }
 
-        @CustomType.Setter
         public Builder notifyChannels(List<String> notifyChannels) {
             this.notifyChannels = Objects.requireNonNull(notifyChannels);
             return this;
@@ -64,19 +74,14 @@ public final class DispatchRuleNotifyRule {
         public Builder notifyChannels(String... notifyChannels) {
             return notifyChannels(List.of(notifyChannels));
         }
-        @CustomType.Setter
         public Builder notifyObjects(List<DispatchRuleNotifyRuleNotifyObject> notifyObjects) {
             this.notifyObjects = Objects.requireNonNull(notifyObjects);
             return this;
         }
         public Builder notifyObjects(DispatchRuleNotifyRuleNotifyObject... notifyObjects) {
             return notifyObjects(List.of(notifyObjects));
-        }
-        public DispatchRuleNotifyRule build() {
-            final var o = new DispatchRuleNotifyRule();
-            o.notifyChannels = notifyChannels;
-            o.notifyObjects = notifyObjects;
-            return o;
+        }        public DispatchRuleNotifyRule build() {
+            return new DispatchRuleNotifyRule(notifyChannels, notifyObjects);
         }
     }
 }

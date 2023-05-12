@@ -14,24 +14,35 @@ public final class GetBundlesBundleDesktopTypeAttribute {
      * @return The cpu count attribute of the bundle.
      * 
      */
-    private Integer cpuCount;
+    private final Integer cpuCount;
     /**
      * @return The gpu count attribute of the bundle.
      * 
      */
-    private String gpuCount;
+    private final String gpuCount;
     /**
      * @return The gpu spec attribute of the bundle.
      * 
      */
-    private String gpuSpec;
+    private final String gpuSpec;
     /**
      * @return The memory size attribute of the bundle.
      * 
      */
-    private String memorySize;
+    private final String memorySize;
 
-    private GetBundlesBundleDesktopTypeAttribute() {}
+    @CustomType.Constructor
+    private GetBundlesBundleDesktopTypeAttribute(
+        @CustomType.Parameter("cpuCount") Integer cpuCount,
+        @CustomType.Parameter("gpuCount") String gpuCount,
+        @CustomType.Parameter("gpuSpec") String gpuSpec,
+        @CustomType.Parameter("memorySize") String memorySize) {
+        this.cpuCount = cpuCount;
+        this.gpuCount = gpuCount;
+        this.gpuSpec = gpuSpec;
+        this.memorySize = memorySize;
+    }
+
     /**
      * @return The cpu count attribute of the bundle.
      * 
@@ -68,13 +79,17 @@ public final class GetBundlesBundleDesktopTypeAttribute {
     public static Builder builder(GetBundlesBundleDesktopTypeAttribute defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer cpuCount;
         private String gpuCount;
         private String gpuSpec;
         private String memorySize;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBundlesBundleDesktopTypeAttribute defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuCount = defaults.cpuCount;
@@ -83,33 +98,23 @@ public final class GetBundlesBundleDesktopTypeAttribute {
     	      this.memorySize = defaults.memorySize;
         }
 
-        @CustomType.Setter
         public Builder cpuCount(Integer cpuCount) {
             this.cpuCount = Objects.requireNonNull(cpuCount);
             return this;
         }
-        @CustomType.Setter
         public Builder gpuCount(String gpuCount) {
             this.gpuCount = Objects.requireNonNull(gpuCount);
             return this;
         }
-        @CustomType.Setter
         public Builder gpuSpec(String gpuSpec) {
             this.gpuSpec = Objects.requireNonNull(gpuSpec);
             return this;
         }
-        @CustomType.Setter
         public Builder memorySize(String memorySize) {
             this.memorySize = Objects.requireNonNull(memorySize);
             return this;
-        }
-        public GetBundlesBundleDesktopTypeAttribute build() {
-            final var o = new GetBundlesBundleDesktopTypeAttribute();
-            o.cpuCount = cpuCount;
-            o.gpuCount = gpuCount;
-            o.gpuSpec = gpuSpec;
-            o.memorySize = memorySize;
-            return o;
+        }        public GetBundlesBundleDesktopTypeAttribute build() {
+            return new GetBundlesBundleDesktopTypeAttribute(cpuCount, gpuCount, gpuSpec, memorySize);
         }
     }
 }

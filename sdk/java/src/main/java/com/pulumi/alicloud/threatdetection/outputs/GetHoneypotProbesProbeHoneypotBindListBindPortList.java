@@ -14,29 +14,42 @@ public final class GetHoneypotProbesProbeHoneypotBindListBindPortList {
      * @return Whether to bind the port.
      * 
      */
-    private Boolean bindPort;
+    private final Boolean bindPort;
     /**
      * @return End port.
      * 
      */
-    private Integer endPort;
+    private final Integer endPort;
     /**
      * @return Whether the port is fixed.
      * 
      */
-    private Boolean fixed;
+    private final Boolean fixed;
     /**
      * @return Start port.
      * 
      */
-    private Integer startPort;
+    private final Integer startPort;
     /**
      * @return Destination port.
      * 
      */
-    private Integer targetPort;
+    private final Integer targetPort;
 
-    private GetHoneypotProbesProbeHoneypotBindListBindPortList() {}
+    @CustomType.Constructor
+    private GetHoneypotProbesProbeHoneypotBindListBindPortList(
+        @CustomType.Parameter("bindPort") Boolean bindPort,
+        @CustomType.Parameter("endPort") Integer endPort,
+        @CustomType.Parameter("fixed") Boolean fixed,
+        @CustomType.Parameter("startPort") Integer startPort,
+        @CustomType.Parameter("targetPort") Integer targetPort) {
+        this.bindPort = bindPort;
+        this.endPort = endPort;
+        this.fixed = fixed;
+        this.startPort = startPort;
+        this.targetPort = targetPort;
+    }
+
     /**
      * @return Whether to bind the port.
      * 
@@ -80,14 +93,18 @@ public final class GetHoneypotProbesProbeHoneypotBindListBindPortList {
     public static Builder builder(GetHoneypotProbesProbeHoneypotBindListBindPortList defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean bindPort;
         private Integer endPort;
         private Boolean fixed;
         private Integer startPort;
         private Integer targetPort;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetHoneypotProbesProbeHoneypotBindListBindPortList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bindPort = defaults.bindPort;
@@ -97,39 +114,27 @@ public final class GetHoneypotProbesProbeHoneypotBindListBindPortList {
     	      this.targetPort = defaults.targetPort;
         }
 
-        @CustomType.Setter
         public Builder bindPort(Boolean bindPort) {
             this.bindPort = Objects.requireNonNull(bindPort);
             return this;
         }
-        @CustomType.Setter
         public Builder endPort(Integer endPort) {
             this.endPort = Objects.requireNonNull(endPort);
             return this;
         }
-        @CustomType.Setter
         public Builder fixed(Boolean fixed) {
             this.fixed = Objects.requireNonNull(fixed);
             return this;
         }
-        @CustomType.Setter
         public Builder startPort(Integer startPort) {
             this.startPort = Objects.requireNonNull(startPort);
             return this;
         }
-        @CustomType.Setter
         public Builder targetPort(Integer targetPort) {
             this.targetPort = Objects.requireNonNull(targetPort);
             return this;
-        }
-        public GetHoneypotProbesProbeHoneypotBindListBindPortList build() {
-            final var o = new GetHoneypotProbesProbeHoneypotBindListBindPortList();
-            o.bindPort = bindPort;
-            o.endPort = endPort;
-            o.fixed = fixed;
-            o.startPort = startPort;
-            o.targetPort = targetPort;
-            return o;
+        }        public GetHoneypotProbesProbeHoneypotBindListBindPortList build() {
+            return new GetHoneypotProbesProbeHoneypotBindListBindPortList(bindPort, endPort, fixed, startPort, targetPort);
         }
     }
 }

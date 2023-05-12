@@ -15,34 +15,49 @@ public final class GetCustomLinesLine {
      * @return The Custom line Code.
      * 
      */
-    private String code;
+    private final String code;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private String customLineId;
+    private final String customLineId;
     /**
      * @return Line name.
      * 
      */
-    private String customLineName;
+    private final String customLineName;
     /**
      * @return The Domain name.
      * 
      */
-    private String domainName;
+    private final String domainName;
     /**
      * @return The ID of the Custom Line.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The IP segment list.
      * 
      */
-    private List<GetCustomLinesLineIpSegmentList> ipSegmentLists;
+    private final List<GetCustomLinesLineIpSegmentList> ipSegmentLists;
 
-    private GetCustomLinesLine() {}
+    @CustomType.Constructor
+    private GetCustomLinesLine(
+        @CustomType.Parameter("code") String code,
+        @CustomType.Parameter("customLineId") String customLineId,
+        @CustomType.Parameter("customLineName") String customLineName,
+        @CustomType.Parameter("domainName") String domainName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ipSegmentLists") List<GetCustomLinesLineIpSegmentList> ipSegmentLists) {
+        this.code = code;
+        this.customLineId = customLineId;
+        this.customLineName = customLineName;
+        this.domainName = domainName;
+        this.id = id;
+        this.ipSegmentLists = ipSegmentLists;
+    }
+
     /**
      * @return The Custom line Code.
      * 
@@ -93,7 +108,7 @@ public final class GetCustomLinesLine {
     public static Builder builder(GetCustomLinesLine defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String code;
         private String customLineId;
@@ -101,7 +116,11 @@ public final class GetCustomLinesLine {
         private String domainName;
         private String id;
         private List<GetCustomLinesLineIpSegmentList> ipSegmentLists;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetCustomLinesLine defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.code = defaults.code;
@@ -112,48 +131,34 @@ public final class GetCustomLinesLine {
     	      this.ipSegmentLists = defaults.ipSegmentLists;
         }
 
-        @CustomType.Setter
         public Builder code(String code) {
             this.code = Objects.requireNonNull(code);
             return this;
         }
-        @CustomType.Setter
         public Builder customLineId(String customLineId) {
             this.customLineId = Objects.requireNonNull(customLineId);
             return this;
         }
-        @CustomType.Setter
         public Builder customLineName(String customLineName) {
             this.customLineName = Objects.requireNonNull(customLineName);
             return this;
         }
-        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ipSegmentLists(List<GetCustomLinesLineIpSegmentList> ipSegmentLists) {
             this.ipSegmentLists = Objects.requireNonNull(ipSegmentLists);
             return this;
         }
         public Builder ipSegmentLists(GetCustomLinesLineIpSegmentList... ipSegmentLists) {
             return ipSegmentLists(List.of(ipSegmentLists));
-        }
-        public GetCustomLinesLine build() {
-            final var o = new GetCustomLinesLine();
-            o.code = code;
-            o.customLineId = customLineId;
-            o.customLineName = customLineName;
-            o.domainName = domainName;
-            o.id = id;
-            o.ipSegmentLists = ipSegmentLists;
-            return o;
+        }        public GetCustomLinesLine build() {
+            return new GetCustomLinesLine(code, customLineId, customLineName, domainName, id, ipSegmentLists);
         }
     }
 }

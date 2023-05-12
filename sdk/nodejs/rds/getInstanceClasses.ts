@@ -67,6 +67,8 @@ export interface GetInstanceClassesArgs {
      * * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
      * * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
      * * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
+     *
+     * > **NOTE**: The field `dbInstanceId` will be ignored when `commodityCode` is not a read-only type.
      */
     commodityCode?: string;
     /**
@@ -75,6 +77,8 @@ export interface GetInstanceClassesArgs {
     dbInstanceClass?: string;
     /**
      * The ID of the instance.
+     *
+     * > **NOTE**: The field `dbInstanceId` will be ignored when `commodityCode` is not a read-only type.
      */
     dbInstanceId?: string;
     /**
@@ -97,6 +101,9 @@ export interface GetInstanceClassesArgs {
      * Whether to show multi available zone. Default false to not show multi availability zone.
      */
     multiZone?: boolean;
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     */
     outputFile?: string;
     sortedBy?: string;
     /**
@@ -183,6 +190,8 @@ export interface GetInstanceClassesOutputArgs {
      * * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
      * * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
      * * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
+     *
+     * > **NOTE**: The field `dbInstanceId` will be ignored when `commodityCode` is not a read-only type.
      */
     commodityCode?: pulumi.Input<string>;
     /**
@@ -191,6 +200,8 @@ export interface GetInstanceClassesOutputArgs {
     dbInstanceClass?: pulumi.Input<string>;
     /**
      * The ID of the instance.
+     *
+     * > **NOTE**: The field `dbInstanceId` will be ignored when `commodityCode` is not a read-only type.
      */
     dbInstanceId?: pulumi.Input<string>;
     /**
@@ -213,6 +224,9 @@ export interface GetInstanceClassesOutputArgs {
      * Whether to show multi available zone. Default false to not show multi availability zone.
      */
     multiZone?: pulumi.Input<boolean>;
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     */
     outputFile?: pulumi.Input<string>;
     sortedBy?: pulumi.Input<string>;
     /**

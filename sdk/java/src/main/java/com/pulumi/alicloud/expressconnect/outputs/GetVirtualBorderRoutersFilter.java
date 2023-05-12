@@ -17,14 +17,21 @@ public final class GetVirtualBorderRoutersFilter {
      * [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
      * 
      */
-    private @Nullable String key;
+    private final @Nullable String key;
     /**
      * @return Set of values that are accepted for the given field.
      * 
      */
-    private @Nullable List<String> values;
+    private final @Nullable List<String> values;
 
-    private GetVirtualBorderRoutersFilter() {}
+    @CustomType.Constructor
+    private GetVirtualBorderRoutersFilter(
+        @CustomType.Parameter("key") @Nullable String key,
+        @CustomType.Parameter("values") @Nullable List<String> values) {
+        this.key = key;
+        this.values = values;
+    }
+
     /**
      * @return The key of the field to filter by, as defined by
      * [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
@@ -48,35 +55,33 @@ public final class GetVirtualBorderRoutersFilter {
     public static Builder builder(GetVirtualBorderRoutersFilter defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String key;
         private @Nullable List<String> values;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVirtualBorderRoutersFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.values = defaults.values;
         }
 
-        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
-        @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
             this.values = values;
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }
-        public GetVirtualBorderRoutersFilter build() {
-            final var o = new GetVirtualBorderRoutersFilter();
-            o.key = key;
-            o.values = values;
-            return o;
+        }        public GetVirtualBorderRoutersFilter build() {
+            return new GetVirtualBorderRoutersFilter(key, values);
         }
     }
 }

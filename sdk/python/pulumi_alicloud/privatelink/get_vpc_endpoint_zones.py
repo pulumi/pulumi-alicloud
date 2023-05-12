@@ -113,6 +113,7 @@ def get_vpc_endpoint_zones(endpoint_id: Optional[str] = None,
 
 
     :param str endpoint_id: The ID of the Vpc Endpoint.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The Status of Vpc Endpoint Zone..
     """
     __args__ = dict()
@@ -155,6 +156,7 @@ def get_vpc_endpoint_zones_output(endpoint_id: Optional[pulumi.Input[str]] = Non
 
 
     :param str endpoint_id: The ID of the Vpc Endpoint.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The Status of Vpc Endpoint Zone..
     """
     ...

@@ -66,6 +66,9 @@ export interface GetFlowlogsArgs {
      * A regex string to filter CEN flow logs by name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The name of the SLS project.
@@ -165,6 +168,9 @@ export interface GetFlowlogsOutputArgs {
      * A regex string to filter CEN flow logs by name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The name of the SLS project.

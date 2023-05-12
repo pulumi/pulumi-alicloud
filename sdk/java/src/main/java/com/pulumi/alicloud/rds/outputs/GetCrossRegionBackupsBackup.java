@@ -15,40 +15,40 @@ public final class GetCrossRegionBackupsBackup {
      * @return The time when the cross-region data backup file was generated.
      * 
      */
-    private String backupEndTime;
+    private final String backupEndTime;
     /**
      * @return The method that is used to generate the cross-region data backup file. Valid values:
      * `L` - logical backup.
      * `P` - physical backup.
      * 
      */
-    private String backupMethod;
+    private final String backupMethod;
     /**
      * @return The level at which the cross-region data backup file is generated.
      * `0` - instance-level backup.
      * `1` - database-level backup.
      * 
      */
-    private String backupSetScale;
+    private final String backupSetScale;
     /**
      * @return TThe status of the cross-region data backup. Valid values:
      * `0` - The cross-region data backup is successful.
      * `1` - The cross-region data backup failed.
      * 
      */
-    private Integer backupSetStatus;
+    private final Integer backupSetStatus;
     /**
      * @return The time when the cross-region data backup started.
      * 
      */
-    private String backupStartTime;
+    private final String backupStartTime;
     /**
      * @return The type of the cross-region data backup. Valid values:F: full data backup
      * `F` - full data backup.
      * `I` - incremental data backup.
      * 
      */
-    private String backupType;
+    private final String backupType;
     /**
      * @return The RDS edition of the instance. Valid values:
      * `Basic` - Basic Edition.
@@ -56,84 +56,131 @@ public final class GetCrossRegionBackupsBackup {
      * `Finance` - Enterprise Edition. This edition is supported only by the China site (aliyun.com).
      * 
      */
-    private String category;
+    private final String category;
     /**
      * @return The point in time that is indicated by the data in the cross-region data backup file.
      * 
      */
-    private String consistentTime;
+    private final String consistentTime;
     /**
      * @return The external URL from which you can download the cross-region data backup file.
      * 
      */
-    private String crossBackupDownloadLink;
+    private final String crossBackupDownloadLink;
     /**
      * @return The ID of the cross-region data backup file.
      * 
      */
-    private String crossBackupId;
+    private final String crossBackupId;
     /**
      * @return The ID of the destination region where the cross-region data backup file of the instance is stored.
      * 
      */
-    private String crossBackupRegion;
+    private final String crossBackupRegion;
     /**
      * @return The name of the compressed package that contains the cross-region data backup file.
      * 
      */
-    private String crossBackupSetFile;
+    private final String crossBackupSetFile;
     /**
      * @return The location where the cross-region data backup file is stored.
      * 
      */
-    private String crossBackupSetLocation;
+    private final String crossBackupSetLocation;
     /**
      * @return The size of the cross-region data backup file. Unit: bytes.
      * 
      */
-    private Integer crossBackupSetSize;
+    private final Integer crossBackupSetSize;
     /**
      * @return The storage type.
      * 
      */
-    private String dbInstanceStorageType;
+    private final String dbInstanceStorageType;
     /**
      * @return The engine of the database.
      * 
      */
-    private String engine;
+    private final String engine;
     /**
      * @return The version of the database engine.
      * 
      */
-    private String engineVersion;
+    private final String engineVersion;
     /**
      * @return The ID of the cross-region data backup file.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the instance. This parameter is used to determine whether the instance that generates the cross-region data backup file is a primary or secondary instance.
      * 
      */
-    private Integer instanceId;
+    private final Integer instanceId;
     /**
      * @return The start time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
-    private String recoveryBeginTime;
+    private final String recoveryBeginTime;
     /**
      * @return The end time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
-    private String recoveryEndTime;
+    private final String recoveryEndTime;
     /**
      * @return An array that consists of the regions to which the cross-region data backup file can be restored.
      * 
      */
-    private List<String> restoreRegions;
+    private final List<String> restoreRegions;
 
-    private GetCrossRegionBackupsBackup() {}
+    @CustomType.Constructor
+    private GetCrossRegionBackupsBackup(
+        @CustomType.Parameter("backupEndTime") String backupEndTime,
+        @CustomType.Parameter("backupMethod") String backupMethod,
+        @CustomType.Parameter("backupSetScale") String backupSetScale,
+        @CustomType.Parameter("backupSetStatus") Integer backupSetStatus,
+        @CustomType.Parameter("backupStartTime") String backupStartTime,
+        @CustomType.Parameter("backupType") String backupType,
+        @CustomType.Parameter("category") String category,
+        @CustomType.Parameter("consistentTime") String consistentTime,
+        @CustomType.Parameter("crossBackupDownloadLink") String crossBackupDownloadLink,
+        @CustomType.Parameter("crossBackupId") String crossBackupId,
+        @CustomType.Parameter("crossBackupRegion") String crossBackupRegion,
+        @CustomType.Parameter("crossBackupSetFile") String crossBackupSetFile,
+        @CustomType.Parameter("crossBackupSetLocation") String crossBackupSetLocation,
+        @CustomType.Parameter("crossBackupSetSize") Integer crossBackupSetSize,
+        @CustomType.Parameter("dbInstanceStorageType") String dbInstanceStorageType,
+        @CustomType.Parameter("engine") String engine,
+        @CustomType.Parameter("engineVersion") String engineVersion,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") Integer instanceId,
+        @CustomType.Parameter("recoveryBeginTime") String recoveryBeginTime,
+        @CustomType.Parameter("recoveryEndTime") String recoveryEndTime,
+        @CustomType.Parameter("restoreRegions") List<String> restoreRegions) {
+        this.backupEndTime = backupEndTime;
+        this.backupMethod = backupMethod;
+        this.backupSetScale = backupSetScale;
+        this.backupSetStatus = backupSetStatus;
+        this.backupStartTime = backupStartTime;
+        this.backupType = backupType;
+        this.category = category;
+        this.consistentTime = consistentTime;
+        this.crossBackupDownloadLink = crossBackupDownloadLink;
+        this.crossBackupId = crossBackupId;
+        this.crossBackupRegion = crossBackupRegion;
+        this.crossBackupSetFile = crossBackupSetFile;
+        this.crossBackupSetLocation = crossBackupSetLocation;
+        this.crossBackupSetSize = crossBackupSetSize;
+        this.dbInstanceStorageType = dbInstanceStorageType;
+        this.engine = engine;
+        this.engineVersion = engineVersion;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.recoveryBeginTime = recoveryBeginTime;
+        this.recoveryEndTime = recoveryEndTime;
+        this.restoreRegions = restoreRegions;
+    }
+
     /**
      * @return The time when the cross-region data backup file was generated.
      * 
@@ -307,7 +354,7 @@ public final class GetCrossRegionBackupsBackup {
     public static Builder builder(GetCrossRegionBackupsBackup defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String backupEndTime;
         private String backupMethod;
@@ -331,7 +378,11 @@ public final class GetCrossRegionBackupsBackup {
         private String recoveryBeginTime;
         private String recoveryEndTime;
         private List<String> restoreRegions;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetCrossRegionBackupsBackup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupEndTime = defaults.backupEndTime;
@@ -358,144 +409,98 @@ public final class GetCrossRegionBackupsBackup {
     	      this.restoreRegions = defaults.restoreRegions;
         }
 
-        @CustomType.Setter
         public Builder backupEndTime(String backupEndTime) {
             this.backupEndTime = Objects.requireNonNull(backupEndTime);
             return this;
         }
-        @CustomType.Setter
         public Builder backupMethod(String backupMethod) {
             this.backupMethod = Objects.requireNonNull(backupMethod);
             return this;
         }
-        @CustomType.Setter
         public Builder backupSetScale(String backupSetScale) {
             this.backupSetScale = Objects.requireNonNull(backupSetScale);
             return this;
         }
-        @CustomType.Setter
         public Builder backupSetStatus(Integer backupSetStatus) {
             this.backupSetStatus = Objects.requireNonNull(backupSetStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder backupStartTime(String backupStartTime) {
             this.backupStartTime = Objects.requireNonNull(backupStartTime);
             return this;
         }
-        @CustomType.Setter
         public Builder backupType(String backupType) {
             this.backupType = Objects.requireNonNull(backupType);
             return this;
         }
-        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
-        @CustomType.Setter
         public Builder consistentTime(String consistentTime) {
             this.consistentTime = Objects.requireNonNull(consistentTime);
             return this;
         }
-        @CustomType.Setter
         public Builder crossBackupDownloadLink(String crossBackupDownloadLink) {
             this.crossBackupDownloadLink = Objects.requireNonNull(crossBackupDownloadLink);
             return this;
         }
-        @CustomType.Setter
         public Builder crossBackupId(String crossBackupId) {
             this.crossBackupId = Objects.requireNonNull(crossBackupId);
             return this;
         }
-        @CustomType.Setter
         public Builder crossBackupRegion(String crossBackupRegion) {
             this.crossBackupRegion = Objects.requireNonNull(crossBackupRegion);
             return this;
         }
-        @CustomType.Setter
         public Builder crossBackupSetFile(String crossBackupSetFile) {
             this.crossBackupSetFile = Objects.requireNonNull(crossBackupSetFile);
             return this;
         }
-        @CustomType.Setter
         public Builder crossBackupSetLocation(String crossBackupSetLocation) {
             this.crossBackupSetLocation = Objects.requireNonNull(crossBackupSetLocation);
             return this;
         }
-        @CustomType.Setter
         public Builder crossBackupSetSize(Integer crossBackupSetSize) {
             this.crossBackupSetSize = Objects.requireNonNull(crossBackupSetSize);
             return this;
         }
-        @CustomType.Setter
         public Builder dbInstanceStorageType(String dbInstanceStorageType) {
             this.dbInstanceStorageType = Objects.requireNonNull(dbInstanceStorageType);
             return this;
         }
-        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
         }
-        @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
             this.engineVersion = Objects.requireNonNull(engineVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(Integer instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder recoveryBeginTime(String recoveryBeginTime) {
             this.recoveryBeginTime = Objects.requireNonNull(recoveryBeginTime);
             return this;
         }
-        @CustomType.Setter
         public Builder recoveryEndTime(String recoveryEndTime) {
             this.recoveryEndTime = Objects.requireNonNull(recoveryEndTime);
             return this;
         }
-        @CustomType.Setter
         public Builder restoreRegions(List<String> restoreRegions) {
             this.restoreRegions = Objects.requireNonNull(restoreRegions);
             return this;
         }
         public Builder restoreRegions(String... restoreRegions) {
             return restoreRegions(List.of(restoreRegions));
-        }
-        public GetCrossRegionBackupsBackup build() {
-            final var o = new GetCrossRegionBackupsBackup();
-            o.backupEndTime = backupEndTime;
-            o.backupMethod = backupMethod;
-            o.backupSetScale = backupSetScale;
-            o.backupSetStatus = backupSetStatus;
-            o.backupStartTime = backupStartTime;
-            o.backupType = backupType;
-            o.category = category;
-            o.consistentTime = consistentTime;
-            o.crossBackupDownloadLink = crossBackupDownloadLink;
-            o.crossBackupId = crossBackupId;
-            o.crossBackupRegion = crossBackupRegion;
-            o.crossBackupSetFile = crossBackupSetFile;
-            o.crossBackupSetLocation = crossBackupSetLocation;
-            o.crossBackupSetSize = crossBackupSetSize;
-            o.dbInstanceStorageType = dbInstanceStorageType;
-            o.engine = engine;
-            o.engineVersion = engineVersion;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.recoveryBeginTime = recoveryBeginTime;
-            o.recoveryEndTime = recoveryEndTime;
-            o.restoreRegions = restoreRegions;
-            return o;
+        }        public GetCrossRegionBackupsBackup build() {
+            return new GetCrossRegionBackupsBackup(backupEndTime, backupMethod, backupSetScale, backupSetStatus, backupStartTime, backupType, category, consistentTime, crossBackupDownloadLink, crossBackupId, crossBackupRegion, crossBackupSetFile, crossBackupSetLocation, crossBackupSetSize, dbInstanceStorageType, engine, engineVersion, id, instanceId, recoveryBeginTime, recoveryEndTime, restoreRegions);
         }
     }
 }

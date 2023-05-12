@@ -55,7 +55,7 @@ class EipAddressArgs:
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         :param pulumi.Input[str] public_ip_address_pool_id: The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if activity_id is not None:
@@ -326,7 +326,7 @@ class EipAddressArgs:
     @pulumi.getter(name="securityProtectionTypes")
     def security_protection_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+        The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
         """
         return pulumi.get(self, "security_protection_types")
 
@@ -394,7 +394,7 @@ class _EipAddressState:
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         :param pulumi.Input[str] public_ip_address_pool_id: The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
         :param pulumi.Input[str] status: The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -682,7 +682,7 @@ class _EipAddressState:
     @pulumi.getter(name="securityProtectionTypes")
     def security_protection_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+        The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
         """
         return pulumi.get(self, "security_protection_types")
 
@@ -797,7 +797,7 @@ class EipAddress(pulumi.CustomResource):
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         :param pulumi.Input[str] public_ip_address_pool_id: The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         ...
@@ -972,7 +972,7 @@ class EipAddress(pulumi.CustomResource):
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
         :param pulumi.Input[str] public_ip_address_pool_id: The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
         :param pulumi.Input[str] status: The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -1161,7 +1161,7 @@ class EipAddress(pulumi.CustomResource):
     @pulumi.getter(name="securityProtectionTypes")
     def security_protection_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+        The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
         """
         return pulumi.get(self, "security_protection_types")
 

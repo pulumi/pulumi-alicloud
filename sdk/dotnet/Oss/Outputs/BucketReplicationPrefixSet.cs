@@ -15,6 +15,8 @@ namespace Pulumi.AliCloud.Oss.Outputs
     {
         /// <summary>
         /// The list of object key name prefix identifying one or more objects to which the rule applies.
+        /// 
+        /// `NOTE`: The prefix must be less than or equal to 1024 characters in length.
         /// </summary>
         public readonly ImmutableArray<string> Prefixes;
 

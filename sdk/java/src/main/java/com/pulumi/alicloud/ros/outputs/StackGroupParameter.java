@@ -15,14 +15,21 @@ public final class StackGroupParameter {
      * @return The parameter key.
      * 
      */
-    private @Nullable String parameterKey;
+    private final @Nullable String parameterKey;
     /**
      * @return The parameter value.
      * 
      */
-    private @Nullable String parameterValue;
+    private final @Nullable String parameterValue;
 
-    private StackGroupParameter() {}
+    @CustomType.Constructor
+    private StackGroupParameter(
+        @CustomType.Parameter("parameterKey") @Nullable String parameterKey,
+        @CustomType.Parameter("parameterValue") @Nullable String parameterValue) {
+        this.parameterKey = parameterKey;
+        this.parameterValue = parameterValue;
+    }
+
     /**
      * @return The parameter key.
      * 
@@ -45,32 +52,30 @@ public final class StackGroupParameter {
     public static Builder builder(StackGroupParameter defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String parameterKey;
         private @Nullable String parameterValue;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(StackGroupParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parameterKey = defaults.parameterKey;
     	      this.parameterValue = defaults.parameterValue;
         }
 
-        @CustomType.Setter
         public Builder parameterKey(@Nullable String parameterKey) {
             this.parameterKey = parameterKey;
             return this;
         }
-        @CustomType.Setter
         public Builder parameterValue(@Nullable String parameterValue) {
             this.parameterValue = parameterValue;
             return this;
-        }
-        public StackGroupParameter build() {
-            final var o = new StackGroupParameter();
-            o.parameterKey = parameterKey;
-            o.parameterValue = parameterValue;
-            return o;
+        }        public StackGroupParameter build() {
+            return new StackGroupParameter(parameterKey, parameterValue);
         }
     }
 }

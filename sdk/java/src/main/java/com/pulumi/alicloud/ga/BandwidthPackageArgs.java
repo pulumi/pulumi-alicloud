@@ -99,12 +99,16 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
     /**
      * The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
      * 
+     * &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
+     * 
      */
     @Import(name="bandwidthType")
     private @Nullable Output<String> bandwidthType;
 
     /**
      * @return The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+     * 
+     * &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
      * 
      */
     public Optional<Output<String>> bandwidthType() {
@@ -396,6 +400,8 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param bandwidthType The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
          * 
+         * &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
+         * 
          * @return builder
          * 
          */
@@ -406,6 +412,8 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param bandwidthType The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+         * 
+         * &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
          * 
          * @return builder
          * 

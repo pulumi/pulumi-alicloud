@@ -14,46 +14,69 @@ public final class GetIndustrialPidLoopsLoop {
      * @return The ID of the Pid Loop.
      * 
      */
-    private String id;
-    private String pidLoopConfiguration;
+    private final String id;
+    private final String pidLoopConfiguration;
     /**
      * @return The dcs type of Pid Loop.
      * 
      */
-    private String pidLoopDcsType;
-    private String pidLoopDesc;
+    private final String pidLoopDcsType;
+    private final String pidLoopDesc;
     /**
      * @return The ID of the Pid Loop.
      * 
      */
-    private String pidLoopId;
+    private final String pidLoopId;
     /**
      * @return Whether is crucial Pid Loop.
      * 
      */
-    private Boolean pidLoopIsCrucial;
+    private final Boolean pidLoopIsCrucial;
     /**
      * @return The name of Pid Loop.
      * 
      */
-    private String pidLoopName;
+    private final String pidLoopName;
     /**
      * @return The type of Pid Loop.
      * 
      */
-    private String pidLoopType;
+    private final String pidLoopType;
     /**
      * @return The pid project id.
      * 
      */
-    private String pidProjectId;
+    private final String pidProjectId;
     /**
      * @return The status of Pid Loop.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetIndustrialPidLoopsLoop() {}
+    @CustomType.Constructor
+    private GetIndustrialPidLoopsLoop(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("pidLoopConfiguration") String pidLoopConfiguration,
+        @CustomType.Parameter("pidLoopDcsType") String pidLoopDcsType,
+        @CustomType.Parameter("pidLoopDesc") String pidLoopDesc,
+        @CustomType.Parameter("pidLoopId") String pidLoopId,
+        @CustomType.Parameter("pidLoopIsCrucial") Boolean pidLoopIsCrucial,
+        @CustomType.Parameter("pidLoopName") String pidLoopName,
+        @CustomType.Parameter("pidLoopType") String pidLoopType,
+        @CustomType.Parameter("pidProjectId") String pidProjectId,
+        @CustomType.Parameter("status") String status) {
+        this.id = id;
+        this.pidLoopConfiguration = pidLoopConfiguration;
+        this.pidLoopDcsType = pidLoopDcsType;
+        this.pidLoopDesc = pidLoopDesc;
+        this.pidLoopId = pidLoopId;
+        this.pidLoopIsCrucial = pidLoopIsCrucial;
+        this.pidLoopName = pidLoopName;
+        this.pidLoopType = pidLoopType;
+        this.pidProjectId = pidProjectId;
+        this.status = status;
+    }
+
     /**
      * @return The ID of the Pid Loop.
      * 
@@ -124,7 +147,7 @@ public final class GetIndustrialPidLoopsLoop {
     public static Builder builder(GetIndustrialPidLoopsLoop defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private String pidLoopConfiguration;
@@ -136,7 +159,11 @@ public final class GetIndustrialPidLoopsLoop {
         private String pidLoopType;
         private String pidProjectId;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetIndustrialPidLoopsLoop defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -151,69 +178,47 @@ public final class GetIndustrialPidLoopsLoop {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder pidLoopConfiguration(String pidLoopConfiguration) {
             this.pidLoopConfiguration = Objects.requireNonNull(pidLoopConfiguration);
             return this;
         }
-        @CustomType.Setter
         public Builder pidLoopDcsType(String pidLoopDcsType) {
             this.pidLoopDcsType = Objects.requireNonNull(pidLoopDcsType);
             return this;
         }
-        @CustomType.Setter
         public Builder pidLoopDesc(String pidLoopDesc) {
             this.pidLoopDesc = Objects.requireNonNull(pidLoopDesc);
             return this;
         }
-        @CustomType.Setter
         public Builder pidLoopId(String pidLoopId) {
             this.pidLoopId = Objects.requireNonNull(pidLoopId);
             return this;
         }
-        @CustomType.Setter
         public Builder pidLoopIsCrucial(Boolean pidLoopIsCrucial) {
             this.pidLoopIsCrucial = Objects.requireNonNull(pidLoopIsCrucial);
             return this;
         }
-        @CustomType.Setter
         public Builder pidLoopName(String pidLoopName) {
             this.pidLoopName = Objects.requireNonNull(pidLoopName);
             return this;
         }
-        @CustomType.Setter
         public Builder pidLoopType(String pidLoopType) {
             this.pidLoopType = Objects.requireNonNull(pidLoopType);
             return this;
         }
-        @CustomType.Setter
         public Builder pidProjectId(String pidProjectId) {
             this.pidProjectId = Objects.requireNonNull(pidProjectId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetIndustrialPidLoopsLoop build() {
-            final var o = new GetIndustrialPidLoopsLoop();
-            o.id = id;
-            o.pidLoopConfiguration = pidLoopConfiguration;
-            o.pidLoopDcsType = pidLoopDcsType;
-            o.pidLoopDesc = pidLoopDesc;
-            o.pidLoopId = pidLoopId;
-            o.pidLoopIsCrucial = pidLoopIsCrucial;
-            o.pidLoopName = pidLoopName;
-            o.pidLoopType = pidLoopType;
-            o.pidProjectId = pidProjectId;
-            o.status = status;
-            return o;
+        }        public GetIndustrialPidLoopsLoop build() {
+            return new GetIndustrialPidLoopsLoop(id, pidLoopConfiguration, pidLoopDcsType, pidLoopDesc, pidLoopId, pidLoopIsCrucial, pidLoopName, pidLoopType, pidProjectId, status);
         }
     }
 }

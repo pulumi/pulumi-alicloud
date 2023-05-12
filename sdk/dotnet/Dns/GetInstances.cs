@@ -12,6 +12,12 @@ namespace Pulumi.AliCloud.Dns
     public static class GetInstances
     {
         /// <summary>
+        /// &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsInstances from version 1.95.0. 
+        /// 
+        /// This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.84.0+.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -45,6 +51,12 @@ namespace Pulumi.AliCloud.Dns
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:dns/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsInstances from version 1.95.0. 
+        /// 
+        /// This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.84.0+.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -99,6 +111,9 @@ namespace Pulumi.AliCloud.Dns
         [Input("lang")]
         public string? Lang { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -131,6 +146,9 @@ namespace Pulumi.AliCloud.Dns
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

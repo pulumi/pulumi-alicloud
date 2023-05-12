@@ -15,39 +15,56 @@ public final class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
      * @return The destination IP address.
      * 
      */
-    private String dip;
+    private final String dip;
     /**
      * @return Specifies whether to enable health checks.
      * 
      */
-    private Boolean enable;
+    private final Boolean enable;
     /**
      * @return The interval between two consecutive health checks. Unit: seconds.
      * 
      */
-    private Integer interval;
+    private final Integer interval;
     /**
      * @return Whether to revoke the published route when the health check fails.
      * 
      */
-    private String policy;
+    private final String policy;
     /**
      * @return The maximum number of health check retries.
      * 
      */
-    private Integer retry;
+    private final Integer retry;
     /**
      * @return The source IP address.
      * 
      */
-    private String sip;
+    private final String sip;
     /**
      * @return The status of the resource.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetGatewayVpnAttachmentsAttachmentHealthCheckConfig() {}
+    @CustomType.Constructor
+    private GetGatewayVpnAttachmentsAttachmentHealthCheckConfig(
+        @CustomType.Parameter("dip") String dip,
+        @CustomType.Parameter("enable") Boolean enable,
+        @CustomType.Parameter("interval") Integer interval,
+        @CustomType.Parameter("policy") String policy,
+        @CustomType.Parameter("retry") Integer retry,
+        @CustomType.Parameter("sip") String sip,
+        @CustomType.Parameter("status") String status) {
+        this.dip = dip;
+        this.enable = enable;
+        this.interval = interval;
+        this.policy = policy;
+        this.retry = retry;
+        this.sip = sip;
+        this.status = status;
+    }
+
     /**
      * @return The destination IP address.
      * 
@@ -105,7 +122,7 @@ public final class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
     public static Builder builder(GetGatewayVpnAttachmentsAttachmentHealthCheckConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String dip;
         private Boolean enable;
@@ -114,7 +131,11 @@ public final class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
         private Integer retry;
         private String sip;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetGatewayVpnAttachmentsAttachmentHealthCheckConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dip = defaults.dip;
@@ -126,51 +147,35 @@ public final class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder dip(String dip) {
             this.dip = Objects.requireNonNull(dip);
             return this;
         }
-        @CustomType.Setter
         public Builder enable(Boolean enable) {
             this.enable = Objects.requireNonNull(enable);
             return this;
         }
-        @CustomType.Setter
         public Builder interval(Integer interval) {
             this.interval = Objects.requireNonNull(interval);
             return this;
         }
-        @CustomType.Setter
         public Builder policy(String policy) {
             this.policy = Objects.requireNonNull(policy);
             return this;
         }
-        @CustomType.Setter
         public Builder retry(Integer retry) {
             this.retry = Objects.requireNonNull(retry);
             return this;
         }
-        @CustomType.Setter
         public Builder sip(String sip) {
             this.sip = Objects.requireNonNull(sip);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetGatewayVpnAttachmentsAttachmentHealthCheckConfig build() {
-            final var o = new GetGatewayVpnAttachmentsAttachmentHealthCheckConfig();
-            o.dip = dip;
-            o.enable = enable;
-            o.interval = interval;
-            o.policy = policy;
-            o.retry = retry;
-            o.sip = sip;
-            o.status = status;
-            return o;
+        }        public GetGatewayVpnAttachmentsAttachmentHealthCheckConfig build() {
+            return new GetGatewayVpnAttachmentsAttachmentHealthCheckConfig(dip, enable, interval, policy, retry, sip, status);
         }
     }
 }

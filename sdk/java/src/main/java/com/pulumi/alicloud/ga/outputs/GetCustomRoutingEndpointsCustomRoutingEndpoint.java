@@ -13,44 +13,63 @@ public final class GetCustomRoutingEndpointsCustomRoutingEndpoint {
      * @return The ID of the GA instance.
      * 
      */
-    private String acceleratorId;
+    private final String acceleratorId;
     /**
      * @return The ID of the Custom Routing Endpoint.
      * 
      */
-    private String customRoutingEndpointId;
+    private final String customRoutingEndpointId;
     /**
      * @return The ID of the endpoint (vSwitch).
      * 
      */
-    private String endpoint;
+    private final String endpoint;
     /**
      * @return The ID of the endpoint group.
      * 
      */
-    private String endpointGroupId;
+    private final String endpointGroupId;
     /**
      * @return The id of the Global Accelerator Custom Routing Endpoint. It formats as `&lt;endpoint_group_id&gt;:&lt;custom_routing_endpoint_id&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the custom routing listener.
      * 
      */
-    private String listenerId;
+    private final String listenerId;
     /**
      * @return The access policy of traffic for the specified endpoint.
      * 
      */
-    private String trafficToEndpointPolicy;
+    private final String trafficToEndpointPolicy;
     /**
      * @return The backend service type of the endpoint.
      * 
      */
-    private String type;
+    private final String type;
 
-    private GetCustomRoutingEndpointsCustomRoutingEndpoint() {}
+    @CustomType.Constructor
+    private GetCustomRoutingEndpointsCustomRoutingEndpoint(
+        @CustomType.Parameter("acceleratorId") String acceleratorId,
+        @CustomType.Parameter("customRoutingEndpointId") String customRoutingEndpointId,
+        @CustomType.Parameter("endpoint") String endpoint,
+        @CustomType.Parameter("endpointGroupId") String endpointGroupId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("listenerId") String listenerId,
+        @CustomType.Parameter("trafficToEndpointPolicy") String trafficToEndpointPolicy,
+        @CustomType.Parameter("type") String type) {
+        this.acceleratorId = acceleratorId;
+        this.customRoutingEndpointId = customRoutingEndpointId;
+        this.endpoint = endpoint;
+        this.endpointGroupId = endpointGroupId;
+        this.id = id;
+        this.listenerId = listenerId;
+        this.trafficToEndpointPolicy = trafficToEndpointPolicy;
+        this.type = type;
+    }
+
     /**
      * @return The ID of the GA instance.
      * 
@@ -115,7 +134,7 @@ public final class GetCustomRoutingEndpointsCustomRoutingEndpoint {
     public static Builder builder(GetCustomRoutingEndpointsCustomRoutingEndpoint defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String acceleratorId;
         private String customRoutingEndpointId;
@@ -125,7 +144,11 @@ public final class GetCustomRoutingEndpointsCustomRoutingEndpoint {
         private String listenerId;
         private String trafficToEndpointPolicy;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetCustomRoutingEndpointsCustomRoutingEndpoint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorId = defaults.acceleratorId;
@@ -138,57 +161,39 @@ public final class GetCustomRoutingEndpointsCustomRoutingEndpoint {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
             this.acceleratorId = Objects.requireNonNull(acceleratorId);
             return this;
         }
-        @CustomType.Setter
         public Builder customRoutingEndpointId(String customRoutingEndpointId) {
             this.customRoutingEndpointId = Objects.requireNonNull(customRoutingEndpointId);
             return this;
         }
-        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointGroupId(String endpointGroupId) {
             this.endpointGroupId = Objects.requireNonNull(endpointGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder listenerId(String listenerId) {
             this.listenerId = Objects.requireNonNull(listenerId);
             return this;
         }
-        @CustomType.Setter
         public Builder trafficToEndpointPolicy(String trafficToEndpointPolicy) {
             this.trafficToEndpointPolicy = Objects.requireNonNull(trafficToEndpointPolicy);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetCustomRoutingEndpointsCustomRoutingEndpoint build() {
-            final var o = new GetCustomRoutingEndpointsCustomRoutingEndpoint();
-            o.acceleratorId = acceleratorId;
-            o.customRoutingEndpointId = customRoutingEndpointId;
-            o.endpoint = endpoint;
-            o.endpointGroupId = endpointGroupId;
-            o.id = id;
-            o.listenerId = listenerId;
-            o.trafficToEndpointPolicy = trafficToEndpointPolicy;
-            o.type = type;
-            return o;
+        }        public GetCustomRoutingEndpointsCustomRoutingEndpoint build() {
+            return new GetCustomRoutingEndpointsCustomRoutingEndpoint(acceleratorId, customRoutingEndpointId, endpoint, endpointGroupId, id, listenerId, trafficToEndpointPolicy, type);
         }
     }
 }

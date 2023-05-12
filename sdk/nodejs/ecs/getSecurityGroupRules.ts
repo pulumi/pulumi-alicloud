@@ -67,6 +67,9 @@ export interface GetSecurityGroupRulesArgs {
      * Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
      */
     nicType?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
@@ -165,6 +168,9 @@ export interface GetSecurityGroupRulesOutputArgs {
      * Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
      */
     nicType?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.

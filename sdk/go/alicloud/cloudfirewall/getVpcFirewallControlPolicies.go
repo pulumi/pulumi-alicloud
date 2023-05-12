@@ -70,7 +70,8 @@ type GetVpcFirewallControlPoliciesArgs struct {
 	// The language of the content within the request and response. Valid values: `zh`, `en`.
 	Lang *string `pulumi:"lang"`
 	// The UID of the member account of the current Alibaba cloud account.
-	MemberUid  *string `pulumi:"memberUid"`
+	MemberUid *string `pulumi:"memberUid"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
@@ -133,7 +134,8 @@ type GetVpcFirewallControlPoliciesOutputArgs struct {
 	// The language of the content within the request and response. Valid values: `zh`, `en`.
 	Lang pulumi.StringPtrInput `pulumi:"lang"`
 	// The UID of the member account of the current Alibaba cloud account.
-	MemberUid  pulumi.StringPtrInput `pulumi:"memberUid"`
+	MemberUid pulumi.StringPtrInput `pulumi:"memberUid"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`

@@ -63,7 +63,8 @@ type GetDdosCooPortsArgs struct {
 	// A list of Port IDs.
 	Ids []string `pulumi:"ids"`
 	// The Ddoscoo instance ID.
-	InstanceId string  `pulumi:"instanceId"`
+	InstanceId string `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -101,7 +102,8 @@ type GetDdosCooPortsOutputArgs struct {
 	// A list of Port IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The Ddoscoo instance ID.
-	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

@@ -172,6 +172,7 @@ def get_zone_records(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Private Zone Record IDs.
     :param str keyword: Keyword for record rr and value.
     :param str lang: User language.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str search_mode: Search mode. Value: 
            - LIKE: fuzzy search.
            - EXACT: precise search. It is not filled in by default.
@@ -238,6 +239,7 @@ def get_zone_records_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     :param Sequence[str] ids: A list of Private Zone Record IDs.
     :param str keyword: Keyword for record rr and value.
     :param str lang: User language.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str search_mode: Search mode. Value: 
            - LIKE: fuzzy search.
            - EXACT: precise search. It is not filled in by default.

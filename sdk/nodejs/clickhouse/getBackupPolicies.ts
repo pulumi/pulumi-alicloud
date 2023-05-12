@@ -42,6 +42,9 @@ export interface GetBackupPoliciesArgs {
      * The db cluster id.
      */
     dbClusterId: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -88,5 +91,8 @@ export interface GetBackupPoliciesOutputArgs {
      * The db cluster id.
      */
     dbClusterId: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

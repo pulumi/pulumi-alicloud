@@ -208,6 +208,7 @@ def get_traffic_mirror_sessions(enabled: Optional[bool] = None,
     :param bool enabled: Indicates whether traffic mirror sessions are enabled. default to `false`.
     :param Sequence[str] ids: A list of Traffic Mirror Session IDs.
     :param str name_regex: A regex string to filter results by Traffic Mirror Session name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int priority: The priority of the traffic mirror session. A smaller value indicates a higher priority.
     :param str status: The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
     :param str traffic_mirror_filter_id: The ID of the filter.
@@ -301,6 +302,7 @@ def get_traffic_mirror_sessions_output(enabled: Optional[pulumi.Input[Optional[b
     :param bool enabled: Indicates whether traffic mirror sessions are enabled. default to `false`.
     :param Sequence[str] ids: A list of Traffic Mirror Session IDs.
     :param str name_regex: A regex string to filter results by Traffic Mirror Session name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int priority: The priority of the traffic mirror session. A smaller value indicates a higher priority.
     :param str status: The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
     :param str traffic_mirror_filter_id: The ID of the filter.

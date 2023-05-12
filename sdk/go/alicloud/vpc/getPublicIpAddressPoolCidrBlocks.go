@@ -69,8 +69,9 @@ type GetPublicIpAddressPoolCidrBlocksArgs struct {
 	// The CIDR block.
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// A list of Vpc Public Ip Address Pool Cidr Block IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the Vpc Public IP address pool.
 	PublicIpAddressPoolId string `pulumi:"publicIpAddressPoolId"`
 	// The status of the CIDR block in the Vpc Public IP address pool. Valid values: `Created`, `Modifying`, `Deleting`.
@@ -111,8 +112,9 @@ type GetPublicIpAddressPoolCidrBlocksOutputArgs struct {
 	// The CIDR block.
 	CidrBlock pulumi.StringPtrInput `pulumi:"cidrBlock"`
 	// A list of Vpc Public Ip Address Pool Cidr Block IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the Vpc Public IP address pool.
 	PublicIpAddressPoolId pulumi.StringInput `pulumi:"publicIpAddressPoolId"`
 	// The status of the CIDR block in the Vpc Public IP address pool. Valid values: `Created`, `Modifying`, `Deleting`.

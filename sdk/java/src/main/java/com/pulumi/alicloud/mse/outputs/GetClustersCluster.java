@@ -16,114 +16,161 @@ public final class GetClustersCluster {
      * @return The id of acl.
      * 
      */
-    private String aclId;
+    private final String aclId;
     /**
      * @return The version of app.
      * 
      */
-    private String appVersion;
+    private final String appVersion;
     /**
      * @return ID of the MSE Cluster.
      * 
      */
-    private String clusterId;
+    private final String clusterId;
     /**
      * @return ID of the OOS Executions.
      * 
      */
-    private String clusterName;
+    private final String clusterName;
     /**
      * @return The type of MSE Cluster.
      * 
      */
-    private String clusterType;
+    private final String clusterType;
     /**
      * @return The num of cpu.
      * 
      */
-    private Integer cpu;
+    private final Integer cpu;
     /**
      * @return The health status of MSE Cluster.
      * 
      */
-    private String healthStatus;
+    private final String healthStatus;
     /**
      * @return ID of the MSE Cluster.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Time-consuming to create.
      * 
      */
-    private Integer initCostTime;
+    private final Integer initCostTime;
     /**
      * @return The count of instance.
      * 
      */
-    private Integer instanceCount;
+    private final Integer instanceCount;
     /**
      * @return ID of the MSE Cluster.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return The list of instances.
      * 
      */
-    private List<GetClustersClusterInstanceModel> instanceModels;
+    private final List<GetClustersClusterInstanceModel> instanceModels;
     /**
      * @return The address of public network.
      * 
      */
-    private String internetAddress;
+    private final String internetAddress;
     /**
      * @return The domain of public network.
      * 
      */
-    private String internetDomain;
+    private final String internetDomain;
     /**
      * @return The port of public network.
      * 
      */
-    private String internetPort;
+    private final String internetPort;
     /**
      * @return The address of private network.
      * 
      */
-    private String intranetAddress;
+    private final String intranetAddress;
     /**
      * @return The domain of private network.
      * 
      */
-    private String intranetDomain;
+    private final String intranetDomain;
     /**
      * @return The port of private network.
      * 
      */
-    private String intranetPort;
+    private final String intranetPort;
     /**
      * @return The memory size.
      * 
      */
-    private Integer memoryCapacity;
+    private final Integer memoryCapacity;
     /**
      * @return The type of payment.
      * 
      */
-    private String payInfo;
+    private final String payInfo;
     /**
      * @return The public network bandwidth.
      * 
      */
-    private String pubNetworkFlow;
+    private final String pubNetworkFlow;
     /**
      * @return The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetClustersCluster() {}
+    @CustomType.Constructor
+    private GetClustersCluster(
+        @CustomType.Parameter("aclId") String aclId,
+        @CustomType.Parameter("appVersion") String appVersion,
+        @CustomType.Parameter("clusterId") String clusterId,
+        @CustomType.Parameter("clusterName") String clusterName,
+        @CustomType.Parameter("clusterType") String clusterType,
+        @CustomType.Parameter("cpu") Integer cpu,
+        @CustomType.Parameter("healthStatus") String healthStatus,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("initCostTime") Integer initCostTime,
+        @CustomType.Parameter("instanceCount") Integer instanceCount,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("instanceModels") List<GetClustersClusterInstanceModel> instanceModels,
+        @CustomType.Parameter("internetAddress") String internetAddress,
+        @CustomType.Parameter("internetDomain") String internetDomain,
+        @CustomType.Parameter("internetPort") String internetPort,
+        @CustomType.Parameter("intranetAddress") String intranetAddress,
+        @CustomType.Parameter("intranetDomain") String intranetDomain,
+        @CustomType.Parameter("intranetPort") String intranetPort,
+        @CustomType.Parameter("memoryCapacity") Integer memoryCapacity,
+        @CustomType.Parameter("payInfo") String payInfo,
+        @CustomType.Parameter("pubNetworkFlow") String pubNetworkFlow,
+        @CustomType.Parameter("status") String status) {
+        this.aclId = aclId;
+        this.appVersion = appVersion;
+        this.clusterId = clusterId;
+        this.clusterName = clusterName;
+        this.clusterType = clusterType;
+        this.cpu = cpu;
+        this.healthStatus = healthStatus;
+        this.id = id;
+        this.initCostTime = initCostTime;
+        this.instanceCount = instanceCount;
+        this.instanceId = instanceId;
+        this.instanceModels = instanceModels;
+        this.internetAddress = internetAddress;
+        this.internetDomain = internetDomain;
+        this.internetPort = internetPort;
+        this.intranetAddress = intranetAddress;
+        this.intranetDomain = intranetDomain;
+        this.intranetPort = intranetPort;
+        this.memoryCapacity = memoryCapacity;
+        this.payInfo = payInfo;
+        this.pubNetworkFlow = pubNetworkFlow;
+        this.status = status;
+    }
+
     /**
      * @return The id of acl.
      * 
@@ -286,7 +333,7 @@ public final class GetClustersCluster {
     public static Builder builder(GetClustersCluster defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String aclId;
         private String appVersion;
@@ -310,7 +357,11 @@ public final class GetClustersCluster {
         private String payInfo;
         private String pubNetworkFlow;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetClustersCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aclId = defaults.aclId;
@@ -337,62 +388,50 @@ public final class GetClustersCluster {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder aclId(String aclId) {
             this.aclId = Objects.requireNonNull(aclId);
             return this;
         }
-        @CustomType.Setter
         public Builder appVersion(String appVersion) {
             this.appVersion = Objects.requireNonNull(appVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder clusterName(String clusterName) {
             this.clusterName = Objects.requireNonNull(clusterName);
             return this;
         }
-        @CustomType.Setter
         public Builder clusterType(String clusterType) {
             this.clusterType = Objects.requireNonNull(clusterType);
             return this;
         }
-        @CustomType.Setter
         public Builder cpu(Integer cpu) {
             this.cpu = Objects.requireNonNull(cpu);
             return this;
         }
-        @CustomType.Setter
         public Builder healthStatus(String healthStatus) {
             this.healthStatus = Objects.requireNonNull(healthStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder initCostTime(Integer initCostTime) {
             this.initCostTime = Objects.requireNonNull(initCostTime);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceCount(Integer instanceCount) {
             this.instanceCount = Objects.requireNonNull(instanceCount);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceModels(List<GetClustersClusterInstanceModel> instanceModels) {
             this.instanceModels = Objects.requireNonNull(instanceModels);
             return this;
@@ -400,81 +439,47 @@ public final class GetClustersCluster {
         public Builder instanceModels(GetClustersClusterInstanceModel... instanceModels) {
             return instanceModels(List.of(instanceModels));
         }
-        @CustomType.Setter
         public Builder internetAddress(String internetAddress) {
             this.internetAddress = Objects.requireNonNull(internetAddress);
             return this;
         }
-        @CustomType.Setter
         public Builder internetDomain(String internetDomain) {
             this.internetDomain = Objects.requireNonNull(internetDomain);
             return this;
         }
-        @CustomType.Setter
         public Builder internetPort(String internetPort) {
             this.internetPort = Objects.requireNonNull(internetPort);
             return this;
         }
-        @CustomType.Setter
         public Builder intranetAddress(String intranetAddress) {
             this.intranetAddress = Objects.requireNonNull(intranetAddress);
             return this;
         }
-        @CustomType.Setter
         public Builder intranetDomain(String intranetDomain) {
             this.intranetDomain = Objects.requireNonNull(intranetDomain);
             return this;
         }
-        @CustomType.Setter
         public Builder intranetPort(String intranetPort) {
             this.intranetPort = Objects.requireNonNull(intranetPort);
             return this;
         }
-        @CustomType.Setter
         public Builder memoryCapacity(Integer memoryCapacity) {
             this.memoryCapacity = Objects.requireNonNull(memoryCapacity);
             return this;
         }
-        @CustomType.Setter
         public Builder payInfo(String payInfo) {
             this.payInfo = Objects.requireNonNull(payInfo);
             return this;
         }
-        @CustomType.Setter
         public Builder pubNetworkFlow(String pubNetworkFlow) {
             this.pubNetworkFlow = Objects.requireNonNull(pubNetworkFlow);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetClustersCluster build() {
-            final var o = new GetClustersCluster();
-            o.aclId = aclId;
-            o.appVersion = appVersion;
-            o.clusterId = clusterId;
-            o.clusterName = clusterName;
-            o.clusterType = clusterType;
-            o.cpu = cpu;
-            o.healthStatus = healthStatus;
-            o.id = id;
-            o.initCostTime = initCostTime;
-            o.instanceCount = instanceCount;
-            o.instanceId = instanceId;
-            o.instanceModels = instanceModels;
-            o.internetAddress = internetAddress;
-            o.internetDomain = internetDomain;
-            o.internetPort = internetPort;
-            o.intranetAddress = intranetAddress;
-            o.intranetDomain = intranetDomain;
-            o.intranetPort = intranetPort;
-            o.memoryCapacity = memoryCapacity;
-            o.payInfo = payInfo;
-            o.pubNetworkFlow = pubNetworkFlow;
-            o.status = status;
-            return o;
+        }        public GetClustersCluster build() {
+            return new GetClustersCluster(aclId, appVersion, clusterId, clusterName, clusterType, cpu, healthStatus, id, initCostTime, instanceCount, instanceId, instanceModels, internetAddress, internetDomain, internetPort, intranetAddress, intranetDomain, intranetPort, memoryCapacity, payInfo, pubNetworkFlow, status);
         }
     }
 }

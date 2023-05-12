@@ -20,99 +20,140 @@ public final class GetLoadBalancersBalancer {
      * @return The IP version.
      * 
      */
-    private String addressIpVersion;
+    private final String addressIpVersion;
     /**
      * @return The type of IPv4 address used by the NLB instance.
      * 
      */
-    private String addressType;
+    private final String addressType;
     /**
      * @return The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
      * 
      */
-    private String bandwidthPackageId;
+    private final String bandwidthPackageId;
     /**
      * @return The time when the resource was created. The time is displayed in UTC in `yyyy-MM-ddTHH:mm:ssZ` format.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return Indicates whether cross-zone load balancing is enabled for the NLB instance.
      * 
      */
-    private Boolean crossZoneEnabled;
+    private final Boolean crossZoneEnabled;
     /**
      * @return The domain name of the NLB instance.
      * 
      */
-    private String dnsName;
+    private final String dnsName;
     /**
      * @return The ID of the NLB instance.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The type of IPv6 address used by the NLB instance.
      * 
      */
-    private String ipv6AddressType;
+    private final String ipv6AddressType;
     /**
      * @return The business status of the NLB instance.
      * 
      */
-    private String loadBalancerBusinessStatus;
+    private final String loadBalancerBusinessStatus;
     /**
      * @return The ID of the NLB instance.
      * 
      */
-    private String loadBalancerId;
+    private final String loadBalancerId;
     /**
      * @return The name of the NLB instance.
      * 
      */
-    private String loadBalancerName;
+    private final String loadBalancerName;
     /**
      * @return The type of the SLB instance. Only Network is supported, which indicates NLB.
      * 
      */
-    private String loadBalancerType;
+    private final String loadBalancerType;
     /**
      * @return The configuration of the operation lock. This parameter takes effect if LoadBalancerBussinessStatus is Abnormal.
      * 
      */
-    private List<GetLoadBalancersBalancerOperationLock> operationLocks;
+    private final List<GetLoadBalancersBalancerOperationLock> operationLocks;
     /**
      * @return The ID of the resource group.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return The security group to which the NLB instance belongs.
      * 
      */
-    private List<String> securityGroupIds;
+    private final List<String> securityGroupIds;
     /**
      * @return The status of the NLB instance.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The tag of the resource.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private final @Nullable Map<String,Object> tags;
     /**
      * @return The ID of the VPC where the NLB instance is deployed.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
     /**
      * @return The zones and the vSwitches in the zones. An NLB instance can be deployed across 2 to 10 zones.
      * 
      */
-    private List<GetLoadBalancersBalancerZoneMapping> zoneMappings;
+    private final List<GetLoadBalancersBalancerZoneMapping> zoneMappings;
 
-    private GetLoadBalancersBalancer() {}
+    @CustomType.Constructor
+    private GetLoadBalancersBalancer(
+        @CustomType.Parameter("addressIpVersion") String addressIpVersion,
+        @CustomType.Parameter("addressType") String addressType,
+        @CustomType.Parameter("bandwidthPackageId") String bandwidthPackageId,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("crossZoneEnabled") Boolean crossZoneEnabled,
+        @CustomType.Parameter("dnsName") String dnsName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ipv6AddressType") String ipv6AddressType,
+        @CustomType.Parameter("loadBalancerBusinessStatus") String loadBalancerBusinessStatus,
+        @CustomType.Parameter("loadBalancerId") String loadBalancerId,
+        @CustomType.Parameter("loadBalancerName") String loadBalancerName,
+        @CustomType.Parameter("loadBalancerType") String loadBalancerType,
+        @CustomType.Parameter("operationLocks") List<GetLoadBalancersBalancerOperationLock> operationLocks,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("securityGroupIds") List<String> securityGroupIds,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("zoneMappings") List<GetLoadBalancersBalancerZoneMapping> zoneMappings) {
+        this.addressIpVersion = addressIpVersion;
+        this.addressType = addressType;
+        this.bandwidthPackageId = bandwidthPackageId;
+        this.createTime = createTime;
+        this.crossZoneEnabled = crossZoneEnabled;
+        this.dnsName = dnsName;
+        this.id = id;
+        this.ipv6AddressType = ipv6AddressType;
+        this.loadBalancerBusinessStatus = loadBalancerBusinessStatus;
+        this.loadBalancerId = loadBalancerId;
+        this.loadBalancerName = loadBalancerName;
+        this.loadBalancerType = loadBalancerType;
+        this.operationLocks = operationLocks;
+        this.resourceGroupId = resourceGroupId;
+        this.securityGroupIds = securityGroupIds;
+        this.status = status;
+        this.tags = tags;
+        this.vpcId = vpcId;
+        this.zoneMappings = zoneMappings;
+    }
+
     /**
      * @return The IP version.
      * 
@@ -254,7 +295,7 @@ public final class GetLoadBalancersBalancer {
     public static Builder builder(GetLoadBalancersBalancer defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String addressIpVersion;
         private String addressType;
@@ -275,7 +316,11 @@ public final class GetLoadBalancersBalancer {
         private @Nullable Map<String,Object> tags;
         private String vpcId;
         private List<GetLoadBalancersBalancerZoneMapping> zoneMappings;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetLoadBalancersBalancer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addressIpVersion = defaults.addressIpVersion;
@@ -299,67 +344,54 @@ public final class GetLoadBalancersBalancer {
     	      this.zoneMappings = defaults.zoneMappings;
         }
 
-        @CustomType.Setter
         public Builder addressIpVersion(String addressIpVersion) {
             this.addressIpVersion = Objects.requireNonNull(addressIpVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder addressType(String addressType) {
             this.addressType = Objects.requireNonNull(addressType);
             return this;
         }
-        @CustomType.Setter
         public Builder bandwidthPackageId(String bandwidthPackageId) {
             this.bandwidthPackageId = Objects.requireNonNull(bandwidthPackageId);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder crossZoneEnabled(Boolean crossZoneEnabled) {
             this.crossZoneEnabled = Objects.requireNonNull(crossZoneEnabled);
             return this;
         }
-        @CustomType.Setter
         public Builder dnsName(String dnsName) {
             this.dnsName = Objects.requireNonNull(dnsName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ipv6AddressType(String ipv6AddressType) {
             this.ipv6AddressType = Objects.requireNonNull(ipv6AddressType);
             return this;
         }
-        @CustomType.Setter
         public Builder loadBalancerBusinessStatus(String loadBalancerBusinessStatus) {
             this.loadBalancerBusinessStatus = Objects.requireNonNull(loadBalancerBusinessStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
             this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
             return this;
         }
-        @CustomType.Setter
         public Builder loadBalancerName(String loadBalancerName) {
             this.loadBalancerName = Objects.requireNonNull(loadBalancerName);
             return this;
         }
-        @CustomType.Setter
         public Builder loadBalancerType(String loadBalancerType) {
             this.loadBalancerType = Objects.requireNonNull(loadBalancerType);
             return this;
         }
-        @CustomType.Setter
         public Builder operationLocks(List<GetLoadBalancersBalancerOperationLock> operationLocks) {
             this.operationLocks = Objects.requireNonNull(operationLocks);
             return this;
@@ -367,12 +399,10 @@ public final class GetLoadBalancersBalancer {
         public Builder operationLocks(GetLoadBalancersBalancerOperationLock... operationLocks) {
             return operationLocks(List.of(operationLocks));
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder securityGroupIds(List<String> securityGroupIds) {
             this.securityGroupIds = Objects.requireNonNull(securityGroupIds);
             return this;
@@ -380,51 +410,26 @@ public final class GetLoadBalancersBalancer {
         public Builder securityGroupIds(String... securityGroupIds) {
             return securityGroupIds(List.of(securityGroupIds));
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneMappings(List<GetLoadBalancersBalancerZoneMapping> zoneMappings) {
             this.zoneMappings = Objects.requireNonNull(zoneMappings);
             return this;
         }
         public Builder zoneMappings(GetLoadBalancersBalancerZoneMapping... zoneMappings) {
             return zoneMappings(List.of(zoneMappings));
-        }
-        public GetLoadBalancersBalancer build() {
-            final var o = new GetLoadBalancersBalancer();
-            o.addressIpVersion = addressIpVersion;
-            o.addressType = addressType;
-            o.bandwidthPackageId = bandwidthPackageId;
-            o.createTime = createTime;
-            o.crossZoneEnabled = crossZoneEnabled;
-            o.dnsName = dnsName;
-            o.id = id;
-            o.ipv6AddressType = ipv6AddressType;
-            o.loadBalancerBusinessStatus = loadBalancerBusinessStatus;
-            o.loadBalancerId = loadBalancerId;
-            o.loadBalancerName = loadBalancerName;
-            o.loadBalancerType = loadBalancerType;
-            o.operationLocks = operationLocks;
-            o.resourceGroupId = resourceGroupId;
-            o.securityGroupIds = securityGroupIds;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.zoneMappings = zoneMappings;
-            return o;
+        }        public GetLoadBalancersBalancer build() {
+            return new GetLoadBalancersBalancer(addressIpVersion, addressType, bandwidthPackageId, createTime, crossZoneEnabled, dnsName, id, ipv6AddressType, loadBalancerBusinessStatus, loadBalancerId, loadBalancerName, loadBalancerType, operationLocks, resourceGroupId, securityGroupIds, status, tags, vpcId, zoneMappings);
         }
     }
 }

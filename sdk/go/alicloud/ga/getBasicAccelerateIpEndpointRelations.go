@@ -63,8 +63,9 @@ type GetBasicAccelerateIpEndpointRelationsArgs struct {
 	// The ID of the Basic Endpoint.
 	EndpointId *string `pulumi:"endpointId"`
 	// A list of Global Accelerator Basic Accelerate Ip Endpoint Relations IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.
 	Status *string `pulumi:"status"`
 }
@@ -109,8 +110,9 @@ type GetBasicAccelerateIpEndpointRelationsOutputArgs struct {
 	// The ID of the Basic Endpoint.
 	EndpointId pulumi.StringPtrInput `pulumi:"endpointId"`
 	// A list of Global Accelerator Basic Accelerate Ip Endpoint Relations IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }

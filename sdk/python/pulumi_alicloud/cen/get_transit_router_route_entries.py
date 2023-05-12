@@ -163,6 +163,7 @@ def get_transit_router_route_entries(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of CEN Transit Router Route Entry IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] transit_router_route_entry_ids: A list of ID of the cen transit router route entry.
     :param Sequence[str] transit_router_route_entry_names: A list of name of the cen transit router route entry.
     :param str transit_router_route_entry_status: The status of the resource.Valid values `Creating`, `Active` and `Deleting`.
@@ -211,6 +212,7 @@ def get_transit_router_route_entries_output(ids: Optional[pulumi.Input[Optional[
 
 
     :param Sequence[str] ids: A list of CEN Transit Router Route Entry IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] transit_router_route_entry_ids: A list of ID of the cen transit router route entry.
     :param Sequence[str] transit_router_route_entry_names: A list of name of the cen transit router route entry.
     :param str transit_router_route_entry_status: The status of the resource.Valid values `Creating`, `Active` and `Deleting`.

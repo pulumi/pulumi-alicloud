@@ -40,6 +40,8 @@ type AccessConfiguration struct {
 	// The ID of the Directory.
 	DirectoryId pulumi.StringOutput `pulumi:"directoryId"`
 	// This parameter is used to force deletion `permissionPolicies`. Valid Value: `true` and `false`.
+	//
+	// * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
 	ForceRemovePermissionPolicies pulumi.BoolPtrOutput `pulumi:"forceRemovePermissionPolicies"`
 	// The Policy List. See the following `Block permissionPolicies`.
 	PermissionPolicies AccessConfigurationPermissionPolicyArrayOutput `pulumi:"permissionPolicies"`
@@ -93,6 +95,8 @@ type accessConfigurationState struct {
 	// The ID of the Directory.
 	DirectoryId *string `pulumi:"directoryId"`
 	// This parameter is used to force deletion `permissionPolicies`. Valid Value: `true` and `false`.
+	//
+	// * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
 	ForceRemovePermissionPolicies *bool `pulumi:"forceRemovePermissionPolicies"`
 	// The Policy List. See the following `Block permissionPolicies`.
 	PermissionPolicies []AccessConfigurationPermissionPolicy `pulumi:"permissionPolicies"`
@@ -112,6 +116,8 @@ type AccessConfigurationState struct {
 	// The ID of the Directory.
 	DirectoryId pulumi.StringPtrInput
 	// This parameter is used to force deletion `permissionPolicies`. Valid Value: `true` and `false`.
+	//
+	// * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
 	ForceRemovePermissionPolicies pulumi.BoolPtrInput
 	// The Policy List. See the following `Block permissionPolicies`.
 	PermissionPolicies AccessConfigurationPermissionPolicyArrayInput
@@ -133,6 +139,8 @@ type accessConfigurationArgs struct {
 	// The ID of the Directory.
 	DirectoryId string `pulumi:"directoryId"`
 	// This parameter is used to force deletion `permissionPolicies`. Valid Value: `true` and `false`.
+	//
+	// * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
 	ForceRemovePermissionPolicies *bool `pulumi:"forceRemovePermissionPolicies"`
 	// The Policy List. See the following `Block permissionPolicies`.
 	PermissionPolicies []AccessConfigurationPermissionPolicy `pulumi:"permissionPolicies"`
@@ -151,6 +159,8 @@ type AccessConfigurationArgs struct {
 	// The ID of the Directory.
 	DirectoryId pulumi.StringInput
 	// This parameter is used to force deletion `permissionPolicies`. Valid Value: `true` and `false`.
+	//
+	// * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
 	ForceRemovePermissionPolicies pulumi.BoolPtrInput
 	// The Policy List. See the following `Block permissionPolicies`.
 	PermissionPolicies AccessConfigurationPermissionPolicyArrayInput
@@ -268,6 +278,8 @@ func (o AccessConfigurationOutput) DirectoryId() pulumi.StringOutput {
 }
 
 // This parameter is used to force deletion `permissionPolicies`. Valid Value: `true` and `false`.
+//
+// * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
 func (o AccessConfigurationOutput) ForceRemovePermissionPolicies() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessConfiguration) pulumi.BoolPtrOutput { return v.ForceRemovePermissionPolicies }).(pulumi.BoolPtrOutput)
 }

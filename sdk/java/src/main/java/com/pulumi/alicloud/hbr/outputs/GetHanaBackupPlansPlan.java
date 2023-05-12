@@ -13,55 +13,80 @@ public final class GetHanaBackupPlansPlan {
      * @return The backup prefix.
      * 
      */
-    private String backupPrefix;
+    private final String backupPrefix;
     /**
      * @return The backup type.
      * 
      */
-    private String backupType;
+    private final String backupType;
     /**
      * @return The ID of the SAP HANA instance.
      * 
      */
-    private String clusterId;
+    private final String clusterId;
     /**
      * @return The name of the database.
      * 
      */
-    private String databaseName;
+    private final String databaseName;
     /**
      * @return The ID of the resource.
      * 
      */
-    private String id;
-    private String pageTotal;
+    private final String id;
+    private final String pageTotal;
     /**
      * @return The ID of the backup plan.
      * 
      */
-    private String planId;
+    private final String planId;
     /**
      * @return The name of the backup plan.
      * 
      */
-    private String planName;
+    private final String planName;
     /**
      * @return The backup policy.
      * 
      */
-    private String schedule;
+    private final String schedule;
     /**
      * @return The status of the resource.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The ID of the backup vault.
      * 
      */
-    private String vaultId;
+    private final String vaultId;
 
-    private GetHanaBackupPlansPlan() {}
+    @CustomType.Constructor
+    private GetHanaBackupPlansPlan(
+        @CustomType.Parameter("backupPrefix") String backupPrefix,
+        @CustomType.Parameter("backupType") String backupType,
+        @CustomType.Parameter("clusterId") String clusterId,
+        @CustomType.Parameter("databaseName") String databaseName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("pageTotal") String pageTotal,
+        @CustomType.Parameter("planId") String planId,
+        @CustomType.Parameter("planName") String planName,
+        @CustomType.Parameter("schedule") String schedule,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("vaultId") String vaultId) {
+        this.backupPrefix = backupPrefix;
+        this.backupType = backupType;
+        this.clusterId = clusterId;
+        this.databaseName = databaseName;
+        this.id = id;
+        this.pageTotal = pageTotal;
+        this.planId = planId;
+        this.planName = planName;
+        this.schedule = schedule;
+        this.status = status;
+        this.vaultId = vaultId;
+    }
+
     /**
      * @return The backup prefix.
      * 
@@ -143,7 +168,7 @@ public final class GetHanaBackupPlansPlan {
     public static Builder builder(GetHanaBackupPlansPlan defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String backupPrefix;
         private String backupType;
@@ -156,7 +181,11 @@ public final class GetHanaBackupPlansPlan {
         private String schedule;
         private String status;
         private String vaultId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetHanaBackupPlansPlan defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupPrefix = defaults.backupPrefix;
@@ -172,75 +201,51 @@ public final class GetHanaBackupPlansPlan {
     	      this.vaultId = defaults.vaultId;
         }
 
-        @CustomType.Setter
         public Builder backupPrefix(String backupPrefix) {
             this.backupPrefix = Objects.requireNonNull(backupPrefix);
             return this;
         }
-        @CustomType.Setter
         public Builder backupType(String backupType) {
             this.backupType = Objects.requireNonNull(backupType);
             return this;
         }
-        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder databaseName(String databaseName) {
             this.databaseName = Objects.requireNonNull(databaseName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder pageTotal(String pageTotal) {
             this.pageTotal = Objects.requireNonNull(pageTotal);
             return this;
         }
-        @CustomType.Setter
         public Builder planId(String planId) {
             this.planId = Objects.requireNonNull(planId);
             return this;
         }
-        @CustomType.Setter
         public Builder planName(String planName) {
             this.planName = Objects.requireNonNull(planName);
             return this;
         }
-        @CustomType.Setter
         public Builder schedule(String schedule) {
             this.schedule = Objects.requireNonNull(schedule);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder vaultId(String vaultId) {
             this.vaultId = Objects.requireNonNull(vaultId);
             return this;
-        }
-        public GetHanaBackupPlansPlan build() {
-            final var o = new GetHanaBackupPlansPlan();
-            o.backupPrefix = backupPrefix;
-            o.backupType = backupType;
-            o.clusterId = clusterId;
-            o.databaseName = databaseName;
-            o.id = id;
-            o.pageTotal = pageTotal;
-            o.planId = planId;
-            o.planName = planName;
-            o.schedule = schedule;
-            o.status = status;
-            o.vaultId = vaultId;
-            return o;
+        }        public GetHanaBackupPlansPlan build() {
+            return new GetHanaBackupPlansPlan(backupPrefix, backupType, clusterId, databaseName, id, pageTotal, planId, planName, schedule, status, vaultId);
         }
     }
 }

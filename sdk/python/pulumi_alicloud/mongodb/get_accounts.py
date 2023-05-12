@@ -106,6 +106,7 @@ def get_accounts(account_name: Optional[str] = None,
 
     :param str account_name: The name of the account.
     :param str instance_id: The id of the instance to which the account belongs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['accountName'] = account_name
@@ -148,5 +149,6 @@ def get_accounts_output(account_name: Optional[pulumi.Input[Optional[str]]] = No
 
     :param str account_name: The name of the account.
     :param str instance_id: The id of the instance to which the account belongs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

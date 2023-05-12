@@ -9,11 +9,20 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProvisionedProductsProvisionedProductOutput {
-    private String description;
-    private String outputKey;
-    private String outputValue;
+    private final String description;
+    private final String outputKey;
+    private final String outputValue;
 
-    private GetProvisionedProductsProvisionedProductOutput() {}
+    @CustomType.Constructor
+    private GetProvisionedProductsProvisionedProductOutput(
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("outputKey") String outputKey,
+        @CustomType.Parameter("outputValue") String outputValue) {
+        this.description = description;
+        this.outputKey = outputKey;
+        this.outputValue = outputValue;
+    }
+
     public String description() {
         return this.description;
     }
@@ -31,12 +40,16 @@ public final class GetProvisionedProductsProvisionedProductOutput {
     public static Builder builder(GetProvisionedProductsProvisionedProductOutput defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String description;
         private String outputKey;
         private String outputValue;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetProvisionedProductsProvisionedProductOutput defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -44,27 +57,19 @@ public final class GetProvisionedProductsProvisionedProductOutput {
     	      this.outputValue = defaults.outputValue;
         }
 
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder outputKey(String outputKey) {
             this.outputKey = Objects.requireNonNull(outputKey);
             return this;
         }
-        @CustomType.Setter
         public Builder outputValue(String outputValue) {
             this.outputValue = Objects.requireNonNull(outputValue);
             return this;
-        }
-        public GetProvisionedProductsProvisionedProductOutput build() {
-            final var o = new GetProvisionedProductsProvisionedProductOutput();
-            o.description = description;
-            o.outputKey = outputKey;
-            o.outputValue = outputValue;
-            return o;
+        }        public GetProvisionedProductsProvisionedProductOutput build() {
+            return new GetProvisionedProductsProvisionedProductOutput(description, outputKey, outputValue);
         }
     }
 }

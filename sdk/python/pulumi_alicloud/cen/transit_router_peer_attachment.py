@@ -556,12 +556,10 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
             instance_id=default_instance.id,
             bandwidth_package_id=default_bandwidth_package.id,
             opts=pulumi.ResourceOptions(provider=alicloud["cn"]))
-        cn_transit_router = alicloud.cen.TransitRouter("cnTransitRouter", cen_id=default_instance.id,
-        opts=pulumi.ResourceOptions(provider=alicloud["cn"],
-            depends_on=[default_bandwidth_package_attachment]))
-        us_transit_router = alicloud.cen.TransitRouter("usTransitRouter", cen_id=default_instance.id,
-        opts=pulumi.ResourceOptions(provider=alicloud["us"],
-            depends_on=[alicloud_cen_transit_router["default_0"]]))
+        cn_transit_router = alicloud.cen.TransitRouter("cnTransitRouter", cen_id=default_bandwidth_package_attachment.instance_id,
+        opts=pulumi.ResourceOptions(provider=alicloud["cn"]))
+        us_transit_router = alicloud.cen.TransitRouter("usTransitRouter", cen_id=cn_transit_router.id,
+        opts=pulumi.ResourceOptions(provider=alicloud["us"]))
         default_transit_router_peer_attachment = alicloud.cen.TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment",
             cen_id=default_instance.id,
             transit_router_id=cn_transit_router.transit_router_id,
@@ -637,12 +635,10 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
             instance_id=default_instance.id,
             bandwidth_package_id=default_bandwidth_package.id,
             opts=pulumi.ResourceOptions(provider=alicloud["cn"]))
-        cn_transit_router = alicloud.cen.TransitRouter("cnTransitRouter", cen_id=default_instance.id,
-        opts=pulumi.ResourceOptions(provider=alicloud["cn"],
-            depends_on=[default_bandwidth_package_attachment]))
-        us_transit_router = alicloud.cen.TransitRouter("usTransitRouter", cen_id=default_instance.id,
-        opts=pulumi.ResourceOptions(provider=alicloud["us"],
-            depends_on=[alicloud_cen_transit_router["default_0"]]))
+        cn_transit_router = alicloud.cen.TransitRouter("cnTransitRouter", cen_id=default_bandwidth_package_attachment.instance_id,
+        opts=pulumi.ResourceOptions(provider=alicloud["cn"]))
+        us_transit_router = alicloud.cen.TransitRouter("usTransitRouter", cen_id=cn_transit_router.id,
+        opts=pulumi.ResourceOptions(provider=alicloud["us"]))
         default_transit_router_peer_attachment = alicloud.cen.TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment",
             cen_id=default_instance.id,
             transit_router_id=cn_transit_router.transit_router_id,

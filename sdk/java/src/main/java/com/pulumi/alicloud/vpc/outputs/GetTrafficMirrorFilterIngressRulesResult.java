@@ -17,14 +17,29 @@ public final class GetTrafficMirrorFilterIngressRulesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String outputFile;
-    private List<GetTrafficMirrorFilterIngressRulesRule> rules;
-    private @Nullable String status;
-    private String trafficMirrorFilterId;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
+    private final List<GetTrafficMirrorFilterIngressRulesRule> rules;
+    private final @Nullable String status;
+    private final String trafficMirrorFilterId;
 
-    private GetTrafficMirrorFilterIngressRulesResult() {}
+    @CustomType.Constructor
+    private GetTrafficMirrorFilterIngressRulesResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("rules") List<GetTrafficMirrorFilterIngressRulesRule> rules,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("trafficMirrorFilterId") String trafficMirrorFilterId) {
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.rules = rules;
+        this.status = status;
+        this.trafficMirrorFilterId = trafficMirrorFilterId;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -55,7 +70,7 @@ public final class GetTrafficMirrorFilterIngressRulesResult {
     public static Builder builder(GetTrafficMirrorFilterIngressRulesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -63,7 +78,11 @@ public final class GetTrafficMirrorFilterIngressRulesResult {
         private List<GetTrafficMirrorFilterIngressRulesRule> rules;
         private @Nullable String status;
         private String trafficMirrorFilterId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTrafficMirrorFilterIngressRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -74,12 +93,10 @@ public final class GetTrafficMirrorFilterIngressRulesResult {
     	      this.trafficMirrorFilterId = defaults.trafficMirrorFilterId;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -87,12 +104,10 @@ public final class GetTrafficMirrorFilterIngressRulesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder rules(List<GetTrafficMirrorFilterIngressRulesRule> rules) {
             this.rules = Objects.requireNonNull(rules);
             return this;
@@ -100,25 +115,15 @@ public final class GetTrafficMirrorFilterIngressRulesResult {
         public Builder rules(GetTrafficMirrorFilterIngressRulesRule... rules) {
             return rules(List.of(rules));
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder trafficMirrorFilterId(String trafficMirrorFilterId) {
             this.trafficMirrorFilterId = Objects.requireNonNull(trafficMirrorFilterId);
             return this;
-        }
-        public GetTrafficMirrorFilterIngressRulesResult build() {
-            final var o = new GetTrafficMirrorFilterIngressRulesResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.rules = rules;
-            o.status = status;
-            o.trafficMirrorFilterId = trafficMirrorFilterId;
-            return o;
+        }        public GetTrafficMirrorFilterIngressRulesResult build() {
+            return new GetTrafficMirrorFilterIngressRulesResult(id, ids, outputFile, rules, status, trafficMirrorFilterId);
         }
     }
 }

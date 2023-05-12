@@ -137,6 +137,9 @@ namespace Pulumi.AliCloud.KVStore
         [Input("nodeType")]
         public string? NodeType { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi up`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -229,6 +232,9 @@ namespace Pulumi.AliCloud.KVStore
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi up`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

@@ -43,6 +43,7 @@ __all__ = [
     'GetRdsBackupsBackupResult',
     'GetRdsParameterGroupsGroupResult',
     'GetRdsParameterGroupsGroupParamDetailResult',
+    'GetSlotsSlotResult',
     'GetZonesZoneResult',
 ]
 
@@ -138,6 +139,8 @@ class DdrInstancePgHbaConf(dict):
                * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
                * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
                * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+               
+               > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
         :param str user: The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
         :param str mask: The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
         :param str option: Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
@@ -193,6 +196,8 @@ class DdrInstancePgHbaConf(dict):
         * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
         * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
         * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+
+        > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
         """
         return pulumi.get(self, "type")
 
@@ -351,6 +356,8 @@ class InstancePgHbaConf(dict):
                * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
                * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
                * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+               
+               > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
         :param str user: The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
         :param str mask: The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
         :param str option: Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
@@ -406,6 +413,8 @@ class InstancePgHbaConf(dict):
         * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
         * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
         * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+
+        > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
         """
         return pulumi.get(self, "type")
 
@@ -572,6 +581,8 @@ class RdsCloneDbInstancePgHbaConf(dict):
                * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
                * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
                * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+               
+               > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
         :param str user: The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
         :param str mask: The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
         :param str option: Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
@@ -627,6 +638,8 @@ class RdsCloneDbInstancePgHbaConf(dict):
         * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
         * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
         * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+
+        > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
         """
         return pulumi.get(self, "type")
 
@@ -883,6 +896,8 @@ class RdsUpgradeDbInstancePgHbaConf(dict):
                * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
                * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
                * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+               
+               > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
         :param str user: The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
         :param str mask: The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
         :param str option: Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
@@ -938,6 +953,8 @@ class RdsUpgradeDbInstancePgHbaConf(dict):
         * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
         * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
         * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+
+        > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
         """
         return pulumi.get(self, "type")
 
@@ -2915,6 +2932,90 @@ class GetRdsParameterGroupsGroupParamDetailResult(dict):
     @pulumi.getter(name="paramValue")
     def param_value(self) -> str:
         return pulumi.get(self, "param_value")
+
+
+@pulumi.output_type
+class GetSlotsSlotResult(dict):
+    def __init__(__self__, *,
+                 database: str,
+                 plugin: str,
+                 slot_name: str,
+                 slot_status: str,
+                 slot_type: str,
+                 temporary: str,
+                 wal_delay: str):
+        """
+        :param str database: The name of the database where Replication Slot is located.
+        :param str plugin: The plugin used by Replication Slot.
+        :param str slot_name: The Replication Slot name.
+        :param str slot_status: The Replication Slot status.
+        :param str slot_type: The Replication Slot type.
+        :param str temporary: Is the Replication Slot temporary.
+        :param str wal_delay: The amount of logs accumulated by Replication Slot.
+        """
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "plugin", plugin)
+        pulumi.set(__self__, "slot_name", slot_name)
+        pulumi.set(__self__, "slot_status", slot_status)
+        pulumi.set(__self__, "slot_type", slot_type)
+        pulumi.set(__self__, "temporary", temporary)
+        pulumi.set(__self__, "wal_delay", wal_delay)
+
+    @property
+    @pulumi.getter
+    def database(self) -> str:
+        """
+        The name of the database where Replication Slot is located.
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter
+    def plugin(self) -> str:
+        """
+        The plugin used by Replication Slot.
+        """
+        return pulumi.get(self, "plugin")
+
+    @property
+    @pulumi.getter(name="slotName")
+    def slot_name(self) -> str:
+        """
+        The Replication Slot name.
+        """
+        return pulumi.get(self, "slot_name")
+
+    @property
+    @pulumi.getter(name="slotStatus")
+    def slot_status(self) -> str:
+        """
+        The Replication Slot status.
+        """
+        return pulumi.get(self, "slot_status")
+
+    @property
+    @pulumi.getter(name="slotType")
+    def slot_type(self) -> str:
+        """
+        The Replication Slot type.
+        """
+        return pulumi.get(self, "slot_type")
+
+    @property
+    @pulumi.getter
+    def temporary(self) -> str:
+        """
+        Is the Replication Slot temporary.
+        """
+        return pulumi.get(self, "temporary")
+
+    @property
+    @pulumi.getter(name="walDelay")
+    def wal_delay(self) -> str:
+        """
+        The amount of logs accumulated by Replication Slot.
+        """
+        return pulumi.get(self, "wal_delay")
 
 
 @pulumi.output_type

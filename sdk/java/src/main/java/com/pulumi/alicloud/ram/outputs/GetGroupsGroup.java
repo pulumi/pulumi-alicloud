@@ -13,14 +13,21 @@ public final class GetGroupsGroup {
      * @return Comments of the group.
      * 
      */
-    private String comments;
+    private final String comments;
     /**
      * @return Name of the group.
      * 
      */
-    private String name;
+    private final String name;
 
-    private GetGroupsGroup() {}
+    @CustomType.Constructor
+    private GetGroupsGroup(
+        @CustomType.Parameter("comments") String comments,
+        @CustomType.Parameter("name") String name) {
+        this.comments = comments;
+        this.name = name;
+    }
+
     /**
      * @return Comments of the group.
      * 
@@ -43,32 +50,30 @@ public final class GetGroupsGroup {
     public static Builder builder(GetGroupsGroup defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String comments;
         private String name;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comments = defaults.comments;
     	      this.name = defaults.name;
         }
 
-        @CustomType.Setter
         public Builder comments(String comments) {
             this.comments = Objects.requireNonNull(comments);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }
-        public GetGroupsGroup build() {
-            final var o = new GetGroupsGroup();
-            o.comments = comments;
-            o.name = name;
-            return o;
+        }        public GetGroupsGroup build() {
+            return new GetGroupsGroup(comments, name);
         }
     }
 }

@@ -162,6 +162,7 @@ def get_prometheus_alert_rules(cluster_id: Optional[str] = None,
     :param str cluster_id: The ID of the cluster.
     :param Sequence[str] ids: A list of Prometheus Alert Rule IDs.
     :param str name_regex: A regex string to filter results by Prometheus Alert Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int status: The status of the resource. Valid values: `0`, `1`.
     :param str type: The type of the alert rule.
     """
@@ -226,6 +227,7 @@ def get_prometheus_alert_rules_output(cluster_id: Optional[pulumi.Input[str]] = 
     :param str cluster_id: The ID of the cluster.
     :param Sequence[str] ids: A list of Prometheus Alert Rule IDs.
     :param str name_regex: A regex string to filter results by Prometheus Alert Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int status: The status of the resource. Valid values: `0`, `1`.
     :param str type: The type of the alert rule.
     """

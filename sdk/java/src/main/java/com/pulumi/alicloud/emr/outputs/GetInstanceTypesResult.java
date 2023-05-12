@@ -14,35 +14,60 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceTypesResult {
-    private String clusterType;
-    private String destinationResource;
+    private final String clusterType;
+    private final String destinationResource;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of emr instance types IDs.
      * 
      */
-    private List<String> ids;
-    private String instanceChargeType;
-    private @Nullable String instanceType;
-    private @Nullable String outputFile;
-    private @Nullable Boolean supportLocalStorage;
-    private @Nullable List<String> supportNodeTypes;
+    private final List<String> ids;
+    private final String instanceChargeType;
+    private final @Nullable String instanceType;
+    private final @Nullable String outputFile;
+    private final @Nullable Boolean supportLocalStorage;
+    private final @Nullable List<String> supportNodeTypes;
     /**
      * @return A list of emr instance types. Each element contains the following attributes:
      * 
      */
-    private List<GetInstanceTypesType> types;
+    private final List<GetInstanceTypesType> types;
     /**
      * @return The available zone id in Alibaba Cloud account
      * 
      */
-    private @Nullable String zoneId;
+    private final @Nullable String zoneId;
 
-    private GetInstanceTypesResult() {}
+    @CustomType.Constructor
+    private GetInstanceTypesResult(
+        @CustomType.Parameter("clusterType") String clusterType,
+        @CustomType.Parameter("destinationResource") String destinationResource,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceChargeType") String instanceChargeType,
+        @CustomType.Parameter("instanceType") @Nullable String instanceType,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("supportLocalStorage") @Nullable Boolean supportLocalStorage,
+        @CustomType.Parameter("supportNodeTypes") @Nullable List<String> supportNodeTypes,
+        @CustomType.Parameter("types") List<GetInstanceTypesType> types,
+        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
+        this.clusterType = clusterType;
+        this.destinationResource = destinationResource;
+        this.id = id;
+        this.ids = ids;
+        this.instanceChargeType = instanceChargeType;
+        this.instanceType = instanceType;
+        this.outputFile = outputFile;
+        this.supportLocalStorage = supportLocalStorage;
+        this.supportNodeTypes = supportNodeTypes;
+        this.types = types;
+        this.zoneId = zoneId;
+    }
+
     public String clusterType() {
         return this.clusterType;
     }
@@ -100,7 +125,7 @@ public final class GetInstanceTypesResult {
     public static Builder builder(GetInstanceTypesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String clusterType;
         private String destinationResource;
@@ -113,7 +138,11 @@ public final class GetInstanceTypesResult {
         private @Nullable List<String> supportNodeTypes;
         private List<GetInstanceTypesType> types;
         private @Nullable String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstanceTypesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterType = defaults.clusterType;
@@ -129,22 +158,18 @@ public final class GetInstanceTypesResult {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder clusterType(String clusterType) {
             this.clusterType = Objects.requireNonNull(clusterType);
             return this;
         }
-        @CustomType.Setter
         public Builder destinationResource(String destinationResource) {
             this.destinationResource = Objects.requireNonNull(destinationResource);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -152,27 +177,22 @@ public final class GetInstanceTypesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceChargeType(String instanceChargeType) {
             this.instanceChargeType = Objects.requireNonNull(instanceChargeType);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
             this.instanceType = instanceType;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder supportLocalStorage(@Nullable Boolean supportLocalStorage) {
             this.supportLocalStorage = supportLocalStorage;
             return this;
         }
-        @CustomType.Setter
         public Builder supportNodeTypes(@Nullable List<String> supportNodeTypes) {
             this.supportNodeTypes = supportNodeTypes;
             return this;
@@ -180,7 +200,6 @@ public final class GetInstanceTypesResult {
         public Builder supportNodeTypes(String... supportNodeTypes) {
             return supportNodeTypes(List.of(supportNodeTypes));
         }
-        @CustomType.Setter
         public Builder types(List<GetInstanceTypesType> types) {
             this.types = Objects.requireNonNull(types);
             return this;
@@ -188,25 +207,11 @@ public final class GetInstanceTypesResult {
         public Builder types(GetInstanceTypesType... types) {
             return types(List.of(types));
         }
-        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }
-        public GetInstanceTypesResult build() {
-            final var o = new GetInstanceTypesResult();
-            o.clusterType = clusterType;
-            o.destinationResource = destinationResource;
-            o.id = id;
-            o.ids = ids;
-            o.instanceChargeType = instanceChargeType;
-            o.instanceType = instanceType;
-            o.outputFile = outputFile;
-            o.supportLocalStorage = supportLocalStorage;
-            o.supportNodeTypes = supportNodeTypes;
-            o.types = types;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetInstanceTypesResult build() {
+            return new GetInstanceTypesResult(clusterType, destinationResource, id, ids, instanceChargeType, instanceType, outputFile, supportLocalStorage, supportNodeTypes, types, zoneId);
         }
     }
 }

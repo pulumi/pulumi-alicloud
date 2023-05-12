@@ -126,6 +126,10 @@ def get_certificates(enable_details: Optional[bool] = None,
                      output_file: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificatesResult:
     """
+    > **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
+
+    This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
+
     ## Example Usage
 
     ```python
@@ -140,6 +144,7 @@ def get_certificates(enable_details: Optional[bool] = None,
 
     :param Sequence[str] ids: A list of cert IDs.
     :param str name_regex: A regex string to filter results by the certificate name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     pulumi.log.warn("""get_certificates is deprecated: This resource has been deprecated in favour of getServiceCertificates""")
     __args__ = dict()
@@ -170,6 +175,10 @@ def get_certificates_output(enable_details: Optional[pulumi.Input[Optional[bool]
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificatesResult]:
     """
+    > **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
+
+    This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
+
     ## Example Usage
 
     ```python
@@ -184,6 +193,7 @@ def get_certificates_output(enable_details: Optional[pulumi.Input[Optional[bool]
 
     :param Sequence[str] ids: A list of cert IDs.
     :param str name_regex: A regex string to filter results by the certificate name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     pulumi.log.warn("""get_certificates is deprecated: This resource has been deprecated in favour of getServiceCertificates""")
     ...

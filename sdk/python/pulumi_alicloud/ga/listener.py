@@ -30,7 +30,11 @@ class ListenerArgs:
         The set of arguments for constructing a Listener resource.
         :param pulumi.Input[str] accelerator_id: The accelerator id.
         :param pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]] port_ranges: The portRanges of the listener.
+               
+               > **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         :param pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]] certificates: The certificates of the listener.
+               
+               > **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
         :param pulumi.Input[str] client_affinity: The clientAffinity of the listener. Default value is `NONE`. Valid values:
                `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
                `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
@@ -38,6 +42,8 @@ class ListenerArgs:
         :param pulumi.Input[str] listener_type: The routing type of the listener. Default Value: `Standard`. Valid values:
         :param pulumi.Input[str] name: The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         :param pulumi.Input[str] protocol: Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
+               
+               > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
         :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value is `false`. Valid value:
                `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
                `false`: keep client source IP function is not turned on.
@@ -79,6 +85,8 @@ class ListenerArgs:
     def port_ranges(self) -> pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]]:
         """
         The portRanges of the listener.
+
+        > **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         """
         return pulumi.get(self, "port_ranges")
 
@@ -91,6 +99,8 @@ class ListenerArgs:
     def certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]]:
         """
         The certificates of the listener.
+
+        > **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
         """
         return pulumi.get(self, "certificates")
 
@@ -153,6 +163,8 @@ class ListenerArgs:
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
         Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
+
+        > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
         """
         return pulumi.get(self, "protocol")
 
@@ -205,6 +217,8 @@ class _ListenerState:
         Input properties used for looking up and filtering Listener resources.
         :param pulumi.Input[str] accelerator_id: The accelerator id.
         :param pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]] certificates: The certificates of the listener.
+               
+               > **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
         :param pulumi.Input[str] client_affinity: The clientAffinity of the listener. Default value is `NONE`. Valid values:
                `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
                `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
@@ -212,7 +226,11 @@ class _ListenerState:
         :param pulumi.Input[str] listener_type: The routing type of the listener. Default Value: `Standard`. Valid values:
         :param pulumi.Input[str] name: The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         :param pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]] port_ranges: The portRanges of the listener.
+               
+               > **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         :param pulumi.Input[str] protocol: Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
+               
+               > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
         :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value is `false`. Valid value:
                `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
                `false`: keep client source IP function is not turned on.
@@ -259,6 +277,8 @@ class _ListenerState:
     def certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]]:
         """
         The certificates of the listener.
+
+        > **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
         """
         return pulumi.get(self, "certificates")
 
@@ -321,6 +341,8 @@ class _ListenerState:
     def port_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]]]:
         """
         The portRanges of the listener.
+
+        > **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         """
         return pulumi.get(self, "port_ranges")
 
@@ -333,6 +355,8 @@ class _ListenerState:
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
         Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
+
+        > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
         """
         return pulumi.get(self, "protocol")
 
@@ -445,6 +469,8 @@ class Listener(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_id: The accelerator id.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]] certificates: The certificates of the listener.
+               
+               > **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
         :param pulumi.Input[str] client_affinity: The clientAffinity of the listener. Default value is `NONE`. Valid values:
                `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
                `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
@@ -452,7 +478,11 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] listener_type: The routing type of the listener. Default Value: `Standard`. Valid values:
         :param pulumi.Input[str] name: The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerPortRangeArgs']]]] port_ranges: The portRanges of the listener.
+               
+               > **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         :param pulumi.Input[str] protocol: Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
+               
+               > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
         :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value is `false`. Valid value:
                `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
                `false`: keep client source IP function is not turned on.
@@ -589,6 +619,8 @@ class Listener(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_id: The accelerator id.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerCertificateArgs']]]] certificates: The certificates of the listener.
+               
+               > **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
         :param pulumi.Input[str] client_affinity: The clientAffinity of the listener. Default value is `NONE`. Valid values:
                `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
                `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
@@ -596,7 +628,11 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] listener_type: The routing type of the listener. Default Value: `Standard`. Valid values:
         :param pulumi.Input[str] name: The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListenerPortRangeArgs']]]] port_ranges: The portRanges of the listener.
+               
+               > **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         :param pulumi.Input[str] protocol: Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
+               
+               > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
         :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value is `false`. Valid value:
                `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
                `false`: keep client source IP function is not turned on.
@@ -633,6 +669,8 @@ class Listener(pulumi.CustomResource):
     def certificates(self) -> pulumi.Output[Optional[Sequence['outputs.ListenerCertificate']]]:
         """
         The certificates of the listener.
+
+        > **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
         """
         return pulumi.get(self, "certificates")
 
@@ -675,6 +713,8 @@ class Listener(pulumi.CustomResource):
     def port_ranges(self) -> pulumi.Output[Sequence['outputs.ListenerPortRange']]:
         """
         The portRanges of the listener.
+
+        > **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         """
         return pulumi.get(self, "port_ranges")
 
@@ -683,6 +723,8 @@ class Listener(pulumi.CustomResource):
     def protocol(self) -> pulumi.Output[Optional[str]]:
         """
         Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
+
+        > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
         """
         return pulumi.get(self, "protocol")
 

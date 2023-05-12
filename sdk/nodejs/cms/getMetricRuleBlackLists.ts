@@ -67,6 +67,9 @@ export interface GetMetricRuleBlackListsArgs {
      */
     namespace?: string;
     order?: number;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     pageNumber?: number;
     pageSize?: number;
@@ -158,6 +161,9 @@ export interface GetMetricRuleBlackListsOutputArgs {
      */
     namespace?: pulumi.Input<string>;
     order?: pulumi.Input<number>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;

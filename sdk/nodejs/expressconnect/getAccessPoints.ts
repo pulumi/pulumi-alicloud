@@ -53,6 +53,9 @@ export interface GetAccessPointsArgs {
      * A regex string to filter results by Access Point name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The Physical Connection to Which the Access Point State.
@@ -114,6 +117,9 @@ export interface GetAccessPointsOutputArgs {
      * A regex string to filter results by Access Point name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The Physical Connection to Which the Access Point State.

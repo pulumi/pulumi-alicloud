@@ -100,6 +100,8 @@ export class BackupPolicy extends pulumi.CustomResource {
      * - 360: A snapshot backup is performed once every 360 minutes.
      * - 480: A snapshot backup is performed once every 480 minutes.
      * - 720: A snapshot backup is performed once every 720 minutes.
+     *
+     * > **NOTE:** Currently, the SQLServer instance does not support to modify `logBackupRetentionPeriod`.
      */
     public readonly backupInterval!: pulumi.Output<string>;
     /**
@@ -283,6 +285,8 @@ export interface BackupPolicyState {
      * - 360: A snapshot backup is performed once every 360 minutes.
      * - 480: A snapshot backup is performed once every 480 minutes.
      * - 720: A snapshot backup is performed once every 720 minutes.
+     *
+     * > **NOTE:** Currently, the SQLServer instance does not support to modify `logBackupRetentionPeriod`.
      */
     backupInterval?: pulumi.Input<string>;
     /**
@@ -399,6 +403,8 @@ export interface BackupPolicyArgs {
      * - 360: A snapshot backup is performed once every 360 minutes.
      * - 480: A snapshot backup is performed once every 480 minutes.
      * - 720: A snapshot backup is performed once every 720 minutes.
+     *
+     * > **NOTE:** Currently, the SQLServer instance does not support to modify `logBackupRetentionPeriod`.
      */
     backupInterval?: pulumi.Input<string>;
     /**

@@ -57,7 +57,8 @@ type GetEnterpriseDatabasesArgs struct {
 	// The instance ID of the target database.
 	InstanceId string `pulumi:"instanceId"`
 	// A regex string to filter the results by the database Schema Name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -95,7 +96,8 @@ type GetEnterpriseDatabasesOutputArgs struct {
 	// The instance ID of the target database.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// A regex string to filter the results by the database Schema Name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

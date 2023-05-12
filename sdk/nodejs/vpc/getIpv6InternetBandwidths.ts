@@ -66,6 +66,9 @@ export interface GetIpv6InternetBandwidthsArgs {
      * The ID of the Ipv6 Internet Bandwidth.
      */
     ipv6InternetBandwidthId?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the resource. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
@@ -139,6 +142,9 @@ export interface GetIpv6InternetBandwidthsOutputArgs {
      * The ID of the Ipv6 Internet Bandwidth.
      */
     ipv6InternetBandwidthId?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.

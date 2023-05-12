@@ -14,14 +14,21 @@ public final class GetTemplateScratchesScratchSourceResourceGroup {
      * @return The ID of the Source Resource Group.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return Source resource type filter list.
      * 
      */
-    private List<String> resourceTypeFilters;
+    private final List<String> resourceTypeFilters;
 
-    private GetTemplateScratchesScratchSourceResourceGroup() {}
+    @CustomType.Constructor
+    private GetTemplateScratchesScratchSourceResourceGroup(
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("resourceTypeFilters") List<String> resourceTypeFilters) {
+        this.resourceGroupId = resourceGroupId;
+        this.resourceTypeFilters = resourceTypeFilters;
+    }
+
     /**
      * @return The ID of the Source Resource Group.
      * 
@@ -44,35 +51,33 @@ public final class GetTemplateScratchesScratchSourceResourceGroup {
     public static Builder builder(GetTemplateScratchesScratchSourceResourceGroup defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String resourceGroupId;
         private List<String> resourceTypeFilters;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTemplateScratchesScratchSourceResourceGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.resourceGroupId = defaults.resourceGroupId;
     	      this.resourceTypeFilters = defaults.resourceTypeFilters;
         }
 
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceTypeFilters(List<String> resourceTypeFilters) {
             this.resourceTypeFilters = Objects.requireNonNull(resourceTypeFilters);
             return this;
         }
         public Builder resourceTypeFilters(String... resourceTypeFilters) {
             return resourceTypeFilters(List.of(resourceTypeFilters));
-        }
-        public GetTemplateScratchesScratchSourceResourceGroup build() {
-            final var o = new GetTemplateScratchesScratchSourceResourceGroup();
-            o.resourceGroupId = resourceGroupId;
-            o.resourceTypeFilters = resourceTypeFilters;
-            return o;
+        }        public GetTemplateScratchesScratchSourceResourceGroup build() {
+            return new GetTemplateScratchesScratchSourceResourceGroup(resourceGroupId, resourceTypeFilters);
         }
     }
 }

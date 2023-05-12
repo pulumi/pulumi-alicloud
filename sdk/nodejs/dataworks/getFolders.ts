@@ -50,6 +50,9 @@ export interface GetFoldersArgs {
      * A list of Folder IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The parent folder path.
@@ -112,6 +115,9 @@ export interface GetFoldersOutputArgs {
      * A list of Folder IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The parent folder path.

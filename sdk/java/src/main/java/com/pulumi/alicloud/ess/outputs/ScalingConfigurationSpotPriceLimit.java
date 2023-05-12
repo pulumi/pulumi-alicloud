@@ -16,10 +16,17 @@ public final class ScalingConfigurationSpotPriceLimit {
      * @return Resource type of an ECS instance.
      * 
      */
-    private @Nullable String instanceType;
-    private @Nullable Double priceLimit;
+    private final @Nullable String instanceType;
+    private final @Nullable Double priceLimit;
 
-    private ScalingConfigurationSpotPriceLimit() {}
+    @CustomType.Constructor
+    private ScalingConfigurationSpotPriceLimit(
+        @CustomType.Parameter("instanceType") @Nullable String instanceType,
+        @CustomType.Parameter("priceLimit") @Nullable Double priceLimit) {
+        this.instanceType = instanceType;
+        this.priceLimit = priceLimit;
+    }
+
     /**
      * @return Resource type of an ECS instance.
      * 
@@ -38,32 +45,30 @@ public final class ScalingConfigurationSpotPriceLimit {
     public static Builder builder(ScalingConfigurationSpotPriceLimit defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String instanceType;
         private @Nullable Double priceLimit;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ScalingConfigurationSpotPriceLimit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instanceType = defaults.instanceType;
     	      this.priceLimit = defaults.priceLimit;
         }
 
-        @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
             this.instanceType = instanceType;
             return this;
         }
-        @CustomType.Setter
         public Builder priceLimit(@Nullable Double priceLimit) {
             this.priceLimit = priceLimit;
             return this;
-        }
-        public ScalingConfigurationSpotPriceLimit build() {
-            final var o = new ScalingConfigurationSpotPriceLimit();
-            o.instanceType = instanceType;
-            o.priceLimit = priceLimit;
-            return o;
+        }        public ScalingConfigurationSpotPriceLimit build() {
+            return new ScalingConfigurationSpotPriceLimit(instanceType, priceLimit);
         }
     }
 }

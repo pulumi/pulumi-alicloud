@@ -17,49 +17,70 @@ public final class GetAddressBooksBook {
      * @return The addresses in the Address Book.
      * 
      */
-    private List<String> addressLists;
+    private final List<String> addressLists;
     /**
      * @return Whether you want to automatically add new matching tags of the ECS IP address to the Address Book.
      * 
      */
-    private Integer autoAddTagEcs;
+    private final Integer autoAddTagEcs;
     /**
      * @return The description of the Address Book.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The logical relation among the ECS tags that to be matchedh.
      * 
      */
-    private @Nullable List<GetAddressBooksBookEcsTag> ecsTags;
+    private final @Nullable List<GetAddressBooksBookEcsTag> ecsTags;
     /**
      * @return The name of the Address Book.
      * 
      */
-    private String groupName;
+    private final String groupName;
     /**
      * @return The type of the Address Book.
      * 
      */
-    private String groupType;
+    private final String groupType;
     /**
      * @return The ID of the Address Book.
      * 
      */
-    private String groupUuid;
+    private final String groupUuid;
     /**
      * @return The ID of the Address Book.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return One or more tags for the relationship between.
      * 
      */
-    private String tagRelation;
+    private final String tagRelation;
 
-    private GetAddressBooksBook() {}
+    @CustomType.Constructor
+    private GetAddressBooksBook(
+        @CustomType.Parameter("addressLists") List<String> addressLists,
+        @CustomType.Parameter("autoAddTagEcs") Integer autoAddTagEcs,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("ecsTags") @Nullable List<GetAddressBooksBookEcsTag> ecsTags,
+        @CustomType.Parameter("groupName") String groupName,
+        @CustomType.Parameter("groupType") String groupType,
+        @CustomType.Parameter("groupUuid") String groupUuid,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("tagRelation") String tagRelation) {
+        this.addressLists = addressLists;
+        this.autoAddTagEcs = autoAddTagEcs;
+        this.description = description;
+        this.ecsTags = ecsTags;
+        this.groupName = groupName;
+        this.groupType = groupType;
+        this.groupUuid = groupUuid;
+        this.id = id;
+        this.tagRelation = tagRelation;
+    }
+
     /**
      * @return The addresses in the Address Book.
      * 
@@ -131,7 +152,7 @@ public final class GetAddressBooksBook {
     public static Builder builder(GetAddressBooksBook defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<String> addressLists;
         private Integer autoAddTagEcs;
@@ -142,7 +163,11 @@ public final class GetAddressBooksBook {
         private String groupUuid;
         private String id;
         private String tagRelation;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAddressBooksBook defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addressLists = defaults.addressLists;
@@ -156,7 +181,6 @@ public final class GetAddressBooksBook {
     	      this.tagRelation = defaults.tagRelation;
         }
 
-        @CustomType.Setter
         public Builder addressLists(List<String> addressLists) {
             this.addressLists = Objects.requireNonNull(addressLists);
             return this;
@@ -164,17 +188,14 @@ public final class GetAddressBooksBook {
         public Builder addressLists(String... addressLists) {
             return addressLists(List.of(addressLists));
         }
-        @CustomType.Setter
         public Builder autoAddTagEcs(Integer autoAddTagEcs) {
             this.autoAddTagEcs = Objects.requireNonNull(autoAddTagEcs);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder ecsTags(@Nullable List<GetAddressBooksBookEcsTag> ecsTags) {
             this.ecsTags = ecsTags;
             return this;
@@ -182,43 +203,27 @@ public final class GetAddressBooksBook {
         public Builder ecsTags(GetAddressBooksBookEcsTag... ecsTags) {
             return ecsTags(List.of(ecsTags));
         }
-        @CustomType.Setter
         public Builder groupName(String groupName) {
             this.groupName = Objects.requireNonNull(groupName);
             return this;
         }
-        @CustomType.Setter
         public Builder groupType(String groupType) {
             this.groupType = Objects.requireNonNull(groupType);
             return this;
         }
-        @CustomType.Setter
         public Builder groupUuid(String groupUuid) {
             this.groupUuid = Objects.requireNonNull(groupUuid);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder tagRelation(String tagRelation) {
             this.tagRelation = Objects.requireNonNull(tagRelation);
             return this;
-        }
-        public GetAddressBooksBook build() {
-            final var o = new GetAddressBooksBook();
-            o.addressLists = addressLists;
-            o.autoAddTagEcs = autoAddTagEcs;
-            o.description = description;
-            o.ecsTags = ecsTags;
-            o.groupName = groupName;
-            o.groupType = groupType;
-            o.groupUuid = groupUuid;
-            o.id = id;
-            o.tagRelation = tagRelation;
-            return o;
+        }        public GetAddressBooksBook build() {
+            return new GetAddressBooksBook(addressLists, autoAddTagEcs, description, ecsTags, groupName, groupType, groupUuid, id, tagRelation);
         }
     }
 }

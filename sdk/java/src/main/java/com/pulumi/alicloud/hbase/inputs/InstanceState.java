@@ -392,12 +392,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The id of the VPC.
      * 
+     * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
+     * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
      * @return The id of the VPC.
+     * 
+     * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -1043,6 +1047,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param vpcId The id of the VPC.
          * 
+         * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
+         * 
          * @return builder
          * 
          */
@@ -1053,6 +1059,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param vpcId The id of the VPC.
+         * 
+         * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
          * 
          * @return builder
          * 

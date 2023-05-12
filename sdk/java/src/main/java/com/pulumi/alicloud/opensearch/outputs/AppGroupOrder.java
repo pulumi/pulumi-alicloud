@@ -17,19 +17,28 @@ public final class AppGroupOrder {
      * @return Whether to renew automatically. It only takes effect when the parameter payment_type takes the value `Subscription`.
      * 
      */
-    private @Nullable Boolean autoRenew;
+    private final @Nullable Boolean autoRenew;
     /**
      * @return Order cycle. The minimum value is not less than 0.
      * 
      */
-    private @Nullable Integer duration;
+    private final @Nullable Integer duration;
     /**
      * @return Order cycle unit. Valid values: `Year` and `Month`.
      * 
      */
-    private @Nullable String pricingCycle;
+    private final @Nullable String pricingCycle;
 
-    private AppGroupOrder() {}
+    @CustomType.Constructor
+    private AppGroupOrder(
+        @CustomType.Parameter("autoRenew") @Nullable Boolean autoRenew,
+        @CustomType.Parameter("duration") @Nullable Integer duration,
+        @CustomType.Parameter("pricingCycle") @Nullable String pricingCycle) {
+        this.autoRenew = autoRenew;
+        this.duration = duration;
+        this.pricingCycle = pricingCycle;
+    }
+
     /**
      * @return Whether to renew automatically. It only takes effect when the parameter payment_type takes the value `Subscription`.
      * 
@@ -59,12 +68,16 @@ public final class AppGroupOrder {
     public static Builder builder(AppGroupOrder defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean autoRenew;
         private @Nullable Integer duration;
         private @Nullable String pricingCycle;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(AppGroupOrder defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoRenew = defaults.autoRenew;
@@ -72,27 +85,19 @@ public final class AppGroupOrder {
     	      this.pricingCycle = defaults.pricingCycle;
         }
 
-        @CustomType.Setter
         public Builder autoRenew(@Nullable Boolean autoRenew) {
             this.autoRenew = autoRenew;
             return this;
         }
-        @CustomType.Setter
         public Builder duration(@Nullable Integer duration) {
             this.duration = duration;
             return this;
         }
-        @CustomType.Setter
         public Builder pricingCycle(@Nullable String pricingCycle) {
             this.pricingCycle = pricingCycle;
             return this;
-        }
-        public AppGroupOrder build() {
-            final var o = new AppGroupOrder();
-            o.autoRenew = autoRenew;
-            o.duration = duration;
-            o.pricingCycle = pricingCycle;
-            return o;
+        }        public AppGroupOrder build() {
+            return new AppGroupOrder(autoRenew, duration, pricingCycle);
         }
     }
 }

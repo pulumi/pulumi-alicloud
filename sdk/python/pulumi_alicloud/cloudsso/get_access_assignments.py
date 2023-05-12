@@ -152,6 +152,7 @@ def get_access_assignments(access_configuration_id: Optional[str] = None,
     :param str access_configuration_id: Access configuration ID.
     :param str directory_id: Directory ID.
     :param Sequence[str] ids: A list of Access Assignment IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str principal_type: Create the identity type of the access assignment, which can be a user or a user group.
     :param str target_id: The ID of the target to create the resource range.
     :param str target_type: The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
@@ -215,6 +216,7 @@ def get_access_assignments_output(access_configuration_id: Optional[pulumi.Input
     :param str access_configuration_id: Access configuration ID.
     :param str directory_id: Directory ID.
     :param Sequence[str] ids: A list of Access Assignment IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str principal_type: Create the identity type of the access assignment, which can be a user or a user group.
     :param str target_id: The ID of the target to create the resource range.
     :param str target_type: The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.

@@ -173,6 +173,7 @@ def get_zones(category: Optional[str] = None,
     :param str instance_charge_type: Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
     :param bool multi: It has been deprecated from version 1.137.0 and using `multi_zone` instead.
     :param bool multi_zone: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['category'] = category
@@ -226,5 +227,6 @@ def get_zones_output(category: Optional[pulumi.Input[Optional[str]]] = None,
     :param str instance_charge_type: Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
     :param bool multi: It has been deprecated from version 1.137.0 and using `multi_zone` instead.
     :param bool multi_zone: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

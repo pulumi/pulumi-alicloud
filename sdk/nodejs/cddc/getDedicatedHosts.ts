@@ -110,6 +110,9 @@ export interface GetDedicatedHostsArgs {
      * The ID of the order.
      */
     orderId?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The state of the host.
@@ -236,6 +239,9 @@ export interface GetDedicatedHostsOutputArgs {
      * The ID of the order.
      */
     orderId?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The state of the host.

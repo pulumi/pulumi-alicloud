@@ -15,14 +15,21 @@ public final class ProvisionedProductParameter {
      * @return The name of the parameter defined in the template.
      * 
      */
-    private @Nullable String parameterKey;
+    private final @Nullable String parameterKey;
     /**
      * @return The Template parameter value entered by the user.
      * 
      */
-    private @Nullable String parameterValue;
+    private final @Nullable String parameterValue;
 
-    private ProvisionedProductParameter() {}
+    @CustomType.Constructor
+    private ProvisionedProductParameter(
+        @CustomType.Parameter("parameterKey") @Nullable String parameterKey,
+        @CustomType.Parameter("parameterValue") @Nullable String parameterValue) {
+        this.parameterKey = parameterKey;
+        this.parameterValue = parameterValue;
+    }
+
     /**
      * @return The name of the parameter defined in the template.
      * 
@@ -45,32 +52,30 @@ public final class ProvisionedProductParameter {
     public static Builder builder(ProvisionedProductParameter defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String parameterKey;
         private @Nullable String parameterValue;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ProvisionedProductParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parameterKey = defaults.parameterKey;
     	      this.parameterValue = defaults.parameterValue;
         }
 
-        @CustomType.Setter
         public Builder parameterKey(@Nullable String parameterKey) {
             this.parameterKey = parameterKey;
             return this;
         }
-        @CustomType.Setter
         public Builder parameterValue(@Nullable String parameterValue) {
             this.parameterValue = parameterValue;
             return this;
-        }
-        public ProvisionedProductParameter build() {
-            final var o = new ProvisionedProductParameter();
-            o.parameterKey = parameterKey;
-            o.parameterValue = parameterValue;
-            return o;
+        }        public ProvisionedProductParameter build() {
+            return new ProvisionedProductParameter(parameterKey, parameterValue);
         }
     }
 }

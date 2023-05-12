@@ -62,8 +62,9 @@ type GetIntegrationExportersArgs struct {
 	// A list of Integration Exporter IDs.
 	Ids []string `pulumi:"ids"`
 	// The type of prometheus integration.
-	IntegrationType string  `pulumi:"integrationType"`
-	OutputFile      *string `pulumi:"outputFile"`
+	IntegrationType string `pulumi:"integrationType"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getIntegrationExporters.
@@ -100,8 +101,9 @@ type GetIntegrationExportersOutputArgs struct {
 	// A list of Integration Exporter IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The type of prometheus integration.
-	IntegrationType pulumi.StringInput    `pulumi:"integrationType"`
-	OutputFile      pulumi.StringPtrInput `pulumi:"outputFile"`
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetIntegrationExportersOutputArgs) ElementType() reflect.Type {

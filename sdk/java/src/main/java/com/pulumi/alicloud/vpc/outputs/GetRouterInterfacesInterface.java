@@ -13,95 +13,134 @@ public final class GetRouterInterfacesInterface {
      * @return ID of the access point used by the VBR.
      * 
      */
-    private String accessPointId;
+    private final String accessPointId;
     /**
      * @return Router interface creation time.
      * 
      */
-    private String creationTime;
+    private final String creationTime;
     /**
      * @return Router interface description.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return Source IP address used to perform health check on the physical connection.
      * 
      */
-    private String healthCheckSourceIp;
+    private final String healthCheckSourceIp;
     /**
      * @return Destination IP address used to perform health check on the physical connection.
      * 
      */
-    private String healthCheckTargetIp;
+    private final String healthCheckTargetIp;
     /**
      * @return Router interface ID.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Router interface name.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return ID of the peer router interface.
      * 
      */
-    private String oppositeInterfaceId;
+    private final String oppositeInterfaceId;
     /**
      * @return Account ID of the owner of the peer router interface.
      * 
      */
-    private String oppositeInterfaceOwnerId;
+    private final String oppositeInterfaceOwnerId;
     /**
      * @return Peer router region ID.
      * 
      */
-    private String oppositeRegionId;
+    private final String oppositeRegionId;
     /**
      * @return Peer router ID.
      * 
      */
-    private String oppositeRouterId;
+    private final String oppositeRouterId;
     /**
      * @return Router type in the peer region. Possible values: `VRouter` and `VBR`.
      * 
      */
-    private String oppositeRouterType;
+    private final String oppositeRouterType;
     /**
      * @return Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
      * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
      * 
      */
-    private String role;
+    private final String role;
     /**
      * @return ID of the VRouter located in the local region.
      * 
      */
-    private String routerId;
+    private final String routerId;
     /**
      * @return Router type in the local region. Valid values are `VRouter` and `VBR` (physical connection).
      * 
      */
-    private String routerType;
+    private final String routerType;
     /**
      * @return Specification of the link, such as `Small.1` (10Mb), `Middle.1` (100Mb), `Large.2` (2Gb), ...etc.
      * 
      */
-    private String specification;
+    private final String specification;
     /**
      * @return Expected status. Valid values are `Active`, `Inactive` and `Idle`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return ID of the VPC that owns the router in the local region.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
 
-    private GetRouterInterfacesInterface() {}
+    @CustomType.Constructor
+    private GetRouterInterfacesInterface(
+        @CustomType.Parameter("accessPointId") String accessPointId,
+        @CustomType.Parameter("creationTime") String creationTime,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("healthCheckSourceIp") String healthCheckSourceIp,
+        @CustomType.Parameter("healthCheckTargetIp") String healthCheckTargetIp,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("oppositeInterfaceId") String oppositeInterfaceId,
+        @CustomType.Parameter("oppositeInterfaceOwnerId") String oppositeInterfaceOwnerId,
+        @CustomType.Parameter("oppositeRegionId") String oppositeRegionId,
+        @CustomType.Parameter("oppositeRouterId") String oppositeRouterId,
+        @CustomType.Parameter("oppositeRouterType") String oppositeRouterType,
+        @CustomType.Parameter("role") String role,
+        @CustomType.Parameter("routerId") String routerId,
+        @CustomType.Parameter("routerType") String routerType,
+        @CustomType.Parameter("specification") String specification,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("vpcId") String vpcId) {
+        this.accessPointId = accessPointId;
+        this.creationTime = creationTime;
+        this.description = description;
+        this.healthCheckSourceIp = healthCheckSourceIp;
+        this.healthCheckTargetIp = healthCheckTargetIp;
+        this.id = id;
+        this.name = name;
+        this.oppositeInterfaceId = oppositeInterfaceId;
+        this.oppositeInterfaceOwnerId = oppositeInterfaceOwnerId;
+        this.oppositeRegionId = oppositeRegionId;
+        this.oppositeRouterId = oppositeRouterId;
+        this.oppositeRouterType = oppositeRouterType;
+        this.role = role;
+        this.routerId = routerId;
+        this.routerType = routerType;
+        this.specification = specification;
+        this.status = status;
+        this.vpcId = vpcId;
+    }
+
     /**
      * @return ID of the access point used by the VBR.
      * 
@@ -237,7 +276,7 @@ public final class GetRouterInterfacesInterface {
     public static Builder builder(GetRouterInterfacesInterface defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String accessPointId;
         private String creationTime;
@@ -257,7 +296,11 @@ public final class GetRouterInterfacesInterface {
         private String specification;
         private String status;
         private String vpcId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRouterInterfacesInterface defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessPointId = defaults.accessPointId;
@@ -280,117 +323,79 @@ public final class GetRouterInterfacesInterface {
     	      this.vpcId = defaults.vpcId;
         }
 
-        @CustomType.Setter
         public Builder accessPointId(String accessPointId) {
             this.accessPointId = Objects.requireNonNull(accessPointId);
             return this;
         }
-        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder healthCheckSourceIp(String healthCheckSourceIp) {
             this.healthCheckSourceIp = Objects.requireNonNull(healthCheckSourceIp);
             return this;
         }
-        @CustomType.Setter
         public Builder healthCheckTargetIp(String healthCheckTargetIp) {
             this.healthCheckTargetIp = Objects.requireNonNull(healthCheckTargetIp);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder oppositeInterfaceId(String oppositeInterfaceId) {
             this.oppositeInterfaceId = Objects.requireNonNull(oppositeInterfaceId);
             return this;
         }
-        @CustomType.Setter
         public Builder oppositeInterfaceOwnerId(String oppositeInterfaceOwnerId) {
             this.oppositeInterfaceOwnerId = Objects.requireNonNull(oppositeInterfaceOwnerId);
             return this;
         }
-        @CustomType.Setter
         public Builder oppositeRegionId(String oppositeRegionId) {
             this.oppositeRegionId = Objects.requireNonNull(oppositeRegionId);
             return this;
         }
-        @CustomType.Setter
         public Builder oppositeRouterId(String oppositeRouterId) {
             this.oppositeRouterId = Objects.requireNonNull(oppositeRouterId);
             return this;
         }
-        @CustomType.Setter
         public Builder oppositeRouterType(String oppositeRouterType) {
             this.oppositeRouterType = Objects.requireNonNull(oppositeRouterType);
             return this;
         }
-        @CustomType.Setter
         public Builder role(String role) {
             this.role = Objects.requireNonNull(role);
             return this;
         }
-        @CustomType.Setter
         public Builder routerId(String routerId) {
             this.routerId = Objects.requireNonNull(routerId);
             return this;
         }
-        @CustomType.Setter
         public Builder routerType(String routerType) {
             this.routerType = Objects.requireNonNull(routerType);
             return this;
         }
-        @CustomType.Setter
         public Builder specification(String specification) {
             this.specification = Objects.requireNonNull(specification);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }
-        public GetRouterInterfacesInterface build() {
-            final var o = new GetRouterInterfacesInterface();
-            o.accessPointId = accessPointId;
-            o.creationTime = creationTime;
-            o.description = description;
-            o.healthCheckSourceIp = healthCheckSourceIp;
-            o.healthCheckTargetIp = healthCheckTargetIp;
-            o.id = id;
-            o.name = name;
-            o.oppositeInterfaceId = oppositeInterfaceId;
-            o.oppositeInterfaceOwnerId = oppositeInterfaceOwnerId;
-            o.oppositeRegionId = oppositeRegionId;
-            o.oppositeRouterId = oppositeRouterId;
-            o.oppositeRouterType = oppositeRouterType;
-            o.role = role;
-            o.routerId = routerId;
-            o.routerType = routerType;
-            o.specification = specification;
-            o.status = status;
-            o.vpcId = vpcId;
-            return o;
+        }        public GetRouterInterfacesInterface build() {
+            return new GetRouterInterfacesInterface(accessPointId, creationTime, description, healthCheckSourceIp, healthCheckTargetIp, id, name, oppositeInterfaceId, oppositeInterfaceOwnerId, oppositeRegionId, oppositeRouterId, oppositeRouterType, role, routerId, routerType, specification, status, vpcId);
         }
     }
 }

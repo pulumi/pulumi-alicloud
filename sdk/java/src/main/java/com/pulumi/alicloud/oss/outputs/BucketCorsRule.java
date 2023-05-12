@@ -17,29 +17,42 @@ public final class BucketCorsRule {
      * @return Specifies which headers are allowed.
      * 
      */
-    private @Nullable List<String> allowedHeaders;
+    private final @Nullable List<String> allowedHeaders;
     /**
      * @return Specifies which methods are allowed. Can be GET, PUT, POST, DELETE or HEAD.
      * 
      */
-    private List<String> allowedMethods;
+    private final List<String> allowedMethods;
     /**
      * @return Specifies which origins are allowed.
      * 
      */
-    private List<String> allowedOrigins;
+    private final List<String> allowedOrigins;
     /**
      * @return Specifies expose header in the response.
      * 
      */
-    private @Nullable List<String> exposeHeaders;
+    private final @Nullable List<String> exposeHeaders;
     /**
      * @return Specifies time in seconds that browser can cache the response for a preflight request.
      * 
      */
-    private @Nullable Integer maxAgeSeconds;
+    private final @Nullable Integer maxAgeSeconds;
 
-    private BucketCorsRule() {}
+    @CustomType.Constructor
+    private BucketCorsRule(
+        @CustomType.Parameter("allowedHeaders") @Nullable List<String> allowedHeaders,
+        @CustomType.Parameter("allowedMethods") List<String> allowedMethods,
+        @CustomType.Parameter("allowedOrigins") List<String> allowedOrigins,
+        @CustomType.Parameter("exposeHeaders") @Nullable List<String> exposeHeaders,
+        @CustomType.Parameter("maxAgeSeconds") @Nullable Integer maxAgeSeconds) {
+        this.allowedHeaders = allowedHeaders;
+        this.allowedMethods = allowedMethods;
+        this.allowedOrigins = allowedOrigins;
+        this.exposeHeaders = exposeHeaders;
+        this.maxAgeSeconds = maxAgeSeconds;
+    }
+
     /**
      * @return Specifies which headers are allowed.
      * 
@@ -83,14 +96,18 @@ public final class BucketCorsRule {
     public static Builder builder(BucketCorsRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<String> allowedHeaders;
         private List<String> allowedMethods;
         private List<String> allowedOrigins;
         private @Nullable List<String> exposeHeaders;
         private @Nullable Integer maxAgeSeconds;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(BucketCorsRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedHeaders = defaults.allowedHeaders;
@@ -100,7 +117,6 @@ public final class BucketCorsRule {
     	      this.maxAgeSeconds = defaults.maxAgeSeconds;
         }
 
-        @CustomType.Setter
         public Builder allowedHeaders(@Nullable List<String> allowedHeaders) {
             this.allowedHeaders = allowedHeaders;
             return this;
@@ -108,7 +124,6 @@ public final class BucketCorsRule {
         public Builder allowedHeaders(String... allowedHeaders) {
             return allowedHeaders(List.of(allowedHeaders));
         }
-        @CustomType.Setter
         public Builder allowedMethods(List<String> allowedMethods) {
             this.allowedMethods = Objects.requireNonNull(allowedMethods);
             return this;
@@ -116,7 +131,6 @@ public final class BucketCorsRule {
         public Builder allowedMethods(String... allowedMethods) {
             return allowedMethods(List.of(allowedMethods));
         }
-        @CustomType.Setter
         public Builder allowedOrigins(List<String> allowedOrigins) {
             this.allowedOrigins = Objects.requireNonNull(allowedOrigins);
             return this;
@@ -124,7 +138,6 @@ public final class BucketCorsRule {
         public Builder allowedOrigins(String... allowedOrigins) {
             return allowedOrigins(List.of(allowedOrigins));
         }
-        @CustomType.Setter
         public Builder exposeHeaders(@Nullable List<String> exposeHeaders) {
             this.exposeHeaders = exposeHeaders;
             return this;
@@ -132,19 +145,11 @@ public final class BucketCorsRule {
         public Builder exposeHeaders(String... exposeHeaders) {
             return exposeHeaders(List.of(exposeHeaders));
         }
-        @CustomType.Setter
         public Builder maxAgeSeconds(@Nullable Integer maxAgeSeconds) {
             this.maxAgeSeconds = maxAgeSeconds;
             return this;
-        }
-        public BucketCorsRule build() {
-            final var o = new BucketCorsRule();
-            o.allowedHeaders = allowedHeaders;
-            o.allowedMethods = allowedMethods;
-            o.allowedOrigins = allowedOrigins;
-            o.exposeHeaders = exposeHeaders;
-            o.maxAgeSeconds = maxAgeSeconds;
-            return o;
+        }        public BucketCorsRule build() {
+            return new BucketCorsRule(allowedHeaders, allowedMethods, allowedOrigins, exposeHeaders, maxAgeSeconds);
         }
     }
 }

@@ -15,14 +15,21 @@ public final class PrefixListEntry {
      * @return The CIDR address block of the prefix list.
      * 
      */
-    private @Nullable String cidr;
+    private final @Nullable String cidr;
     /**
      * @return The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
      * 
      */
-    private @Nullable String description;
+    private final @Nullable String description;
 
-    private PrefixListEntry() {}
+    @CustomType.Constructor
+    private PrefixListEntry(
+        @CustomType.Parameter("cidr") @Nullable String cidr,
+        @CustomType.Parameter("description") @Nullable String description) {
+        this.cidr = cidr;
+        this.description = description;
+    }
+
     /**
      * @return The CIDR address block of the prefix list.
      * 
@@ -45,32 +52,30 @@ public final class PrefixListEntry {
     public static Builder builder(PrefixListEntry defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String cidr;
         private @Nullable String description;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(PrefixListEntry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidr = defaults.cidr;
     	      this.description = defaults.description;
         }
 
-        @CustomType.Setter
         public Builder cidr(@Nullable String cidr) {
             this.cidr = cidr;
             return this;
         }
-        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
-        }
-        public PrefixListEntry build() {
-            final var o = new PrefixListEntry();
-            o.cidr = cidr;
-            o.description = description;
-            return o;
+        }        public PrefixListEntry build() {
+            return new PrefixListEntry(cidr, description);
         }
     }
 }

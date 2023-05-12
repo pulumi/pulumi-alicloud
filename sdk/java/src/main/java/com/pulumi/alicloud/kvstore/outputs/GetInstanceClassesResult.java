@@ -14,56 +14,95 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceClassesResult {
-    private @Nullable String architecture;
+    private final @Nullable String architecture;
     /**
      * @return A list of KVStore available instance classes when the `sorted_by` is &#34;Price&#34;. include:
      * 
      */
-    private List<GetInstanceClassesClass> classes;
-    private @Nullable String editionType;
-    private @Nullable String engine;
-    private @Nullable String engineVersion;
+    private final List<GetInstanceClassesClass> classes;
+    private final @Nullable String editionType;
+    private final @Nullable String engine;
+    private final @Nullable String engineVersion;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private @Nullable String instanceChargeType;
+    private final String id;
+    private final @Nullable String instanceChargeType;
     /**
      * @return A list of KVStore available instance classes.
      * 
      */
-    private List<String> instanceClasses;
-    private @Nullable String nodeType;
-    private @Nullable String outputFile;
+    private final List<String> instanceClasses;
+    private final @Nullable String nodeType;
+    private final @Nullable String outputFile;
     /**
      * @deprecated
      * The parameter &#39;package_type&#39; has been deprecated from 1.68.0.
      * 
      */
     @Deprecated /* The parameter 'package_type' has been deprecated from 1.68.0. */
-    private @Nullable String packageType;
+    private final @Nullable String packageType;
     /**
      * @deprecated
      * The parameter &#39;performance_type&#39; has been deprecated from 1.68.0.
      * 
      */
     @Deprecated /* The parameter 'performance_type' has been deprecated from 1.68.0. */
-    private @Nullable String performanceType;
-    private @Nullable String productType;
-    private @Nullable String seriesType;
-    private @Nullable Integer shardNumber;
-    private @Nullable String sortedBy;
+    private final @Nullable String performanceType;
+    private final @Nullable String productType;
+    private final @Nullable String seriesType;
+    private final @Nullable Integer shardNumber;
+    private final @Nullable String sortedBy;
     /**
      * @deprecated
      * The parameter &#39;storage_type&#39; has been deprecated from 1.68.0.
      * 
      */
     @Deprecated /* The parameter 'storage_type' has been deprecated from 1.68.0. */
-    private @Nullable String storageType;
-    private String zoneId;
+    private final @Nullable String storageType;
+    private final String zoneId;
 
-    private GetInstanceClassesResult() {}
+    @CustomType.Constructor
+    private GetInstanceClassesResult(
+        @CustomType.Parameter("architecture") @Nullable String architecture,
+        @CustomType.Parameter("classes") List<GetInstanceClassesClass> classes,
+        @CustomType.Parameter("editionType") @Nullable String editionType,
+        @CustomType.Parameter("engine") @Nullable String engine,
+        @CustomType.Parameter("engineVersion") @Nullable String engineVersion,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceChargeType") @Nullable String instanceChargeType,
+        @CustomType.Parameter("instanceClasses") List<String> instanceClasses,
+        @CustomType.Parameter("nodeType") @Nullable String nodeType,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("packageType") @Nullable String packageType,
+        @CustomType.Parameter("performanceType") @Nullable String performanceType,
+        @CustomType.Parameter("productType") @Nullable String productType,
+        @CustomType.Parameter("seriesType") @Nullable String seriesType,
+        @CustomType.Parameter("shardNumber") @Nullable Integer shardNumber,
+        @CustomType.Parameter("sortedBy") @Nullable String sortedBy,
+        @CustomType.Parameter("storageType") @Nullable String storageType,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.architecture = architecture;
+        this.classes = classes;
+        this.editionType = editionType;
+        this.engine = engine;
+        this.engineVersion = engineVersion;
+        this.id = id;
+        this.instanceChargeType = instanceChargeType;
+        this.instanceClasses = instanceClasses;
+        this.nodeType = nodeType;
+        this.outputFile = outputFile;
+        this.packageType = packageType;
+        this.performanceType = performanceType;
+        this.productType = productType;
+        this.seriesType = seriesType;
+        this.shardNumber = shardNumber;
+        this.sortedBy = sortedBy;
+        this.storageType = storageType;
+        this.zoneId = zoneId;
+    }
+
     public Optional<String> architecture() {
         return Optional.ofNullable(this.architecture);
     }
@@ -156,7 +195,7 @@ public final class GetInstanceClassesResult {
     public static Builder builder(GetInstanceClassesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String architecture;
         private List<GetInstanceClassesClass> classes;
@@ -176,7 +215,11 @@ public final class GetInstanceClassesResult {
         private @Nullable String sortedBy;
         private @Nullable String storageType;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstanceClassesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.architecture = defaults.architecture;
@@ -199,12 +242,10 @@ public final class GetInstanceClassesResult {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder architecture(@Nullable String architecture) {
             this.architecture = architecture;
             return this;
         }
-        @CustomType.Setter
         public Builder classes(List<GetInstanceClassesClass> classes) {
             this.classes = Objects.requireNonNull(classes);
             return this;
@@ -212,32 +253,26 @@ public final class GetInstanceClassesResult {
         public Builder classes(GetInstanceClassesClass... classes) {
             return classes(List.of(classes));
         }
-        @CustomType.Setter
         public Builder editionType(@Nullable String editionType) {
             this.editionType = editionType;
             return this;
         }
-        @CustomType.Setter
         public Builder engine(@Nullable String engine) {
             this.engine = engine;
             return this;
         }
-        @CustomType.Setter
         public Builder engineVersion(@Nullable String engineVersion) {
             this.engineVersion = engineVersion;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceChargeType(@Nullable String instanceChargeType) {
             this.instanceChargeType = instanceChargeType;
             return this;
         }
-        @CustomType.Setter
         public Builder instanceClasses(List<String> instanceClasses) {
             this.instanceClasses = Objects.requireNonNull(instanceClasses);
             return this;
@@ -245,77 +280,47 @@ public final class GetInstanceClassesResult {
         public Builder instanceClasses(String... instanceClasses) {
             return instanceClasses(List.of(instanceClasses));
         }
-        @CustomType.Setter
         public Builder nodeType(@Nullable String nodeType) {
             this.nodeType = nodeType;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder packageType(@Nullable String packageType) {
             this.packageType = packageType;
             return this;
         }
-        @CustomType.Setter
         public Builder performanceType(@Nullable String performanceType) {
             this.performanceType = performanceType;
             return this;
         }
-        @CustomType.Setter
         public Builder productType(@Nullable String productType) {
             this.productType = productType;
             return this;
         }
-        @CustomType.Setter
         public Builder seriesType(@Nullable String seriesType) {
             this.seriesType = seriesType;
             return this;
         }
-        @CustomType.Setter
         public Builder shardNumber(@Nullable Integer shardNumber) {
             this.shardNumber = shardNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder sortedBy(@Nullable String sortedBy) {
             this.sortedBy = sortedBy;
             return this;
         }
-        @CustomType.Setter
         public Builder storageType(@Nullable String storageType) {
             this.storageType = storageType;
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetInstanceClassesResult build() {
-            final var o = new GetInstanceClassesResult();
-            o.architecture = architecture;
-            o.classes = classes;
-            o.editionType = editionType;
-            o.engine = engine;
-            o.engineVersion = engineVersion;
-            o.id = id;
-            o.instanceChargeType = instanceChargeType;
-            o.instanceClasses = instanceClasses;
-            o.nodeType = nodeType;
-            o.outputFile = outputFile;
-            o.packageType = packageType;
-            o.performanceType = performanceType;
-            o.productType = productType;
-            o.seriesType = seriesType;
-            o.shardNumber = shardNumber;
-            o.sortedBy = sortedBy;
-            o.storageType = storageType;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetInstanceClassesResult build() {
+            return new GetInstanceClassesResult(architecture, classes, editionType, engine, engineVersion, id, instanceChargeType, instanceClasses, nodeType, outputFile, packageType, performanceType, productType, seriesType, shardNumber, sortedBy, storageType, zoneId);
         }
     }
 }

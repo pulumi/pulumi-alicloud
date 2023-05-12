@@ -212,9 +212,21 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.osType);
     }
 
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     * 
+     * &gt; **NOTE:** At least one of the `name_regex`, `most_recent` and `owners` must be set.
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable String outputFile;
 
+    /**
+     * @return File name where to save data source results (after running `pulumi preview`).
+     * 
+     * &gt; **NOTE:** At least one of the `name_regex`, `most_recent` and `owners` must be set.
+     * 
+     */
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -495,6 +507,14 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * &gt; **NOTE:** At least one of the `name_regex`, `most_recent` and `owners` must be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
             return this;

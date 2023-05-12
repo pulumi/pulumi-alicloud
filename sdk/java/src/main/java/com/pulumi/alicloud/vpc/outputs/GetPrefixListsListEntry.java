@@ -13,14 +13,21 @@ public final class GetPrefixListsListEntry {
      * @return The CIDR address block of the prefix list.
      * 
      */
-    private String cidr;
+    private final String cidr;
     /**
      * @return The description of the cidr entry.
      * 
      */
-    private String description;
+    private final String description;
 
-    private GetPrefixListsListEntry() {}
+    @CustomType.Constructor
+    private GetPrefixListsListEntry(
+        @CustomType.Parameter("cidr") String cidr,
+        @CustomType.Parameter("description") String description) {
+        this.cidr = cidr;
+        this.description = description;
+    }
+
     /**
      * @return The CIDR address block of the prefix list.
      * 
@@ -43,32 +50,30 @@ public final class GetPrefixListsListEntry {
     public static Builder builder(GetPrefixListsListEntry defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String cidr;
         private String description;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetPrefixListsListEntry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidr = defaults.cidr;
     	      this.description = defaults.description;
         }
 
-        @CustomType.Setter
         public Builder cidr(String cidr) {
             this.cidr = Objects.requireNonNull(cidr);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
-        }
-        public GetPrefixListsListEntry build() {
-            final var o = new GetPrefixListsListEntry();
-            o.cidr = cidr;
-            o.description = description;
-            return o;
+        }        public GetPrefixListsListEntry build() {
+            return new GetPrefixListsListEntry(cidr, description);
         }
     }
 }

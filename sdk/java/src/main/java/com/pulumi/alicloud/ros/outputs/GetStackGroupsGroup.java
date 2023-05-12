@@ -15,49 +15,70 @@ public final class GetStackGroupsGroup {
      * @return The name of the RAM administrator role assumed by ROS.
      * 
      */
-    private String administrationRoleName;
+    private final String administrationRoleName;
     /**
      * @return The description of the stack group.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The name of the RAM execution role assumed by the administrator role.
      * 
      */
-    private String executionRoleName;
+    private final String executionRoleName;
     /**
      * @return The ID of the Stack Group.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The parameters.
      * 
      */
-    private List<GetStackGroupsGroupParameter> parameters;
+    private final List<GetStackGroupsGroupParameter> parameters;
     /**
      * @return The id of Stack Group.
      * 
      */
-    private String stackGroupId;
+    private final String stackGroupId;
     /**
      * @return The name of the stack group..
      * 
      */
-    private String stackGroupName;
+    private final String stackGroupName;
     /**
      * @return The status of Stack Group.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The structure that contains the template body.
      * 
      */
-    private String templateBody;
+    private final String templateBody;
 
-    private GetStackGroupsGroup() {}
+    @CustomType.Constructor
+    private GetStackGroupsGroup(
+        @CustomType.Parameter("administrationRoleName") String administrationRoleName,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("executionRoleName") String executionRoleName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("parameters") List<GetStackGroupsGroupParameter> parameters,
+        @CustomType.Parameter("stackGroupId") String stackGroupId,
+        @CustomType.Parameter("stackGroupName") String stackGroupName,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("templateBody") String templateBody) {
+        this.administrationRoleName = administrationRoleName;
+        this.description = description;
+        this.executionRoleName = executionRoleName;
+        this.id = id;
+        this.parameters = parameters;
+        this.stackGroupId = stackGroupId;
+        this.stackGroupName = stackGroupName;
+        this.status = status;
+        this.templateBody = templateBody;
+    }
+
     /**
      * @return The name of the RAM administrator role assumed by ROS.
      * 
@@ -129,7 +150,7 @@ public final class GetStackGroupsGroup {
     public static Builder builder(GetStackGroupsGroup defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String administrationRoleName;
         private String description;
@@ -140,7 +161,11 @@ public final class GetStackGroupsGroup {
         private String stackGroupName;
         private String status;
         private String templateBody;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetStackGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.administrationRoleName = defaults.administrationRoleName;
@@ -154,27 +179,22 @@ public final class GetStackGroupsGroup {
     	      this.templateBody = defaults.templateBody;
         }
 
-        @CustomType.Setter
         public Builder administrationRoleName(String administrationRoleName) {
             this.administrationRoleName = Objects.requireNonNull(administrationRoleName);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder executionRoleName(String executionRoleName) {
             this.executionRoleName = Objects.requireNonNull(executionRoleName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder parameters(List<GetStackGroupsGroupParameter> parameters) {
             this.parameters = Objects.requireNonNull(parameters);
             return this;
@@ -182,38 +202,23 @@ public final class GetStackGroupsGroup {
         public Builder parameters(GetStackGroupsGroupParameter... parameters) {
             return parameters(List.of(parameters));
         }
-        @CustomType.Setter
         public Builder stackGroupId(String stackGroupId) {
             this.stackGroupId = Objects.requireNonNull(stackGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder stackGroupName(String stackGroupName) {
             this.stackGroupName = Objects.requireNonNull(stackGroupName);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder templateBody(String templateBody) {
             this.templateBody = Objects.requireNonNull(templateBody);
             return this;
-        }
-        public GetStackGroupsGroup build() {
-            final var o = new GetStackGroupsGroup();
-            o.administrationRoleName = administrationRoleName;
-            o.description = description;
-            o.executionRoleName = executionRoleName;
-            o.id = id;
-            o.parameters = parameters;
-            o.stackGroupId = stackGroupId;
-            o.stackGroupName = stackGroupName;
-            o.status = status;
-            o.templateBody = templateBody;
-            return o;
+        }        public GetStackGroupsGroup build() {
+            return new GetStackGroupsGroup(administrationRoleName, description, executionRoleName, id, parameters, stackGroupId, stackGroupName, status, templateBody);
         }
     }
 }

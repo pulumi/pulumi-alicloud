@@ -50,6 +50,9 @@ export interface GetVaultsArgs {
      * A regex string to filter results by Vault name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
@@ -112,6 +115,9 @@ export interface GetVaultsOutputArgs {
      * A regex string to filter results by Vault name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.

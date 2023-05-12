@@ -14,19 +14,28 @@ public final class GetInstanceTypesType {
      * @return The ID of the instance type.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Local capacity of the applied ecs instance for emr cluster. Unit: GB.
      * 
      */
-    private Integer localStorageCapacity;
+    private final Integer localStorageCapacity;
     /**
      * @return The supported resources of specific zoneId.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetInstanceTypesType() {}
+    @CustomType.Constructor
+    private GetInstanceTypesType(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("localStorageCapacity") Integer localStorageCapacity,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.id = id;
+        this.localStorageCapacity = localStorageCapacity;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return The ID of the instance type.
      * 
@@ -56,12 +65,16 @@ public final class GetInstanceTypesType {
     public static Builder builder(GetInstanceTypesType defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private Integer localStorageCapacity;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstanceTypesType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -69,27 +82,19 @@ public final class GetInstanceTypesType {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder localStorageCapacity(Integer localStorageCapacity) {
             this.localStorageCapacity = Objects.requireNonNull(localStorageCapacity);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetInstanceTypesType build() {
-            final var o = new GetInstanceTypesType();
-            o.id = id;
-            o.localStorageCapacity = localStorageCapacity;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetInstanceTypesType build() {
+            return new GetInstanceTypesType(id, localStorageCapacity, zoneId);
         }
     }
 }

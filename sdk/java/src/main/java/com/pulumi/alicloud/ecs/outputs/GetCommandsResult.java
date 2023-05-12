@@ -13,23 +13,48 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCommandsResult {
-    private @Nullable String commandProvider;
-    private List<GetCommandsCommand> commands;
-    private @Nullable String contentEncoding;
-    private @Nullable String description;
+    private final @Nullable String commandProvider;
+    private final List<GetCommandsCommand> commands;
+    private final @Nullable String contentEncoding;
+    private final @Nullable String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String name;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String type;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String name;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String type;
 
-    private GetCommandsResult() {}
+    @CustomType.Constructor
+    private GetCommandsResult(
+        @CustomType.Parameter("commandProvider") @Nullable String commandProvider,
+        @CustomType.Parameter("commands") List<GetCommandsCommand> commands,
+        @CustomType.Parameter("contentEncoding") @Nullable String contentEncoding,
+        @CustomType.Parameter("description") @Nullable String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("name") @Nullable String name,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("type") @Nullable String type) {
+        this.commandProvider = commandProvider;
+        this.commands = commands;
+        this.contentEncoding = contentEncoding;
+        this.description = description;
+        this.id = id;
+        this.ids = ids;
+        this.name = name;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.type = type;
+    }
+
     public Optional<String> commandProvider() {
         return Optional.ofNullable(this.commandProvider);
     }
@@ -75,7 +100,7 @@ public final class GetCommandsResult {
     public static Builder builder(GetCommandsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String commandProvider;
         private List<GetCommandsCommand> commands;
@@ -88,7 +113,11 @@ public final class GetCommandsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetCommandsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.commandProvider = defaults.commandProvider;
@@ -104,12 +133,10 @@ public final class GetCommandsResult {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder commandProvider(@Nullable String commandProvider) {
             this.commandProvider = commandProvider;
             return this;
         }
-        @CustomType.Setter
         public Builder commands(List<GetCommandsCommand> commands) {
             this.commands = Objects.requireNonNull(commands);
             return this;
@@ -117,22 +144,18 @@ public final class GetCommandsResult {
         public Builder commands(GetCommandsCommand... commands) {
             return commands(List.of(commands));
         }
-        @CustomType.Setter
         public Builder contentEncoding(@Nullable String contentEncoding) {
             this.contentEncoding = contentEncoding;
             return this;
         }
-        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -140,17 +163,14 @@ public final class GetCommandsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -158,30 +178,15 @@ public final class GetCommandsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }
-        public GetCommandsResult build() {
-            final var o = new GetCommandsResult();
-            o.commandProvider = commandProvider;
-            o.commands = commands;
-            o.contentEncoding = contentEncoding;
-            o.description = description;
-            o.id = id;
-            o.ids = ids;
-            o.name = name;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.type = type;
-            return o;
+        }        public GetCommandsResult build() {
+            return new GetCommandsResult(commandProvider, commands, contentEncoding, description, id, ids, name, nameRegex, names, outputFile, type);
         }
     }
 }

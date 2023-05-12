@@ -145,6 +145,7 @@ def get_access_configurations(directory_id: Optional[str] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Access Configuration IDs.
     :param str name_regex: A regex string to filter results by Access Configuration name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['directoryId'] = directory_id
@@ -204,5 +205,6 @@ def get_access_configurations_output(directory_id: Optional[pulumi.Input[str]] =
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Access Configuration IDs.
     :param str name_regex: A regex string to filter results by Access Configuration name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

@@ -21,60 +21,103 @@ public final class GetNetworksResult {
      * @return CIDR block of the VPC.
      * 
      */
-    private @Nullable String cidrBlock;
-    private @Nullable String dhcpOptionsSetId;
-    private @Nullable Boolean dryRun;
-    private @Nullable Boolean enableDetails;
+    private final @Nullable String cidrBlock;
+    private final @Nullable String dhcpOptionsSetId;
+    private final @Nullable Boolean dryRun;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of VPC IDs.
      * 
      */
-    private List<String> ids;
+    private final List<String> ids;
     /**
      * @return Whether the VPC is the default VPC in the region.
      * 
      */
-    private @Nullable Boolean isDefault;
-    private @Nullable String nameRegex;
+    private final @Nullable Boolean isDefault;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of VPC names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
-    private @Nullable String resourceGroupId;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
+    private final @Nullable String resourceGroupId;
     /**
      * @return Status of the VPC.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
     /**
      * @return A map of tags assigned to the VPC.
      * 
      */
-    private @Nullable Map<String,Object> tags;
-    private Integer totalCount;
+    private final @Nullable Map<String,Object> tags;
+    private final Integer totalCount;
     /**
      * @return Name of the VPC.
      * 
      */
-    private @Nullable String vpcName;
-    private @Nullable Integer vpcOwnerId;
+    private final @Nullable String vpcName;
+    private final @Nullable Integer vpcOwnerId;
     /**
      * @return A list of VPCs. Each element contains the following attributes:
      * 
      */
-    private List<GetNetworksVpc> vpcs;
-    private @Nullable String vswitchId;
+    private final List<GetNetworksVpc> vpcs;
+    private final @Nullable String vswitchId;
 
-    private GetNetworksResult() {}
+    @CustomType.Constructor
+    private GetNetworksResult(
+        @CustomType.Parameter("cidrBlock") @Nullable String cidrBlock,
+        @CustomType.Parameter("dhcpOptionsSetId") @Nullable String dhcpOptionsSetId,
+        @CustomType.Parameter("dryRun") @Nullable Boolean dryRun,
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("isDefault") @Nullable Boolean isDefault,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
+        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
+        @CustomType.Parameter("totalCount") Integer totalCount,
+        @CustomType.Parameter("vpcName") @Nullable String vpcName,
+        @CustomType.Parameter("vpcOwnerId") @Nullable Integer vpcOwnerId,
+        @CustomType.Parameter("vpcs") List<GetNetworksVpc> vpcs,
+        @CustomType.Parameter("vswitchId") @Nullable String vswitchId) {
+        this.cidrBlock = cidrBlock;
+        this.dhcpOptionsSetId = dhcpOptionsSetId;
+        this.dryRun = dryRun;
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.isDefault = isDefault;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+        this.resourceGroupId = resourceGroupId;
+        this.status = status;
+        this.tags = tags;
+        this.totalCount = totalCount;
+        this.vpcName = vpcName;
+        this.vpcOwnerId = vpcOwnerId;
+        this.vpcs = vpcs;
+        this.vswitchId = vswitchId;
+    }
+
     /**
      * @return CIDR block of the VPC.
      * 
@@ -179,7 +222,7 @@ public final class GetNetworksResult {
     public static Builder builder(GetNetworksResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String cidrBlock;
         private @Nullable String dhcpOptionsSetId;
@@ -201,7 +244,11 @@ public final class GetNetworksResult {
         private @Nullable Integer vpcOwnerId;
         private List<GetNetworksVpc> vpcs;
         private @Nullable String vswitchId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetNetworksResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrBlock = defaults.cidrBlock;
@@ -226,32 +273,26 @@ public final class GetNetworksResult {
     	      this.vswitchId = defaults.vswitchId;
         }
 
-        @CustomType.Setter
         public Builder cidrBlock(@Nullable String cidrBlock) {
             this.cidrBlock = cidrBlock;
             return this;
         }
-        @CustomType.Setter
         public Builder dhcpOptionsSetId(@Nullable String dhcpOptionsSetId) {
             this.dhcpOptionsSetId = dhcpOptionsSetId;
             return this;
         }
-        @CustomType.Setter
         public Builder dryRun(@Nullable Boolean dryRun) {
             this.dryRun = dryRun;
             return this;
         }
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -259,17 +300,14 @@ public final class GetNetworksResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder isDefault(@Nullable Boolean isDefault) {
             this.isDefault = isDefault;
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -277,52 +315,42 @@ public final class GetNetworksResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
-        @CustomType.Setter
         public Builder totalCount(Integer totalCount) {
             this.totalCount = Objects.requireNonNull(totalCount);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcName(@Nullable String vpcName) {
             this.vpcName = vpcName;
             return this;
         }
-        @CustomType.Setter
         public Builder vpcOwnerId(@Nullable Integer vpcOwnerId) {
             this.vpcOwnerId = vpcOwnerId;
             return this;
         }
-        @CustomType.Setter
         public Builder vpcs(List<GetNetworksVpc> vpcs) {
             this.vpcs = Objects.requireNonNull(vpcs);
             return this;
@@ -330,34 +358,11 @@ public final class GetNetworksResult {
         public Builder vpcs(GetNetworksVpc... vpcs) {
             return vpcs(List.of(vpcs));
         }
-        @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
             this.vswitchId = vswitchId;
             return this;
-        }
-        public GetNetworksResult build() {
-            final var o = new GetNetworksResult();
-            o.cidrBlock = cidrBlock;
-            o.dhcpOptionsSetId = dhcpOptionsSetId;
-            o.dryRun = dryRun;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.isDefault = isDefault;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.tags = tags;
-            o.totalCount = totalCount;
-            o.vpcName = vpcName;
-            o.vpcOwnerId = vpcOwnerId;
-            o.vpcs = vpcs;
-            o.vswitchId = vswitchId;
-            return o;
+        }        public GetNetworksResult build() {
+            return new GetNetworksResult(cidrBlock, dhcpOptionsSetId, dryRun, enableDetails, id, ids, isDefault, nameRegex, names, outputFile, pageNumber, pageSize, resourceGroupId, status, tags, totalCount, vpcName, vpcOwnerId, vpcs, vswitchId);
         }
     }
 }

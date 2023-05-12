@@ -230,6 +230,10 @@ class Attachment(pulumi.CustomResource):
                  weight: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
+        > **DEPRECATED:** This resource has been deprecated from v1.153.0 and using alicloud_backend_server instead.
+
+        Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
+
         ## Example Usage
 
         ```python
@@ -297,6 +301,10 @@ class Attachment(pulumi.CustomResource):
                  args: AttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **DEPRECATED:** This resource has been deprecated from v1.153.0 and using alicloud_backend_server instead.
+
+        Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
+
         ## Example Usage
 
         ```python

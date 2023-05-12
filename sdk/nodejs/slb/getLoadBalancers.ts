@@ -7,6 +7,10 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **DEPRECATED:** This datasource has been renamed to alicloud.slb.getApplicationLoadBalancers from version 1.123.1.
+ *
+ * This data source provides the server load balancers of the current Alibaba Cloud user.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -76,6 +80,9 @@ export interface GetLoadBalancersArgs {
      * Network type of the SLBs. Valid values: `vpc` and `classic`.
      */
     networkType?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     pageNumber?: number;
     pageSize?: number;
@@ -181,6 +188,10 @@ export interface GetLoadBalancersResult {
     readonly vswitchId?: string;
 }
 /**
+ * > **DEPRECATED:** This datasource has been renamed to alicloud.slb.getApplicationLoadBalancers from version 1.123.1.
+ *
+ * This data source provides the server load balancers of the current Alibaba Cloud user.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -224,6 +235,9 @@ export interface GetLoadBalancersOutputArgs {
      * Network type of the SLBs. Valid values: `vpc` and `classic`.
      */
     networkType?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;

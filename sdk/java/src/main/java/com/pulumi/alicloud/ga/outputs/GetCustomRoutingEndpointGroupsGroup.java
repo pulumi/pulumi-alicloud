@@ -14,54 +14,77 @@ public final class GetCustomRoutingEndpointGroupsGroup {
      * @return The ID of the GA instance.
      * 
      */
-    private String acceleratorId;
+    private final String acceleratorId;
     /**
      * @return The name of the endpoint group.
      * 
      */
-    private String customRoutingEndpointGroupName;
+    private final String customRoutingEndpointGroupName;
     /**
      * @return The description of the endpoint group.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the endpoint group.
      * 
      */
-    private String endpointGroupId;
+    private final String endpointGroupId;
     /**
      * @return The list of endpoint group IP addresses.
      * 
      */
-    private List<String> endpointGroupIpLists;
+    private final List<String> endpointGroupIpLists;
     /**
      * @return The ID of the region where the endpoint group is created.
      * 
      */
-    private String endpointGroupRegion;
+    private final String endpointGroupRegion;
     /**
      * @return The endpoint group IP addresses to be confirmed after the GA instance is upgraded.
      * 
      */
-    private List<String> endpointGroupUnconfirmedIpLists;
+    private final List<String> endpointGroupUnconfirmedIpLists;
     /**
      * @return The id of the Custom Routing Endpoint Group.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the custom routing listener.
      * 
      */
-    private String listenerId;
+    private final String listenerId;
     /**
      * @return The status of the endpoint group. Valid Values: `init`, `active`, `updating`, `deleting`.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetCustomRoutingEndpointGroupsGroup() {}
+    @CustomType.Constructor
+    private GetCustomRoutingEndpointGroupsGroup(
+        @CustomType.Parameter("acceleratorId") String acceleratorId,
+        @CustomType.Parameter("customRoutingEndpointGroupName") String customRoutingEndpointGroupName,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("endpointGroupId") String endpointGroupId,
+        @CustomType.Parameter("endpointGroupIpLists") List<String> endpointGroupIpLists,
+        @CustomType.Parameter("endpointGroupRegion") String endpointGroupRegion,
+        @CustomType.Parameter("endpointGroupUnconfirmedIpLists") List<String> endpointGroupUnconfirmedIpLists,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("listenerId") String listenerId,
+        @CustomType.Parameter("status") String status) {
+        this.acceleratorId = acceleratorId;
+        this.customRoutingEndpointGroupName = customRoutingEndpointGroupName;
+        this.description = description;
+        this.endpointGroupId = endpointGroupId;
+        this.endpointGroupIpLists = endpointGroupIpLists;
+        this.endpointGroupRegion = endpointGroupRegion;
+        this.endpointGroupUnconfirmedIpLists = endpointGroupUnconfirmedIpLists;
+        this.id = id;
+        this.listenerId = listenerId;
+        this.status = status;
+    }
+
     /**
      * @return The ID of the GA instance.
      * 
@@ -140,7 +163,7 @@ public final class GetCustomRoutingEndpointGroupsGroup {
     public static Builder builder(GetCustomRoutingEndpointGroupsGroup defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String acceleratorId;
         private String customRoutingEndpointGroupName;
@@ -152,7 +175,11 @@ public final class GetCustomRoutingEndpointGroupsGroup {
         private String id;
         private String listenerId;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetCustomRoutingEndpointGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorId = defaults.acceleratorId;
@@ -167,27 +194,22 @@ public final class GetCustomRoutingEndpointGroupsGroup {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
             this.acceleratorId = Objects.requireNonNull(acceleratorId);
             return this;
         }
-        @CustomType.Setter
         public Builder customRoutingEndpointGroupName(String customRoutingEndpointGroupName) {
             this.customRoutingEndpointGroupName = Objects.requireNonNull(customRoutingEndpointGroupName);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointGroupId(String endpointGroupId) {
             this.endpointGroupId = Objects.requireNonNull(endpointGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointGroupIpLists(List<String> endpointGroupIpLists) {
             this.endpointGroupIpLists = Objects.requireNonNull(endpointGroupIpLists);
             return this;
@@ -195,12 +217,10 @@ public final class GetCustomRoutingEndpointGroupsGroup {
         public Builder endpointGroupIpLists(String... endpointGroupIpLists) {
             return endpointGroupIpLists(List.of(endpointGroupIpLists));
         }
-        @CustomType.Setter
         public Builder endpointGroupRegion(String endpointGroupRegion) {
             this.endpointGroupRegion = Objects.requireNonNull(endpointGroupRegion);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointGroupUnconfirmedIpLists(List<String> endpointGroupUnconfirmedIpLists) {
             this.endpointGroupUnconfirmedIpLists = Objects.requireNonNull(endpointGroupUnconfirmedIpLists);
             return this;
@@ -208,34 +228,19 @@ public final class GetCustomRoutingEndpointGroupsGroup {
         public Builder endpointGroupUnconfirmedIpLists(String... endpointGroupUnconfirmedIpLists) {
             return endpointGroupUnconfirmedIpLists(List.of(endpointGroupUnconfirmedIpLists));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder listenerId(String listenerId) {
             this.listenerId = Objects.requireNonNull(listenerId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetCustomRoutingEndpointGroupsGroup build() {
-            final var o = new GetCustomRoutingEndpointGroupsGroup();
-            o.acceleratorId = acceleratorId;
-            o.customRoutingEndpointGroupName = customRoutingEndpointGroupName;
-            o.description = description;
-            o.endpointGroupId = endpointGroupId;
-            o.endpointGroupIpLists = endpointGroupIpLists;
-            o.endpointGroupRegion = endpointGroupRegion;
-            o.endpointGroupUnconfirmedIpLists = endpointGroupUnconfirmedIpLists;
-            o.id = id;
-            o.listenerId = listenerId;
-            o.status = status;
-            return o;
+        }        public GetCustomRoutingEndpointGroupsGroup build() {
+            return new GetCustomRoutingEndpointGroupsGroup(acceleratorId, customRoutingEndpointGroupName, description, endpointGroupId, endpointGroupIpLists, endpointGroupRegion, endpointGroupUnconfirmedIpLists, id, listenerId, status);
         }
     }
 }

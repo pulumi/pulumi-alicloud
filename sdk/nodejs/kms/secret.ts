@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * KMS secret can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:kms/secret:Secret default secret-foo
+ *  $ pulumi import alicloud:kms/secret:Secret default <id>
  * ```
  */
 export class Secret extends pulumi.CustomResource {
@@ -83,6 +83,10 @@ export class Secret extends pulumi.CustomResource {
      */
     public readonly encryptionKeyId!: pulumi.Output<string | undefined>;
     /**
+     * The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+     */
+    public readonly extendedConfig!: pulumi.Output<string | undefined>;
+    /**
      * Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
      */
     public readonly forceDeleteWithoutRecovery!: pulumi.Output<boolean | undefined>;
@@ -99,7 +103,7 @@ export class Secret extends pulumi.CustomResource {
      */
     public readonly rotationInterval!: pulumi.Output<string | undefined>;
     /**
-     * The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
+     * The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secretData` updating diff will be ignored when `secretType` is not Generic.
      */
     public readonly secretData!: pulumi.Output<string>;
     /**
@@ -110,6 +114,10 @@ export class Secret extends pulumi.CustomResource {
      * The name of the secret.
      */
     public readonly secretName!: pulumi.Output<string>;
+    /**
+     * The type of the secret. Valid values:
+     */
+    public readonly secretType!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -141,6 +149,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["dkmsInstanceId"] = state ? state.dkmsInstanceId : undefined;
             resourceInputs["enableAutomaticRotation"] = state ? state.enableAutomaticRotation : undefined;
             resourceInputs["encryptionKeyId"] = state ? state.encryptionKeyId : undefined;
+            resourceInputs["extendedConfig"] = state ? state.extendedConfig : undefined;
             resourceInputs["forceDeleteWithoutRecovery"] = state ? state.forceDeleteWithoutRecovery : undefined;
             resourceInputs["plannedDeleteTime"] = state ? state.plannedDeleteTime : undefined;
             resourceInputs["recoveryWindowInDays"] = state ? state.recoveryWindowInDays : undefined;
@@ -148,6 +157,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["secretData"] = state ? state.secretData : undefined;
             resourceInputs["secretDataType"] = state ? state.secretDataType : undefined;
             resourceInputs["secretName"] = state ? state.secretName : undefined;
+            resourceInputs["secretType"] = state ? state.secretType : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["versionId"] = state ? state.versionId : undefined;
             resourceInputs["versionStages"] = state ? state.versionStages : undefined;
@@ -166,12 +176,14 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["dkmsInstanceId"] = args ? args.dkmsInstanceId : undefined;
             resourceInputs["enableAutomaticRotation"] = args ? args.enableAutomaticRotation : undefined;
             resourceInputs["encryptionKeyId"] = args ? args.encryptionKeyId : undefined;
+            resourceInputs["extendedConfig"] = args ? args.extendedConfig : undefined;
             resourceInputs["forceDeleteWithoutRecovery"] = args ? args.forceDeleteWithoutRecovery : undefined;
             resourceInputs["recoveryWindowInDays"] = args ? args.recoveryWindowInDays : undefined;
             resourceInputs["rotationInterval"] = args ? args.rotationInterval : undefined;
             resourceInputs["secretData"] = args?.secretData ? pulumi.secret(args.secretData) : undefined;
             resourceInputs["secretDataType"] = args ? args.secretDataType : undefined;
             resourceInputs["secretName"] = args ? args.secretName : undefined;
+            resourceInputs["secretType"] = args ? args.secretType : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["versionId"] = args ? args.versionId : undefined;
             resourceInputs["versionStages"] = args ? args.versionStages : undefined;
@@ -210,6 +222,10 @@ export interface SecretState {
      */
     encryptionKeyId?: pulumi.Input<string>;
     /**
+     * The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+     */
+    extendedConfig?: pulumi.Input<string>;
+    /**
      * Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
      */
     forceDeleteWithoutRecovery?: pulumi.Input<boolean>;
@@ -226,7 +242,7 @@ export interface SecretState {
      */
     rotationInterval?: pulumi.Input<string>;
     /**
-     * The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
+     * The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secretData` updating diff will be ignored when `secretType` is not Generic.
      */
     secretData?: pulumi.Input<string>;
     /**
@@ -237,6 +253,10 @@ export interface SecretState {
      * The name of the secret.
      */
     secretName?: pulumi.Input<string>;
+    /**
+     * The type of the secret. Valid values:
+     */
+    secretType?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
@@ -272,6 +292,10 @@ export interface SecretArgs {
      */
     encryptionKeyId?: pulumi.Input<string>;
     /**
+     * The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+     */
+    extendedConfig?: pulumi.Input<string>;
+    /**
      * Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
      */
     forceDeleteWithoutRecovery?: pulumi.Input<boolean>;
@@ -284,7 +308,7 @@ export interface SecretArgs {
      */
     rotationInterval?: pulumi.Input<string>;
     /**
-     * The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
+     * The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secretData` updating diff will be ignored when `secretType` is not Generic.
      */
     secretData: pulumi.Input<string>;
     /**
@@ -295,6 +319,10 @@ export interface SecretArgs {
      * The name of the secret.
      */
     secretName: pulumi.Input<string>;
+    /**
+     * The type of the secret. Valid values:
+     */
+    secretType?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */

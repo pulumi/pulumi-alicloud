@@ -17,15 +17,32 @@ public final class GetOrganizationsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private List<GetOrganizationsOrganization> organizations;
-    private @Nullable String outputFile;
-    private @Nullable String realPk;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final List<GetOrganizationsOrganization> organizations;
+    private final @Nullable String outputFile;
+    private final @Nullable String realPk;
 
-    private GetOrganizationsResult() {}
+    @CustomType.Constructor
+    private GetOrganizationsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("organizations") List<GetOrganizationsOrganization> organizations,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("realPk") @Nullable String realPk) {
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.organizations = organizations;
+        this.outputFile = outputFile;
+        this.realPk = realPk;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -59,7 +76,7 @@ public final class GetOrganizationsResult {
     public static Builder builder(GetOrganizationsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -68,7 +85,11 @@ public final class GetOrganizationsResult {
         private List<GetOrganizationsOrganization> organizations;
         private @Nullable String outputFile;
         private @Nullable String realPk;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetOrganizationsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -80,12 +101,10 @@ public final class GetOrganizationsResult {
     	      this.realPk = defaults.realPk;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -93,12 +112,10 @@ public final class GetOrganizationsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -106,7 +123,6 @@ public final class GetOrganizationsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder organizations(List<GetOrganizationsOrganization> organizations) {
             this.organizations = Objects.requireNonNull(organizations);
             return this;
@@ -114,26 +130,15 @@ public final class GetOrganizationsResult {
         public Builder organizations(GetOrganizationsOrganization... organizations) {
             return organizations(List.of(organizations));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder realPk(@Nullable String realPk) {
             this.realPk = realPk;
             return this;
-        }
-        public GetOrganizationsResult build() {
-            final var o = new GetOrganizationsResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.organizations = organizations;
-            o.outputFile = outputFile;
-            o.realPk = realPk;
-            return o;
+        }        public GetOrganizationsResult build() {
+            return new GetOrganizationsResult(id, ids, nameRegex, names, organizations, outputFile, realPk);
         }
     }
 }

@@ -36,7 +36,8 @@ type GetInstancesArgs struct {
 	// The Key Name.
 	KeyPairName *string `pulumi:"keyPairName"`
 	// A regex string to filter results by mobile phone name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The payment type.Valid values: `PayAsYouGo`,`Subscription`
 	PaymentType *string `pulumi:"paymentType"`
@@ -94,7 +95,8 @@ type GetInstancesOutputArgs struct {
 	// The Key Name.
 	KeyPairName pulumi.StringPtrInput `pulumi:"keyPairName"`
 	// A regex string to filter results by mobile phone name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The payment type.Valid values: `PayAsYouGo`,`Subscription`
 	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`

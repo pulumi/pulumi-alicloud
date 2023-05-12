@@ -65,7 +65,8 @@ type GetAlertContactsArgs struct {
 	// A list of Alert Contact IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Alert Contact name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The mobile number of the alert contact.
 	PhoneNum *string `pulumi:"phoneNum"`
@@ -107,7 +108,8 @@ type GetAlertContactsOutputArgs struct {
 	// A list of Alert Contact IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Alert Contact name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The mobile number of the alert contact.
 	PhoneNum pulumi.StringPtrInput `pulumi:"phoneNum"`

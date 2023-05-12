@@ -16,19 +16,28 @@ public final class ProjectPropertiesEncryption {
      * @return Algorithm.
      * 
      */
-    private @Nullable String algorithm;
+    private final @Nullable String algorithm;
     /**
      * @return Whether to open.
      * 
      */
-    private @Nullable Boolean enable;
+    private final @Nullable Boolean enable;
     /**
      * @return Encryption algorithm key.
      * 
      */
-    private @Nullable String key;
+    private final @Nullable String key;
 
-    private ProjectPropertiesEncryption() {}
+    @CustomType.Constructor
+    private ProjectPropertiesEncryption(
+        @CustomType.Parameter("algorithm") @Nullable String algorithm,
+        @CustomType.Parameter("enable") @Nullable Boolean enable,
+        @CustomType.Parameter("key") @Nullable String key) {
+        this.algorithm = algorithm;
+        this.enable = enable;
+        this.key = key;
+    }
+
     /**
      * @return Algorithm.
      * 
@@ -58,12 +67,16 @@ public final class ProjectPropertiesEncryption {
     public static Builder builder(ProjectPropertiesEncryption defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String algorithm;
         private @Nullable Boolean enable;
         private @Nullable String key;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ProjectPropertiesEncryption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.algorithm = defaults.algorithm;
@@ -71,27 +84,19 @@ public final class ProjectPropertiesEncryption {
     	      this.key = defaults.key;
         }
 
-        @CustomType.Setter
         public Builder algorithm(@Nullable String algorithm) {
             this.algorithm = algorithm;
             return this;
         }
-        @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
             this.enable = enable;
             return this;
         }
-        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
-        }
-        public ProjectPropertiesEncryption build() {
-            final var o = new ProjectPropertiesEncryption();
-            o.algorithm = algorithm;
-            o.enable = enable;
-            o.key = key;
-            return o;
+        }        public ProjectPropertiesEncryption build() {
+            return new ProjectPropertiesEncryption(algorithm, enable, key);
         }
     }
 }

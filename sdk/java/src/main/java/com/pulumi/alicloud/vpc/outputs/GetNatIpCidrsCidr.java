@@ -14,49 +14,70 @@ public final class GetNatIpCidrsCidr {
      * @return The time when the CIDR block was created.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The ID of the Nat Ip Cidr.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Whether it is the default NAT IP ADDRESS. Valid values:`true` or `false`.`true`: is the default NAT IP ADDRESS. `false`: it is not the default NAT IP ADDRESS.
      * 
      */
-    private Boolean isDefault;
+    private final Boolean isDefault;
     /**
      * @return The ID of the VPC NAT gateway.
      * 
      */
-    private String natGatewayId;
+    private final String natGatewayId;
     /**
      * @return The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
      * 
      */
-    private String natIpCidr;
+    private final String natIpCidr;
     /**
      * @return NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
      * 
      */
-    private String natIpCidrDescription;
+    private final String natIpCidrDescription;
     /**
      * @return NAT IP ADDRESS instance ID.
      * 
      */
-    private String natIpCidrId;
+    private final String natIpCidrId;
     /**
      * @return NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
      * 
      */
-    private String natIpCidrName;
+    private final String natIpCidrName;
     /**
      * @return The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetNatIpCidrsCidr() {}
+    @CustomType.Constructor
+    private GetNatIpCidrsCidr(
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("isDefault") Boolean isDefault,
+        @CustomType.Parameter("natGatewayId") String natGatewayId,
+        @CustomType.Parameter("natIpCidr") String natIpCidr,
+        @CustomType.Parameter("natIpCidrDescription") String natIpCidrDescription,
+        @CustomType.Parameter("natIpCidrId") String natIpCidrId,
+        @CustomType.Parameter("natIpCidrName") String natIpCidrName,
+        @CustomType.Parameter("status") String status) {
+        this.createTime = createTime;
+        this.id = id;
+        this.isDefault = isDefault;
+        this.natGatewayId = natGatewayId;
+        this.natIpCidr = natIpCidr;
+        this.natIpCidrDescription = natIpCidrDescription;
+        this.natIpCidrId = natIpCidrId;
+        this.natIpCidrName = natIpCidrName;
+        this.status = status;
+    }
+
     /**
      * @return The time when the CIDR block was created.
      * 
@@ -128,7 +149,7 @@ public final class GetNatIpCidrsCidr {
     public static Builder builder(GetNatIpCidrsCidr defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String createTime;
         private String id;
@@ -139,7 +160,11 @@ public final class GetNatIpCidrsCidr {
         private String natIpCidrId;
         private String natIpCidrName;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetNatIpCidrsCidr defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -153,63 +178,43 @@ public final class GetNatIpCidrsCidr {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder isDefault(Boolean isDefault) {
             this.isDefault = Objects.requireNonNull(isDefault);
             return this;
         }
-        @CustomType.Setter
         public Builder natGatewayId(String natGatewayId) {
             this.natGatewayId = Objects.requireNonNull(natGatewayId);
             return this;
         }
-        @CustomType.Setter
         public Builder natIpCidr(String natIpCidr) {
             this.natIpCidr = Objects.requireNonNull(natIpCidr);
             return this;
         }
-        @CustomType.Setter
         public Builder natIpCidrDescription(String natIpCidrDescription) {
             this.natIpCidrDescription = Objects.requireNonNull(natIpCidrDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder natIpCidrId(String natIpCidrId) {
             this.natIpCidrId = Objects.requireNonNull(natIpCidrId);
             return this;
         }
-        @CustomType.Setter
         public Builder natIpCidrName(String natIpCidrName) {
             this.natIpCidrName = Objects.requireNonNull(natIpCidrName);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetNatIpCidrsCidr build() {
-            final var o = new GetNatIpCidrsCidr();
-            o.createTime = createTime;
-            o.id = id;
-            o.isDefault = isDefault;
-            o.natGatewayId = natGatewayId;
-            o.natIpCidr = natIpCidr;
-            o.natIpCidrDescription = natIpCidrDescription;
-            o.natIpCidrId = natIpCidrId;
-            o.natIpCidrName = natIpCidrName;
-            o.status = status;
-            return o;
+        }        public GetNatIpCidrsCidr build() {
+            return new GetNatIpCidrsCidr(createTime, id, isDefault, natGatewayId, natIpCidr, natIpCidrDescription, natIpCidrId, natIpCidrName, status);
         }
     }
 }

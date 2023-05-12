@@ -11,10 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class ScalingGroupVServerGroupsVserverGroup {
-    private String loadbalancerId;
-    private List<ScalingGroupVServerGroupsVserverGroupVserverAttribute> vserverAttributes;
+    private final String loadbalancerId;
+    private final List<ScalingGroupVServerGroupsVserverGroupVserverAttribute> vserverAttributes;
 
-    private ScalingGroupVServerGroupsVserverGroup() {}
+    @CustomType.Constructor
+    private ScalingGroupVServerGroupsVserverGroup(
+        @CustomType.Parameter("loadbalancerId") String loadbalancerId,
+        @CustomType.Parameter("vserverAttributes") List<ScalingGroupVServerGroupsVserverGroupVserverAttribute> vserverAttributes) {
+        this.loadbalancerId = loadbalancerId;
+        this.vserverAttributes = vserverAttributes;
+    }
+
     public String loadbalancerId() {
         return this.loadbalancerId;
     }
@@ -29,35 +36,33 @@ public final class ScalingGroupVServerGroupsVserverGroup {
     public static Builder builder(ScalingGroupVServerGroupsVserverGroup defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String loadbalancerId;
         private List<ScalingGroupVServerGroupsVserverGroupVserverAttribute> vserverAttributes;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ScalingGroupVServerGroupsVserverGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.loadbalancerId = defaults.loadbalancerId;
     	      this.vserverAttributes = defaults.vserverAttributes;
         }
 
-        @CustomType.Setter
         public Builder loadbalancerId(String loadbalancerId) {
             this.loadbalancerId = Objects.requireNonNull(loadbalancerId);
             return this;
         }
-        @CustomType.Setter
         public Builder vserverAttributes(List<ScalingGroupVServerGroupsVserverGroupVserverAttribute> vserverAttributes) {
             this.vserverAttributes = Objects.requireNonNull(vserverAttributes);
             return this;
         }
         public Builder vserverAttributes(ScalingGroupVServerGroupsVserverGroupVserverAttribute... vserverAttributes) {
             return vserverAttributes(List.of(vserverAttributes));
-        }
-        public ScalingGroupVServerGroupsVserverGroup build() {
-            final var o = new ScalingGroupVServerGroupsVserverGroup();
-            o.loadbalancerId = loadbalancerId;
-            o.vserverAttributes = vserverAttributes;
-            return o;
+        }        public ScalingGroupVServerGroupsVserverGroup build() {
+            return new ScalingGroupVServerGroupsVserverGroup(loadbalancerId, vserverAttributes);
         }
     }
 }

@@ -12,15 +12,24 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ManagedKubernetesAddon {
-    private @Nullable String config;
-    private @Nullable Boolean disabled;
+    private final @Nullable String config;
+    private final @Nullable Boolean disabled;
     /**
      * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
      * 
      */
-    private @Nullable String name;
+    private final @Nullable String name;
 
-    private ManagedKubernetesAddon() {}
+    @CustomType.Constructor
+    private ManagedKubernetesAddon(
+        @CustomType.Parameter("config") @Nullable String config,
+        @CustomType.Parameter("disabled") @Nullable Boolean disabled,
+        @CustomType.Parameter("name") @Nullable String name) {
+        this.config = config;
+        this.disabled = disabled;
+        this.name = name;
+    }
+
     public Optional<String> config() {
         return Optional.ofNullable(this.config);
     }
@@ -42,12 +51,16 @@ public final class ManagedKubernetesAddon {
     public static Builder builder(ManagedKubernetesAddon defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String config;
         private @Nullable Boolean disabled;
         private @Nullable String name;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ManagedKubernetesAddon defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.config = defaults.config;
@@ -55,27 +68,19 @@ public final class ManagedKubernetesAddon {
     	      this.name = defaults.name;
         }
 
-        @CustomType.Setter
         public Builder config(@Nullable String config) {
             this.config = config;
             return this;
         }
-        @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
             this.disabled = disabled;
             return this;
         }
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
-        }
-        public ManagedKubernetesAddon build() {
-            final var o = new ManagedKubernetesAddon();
-            o.config = config;
-            o.disabled = disabled;
-            o.name = name;
-            return o;
+        }        public ManagedKubernetesAddon build() {
+            return new ManagedKubernetesAddon(config, disabled, name);
         }
     }
 }

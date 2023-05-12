@@ -50,6 +50,9 @@ namespace Pulumi.AliCloud.Cfg
     [AliCloudResourceType("alicloud:cfg/configurationRecorder:ConfigurationRecorder")]
     public partial class ConfigurationRecorder : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
+        /// </summary>
         [Output("enterpriseEdition")]
         public Output<bool> EnterpriseEdition { get; private set; } = null!;
 
@@ -125,6 +128,9 @@ namespace Pulumi.AliCloud.Cfg
 
     public sealed class ConfigurationRecorderArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
+        /// </summary>
         [Input("enterpriseEdition")]
         public Input<bool>? EnterpriseEdition { get; set; }
 
@@ -150,6 +156,9 @@ namespace Pulumi.AliCloud.Cfg
 
     public sealed class ConfigurationRecorderState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
+        /// </summary>
         [Input("enterpriseEdition")]
         public Input<bool>? EnterpriseEdition { get; set; }
 

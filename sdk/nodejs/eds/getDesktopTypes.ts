@@ -64,6 +64,9 @@ export interface GetDesktopTypesArgs {
      * The Memory size. Unit: MiB.
      */
     memorySize?: number;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the resource.
@@ -135,6 +138,9 @@ export interface GetDesktopTypesOutputArgs {
      * The Memory size. Unit: MiB.
      */
     memorySize?: pulumi.Input<number>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the resource.

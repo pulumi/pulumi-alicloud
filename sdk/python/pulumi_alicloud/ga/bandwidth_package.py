@@ -40,6 +40,8 @@ class BandwidthPackageArgs:
         :param pulumi.Input[bool] auto_use_coupon: Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
         :param pulumi.Input[str] bandwidth_package_name: The name of the bandwidth packet.
         :param pulumi.Input[str] bandwidth_type: The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+               
+               > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         :param pulumi.Input[str] billing_type: The billing type. Valid values: `PayBy95`, `PayByTraffic`.
         :param pulumi.Input[str] cbn_geographic_region_ida: Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
         :param pulumi.Input[str] cbn_geographic_region_idb: Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
@@ -157,6 +159,8 @@ class BandwidthPackageArgs:
     def bandwidth_type(self) -> Optional[pulumi.Input[str]]:
         """
         The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+
+        > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         """
         return pulumi.get(self, "bandwidth_type")
 
@@ -290,6 +294,8 @@ class _BandwidthPackageState:
         :param pulumi.Input[int] bandwidth: The bandwidth value of bandwidth packet.
         :param pulumi.Input[str] bandwidth_package_name: The name of the bandwidth packet.
         :param pulumi.Input[str] bandwidth_type: The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+               
+               > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         :param pulumi.Input[str] billing_type: The billing type. Valid values: `PayBy95`, `PayByTraffic`.
         :param pulumi.Input[str] cbn_geographic_region_ida: Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
         :param pulumi.Input[str] cbn_geographic_region_idb: Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
@@ -401,6 +407,8 @@ class _BandwidthPackageState:
     def bandwidth_type(self) -> Optional[pulumi.Input[str]]:
         """
         The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+
+        > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         """
         return pulumi.get(self, "bandwidth_type")
 
@@ -594,6 +602,8 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[int] bandwidth: The bandwidth value of bandwidth packet.
         :param pulumi.Input[str] bandwidth_package_name: The name of the bandwidth packet.
         :param pulumi.Input[str] bandwidth_type: The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+               
+               > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         :param pulumi.Input[str] billing_type: The billing type. Valid values: `PayBy95`, `PayByTraffic`.
         :param pulumi.Input[str] cbn_geographic_region_ida: Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
         :param pulumi.Input[str] cbn_geographic_region_idb: Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
@@ -744,6 +754,8 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[int] bandwidth: The bandwidth value of bandwidth packet.
         :param pulumi.Input[str] bandwidth_package_name: The name of the bandwidth packet.
         :param pulumi.Input[str] bandwidth_type: The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+               
+               > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         :param pulumi.Input[str] billing_type: The billing type. Valid values: `PayBy95`, `PayByTraffic`.
         :param pulumi.Input[str] cbn_geographic_region_ida: Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
         :param pulumi.Input[str] cbn_geographic_region_idb: Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
@@ -824,6 +836,8 @@ class BandwidthPackage(pulumi.CustomResource):
     def bandwidth_type(self) -> pulumi.Output[Optional[str]]:
         """
         The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+
+        > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         """
         return pulumi.get(self, "bandwidth_type")
 

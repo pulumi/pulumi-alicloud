@@ -14,24 +14,35 @@ public final class GetAlidnsDomainGroupsGroup {
      * @return Number of domain names in the group.
      * 
      */
-    private Integer domainCount;
+    private final Integer domainCount;
     /**
      * @return Id of the domain group.
      * 
      */
-    private String groupId;
+    private final String groupId;
     /**
      * @return The name of the domain group.
      * 
      */
-    private String groupName;
+    private final String groupName;
     /**
      * @return Id of the instance.
      * 
      */
-    private String id;
+    private final String id;
 
-    private GetAlidnsDomainGroupsGroup() {}
+    @CustomType.Constructor
+    private GetAlidnsDomainGroupsGroup(
+        @CustomType.Parameter("domainCount") Integer domainCount,
+        @CustomType.Parameter("groupId") String groupId,
+        @CustomType.Parameter("groupName") String groupName,
+        @CustomType.Parameter("id") String id) {
+        this.domainCount = domainCount;
+        this.groupId = groupId;
+        this.groupName = groupName;
+        this.id = id;
+    }
+
     /**
      * @return Number of domain names in the group.
      * 
@@ -68,13 +79,17 @@ public final class GetAlidnsDomainGroupsGroup {
     public static Builder builder(GetAlidnsDomainGroupsGroup defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer domainCount;
         private String groupId;
         private String groupName;
         private String id;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAlidnsDomainGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domainCount = defaults.domainCount;
@@ -83,33 +98,23 @@ public final class GetAlidnsDomainGroupsGroup {
     	      this.id = defaults.id;
         }
 
-        @CustomType.Setter
         public Builder domainCount(Integer domainCount) {
             this.domainCount = Objects.requireNonNull(domainCount);
             return this;
         }
-        @CustomType.Setter
         public Builder groupId(String groupId) {
             this.groupId = Objects.requireNonNull(groupId);
             return this;
         }
-        @CustomType.Setter
         public Builder groupName(String groupName) {
             this.groupName = Objects.requireNonNull(groupName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }
-        public GetAlidnsDomainGroupsGroup build() {
-            final var o = new GetAlidnsDomainGroupsGroup();
-            o.domainCount = domainCount;
-            o.groupId = groupId;
-            o.groupName = groupName;
-            o.id = id;
-            return o;
+        }        public GetAlidnsDomainGroupsGroup build() {
+            return new GetAlidnsDomainGroupsGroup(domainCount, groupId, groupName, id);
         }
     }
 }

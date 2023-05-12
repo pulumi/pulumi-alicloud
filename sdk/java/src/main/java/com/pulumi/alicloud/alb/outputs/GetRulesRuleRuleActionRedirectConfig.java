@@ -13,34 +13,49 @@ public final class GetRulesRuleRuleActionRedirectConfig {
      * @return The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
      * 
      */
-    private String host;
+    private final String host;
     /**
      * @return The redirect method. Valid values:301, 302, 303, 307, and 308.
      * 
      */
-    private String httpCode;
+    private final String httpCode;
     /**
      * @return The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / &amp; ~ @ :. It cannot contain the following special characters: &#34; % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
      * 
      */
-    private String path;
+    private final String path;
     /**
      * @return The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
      * 
      */
-    private String port;
+    private final String port;
     /**
      * @return The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
      * 
      */
-    private String protocol;
+    private final String protocol;
     /**
      * @return The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | &lt; &gt; &amp;.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
      * 
      */
-    private String query;
+    private final String query;
 
-    private GetRulesRuleRuleActionRedirectConfig() {}
+    @CustomType.Constructor
+    private GetRulesRuleRuleActionRedirectConfig(
+        @CustomType.Parameter("host") String host,
+        @CustomType.Parameter("httpCode") String httpCode,
+        @CustomType.Parameter("path") String path,
+        @CustomType.Parameter("port") String port,
+        @CustomType.Parameter("protocol") String protocol,
+        @CustomType.Parameter("query") String query) {
+        this.host = host;
+        this.httpCode = httpCode;
+        this.path = path;
+        this.port = port;
+        this.protocol = protocol;
+        this.query = query;
+    }
+
     /**
      * @return The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
      * 
@@ -91,7 +106,7 @@ public final class GetRulesRuleRuleActionRedirectConfig {
     public static Builder builder(GetRulesRuleRuleActionRedirectConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String host;
         private String httpCode;
@@ -99,7 +114,11 @@ public final class GetRulesRuleRuleActionRedirectConfig {
         private String port;
         private String protocol;
         private String query;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRulesRuleRuleActionRedirectConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.host = defaults.host;
@@ -110,45 +129,31 @@ public final class GetRulesRuleRuleActionRedirectConfig {
     	      this.query = defaults.query;
         }
 
-        @CustomType.Setter
         public Builder host(String host) {
             this.host = Objects.requireNonNull(host);
             return this;
         }
-        @CustomType.Setter
         public Builder httpCode(String httpCode) {
             this.httpCode = Objects.requireNonNull(httpCode);
             return this;
         }
-        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
-        @CustomType.Setter
         public Builder port(String port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
-        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
         }
-        @CustomType.Setter
         public Builder query(String query) {
             this.query = Objects.requireNonNull(query);
             return this;
-        }
-        public GetRulesRuleRuleActionRedirectConfig build() {
-            final var o = new GetRulesRuleRuleActionRedirectConfig();
-            o.host = host;
-            o.httpCode = httpCode;
-            o.path = path;
-            o.port = port;
-            o.protocol = protocol;
-            o.query = query;
-            return o;
+        }        public GetRulesRuleRuleActionRedirectConfig build() {
+            return new GetRulesRuleRuleActionRedirectConfig(host, httpCode, path, port, protocol, query);
         }
     }
 }

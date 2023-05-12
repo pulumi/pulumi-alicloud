@@ -17,26 +17,41 @@ public final class GetNamespacesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of matched Container Registry namespaces. Its element is a namespace name.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of namespace names.
      * 
      */
-    private List<String> names;
+    private final List<String> names;
     /**
      * @return A list of matched Container Registry namespaces. Each element contains the following attributes:
      * 
      */
-    private List<GetNamespacesNamespace> namespaces;
-    private @Nullable String outputFile;
+    private final List<GetNamespacesNamespace> namespaces;
+    private final @Nullable String outputFile;
 
-    private GetNamespacesResult() {}
+    @CustomType.Constructor
+    private GetNamespacesResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("namespaces") List<GetNamespacesNamespace> namespaces,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.namespaces = namespaces;
+        this.outputFile = outputFile;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -79,7 +94,7 @@ public final class GetNamespacesResult {
     public static Builder builder(GetNamespacesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -87,7 +102,11 @@ public final class GetNamespacesResult {
         private List<String> names;
         private List<GetNamespacesNamespace> namespaces;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetNamespacesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -98,12 +117,10 @@ public final class GetNamespacesResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -111,12 +128,10 @@ public final class GetNamespacesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -124,7 +139,6 @@ public final class GetNamespacesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder namespaces(List<GetNamespacesNamespace> namespaces) {
             this.namespaces = Objects.requireNonNull(namespaces);
             return this;
@@ -132,20 +146,11 @@ public final class GetNamespacesResult {
         public Builder namespaces(GetNamespacesNamespace... namespaces) {
             return namespaces(List.of(namespaces));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetNamespacesResult build() {
-            final var o = new GetNamespacesResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.namespaces = namespaces;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetNamespacesResult build() {
+            return new GetNamespacesResult(id, ids, nameRegex, names, namespaces, outputFile);
         }
     }
 }

@@ -182,6 +182,7 @@ def get_route_entries(cidr_block: Optional[str] = None,
 
     :param str cidr_block: The destination CIDR block of the route entry.
     :param str instance_id: The instance ID of the next hop.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str route_table_id: The ID of the router table to which the route entry belongs.
     :param str type: The type of the route entry.
     """
@@ -273,6 +274,7 @@ def get_route_entries_output(cidr_block: Optional[pulumi.Input[Optional[str]]] =
 
     :param str cidr_block: The destination CIDR block of the route entry.
     :param str instance_id: The instance ID of the next hop.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str route_table_id: The ID of the router table to which the route entry belongs.
     :param str type: The type of the route entry.
     """

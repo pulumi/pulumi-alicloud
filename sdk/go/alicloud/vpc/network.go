@@ -10,6 +10,39 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//				VpcName:   pulumi.String("tf_test_foo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Module Support
+//
+// You can use the existing vpc module
+// to create a VPC and several VSwitches one-click.
+//
 // ## Import
 //
 // VPC can be imported using the id, e.g.
@@ -29,6 +62,8 @@ type Network struct {
 	// Specifies whether to pre-check this request only. Valid values: `true` and `false`.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+	//
+	// > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
 	EnableIpv6 pulumi.BoolPtrOutput `pulumi:"enableIpv6"`
 	// (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
 	Ipv6CidrBlock pulumi.StringOutput `pulumi:"ipv6CidrBlock"`
@@ -96,6 +131,8 @@ type networkState struct {
 	// Specifies whether to pre-check this request only. Valid values: `true` and `false`.
 	DryRun *bool `pulumi:"dryRun"`
 	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+	//
+	// > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
 	// (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
 	Ipv6CidrBlock *string `pulumi:"ipv6CidrBlock"`
@@ -135,6 +172,8 @@ type NetworkState struct {
 	// Specifies whether to pre-check this request only. Valid values: `true` and `false`.
 	DryRun pulumi.BoolPtrInput
 	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+	//
+	// > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
 	EnableIpv6 pulumi.BoolPtrInput
 	// (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
 	Ipv6CidrBlock pulumi.StringPtrInput
@@ -178,6 +217,8 @@ type networkArgs struct {
 	// Specifies whether to pre-check this request only. Valid values: `true` and `false`.
 	DryRun *bool `pulumi:"dryRun"`
 	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+	//
+	// > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
 	// Field `name` has been deprecated from provider version 1.119.0. New field `vpcName` instead.
 	//
@@ -206,6 +247,8 @@ type NetworkArgs struct {
 	// Specifies whether to pre-check this request only. Valid values: `true` and `false`.
 	DryRun pulumi.BoolPtrInput
 	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+	//
+	// > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
 	EnableIpv6 pulumi.BoolPtrInput
 	// Field `name` has been deprecated from provider version 1.119.0. New field `vpcName` instead.
 	//
@@ -328,6 +371,8 @@ func (o NetworkOutput) DryRun() pulumi.BoolPtrOutput {
 }
 
 // Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+//
+// > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
 func (o NetworkOutput) EnableIpv6() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.BoolPtrOutput { return v.EnableIpv6 }).(pulumi.BoolPtrOutput)
 }

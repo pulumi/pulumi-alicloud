@@ -61,6 +61,9 @@ export interface GetGatewayFileSharesArgs {
      * A regex string to filter results by Gateway File Share name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -127,5 +130,8 @@ export interface GetGatewayFileSharesOutputArgs {
      * A regex string to filter results by Gateway File Share name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

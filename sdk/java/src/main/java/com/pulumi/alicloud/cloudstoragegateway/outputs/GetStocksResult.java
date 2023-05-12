@@ -13,16 +13,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStocksResult {
-    private @Nullable String gatewayClass;
+    private final @Nullable String gatewayClass;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private @Nullable String outputFile;
-    private List<GetStocksStock> stocks;
+    private final String id;
+    private final @Nullable String outputFile;
+    private final List<GetStocksStock> stocks;
 
-    private GetStocksResult() {}
+    @CustomType.Constructor
+    private GetStocksResult(
+        @CustomType.Parameter("gatewayClass") @Nullable String gatewayClass,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("stocks") List<GetStocksStock> stocks) {
+        this.gatewayClass = gatewayClass;
+        this.id = id;
+        this.outputFile = outputFile;
+        this.stocks = stocks;
+    }
+
     public Optional<String> gatewayClass() {
         return Optional.ofNullable(this.gatewayClass);
     }
@@ -47,13 +58,17 @@ public final class GetStocksResult {
     public static Builder builder(GetStocksResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String gatewayClass;
         private String id;
         private @Nullable String outputFile;
         private List<GetStocksStock> stocks;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetStocksResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gatewayClass = defaults.gatewayClass;
@@ -62,36 +77,26 @@ public final class GetStocksResult {
     	      this.stocks = defaults.stocks;
         }
 
-        @CustomType.Setter
         public Builder gatewayClass(@Nullable String gatewayClass) {
             this.gatewayClass = gatewayClass;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder stocks(List<GetStocksStock> stocks) {
             this.stocks = Objects.requireNonNull(stocks);
             return this;
         }
         public Builder stocks(GetStocksStock... stocks) {
             return stocks(List.of(stocks));
-        }
-        public GetStocksResult build() {
-            final var o = new GetStocksResult();
-            o.gatewayClass = gatewayClass;
-            o.id = id;
-            o.outputFile = outputFile;
-            o.stocks = stocks;
-            return o;
+        }        public GetStocksResult build() {
+            return new GetStocksResult(gatewayClass, id, outputFile, stocks);
         }
     }
 }

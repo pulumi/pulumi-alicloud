@@ -18,27 +18,44 @@ public final class GetEdgeKubernetesClustersResult {
      * @return A list of matched Kubernetes clusters. Each element contains the following attributes:
      * 
      */
-    private List<GetEdgeKubernetesClustersCluster> clusters;
-    private @Nullable Boolean enableDetails;
+    private final List<GetEdgeKubernetesClustersCluster> clusters;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of matched Kubernetes clusters&#39; ids.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of matched Kubernetes clusters&#39; names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
 
-    private GetEdgeKubernetesClustersResult() {}
+    @CustomType.Constructor
+    private GetEdgeKubernetesClustersResult(
+        @CustomType.Parameter("clusters") List<GetEdgeKubernetesClustersCluster> clusters,
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.clusters = clusters;
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+    }
+
     /**
      * @return A list of matched Kubernetes clusters. Each element contains the following attributes:
      * 
@@ -84,7 +101,7 @@ public final class GetEdgeKubernetesClustersResult {
     public static Builder builder(GetEdgeKubernetesClustersResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetEdgeKubernetesClustersCluster> clusters;
         private @Nullable Boolean enableDetails;
@@ -93,7 +110,11 @@ public final class GetEdgeKubernetesClustersResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEdgeKubernetesClustersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusters = defaults.clusters;
@@ -105,7 +126,6 @@ public final class GetEdgeKubernetesClustersResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder clusters(List<GetEdgeKubernetesClustersCluster> clusters) {
             this.clusters = Objects.requireNonNull(clusters);
             return this;
@@ -113,17 +133,14 @@ public final class GetEdgeKubernetesClustersResult {
         public Builder clusters(GetEdgeKubernetesClustersCluster... clusters) {
             return clusters(List.of(clusters));
         }
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -131,12 +148,10 @@ public final class GetEdgeKubernetesClustersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -144,21 +159,11 @@ public final class GetEdgeKubernetesClustersResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetEdgeKubernetesClustersResult build() {
-            final var o = new GetEdgeKubernetesClustersResult();
-            o.clusters = clusters;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetEdgeKubernetesClustersResult build() {
+            return new GetEdgeKubernetesClustersResult(clusters, enableDetails, id, ids, nameRegex, names, outputFile);
         }
     }
 }

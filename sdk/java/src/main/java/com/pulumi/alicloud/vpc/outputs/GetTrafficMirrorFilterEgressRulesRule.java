@@ -14,59 +14,84 @@ public final class GetTrafficMirrorFilterEgressRulesRule {
      * @return The destination CIDR block of the outbound traffic.
      * 
      */
-    private String destinationCidrBlock;
+    private final String destinationCidrBlock;
     /**
      * @return The destination port range of the outbound traffic.
      * 
      */
-    private String destinationPortRange;
+    private final String destinationPortRange;
     /**
      * @return The ID of the Traffic Mirror Filter Egress Rule.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The priority of the outbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
      * 
      */
-    private Integer priority;
+    private final Integer priority;
     /**
      * @return The transport protocol used by outbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
      * 
      */
-    private String protocol;
+    private final String protocol;
     /**
      * @return The collection policy of the inbound rule. Valid values: `accept` or `drop`. `accept`: collects network traffic. `drop`: does not collect network traffic.
      * 
      */
-    private String ruleAction;
+    private final String ruleAction;
     /**
      * @return The source CIDR block of the outbound traffic.
      * 
      */
-    private String sourceCidrBlock;
+    private final String sourceCidrBlock;
     /**
      * @return The source port range of the outbound traffic.
      * 
      */
-    private String sourcePortRange;
+    private final String sourcePortRange;
     /**
      * @return The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The ID of the filter associated with the outbound rule.
      * 
      */
-    private String trafficMirrorFilterId;
+    private final String trafficMirrorFilterId;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private String trafficMirrorFilterRuleId;
+    private final String trafficMirrorFilterRuleId;
 
-    private GetTrafficMirrorFilterEgressRulesRule() {}
+    @CustomType.Constructor
+    private GetTrafficMirrorFilterEgressRulesRule(
+        @CustomType.Parameter("destinationCidrBlock") String destinationCidrBlock,
+        @CustomType.Parameter("destinationPortRange") String destinationPortRange,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("priority") Integer priority,
+        @CustomType.Parameter("protocol") String protocol,
+        @CustomType.Parameter("ruleAction") String ruleAction,
+        @CustomType.Parameter("sourceCidrBlock") String sourceCidrBlock,
+        @CustomType.Parameter("sourcePortRange") String sourcePortRange,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("trafficMirrorFilterId") String trafficMirrorFilterId,
+        @CustomType.Parameter("trafficMirrorFilterRuleId") String trafficMirrorFilterRuleId) {
+        this.destinationCidrBlock = destinationCidrBlock;
+        this.destinationPortRange = destinationPortRange;
+        this.id = id;
+        this.priority = priority;
+        this.protocol = protocol;
+        this.ruleAction = ruleAction;
+        this.sourceCidrBlock = sourceCidrBlock;
+        this.sourcePortRange = sourcePortRange;
+        this.status = status;
+        this.trafficMirrorFilterId = trafficMirrorFilterId;
+        this.trafficMirrorFilterRuleId = trafficMirrorFilterRuleId;
+    }
+
     /**
      * @return The destination CIDR block of the outbound traffic.
      * 
@@ -152,7 +177,7 @@ public final class GetTrafficMirrorFilterEgressRulesRule {
     public static Builder builder(GetTrafficMirrorFilterEgressRulesRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String destinationCidrBlock;
         private String destinationPortRange;
@@ -165,7 +190,11 @@ public final class GetTrafficMirrorFilterEgressRulesRule {
         private String status;
         private String trafficMirrorFilterId;
         private String trafficMirrorFilterRuleId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTrafficMirrorFilterEgressRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destinationCidrBlock = defaults.destinationCidrBlock;
@@ -181,75 +210,51 @@ public final class GetTrafficMirrorFilterEgressRulesRule {
     	      this.trafficMirrorFilterRuleId = defaults.trafficMirrorFilterRuleId;
         }
 
-        @CustomType.Setter
         public Builder destinationCidrBlock(String destinationCidrBlock) {
             this.destinationCidrBlock = Objects.requireNonNull(destinationCidrBlock);
             return this;
         }
-        @CustomType.Setter
         public Builder destinationPortRange(String destinationPortRange) {
             this.destinationPortRange = Objects.requireNonNull(destinationPortRange);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder priority(Integer priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
-        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
         }
-        @CustomType.Setter
         public Builder ruleAction(String ruleAction) {
             this.ruleAction = Objects.requireNonNull(ruleAction);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceCidrBlock(String sourceCidrBlock) {
             this.sourceCidrBlock = Objects.requireNonNull(sourceCidrBlock);
             return this;
         }
-        @CustomType.Setter
         public Builder sourcePortRange(String sourcePortRange) {
             this.sourcePortRange = Objects.requireNonNull(sourcePortRange);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder trafficMirrorFilterId(String trafficMirrorFilterId) {
             this.trafficMirrorFilterId = Objects.requireNonNull(trafficMirrorFilterId);
             return this;
         }
-        @CustomType.Setter
         public Builder trafficMirrorFilterRuleId(String trafficMirrorFilterRuleId) {
             this.trafficMirrorFilterRuleId = Objects.requireNonNull(trafficMirrorFilterRuleId);
             return this;
-        }
-        public GetTrafficMirrorFilterEgressRulesRule build() {
-            final var o = new GetTrafficMirrorFilterEgressRulesRule();
-            o.destinationCidrBlock = destinationCidrBlock;
-            o.destinationPortRange = destinationPortRange;
-            o.id = id;
-            o.priority = priority;
-            o.protocol = protocol;
-            o.ruleAction = ruleAction;
-            o.sourceCidrBlock = sourceCidrBlock;
-            o.sourcePortRange = sourcePortRange;
-            o.status = status;
-            o.trafficMirrorFilterId = trafficMirrorFilterId;
-            o.trafficMirrorFilterRuleId = trafficMirrorFilterRuleId;
-            return o;
+        }        public GetTrafficMirrorFilterEgressRulesRule build() {
+            return new GetTrafficMirrorFilterEgressRulesRule(destinationCidrBlock, destinationPortRange, id, priority, protocol, ruleAction, sourceCidrBlock, sourcePortRange, status, trafficMirrorFilterId, trafficMirrorFilterRuleId);
         }
     }
 }

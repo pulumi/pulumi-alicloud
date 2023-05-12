@@ -386,6 +386,7 @@ def get_application_load_balancers(address: Optional[str] = None,
     :param str master_zone_id: The master zone id of the SLB.
     :param str name_regex: A regex string to filter results by SLB name.
     :param str network_type: Network type of the SLBs. Valid values: `vpc` and `classic`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str payment_type: The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
     :param str resource_group_id: The Id of resource group which SLB belongs.
     :param str server_id: The server ID.
@@ -505,6 +506,7 @@ def get_application_load_balancers_output(address: Optional[pulumi.Input[Optiona
     :param str master_zone_id: The master zone id of the SLB.
     :param str name_regex: A regex string to filter results by SLB name.
     :param str network_type: Network type of the SLBs. Valid values: `vpc` and `classic`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str payment_type: The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
     :param str resource_group_id: The Id of resource group which SLB belongs.
     :param str server_id: The server ID.

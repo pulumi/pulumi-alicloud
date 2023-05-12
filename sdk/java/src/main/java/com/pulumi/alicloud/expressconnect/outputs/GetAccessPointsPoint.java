@@ -15,54 +15,77 @@ public final class GetAccessPointsPoint {
      * @return Query to the Access Point Feature Model.
      * 
      */
-    private List<GetAccessPointsPointAccessPointFeatureModel> accessPointFeatureModels;
+    private final List<GetAccessPointsPointAccessPointFeatureModel> accessPointFeatureModels;
     /**
      * @return The Access Point ID.
      * 
      */
-    private String accessPointId;
+    private final String accessPointId;
     /**
      * @return Access Point Name.
      * 
      */
-    private String accessPointName;
+    private final String accessPointName;
     /**
      * @return The Access Point Is Located an ID.
      * 
      */
-    private String attachedRegionNo;
+    private final String attachedRegionNo;
     /**
      * @return The Access Point Description.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The Access Point Belongs to the Operator.
      * 
      */
-    private String hostOperator;
+    private final String hostOperator;
     /**
      * @return The ID of the Access Point.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The Location of the Access Point.
      * 
      */
-    private String location;
+    private final String location;
     /**
      * @return The Physical Connection to Which the Access Point State.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The Physical Connection to Which the Network Type.
      * 
      */
-    private String type;
+    private final String type;
 
-    private GetAccessPointsPoint() {}
+    @CustomType.Constructor
+    private GetAccessPointsPoint(
+        @CustomType.Parameter("accessPointFeatureModels") List<GetAccessPointsPointAccessPointFeatureModel> accessPointFeatureModels,
+        @CustomType.Parameter("accessPointId") String accessPointId,
+        @CustomType.Parameter("accessPointName") String accessPointName,
+        @CustomType.Parameter("attachedRegionNo") String attachedRegionNo,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("hostOperator") String hostOperator,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("location") String location,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("type") String type) {
+        this.accessPointFeatureModels = accessPointFeatureModels;
+        this.accessPointId = accessPointId;
+        this.accessPointName = accessPointName;
+        this.attachedRegionNo = attachedRegionNo;
+        this.description = description;
+        this.hostOperator = hostOperator;
+        this.id = id;
+        this.location = location;
+        this.status = status;
+        this.type = type;
+    }
+
     /**
      * @return Query to the Access Point Feature Model.
      * 
@@ -141,7 +164,7 @@ public final class GetAccessPointsPoint {
     public static Builder builder(GetAccessPointsPoint defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetAccessPointsPointAccessPointFeatureModel> accessPointFeatureModels;
         private String accessPointId;
@@ -153,7 +176,11 @@ public final class GetAccessPointsPoint {
         private String location;
         private String status;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAccessPointsPoint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessPointFeatureModels = defaults.accessPointFeatureModels;
@@ -168,7 +195,6 @@ public final class GetAccessPointsPoint {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder accessPointFeatureModels(List<GetAccessPointsPointAccessPointFeatureModel> accessPointFeatureModels) {
             this.accessPointFeatureModels = Objects.requireNonNull(accessPointFeatureModels);
             return this;
@@ -176,64 +202,43 @@ public final class GetAccessPointsPoint {
         public Builder accessPointFeatureModels(GetAccessPointsPointAccessPointFeatureModel... accessPointFeatureModels) {
             return accessPointFeatureModels(List.of(accessPointFeatureModels));
         }
-        @CustomType.Setter
         public Builder accessPointId(String accessPointId) {
             this.accessPointId = Objects.requireNonNull(accessPointId);
             return this;
         }
-        @CustomType.Setter
         public Builder accessPointName(String accessPointName) {
             this.accessPointName = Objects.requireNonNull(accessPointName);
             return this;
         }
-        @CustomType.Setter
         public Builder attachedRegionNo(String attachedRegionNo) {
             this.attachedRegionNo = Objects.requireNonNull(attachedRegionNo);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder hostOperator(String hostOperator) {
             this.hostOperator = Objects.requireNonNull(hostOperator);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder location(String location) {
             this.location = Objects.requireNonNull(location);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetAccessPointsPoint build() {
-            final var o = new GetAccessPointsPoint();
-            o.accessPointFeatureModels = accessPointFeatureModels;
-            o.accessPointId = accessPointId;
-            o.accessPointName = accessPointName;
-            o.attachedRegionNo = attachedRegionNo;
-            o.description = description;
-            o.hostOperator = hostOperator;
-            o.id = id;
-            o.location = location;
-            o.status = status;
-            o.type = type;
-            return o;
+        }        public GetAccessPointsPoint build() {
+            return new GetAccessPointsPoint(accessPointFeatureModels, accessPointId, accessPointName, attachedRegionNo, description, hostOperator, id, location, status, type);
         }
     }
 }

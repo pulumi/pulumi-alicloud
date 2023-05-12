@@ -220,6 +220,7 @@ def get_instances(availability_zone: Optional[str] = None,
     :param Sequence[str] ids: The ids list of AnalyticDB for PostgreSQL instances.
     :param str instance_network_type: The network type of the instance.
     :param str name_regex: A regex string to apply to the instance name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the enterprise resource group to which the instance belongs.
     :param str status: The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
     :param Mapping[str, Any] tags: The tags of the instance.
@@ -302,6 +303,7 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
     :param Sequence[str] ids: The ids list of AnalyticDB for PostgreSQL instances.
     :param str instance_network_type: The network type of the instance.
     :param str name_regex: A regex string to apply to the instance name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the enterprise resource group to which the instance belongs.
     :param str status: The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
     :param Mapping[str, Any] tags: The tags of the instance.

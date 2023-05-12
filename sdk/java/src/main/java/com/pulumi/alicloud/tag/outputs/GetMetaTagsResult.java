@@ -17,12 +17,23 @@ public final class GetMetaTagsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private @Nullable String keyName;
-    private @Nullable String outputFile;
-    private List<GetMetaTagsTag> tags;
+    private final String id;
+    private final @Nullable String keyName;
+    private final @Nullable String outputFile;
+    private final List<GetMetaTagsTag> tags;
 
-    private GetMetaTagsResult() {}
+    @CustomType.Constructor
+    private GetMetaTagsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("keyName") @Nullable String keyName,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("tags") List<GetMetaTagsTag> tags) {
+        this.id = id;
+        this.keyName = keyName;
+        this.outputFile = outputFile;
+        this.tags = tags;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -47,13 +58,17 @@ public final class GetMetaTagsResult {
     public static Builder builder(GetMetaTagsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private @Nullable String keyName;
         private @Nullable String outputFile;
         private List<GetMetaTagsTag> tags;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetMetaTagsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -62,36 +77,26 @@ public final class GetMetaTagsResult {
     	      this.tags = defaults.tags;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder keyName(@Nullable String keyName) {
             this.keyName = keyName;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder tags(List<GetMetaTagsTag> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
         public Builder tags(GetMetaTagsTag... tags) {
             return tags(List.of(tags));
-        }
-        public GetMetaTagsResult build() {
-            final var o = new GetMetaTagsResult();
-            o.id = id;
-            o.keyName = keyName;
-            o.outputFile = outputFile;
-            o.tags = tags;
-            return o;
+        }        public GetMetaTagsResult build() {
+            return new GetMetaTagsResult(id, keyName, outputFile, tags);
         }
     }
 }

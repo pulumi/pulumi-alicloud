@@ -63,9 +63,10 @@ type GetEcsInvocationsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
 	InvokeStatus *string `pulumi:"invokeStatus"`
-	OutputFile   *string `pulumi:"outputFile"`
-	PageNumber   *int    `pulumi:"pageNumber"`
-	PageSize     *int    `pulumi:"pageSize"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
 }
 
 // A collection of values returned by getEcsInvocations.
@@ -105,9 +106,10 @@ type GetEcsInvocationsOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
 	InvokeStatus pulumi.StringPtrInput `pulumi:"invokeStatus"`
-	OutputFile   pulumi.StringPtrInput `pulumi:"outputFile"`
-	PageNumber   pulumi.IntPtrInput    `pulumi:"pageNumber"`
-	PageSize     pulumi.IntPtrInput    `pulumi:"pageSize"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 }
 
 func (GetEcsInvocationsOutputArgs) ElementType() reflect.Type {

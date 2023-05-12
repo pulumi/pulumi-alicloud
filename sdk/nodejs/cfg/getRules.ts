@@ -64,6 +64,9 @@ export interface GetRulesArgs {
      * A regex string to filter results by rule name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
@@ -167,6 +170,9 @@ export interface GetRulesOutputArgs {
      * A regex string to filter results by rule name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.

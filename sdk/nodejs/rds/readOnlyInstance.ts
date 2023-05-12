@@ -136,10 +136,14 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
      * The attribute of the IP address whitelist. By default, this parameter is empty.
+     *
+     * > **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
      */
     public readonly dbInstanceIpArrayAttribute!: pulumi.Output<string | undefined>;
     /**
      * The name of the IP address whitelist. Default value: Default.
+     *
+     * > **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
      */
     public readonly dbInstanceIpArrayName!: pulumi.Output<string | undefined>;
     /**
@@ -245,6 +249,8 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
     public readonly sslEnabled!: pulumi.Output<number>;
     /**
      * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+     *
+     * > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
      */
     public readonly switchTime!: pulumi.Output<string | undefined>;
     /**
@@ -261,6 +267,8 @@ export class ReadOnlyInstance extends pulumi.CustomResource {
      * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
      * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+     *
+     * > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
      */
     public readonly targetMinorVersion!: pulumi.Output<string>;
     /**
@@ -458,10 +466,14 @@ export interface ReadOnlyInstanceState {
     connectionString?: pulumi.Input<string>;
     /**
      * The attribute of the IP address whitelist. By default, this parameter is empty.
+     *
+     * > **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
      */
     dbInstanceIpArrayAttribute?: pulumi.Input<string>;
     /**
      * The name of the IP address whitelist. Default value: Default.
+     *
+     * > **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
      */
     dbInstanceIpArrayName?: pulumi.Input<string>;
     /**
@@ -567,6 +579,8 @@ export interface ReadOnlyInstanceState {
     sslEnabled?: pulumi.Input<number>;
     /**
      * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+     *
+     * > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
      */
     switchTime?: pulumi.Input<string>;
     /**
@@ -583,6 +597,8 @@ export interface ReadOnlyInstanceState {
      * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
      * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+     *
+     * > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
      */
     targetMinorVersion?: pulumi.Input<string>;
     /**
@@ -664,10 +680,14 @@ export interface ReadOnlyInstanceArgs {
     clientCrlEnabled?: pulumi.Input<number>;
     /**
      * The attribute of the IP address whitelist. By default, this parameter is empty.
+     *
+     * > **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
      */
     dbInstanceIpArrayAttribute?: pulumi.Input<string>;
     /**
      * The name of the IP address whitelist. Default value: Default.
+     *
+     * > **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
      */
     dbInstanceIpArrayName?: pulumi.Input<string>;
     /**
@@ -765,6 +785,8 @@ export interface ReadOnlyInstanceArgs {
     sslEnabled?: pulumi.Input<number>;
     /**
      * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+     *
+     * > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
      */
     switchTime?: pulumi.Input<string>;
     /**
@@ -781,6 +803,8 @@ export interface ReadOnlyInstanceArgs {
      * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
      * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+     *
+     * > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
      */
     targetMinorVersion?: pulumi.Input<string>;
     /**

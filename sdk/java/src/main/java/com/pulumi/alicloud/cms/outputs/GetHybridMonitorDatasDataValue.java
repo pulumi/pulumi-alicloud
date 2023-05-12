@@ -13,14 +13,21 @@ public final class GetHybridMonitorDatasDataValue {
      * @return The timestamp that indicates the time when the metric value is collected. Unit: seconds.
      * 
      */
-    private String ts;
+    private final String ts;
     /**
      * @return Label value.
      * 
      */
-    private String value;
+    private final String value;
 
-    private GetHybridMonitorDatasDataValue() {}
+    @CustomType.Constructor
+    private GetHybridMonitorDatasDataValue(
+        @CustomType.Parameter("ts") String ts,
+        @CustomType.Parameter("value") String value) {
+        this.ts = ts;
+        this.value = value;
+    }
+
     /**
      * @return The timestamp that indicates the time when the metric value is collected. Unit: seconds.
      * 
@@ -43,32 +50,30 @@ public final class GetHybridMonitorDatasDataValue {
     public static Builder builder(GetHybridMonitorDatasDataValue defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String ts;
         private String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetHybridMonitorDatasDataValue defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ts = defaults.ts;
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder ts(String ts) {
             this.ts = Objects.requireNonNull(ts);
             return this;
         }
-        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }
-        public GetHybridMonitorDatasDataValue build() {
-            final var o = new GetHybridMonitorDatasDataValue();
-            o.ts = ts;
-            o.value = value;
-            return o;
+        }        public GetHybridMonitorDatasDataValue build() {
+            return new GetHybridMonitorDatasDataValue(ts, value);
         }
     }
 }

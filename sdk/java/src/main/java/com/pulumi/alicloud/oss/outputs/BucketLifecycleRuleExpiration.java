@@ -17,24 +17,39 @@ public final class BucketLifecycleRuleExpiration {
      * @return Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
      * 
      */
-    private @Nullable String createdBeforeDate;
+    private final @Nullable String createdBeforeDate;
     /**
      * @return Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
      * 
      */
-    private @Nullable String date;
+    private final @Nullable String date;
     /**
      * @return Specifies the number of days after object creation when the specific rule action takes effect.
      * 
+     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one abort_multipart_upload configuration.
+     * 
      */
-    private @Nullable Integer days;
+    private final @Nullable Integer days;
     /**
      * @return On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
      * 
+     * `NOTE`: One and only one of &#34;date&#34;, &#34;days&#34;, &#34;created_before_date&#34; and &#34;expired_object_delete_marker&#34; can be specified in one expiration configuration.
+     * 
      */
-    private @Nullable Boolean expiredObjectDeleteMarker;
+    private final @Nullable Boolean expiredObjectDeleteMarker;
 
-    private BucketLifecycleRuleExpiration() {}
+    @CustomType.Constructor
+    private BucketLifecycleRuleExpiration(
+        @CustomType.Parameter("createdBeforeDate") @Nullable String createdBeforeDate,
+        @CustomType.Parameter("date") @Nullable String date,
+        @CustomType.Parameter("days") @Nullable Integer days,
+        @CustomType.Parameter("expiredObjectDeleteMarker") @Nullable Boolean expiredObjectDeleteMarker) {
+        this.createdBeforeDate = createdBeforeDate;
+        this.date = date;
+        this.days = days;
+        this.expiredObjectDeleteMarker = expiredObjectDeleteMarker;
+    }
+
     /**
      * @return Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
      * 
@@ -52,12 +67,16 @@ public final class BucketLifecycleRuleExpiration {
     /**
      * @return Specifies the number of days after object creation when the specific rule action takes effect.
      * 
+     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one abort_multipart_upload configuration.
+     * 
      */
     public Optional<Integer> days() {
         return Optional.ofNullable(this.days);
     }
     /**
      * @return On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
+     * 
+     * `NOTE`: One and only one of &#34;date&#34;, &#34;days&#34;, &#34;created_before_date&#34; and &#34;expired_object_delete_marker&#34; can be specified in one expiration configuration.
      * 
      */
     public Optional<Boolean> expiredObjectDeleteMarker() {
@@ -71,13 +90,17 @@ public final class BucketLifecycleRuleExpiration {
     public static Builder builder(BucketLifecycleRuleExpiration defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String createdBeforeDate;
         private @Nullable String date;
         private @Nullable Integer days;
         private @Nullable Boolean expiredObjectDeleteMarker;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(BucketLifecycleRuleExpiration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdBeforeDate = defaults.createdBeforeDate;
@@ -86,33 +109,23 @@ public final class BucketLifecycleRuleExpiration {
     	      this.expiredObjectDeleteMarker = defaults.expiredObjectDeleteMarker;
         }
 
-        @CustomType.Setter
         public Builder createdBeforeDate(@Nullable String createdBeforeDate) {
             this.createdBeforeDate = createdBeforeDate;
             return this;
         }
-        @CustomType.Setter
         public Builder date(@Nullable String date) {
             this.date = date;
             return this;
         }
-        @CustomType.Setter
         public Builder days(@Nullable Integer days) {
             this.days = days;
             return this;
         }
-        @CustomType.Setter
         public Builder expiredObjectDeleteMarker(@Nullable Boolean expiredObjectDeleteMarker) {
             this.expiredObjectDeleteMarker = expiredObjectDeleteMarker;
             return this;
-        }
-        public BucketLifecycleRuleExpiration build() {
-            final var o = new BucketLifecycleRuleExpiration();
-            o.createdBeforeDate = createdBeforeDate;
-            o.date = date;
-            o.days = days;
-            o.expiredObjectDeleteMarker = expiredObjectDeleteMarker;
-            return o;
+        }        public BucketLifecycleRuleExpiration build() {
+            return new BucketLifecycleRuleExpiration(createdBeforeDate, date, days, expiredObjectDeleteMarker);
         }
     }
 }

@@ -16,44 +16,63 @@ public final class GetEdgeKubernetesClustersCluster {
      * @return The ID of availability zone.
      * 
      */
-    private String availabilityZone;
+    private final String availabilityZone;
     /**
      * @return Map of kubernetes cluster connection information. It contains several attributes to `Block Connections`.
      * 
      */
-    private GetEdgeKubernetesClustersClusterConnections connections;
+    private final GetEdgeKubernetesClustersClusterConnections connections;
     /**
      * @return ID of the node.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Node name.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The ID of nat gateway used to launch kubernetes cluster.
      * 
      */
-    private String natGatewayId;
+    private final String natGatewayId;
     /**
      * @return The ID of security group where the current cluster worker node is located.
      * 
      */
-    private String securityGroupId;
+    private final String securityGroupId;
     /**
      * @return The ID of VPC where the current cluster is located.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
     /**
      * @return List of cluster worker nodes. It contains several attributes to `Block Nodes`.
      * 
      */
-    private List<GetEdgeKubernetesClustersClusterWorkerNode> workerNodes;
+    private final List<GetEdgeKubernetesClustersClusterWorkerNode> workerNodes;
 
-    private GetEdgeKubernetesClustersCluster() {}
+    @CustomType.Constructor
+    private GetEdgeKubernetesClustersCluster(
+        @CustomType.Parameter("availabilityZone") String availabilityZone,
+        @CustomType.Parameter("connections") GetEdgeKubernetesClustersClusterConnections connections,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("natGatewayId") String natGatewayId,
+        @CustomType.Parameter("securityGroupId") String securityGroupId,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("workerNodes") List<GetEdgeKubernetesClustersClusterWorkerNode> workerNodes) {
+        this.availabilityZone = availabilityZone;
+        this.connections = connections;
+        this.id = id;
+        this.name = name;
+        this.natGatewayId = natGatewayId;
+        this.securityGroupId = securityGroupId;
+        this.vpcId = vpcId;
+        this.workerNodes = workerNodes;
+    }
+
     /**
      * @return The ID of availability zone.
      * 
@@ -118,7 +137,7 @@ public final class GetEdgeKubernetesClustersCluster {
     public static Builder builder(GetEdgeKubernetesClustersCluster defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String availabilityZone;
         private GetEdgeKubernetesClustersClusterConnections connections;
@@ -128,7 +147,11 @@ public final class GetEdgeKubernetesClustersCluster {
         private String securityGroupId;
         private String vpcId;
         private List<GetEdgeKubernetesClustersClusterWorkerNode> workerNodes;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEdgeKubernetesClustersCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityZone = defaults.availabilityZone;
@@ -141,60 +164,42 @@ public final class GetEdgeKubernetesClustersCluster {
     	      this.workerNodes = defaults.workerNodes;
         }
 
-        @CustomType.Setter
         public Builder availabilityZone(String availabilityZone) {
             this.availabilityZone = Objects.requireNonNull(availabilityZone);
             return this;
         }
-        @CustomType.Setter
         public Builder connections(GetEdgeKubernetesClustersClusterConnections connections) {
             this.connections = Objects.requireNonNull(connections);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder natGatewayId(String natGatewayId) {
             this.natGatewayId = Objects.requireNonNull(natGatewayId);
             return this;
         }
-        @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
             this.securityGroupId = Objects.requireNonNull(securityGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder workerNodes(List<GetEdgeKubernetesClustersClusterWorkerNode> workerNodes) {
             this.workerNodes = Objects.requireNonNull(workerNodes);
             return this;
         }
         public Builder workerNodes(GetEdgeKubernetesClustersClusterWorkerNode... workerNodes) {
             return workerNodes(List.of(workerNodes));
-        }
-        public GetEdgeKubernetesClustersCluster build() {
-            final var o = new GetEdgeKubernetesClustersCluster();
-            o.availabilityZone = availabilityZone;
-            o.connections = connections;
-            o.id = id;
-            o.name = name;
-            o.natGatewayId = natGatewayId;
-            o.securityGroupId = securityGroupId;
-            o.vpcId = vpcId;
-            o.workerNodes = workerNodes;
-            return o;
+        }        public GetEdgeKubernetesClustersCluster build() {
+            return new GetEdgeKubernetesClustersCluster(availabilityZone, connections, id, name, natGatewayId, securityGroupId, vpcId, workerNodes);
         }
     }
 }

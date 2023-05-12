@@ -19,6 +19,8 @@ namespace Pulumi.AliCloud.Alb.Outputs
         public readonly string? QuicListenerId;
         /// <summary>
         /// Indicates Whether to Enable the QuIC Upgrade.
+        /// 
+        /// &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
         /// </summary>
         public readonly bool? QuicUpgradeEnabled;
 

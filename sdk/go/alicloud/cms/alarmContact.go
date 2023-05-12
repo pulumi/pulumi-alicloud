@@ -96,6 +96,8 @@ type AlarmContact struct {
 	// The description of the alarm contact.
 	Describe pulumi.StringOutput `pulumi:"describe"`
 	// The language type of the alarm. Valid values: `en`, `zh-cn`.
+	//
+	// > **NOTE:** Specify at least one of the following alarm notification targets: `channelsAliim`, `channelsDingWebHook`, `channelsMail`, `channelsSms`.
 	Lang pulumi.StringPtrOutput `pulumi:"lang"`
 }
 
@@ -147,6 +149,8 @@ type alarmContactState struct {
 	// The description of the alarm contact.
 	Describe *string `pulumi:"describe"`
 	// The language type of the alarm. Valid values: `en`, `zh-cn`.
+	//
+	// > **NOTE:** Specify at least one of the following alarm notification targets: `channelsAliim`, `channelsDingWebHook`, `channelsMail`, `channelsSms`.
 	Lang *string `pulumi:"lang"`
 }
 
@@ -164,6 +168,8 @@ type AlarmContactState struct {
 	// The description of the alarm contact.
 	Describe pulumi.StringPtrInput
 	// The language type of the alarm. Valid values: `en`, `zh-cn`.
+	//
+	// > **NOTE:** Specify at least one of the following alarm notification targets: `channelsAliim`, `channelsDingWebHook`, `channelsMail`, `channelsSms`.
 	Lang pulumi.StringPtrInput
 }
 
@@ -185,6 +191,8 @@ type alarmContactArgs struct {
 	// The description of the alarm contact.
 	Describe string `pulumi:"describe"`
 	// The language type of the alarm. Valid values: `en`, `zh-cn`.
+	//
+	// > **NOTE:** Specify at least one of the following alarm notification targets: `channelsAliim`, `channelsDingWebHook`, `channelsMail`, `channelsSms`.
 	Lang *string `pulumi:"lang"`
 }
 
@@ -203,6 +211,8 @@ type AlarmContactArgs struct {
 	// The description of the alarm contact.
 	Describe pulumi.StringInput
 	// The language type of the alarm. Valid values: `en`, `zh-cn`.
+	//
+	// > **NOTE:** Specify at least one of the following alarm notification targets: `channelsAliim`, `channelsDingWebHook`, `channelsMail`, `channelsSms`.
 	Lang pulumi.StringPtrInput
 }
 
@@ -324,6 +334,8 @@ func (o AlarmContactOutput) Describe() pulumi.StringOutput {
 }
 
 // The language type of the alarm. Valid values: `en`, `zh-cn`.
+//
+// > **NOTE:** Specify at least one of the following alarm notification targets: `channelsAliim`, `channelsDingWebHook`, `channelsMail`, `channelsSms`.
 func (o AlarmContactOutput) Lang() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlarmContact) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
 }

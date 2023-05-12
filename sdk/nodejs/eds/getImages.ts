@@ -105,6 +105,9 @@ export interface GetImagesArgs {
      * The os type of the image.
      */
     osType?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
@@ -218,6 +221,9 @@ export interface GetImagesOutputArgs {
      * The os type of the image.
      */
     osType?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.

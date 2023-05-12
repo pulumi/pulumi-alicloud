@@ -16,24 +16,51 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDedicatedHostsResult {
-    private @Nullable String allocationStatus;
-    private String dedicatedHostGroupId;
-    private @Nullable Boolean enableDetails;
-    private @Nullable String hostType;
-    private List<GetDedicatedHostsHost> hosts;
+    private final @Nullable String allocationStatus;
+    private final String dedicatedHostGroupId;
+    private final @Nullable Boolean enableDetails;
+    private final @Nullable String hostType;
+    private final List<GetDedicatedHostsHost> hosts;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String orderId;
-    private @Nullable String outputFile;
-    private @Nullable String status;
-    private @Nullable Map<String,Object> tags;
-    private @Nullable String zoneId;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String orderId;
+    private final @Nullable String outputFile;
+    private final @Nullable String status;
+    private final @Nullable Map<String,Object> tags;
+    private final @Nullable String zoneId;
 
-    private GetDedicatedHostsResult() {}
+    @CustomType.Constructor
+    private GetDedicatedHostsResult(
+        @CustomType.Parameter("allocationStatus") @Nullable String allocationStatus,
+        @CustomType.Parameter("dedicatedHostGroupId") String dedicatedHostGroupId,
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("hostType") @Nullable String hostType,
+        @CustomType.Parameter("hosts") List<GetDedicatedHostsHost> hosts,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("orderId") @Nullable String orderId,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
+        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
+        this.allocationStatus = allocationStatus;
+        this.dedicatedHostGroupId = dedicatedHostGroupId;
+        this.enableDetails = enableDetails;
+        this.hostType = hostType;
+        this.hosts = hosts;
+        this.id = id;
+        this.ids = ids;
+        this.orderId = orderId;
+        this.outputFile = outputFile;
+        this.status = status;
+        this.tags = tags;
+        this.zoneId = zoneId;
+    }
+
     public Optional<String> allocationStatus() {
         return Optional.ofNullable(this.allocationStatus);
     }
@@ -82,7 +109,7 @@ public final class GetDedicatedHostsResult {
     public static Builder builder(GetDedicatedHostsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String allocationStatus;
         private String dedicatedHostGroupId;
@@ -96,7 +123,11 @@ public final class GetDedicatedHostsResult {
         private @Nullable String status;
         private @Nullable Map<String,Object> tags;
         private @Nullable String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDedicatedHostsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allocationStatus = defaults.allocationStatus;
@@ -113,27 +144,22 @@ public final class GetDedicatedHostsResult {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder allocationStatus(@Nullable String allocationStatus) {
             this.allocationStatus = allocationStatus;
             return this;
         }
-        @CustomType.Setter
         public Builder dedicatedHostGroupId(String dedicatedHostGroupId) {
             this.dedicatedHostGroupId = Objects.requireNonNull(dedicatedHostGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder hostType(@Nullable String hostType) {
             this.hostType = hostType;
             return this;
         }
-        @CustomType.Setter
         public Builder hosts(List<GetDedicatedHostsHost> hosts) {
             this.hosts = Objects.requireNonNull(hosts);
             return this;
@@ -141,12 +167,10 @@ public final class GetDedicatedHostsResult {
         public Builder hosts(GetDedicatedHostsHost... hosts) {
             return hosts(List.of(hosts));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -154,46 +178,27 @@ public final class GetDedicatedHostsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder orderId(@Nullable String orderId) {
             this.orderId = orderId;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }
-        public GetDedicatedHostsResult build() {
-            final var o = new GetDedicatedHostsResult();
-            o.allocationStatus = allocationStatus;
-            o.dedicatedHostGroupId = dedicatedHostGroupId;
-            o.enableDetails = enableDetails;
-            o.hostType = hostType;
-            o.hosts = hosts;
-            o.id = id;
-            o.ids = ids;
-            o.orderId = orderId;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.tags = tags;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetDedicatedHostsResult build() {
+            return new GetDedicatedHostsResult(allocationStatus, dedicatedHostGroupId, enableDetails, hostType, hosts, id, ids, orderId, outputFile, status, tags, zoneId);
         }
     }
 }

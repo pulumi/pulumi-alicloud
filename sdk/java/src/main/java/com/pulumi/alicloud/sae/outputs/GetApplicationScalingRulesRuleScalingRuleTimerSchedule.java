@@ -14,24 +14,35 @@ public final class GetApplicationScalingRulesRuleScalingRuleTimerSchedule {
      * @return Time point. Format: `hours:minutes`.
      * 
      */
-    private String atTime;
+    private final String atTime;
     /**
      * @return The maximum number of instances.
      * 
      */
-    private Integer maxReplicas;
+    private final Integer maxReplicas;
     /**
      * @return The minimum number of instances.
      * 
      */
-    private Integer minReplicas;
+    private final Integer minReplicas;
     /**
      * @return The number of target instances.
      * 
      */
-    private Integer targetReplicas;
+    private final Integer targetReplicas;
 
-    private GetApplicationScalingRulesRuleScalingRuleTimerSchedule() {}
+    @CustomType.Constructor
+    private GetApplicationScalingRulesRuleScalingRuleTimerSchedule(
+        @CustomType.Parameter("atTime") String atTime,
+        @CustomType.Parameter("maxReplicas") Integer maxReplicas,
+        @CustomType.Parameter("minReplicas") Integer minReplicas,
+        @CustomType.Parameter("targetReplicas") Integer targetReplicas) {
+        this.atTime = atTime;
+        this.maxReplicas = maxReplicas;
+        this.minReplicas = minReplicas;
+        this.targetReplicas = targetReplicas;
+    }
+
     /**
      * @return Time point. Format: `hours:minutes`.
      * 
@@ -68,13 +79,17 @@ public final class GetApplicationScalingRulesRuleScalingRuleTimerSchedule {
     public static Builder builder(GetApplicationScalingRulesRuleScalingRuleTimerSchedule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String atTime;
         private Integer maxReplicas;
         private Integer minReplicas;
         private Integer targetReplicas;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetApplicationScalingRulesRuleScalingRuleTimerSchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.atTime = defaults.atTime;
@@ -83,33 +98,23 @@ public final class GetApplicationScalingRulesRuleScalingRuleTimerSchedule {
     	      this.targetReplicas = defaults.targetReplicas;
         }
 
-        @CustomType.Setter
         public Builder atTime(String atTime) {
             this.atTime = Objects.requireNonNull(atTime);
             return this;
         }
-        @CustomType.Setter
         public Builder maxReplicas(Integer maxReplicas) {
             this.maxReplicas = Objects.requireNonNull(maxReplicas);
             return this;
         }
-        @CustomType.Setter
         public Builder minReplicas(Integer minReplicas) {
             this.minReplicas = Objects.requireNonNull(minReplicas);
             return this;
         }
-        @CustomType.Setter
         public Builder targetReplicas(Integer targetReplicas) {
             this.targetReplicas = Objects.requireNonNull(targetReplicas);
             return this;
-        }
-        public GetApplicationScalingRulesRuleScalingRuleTimerSchedule build() {
-            final var o = new GetApplicationScalingRulesRuleScalingRuleTimerSchedule();
-            o.atTime = atTime;
-            o.maxReplicas = maxReplicas;
-            o.minReplicas = minReplicas;
-            o.targetReplicas = targetReplicas;
-            return o;
+        }        public GetApplicationScalingRulesRuleScalingRuleTimerSchedule build() {
+            return new GetApplicationScalingRulesRuleScalingRuleTimerSchedule(atTime, maxReplicas, minReplicas, targetReplicas);
         }
     }
 }

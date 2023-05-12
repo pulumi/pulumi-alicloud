@@ -18,28 +18,47 @@ public final class GetAutoSnapShotPoliciesResult {
      * @return A list of Auto Snap Shot Policy Entries. Each element contains the following attributes:
      * 
      */
-    private List<GetAutoSnapShotPoliciesAutoSnapShotPolicy> autoSnapShotPolicies;
+    private final List<GetAutoSnapShotPoliciesAutoSnapShotPolicy> autoSnapShotPolicies;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of Auto Snap Shot Policy IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of Auto Snap Shot Policy names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
 
-    private GetAutoSnapShotPoliciesResult() {}
+    @CustomType.Constructor
+    private GetAutoSnapShotPoliciesResult(
+        @CustomType.Parameter("autoSnapShotPolicies") List<GetAutoSnapShotPoliciesAutoSnapShotPolicy> autoSnapShotPolicies,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize) {
+        this.autoSnapShotPolicies = autoSnapShotPolicies;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+    }
+
     /**
      * @return A list of Auto Snap Shot Policy Entries. Each element contains the following attributes:
      * 
@@ -88,7 +107,7 @@ public final class GetAutoSnapShotPoliciesResult {
     public static Builder builder(GetAutoSnapShotPoliciesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetAutoSnapShotPoliciesAutoSnapShotPolicy> autoSnapShotPolicies;
         private String id;
@@ -98,7 +117,11 @@ public final class GetAutoSnapShotPoliciesResult {
         private @Nullable String outputFile;
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAutoSnapShotPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoSnapShotPolicies = defaults.autoSnapShotPolicies;
@@ -111,7 +134,6 @@ public final class GetAutoSnapShotPoliciesResult {
     	      this.pageSize = defaults.pageSize;
         }
 
-        @CustomType.Setter
         public Builder autoSnapShotPolicies(List<GetAutoSnapShotPoliciesAutoSnapShotPolicy> autoSnapShotPolicies) {
             this.autoSnapShotPolicies = Objects.requireNonNull(autoSnapShotPolicies);
             return this;
@@ -119,12 +141,10 @@ public final class GetAutoSnapShotPoliciesResult {
         public Builder autoSnapShotPolicies(GetAutoSnapShotPoliciesAutoSnapShotPolicy... autoSnapShotPolicies) {
             return autoSnapShotPolicies(List.of(autoSnapShotPolicies));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -132,12 +152,10 @@ public final class GetAutoSnapShotPoliciesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -145,32 +163,19 @@ public final class GetAutoSnapShotPoliciesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
-        }
-        public GetAutoSnapShotPoliciesResult build() {
-            final var o = new GetAutoSnapShotPoliciesResult();
-            o.autoSnapShotPolicies = autoSnapShotPolicies;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            return o;
+        }        public GetAutoSnapShotPoliciesResult build() {
+            return new GetAutoSnapShotPoliciesResult(autoSnapShotPolicies, id, ids, nameRegex, names, outputFile, pageNumber, pageSize);
         }
     }
 }

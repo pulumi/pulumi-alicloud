@@ -14,14 +14,21 @@ public final class GetServiceMeshesMeshMeshConfigKiali {
      * @return Whether to enable Service grid audit.
      * 
      */
-    private Boolean enabled;
+    private final Boolean enabled;
     /**
      * @return The service address of the Kiali.
      * 
      */
-    private String url;
+    private final String url;
 
-    private GetServiceMeshesMeshMeshConfigKiali() {}
+    @CustomType.Constructor
+    private GetServiceMeshesMeshMeshConfigKiali(
+        @CustomType.Parameter("enabled") Boolean enabled,
+        @CustomType.Parameter("url") String url) {
+        this.enabled = enabled;
+        this.url = url;
+    }
+
     /**
      * @return Whether to enable Service grid audit.
      * 
@@ -44,32 +51,30 @@ public final class GetServiceMeshesMeshMeshConfigKiali {
     public static Builder builder(GetServiceMeshesMeshMeshConfigKiali defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean enabled;
         private String url;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServiceMeshesMeshMeshConfigKiali defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.url = defaults.url;
         }
 
-        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
-        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }
-        public GetServiceMeshesMeshMeshConfigKiali build() {
-            final var o = new GetServiceMeshesMeshMeshConfigKiali();
-            o.enabled = enabled;
-            o.url = url;
-            return o;
+        }        public GetServiceMeshesMeshMeshConfigKiali build() {
+            return new GetServiceMeshesMeshMeshConfigKiali(enabled, url);
         }
     }
 }

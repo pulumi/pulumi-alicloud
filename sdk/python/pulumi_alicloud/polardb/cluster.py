@@ -19,6 +19,7 @@ class ClusterArgs:
                  db_node_class: pulumi.Input[str],
                  db_type: pulumi.Input[str],
                  db_version: pulumi.Input[str],
+                 allow_shut_down: Optional[pulumi.Input[str]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
                  clone_data_point: Optional[pulumi.Input[str]] = None,
@@ -42,8 +43,14 @@ class ClusterArgs:
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
+                 scale_max: Optional[pulumi.Input[int]] = None,
+                 scale_min: Optional[pulumi.Input[int]] = None,
+                 scale_ro_num_max: Optional[pulumi.Input[int]] = None,
+                 scale_ro_num_min: Optional[pulumi.Input[int]] = None,
+                 seconds_until_auto_pause: Optional[pulumi.Input[int]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 serverless_type: Optional[pulumi.Input[str]] = None,
                  source_resource_id: Optional[pulumi.Input[str]] = None,
                  storage_space: Optional[pulumi.Input[int]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
@@ -56,9 +63,11 @@ class ClusterArgs:
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
-               > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+               > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
+        :param pulumi.Input[str] allow_shut_down: Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
+               > **NOTE:** This parameter is valid only for serverless clusters.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         :param pulumi.Input[str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
         :param pulumi.Input[str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
@@ -87,13 +96,27 @@ class ClusterArgs:
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+        :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+        :param pulumi.Input[int] scale_max: The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+               > **NOTE:** This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_min: The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+               > **NOTE:** This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_ro_num_max: The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+               > **NOTE:** This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_ro_num_min: The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+               > **NOTE:** This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] seconds_until_auto_pause: The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+               > **NOTE:** This parameter is valid only for serverless clusters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
                Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
+        :param pulumi.Input[str] serverless_type: The type of the serverless cluster. Set the value to AgileServerless.
+               > **NOTE:** This parameter is valid only for serverless clusters.
         :param pulumi.Input[str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
         :param pulumi.Input[int] storage_space: Storage space charged by space (monthly package). Unit: GB.
         :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
@@ -112,6 +135,8 @@ class ClusterArgs:
         pulumi.set(__self__, "db_node_class", db_node_class)
         pulumi.set(__self__, "db_type", db_type)
         pulumi.set(__self__, "db_version", db_version)
+        if allow_shut_down is not None:
+            pulumi.set(__self__, "allow_shut_down", allow_shut_down)
         if auto_renew_period is not None:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if backup_retention_policy_on_cluster_deletion is not None:
@@ -158,10 +183,22 @@ class ClusterArgs:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
+        if scale_max is not None:
+            pulumi.set(__self__, "scale_max", scale_max)
+        if scale_min is not None:
+            pulumi.set(__self__, "scale_min", scale_min)
+        if scale_ro_num_max is not None:
+            pulumi.set(__self__, "scale_ro_num_max", scale_ro_num_max)
+        if scale_ro_num_min is not None:
+            pulumi.set(__self__, "scale_ro_num_min", scale_ro_num_min)
+        if seconds_until_auto_pause is not None:
+            pulumi.set(__self__, "seconds_until_auto_pause", seconds_until_auto_pause)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
         if security_ips is not None:
             pulumi.set(__self__, "security_ips", security_ips)
+        if serverless_type is not None:
+            pulumi.set(__self__, "serverless_type", serverless_type)
         if source_resource_id is not None:
             pulumi.set(__self__, "source_resource_id", source_resource_id)
         if storage_space is not None:
@@ -186,7 +223,7 @@ class ClusterArgs:
     def db_node_class(self) -> pulumi.Input[str]:
         """
         The db_node_class of cluster node.
-        > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+        > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
         """
         return pulumi.get(self, "db_node_class")
 
@@ -217,6 +254,19 @@ class ClusterArgs:
     @db_version.setter
     def db_version(self, value: pulumi.Input[str]):
         pulumi.set(self, "db_version", value)
+
+    @property
+    @pulumi.getter(name="allowShutDown")
+    def allow_shut_down(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
+        > **NOTE:** This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "allow_shut_down")
+
+    @allow_shut_down.setter
+    def allow_shut_down(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allow_shut_down", value)
 
     @property
     @pulumi.getter(name="autoRenewPeriod")
@@ -458,6 +508,10 @@ class ClusterArgs:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -501,6 +555,71 @@ class ClusterArgs:
         pulumi.set(self, "role_arn", value)
 
     @property
+    @pulumi.getter(name="scaleMax")
+    def scale_max(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+        > **NOTE:** This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "scale_max")
+
+    @scale_max.setter
+    def scale_max(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale_max", value)
+
+    @property
+    @pulumi.getter(name="scaleMin")
+    def scale_min(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+        > **NOTE:** This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "scale_min")
+
+    @scale_min.setter
+    def scale_min(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale_min", value)
+
+    @property
+    @pulumi.getter(name="scaleRoNumMax")
+    def scale_ro_num_max(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+        > **NOTE:** This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "scale_ro_num_max")
+
+    @scale_ro_num_max.setter
+    def scale_ro_num_max(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale_ro_num_max", value)
+
+    @property
+    @pulumi.getter(name="scaleRoNumMin")
+    def scale_ro_num_min(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+        > **NOTE:** This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "scale_ro_num_min")
+
+    @scale_ro_num_min.setter
+    def scale_ro_num_min(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale_ro_num_min", value)
+
+    @property
+    @pulumi.getter(name="secondsUntilAutoPause")
+    def seconds_until_auto_pause(self) -> Optional[pulumi.Input[int]]:
+        """
+        The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+        > **NOTE:** This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "seconds_until_auto_pause")
+
+    @seconds_until_auto_pause.setter
+    def seconds_until_auto_pause(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "seconds_until_auto_pause", value)
+
+    @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -525,6 +644,19 @@ class ClusterArgs:
     @security_ips.setter
     def security_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "security_ips", value)
+
+    @property
+    @pulumi.getter(name="serverlessType")
+    def serverless_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the serverless cluster. Set the value to AgileServerless.
+        > **NOTE:** This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "serverless_type")
+
+    @serverless_type.setter
+    def serverless_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serverless_type", value)
 
     @property
     @pulumi.getter(name="sourceResourceId")
@@ -643,11 +775,13 @@ class ClusterArgs:
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
+                 allow_shut_down: Optional[pulumi.Input[str]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
                  clone_data_point: Optional[pulumi.Input[str]] = None,
                  collector_status: Optional[pulumi.Input[str]] = None,
                  connection_string: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  creation_category: Optional[pulumi.Input[str]] = None,
                  creation_option: Optional[pulumi.Input[str]] = None,
                  db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]] = None,
@@ -671,9 +805,16 @@ class _ClusterState:
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
+                 scale_max: Optional[pulumi.Input[int]] = None,
+                 scale_min: Optional[pulumi.Input[int]] = None,
+                 scale_ro_num_max: Optional[pulumi.Input[int]] = None,
+                 scale_ro_num_min: Optional[pulumi.Input[int]] = None,
+                 seconds_until_auto_pause: Optional[pulumi.Input[int]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 serverless_type: Optional[pulumi.Input[str]] = None,
                  source_resource_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  storage_space: Optional[pulumi.Input[int]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  sub_category: Optional[pulumi.Input[str]] = None,
@@ -685,19 +826,22 @@ class _ClusterState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+        :param pulumi.Input[str] allow_shut_down: Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
+               > **NOTE:** This parameter is valid only for serverless clusters.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         :param pulumi.Input[str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
         :param pulumi.Input[str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
                > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         :param pulumi.Input[str] connection_string: (Available in 1.81.0+) PolarDB cluster connection string.
+        :param pulumi.Input[str] create_time: (Available in 1.204.1+) PolarDB cluster creation time.
         :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
                > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
         :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
                > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
-               > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+               > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
@@ -718,15 +862,30 @@ class _ClusterState:
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+        :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] port: (Available in 1.196.0+) PolarDB cluster connection port.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+        :param pulumi.Input[int] scale_max: The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+               > **NOTE:** This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_min: The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+               > **NOTE:** This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_ro_num_max: The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+               > **NOTE:** This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_ro_num_min: The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+               > **NOTE:** This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] seconds_until_auto_pause: The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+               > **NOTE:** This parameter is valid only for serverless clusters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
                Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
+        :param pulumi.Input[str] serverless_type: The type of the serverless cluster. Set the value to AgileServerless.
+               > **NOTE:** This parameter is valid only for serverless clusters.
         :param pulumi.Input[str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+        :param pulumi.Input[str] status: (Available in 1.204.1+) PolarDB cluster status.
         :param pulumi.Input[int] storage_space: Storage space charged by space (monthly package). Unit: GB.
         :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
                > **NOTE:** Serverless cluster does not support this parameter.
@@ -744,6 +903,8 @@ class _ClusterState:
                > **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB cluster. it supports multiple zone.
         """
+        if allow_shut_down is not None:
+            pulumi.set(__self__, "allow_shut_down", allow_shut_down)
         if auto_renew_period is not None:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if backup_retention_policy_on_cluster_deletion is not None:
@@ -754,6 +915,8 @@ class _ClusterState:
             pulumi.set(__self__, "collector_status", collector_status)
         if connection_string is not None:
             pulumi.set(__self__, "connection_string", connection_string)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if creation_category is not None:
             pulumi.set(__self__, "creation_category", creation_category)
         if creation_option is not None:
@@ -800,12 +963,26 @@ class _ClusterState:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
+        if scale_max is not None:
+            pulumi.set(__self__, "scale_max", scale_max)
+        if scale_min is not None:
+            pulumi.set(__self__, "scale_min", scale_min)
+        if scale_ro_num_max is not None:
+            pulumi.set(__self__, "scale_ro_num_max", scale_ro_num_max)
+        if scale_ro_num_min is not None:
+            pulumi.set(__self__, "scale_ro_num_min", scale_ro_num_min)
+        if seconds_until_auto_pause is not None:
+            pulumi.set(__self__, "seconds_until_auto_pause", seconds_until_auto_pause)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
         if security_ips is not None:
             pulumi.set(__self__, "security_ips", security_ips)
+        if serverless_type is not None:
+            pulumi.set(__self__, "serverless_type", serverless_type)
         if source_resource_id is not None:
             pulumi.set(__self__, "source_resource_id", source_resource_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if storage_space is not None:
             pulumi.set(__self__, "storage_space", storage_space)
         if storage_type is not None:
@@ -824,6 +1001,19 @@ class _ClusterState:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="allowShutDown")
+    def allow_shut_down(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
+        > **NOTE:** This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "allow_shut_down")
+
+    @allow_shut_down.setter
+    def allow_shut_down(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allow_shut_down", value)
 
     @property
     @pulumi.getter(name="autoRenewPeriod")
@@ -887,6 +1077,18 @@ class _ClusterState:
         pulumi.set(self, "connection_string", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.204.1+) PolarDB cluster creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter(name="creationCategory")
     def creation_category(self) -> Optional[pulumi.Input[str]]:
         """
@@ -929,7 +1131,7 @@ class _ClusterState:
     def db_node_class(self) -> Optional[pulumi.Input[str]]:
         """
         The db_node_class of cluster node.
-        > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+        > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
         """
         return pulumi.get(self, "db_node_class")
 
@@ -1114,6 +1316,10 @@ class _ClusterState:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -1169,6 +1375,71 @@ class _ClusterState:
         pulumi.set(self, "role_arn", value)
 
     @property
+    @pulumi.getter(name="scaleMax")
+    def scale_max(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+        > **NOTE:** This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "scale_max")
+
+    @scale_max.setter
+    def scale_max(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale_max", value)
+
+    @property
+    @pulumi.getter(name="scaleMin")
+    def scale_min(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+        > **NOTE:** This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "scale_min")
+
+    @scale_min.setter
+    def scale_min(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale_min", value)
+
+    @property
+    @pulumi.getter(name="scaleRoNumMax")
+    def scale_ro_num_max(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+        > **NOTE:** This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "scale_ro_num_max")
+
+    @scale_ro_num_max.setter
+    def scale_ro_num_max(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale_ro_num_max", value)
+
+    @property
+    @pulumi.getter(name="scaleRoNumMin")
+    def scale_ro_num_min(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+        > **NOTE:** This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "scale_ro_num_min")
+
+    @scale_ro_num_min.setter
+    def scale_ro_num_min(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale_ro_num_min", value)
+
+    @property
+    @pulumi.getter(name="secondsUntilAutoPause")
+    def seconds_until_auto_pause(self) -> Optional[pulumi.Input[int]]:
+        """
+        The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+        > **NOTE:** This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "seconds_until_auto_pause")
+
+    @seconds_until_auto_pause.setter
+    def seconds_until_auto_pause(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "seconds_until_auto_pause", value)
+
+    @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -1195,6 +1466,19 @@ class _ClusterState:
         pulumi.set(self, "security_ips", value)
 
     @property
+    @pulumi.getter(name="serverlessType")
+    def serverless_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the serverless cluster. Set the value to AgileServerless.
+        > **NOTE:** This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "serverless_type")
+
+    @serverless_type.setter
+    def serverless_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serverless_type", value)
+
+    @property
     @pulumi.getter(name="sourceResourceId")
     def source_resource_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1205,6 +1489,18 @@ class _ClusterState:
     @source_resource_id.setter
     def source_resource_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_resource_id", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in 1.204.1+) PolarDB cluster status.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
     @property
     @pulumi.getter(name="storageSpace")
@@ -1327,6 +1623,7 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_shut_down: Optional[pulumi.Input[str]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
                  clone_data_point: Optional[pulumi.Input[str]] = None,
@@ -1353,8 +1650,14 @@ class Cluster(pulumi.CustomResource):
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
+                 scale_max: Optional[pulumi.Input[int]] = None,
+                 scale_min: Optional[pulumi.Input[int]] = None,
+                 scale_ro_num_max: Optional[pulumi.Input[int]] = None,
+                 scale_ro_num_min: Optional[pulumi.Input[int]] = None,
+                 seconds_until_auto_pause: Optional[pulumi.Input[int]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 serverless_type: Optional[pulumi.Input[str]] = None,
                  source_resource_id: Optional[pulumi.Input[str]] = None,
                  storage_space: Optional[pulumi.Input[int]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
@@ -1427,6 +1730,8 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] allow_shut_down: Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
+               > **NOTE:** This parameter is valid only for serverless clusters.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         :param pulumi.Input[str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
         :param pulumi.Input[str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
@@ -1438,7 +1743,7 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
-               > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+               > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
@@ -1459,13 +1764,27 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+        :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+        :param pulumi.Input[int] scale_max: The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+               > **NOTE:** This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_min: The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+               > **NOTE:** This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_ro_num_max: The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+               > **NOTE:** This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_ro_num_min: The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+               > **NOTE:** This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] seconds_until_auto_pause: The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+               > **NOTE:** This parameter is valid only for serverless clusters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
                Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
+        :param pulumi.Input[str] serverless_type: The type of the serverless cluster. Set the value to AgileServerless.
+               > **NOTE:** This parameter is valid only for serverless clusters.
         :param pulumi.Input[str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
         :param pulumi.Input[int] storage_space: Storage space charged by space (monthly package). Unit: GB.
         :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
@@ -1562,6 +1881,7 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_shut_down: Optional[pulumi.Input[str]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
                  clone_data_point: Optional[pulumi.Input[str]] = None,
@@ -1588,8 +1908,14 @@ class Cluster(pulumi.CustomResource):
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
+                 scale_max: Optional[pulumi.Input[int]] = None,
+                 scale_min: Optional[pulumi.Input[int]] = None,
+                 scale_ro_num_max: Optional[pulumi.Input[int]] = None,
+                 scale_ro_num_min: Optional[pulumi.Input[int]] = None,
+                 seconds_until_auto_pause: Optional[pulumi.Input[int]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 serverless_type: Optional[pulumi.Input[str]] = None,
                  source_resource_id: Optional[pulumi.Input[str]] = None,
                  storage_space: Optional[pulumi.Input[int]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
@@ -1608,6 +1934,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
+            __props__.__dict__["allow_shut_down"] = allow_shut_down
             __props__.__dict__["auto_renew_period"] = auto_renew_period
             __props__.__dict__["backup_retention_policy_on_cluster_deletion"] = backup_retention_policy_on_cluster_deletion
             __props__.__dict__["clone_data_point"] = clone_data_point
@@ -1640,8 +1967,14 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["renewal_status"] = renewal_status
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["role_arn"] = role_arn
+            __props__.__dict__["scale_max"] = scale_max
+            __props__.__dict__["scale_min"] = scale_min
+            __props__.__dict__["scale_ro_num_max"] = scale_ro_num_max
+            __props__.__dict__["scale_ro_num_min"] = scale_ro_num_min
+            __props__.__dict__["seconds_until_auto_pause"] = seconds_until_auto_pause
             __props__.__dict__["security_group_ids"] = security_group_ids
             __props__.__dict__["security_ips"] = security_ips
+            __props__.__dict__["serverless_type"] = serverless_type
             __props__.__dict__["source_resource_id"] = source_resource_id
             __props__.__dict__["storage_space"] = storage_space
             __props__.__dict__["storage_type"] = storage_type
@@ -1652,7 +1985,9 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["connection_string"] = None
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["port"] = None
+            __props__.__dict__["status"] = None
             __props__.__dict__["tde_region"] = None
         super(Cluster, __self__).__init__(
             'alicloud:polardb/cluster:Cluster',
@@ -1664,11 +1999,13 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allow_shut_down: Optional[pulumi.Input[str]] = None,
             auto_renew_period: Optional[pulumi.Input[int]] = None,
             backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
             clone_data_point: Optional[pulumi.Input[str]] = None,
             collector_status: Optional[pulumi.Input[str]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             creation_category: Optional[pulumi.Input[str]] = None,
             creation_option: Optional[pulumi.Input[str]] = None,
             db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]]] = None,
@@ -1692,9 +2029,16 @@ class Cluster(pulumi.CustomResource):
             renewal_status: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             role_arn: Optional[pulumi.Input[str]] = None,
+            scale_max: Optional[pulumi.Input[int]] = None,
+            scale_min: Optional[pulumi.Input[int]] = None,
+            scale_ro_num_max: Optional[pulumi.Input[int]] = None,
+            scale_ro_num_min: Optional[pulumi.Input[int]] = None,
+            seconds_until_auto_pause: Optional[pulumi.Input[int]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            serverless_type: Optional[pulumi.Input[str]] = None,
             source_resource_id: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
             storage_space: Optional[pulumi.Input[int]] = None,
             storage_type: Optional[pulumi.Input[str]] = None,
             sub_category: Optional[pulumi.Input[str]] = None,
@@ -1711,19 +2055,22 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] allow_shut_down: Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
+               > **NOTE:** This parameter is valid only for serverless clusters.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         :param pulumi.Input[str] backup_retention_policy_on_cluster_deletion: The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
         :param pulumi.Input[str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CloneDataPoint`.
                > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         :param pulumi.Input[str] connection_string: (Available in 1.81.0+) PolarDB cluster connection string.
+        :param pulumi.Input[str] create_time: (Available in 1.204.1+) PolarDB cluster creation time.
         :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
                > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
         :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationOption`.
                > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
-               > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+               > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
@@ -1744,15 +2091,30 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] modify_type: Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterParameterArgs']]]] parameters: Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/98122.htm) .
         :param pulumi.Input[str] pay_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+        :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] port: (Available in 1.196.0+) PolarDB cluster connection port.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
+        :param pulumi.Input[int] scale_max: The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+               > **NOTE:** This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_min: The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+               > **NOTE:** This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_ro_num_max: The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+               > **NOTE:** This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] scale_ro_num_min: The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+               > **NOTE:** This parameter is valid only for serverless clusters.
+        :param pulumi.Input[int] seconds_until_auto_pause: The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+               > **NOTE:** This parameter is valid only for serverless clusters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
                > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
                Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
+        :param pulumi.Input[str] serverless_type: The type of the serverless cluster. Set the value to AgileServerless.
+               > **NOTE:** This parameter is valid only for serverless clusters.
         :param pulumi.Input[str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
+        :param pulumi.Input[str] status: (Available in 1.204.1+) PolarDB cluster status.
         :param pulumi.Input[int] storage_space: Storage space charged by space (monthly package). Unit: GB.
         :param pulumi.Input[str] storage_type: The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
                > **NOTE:** Serverless cluster does not support this parameter.
@@ -1774,11 +2136,13 @@ class Cluster(pulumi.CustomResource):
 
         __props__ = _ClusterState.__new__(_ClusterState)
 
+        __props__.__dict__["allow_shut_down"] = allow_shut_down
         __props__.__dict__["auto_renew_period"] = auto_renew_period
         __props__.__dict__["backup_retention_policy_on_cluster_deletion"] = backup_retention_policy_on_cluster_deletion
         __props__.__dict__["clone_data_point"] = clone_data_point
         __props__.__dict__["collector_status"] = collector_status
         __props__.__dict__["connection_string"] = connection_string
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["creation_category"] = creation_category
         __props__.__dict__["creation_option"] = creation_option
         __props__.__dict__["db_cluster_ip_arrays"] = db_cluster_ip_arrays
@@ -1802,9 +2166,16 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["role_arn"] = role_arn
+        __props__.__dict__["scale_max"] = scale_max
+        __props__.__dict__["scale_min"] = scale_min
+        __props__.__dict__["scale_ro_num_max"] = scale_ro_num_max
+        __props__.__dict__["scale_ro_num_min"] = scale_ro_num_min
+        __props__.__dict__["seconds_until_auto_pause"] = seconds_until_auto_pause
         __props__.__dict__["security_group_ids"] = security_group_ids
         __props__.__dict__["security_ips"] = security_ips
+        __props__.__dict__["serverless_type"] = serverless_type
         __props__.__dict__["source_resource_id"] = source_resource_id
+        __props__.__dict__["status"] = status
         __props__.__dict__["storage_space"] = storage_space
         __props__.__dict__["storage_type"] = storage_type
         __props__.__dict__["sub_category"] = sub_category
@@ -1815,6 +2186,15 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
         return Cluster(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allowShutDown")
+    def allow_shut_down(self) -> pulumi.Output[Optional[str]]:
+        """
+        Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
+        > **NOTE:** This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "allow_shut_down")
 
     @property
     @pulumi.getter(name="autoRenewPeriod")
@@ -1858,6 +2238,14 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "connection_string")
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.204.1+) PolarDB cluster creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
     @pulumi.getter(name="creationCategory")
     def creation_category(self) -> pulumi.Output[str]:
         """
@@ -1888,7 +2276,7 @@ class Cluster(pulumi.CustomResource):
     def db_node_class(self) -> pulumi.Output[str]:
         """
         The db_node_class of cluster node.
-        > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+        > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
         """
         return pulumi.get(self, "db_node_class")
 
@@ -2013,6 +2401,10 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
+        """
+        The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        """
         return pulumi.get(self, "period")
 
     @property
@@ -2048,6 +2440,51 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "role_arn")
 
     @property
+    @pulumi.getter(name="scaleMax")
+    def scale_max(self) -> pulumi.Output[Optional[int]]:
+        """
+        The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+        > **NOTE:** This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "scale_max")
+
+    @property
+    @pulumi.getter(name="scaleMin")
+    def scale_min(self) -> pulumi.Output[Optional[int]]:
+        """
+        The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+        > **NOTE:** This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "scale_min")
+
+    @property
+    @pulumi.getter(name="scaleRoNumMax")
+    def scale_ro_num_max(self) -> pulumi.Output[Optional[int]]:
+        """
+        The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+        > **NOTE:** This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "scale_ro_num_max")
+
+    @property
+    @pulumi.getter(name="scaleRoNumMin")
+    def scale_ro_num_min(self) -> pulumi.Output[Optional[int]]:
+        """
+        The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+        > **NOTE:** This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "scale_ro_num_min")
+
+    @property
+    @pulumi.getter(name="secondsUntilAutoPause")
+    def seconds_until_auto_pause(self) -> pulumi.Output[int]:
+        """
+        The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+        > **NOTE:** This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "seconds_until_auto_pause")
+
+    @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Sequence[str]]:
         """
@@ -2066,12 +2503,29 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "security_ips")
 
     @property
+    @pulumi.getter(name="serverlessType")
+    def serverless_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The type of the serverless cluster. Set the value to AgileServerless.
+        > **NOTE:** This parameter is valid only for serverless clusters.
+        """
+        return pulumi.get(self, "serverless_type")
+
+    @property
     @pulumi.getter(name="sourceResourceId")
     def source_resource_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
         """
         return pulumi.get(self, "source_resource_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        (Available in 1.204.1+) PolarDB cluster status.
+        """
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="storageSpace")

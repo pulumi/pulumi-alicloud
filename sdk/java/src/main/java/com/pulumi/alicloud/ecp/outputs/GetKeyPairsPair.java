@@ -13,19 +13,28 @@ public final class GetKeyPairsPair {
      * @return The ID of the Key Pair. Its value is same as Queue Name.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The Private Key of the Fingerprint.
      * 
      */
-    private String keyPairFingerPrint;
+    private final String keyPairFingerPrint;
     /**
      * @return The Key Name.
      * 
      */
-    private String keyPairName;
+    private final String keyPairName;
 
-    private GetKeyPairsPair() {}
+    @CustomType.Constructor
+    private GetKeyPairsPair(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("keyPairFingerPrint") String keyPairFingerPrint,
+        @CustomType.Parameter("keyPairName") String keyPairName) {
+        this.id = id;
+        this.keyPairFingerPrint = keyPairFingerPrint;
+        this.keyPairName = keyPairName;
+    }
+
     /**
      * @return The ID of the Key Pair. Its value is same as Queue Name.
      * 
@@ -55,12 +64,16 @@ public final class GetKeyPairsPair {
     public static Builder builder(GetKeyPairsPair defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private String keyPairFingerPrint;
         private String keyPairName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetKeyPairsPair defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -68,27 +81,19 @@ public final class GetKeyPairsPair {
     	      this.keyPairName = defaults.keyPairName;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder keyPairFingerPrint(String keyPairFingerPrint) {
             this.keyPairFingerPrint = Objects.requireNonNull(keyPairFingerPrint);
             return this;
         }
-        @CustomType.Setter
         public Builder keyPairName(String keyPairName) {
             this.keyPairName = Objects.requireNonNull(keyPairName);
             return this;
-        }
-        public GetKeyPairsPair build() {
-            final var o = new GetKeyPairsPair();
-            o.id = id;
-            o.keyPairFingerPrint = keyPairFingerPrint;
-            o.keyPairName = keyPairName;
-            return o;
+        }        public GetKeyPairsPair build() {
+            return new GetKeyPairsPair(id, keyPairFingerPrint, keyPairName);
         }
     }
 }

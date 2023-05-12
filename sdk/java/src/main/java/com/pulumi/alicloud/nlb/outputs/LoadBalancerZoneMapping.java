@@ -15,39 +15,56 @@ public final class LoadBalancerZoneMapping {
      * @return The ID of the EIP associated with the Internet-facing NLB instance.
      * 
      */
-    private @Nullable String allocationId;
+    private final @Nullable String allocationId;
     /**
      * @return The ID of the elastic network interface (ENI).
      * 
      */
-    private @Nullable String eniId;
+    private final @Nullable String eniId;
     /**
      * @return The IPv6 address of the NLB instance.
      * 
      */
-    private @Nullable String ipv6Address;
+    private final @Nullable String ipv6Address;
     /**
      * @return The private IPv4 address of the NLB instance.
      * 
      */
-    private @Nullable String privateIpv4Address;
+    private final @Nullable String privateIpv4Address;
     /**
      * @return The public IPv4 address of the NLB instance.
      * 
      */
-    private @Nullable String publicIpv4Address;
+    private final @Nullable String publicIpv4Address;
     /**
      * @return The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance.
      * 
      */
-    private String vswitchId;
+    private final String vswitchId;
     /**
      * @return The ID of the zone of the NLB instance.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private LoadBalancerZoneMapping() {}
+    @CustomType.Constructor
+    private LoadBalancerZoneMapping(
+        @CustomType.Parameter("allocationId") @Nullable String allocationId,
+        @CustomType.Parameter("eniId") @Nullable String eniId,
+        @CustomType.Parameter("ipv6Address") @Nullable String ipv6Address,
+        @CustomType.Parameter("privateIpv4Address") @Nullable String privateIpv4Address,
+        @CustomType.Parameter("publicIpv4Address") @Nullable String publicIpv4Address,
+        @CustomType.Parameter("vswitchId") String vswitchId,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.allocationId = allocationId;
+        this.eniId = eniId;
+        this.ipv6Address = ipv6Address;
+        this.privateIpv4Address = privateIpv4Address;
+        this.publicIpv4Address = publicIpv4Address;
+        this.vswitchId = vswitchId;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return The ID of the EIP associated with the Internet-facing NLB instance.
      * 
@@ -105,7 +122,7 @@ public final class LoadBalancerZoneMapping {
     public static Builder builder(LoadBalancerZoneMapping defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String allocationId;
         private @Nullable String eniId;
@@ -114,7 +131,11 @@ public final class LoadBalancerZoneMapping {
         private @Nullable String publicIpv4Address;
         private String vswitchId;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(LoadBalancerZoneMapping defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allocationId = defaults.allocationId;
@@ -126,51 +147,35 @@ public final class LoadBalancerZoneMapping {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder allocationId(@Nullable String allocationId) {
             this.allocationId = allocationId;
             return this;
         }
-        @CustomType.Setter
         public Builder eniId(@Nullable String eniId) {
             this.eniId = eniId;
             return this;
         }
-        @CustomType.Setter
         public Builder ipv6Address(@Nullable String ipv6Address) {
             this.ipv6Address = ipv6Address;
             return this;
         }
-        @CustomType.Setter
         public Builder privateIpv4Address(@Nullable String privateIpv4Address) {
             this.privateIpv4Address = privateIpv4Address;
             return this;
         }
-        @CustomType.Setter
         public Builder publicIpv4Address(@Nullable String publicIpv4Address) {
             this.publicIpv4Address = publicIpv4Address;
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public LoadBalancerZoneMapping build() {
-            final var o = new LoadBalancerZoneMapping();
-            o.allocationId = allocationId;
-            o.eniId = eniId;
-            o.ipv6Address = ipv6Address;
-            o.privateIpv4Address = privateIpv4Address;
-            o.publicIpv4Address = publicIpv4Address;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+        }        public LoadBalancerZoneMapping build() {
+            return new LoadBalancerZoneMapping(allocationId, eniId, ipv6Address, privateIpv4Address, publicIpv4Address, vswitchId, zoneId);
         }
     }
 }

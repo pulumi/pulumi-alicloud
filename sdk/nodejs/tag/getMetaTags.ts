@@ -43,6 +43,9 @@ export interface GetMetaTagsArgs {
      * The name of the key.
      */
     keyName?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -89,5 +92,8 @@ export interface GetMetaTagsOutputArgs {
      * The name of the key.
      */
     keyName?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

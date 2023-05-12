@@ -59,10 +59,11 @@ type GetEcsNetworkInterfacePermissionsArgs struct {
 	// A list of Network Interface Permission IDs.
 	Ids []string `pulumi:"ids"`
 	// The ID of the network interface.
-	NetworkInterfaceId string  `pulumi:"networkInterfaceId"`
-	OutputFile         *string `pulumi:"outputFile"`
-	PageNumber         *int    `pulumi:"pageNumber"`
-	PageSize           *int    `pulumi:"pageSize"`
+	NetworkInterfaceId string `pulumi:"networkInterfaceId"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
 	// The Status of the Network Interface Permissions.
 	Status *string `pulumi:"status"`
 }
@@ -99,10 +100,11 @@ type GetEcsNetworkInterfacePermissionsOutputArgs struct {
 	// A list of Network Interface Permission IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The ID of the network interface.
-	NetworkInterfaceId pulumi.StringInput    `pulumi:"networkInterfaceId"`
-	OutputFile         pulumi.StringPtrInput `pulumi:"outputFile"`
-	PageNumber         pulumi.IntPtrInput    `pulumi:"pageNumber"`
-	PageSize           pulumi.IntPtrInput    `pulumi:"pageSize"`
+	NetworkInterfaceId pulumi.StringInput `pulumi:"networkInterfaceId"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 	// The Status of the Network Interface Permissions.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }

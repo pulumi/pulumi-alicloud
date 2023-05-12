@@ -14,30 +14,45 @@ public final class GetImageCachesCachEvent {
      * @return Number of events.
      * 
      */
-    private Integer count;
+    private final Integer count;
     /**
      * @return Start time.
      * 
      */
-    private String firstTimestamp;
+    private final String firstTimestamp;
     /**
      * @return End time.
      * 
      */
-    private String lastTimestamp;
-    private String message;
+    private final String lastTimestamp;
+    private final String message;
     /**
      * @return The name of event.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The type of event.
      * 
      */
-    private String type;
+    private final String type;
 
-    private GetImageCachesCachEvent() {}
+    @CustomType.Constructor
+    private GetImageCachesCachEvent(
+        @CustomType.Parameter("count") Integer count,
+        @CustomType.Parameter("firstTimestamp") String firstTimestamp,
+        @CustomType.Parameter("lastTimestamp") String lastTimestamp,
+        @CustomType.Parameter("message") String message,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("type") String type) {
+        this.count = count;
+        this.firstTimestamp = firstTimestamp;
+        this.lastTimestamp = lastTimestamp;
+        this.message = message;
+        this.name = name;
+        this.type = type;
+    }
+
     /**
      * @return Number of events.
      * 
@@ -84,7 +99,7 @@ public final class GetImageCachesCachEvent {
     public static Builder builder(GetImageCachesCachEvent defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer count;
         private String firstTimestamp;
@@ -92,7 +107,11 @@ public final class GetImageCachesCachEvent {
         private String message;
         private String name;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetImageCachesCachEvent defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.count = defaults.count;
@@ -103,45 +122,31 @@ public final class GetImageCachesCachEvent {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder count(Integer count) {
             this.count = Objects.requireNonNull(count);
             return this;
         }
-        @CustomType.Setter
         public Builder firstTimestamp(String firstTimestamp) {
             this.firstTimestamp = Objects.requireNonNull(firstTimestamp);
             return this;
         }
-        @CustomType.Setter
         public Builder lastTimestamp(String lastTimestamp) {
             this.lastTimestamp = Objects.requireNonNull(lastTimestamp);
             return this;
         }
-        @CustomType.Setter
         public Builder message(String message) {
             this.message = Objects.requireNonNull(message);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetImageCachesCachEvent build() {
-            final var o = new GetImageCachesCachEvent();
-            o.count = count;
-            o.firstTimestamp = firstTimestamp;
-            o.lastTimestamp = lastTimestamp;
-            o.message = message;
-            o.name = name;
-            o.type = type;
-            return o;
+        }        public GetImageCachesCachEvent build() {
+            return new GetImageCachesCachEvent(count, firstTimestamp, lastTimestamp, message, name, type);
         }
     }
 }

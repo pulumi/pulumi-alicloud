@@ -16,34 +16,53 @@ public final class MetricRuleTemplateAlertTemplate {
      * @return The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iot_edge`, `kvstore_sharding`, `kvstore_splitrw`, `kvstore_standard`, `memcache`, `mns`, `mongodb`, `mongodb_cluster`, `mongodb_sharding`, `mq_topic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
      * 
      */
-    private String category;
+    private final String category;
     /**
      * @return The information about the trigger condition based on the alert level. See the following `Block escalations`.
      * 
      */
-    private @Nullable MetricRuleTemplateAlertTemplateEscalations escalations;
+    private final @Nullable MetricRuleTemplateAlertTemplateEscalations escalations;
     /**
      * @return The name of the metric.
      * 
+     * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * 
      */
-    private String metricName;
+    private final String metricName;
     /**
      * @return The namespace of the service.
      * 
+     * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * 
      */
-    private String namespace;
+    private final String namespace;
     /**
      * @return The name of the alert rule.
      * 
      */
-    private String ruleName;
+    private final String ruleName;
     /**
      * @return The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
      * 
      */
-    private @Nullable String webhook;
+    private final @Nullable String webhook;
 
-    private MetricRuleTemplateAlertTemplate() {}
+    @CustomType.Constructor
+    private MetricRuleTemplateAlertTemplate(
+        @CustomType.Parameter("category") String category,
+        @CustomType.Parameter("escalations") @Nullable MetricRuleTemplateAlertTemplateEscalations escalations,
+        @CustomType.Parameter("metricName") String metricName,
+        @CustomType.Parameter("namespace") String namespace,
+        @CustomType.Parameter("ruleName") String ruleName,
+        @CustomType.Parameter("webhook") @Nullable String webhook) {
+        this.category = category;
+        this.escalations = escalations;
+        this.metricName = metricName;
+        this.namespace = namespace;
+        this.ruleName = ruleName;
+        this.webhook = webhook;
+    }
+
     /**
      * @return The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iot_edge`, `kvstore_sharding`, `kvstore_splitrw`, `kvstore_standard`, `memcache`, `mns`, `mongodb`, `mongodb_cluster`, `mongodb_sharding`, `mq_topic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
      * 
@@ -61,12 +80,16 @@ public final class MetricRuleTemplateAlertTemplate {
     /**
      * @return The name of the metric.
      * 
+     * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * 
      */
     public String metricName() {
         return this.metricName;
     }
     /**
      * @return The namespace of the service.
+     * 
+     * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * 
      */
     public String namespace() {
@@ -94,7 +117,7 @@ public final class MetricRuleTemplateAlertTemplate {
     public static Builder builder(MetricRuleTemplateAlertTemplate defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String category;
         private @Nullable MetricRuleTemplateAlertTemplateEscalations escalations;
@@ -102,7 +125,11 @@ public final class MetricRuleTemplateAlertTemplate {
         private String namespace;
         private String ruleName;
         private @Nullable String webhook;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(MetricRuleTemplateAlertTemplate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -113,45 +140,31 @@ public final class MetricRuleTemplateAlertTemplate {
     	      this.webhook = defaults.webhook;
         }
 
-        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
-        @CustomType.Setter
         public Builder escalations(@Nullable MetricRuleTemplateAlertTemplateEscalations escalations) {
             this.escalations = escalations;
             return this;
         }
-        @CustomType.Setter
         public Builder metricName(String metricName) {
             this.metricName = Objects.requireNonNull(metricName);
             return this;
         }
-        @CustomType.Setter
         public Builder namespace(String namespace) {
             this.namespace = Objects.requireNonNull(namespace);
             return this;
         }
-        @CustomType.Setter
         public Builder ruleName(String ruleName) {
             this.ruleName = Objects.requireNonNull(ruleName);
             return this;
         }
-        @CustomType.Setter
         public Builder webhook(@Nullable String webhook) {
             this.webhook = webhook;
             return this;
-        }
-        public MetricRuleTemplateAlertTemplate build() {
-            final var o = new MetricRuleTemplateAlertTemplate();
-            o.category = category;
-            o.escalations = escalations;
-            o.metricName = metricName;
-            o.namespace = namespace;
-            o.ruleName = ruleName;
-            o.webhook = webhook;
-            return o;
+        }        public MetricRuleTemplateAlertTemplate build() {
+            return new MetricRuleTemplateAlertTemplate(category, escalations, metricName, namespace, ruleName, webhook);
         }
     }
 }

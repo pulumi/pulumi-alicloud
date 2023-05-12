@@ -153,9 +153,19 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.isOutdated);
     }
 
+    /**
+     * Filter the result which is used to create a kubernetes cluster
+     * and managed kubernetes cluster. Optional Values: `Master` and `Worker`.
+     * 
+     */
     @Import(name="kubernetesNodeRole")
     private @Nullable Output<String> kubernetesNodeRole;
 
+    /**
+     * @return Filter the result which is used to create a kubernetes cluster
+     * and managed kubernetes cluster. Optional Values: `Master` and `Worker`.
+     * 
+     */
     public Optional<Output<String>> kubernetesNodeRole() {
         return Optional.ofNullable(this.kubernetesNodeRole);
     }
@@ -205,9 +215,17 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.networkType);
     }
 
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable Output<String> outputFile;
 
+    /**
+     * @return File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     public Optional<Output<String>> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -480,11 +498,25 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
             return isOutdated(Output.of(isOutdated));
         }
 
+        /**
+         * @param kubernetesNodeRole Filter the result which is used to create a kubernetes cluster
+         * and managed kubernetes cluster. Optional Values: `Master` and `Worker`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kubernetesNodeRole(@Nullable Output<String> kubernetesNodeRole) {
             $.kubernetesNodeRole = kubernetesNodeRole;
             return this;
         }
 
+        /**
+         * @param kubernetesNodeRole Filter the result which is used to create a kubernetes cluster
+         * and managed kubernetes cluster. Optional Values: `Master` and `Worker`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kubernetesNodeRole(String kubernetesNodeRole) {
             return kubernetesNodeRole(Output.of(kubernetesNodeRole));
         }
@@ -552,11 +584,23 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
             return networkType(Output.of(networkType));
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable Output<String> outputFile) {
             $.outputFile = outputFile;
             return this;
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(String outputFile) {
             return outputFile(Output.of(outputFile));
         }

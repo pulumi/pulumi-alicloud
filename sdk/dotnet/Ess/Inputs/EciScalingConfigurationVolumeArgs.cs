@@ -80,6 +80,8 @@ namespace Pulumi.AliCloud.Ess.Inputs
 
         /// <summary>
         /// The address of the NFS server.
+        /// 
+        /// &gt; **NOTE:** Every volume mounted must have a name and type attributes.
         /// </summary>
         [Input("nfsVolumeServer")]
         public Input<string>? NfsVolumeServer { get; set; }

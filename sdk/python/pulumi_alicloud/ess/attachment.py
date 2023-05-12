@@ -22,6 +22,16 @@ class AttachmentArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
         :param pulumi.Input[bool] force: Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+               
+               > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
+               
+               > **NOTE:** Restrictions on attaching ECS instances:
+               
+               - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+               - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+               - The attached ECS instances must in the running state.
+               - The attached ECS instances has not been attached to other scaling groups.
+               - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
         """
         pulumi.set(__self__, "instance_ids", instance_ids)
         pulumi.set(__self__, "scaling_group_id", scaling_group_id)
@@ -57,6 +67,16 @@ class AttachmentArgs:
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+
+        > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
+
+        > **NOTE:** Restrictions on attaching ECS instances:
+
+        - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+        - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+        - The attached ECS instances must in the running state.
+        - The attached ECS instances has not been attached to other scaling groups.
+        - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
         """
         return pulumi.get(self, "force")
 
@@ -74,6 +94,16 @@ class _AttachmentState:
         """
         Input properties used for looking up and filtering Attachment resources.
         :param pulumi.Input[bool] force: Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+               
+               > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
+               
+               > **NOTE:** Restrictions on attaching ECS instances:
+               
+               - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+               - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+               - The attached ECS instances must in the running state.
+               - The attached ECS instances has not been attached to other scaling groups.
+               - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
         """
@@ -89,6 +119,16 @@ class _AttachmentState:
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+
+        > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
+
+        > **NOTE:** Restrictions on attaching ECS instances:
+
+        - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+        - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+        - The attached ECS instances must in the running state.
+        - The attached ECS instances has not been attached to other scaling groups.
+        - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
         """
         return pulumi.get(self, "force")
 
@@ -221,6 +261,16 @@ class Attachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force: Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+               
+               > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
+               
+               > **NOTE:** Restrictions on attaching ECS instances:
+               
+               - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+               - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+               - The attached ECS instances must in the running state.
+               - The attached ECS instances has not been attached to other scaling groups.
+               - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
         """
@@ -373,6 +423,16 @@ class Attachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force: Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+               
+               > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
+               
+               > **NOTE:** Restrictions on attaching ECS instances:
+               
+               - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+               - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+               - The attached ECS instances must in the running state.
+               - The attached ECS instances has not been attached to other scaling groups.
+               - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
         """
@@ -390,6 +450,16 @@ class Attachment(pulumi.CustomResource):
     def force(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+
+        > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
+
+        > **NOTE:** Restrictions on attaching ECS instances:
+
+        - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+        - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+        - The attached ECS instances must in the running state.
+        - The attached ECS instances has not been attached to other scaling groups.
+        - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
         """
         return pulumi.get(self, "force")
 

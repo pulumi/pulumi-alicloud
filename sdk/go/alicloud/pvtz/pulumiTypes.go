@@ -348,6 +348,8 @@ func (o RuleForwardIpArrayOutput) Index(i pulumi.IntInput) RuleForwardIpOutput {
 
 type ZoneAttachmentVpc struct {
 	// The region of the vpc. If not set, the current region will instead of.
+	//
+	// Recommend to use `vpcs`.
 	RegionId *string `pulumi:"regionId"`
 	// The Id of the vpc.
 	VpcId string `pulumi:"vpcId"`
@@ -366,6 +368,8 @@ type ZoneAttachmentVpcInput interface {
 
 type ZoneAttachmentVpcArgs struct {
 	// The region of the vpc. If not set, the current region will instead of.
+	//
+	// Recommend to use `vpcs`.
 	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
 	// The Id of the vpc.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -423,6 +427,8 @@ func (o ZoneAttachmentVpcOutput) ToZoneAttachmentVpcOutputWithContext(ctx contex
 }
 
 // The region of the vpc. If not set, the current region will instead of.
+//
+// Recommend to use `vpcs`.
 func (o ZoneAttachmentVpcOutput) RegionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneAttachmentVpc) *string { return v.RegionId }).(pulumi.StringPtrOutput)
 }

@@ -122,6 +122,7 @@ def get_transit_router_multicast_domain_members(ids: Optional[Sequence[str]] = N
 
     :param Sequence[str] ids: A list of Transit Router Multicast Domain Member IDs.
     :param str network_interface_id: The ID of the ENI.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast member belongs.
     """
     __args__ = dict()
@@ -165,6 +166,7 @@ def get_transit_router_multicast_domain_members_output(ids: Optional[pulumi.Inpu
 
     :param Sequence[str] ids: A list of Transit Router Multicast Domain Member IDs.
     :param str network_interface_id: The ID of the ENI.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast member belongs.
     """
     ...

@@ -15,19 +15,28 @@ public final class ProvisionedProductOutput {
      * @return Description of the output value defined in the template.
      * 
      */
-    private @Nullable String description;
+    private final @Nullable String description;
     /**
      * @return The name of the output value defined in the template.
      * 
      */
-    private @Nullable String outputKey;
+    private final @Nullable String outputKey;
     /**
      * @return The content of the output value defined in the template.
      * 
      */
-    private @Nullable String outputValue;
+    private final @Nullable String outputValue;
 
-    private ProvisionedProductOutput() {}
+    @CustomType.Constructor
+    private ProvisionedProductOutput(
+        @CustomType.Parameter("description") @Nullable String description,
+        @CustomType.Parameter("outputKey") @Nullable String outputKey,
+        @CustomType.Parameter("outputValue") @Nullable String outputValue) {
+        this.description = description;
+        this.outputKey = outputKey;
+        this.outputValue = outputValue;
+    }
+
     /**
      * @return Description of the output value defined in the template.
      * 
@@ -57,12 +66,16 @@ public final class ProvisionedProductOutput {
     public static Builder builder(ProvisionedProductOutput defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String description;
         private @Nullable String outputKey;
         private @Nullable String outputValue;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ProvisionedProductOutput defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -70,27 +83,19 @@ public final class ProvisionedProductOutput {
     	      this.outputValue = defaults.outputValue;
         }
 
-        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
-        @CustomType.Setter
         public Builder outputKey(@Nullable String outputKey) {
             this.outputKey = outputKey;
             return this;
         }
-        @CustomType.Setter
         public Builder outputValue(@Nullable String outputValue) {
             this.outputValue = outputValue;
             return this;
-        }
-        public ProvisionedProductOutput build() {
-            final var o = new ProvisionedProductOutput();
-            o.description = description;
-            o.outputKey = outputKey;
-            o.outputValue = outputValue;
-            return o;
+        }        public ProvisionedProductOutput build() {
+            return new ProvisionedProductOutput(description, outputKey, outputValue);
         }
     }
 }

@@ -19,12 +19,16 @@ public final class TransitRouterRouteTablePropagationState extends com.pulumi.re
     /**
      * The dry run.
      * 
+     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+     * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
      * @return The dry run.
+     * 
+     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -106,6 +110,8 @@ public final class TransitRouterRouteTablePropagationState extends com.pulumi.re
         /**
          * @param dryRun The dry run.
          * 
+         * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+         * 
          * @return builder
          * 
          */
@@ -116,6 +122,8 @@ public final class TransitRouterRouteTablePropagationState extends com.pulumi.re
 
         /**
          * @param dryRun The dry run.
+         * 
+         * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
          * 
          * @return builder
          * 

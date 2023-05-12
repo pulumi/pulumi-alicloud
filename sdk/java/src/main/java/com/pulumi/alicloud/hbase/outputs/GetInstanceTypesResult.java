@@ -15,53 +15,82 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceTypesResult {
-    private @Nullable String chargeType;
+    private final @Nullable String chargeType;
     /**
      * @return (Available in 1.115.0+) A list of core instance types. Each element contains the following attributes:
      * 
      */
-    private List<GetInstanceTypesCoreInstanceType> coreInstanceTypes;
-    private @Nullable String diskType;
+    private final List<GetInstanceTypesCoreInstanceType> coreInstanceTypes;
+    private final @Nullable String diskType;
     /**
      * @return Name of the engine.
      * 
      */
-    private @Nullable String engine;
+    private final @Nullable String engine;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of instance types type IDs.
      * 
      */
-    private List<String> ids;
+    private final List<String> ids;
     /**
      * @return Name of the instance type.
      * 
      */
-    private @Nullable String instanceType;
+    private final @Nullable String instanceType;
     /**
      * @return (Available in 1.115.0+) A list of master instance types. Each element contains the following attributes:
      * 
      */
-    private List<GetInstanceTypesMasterInstanceType> masterInstanceTypes;
-    private @Nullable String outputFile;
-    private @Nullable String regionId;
+    private final List<GetInstanceTypesMasterInstanceType> masterInstanceTypes;
+    private final @Nullable String outputFile;
+    private final @Nullable String regionId;
     /**
      * @return (Deprecated) A list of instance types. Each element contains the following attributes:
      * 
      */
-    private List<GetInstanceTypesType> types;
+    private final List<GetInstanceTypesType> types;
     /**
      * @return The version of the engine.
      * 
      */
-    private @Nullable String version;
-    private @Nullable String zoneId;
+    private final @Nullable String version;
+    private final @Nullable String zoneId;
 
-    private GetInstanceTypesResult() {}
+    @CustomType.Constructor
+    private GetInstanceTypesResult(
+        @CustomType.Parameter("chargeType") @Nullable String chargeType,
+        @CustomType.Parameter("coreInstanceTypes") List<GetInstanceTypesCoreInstanceType> coreInstanceTypes,
+        @CustomType.Parameter("diskType") @Nullable String diskType,
+        @CustomType.Parameter("engine") @Nullable String engine,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceType") @Nullable String instanceType,
+        @CustomType.Parameter("masterInstanceTypes") List<GetInstanceTypesMasterInstanceType> masterInstanceTypes,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("regionId") @Nullable String regionId,
+        @CustomType.Parameter("types") List<GetInstanceTypesType> types,
+        @CustomType.Parameter("version") @Nullable String version,
+        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
+        this.chargeType = chargeType;
+        this.coreInstanceTypes = coreInstanceTypes;
+        this.diskType = diskType;
+        this.engine = engine;
+        this.id = id;
+        this.ids = ids;
+        this.instanceType = instanceType;
+        this.masterInstanceTypes = masterInstanceTypes;
+        this.outputFile = outputFile;
+        this.regionId = regionId;
+        this.types = types;
+        this.version = version;
+        this.zoneId = zoneId;
+    }
+
     public Optional<String> chargeType() {
         return Optional.ofNullable(this.chargeType);
     }
@@ -141,7 +170,7 @@ public final class GetInstanceTypesResult {
     public static Builder builder(GetInstanceTypesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String chargeType;
         private List<GetInstanceTypesCoreInstanceType> coreInstanceTypes;
@@ -156,7 +185,11 @@ public final class GetInstanceTypesResult {
         private List<GetInstanceTypesType> types;
         private @Nullable String version;
         private @Nullable String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstanceTypesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.chargeType = defaults.chargeType;
@@ -174,12 +207,10 @@ public final class GetInstanceTypesResult {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder chargeType(@Nullable String chargeType) {
             this.chargeType = chargeType;
             return this;
         }
-        @CustomType.Setter
         public Builder coreInstanceTypes(List<GetInstanceTypesCoreInstanceType> coreInstanceTypes) {
             this.coreInstanceTypes = Objects.requireNonNull(coreInstanceTypes);
             return this;
@@ -187,22 +218,18 @@ public final class GetInstanceTypesResult {
         public Builder coreInstanceTypes(GetInstanceTypesCoreInstanceType... coreInstanceTypes) {
             return coreInstanceTypes(List.of(coreInstanceTypes));
         }
-        @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
             this.diskType = diskType;
             return this;
         }
-        @CustomType.Setter
         public Builder engine(@Nullable String engine) {
             this.engine = engine;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -210,12 +237,10 @@ public final class GetInstanceTypesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
             this.instanceType = instanceType;
             return this;
         }
-        @CustomType.Setter
         public Builder masterInstanceTypes(List<GetInstanceTypesMasterInstanceType> masterInstanceTypes) {
             this.masterInstanceTypes = Objects.requireNonNull(masterInstanceTypes);
             return this;
@@ -223,17 +248,14 @@ public final class GetInstanceTypesResult {
         public Builder masterInstanceTypes(GetInstanceTypesMasterInstanceType... masterInstanceTypes) {
             return masterInstanceTypes(List.of(masterInstanceTypes));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder regionId(@Nullable String regionId) {
             this.regionId = regionId;
             return this;
         }
-        @CustomType.Setter
         public Builder types(List<GetInstanceTypesType> types) {
             this.types = Objects.requireNonNull(types);
             return this;
@@ -241,32 +263,15 @@ public final class GetInstanceTypesResult {
         public Builder types(GetInstanceTypesType... types) {
             return types(List.of(types));
         }
-        @CustomType.Setter
         public Builder version(@Nullable String version) {
             this.version = version;
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }
-        public GetInstanceTypesResult build() {
-            final var o = new GetInstanceTypesResult();
-            o.chargeType = chargeType;
-            o.coreInstanceTypes = coreInstanceTypes;
-            o.diskType = diskType;
-            o.engine = engine;
-            o.id = id;
-            o.ids = ids;
-            o.instanceType = instanceType;
-            o.masterInstanceTypes = masterInstanceTypes;
-            o.outputFile = outputFile;
-            o.regionId = regionId;
-            o.types = types;
-            o.version = version;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetInstanceTypesResult build() {
+            return new GetInstanceTypesResult(chargeType, coreInstanceTypes, diskType, engine, id, ids, instanceType, masterInstanceTypes, outputFile, regionId, types, version, zoneId);
         }
     }
 }

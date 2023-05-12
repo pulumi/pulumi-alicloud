@@ -14,41 +14,62 @@ public final class GetTransitRouterVbrAttachmentsAttachment {
      * @return ID of the region where the conflicted VBR is located.
      * 
      */
-    private Boolean autoPublishRouteEnabled;
-    private String id;
+    private final Boolean autoPublishRouteEnabled;
+    private final String id;
     /**
      * @return Type of the resource.
      * 
      */
-    private String resourceType;
+    private final String resourceType;
     /**
      * @return The status of the resource. Valid values `Attached`, `Attaching` and `Detaching`.
      * 
      */
-    private String status;
-    private String transitRouterAttachmentDescription;
+    private final String status;
+    private final String transitRouterAttachmentDescription;
     /**
      * @return ID of the transit router VBR attachment.
      * 
      */
-    private String transitRouterAttachmentId;
+    private final String transitRouterAttachmentId;
     /**
      * @return Name of the transit router attachment.
      * 
      */
-    private String transitRouterAttachmentName;
+    private final String transitRouterAttachmentName;
     /**
      * @return ID of the VBR.
      * 
      */
-    private String vbrId;
+    private final String vbrId;
     /**
      * @return The Owner ID of the VBR.
      * 
      */
-    private String vbrOwnerId;
+    private final String vbrOwnerId;
 
-    private GetTransitRouterVbrAttachmentsAttachment() {}
+    @CustomType.Constructor
+    private GetTransitRouterVbrAttachmentsAttachment(
+        @CustomType.Parameter("autoPublishRouteEnabled") Boolean autoPublishRouteEnabled,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("resourceType") String resourceType,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("transitRouterAttachmentDescription") String transitRouterAttachmentDescription,
+        @CustomType.Parameter("transitRouterAttachmentId") String transitRouterAttachmentId,
+        @CustomType.Parameter("transitRouterAttachmentName") String transitRouterAttachmentName,
+        @CustomType.Parameter("vbrId") String vbrId,
+        @CustomType.Parameter("vbrOwnerId") String vbrOwnerId) {
+        this.autoPublishRouteEnabled = autoPublishRouteEnabled;
+        this.id = id;
+        this.resourceType = resourceType;
+        this.status = status;
+        this.transitRouterAttachmentDescription = transitRouterAttachmentDescription;
+        this.transitRouterAttachmentId = transitRouterAttachmentId;
+        this.transitRouterAttachmentName = transitRouterAttachmentName;
+        this.vbrId = vbrId;
+        this.vbrOwnerId = vbrOwnerId;
+    }
+
     /**
      * @return ID of the region where the conflicted VBR is located.
      * 
@@ -112,7 +133,7 @@ public final class GetTransitRouterVbrAttachmentsAttachment {
     public static Builder builder(GetTransitRouterVbrAttachmentsAttachment defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean autoPublishRouteEnabled;
         private String id;
@@ -123,7 +144,11 @@ public final class GetTransitRouterVbrAttachmentsAttachment {
         private String transitRouterAttachmentName;
         private String vbrId;
         private String vbrOwnerId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTransitRouterVbrAttachmentsAttachment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoPublishRouteEnabled = defaults.autoPublishRouteEnabled;
@@ -137,63 +162,43 @@ public final class GetTransitRouterVbrAttachmentsAttachment {
     	      this.vbrOwnerId = defaults.vbrOwnerId;
         }
 
-        @CustomType.Setter
         public Builder autoPublishRouteEnabled(Boolean autoPublishRouteEnabled) {
             this.autoPublishRouteEnabled = Objects.requireNonNull(autoPublishRouteEnabled);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceType(String resourceType) {
             this.resourceType = Objects.requireNonNull(resourceType);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterAttachmentDescription(String transitRouterAttachmentDescription) {
             this.transitRouterAttachmentDescription = Objects.requireNonNull(transitRouterAttachmentDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
             this.transitRouterAttachmentId = Objects.requireNonNull(transitRouterAttachmentId);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterAttachmentName(String transitRouterAttachmentName) {
             this.transitRouterAttachmentName = Objects.requireNonNull(transitRouterAttachmentName);
             return this;
         }
-        @CustomType.Setter
         public Builder vbrId(String vbrId) {
             this.vbrId = Objects.requireNonNull(vbrId);
             return this;
         }
-        @CustomType.Setter
         public Builder vbrOwnerId(String vbrOwnerId) {
             this.vbrOwnerId = Objects.requireNonNull(vbrOwnerId);
             return this;
-        }
-        public GetTransitRouterVbrAttachmentsAttachment build() {
-            final var o = new GetTransitRouterVbrAttachmentsAttachment();
-            o.autoPublishRouteEnabled = autoPublishRouteEnabled;
-            o.id = id;
-            o.resourceType = resourceType;
-            o.status = status;
-            o.transitRouterAttachmentDescription = transitRouterAttachmentDescription;
-            o.transitRouterAttachmentId = transitRouterAttachmentId;
-            o.transitRouterAttachmentName = transitRouterAttachmentName;
-            o.vbrId = vbrId;
-            o.vbrOwnerId = vbrOwnerId;
-            return o;
+        }        public GetTransitRouterVbrAttachmentsAttachment build() {
+            return new GetTransitRouterVbrAttachmentsAttachment(autoPublishRouteEnabled, id, resourceType, status, transitRouterAttachmentDescription, transitRouterAttachmentId, transitRouterAttachmentName, vbrId, vbrOwnerId);
         }
     }
 }

@@ -56,7 +56,8 @@ type GetTransitRoutersArgs struct {
 	// A list of resource id. The element value is same as <cen_id>:<transit_router_id>`.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter CEN Transit Routers by name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
 	Status *string `pulumi:"status"`
@@ -106,7 +107,8 @@ type GetTransitRoutersOutputArgs struct {
 	// A list of resource id. The element value is same as <cen_id>:<transit_router_id>`.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter CEN Transit Routers by name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

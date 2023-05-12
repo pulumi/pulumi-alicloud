@@ -14,84 +14,119 @@ public final class GetNasFileSystemsSystem {
      * @return The capacity of nas file system.
      * 
      */
-    private String capacity;
+    private final String capacity;
     /**
      * @return The create time of nas file system.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The description of nas file system.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The filesystem id of nas file system.
      * 
      */
-    private String fileSystemId;
+    private final String fileSystemId;
     /**
      * @return The type of nas file system.
      * 
      */
-    private String fileSystemType;
+    private final String fileSystemType;
     /**
      * @return The ID of the Nas File System.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The size of metered.
      * 
      */
-    private String meteredSize;
+    private final String meteredSize;
     /**
      * @return The domain of mount target.
      * 
      */
-    private String mountTargetDomain;
+    private final String mountTargetDomain;
     /**
      * @return The status of mount target. Valid values: `Pending`, `Active`, `Inactive`,`Deleting`,`Invalid`.
      * 
      */
-    private String mountTargetStatus;
+    private final String mountTargetStatus;
     /**
      * @return The name of nas file system.
      * 
      */
-    private String nasFileSystemName;
+    private final String nasFileSystemName;
     /**
      * @return The ID of office site.
      * 
      */
-    private String officeSiteId;
+    private final String officeSiteId;
     /**
      * @return The name of office site.
      * 
      */
-    private String officeSiteName;
+    private final String officeSiteName;
     /**
      * @return The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The storage type of nas file system.
      * 
      */
-    private String storageType;
+    private final String storageType;
     /**
      * @return Whether to support Acl.
      * 
      */
-    private Boolean supportAcl;
+    private final Boolean supportAcl;
     /**
      * @return The zone id of nas file system.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetNasFileSystemsSystem() {}
+    @CustomType.Constructor
+    private GetNasFileSystemsSystem(
+        @CustomType.Parameter("capacity") String capacity,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("fileSystemId") String fileSystemId,
+        @CustomType.Parameter("fileSystemType") String fileSystemType,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("meteredSize") String meteredSize,
+        @CustomType.Parameter("mountTargetDomain") String mountTargetDomain,
+        @CustomType.Parameter("mountTargetStatus") String mountTargetStatus,
+        @CustomType.Parameter("nasFileSystemName") String nasFileSystemName,
+        @CustomType.Parameter("officeSiteId") String officeSiteId,
+        @CustomType.Parameter("officeSiteName") String officeSiteName,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("storageType") String storageType,
+        @CustomType.Parameter("supportAcl") Boolean supportAcl,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.capacity = capacity;
+        this.createTime = createTime;
+        this.description = description;
+        this.fileSystemId = fileSystemId;
+        this.fileSystemType = fileSystemType;
+        this.id = id;
+        this.meteredSize = meteredSize;
+        this.mountTargetDomain = mountTargetDomain;
+        this.mountTargetStatus = mountTargetStatus;
+        this.nasFileSystemName = nasFileSystemName;
+        this.officeSiteId = officeSiteId;
+        this.officeSiteName = officeSiteName;
+        this.status = status;
+        this.storageType = storageType;
+        this.supportAcl = supportAcl;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return The capacity of nas file system.
      * 
@@ -212,7 +247,7 @@ public final class GetNasFileSystemsSystem {
     public static Builder builder(GetNasFileSystemsSystem defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String capacity;
         private String createTime;
@@ -230,7 +265,11 @@ public final class GetNasFileSystemsSystem {
         private String storageType;
         private Boolean supportAcl;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetNasFileSystemsSystem defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.capacity = defaults.capacity;
@@ -251,105 +290,71 @@ public final class GetNasFileSystemsSystem {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder capacity(String capacity) {
             this.capacity = Objects.requireNonNull(capacity);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder fileSystemId(String fileSystemId) {
             this.fileSystemId = Objects.requireNonNull(fileSystemId);
             return this;
         }
-        @CustomType.Setter
         public Builder fileSystemType(String fileSystemType) {
             this.fileSystemType = Objects.requireNonNull(fileSystemType);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder meteredSize(String meteredSize) {
             this.meteredSize = Objects.requireNonNull(meteredSize);
             return this;
         }
-        @CustomType.Setter
         public Builder mountTargetDomain(String mountTargetDomain) {
             this.mountTargetDomain = Objects.requireNonNull(mountTargetDomain);
             return this;
         }
-        @CustomType.Setter
         public Builder mountTargetStatus(String mountTargetStatus) {
             this.mountTargetStatus = Objects.requireNonNull(mountTargetStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder nasFileSystemName(String nasFileSystemName) {
             this.nasFileSystemName = Objects.requireNonNull(nasFileSystemName);
             return this;
         }
-        @CustomType.Setter
         public Builder officeSiteId(String officeSiteId) {
             this.officeSiteId = Objects.requireNonNull(officeSiteId);
             return this;
         }
-        @CustomType.Setter
         public Builder officeSiteName(String officeSiteName) {
             this.officeSiteName = Objects.requireNonNull(officeSiteName);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder storageType(String storageType) {
             this.storageType = Objects.requireNonNull(storageType);
             return this;
         }
-        @CustomType.Setter
         public Builder supportAcl(Boolean supportAcl) {
             this.supportAcl = Objects.requireNonNull(supportAcl);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetNasFileSystemsSystem build() {
-            final var o = new GetNasFileSystemsSystem();
-            o.capacity = capacity;
-            o.createTime = createTime;
-            o.description = description;
-            o.fileSystemId = fileSystemId;
-            o.fileSystemType = fileSystemType;
-            o.id = id;
-            o.meteredSize = meteredSize;
-            o.mountTargetDomain = mountTargetDomain;
-            o.mountTargetStatus = mountTargetStatus;
-            o.nasFileSystemName = nasFileSystemName;
-            o.officeSiteId = officeSiteId;
-            o.officeSiteName = officeSiteName;
-            o.status = status;
-            o.storageType = storageType;
-            o.supportAcl = supportAcl;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetNasFileSystemsSystem build() {
+            return new GetNasFileSystemsSystem(capacity, createTime, description, fileSystemId, fileSystemType, id, meteredSize, mountTargetDomain, mountTargetStatus, nasFileSystemName, officeSiteId, officeSiteName, status, storageType, supportAcl, zoneId);
         }
     }
 }

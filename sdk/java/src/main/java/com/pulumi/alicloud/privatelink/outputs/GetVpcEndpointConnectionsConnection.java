@@ -14,24 +14,35 @@ public final class GetVpcEndpointConnectionsConnection {
      * @return The Bandwidth.
      * 
      */
-    private Integer bandwidth;
+    private final Integer bandwidth;
     /**
      * @return The ID of the Vpc Endpoint.
      * 
      */
-    private String endpointId;
+    private final String endpointId;
     /**
      * @return The ID of the Vpc Endpoint Connection.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The status of Vpc Endpoint Connection.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetVpcEndpointConnectionsConnection() {}
+    @CustomType.Constructor
+    private GetVpcEndpointConnectionsConnection(
+        @CustomType.Parameter("bandwidth") Integer bandwidth,
+        @CustomType.Parameter("endpointId") String endpointId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("status") String status) {
+        this.bandwidth = bandwidth;
+        this.endpointId = endpointId;
+        this.id = id;
+        this.status = status;
+    }
+
     /**
      * @return The Bandwidth.
      * 
@@ -68,13 +79,17 @@ public final class GetVpcEndpointConnectionsConnection {
     public static Builder builder(GetVpcEndpointConnectionsConnection defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer bandwidth;
         private String endpointId;
         private String id;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVpcEndpointConnectionsConnection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidth = defaults.bandwidth;
@@ -83,33 +98,23 @@ public final class GetVpcEndpointConnectionsConnection {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointId(String endpointId) {
             this.endpointId = Objects.requireNonNull(endpointId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetVpcEndpointConnectionsConnection build() {
-            final var o = new GetVpcEndpointConnectionsConnection();
-            o.bandwidth = bandwidth;
-            o.endpointId = endpointId;
-            o.id = id;
-            o.status = status;
-            return o;
+        }        public GetVpcEndpointConnectionsConnection build() {
+            return new GetVpcEndpointConnectionsConnection(bandwidth, endpointId, id, status);
         }
     }
 }

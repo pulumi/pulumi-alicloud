@@ -18,90 +18,129 @@ public final class GetVirtualNodesNode {
      * @return The Number of CPU.
      * 
      */
-    private Integer cpu;
+    private final Integer cpu;
     /**
      * @return The creation time of the virtual node.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The ENI instance ID.
      * 
      */
-    private String eniInstanceId;
+    private final String eniInstanceId;
     /**
      * @return The event list.
      * 
      */
-    private List<GetVirtualNodesNodeEvent> events;
+    private final List<GetVirtualNodesNodeEvent> events;
     /**
      * @return The ID of the Virtual Node.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The IP address of a public network.
      * 
      */
-    private String internetIp;
+    private final String internetIp;
     /**
      * @return The private IP address of the RDS instance.
      * 
      */
-    private String intranetIp;
+    private final String intranetIp;
     /**
      * @return The memory size.
      * 
      */
-    private Integer memory;
+    private final Integer memory;
     /**
      * @return The ram role.
      * 
      */
-    private String ramRoleName;
+    private final String ramRoleName;
     /**
      * @return The resource group ID.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return The security group ID.
      * 
      */
-    private String securityGroupId;
+    private final String securityGroupId;
     /**
      * @return The Status of the virtual node.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
     /**
      * @return Of the virtual node number.
      * 
      */
-    private String virtualNodeId;
+    private final String virtualNodeId;
     /**
      * @return The name of the virtual node.
      * 
      */
-    private String virtualNodeName;
-    private String vpcId;
+    private final String virtualNodeName;
+    private final String vpcId;
     /**
      * @return The vswitch id.
      * 
      */
-    private String vswitchId;
+    private final String vswitchId;
     /**
      * @return The Zone.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetVirtualNodesNode() {}
+    @CustomType.Constructor
+    private GetVirtualNodesNode(
+        @CustomType.Parameter("cpu") Integer cpu,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("eniInstanceId") String eniInstanceId,
+        @CustomType.Parameter("events") List<GetVirtualNodesNodeEvent> events,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("internetIp") String internetIp,
+        @CustomType.Parameter("intranetIp") String intranetIp,
+        @CustomType.Parameter("memory") Integer memory,
+        @CustomType.Parameter("ramRoleName") String ramRoleName,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("securityGroupId") String securityGroupId,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("tags") Map<String,Object> tags,
+        @CustomType.Parameter("virtualNodeId") String virtualNodeId,
+        @CustomType.Parameter("virtualNodeName") String virtualNodeName,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("vswitchId") String vswitchId,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.cpu = cpu;
+        this.createTime = createTime;
+        this.eniInstanceId = eniInstanceId;
+        this.events = events;
+        this.id = id;
+        this.internetIp = internetIp;
+        this.intranetIp = intranetIp;
+        this.memory = memory;
+        this.ramRoleName = ramRoleName;
+        this.resourceGroupId = resourceGroupId;
+        this.securityGroupId = securityGroupId;
+        this.status = status;
+        this.tags = tags;
+        this.virtualNodeId = virtualNodeId;
+        this.virtualNodeName = virtualNodeName;
+        this.vpcId = vpcId;
+        this.vswitchId = vswitchId;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return The Number of CPU.
      * 
@@ -232,7 +271,7 @@ public final class GetVirtualNodesNode {
     public static Builder builder(GetVirtualNodesNode defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer cpu;
         private String createTime;
@@ -252,7 +291,11 @@ public final class GetVirtualNodesNode {
         private String vpcId;
         private String vswitchId;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVirtualNodesNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpu = defaults.cpu;
@@ -275,22 +318,18 @@ public final class GetVirtualNodesNode {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder cpu(Integer cpu) {
             this.cpu = Objects.requireNonNull(cpu);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder eniInstanceId(String eniInstanceId) {
             this.eniInstanceId = Objects.requireNonNull(eniInstanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder events(List<GetVirtualNodesNodeEvent> events) {
             this.events = Objects.requireNonNull(events);
             return this;
@@ -298,97 +337,63 @@ public final class GetVirtualNodesNode {
         public Builder events(GetVirtualNodesNodeEvent... events) {
             return events(List.of(events));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder internetIp(String internetIp) {
             this.internetIp = Objects.requireNonNull(internetIp);
             return this;
         }
-        @CustomType.Setter
         public Builder intranetIp(String intranetIp) {
             this.intranetIp = Objects.requireNonNull(intranetIp);
             return this;
         }
-        @CustomType.Setter
         public Builder memory(Integer memory) {
             this.memory = Objects.requireNonNull(memory);
             return this;
         }
-        @CustomType.Setter
         public Builder ramRoleName(String ramRoleName) {
             this.ramRoleName = Objects.requireNonNull(ramRoleName);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
             this.securityGroupId = Objects.requireNonNull(securityGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
-        @CustomType.Setter
         public Builder virtualNodeId(String virtualNodeId) {
             this.virtualNodeId = Objects.requireNonNull(virtualNodeId);
             return this;
         }
-        @CustomType.Setter
         public Builder virtualNodeName(String virtualNodeName) {
             this.virtualNodeName = Objects.requireNonNull(virtualNodeName);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetVirtualNodesNode build() {
-            final var o = new GetVirtualNodesNode();
-            o.cpu = cpu;
-            o.createTime = createTime;
-            o.eniInstanceId = eniInstanceId;
-            o.events = events;
-            o.id = id;
-            o.internetIp = internetIp;
-            o.intranetIp = intranetIp;
-            o.memory = memory;
-            o.ramRoleName = ramRoleName;
-            o.resourceGroupId = resourceGroupId;
-            o.securityGroupId = securityGroupId;
-            o.status = status;
-            o.tags = tags;
-            o.virtualNodeId = virtualNodeId;
-            o.virtualNodeName = virtualNodeName;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetVirtualNodesNode build() {
+            return new GetVirtualNodesNode(cpu, createTime, eniInstanceId, events, id, internetIp, intranetIp, memory, ramRoleName, resourceGroupId, securityGroupId, status, tags, virtualNodeId, virtualNodeName, vpcId, vswitchId, zoneId);
         }
     }
 }

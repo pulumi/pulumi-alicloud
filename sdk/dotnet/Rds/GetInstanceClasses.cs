@@ -107,6 +107,8 @@ namespace Pulumi.AliCloud.Rds
         /// * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
         /// * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
         /// * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
+        /// 
+        /// &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
         /// </summary>
         [Input("commodityCode")]
         public string? CommodityCode { get; set; }
@@ -119,6 +121,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The ID of the instance.
+        /// 
+        /// &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
         /// </summary>
         [Input("dbInstanceId")]
         public string? DbInstanceId { get; set; }
@@ -153,6 +157,9 @@ namespace Pulumi.AliCloud.Rds
         [Input("multiZone")]
         public bool? MultiZone { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi up`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -197,6 +204,8 @@ namespace Pulumi.AliCloud.Rds
         /// * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
         /// * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
         /// * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
+        /// 
+        /// &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
         /// </summary>
         [Input("commodityCode")]
         public Input<string>? CommodityCode { get; set; }
@@ -209,6 +218,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The ID of the instance.
+        /// 
+        /// &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
         /// </summary>
         [Input("dbInstanceId")]
         public Input<string>? DbInstanceId { get; set; }
@@ -243,6 +254,9 @@ namespace Pulumi.AliCloud.Rds
         [Input("multiZone")]
         public Input<bool>? MultiZone { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi up`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

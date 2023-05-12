@@ -85,6 +85,8 @@ def get_industrial_serice(enable: Optional[str] = None,
 
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+           
+           > **NOTE:** Setting `enable = "On"` to open the Brain Industrial service. The service can not closed once it is opened.
     """
     __args__ = dict()
     __args__['enable'] = enable
@@ -118,5 +120,7 @@ def get_industrial_serice_output(enable: Optional[pulumi.Input[Optional[str]]] =
 
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+           
+           > **NOTE:** Setting `enable = "On"` to open the Brain Industrial service. The service can not closed once it is opened.
     """
     ...

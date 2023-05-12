@@ -28,7 +28,6 @@ class EcsKeyPairArgs:
         :param pulumi.Input[str] key_pair_name: The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the key pair belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if key_file is not None:
             pulumi.set(__self__, "key_file", key_file)
@@ -120,9 +119,6 @@ class EcsKeyPairArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        A mapping of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -149,7 +145,6 @@ class _EcsKeyPairState:
         :param pulumi.Input[str] key_pair_name: The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the key pair belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if finger_print is not None:
             pulumi.set(__self__, "finger_print", finger_print)
@@ -255,9 +250,6 @@ class _EcsKeyPairState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        A mapping of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -317,7 +309,6 @@ class EcsKeyPair(pulumi.CustomResource):
         :param pulumi.Input[str] key_pair_name: The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the key pair belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         ...
     @overload
@@ -430,7 +421,6 @@ class EcsKeyPair(pulumi.CustomResource):
         :param pulumi.Input[str] key_pair_name: The key pair's name. It is the only in one Alicloud account, the key pair's name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the key pair belongs.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -502,8 +492,5 @@ class EcsKeyPair(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
-        """
-        A mapping of tags to assign to the resource.
-        """
         return pulumi.get(self, "tags")
 

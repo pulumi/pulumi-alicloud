@@ -145,6 +145,7 @@ def get_scheduled_tasks(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of scheduled task IDs.
     :param str name_regex: A regex string to filter resulting scheduled tasks by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str scheduled_action: The operation to be performed when a scheduled task is triggered.
     :param str scheduled_task_id: The id of the scheduled task.
     """
@@ -194,6 +195,7 @@ def get_scheduled_tasks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
 
     :param Sequence[str] ids: A list of scheduled task IDs.
     :param str name_regex: A regex string to filter resulting scheduled tasks by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str scheduled_action: The operation to be performed when a scheduled task is triggered.
     :param str scheduled_task_id: The id of the scheduled task.
     """

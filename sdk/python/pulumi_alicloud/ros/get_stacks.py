@@ -176,6 +176,7 @@ def get_stacks(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Stack IDs.
     :param str name_regex: A regex string to filter results by Stack name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str parent_stack_id: Parent Stack Id.
     :param bool show_nested_stack: The show nested stack.
     :param str stack_name: Stack Name.
@@ -243,6 +244,7 @@ def get_stacks_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Stack IDs.
     :param str name_regex: A regex string to filter results by Stack name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str parent_stack_id: Parent Stack Id.
     :param bool show_nested_stack: The show nested stack.
     :param str stack_name: Stack Name.

@@ -112,6 +112,7 @@ def get_vpc_endpoint_service_users(output_file: Optional[str] = None,
     ```
 
 
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str service_id: The Id of Vpc Endpoint Service.
     :param str user_id: The Id of Ram User.
     """
@@ -154,6 +155,7 @@ def get_vpc_endpoint_service_users_output(output_file: Optional[pulumi.Input[Opt
     ```
 
 
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str service_id: The Id of Vpc Endpoint Service.
     :param str user_id: The Id of Ram User.
     """

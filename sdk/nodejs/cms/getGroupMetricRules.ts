@@ -80,6 +80,9 @@ export interface GetGroupMetricRulesArgs {
      * The namespace of the service.
      */
     namespace?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of Group Metric Rule..
@@ -168,6 +171,9 @@ export interface GetGroupMetricRulesOutputArgs {
      * The namespace of the service.
      */
     namespace?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of Group Metric Rule..

@@ -163,6 +163,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+        /// 
+        /// &gt; **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -321,6 +323,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+        /// 
+        /// &gt; **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -442,6 +446,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+        /// 
+        /// &gt; **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

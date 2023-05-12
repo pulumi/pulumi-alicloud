@@ -53,6 +53,8 @@ func GetPhysicalConnectionService(ctx *pulumi.Context, args *GetPhysicalConnecti
 // A collection of arguments for invoking getPhysicalConnectionService.
 type GetPhysicalConnectionServiceArgs struct {
 	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+	//
+	// > **NOTE:** Setting `enable = "On"` to enable outbound traffic for an Express Connect circuit that means you have read and agreed the [Express Connect Terms of Service](https://terms.aliyun.com/legal-agreement/terms/suit_bu1_ali_cloud/suit_bu1_ali_cloud201803060947_16271.html). The service can not closed once it is opened.
 	Enable *string `pulumi:"enable"`
 }
 
@@ -81,6 +83,8 @@ func GetPhysicalConnectionServiceOutput(ctx *pulumi.Context, args GetPhysicalCon
 // A collection of arguments for invoking getPhysicalConnectionService.
 type GetPhysicalConnectionServiceOutputArgs struct {
 	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+	//
+	// > **NOTE:** Setting `enable = "On"` to enable outbound traffic for an Express Connect circuit that means you have read and agreed the [Express Connect Terms of Service](https://terms.aliyun.com/legal-agreement/terms/suit_bu1_ali_cloud/suit_bu1_ali_cloud201803060947_16271.html). The service can not closed once it is opened.
 	Enable pulumi.StringPtrInput `pulumi:"enable"`
 }
 

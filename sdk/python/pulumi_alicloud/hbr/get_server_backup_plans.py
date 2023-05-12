@@ -111,6 +111,7 @@ def get_server_backup_plans(filters: Optional[Sequence[pulumi.InputType['GetServ
 
     :param Sequence[pulumi.InputType['GetServerBackupPlansFilterArgs']] filters: The filters.
     :param Sequence[str] ids: A list of Server Backup Plan IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -157,5 +158,6 @@ def get_server_backup_plans_output(filters: Optional[pulumi.Input[Optional[Seque
 
     :param Sequence[pulumi.InputType['GetServerBackupPlansFilterArgs']] filters: The filters.
     :param Sequence[str] ids: A list of Server Backup Plan IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

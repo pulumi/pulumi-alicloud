@@ -14,19 +14,28 @@ public final class GetInstanceTypesMasterInstanceType {
      * @return Cpu size of the instance type.
      * 
      */
-    private Integer cpuSize;
+    private final Integer cpuSize;
     /**
      * @return The hbase instance type of create hbase cluster instance.
      * 
      */
-    private String instanceType;
+    private final String instanceType;
     /**
      * @return Mem size of the instance type.
      * 
      */
-    private Integer memSize;
+    private final Integer memSize;
 
-    private GetInstanceTypesMasterInstanceType() {}
+    @CustomType.Constructor
+    private GetInstanceTypesMasterInstanceType(
+        @CustomType.Parameter("cpuSize") Integer cpuSize,
+        @CustomType.Parameter("instanceType") String instanceType,
+        @CustomType.Parameter("memSize") Integer memSize) {
+        this.cpuSize = cpuSize;
+        this.instanceType = instanceType;
+        this.memSize = memSize;
+    }
+
     /**
      * @return Cpu size of the instance type.
      * 
@@ -56,12 +65,16 @@ public final class GetInstanceTypesMasterInstanceType {
     public static Builder builder(GetInstanceTypesMasterInstanceType defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer cpuSize;
         private String instanceType;
         private Integer memSize;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstanceTypesMasterInstanceType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuSize = defaults.cpuSize;
@@ -69,27 +82,19 @@ public final class GetInstanceTypesMasterInstanceType {
     	      this.memSize = defaults.memSize;
         }
 
-        @CustomType.Setter
         public Builder cpuSize(Integer cpuSize) {
             this.cpuSize = Objects.requireNonNull(cpuSize);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
-        @CustomType.Setter
         public Builder memSize(Integer memSize) {
             this.memSize = Objects.requireNonNull(memSize);
             return this;
-        }
-        public GetInstanceTypesMasterInstanceType build() {
-            final var o = new GetInstanceTypesMasterInstanceType();
-            o.cpuSize = cpuSize;
-            o.instanceType = instanceType;
-            o.memSize = memSize;
-            return o;
+        }        public GetInstanceTypesMasterInstanceType build() {
+            return new GetInstanceTypesMasterInstanceType(cpuSize, instanceType, memSize);
         }
     }
 }

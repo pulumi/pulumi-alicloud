@@ -17,23 +17,40 @@ public final class GetProductAsEndUsersResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of Product As End User IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private @Nullable String outputFile;
-    private @Nullable String sortBy;
-    private @Nullable String sortOrder;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final @Nullable String outputFile;
+    private final @Nullable String sortBy;
+    private final @Nullable String sortOrder;
     /**
      * @return A list of Product As End User Entries. Each element contains the following attributes:
      * 
      */
-    private List<GetProductAsEndUsersUser> users;
+    private final List<GetProductAsEndUsersUser> users;
 
-    private GetProductAsEndUsersResult() {}
+    @CustomType.Constructor
+    private GetProductAsEndUsersResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("sortBy") @Nullable String sortBy,
+        @CustomType.Parameter("sortOrder") @Nullable String sortOrder,
+        @CustomType.Parameter("users") List<GetProductAsEndUsersUser> users) {
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.outputFile = outputFile;
+        this.sortBy = sortBy;
+        this.sortOrder = sortOrder;
+        this.users = users;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -75,7 +92,7 @@ public final class GetProductAsEndUsersResult {
     public static Builder builder(GetProductAsEndUsersResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -84,7 +101,11 @@ public final class GetProductAsEndUsersResult {
         private @Nullable String sortBy;
         private @Nullable String sortOrder;
         private List<GetProductAsEndUsersUser> users;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetProductAsEndUsersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -96,12 +117,10 @@ public final class GetProductAsEndUsersResult {
     	      this.users = defaults.users;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -109,44 +128,30 @@ public final class GetProductAsEndUsersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder sortBy(@Nullable String sortBy) {
             this.sortBy = sortBy;
             return this;
         }
-        @CustomType.Setter
         public Builder sortOrder(@Nullable String sortOrder) {
             this.sortOrder = sortOrder;
             return this;
         }
-        @CustomType.Setter
         public Builder users(List<GetProductAsEndUsersUser> users) {
             this.users = Objects.requireNonNull(users);
             return this;
         }
         public Builder users(GetProductAsEndUsersUser... users) {
             return users(List.of(users));
-        }
-        public GetProductAsEndUsersResult build() {
-            final var o = new GetProductAsEndUsersResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.outputFile = outputFile;
-            o.sortBy = sortBy;
-            o.sortOrder = sortOrder;
-            o.users = users;
-            return o;
+        }        public GetProductAsEndUsersResult build() {
+            return new GetProductAsEndUsersResult(id, ids, nameRegex, outputFile, sortBy, sortOrder, users);
         }
     }
 }

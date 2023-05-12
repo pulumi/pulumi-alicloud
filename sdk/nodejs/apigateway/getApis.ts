@@ -56,6 +56,9 @@ export interface GetApisArgs {
      * A regex string to filter api gateway apis by name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -131,5 +134,8 @@ export interface GetApisOutputArgs {
      * A regex string to filter api gateway apis by name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

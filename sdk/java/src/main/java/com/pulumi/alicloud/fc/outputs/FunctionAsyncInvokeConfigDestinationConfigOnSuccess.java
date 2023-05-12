@@ -13,9 +13,13 @@ public final class FunctionAsyncInvokeConfigDestinationConfigOnSuccess {
      * @return Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
      * 
      */
-    private String destination;
+    private final String destination;
 
-    private FunctionAsyncInvokeConfigDestinationConfigOnSuccess() {}
+    @CustomType.Constructor
+    private FunctionAsyncInvokeConfigDestinationConfigOnSuccess(@CustomType.Parameter("destination") String destination) {
+        this.destination = destination;
+    }
+
     /**
      * @return Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
      * 
@@ -31,24 +35,24 @@ public final class FunctionAsyncInvokeConfigDestinationConfigOnSuccess {
     public static Builder builder(FunctionAsyncInvokeConfigDestinationConfigOnSuccess defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String destination;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(FunctionAsyncInvokeConfigDestinationConfigOnSuccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destination = defaults.destination;
         }
 
-        @CustomType.Setter
         public Builder destination(String destination) {
             this.destination = Objects.requireNonNull(destination);
             return this;
-        }
-        public FunctionAsyncInvokeConfigDestinationConfigOnSuccess build() {
-            final var o = new FunctionAsyncInvokeConfigDestinationConfigOnSuccess();
-            o.destination = destination;
-            return o;
+        }        public FunctionAsyncInvokeConfigDestinationConfigOnSuccess build() {
+            return new FunctionAsyncInvokeConfigDestinationConfigOnSuccess(destination);
         }
     }
 }

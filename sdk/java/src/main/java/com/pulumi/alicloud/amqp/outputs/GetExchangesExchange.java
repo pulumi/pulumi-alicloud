@@ -16,44 +16,63 @@ public final class GetExchangesExchange {
      * @return The attributes.
      * 
      */
-    private Map<String,Object> attributes;
+    private final Map<String,Object> attributes;
     /**
      * @return Indicates whether the Auto Delete attribute is configured.
      * 
      */
-    private Boolean autoDeleteState;
+    private final Boolean autoDeleteState;
     /**
      * @return The creation time.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The name of the exchange.
      * 
      */
-    private String exchangeName;
+    private final String exchangeName;
     /**
      * @return The type of the exchange.
      * 
      */
-    private String exchangeType;
+    private final String exchangeType;
     /**
      * @return The ID of the Exchange. Its value is same as Queue Name.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the instance.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return The name of virtual host where an exchange resides.
      * 
      */
-    private String virtualHostName;
+    private final String virtualHostName;
 
-    private GetExchangesExchange() {}
+    @CustomType.Constructor
+    private GetExchangesExchange(
+        @CustomType.Parameter("attributes") Map<String,Object> attributes,
+        @CustomType.Parameter("autoDeleteState") Boolean autoDeleteState,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("exchangeName") String exchangeName,
+        @CustomType.Parameter("exchangeType") String exchangeType,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("virtualHostName") String virtualHostName) {
+        this.attributes = attributes;
+        this.autoDeleteState = autoDeleteState;
+        this.createTime = createTime;
+        this.exchangeName = exchangeName;
+        this.exchangeType = exchangeType;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.virtualHostName = virtualHostName;
+    }
+
     /**
      * @return The attributes.
      * 
@@ -118,7 +137,7 @@ public final class GetExchangesExchange {
     public static Builder builder(GetExchangesExchange defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Map<String,Object> attributes;
         private Boolean autoDeleteState;
@@ -128,7 +147,11 @@ public final class GetExchangesExchange {
         private String id;
         private String instanceId;
         private String virtualHostName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetExchangesExchange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attributes = defaults.attributes;
@@ -141,57 +164,39 @@ public final class GetExchangesExchange {
     	      this.virtualHostName = defaults.virtualHostName;
         }
 
-        @CustomType.Setter
         public Builder attributes(Map<String,Object> attributes) {
             this.attributes = Objects.requireNonNull(attributes);
             return this;
         }
-        @CustomType.Setter
         public Builder autoDeleteState(Boolean autoDeleteState) {
             this.autoDeleteState = Objects.requireNonNull(autoDeleteState);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder exchangeName(String exchangeName) {
             this.exchangeName = Objects.requireNonNull(exchangeName);
             return this;
         }
-        @CustomType.Setter
         public Builder exchangeType(String exchangeType) {
             this.exchangeType = Objects.requireNonNull(exchangeType);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder virtualHostName(String virtualHostName) {
             this.virtualHostName = Objects.requireNonNull(virtualHostName);
             return this;
-        }
-        public GetExchangesExchange build() {
-            final var o = new GetExchangesExchange();
-            o.attributes = attributes;
-            o.autoDeleteState = autoDeleteState;
-            o.createTime = createTime;
-            o.exchangeName = exchangeName;
-            o.exchangeType = exchangeType;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.virtualHostName = virtualHostName;
-            return o;
+        }        public GetExchangesExchange build() {
+            return new GetExchangesExchange(attributes, autoDeleteState, createTime, exchangeName, exchangeType, id, instanceId, virtualHostName);
         }
     }
 }

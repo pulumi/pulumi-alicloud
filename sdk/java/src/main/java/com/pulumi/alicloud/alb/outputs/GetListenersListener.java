@@ -21,112 +21,165 @@ public final class GetListenersListener {
     /**
      * @return Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
      * 
+     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
+     * 
      */
-    private Boolean accessLogRecordCustomizedHeadersEnabled;
+    private final Boolean accessLogRecordCustomizedHeadersEnabled;
     /**
      * @return Xtrace Configuration Information.
      * 
      */
-    private List<GetListenersListenerAccessLogTracingConfig> accessLogTracingConfigs;
+    private final List<GetListenersListenerAccessLogTracingConfig> accessLogTracingConfigs;
     /**
      * @return The configurations of the access control lists (ACLs).
      * 
      */
-    private List<GetListenersListenerAclConfig> aclConfigs;
+    private final List<GetListenersListenerAclConfig> aclConfigs;
     /**
      * @return The Certificate List.
      * 
      */
-    private List<GetListenersListenerCertificate> certificates;
+    private final List<GetListenersListenerCertificate> certificates;
     /**
      * @return The Default Rule Action List.
      * 
      */
-    private List<GetListenersListenerDefaultAction> defaultActions;
+    private final List<GetListenersListenerDefaultAction> defaultActions;
     /**
      * @return Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: `True` Or `False`. Default Value: `True`.
      * 
      */
-    private Boolean gzipEnabled;
+    private final Boolean gzipEnabled;
     /**
      * @return Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
      * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
+     * 
      */
-    private Boolean http2Enabled;
+    private final Boolean http2Enabled;
     /**
      * @return The ID of the Listener.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
      * 
      */
-    private Integer idleTimeout;
+    private final Integer idleTimeout;
     /**
      * @return Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
      * 
      */
-    private String listenerDescription;
+    private final String listenerDescription;
     /**
      * @return on Behalf of the Resource Level Id of the Resources Property Fields.
      * 
      */
-    private String listenerId;
+    private final String listenerId;
     /**
      * @return The ALB Instance Front-End, and Those of the Ports Used. Value: `1~65535`.
      * 
      */
-    private Integer listenerPort;
+    private final Integer listenerPort;
     /**
      * @return Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
      * 
      */
-    private String listenerProtocol;
+    private final String listenerProtocol;
     /**
      * @return The ALB Instance Id.
      * 
      */
-    private String loadBalancerId;
+    private final String loadBalancerId;
     /**
      * @return This Request Returned by the Maximum Number of Records.
      * 
      */
-    private String maxResults;
+    private final String maxResults;
     /**
      * @return The Current Call Returns to the Position of the Set to Null Represents the Data Has Been Read to the End of.
      * 
      */
-    private String nextToken;
+    private final String nextToken;
     /**
      * @return Configuration Associated with the QuIC Listening.
      * 
      */
-    private List<GetListenersListenerQuicConfig> quicConfigs;
+    private final List<GetListenersListenerQuicConfig> quicConfigs;
     /**
      * @return The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      * 
      */
-    private Integer requestTimeout;
+    private final Integer requestTimeout;
     /**
      * @return Security Policy.
      * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
+     * 
      */
-    private String securityPolicyId;
+    private final String securityPolicyId;
     /**
      * @return The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return xforwardfor Related Attribute Configuration.
      * 
      */
-    private List<GetListenersListenerXforwardedForConfig> xforwardedForConfigs;
+    private final List<GetListenersListenerXforwardedForConfig> xforwardedForConfigs;
 
-    private GetListenersListener() {}
+    @CustomType.Constructor
+    private GetListenersListener(
+        @CustomType.Parameter("accessLogRecordCustomizedHeadersEnabled") Boolean accessLogRecordCustomizedHeadersEnabled,
+        @CustomType.Parameter("accessLogTracingConfigs") List<GetListenersListenerAccessLogTracingConfig> accessLogTracingConfigs,
+        @CustomType.Parameter("aclConfigs") List<GetListenersListenerAclConfig> aclConfigs,
+        @CustomType.Parameter("certificates") List<GetListenersListenerCertificate> certificates,
+        @CustomType.Parameter("defaultActions") List<GetListenersListenerDefaultAction> defaultActions,
+        @CustomType.Parameter("gzipEnabled") Boolean gzipEnabled,
+        @CustomType.Parameter("http2Enabled") Boolean http2Enabled,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("idleTimeout") Integer idleTimeout,
+        @CustomType.Parameter("listenerDescription") String listenerDescription,
+        @CustomType.Parameter("listenerId") String listenerId,
+        @CustomType.Parameter("listenerPort") Integer listenerPort,
+        @CustomType.Parameter("listenerProtocol") String listenerProtocol,
+        @CustomType.Parameter("loadBalancerId") String loadBalancerId,
+        @CustomType.Parameter("maxResults") String maxResults,
+        @CustomType.Parameter("nextToken") String nextToken,
+        @CustomType.Parameter("quicConfigs") List<GetListenersListenerQuicConfig> quicConfigs,
+        @CustomType.Parameter("requestTimeout") Integer requestTimeout,
+        @CustomType.Parameter("securityPolicyId") String securityPolicyId,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("xforwardedForConfigs") List<GetListenersListenerXforwardedForConfig> xforwardedForConfigs) {
+        this.accessLogRecordCustomizedHeadersEnabled = accessLogRecordCustomizedHeadersEnabled;
+        this.accessLogTracingConfigs = accessLogTracingConfigs;
+        this.aclConfigs = aclConfigs;
+        this.certificates = certificates;
+        this.defaultActions = defaultActions;
+        this.gzipEnabled = gzipEnabled;
+        this.http2Enabled = http2Enabled;
+        this.id = id;
+        this.idleTimeout = idleTimeout;
+        this.listenerDescription = listenerDescription;
+        this.listenerId = listenerId;
+        this.listenerPort = listenerPort;
+        this.listenerProtocol = listenerProtocol;
+        this.loadBalancerId = loadBalancerId;
+        this.maxResults = maxResults;
+        this.nextToken = nextToken;
+        this.quicConfigs = quicConfigs;
+        this.requestTimeout = requestTimeout;
+        this.securityPolicyId = securityPolicyId;
+        this.status = status;
+        this.xforwardedForConfigs = xforwardedForConfigs;
+    }
+
     /**
      * @return Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+     * 
+     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
      * 
      */
     public Boolean accessLogRecordCustomizedHeadersEnabled() {
@@ -169,6 +222,8 @@ public final class GetListenersListener {
     }
     /**
      * @return Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+     * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
      * 
      */
     public Boolean http2Enabled() {
@@ -254,6 +309,8 @@ public final class GetListenersListener {
     /**
      * @return Security Policy.
      * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
+     * 
      */
     public String securityPolicyId() {
         return this.securityPolicyId;
@@ -280,7 +337,7 @@ public final class GetListenersListener {
     public static Builder builder(GetListenersListener defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean accessLogRecordCustomizedHeadersEnabled;
         private List<GetListenersListenerAccessLogTracingConfig> accessLogTracingConfigs;
@@ -303,7 +360,11 @@ public final class GetListenersListener {
         private String securityPolicyId;
         private String status;
         private List<GetListenersListenerXforwardedForConfig> xforwardedForConfigs;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetListenersListener defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessLogRecordCustomizedHeadersEnabled = defaults.accessLogRecordCustomizedHeadersEnabled;
@@ -329,12 +390,10 @@ public final class GetListenersListener {
     	      this.xforwardedForConfigs = defaults.xforwardedForConfigs;
         }
 
-        @CustomType.Setter
         public Builder accessLogRecordCustomizedHeadersEnabled(Boolean accessLogRecordCustomizedHeadersEnabled) {
             this.accessLogRecordCustomizedHeadersEnabled = Objects.requireNonNull(accessLogRecordCustomizedHeadersEnabled);
             return this;
         }
-        @CustomType.Setter
         public Builder accessLogTracingConfigs(List<GetListenersListenerAccessLogTracingConfig> accessLogTracingConfigs) {
             this.accessLogTracingConfigs = Objects.requireNonNull(accessLogTracingConfigs);
             return this;
@@ -342,7 +401,6 @@ public final class GetListenersListener {
         public Builder accessLogTracingConfigs(GetListenersListenerAccessLogTracingConfig... accessLogTracingConfigs) {
             return accessLogTracingConfigs(List.of(accessLogTracingConfigs));
         }
-        @CustomType.Setter
         public Builder aclConfigs(List<GetListenersListenerAclConfig> aclConfigs) {
             this.aclConfigs = Objects.requireNonNull(aclConfigs);
             return this;
@@ -350,7 +408,6 @@ public final class GetListenersListener {
         public Builder aclConfigs(GetListenersListenerAclConfig... aclConfigs) {
             return aclConfigs(List.of(aclConfigs));
         }
-        @CustomType.Setter
         public Builder certificates(List<GetListenersListenerCertificate> certificates) {
             this.certificates = Objects.requireNonNull(certificates);
             return this;
@@ -358,7 +415,6 @@ public final class GetListenersListener {
         public Builder certificates(GetListenersListenerCertificate... certificates) {
             return certificates(List.of(certificates));
         }
-        @CustomType.Setter
         public Builder defaultActions(List<GetListenersListenerDefaultAction> defaultActions) {
             this.defaultActions = Objects.requireNonNull(defaultActions);
             return this;
@@ -366,62 +422,50 @@ public final class GetListenersListener {
         public Builder defaultActions(GetListenersListenerDefaultAction... defaultActions) {
             return defaultActions(List.of(defaultActions));
         }
-        @CustomType.Setter
         public Builder gzipEnabled(Boolean gzipEnabled) {
             this.gzipEnabled = Objects.requireNonNull(gzipEnabled);
             return this;
         }
-        @CustomType.Setter
         public Builder http2Enabled(Boolean http2Enabled) {
             this.http2Enabled = Objects.requireNonNull(http2Enabled);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder idleTimeout(Integer idleTimeout) {
             this.idleTimeout = Objects.requireNonNull(idleTimeout);
             return this;
         }
-        @CustomType.Setter
         public Builder listenerDescription(String listenerDescription) {
             this.listenerDescription = Objects.requireNonNull(listenerDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder listenerId(String listenerId) {
             this.listenerId = Objects.requireNonNull(listenerId);
             return this;
         }
-        @CustomType.Setter
         public Builder listenerPort(Integer listenerPort) {
             this.listenerPort = Objects.requireNonNull(listenerPort);
             return this;
         }
-        @CustomType.Setter
         public Builder listenerProtocol(String listenerProtocol) {
             this.listenerProtocol = Objects.requireNonNull(listenerProtocol);
             return this;
         }
-        @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
             this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
             return this;
         }
-        @CustomType.Setter
         public Builder maxResults(String maxResults) {
             this.maxResults = Objects.requireNonNull(maxResults);
             return this;
         }
-        @CustomType.Setter
         public Builder nextToken(String nextToken) {
             this.nextToken = Objects.requireNonNull(nextToken);
             return this;
         }
-        @CustomType.Setter
         public Builder quicConfigs(List<GetListenersListenerQuicConfig> quicConfigs) {
             this.quicConfigs = Objects.requireNonNull(quicConfigs);
             return this;
@@ -429,53 +473,26 @@ public final class GetListenersListener {
         public Builder quicConfigs(GetListenersListenerQuicConfig... quicConfigs) {
             return quicConfigs(List.of(quicConfigs));
         }
-        @CustomType.Setter
         public Builder requestTimeout(Integer requestTimeout) {
             this.requestTimeout = Objects.requireNonNull(requestTimeout);
             return this;
         }
-        @CustomType.Setter
         public Builder securityPolicyId(String securityPolicyId) {
             this.securityPolicyId = Objects.requireNonNull(securityPolicyId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder xforwardedForConfigs(List<GetListenersListenerXforwardedForConfig> xforwardedForConfigs) {
             this.xforwardedForConfigs = Objects.requireNonNull(xforwardedForConfigs);
             return this;
         }
         public Builder xforwardedForConfigs(GetListenersListenerXforwardedForConfig... xforwardedForConfigs) {
             return xforwardedForConfigs(List.of(xforwardedForConfigs));
-        }
-        public GetListenersListener build() {
-            final var o = new GetListenersListener();
-            o.accessLogRecordCustomizedHeadersEnabled = accessLogRecordCustomizedHeadersEnabled;
-            o.accessLogTracingConfigs = accessLogTracingConfigs;
-            o.aclConfigs = aclConfigs;
-            o.certificates = certificates;
-            o.defaultActions = defaultActions;
-            o.gzipEnabled = gzipEnabled;
-            o.http2Enabled = http2Enabled;
-            o.id = id;
-            o.idleTimeout = idleTimeout;
-            o.listenerDescription = listenerDescription;
-            o.listenerId = listenerId;
-            o.listenerPort = listenerPort;
-            o.listenerProtocol = listenerProtocol;
-            o.loadBalancerId = loadBalancerId;
-            o.maxResults = maxResults;
-            o.nextToken = nextToken;
-            o.quicConfigs = quicConfigs;
-            o.requestTimeout = requestTimeout;
-            o.securityPolicyId = securityPolicyId;
-            o.status = status;
-            o.xforwardedForConfigs = xforwardedForConfigs;
-            return o;
+        }        public GetListenersListener build() {
+            return new GetListenersListener(accessLogRecordCustomizedHeadersEnabled, accessLogTracingConfigs, aclConfigs, certificates, defaultActions, gzipEnabled, http2Enabled, id, idleTimeout, listenerDescription, listenerId, listenerPort, listenerProtocol, loadBalancerId, maxResults, nextToken, quicConfigs, requestTimeout, securityPolicyId, status, xforwardedForConfigs);
         }
     }
 }

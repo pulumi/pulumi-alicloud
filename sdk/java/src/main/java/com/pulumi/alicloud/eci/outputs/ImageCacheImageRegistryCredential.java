@@ -15,19 +15,28 @@ public final class ImageCacheImageRegistryCredential {
      * @return The password of the Image Registry.
      * 
      */
-    private @Nullable String password;
+    private final @Nullable String password;
     /**
      * @return The address of Image Registry without `http://` or `https://`.
      * 
      */
-    private @Nullable String server;
+    private final @Nullable String server;
     /**
      * @return The user name of Image Registry.
      * 
      */
-    private @Nullable String userName;
+    private final @Nullable String userName;
 
-    private ImageCacheImageRegistryCredential() {}
+    @CustomType.Constructor
+    private ImageCacheImageRegistryCredential(
+        @CustomType.Parameter("password") @Nullable String password,
+        @CustomType.Parameter("server") @Nullable String server,
+        @CustomType.Parameter("userName") @Nullable String userName) {
+        this.password = password;
+        this.server = server;
+        this.userName = userName;
+    }
+
     /**
      * @return The password of the Image Registry.
      * 
@@ -57,12 +66,16 @@ public final class ImageCacheImageRegistryCredential {
     public static Builder builder(ImageCacheImageRegistryCredential defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String password;
         private @Nullable String server;
         private @Nullable String userName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ImageCacheImageRegistryCredential defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.password = defaults.password;
@@ -70,27 +83,19 @@ public final class ImageCacheImageRegistryCredential {
     	      this.userName = defaults.userName;
         }
 
-        @CustomType.Setter
         public Builder password(@Nullable String password) {
             this.password = password;
             return this;
         }
-        @CustomType.Setter
         public Builder server(@Nullable String server) {
             this.server = server;
             return this;
         }
-        @CustomType.Setter
         public Builder userName(@Nullable String userName) {
             this.userName = userName;
             return this;
-        }
-        public ImageCacheImageRegistryCredential build() {
-            final var o = new ImageCacheImageRegistryCredential();
-            o.password = password;
-            o.server = server;
-            o.userName = userName;
-            return o;
+        }        public ImageCacheImageRegistryCredential build() {
+            return new ImageCacheImageRegistryCredential(password, server, userName);
         }
     }
 }

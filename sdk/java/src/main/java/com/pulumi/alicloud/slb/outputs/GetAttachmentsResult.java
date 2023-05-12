@@ -17,17 +17,30 @@ public final class GetAttachmentsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private @Nullable List<String> instanceIds;
-    private String loadBalancerId;
-    private @Nullable String outputFile;
+    private final String id;
+    private final @Nullable List<String> instanceIds;
+    private final String loadBalancerId;
+    private final @Nullable String outputFile;
     /**
      * @return A list of SLB attachments. Each element contains the following attributes:
      * 
      */
-    private List<GetAttachmentsSlbAttachment> slbAttachments;
+    private final List<GetAttachmentsSlbAttachment> slbAttachments;
 
-    private GetAttachmentsResult() {}
+    @CustomType.Constructor
+    private GetAttachmentsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceIds") @Nullable List<String> instanceIds,
+        @CustomType.Parameter("loadBalancerId") String loadBalancerId,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("slbAttachments") List<GetAttachmentsSlbAttachment> slbAttachments) {
+        this.id = id;
+        this.instanceIds = instanceIds;
+        this.loadBalancerId = loadBalancerId;
+        this.outputFile = outputFile;
+        this.slbAttachments = slbAttachments;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -59,14 +72,18 @@ public final class GetAttachmentsResult {
     public static Builder builder(GetAttachmentsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private @Nullable List<String> instanceIds;
         private String loadBalancerId;
         private @Nullable String outputFile;
         private List<GetAttachmentsSlbAttachment> slbAttachments;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAttachmentsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -76,12 +93,10 @@ public final class GetAttachmentsResult {
     	      this.slbAttachments = defaults.slbAttachments;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceIds(@Nullable List<String> instanceIds) {
             this.instanceIds = instanceIds;
             return this;
@@ -89,32 +104,22 @@ public final class GetAttachmentsResult {
         public Builder instanceIds(String... instanceIds) {
             return instanceIds(List.of(instanceIds));
         }
-        @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
             this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder slbAttachments(List<GetAttachmentsSlbAttachment> slbAttachments) {
             this.slbAttachments = Objects.requireNonNull(slbAttachments);
             return this;
         }
         public Builder slbAttachments(GetAttachmentsSlbAttachment... slbAttachments) {
             return slbAttachments(List.of(slbAttachments));
-        }
-        public GetAttachmentsResult build() {
-            final var o = new GetAttachmentsResult();
-            o.id = id;
-            o.instanceIds = instanceIds;
-            o.loadBalancerId = loadBalancerId;
-            o.outputFile = outputFile;
-            o.slbAttachments = slbAttachments;
-            return o;
+        }        public GetAttachmentsResult build() {
+            return new GetAttachmentsResult(id, instanceIds, loadBalancerId, outputFile, slbAttachments);
         }
     }
 }

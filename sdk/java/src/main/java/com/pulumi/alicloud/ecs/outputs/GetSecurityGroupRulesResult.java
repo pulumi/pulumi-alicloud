@@ -17,46 +17,69 @@ public final class GetSecurityGroupRulesResult {
      * @return Authorization direction, `ingress` or `egress`.
      * 
      */
-    private @Nullable String direction;
+    private final @Nullable String direction;
     /**
      * @return The description of the security group that owns the rules.
      * 
      */
-    private String groupDesc;
-    private String groupId;
+    private final String groupDesc;
+    private final String groupId;
     /**
      * @return The name of the security group that owns the rules.
      * 
      */
-    private String groupName;
+    private final String groupName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
      * 
      */
-    private @Nullable String ipProtocol;
+    private final @Nullable String ipProtocol;
     /**
      * @return Network type, `internet` or `intranet`.
      * 
      */
-    private @Nullable String nicType;
-    private @Nullable String outputFile;
+    private final @Nullable String nicType;
+    private final @Nullable String outputFile;
     /**
      * @return Authorization policy. Can be either `accept` or `drop`.
      * 
      */
-    private @Nullable String policy;
+    private final @Nullable String policy;
     /**
      * @return A list of security group rules. Each element contains the following attributes:
      * 
      */
-    private List<GetSecurityGroupRulesRule> rules;
+    private final List<GetSecurityGroupRulesRule> rules;
 
-    private GetSecurityGroupRulesResult() {}
+    @CustomType.Constructor
+    private GetSecurityGroupRulesResult(
+        @CustomType.Parameter("direction") @Nullable String direction,
+        @CustomType.Parameter("groupDesc") String groupDesc,
+        @CustomType.Parameter("groupId") String groupId,
+        @CustomType.Parameter("groupName") String groupName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ipProtocol") @Nullable String ipProtocol,
+        @CustomType.Parameter("nicType") @Nullable String nicType,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("policy") @Nullable String policy,
+        @CustomType.Parameter("rules") List<GetSecurityGroupRulesRule> rules) {
+        this.direction = direction;
+        this.groupDesc = groupDesc;
+        this.groupId = groupId;
+        this.groupName = groupName;
+        this.id = id;
+        this.ipProtocol = ipProtocol;
+        this.nicType = nicType;
+        this.outputFile = outputFile;
+        this.policy = policy;
+        this.rules = rules;
+    }
+
     /**
      * @return Authorization direction, `ingress` or `egress`.
      * 
@@ -127,7 +150,7 @@ public final class GetSecurityGroupRulesResult {
     public static Builder builder(GetSecurityGroupRulesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String direction;
         private String groupDesc;
@@ -139,7 +162,11 @@ public final class GetSecurityGroupRulesResult {
         private @Nullable String outputFile;
         private @Nullable String policy;
         private List<GetSecurityGroupRulesRule> rules;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetSecurityGroupRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.direction = defaults.direction;
@@ -154,72 +181,50 @@ public final class GetSecurityGroupRulesResult {
     	      this.rules = defaults.rules;
         }
 
-        @CustomType.Setter
         public Builder direction(@Nullable String direction) {
             this.direction = direction;
             return this;
         }
-        @CustomType.Setter
         public Builder groupDesc(String groupDesc) {
             this.groupDesc = Objects.requireNonNull(groupDesc);
             return this;
         }
-        @CustomType.Setter
         public Builder groupId(String groupId) {
             this.groupId = Objects.requireNonNull(groupId);
             return this;
         }
-        @CustomType.Setter
         public Builder groupName(String groupName) {
             this.groupName = Objects.requireNonNull(groupName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ipProtocol(@Nullable String ipProtocol) {
             this.ipProtocol = ipProtocol;
             return this;
         }
-        @CustomType.Setter
         public Builder nicType(@Nullable String nicType) {
             this.nicType = nicType;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder policy(@Nullable String policy) {
             this.policy = policy;
             return this;
         }
-        @CustomType.Setter
         public Builder rules(List<GetSecurityGroupRulesRule> rules) {
             this.rules = Objects.requireNonNull(rules);
             return this;
         }
         public Builder rules(GetSecurityGroupRulesRule... rules) {
             return rules(List.of(rules));
-        }
-        public GetSecurityGroupRulesResult build() {
-            final var o = new GetSecurityGroupRulesResult();
-            o.direction = direction;
-            o.groupDesc = groupDesc;
-            o.groupId = groupId;
-            o.groupName = groupName;
-            o.id = id;
-            o.ipProtocol = ipProtocol;
-            o.nicType = nicType;
-            o.outputFile = outputFile;
-            o.policy = policy;
-            o.rules = rules;
-            return o;
+        }        public GetSecurityGroupRulesResult build() {
+            return new GetSecurityGroupRulesResult(direction, groupDesc, groupId, groupName, id, ipProtocol, nicType, outputFile, policy, rules);
         }
     }
 }

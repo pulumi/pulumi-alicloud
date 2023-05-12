@@ -17,14 +17,29 @@ public final class GetVpcEndpointServiceUsersResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String outputFile;
-    private String serviceId;
-    private @Nullable String userId;
-    private List<GetVpcEndpointServiceUsersUser> users;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
+    private final String serviceId;
+    private final @Nullable String userId;
+    private final List<GetVpcEndpointServiceUsersUser> users;
 
-    private GetVpcEndpointServiceUsersResult() {}
+    @CustomType.Constructor
+    private GetVpcEndpointServiceUsersResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("serviceId") String serviceId,
+        @CustomType.Parameter("userId") @Nullable String userId,
+        @CustomType.Parameter("users") List<GetVpcEndpointServiceUsersUser> users) {
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.serviceId = serviceId;
+        this.userId = userId;
+        this.users = users;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -55,7 +70,7 @@ public final class GetVpcEndpointServiceUsersResult {
     public static Builder builder(GetVpcEndpointServiceUsersResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -63,7 +78,11 @@ public final class GetVpcEndpointServiceUsersResult {
         private String serviceId;
         private @Nullable String userId;
         private List<GetVpcEndpointServiceUsersUser> users;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVpcEndpointServiceUsersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -74,12 +93,10 @@ public final class GetVpcEndpointServiceUsersResult {
     	      this.users = defaults.users;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -87,38 +104,26 @@ public final class GetVpcEndpointServiceUsersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder serviceId(String serviceId) {
             this.serviceId = Objects.requireNonNull(serviceId);
             return this;
         }
-        @CustomType.Setter
         public Builder userId(@Nullable String userId) {
             this.userId = userId;
             return this;
         }
-        @CustomType.Setter
         public Builder users(List<GetVpcEndpointServiceUsersUser> users) {
             this.users = Objects.requireNonNull(users);
             return this;
         }
         public Builder users(GetVpcEndpointServiceUsersUser... users) {
             return users(List.of(users));
-        }
-        public GetVpcEndpointServiceUsersResult build() {
-            final var o = new GetVpcEndpointServiceUsersResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.serviceId = serviceId;
-            o.userId = userId;
-            o.users = users;
-            return o;
+        }        public GetVpcEndpointServiceUsersResult build() {
+            return new GetVpcEndpointServiceUsersResult(id, ids, outputFile, serviceId, userId, users);
         }
     }
 }

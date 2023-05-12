@@ -16,54 +16,77 @@ public final class GetDomainsDomain {
      * @return Certificate Information.
      * 
      */
-    private List<GetDomainsDomainCertInfo> certInfos;
+    private final List<GetDomainsDomainCertInfo> certInfos;
     /**
      * @return In Order to Link the CDN Domain Name to Generate a CNAME Domain Name, in the Domain Name Resolution Service Provider at the Acceleration Domain Name CNAME Resolution to the Domain.
      * 
      */
-    private String cname;
+    private final String cname;
     /**
      * @return Creation Time.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return Review the Reason for the Failure Is Displayed.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return Your Domain Name.
      * 
      */
-    private String domainName;
+    private final String domainName;
     /**
      * @return Last Modified Date.
      * 
      */
-    private String gmtModified;
+    private final String gmtModified;
     /**
      * @return The ID of the Domain. Its value is same as Queue Name.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The Resource Group ID.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return the Origin Server Information.
      * 
      */
-    private List<GetDomainsDomainSource> sources;
+    private final List<GetDomainsDomainSource> sources;
     /**
      * @return The status of the resource.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetDomainsDomain() {}
+    @CustomType.Constructor
+    private GetDomainsDomain(
+        @CustomType.Parameter("certInfos") List<GetDomainsDomainCertInfo> certInfos,
+        @CustomType.Parameter("cname") String cname,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("domainName") String domainName,
+        @CustomType.Parameter("gmtModified") String gmtModified,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("sources") List<GetDomainsDomainSource> sources,
+        @CustomType.Parameter("status") String status) {
+        this.certInfos = certInfos;
+        this.cname = cname;
+        this.createTime = createTime;
+        this.description = description;
+        this.domainName = domainName;
+        this.gmtModified = gmtModified;
+        this.id = id;
+        this.resourceGroupId = resourceGroupId;
+        this.sources = sources;
+        this.status = status;
+    }
+
     /**
      * @return Certificate Information.
      * 
@@ -142,7 +165,7 @@ public final class GetDomainsDomain {
     public static Builder builder(GetDomainsDomain defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetDomainsDomainCertInfo> certInfos;
         private String cname;
@@ -154,7 +177,11 @@ public final class GetDomainsDomain {
         private String resourceGroupId;
         private List<GetDomainsDomainSource> sources;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDomainsDomain defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certInfos = defaults.certInfos;
@@ -169,7 +196,6 @@ public final class GetDomainsDomain {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder certInfos(List<GetDomainsDomainCertInfo> certInfos) {
             this.certInfos = Objects.requireNonNull(certInfos);
             return this;
@@ -177,42 +203,34 @@ public final class GetDomainsDomain {
         public Builder certInfos(GetDomainsDomainCertInfo... certInfos) {
             return certInfos(List.of(certInfos));
         }
-        @CustomType.Setter
         public Builder cname(String cname) {
             this.cname = Objects.requireNonNull(cname);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
-        @CustomType.Setter
         public Builder gmtModified(String gmtModified) {
             this.gmtModified = Objects.requireNonNull(gmtModified);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder sources(List<GetDomainsDomainSource> sources) {
             this.sources = Objects.requireNonNull(sources);
             return this;
@@ -220,24 +238,11 @@ public final class GetDomainsDomain {
         public Builder sources(GetDomainsDomainSource... sources) {
             return sources(List.of(sources));
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetDomainsDomain build() {
-            final var o = new GetDomainsDomain();
-            o.certInfos = certInfos;
-            o.cname = cname;
-            o.createTime = createTime;
-            o.description = description;
-            o.domainName = domainName;
-            o.gmtModified = gmtModified;
-            o.id = id;
-            o.resourceGroupId = resourceGroupId;
-            o.sources = sources;
-            o.status = status;
-            return o;
+        }        public GetDomainsDomain build() {
+            return new GetDomainsDomain(certInfos, cname, createTime, description, domainName, gmtModified, id, resourceGroupId, sources, status);
         }
     }
 }

@@ -189,6 +189,7 @@ def get_flowlogs(cen_id: Optional[str] = None,
     :param Sequence[str] ids: A list of CEN flow log IDs.
     :param str log_store_name: The name of the log store which is in the  `project_name` SLS project.
     :param str name_regex: A regex string to filter CEN flow logs by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str project_name: The name of the SLS project.
     :param str status: The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
     """
@@ -252,6 +253,7 @@ def get_flowlogs_output(cen_id: Optional[pulumi.Input[Optional[str]]] = None,
     :param Sequence[str] ids: A list of CEN flow log IDs.
     :param str log_store_name: The name of the log store which is in the  `project_name` SLS project.
     :param str name_regex: A regex string to filter CEN flow logs by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str project_name: The name of the SLS project.
     :param str status: The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
     """

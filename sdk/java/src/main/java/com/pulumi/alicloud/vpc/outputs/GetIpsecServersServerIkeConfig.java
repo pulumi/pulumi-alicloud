@@ -14,44 +14,63 @@ public final class GetIpsecServersServerIkeConfig {
      * @return The IKE authentication algorithm.
      * 
      */
-    private String ikeAuthAlg;
+    private final String ikeAuthAlg;
     /**
      * @return The IKE encryption algorithm.
      * 
      */
-    private String ikeEncAlg;
+    private final String ikeEncAlg;
     /**
      * @return The IKE lifetime. Unit: seconds.
      * 
      */
-    private Integer ikeLifetime;
+    private final Integer ikeLifetime;
     /**
      * @return The IKE negotiation mode.
      * 
      */
-    private String ikeMode;
+    private final String ikeMode;
     /**
      * @return Diffie-Hellman key exchange algorithm.
      * 
      */
-    private String ikePfs;
+    private final String ikePfs;
     /**
      * @return The IKE version.
      * 
      */
-    private String ikeVersion;
+    private final String ikeVersion;
     /**
      * @return IPsec server identifier. Supports the format of FQDN and IP address. The public IP address of the VPN gateway is selected by default.
      * 
      */
-    private String localId;
+    private final String localId;
     /**
      * @return The peer identifier. Supports the format of FQDN and IP address, which is empty by default.
      * 
      */
-    private String remoteId;
+    private final String remoteId;
 
-    private GetIpsecServersServerIkeConfig() {}
+    @CustomType.Constructor
+    private GetIpsecServersServerIkeConfig(
+        @CustomType.Parameter("ikeAuthAlg") String ikeAuthAlg,
+        @CustomType.Parameter("ikeEncAlg") String ikeEncAlg,
+        @CustomType.Parameter("ikeLifetime") Integer ikeLifetime,
+        @CustomType.Parameter("ikeMode") String ikeMode,
+        @CustomType.Parameter("ikePfs") String ikePfs,
+        @CustomType.Parameter("ikeVersion") String ikeVersion,
+        @CustomType.Parameter("localId") String localId,
+        @CustomType.Parameter("remoteId") String remoteId) {
+        this.ikeAuthAlg = ikeAuthAlg;
+        this.ikeEncAlg = ikeEncAlg;
+        this.ikeLifetime = ikeLifetime;
+        this.ikeMode = ikeMode;
+        this.ikePfs = ikePfs;
+        this.ikeVersion = ikeVersion;
+        this.localId = localId;
+        this.remoteId = remoteId;
+    }
+
     /**
      * @return The IKE authentication algorithm.
      * 
@@ -116,7 +135,7 @@ public final class GetIpsecServersServerIkeConfig {
     public static Builder builder(GetIpsecServersServerIkeConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String ikeAuthAlg;
         private String ikeEncAlg;
@@ -126,7 +145,11 @@ public final class GetIpsecServersServerIkeConfig {
         private String ikeVersion;
         private String localId;
         private String remoteId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetIpsecServersServerIkeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ikeAuthAlg = defaults.ikeAuthAlg;
@@ -139,57 +162,39 @@ public final class GetIpsecServersServerIkeConfig {
     	      this.remoteId = defaults.remoteId;
         }
 
-        @CustomType.Setter
         public Builder ikeAuthAlg(String ikeAuthAlg) {
             this.ikeAuthAlg = Objects.requireNonNull(ikeAuthAlg);
             return this;
         }
-        @CustomType.Setter
         public Builder ikeEncAlg(String ikeEncAlg) {
             this.ikeEncAlg = Objects.requireNonNull(ikeEncAlg);
             return this;
         }
-        @CustomType.Setter
         public Builder ikeLifetime(Integer ikeLifetime) {
             this.ikeLifetime = Objects.requireNonNull(ikeLifetime);
             return this;
         }
-        @CustomType.Setter
         public Builder ikeMode(String ikeMode) {
             this.ikeMode = Objects.requireNonNull(ikeMode);
             return this;
         }
-        @CustomType.Setter
         public Builder ikePfs(String ikePfs) {
             this.ikePfs = Objects.requireNonNull(ikePfs);
             return this;
         }
-        @CustomType.Setter
         public Builder ikeVersion(String ikeVersion) {
             this.ikeVersion = Objects.requireNonNull(ikeVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder localId(String localId) {
             this.localId = Objects.requireNonNull(localId);
             return this;
         }
-        @CustomType.Setter
         public Builder remoteId(String remoteId) {
             this.remoteId = Objects.requireNonNull(remoteId);
             return this;
-        }
-        public GetIpsecServersServerIkeConfig build() {
-            final var o = new GetIpsecServersServerIkeConfig();
-            o.ikeAuthAlg = ikeAuthAlg;
-            o.ikeEncAlg = ikeEncAlg;
-            o.ikeLifetime = ikeLifetime;
-            o.ikeMode = ikeMode;
-            o.ikePfs = ikePfs;
-            o.ikeVersion = ikeVersion;
-            o.localId = localId;
-            o.remoteId = remoteId;
-            return o;
+        }        public GetIpsecServersServerIkeConfig build() {
+            return new GetIpsecServersServerIkeConfig(ikeAuthAlg, ikeEncAlg, ikeLifetime, ikeMode, ikePfs, ikeVersion, localId, remoteId);
         }
     }
 }

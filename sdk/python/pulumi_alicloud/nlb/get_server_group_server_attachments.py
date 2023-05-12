@@ -124,6 +124,7 @@ def get_server_group_server_attachments(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Server Group Server Attachment IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str server_group_id: The ID of the server group.
     :param Sequence[str] server_ids: The IDs of the servers. You can specify at most 40 server IDs in each call.
     :param Sequence[str] server_ips: The IP addresses of the servers. You can specify at most 40 server IP addresses in each call.
@@ -173,6 +174,7 @@ def get_server_group_server_attachments_output(ids: Optional[pulumi.Input[Option
 
 
     :param Sequence[str] ids: A list of Server Group Server Attachment IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str server_group_id: The ID of the server group.
     :param Sequence[str] server_ids: The IDs of the servers. You can specify at most 40 server IDs in each call.
     :param Sequence[str] server_ips: The IP addresses of the servers. You can specify at most 40 server IP addresses in each call.

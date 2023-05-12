@@ -61,7 +61,8 @@ type GetEcsStorageCapacityUnitsArgs struct {
 	// A list of Storage Capacity Unit IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Storage Capacity Unit name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of Storage Capacity Unit.
 	Status *string `pulumi:"status"`
@@ -97,7 +98,8 @@ type GetEcsStorageCapacityUnitsOutputArgs struct {
 	// A list of Storage Capacity Unit IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Storage Capacity Unit name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of Storage Capacity Unit.
 	Status pulumi.StringPtrInput `pulumi:"status"`

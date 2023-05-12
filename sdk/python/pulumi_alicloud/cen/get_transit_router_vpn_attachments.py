@@ -144,6 +144,7 @@ def get_transit_router_vpn_attachments(cen_id: Optional[str] = None,
 
     :param str cen_id: The id of the cen.
     :param Sequence[str] ids: A list of Transit Router Vpn Attachment IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the transit router attachment.
     :param str transit_router_id: The ID of the forwarding router instance.
     """
@@ -197,6 +198,7 @@ def get_transit_router_vpn_attachments_output(cen_id: Optional[pulumi.Input[str]
 
     :param str cen_id: The id of the cen.
     :param Sequence[str] ids: A list of Transit Router Vpn Attachment IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the transit router attachment.
     :param str transit_router_id: The ID of the forwarding router instance.
     """

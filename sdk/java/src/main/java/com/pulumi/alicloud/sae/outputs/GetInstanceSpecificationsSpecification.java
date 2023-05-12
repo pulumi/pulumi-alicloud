@@ -15,39 +15,56 @@ public final class GetInstanceSpecificationsSpecification {
      * @return CPU Size, Specifications for Micronucleus.
      * 
      */
-    private Integer cpu;
+    private final Integer cpu;
     /**
      * @return Whether the instance is available. The value description is as follows:
      * 
      */
-    private Boolean enable;
+    private final Boolean enable;
     /**
      * @return The ID of the Instance Specification.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private String instanceSpecificationId;
+    private final String instanceSpecificationId;
     /**
      * @return The Memory specifications for the MB.
      * 
      */
-    private Integer memory;
+    private final Integer memory;
     /**
      * @return The specification configuration name.
      * 
      */
-    private String specInfo;
+    private final String specInfo;
     /**
      * @return The specification configuration version.
      * 
      */
-    private Integer version;
+    private final Integer version;
 
-    private GetInstanceSpecificationsSpecification() {}
+    @CustomType.Constructor
+    private GetInstanceSpecificationsSpecification(
+        @CustomType.Parameter("cpu") Integer cpu,
+        @CustomType.Parameter("enable") Boolean enable,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceSpecificationId") String instanceSpecificationId,
+        @CustomType.Parameter("memory") Integer memory,
+        @CustomType.Parameter("specInfo") String specInfo,
+        @CustomType.Parameter("version") Integer version) {
+        this.cpu = cpu;
+        this.enable = enable;
+        this.id = id;
+        this.instanceSpecificationId = instanceSpecificationId;
+        this.memory = memory;
+        this.specInfo = specInfo;
+        this.version = version;
+    }
+
     /**
      * @return CPU Size, Specifications for Micronucleus.
      * 
@@ -105,7 +122,7 @@ public final class GetInstanceSpecificationsSpecification {
     public static Builder builder(GetInstanceSpecificationsSpecification defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer cpu;
         private Boolean enable;
@@ -114,7 +131,11 @@ public final class GetInstanceSpecificationsSpecification {
         private Integer memory;
         private String specInfo;
         private Integer version;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstanceSpecificationsSpecification defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpu = defaults.cpu;
@@ -126,51 +147,35 @@ public final class GetInstanceSpecificationsSpecification {
     	      this.version = defaults.version;
         }
 
-        @CustomType.Setter
         public Builder cpu(Integer cpu) {
             this.cpu = Objects.requireNonNull(cpu);
             return this;
         }
-        @CustomType.Setter
         public Builder enable(Boolean enable) {
             this.enable = Objects.requireNonNull(enable);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceSpecificationId(String instanceSpecificationId) {
             this.instanceSpecificationId = Objects.requireNonNull(instanceSpecificationId);
             return this;
         }
-        @CustomType.Setter
         public Builder memory(Integer memory) {
             this.memory = Objects.requireNonNull(memory);
             return this;
         }
-        @CustomType.Setter
         public Builder specInfo(String specInfo) {
             this.specInfo = Objects.requireNonNull(specInfo);
             return this;
         }
-        @CustomType.Setter
         public Builder version(Integer version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }
-        public GetInstanceSpecificationsSpecification build() {
-            final var o = new GetInstanceSpecificationsSpecification();
-            o.cpu = cpu;
-            o.enable = enable;
-            o.id = id;
-            o.instanceSpecificationId = instanceSpecificationId;
-            o.memory = memory;
-            o.specInfo = specInfo;
-            o.version = version;
-            return o;
+        }        public GetInstanceSpecificationsSpecification build() {
+            return new GetInstanceSpecificationsSpecification(cpu, enable, id, instanceSpecificationId, memory, specInfo, version);
         }
     }
 }

@@ -157,6 +157,7 @@ def get_folders(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of resource manager folders IDs.
     :param str name_regex: A regex string to filter results by folder name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str parent_folder_id: The ID of the parent folder.
     :param str query_keyword: The query keyword.
     """
@@ -211,6 +212,7 @@ def get_folders_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
     :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of resource manager folders IDs.
     :param str name_regex: A regex string to filter results by folder name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str parent_folder_id: The ID of the parent folder.
     :param str query_keyword: The query keyword.
     """

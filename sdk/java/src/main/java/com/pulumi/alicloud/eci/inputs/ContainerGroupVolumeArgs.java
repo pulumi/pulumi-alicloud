@@ -156,12 +156,16 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
     /**
      * The address of the NFS server.
      * 
+     * &gt; **NOTE:** Every volumes mounted must have name and type attributes.
+     * 
      */
     @Import(name="nfsVolumeServer")
     private @Nullable Output<String> nfsVolumeServer;
 
     /**
      * @return The address of the NFS server.
+     * 
+     * &gt; **NOTE:** Every volumes mounted must have name and type attributes.
      * 
      */
     public Optional<Output<String>> nfsVolumeServer() {
@@ -419,6 +423,8 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
         /**
          * @param nfsVolumeServer The address of the NFS server.
          * 
+         * &gt; **NOTE:** Every volumes mounted must have name and type attributes.
+         * 
          * @return builder
          * 
          */
@@ -429,6 +435,8 @@ public final class ContainerGroupVolumeArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param nfsVolumeServer The address of the NFS server.
+         * 
+         * &gt; **NOTE:** Every volumes mounted must have name and type attributes.
          * 
          * @return builder
          * 

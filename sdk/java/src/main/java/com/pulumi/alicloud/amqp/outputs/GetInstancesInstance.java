@@ -15,74 +15,105 @@ public final class GetInstancesInstance {
      * @return OrderCreateTime.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return ExpireTime.
      * 
      */
-    private String expireTime;
+    private final String expireTime;
     /**
      * @return The ID of the Instance.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return THe instance Id.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return THe instance name.
      * 
      */
-    private String instanceName;
+    private final String instanceName;
     /**
      * @return The instance type.
      * 
      */
-    private String instanceType;
+    private final String instanceType;
     /**
      * @return The Pay-as-You-Type Values Include: the Subscription of a Pre-Paid.
      * 
      */
-    private String paymentType;
+    private final String paymentType;
     /**
      * @return The private endPoint.
      * 
      */
-    private String privateEndPoint;
+    private final String privateEndPoint;
     /**
      * @return The public dndpoint.
      * 
      */
-    private String publicEndpoint;
+    private final String publicEndpoint;
     /**
      * @return Renewal duration.
      * 
      */
-    private Integer renewalDuration;
+    private final Integer renewalDuration;
     /**
      * @return Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
      * 
      */
-    private String renewalDurationUnit;
+    private final String renewalDurationUnit;
     /**
      * @return Renew status.
      * 
      */
-    private String renewalStatus;
+    private final String renewalStatus;
     /**
      * @return The status of the resource.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return Whether to support eip.
      * 
      */
-    private Boolean supportEip;
+    private final Boolean supportEip;
 
-    private GetInstancesInstance() {}
+    @CustomType.Constructor
+    private GetInstancesInstance(
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("expireTime") String expireTime,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("instanceName") String instanceName,
+        @CustomType.Parameter("instanceType") String instanceType,
+        @CustomType.Parameter("paymentType") String paymentType,
+        @CustomType.Parameter("privateEndPoint") String privateEndPoint,
+        @CustomType.Parameter("publicEndpoint") String publicEndpoint,
+        @CustomType.Parameter("renewalDuration") Integer renewalDuration,
+        @CustomType.Parameter("renewalDurationUnit") String renewalDurationUnit,
+        @CustomType.Parameter("renewalStatus") String renewalStatus,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("supportEip") Boolean supportEip) {
+        this.createTime = createTime;
+        this.expireTime = expireTime;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.instanceName = instanceName;
+        this.instanceType = instanceType;
+        this.paymentType = paymentType;
+        this.privateEndPoint = privateEndPoint;
+        this.publicEndpoint = publicEndpoint;
+        this.renewalDuration = renewalDuration;
+        this.renewalDurationUnit = renewalDurationUnit;
+        this.renewalStatus = renewalStatus;
+        this.status = status;
+        this.supportEip = supportEip;
+    }
+
     /**
      * @return OrderCreateTime.
      * 
@@ -189,7 +220,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String createTime;
         private String expireTime;
@@ -205,7 +236,11 @@ public final class GetInstancesInstance {
         private String renewalStatus;
         private String status;
         private Boolean supportEip;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -224,93 +259,63 @@ public final class GetInstancesInstance {
     	      this.supportEip = defaults.supportEip;
         }
 
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder expireTime(String expireTime) {
             this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
-        @CustomType.Setter
         public Builder privateEndPoint(String privateEndPoint) {
             this.privateEndPoint = Objects.requireNonNull(privateEndPoint);
             return this;
         }
-        @CustomType.Setter
         public Builder publicEndpoint(String publicEndpoint) {
             this.publicEndpoint = Objects.requireNonNull(publicEndpoint);
             return this;
         }
-        @CustomType.Setter
         public Builder renewalDuration(Integer renewalDuration) {
             this.renewalDuration = Objects.requireNonNull(renewalDuration);
             return this;
         }
-        @CustomType.Setter
         public Builder renewalDurationUnit(String renewalDurationUnit) {
             this.renewalDurationUnit = Objects.requireNonNull(renewalDurationUnit);
             return this;
         }
-        @CustomType.Setter
         public Builder renewalStatus(String renewalStatus) {
             this.renewalStatus = Objects.requireNonNull(renewalStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder supportEip(Boolean supportEip) {
             this.supportEip = Objects.requireNonNull(supportEip);
             return this;
-        }
-        public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.createTime = createTime;
-            o.expireTime = expireTime;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.instanceType = instanceType;
-            o.paymentType = paymentType;
-            o.privateEndPoint = privateEndPoint;
-            o.publicEndpoint = publicEndpoint;
-            o.renewalDuration = renewalDuration;
-            o.renewalDurationUnit = renewalDurationUnit;
-            o.renewalStatus = renewalStatus;
-            o.status = status;
-            o.supportEip = supportEip;
-            return o;
+        }        public GetInstancesInstance build() {
+            return new GetInstancesInstance(createTime, expireTime, id, instanceId, instanceName, instanceType, paymentType, privateEndPoint, publicEndpoint, renewalDuration, renewalDurationUnit, renewalStatus, status, supportEip);
         }
     }
 }

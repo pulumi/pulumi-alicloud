@@ -60,9 +60,10 @@ type GetAggregateDeliveriesArgs struct {
 	// The ID of the Aggregator.
 	AggregatorId string `pulumi:"aggregatorId"`
 	// A list of Aggregate Delivery IDs.
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
 	Status *int `pulumi:"status"`
 }
@@ -98,9 +99,10 @@ type GetAggregateDeliveriesOutputArgs struct {
 	// The ID of the Aggregator.
 	AggregatorId pulumi.StringInput `pulumi:"aggregatorId"`
 	// A list of Aggregate Delivery IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	NameRegex  pulumi.StringPtrInput   `pulumi:"nameRegex"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids       pulumi.StringArrayInput `pulumi:"ids"`
+	NameRegex pulumi.StringPtrInput   `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
 	Status pulumi.IntPtrInput `pulumi:"status"`
 }

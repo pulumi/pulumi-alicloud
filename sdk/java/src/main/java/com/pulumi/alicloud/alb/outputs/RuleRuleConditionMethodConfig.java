@@ -15,9 +15,13 @@ public final class RuleRuleConditionMethodConfig {
      * @return The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
      * 
      */
-    private @Nullable List<String> values;
+    private final @Nullable List<String> values;
 
-    private RuleRuleConditionMethodConfig() {}
+    @CustomType.Constructor
+    private RuleRuleConditionMethodConfig(@CustomType.Parameter("values") @Nullable List<String> values) {
+        this.values = values;
+    }
+
     /**
      * @return The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
      * 
@@ -33,27 +37,27 @@ public final class RuleRuleConditionMethodConfig {
     public static Builder builder(RuleRuleConditionMethodConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<String> values;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(RuleRuleConditionMethodConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.values = defaults.values;
         }
 
-        @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
             this.values = values;
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }
-        public RuleRuleConditionMethodConfig build() {
-            final var o = new RuleRuleConditionMethodConfig();
-            o.values = values;
-            return o;
+        }        public RuleRuleConditionMethodConfig build() {
+            return new RuleRuleConditionMethodConfig(values);
         }
     }
 }

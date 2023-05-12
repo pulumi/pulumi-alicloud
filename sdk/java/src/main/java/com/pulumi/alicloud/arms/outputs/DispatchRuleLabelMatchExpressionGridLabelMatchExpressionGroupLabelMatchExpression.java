@@ -21,21 +21,30 @@ public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup
      * * _aliyun_arms_alert_level: alert severity
      * 
      */
-    private String key;
+    private final String key;
     /**
      * @return The operator used in the dispatch rule. Valid values:
      * * eq: equals to.
      * * re: matches a regular expression.
      * 
      */
-    private String operator;
+    private final String operator;
     /**
      * @return The value of the tag.
      * 
      */
-    private String value;
+    private final String value;
 
-    private DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression() {}
+    @CustomType.Constructor
+    private DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression(
+        @CustomType.Parameter("key") String key,
+        @CustomType.Parameter("operator") String operator,
+        @CustomType.Parameter("value") String value) {
+        this.key = key;
+        this.operator = operator;
+        this.value = value;
+    }
+
     /**
      * @return The key of the tag of the dispatch rule. Valud values:
      * * _aliyun_arms_userid: user ID
@@ -75,12 +84,16 @@ public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup
     public static Builder builder(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String key;
         private String operator;
         private String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
@@ -88,27 +101,19 @@ public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
-        @CustomType.Setter
         public Builder operator(String operator) {
             this.operator = Objects.requireNonNull(operator);
             return this;
         }
-        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }
-        public DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression build() {
-            final var o = new DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression();
-            o.key = key;
-            o.operator = operator;
-            o.value = value;
-            return o;
+        }        public DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression build() {
+            return new DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression(key, operator, value);
         }
     }
 }

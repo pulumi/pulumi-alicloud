@@ -11,24 +11,35 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ListenerXForwardedFor {
-    private @Nullable Boolean retriveClientIp;
+    private final @Nullable Boolean retriveClientIp;
     /**
      * @return Whether to use the XForwardedFor header to obtain the ID of the SLB instance. Default to false.
      * 
      */
-    private @Nullable Boolean retriveSlbId;
+    private final @Nullable Boolean retriveSlbId;
     /**
      * @return Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
      * 
      */
-    private @Nullable Boolean retriveSlbIp;
+    private final @Nullable Boolean retriveSlbIp;
     /**
      * @return Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
      * 
      */
-    private @Nullable Boolean retriveSlbProto;
+    private final @Nullable Boolean retriveSlbProto;
 
-    private ListenerXForwardedFor() {}
+    @CustomType.Constructor
+    private ListenerXForwardedFor(
+        @CustomType.Parameter("retriveClientIp") @Nullable Boolean retriveClientIp,
+        @CustomType.Parameter("retriveSlbId") @Nullable Boolean retriveSlbId,
+        @CustomType.Parameter("retriveSlbIp") @Nullable Boolean retriveSlbIp,
+        @CustomType.Parameter("retriveSlbProto") @Nullable Boolean retriveSlbProto) {
+        this.retriveClientIp = retriveClientIp;
+        this.retriveSlbId = retriveSlbId;
+        this.retriveSlbIp = retriveSlbIp;
+        this.retriveSlbProto = retriveSlbProto;
+    }
+
     public Optional<Boolean> retriveClientIp() {
         return Optional.ofNullable(this.retriveClientIp);
     }
@@ -61,13 +72,17 @@ public final class ListenerXForwardedFor {
     public static Builder builder(ListenerXForwardedFor defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean retriveClientIp;
         private @Nullable Boolean retriveSlbId;
         private @Nullable Boolean retriveSlbIp;
         private @Nullable Boolean retriveSlbProto;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ListenerXForwardedFor defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.retriveClientIp = defaults.retriveClientIp;
@@ -76,33 +91,23 @@ public final class ListenerXForwardedFor {
     	      this.retriveSlbProto = defaults.retriveSlbProto;
         }
 
-        @CustomType.Setter
         public Builder retriveClientIp(@Nullable Boolean retriveClientIp) {
             this.retriveClientIp = retriveClientIp;
             return this;
         }
-        @CustomType.Setter
         public Builder retriveSlbId(@Nullable Boolean retriveSlbId) {
             this.retriveSlbId = retriveSlbId;
             return this;
         }
-        @CustomType.Setter
         public Builder retriveSlbIp(@Nullable Boolean retriveSlbIp) {
             this.retriveSlbIp = retriveSlbIp;
             return this;
         }
-        @CustomType.Setter
         public Builder retriveSlbProto(@Nullable Boolean retriveSlbProto) {
             this.retriveSlbProto = retriveSlbProto;
             return this;
-        }
-        public ListenerXForwardedFor build() {
-            final var o = new ListenerXForwardedFor();
-            o.retriveClientIp = retriveClientIp;
-            o.retriveSlbId = retriveSlbId;
-            o.retriveSlbIp = retriveSlbIp;
-            o.retriveSlbProto = retriveSlbProto;
-            return o;
+        }        public ListenerXForwardedFor build() {
+            return new ListenerXForwardedFor(retriveClientIp, retriveSlbId, retriveSlbIp, retriveSlbProto);
         }
     }
 }

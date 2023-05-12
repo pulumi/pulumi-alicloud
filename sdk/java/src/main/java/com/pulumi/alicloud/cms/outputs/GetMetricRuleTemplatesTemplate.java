@@ -15,39 +15,58 @@ public final class GetMetricRuleTemplatesTemplate {
      * @return The details of alert rules that are generated based on the alert template.
      * 
      */
-    private List<GetMetricRuleTemplatesTemplateAlertTemplate> alertTemplates;
+    private final List<GetMetricRuleTemplatesTemplateAlertTemplate> alertTemplates;
     /**
      * @return The description of the alert template.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return GroupId.
      * 
      */
-    private String groupId;
+    private final String groupId;
     /**
      * @return The ID of the Metric Rule Template.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The name of the alert template.
      * 
      */
-    private String metricRuleTemplateName;
+    private final String metricRuleTemplateName;
     /**
      * @return The version of the alert template.
      * 
+     * &gt; **NOTE:** The version changes with the number of times that the alert template is modified.
+     * 
      */
-    private String restVersion;
+    private final String restVersion;
     /**
      * @return The ID of the alert template.
      * 
      */
-    private String templateId;
+    private final String templateId;
 
-    private GetMetricRuleTemplatesTemplate() {}
+    @CustomType.Constructor
+    private GetMetricRuleTemplatesTemplate(
+        @CustomType.Parameter("alertTemplates") List<GetMetricRuleTemplatesTemplateAlertTemplate> alertTemplates,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("groupId") String groupId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("metricRuleTemplateName") String metricRuleTemplateName,
+        @CustomType.Parameter("restVersion") String restVersion,
+        @CustomType.Parameter("templateId") String templateId) {
+        this.alertTemplates = alertTemplates;
+        this.description = description;
+        this.groupId = groupId;
+        this.id = id;
+        this.metricRuleTemplateName = metricRuleTemplateName;
+        this.restVersion = restVersion;
+        this.templateId = templateId;
+    }
+
     /**
      * @return The details of alert rules that are generated based on the alert template.
      * 
@@ -86,6 +105,8 @@ public final class GetMetricRuleTemplatesTemplate {
     /**
      * @return The version of the alert template.
      * 
+     * &gt; **NOTE:** The version changes with the number of times that the alert template is modified.
+     * 
      */
     public String restVersion() {
         return this.restVersion;
@@ -105,7 +126,7 @@ public final class GetMetricRuleTemplatesTemplate {
     public static Builder builder(GetMetricRuleTemplatesTemplate defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetMetricRuleTemplatesTemplateAlertTemplate> alertTemplates;
         private String description;
@@ -114,7 +135,11 @@ public final class GetMetricRuleTemplatesTemplate {
         private String metricRuleTemplateName;
         private String restVersion;
         private String templateId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetMetricRuleTemplatesTemplate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alertTemplates = defaults.alertTemplates;
@@ -126,7 +151,6 @@ public final class GetMetricRuleTemplatesTemplate {
     	      this.templateId = defaults.templateId;
         }
 
-        @CustomType.Setter
         public Builder alertTemplates(List<GetMetricRuleTemplatesTemplateAlertTemplate> alertTemplates) {
             this.alertTemplates = Objects.requireNonNull(alertTemplates);
             return this;
@@ -134,46 +158,31 @@ public final class GetMetricRuleTemplatesTemplate {
         public Builder alertTemplates(GetMetricRuleTemplatesTemplateAlertTemplate... alertTemplates) {
             return alertTemplates(List.of(alertTemplates));
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder groupId(String groupId) {
             this.groupId = Objects.requireNonNull(groupId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder metricRuleTemplateName(String metricRuleTemplateName) {
             this.metricRuleTemplateName = Objects.requireNonNull(metricRuleTemplateName);
             return this;
         }
-        @CustomType.Setter
         public Builder restVersion(String restVersion) {
             this.restVersion = Objects.requireNonNull(restVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder templateId(String templateId) {
             this.templateId = Objects.requireNonNull(templateId);
             return this;
-        }
-        public GetMetricRuleTemplatesTemplate build() {
-            final var o = new GetMetricRuleTemplatesTemplate();
-            o.alertTemplates = alertTemplates;
-            o.description = description;
-            o.groupId = groupId;
-            o.id = id;
-            o.metricRuleTemplateName = metricRuleTemplateName;
-            o.restVersion = restVersion;
-            o.templateId = templateId;
-            return o;
+        }        public GetMetricRuleTemplatesTemplate build() {
+            return new GetMetricRuleTemplatesTemplate(alertTemplates, description, groupId, id, metricRuleTemplateName, restVersion, templateId);
         }
     }
 }

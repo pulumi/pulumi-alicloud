@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+        /// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
         /// </summary>
         [Output("period")]
         public Output<int> Period { get; private set; } = null!;
@@ -275,7 +275,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> PaymentType { get; set; } = null!;
 
         /// <summary>
-        /// The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+        /// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
         /// </summary>
         [Input("period", required: true)]
         public Input<int> Period { get; set; } = null!;
@@ -379,7 +379,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+        /// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }

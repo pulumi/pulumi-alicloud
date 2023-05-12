@@ -51,6 +51,9 @@ export interface GetDataCentersArgs {
      * A regex string to apply to the cluster name.
      */
     nameRegex?: string;
+    /**
+     * The name of file that can save the collection of data centers after running `pulumi preview`.
+     */
     outputFile?: string;
 }
 
@@ -119,5 +122,8 @@ export interface GetDataCentersOutputArgs {
      * A regex string to apply to the cluster name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * The name of file that can save the collection of data centers after running `pulumi preview`.
+     */
     outputFile?: pulumi.Input<string>;
 }

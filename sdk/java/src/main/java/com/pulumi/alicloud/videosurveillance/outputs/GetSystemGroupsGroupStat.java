@@ -13,24 +13,35 @@ public final class GetSystemGroupsGroupStat {
      * @return The total number of devices in the group.
      * 
      */
-    private String deviceNum;
+    private final String deviceNum;
     /**
      * @return The total number of smart devices in the group.
      * 
      */
-    private String iedNum;
+    private final String iedNum;
     /**
      * @return The total number of cameras in the group.
      * 
      */
-    private String ipcNum;
+    private final String ipcNum;
     /**
      * @return The total number of platforms in the group.
      * 
      */
-    private String platformNum;
+    private final String platformNum;
 
-    private GetSystemGroupsGroupStat() {}
+    @CustomType.Constructor
+    private GetSystemGroupsGroupStat(
+        @CustomType.Parameter("deviceNum") String deviceNum,
+        @CustomType.Parameter("iedNum") String iedNum,
+        @CustomType.Parameter("ipcNum") String ipcNum,
+        @CustomType.Parameter("platformNum") String platformNum) {
+        this.deviceNum = deviceNum;
+        this.iedNum = iedNum;
+        this.ipcNum = ipcNum;
+        this.platformNum = platformNum;
+    }
+
     /**
      * @return The total number of devices in the group.
      * 
@@ -67,13 +78,17 @@ public final class GetSystemGroupsGroupStat {
     public static Builder builder(GetSystemGroupsGroupStat defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String deviceNum;
         private String iedNum;
         private String ipcNum;
         private String platformNum;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetSystemGroupsGroupStat defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deviceNum = defaults.deviceNum;
@@ -82,33 +97,23 @@ public final class GetSystemGroupsGroupStat {
     	      this.platformNum = defaults.platformNum;
         }
 
-        @CustomType.Setter
         public Builder deviceNum(String deviceNum) {
             this.deviceNum = Objects.requireNonNull(deviceNum);
             return this;
         }
-        @CustomType.Setter
         public Builder iedNum(String iedNum) {
             this.iedNum = Objects.requireNonNull(iedNum);
             return this;
         }
-        @CustomType.Setter
         public Builder ipcNum(String ipcNum) {
             this.ipcNum = Objects.requireNonNull(ipcNum);
             return this;
         }
-        @CustomType.Setter
         public Builder platformNum(String platformNum) {
             this.platformNum = Objects.requireNonNull(platformNum);
             return this;
-        }
-        public GetSystemGroupsGroupStat build() {
-            final var o = new GetSystemGroupsGroupStat();
-            o.deviceNum = deviceNum;
-            o.iedNum = iedNum;
-            o.ipcNum = ipcNum;
-            o.platformNum = platformNum;
-            return o;
+        }        public GetSystemGroupsGroupStat build() {
+            return new GetSystemGroupsGroupStat(deviceNum, iedNum, ipcNum, platformNum);
         }
     }
 }

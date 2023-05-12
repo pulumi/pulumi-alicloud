@@ -9,9 +9,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
-    private String endpointGroupId;
+    private final String endpointGroupId;
 
-    private GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple() {}
+    @CustomType.Constructor
+    private GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple(@CustomType.Parameter("endpointGroupId") String endpointGroupId) {
+        this.endpointGroupId = endpointGroupId;
+    }
+
     public String endpointGroupId() {
         return this.endpointGroupId;
     }
@@ -23,24 +27,24 @@ public final class GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigS
     public static Builder builder(GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String endpointGroupId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endpointGroupId = defaults.endpointGroupId;
         }
 
-        @CustomType.Setter
         public Builder endpointGroupId(String endpointGroupId) {
             this.endpointGroupId = Objects.requireNonNull(endpointGroupId);
             return this;
-        }
-        public GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple build() {
-            final var o = new GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple();
-            o.endpointGroupId = endpointGroupId;
-            return o;
+        }        public GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple build() {
+            return new GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple(endpointGroupId);
         }
     }
 }

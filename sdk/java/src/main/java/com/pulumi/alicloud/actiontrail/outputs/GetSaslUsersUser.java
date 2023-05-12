@@ -13,14 +13,21 @@ public final class GetSaslUsersUser {
      * @return The password of the user.
      * 
      */
-    private String password;
+    private final String password;
     /**
      * @return The username of the user.
      * 
      */
-    private String username;
+    private final String username;
 
-    private GetSaslUsersUser() {}
+    @CustomType.Constructor
+    private GetSaslUsersUser(
+        @CustomType.Parameter("password") String password,
+        @CustomType.Parameter("username") String username) {
+        this.password = password;
+        this.username = username;
+    }
+
     /**
      * @return The password of the user.
      * 
@@ -43,32 +50,30 @@ public final class GetSaslUsersUser {
     public static Builder builder(GetSaslUsersUser defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String password;
         private String username;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetSaslUsersUser defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.password = defaults.password;
     	      this.username = defaults.username;
         }
 
-        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
-        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }
-        public GetSaslUsersUser build() {
-            final var o = new GetSaslUsersUser();
-            o.password = password;
-            o.username = username;
-            return o;
+        }        public GetSaslUsersUser build() {
+            return new GetSaslUsersUser(password, username);
         }
     }
 }

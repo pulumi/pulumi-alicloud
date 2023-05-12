@@ -14,14 +14,21 @@ public final class GetInstancesInstanceAllowedListVpcList {
      * @return The allowed ip list of the internet_list.
      * 
      */
-    private List<String> allowedIpLists;
+    private final List<String> allowedIpLists;
     /**
      * @return The port range of the internet_list.
      * 
      */
-    private String portRange;
+    private final String portRange;
 
-    private GetInstancesInstanceAllowedListVpcList() {}
+    @CustomType.Constructor
+    private GetInstancesInstanceAllowedListVpcList(
+        @CustomType.Parameter("allowedIpLists") List<String> allowedIpLists,
+        @CustomType.Parameter("portRange") String portRange) {
+        this.allowedIpLists = allowedIpLists;
+        this.portRange = portRange;
+    }
+
     /**
      * @return The allowed ip list of the internet_list.
      * 
@@ -44,18 +51,21 @@ public final class GetInstancesInstanceAllowedListVpcList {
     public static Builder builder(GetInstancesInstanceAllowedListVpcList defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<String> allowedIpLists;
         private String portRange;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstancesInstanceAllowedListVpcList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedIpLists = defaults.allowedIpLists;
     	      this.portRange = defaults.portRange;
         }
 
-        @CustomType.Setter
         public Builder allowedIpLists(List<String> allowedIpLists) {
             this.allowedIpLists = Objects.requireNonNull(allowedIpLists);
             return this;
@@ -63,16 +73,11 @@ public final class GetInstancesInstanceAllowedListVpcList {
         public Builder allowedIpLists(String... allowedIpLists) {
             return allowedIpLists(List.of(allowedIpLists));
         }
-        @CustomType.Setter
         public Builder portRange(String portRange) {
             this.portRange = Objects.requireNonNull(portRange);
             return this;
-        }
-        public GetInstancesInstanceAllowedListVpcList build() {
-            final var o = new GetInstancesInstanceAllowedListVpcList();
-            o.allowedIpLists = allowedIpLists;
-            o.portRange = portRange;
-            return o;
+        }        public GetInstancesInstanceAllowedListVpcList build() {
+            return new GetInstancesInstanceAllowedListVpcList(allowedIpLists, portRange);
         }
     }
 }

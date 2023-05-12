@@ -60,7 +60,8 @@ type GetServerFirewallRulesArgs struct {
 	// A list of Firewall Rule IDs.
 	Ids []string `pulumi:"ids"`
 	// Alibaba Cloud simple application server instance ID.
-	InstanceId string  `pulumi:"instanceId"`
+	InstanceId string `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -92,7 +93,8 @@ type GetServerFirewallRulesOutputArgs struct {
 	// A list of Firewall Rule IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// Alibaba Cloud simple application server instance ID.
-	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

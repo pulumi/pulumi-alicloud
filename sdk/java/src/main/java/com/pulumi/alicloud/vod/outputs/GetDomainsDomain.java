@@ -15,54 +15,77 @@ public final class GetDomainsDomain {
      * @return The CNAME that is assigned to the domain name for CDN. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name for CDN to the CNAME.
      * 
      */
-    private String cname;
+    private final String cname;
     /**
      * @return The description of the domain name for CDN.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The domain name for CDN.
      * 
      */
-    private String domainName;
+    private final String domainName;
     /**
      * @return The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
-    private String gmtCreated;
+    private final String gmtCreated;
     /**
      * @return The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
-    private String gmtModified;
+    private final String gmtModified;
     /**
      * @return The ID of the Domain. Its value is same as Queue Name.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Indicates whether the domain name for CDN is in a sandbox environment.
      * 
      */
-    private String sandBox;
+    private final String sandBox;
     /**
      * @return The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
      * 
      */
-    private List<GetDomainsDomainSource> sources;
+    private final List<GetDomainsDomainSource> sources;
     /**
      * @return Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
      * 
      */
-    private String sslProtocol;
+    private final String sslProtocol;
     /**
      * @return The status of the resource.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetDomainsDomain() {}
+    @CustomType.Constructor
+    private GetDomainsDomain(
+        @CustomType.Parameter("cname") String cname,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("domainName") String domainName,
+        @CustomType.Parameter("gmtCreated") String gmtCreated,
+        @CustomType.Parameter("gmtModified") String gmtModified,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("sandBox") String sandBox,
+        @CustomType.Parameter("sources") List<GetDomainsDomainSource> sources,
+        @CustomType.Parameter("sslProtocol") String sslProtocol,
+        @CustomType.Parameter("status") String status) {
+        this.cname = cname;
+        this.description = description;
+        this.domainName = domainName;
+        this.gmtCreated = gmtCreated;
+        this.gmtModified = gmtModified;
+        this.id = id;
+        this.sandBox = sandBox;
+        this.sources = sources;
+        this.sslProtocol = sslProtocol;
+        this.status = status;
+    }
+
     /**
      * @return The CNAME that is assigned to the domain name for CDN. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name for CDN to the CNAME.
      * 
@@ -141,7 +164,7 @@ public final class GetDomainsDomain {
     public static Builder builder(GetDomainsDomain defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String cname;
         private String description;
@@ -153,7 +176,11 @@ public final class GetDomainsDomain {
         private List<GetDomainsDomainSource> sources;
         private String sslProtocol;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDomainsDomain defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cname = defaults.cname;
@@ -168,42 +195,34 @@ public final class GetDomainsDomain {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder cname(String cname) {
             this.cname = Objects.requireNonNull(cname);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
-        @CustomType.Setter
         public Builder gmtCreated(String gmtCreated) {
             this.gmtCreated = Objects.requireNonNull(gmtCreated);
             return this;
         }
-        @CustomType.Setter
         public Builder gmtModified(String gmtModified) {
             this.gmtModified = Objects.requireNonNull(gmtModified);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder sandBox(String sandBox) {
             this.sandBox = Objects.requireNonNull(sandBox);
             return this;
         }
-        @CustomType.Setter
         public Builder sources(List<GetDomainsDomainSource> sources) {
             this.sources = Objects.requireNonNull(sources);
             return this;
@@ -211,29 +230,15 @@ public final class GetDomainsDomain {
         public Builder sources(GetDomainsDomainSource... sources) {
             return sources(List.of(sources));
         }
-        @CustomType.Setter
         public Builder sslProtocol(String sslProtocol) {
             this.sslProtocol = Objects.requireNonNull(sslProtocol);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetDomainsDomain build() {
-            final var o = new GetDomainsDomain();
-            o.cname = cname;
-            o.description = description;
-            o.domainName = domainName;
-            o.gmtCreated = gmtCreated;
-            o.gmtModified = gmtModified;
-            o.id = id;
-            o.sandBox = sandBox;
-            o.sources = sources;
-            o.sslProtocol = sslProtocol;
-            o.status = status;
-            return o;
+        }        public GetDomainsDomain build() {
+            return new GetDomainsDomain(cname, description, domainName, gmtCreated, gmtModified, id, sandBox, sources, sslProtocol, status);
         }
     }
 }

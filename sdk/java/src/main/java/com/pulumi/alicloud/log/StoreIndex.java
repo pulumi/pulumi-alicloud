@@ -18,6 +18,72 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Log Service provides the LogSearch/Analytics function to query and analyze large amounts of logs in real time.
+ * You can use this function by enabling the index and field statistics. [Refer to details](https://www.alibabacloud.com/help/doc-detail/43772.htm)
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
+ * import com.pulumi.alicloud.log.StoreIndex;
+ * import com.pulumi.alicloud.log.StoreIndexArgs;
+ * import com.pulumi.alicloud.log.inputs.StoreIndexFullTextArgs;
+ * import com.pulumi.alicloud.log.inputs.StoreIndexFieldSearchArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
+ *             .description(&#34;created by terraform&#34;)
+ *             .build());
+ * 
+ *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
+ *             .project(exampleProject.name())
+ *             .description(&#34;created by terraform&#34;)
+ *             .build());
+ * 
+ *         var exampleStoreIndex = new StoreIndex(&#34;exampleStoreIndex&#34;, StoreIndexArgs.builder()        
+ *             .project(exampleProject.name())
+ *             .logstore(exampleStore.name())
+ *             .fullText(StoreIndexFullTextArgs.builder()
+ *                 .caseSensitive(true)
+ *                 .token(&#34;&#34;&#34;
+ *  #$%^*
+ * 	                &#34;&#34;&#34;)
+ *                 .build())
+ *             .fieldSearches(StoreIndexFieldSearchArgs.builder()
+ *                 .name(&#34;terraform&#34;)
+ *                 .enableAnalytics(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Module Support
+ * 
+ * You can use the existing sls module
+ * to create SLS project, store and store index one-click, like ECS instances.
+ * 
  * ## Import
  * 
  * Log store index can be imported using the id, e.g.

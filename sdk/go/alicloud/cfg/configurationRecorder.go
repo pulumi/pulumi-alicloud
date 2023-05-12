@@ -58,6 +58,7 @@ import (
 type ConfigurationRecorder struct {
 	pulumi.CustomResourceState
 
+	// Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
 	EnterpriseEdition pulumi.BoolOutput `pulumi:"enterpriseEdition"`
 	// Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
 	OrganizationEnableStatus pulumi.StringOutput `pulumi:"organizationEnableStatus"`
@@ -100,6 +101,7 @@ func GetConfigurationRecorder(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConfigurationRecorder resources.
 type configurationRecorderState struct {
+	// Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
 	EnterpriseEdition *bool `pulumi:"enterpriseEdition"`
 	// Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
 	OrganizationEnableStatus *string `pulumi:"organizationEnableStatus"`
@@ -114,6 +116,7 @@ type configurationRecorderState struct {
 }
 
 type ConfigurationRecorderState struct {
+	// Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
 	EnterpriseEdition pulumi.BoolPtrInput
 	// Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
 	OrganizationEnableStatus pulumi.StringPtrInput
@@ -132,6 +135,7 @@ func (ConfigurationRecorderState) ElementType() reflect.Type {
 }
 
 type configurationRecorderArgs struct {
+	// Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
 	EnterpriseEdition *bool `pulumi:"enterpriseEdition"`
 	// A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
 	// * If you use an ordinary account, the `resourceTypes` supports the update operation after the process of creation is completed.
@@ -141,6 +145,7 @@ type configurationRecorderArgs struct {
 
 // The set of arguments for constructing a ConfigurationRecorder resource.
 type ConfigurationRecorderArgs struct {
+	// Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
 	EnterpriseEdition pulumi.BoolPtrInput
 	// A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
 	// * If you use an ordinary account, the `resourceTypes` supports the update operation after the process of creation is completed.
@@ -235,6 +240,7 @@ func (o ConfigurationRecorderOutput) ToConfigurationRecorderOutputWithContext(ct
 	return o
 }
 
+// Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
 func (o ConfigurationRecorderOutput) EnterpriseEdition() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ConfigurationRecorder) pulumi.BoolOutput { return v.EnterpriseEdition }).(pulumi.BoolOutput)
 }

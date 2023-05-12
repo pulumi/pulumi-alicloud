@@ -49,6 +49,7 @@ func GetAccountAliases(ctx *pulumi.Context, args *GetAccountAliasesArgs, opts ..
 
 // A collection of arguments for invoking getAccountAliases.
 type GetAccountAliasesArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -76,6 +77,7 @@ func GetAccountAliasesOutput(ctx *pulumi.Context, args GetAccountAliasesOutputAr
 
 // A collection of arguments for invoking getAccountAliases.
 type GetAccountAliasesOutputArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

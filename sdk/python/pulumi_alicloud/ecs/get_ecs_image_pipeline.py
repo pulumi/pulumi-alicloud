@@ -147,6 +147,7 @@ def get_ecs_image_pipeline(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Image Pipeline ids.
     :param str name: The name of the image template.
     :param str name_regex: A regex string to filter results by Image Pipeline name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group to which the image template belongs.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
@@ -203,6 +204,7 @@ def get_ecs_image_pipeline_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     :param Sequence[str] ids: A list of Image Pipeline ids.
     :param str name: The name of the image template.
     :param str name_regex: A regex string to filter results by Image Pipeline name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group to which the image template belongs.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """

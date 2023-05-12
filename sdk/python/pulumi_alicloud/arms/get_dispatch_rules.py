@@ -138,6 +138,7 @@ def get_dispatch_rules(dispatch_rule_name: Optional[str] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of dispatch rule id.
     :param str name_regex: A regex string to filter results by Dispatch Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['dispatchRuleName'] = dispatch_rule_name
@@ -190,5 +191,6 @@ def get_dispatch_rules_output(dispatch_rule_name: Optional[pulumi.Input[Optional
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of dispatch rule id.
     :param str name_regex: A regex string to filter results by Dispatch Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

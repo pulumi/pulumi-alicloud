@@ -14,9 +14,13 @@ public final class GetRulesRuleRuleConditionQueryStringConfig {
      * @return Add one or more IP addresses or IP address segments.
      * 
      */
-    private List<GetRulesRuleRuleConditionQueryStringConfigValue> values;
+    private final List<GetRulesRuleRuleConditionQueryStringConfigValue> values;
 
-    private GetRulesRuleRuleConditionQueryStringConfig() {}
+    @CustomType.Constructor
+    private GetRulesRuleRuleConditionQueryStringConfig(@CustomType.Parameter("values") List<GetRulesRuleRuleConditionQueryStringConfigValue> values) {
+        this.values = values;
+    }
+
     /**
      * @return Add one or more IP addresses or IP address segments.
      * 
@@ -32,27 +36,27 @@ public final class GetRulesRuleRuleConditionQueryStringConfig {
     public static Builder builder(GetRulesRuleRuleConditionQueryStringConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetRulesRuleRuleConditionQueryStringConfigValue> values;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRulesRuleRuleConditionQueryStringConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.values = defaults.values;
         }
 
-        @CustomType.Setter
         public Builder values(List<GetRulesRuleRuleConditionQueryStringConfigValue> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(GetRulesRuleRuleConditionQueryStringConfigValue... values) {
             return values(List.of(values));
-        }
-        public GetRulesRuleRuleConditionQueryStringConfig build() {
-            final var o = new GetRulesRuleRuleConditionQueryStringConfig();
-            o.values = values;
-            return o;
+        }        public GetRulesRuleRuleConditionQueryStringConfig build() {
+            return new GetRulesRuleRuleConditionQueryStringConfig(values);
         }
     }
 }

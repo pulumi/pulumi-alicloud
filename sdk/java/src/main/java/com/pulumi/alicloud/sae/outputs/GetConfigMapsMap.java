@@ -13,39 +13,56 @@ public final class GetConfigMapsMap {
      * @return The first ID of the resource.
      * 
      */
-    private String configMapId;
+    private final String configMapId;
     /**
      * @return The Creation Time of the ConfigMap.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return ConfigMap instance data. The value&#39;s format is a `json` string
      * 
      */
-    private String data;
+    private final String data;
     /**
      * @return The Description of Config Map.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the Config Map.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return ConfigMap instance name.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The NamespaceId of Config Maps.
      * 
      */
-    private String namespaceId;
+    private final String namespaceId;
 
-    private GetConfigMapsMap() {}
+    @CustomType.Constructor
+    private GetConfigMapsMap(
+        @CustomType.Parameter("configMapId") String configMapId,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("data") String data,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("namespaceId") String namespaceId) {
+        this.configMapId = configMapId;
+        this.createTime = createTime;
+        this.data = data;
+        this.description = description;
+        this.id = id;
+        this.name = name;
+        this.namespaceId = namespaceId;
+    }
+
     /**
      * @return The first ID of the resource.
      * 
@@ -103,7 +120,7 @@ public final class GetConfigMapsMap {
     public static Builder builder(GetConfigMapsMap defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String configMapId;
         private String createTime;
@@ -112,7 +129,11 @@ public final class GetConfigMapsMap {
         private String id;
         private String name;
         private String namespaceId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetConfigMapsMap defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configMapId = defaults.configMapId;
@@ -124,51 +145,35 @@ public final class GetConfigMapsMap {
     	      this.namespaceId = defaults.namespaceId;
         }
 
-        @CustomType.Setter
         public Builder configMapId(String configMapId) {
             this.configMapId = Objects.requireNonNull(configMapId);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder data(String data) {
             this.data = Objects.requireNonNull(data);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder namespaceId(String namespaceId) {
             this.namespaceId = Objects.requireNonNull(namespaceId);
             return this;
-        }
-        public GetConfigMapsMap build() {
-            final var o = new GetConfigMapsMap();
-            o.configMapId = configMapId;
-            o.createTime = createTime;
-            o.data = data;
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.namespaceId = namespaceId;
-            return o;
+        }        public GetConfigMapsMap build() {
+            return new GetConfigMapsMap(configMapId, createTime, data, description, id, name, namespaceId);
         }
     }
 }

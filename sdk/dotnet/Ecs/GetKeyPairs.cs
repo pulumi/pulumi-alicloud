@@ -12,6 +12,10 @@ namespace Pulumi.AliCloud.Ecs
     public static class GetKeyPairs
     {
         /// <summary>
+        /// &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsKeyPairs from version 1.121.0.
+        /// 
+        /// This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -44,6 +48,10 @@ namespace Pulumi.AliCloud.Ecs
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKeyPairsResult>("alicloud:ecs/getKeyPairs:getKeyPairs", args ?? new GetKeyPairsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsKeyPairs from version 1.121.0.
+        /// 
+        /// This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -103,6 +111,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -156,6 +167,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

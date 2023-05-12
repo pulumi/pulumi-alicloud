@@ -79,7 +79,8 @@ type GetTrafficMirrorFiltersArgs struct {
 	// A list of Traffic Mirror Filter IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Traffic Mirror Filter name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
 	Status *string `pulumi:"status"`
@@ -118,7 +119,8 @@ type GetTrafficMirrorFiltersOutputArgs struct {
 	// A list of Traffic Mirror Filter IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Traffic Mirror Filter name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
 	Status pulumi.StringPtrInput `pulumi:"status"`

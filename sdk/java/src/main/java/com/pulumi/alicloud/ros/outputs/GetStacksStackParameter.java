@@ -13,14 +13,21 @@ public final class GetStacksStackParameter {
      * @return The key of parameters.
      * 
      */
-    private String parameterKey;
+    private final String parameterKey;
     /**
      * @return The value of parameters.
      * 
      */
-    private String parameterValue;
+    private final String parameterValue;
 
-    private GetStacksStackParameter() {}
+    @CustomType.Constructor
+    private GetStacksStackParameter(
+        @CustomType.Parameter("parameterKey") String parameterKey,
+        @CustomType.Parameter("parameterValue") String parameterValue) {
+        this.parameterKey = parameterKey;
+        this.parameterValue = parameterValue;
+    }
+
     /**
      * @return The key of parameters.
      * 
@@ -43,32 +50,30 @@ public final class GetStacksStackParameter {
     public static Builder builder(GetStacksStackParameter defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String parameterKey;
         private String parameterValue;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetStacksStackParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parameterKey = defaults.parameterKey;
     	      this.parameterValue = defaults.parameterValue;
         }
 
-        @CustomType.Setter
         public Builder parameterKey(String parameterKey) {
             this.parameterKey = Objects.requireNonNull(parameterKey);
             return this;
         }
-        @CustomType.Setter
         public Builder parameterValue(String parameterValue) {
             this.parameterValue = Objects.requireNonNull(parameterValue);
             return this;
-        }
-        public GetStacksStackParameter build() {
-            final var o = new GetStacksStackParameter();
-            o.parameterKey = parameterKey;
-            o.parameterValue = parameterValue;
-            return o;
+        }        public GetStacksStackParameter build() {
+            return new GetStacksStackParameter(parameterKey, parameterValue);
         }
     }
 }

@@ -15,54 +15,77 @@ public final class ShardingNetworkPublicAddressNetworkAddress {
      * @return The remaining duration of the classic network address. Unit: `seconds`.
      * 
      */
-    private @Nullable String expiredTime;
+    private final @Nullable String expiredTime;
     /**
      * @return The IP address of the instance.
      * 
      */
-    private @Nullable String ipAddress;
+    private final @Nullable String ipAddress;
     /**
      * @return The endpoint of the instance.
      * 
      */
-    private @Nullable String networkAddress;
+    private final @Nullable String networkAddress;
     /**
      * @return The network type.
      * 
      */
-    private @Nullable String networkType;
+    private final @Nullable String networkType;
     /**
      * @return The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
      * 
      */
-    private @Nullable String nodeId;
+    private final @Nullable String nodeId;
     /**
      * @return The type of the node.
      * 
      */
-    private @Nullable String nodeType;
+    private final @Nullable String nodeType;
     /**
      * @return The port number.
      * 
      */
-    private @Nullable String port;
+    private final @Nullable String port;
     /**
      * @return The role of the node.
      * 
      */
-    private @Nullable String role;
+    private final @Nullable String role;
     /**
      * @return The ID of the VPC.
      * 
      */
-    private @Nullable String vpcId;
+    private final @Nullable String vpcId;
     /**
      * @return The vSwitch ID of the VPC.
      * 
      */
-    private @Nullable String vswitchId;
+    private final @Nullable String vswitchId;
 
-    private ShardingNetworkPublicAddressNetworkAddress() {}
+    @CustomType.Constructor
+    private ShardingNetworkPublicAddressNetworkAddress(
+        @CustomType.Parameter("expiredTime") @Nullable String expiredTime,
+        @CustomType.Parameter("ipAddress") @Nullable String ipAddress,
+        @CustomType.Parameter("networkAddress") @Nullable String networkAddress,
+        @CustomType.Parameter("networkType") @Nullable String networkType,
+        @CustomType.Parameter("nodeId") @Nullable String nodeId,
+        @CustomType.Parameter("nodeType") @Nullable String nodeType,
+        @CustomType.Parameter("port") @Nullable String port,
+        @CustomType.Parameter("role") @Nullable String role,
+        @CustomType.Parameter("vpcId") @Nullable String vpcId,
+        @CustomType.Parameter("vswitchId") @Nullable String vswitchId) {
+        this.expiredTime = expiredTime;
+        this.ipAddress = ipAddress;
+        this.networkAddress = networkAddress;
+        this.networkType = networkType;
+        this.nodeId = nodeId;
+        this.nodeType = nodeType;
+        this.port = port;
+        this.role = role;
+        this.vpcId = vpcId;
+        this.vswitchId = vswitchId;
+    }
+
     /**
      * @return The remaining duration of the classic network address. Unit: `seconds`.
      * 
@@ -141,7 +164,7 @@ public final class ShardingNetworkPublicAddressNetworkAddress {
     public static Builder builder(ShardingNetworkPublicAddressNetworkAddress defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String expiredTime;
         private @Nullable String ipAddress;
@@ -153,7 +176,11 @@ public final class ShardingNetworkPublicAddressNetworkAddress {
         private @Nullable String role;
         private @Nullable String vpcId;
         private @Nullable String vswitchId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ShardingNetworkPublicAddressNetworkAddress defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expiredTime = defaults.expiredTime;
@@ -168,69 +195,47 @@ public final class ShardingNetworkPublicAddressNetworkAddress {
     	      this.vswitchId = defaults.vswitchId;
         }
 
-        @CustomType.Setter
         public Builder expiredTime(@Nullable String expiredTime) {
             this.expiredTime = expiredTime;
             return this;
         }
-        @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
             this.ipAddress = ipAddress;
             return this;
         }
-        @CustomType.Setter
         public Builder networkAddress(@Nullable String networkAddress) {
             this.networkAddress = networkAddress;
             return this;
         }
-        @CustomType.Setter
         public Builder networkType(@Nullable String networkType) {
             this.networkType = networkType;
             return this;
         }
-        @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
             this.nodeId = nodeId;
             return this;
         }
-        @CustomType.Setter
         public Builder nodeType(@Nullable String nodeType) {
             this.nodeType = nodeType;
             return this;
         }
-        @CustomType.Setter
         public Builder port(@Nullable String port) {
             this.port = port;
             return this;
         }
-        @CustomType.Setter
         public Builder role(@Nullable String role) {
             this.role = role;
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
             this.vswitchId = vswitchId;
             return this;
-        }
-        public ShardingNetworkPublicAddressNetworkAddress build() {
-            final var o = new ShardingNetworkPublicAddressNetworkAddress();
-            o.expiredTime = expiredTime;
-            o.ipAddress = ipAddress;
-            o.networkAddress = networkAddress;
-            o.networkType = networkType;
-            o.nodeId = nodeId;
-            o.nodeType = nodeType;
-            o.port = port;
-            o.role = role;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+        }        public ShardingNetworkPublicAddressNetworkAddress build() {
+            return new ShardingNetworkPublicAddressNetworkAddress(expiredTime, ipAddress, networkAddress, networkType, nodeId, nodeType, port, role, vpcId, vswitchId);
         }
     }
 }

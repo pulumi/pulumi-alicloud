@@ -125,6 +125,7 @@ def get_stores(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of store IDs.
     :param str name_regex: A regex string to filter results by store name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -171,5 +172,6 @@ def get_stores_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
 
     :param Sequence[str] ids: A list of store IDs.
     :param str name_regex: A regex string to filter results by store name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

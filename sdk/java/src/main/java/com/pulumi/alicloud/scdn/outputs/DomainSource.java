@@ -16,22 +16,22 @@ public final class DomainSource {
      * @return The Back-to-Source Address.
      * 
      */
-    private String content;
+    private final String content;
     /**
      * @return The source status. Valid values: online, offline.
      * 
      */
-    private @Nullable String enabled;
+    private final @Nullable String enabled;
     /**
      * @return Port.
      * 
      */
-    private Integer port;
+    private final Integer port;
     /**
      * @return Priority.
      * 
      */
-    private String priority;
+    private final String priority;
     /**
      * @return The Origin Server Type. Valid Values:
      * * ipaddr: IP Source Station
@@ -39,9 +39,22 @@ public final class DomainSource {
      * * oss: OSS Bucket as a Source Station.
      * 
      */
-    private String type;
+    private final String type;
 
-    private DomainSource() {}
+    @CustomType.Constructor
+    private DomainSource(
+        @CustomType.Parameter("content") String content,
+        @CustomType.Parameter("enabled") @Nullable String enabled,
+        @CustomType.Parameter("port") Integer port,
+        @CustomType.Parameter("priority") String priority,
+        @CustomType.Parameter("type") String type) {
+        this.content = content;
+        this.enabled = enabled;
+        this.port = port;
+        this.priority = priority;
+        this.type = type;
+    }
+
     /**
      * @return The Back-to-Source Address.
      * 
@@ -88,14 +101,18 @@ public final class DomainSource {
     public static Builder builder(DomainSource defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String content;
         private @Nullable String enabled;
         private Integer port;
         private String priority;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(DomainSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
@@ -105,39 +122,27 @@ public final class DomainSource {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder content(String content) {
             this.content = Objects.requireNonNull(content);
             return this;
         }
-        @CustomType.Setter
         public Builder enabled(@Nullable String enabled) {
             this.enabled = enabled;
             return this;
         }
-        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
-        @CustomType.Setter
         public Builder priority(String priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public DomainSource build() {
-            final var o = new DomainSource();
-            o.content = content;
-            o.enabled = enabled;
-            o.port = port;
-            o.priority = priority;
-            o.type = type;
-            return o;
+        }        public DomainSource build() {
+            return new DomainSource(content, enabled, port, priority, type);
         }
     }
 }

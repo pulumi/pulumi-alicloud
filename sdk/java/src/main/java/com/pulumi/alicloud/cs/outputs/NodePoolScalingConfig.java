@@ -17,34 +17,49 @@ public final class NodePoolScalingConfig {
      * @return Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
      * 
      */
-    private @Nullable Integer eipBandwidth;
+    private final @Nullable Integer eipBandwidth;
     /**
      * @return EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
      * 
      */
-    private @Nullable String eipInternetChargeType;
+    private final @Nullable String eipInternetChargeType;
     /**
      * @return Whether to bind EIP for an instance. Default: `false`.
      * 
      */
-    private @Nullable Boolean isBondEip;
+    private final @Nullable Boolean isBondEip;
     /**
      * @return Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
      * 
      */
-    private Integer maxSize;
+    private final Integer maxSize;
     /**
      * @return Min number of instances in a auto scaling group, its valid value range [0~1000].
      * 
      */
-    private Integer minSize;
+    private final Integer minSize;
     /**
      * @return Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
      * 
      */
-    private @Nullable String type;
+    private final @Nullable String type;
 
-    private NodePoolScalingConfig() {}
+    @CustomType.Constructor
+    private NodePoolScalingConfig(
+        @CustomType.Parameter("eipBandwidth") @Nullable Integer eipBandwidth,
+        @CustomType.Parameter("eipInternetChargeType") @Nullable String eipInternetChargeType,
+        @CustomType.Parameter("isBondEip") @Nullable Boolean isBondEip,
+        @CustomType.Parameter("maxSize") Integer maxSize,
+        @CustomType.Parameter("minSize") Integer minSize,
+        @CustomType.Parameter("type") @Nullable String type) {
+        this.eipBandwidth = eipBandwidth;
+        this.eipInternetChargeType = eipInternetChargeType;
+        this.isBondEip = isBondEip;
+        this.maxSize = maxSize;
+        this.minSize = minSize;
+        this.type = type;
+    }
+
     /**
      * @return Peak EIP bandwidth. Its valid value range [1~500] in Mbps. Default to `5`.
      * 
@@ -95,7 +110,7 @@ public final class NodePoolScalingConfig {
     public static Builder builder(NodePoolScalingConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Integer eipBandwidth;
         private @Nullable String eipInternetChargeType;
@@ -103,7 +118,11 @@ public final class NodePoolScalingConfig {
         private Integer maxSize;
         private Integer minSize;
         private @Nullable String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(NodePoolScalingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.eipBandwidth = defaults.eipBandwidth;
@@ -114,45 +133,31 @@ public final class NodePoolScalingConfig {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder eipBandwidth(@Nullable Integer eipBandwidth) {
             this.eipBandwidth = eipBandwidth;
             return this;
         }
-        @CustomType.Setter
         public Builder eipInternetChargeType(@Nullable String eipInternetChargeType) {
             this.eipInternetChargeType = eipInternetChargeType;
             return this;
         }
-        @CustomType.Setter
         public Builder isBondEip(@Nullable Boolean isBondEip) {
             this.isBondEip = isBondEip;
             return this;
         }
-        @CustomType.Setter
         public Builder maxSize(Integer maxSize) {
             this.maxSize = Objects.requireNonNull(maxSize);
             return this;
         }
-        @CustomType.Setter
         public Builder minSize(Integer minSize) {
             this.minSize = Objects.requireNonNull(minSize);
             return this;
         }
-        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }
-        public NodePoolScalingConfig build() {
-            final var o = new NodePoolScalingConfig();
-            o.eipBandwidth = eipBandwidth;
-            o.eipInternetChargeType = eipInternetChargeType;
-            o.isBondEip = isBondEip;
-            o.maxSize = maxSize;
-            o.minSize = minSize;
-            o.type = type;
-            return o;
+        }        public NodePoolScalingConfig build() {
+            return new NodePoolScalingConfig(eipBandwidth, eipInternetChargeType, isBondEip, maxSize, minSize, type);
         }
     }
 }

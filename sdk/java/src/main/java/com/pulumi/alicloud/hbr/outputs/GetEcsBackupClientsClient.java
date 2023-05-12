@@ -14,134 +14,189 @@ public final class GetEcsBackupClientsClient {
      * @return The system architecture of client, only the ECS File Backup Client is available. Valid values: `AMD64` , `386`.
      * 
      */
-    private String archType;
+    private final String archType;
     /**
      * @return Client protected status. Valid values: `UNPROTECTED`, `PROTECTED`.
      * 
      */
-    private String backupStatus;
+    private final String backupStatus;
     /**
      * @return The type of client. Valid values: `ECS_CLIENT` (ECS File Backup Client).
      * 
      */
-    private String clientType;
+    private final String clientType;
     /**
      * @return The version of client.
      * 
      */
-    private String clientVersion;
+    private final String clientVersion;
     /**
      * @return The creation time of client. Unix time in seconds.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The data plane access point type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
      * 
      */
-    private String dataNetworkType;
+    private final String dataNetworkType;
     /**
      * @return The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
      * 
      */
-    private String dataProxySetting;
+    private final String dataProxySetting;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private String ecsBackupClientId;
+    private final String ecsBackupClientId;
     /**
      * @return The hostname of ECS instance.
      * 
      */
-    private String hostname;
+    private final String hostname;
     /**
      * @return The ID of the Ecs Backup Client.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of ECS instance. When the client type is ECS file backup client, it indicates the ID of ECS instance. When the client type is a local file backup client, it is a hardware fingerprint generated based on system information.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return The name of ECS instance.
      * 
      */
-    private String instanceName;
+    private final String instanceName;
     /**
      * @return The last heartbeat time of client. Unix Time Seconds.
      * 
      */
-    private String lastHeartBeatTime;
+    private final String lastHeartBeatTime;
     /**
      * @return The latest version of client.
      * 
      */
-    private String maxClientVersion;
+    private final String maxClientVersion;
     /**
      * @return The number of CPU cores used by a single backup task, 0 means no restrictions.
      * 
      */
-    private String maxCpuCore;
+    private final String maxCpuCore;
     /**
      * @return The number of concurrent jobs for a single backup task, 0 means no restrictions.
      * 
      */
-    private String maxWorker;
+    private final String maxWorker;
     /**
      * @return The operating system type of client, only the ECS File Backup Client is available. Valid values: `windows`, `linux`.
      * 
      */
-    private String osType;
+    private final String osType;
     /**
      * @return Intranet IP address of the instance, only available for ECS file backup client.
      * 
      */
-    private String privateIpv4;
+    private final String privateIpv4;
     /**
      * @return Custom data plane proxy server host address.
      * 
      */
-    private String proxyHost;
+    private final String proxyHost;
     /**
      * @return The password of custom data plane proxy server.
      * 
      */
-    private String proxyPassword;
+    private final String proxyPassword;
     /**
      * @return Custom data plane proxy server host port.
      * 
      */
-    private String proxyPort;
+    private final String proxyPort;
     /**
      * @return The username of custom data plane proxy server.
      * 
      */
-    private String proxyUser;
+    private final String proxyUser;
     /**
      * @return The status of the resource.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The update time of client. Unix Time Seconds.
      * 
      */
-    private String updatedTime;
+    private final String updatedTime;
     /**
      * @return Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
      * 
      */
-    private Boolean useHttps;
+    private final Boolean useHttps;
     /**
      * @return The ID of Zone.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetEcsBackupClientsClient() {}
+    @CustomType.Constructor
+    private GetEcsBackupClientsClient(
+        @CustomType.Parameter("archType") String archType,
+        @CustomType.Parameter("backupStatus") String backupStatus,
+        @CustomType.Parameter("clientType") String clientType,
+        @CustomType.Parameter("clientVersion") String clientVersion,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("dataNetworkType") String dataNetworkType,
+        @CustomType.Parameter("dataProxySetting") String dataProxySetting,
+        @CustomType.Parameter("ecsBackupClientId") String ecsBackupClientId,
+        @CustomType.Parameter("hostname") String hostname,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("instanceName") String instanceName,
+        @CustomType.Parameter("lastHeartBeatTime") String lastHeartBeatTime,
+        @CustomType.Parameter("maxClientVersion") String maxClientVersion,
+        @CustomType.Parameter("maxCpuCore") String maxCpuCore,
+        @CustomType.Parameter("maxWorker") String maxWorker,
+        @CustomType.Parameter("osType") String osType,
+        @CustomType.Parameter("privateIpv4") String privateIpv4,
+        @CustomType.Parameter("proxyHost") String proxyHost,
+        @CustomType.Parameter("proxyPassword") String proxyPassword,
+        @CustomType.Parameter("proxyPort") String proxyPort,
+        @CustomType.Parameter("proxyUser") String proxyUser,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("updatedTime") String updatedTime,
+        @CustomType.Parameter("useHttps") Boolean useHttps,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.archType = archType;
+        this.backupStatus = backupStatus;
+        this.clientType = clientType;
+        this.clientVersion = clientVersion;
+        this.createTime = createTime;
+        this.dataNetworkType = dataNetworkType;
+        this.dataProxySetting = dataProxySetting;
+        this.ecsBackupClientId = ecsBackupClientId;
+        this.hostname = hostname;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.instanceName = instanceName;
+        this.lastHeartBeatTime = lastHeartBeatTime;
+        this.maxClientVersion = maxClientVersion;
+        this.maxCpuCore = maxCpuCore;
+        this.maxWorker = maxWorker;
+        this.osType = osType;
+        this.privateIpv4 = privateIpv4;
+        this.proxyHost = proxyHost;
+        this.proxyPassword = proxyPassword;
+        this.proxyPort = proxyPort;
+        this.proxyUser = proxyUser;
+        this.status = status;
+        this.updatedTime = updatedTime;
+        this.useHttps = useHttps;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return The system architecture of client, only the ECS File Backup Client is available. Valid values: `AMD64` , `386`.
      * 
@@ -332,7 +387,7 @@ public final class GetEcsBackupClientsClient {
     public static Builder builder(GetEcsBackupClientsClient defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String archType;
         private String backupStatus;
@@ -360,7 +415,11 @@ public final class GetEcsBackupClientsClient {
         private String updatedTime;
         private Boolean useHttps;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEcsBackupClientsClient defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.archType = defaults.archType;
@@ -391,165 +450,111 @@ public final class GetEcsBackupClientsClient {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder archType(String archType) {
             this.archType = Objects.requireNonNull(archType);
             return this;
         }
-        @CustomType.Setter
         public Builder backupStatus(String backupStatus) {
             this.backupStatus = Objects.requireNonNull(backupStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder clientType(String clientType) {
             this.clientType = Objects.requireNonNull(clientType);
             return this;
         }
-        @CustomType.Setter
         public Builder clientVersion(String clientVersion) {
             this.clientVersion = Objects.requireNonNull(clientVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder dataNetworkType(String dataNetworkType) {
             this.dataNetworkType = Objects.requireNonNull(dataNetworkType);
             return this;
         }
-        @CustomType.Setter
         public Builder dataProxySetting(String dataProxySetting) {
             this.dataProxySetting = Objects.requireNonNull(dataProxySetting);
             return this;
         }
-        @CustomType.Setter
         public Builder ecsBackupClientId(String ecsBackupClientId) {
             this.ecsBackupClientId = Objects.requireNonNull(ecsBackupClientId);
             return this;
         }
-        @CustomType.Setter
         public Builder hostname(String hostname) {
             this.hostname = Objects.requireNonNull(hostname);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
-        @CustomType.Setter
         public Builder lastHeartBeatTime(String lastHeartBeatTime) {
             this.lastHeartBeatTime = Objects.requireNonNull(lastHeartBeatTime);
             return this;
         }
-        @CustomType.Setter
         public Builder maxClientVersion(String maxClientVersion) {
             this.maxClientVersion = Objects.requireNonNull(maxClientVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder maxCpuCore(String maxCpuCore) {
             this.maxCpuCore = Objects.requireNonNull(maxCpuCore);
             return this;
         }
-        @CustomType.Setter
         public Builder maxWorker(String maxWorker) {
             this.maxWorker = Objects.requireNonNull(maxWorker);
             return this;
         }
-        @CustomType.Setter
         public Builder osType(String osType) {
             this.osType = Objects.requireNonNull(osType);
             return this;
         }
-        @CustomType.Setter
         public Builder privateIpv4(String privateIpv4) {
             this.privateIpv4 = Objects.requireNonNull(privateIpv4);
             return this;
         }
-        @CustomType.Setter
         public Builder proxyHost(String proxyHost) {
             this.proxyHost = Objects.requireNonNull(proxyHost);
             return this;
         }
-        @CustomType.Setter
         public Builder proxyPassword(String proxyPassword) {
             this.proxyPassword = Objects.requireNonNull(proxyPassword);
             return this;
         }
-        @CustomType.Setter
         public Builder proxyPort(String proxyPort) {
             this.proxyPort = Objects.requireNonNull(proxyPort);
             return this;
         }
-        @CustomType.Setter
         public Builder proxyUser(String proxyUser) {
             this.proxyUser = Objects.requireNonNull(proxyUser);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder updatedTime(String updatedTime) {
             this.updatedTime = Objects.requireNonNull(updatedTime);
             return this;
         }
-        @CustomType.Setter
         public Builder useHttps(Boolean useHttps) {
             this.useHttps = Objects.requireNonNull(useHttps);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetEcsBackupClientsClient build() {
-            final var o = new GetEcsBackupClientsClient();
-            o.archType = archType;
-            o.backupStatus = backupStatus;
-            o.clientType = clientType;
-            o.clientVersion = clientVersion;
-            o.createTime = createTime;
-            o.dataNetworkType = dataNetworkType;
-            o.dataProxySetting = dataProxySetting;
-            o.ecsBackupClientId = ecsBackupClientId;
-            o.hostname = hostname;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.lastHeartBeatTime = lastHeartBeatTime;
-            o.maxClientVersion = maxClientVersion;
-            o.maxCpuCore = maxCpuCore;
-            o.maxWorker = maxWorker;
-            o.osType = osType;
-            o.privateIpv4 = privateIpv4;
-            o.proxyHost = proxyHost;
-            o.proxyPassword = proxyPassword;
-            o.proxyPort = proxyPort;
-            o.proxyUser = proxyUser;
-            o.status = status;
-            o.updatedTime = updatedTime;
-            o.useHttps = useHttps;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetEcsBackupClientsClient build() {
+            return new GetEcsBackupClientsClient(archType, backupStatus, clientType, clientVersion, createTime, dataNetworkType, dataProxySetting, ecsBackupClientId, hostname, id, instanceId, instanceName, lastHeartBeatTime, maxClientVersion, maxCpuCore, maxWorker, osType, privateIpv4, proxyHost, proxyPassword, proxyPort, proxyUser, status, updatedTime, useHttps, zoneId);
         }
     }
 }

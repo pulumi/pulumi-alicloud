@@ -165,6 +165,7 @@ def get_instances(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of instance IDs to filter results.
     :param str name_regex: A regex string to filter results by the instance name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int status: The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
     :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
     """
@@ -224,6 +225,7 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list of instance IDs to filter results.
     :param str name_regex: A regex string to filter results by the instance name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int status: The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
     :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
     """

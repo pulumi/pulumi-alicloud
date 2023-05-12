@@ -14,49 +14,70 @@ public final class GetDdosBgpInstancesInstance {
      * @return The instance&#39;s elastic defend bandwidth.
      * 
      */
-    private Integer bandwidth;
+    private final Integer bandwidth;
     /**
      * @return The instance&#39;s base defend bandwidth.
      * 
      */
-    private Integer baseBandwidth;
+    private final Integer baseBandwidth;
     /**
      * @return The instance&#39;s id.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The instance&#39;s count of ip config.
      * 
      */
-    private Integer ipCount;
+    private final Integer ipCount;
     /**
      * @return The instance&#39;s IP version.
      * 
      */
-    private String ipType;
+    private final String ipType;
     /**
      * @return The instance&#39;s remark.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return Normal defend bandwidth of the instance. The unit is Gbps.
      * 
      */
-    private Integer normalBandwidth;
+    private final Integer normalBandwidth;
     /**
      * @return A region of instance.
      * 
      */
-    private String region;
+    private final String region;
     /**
      * @return The instance&#39;s type.
      * 
      */
-    private String type;
+    private final String type;
 
-    private GetDdosBgpInstancesInstance() {}
+    @CustomType.Constructor
+    private GetDdosBgpInstancesInstance(
+        @CustomType.Parameter("bandwidth") Integer bandwidth,
+        @CustomType.Parameter("baseBandwidth") Integer baseBandwidth,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ipCount") Integer ipCount,
+        @CustomType.Parameter("ipType") String ipType,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("normalBandwidth") Integer normalBandwidth,
+        @CustomType.Parameter("region") String region,
+        @CustomType.Parameter("type") String type) {
+        this.bandwidth = bandwidth;
+        this.baseBandwidth = baseBandwidth;
+        this.id = id;
+        this.ipCount = ipCount;
+        this.ipType = ipType;
+        this.name = name;
+        this.normalBandwidth = normalBandwidth;
+        this.region = region;
+        this.type = type;
+    }
+
     /**
      * @return The instance&#39;s elastic defend bandwidth.
      * 
@@ -128,7 +149,7 @@ public final class GetDdosBgpInstancesInstance {
     public static Builder builder(GetDdosBgpInstancesInstance defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer bandwidth;
         private Integer baseBandwidth;
@@ -139,7 +160,11 @@ public final class GetDdosBgpInstancesInstance {
         private Integer normalBandwidth;
         private String region;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDdosBgpInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidth = defaults.bandwidth;
@@ -153,63 +178,43 @@ public final class GetDdosBgpInstancesInstance {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
-        @CustomType.Setter
         public Builder baseBandwidth(Integer baseBandwidth) {
             this.baseBandwidth = Objects.requireNonNull(baseBandwidth);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ipCount(Integer ipCount) {
             this.ipCount = Objects.requireNonNull(ipCount);
             return this;
         }
-        @CustomType.Setter
         public Builder ipType(String ipType) {
             this.ipType = Objects.requireNonNull(ipType);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder normalBandwidth(Integer normalBandwidth) {
             this.normalBandwidth = Objects.requireNonNull(normalBandwidth);
             return this;
         }
-        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetDdosBgpInstancesInstance build() {
-            final var o = new GetDdosBgpInstancesInstance();
-            o.bandwidth = bandwidth;
-            o.baseBandwidth = baseBandwidth;
-            o.id = id;
-            o.ipCount = ipCount;
-            o.ipType = ipType;
-            o.name = name;
-            o.normalBandwidth = normalBandwidth;
-            o.region = region;
-            o.type = type;
-            return o;
+        }        public GetDdosBgpInstancesInstance build() {
+            return new GetDdosBgpInstancesInstance(bandwidth, baseBandwidth, id, ipCount, ipType, name, normalBandwidth, region, type);
         }
     }
 }

@@ -34,12 +34,16 @@ public final class ServerlessKubernetesAddonArgs extends com.pulumi.resources.Re
     /**
      * Disables the automatic installation of a component. Default is `false`.
      * 
+     * The following example is the definition of addons block, The type of this field is list:
+     * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
      * @return Disables the automatic installation of a component. Default is `false`.
+     * 
+     * The following example is the definition of addons block, The type of this field is list:
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -111,6 +115,8 @@ public final class ServerlessKubernetesAddonArgs extends com.pulumi.resources.Re
         /**
          * @param disabled Disables the automatic installation of a component. Default is `false`.
          * 
+         * The following example is the definition of addons block, The type of this field is list:
+         * 
          * @return builder
          * 
          */
@@ -121,6 +127,8 @@ public final class ServerlessKubernetesAddonArgs extends com.pulumi.resources.Re
 
         /**
          * @param disabled Disables the automatic installation of a component. Default is `false`.
+         * 
+         * The following example is the definition of addons block, The type of this field is list:
          * 
          * @return builder
          * 

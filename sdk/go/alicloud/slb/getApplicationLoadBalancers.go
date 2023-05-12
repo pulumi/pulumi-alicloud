@@ -74,9 +74,10 @@ type GetApplicationLoadBalancersArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// Network type of the SLBs. Valid values: `vpc` and `classic`.
 	NetworkType *string `pulumi:"networkType"`
-	OutputFile  *string `pulumi:"outputFile"`
-	PageNumber  *int    `pulumi:"pageNumber"`
-	PageSize    *int    `pulumi:"pageSize"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
 	// The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The Id of resource group which SLB belongs.
@@ -181,9 +182,10 @@ type GetApplicationLoadBalancersOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// Network type of the SLBs. Valid values: `vpc` and `classic`.
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
-	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
-	PageNumber  pulumi.IntPtrInput    `pulumi:"pageNumber"`
-	PageSize    pulumi.IntPtrInput    `pulumi:"pageSize"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 	// The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
 	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
 	// The Id of resource group which SLB belongs.

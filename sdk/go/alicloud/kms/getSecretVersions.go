@@ -58,7 +58,8 @@ type GetSecretVersionsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// Specifies whether to return deprecated secret versions. Default to `false`.
 	IncludeDeprecated *string `pulumi:"includeDeprecated"`
-	OutputFile        *string `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The name of the secret.
 	SecretName string `pulumi:"secretName"`
 	// The stage of the secret version.
@@ -102,7 +103,8 @@ type GetSecretVersionsOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// Specifies whether to return deprecated secret versions. Default to `false`.
 	IncludeDeprecated pulumi.StringPtrInput `pulumi:"includeDeprecated"`
-	OutputFile        pulumi.StringPtrInput `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The name of the secret.
 	SecretName pulumi.StringInput `pulumi:"secretName"`
 	// The stage of the secret version.

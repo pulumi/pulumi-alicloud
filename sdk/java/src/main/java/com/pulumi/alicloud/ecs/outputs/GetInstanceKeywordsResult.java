@@ -16,21 +16,34 @@ public final class GetInstanceKeywordsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of keywords.
      * 
      */
-    private List<String> ids;
-    private String key;
+    private final List<String> ids;
+    private final String key;
     /**
      * @return An array that consists of reserved keywords.
      * 
      */
-    private List<String> keywords;
-    private @Nullable String outputFile;
+    private final List<String> keywords;
+    private final @Nullable String outputFile;
 
-    private GetInstanceKeywordsResult() {}
+    @CustomType.Constructor
+    private GetInstanceKeywordsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("key") String key,
+        @CustomType.Parameter("keywords") List<String> keywords,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.id = id;
+        this.ids = ids;
+        this.key = key;
+        this.keywords = keywords;
+        this.outputFile = outputFile;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -66,14 +79,18 @@ public final class GetInstanceKeywordsResult {
     public static Builder builder(GetInstanceKeywordsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
         private String key;
         private List<String> keywords;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstanceKeywordsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -83,12 +100,10 @@ public final class GetInstanceKeywordsResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -96,12 +111,10 @@ public final class GetInstanceKeywordsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
-        @CustomType.Setter
         public Builder keywords(List<String> keywords) {
             this.keywords = Objects.requireNonNull(keywords);
             return this;
@@ -109,19 +122,11 @@ public final class GetInstanceKeywordsResult {
         public Builder keywords(String... keywords) {
             return keywords(List.of(keywords));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetInstanceKeywordsResult build() {
-            final var o = new GetInstanceKeywordsResult();
-            o.id = id;
-            o.ids = ids;
-            o.key = key;
-            o.keywords = keywords;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetInstanceKeywordsResult build() {
+            return new GetInstanceKeywordsResult(id, ids, key, keywords, outputFile);
         }
     }
 }

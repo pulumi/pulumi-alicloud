@@ -75,7 +75,8 @@ type GetBasicEndpointsArgs struct {
 	// The name of the Basic Endpoint.
 	Name *string `pulumi:"name"`
 	// A regex string to filter results by Global Accelerator Basic Endpoints name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
 	Status *string `pulumi:"status"`
@@ -129,7 +130,8 @@ type GetBasicEndpointsOutputArgs struct {
 	// The name of the Basic Endpoint.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// A regex string to filter results by Global Accelerator Basic Endpoints name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

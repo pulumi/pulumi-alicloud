@@ -32,9 +32,23 @@ public final class MscSubSubscriptionState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.channel);
     }
 
+    /**
+     * The ids of subscribed contacts.
+     * **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
+     * So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     * 
+     */
     @Import(name="contactIds")
     private @Nullable Output<List<String>> contactIds;
 
+    /**
+     * @return The ids of subscribed contacts.
+     * **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
+     * So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     * 
+     */
     public Optional<Output<List<String>>> contactIds() {
         return Optional.ofNullable(this.contactIds);
     }
@@ -213,15 +227,42 @@ public final class MscSubSubscriptionState extends com.pulumi.resources.Resource
             return channel(Output.of(channel));
         }
 
+        /**
+         * @param contactIds The ids of subscribed contacts.
+         * **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
+         * So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+         * and you can use tolist to convert it to a list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder contactIds(@Nullable Output<List<String>> contactIds) {
             $.contactIds = contactIds;
             return this;
         }
 
+        /**
+         * @param contactIds The ids of subscribed contacts.
+         * **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
+         * So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+         * and you can use tolist to convert it to a list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder contactIds(List<String> contactIds) {
             return contactIds(Output.of(contactIds));
         }
 
+        /**
+         * @param contactIds The ids of subscribed contacts.
+         * **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
+         * So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+         * and you can use tolist to convert it to a list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder contactIds(String... contactIds) {
             return contactIds(List.of(contactIds));
         }

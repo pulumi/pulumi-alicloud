@@ -136,6 +136,7 @@ def get_data_centers(cluster_id: Optional[str] = None,
     :param str cluster_id: The cluster id of dataCenters belongs to.
     :param Sequence[str] ids: The list of Cassandra data center ids.
     :param str name_regex: A regex string to apply to the cluster name.
+    :param str output_file: The name of file that can save the collection of data centers after running `pulumi preview`.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -181,5 +182,6 @@ def get_data_centers_output(cluster_id: Optional[pulumi.Input[str]] = None,
     :param str cluster_id: The cluster id of dataCenters belongs to.
     :param Sequence[str] ids: The list of Cassandra data center ids.
     :param str name_regex: A regex string to apply to the cluster name.
+    :param str output_file: The name of file that can save the collection of data centers after running `pulumi preview`.
     """
     ...

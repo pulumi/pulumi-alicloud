@@ -13,34 +13,49 @@ public final class GetInstancesInstanceParameter {
      * @return The value range of the parameter.
      * 
      */
-    private String checkingCode;
+    private final String checkingCode;
     /**
      * @return Indicates whether the parameter can be modified. Valid values: true | false
      * 
      */
-    private String forceModify;
+    private final String forceModify;
     /**
      * @return Indicates whether the modified parameter takes effect only after a database restart. Valid values: true | false
      * 
      */
-    private String forceRestart;
+    private final String forceRestart;
     /**
      * @return The description of the parameter.
      * 
      */
-    private String parameterDescription;
+    private final String parameterDescription;
     /**
      * @return The name of the parameter.
      * 
      */
-    private String parameterName;
+    private final String parameterName;
     /**
      * @return The default value of the parameter.
      * 
      */
-    private String parameterValue;
+    private final String parameterValue;
 
-    private GetInstancesInstanceParameter() {}
+    @CustomType.Constructor
+    private GetInstancesInstanceParameter(
+        @CustomType.Parameter("checkingCode") String checkingCode,
+        @CustomType.Parameter("forceModify") String forceModify,
+        @CustomType.Parameter("forceRestart") String forceRestart,
+        @CustomType.Parameter("parameterDescription") String parameterDescription,
+        @CustomType.Parameter("parameterName") String parameterName,
+        @CustomType.Parameter("parameterValue") String parameterValue) {
+        this.checkingCode = checkingCode;
+        this.forceModify = forceModify;
+        this.forceRestart = forceRestart;
+        this.parameterDescription = parameterDescription;
+        this.parameterName = parameterName;
+        this.parameterValue = parameterValue;
+    }
+
     /**
      * @return The value range of the parameter.
      * 
@@ -91,7 +106,7 @@ public final class GetInstancesInstanceParameter {
     public static Builder builder(GetInstancesInstanceParameter defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String checkingCode;
         private String forceModify;
@@ -99,7 +114,11 @@ public final class GetInstancesInstanceParameter {
         private String parameterDescription;
         private String parameterName;
         private String parameterValue;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstancesInstanceParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.checkingCode = defaults.checkingCode;
@@ -110,45 +129,31 @@ public final class GetInstancesInstanceParameter {
     	      this.parameterValue = defaults.parameterValue;
         }
 
-        @CustomType.Setter
         public Builder checkingCode(String checkingCode) {
             this.checkingCode = Objects.requireNonNull(checkingCode);
             return this;
         }
-        @CustomType.Setter
         public Builder forceModify(String forceModify) {
             this.forceModify = Objects.requireNonNull(forceModify);
             return this;
         }
-        @CustomType.Setter
         public Builder forceRestart(String forceRestart) {
             this.forceRestart = Objects.requireNonNull(forceRestart);
             return this;
         }
-        @CustomType.Setter
         public Builder parameterDescription(String parameterDescription) {
             this.parameterDescription = Objects.requireNonNull(parameterDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder parameterName(String parameterName) {
             this.parameterName = Objects.requireNonNull(parameterName);
             return this;
         }
-        @CustomType.Setter
         public Builder parameterValue(String parameterValue) {
             this.parameterValue = Objects.requireNonNull(parameterValue);
             return this;
-        }
-        public GetInstancesInstanceParameter build() {
-            final var o = new GetInstancesInstanceParameter();
-            o.checkingCode = checkingCode;
-            o.forceModify = forceModify;
-            o.forceRestart = forceRestart;
-            o.parameterDescription = parameterDescription;
-            o.parameterName = parameterName;
-            o.parameterValue = parameterValue;
-            return o;
+        }        public GetInstancesInstanceParameter build() {
+            return new GetInstancesInstanceParameter(checkingCode, forceModify, forceRestart, parameterDescription, parameterName, parameterValue);
         }
     }
 }

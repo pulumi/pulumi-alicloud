@@ -16,26 +16,57 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServerlessInstancesResult {
-    private @Nullable String dbInstanceClass;
-    private @Nullable String dbInstanceDescription;
-    private @Nullable Boolean enableDetails;
+    private final @Nullable String dbInstanceClass;
+    private final @Nullable String dbInstanceDescription;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private List<GetServerlessInstancesInstance> instances;
-    private @Nullable String networkType;
-    private @Nullable String outputFile;
-    private @Nullable String resourceGroupId;
-    private @Nullable String status;
-    private @Nullable Map<String,Object> tags;
-    private @Nullable String vpcId;
-    private @Nullable String vswitchId;
-    private @Nullable String zoneId;
+    private final String id;
+    private final List<String> ids;
+    private final List<GetServerlessInstancesInstance> instances;
+    private final @Nullable String networkType;
+    private final @Nullable String outputFile;
+    private final @Nullable String resourceGroupId;
+    private final @Nullable String status;
+    private final @Nullable Map<String,Object> tags;
+    private final @Nullable String vpcId;
+    private final @Nullable String vswitchId;
+    private final @Nullable String zoneId;
 
-    private GetServerlessInstancesResult() {}
+    @CustomType.Constructor
+    private GetServerlessInstancesResult(
+        @CustomType.Parameter("dbInstanceClass") @Nullable String dbInstanceClass,
+        @CustomType.Parameter("dbInstanceDescription") @Nullable String dbInstanceDescription,
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instances") List<GetServerlessInstancesInstance> instances,
+        @CustomType.Parameter("networkType") @Nullable String networkType,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
+        @CustomType.Parameter("vpcId") @Nullable String vpcId,
+        @CustomType.Parameter("vswitchId") @Nullable String vswitchId,
+        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
+        this.dbInstanceClass = dbInstanceClass;
+        this.dbInstanceDescription = dbInstanceDescription;
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.instances = instances;
+        this.networkType = networkType;
+        this.outputFile = outputFile;
+        this.resourceGroupId = resourceGroupId;
+        this.status = status;
+        this.tags = tags;
+        this.vpcId = vpcId;
+        this.vswitchId = vswitchId;
+        this.zoneId = zoneId;
+    }
+
     public Optional<String> dbInstanceClass() {
         return Optional.ofNullable(this.dbInstanceClass);
     }
@@ -90,7 +121,7 @@ public final class GetServerlessInstancesResult {
     public static Builder builder(GetServerlessInstancesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String dbInstanceClass;
         private @Nullable String dbInstanceDescription;
@@ -106,7 +137,11 @@ public final class GetServerlessInstancesResult {
         private @Nullable String vpcId;
         private @Nullable String vswitchId;
         private @Nullable String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServerlessInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbInstanceClass = defaults.dbInstanceClass;
@@ -125,27 +160,22 @@ public final class GetServerlessInstancesResult {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder dbInstanceClass(@Nullable String dbInstanceClass) {
             this.dbInstanceClass = dbInstanceClass;
             return this;
         }
-        @CustomType.Setter
         public Builder dbInstanceDescription(@Nullable String dbInstanceDescription) {
             this.dbInstanceDescription = dbInstanceDescription;
             return this;
         }
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -153,7 +183,6 @@ public final class GetServerlessInstancesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instances(List<GetServerlessInstancesInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -161,63 +190,39 @@ public final class GetServerlessInstancesResult {
         public Builder instances(GetServerlessInstancesInstance... instances) {
             return instances(List.of(instances));
         }
-        @CustomType.Setter
         public Builder networkType(@Nullable String networkType) {
             this.networkType = networkType;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
             this.vswitchId = vswitchId;
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }
-        public GetServerlessInstancesResult build() {
-            final var o = new GetServerlessInstancesResult();
-            o.dbInstanceClass = dbInstanceClass;
-            o.dbInstanceDescription = dbInstanceDescription;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.instances = instances;
-            o.networkType = networkType;
-            o.outputFile = outputFile;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetServerlessInstancesResult build() {
+            return new GetServerlessInstancesResult(dbInstanceClass, dbInstanceDescription, enableDetails, id, ids, instances, networkType, outputFile, resourceGroupId, status, tags, vpcId, vswitchId, zoneId);
         }
     }
 }

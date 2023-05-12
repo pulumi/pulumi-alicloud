@@ -13,64 +13,91 @@ public final class GetBasicAccelerateIpEndpointRelationsRelation {
      * @return The ID of the Basic Accelerate IP.
      * 
      */
-    private String accelerateIpId;
+    private final String accelerateIpId;
     /**
      * @return The ID of the Global Accelerator Basic Accelerator instance.
      * 
      */
-    private String acceleratorId;
+    private final String acceleratorId;
     /**
      * @return The name of the Basic Endpoint.
      * 
      */
-    private String basicEndpointName;
+    private final String basicEndpointName;
     /**
      * @return The address of the Basic Endpoint.
      * 
      */
-    private String endpointAddress;
+    private final String endpointAddress;
     /**
      * @return The ID of the Basic Endpoint.
      * 
      */
-    private String endpointId;
+    private final String endpointId;
     /**
      * @return The sub address of the Basic Endpoint.
      * 
      */
-    private String endpointSubAddress;
+    private final String endpointSubAddress;
     /**
      * @return The sub address type of the Basic Endpoint.
      * 
      */
-    private String endpointSubAddressType;
+    private final String endpointSubAddressType;
     /**
      * @return The type of the Basic Endpoint.
      * 
      */
-    private String endpointType;
+    private final String endpointType;
     /**
      * @return The zone id of the Basic Endpoint.
      * 
      */
-    private String endpointZoneId;
+    private final String endpointZoneId;
     /**
      * @return The id of the Global Accelerator Basic Accelerate Ip Endpoint Relation. It formats as `&lt;accelerator_id&gt;:&lt;accelerate_ip_id&gt;:&lt;endpoint_id&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The address of the Basic Accelerate IP.
      * 
      */
-    private String ipAddress;
+    private final String ipAddress;
     /**
      * @return The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetBasicAccelerateIpEndpointRelationsRelation() {}
+    @CustomType.Constructor
+    private GetBasicAccelerateIpEndpointRelationsRelation(
+        @CustomType.Parameter("accelerateIpId") String accelerateIpId,
+        @CustomType.Parameter("acceleratorId") String acceleratorId,
+        @CustomType.Parameter("basicEndpointName") String basicEndpointName,
+        @CustomType.Parameter("endpointAddress") String endpointAddress,
+        @CustomType.Parameter("endpointId") String endpointId,
+        @CustomType.Parameter("endpointSubAddress") String endpointSubAddress,
+        @CustomType.Parameter("endpointSubAddressType") String endpointSubAddressType,
+        @CustomType.Parameter("endpointType") String endpointType,
+        @CustomType.Parameter("endpointZoneId") String endpointZoneId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ipAddress") String ipAddress,
+        @CustomType.Parameter("status") String status) {
+        this.accelerateIpId = accelerateIpId;
+        this.acceleratorId = acceleratorId;
+        this.basicEndpointName = basicEndpointName;
+        this.endpointAddress = endpointAddress;
+        this.endpointId = endpointId;
+        this.endpointSubAddress = endpointSubAddress;
+        this.endpointSubAddressType = endpointSubAddressType;
+        this.endpointType = endpointType;
+        this.endpointZoneId = endpointZoneId;
+        this.id = id;
+        this.ipAddress = ipAddress;
+        this.status = status;
+    }
+
     /**
      * @return The ID of the Basic Accelerate IP.
      * 
@@ -163,7 +190,7 @@ public final class GetBasicAccelerateIpEndpointRelationsRelation {
     public static Builder builder(GetBasicAccelerateIpEndpointRelationsRelation defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String accelerateIpId;
         private String acceleratorId;
@@ -177,7 +204,11 @@ public final class GetBasicAccelerateIpEndpointRelationsRelation {
         private String id;
         private String ipAddress;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBasicAccelerateIpEndpointRelationsRelation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accelerateIpId = defaults.accelerateIpId;
@@ -194,81 +225,55 @@ public final class GetBasicAccelerateIpEndpointRelationsRelation {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder accelerateIpId(String accelerateIpId) {
             this.accelerateIpId = Objects.requireNonNull(accelerateIpId);
             return this;
         }
-        @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
             this.acceleratorId = Objects.requireNonNull(acceleratorId);
             return this;
         }
-        @CustomType.Setter
         public Builder basicEndpointName(String basicEndpointName) {
             this.basicEndpointName = Objects.requireNonNull(basicEndpointName);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointAddress(String endpointAddress) {
             this.endpointAddress = Objects.requireNonNull(endpointAddress);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointId(String endpointId) {
             this.endpointId = Objects.requireNonNull(endpointId);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointSubAddress(String endpointSubAddress) {
             this.endpointSubAddress = Objects.requireNonNull(endpointSubAddress);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointSubAddressType(String endpointSubAddressType) {
             this.endpointSubAddressType = Objects.requireNonNull(endpointSubAddressType);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointType(String endpointType) {
             this.endpointType = Objects.requireNonNull(endpointType);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointZoneId(String endpointZoneId) {
             this.endpointZoneId = Objects.requireNonNull(endpointZoneId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
             this.ipAddress = Objects.requireNonNull(ipAddress);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetBasicAccelerateIpEndpointRelationsRelation build() {
-            final var o = new GetBasicAccelerateIpEndpointRelationsRelation();
-            o.accelerateIpId = accelerateIpId;
-            o.acceleratorId = acceleratorId;
-            o.basicEndpointName = basicEndpointName;
-            o.endpointAddress = endpointAddress;
-            o.endpointId = endpointId;
-            o.endpointSubAddress = endpointSubAddress;
-            o.endpointSubAddressType = endpointSubAddressType;
-            o.endpointType = endpointType;
-            o.endpointZoneId = endpointZoneId;
-            o.id = id;
-            o.ipAddress = ipAddress;
-            o.status = status;
-            return o;
+        }        public GetBasicAccelerateIpEndpointRelationsRelation build() {
+            return new GetBasicAccelerateIpEndpointRelationsRelation(accelerateIpId, acceleratorId, basicEndpointName, endpointAddress, endpointId, endpointSubAddress, endpointSubAddressType, endpointType, endpointZoneId, id, ipAddress, status);
         }
     }
 }

@@ -7,6 +7,10 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
+ *
+ * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -49,6 +53,9 @@ export interface GetCertificatesArgs {
      * A regex string to filter results by the certificate name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -78,6 +85,10 @@ export interface GetCertificatesResult {
     readonly outputFile?: string;
 }
 /**
+ * > **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
+ *
+ * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -110,5 +121,8 @@ export interface GetCertificatesOutputArgs {
      * A regex string to filter results by the certificate name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

@@ -68,7 +68,8 @@ type GetAlidnsDomainsArgs struct {
 	// The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
 	KeyWord *string `pulumi:"keyWord"`
 	// User language.
-	Lang       *string `pulumi:"lang"`
+	Lang *string `pulumi:"lang"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The Id of resource group which the dns belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -144,7 +145,8 @@ type GetAlidnsDomainsOutputArgs struct {
 	// The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
 	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
 	// User language.
-	Lang       pulumi.StringPtrInput `pulumi:"lang"`
+	Lang pulumi.StringPtrInput `pulumi:"lang"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The Id of resource group which the dns belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`

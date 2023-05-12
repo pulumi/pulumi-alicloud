@@ -13,9 +13,13 @@ public final class ListenerDefaultActionForwardGroupConfigServerGroupTuple {
      * @return The ID of the destination server group to which requests are forwarded.
      * 
      */
-    private String serverGroupId;
+    private final String serverGroupId;
 
-    private ListenerDefaultActionForwardGroupConfigServerGroupTuple() {}
+    @CustomType.Constructor
+    private ListenerDefaultActionForwardGroupConfigServerGroupTuple(@CustomType.Parameter("serverGroupId") String serverGroupId) {
+        this.serverGroupId = serverGroupId;
+    }
+
     /**
      * @return The ID of the destination server group to which requests are forwarded.
      * 
@@ -31,24 +35,24 @@ public final class ListenerDefaultActionForwardGroupConfigServerGroupTuple {
     public static Builder builder(ListenerDefaultActionForwardGroupConfigServerGroupTuple defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String serverGroupId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ListenerDefaultActionForwardGroupConfigServerGroupTuple defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.serverGroupId = defaults.serverGroupId;
         }
 
-        @CustomType.Setter
         public Builder serverGroupId(String serverGroupId) {
             this.serverGroupId = Objects.requireNonNull(serverGroupId);
             return this;
-        }
-        public ListenerDefaultActionForwardGroupConfigServerGroupTuple build() {
-            final var o = new ListenerDefaultActionForwardGroupConfigServerGroupTuple();
-            o.serverGroupId = serverGroupId;
-            return o;
+        }        public ListenerDefaultActionForwardGroupConfigServerGroupTuple build() {
+            return new ListenerDefaultActionForwardGroupConfigServerGroupTuple(serverGroupId);
         }
     }
 }

@@ -132,6 +132,7 @@ def get_gateway_file_shares(gateway_id: Optional[str] = None,
     :param str gateway_id: The ID of the gateway.
     :param Sequence[str] ids: A list of Gateway File Share IDs.
     :param str name_regex: A regex string to filter results by Gateway File Share name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['gatewayId'] = gateway_id
@@ -185,5 +186,6 @@ def get_gateway_file_shares_output(gateway_id: Optional[pulumi.Input[str]] = Non
     :param str gateway_id: The ID of the gateway.
     :param Sequence[str] ids: A list of Gateway File Share IDs.
     :param str name_regex: A regex string to filter results by Gateway File Share name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

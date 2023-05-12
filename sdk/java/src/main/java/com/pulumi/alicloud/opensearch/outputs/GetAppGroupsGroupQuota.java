@@ -13,12 +13,12 @@ public final class GetAppGroupsGroupQuota {
      * @return Computing resources. Unit: LCU.
      * 
      */
-    private String computeResource;
+    private final String computeResource;
     /**
      * @return Storage Size. Unit: GB.
      * 
      */
-    private String docSize;
+    private final String docSize;
     /**
      * @return Specification. Valid values:
      * * `opensearch.share.junior`: Entry-level.
@@ -30,9 +30,18 @@ public final class GetAppGroupsGroupQuota {
      * * `opensearch.private.storage`: Exclusive storage type
      * 
      */
-    private String spec;
+    private final String spec;
 
-    private GetAppGroupsGroupQuota() {}
+    @CustomType.Constructor
+    private GetAppGroupsGroupQuota(
+        @CustomType.Parameter("computeResource") String computeResource,
+        @CustomType.Parameter("docSize") String docSize,
+        @CustomType.Parameter("spec") String spec) {
+        this.computeResource = computeResource;
+        this.docSize = docSize;
+        this.spec = spec;
+    }
+
     /**
      * @return Computing resources. Unit: LCU.
      * 
@@ -69,12 +78,16 @@ public final class GetAppGroupsGroupQuota {
     public static Builder builder(GetAppGroupsGroupQuota defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String computeResource;
         private String docSize;
         private String spec;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAppGroupsGroupQuota defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.computeResource = defaults.computeResource;
@@ -82,27 +95,19 @@ public final class GetAppGroupsGroupQuota {
     	      this.spec = defaults.spec;
         }
 
-        @CustomType.Setter
         public Builder computeResource(String computeResource) {
             this.computeResource = Objects.requireNonNull(computeResource);
             return this;
         }
-        @CustomType.Setter
         public Builder docSize(String docSize) {
             this.docSize = Objects.requireNonNull(docSize);
             return this;
         }
-        @CustomType.Setter
         public Builder spec(String spec) {
             this.spec = Objects.requireNonNull(spec);
             return this;
-        }
-        public GetAppGroupsGroupQuota build() {
-            final var o = new GetAppGroupsGroupQuota();
-            o.computeResource = computeResource;
-            o.docSize = docSize;
-            o.spec = spec;
-            return o;
+        }        public GetAppGroupsGroupQuota build() {
+            return new GetAppGroupsGroupQuota(computeResource, docSize, spec);
         }
     }
 }

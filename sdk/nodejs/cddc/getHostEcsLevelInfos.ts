@@ -35,6 +35,9 @@ export interface GetHostEcsLevelInfosArgs {
      * Host image. Valid values: `WindowsWithMssqlEntAlwaysonLicense`, `WindowsWithMssqlStdLicense`, `WindowsWithMssqlEntLicense`, `WindowsWithMssqlWebLicense`, `AliLinux`.
      */
     imageCategory?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The storage type of the host ecs level info. Valid values: `localSsd`, `cloudEssd`, `cloudEssd2`, `cloudEssd3`.
@@ -82,6 +85,9 @@ export interface GetHostEcsLevelInfosOutputArgs {
      * Host image. Valid values: `WindowsWithMssqlEntAlwaysonLicense`, `WindowsWithMssqlStdLicense`, `WindowsWithMssqlEntLicense`, `WindowsWithMssqlWebLicense`, `AliLinux`.
      */
     imageCategory?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The storage type of the host ecs level info. Valid values: `localSsd`, `cloudEssd`, `cloudEssd2`, `cloudEssd3`.

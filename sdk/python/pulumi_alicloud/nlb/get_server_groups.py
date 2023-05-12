@@ -166,6 +166,7 @@ def get_server_groups(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Server Group IDs.
     :param str name_regex: A regex string to filter results by Server Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group to which the security group belongs.
     :param Sequence[str] server_group_names: The names of the server groups to be queried.
     :param str server_group_type: The type of the server group.
@@ -230,6 +231,7 @@ def get_server_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
 
     :param Sequence[str] ids: A list of Server Group IDs.
     :param str name_regex: A regex string to filter results by Server Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group to which the security group belongs.
     :param Sequence[str] server_group_names: The names of the server groups to be queried.
     :param str server_group_type: The type of the server group.

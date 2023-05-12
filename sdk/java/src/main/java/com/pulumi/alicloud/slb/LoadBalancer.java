@@ -18,6 +18,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **DEPRECATED:** This resource has been renamed to alicloud.slb.ApplicationLoadBalancer from version 1.123.1.
+ * 
+ * Provides an Application Load Balancer resource.
+ * 
+ * &gt; **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create &#34;paybybandwidth&#34; instance.
+ * 
+ * &gt; **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
+ * For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -263,14 +272,30 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     public Output<String> paymentType() {
         return this.paymentType;
     }
+    /**
+     * The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     @Export(name="period", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> period;
 
+    /**
+     * @return The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
     /**
      * The Id of resource group which the SLB belongs.
+     * 
+     * &gt; **NOTE:** A &#34;Shared-Performance&#34; instance can be changed to &#34;Performance-guaranteed&#34;, but the change is irreversible.
+     * 
+     * &gt; **NOTE:** To change a &#34;Shared-Performance&#34; instance to a &#34;Performance-guaranteed&#34; instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+     * 
+     * &gt; **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
      * 
      */
     @Export(name="resourceGroupId", type=String.class, parameters={})
@@ -278,6 +303,12 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The Id of resource group which the SLB belongs.
+     * 
+     * &gt; **NOTE:** A &#34;Shared-Performance&#34; instance can be changed to &#34;Performance-guaranteed&#34;, but the change is irreversible.
+     * 
+     * &gt; **NOTE:** To change a &#34;Shared-Performance&#34; instance to a &#34;Performance-guaranteed&#34; instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+     * 
+     * &gt; **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
      * 
      */
     public Output<String> resourceGroupId() {

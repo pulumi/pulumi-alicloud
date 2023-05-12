@@ -16,79 +16,112 @@ public final class GetParametersParameter {
      * @return The constraints of the common parameter.
      * 
      */
-    private String constraints;
+    private final String constraints;
     /**
      * @return The time when the common parameter was created.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The user who created the common parameter.
      * 
      */
-    private String createdBy;
+    private final String createdBy;
     /**
      * @return The description of the common parameter.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the Parameter. Its value is same as `parameter_name`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the common parameter.
      * 
      */
-    private String parameterId;
+    private final String parameterId;
     /**
      * @return The name of the common parameter.
      * 
      */
-    private String parameterName;
+    private final String parameterName;
     /**
      * @return The version number of the common parameter.
      * 
      */
-    private Integer parameterVersion;
+    private final Integer parameterVersion;
     /**
      * @return The ID of the Resource Group.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return The share type of the common parameter.
      * 
      */
-    private String shareType;
+    private final String shareType;
     /**
      * @return The tag of the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
     /**
      * @return The data type of the common parameter.
      * 
      */
-    private String type;
+    private final String type;
     /**
      * @return The user who updated the common parameter.
      * 
      */
-    private String updatedBy;
+    private final String updatedBy;
     /**
      * @return The time when the common parameter was updated.
      * 
      */
-    private String updatedDate;
+    private final String updatedDate;
     /**
      * @return The value of the common parameter.
      * 
      */
-    private String value;
+    private final String value;
 
-    private GetParametersParameter() {}
+    @CustomType.Constructor
+    private GetParametersParameter(
+        @CustomType.Parameter("constraints") String constraints,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("createdBy") String createdBy,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("parameterId") String parameterId,
+        @CustomType.Parameter("parameterName") String parameterName,
+        @CustomType.Parameter("parameterVersion") Integer parameterVersion,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("shareType") String shareType,
+        @CustomType.Parameter("tags") Map<String,Object> tags,
+        @CustomType.Parameter("type") String type,
+        @CustomType.Parameter("updatedBy") String updatedBy,
+        @CustomType.Parameter("updatedDate") String updatedDate,
+        @CustomType.Parameter("value") String value) {
+        this.constraints = constraints;
+        this.createTime = createTime;
+        this.createdBy = createdBy;
+        this.description = description;
+        this.id = id;
+        this.parameterId = parameterId;
+        this.parameterName = parameterName;
+        this.parameterVersion = parameterVersion;
+        this.resourceGroupId = resourceGroupId;
+        this.shareType = shareType;
+        this.tags = tags;
+        this.type = type;
+        this.updatedBy = updatedBy;
+        this.updatedDate = updatedDate;
+        this.value = value;
+    }
+
     /**
      * @return The constraints of the common parameter.
      * 
@@ -202,7 +235,7 @@ public final class GetParametersParameter {
     public static Builder builder(GetParametersParameter defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String constraints;
         private String createTime;
@@ -219,7 +252,11 @@ public final class GetParametersParameter {
         private String updatedBy;
         private String updatedDate;
         private String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetParametersParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.constraints = defaults.constraints;
@@ -239,99 +276,67 @@ public final class GetParametersParameter {
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder constraints(String constraints) {
             this.constraints = Objects.requireNonNull(constraints);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder createdBy(String createdBy) {
             this.createdBy = Objects.requireNonNull(createdBy);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder parameterId(String parameterId) {
             this.parameterId = Objects.requireNonNull(parameterId);
             return this;
         }
-        @CustomType.Setter
         public Builder parameterName(String parameterName) {
             this.parameterName = Objects.requireNonNull(parameterName);
             return this;
         }
-        @CustomType.Setter
         public Builder parameterVersion(Integer parameterVersion) {
             this.parameterVersion = Objects.requireNonNull(parameterVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder shareType(String shareType) {
             this.shareType = Objects.requireNonNull(shareType);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
-        @CustomType.Setter
         public Builder updatedBy(String updatedBy) {
             this.updatedBy = Objects.requireNonNull(updatedBy);
             return this;
         }
-        @CustomType.Setter
         public Builder updatedDate(String updatedDate) {
             this.updatedDate = Objects.requireNonNull(updatedDate);
             return this;
         }
-        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }
-        public GetParametersParameter build() {
-            final var o = new GetParametersParameter();
-            o.constraints = constraints;
-            o.createTime = createTime;
-            o.createdBy = createdBy;
-            o.description = description;
-            o.id = id;
-            o.parameterId = parameterId;
-            o.parameterName = parameterName;
-            o.parameterVersion = parameterVersion;
-            o.resourceGroupId = resourceGroupId;
-            o.shareType = shareType;
-            o.tags = tags;
-            o.type = type;
-            o.updatedBy = updatedBy;
-            o.updatedDate = updatedDate;
-            o.value = value;
-            return o;
+        }        public GetParametersParameter build() {
+            return new GetParametersParameter(constraints, createTime, createdBy, description, id, parameterId, parameterName, parameterVersion, resourceGroupId, shareType, tags, type, updatedBy, updatedDate, value);
         }
     }
 }

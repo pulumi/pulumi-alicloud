@@ -13,109 +13,154 @@ public final class GetOtsSnapshotsSnapshot {
      * @return The actual amount of backup snapshots after duplicates are removed. Unit: bytes.
      * 
      */
-    private String actualBytes;
+    private final String actualBytes;
     /**
      * @return The backup type. Valid value: `COMPLETE`, which indicates full backup.
      * 
      */
-    private String backupType;
+    private final String backupType;
     /**
      * @return The total amount of data. Unit: bytes.
      * 
      */
-    private String bytesTotal;
+    private final String bytesTotal;
     /**
      * @return The time when the backup snapshot was completed. This value is a UNIX timestamp. Unit: seconds.
      * 
      */
-    private String completeTime;
+    private final String completeTime;
     /**
      * @return The time when the Table store instance was created. This value is a UNIX timestamp. Unit: seconds.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The time when the backup snapshot was created. This value is a UNIX timestamp. Unit: seconds.
      * 
      */
-    private String createdTime;
+    private final String createdTime;
     /**
      * @return The ID of the backup snapshot.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The name of the Table store instance.
      * 
      */
-    private String instanceName;
+    private final String instanceName;
     /**
      * @return The ID of the backup job.
      * 
      */
-    private String jobId;
+    private final String jobId;
     /**
      * @return The hash value of the parent backup snapshot.
      * 
      */
-    private String parentSnapshotHash;
+    private final String parentSnapshotHash;
     /**
      * @return The time when the backup job ended. This value is a UNIX timestamp. Unit: milliseconds.
      * 
      */
-    private String rangeEnd;
+    private final String rangeEnd;
     /**
      * @return The time when the backup job started. This value is a UNIX timestamp. Unit: milliseconds.
      * 
      */
-    private String rangeStart;
+    private final String rangeStart;
     /**
      * @return The retention period of the backup snapshot.
      * 
      */
-    private String retention;
+    private final String retention;
     /**
      * @return The hash value of the backup snapshot.
      * 
      */
-    private String snapshotHash;
+    private final String snapshotHash;
     /**
      * @return The ID of the backup snapshot.
      * 
      */
-    private String snapshotId;
+    private final String snapshotId;
     /**
      * @return The type of the data source. Valid values: `ECS_FILE`,`PARTIAL_COMPLETE`,`FAILED`
      * 
      */
-    private String sourceType;
+    private final String sourceType;
     /**
      * @return The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
      * 
      */
-    private String startTime;
+    private final String startTime;
     /**
      * @return The status of the backup job. Valid values: `COMPLETE`,`PARTIAL_COMPLETE`,`FAILED`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The name of the table in the Table store instance.
      * 
      */
-    private String tableName;
+    private final String tableName;
     /**
      * @return The time when the backup snapshot was updated. This value is a UNIX timestamp. Unit: seconds.
      * 
      */
-    private String updatedTime;
+    private final String updatedTime;
     /**
      * @return The ID of the backup vault that stores the backup snapshot.
      * 
      */
-    private String vaultId;
+    private final String vaultId;
 
-    private GetOtsSnapshotsSnapshot() {}
+    @CustomType.Constructor
+    private GetOtsSnapshotsSnapshot(
+        @CustomType.Parameter("actualBytes") String actualBytes,
+        @CustomType.Parameter("backupType") String backupType,
+        @CustomType.Parameter("bytesTotal") String bytesTotal,
+        @CustomType.Parameter("completeTime") String completeTime,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("createdTime") String createdTime,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceName") String instanceName,
+        @CustomType.Parameter("jobId") String jobId,
+        @CustomType.Parameter("parentSnapshotHash") String parentSnapshotHash,
+        @CustomType.Parameter("rangeEnd") String rangeEnd,
+        @CustomType.Parameter("rangeStart") String rangeStart,
+        @CustomType.Parameter("retention") String retention,
+        @CustomType.Parameter("snapshotHash") String snapshotHash,
+        @CustomType.Parameter("snapshotId") String snapshotId,
+        @CustomType.Parameter("sourceType") String sourceType,
+        @CustomType.Parameter("startTime") String startTime,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("tableName") String tableName,
+        @CustomType.Parameter("updatedTime") String updatedTime,
+        @CustomType.Parameter("vaultId") String vaultId) {
+        this.actualBytes = actualBytes;
+        this.backupType = backupType;
+        this.bytesTotal = bytesTotal;
+        this.completeTime = completeTime;
+        this.createTime = createTime;
+        this.createdTime = createdTime;
+        this.id = id;
+        this.instanceName = instanceName;
+        this.jobId = jobId;
+        this.parentSnapshotHash = parentSnapshotHash;
+        this.rangeEnd = rangeEnd;
+        this.rangeStart = rangeStart;
+        this.retention = retention;
+        this.snapshotHash = snapshotHash;
+        this.snapshotId = snapshotId;
+        this.sourceType = sourceType;
+        this.startTime = startTime;
+        this.status = status;
+        this.tableName = tableName;
+        this.updatedTime = updatedTime;
+        this.vaultId = vaultId;
+    }
+
     /**
      * @return The actual amount of backup snapshots after duplicates are removed. Unit: bytes.
      * 
@@ -271,7 +316,7 @@ public final class GetOtsSnapshotsSnapshot {
     public static Builder builder(GetOtsSnapshotsSnapshot defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String actualBytes;
         private String backupType;
@@ -294,7 +339,11 @@ public final class GetOtsSnapshotsSnapshot {
         private String tableName;
         private String updatedTime;
         private String vaultId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetOtsSnapshotsSnapshot defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.actualBytes = defaults.actualBytes;
@@ -320,135 +369,91 @@ public final class GetOtsSnapshotsSnapshot {
     	      this.vaultId = defaults.vaultId;
         }
 
-        @CustomType.Setter
         public Builder actualBytes(String actualBytes) {
             this.actualBytes = Objects.requireNonNull(actualBytes);
             return this;
         }
-        @CustomType.Setter
         public Builder backupType(String backupType) {
             this.backupType = Objects.requireNonNull(backupType);
             return this;
         }
-        @CustomType.Setter
         public Builder bytesTotal(String bytesTotal) {
             this.bytesTotal = Objects.requireNonNull(bytesTotal);
             return this;
         }
-        @CustomType.Setter
         public Builder completeTime(String completeTime) {
             this.completeTime = Objects.requireNonNull(completeTime);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder createdTime(String createdTime) {
             this.createdTime = Objects.requireNonNull(createdTime);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
-        @CustomType.Setter
         public Builder jobId(String jobId) {
             this.jobId = Objects.requireNonNull(jobId);
             return this;
         }
-        @CustomType.Setter
         public Builder parentSnapshotHash(String parentSnapshotHash) {
             this.parentSnapshotHash = Objects.requireNonNull(parentSnapshotHash);
             return this;
         }
-        @CustomType.Setter
         public Builder rangeEnd(String rangeEnd) {
             this.rangeEnd = Objects.requireNonNull(rangeEnd);
             return this;
         }
-        @CustomType.Setter
         public Builder rangeStart(String rangeStart) {
             this.rangeStart = Objects.requireNonNull(rangeStart);
             return this;
         }
-        @CustomType.Setter
         public Builder retention(String retention) {
             this.retention = Objects.requireNonNull(retention);
             return this;
         }
-        @CustomType.Setter
         public Builder snapshotHash(String snapshotHash) {
             this.snapshotHash = Objects.requireNonNull(snapshotHash);
             return this;
         }
-        @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
             this.snapshotId = Objects.requireNonNull(snapshotId);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceType(String sourceType) {
             this.sourceType = Objects.requireNonNull(sourceType);
             return this;
         }
-        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder tableName(String tableName) {
             this.tableName = Objects.requireNonNull(tableName);
             return this;
         }
-        @CustomType.Setter
         public Builder updatedTime(String updatedTime) {
             this.updatedTime = Objects.requireNonNull(updatedTime);
             return this;
         }
-        @CustomType.Setter
         public Builder vaultId(String vaultId) {
             this.vaultId = Objects.requireNonNull(vaultId);
             return this;
-        }
-        public GetOtsSnapshotsSnapshot build() {
-            final var o = new GetOtsSnapshotsSnapshot();
-            o.actualBytes = actualBytes;
-            o.backupType = backupType;
-            o.bytesTotal = bytesTotal;
-            o.completeTime = completeTime;
-            o.createTime = createTime;
-            o.createdTime = createdTime;
-            o.id = id;
-            o.instanceName = instanceName;
-            o.jobId = jobId;
-            o.parentSnapshotHash = parentSnapshotHash;
-            o.rangeEnd = rangeEnd;
-            o.rangeStart = rangeStart;
-            o.retention = retention;
-            o.snapshotHash = snapshotHash;
-            o.snapshotId = snapshotId;
-            o.sourceType = sourceType;
-            o.startTime = startTime;
-            o.status = status;
-            o.tableName = tableName;
-            o.updatedTime = updatedTime;
-            o.vaultId = vaultId;
-            return o;
+        }        public GetOtsSnapshotsSnapshot build() {
+            return new GetOtsSnapshotsSnapshot(actualBytes, backupType, bytesTotal, completeTime, createTime, createdTime, id, instanceName, jobId, parentSnapshotHash, rangeEnd, rangeStart, retention, snapshotHash, snapshotId, sourceType, startTime, status, tableName, updatedTime, vaultId);
         }
     }
 }

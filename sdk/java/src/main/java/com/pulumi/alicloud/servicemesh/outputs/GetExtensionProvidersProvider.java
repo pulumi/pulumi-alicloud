@@ -13,29 +13,42 @@ public final class GetExtensionProvidersProvider {
      * @return The config of the Service Mesh Extension Provider.
      * 
      */
-    private String config;
+    private final String config;
     /**
      * @return The name of the Service Mesh Extension Provider.
      * 
      */
-    private String extensionProviderName;
+    private final String extensionProviderName;
     /**
      * @return The ID of the Service Mesh Extension Provider. It formats as `&lt;service_mesh_id&gt;:&lt;type&gt;:&lt;extension_provider_name&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the Service Mesh.
      * 
      */
-    private String serviceMeshId;
+    private final String serviceMeshId;
     /**
      * @return The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
      * 
      */
-    private String type;
+    private final String type;
 
-    private GetExtensionProvidersProvider() {}
+    @CustomType.Constructor
+    private GetExtensionProvidersProvider(
+        @CustomType.Parameter("config") String config,
+        @CustomType.Parameter("extensionProviderName") String extensionProviderName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("serviceMeshId") String serviceMeshId,
+        @CustomType.Parameter("type") String type) {
+        this.config = config;
+        this.extensionProviderName = extensionProviderName;
+        this.id = id;
+        this.serviceMeshId = serviceMeshId;
+        this.type = type;
+    }
+
     /**
      * @return The config of the Service Mesh Extension Provider.
      * 
@@ -79,14 +92,18 @@ public final class GetExtensionProvidersProvider {
     public static Builder builder(GetExtensionProvidersProvider defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String config;
         private String extensionProviderName;
         private String id;
         private String serviceMeshId;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetExtensionProvidersProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.config = defaults.config;
@@ -96,39 +113,27 @@ public final class GetExtensionProvidersProvider {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder config(String config) {
             this.config = Objects.requireNonNull(config);
             return this;
         }
-        @CustomType.Setter
         public Builder extensionProviderName(String extensionProviderName) {
             this.extensionProviderName = Objects.requireNonNull(extensionProviderName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder serviceMeshId(String serviceMeshId) {
             this.serviceMeshId = Objects.requireNonNull(serviceMeshId);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetExtensionProvidersProvider build() {
-            final var o = new GetExtensionProvidersProvider();
-            o.config = config;
-            o.extensionProviderName = extensionProviderName;
-            o.id = id;
-            o.serviceMeshId = serviceMeshId;
-            o.type = type;
-            return o;
+        }        public GetExtensionProvidersProvider build() {
+            return new GetExtensionProvidersProvider(config, extensionProviderName, id, serviceMeshId, type);
         }
     }
 }

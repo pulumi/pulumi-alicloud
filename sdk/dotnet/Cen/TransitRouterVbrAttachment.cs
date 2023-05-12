@@ -105,6 +105,8 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The owner id of the transit router vbr attachment.
+        /// 
+        /// -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
         /// </summary>
         [Output("vbrOwnerId")]
         public Output<string> VbrOwnerId { get; private set; } = null!;
@@ -229,6 +231,8 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The owner id of the transit router vbr attachment.
+        /// 
+        /// -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
         /// </summary>
         [Input("vbrOwnerId")]
         public Input<string>? VbrOwnerId { get; set; }
@@ -327,6 +331,8 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The owner id of the transit router vbr attachment.
+        /// 
+        /// -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
         /// </summary>
         [Input("vbrOwnerId")]
         public Input<string>? VbrOwnerId { get; set; }

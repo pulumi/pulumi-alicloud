@@ -135,6 +135,7 @@ def get_ecs_backup_plans(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of EcsBackupPlan IDs.
     :param str instance_id: The ID of ECS instance.
     :param str name_regex: A regex string to filter results by EcsBackupPlan name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str vault_id: The ID of Backup vault.
     """
     __args__ = dict()
@@ -185,6 +186,7 @@ def get_ecs_backup_plans_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     :param Sequence[str] ids: A list of EcsBackupPlan IDs.
     :param str instance_id: The ID of ECS instance.
     :param str name_regex: A regex string to filter results by EcsBackupPlan name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str vault_id: The ID of Backup vault.
     """
     ...

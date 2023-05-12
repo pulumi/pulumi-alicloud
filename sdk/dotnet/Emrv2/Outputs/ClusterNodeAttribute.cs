@@ -14,6 +14,14 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
     public sealed class ClusterNodeAttribute
     {
         /// <summary>
+        /// Whether to enable data disk encryption.
+        /// </summary>
+        public readonly bool? DataDiskEncrypted;
+        /// <summary>
+        /// The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
+        /// </summary>
+        public readonly string? DataDiskKmsKeyId;
+        /// <summary>
         /// The name of the key pair.
         /// </summary>
         public readonly string KeyPairName;
@@ -36,6 +44,10 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
 
         [OutputConstructor]
         private ClusterNodeAttribute(
+            bool? dataDiskEncrypted,
+
+            string? dataDiskKmsKeyId,
+
             string keyPairName,
 
             string ramRole,
@@ -46,6 +58,8 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
 
             string zoneId)
         {
+            DataDiskEncrypted = dataDiskEncrypted;
+            DataDiskKmsKeyId = dataDiskKmsKeyId;
             KeyPairName = keyPairName;
             RamRole = ramRole;
             SecurityGroupId = securityGroupId;

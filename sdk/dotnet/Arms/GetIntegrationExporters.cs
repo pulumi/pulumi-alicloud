@@ -121,6 +121,9 @@ namespace Pulumi.AliCloud.Arms
         [Input("integrationType", required: true)]
         public string IntegrationType { get; set; } = null!;
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -156,6 +159,9 @@ namespace Pulumi.AliCloud.Arms
         [Input("integrationType", required: true)]
         public Input<string> IntegrationType { get; set; } = null!;
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

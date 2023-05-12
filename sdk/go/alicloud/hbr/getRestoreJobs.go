@@ -24,6 +24,7 @@ func GetRestoreJobs(ctx *pulumi.Context, args *GetRestoreJobsArgs, opts ...pulum
 
 // A collection of arguments for invoking getRestoreJobs.
 type GetRestoreJobsArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The list of restore job IDs.
 	RestoreIds []string `pulumi:"restoreIds"`
@@ -75,6 +76,7 @@ func GetRestoreJobsOutput(ctx *pulumi.Context, args GetRestoreJobsOutputArgs, op
 
 // A collection of arguments for invoking getRestoreJobs.
 type GetRestoreJobsOutputArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The list of restore job IDs.
 	RestoreIds pulumi.StringArrayInput `pulumi:"restoreIds"`

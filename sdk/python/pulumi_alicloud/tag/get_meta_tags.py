@@ -94,6 +94,7 @@ def get_meta_tags(key_name: Optional[str] = None,
 
 
     :param str key_name: The name of the key.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['keyName'] = key_name
@@ -131,5 +132,6 @@ def get_meta_tags_output(key_name: Optional[pulumi.Input[Optional[str]]] = None,
 
 
     :param str key_name: The name of the key.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

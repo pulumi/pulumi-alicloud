@@ -61,12 +61,16 @@ public final class PrivateZoneArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The VPC that belongs to the service region.
      * 
+     * -&gt;**NOTE:** The &#34;alicloud.cen.PrivateZone&#34; resource depends on the related &#34;alicloud.cen.InstanceAttachment&#34; resource.
+     * 
      */
     @Import(name="hostVpcId", required=true)
     private Output<String> hostVpcId;
 
     /**
      * @return The VPC that belongs to the service region.
+     * 
+     * -&gt;**NOTE:** The &#34;alicloud.cen.PrivateZone&#34; resource depends on the related &#34;alicloud.cen.InstanceAttachment&#34; resource.
      * 
      */
     public Output<String> hostVpcId() {
@@ -166,6 +170,8 @@ public final class PrivateZoneArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param hostVpcId The VPC that belongs to the service region.
          * 
+         * -&gt;**NOTE:** The &#34;alicloud.cen.PrivateZone&#34; resource depends on the related &#34;alicloud.cen.InstanceAttachment&#34; resource.
+         * 
          * @return builder
          * 
          */
@@ -176,6 +182,8 @@ public final class PrivateZoneArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param hostVpcId The VPC that belongs to the service region.
+         * 
+         * -&gt;**NOTE:** The &#34;alicloud.cen.PrivateZone&#34; resource depends on the related &#34;alicloud.cen.InstanceAttachment&#34; resource.
          * 
          * @return builder
          * 

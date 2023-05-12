@@ -17,36 +17,53 @@ public final class GetPrivateZonesResult {
      * @return The ID of the CEN instance.
      * 
      */
-    private String cenId;
+    private final String cenId;
     /**
      * @return The service region. The service region is the target region of the PrivateZone service accessed through CEN.
      * 
      */
-    private @Nullable String hostRegionId;
+    private final @Nullable String hostRegionId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of CEN private zone IDs. Each element format as `&lt;cen_id&gt;:&lt;access_region_id&gt;`.
      * **NOTE:** Before 1.162.0, each element same as `access_region_id`.
      * 
      */
-    private List<String> ids;
-    private @Nullable String outputFile;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
     /**
      * @return The status of the PrivateZone service.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
     /**
      * @return A list of CEN private zones. Each element contains the following attributes:
      * 
      */
-    private List<GetPrivateZonesZone> zones;
+    private final List<GetPrivateZonesZone> zones;
 
-    private GetPrivateZonesResult() {}
+    @CustomType.Constructor
+    private GetPrivateZonesResult(
+        @CustomType.Parameter("cenId") String cenId,
+        @CustomType.Parameter("hostRegionId") @Nullable String hostRegionId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("zones") List<GetPrivateZonesZone> zones) {
+        this.cenId = cenId;
+        this.hostRegionId = hostRegionId;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.status = status;
+        this.zones = zones;
+    }
+
     /**
      * @return The ID of the CEN instance.
      * 
@@ -101,7 +118,7 @@ public final class GetPrivateZonesResult {
     public static Builder builder(GetPrivateZonesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String cenId;
         private @Nullable String hostRegionId;
@@ -110,7 +127,11 @@ public final class GetPrivateZonesResult {
         private @Nullable String outputFile;
         private @Nullable String status;
         private List<GetPrivateZonesZone> zones;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetPrivateZonesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cenId = defaults.cenId;
@@ -122,22 +143,18 @@ public final class GetPrivateZonesResult {
     	      this.zones = defaults.zones;
         }
 
-        @CustomType.Setter
         public Builder cenId(String cenId) {
             this.cenId = Objects.requireNonNull(cenId);
             return this;
         }
-        @CustomType.Setter
         public Builder hostRegionId(@Nullable String hostRegionId) {
             this.hostRegionId = hostRegionId;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -145,34 +162,22 @@ public final class GetPrivateZonesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder zones(List<GetPrivateZonesZone> zones) {
             this.zones = Objects.requireNonNull(zones);
             return this;
         }
         public Builder zones(GetPrivateZonesZone... zones) {
             return zones(List.of(zones));
-        }
-        public GetPrivateZonesResult build() {
-            final var o = new GetPrivateZonesResult();
-            o.cenId = cenId;
-            o.hostRegionId = hostRegionId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.zones = zones;
-            return o;
+        }        public GetPrivateZonesResult build() {
+            return new GetPrivateZonesResult(cenId, hostRegionId, id, ids, outputFile, status, zones);
         }
     }
 }

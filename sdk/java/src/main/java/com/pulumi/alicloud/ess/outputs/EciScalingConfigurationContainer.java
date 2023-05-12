@@ -21,169 +21,236 @@ public final class EciScalingConfigurationContainer {
      * @return The arguments passed to the commands.
      * 
      */
-    private @Nullable List<String> args;
+    private final @Nullable List<String> args;
     /**
      * @return The commands run by the init container.
      * 
      */
-    private @Nullable List<String> commands;
+    private final @Nullable List<String> commands;
     /**
      * @return The amount of CPU resources allocated to the container group.
      * 
      */
-    private @Nullable Double cpu;
+    private final @Nullable Double cpu;
     /**
      * @return The structure of environmentVars.
      * See Block_environment_var_in_init_container below for details.
      * See Block_environment_var_in_container below for details.
      * 
      */
-    private @Nullable List<EciScalingConfigurationContainerEnvironmentVar> environmentVars;
+    private final @Nullable List<EciScalingConfigurationContainerEnvironmentVar> environmentVars;
     /**
      * @return The number GPUs.
      * 
      */
-    private @Nullable Integer gpu;
+    private final @Nullable Integer gpu;
     /**
      * @return The image of the container.
      * 
      */
-    private @Nullable String image;
+    private final @Nullable String image;
     /**
      * @return The restart policy of the image.
      * 
      */
-    private @Nullable String imagePullPolicy;
+    private final @Nullable String imagePullPolicy;
     /**
      * @return Commands that you want to run in containers when you use the CLI to perform liveness probes.
      * 
      */
-    private @Nullable List<String> livenessProbeExecCommands;
+    private final @Nullable List<String> livenessProbeExecCommands;
     /**
      * @return The minimum number of consecutive failures for the liveness probe to be considered failed after having been successful. Default value: 3.
      * 
      */
-    private @Nullable Integer livenessProbeFailureThreshold;
+    private final @Nullable Integer livenessProbeFailureThreshold;
     /**
      * @return The path to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
      * 
      */
-    private @Nullable String livenessProbeHttpGetPath;
+    private final @Nullable String livenessProbeHttpGetPath;
     /**
      * @return The port to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
      * 
      */
-    private @Nullable Integer livenessProbeHttpGetPort;
+    private final @Nullable Integer livenessProbeHttpGetPort;
     /**
      * @return The protocol type of HTTP GET requests when you use HTTP requests for liveness probes.Valid values:HTTP and HTTPS.
      * 
      */
-    private @Nullable String livenessProbeHttpGetScheme;
+    private final @Nullable String livenessProbeHttpGetScheme;
     /**
      * @return The number of seconds after container has started before liveness probes are initiated.
      * 
      */
-    private @Nullable Integer livenessProbeInitialDelaySeconds;
+    private final @Nullable Integer livenessProbeInitialDelaySeconds;
     /**
      * @return The interval at which the liveness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
      * 
      */
-    private @Nullable Integer livenessProbePeriodSeconds;
+    private final @Nullable Integer livenessProbePeriodSeconds;
     /**
      * @return The minimum number of consecutive successes for the liveness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
      * 
      */
-    private @Nullable Integer livenessProbeSuccessThreshold;
+    private final @Nullable Integer livenessProbeSuccessThreshold;
     /**
      * @return The port detected by TCP sockets when you use TCP sockets to perform liveness probes.
      * 
      */
-    private @Nullable Integer livenessProbeTcpSocketPort;
+    private final @Nullable Integer livenessProbeTcpSocketPort;
     /**
      * @return The timeout period for the liveness probe. Unit: seconds. Default value: 1. Minimum value: 1.
      * 
      */
-    private @Nullable Integer livenessProbeTimeoutSeconds;
+    private final @Nullable Integer livenessProbeTimeoutSeconds;
     /**
      * @return The amount of memory resources allocated to the container group.
      * 
      */
-    private @Nullable Double memory;
+    private final @Nullable Double memory;
     /**
      * @return The name of the volume.
      * 
      */
-    private @Nullable String name;
+    private final @Nullable String name;
     /**
      * @return The structure of port. See Block_port_in_init_container below
      * for details.
      * 
      */
-    private @Nullable List<EciScalingConfigurationContainerPort> ports;
+    private final @Nullable List<EciScalingConfigurationContainerPort> ports;
     /**
      * @return Commands that you want to run in containers when you use the CLI to perform readiness probes.
      * 
      */
-    private @Nullable List<String> readinessProbeExecCommands;
+    private final @Nullable List<String> readinessProbeExecCommands;
     /**
      * @return The minimum number of consecutive failures for the readiness probe to be considered failed after having been successful. Default value: 3.
      * 
      */
-    private @Nullable Integer readinessProbeFailureThreshold;
+    private final @Nullable Integer readinessProbeFailureThreshold;
     /**
      * @return The path to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
      * 
      */
-    private @Nullable String readinessProbeHttpGetPath;
+    private final @Nullable String readinessProbeHttpGetPath;
     /**
      * @return The port to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
      * 
      */
-    private @Nullable Integer readinessProbeHttpGetPort;
+    private final @Nullable Integer readinessProbeHttpGetPort;
     /**
      * @return The protocol type of HTTP GET requests when you use HTTP requests for readiness probes. Valid values: HTTP and HTTPS.
      * 
      */
-    private @Nullable String readinessProbeHttpGetScheme;
+    private final @Nullable String readinessProbeHttpGetScheme;
     /**
      * @return The number of seconds after container N has started before readiness probes are initiated.
      * 
      */
-    private @Nullable Integer readinessProbeInitialDelaySeconds;
+    private final @Nullable Integer readinessProbeInitialDelaySeconds;
     /**
      * @return The interval at which the readiness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
      * 
      */
-    private @Nullable Integer readinessProbePeriodSeconds;
+    private final @Nullable Integer readinessProbePeriodSeconds;
     /**
      * @return The minimum number of consecutive successes for the readiness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
      * 
      */
-    private @Nullable Integer readinessProbeSuccessThreshold;
+    private final @Nullable Integer readinessProbeSuccessThreshold;
     /**
      * @return The port detected by Transmission Control Protocol (TCP) sockets when you use TCP sockets to perform readiness probes.
      * 
      */
-    private @Nullable Integer readinessProbeTcpSocketPort;
+    private final @Nullable Integer readinessProbeTcpSocketPort;
     /**
      * @return The timeout period for the readiness probe. Unit: seconds. Default value: 1. Minimum value: 1.
      * 
      */
-    private @Nullable Integer readinessProbeTimeoutSeconds;
+    private final @Nullable Integer readinessProbeTimeoutSeconds;
     /**
      * @return The structure of volumeMounts.
      * See Block_volume_mount_in_init_container below for details.
      * See Block_volume_mount_in_container below for details.
      * 
      */
-    private @Nullable List<EciScalingConfigurationContainerVolumeMount> volumeMounts;
+    private final @Nullable List<EciScalingConfigurationContainerVolumeMount> volumeMounts;
     /**
      * @return The working directory of the container.
      * 
      */
-    private @Nullable String workingDir;
+    private final @Nullable String workingDir;
 
-    private EciScalingConfigurationContainer() {}
+    @CustomType.Constructor
+    private EciScalingConfigurationContainer(
+        @CustomType.Parameter("args") @Nullable List<String> args,
+        @CustomType.Parameter("commands") @Nullable List<String> commands,
+        @CustomType.Parameter("cpu") @Nullable Double cpu,
+        @CustomType.Parameter("environmentVars") @Nullable List<EciScalingConfigurationContainerEnvironmentVar> environmentVars,
+        @CustomType.Parameter("gpu") @Nullable Integer gpu,
+        @CustomType.Parameter("image") @Nullable String image,
+        @CustomType.Parameter("imagePullPolicy") @Nullable String imagePullPolicy,
+        @CustomType.Parameter("livenessProbeExecCommands") @Nullable List<String> livenessProbeExecCommands,
+        @CustomType.Parameter("livenessProbeFailureThreshold") @Nullable Integer livenessProbeFailureThreshold,
+        @CustomType.Parameter("livenessProbeHttpGetPath") @Nullable String livenessProbeHttpGetPath,
+        @CustomType.Parameter("livenessProbeHttpGetPort") @Nullable Integer livenessProbeHttpGetPort,
+        @CustomType.Parameter("livenessProbeHttpGetScheme") @Nullable String livenessProbeHttpGetScheme,
+        @CustomType.Parameter("livenessProbeInitialDelaySeconds") @Nullable Integer livenessProbeInitialDelaySeconds,
+        @CustomType.Parameter("livenessProbePeriodSeconds") @Nullable Integer livenessProbePeriodSeconds,
+        @CustomType.Parameter("livenessProbeSuccessThreshold") @Nullable Integer livenessProbeSuccessThreshold,
+        @CustomType.Parameter("livenessProbeTcpSocketPort") @Nullable Integer livenessProbeTcpSocketPort,
+        @CustomType.Parameter("livenessProbeTimeoutSeconds") @Nullable Integer livenessProbeTimeoutSeconds,
+        @CustomType.Parameter("memory") @Nullable Double memory,
+        @CustomType.Parameter("name") @Nullable String name,
+        @CustomType.Parameter("ports") @Nullable List<EciScalingConfigurationContainerPort> ports,
+        @CustomType.Parameter("readinessProbeExecCommands") @Nullable List<String> readinessProbeExecCommands,
+        @CustomType.Parameter("readinessProbeFailureThreshold") @Nullable Integer readinessProbeFailureThreshold,
+        @CustomType.Parameter("readinessProbeHttpGetPath") @Nullable String readinessProbeHttpGetPath,
+        @CustomType.Parameter("readinessProbeHttpGetPort") @Nullable Integer readinessProbeHttpGetPort,
+        @CustomType.Parameter("readinessProbeHttpGetScheme") @Nullable String readinessProbeHttpGetScheme,
+        @CustomType.Parameter("readinessProbeInitialDelaySeconds") @Nullable Integer readinessProbeInitialDelaySeconds,
+        @CustomType.Parameter("readinessProbePeriodSeconds") @Nullable Integer readinessProbePeriodSeconds,
+        @CustomType.Parameter("readinessProbeSuccessThreshold") @Nullable Integer readinessProbeSuccessThreshold,
+        @CustomType.Parameter("readinessProbeTcpSocketPort") @Nullable Integer readinessProbeTcpSocketPort,
+        @CustomType.Parameter("readinessProbeTimeoutSeconds") @Nullable Integer readinessProbeTimeoutSeconds,
+        @CustomType.Parameter("volumeMounts") @Nullable List<EciScalingConfigurationContainerVolumeMount> volumeMounts,
+        @CustomType.Parameter("workingDir") @Nullable String workingDir) {
+        this.args = args;
+        this.commands = commands;
+        this.cpu = cpu;
+        this.environmentVars = environmentVars;
+        this.gpu = gpu;
+        this.image = image;
+        this.imagePullPolicy = imagePullPolicy;
+        this.livenessProbeExecCommands = livenessProbeExecCommands;
+        this.livenessProbeFailureThreshold = livenessProbeFailureThreshold;
+        this.livenessProbeHttpGetPath = livenessProbeHttpGetPath;
+        this.livenessProbeHttpGetPort = livenessProbeHttpGetPort;
+        this.livenessProbeHttpGetScheme = livenessProbeHttpGetScheme;
+        this.livenessProbeInitialDelaySeconds = livenessProbeInitialDelaySeconds;
+        this.livenessProbePeriodSeconds = livenessProbePeriodSeconds;
+        this.livenessProbeSuccessThreshold = livenessProbeSuccessThreshold;
+        this.livenessProbeTcpSocketPort = livenessProbeTcpSocketPort;
+        this.livenessProbeTimeoutSeconds = livenessProbeTimeoutSeconds;
+        this.memory = memory;
+        this.name = name;
+        this.ports = ports;
+        this.readinessProbeExecCommands = readinessProbeExecCommands;
+        this.readinessProbeFailureThreshold = readinessProbeFailureThreshold;
+        this.readinessProbeHttpGetPath = readinessProbeHttpGetPath;
+        this.readinessProbeHttpGetPort = readinessProbeHttpGetPort;
+        this.readinessProbeHttpGetScheme = readinessProbeHttpGetScheme;
+        this.readinessProbeInitialDelaySeconds = readinessProbeInitialDelaySeconds;
+        this.readinessProbePeriodSeconds = readinessProbePeriodSeconds;
+        this.readinessProbeSuccessThreshold = readinessProbeSuccessThreshold;
+        this.readinessProbeTcpSocketPort = readinessProbeTcpSocketPort;
+        this.readinessProbeTimeoutSeconds = readinessProbeTimeoutSeconds;
+        this.volumeMounts = volumeMounts;
+        this.workingDir = workingDir;
+    }
+
     /**
      * @return The arguments passed to the commands.
      * 
@@ -421,7 +488,7 @@ public final class EciScalingConfigurationContainer {
     public static Builder builder(EciScalingConfigurationContainer defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<String> args;
         private @Nullable List<String> commands;
@@ -455,7 +522,11 @@ public final class EciScalingConfigurationContainer {
         private @Nullable Integer readinessProbeTimeoutSeconds;
         private @Nullable List<EciScalingConfigurationContainerVolumeMount> volumeMounts;
         private @Nullable String workingDir;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(EciScalingConfigurationContainer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.args = defaults.args;
@@ -492,7 +563,6 @@ public final class EciScalingConfigurationContainer {
     	      this.workingDir = defaults.workingDir;
         }
 
-        @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
             this.args = args;
             return this;
@@ -500,7 +570,6 @@ public final class EciScalingConfigurationContainer {
         public Builder args(String... args) {
             return args(List.of(args));
         }
-        @CustomType.Setter
         public Builder commands(@Nullable List<String> commands) {
             this.commands = commands;
             return this;
@@ -508,12 +577,10 @@ public final class EciScalingConfigurationContainer {
         public Builder commands(String... commands) {
             return commands(List.of(commands));
         }
-        @CustomType.Setter
         public Builder cpu(@Nullable Double cpu) {
             this.cpu = cpu;
             return this;
         }
-        @CustomType.Setter
         public Builder environmentVars(@Nullable List<EciScalingConfigurationContainerEnvironmentVar> environmentVars) {
             this.environmentVars = environmentVars;
             return this;
@@ -521,22 +588,18 @@ public final class EciScalingConfigurationContainer {
         public Builder environmentVars(EciScalingConfigurationContainerEnvironmentVar... environmentVars) {
             return environmentVars(List.of(environmentVars));
         }
-        @CustomType.Setter
         public Builder gpu(@Nullable Integer gpu) {
             this.gpu = gpu;
             return this;
         }
-        @CustomType.Setter
         public Builder image(@Nullable String image) {
             this.image = image;
             return this;
         }
-        @CustomType.Setter
         public Builder imagePullPolicy(@Nullable String imagePullPolicy) {
             this.imagePullPolicy = imagePullPolicy;
             return this;
         }
-        @CustomType.Setter
         public Builder livenessProbeExecCommands(@Nullable List<String> livenessProbeExecCommands) {
             this.livenessProbeExecCommands = livenessProbeExecCommands;
             return this;
@@ -544,62 +607,50 @@ public final class EciScalingConfigurationContainer {
         public Builder livenessProbeExecCommands(String... livenessProbeExecCommands) {
             return livenessProbeExecCommands(List.of(livenessProbeExecCommands));
         }
-        @CustomType.Setter
         public Builder livenessProbeFailureThreshold(@Nullable Integer livenessProbeFailureThreshold) {
             this.livenessProbeFailureThreshold = livenessProbeFailureThreshold;
             return this;
         }
-        @CustomType.Setter
         public Builder livenessProbeHttpGetPath(@Nullable String livenessProbeHttpGetPath) {
             this.livenessProbeHttpGetPath = livenessProbeHttpGetPath;
             return this;
         }
-        @CustomType.Setter
         public Builder livenessProbeHttpGetPort(@Nullable Integer livenessProbeHttpGetPort) {
             this.livenessProbeHttpGetPort = livenessProbeHttpGetPort;
             return this;
         }
-        @CustomType.Setter
         public Builder livenessProbeHttpGetScheme(@Nullable String livenessProbeHttpGetScheme) {
             this.livenessProbeHttpGetScheme = livenessProbeHttpGetScheme;
             return this;
         }
-        @CustomType.Setter
         public Builder livenessProbeInitialDelaySeconds(@Nullable Integer livenessProbeInitialDelaySeconds) {
             this.livenessProbeInitialDelaySeconds = livenessProbeInitialDelaySeconds;
             return this;
         }
-        @CustomType.Setter
         public Builder livenessProbePeriodSeconds(@Nullable Integer livenessProbePeriodSeconds) {
             this.livenessProbePeriodSeconds = livenessProbePeriodSeconds;
             return this;
         }
-        @CustomType.Setter
         public Builder livenessProbeSuccessThreshold(@Nullable Integer livenessProbeSuccessThreshold) {
             this.livenessProbeSuccessThreshold = livenessProbeSuccessThreshold;
             return this;
         }
-        @CustomType.Setter
         public Builder livenessProbeTcpSocketPort(@Nullable Integer livenessProbeTcpSocketPort) {
             this.livenessProbeTcpSocketPort = livenessProbeTcpSocketPort;
             return this;
         }
-        @CustomType.Setter
         public Builder livenessProbeTimeoutSeconds(@Nullable Integer livenessProbeTimeoutSeconds) {
             this.livenessProbeTimeoutSeconds = livenessProbeTimeoutSeconds;
             return this;
         }
-        @CustomType.Setter
         public Builder memory(@Nullable Double memory) {
             this.memory = memory;
             return this;
         }
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
-        @CustomType.Setter
         public Builder ports(@Nullable List<EciScalingConfigurationContainerPort> ports) {
             this.ports = ports;
             return this;
@@ -607,7 +658,6 @@ public final class EciScalingConfigurationContainer {
         public Builder ports(EciScalingConfigurationContainerPort... ports) {
             return ports(List.of(ports));
         }
-        @CustomType.Setter
         public Builder readinessProbeExecCommands(@Nullable List<String> readinessProbeExecCommands) {
             this.readinessProbeExecCommands = readinessProbeExecCommands;
             return this;
@@ -615,52 +665,42 @@ public final class EciScalingConfigurationContainer {
         public Builder readinessProbeExecCommands(String... readinessProbeExecCommands) {
             return readinessProbeExecCommands(List.of(readinessProbeExecCommands));
         }
-        @CustomType.Setter
         public Builder readinessProbeFailureThreshold(@Nullable Integer readinessProbeFailureThreshold) {
             this.readinessProbeFailureThreshold = readinessProbeFailureThreshold;
             return this;
         }
-        @CustomType.Setter
         public Builder readinessProbeHttpGetPath(@Nullable String readinessProbeHttpGetPath) {
             this.readinessProbeHttpGetPath = readinessProbeHttpGetPath;
             return this;
         }
-        @CustomType.Setter
         public Builder readinessProbeHttpGetPort(@Nullable Integer readinessProbeHttpGetPort) {
             this.readinessProbeHttpGetPort = readinessProbeHttpGetPort;
             return this;
         }
-        @CustomType.Setter
         public Builder readinessProbeHttpGetScheme(@Nullable String readinessProbeHttpGetScheme) {
             this.readinessProbeHttpGetScheme = readinessProbeHttpGetScheme;
             return this;
         }
-        @CustomType.Setter
         public Builder readinessProbeInitialDelaySeconds(@Nullable Integer readinessProbeInitialDelaySeconds) {
             this.readinessProbeInitialDelaySeconds = readinessProbeInitialDelaySeconds;
             return this;
         }
-        @CustomType.Setter
         public Builder readinessProbePeriodSeconds(@Nullable Integer readinessProbePeriodSeconds) {
             this.readinessProbePeriodSeconds = readinessProbePeriodSeconds;
             return this;
         }
-        @CustomType.Setter
         public Builder readinessProbeSuccessThreshold(@Nullable Integer readinessProbeSuccessThreshold) {
             this.readinessProbeSuccessThreshold = readinessProbeSuccessThreshold;
             return this;
         }
-        @CustomType.Setter
         public Builder readinessProbeTcpSocketPort(@Nullable Integer readinessProbeTcpSocketPort) {
             this.readinessProbeTcpSocketPort = readinessProbeTcpSocketPort;
             return this;
         }
-        @CustomType.Setter
         public Builder readinessProbeTimeoutSeconds(@Nullable Integer readinessProbeTimeoutSeconds) {
             this.readinessProbeTimeoutSeconds = readinessProbeTimeoutSeconds;
             return this;
         }
-        @CustomType.Setter
         public Builder volumeMounts(@Nullable List<EciScalingConfigurationContainerVolumeMount> volumeMounts) {
             this.volumeMounts = volumeMounts;
             return this;
@@ -668,46 +708,11 @@ public final class EciScalingConfigurationContainer {
         public Builder volumeMounts(EciScalingConfigurationContainerVolumeMount... volumeMounts) {
             return volumeMounts(List.of(volumeMounts));
         }
-        @CustomType.Setter
         public Builder workingDir(@Nullable String workingDir) {
             this.workingDir = workingDir;
             return this;
-        }
-        public EciScalingConfigurationContainer build() {
-            final var o = new EciScalingConfigurationContainer();
-            o.args = args;
-            o.commands = commands;
-            o.cpu = cpu;
-            o.environmentVars = environmentVars;
-            o.gpu = gpu;
-            o.image = image;
-            o.imagePullPolicy = imagePullPolicy;
-            o.livenessProbeExecCommands = livenessProbeExecCommands;
-            o.livenessProbeFailureThreshold = livenessProbeFailureThreshold;
-            o.livenessProbeHttpGetPath = livenessProbeHttpGetPath;
-            o.livenessProbeHttpGetPort = livenessProbeHttpGetPort;
-            o.livenessProbeHttpGetScheme = livenessProbeHttpGetScheme;
-            o.livenessProbeInitialDelaySeconds = livenessProbeInitialDelaySeconds;
-            o.livenessProbePeriodSeconds = livenessProbePeriodSeconds;
-            o.livenessProbeSuccessThreshold = livenessProbeSuccessThreshold;
-            o.livenessProbeTcpSocketPort = livenessProbeTcpSocketPort;
-            o.livenessProbeTimeoutSeconds = livenessProbeTimeoutSeconds;
-            o.memory = memory;
-            o.name = name;
-            o.ports = ports;
-            o.readinessProbeExecCommands = readinessProbeExecCommands;
-            o.readinessProbeFailureThreshold = readinessProbeFailureThreshold;
-            o.readinessProbeHttpGetPath = readinessProbeHttpGetPath;
-            o.readinessProbeHttpGetPort = readinessProbeHttpGetPort;
-            o.readinessProbeHttpGetScheme = readinessProbeHttpGetScheme;
-            o.readinessProbeInitialDelaySeconds = readinessProbeInitialDelaySeconds;
-            o.readinessProbePeriodSeconds = readinessProbePeriodSeconds;
-            o.readinessProbeSuccessThreshold = readinessProbeSuccessThreshold;
-            o.readinessProbeTcpSocketPort = readinessProbeTcpSocketPort;
-            o.readinessProbeTimeoutSeconds = readinessProbeTimeoutSeconds;
-            o.volumeMounts = volumeMounts;
-            o.workingDir = workingDir;
-            return o;
+        }        public EciScalingConfigurationContainer build() {
+            return new EciScalingConfigurationContainer(args, commands, cpu, environmentVars, gpu, image, imagePullPolicy, livenessProbeExecCommands, livenessProbeFailureThreshold, livenessProbeHttpGetPath, livenessProbeHttpGetPort, livenessProbeHttpGetScheme, livenessProbeInitialDelaySeconds, livenessProbePeriodSeconds, livenessProbeSuccessThreshold, livenessProbeTcpSocketPort, livenessProbeTimeoutSeconds, memory, name, ports, readinessProbeExecCommands, readinessProbeFailureThreshold, readinessProbeHttpGetPath, readinessProbeHttpGetPort, readinessProbeHttpGetScheme, readinessProbeInitialDelaySeconds, readinessProbePeriodSeconds, readinessProbeSuccessThreshold, readinessProbeTcpSocketPort, readinessProbeTimeoutSeconds, volumeMounts, workingDir);
         }
     }
 }

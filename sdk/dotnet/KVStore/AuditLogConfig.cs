@@ -57,6 +57,8 @@ namespace Pulumi.AliCloud.KVStore
         /// Indicates Whether to Enable the Audit Log.  Valid value: 
         /// * true: Default Value, Open.
         /// * false: Closed.
+        /// 
+        /// Note: When the Instance for the Cluster Architecture Or Read/Write Split Architecture, at the Same Time to Open Or Close the Data Node and the Proxy Node of the Audit Log Doesn't Support Separate Open.
         /// </summary>
         [Output("dbAudit")]
         public Output<bool?> DbAudit { get; private set; } = null!;
@@ -68,7 +70,9 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Audit Log Retention Period Value: 1~365.
+        /// Audit Log Retention Period Value: 1~365. 
+        /// 
+        /// &gt; **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
         /// </summary>
         [Output("retention")]
         public Output<int?> Retention { get; private set; } = null!;
@@ -129,6 +133,8 @@ namespace Pulumi.AliCloud.KVStore
         /// Indicates Whether to Enable the Audit Log.  Valid value: 
         /// * true: Default Value, Open.
         /// * false: Closed.
+        /// 
+        /// Note: When the Instance for the Cluster Architecture Or Read/Write Split Architecture, at the Same Time to Open Or Close the Data Node and the Proxy Node of the Audit Log Doesn't Support Separate Open.
         /// </summary>
         [Input("dbAudit")]
         public Input<bool>? DbAudit { get; set; }
@@ -140,7 +146,9 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Audit Log Retention Period Value: 1~365.
+        /// Audit Log Retention Period Value: 1~365. 
+        /// 
+        /// &gt; **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
         /// </summary>
         [Input("retention")]
         public Input<int>? Retention { get; set; }
@@ -163,6 +171,8 @@ namespace Pulumi.AliCloud.KVStore
         /// Indicates Whether to Enable the Audit Log.  Valid value: 
         /// * true: Default Value, Open.
         /// * false: Closed.
+        /// 
+        /// Note: When the Instance for the Cluster Architecture Or Read/Write Split Architecture, at the Same Time to Open Or Close the Data Node and the Proxy Node of the Audit Log Doesn't Support Separate Open.
         /// </summary>
         [Input("dbAudit")]
         public Input<bool>? DbAudit { get; set; }
@@ -174,7 +184,9 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Audit Log Retention Period Value: 1~365.
+        /// Audit Log Retention Period Value: 1~365. 
+        /// 
+        /// &gt; **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
         /// </summary>
         [Input("retention")]
         public Input<int>? Retention { get; set; }

@@ -11,6 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:** This resource has been renamed to ecs.AutoSnapshotPolicy from version 1.117.0.
+//
+// Provides an ECS snapshot policy resource.
+//
+// For information about snapshot policy and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+//
+// > **NOTE:** Available in 1.42.0+.
+//
 // ## Example Usage
 //
 // ```go
@@ -70,6 +78,8 @@ type SnapshotPolicy struct {
 	// The snapshot retention time, and the unit of measurement is day. Optional values:
 	// - -1: The automatic snapshots are retained permanently.
 	// - [1, 65536]: The number of days retained.
+	//
+	// Default value: -1.
 	RetentionDays     pulumi.IntOutput         `pulumi:"retentionDays"`
 	Status            pulumi.StringOutput      `pulumi:"status"`
 	Tags              pulumi.MapOutput         `pulumi:"tags"`
@@ -129,6 +139,8 @@ type snapshotPolicyState struct {
 	// The snapshot retention time, and the unit of measurement is day. Optional values:
 	// - -1: The automatic snapshots are retained permanently.
 	// - [1, 65536]: The number of days retained.
+	//
+	// Default value: -1.
 	RetentionDays     *int                   `pulumi:"retentionDays"`
 	Status            *string                `pulumi:"status"`
 	Tags              map[string]interface{} `pulumi:"tags"`
@@ -151,6 +163,8 @@ type SnapshotPolicyState struct {
 	// The snapshot retention time, and the unit of measurement is day. Optional values:
 	// - -1: The automatic snapshots are retained permanently.
 	// - [1, 65536]: The number of days retained.
+	//
+	// Default value: -1.
 	RetentionDays     pulumi.IntPtrInput
 	Status            pulumi.StringPtrInput
 	Tags              pulumi.MapInput
@@ -177,6 +191,8 @@ type snapshotPolicyArgs struct {
 	// The snapshot retention time, and the unit of measurement is day. Optional values:
 	// - -1: The automatic snapshots are retained permanently.
 	// - [1, 65536]: The number of days retained.
+	//
+	// Default value: -1.
 	RetentionDays     int                    `pulumi:"retentionDays"`
 	Tags              map[string]interface{} `pulumi:"tags"`
 	TargetCopyRegions []string               `pulumi:"targetCopyRegions"`
@@ -199,6 +215,8 @@ type SnapshotPolicyArgs struct {
 	// The snapshot retention time, and the unit of measurement is day. Optional values:
 	// - -1: The automatic snapshots are retained permanently.
 	// - [1, 65536]: The number of days retained.
+	//
+	// Default value: -1.
 	RetentionDays     pulumi.IntInput
 	Tags              pulumi.MapInput
 	TargetCopyRegions pulumi.StringArrayInput
@@ -318,6 +336,8 @@ func (o SnapshotPolicyOutput) RepeatWeekdays() pulumi.StringArrayOutput {
 // The snapshot retention time, and the unit of measurement is day. Optional values:
 // - -1: The automatic snapshots are retained permanently.
 // - [1, 65536]: The number of days retained.
+//
+// Default value: -1.
 func (o SnapshotPolicyOutput) RetentionDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *SnapshotPolicy) pulumi.IntOutput { return v.RetentionDays }).(pulumi.IntOutput)
 }

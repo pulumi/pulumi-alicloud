@@ -791,6 +791,8 @@ class GroupMetricRuleTarget(dict):
         :param str arn: The Alibaba Cloud Resource Name (ARN) of the resource.
         :param str id: The ID of the resource for which alerts are triggered.
         :param str json_params: The parameters of the alert callback. The parameters are in the JSON format.
+               
+               > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
         :param str level: The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
         """
         if arn is not None:
@@ -823,6 +825,8 @@ class GroupMetricRuleTarget(dict):
     def json_params(self) -> Optional[str]:
         """
         The parameters of the alert callback. The parameters are in the JSON format.
+
+        > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
         """
         return pulumi.get(self, "json_params")
 
@@ -1278,7 +1282,11 @@ class MetricRuleTemplateAlertTemplate(dict):
         """
         :param str category: The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iot_edge`, `kvstore_sharding`, `kvstore_splitrw`, `kvstore_standard`, `memcache`, `mns`, `mongodb`, `mongodb_cluster`, `mongodb_sharding`, `mq_topic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
         :param str metric_name: The name of the metric.
+               
+               > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param str namespace: The namespace of the service.
+               
+               > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         :param str rule_name: The name of the alert rule.
         :param 'MetricRuleTemplateAlertTemplateEscalationsArgs' escalations: The information about the trigger condition based on the alert level. See the following `Block escalations`.
         :param str webhook: The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
@@ -1305,6 +1313,8 @@ class MetricRuleTemplateAlertTemplate(dict):
     def metric_name(self) -> str:
         """
         The name of the metric.
+
+        > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         """
         return pulumi.get(self, "metric_name")
 
@@ -1313,6 +1323,8 @@ class MetricRuleTemplateAlertTemplate(dict):
     def namespace(self) -> str:
         """
         The namespace of the service.
+
+        > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         """
         return pulumi.get(self, "namespace")
 
@@ -3665,6 +3677,8 @@ class GetMetricRuleTemplatesTemplateResult(dict):
         :param str id: The ID of the Metric Rule Template.
         :param str metric_rule_template_name: The name of the alert template.
         :param str rest_version: The version of the alert template.
+               
+               > **NOTE:** The version changes with the number of times that the alert template is modified.
         :param str template_id: The ID of the alert template.
         """
         pulumi.set(__self__, "alert_templates", alert_templates)
@@ -3720,6 +3734,8 @@ class GetMetricRuleTemplatesTemplateResult(dict):
     def rest_version(self) -> str:
         """
         The version of the alert template.
+
+        > **NOTE:** The version changes with the number of times that the alert template is modified.
         """
         return pulumi.get(self, "rest_version")
 

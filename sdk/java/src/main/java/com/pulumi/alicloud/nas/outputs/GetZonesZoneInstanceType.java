@@ -13,14 +13,21 @@ public final class GetZonesZoneInstanceType {
      * @return File transfer protocol type. Valid values:
      * 
      */
-    private String protocolType;
+    private final String protocolType;
     /**
      * @return The storage type of the nas zones. Valid values:
      * 
      */
-    private String storageType;
+    private final String storageType;
 
-    private GetZonesZoneInstanceType() {}
+    @CustomType.Constructor
+    private GetZonesZoneInstanceType(
+        @CustomType.Parameter("protocolType") String protocolType,
+        @CustomType.Parameter("storageType") String storageType) {
+        this.protocolType = protocolType;
+        this.storageType = storageType;
+    }
+
     /**
      * @return File transfer protocol type. Valid values:
      * 
@@ -43,32 +50,30 @@ public final class GetZonesZoneInstanceType {
     public static Builder builder(GetZonesZoneInstanceType defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String protocolType;
         private String storageType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetZonesZoneInstanceType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.protocolType = defaults.protocolType;
     	      this.storageType = defaults.storageType;
         }
 
-        @CustomType.Setter
         public Builder protocolType(String protocolType) {
             this.protocolType = Objects.requireNonNull(protocolType);
             return this;
         }
-        @CustomType.Setter
         public Builder storageType(String storageType) {
             this.storageType = Objects.requireNonNull(storageType);
             return this;
-        }
-        public GetZonesZoneInstanceType build() {
-            final var o = new GetZonesZoneInstanceType();
-            o.protocolType = protocolType;
-            o.storageType = storageType;
-            return o;
+        }        public GetZonesZoneInstanceType build() {
+            return new GetZonesZoneInstanceType(protocolType, storageType);
         }
     }
 }

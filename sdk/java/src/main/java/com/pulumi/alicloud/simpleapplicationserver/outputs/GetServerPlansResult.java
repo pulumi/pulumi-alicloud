@@ -14,22 +14,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServerPlansResult {
-    private @Nullable Integer bandwidth;
-    private @Nullable Integer core;
-    private @Nullable Integer diskSize;
-    private @Nullable Integer flow;
+    private final @Nullable Integer bandwidth;
+    private final @Nullable Integer core;
+    private final @Nullable Integer diskSize;
+    private final @Nullable Integer flow;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable Integer memory;
-    private @Nullable String outputFile;
-    private List<GetServerPlansPlan> plans;
-    private @Nullable String platform;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable Integer memory;
+    private final @Nullable String outputFile;
+    private final List<GetServerPlansPlan> plans;
+    private final @Nullable String platform;
 
-    private GetServerPlansResult() {}
+    @CustomType.Constructor
+    private GetServerPlansResult(
+        @CustomType.Parameter("bandwidth") @Nullable Integer bandwidth,
+        @CustomType.Parameter("core") @Nullable Integer core,
+        @CustomType.Parameter("diskSize") @Nullable Integer diskSize,
+        @CustomType.Parameter("flow") @Nullable Integer flow,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("memory") @Nullable Integer memory,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("plans") List<GetServerPlansPlan> plans,
+        @CustomType.Parameter("platform") @Nullable String platform) {
+        this.bandwidth = bandwidth;
+        this.core = core;
+        this.diskSize = diskSize;
+        this.flow = flow;
+        this.id = id;
+        this.ids = ids;
+        this.memory = memory;
+        this.outputFile = outputFile;
+        this.plans = plans;
+        this.platform = platform;
+    }
+
     public Optional<Integer> bandwidth() {
         return Optional.ofNullable(this.bandwidth);
     }
@@ -72,7 +95,7 @@ public final class GetServerPlansResult {
     public static Builder builder(GetServerPlansResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Integer bandwidth;
         private @Nullable Integer core;
@@ -84,7 +107,11 @@ public final class GetServerPlansResult {
         private @Nullable String outputFile;
         private List<GetServerPlansPlan> plans;
         private @Nullable String platform;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServerPlansResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidth = defaults.bandwidth;
@@ -99,32 +126,26 @@ public final class GetServerPlansResult {
     	      this.platform = defaults.platform;
         }
 
-        @CustomType.Setter
         public Builder bandwidth(@Nullable Integer bandwidth) {
             this.bandwidth = bandwidth;
             return this;
         }
-        @CustomType.Setter
         public Builder core(@Nullable Integer core) {
             this.core = core;
             return this;
         }
-        @CustomType.Setter
         public Builder diskSize(@Nullable Integer diskSize) {
             this.diskSize = diskSize;
             return this;
         }
-        @CustomType.Setter
         public Builder flow(@Nullable Integer flow) {
             this.flow = flow;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -132,17 +153,14 @@ public final class GetServerPlansResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder memory(@Nullable Integer memory) {
             this.memory = memory;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder plans(List<GetServerPlansPlan> plans) {
             this.plans = Objects.requireNonNull(plans);
             return this;
@@ -150,24 +168,11 @@ public final class GetServerPlansResult {
         public Builder plans(GetServerPlansPlan... plans) {
             return plans(List.of(plans));
         }
-        @CustomType.Setter
         public Builder platform(@Nullable String platform) {
             this.platform = platform;
             return this;
-        }
-        public GetServerPlansResult build() {
-            final var o = new GetServerPlansResult();
-            o.bandwidth = bandwidth;
-            o.core = core;
-            o.diskSize = diskSize;
-            o.flow = flow;
-            o.id = id;
-            o.ids = ids;
-            o.memory = memory;
-            o.outputFile = outputFile;
-            o.plans = plans;
-            o.platform = platform;
-            return o;
+        }        public GetServerPlansResult build() {
+            return new GetServerPlansResult(bandwidth, core, diskSize, flow, id, ids, memory, outputFile, plans, platform);
         }
     }
 }

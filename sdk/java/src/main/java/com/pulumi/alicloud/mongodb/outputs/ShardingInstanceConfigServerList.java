@@ -16,45 +16,64 @@ public final class ShardingInstanceConfigServerList {
      * @return The connection address of the Config Server node.
      * 
      */
-    private @Nullable String connectString;
+    private final @Nullable String connectString;
     /**
      * @return The max connections of the Config Server node.
      * 
      */
-    private @Nullable Integer maxConnections;
+    private final @Nullable Integer maxConnections;
     /**
      * @return The maximum IOPS of the Config Server node.
      * 
      */
-    private @Nullable Integer maxIops;
+    private final @Nullable Integer maxIops;
     /**
      * @return Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      * 
      */
-    private @Nullable String nodeClass;
+    private final @Nullable String nodeClass;
     /**
      * @return The description of the Config Server node.
      * 
      */
-    private @Nullable String nodeDescription;
+    private final @Nullable String nodeDescription;
     /**
      * @return The ID of the Config Server node.
      * 
      */
-    private @Nullable String nodeId;
+    private final @Nullable String nodeId;
     /**
      * @return - Custom storage space; value range: [10, 1,000]
      * - 10-GB increments. Unit: GB.
      * 
      */
-    private @Nullable Integer nodeStorage;
+    private final @Nullable Integer nodeStorage;
     /**
      * @return The connection port of the Config Server node.
      * 
      */
-    private @Nullable Integer port;
+    private final @Nullable Integer port;
 
-    private ShardingInstanceConfigServerList() {}
+    @CustomType.Constructor
+    private ShardingInstanceConfigServerList(
+        @CustomType.Parameter("connectString") @Nullable String connectString,
+        @CustomType.Parameter("maxConnections") @Nullable Integer maxConnections,
+        @CustomType.Parameter("maxIops") @Nullable Integer maxIops,
+        @CustomType.Parameter("nodeClass") @Nullable String nodeClass,
+        @CustomType.Parameter("nodeDescription") @Nullable String nodeDescription,
+        @CustomType.Parameter("nodeId") @Nullable String nodeId,
+        @CustomType.Parameter("nodeStorage") @Nullable Integer nodeStorage,
+        @CustomType.Parameter("port") @Nullable Integer port) {
+        this.connectString = connectString;
+        this.maxConnections = maxConnections;
+        this.maxIops = maxIops;
+        this.nodeClass = nodeClass;
+        this.nodeDescription = nodeDescription;
+        this.nodeId = nodeId;
+        this.nodeStorage = nodeStorage;
+        this.port = port;
+    }
+
     /**
      * @return The connection address of the Config Server node.
      * 
@@ -120,7 +139,7 @@ public final class ShardingInstanceConfigServerList {
     public static Builder builder(ShardingInstanceConfigServerList defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String connectString;
         private @Nullable Integer maxConnections;
@@ -130,7 +149,11 @@ public final class ShardingInstanceConfigServerList {
         private @Nullable String nodeId;
         private @Nullable Integer nodeStorage;
         private @Nullable Integer port;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ShardingInstanceConfigServerList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectString = defaults.connectString;
@@ -143,57 +166,39 @@ public final class ShardingInstanceConfigServerList {
     	      this.port = defaults.port;
         }
 
-        @CustomType.Setter
         public Builder connectString(@Nullable String connectString) {
             this.connectString = connectString;
             return this;
         }
-        @CustomType.Setter
         public Builder maxConnections(@Nullable Integer maxConnections) {
             this.maxConnections = maxConnections;
             return this;
         }
-        @CustomType.Setter
         public Builder maxIops(@Nullable Integer maxIops) {
             this.maxIops = maxIops;
             return this;
         }
-        @CustomType.Setter
         public Builder nodeClass(@Nullable String nodeClass) {
             this.nodeClass = nodeClass;
             return this;
         }
-        @CustomType.Setter
         public Builder nodeDescription(@Nullable String nodeDescription) {
             this.nodeDescription = nodeDescription;
             return this;
         }
-        @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
             this.nodeId = nodeId;
             return this;
         }
-        @CustomType.Setter
         public Builder nodeStorage(@Nullable Integer nodeStorage) {
             this.nodeStorage = nodeStorage;
             return this;
         }
-        @CustomType.Setter
         public Builder port(@Nullable Integer port) {
             this.port = port;
             return this;
-        }
-        public ShardingInstanceConfigServerList build() {
-            final var o = new ShardingInstanceConfigServerList();
-            o.connectString = connectString;
-            o.maxConnections = maxConnections;
-            o.maxIops = maxIops;
-            o.nodeClass = nodeClass;
-            o.nodeDescription = nodeDescription;
-            o.nodeId = nodeId;
-            o.nodeStorage = nodeStorage;
-            o.port = port;
-            return o;
+        }        public ShardingInstanceConfigServerList build() {
+            return new ShardingInstanceConfigServerList(connectString, maxConnections, maxIops, nodeClass, nodeDescription, nodeId, nodeStorage, port);
         }
     }
 }

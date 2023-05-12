@@ -13,14 +13,21 @@ public final class GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath
      * @return The content of the configuration file. Maximum size: 32 KB.
      * 
      */
-    private String content;
+    private final String content;
     /**
      * @return The relative file path.
      * 
      */
-    private String path;
+    private final String path;
 
-    private GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath() {}
+    @CustomType.Constructor
+    private GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath(
+        @CustomType.Parameter("content") String content,
+        @CustomType.Parameter("path") String path) {
+        this.content = content;
+        this.path = path;
+    }
+
     /**
      * @return The content of the configuration file. Maximum size: 32 KB.
      * 
@@ -43,32 +50,30 @@ public final class GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath
     public static Builder builder(GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String content;
         private String path;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
     	      this.path = defaults.path;
         }
 
-        @CustomType.Setter
         public Builder content(String content) {
             this.content = Objects.requireNonNull(content);
             return this;
         }
-        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
-        }
-        public GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath build() {
-            final var o = new GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath();
-            o.content = content;
-            o.path = path;
-            return o;
+        }        public GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath build() {
+            return new GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath(content, path);
         }
     }
 }

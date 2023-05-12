@@ -146,9 +146,13 @@ def get_trails_deprecated(ids: Optional[Sequence[str]] = None,
                           status: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTrailsDeprecatedResult:
     """
-    Use this data source to access information about an existing resource.
+    > **DEPRECATED:**  This datasource has been renamed to actiontrail_get_trails from version 1.95.0.
+
+    This data source provides a list of action trail of the current Alibaba Cloud user.
+
 
     :param str name_regex: A regex string to filter results action trail name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     pulumi.log.warn("""get_trails_deprecated is deprecated: DataSource has been renamed to `getTrails`""")
     __args__ = dict()
@@ -183,9 +187,13 @@ def get_trails_deprecated_output(ids: Optional[pulumi.Input[Optional[Sequence[st
                                  status: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTrailsDeprecatedResult]:
     """
-    Use this data source to access information about an existing resource.
+    > **DEPRECATED:**  This datasource has been renamed to actiontrail_get_trails from version 1.95.0.
+
+    This data source provides a list of action trail of the current Alibaba Cloud user.
+
 
     :param str name_regex: A regex string to filter results action trail name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     pulumi.log.warn("""get_trails_deprecated is deprecated: DataSource has been renamed to `getTrails`""")
     ...

@@ -52,7 +52,8 @@ type GetServicesArgs struct {
 	// A list of FC services ids.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by FC service name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -88,7 +89,8 @@ type GetServicesOutputArgs struct {
 	// A list of FC services ids.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by FC service name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

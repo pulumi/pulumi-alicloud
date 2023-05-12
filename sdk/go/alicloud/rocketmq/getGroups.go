@@ -88,6 +88,7 @@ type GetGroupsArgs struct {
 	// ID of the ONS Instance that owns the groups.
 	InstanceId string  `pulumi:"instanceId"`
 	NameRegex  *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// A map of tags assigned to the Ons instance.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -136,6 +137,7 @@ type GetGroupsOutputArgs struct {
 	// ID of the ONS Instance that owns the groups.
 	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// A map of tags assigned to the Ons instance.
 	Tags pulumi.MapInput `pulumi:"tags"`

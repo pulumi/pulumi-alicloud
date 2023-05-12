@@ -22,10 +22,13 @@ class GetInstancesResult:
     """
     A collection of values returned by getInstances.
     """
-    def __init__(__self__, availability_zone=None, id=None, ids=None, image_id=None, instance_name=None, instances=None, name_regex=None, names=None, output_file=None, page_number=None, page_size=None, ram_role_name=None, resource_group_id=None, status=None, tags=None, total_count=None, vpc_id=None, vswitch_id=None):
+    def __init__(__self__, availability_zone=None, enable_details=None, id=None, ids=None, image_id=None, instance_name=None, instances=None, name_regex=None, names=None, output_file=None, page_number=None, page_size=None, ram_role_name=None, resource_group_id=None, status=None, tags=None, total_count=None, vpc_id=None, vswitch_id=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         pulumi.set(__self__, "availability_zone", availability_zone)
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -85,6 +88,11 @@ class GetInstancesResult:
         Availability zone the instance belongs to.
         """
         return pulumi.get(self, "availability_zone")
+
+    @property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_details")
 
     @property
     @pulumi.getter
@@ -212,6 +220,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             yield self
         return GetInstancesResult(
             availability_zone=self.availability_zone,
+            enable_details=self.enable_details,
             id=self.id,
             ids=self.ids,
             image_id=self.image_id,
@@ -232,6 +241,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
 
 
 def get_instances(availability_zone: Optional[str] = None,
+                  enable_details: Optional[bool] = None,
                   ids: Optional[Sequence[str]] = None,
                   image_id: Optional[str] = None,
                   instance_name: Optional[str] = None,
@@ -263,12 +273,14 @@ def get_instances(availability_zone: Optional[str] = None,
 
 
     :param str availability_zone: Availability zone where instances are located.
+    :param bool enable_details: Default to `true`. If false, the attributes `ram_role_name` and `disk_device_mappings` will not be fetched and output.
     :param Sequence[str] ids: A list of ECS instance IDs.
     :param str image_id: The image ID of some ECS instance used.
     :param str instance_name: The name of the instance. Fuzzy search with the asterisk (*) wildcard characters is supported.
     :param str name_regex: A regex string to filter results by instance name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str ram_role_name: The RAM role name which the instance attaches.
-    :param str resource_group_id: The Id of resource group which the instance belongs.
+    :param str resource_group_id: The ID of resource group which the instance belongs.
     :param str status: Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
     :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
            ```python
@@ -285,6 +297,7 @@ def get_instances(availability_zone: Optional[str] = None,
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone
+    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
     __args__['imageId'] = image_id
     __args__['instanceName'] = instance_name
@@ -303,6 +316,7 @@ def get_instances(availability_zone: Optional[str] = None,
 
     return AwaitableGetInstancesResult(
         availability_zone=__ret__.availability_zone,
+        enable_details=__ret__.enable_details,
         id=__ret__.id,
         ids=__ret__.ids,
         image_id=__ret__.image_id,
@@ -324,6 +338,7 @@ def get_instances(availability_zone: Optional[str] = None,
 
 @_utilities.lift_output_func(get_instances)
 def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]] = None,
+                         enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          image_id: Optional[pulumi.Input[Optional[str]]] = None,
                          instance_name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -355,12 +370,14 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
 
 
     :param str availability_zone: Availability zone where instances are located.
+    :param bool enable_details: Default to `true`. If false, the attributes `ram_role_name` and `disk_device_mappings` will not be fetched and output.
     :param Sequence[str] ids: A list of ECS instance IDs.
     :param str image_id: The image ID of some ECS instance used.
     :param str instance_name: The name of the instance. Fuzzy search with the asterisk (*) wildcard characters is supported.
     :param str name_regex: A regex string to filter results by instance name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str ram_role_name: The RAM role name which the instance attaches.
-    :param str resource_group_id: The Id of resource group which the instance belongs.
+    :param str resource_group_id: The ID of resource group which the instance belongs.
     :param str status: Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
     :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
            ```python

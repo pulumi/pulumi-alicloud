@@ -7,6 +7,13 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **DEPRECATED:** It has been deprecated from version `1.197.0`.
+ * Please use new datasource alicloud.servicecatalog.getEndUserProducts instead.
+ *
+ * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+ *
+ * > **NOTE:** Available in 1.196.0+
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -44,6 +51,9 @@ export interface GetProductAsEndUsersArgs {
      * A regex string to filter results by product name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     sortBy?: string;
     sortOrder?: string;
@@ -71,6 +81,13 @@ export interface GetProductAsEndUsersResult {
     readonly users: outputs.servicecatalog.GetProductAsEndUsersUser[];
 }
 /**
+ * > **DEPRECATED:** It has been deprecated from version `1.197.0`.
+ * Please use new datasource alicloud.servicecatalog.getEndUserProducts instead.
+ *
+ * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+ *
+ * > **NOTE:** Available in 1.196.0+
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -99,6 +116,9 @@ export interface GetProductAsEndUsersOutputArgs {
      * A regex string to filter results by product name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     sortBy?: pulumi.Input<string>;
     sortOrder?: pulumi.Input<string>;

@@ -7,6 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+ * that connect VPCs together.
+ *
+ * > **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new resource alicloud_express_connect_router_interfaces.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -58,6 +63,9 @@ export interface GetRouterInterfacesArgs {
      * Account ID of the owner of the peer router interface.
      */
     oppositeInterfaceOwnerId?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
@@ -134,6 +142,11 @@ export interface GetRouterInterfacesResult {
     readonly status?: string;
 }
 /**
+ * This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+ * that connect VPCs together.
+ *
+ * > **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new resource alicloud_express_connect_router_interfaces.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -171,6 +184,9 @@ export interface GetRouterInterfacesOutputArgs {
      * Account ID of the owner of the peer router interface.
      */
     oppositeInterfaceOwnerId?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 

@@ -15,6 +15,11 @@ export const getLaunchOptions: typeof import("./getLaunchOptions").getLaunchOpti
 export const getLaunchOptionsOutput: typeof import("./getLaunchOptions").getLaunchOptionsOutput = null as any;
 utilities.lazyLoad(exports, ["getLaunchOptions","getLaunchOptionsOutput"], () => require("./getLaunchOptions"));
 
+export { GetPortfoliosArgs, GetPortfoliosResult, GetPortfoliosOutputArgs } from "./getPortfolios";
+export const getPortfolios: typeof import("./getPortfolios").getPortfolios = null as any;
+export const getPortfoliosOutput: typeof import("./getPortfolios").getPortfoliosOutput = null as any;
+utilities.lazyLoad(exports, ["getPortfolios","getPortfoliosOutput"], () => require("./getPortfolios"));
+
 export { GetProductAsEndUsersArgs, GetProductAsEndUsersResult, GetProductAsEndUsersOutputArgs } from "./getProductAsEndUsers";
 export const getProductAsEndUsers: typeof import("./getProductAsEndUsers").getProductAsEndUsers = null as any;
 export const getProductAsEndUsersOutput: typeof import("./getProductAsEndUsers").getProductAsEndUsersOutput = null as any;
@@ -30,6 +35,11 @@ export const getProvisionedProducts: typeof import("./getProvisionedProducts").g
 export const getProvisionedProductsOutput: typeof import("./getProvisionedProducts").getProvisionedProductsOutput = null as any;
 utilities.lazyLoad(exports, ["getProvisionedProducts","getProvisionedProductsOutput"], () => require("./getProvisionedProducts"));
 
+export { PortfolioArgs, PortfolioState } from "./portfolio";
+export type Portfolio = import("./portfolio").Portfolio;
+export const Portfolio: typeof import("./portfolio").Portfolio = null as any;
+utilities.lazyLoad(exports, ["Portfolio"], () => require("./portfolio"));
+
 export { ProvisionedProductArgs, ProvisionedProductState } from "./provisionedProduct";
 export type ProvisionedProduct = import("./provisionedProduct").ProvisionedProduct;
 export const ProvisionedProduct: typeof import("./provisionedProduct").ProvisionedProduct = null as any;
@@ -40,6 +50,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:servicecatalog/portfolio:Portfolio":
+                return new Portfolio(name, <any>undefined, { urn })
             case "alicloud:servicecatalog/provisionedProduct:ProvisionedProduct":
                 return new ProvisionedProduct(name, <any>undefined, { urn })
             default:
@@ -47,4 +59,5 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "servicecatalog/portfolio", _module)
 pulumi.runtime.registerResourceModule("alicloud", "servicecatalog/provisionedProduct", _module)

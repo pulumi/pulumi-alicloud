@@ -132,6 +132,7 @@ def get_virtual_hosts(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Virtual Host IDs. Its element value is same as Virtual Host Name.
     :param str instance_id: InstanceId.
     :param str name_regex: A regex string to filter results by Virtual Host name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -185,5 +186,6 @@ def get_virtual_hosts_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     :param Sequence[str] ids: A list of Virtual Host IDs. Its element value is same as Virtual Host Name.
     :param str instance_id: InstanceId.
     :param str name_regex: A regex string to filter results by Virtual Host name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

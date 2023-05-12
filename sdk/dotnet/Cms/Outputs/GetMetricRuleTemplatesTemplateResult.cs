@@ -35,6 +35,8 @@ namespace Pulumi.AliCloud.Cms.Outputs
         public readonly string MetricRuleTemplateName;
         /// <summary>
         /// The version of the alert template.
+        /// 
+        /// &gt; **NOTE:** The version changes with the number of times that the alert template is modified.
         /// </summary>
         public readonly string RestVersion;
         /// <summary>

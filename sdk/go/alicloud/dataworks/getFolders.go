@@ -68,8 +68,9 @@ func GetFolders(ctx *pulumi.Context, args *GetFoldersArgs, opts ...pulumi.Invoke
 // A collection of arguments for invoking getFolders.
 type GetFoldersArgs struct {
 	// A list of Folder IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The parent folder path.
 	ParentFolderPath string `pulumi:"parentFolderPath"`
 	// The ID of the project.
@@ -103,8 +104,9 @@ func GetFoldersOutput(ctx *pulumi.Context, args GetFoldersOutputArgs, opts ...pu
 // A collection of arguments for invoking getFolders.
 type GetFoldersOutputArgs struct {
 	// A list of Folder IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The parent folder path.
 	ParentFolderPath pulumi.StringInput `pulumi:"parentFolderPath"`
 	// The ID of the project.

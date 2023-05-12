@@ -17,34 +17,49 @@ public final class WafRuleRateLimit {
      * @return Statistical duration, 5-1800.
      * 
      */
-    private @Nullable Integer interval;
+    private final @Nullable Integer interval;
     /**
      * @return The status of the waf rule. Valid values: `on` and `off`. Default value: on.
      * 
      */
-    private @Nullable WafRuleRateLimitStatus status;
+    private final @Nullable WafRuleRateLimitStatus status;
     /**
      * @return The match subfield.
      * 
      */
-    private @Nullable String subKey;
+    private final @Nullable String subKey;
     /**
      * @return The statistical field for frequency control. Currently, `IP`, `Header`, `Query String Parameter`, `Cookie Name`, `Session` is supported.
      * 
      */
-    private @Nullable String target;
+    private final @Nullable String target;
     /**
      * @return The trigger threshold of rate limiting. Valid values: 2 to 500000. Unit: requests.
      * 
      */
-    private @Nullable Integer threshold;
+    private final @Nullable Integer threshold;
     /**
      * @return The validity period of the blacklist. Valid values: 60 to 86400. Unit: seconds.
      * 
      */
-    private @Nullable Integer ttl;
+    private final @Nullable Integer ttl;
 
-    private WafRuleRateLimit() {}
+    @CustomType.Constructor
+    private WafRuleRateLimit(
+        @CustomType.Parameter("interval") @Nullable Integer interval,
+        @CustomType.Parameter("status") @Nullable WafRuleRateLimitStatus status,
+        @CustomType.Parameter("subKey") @Nullable String subKey,
+        @CustomType.Parameter("target") @Nullable String target,
+        @CustomType.Parameter("threshold") @Nullable Integer threshold,
+        @CustomType.Parameter("ttl") @Nullable Integer ttl) {
+        this.interval = interval;
+        this.status = status;
+        this.subKey = subKey;
+        this.target = target;
+        this.threshold = threshold;
+        this.ttl = ttl;
+    }
+
     /**
      * @return Statistical duration, 5-1800.
      * 
@@ -95,7 +110,7 @@ public final class WafRuleRateLimit {
     public static Builder builder(WafRuleRateLimit defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Integer interval;
         private @Nullable WafRuleRateLimitStatus status;
@@ -103,7 +118,11 @@ public final class WafRuleRateLimit {
         private @Nullable String target;
         private @Nullable Integer threshold;
         private @Nullable Integer ttl;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(WafRuleRateLimit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.interval = defaults.interval;
@@ -114,45 +133,31 @@ public final class WafRuleRateLimit {
     	      this.ttl = defaults.ttl;
         }
 
-        @CustomType.Setter
         public Builder interval(@Nullable Integer interval) {
             this.interval = interval;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable WafRuleRateLimitStatus status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder subKey(@Nullable String subKey) {
             this.subKey = subKey;
             return this;
         }
-        @CustomType.Setter
         public Builder target(@Nullable String target) {
             this.target = target;
             return this;
         }
-        @CustomType.Setter
         public Builder threshold(@Nullable Integer threshold) {
             this.threshold = threshold;
             return this;
         }
-        @CustomType.Setter
         public Builder ttl(@Nullable Integer ttl) {
             this.ttl = ttl;
             return this;
-        }
-        public WafRuleRateLimit build() {
-            final var o = new WafRuleRateLimit();
-            o.interval = interval;
-            o.status = status;
-            o.subKey = subKey;
-            o.target = target;
-            o.threshold = threshold;
-            o.ttl = ttl;
-            return o;
+        }        public WafRuleRateLimit build() {
+            return new WafRuleRateLimit(interval, status, subKey, target, threshold, ttl);
         }
     }
 }

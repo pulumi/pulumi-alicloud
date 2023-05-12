@@ -7,6 +7,14 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsSnapshots from version 1.120.0.
+ *
+ * Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
+ *
+ * For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+ *
+ * > **NOTE:**  Available in 1.40.0+.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -163,6 +171,14 @@ export interface GetSnapshotsResult {
     readonly usage?: string;
 }
 /**
+ * > **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsSnapshots from version 1.120.0.
+ *
+ * Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
+ *
+ * For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+ *
+ * > **NOTE:**  Available in 1.40.0+.
+ *
  * ## Example Usage
  *
  * ```typescript

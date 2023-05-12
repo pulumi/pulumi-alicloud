@@ -14,21 +14,42 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDeviceGroupsResult {
-    private @Nullable Boolean enableDetails;
-    private @Nullable String groupName;
-    private List<GetDeviceGroupsGroup> groups;
+    private final @Nullable Boolean enableDetails;
+    private final @Nullable String groupName;
+    private final List<GetDeviceGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String iotInstanceId;
-    private @Nullable String nameRegex;
-    private @Nullable String outputFile;
-    private @Nullable String superGroupId;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String iotInstanceId;
+    private final @Nullable String nameRegex;
+    private final @Nullable String outputFile;
+    private final @Nullable String superGroupId;
 
-    private GetDeviceGroupsResult() {}
+    @CustomType.Constructor
+    private GetDeviceGroupsResult(
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("groupName") @Nullable String groupName,
+        @CustomType.Parameter("groups") List<GetDeviceGroupsGroup> groups,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("iotInstanceId") @Nullable String iotInstanceId,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("superGroupId") @Nullable String superGroupId) {
+        this.enableDetails = enableDetails;
+        this.groupName = groupName;
+        this.groups = groups;
+        this.id = id;
+        this.ids = ids;
+        this.iotInstanceId = iotInstanceId;
+        this.nameRegex = nameRegex;
+        this.outputFile = outputFile;
+        this.superGroupId = superGroupId;
+    }
+
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -68,7 +89,7 @@ public final class GetDeviceGroupsResult {
     public static Builder builder(GetDeviceGroupsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private @Nullable String groupName;
@@ -79,7 +100,11 @@ public final class GetDeviceGroupsResult {
         private @Nullable String nameRegex;
         private @Nullable String outputFile;
         private @Nullable String superGroupId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDeviceGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -93,17 +118,14 @@ public final class GetDeviceGroupsResult {
     	      this.superGroupId = defaults.superGroupId;
         }
 
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder groupName(@Nullable String groupName) {
             this.groupName = groupName;
             return this;
         }
-        @CustomType.Setter
         public Builder groups(List<GetDeviceGroupsGroup> groups) {
             this.groups = Objects.requireNonNull(groups);
             return this;
@@ -111,12 +133,10 @@ public final class GetDeviceGroupsResult {
         public Builder groups(GetDeviceGroupsGroup... groups) {
             return groups(List.of(groups));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -124,38 +144,23 @@ public final class GetDeviceGroupsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder iotInstanceId(@Nullable String iotInstanceId) {
             this.iotInstanceId = iotInstanceId;
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder superGroupId(@Nullable String superGroupId) {
             this.superGroupId = superGroupId;
             return this;
-        }
-        public GetDeviceGroupsResult build() {
-            final var o = new GetDeviceGroupsResult();
-            o.enableDetails = enableDetails;
-            o.groupName = groupName;
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.iotInstanceId = iotInstanceId;
-            o.nameRegex = nameRegex;
-            o.outputFile = outputFile;
-            o.superGroupId = superGroupId;
-            return o;
+        }        public GetDeviceGroupsResult build() {
+            return new GetDeviceGroupsResult(enableDetails, groupName, groups, id, ids, iotInstanceId, nameRegex, outputFile, superGroupId);
         }
     }
 }

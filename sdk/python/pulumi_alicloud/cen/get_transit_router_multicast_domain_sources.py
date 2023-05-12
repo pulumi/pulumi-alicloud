@@ -107,6 +107,7 @@ def get_transit_router_multicast_domain_sources(ids: Optional[Sequence[str]] = N
     ```
 
 
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast source belongs.
     """
     __args__ = dict()
@@ -145,6 +146,7 @@ def get_transit_router_multicast_domain_sources_output(ids: Optional[pulumi.Inpu
     ```
 
 
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast source belongs.
     """
     ...

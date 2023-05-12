@@ -15,6 +15,12 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
+ * Provides bind the domain name to the DNS instance resource.
+ * 
+ * &gt; **NOTE:** Available in v1.80.0+.
+ * 
+ * &gt; **DEPRECATED:**  This resource has been deprecated from version `1.99.0`. Please use new resource alicloud_alidns_domain_attachment.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;

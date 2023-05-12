@@ -148,6 +148,7 @@ def get_desktop_types(cpu_count: Optional[int] = None,
     :param Sequence[str] ids: A list of Desktop Type IDs.
     :param str instance_type_family: The Specification family.
     :param int memory_size: The Memory size. Unit: MiB.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource.
     """
     __args__ = dict()
@@ -205,6 +206,7 @@ def get_desktop_types_output(cpu_count: Optional[pulumi.Input[Optional[int]]] = 
     :param Sequence[str] ids: A list of Desktop Type IDs.
     :param str instance_type_family: The Specification family.
     :param int memory_size: The Memory size. Unit: MiB.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource.
     """
     ...

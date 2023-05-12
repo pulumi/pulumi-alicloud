@@ -11,14 +11,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApiMockServiceConfig {
-    private @Nullable String aoneName;
+    private final @Nullable String aoneName;
     /**
      * @return The result of the mock service.
      * 
      */
-    private String result;
+    private final String result;
 
-    private ApiMockServiceConfig() {}
+    @CustomType.Constructor
+    private ApiMockServiceConfig(
+        @CustomType.Parameter("aoneName") @Nullable String aoneName,
+        @CustomType.Parameter("result") String result) {
+        this.aoneName = aoneName;
+        this.result = result;
+    }
+
     public Optional<String> aoneName() {
         return Optional.ofNullable(this.aoneName);
     }
@@ -37,32 +44,30 @@ public final class ApiMockServiceConfig {
     public static Builder builder(ApiMockServiceConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String aoneName;
         private String result;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ApiMockServiceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aoneName = defaults.aoneName;
     	      this.result = defaults.result;
         }
 
-        @CustomType.Setter
         public Builder aoneName(@Nullable String aoneName) {
             this.aoneName = aoneName;
             return this;
         }
-        @CustomType.Setter
         public Builder result(String result) {
             this.result = Objects.requireNonNull(result);
             return this;
-        }
-        public ApiMockServiceConfig build() {
-            final var o = new ApiMockServiceConfig();
-            o.aoneName = aoneName;
-            o.result = result;
-            return o;
+        }        public ApiMockServiceConfig build() {
+            return new ApiMockServiceConfig(aoneName, result);
         }
     }
 }

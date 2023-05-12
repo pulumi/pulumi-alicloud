@@ -53,6 +53,8 @@ func GetIndustrialSerice(ctx *pulumi.Context, args *GetIndustrialSericeArgs, opt
 // A collection of arguments for invoking getIndustrialSerice.
 type GetIndustrialSericeArgs struct {
 	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+	//
+	// > **NOTE:** Setting `enable = "On"` to open the Brain Industrial service. The service can not closed once it is opened.
 	Enable *string `pulumi:"enable"`
 }
 
@@ -81,6 +83,8 @@ func GetIndustrialSericeOutput(ctx *pulumi.Context, args GetIndustrialSericeOutp
 // A collection of arguments for invoking getIndustrialSerice.
 type GetIndustrialSericeOutputArgs struct {
 	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+	//
+	// > **NOTE:** Setting `enable = "On"` to open the Brain Industrial service. The service can not closed once it is opened.
 	Enable pulumi.StringPtrInput `pulumi:"enable"`
 }
 

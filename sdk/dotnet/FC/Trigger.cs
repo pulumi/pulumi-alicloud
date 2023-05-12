@@ -10,6 +10,510 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.FC
 {
     /// <summary>
+    /// Provides an Alicloud Function Compute Trigger resource. Based on trigger, execute your code in response to events in Alibaba Cloud.
+    ///  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/doc-detail/52895.htm).
+    /// 
+    /// &gt; **NOTE:** The resource requires a provider field 'account_id'. See account_id.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
+    ///     var account = config.Get("account") ?? "12345";
+    ///     var fooRole = new AliCloud.Ram.Role("fooRole", new()
+    ///     {
+    ///         Document = @"  {
+    ///     ""Statement"": [
+    ///       {
+    ///         ""Action"": ""sts:AssumeRole"",
+    ///         ""Effect"": ""Allow"",
+    ///         ""Principal"": {
+    ///           ""Service"": [
+    ///             ""log.aliyuncs.com""
+    ///           ]
+    ///         }
+    ///       }
+    ///     ],
+    ///     ""Version"": ""1""
+    ///   }
+    ///   
+    /// ",
+    ///         Description = "this is a test",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var fooRolePolicyAttachment = new AliCloud.Ram.RolePolicyAttachment("fooRolePolicyAttachment", new()
+    ///     {
+    ///         RoleName = fooRole.Name,
+    ///         PolicyName = "AliyunLogFullAccess",
+    ///         PolicyType = "System",
+    ///     });
+    /// 
+    ///     var fooTrigger = new AliCloud.FC.Trigger("fooTrigger", new()
+    ///     {
+    ///         Service = "my-fc-service",
+    ///         Function = "hello-world",
+    ///         Role = fooRole.Arn,
+    ///         SourceArn = $"acs:log:{region}:{account}:project/{alicloud_log_project.Foo.Name}",
+    ///         Type = "log",
+    ///         Config = @"    {
+    ///         ""sourceConfig"": {
+    ///             ""project"": ""project-for-fc"",
+    ///             ""logstore"": ""project-for-fc""
+    ///         },
+    ///         ""jobConfig"": {
+    ///             ""maxRetryTime"": 3,
+    ///             ""triggerInterval"": 60
+    ///         },
+    ///         ""functionParameter"": {
+    ///             ""a"": ""b"",
+    ///             ""c"": ""d""
+    ///         },
+    ///         ""logConfig"": {
+    ///             ""project"": ""project-for-fc-log"",
+    ///             ""logstore"": ""project-for-fc-log""
+    ///         },
+    ///         ""enable"": true
+    ///     }
+    ///   
+    /// ",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             fooRolePolicyAttachment,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// MNS topic trigger:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "fctriggermnstopic";
+    ///     var currentRegion = AliCloud.GetRegions.Invoke(new()
+    ///     {
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var current = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var fooProject = new AliCloud.Log.Project("fooProject", new()
+    ///     {
+    ///         Description = "tf unit test",
+    ///     });
+    /// 
+    ///     var bar = new AliCloud.Log.Store("bar", new()
+    ///     {
+    ///         Project = fooProject.Name,
+    ///         RetentionPeriod = 3000,
+    ///         ShardCount = 1,
+    ///     });
+    /// 
+    ///     var fooStore = new AliCloud.Log.Store("fooStore", new()
+    ///     {
+    ///         Project = fooProject.Name,
+    ///         RetentionPeriod = 3000,
+    ///         ShardCount = 1,
+    ///     });
+    /// 
+    ///     var fooTopic = new AliCloud.Mns.Topic("fooTopic");
+    /// 
+    ///     var fooService = new AliCloud.FC.Service("fooService", new()
+    ///     {
+    ///         InternetAccess = false,
+    ///     });
+    /// 
+    ///     var fooBucket = new AliCloud.Oss.Bucket("fooBucket", new()
+    ///     {
+    ///         BucketName = name,
+    ///     });
+    /// 
+    ///     // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+    ///     var fooBucketObject = new AliCloud.Oss.BucketObject("fooBucketObject", new()
+    ///     {
+    ///         Bucket = fooBucket.Id,
+    ///         Key = "fc/hello.zip",
+    ///         Source = "./hello.zip",
+    ///     });
+    /// 
+    ///     var fooFunction = new AliCloud.FC.Function("fooFunction", new()
+    ///     {
+    ///         Handler = "hello.handler",
+    ///         MemorySize = 512,
+    ///         OssBucket = fooBucket.Id,
+    ///         OssKey = fooBucketObject.Key,
+    ///         Runtime = "python2.7",
+    ///         Service = fooService.Name,
+    ///     });
+    /// 
+    ///     var fooRole = new AliCloud.Ram.Role("fooRole", new()
+    ///     {
+    ///         Description = "this is a test",
+    ///         Document = @"  {
+    ///     ""Statement"": [
+    ///       {
+    ///         ""Action"": ""sts:AssumeRole"",
+    ///         ""Effect"": ""Allow"",
+    ///         ""Principal"": {
+    ///           ""Service"": [
+    ///             ""mns.aliyuncs.com""
+    ///           ]
+    ///         }
+    ///       }
+    ///     ],
+    ///     ""Version"": ""1""
+    ///   }
+    ///   
+    /// ",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var fooRolePolicyAttachment = new AliCloud.Ram.RolePolicyAttachment("fooRolePolicyAttachment", new()
+    ///     {
+    ///         PolicyName = "AliyunMNSNotificationRolePolicy",
+    ///         PolicyType = "System",
+    ///         RoleName = fooRole.Name,
+    ///     });
+    /// 
+    ///     var fooTrigger = new AliCloud.FC.Trigger("fooTrigger", new()
+    ///     {
+    ///         ConfigMns = @"  {
+    ///     ""filterTag"":""testTag"",
+    ///     ""notifyContentFormat"":""STREAM"",
+    ///     ""notifyStrategy"":""BACKOFF_RETRY""
+    ///   }
+    ///   
+    /// ",
+    ///         Function = fooFunction.Name,
+    ///         Role = fooRole.Arn,
+    ///         Service = fooService.Name,
+    ///         SourceArn = Output.Tuple(currentRegion, current, fooTopic.Name).Apply(values =&gt;
+    ///         {
+    ///             var currentRegion = values.Item1;
+    ///             var current = values.Item2;
+    ///             var name = values.Item3;
+    ///             return $"acs:mns:{currentRegion.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{current.Apply(getAccountResult =&gt; getAccountResult.Id)}:/topics/{name}";
+    ///         }),
+    ///         Type = "mns_topic",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             "alicloud_ram_role_policy_attachment.foo",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// CDN events trigger:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "fctriggercdneventsconfig";
+    ///     var current = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var domain = new AliCloud.Cdn.DomainNew("domain", new()
+    ///     {
+    ///         CdnType = "web",
+    ///         DomainName = $"{name}.tf.com",
+    ///         Scope = "overseas",
+    ///         Sources = new[]
+    ///         {
+    ///             new AliCloud.Cdn.Inputs.DomainNewSourceArgs
+    ///             {
+    ///                 Content = "1.1.1.1",
+    ///                 Port = 80,
+    ///                 Priority = 20,
+    ///                 Type = "ipaddr",
+    ///                 Weight = 10,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var fooService = new AliCloud.FC.Service("fooService", new()
+    ///     {
+    ///         InternetAccess = false,
+    ///     });
+    /// 
+    ///     var fooBucket = new AliCloud.Oss.Bucket("fooBucket", new()
+    ///     {
+    ///         BucketName = name,
+    ///     });
+    /// 
+    ///     // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+    ///     var fooBucketObject = new AliCloud.Oss.BucketObject("fooBucketObject", new()
+    ///     {
+    ///         Bucket = fooBucket.Id,
+    ///         Key = "fc/hello.zip",
+    ///         Source = "./hello.zip",
+    ///     });
+    /// 
+    ///     var fooFunction = new AliCloud.FC.Function("fooFunction", new()
+    ///     {
+    ///         Handler = "hello.handler",
+    ///         MemorySize = 512,
+    ///         OssBucket = fooBucket.Id,
+    ///         OssKey = fooBucketObject.Key,
+    ///         Runtime = "python2.7",
+    ///         Service = fooService.Name,
+    ///     });
+    /// 
+    ///     var fooRole = new AliCloud.Ram.Role("fooRole", new()
+    ///     {
+    ///         Description = "this is a test",
+    ///         Document = @"    {
+    ///         ""Version"": ""1"",
+    ///         ""Statement"": [
+    ///             {
+    ///                 ""Action"": ""cdn:Describe*"",
+    ///                 ""Resource"": ""*"",
+    ///                 ""Effect"": ""Allow"",
+    /// 		        ""Principal"": {
+    ///                 ""Service"":
+    ///                     [""log.aliyuncs.com""]
+    ///                 }
+    ///             }
+    ///         ]
+    ///     }
+    ///     
+    /// ",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var fooPolicy = new AliCloud.Ram.Policy("fooPolicy", new()
+    ///     {
+    ///         Description = "this is a test",
+    ///         Document = @"    {
+    ///         ""Version"": ""1"",
+    ///         ""Statement"": [
+    ///         {
+    ///             ""Action"": [
+    ///             ""fc:InvokeFunction""
+    ///             ],
+    ///         ""Resource"": [
+    ///             ""acs:fc:*:*:services/tf_cdnEvents/functions/*"",
+    ///             ""acs:fc:*:*:services/tf_cdnEvents.*/functions/*""
+    ///         ],
+    ///         ""Effect"": ""Allow""
+    ///         }
+    ///         ]
+    ///     }
+    ///     
+    /// ",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var fooRolePolicyAttachment = new AliCloud.Ram.RolePolicyAttachment("fooRolePolicyAttachment", new()
+    ///     {
+    ///         PolicyName = fooPolicy.Name,
+    ///         PolicyType = "Custom",
+    ///         RoleName = fooRole.Name,
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.FC.Trigger("default", new()
+    ///     {
+    ///         Config = domain.DomainName.Apply(domainName =&gt; @$"      {{""eventName"":""LogFileCreated"",
+    ///      ""eventVersion"":""1.0.0"",
+    ///      ""notes"":""cdn events trigger"",
+    ///      ""filter"":{{
+    ///         ""domain"": [""{domainName}""]
+    ///         }}
+    ///     }}
+    /// 
+    /// "),
+    ///         Function = fooFunction.Name,
+    ///         Role = fooRole.Arn,
+    ///         Service = fooService.Name,
+    ///         SourceArn = $"acs:cdn:*:{current.Apply(getAccountResult =&gt; getAccountResult.Id)}",
+    ///         Type = "cdn_events",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             "alicloud_ram_role_policy_attachment.foo",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// EventBridge trigger:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "fctriggereventbridgeconfig";
+    ///     var current = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     // Please make eventbridge available and then assume a specific service-linked role, which refers to https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/event_bridge_service_linked_role
+    ///     var serviceLinkedRole = new AliCloud.EventBridge.ServiceLinkedRole("serviceLinkedRole", new()
+    ///     {
+    ///         ProductName = "AliyunServiceRoleForEventBridgeSendToFC",
+    ///     });
+    /// 
+    ///     var fooService = new AliCloud.FC.Service("fooService", new()
+    ///     {
+    ///         InternetAccess = false,
+    ///     });
+    /// 
+    ///     var fooBucket = new AliCloud.Oss.Bucket("fooBucket", new()
+    ///     {
+    ///         BucketName = name,
+    ///     });
+    /// 
+    ///     // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+    ///     var fooBucketObject = new AliCloud.Oss.BucketObject("fooBucketObject", new()
+    ///     {
+    ///         Bucket = fooBucket.Id,
+    ///         Key = "fc/hello.zip",
+    ///         Source = "./hello.zip",
+    ///     });
+    /// 
+    ///     var fooFunction = new AliCloud.FC.Function("fooFunction", new()
+    ///     {
+    ///         Handler = "hello.handler",
+    ///         MemorySize = 512,
+    ///         OssBucket = fooBucket.Id,
+    ///         OssKey = fooBucketObject.Key,
+    ///         Runtime = "python2.7",
+    ///         Service = fooService.Name,
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.FC.Trigger("default", new()
+    ///     {
+    ///         Config = @"    {
+    ///         ""triggerEnable"": false,
+    ///         ""asyncInvocationType"": false,
+    ///         ""eventRuleFilterPattern"": ""{\""source\"":[\""acs.oss\""],\""type\"":[\""oss:BucketCreated:PutBucket\""]}"",
+    ///         ""eventSourceConfig"": {
+    ///             ""eventSourceType"": ""Default""
+    ///         }
+    ///     }
+    /// 
+    /// ",
+    ///         Function = fooFunction.Name,
+    ///         Service = fooService.Name,
+    ///         Type = "eventbridge",
+    ///     });
+    /// 
+    ///     var mns = new AliCloud.FC.Trigger("mns", new()
+    ///     {
+    ///         Config = @"    {
+    ///         ""triggerEnable"": false,
+    ///         ""asyncInvocationType"": false,
+    ///         ""eventRuleFilterPattern"": ""{}"",
+    ///         ""eventSourceConfig"": {
+    ///             ""eventSourceType"": ""MNS"",
+    ///             ""eventSourceParameters"": {
+    ///                 ""sourceMNSParameters"": {
+    ///                     ""RegionId"": ""cn-hangzhou"",
+    ///                     ""QueueName"": ""mns-queue"",
+    ///                     ""IsBase64Decode"": true
+    ///                 }
+    ///             }
+    ///         }
+    ///     }
+    /// 
+    /// ",
+    ///         Function = fooFunction.Name,
+    ///         Service = fooService.Name,
+    ///         Type = "eventbridge",
+    ///     });
+    /// 
+    ///     var rocketmq = new AliCloud.FC.Trigger("rocketmq", new()
+    ///     {
+    ///         Config = @"    {
+    ///         ""triggerEnable"": false,
+    ///         ""asyncInvocationType"": false,
+    ///         ""eventRuleFilterPattern"": ""{}"",
+    ///         ""eventSourceConfig"": {
+    ///             ""eventSourceType"": ""RocketMQ"",
+    ///             ""eventSourceParameters"": {
+    ///                 ""sourceRocketMQParameters"": {
+    ///                     ""RegionId"": ""cn-hangzhou"",
+    ///                     ""InstanceId"": ""MQ_INST_164901546557****_BAAN****"",
+    ///                     ""GroupID"": ""GID_group1"",
+    ///                     ""Topic"": ""mytopic"",
+    ///                     ""Timestamp"": 1636597951984,
+    ///                     ""Tag"": ""test-tag"",
+    ///                     ""Offset"": ""CONSUME_FROM_LAST_OFFSET""
+    ///                 }
+    ///             }
+    ///         }
+    ///     }
+    /// 
+    /// ",
+    ///         Function = fooFunction.Name,
+    ///         Service = fooService.Name,
+    ///         Type = "eventbridge",
+    ///     });
+    /// 
+    ///     var rabbitmq = new AliCloud.FC.Trigger("rabbitmq", new()
+    ///     {
+    ///         Config = @"    {
+    ///         ""triggerEnable"": false,
+    ///         ""asyncInvocationType"": false,
+    ///         ""eventRuleFilterPattern"": ""{}"",
+    ///         ""eventSourceConfig"": {
+    ///             ""eventSourceType"": ""RabbitMQ"",
+    ///             ""eventSourceParameters"": {
+    ///                 ""sourceRabbitMQParameters"": {
+    ///                     ""RegionId"": ""cn-hangzhou"",
+    ///                     ""InstanceId"": ""amqp-cn-****** "",
+    ///                     ""VirtualHostName"": ""test-virtual"",
+    ///                     ""QueueName"": ""test-queue""
+    ///                 }
+    ///             }
+    ///         }
+    ///     }
+    /// 
+    /// ",
+    ///         Function = fooFunction.Name,
+    ///         Service = fooService.Name,
+    ///         Type = "eventbridge",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Module Support
+    /// 
+    /// You can use to the existing fc module
+    /// to create several triggers quickly.
+    /// 
     /// ## Import
     /// 
     /// Function Compute trigger can be imported using the id, e.g.
@@ -83,6 +587,10 @@ namespace Pulumi.AliCloud.FC
 
         /// <summary>
         /// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
+        /// 
+        /// &gt; **NOTE:** Config does not support modification when type is mns_topic.
+        /// &gt; **NOTE:** type = cdn_events, available in 1.47.0+.
+        /// &gt; **NOTE:** type = eventbridge, available in 1.173.0+.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -183,6 +691,10 @@ namespace Pulumi.AliCloud.FC
 
         /// <summary>
         /// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
+        /// 
+        /// &gt; **NOTE:** Config does not support modification when type is mns_topic.
+        /// &gt; **NOTE:** type = cdn_events, available in 1.47.0+.
+        /// &gt; **NOTE:** type = eventbridge, available in 1.173.0+.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -257,6 +769,10 @@ namespace Pulumi.AliCloud.FC
 
         /// <summary>
         /// The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
+        /// 
+        /// &gt; **NOTE:** Config does not support modification when type is mns_topic.
+        /// &gt; **NOTE:** type = cdn_events, available in 1.47.0+.
+        /// &gt; **NOTE:** type = eventbridge, available in 1.173.0+.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

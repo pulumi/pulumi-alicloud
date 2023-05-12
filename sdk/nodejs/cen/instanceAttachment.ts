@@ -67,6 +67,8 @@ export class InstanceAttachment extends pulumi.CustomResource {
 
     /**
      * The account ID to which the CEN instance belongs.
+     *
+     * ->**NOTE:** Ensure that the child instance is not used in Express Connect.
      */
     public readonly cenOwnerId!: pulumi.Output<number | undefined>;
     /**
@@ -147,6 +149,8 @@ export class InstanceAttachment extends pulumi.CustomResource {
 export interface InstanceAttachmentState {
     /**
      * The account ID to which the CEN instance belongs.
+     *
+     * ->**NOTE:** Ensure that the child instance is not used in Express Connect.
      */
     cenOwnerId?: pulumi.Input<number>;
     /**
@@ -181,6 +185,8 @@ export interface InstanceAttachmentState {
 export interface InstanceAttachmentArgs {
     /**
      * The account ID to which the CEN instance belongs.
+     *
+     * ->**NOTE:** Ensure that the child instance is not used in Express Connect.
      */
     cenOwnerId?: pulumi.Input<number>;
     /**

@@ -14,39 +14,56 @@ public final class GetLifecyclePoliciesPolicy {
      * @return The time when the lifecycle management policy was created.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The ID of the file system.
      * 
      */
-    private String fileSystemId;
+    private final String fileSystemId;
     /**
      * @return The ID of the Lifecycle Policy. Its value is same as Queue Name.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The name of the lifecycle management policy.
      * 
      */
-    private String lifecyclePolicyName;
+    private final String lifecyclePolicyName;
     /**
      * @return The rules in the lifecycle management policy.
      * 
      */
-    private String lifecycleRuleName;
+    private final String lifecycleRuleName;
     /**
      * @return The list of absolute paths for multiple directories. In this case, you can associate a lifecycle management policy with each directory.
      * 
      */
-    private List<String> paths;
+    private final List<String> paths;
     /**
      * @return The storage type of the data that is dumped to the IA storage medium.
      * 
      */
-    private String storageType;
+    private final String storageType;
 
-    private GetLifecyclePoliciesPolicy() {}
+    @CustomType.Constructor
+    private GetLifecyclePoliciesPolicy(
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("fileSystemId") String fileSystemId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("lifecyclePolicyName") String lifecyclePolicyName,
+        @CustomType.Parameter("lifecycleRuleName") String lifecycleRuleName,
+        @CustomType.Parameter("paths") List<String> paths,
+        @CustomType.Parameter("storageType") String storageType) {
+        this.createTime = createTime;
+        this.fileSystemId = fileSystemId;
+        this.id = id;
+        this.lifecyclePolicyName = lifecyclePolicyName;
+        this.lifecycleRuleName = lifecycleRuleName;
+        this.paths = paths;
+        this.storageType = storageType;
+    }
+
     /**
      * @return The time when the lifecycle management policy was created.
      * 
@@ -104,7 +121,7 @@ public final class GetLifecyclePoliciesPolicy {
     public static Builder builder(GetLifecyclePoliciesPolicy defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String createTime;
         private String fileSystemId;
@@ -113,7 +130,11 @@ public final class GetLifecyclePoliciesPolicy {
         private String lifecycleRuleName;
         private List<String> paths;
         private String storageType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetLifecyclePoliciesPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -125,32 +146,26 @@ public final class GetLifecyclePoliciesPolicy {
     	      this.storageType = defaults.storageType;
         }
 
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder fileSystemId(String fileSystemId) {
             this.fileSystemId = Objects.requireNonNull(fileSystemId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder lifecyclePolicyName(String lifecyclePolicyName) {
             this.lifecyclePolicyName = Objects.requireNonNull(lifecyclePolicyName);
             return this;
         }
-        @CustomType.Setter
         public Builder lifecycleRuleName(String lifecycleRuleName) {
             this.lifecycleRuleName = Objects.requireNonNull(lifecycleRuleName);
             return this;
         }
-        @CustomType.Setter
         public Builder paths(List<String> paths) {
             this.paths = Objects.requireNonNull(paths);
             return this;
@@ -158,21 +173,11 @@ public final class GetLifecyclePoliciesPolicy {
         public Builder paths(String... paths) {
             return paths(List.of(paths));
         }
-        @CustomType.Setter
         public Builder storageType(String storageType) {
             this.storageType = Objects.requireNonNull(storageType);
             return this;
-        }
-        public GetLifecyclePoliciesPolicy build() {
-            final var o = new GetLifecyclePoliciesPolicy();
-            o.createTime = createTime;
-            o.fileSystemId = fileSystemId;
-            o.id = id;
-            o.lifecyclePolicyName = lifecyclePolicyName;
-            o.lifecycleRuleName = lifecycleRuleName;
-            o.paths = paths;
-            o.storageType = storageType;
-            return o;
+        }        public GetLifecyclePoliciesPolicy build() {
+            return new GetLifecyclePoliciesPolicy(createTime, fileSystemId, id, lifecyclePolicyName, lifecycleRuleName, paths, storageType);
         }
     }
 }

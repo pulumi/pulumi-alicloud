@@ -59,7 +59,8 @@ type GetAcceleratorsArgs struct {
 	// A list of Accelerator IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Accelerator name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the GA instance.
 	Status *string `pulumi:"status"`
@@ -95,7 +96,8 @@ type GetAcceleratorsOutputArgs struct {
 	// A list of Accelerator IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Accelerator name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the GA instance.
 	Status pulumi.StringPtrInput `pulumi:"status"`

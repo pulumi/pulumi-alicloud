@@ -171,6 +171,7 @@ def get_cross_region_backups(backup_id: Optional[str] = None,
     :param str db_instance_id: The db instance id.
     :param str end_time: The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
     :param Sequence[str] ids: A list of Cross Region Backup IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param str start_time: The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
     """
@@ -238,6 +239,7 @@ def get_cross_region_backups_output(backup_id: Optional[pulumi.Input[Optional[st
     :param str db_instance_id: The db instance id.
     :param str end_time: The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
     :param Sequence[str] ids: A list of Cross Region Backup IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param str start_time: The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
     """

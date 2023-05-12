@@ -14,24 +14,35 @@ public final class GetSystemSecurityPoliciesPolicy {
      * @return The supported cipher suites, which are determined by the TLS protocol version.
      * 
      */
-    private List<String> ciphers;
+    private final List<String> ciphers;
     /**
      * @return The ID of the Security Policy.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private String securityPolicyId;
+    private final String securityPolicyId;
     /**
      * @return The TLS protocol versions are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
      * 
      */
-    private List<String> tlsVersions;
+    private final List<String> tlsVersions;
 
-    private GetSystemSecurityPoliciesPolicy() {}
+    @CustomType.Constructor
+    private GetSystemSecurityPoliciesPolicy(
+        @CustomType.Parameter("ciphers") List<String> ciphers,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("securityPolicyId") String securityPolicyId,
+        @CustomType.Parameter("tlsVersions") List<String> tlsVersions) {
+        this.ciphers = ciphers;
+        this.id = id;
+        this.securityPolicyId = securityPolicyId;
+        this.tlsVersions = tlsVersions;
+    }
+
     /**
      * @return The supported cipher suites, which are determined by the TLS protocol version.
      * 
@@ -68,13 +79,17 @@ public final class GetSystemSecurityPoliciesPolicy {
     public static Builder builder(GetSystemSecurityPoliciesPolicy defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<String> ciphers;
         private String id;
         private String securityPolicyId;
         private List<String> tlsVersions;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetSystemSecurityPoliciesPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ciphers = defaults.ciphers;
@@ -83,7 +98,6 @@ public final class GetSystemSecurityPoliciesPolicy {
     	      this.tlsVersions = defaults.tlsVersions;
         }
 
-        @CustomType.Setter
         public Builder ciphers(List<String> ciphers) {
             this.ciphers = Objects.requireNonNull(ciphers);
             return this;
@@ -91,31 +105,22 @@ public final class GetSystemSecurityPoliciesPolicy {
         public Builder ciphers(String... ciphers) {
             return ciphers(List.of(ciphers));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder securityPolicyId(String securityPolicyId) {
             this.securityPolicyId = Objects.requireNonNull(securityPolicyId);
             return this;
         }
-        @CustomType.Setter
         public Builder tlsVersions(List<String> tlsVersions) {
             this.tlsVersions = Objects.requireNonNull(tlsVersions);
             return this;
         }
         public Builder tlsVersions(String... tlsVersions) {
             return tlsVersions(List.of(tlsVersions));
-        }
-        public GetSystemSecurityPoliciesPolicy build() {
-            final var o = new GetSystemSecurityPoliciesPolicy();
-            o.ciphers = ciphers;
-            o.id = id;
-            o.securityPolicyId = securityPolicyId;
-            o.tlsVersions = tlsVersions;
-            return o;
+        }        public GetSystemSecurityPoliciesPolicy build() {
+            return new GetSystemSecurityPoliciesPolicy(ciphers, id, securityPolicyId, tlsVersions);
         }
     }
 }

@@ -13,17 +13,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountsResult {
-    private @Nullable String accountName;
-    private List<GetAccountsAccount> accounts;
+    private final @Nullable String accountName;
+    private final List<GetAccountsAccount> accounts;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private String instanceId;
-    private @Nullable String outputFile;
+    private final String id;
+    private final String instanceId;
+    private final @Nullable String outputFile;
 
-    private GetAccountsResult() {}
+    @CustomType.Constructor
+    private GetAccountsResult(
+        @CustomType.Parameter("accountName") @Nullable String accountName,
+        @CustomType.Parameter("accounts") List<GetAccountsAccount> accounts,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.accountName = accountName;
+        this.accounts = accounts;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.outputFile = outputFile;
+    }
+
     public Optional<String> accountName() {
         return Optional.ofNullable(this.accountName);
     }
@@ -51,14 +64,18 @@ public final class GetAccountsResult {
     public static Builder builder(GetAccountsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String accountName;
         private List<GetAccountsAccount> accounts;
         private String id;
         private String instanceId;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAccountsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountName = defaults.accountName;
@@ -68,12 +85,10 @@ public final class GetAccountsResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder accountName(@Nullable String accountName) {
             this.accountName = accountName;
             return this;
         }
-        @CustomType.Setter
         public Builder accounts(List<GetAccountsAccount> accounts) {
             this.accounts = Objects.requireNonNull(accounts);
             return this;
@@ -81,29 +96,19 @@ public final class GetAccountsResult {
         public Builder accounts(GetAccountsAccount... accounts) {
             return accounts(List.of(accounts));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetAccountsResult build() {
-            final var o = new GetAccountsResult();
-            o.accountName = accountName;
-            o.accounts = accounts;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetAccountsResult build() {
+            return new GetAccountsResult(accountName, accounts, id, instanceId, outputFile);
         }
     }
 }

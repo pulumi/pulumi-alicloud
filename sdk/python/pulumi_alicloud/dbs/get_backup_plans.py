@@ -168,6 +168,7 @@ def get_backup_plans(backup_plan_name: Optional[str] = None,
     :param bool enable_details: Default to `true`. Set it to `false` can hide the `payment_type` to output.
     :param Sequence[str] ids: A list of Backup Plan IDs.
     :param str name_regex: A regex string to filter results by Backup Plan name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource.
     """
     __args__ = dict()
@@ -230,6 +231,7 @@ def get_backup_plans_output(backup_plan_name: Optional[pulumi.Input[Optional[str
     :param bool enable_details: Default to `true`. Set it to `false` can hide the `payment_type` to output.
     :param Sequence[str] ids: A list of Backup Plan IDs.
     :param str name_regex: A regex string to filter results by Backup Plan name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource.
     """
     ...

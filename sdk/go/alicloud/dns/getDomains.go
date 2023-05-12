@@ -10,6 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:**  This resource has been renamed to dns.getAlidnsDomains from version 1.95.0.
+//
+// This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
+//
 // ## Example Usage
 //
 // ```go
@@ -64,7 +68,8 @@ type GetDomainsArgs struct {
 	// The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
 	KeyWord *string `pulumi:"keyWord"`
 	// User language.
-	Lang       *string `pulumi:"lang"`
+	Lang *string `pulumi:"lang"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The Id of resource group which the dns belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -140,7 +145,8 @@ type GetDomainsOutputArgs struct {
 	// The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
 	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
 	// User language.
-	Lang       pulumi.StringPtrInput `pulumi:"lang"`
+	Lang pulumi.StringPtrInput `pulumi:"lang"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The Id of resource group which the dns belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`

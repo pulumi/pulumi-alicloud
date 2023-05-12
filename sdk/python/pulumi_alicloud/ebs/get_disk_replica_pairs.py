@@ -118,6 +118,7 @@ def get_disk_replica_pairs(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Disk Replica Pair IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str replica_group_id: Consistent Replication Group ID, you can specify a consistent replication group ID to query the replication pairs within the group.
     :param str site: Get data for replication pairs where this Region is the production site or the disaster recovery site.
     """
@@ -161,6 +162,7 @@ def get_disk_replica_pairs_output(ids: Optional[pulumi.Input[Optional[Sequence[s
 
 
     :param Sequence[str] ids: A list of Disk Replica Pair IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str replica_group_id: Consistent Replication Group ID, you can specify a consistent replication group ID to query the replication pairs within the group.
     :param str site: Get data for replication pairs where this Region is the production site or the disaster recovery site.
     """

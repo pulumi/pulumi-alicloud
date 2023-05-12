@@ -147,6 +147,7 @@ def get_ecs_invocations(command_id: Optional[str] = None,
     :param str content_encoding: The encoding mode of the CommandContent and Output response parameters. Valid values: `PlainText`, `Base64`.
     :param Sequence[str] ids: A list of Invocation IDs.
     :param str invoke_status: The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['commandId'] = command_id
@@ -202,5 +203,6 @@ def get_ecs_invocations_output(command_id: Optional[pulumi.Input[Optional[str]]]
     :param str content_encoding: The encoding mode of the CommandContent and Output response parameters. Valid values: `PlainText`, `Base64`.
     :param Sequence[str] ids: A list of Invocation IDs.
     :param str invoke_status: The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

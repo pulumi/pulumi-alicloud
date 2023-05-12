@@ -319,7 +319,7 @@ def get_instances(architecture_type: Optional[str] = None,
     :param str architecture_type: The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
     :param str edition_type: Used to retrieve instances belong to specified `vswitch` resources.  Valid values: `Enterprise`, `Community`.
     :param bool enable_details: Default to `false`. Set it to true can output more details.
-    :param str engine_version: The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+    :param str engine_version: The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
     :param str expired: The expiration status of the instance.
     :param bool global_instance: Whether to create a distributed cache.
     :param Sequence[str] ids: A list of KVStore DBInstance IDs.
@@ -327,6 +327,7 @@ def get_instances(architecture_type: Optional[str] = None,
     :param str instance_type: The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
     :param str name_regex: A regex string to apply to the instance name.
     :param str network_type: The type of the network. Valid values: `CLASSIC`, `VPC`.
+    :param str output_file: The name of file that can save the collection of instances after running `pulumi preview`.
     :param str payment_type: The payment type. Valid values: `PostPaid`, `PrePaid`.
     :param str resource_group_id: The ID of the resource group.
     :param str search_key: The name of the instance.
@@ -426,7 +427,7 @@ def get_instances_output(architecture_type: Optional[pulumi.Input[Optional[str]]
     :param str architecture_type: The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
     :param str edition_type: Used to retrieve instances belong to specified `vswitch` resources.  Valid values: `Enterprise`, `Community`.
     :param bool enable_details: Default to `false`. Set it to true can output more details.
-    :param str engine_version: The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+    :param str engine_version: The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
     :param str expired: The expiration status of the instance.
     :param bool global_instance: Whether to create a distributed cache.
     :param Sequence[str] ids: A list of KVStore DBInstance IDs.
@@ -434,6 +435,7 @@ def get_instances_output(architecture_type: Optional[pulumi.Input[Optional[str]]
     :param str instance_type: The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
     :param str name_regex: A regex string to apply to the instance name.
     :param str network_type: The type of the network. Valid values: `CLASSIC`, `VPC`.
+    :param str output_file: The name of file that can save the collection of instances after running `pulumi preview`.
     :param str payment_type: The payment type. Valid values: `PostPaid`, `PrePaid`.
     :param str resource_group_id: The ID of the resource group.
     :param str search_key: The name of the instance.

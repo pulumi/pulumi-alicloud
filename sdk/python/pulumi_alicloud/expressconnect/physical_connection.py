@@ -48,6 +48,8 @@ class PhysicalConnectionArgs:
                * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
                * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
                * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
+               
+               **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
         :param pulumi.Input[str] redundant_physical_connection_id: Redundant Physical Connection to Which the ID.
         :param pulumi.Input[str] status: Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
         :param pulumi.Input[str] type: Physical Private Line of Type. Default Value: VPC.
@@ -175,6 +177,8 @@ class PhysicalConnectionArgs:
         * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
         * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
         * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
+
+        **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
         """
         return pulumi.get(self, "port_type")
 
@@ -256,6 +260,8 @@ class _PhysicalConnectionState:
                * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
                * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
                * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
+               
+               **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
         :param pulumi.Input[str] redundant_physical_connection_id: Redundant Physical Connection to Which the ID.
         :param pulumi.Input[str] status: Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
         :param pulumi.Input[str] type: Physical Private Line of Type. Default Value: VPC.
@@ -385,6 +391,8 @@ class _PhysicalConnectionState:
         * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
         * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
         * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
+
+        **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
         """
         return pulumi.get(self, "port_type")
 
@@ -512,6 +520,8 @@ class PhysicalConnection(pulumi.CustomResource):
                * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
                * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
                * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
+               
+               **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
         :param pulumi.Input[str] redundant_physical_connection_id: Redundant Physical Connection to Which the ID.
         :param pulumi.Input[str] status: Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
         :param pulumi.Input[str] type: Physical Private Line of Type. Default Value: VPC.
@@ -664,6 +674,8 @@ class PhysicalConnection(pulumi.CustomResource):
                * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
                * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
                * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
+               
+               **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
         :param pulumi.Input[str] redundant_physical_connection_id: Redundant Physical Connection to Which the ID.
         :param pulumi.Input[str] status: Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
         :param pulumi.Input[str] type: Physical Private Line of Type. Default Value: VPC.
@@ -759,6 +771,8 @@ class PhysicalConnection(pulumi.CustomResource):
         * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
         * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
         * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
+
+        **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
         """
         return pulumi.get(self, "port_type")
 

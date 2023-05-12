@@ -154,8 +154,14 @@ class ListenerAccessLogTracingConfigArgs:
                  tracing_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] tracing_enabled: Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+               
+               > **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
         :param pulumi.Input[int] tracing_sample: Xtrace Sampling Rate. Value: `1` to `10000`.
+               
+               > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
         :param pulumi.Input[str] tracing_type: Xtrace Type Value Is `Zipkin`.
+               
+               > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
         """
         if tracing_enabled is not None:
             pulumi.set(__self__, "tracing_enabled", tracing_enabled)
@@ -169,6 +175,8 @@ class ListenerAccessLogTracingConfigArgs:
     def tracing_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+
+        > **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
         """
         return pulumi.get(self, "tracing_enabled")
 
@@ -181,6 +189,8 @@ class ListenerAccessLogTracingConfigArgs:
     def tracing_sample(self) -> Optional[pulumi.Input[int]]:
         """
         Xtrace Sampling Rate. Value: `1` to `10000`.
+
+        > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
         """
         return pulumi.get(self, "tracing_sample")
 
@@ -193,6 +203,8 @@ class ListenerAccessLogTracingConfigArgs:
     def tracing_type(self) -> Optional[pulumi.Input[str]]:
         """
         Xtrace Type Value Is `Zipkin`.
+
+        > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
         """
         return pulumi.get(self, "tracing_type")
 
@@ -391,6 +403,8 @@ class ListenerQuicConfigArgs:
         """
         :param pulumi.Input[str] quic_listener_id: There Is a Need to Correlate the QuIC Listener ID. The Https Listener, in Effect at the Time. quicupgradeenabled True When Required.
         :param pulumi.Input[bool] quic_upgrade_enabled: Indicates Whether to Enable the QuIC Upgrade.
+               
+               > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
         """
         if quic_listener_id is not None:
             pulumi.set(__self__, "quic_listener_id", quic_listener_id)
@@ -414,6 +428,8 @@ class ListenerQuicConfigArgs:
     def quic_upgrade_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Indicates Whether to Enable the QuIC Upgrade.
+
+        > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
         """
         return pulumi.get(self, "quic_upgrade_enabled")
 

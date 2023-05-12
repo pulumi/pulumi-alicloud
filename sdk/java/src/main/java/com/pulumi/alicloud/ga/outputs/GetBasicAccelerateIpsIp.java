@@ -13,34 +13,49 @@ public final class GetBasicAccelerateIpsIp {
      * @return The address of the Basic Accelerate IP.
      * 
      */
-    private String accelerateIpAddress;
+    private final String accelerateIpAddress;
     /**
      * @return The id of the Basic Accelerate IP.
      * 
      */
-    private String accelerateIpId;
+    private final String accelerateIpId;
     /**
      * @return The id of the Global Accelerator Basic Accelerator instance.
      * 
      */
-    private String acceleratorId;
+    private final String acceleratorId;
     /**
      * @return The id of the Basic Accelerate IP.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the Basic Ip Set.
      * 
      */
-    private String ipSetId;
+    private final String ipSetId;
     /**
      * @return The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `active`, `binding`, `bound`, `unbinding`, `deleting`.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetBasicAccelerateIpsIp() {}
+    @CustomType.Constructor
+    private GetBasicAccelerateIpsIp(
+        @CustomType.Parameter("accelerateIpAddress") String accelerateIpAddress,
+        @CustomType.Parameter("accelerateIpId") String accelerateIpId,
+        @CustomType.Parameter("acceleratorId") String acceleratorId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ipSetId") String ipSetId,
+        @CustomType.Parameter("status") String status) {
+        this.accelerateIpAddress = accelerateIpAddress;
+        this.accelerateIpId = accelerateIpId;
+        this.acceleratorId = acceleratorId;
+        this.id = id;
+        this.ipSetId = ipSetId;
+        this.status = status;
+    }
+
     /**
      * @return The address of the Basic Accelerate IP.
      * 
@@ -91,7 +106,7 @@ public final class GetBasicAccelerateIpsIp {
     public static Builder builder(GetBasicAccelerateIpsIp defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String accelerateIpAddress;
         private String accelerateIpId;
@@ -99,7 +114,11 @@ public final class GetBasicAccelerateIpsIp {
         private String id;
         private String ipSetId;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBasicAccelerateIpsIp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accelerateIpAddress = defaults.accelerateIpAddress;
@@ -110,45 +129,31 @@ public final class GetBasicAccelerateIpsIp {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder accelerateIpAddress(String accelerateIpAddress) {
             this.accelerateIpAddress = Objects.requireNonNull(accelerateIpAddress);
             return this;
         }
-        @CustomType.Setter
         public Builder accelerateIpId(String accelerateIpId) {
             this.accelerateIpId = Objects.requireNonNull(accelerateIpId);
             return this;
         }
-        @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
             this.acceleratorId = Objects.requireNonNull(acceleratorId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ipSetId(String ipSetId) {
             this.ipSetId = Objects.requireNonNull(ipSetId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetBasicAccelerateIpsIp build() {
-            final var o = new GetBasicAccelerateIpsIp();
-            o.accelerateIpAddress = accelerateIpAddress;
-            o.accelerateIpId = accelerateIpId;
-            o.acceleratorId = acceleratorId;
-            o.id = id;
-            o.ipSetId = ipSetId;
-            o.status = status;
-            return o;
+        }        public GetBasicAccelerateIpsIp build() {
+            return new GetBasicAccelerateIpsIp(accelerateIpAddress, accelerateIpId, acceleratorId, id, ipSetId, status);
         }
     }
 }

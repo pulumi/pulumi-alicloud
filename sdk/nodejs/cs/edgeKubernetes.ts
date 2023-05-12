@@ -7,9 +7,28 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * This resource will help you to manage a Edge Kubernetes Cluster in Alibaba Cloud Kubernetes Service.
+ *
+ * > **NOTE:** Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
+ * A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
+ * VPC, you can set `newNatGateway` to "true" to create one automatically.
+ *
+ * > **NOTE:** Creating kubernetes cluster need to install several packages and it will cost about 15 minutes. Please be patient.
+ *
+ * > **NOTE:** The provider supports to download kube config, client certificate, client key and cluster ca certificate
+ * after creating cluster successfully, and you can put them into the specified location, like '~/.kube/config'.
+ *
+ * > **NOTE:** The provider supports disabling internet load balancer for API Server by setting `false` to `slbInternetEnabled`.
+ *
+ * > **NOTE:** If you want to manage Kubernetes, you can use Kubernetes Provider.
+ *
+ * > **NOTE:** Available in v1.103.0+.
+ *
+ * > **NOTE:** From version 1.185.0+, support new fields `clusterSpec`, `runtime` and `loadBalancerSpec`.
+ *
  * ## Import
  *
- * Kubernetes edge cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
+ * Kubernetes edge cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
  *
  * ```sh
  *  $ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes main cluster-id
@@ -105,6 +124,8 @@ export class EdgeKubernetes extends pulumi.CustomResource {
     public readonly kubeConfig!: pulumi.Output<string | undefined>;
     /**
      * The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     *
+     * ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
      */
     public readonly loadBalancerSpec!: pulumi.Output<string>;
     /**
@@ -430,6 +451,8 @@ export interface EdgeKubernetesState {
     kubeConfig?: pulumi.Input<string>;
     /**
      * The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     *
+     * ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
      */
     loadBalancerSpec?: pulumi.Input<string>;
     /**
@@ -620,6 +643,8 @@ export interface EdgeKubernetesArgs {
     kubeConfig?: pulumi.Input<string>;
     /**
      * The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     *
+     * ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
      */
     loadBalancerSpec?: pulumi.Input<string>;
     /**

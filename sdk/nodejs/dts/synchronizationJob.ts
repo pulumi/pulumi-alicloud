@@ -245,6 +245,10 @@ export class SynchronizationJob extends pulumi.CustomResource {
     public readonly sourceEndpointUserName!: pulumi.Output<string | undefined>;
     /**
      * The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+     *
+     * > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+     *
+     * > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
      */
     public readonly status!: pulumi.Output<string>;
     /**
@@ -535,6 +539,10 @@ export interface SynchronizationJobState {
     sourceEndpointUserName?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+     *
+     * > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+     *
+     * > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
      */
     status?: pulumi.Input<string>;
     /**
@@ -699,6 +707,10 @@ export interface SynchronizationJobArgs {
     sourceEndpointUserName?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+     *
+     * > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+     *
+     * > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
      */
     status?: pulumi.Input<string>;
     /**

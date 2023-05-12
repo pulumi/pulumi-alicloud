@@ -112,6 +112,13 @@ def get_product_as_end_users(ids: Optional[Sequence[str]] = None,
                              sort_order: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProductAsEndUsersResult:
     """
+    > **DEPRECATED:** It has been deprecated from version `1.197.0`.
+    Please use new datasource servicecatalog_get_end_user_products instead.
+
+    This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+
+    > **NOTE:** Available in 1.196.0+
+
     ## Example Usage
 
     ```python
@@ -125,6 +132,7 @@ def get_product_as_end_users(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Product As End User IDs.
     :param str name_regex: A regex string to filter results by product name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -153,6 +161,13 @@ def get_product_as_end_users_output(ids: Optional[pulumi.Input[Optional[Sequence
                                     sort_order: Optional[pulumi.Input[Optional[str]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProductAsEndUsersResult]:
     """
+    > **DEPRECATED:** It has been deprecated from version `1.197.0`.
+    Please use new datasource servicecatalog_get_end_user_products instead.
+
+    This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+
+    > **NOTE:** Available in 1.196.0+
+
     ## Example Usage
 
     ```python
@@ -166,5 +181,6 @@ def get_product_as_end_users_output(ids: Optional[pulumi.Input[Optional[Sequence
 
     :param Sequence[str] ids: A list of Product As End User IDs.
     :param str name_regex: A regex string to filter results by product name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

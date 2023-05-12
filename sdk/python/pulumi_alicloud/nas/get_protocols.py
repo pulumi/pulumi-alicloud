@@ -105,6 +105,7 @@ def get_protocols(output_file: Optional[str] = None,
     ```
 
 
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str type: The file system type. Valid Values: `Performance` and `Capacity`.
     :param str zone_id: String to filter results by zone id.
     """
@@ -146,6 +147,7 @@ def get_protocols_output(output_file: Optional[pulumi.Input[Optional[str]]] = No
     ```
 
 
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str type: The file system type. Valid Values: `Performance` and `Capacity`.
     :param str zone_id: String to filter results by zone id.
     """

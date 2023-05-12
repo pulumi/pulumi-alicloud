@@ -7,6 +7,15 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **DEPRECATED:**  This resource is based on Config's old version OpenAPI, and it has been deprecated from version `1.173.0`.
+ * Please use new datasource alicloud.cfg.getDeliveries instead.
+ *
+ * This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
+ *
+ * > **NOTE:**  Available in 1.99.0+.
+ *
+ * > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -44,6 +53,9 @@ export interface GetDeliveryChannelsArgs {
      * A regex string to filter results by delivery channel name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
@@ -79,6 +91,15 @@ export interface GetDeliveryChannelsResult {
     readonly status?: number;
 }
 /**
+ * > **DEPRECATED:**  This resource is based on Config's old version OpenAPI, and it has been deprecated from version `1.173.0`.
+ * Please use new datasource alicloud.cfg.getDeliveries instead.
+ *
+ * This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
+ *
+ * > **NOTE:**  Available in 1.99.0+.
+ *
+ * > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -108,6 +129,9 @@ export interface GetDeliveryChannelsOutputArgs {
      * A regex string to filter results by delivery channel name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.

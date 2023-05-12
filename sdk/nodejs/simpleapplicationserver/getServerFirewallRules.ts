@@ -51,6 +51,9 @@ export interface GetServerFirewallRulesArgs {
      * Alibaba Cloud simple application server instance ID.
      */
     instanceId: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -106,5 +109,8 @@ export interface GetServerFirewallRulesOutputArgs {
      * Alibaba Cloud simple application server instance ID.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

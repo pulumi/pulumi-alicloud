@@ -19,12 +19,18 @@ public final class TransitRouterRouteEntryState extends com.pulumi.resources.Res
     /**
      * The dry run.
      * 
+     * &gt; **NOTE:** If transit_router_route_entry_next_hop_type is `Attachment`, transit_router_route_entry_next_hop_id is required.
+     * If transit_router_route_entry_next_hop_type is `BlackHole`, transit_router_route_entry_next_hop_id cannot be filled.
+     * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
      * @return The dry run.
+     * 
+     * &gt; **NOTE:** If transit_router_route_entry_next_hop_type is `Attachment`, transit_router_route_entry_next_hop_id is required.
+     * If transit_router_route_entry_next_hop_type is `BlackHole`, transit_router_route_entry_next_hop_id cannot be filled.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -186,6 +192,9 @@ public final class TransitRouterRouteEntryState extends com.pulumi.resources.Res
         /**
          * @param dryRun The dry run.
          * 
+         * &gt; **NOTE:** If transit_router_route_entry_next_hop_type is `Attachment`, transit_router_route_entry_next_hop_id is required.
+         * If transit_router_route_entry_next_hop_type is `BlackHole`, transit_router_route_entry_next_hop_id cannot be filled.
+         * 
          * @return builder
          * 
          */
@@ -196,6 +205,9 @@ public final class TransitRouterRouteEntryState extends com.pulumi.resources.Res
 
         /**
          * @param dryRun The dry run.
+         * 
+         * &gt; **NOTE:** If transit_router_route_entry_next_hop_type is `Attachment`, transit_router_route_entry_next_hop_id is required.
+         * If transit_router_route_entry_next_hop_type is `BlackHole`, transit_router_route_entry_next_hop_id cannot be filled.
          * 
          * @return builder
          * 

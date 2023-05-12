@@ -17,26 +17,41 @@ public final class GetAliasesResult {
      * @return A list of KMS User alias. Each element contains the following attributes:
      * 
      */
-    private List<GetAliasesAlias> aliases;
+    private final List<GetAliasesAlias> aliases;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of kms aliases IDs. The value is same as KMS alias_name.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of KMS alias name.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
 
-    private GetAliasesResult() {}
+    @CustomType.Constructor
+    private GetAliasesResult(
+        @CustomType.Parameter("aliases") List<GetAliasesAlias> aliases,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.aliases = aliases;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+    }
+
     /**
      * @return A list of KMS User alias. Each element contains the following attributes:
      * 
@@ -79,7 +94,7 @@ public final class GetAliasesResult {
     public static Builder builder(GetAliasesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetAliasesAlias> aliases;
         private String id;
@@ -87,7 +102,11 @@ public final class GetAliasesResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAliasesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aliases = defaults.aliases;
@@ -98,7 +117,6 @@ public final class GetAliasesResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder aliases(List<GetAliasesAlias> aliases) {
             this.aliases = Objects.requireNonNull(aliases);
             return this;
@@ -106,12 +124,10 @@ public final class GetAliasesResult {
         public Builder aliases(GetAliasesAlias... aliases) {
             return aliases(List.of(aliases));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -119,12 +135,10 @@ public final class GetAliasesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -132,20 +146,11 @@ public final class GetAliasesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetAliasesResult build() {
-            final var o = new GetAliasesResult();
-            o.aliases = aliases;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetAliasesResult build() {
+            return new GetAliasesResult(aliases, id, ids, nameRegex, names, outputFile);
         }
     }
 }

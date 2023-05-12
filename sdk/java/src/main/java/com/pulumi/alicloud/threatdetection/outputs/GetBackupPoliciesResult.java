@@ -14,35 +14,60 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBackupPoliciesResult {
-    private @Nullable Integer currentPage;
+    private final @Nullable Integer currentPage;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String machineRemark;
-    private @Nullable String name;
-    private @Nullable String nameRegex;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String machineRemark;
+    private final @Nullable String name;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of Threat Detection Backup Policy names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageSize;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageSize;
     /**
      * @return A list of Threat Detection Backup policies. Each element contains the following attributes:
      * 
      */
-    private List<GetBackupPoliciesPolicy> policies;
+    private final List<GetBackupPoliciesPolicy> policies;
     /**
      * @return The status of the anti-ransomware policy.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
 
-    private GetBackupPoliciesResult() {}
+    @CustomType.Constructor
+    private GetBackupPoliciesResult(
+        @CustomType.Parameter("currentPage") @Nullable Integer currentPage,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("machineRemark") @Nullable String machineRemark,
+        @CustomType.Parameter("name") @Nullable String name,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
+        @CustomType.Parameter("policies") List<GetBackupPoliciesPolicy> policies,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.currentPage = currentPage;
+        this.id = id;
+        this.ids = ids;
+        this.machineRemark = machineRemark;
+        this.name = name;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.pageSize = pageSize;
+        this.policies = policies;
+        this.status = status;
+    }
+
     public Optional<Integer> currentPage() {
         return Optional.ofNullable(this.currentPage);
     }
@@ -100,7 +125,7 @@ public final class GetBackupPoliciesResult {
     public static Builder builder(GetBackupPoliciesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Integer currentPage;
         private String id;
@@ -113,7 +138,11 @@ public final class GetBackupPoliciesResult {
         private @Nullable Integer pageSize;
         private List<GetBackupPoliciesPolicy> policies;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBackupPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.currentPage = defaults.currentPage;
@@ -129,17 +158,14 @@ public final class GetBackupPoliciesResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder currentPage(@Nullable Integer currentPage) {
             this.currentPage = currentPage;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -147,22 +173,18 @@ public final class GetBackupPoliciesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder machineRemark(@Nullable String machineRemark) {
             this.machineRemark = machineRemark;
             return this;
         }
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -170,17 +192,14 @@ public final class GetBackupPoliciesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
-        @CustomType.Setter
         public Builder policies(List<GetBackupPoliciesPolicy> policies) {
             this.policies = Objects.requireNonNull(policies);
             return this;
@@ -188,25 +207,11 @@ public final class GetBackupPoliciesResult {
         public Builder policies(GetBackupPoliciesPolicy... policies) {
             return policies(List.of(policies));
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetBackupPoliciesResult build() {
-            final var o = new GetBackupPoliciesResult();
-            o.currentPage = currentPage;
-            o.id = id;
-            o.ids = ids;
-            o.machineRemark = machineRemark;
-            o.name = name;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageSize = pageSize;
-            o.policies = policies;
-            o.status = status;
-            return o;
+        }        public GetBackupPoliciesResult build() {
+            return new GetBackupPoliciesResult(currentPage, id, ids, machineRemark, name, nameRegex, names, outputFile, pageSize, policies, status);
         }
     }
 }

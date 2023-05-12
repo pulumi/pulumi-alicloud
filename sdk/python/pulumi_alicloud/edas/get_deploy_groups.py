@@ -111,6 +111,7 @@ def get_deploy_groups(app_id: Optional[str] = None,
 
     :param str app_id: ID of the EDAS application.
     :param str name_regex: A regex string to filter results by the deploy group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['appId'] = app_id
@@ -141,5 +142,6 @@ def get_deploy_groups_output(app_id: Optional[pulumi.Input[str]] = None,
 
     :param str app_id: ID of the EDAS application.
     :param str name_regex: A regex string to filter results by the deploy group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

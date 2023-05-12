@@ -168,6 +168,7 @@ def get_route_maps(cen_id: Optional[str] = None,
     :param str cen_region_id: The ID of the region to which the CEN instance belongs.
     :param str description_regex: A regex string to filter CEN route map by description.
     :param Sequence[str] ids: A list of CEN route map IDs. Each item formats as `<cen_id>:<route_map_id>`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the route map, including `Creating`, `Active` and `Deleting`.
     :param str transmit_direction: The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
     """
@@ -228,6 +229,7 @@ def get_route_maps_output(cen_id: Optional[pulumi.Input[str]] = None,
     :param str cen_region_id: The ID of the region to which the CEN instance belongs.
     :param str description_regex: A regex string to filter CEN route map by description.
     :param Sequence[str] ids: A list of CEN route map IDs. Each item formats as `<cen_id>:<route_map_id>`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the route map, including `Creating`, `Active` and `Deleting`.
     :param str transmit_direction: The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
     """

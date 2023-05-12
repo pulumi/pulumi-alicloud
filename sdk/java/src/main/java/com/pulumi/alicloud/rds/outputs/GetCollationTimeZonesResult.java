@@ -13,16 +13,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCollationTimeZonesResult {
-    private @Nullable List<GetCollationTimeZonesCollationTimeZone> collationTimeZones;
+    private final @Nullable List<GetCollationTimeZonesCollationTimeZone> collationTimeZones;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String outputFile;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
 
-    private GetCollationTimeZonesResult() {}
+    @CustomType.Constructor
+    private GetCollationTimeZonesResult(
+        @CustomType.Parameter("collationTimeZones") @Nullable List<GetCollationTimeZonesCollationTimeZone> collationTimeZones,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.collationTimeZones = collationTimeZones;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+    }
+
     public List<GetCollationTimeZonesCollationTimeZone> collationTimeZones() {
         return this.collationTimeZones == null ? List.of() : this.collationTimeZones;
     }
@@ -47,13 +58,17 @@ public final class GetCollationTimeZonesResult {
     public static Builder builder(GetCollationTimeZonesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<GetCollationTimeZonesCollationTimeZone> collationTimeZones;
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetCollationTimeZonesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.collationTimeZones = defaults.collationTimeZones;
@@ -62,7 +77,6 @@ public final class GetCollationTimeZonesResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder collationTimeZones(@Nullable List<GetCollationTimeZonesCollationTimeZone> collationTimeZones) {
             this.collationTimeZones = collationTimeZones;
             return this;
@@ -70,12 +84,10 @@ public final class GetCollationTimeZonesResult {
         public Builder collationTimeZones(GetCollationTimeZonesCollationTimeZone... collationTimeZones) {
             return collationTimeZones(List.of(collationTimeZones));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -83,18 +95,11 @@ public final class GetCollationTimeZonesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetCollationTimeZonesResult build() {
-            final var o = new GetCollationTimeZonesResult();
-            o.collationTimeZones = collationTimeZones;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetCollationTimeZonesResult build() {
+            return new GetCollationTimeZonesResult(collationTimeZones, id, ids, outputFile);
         }
     }
 }

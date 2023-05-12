@@ -16,29 +16,42 @@ public final class GreyTagRouteDubboRuleItem {
      * @return The comparison operator. Valid values: `&gt;`, `&lt;`, `&gt;=`, `&lt;=`, `==`, `!=`.
      * 
      */
-    private @Nullable String cond;
+    private final @Nullable String cond;
     /**
      * @return The parameter value gets the expression.
      * 
      */
-    private @Nullable String expr;
+    private final @Nullable String expr;
     /**
      * @return The parameter number.
      * 
      */
-    private @Nullable Integer index;
+    private final @Nullable Integer index;
     /**
      * @return The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`
      * 
      */
-    private @Nullable String operator;
+    private final @Nullable String operator;
     /**
      * @return The value of the parameter.
      * 
      */
-    private @Nullable String value;
+    private final @Nullable String value;
 
-    private GreyTagRouteDubboRuleItem() {}
+    @CustomType.Constructor
+    private GreyTagRouteDubboRuleItem(
+        @CustomType.Parameter("cond") @Nullable String cond,
+        @CustomType.Parameter("expr") @Nullable String expr,
+        @CustomType.Parameter("index") @Nullable Integer index,
+        @CustomType.Parameter("operator") @Nullable String operator,
+        @CustomType.Parameter("value") @Nullable String value) {
+        this.cond = cond;
+        this.expr = expr;
+        this.index = index;
+        this.operator = operator;
+        this.value = value;
+    }
+
     /**
      * @return The comparison operator. Valid values: `&gt;`, `&lt;`, `&gt;=`, `&lt;=`, `==`, `!=`.
      * 
@@ -82,14 +95,18 @@ public final class GreyTagRouteDubboRuleItem {
     public static Builder builder(GreyTagRouteDubboRuleItem defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String cond;
         private @Nullable String expr;
         private @Nullable Integer index;
         private @Nullable String operator;
         private @Nullable String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GreyTagRouteDubboRuleItem defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cond = defaults.cond;
@@ -99,39 +116,27 @@ public final class GreyTagRouteDubboRuleItem {
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder cond(@Nullable String cond) {
             this.cond = cond;
             return this;
         }
-        @CustomType.Setter
         public Builder expr(@Nullable String expr) {
             this.expr = expr;
             return this;
         }
-        @CustomType.Setter
         public Builder index(@Nullable Integer index) {
             this.index = index;
             return this;
         }
-        @CustomType.Setter
         public Builder operator(@Nullable String operator) {
             this.operator = operator;
             return this;
         }
-        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }
-        public GreyTagRouteDubboRuleItem build() {
-            final var o = new GreyTagRouteDubboRuleItem();
-            o.cond = cond;
-            o.expr = expr;
-            o.index = index;
-            o.operator = operator;
-            o.value = value;
-            return o;
+        }        public GreyTagRouteDubboRuleItem build() {
+            return new GreyTagRouteDubboRuleItem(cond, expr, index, operator, value);
         }
     }
 }

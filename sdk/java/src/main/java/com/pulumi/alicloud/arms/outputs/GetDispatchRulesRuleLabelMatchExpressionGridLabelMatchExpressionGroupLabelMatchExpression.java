@@ -13,19 +13,28 @@ public final class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpress
      * @return The key of the tag of the dispatch rule.
      * 
      */
-    private String key;
+    private final String key;
     /**
      * @return The operator used in the dispatch rule.
      * 
      */
-    private String operator;
+    private final String operator;
     /**
      * @return The value of the tag.
      * 
      */
-    private String value;
+    private final String value;
 
-    private GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression() {}
+    @CustomType.Constructor
+    private GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression(
+        @CustomType.Parameter("key") String key,
+        @CustomType.Parameter("operator") String operator,
+        @CustomType.Parameter("value") String value) {
+        this.key = key;
+        this.operator = operator;
+        this.value = value;
+    }
+
     /**
      * @return The key of the tag of the dispatch rule.
      * 
@@ -55,12 +64,16 @@ public final class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpress
     public static Builder builder(GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String key;
         private String operator;
         private String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
@@ -68,27 +81,19 @@ public final class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpress
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
-        @CustomType.Setter
         public Builder operator(String operator) {
             this.operator = Objects.requireNonNull(operator);
             return this;
         }
-        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }
-        public GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression build() {
-            final var o = new GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression();
-            o.key = key;
-            o.operator = operator;
-            o.value = value;
-            return o;
+        }        public GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression build() {
+            return new GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression(key, operator, value);
         }
     }
 }

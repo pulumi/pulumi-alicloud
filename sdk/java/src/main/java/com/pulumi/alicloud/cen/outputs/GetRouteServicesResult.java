@@ -17,50 +17,73 @@ public final class GetRouteServicesResult {
      * @return The region of the network instances that access the cloud services.
      * 
      */
-    private @Nullable String accessRegionId;
+    private final @Nullable String accessRegionId;
     /**
      * @return The ID of the CEN instance.
      * 
      */
-    private String cenId;
+    private final String cenId;
     /**
      * @return The domain name or IP address of the cloud service.
      * 
      */
-    private @Nullable String host;
+    private final @Nullable String host;
     /**
      * @return The region of the cloud service.
      * 
      */
-    private @Nullable String hostRegionId;
+    private final @Nullable String hostRegionId;
     /**
      * @return The VPC associated with the cloud service.
      * 
      */
-    private @Nullable String hostVpcId;
+    private final @Nullable String hostVpcId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of CEN Route Service IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String outputFile;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
     /**
      * @return A list of CEN Route Services. Each element contains the following attributes:
      * 
      */
-    private List<GetRouteServicesService> services;
+    private final List<GetRouteServicesService> services;
     /**
      * @return The status of the cloud service.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
 
-    private GetRouteServicesResult() {}
+    @CustomType.Constructor
+    private GetRouteServicesResult(
+        @CustomType.Parameter("accessRegionId") @Nullable String accessRegionId,
+        @CustomType.Parameter("cenId") String cenId,
+        @CustomType.Parameter("host") @Nullable String host,
+        @CustomType.Parameter("hostRegionId") @Nullable String hostRegionId,
+        @CustomType.Parameter("hostVpcId") @Nullable String hostVpcId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("services") List<GetRouteServicesService> services,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.accessRegionId = accessRegionId;
+        this.cenId = cenId;
+        this.host = host;
+        this.hostRegionId = hostRegionId;
+        this.hostVpcId = hostVpcId;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.services = services;
+        this.status = status;
+    }
+
     /**
      * @return The region of the network instances that access the cloud services.
      * 
@@ -135,7 +158,7 @@ public final class GetRouteServicesResult {
     public static Builder builder(GetRouteServicesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String accessRegionId;
         private String cenId;
@@ -147,7 +170,11 @@ public final class GetRouteServicesResult {
         private @Nullable String outputFile;
         private List<GetRouteServicesService> services;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRouteServicesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessRegionId = defaults.accessRegionId;
@@ -162,37 +189,30 @@ public final class GetRouteServicesResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder accessRegionId(@Nullable String accessRegionId) {
             this.accessRegionId = accessRegionId;
             return this;
         }
-        @CustomType.Setter
         public Builder cenId(String cenId) {
             this.cenId = Objects.requireNonNull(cenId);
             return this;
         }
-        @CustomType.Setter
         public Builder host(@Nullable String host) {
             this.host = host;
             return this;
         }
-        @CustomType.Setter
         public Builder hostRegionId(@Nullable String hostRegionId) {
             this.hostRegionId = hostRegionId;
             return this;
         }
-        @CustomType.Setter
         public Builder hostVpcId(@Nullable String hostVpcId) {
             this.hostVpcId = hostVpcId;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -200,12 +220,10 @@ public final class GetRouteServicesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder services(List<GetRouteServicesService> services) {
             this.services = Objects.requireNonNull(services);
             return this;
@@ -213,24 +231,11 @@ public final class GetRouteServicesResult {
         public Builder services(GetRouteServicesService... services) {
             return services(List.of(services));
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetRouteServicesResult build() {
-            final var o = new GetRouteServicesResult();
-            o.accessRegionId = accessRegionId;
-            o.cenId = cenId;
-            o.host = host;
-            o.hostRegionId = hostRegionId;
-            o.hostVpcId = hostVpcId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.services = services;
-            o.status = status;
-            return o;
+        }        public GetRouteServicesResult build() {
+            return new GetRouteServicesResult(accessRegionId, cenId, host, hostRegionId, hostVpcId, id, ids, outputFile, services, status);
         }
     }
 }

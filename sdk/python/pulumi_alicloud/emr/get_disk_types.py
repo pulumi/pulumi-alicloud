@@ -155,6 +155,7 @@ def get_disk_types(cluster_type: Optional[str] = None,
     :param str destination_resource: The destination resource of emr cluster instance
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param str instance_type: The ecs instance type of create emr cluster instance.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str zone_id: The Zone to create emr cluster instance.
     """
     __args__ = dict()
@@ -212,6 +213,7 @@ def get_disk_types_output(cluster_type: Optional[pulumi.Input[str]] = None,
     :param str destination_resource: The destination resource of emr cluster instance
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param str instance_type: The ecs instance type of create emr cluster instance.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str zone_id: The Zone to create emr cluster instance.
     """
     ...

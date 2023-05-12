@@ -5,6 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a AnalyticDB for PostgreSQL instance resource which storage type is flexible. Compared to the reserved storage ADB PG instance, you can scale up each disk and smoothly scale out nodes online.\
+ * For more detail product introduction, see [here](https://www.alibabacloud.com/help/doc-detail/141368.htm).
+ *
+ * > **DEPRECATED:**  This resource  has been deprecated from version `1.147.0`. Please use new resource alicloud_gpdb_instance.
+ *
+ * > **NOTE:**  Available in 1.127.0+
+ *
  * ## Example Usage
  * ### Create a AnalyticDB for PostgreSQL instance
  *

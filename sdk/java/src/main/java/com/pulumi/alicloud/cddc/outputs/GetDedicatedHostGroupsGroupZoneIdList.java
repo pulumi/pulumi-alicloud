@@ -14,9 +14,13 @@ public final class GetDedicatedHostGroupsGroupZoneIdList {
      * @return The ZoneIDList of the Dedicated Host Group.
      * 
      */
-    private List<String> zoneIdLists;
+    private final List<String> zoneIdLists;
 
-    private GetDedicatedHostGroupsGroupZoneIdList() {}
+    @CustomType.Constructor
+    private GetDedicatedHostGroupsGroupZoneIdList(@CustomType.Parameter("zoneIdLists") List<String> zoneIdLists) {
+        this.zoneIdLists = zoneIdLists;
+    }
+
     /**
      * @return The ZoneIDList of the Dedicated Host Group.
      * 
@@ -32,27 +36,27 @@ public final class GetDedicatedHostGroupsGroupZoneIdList {
     public static Builder builder(GetDedicatedHostGroupsGroupZoneIdList defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<String> zoneIdLists;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDedicatedHostGroupsGroupZoneIdList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.zoneIdLists = defaults.zoneIdLists;
         }
 
-        @CustomType.Setter
         public Builder zoneIdLists(List<String> zoneIdLists) {
             this.zoneIdLists = Objects.requireNonNull(zoneIdLists);
             return this;
         }
         public Builder zoneIdLists(String... zoneIdLists) {
             return zoneIdLists(List.of(zoneIdLists));
-        }
-        public GetDedicatedHostGroupsGroupZoneIdList build() {
-            final var o = new GetDedicatedHostGroupsGroupZoneIdList();
-            o.zoneIdLists = zoneIdLists;
-            return o;
+        }        public GetDedicatedHostGroupsGroupZoneIdList build() {
+            return new GetDedicatedHostGroupsGroupZoneIdList(zoneIdLists);
         }
     }
 }

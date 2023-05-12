@@ -27,8 +27,9 @@ type GetAccessRulesArgs struct {
 	// Filter results by a specific AccessGroupName.
 	AccessGroupName string `pulumi:"accessGroupName"`
 	// A list of rule IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// Filter results by a specific RWAccess.
 	RwAccess *string `pulumi:"rwAccess"`
 	// Filter results by a specific SourceCidrIp.
@@ -73,8 +74,9 @@ type GetAccessRulesOutputArgs struct {
 	// Filter results by a specific AccessGroupName.
 	AccessGroupName pulumi.StringInput `pulumi:"accessGroupName"`
 	// A list of rule IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Filter results by a specific RWAccess.
 	RwAccess pulumi.StringPtrInput `pulumi:"rwAccess"`
 	// Filter results by a specific SourceCidrIp.

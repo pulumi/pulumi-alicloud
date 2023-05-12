@@ -16,24 +16,35 @@ public final class ServiceLogConfig {
      * @return Enable instance level metrics.
      * 
      */
-    private @Nullable Boolean enableInstanceMetrics;
+    private final @Nullable Boolean enableInstanceMetrics;
     /**
      * @return Enable request level metrics.
      * 
      */
-    private @Nullable Boolean enableRequestMetrics;
+    private final @Nullable Boolean enableRequestMetrics;
     /**
      * @return The log store name of Alicloud Simple Log Service.
      * 
      */
-    private String logstore;
+    private final String logstore;
     /**
      * @return The project name of the Alicloud Simple Log Service.
      * 
      */
-    private String project;
+    private final String project;
 
-    private ServiceLogConfig() {}
+    @CustomType.Constructor
+    private ServiceLogConfig(
+        @CustomType.Parameter("enableInstanceMetrics") @Nullable Boolean enableInstanceMetrics,
+        @CustomType.Parameter("enableRequestMetrics") @Nullable Boolean enableRequestMetrics,
+        @CustomType.Parameter("logstore") String logstore,
+        @CustomType.Parameter("project") String project) {
+        this.enableInstanceMetrics = enableInstanceMetrics;
+        this.enableRequestMetrics = enableRequestMetrics;
+        this.logstore = logstore;
+        this.project = project;
+    }
+
     /**
      * @return Enable instance level metrics.
      * 
@@ -70,13 +81,17 @@ public final class ServiceLogConfig {
     public static Builder builder(ServiceLogConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean enableInstanceMetrics;
         private @Nullable Boolean enableRequestMetrics;
         private String logstore;
         private String project;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ServiceLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableInstanceMetrics = defaults.enableInstanceMetrics;
@@ -85,33 +100,23 @@ public final class ServiceLogConfig {
     	      this.project = defaults.project;
         }
 
-        @CustomType.Setter
         public Builder enableInstanceMetrics(@Nullable Boolean enableInstanceMetrics) {
             this.enableInstanceMetrics = enableInstanceMetrics;
             return this;
         }
-        @CustomType.Setter
         public Builder enableRequestMetrics(@Nullable Boolean enableRequestMetrics) {
             this.enableRequestMetrics = enableRequestMetrics;
             return this;
         }
-        @CustomType.Setter
         public Builder logstore(String logstore) {
             this.logstore = Objects.requireNonNull(logstore);
             return this;
         }
-        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
-        }
-        public ServiceLogConfig build() {
-            final var o = new ServiceLogConfig();
-            o.enableInstanceMetrics = enableInstanceMetrics;
-            o.enableRequestMetrics = enableRequestMetrics;
-            o.logstore = logstore;
-            o.project = project;
-            return o;
+        }        public ServiceLogConfig build() {
+            return new ServiceLogConfig(enableInstanceMetrics, enableRequestMetrics, logstore, project);
         }
     }
 }

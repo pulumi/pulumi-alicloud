@@ -16,49 +16,70 @@ public final class GatewayVpnAttachmentIkeConfig {
      * @return IKE authentication algorithm supports sha1 and MD5.
      * 
      */
-    private @Nullable String ikeAuthAlg;
+    private final @Nullable String ikeAuthAlg;
     /**
      * @return The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes.
      * 
      */
-    private @Nullable String ikeEncAlg;
+    private final @Nullable String ikeEncAlg;
     /**
      * @return The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
      * 
      */
-    private @Nullable Integer ikeLifetime;
+    private final @Nullable Integer ikeLifetime;
     /**
      * @return The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: `main`.
      * 
      */
-    private @Nullable String ikeMode;
+    private final @Nullable String ikeMode;
     /**
      * @return The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
      * 
      */
-    private @Nullable String ikePfs;
+    private final @Nullable String ikePfs;
     /**
      * @return The version of the IKE protocol. Valid value: `ikev1`, `ikev2`. Default value: `ikev1`.
      * 
      */
-    private @Nullable String ikeVersion;
+    private final @Nullable String ikeVersion;
     /**
      * @return The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
      * 
      */
-    private @Nullable String localId;
+    private final @Nullable String localId;
     /**
      * @return Used for authentication between the IPsec VPN gateway and the customer gateway.
      * 
      */
-    private @Nullable String psk;
+    private final @Nullable String psk;
     /**
      * @return The peer ID, which supports FQDN and IP formats. By default, the IP address of the currently selected user gateway.
      * 
      */
-    private @Nullable String remoteId;
+    private final @Nullable String remoteId;
 
-    private GatewayVpnAttachmentIkeConfig() {}
+    @CustomType.Constructor
+    private GatewayVpnAttachmentIkeConfig(
+        @CustomType.Parameter("ikeAuthAlg") @Nullable String ikeAuthAlg,
+        @CustomType.Parameter("ikeEncAlg") @Nullable String ikeEncAlg,
+        @CustomType.Parameter("ikeLifetime") @Nullable Integer ikeLifetime,
+        @CustomType.Parameter("ikeMode") @Nullable String ikeMode,
+        @CustomType.Parameter("ikePfs") @Nullable String ikePfs,
+        @CustomType.Parameter("ikeVersion") @Nullable String ikeVersion,
+        @CustomType.Parameter("localId") @Nullable String localId,
+        @CustomType.Parameter("psk") @Nullable String psk,
+        @CustomType.Parameter("remoteId") @Nullable String remoteId) {
+        this.ikeAuthAlg = ikeAuthAlg;
+        this.ikeEncAlg = ikeEncAlg;
+        this.ikeLifetime = ikeLifetime;
+        this.ikeMode = ikeMode;
+        this.ikePfs = ikePfs;
+        this.ikeVersion = ikeVersion;
+        this.localId = localId;
+        this.psk = psk;
+        this.remoteId = remoteId;
+    }
+
     /**
      * @return IKE authentication algorithm supports sha1 and MD5.
      * 
@@ -130,7 +151,7 @@ public final class GatewayVpnAttachmentIkeConfig {
     public static Builder builder(GatewayVpnAttachmentIkeConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String ikeAuthAlg;
         private @Nullable String ikeEncAlg;
@@ -141,7 +162,11 @@ public final class GatewayVpnAttachmentIkeConfig {
         private @Nullable String localId;
         private @Nullable String psk;
         private @Nullable String remoteId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GatewayVpnAttachmentIkeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ikeAuthAlg = defaults.ikeAuthAlg;
@@ -155,63 +180,43 @@ public final class GatewayVpnAttachmentIkeConfig {
     	      this.remoteId = defaults.remoteId;
         }
 
-        @CustomType.Setter
         public Builder ikeAuthAlg(@Nullable String ikeAuthAlg) {
             this.ikeAuthAlg = ikeAuthAlg;
             return this;
         }
-        @CustomType.Setter
         public Builder ikeEncAlg(@Nullable String ikeEncAlg) {
             this.ikeEncAlg = ikeEncAlg;
             return this;
         }
-        @CustomType.Setter
         public Builder ikeLifetime(@Nullable Integer ikeLifetime) {
             this.ikeLifetime = ikeLifetime;
             return this;
         }
-        @CustomType.Setter
         public Builder ikeMode(@Nullable String ikeMode) {
             this.ikeMode = ikeMode;
             return this;
         }
-        @CustomType.Setter
         public Builder ikePfs(@Nullable String ikePfs) {
             this.ikePfs = ikePfs;
             return this;
         }
-        @CustomType.Setter
         public Builder ikeVersion(@Nullable String ikeVersion) {
             this.ikeVersion = ikeVersion;
             return this;
         }
-        @CustomType.Setter
         public Builder localId(@Nullable String localId) {
             this.localId = localId;
             return this;
         }
-        @CustomType.Setter
         public Builder psk(@Nullable String psk) {
             this.psk = psk;
             return this;
         }
-        @CustomType.Setter
         public Builder remoteId(@Nullable String remoteId) {
             this.remoteId = remoteId;
             return this;
-        }
-        public GatewayVpnAttachmentIkeConfig build() {
-            final var o = new GatewayVpnAttachmentIkeConfig();
-            o.ikeAuthAlg = ikeAuthAlg;
-            o.ikeEncAlg = ikeEncAlg;
-            o.ikeLifetime = ikeLifetime;
-            o.ikeMode = ikeMode;
-            o.ikePfs = ikePfs;
-            o.ikeVersion = ikeVersion;
-            o.localId = localId;
-            o.psk = psk;
-            o.remoteId = remoteId;
-            return o;
+        }        public GatewayVpnAttachmentIkeConfig build() {
+            return new GatewayVpnAttachmentIkeConfig(ikeAuthAlg, ikeEncAlg, ikeLifetime, ikeMode, ikePfs, ikeVersion, localId, psk, remoteId);
         }
     }
 }

@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Oss.Inputs
     {
         /// <summary>
         /// Specifies the number of days after object creation when the specific rule action takes effect.
+        /// 
+        /// `NOTE`: One and only one of "created_before_date" and "days" can be specified in one abort_multipart_upload configuration.
         /// </summary>
         [Input("days", required: true)]
         public Input<int> Days { get; set; } = null!;

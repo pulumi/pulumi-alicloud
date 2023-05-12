@@ -152,9 +152,19 @@ public final class GetInstanceTypesPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.isOutdated);
     }
 
+    /**
+     * Filter the result which is used to create a kubernetes cluster
+     * and managed kubernetes cluster. Optional Values: `Master` and `Worker`.
+     * 
+     */
     @Import(name="kubernetesNodeRole")
     private @Nullable String kubernetesNodeRole;
 
+    /**
+     * @return Filter the result which is used to create a kubernetes cluster
+     * and managed kubernetes cluster. Optional Values: `Master` and `Worker`.
+     * 
+     */
     public Optional<String> kubernetesNodeRole() {
         return Optional.ofNullable(this.kubernetesNodeRole);
     }
@@ -204,9 +214,17 @@ public final class GetInstanceTypesPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.networkType);
     }
 
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable String outputFile;
 
+    /**
+     * @return File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -389,6 +407,13 @@ public final class GetInstanceTypesPlainArgs extends com.pulumi.resources.Invoke
             return this;
         }
 
+        /**
+         * @param kubernetesNodeRole Filter the result which is used to create a kubernetes cluster
+         * and managed kubernetes cluster. Optional Values: `Master` and `Worker`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kubernetesNodeRole(@Nullable String kubernetesNodeRole) {
             $.kubernetesNodeRole = kubernetesNodeRole;
             return this;
@@ -427,6 +452,12 @@ public final class GetInstanceTypesPlainArgs extends com.pulumi.resources.Invoke
             return this;
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
             return this;

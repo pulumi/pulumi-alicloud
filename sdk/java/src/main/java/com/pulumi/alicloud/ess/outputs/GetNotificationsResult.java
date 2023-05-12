@@ -17,25 +17,38 @@ public final class GetNotificationsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of notification ids.
      * 
      */
-    private @Nullable List<String> ids;
+    private final @Nullable List<String> ids;
     /**
      * @return A list of notifications. Each element contains the following attributes:
      * 
      */
-    private List<GetNotificationsNotification> notifications;
-    private @Nullable String outputFile;
+    private final List<GetNotificationsNotification> notifications;
+    private final @Nullable String outputFile;
     /**
      * @return ID of the scaling group.
      * 
      */
-    private String scalingGroupId;
+    private final String scalingGroupId;
 
-    private GetNotificationsResult() {}
+    @CustomType.Constructor
+    private GetNotificationsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") @Nullable List<String> ids,
+        @CustomType.Parameter("notifications") List<GetNotificationsNotification> notifications,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("scalingGroupId") String scalingGroupId) {
+        this.id = id;
+        this.ids = ids;
+        this.notifications = notifications;
+        this.outputFile = outputFile;
+        this.scalingGroupId = scalingGroupId;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -75,14 +88,18 @@ public final class GetNotificationsResult {
     public static Builder builder(GetNotificationsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private @Nullable List<String> ids;
         private List<GetNotificationsNotification> notifications;
         private @Nullable String outputFile;
         private String scalingGroupId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetNotificationsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -92,12 +109,10 @@ public final class GetNotificationsResult {
     	      this.scalingGroupId = defaults.scalingGroupId;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(@Nullable List<String> ids) {
             this.ids = ids;
             return this;
@@ -105,7 +120,6 @@ public final class GetNotificationsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder notifications(List<GetNotificationsNotification> notifications) {
             this.notifications = Objects.requireNonNull(notifications);
             return this;
@@ -113,24 +127,15 @@ public final class GetNotificationsResult {
         public Builder notifications(GetNotificationsNotification... notifications) {
             return notifications(List.of(notifications));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder scalingGroupId(String scalingGroupId) {
             this.scalingGroupId = Objects.requireNonNull(scalingGroupId);
             return this;
-        }
-        public GetNotificationsResult build() {
-            final var o = new GetNotificationsResult();
-            o.id = id;
-            o.ids = ids;
-            o.notifications = notifications;
-            o.outputFile = outputFile;
-            o.scalingGroupId = scalingGroupId;
-            return o;
+        }        public GetNotificationsResult build() {
+            return new GetNotificationsResult(id, ids, notifications, outputFile, scalingGroupId);
         }
     }
 }

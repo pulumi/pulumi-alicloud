@@ -60,6 +60,8 @@ type KeyVersion struct {
 	pulumi.CustomResourceState
 
 	// The id of the master key (CMK).
+	//
+	// > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
 	// The id of the Alikms key version.
 	KeyVersionId pulumi.StringOutput `pulumi:"keyVersionId"`
@@ -98,6 +100,8 @@ func GetKeyVersion(ctx *pulumi.Context,
 // Input properties used for looking up and filtering KeyVersion resources.
 type keyVersionState struct {
 	// The id of the master key (CMK).
+	//
+	// > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
 	KeyId *string `pulumi:"keyId"`
 	// The id of the Alikms key version.
 	KeyVersionId *string `pulumi:"keyVersionId"`
@@ -105,6 +109,8 @@ type keyVersionState struct {
 
 type KeyVersionState struct {
 	// The id of the master key (CMK).
+	//
+	// > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
 	KeyId pulumi.StringPtrInput
 	// The id of the Alikms key version.
 	KeyVersionId pulumi.StringPtrInput
@@ -116,12 +122,16 @@ func (KeyVersionState) ElementType() reflect.Type {
 
 type keyVersionArgs struct {
 	// The id of the master key (CMK).
+	//
+	// > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
 	KeyId string `pulumi:"keyId"`
 }
 
 // The set of arguments for constructing a KeyVersion resource.
 type KeyVersionArgs struct {
 	// The id of the master key (CMK).
+	//
+	// > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
 	KeyId pulumi.StringInput
 }
 
@@ -213,6 +223,8 @@ func (o KeyVersionOutput) ToKeyVersionOutputWithContext(ctx context.Context) Key
 }
 
 // The id of the master key (CMK).
+//
+// > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
 func (o KeyVersionOutput) KeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeyVersion) pulumi.StringOutput { return v.KeyId }).(pulumi.StringOutput)
 }

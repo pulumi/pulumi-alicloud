@@ -96,6 +96,8 @@ type Topic struct {
 	pulumi.CustomResourceState
 
 	// Comment of the datahub topic. It cannot be longer than 255 characters.
+	//
+	// **Notes:** Currently `lifeCycle` can not be modified and it will be supported in the next future.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// Create time of the datahub topic. It is a human-readable string rather than 64-bits UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -153,6 +155,8 @@ func GetTopic(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Topic resources.
 type topicState struct {
 	// Comment of the datahub topic. It cannot be longer than 255 characters.
+	//
+	// **Notes:** Currently `lifeCycle` can not be modified and it will be supported in the next future.
 	Comment *string `pulumi:"comment"`
 	// Create time of the datahub topic. It is a human-readable string rather than 64-bits UTC.
 	CreateTime *string `pulumi:"createTime"`
@@ -179,6 +183,8 @@ type topicState struct {
 
 type TopicState struct {
 	// Comment of the datahub topic. It cannot be longer than 255 characters.
+	//
+	// **Notes:** Currently `lifeCycle` can not be modified and it will be supported in the next future.
 	Comment pulumi.StringPtrInput
 	// Create time of the datahub topic. It is a human-readable string rather than 64-bits UTC.
 	CreateTime pulumi.StringPtrInput
@@ -209,6 +215,8 @@ func (TopicState) ElementType() reflect.Type {
 
 type topicArgs struct {
 	// Comment of the datahub topic. It cannot be longer than 255 characters.
+	//
+	// **Notes:** Currently `lifeCycle` can not be modified and it will be supported in the next future.
 	Comment *string `pulumi:"comment"`
 	// How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
 	LifeCycle *int `pulumi:"lifeCycle"`
@@ -232,6 +240,8 @@ type topicArgs struct {
 // The set of arguments for constructing a Topic resource.
 type TopicArgs struct {
 	// Comment of the datahub topic. It cannot be longer than 255 characters.
+	//
+	// **Notes:** Currently `lifeCycle` can not be modified and it will be supported in the next future.
 	Comment pulumi.StringPtrInput
 	// How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
 	LifeCycle pulumi.IntPtrInput
@@ -340,6 +350,8 @@ func (o TopicOutput) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 }
 
 // Comment of the datahub topic. It cannot be longer than 255 characters.
+//
+// **Notes:** Currently `lifeCycle` can not be modified and it will be supported in the next future.
 func (o TopicOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }

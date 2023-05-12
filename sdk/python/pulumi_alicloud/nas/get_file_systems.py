@@ -148,6 +148,7 @@ def get_file_systems(description_regex: Optional[str] = None,
 
     :param str description_regex: A regex string to filter the results by the ：FileSystem description.
     :param Sequence[str] ids: A list of FileSystemId.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str protocol_type: The protocol type of the file system.
            Valid values:
            `NFS`,
@@ -201,6 +202,7 @@ def get_file_systems_output(description_regex: Optional[pulumi.Input[Optional[st
 
     :param str description_regex: A regex string to filter the results by the ：FileSystem description.
     :param Sequence[str] ids: A list of FileSystemId.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str protocol_type: The protocol type of the file system.
            Valid values:
            `NFS`,

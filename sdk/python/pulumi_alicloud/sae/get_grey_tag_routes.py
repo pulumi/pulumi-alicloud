@@ -126,6 +126,7 @@ def get_grey_tag_routes(app_id: Optional[str] = None,
     :param str app_id: The ID  of the SAE Application.
     :param Sequence[str] ids: A list of GreyTagRoute IDs.
     :param str name_regex: A regex string to filter results by GreyTagRoute name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['appId'] = app_id
@@ -173,5 +174,6 @@ def get_grey_tag_routes_output(app_id: Optional[pulumi.Input[str]] = None,
     :param str app_id: The ID  of the SAE Application.
     :param Sequence[str] ids: A list of GreyTagRoute IDs.
     :param str name_regex: A regex string to filter results by GreyTagRoute name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

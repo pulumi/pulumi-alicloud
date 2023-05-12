@@ -18,24 +18,35 @@ public final class AlarmPrometheus {
      * @return The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
      * 
      */
-    private @Nullable Map<String,Object> annotations;
+    private final @Nullable Map<String,Object> annotations;
     /**
      * @return The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
      * 
      */
-    private @Nullable String level;
+    private final @Nullable String level;
     /**
      * @return The PromQL query statement. **Note:** The data obtained by using the PromQL query statement is the monitoring data. You must include the alert threshold in this statement.
      * 
      */
-    private @Nullable String promQl;
+    private final @Nullable String promQl;
     /**
      * @return Critical level alarm retry times. Default to 3.
      * 
      */
-    private @Nullable Integer times;
+    private final @Nullable Integer times;
 
-    private AlarmPrometheus() {}
+    @CustomType.Constructor
+    private AlarmPrometheus(
+        @CustomType.Parameter("annotations") @Nullable Map<String,Object> annotations,
+        @CustomType.Parameter("level") @Nullable String level,
+        @CustomType.Parameter("promQl") @Nullable String promQl,
+        @CustomType.Parameter("times") @Nullable Integer times) {
+        this.annotations = annotations;
+        this.level = level;
+        this.promQl = promQl;
+        this.times = times;
+    }
+
     /**
      * @return The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
      * 
@@ -72,13 +83,17 @@ public final class AlarmPrometheus {
     public static Builder builder(AlarmPrometheus defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Map<String,Object> annotations;
         private @Nullable String level;
         private @Nullable String promQl;
         private @Nullable Integer times;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(AlarmPrometheus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -87,33 +102,23 @@ public final class AlarmPrometheus {
     	      this.times = defaults.times;
         }
 
-        @CustomType.Setter
         public Builder annotations(@Nullable Map<String,Object> annotations) {
             this.annotations = annotations;
             return this;
         }
-        @CustomType.Setter
         public Builder level(@Nullable String level) {
             this.level = level;
             return this;
         }
-        @CustomType.Setter
         public Builder promQl(@Nullable String promQl) {
             this.promQl = promQl;
             return this;
         }
-        @CustomType.Setter
         public Builder times(@Nullable Integer times) {
             this.times = times;
             return this;
-        }
-        public AlarmPrometheus build() {
-            final var o = new AlarmPrometheus();
-            o.annotations = annotations;
-            o.level = level;
-            o.promQl = promQl;
-            o.times = times;
-            return o;
+        }        public AlarmPrometheus build() {
+            return new AlarmPrometheus(annotations, level, promQl, times);
         }
     }
 }

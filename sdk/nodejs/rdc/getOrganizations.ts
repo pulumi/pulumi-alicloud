@@ -59,6 +59,9 @@ export interface GetOrganizationsArgs {
      * A regex string to filter results by Organization name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
@@ -126,6 +129,9 @@ export interface GetOrganizationsOutputArgs {
      * A regex string to filter results by Organization name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk

@@ -123,6 +123,7 @@ def get_scaling_groups(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of scaling group IDs.
     :param str name_regex: A regex string to filter resulting scaling groups by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -165,5 +166,6 @@ def get_scaling_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
 
     :param Sequence[str] ids: A list of scaling group IDs.
     :param str name_regex: A regex string to filter resulting scaling groups by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

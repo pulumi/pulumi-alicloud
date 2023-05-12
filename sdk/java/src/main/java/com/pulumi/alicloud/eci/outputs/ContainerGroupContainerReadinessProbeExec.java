@@ -15,9 +15,13 @@ public final class ContainerGroupContainerReadinessProbeExec {
      * @return The commands run by the init container.
      * 
      */
-    private @Nullable List<String> commands;
+    private final @Nullable List<String> commands;
 
-    private ContainerGroupContainerReadinessProbeExec() {}
+    @CustomType.Constructor
+    private ContainerGroupContainerReadinessProbeExec(@CustomType.Parameter("commands") @Nullable List<String> commands) {
+        this.commands = commands;
+    }
+
     /**
      * @return The commands run by the init container.
      * 
@@ -33,27 +37,27 @@ public final class ContainerGroupContainerReadinessProbeExec {
     public static Builder builder(ContainerGroupContainerReadinessProbeExec defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<String> commands;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ContainerGroupContainerReadinessProbeExec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.commands = defaults.commands;
         }
 
-        @CustomType.Setter
         public Builder commands(@Nullable List<String> commands) {
             this.commands = commands;
             return this;
         }
         public Builder commands(String... commands) {
             return commands(List.of(commands));
-        }
-        public ContainerGroupContainerReadinessProbeExec build() {
-            final var o = new ContainerGroupContainerReadinessProbeExec();
-            o.commands = commands;
-            return o;
+        }        public ContainerGroupContainerReadinessProbeExec build() {
+            return new ContainerGroupContainerReadinessProbeExec(commands);
         }
     }
 }

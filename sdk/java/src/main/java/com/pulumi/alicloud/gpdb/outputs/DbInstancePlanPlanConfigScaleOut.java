@@ -15,19 +15,28 @@ public final class DbInstancePlanPlanConfigScaleOut {
      * @return The executed time of the Plan.
      * 
      */
-    private @Nullable String executeTime;
+    private final @Nullable String executeTime;
     /**
      * @return The Cron Time of the plan.
      * 
      */
-    private @Nullable String planCronTime;
+    private final @Nullable String planCronTime;
     /**
      * @return The segment Node Num of the Plan.
      * 
      */
-    private @Nullable String segmentNodeNum;
+    private final @Nullable String segmentNodeNum;
 
-    private DbInstancePlanPlanConfigScaleOut() {}
+    @CustomType.Constructor
+    private DbInstancePlanPlanConfigScaleOut(
+        @CustomType.Parameter("executeTime") @Nullable String executeTime,
+        @CustomType.Parameter("planCronTime") @Nullable String planCronTime,
+        @CustomType.Parameter("segmentNodeNum") @Nullable String segmentNodeNum) {
+        this.executeTime = executeTime;
+        this.planCronTime = planCronTime;
+        this.segmentNodeNum = segmentNodeNum;
+    }
+
     /**
      * @return The executed time of the Plan.
      * 
@@ -57,12 +66,16 @@ public final class DbInstancePlanPlanConfigScaleOut {
     public static Builder builder(DbInstancePlanPlanConfigScaleOut defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String executeTime;
         private @Nullable String planCronTime;
         private @Nullable String segmentNodeNum;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(DbInstancePlanPlanConfigScaleOut defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.executeTime = defaults.executeTime;
@@ -70,27 +83,19 @@ public final class DbInstancePlanPlanConfigScaleOut {
     	      this.segmentNodeNum = defaults.segmentNodeNum;
         }
 
-        @CustomType.Setter
         public Builder executeTime(@Nullable String executeTime) {
             this.executeTime = executeTime;
             return this;
         }
-        @CustomType.Setter
         public Builder planCronTime(@Nullable String planCronTime) {
             this.planCronTime = planCronTime;
             return this;
         }
-        @CustomType.Setter
         public Builder segmentNodeNum(@Nullable String segmentNodeNum) {
             this.segmentNodeNum = segmentNodeNum;
             return this;
-        }
-        public DbInstancePlanPlanConfigScaleOut build() {
-            final var o = new DbInstancePlanPlanConfigScaleOut();
-            o.executeTime = executeTime;
-            o.planCronTime = planCronTime;
-            o.segmentNodeNum = segmentNodeNum;
-            return o;
+        }        public DbInstancePlanPlanConfigScaleOut build() {
+            return new DbInstancePlanPlanConfigScaleOut(executeTime, planCronTime, segmentNodeNum);
         }
     }
 }

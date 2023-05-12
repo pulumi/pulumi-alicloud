@@ -289,6 +289,10 @@ export class Listener extends pulumi.CustomResource {
     public readonly protocol!: pulumi.Output<string>;
     /**
      * Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+     *
+     * > **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
+     *
+     * > **NOTE:** Advantanced feature such as `tlsCipherPolicy`, can not be updated when load balancer instance is "Shared-Performance". More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
      */
     public readonly proxyProtocolV2Enabled!: pulumi.Output<boolean>;
     /**
@@ -597,6 +601,10 @@ export interface ListenerState {
     protocol?: pulumi.Input<string>;
     /**
      * Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+     *
+     * > **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
+     *
+     * > **NOTE:** Advantanced feature such as `tlsCipherPolicy`, can not be updated when load balancer instance is "Shared-Performance". More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
      */
     proxyProtocolV2Enabled?: pulumi.Input<boolean>;
     /**
@@ -786,6 +794,10 @@ export interface ListenerArgs {
     protocol: pulumi.Input<string>;
     /**
      * Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+     *
+     * > **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
+     *
+     * > **NOTE:** Advantanced feature such as `tlsCipherPolicy`, can not be updated when load balancer instance is "Shared-Performance". More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
      */
     proxyProtocolV2Enabled?: pulumi.Input<boolean>;
     /**

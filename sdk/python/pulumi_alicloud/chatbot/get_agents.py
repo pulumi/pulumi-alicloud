@@ -150,6 +150,7 @@ def get_agents(agent_name: Optional[str] = None,
 
     :param str agent_name: The name of the agent.
     :param str name_regex: A regex string to filter resulting chatbot agents by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['agentName'] = agent_name
@@ -197,5 +198,6 @@ def get_agents_output(agent_name: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str agent_name: The name of the agent.
     :param str name_regex: A regex string to filter resulting chatbot agents by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

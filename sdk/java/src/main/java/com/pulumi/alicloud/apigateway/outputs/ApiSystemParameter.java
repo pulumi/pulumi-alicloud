@@ -13,19 +13,28 @@ public final class ApiSystemParameter {
      * @return Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
      * 
      */
-    private String in;
+    private final String in;
     /**
      * @return The name of the api gateway api. Defaults to null.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return Backend service&#39;s parameter name.
      * 
      */
-    private String nameService;
+    private final String nameService;
 
-    private ApiSystemParameter() {}
+    @CustomType.Constructor
+    private ApiSystemParameter(
+        @CustomType.Parameter("in") String in,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("nameService") String nameService) {
+        this.in = in;
+        this.name = name;
+        this.nameService = nameService;
+    }
+
     /**
      * @return Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
      * 
@@ -55,12 +64,16 @@ public final class ApiSystemParameter {
     public static Builder builder(ApiSystemParameter defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String in;
         private String name;
         private String nameService;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ApiSystemParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.in = defaults.in;
@@ -68,27 +81,19 @@ public final class ApiSystemParameter {
     	      this.nameService = defaults.nameService;
         }
 
-        @CustomType.Setter
         public Builder in(String in) {
             this.in = Objects.requireNonNull(in);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder nameService(String nameService) {
             this.nameService = Objects.requireNonNull(nameService);
             return this;
-        }
-        public ApiSystemParameter build() {
-            final var o = new ApiSystemParameter();
-            o.in = in;
-            o.name = name;
-            o.nameService = nameService;
-            return o;
+        }        public ApiSystemParameter build() {
+            return new ApiSystemParameter(in, name, nameService);
         }
     }
 }

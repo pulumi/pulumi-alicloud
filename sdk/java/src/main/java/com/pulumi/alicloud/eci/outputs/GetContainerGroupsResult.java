@@ -17,27 +17,60 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetContainerGroupsResult {
-    private @Nullable String containerGroupName;
-    private @Nullable Boolean enableDetails;
-    private List<GetContainerGroupsGroup> groups;
+    private final @Nullable String containerGroupName;
+    private final @Nullable Boolean enableDetails;
+    private final List<GetContainerGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable Integer limit;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String resourceGroupId;
-    private @Nullable String status;
-    private @Nullable Map<String,Object> tags;
-    private @Nullable String vswitchId;
-    private @Nullable Boolean withEvent;
-    private @Nullable String zoneId;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable Integer limit;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String resourceGroupId;
+    private final @Nullable String status;
+    private final @Nullable Map<String,Object> tags;
+    private final @Nullable String vswitchId;
+    private final @Nullable Boolean withEvent;
+    private final @Nullable String zoneId;
 
-    private GetContainerGroupsResult() {}
+    @CustomType.Constructor
+    private GetContainerGroupsResult(
+        @CustomType.Parameter("containerGroupName") @Nullable String containerGroupName,
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("groups") List<GetContainerGroupsGroup> groups,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("limit") @Nullable Integer limit,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
+        @CustomType.Parameter("vswitchId") @Nullable String vswitchId,
+        @CustomType.Parameter("withEvent") @Nullable Boolean withEvent,
+        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
+        this.containerGroupName = containerGroupName;
+        this.enableDetails = enableDetails;
+        this.groups = groups;
+        this.id = id;
+        this.ids = ids;
+        this.limit = limit;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.resourceGroupId = resourceGroupId;
+        this.status = status;
+        this.tags = tags;
+        this.vswitchId = vswitchId;
+        this.withEvent = withEvent;
+        this.zoneId = zoneId;
+    }
+
     public Optional<String> containerGroupName() {
         return Optional.ofNullable(this.containerGroupName);
     }
@@ -95,7 +128,7 @@ public final class GetContainerGroupsResult {
     public static Builder builder(GetContainerGroupsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String containerGroupName;
         private @Nullable Boolean enableDetails;
@@ -112,7 +145,11 @@ public final class GetContainerGroupsResult {
         private @Nullable String vswitchId;
         private @Nullable Boolean withEvent;
         private @Nullable String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetContainerGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.containerGroupName = defaults.containerGroupName;
@@ -132,17 +169,14 @@ public final class GetContainerGroupsResult {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder containerGroupName(@Nullable String containerGroupName) {
             this.containerGroupName = containerGroupName;
             return this;
         }
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder groups(List<GetContainerGroupsGroup> groups) {
             this.groups = Objects.requireNonNull(groups);
             return this;
@@ -150,12 +184,10 @@ public final class GetContainerGroupsResult {
         public Builder groups(GetContainerGroupsGroup... groups) {
             return groups(List.of(groups));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -163,17 +195,14 @@ public final class GetContainerGroupsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder limit(@Nullable Integer limit) {
             this.limit = limit;
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -181,59 +210,35 @@ public final class GetContainerGroupsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
             this.vswitchId = vswitchId;
             return this;
         }
-        @CustomType.Setter
         public Builder withEvent(@Nullable Boolean withEvent) {
             this.withEvent = withEvent;
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }
-        public GetContainerGroupsResult build() {
-            final var o = new GetContainerGroupsResult();
-            o.containerGroupName = containerGroupName;
-            o.enableDetails = enableDetails;
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.limit = limit;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.tags = tags;
-            o.vswitchId = vswitchId;
-            o.withEvent = withEvent;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetContainerGroupsResult build() {
+            return new GetContainerGroupsResult(containerGroupName, enableDetails, groups, id, ids, limit, nameRegex, names, outputFile, resourceGroupId, status, tags, vswitchId, withEvent, zoneId);
         }
     }
 }

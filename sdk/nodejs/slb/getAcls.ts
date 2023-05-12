@@ -59,6 +59,9 @@ export interface GetAclsArgs {
      * A regex string to filter results by acl name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The Id of resource group which acl belongs.
@@ -145,6 +148,9 @@ export interface GetAclsOutputArgs {
      * A regex string to filter results by acl name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The Id of resource group which acl belongs.

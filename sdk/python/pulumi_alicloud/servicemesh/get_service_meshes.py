@@ -148,6 +148,7 @@ def get_service_meshes(enable_details: Optional[bool] = None,
 
     :param Sequence[str] ids: A list of Service Mesh IDs.
     :param str name_regex: A regex string to filter results by Service Mesh name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values: `running` or `initial`.
     """
     __args__ = dict()
@@ -202,6 +203,7 @@ def get_service_meshes_output(enable_details: Optional[pulumi.Input[Optional[boo
 
     :param Sequence[str] ids: A list of Service Mesh IDs.
     :param str name_regex: A regex string to filter results by Service Mesh name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values: `running` or `initial`.
     """
     ...

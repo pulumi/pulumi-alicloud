@@ -13,134 +13,189 @@ public final class GetPhysicalConnectionsConnection {
      * @return The Physical Leased Line Access Point ID.
      * 
      */
-    private String accessPointId;
+    private final String accessPointId;
     /**
      * @return To Connect a Device Physical Location.
      * 
      */
-    private String adLocation;
+    private final String adLocation;
     /**
      * @return On the Bandwidth of the ECC Service and Physical Connection.
      * 
      */
-    private String bandwidth;
+    private final String bandwidth;
     /**
      * @return The Physical Connection to Which the Payment Status: Normal, financiallocked, securitylocked.
      * 
      */
-    private String businessStatus;
+    private final String businessStatus;
     /**
      * @return Operators for Physical Connection Circuit Provided Coding.
      * 
      */
-    private String circuitCode;
+    private final String circuitCode;
     /**
      * @return The Representative of the Creation Time Resources Attribute Field.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The Physical Connection to Which the Description.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The Physical Connection to Which the Activation Time.
      * 
      */
-    private String enabledTime;
+    private final String enabledTime;
     /**
      * @return The Expiration Time.
      * 
      */
-    private String endTime;
+    private final String endTime;
     /**
      * @return HasReservationData.
      * 
      */
-    private String hasReservationData;
+    private final String hasReservationData;
     /**
      * @return The ID of the Physical Connection.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Provides Access to the Physical Line Operator Value CT: China Telecom, CU: China Unicom, CM: china Mobile, CO: Other Chinese, Equinix:Equinix, Other: Other Overseas.
      * 
      */
-    private String lineOperator;
+    private final String lineOperator;
     /**
      * @return Loa State.
      * 
      */
-    private String loaStatus;
+    private final String loaStatus;
     /**
      * @return on Behalf of the Pay-as-You-Type of Resource Attribute Field.
      * 
      */
-    private String paymentType;
+    private final String paymentType;
     /**
      * @return and an on-Premises Data Center Location.
      * 
      */
-    private String peerLocation;
+    private final String peerLocation;
     /**
      * @return on Behalf of the Resource Level Id of the Resources Property Fields.
      * 
      */
-    private String physicalConnectionId;
+    private final String physicalConnectionId;
     /**
      * @return on Behalf of the Resource Name of the Resources-Attribute Field.
      * 
      */
-    private String physicalConnectionName;
+    private final String physicalConnectionName;
     /**
      * @return To Connect a Device Port: The Port Number of.
      * 
      */
-    private String portNumber;
+    private final String portNumber;
     /**
      * @return The Physical Leased Line Access Port Type Value 100Base-T: Fast Electrical Ports, 1000Base-T (the Default): gigabit Electrical Ports, 1000Base-LX: Gigabit Singlemode Optical Ports (10Km), 10GBase-T: Gigabit Electrical Port, 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
      * 
      */
-    private String portType;
+    private final String portType;
     /**
      * @return Redundant Physical Connection to Which the ID.
      * 
      */
-    private String redundantPhysicalConnectionId;
+    private final String redundantPhysicalConnectionId;
     /**
      * @return The Renewal of the Entry into Force of the Time.
      * 
      */
-    private String reservationActiveTime;
+    private final String reservationActiveTime;
     /**
      * @return Renewal Type.
      * 
      */
-    private String reservationInternetChargeType;
+    private final String reservationInternetChargeType;
     /**
      * @return Renewal Order Type.
      * 
      */
-    private String reservationOrderType;
+    private final String reservationOrderType;
     /**
      * @return The Physical Connection to Which the Specifications.
      * 
      */
-    private String spec;
+    private final String spec;
     /**
      * @return Resources on Behalf of a State of the Resource Attribute Field.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return Physical Private Line of Type. Default Value: VPC.
      * 
      */
-    private String type;
+    private final String type;
 
-    private GetPhysicalConnectionsConnection() {}
+    @CustomType.Constructor
+    private GetPhysicalConnectionsConnection(
+        @CustomType.Parameter("accessPointId") String accessPointId,
+        @CustomType.Parameter("adLocation") String adLocation,
+        @CustomType.Parameter("bandwidth") String bandwidth,
+        @CustomType.Parameter("businessStatus") String businessStatus,
+        @CustomType.Parameter("circuitCode") String circuitCode,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("enabledTime") String enabledTime,
+        @CustomType.Parameter("endTime") String endTime,
+        @CustomType.Parameter("hasReservationData") String hasReservationData,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("lineOperator") String lineOperator,
+        @CustomType.Parameter("loaStatus") String loaStatus,
+        @CustomType.Parameter("paymentType") String paymentType,
+        @CustomType.Parameter("peerLocation") String peerLocation,
+        @CustomType.Parameter("physicalConnectionId") String physicalConnectionId,
+        @CustomType.Parameter("physicalConnectionName") String physicalConnectionName,
+        @CustomType.Parameter("portNumber") String portNumber,
+        @CustomType.Parameter("portType") String portType,
+        @CustomType.Parameter("redundantPhysicalConnectionId") String redundantPhysicalConnectionId,
+        @CustomType.Parameter("reservationActiveTime") String reservationActiveTime,
+        @CustomType.Parameter("reservationInternetChargeType") String reservationInternetChargeType,
+        @CustomType.Parameter("reservationOrderType") String reservationOrderType,
+        @CustomType.Parameter("spec") String spec,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("type") String type) {
+        this.accessPointId = accessPointId;
+        this.adLocation = adLocation;
+        this.bandwidth = bandwidth;
+        this.businessStatus = businessStatus;
+        this.circuitCode = circuitCode;
+        this.createTime = createTime;
+        this.description = description;
+        this.enabledTime = enabledTime;
+        this.endTime = endTime;
+        this.hasReservationData = hasReservationData;
+        this.id = id;
+        this.lineOperator = lineOperator;
+        this.loaStatus = loaStatus;
+        this.paymentType = paymentType;
+        this.peerLocation = peerLocation;
+        this.physicalConnectionId = physicalConnectionId;
+        this.physicalConnectionName = physicalConnectionName;
+        this.portNumber = portNumber;
+        this.portType = portType;
+        this.redundantPhysicalConnectionId = redundantPhysicalConnectionId;
+        this.reservationActiveTime = reservationActiveTime;
+        this.reservationInternetChargeType = reservationInternetChargeType;
+        this.reservationOrderType = reservationOrderType;
+        this.spec = spec;
+        this.status = status;
+        this.type = type;
+    }
+
     /**
      * @return The Physical Leased Line Access Point ID.
      * 
@@ -331,7 +386,7 @@ public final class GetPhysicalConnectionsConnection {
     public static Builder builder(GetPhysicalConnectionsConnection defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String accessPointId;
         private String adLocation;
@@ -359,7 +414,11 @@ public final class GetPhysicalConnectionsConnection {
         private String spec;
         private String status;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetPhysicalConnectionsConnection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessPointId = defaults.accessPointId;
@@ -390,165 +449,111 @@ public final class GetPhysicalConnectionsConnection {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder accessPointId(String accessPointId) {
             this.accessPointId = Objects.requireNonNull(accessPointId);
             return this;
         }
-        @CustomType.Setter
         public Builder adLocation(String adLocation) {
             this.adLocation = Objects.requireNonNull(adLocation);
             return this;
         }
-        @CustomType.Setter
         public Builder bandwidth(String bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
-        @CustomType.Setter
         public Builder businessStatus(String businessStatus) {
             this.businessStatus = Objects.requireNonNull(businessStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder circuitCode(String circuitCode) {
             this.circuitCode = Objects.requireNonNull(circuitCode);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder enabledTime(String enabledTime) {
             this.enabledTime = Objects.requireNonNull(enabledTime);
             return this;
         }
-        @CustomType.Setter
         public Builder endTime(String endTime) {
             this.endTime = Objects.requireNonNull(endTime);
             return this;
         }
-        @CustomType.Setter
         public Builder hasReservationData(String hasReservationData) {
             this.hasReservationData = Objects.requireNonNull(hasReservationData);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder lineOperator(String lineOperator) {
             this.lineOperator = Objects.requireNonNull(lineOperator);
             return this;
         }
-        @CustomType.Setter
         public Builder loaStatus(String loaStatus) {
             this.loaStatus = Objects.requireNonNull(loaStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
-        @CustomType.Setter
         public Builder peerLocation(String peerLocation) {
             this.peerLocation = Objects.requireNonNull(peerLocation);
             return this;
         }
-        @CustomType.Setter
         public Builder physicalConnectionId(String physicalConnectionId) {
             this.physicalConnectionId = Objects.requireNonNull(physicalConnectionId);
             return this;
         }
-        @CustomType.Setter
         public Builder physicalConnectionName(String physicalConnectionName) {
             this.physicalConnectionName = Objects.requireNonNull(physicalConnectionName);
             return this;
         }
-        @CustomType.Setter
         public Builder portNumber(String portNumber) {
             this.portNumber = Objects.requireNonNull(portNumber);
             return this;
         }
-        @CustomType.Setter
         public Builder portType(String portType) {
             this.portType = Objects.requireNonNull(portType);
             return this;
         }
-        @CustomType.Setter
         public Builder redundantPhysicalConnectionId(String redundantPhysicalConnectionId) {
             this.redundantPhysicalConnectionId = Objects.requireNonNull(redundantPhysicalConnectionId);
             return this;
         }
-        @CustomType.Setter
         public Builder reservationActiveTime(String reservationActiveTime) {
             this.reservationActiveTime = Objects.requireNonNull(reservationActiveTime);
             return this;
         }
-        @CustomType.Setter
         public Builder reservationInternetChargeType(String reservationInternetChargeType) {
             this.reservationInternetChargeType = Objects.requireNonNull(reservationInternetChargeType);
             return this;
         }
-        @CustomType.Setter
         public Builder reservationOrderType(String reservationOrderType) {
             this.reservationOrderType = Objects.requireNonNull(reservationOrderType);
             return this;
         }
-        @CustomType.Setter
         public Builder spec(String spec) {
             this.spec = Objects.requireNonNull(spec);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetPhysicalConnectionsConnection build() {
-            final var o = new GetPhysicalConnectionsConnection();
-            o.accessPointId = accessPointId;
-            o.adLocation = adLocation;
-            o.bandwidth = bandwidth;
-            o.businessStatus = businessStatus;
-            o.circuitCode = circuitCode;
-            o.createTime = createTime;
-            o.description = description;
-            o.enabledTime = enabledTime;
-            o.endTime = endTime;
-            o.hasReservationData = hasReservationData;
-            o.id = id;
-            o.lineOperator = lineOperator;
-            o.loaStatus = loaStatus;
-            o.paymentType = paymentType;
-            o.peerLocation = peerLocation;
-            o.physicalConnectionId = physicalConnectionId;
-            o.physicalConnectionName = physicalConnectionName;
-            o.portNumber = portNumber;
-            o.portType = portType;
-            o.redundantPhysicalConnectionId = redundantPhysicalConnectionId;
-            o.reservationActiveTime = reservationActiveTime;
-            o.reservationInternetChargeType = reservationInternetChargeType;
-            o.reservationOrderType = reservationOrderType;
-            o.spec = spec;
-            o.status = status;
-            o.type = type;
-            return o;
+        }        public GetPhysicalConnectionsConnection build() {
+            return new GetPhysicalConnectionsConnection(accessPointId, adLocation, bandwidth, businessStatus, circuitCode, createTime, description, enabledTime, endTime, hasReservationData, id, lineOperator, loaStatus, paymentType, peerLocation, physicalConnectionId, physicalConnectionName, portNumber, portType, redundantPhysicalConnectionId, reservationActiveTime, reservationInternetChargeType, reservationOrderType, spec, status, type);
         }
     }
 }

@@ -24,79 +24,112 @@ public final class GetServiceMeshesMeshMeshConfig {
      * @return The configuration of the access logging.
      * 
      */
-    private List<GetServiceMeshesMeshMeshConfigAccessLog> accessLogs;
+    private final List<GetServiceMeshesMeshMeshConfigAccessLog> accessLogs;
     /**
      * @return The configuration of the Service grid audit.
      * 
      */
-    private List<GetServiceMeshesMeshMeshConfigAudit> audits;
+    private final List<GetServiceMeshesMeshMeshConfigAudit> audits;
     /**
      * @return The configuration of the control plane logging. **NOTE:** Available in 1.174.0+
      * 
      */
-    private List<GetServiceMeshesMeshMeshConfigControlPlaneLog> controlPlaneLogs;
+    private final List<GetServiceMeshesMeshMeshConfigControlPlaneLog> controlPlaneLogs;
     /**
      * @return Whether or not to enable the use of a custom zipkin.
      * 
      */
-    private Boolean customizedZipkin;
+    private final Boolean customizedZipkin;
     /**
      * @return Whether to enable service can access the service through the nearest node access.
      * 
      */
-    private Boolean enableLocalityLb;
+    private final Boolean enableLocalityLb;
     /**
      * @return The IP ADDRESS range.
      * 
      */
-    private String includeIpRanges;
+    private final String includeIpRanges;
     /**
      * @return The configuration of the Kiali.
      * 
      */
-    private List<GetServiceMeshesMeshMeshConfigKiali> kialis;
+    private final List<GetServiceMeshesMeshMeshConfigKiali> kialis;
     /**
      * @return The open-door policy of agent (OPA) plug-in information.
      * 
      */
-    private List<GetServiceMeshesMeshMeshConfigOpa> opas;
+    private final List<GetServiceMeshesMeshMeshConfigOpa> opas;
     /**
      * @return The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
      * 
      */
-    private String outboundTrafficPolicy;
+    private final String outboundTrafficPolicy;
     /**
      * @return The configuration of the Link trace sampling.
      * 
      */
-    private List<GetServiceMeshesMeshMeshConfigPilot> pilots;
+    private final List<GetServiceMeshesMeshMeshConfigPilot> pilots;
     /**
      * @return the configuration of the Prometheus.
      * 
      */
-    private List<GetServiceMeshesMeshMeshConfigPrometheus> prometheuses;
+    private final List<GetServiceMeshesMeshMeshConfigPrometheus> prometheuses;
     /**
      * @return The configuration of the Proxy.
      * 
      */
-    private List<GetServiceMeshesMeshMeshConfigProxy> proxies;
+    private final List<GetServiceMeshesMeshMeshConfigProxy> proxies;
     /**
      * @return The configuration of the Sidecar injector.
      * 
      */
-    private List<GetServiceMeshesMeshMeshConfigSidecarInjector> sidecarInjectors;
+    private final List<GetServiceMeshesMeshMeshConfigSidecarInjector> sidecarInjectors;
     /**
      * @return Whether to enable acquisition Prometheus metrics.
      * 
      */
-    private Boolean telemetry;
+    private final Boolean telemetry;
     /**
      * @return Whether to enable link trace.
      * 
      */
-    private Boolean tracing;
+    private final Boolean tracing;
 
-    private GetServiceMeshesMeshMeshConfig() {}
+    @CustomType.Constructor
+    private GetServiceMeshesMeshMeshConfig(
+        @CustomType.Parameter("accessLogs") List<GetServiceMeshesMeshMeshConfigAccessLog> accessLogs,
+        @CustomType.Parameter("audits") List<GetServiceMeshesMeshMeshConfigAudit> audits,
+        @CustomType.Parameter("controlPlaneLogs") List<GetServiceMeshesMeshMeshConfigControlPlaneLog> controlPlaneLogs,
+        @CustomType.Parameter("customizedZipkin") Boolean customizedZipkin,
+        @CustomType.Parameter("enableLocalityLb") Boolean enableLocalityLb,
+        @CustomType.Parameter("includeIpRanges") String includeIpRanges,
+        @CustomType.Parameter("kialis") List<GetServiceMeshesMeshMeshConfigKiali> kialis,
+        @CustomType.Parameter("opas") List<GetServiceMeshesMeshMeshConfigOpa> opas,
+        @CustomType.Parameter("outboundTrafficPolicy") String outboundTrafficPolicy,
+        @CustomType.Parameter("pilots") List<GetServiceMeshesMeshMeshConfigPilot> pilots,
+        @CustomType.Parameter("prometheuses") List<GetServiceMeshesMeshMeshConfigPrometheus> prometheuses,
+        @CustomType.Parameter("proxies") List<GetServiceMeshesMeshMeshConfigProxy> proxies,
+        @CustomType.Parameter("sidecarInjectors") List<GetServiceMeshesMeshMeshConfigSidecarInjector> sidecarInjectors,
+        @CustomType.Parameter("telemetry") Boolean telemetry,
+        @CustomType.Parameter("tracing") Boolean tracing) {
+        this.accessLogs = accessLogs;
+        this.audits = audits;
+        this.controlPlaneLogs = controlPlaneLogs;
+        this.customizedZipkin = customizedZipkin;
+        this.enableLocalityLb = enableLocalityLb;
+        this.includeIpRanges = includeIpRanges;
+        this.kialis = kialis;
+        this.opas = opas;
+        this.outboundTrafficPolicy = outboundTrafficPolicy;
+        this.pilots = pilots;
+        this.prometheuses = prometheuses;
+        this.proxies = proxies;
+        this.sidecarInjectors = sidecarInjectors;
+        this.telemetry = telemetry;
+        this.tracing = tracing;
+    }
+
     /**
      * @return The configuration of the access logging.
      * 
@@ -210,7 +243,7 @@ public final class GetServiceMeshesMeshMeshConfig {
     public static Builder builder(GetServiceMeshesMeshMeshConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetServiceMeshesMeshMeshConfigAccessLog> accessLogs;
         private List<GetServiceMeshesMeshMeshConfigAudit> audits;
@@ -227,7 +260,11 @@ public final class GetServiceMeshesMeshMeshConfig {
         private List<GetServiceMeshesMeshMeshConfigSidecarInjector> sidecarInjectors;
         private Boolean telemetry;
         private Boolean tracing;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServiceMeshesMeshMeshConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessLogs = defaults.accessLogs;
@@ -247,7 +284,6 @@ public final class GetServiceMeshesMeshMeshConfig {
     	      this.tracing = defaults.tracing;
         }
 
-        @CustomType.Setter
         public Builder accessLogs(List<GetServiceMeshesMeshMeshConfigAccessLog> accessLogs) {
             this.accessLogs = Objects.requireNonNull(accessLogs);
             return this;
@@ -255,7 +291,6 @@ public final class GetServiceMeshesMeshMeshConfig {
         public Builder accessLogs(GetServiceMeshesMeshMeshConfigAccessLog... accessLogs) {
             return accessLogs(List.of(accessLogs));
         }
-        @CustomType.Setter
         public Builder audits(List<GetServiceMeshesMeshMeshConfigAudit> audits) {
             this.audits = Objects.requireNonNull(audits);
             return this;
@@ -263,7 +298,6 @@ public final class GetServiceMeshesMeshMeshConfig {
         public Builder audits(GetServiceMeshesMeshMeshConfigAudit... audits) {
             return audits(List.of(audits));
         }
-        @CustomType.Setter
         public Builder controlPlaneLogs(List<GetServiceMeshesMeshMeshConfigControlPlaneLog> controlPlaneLogs) {
             this.controlPlaneLogs = Objects.requireNonNull(controlPlaneLogs);
             return this;
@@ -271,22 +305,18 @@ public final class GetServiceMeshesMeshMeshConfig {
         public Builder controlPlaneLogs(GetServiceMeshesMeshMeshConfigControlPlaneLog... controlPlaneLogs) {
             return controlPlaneLogs(List.of(controlPlaneLogs));
         }
-        @CustomType.Setter
         public Builder customizedZipkin(Boolean customizedZipkin) {
             this.customizedZipkin = Objects.requireNonNull(customizedZipkin);
             return this;
         }
-        @CustomType.Setter
         public Builder enableLocalityLb(Boolean enableLocalityLb) {
             this.enableLocalityLb = Objects.requireNonNull(enableLocalityLb);
             return this;
         }
-        @CustomType.Setter
         public Builder includeIpRanges(String includeIpRanges) {
             this.includeIpRanges = Objects.requireNonNull(includeIpRanges);
             return this;
         }
-        @CustomType.Setter
         public Builder kialis(List<GetServiceMeshesMeshMeshConfigKiali> kialis) {
             this.kialis = Objects.requireNonNull(kialis);
             return this;
@@ -294,7 +324,6 @@ public final class GetServiceMeshesMeshMeshConfig {
         public Builder kialis(GetServiceMeshesMeshMeshConfigKiali... kialis) {
             return kialis(List.of(kialis));
         }
-        @CustomType.Setter
         public Builder opas(List<GetServiceMeshesMeshMeshConfigOpa> opas) {
             this.opas = Objects.requireNonNull(opas);
             return this;
@@ -302,12 +331,10 @@ public final class GetServiceMeshesMeshMeshConfig {
         public Builder opas(GetServiceMeshesMeshMeshConfigOpa... opas) {
             return opas(List.of(opas));
         }
-        @CustomType.Setter
         public Builder outboundTrafficPolicy(String outboundTrafficPolicy) {
             this.outboundTrafficPolicy = Objects.requireNonNull(outboundTrafficPolicy);
             return this;
         }
-        @CustomType.Setter
         public Builder pilots(List<GetServiceMeshesMeshMeshConfigPilot> pilots) {
             this.pilots = Objects.requireNonNull(pilots);
             return this;
@@ -315,7 +342,6 @@ public final class GetServiceMeshesMeshMeshConfig {
         public Builder pilots(GetServiceMeshesMeshMeshConfigPilot... pilots) {
             return pilots(List.of(pilots));
         }
-        @CustomType.Setter
         public Builder prometheuses(List<GetServiceMeshesMeshMeshConfigPrometheus> prometheuses) {
             this.prometheuses = Objects.requireNonNull(prometheuses);
             return this;
@@ -323,7 +349,6 @@ public final class GetServiceMeshesMeshMeshConfig {
         public Builder prometheuses(GetServiceMeshesMeshMeshConfigPrometheus... prometheuses) {
             return prometheuses(List.of(prometheuses));
         }
-        @CustomType.Setter
         public Builder proxies(List<GetServiceMeshesMeshMeshConfigProxy> proxies) {
             this.proxies = Objects.requireNonNull(proxies);
             return this;
@@ -331,7 +356,6 @@ public final class GetServiceMeshesMeshMeshConfig {
         public Builder proxies(GetServiceMeshesMeshMeshConfigProxy... proxies) {
             return proxies(List.of(proxies));
         }
-        @CustomType.Setter
         public Builder sidecarInjectors(List<GetServiceMeshesMeshMeshConfigSidecarInjector> sidecarInjectors) {
             this.sidecarInjectors = Objects.requireNonNull(sidecarInjectors);
             return this;
@@ -339,34 +363,15 @@ public final class GetServiceMeshesMeshMeshConfig {
         public Builder sidecarInjectors(GetServiceMeshesMeshMeshConfigSidecarInjector... sidecarInjectors) {
             return sidecarInjectors(List.of(sidecarInjectors));
         }
-        @CustomType.Setter
         public Builder telemetry(Boolean telemetry) {
             this.telemetry = Objects.requireNonNull(telemetry);
             return this;
         }
-        @CustomType.Setter
         public Builder tracing(Boolean tracing) {
             this.tracing = Objects.requireNonNull(tracing);
             return this;
-        }
-        public GetServiceMeshesMeshMeshConfig build() {
-            final var o = new GetServiceMeshesMeshMeshConfig();
-            o.accessLogs = accessLogs;
-            o.audits = audits;
-            o.controlPlaneLogs = controlPlaneLogs;
-            o.customizedZipkin = customizedZipkin;
-            o.enableLocalityLb = enableLocalityLb;
-            o.includeIpRanges = includeIpRanges;
-            o.kialis = kialis;
-            o.opas = opas;
-            o.outboundTrafficPolicy = outboundTrafficPolicy;
-            o.pilots = pilots;
-            o.prometheuses = prometheuses;
-            o.proxies = proxies;
-            o.sidecarInjectors = sidecarInjectors;
-            o.telemetry = telemetry;
-            o.tracing = tracing;
-            return o;
+        }        public GetServiceMeshesMeshMeshConfig build() {
+            return new GetServiceMeshesMeshMeshConfig(accessLogs, audits, controlPlaneLogs, customizedZipkin, enableLocalityLb, includeIpRanges, kialis, opas, outboundTrafficPolicy, pilots, prometheuses, proxies, sidecarInjectors, telemetry, tracing);
         }
     }
 }

@@ -164,6 +164,7 @@ def get_ecs_dedicated_host_clusters(dedicated_host_cluster_ids: Optional[Sequenc
     :param str dedicated_host_cluster_name: The name of the dedicated host cluster.
     :param Sequence[str] ids: A list of Dedicated Host Cluster IDs.
     :param str name_regex: A regex string to filter results by Dedicated Host Cluster name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     :param str zone_id: The zone ID of the dedicated host cluster.
     """
@@ -230,6 +231,7 @@ def get_ecs_dedicated_host_clusters_output(dedicated_host_cluster_ids: Optional[
     :param str dedicated_host_cluster_name: The name of the dedicated host cluster.
     :param Sequence[str] ids: A list of Dedicated Host Cluster IDs.
     :param str name_regex: A regex string to filter results by Dedicated Host Cluster name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     :param str zone_id: The zone ID of the dedicated host cluster.
     """

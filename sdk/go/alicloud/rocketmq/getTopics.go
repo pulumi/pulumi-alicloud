@@ -84,7 +84,8 @@ type GetTopicsArgs struct {
 	// ID of the ONS Instance that owns the topics.
 	InstanceId string `pulumi:"instanceId"`
 	// A regex string to filter results by the topic name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// A map of tags assigned to the Ons instance.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -128,7 +129,8 @@ type GetTopicsOutputArgs struct {
 	// ID of the ONS Instance that owns the topics.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// A regex string to filter results by the topic name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// A map of tags assigned to the Ons instance.
 	Tags pulumi.MapInput `pulumi:"tags"`

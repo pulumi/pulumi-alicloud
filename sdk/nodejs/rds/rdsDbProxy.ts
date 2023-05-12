@@ -144,6 +144,8 @@ export class RdsDbProxy extends pulumi.CustomResource {
      * The read and write attributes of the proxy terminal. Valid values:
      * - ReadWrite: The proxy terminal connects to the primary instance and can receive both read and write requests.
      * - ReadOnly: The proxy terminal does not connect to the primary instance and can receive only read requests. This is the default value.
+     *
+     * > **NOTE:** Note This setting causes your instance to restart. Proceed with caution.
      */
     public readonly dbProxyEndpointReadWriteMode!: pulumi.Output<string>;
     /**
@@ -154,6 +156,8 @@ export class RdsDbProxy extends pulumi.CustomResource {
      * Valid status values:
      * - 1: enabled.
      * - 0: disabled.
+     *
+     * > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
      */
     public readonly dbProxyFeatures!: pulumi.Output<string>;
     /**
@@ -176,6 +180,8 @@ export class RdsDbProxy extends pulumi.CustomResource {
      * - Immediate: ApsaraDB RDS immediately applies the new settings.
      * - MaintainTime: ApsaraDB RDS applies the new settings during the maintenance window that you specified. For more information, see Modify the maintenance window.
      * - SpecificTime: ApsaraDB RDS applies the new settings at a specified point in time.
+     *
+     * > **NOTE:** Note If you set the EffectiveTime parameter to SpecificTime, you must specify the EffectiveSpecificTime parameter.
      */
     public readonly effectiveTime!: pulumi.Output<string>;
     /**
@@ -194,10 +200,14 @@ export class RdsDbProxy extends pulumi.CustomResource {
      * The policy that is used to allocate read weights. Valid values:
      * - Standard: ApsaraDB RDS automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
      * - Custom: You must manually allocate read weights to the instance and its read-only instances.
+     *
+     * > **NOTE:** Note If you set the ReadOnlyInstanceDistributionType parameter to Custom, you must specify the ReadOnlyInstanceWeight parameter.
      */
     public readonly readOnlyInstanceDistributionType!: pulumi.Output<string>;
     /**
      * The maximum latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, ApsaraDB RDS no longer forwards read requests to the read-only instance. If you do not specify this parameter, the default value of this parameter is retained. Unit: seconds. Valid values: 0 to 3600.
+     *
+     * > **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
      */
     public readonly readOnlyInstanceMaxDelayTime!: pulumi.Output<number>;
     /**
@@ -342,6 +352,8 @@ export interface RdsDbProxyState {
      * The read and write attributes of the proxy terminal. Valid values:
      * - ReadWrite: The proxy terminal connects to the primary instance and can receive both read and write requests.
      * - ReadOnly: The proxy terminal does not connect to the primary instance and can receive only read requests. This is the default value.
+     *
+     * > **NOTE:** Note This setting causes your instance to restart. Proceed with caution.
      */
     dbProxyEndpointReadWriteMode?: pulumi.Input<string>;
     /**
@@ -352,6 +364,8 @@ export interface RdsDbProxyState {
      * Valid status values:
      * - 1: enabled.
      * - 0: disabled.
+     *
+     * > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
      */
     dbProxyFeatures?: pulumi.Input<string>;
     /**
@@ -374,6 +388,8 @@ export interface RdsDbProxyState {
      * - Immediate: ApsaraDB RDS immediately applies the new settings.
      * - MaintainTime: ApsaraDB RDS applies the new settings during the maintenance window that you specified. For more information, see Modify the maintenance window.
      * - SpecificTime: ApsaraDB RDS applies the new settings at a specified point in time.
+     *
+     * > **NOTE:** Note If you set the EffectiveTime parameter to SpecificTime, you must specify the EffectiveSpecificTime parameter.
      */
     effectiveTime?: pulumi.Input<string>;
     /**
@@ -392,10 +408,14 @@ export interface RdsDbProxyState {
      * The policy that is used to allocate read weights. Valid values:
      * - Standard: ApsaraDB RDS automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
      * - Custom: You must manually allocate read weights to the instance and its read-only instances.
+     *
+     * > **NOTE:** Note If you set the ReadOnlyInstanceDistributionType parameter to Custom, you must specify the ReadOnlyInstanceWeight parameter.
      */
     readOnlyInstanceDistributionType?: pulumi.Input<string>;
     /**
      * The maximum latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, ApsaraDB RDS no longer forwards read requests to the read-only instance. If you do not specify this parameter, the default value of this parameter is retained. Unit: seconds. Valid values: 0 to 3600.
+     *
+     * > **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
      */
     readOnlyInstanceMaxDelayTime?: pulumi.Input<number>;
     /**
@@ -447,6 +467,8 @@ export interface RdsDbProxyArgs {
      * The read and write attributes of the proxy terminal. Valid values:
      * - ReadWrite: The proxy terminal connects to the primary instance and can receive both read and write requests.
      * - ReadOnly: The proxy terminal does not connect to the primary instance and can receive only read requests. This is the default value.
+     *
+     * > **NOTE:** Note This setting causes your instance to restart. Proceed with caution.
      */
     dbProxyEndpointReadWriteMode?: pulumi.Input<string>;
     /**
@@ -457,6 +479,8 @@ export interface RdsDbProxyArgs {
      * Valid status values:
      * - 1: enabled.
      * - 0: disabled.
+     *
+     * > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
      */
     dbProxyFeatures?: pulumi.Input<string>;
     /**
@@ -479,6 +503,8 @@ export interface RdsDbProxyArgs {
      * - Immediate: ApsaraDB RDS immediately applies the new settings.
      * - MaintainTime: ApsaraDB RDS applies the new settings during the maintenance window that you specified. For more information, see Modify the maintenance window.
      * - SpecificTime: ApsaraDB RDS applies the new settings at a specified point in time.
+     *
+     * > **NOTE:** Note If you set the EffectiveTime parameter to SpecificTime, you must specify the EffectiveSpecificTime parameter.
      */
     effectiveTime?: pulumi.Input<string>;
     /**
@@ -493,10 +519,14 @@ export interface RdsDbProxyArgs {
      * The policy that is used to allocate read weights. Valid values:
      * - Standard: ApsaraDB RDS automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
      * - Custom: You must manually allocate read weights to the instance and its read-only instances.
+     *
+     * > **NOTE:** Note If you set the ReadOnlyInstanceDistributionType parameter to Custom, you must specify the ReadOnlyInstanceWeight parameter.
      */
     readOnlyInstanceDistributionType?: pulumi.Input<string>;
     /**
      * The maximum latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, ApsaraDB RDS no longer forwards read requests to the read-only instance. If you do not specify this parameter, the default value of this parameter is retained. Unit: seconds. Valid values: 0 to 3600.
+     *
+     * > **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
      */
     readOnlyInstanceMaxDelayTime?: pulumi.Input<number>;
     /**

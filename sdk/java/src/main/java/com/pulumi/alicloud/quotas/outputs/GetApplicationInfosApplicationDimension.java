@@ -9,10 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetApplicationInfosApplicationDimension {
-    private String key;
-    private String value;
+    private final String key;
+    private final String value;
 
-    private GetApplicationInfosApplicationDimension() {}
+    @CustomType.Constructor
+    private GetApplicationInfosApplicationDimension(
+        @CustomType.Parameter("key") String key,
+        @CustomType.Parameter("value") String value) {
+        this.key = key;
+        this.value = value;
+    }
+
     public String key() {
         return this.key;
     }
@@ -27,32 +34,30 @@ public final class GetApplicationInfosApplicationDimension {
     public static Builder builder(GetApplicationInfosApplicationDimension defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String key;
         private String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetApplicationInfosApplicationDimension defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
-        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }
-        public GetApplicationInfosApplicationDimension build() {
-            final var o = new GetApplicationInfosApplicationDimension();
-            o.key = key;
-            o.value = value;
-            return o;
+        }        public GetApplicationInfosApplicationDimension build() {
+            return new GetApplicationInfosApplicationDimension(key, value);
         }
     }
 }

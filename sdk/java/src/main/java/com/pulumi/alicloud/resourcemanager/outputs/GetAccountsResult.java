@@ -18,26 +18,41 @@ public final class GetAccountsResult {
      * @return A list of accounts. Each element contains the following attributes:
      * 
      */
-    private List<GetAccountsAccount> accounts;
-    private @Nullable Boolean enableDetails;
+    private final List<GetAccountsAccount> accounts;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of account IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String outputFile;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
     /**
      * @return The status of the member account.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
 
-    private GetAccountsResult() {}
+    @CustomType.Constructor
+    private GetAccountsResult(
+        @CustomType.Parameter("accounts") List<GetAccountsAccount> accounts,
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.accounts = accounts;
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.status = status;
+    }
+
     /**
      * @return A list of accounts. Each element contains the following attributes:
      * 
@@ -80,7 +95,7 @@ public final class GetAccountsResult {
     public static Builder builder(GetAccountsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetAccountsAccount> accounts;
         private @Nullable Boolean enableDetails;
@@ -88,7 +103,11 @@ public final class GetAccountsResult {
         private List<String> ids;
         private @Nullable String outputFile;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAccountsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accounts = defaults.accounts;
@@ -99,7 +118,6 @@ public final class GetAccountsResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder accounts(List<GetAccountsAccount> accounts) {
             this.accounts = Objects.requireNonNull(accounts);
             return this;
@@ -107,17 +125,14 @@ public final class GetAccountsResult {
         public Builder accounts(GetAccountsAccount... accounts) {
             return accounts(List.of(accounts));
         }
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -125,25 +140,15 @@ public final class GetAccountsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetAccountsResult build() {
-            final var o = new GetAccountsResult();
-            o.accounts = accounts;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+        }        public GetAccountsResult build() {
+            return new GetAccountsResult(accounts, enableDetails, id, ids, outputFile, status);
         }
     }
 }

@@ -17,75 +17,116 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNatGatewaysResult {
-    private @Nullable Boolean dryRun;
-    private @Nullable Boolean enableDetails;
+    private final @Nullable Boolean dryRun;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return A list of Nat gateways. Each element contains the following attributes:
      * 
      */
-    private List<GetNatGatewaysGateway> gateways;
+    private final List<GetNatGatewaysGateway> gateways;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return (Optional) A list of Nat gateways IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of Nat gateways names.
      * 
      */
-    private List<String> names;
+    private final List<String> names;
     /**
      * @return The name of the NAT gateway.
      * 
      */
-    private @Nullable String natGatewayName;
+    private final @Nullable String natGatewayName;
     /**
      * @return The type of the NAT gateway.
      * 
      */
-    private @Nullable String natType;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
+    private final @Nullable String natType;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
     /**
      * @return The billing method of the NAT gateway.
      * 
      */
-    private @Nullable String paymentType;
+    private final @Nullable String paymentType;
     /**
      * @return The ID of the resource group.
      * 
      */
-    private @Nullable String resourceGroupId;
+    private final @Nullable String resourceGroupId;
     /**
      * @return The specification of the NAT gateway.
      * 
      */
-    private @Nullable String specification;
+    private final @Nullable String specification;
     /**
      * @return The status of the NAT gateway.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
     /**
      * @return The tags of NAT gateway.
      * 
      */
-    private @Nullable Map<String,Object> tags;
-    private Integer totalCount;
+    private final @Nullable Map<String,Object> tags;
+    private final Integer totalCount;
     /**
      * @return The ID of the VPC.
      * 
      */
-    private @Nullable String vpcId;
+    private final @Nullable String vpcId;
 
-    private GetNatGatewaysResult() {}
+    @CustomType.Constructor
+    private GetNatGatewaysResult(
+        @CustomType.Parameter("dryRun") @Nullable Boolean dryRun,
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("gateways") List<GetNatGatewaysGateway> gateways,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("natGatewayName") @Nullable String natGatewayName,
+        @CustomType.Parameter("natType") @Nullable String natType,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
+        @CustomType.Parameter("paymentType") @Nullable String paymentType,
+        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
+        @CustomType.Parameter("specification") @Nullable String specification,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
+        @CustomType.Parameter("totalCount") Integer totalCount,
+        @CustomType.Parameter("vpcId") @Nullable String vpcId) {
+        this.dryRun = dryRun;
+        this.enableDetails = enableDetails;
+        this.gateways = gateways;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.natGatewayName = natGatewayName;
+        this.natType = natType;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+        this.paymentType = paymentType;
+        this.resourceGroupId = resourceGroupId;
+        this.specification = specification;
+        this.status = status;
+        this.tags = tags;
+        this.totalCount = totalCount;
+        this.vpcId = vpcId;
+    }
+
     public Optional<Boolean> dryRun() {
         return Optional.ofNullable(this.dryRun);
     }
@@ -199,7 +240,7 @@ public final class GetNatGatewaysResult {
     public static Builder builder(GetNatGatewaysResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean dryRun;
         private @Nullable Boolean enableDetails;
@@ -220,7 +261,11 @@ public final class GetNatGatewaysResult {
         private @Nullable Map<String,Object> tags;
         private Integer totalCount;
         private @Nullable String vpcId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetNatGatewaysResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dryRun = defaults.dryRun;
@@ -244,17 +289,14 @@ public final class GetNatGatewaysResult {
     	      this.vpcId = defaults.vpcId;
         }
 
-        @CustomType.Setter
         public Builder dryRun(@Nullable Boolean dryRun) {
             this.dryRun = dryRun;
             return this;
         }
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder gateways(List<GetNatGatewaysGateway> gateways) {
             this.gateways = Objects.requireNonNull(gateways);
             return this;
@@ -262,12 +304,10 @@ public final class GetNatGatewaysResult {
         public Builder gateways(GetNatGatewaysGateway... gateways) {
             return gateways(List.of(gateways));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -275,12 +315,10 @@ public final class GetNatGatewaysResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -288,88 +326,55 @@ public final class GetNatGatewaysResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder natGatewayName(@Nullable String natGatewayName) {
             this.natGatewayName = natGatewayName;
             return this;
         }
-        @CustomType.Setter
         public Builder natType(@Nullable String natType) {
             this.natType = natType;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(@Nullable String paymentType) {
             this.paymentType = paymentType;
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
-        @CustomType.Setter
         public Builder specification(@Nullable String specification) {
             this.specification = specification;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
-        @CustomType.Setter
         public Builder totalCount(Integer totalCount) {
             this.totalCount = Objects.requireNonNull(totalCount);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
-        }
-        public GetNatGatewaysResult build() {
-            final var o = new GetNatGatewaysResult();
-            o.dryRun = dryRun;
-            o.enableDetails = enableDetails;
-            o.gateways = gateways;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.natGatewayName = natGatewayName;
-            o.natType = natType;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.paymentType = paymentType;
-            o.resourceGroupId = resourceGroupId;
-            o.specification = specification;
-            o.status = status;
-            o.tags = tags;
-            o.totalCount = totalCount;
-            o.vpcId = vpcId;
-            return o;
+        }        public GetNatGatewaysResult build() {
+            return new GetNatGatewaysResult(dryRun, enableDetails, gateways, id, ids, nameRegex, names, natGatewayName, natType, outputFile, pageNumber, pageSize, paymentType, resourceGroupId, specification, status, tags, totalCount, vpcId);
         }
     }
 }

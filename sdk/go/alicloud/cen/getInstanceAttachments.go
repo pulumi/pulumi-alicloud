@@ -56,7 +56,8 @@ type GetInstanceAttachmentsArgs struct {
 	// The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
 	ChildInstanceType *string `pulumi:"childInstanceType"`
 	// The ID of the CEN instance.
-	InstanceId string  `pulumi:"instanceId"`
+	InstanceId string `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
 	Status *string `pulumi:"status"`
@@ -101,7 +102,8 @@ type GetInstanceAttachmentsOutputArgs struct {
 	// The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
 	ChildInstanceType pulumi.StringPtrInput `pulumi:"childInstanceType"`
 	// The ID of the CEN instance.
-	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

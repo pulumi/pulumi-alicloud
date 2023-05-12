@@ -13,19 +13,36 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetIpv6InternetBandwidthsResult {
-    private List<GetIpv6InternetBandwidthsBandwidth> bandwidths;
+    private final List<GetIpv6InternetBandwidthsBandwidth> bandwidths;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String ipv6AddressId;
-    private @Nullable String ipv6InternetBandwidthId;
-    private @Nullable String outputFile;
-    private @Nullable String status;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String ipv6AddressId;
+    private final @Nullable String ipv6InternetBandwidthId;
+    private final @Nullable String outputFile;
+    private final @Nullable String status;
 
-    private GetIpv6InternetBandwidthsResult() {}
+    @CustomType.Constructor
+    private GetIpv6InternetBandwidthsResult(
+        @CustomType.Parameter("bandwidths") List<GetIpv6InternetBandwidthsBandwidth> bandwidths,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("ipv6AddressId") @Nullable String ipv6AddressId,
+        @CustomType.Parameter("ipv6InternetBandwidthId") @Nullable String ipv6InternetBandwidthId,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.bandwidths = bandwidths;
+        this.id = id;
+        this.ids = ids;
+        this.ipv6AddressId = ipv6AddressId;
+        this.ipv6InternetBandwidthId = ipv6InternetBandwidthId;
+        this.outputFile = outputFile;
+        this.status = status;
+    }
+
     public List<GetIpv6InternetBandwidthsBandwidth> bandwidths() {
         return this.bandwidths;
     }
@@ -59,7 +76,7 @@ public final class GetIpv6InternetBandwidthsResult {
     public static Builder builder(GetIpv6InternetBandwidthsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetIpv6InternetBandwidthsBandwidth> bandwidths;
         private String id;
@@ -68,7 +85,11 @@ public final class GetIpv6InternetBandwidthsResult {
         private @Nullable String ipv6InternetBandwidthId;
         private @Nullable String outputFile;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetIpv6InternetBandwidthsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidths = defaults.bandwidths;
@@ -80,7 +101,6 @@ public final class GetIpv6InternetBandwidthsResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder bandwidths(List<GetIpv6InternetBandwidthsBandwidth> bandwidths) {
             this.bandwidths = Objects.requireNonNull(bandwidths);
             return this;
@@ -88,12 +108,10 @@ public final class GetIpv6InternetBandwidthsResult {
         public Builder bandwidths(GetIpv6InternetBandwidthsBandwidth... bandwidths) {
             return bandwidths(List.of(bandwidths));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -101,36 +119,23 @@ public final class GetIpv6InternetBandwidthsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder ipv6AddressId(@Nullable String ipv6AddressId) {
             this.ipv6AddressId = ipv6AddressId;
             return this;
         }
-        @CustomType.Setter
         public Builder ipv6InternetBandwidthId(@Nullable String ipv6InternetBandwidthId) {
             this.ipv6InternetBandwidthId = ipv6InternetBandwidthId;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetIpv6InternetBandwidthsResult build() {
-            final var o = new GetIpv6InternetBandwidthsResult();
-            o.bandwidths = bandwidths;
-            o.id = id;
-            o.ids = ids;
-            o.ipv6AddressId = ipv6AddressId;
-            o.ipv6InternetBandwidthId = ipv6InternetBandwidthId;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+        }        public GetIpv6InternetBandwidthsResult build() {
+            return new GetIpv6InternetBandwidthsResult(bandwidths, id, ids, ipv6AddressId, ipv6InternetBandwidthId, outputFile, status);
         }
     }
 }

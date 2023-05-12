@@ -77,6 +77,9 @@ export interface GetAnycastEipAddressesArgs {
      * A regex string to filter results by Anycast Eip Address name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
@@ -170,6 +173,9 @@ export interface GetAnycastEipAddressesOutputArgs {
      * A regex string to filter results by Anycast Eip Address name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.

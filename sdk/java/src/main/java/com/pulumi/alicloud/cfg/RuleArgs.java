@@ -20,14 +20,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     public static final RuleArgs Empty = new RuleArgs();
 
     /**
-     * The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+     * The trigger type of the rule. Valid values:  `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
      * 
      */
     @Import(name="configRuleTriggerTypes")
     private @Nullable Output<String> configRuleTriggerTypes;
 
     /**
-     * @return The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+     * @return The trigger type of the rule. Valid values:  `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
      * 
      */
     public Optional<Output<String>> configRuleTriggerTypes() {
@@ -35,14 +35,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the Config Rule.
+     * The description of the rule.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the Config Rule.
+     * @return The description of the rule.
      * 
      */
     public Optional<Output<String>> description() {
@@ -50,14 +50,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, custom rule this field is empty.
+     * The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
      * 
      */
     @Import(name="excludeResourceIdsScope")
     private @Nullable Output<String> excludeResourceIdsScope;
 
     /**
-     * @return The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, custom rule this field is empty.
+     * @return The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
      * 
      */
     public Optional<Output<String>> excludeResourceIdsScope() {
@@ -65,14 +65,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Threshold value for managed rule triggering.
+     * The settings of the input parameters for the rule.
      * 
      */
     @Import(name="inputParameters")
     private @Nullable Output<Map<String,Object>> inputParameters;
 
     /**
-     * @return Threshold value for managed rule triggering.
+     * @return The settings of the input parameters for the rule.
      * 
      */
     public Optional<Output<Map<String,Object>>> inputParameters() {
@@ -80,14 +80,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
+     * The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
      * 
      */
     @Import(name="maximumExecutionFrequency")
     private @Nullable Output<String> maximumExecutionFrequency;
 
     /**
-     * @return The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
+     * @return The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
      * 
      */
     public Optional<Output<String>> maximumExecutionFrequency() {
@@ -125,14 +125,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+     * The types of the resources to be evaluated against the rule.
      * 
      */
     @Import(name="resourceTypesScopes")
     private @Nullable Output<List<String>> resourceTypesScopes;
 
     /**
-     * @return Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+     * @return The types of the resources to be evaluated against the rule.
      * 
      */
     public Optional<Output<List<String>>> resourceTypesScopes() {
@@ -140,14 +140,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+     * The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info
      * 
      */
     @Import(name="riskLevel", required=true)
     private Output<Integer> riskLevel;
 
     /**
-     * @return The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+     * @return The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info
      * 
      */
     public Output<Integer> riskLevel() {
@@ -155,14 +155,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the Config Rule.
+     * The name of the rule.
      * 
      */
     @Import(name="ruleName", required=true)
     private Output<String> ruleName;
 
     /**
-     * @return The name of the Config Rule.
+     * @return The name of the rule.
      * 
      */
     public Output<String> ruleName() {
@@ -170,7 +170,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `scope_compliance_resource_types` has been deprecated from provider version 1.124.1. New field `resource_types_scope` instead.
+     * Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
      * 
      * @deprecated
      * Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
@@ -178,22 +178,22 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
      */
     @Deprecated /* Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead. */
     @Import(name="scopeComplianceResourceTypes")
-    private @Nullable Output<List<String>> scopeComplianceResourceTypes;
+    private @Nullable Output<String> scopeComplianceResourceTypes;
 
     /**
-     * @return Field `scope_compliance_resource_types` has been deprecated from provider version 1.124.1. New field `resource_types_scope` instead.
+     * @return Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
      * 
      * @deprecated
      * Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
      * 
      */
     @Deprecated /* Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead. */
-    public Optional<Output<List<String>>> scopeComplianceResourceTypes() {
+    public Optional<Output<String>> scopeComplianceResourceTypes() {
         return Optional.ofNullable(this.scopeComplianceResourceTypes);
     }
 
     /**
-     * Field `source_detail_message_type` has been deprecated from provider version 1.124.1. New field `config_rule_trigger_types` instead.
+     * Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
      * 
      * @deprecated
      * Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
@@ -204,7 +204,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> sourceDetailMessageType;
 
     /**
-     * @return Field `source_detail_message_type` has been deprecated from provider version 1.124.1. New field `config_rule_trigger_types` instead.
+     * @return Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
      * 
      * @deprecated
      * Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
@@ -216,14 +216,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+     * The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
      * 
      */
     @Import(name="sourceIdentifier", required=true)
     private Output<String> sourceIdentifier;
 
     /**
-     * @return The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+     * @return The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
      * 
      */
     public Output<String> sourceIdentifier() {
@@ -231,7 +231,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `source_maximum_execution_frequency` has been deprecated from provider version 1.124.1. New field `maximum_execution_frequency` instead.
+     * Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
      * 
      * @deprecated
      * Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
@@ -242,7 +242,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> sourceMaximumExecutionFrequency;
 
     /**
-     * @return Field `source_maximum_execution_frequency` has been deprecated from provider version 1.124.1. New field `maximum_execution_frequency` instead.
+     * @return Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
      * 
      * @deprecated
      * Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
@@ -254,14 +254,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
+     * Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values:  `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule
      * 
      */
     @Import(name="sourceOwner", required=true)
     private Output<String> sourceOwner;
 
     /**
-     * @return Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
+     * @return Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values:  `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule
      * 
      */
     public Output<String> sourceOwner() {
@@ -269,14 +269,14 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+     * The status of the rule. Valid values: ACTIVE: The rule is monitoring the configurations of target resources. DELETING_RESULTS: The compliance evaluation result returned by the rule is being deleted. EVALUATING: The rule is triggered and is evaluating whether the configurations of target resources are compliant. INACTIVE: The rule is disabled from monitoring the configurations of target resources.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+     * @return The status of the rule. Valid values: ACTIVE: The rule is monitoring the configurations of target resources. DELETING_RESULTS: The compliance evaluation result returned by the rule is being deleted. EVALUATING: The rule is triggered and is evaluating whether the configurations of target resources are compliant. INACTIVE: The rule is disabled from monitoring the configurations of target resources.
      * 
      */
     public Optional<Output<String>> status() {
@@ -299,14 +299,18 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
+     * The rule monitors the tag value, only applies to rules created based on managed rules.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Import(name="tagValueScope")
     private @Nullable Output<String> tagValueScope;
 
     /**
-     * @return The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
+     * @return The rule monitors the tag value, only applies to rules created based on managed rules.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<String>> tagValueScope() {
@@ -355,7 +359,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configRuleTriggerTypes The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+         * @param configRuleTriggerTypes The trigger type of the rule. Valid values:  `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
          * 
          * @return builder
          * 
@@ -366,7 +370,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configRuleTriggerTypes The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+         * @param configRuleTriggerTypes The trigger type of the rule. Valid values:  `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
          * 
          * @return builder
          * 
@@ -376,7 +380,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the Config Rule.
+         * @param description The description of the rule.
          * 
          * @return builder
          * 
@@ -387,7 +391,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the Config Rule.
+         * @param description The description of the rule.
          * 
          * @return builder
          * 
@@ -397,7 +401,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param excludeResourceIdsScope The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, custom rule this field is empty.
+         * @param excludeResourceIdsScope The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
          * 
          * @return builder
          * 
@@ -408,7 +412,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param excludeResourceIdsScope The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, custom rule this field is empty.
+         * @param excludeResourceIdsScope The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
          * 
          * @return builder
          * 
@@ -418,7 +422,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param inputParameters Threshold value for managed rule triggering.
+         * @param inputParameters The settings of the input parameters for the rule.
          * 
          * @return builder
          * 
@@ -429,7 +433,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param inputParameters Threshold value for managed rule triggering.
+         * @param inputParameters The settings of the input parameters for the rule.
          * 
          * @return builder
          * 
@@ -439,7 +443,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maximumExecutionFrequency The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
+         * @param maximumExecutionFrequency The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
          * 
          * @return builder
          * 
@@ -450,7 +454,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maximumExecutionFrequency The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
+         * @param maximumExecutionFrequency The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
          * 
          * @return builder
          * 
@@ -502,7 +506,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceTypesScopes Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+         * @param resourceTypesScopes The types of the resources to be evaluated against the rule.
          * 
          * @return builder
          * 
@@ -513,7 +517,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceTypesScopes Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+         * @param resourceTypesScopes The types of the resources to be evaluated against the rule.
          * 
          * @return builder
          * 
@@ -523,7 +527,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceTypesScopes Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+         * @param resourceTypesScopes The types of the resources to be evaluated against the rule.
          * 
          * @return builder
          * 
@@ -533,7 +537,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param riskLevel The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+         * @param riskLevel The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info
          * 
          * @return builder
          * 
@@ -544,7 +548,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param riskLevel The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+         * @param riskLevel The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info
          * 
          * @return builder
          * 
@@ -554,7 +558,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleName The name of the Config Rule.
+         * @param ruleName The name of the rule.
          * 
          * @return builder
          * 
@@ -565,7 +569,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleName The name of the Config Rule.
+         * @param ruleName The name of the rule.
          * 
          * @return builder
          * 
@@ -575,7 +579,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scopeComplianceResourceTypes Field `scope_compliance_resource_types` has been deprecated from provider version 1.124.1. New field `resource_types_scope` instead.
+         * @param scopeComplianceResourceTypes Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
          * 
          * @return builder
          * 
@@ -584,13 +588,13 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
          * 
          */
         @Deprecated /* Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead. */
-        public Builder scopeComplianceResourceTypes(@Nullable Output<List<String>> scopeComplianceResourceTypes) {
+        public Builder scopeComplianceResourceTypes(@Nullable Output<String> scopeComplianceResourceTypes) {
             $.scopeComplianceResourceTypes = scopeComplianceResourceTypes;
             return this;
         }
 
         /**
-         * @param scopeComplianceResourceTypes Field `scope_compliance_resource_types` has been deprecated from provider version 1.124.1. New field `resource_types_scope` instead.
+         * @param scopeComplianceResourceTypes Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
          * 
          * @return builder
          * 
@@ -599,26 +603,12 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
          * 
          */
         @Deprecated /* Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead. */
-        public Builder scopeComplianceResourceTypes(List<String> scopeComplianceResourceTypes) {
+        public Builder scopeComplianceResourceTypes(String scopeComplianceResourceTypes) {
             return scopeComplianceResourceTypes(Output.of(scopeComplianceResourceTypes));
         }
 
         /**
-         * @param scopeComplianceResourceTypes Field `scope_compliance_resource_types` has been deprecated from provider version 1.124.1. New field `resource_types_scope` instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
-         * 
-         */
-        @Deprecated /* Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead. */
-        public Builder scopeComplianceResourceTypes(String... scopeComplianceResourceTypes) {
-            return scopeComplianceResourceTypes(List.of(scopeComplianceResourceTypes));
-        }
-
-        /**
-         * @param sourceDetailMessageType Field `source_detail_message_type` has been deprecated from provider version 1.124.1. New field `config_rule_trigger_types` instead.
+         * @param sourceDetailMessageType Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
          * 
          * @return builder
          * 
@@ -633,7 +623,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceDetailMessageType Field `source_detail_message_type` has been deprecated from provider version 1.124.1. New field `config_rule_trigger_types` instead.
+         * @param sourceDetailMessageType Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
          * 
          * @return builder
          * 
@@ -647,7 +637,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceIdentifier The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+         * @param sourceIdentifier The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
          * 
          * @return builder
          * 
@@ -658,7 +648,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceIdentifier The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+         * @param sourceIdentifier The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
          * 
          * @return builder
          * 
@@ -668,7 +658,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceMaximumExecutionFrequency Field `source_maximum_execution_frequency` has been deprecated from provider version 1.124.1. New field `maximum_execution_frequency` instead.
+         * @param sourceMaximumExecutionFrequency Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
          * 
          * @return builder
          * 
@@ -683,7 +673,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceMaximumExecutionFrequency Field `source_maximum_execution_frequency` has been deprecated from provider version 1.124.1. New field `maximum_execution_frequency` instead.
+         * @param sourceMaximumExecutionFrequency Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
          * 
          * @return builder
          * 
@@ -697,7 +687,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceOwner Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
+         * @param sourceOwner Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values:  `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule
          * 
          * @return builder
          * 
@@ -708,7 +698,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceOwner Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
+         * @param sourceOwner Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values:  `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule
          * 
          * @return builder
          * 
@@ -718,7 +708,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+         * @param status The status of the rule. Valid values: ACTIVE: The rule is monitoring the configurations of target resources. DELETING_RESULTS: The compliance evaluation result returned by the rule is being deleted. EVALUATING: The rule is triggered and is evaluating whether the configurations of target resources are compliant. INACTIVE: The rule is disabled from monitoring the configurations of target resources.
          * 
          * @return builder
          * 
@@ -729,7 +719,7 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+         * @param status The status of the rule. Valid values: ACTIVE: The rule is monitoring the configurations of target resources. DELETING_RESULTS: The compliance evaluation result returned by the rule is being deleted. EVALUATING: The rule is triggered and is evaluating whether the configurations of target resources are compliant. INACTIVE: The rule is disabled from monitoring the configurations of target resources.
          * 
          * @return builder
          * 
@@ -760,7 +750,9 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tagValueScope The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
+         * @param tagValueScope The rule monitors the tag value, only applies to rules created based on managed rules.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -771,7 +763,9 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tagValueScope The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
+         * @param tagValueScope The rule monitors the tag value, only applies to rules created based on managed rules.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

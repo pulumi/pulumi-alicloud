@@ -401,6 +401,7 @@ func GetPolicyDocument(ctx *pulumi.Context, args *GetPolicyDocumentArgs, opts ..
 
 // A collection of arguments for invoking getPolicyDocument.
 type GetPolicyDocumentArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Statement of the RAM policy document. See the following `Block statement`.
 	Statements []GetPolicyDocumentStatement `pulumi:"statements"`
@@ -434,6 +435,7 @@ func GetPolicyDocumentOutput(ctx *pulumi.Context, args GetPolicyDocumentOutputAr
 
 // A collection of arguments for invoking getPolicyDocument.
 type GetPolicyDocumentOutputArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Statement of the RAM policy document. See the following `Block statement`.
 	Statements GetPolicyDocumentStatementArrayInput `pulumi:"statements"`

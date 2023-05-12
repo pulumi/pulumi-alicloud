@@ -7,6 +7,10 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsDomains from version 1.95.0.
+ *
+ * This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -80,6 +84,9 @@ export interface GetDomainsArgs {
      * User language.
      */
     lang?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The Id of resource group which the dns belongs.
@@ -154,6 +161,10 @@ export interface GetDomainsResult {
     readonly versionCode?: string;
 }
 /**
+ * > **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsDomains from version 1.95.0.
+ *
+ * This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -208,6 +219,9 @@ export interface GetDomainsOutputArgs {
      * User language.
      */
     lang?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The Id of resource group which the dns belongs.

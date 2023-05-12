@@ -15,14 +15,21 @@ public final class AScriptExtAttribute {
      * @return The key of the extended attribute.
      * 
      */
-    private @Nullable String attributeKey;
+    private final @Nullable String attributeKey;
     /**
      * @return The value of the extended attribute.
      * 
      */
-    private @Nullable String attributeValue;
+    private final @Nullable String attributeValue;
 
-    private AScriptExtAttribute() {}
+    @CustomType.Constructor
+    private AScriptExtAttribute(
+        @CustomType.Parameter("attributeKey") @Nullable String attributeKey,
+        @CustomType.Parameter("attributeValue") @Nullable String attributeValue) {
+        this.attributeKey = attributeKey;
+        this.attributeValue = attributeValue;
+    }
+
     /**
      * @return The key of the extended attribute.
      * 
@@ -45,32 +52,30 @@ public final class AScriptExtAttribute {
     public static Builder builder(AScriptExtAttribute defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String attributeKey;
         private @Nullable String attributeValue;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(AScriptExtAttribute defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attributeKey = defaults.attributeKey;
     	      this.attributeValue = defaults.attributeValue;
         }
 
-        @CustomType.Setter
         public Builder attributeKey(@Nullable String attributeKey) {
             this.attributeKey = attributeKey;
             return this;
         }
-        @CustomType.Setter
         public Builder attributeValue(@Nullable String attributeValue) {
             this.attributeValue = attributeValue;
             return this;
-        }
-        public AScriptExtAttribute build() {
-            final var o = new AScriptExtAttribute();
-            o.attributeKey = attributeKey;
-            o.attributeValue = attributeValue;
-            return o;
+        }        public AScriptExtAttribute build() {
+            return new AScriptExtAttribute(attributeKey, attributeValue);
         }
     }
 }

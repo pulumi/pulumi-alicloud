@@ -51,12 +51,16 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
     /**
      * The configuration of HTTPS certificate.
      * 
+     * **route_config** includes the following arguments:
+     * 
      */
     @Import(name="certConfig")
     private @Nullable Output<CustomDomainCertConfigArgs> certConfig;
 
     /**
      * @return The configuration of HTTPS certificate.
+     * 
+     * **route_config** includes the following arguments:
      * 
      */
     public Optional<Output<CustomDomainCertConfigArgs>> certConfig() {
@@ -214,6 +218,8 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param certConfig The configuration of HTTPS certificate.
          * 
+         * **route_config** includes the following arguments:
+         * 
          * @return builder
          * 
          */
@@ -224,6 +230,8 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param certConfig The configuration of HTTPS certificate.
+         * 
+         * **route_config** includes the following arguments:
          * 
          * @return builder
          * 

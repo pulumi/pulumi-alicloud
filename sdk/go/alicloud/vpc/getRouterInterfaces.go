@@ -10,6 +10,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+// that connect VPCs together.
+//
+// > **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new resource alicloud_express_connect_router_interfaces.
+//
 // ## Example Usage
 //
 // ```go
@@ -56,7 +61,8 @@ type GetRouterInterfacesArgs struct {
 	OppositeInterfaceId *string `pulumi:"oppositeInterfaceId"`
 	// Account ID of the owner of the peer router interface.
 	OppositeInterfaceOwnerId *string `pulumi:"oppositeInterfaceOwnerId"`
-	OutputFile               *string `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
 	// `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
 	Role *string `pulumi:"role"`
@@ -121,7 +127,8 @@ type GetRouterInterfacesOutputArgs struct {
 	OppositeInterfaceId pulumi.StringPtrInput `pulumi:"oppositeInterfaceId"`
 	// Account ID of the owner of the peer router interface.
 	OppositeInterfaceOwnerId pulumi.StringPtrInput `pulumi:"oppositeInterfaceOwnerId"`
-	OutputFile               pulumi.StringPtrInput `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
 	// `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
 	Role pulumi.StringPtrInput `pulumi:"role"`

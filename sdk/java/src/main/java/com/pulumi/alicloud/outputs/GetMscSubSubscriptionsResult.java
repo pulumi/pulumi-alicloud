@@ -17,11 +17,20 @@ public final class GetMscSubSubscriptionsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private @Nullable String outputFile;
-    private List<GetMscSubSubscriptionsSubscription> subscriptions;
+    private final String id;
+    private final @Nullable String outputFile;
+    private final List<GetMscSubSubscriptionsSubscription> subscriptions;
 
-    private GetMscSubSubscriptionsResult() {}
+    @CustomType.Constructor
+    private GetMscSubSubscriptionsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("subscriptions") List<GetMscSubSubscriptionsSubscription> subscriptions) {
+        this.id = id;
+        this.outputFile = outputFile;
+        this.subscriptions = subscriptions;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -43,12 +52,16 @@ public final class GetMscSubSubscriptionsResult {
     public static Builder builder(GetMscSubSubscriptionsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private @Nullable String outputFile;
         private List<GetMscSubSubscriptionsSubscription> subscriptions;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetMscSubSubscriptionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -56,30 +69,22 @@ public final class GetMscSubSubscriptionsResult {
     	      this.subscriptions = defaults.subscriptions;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder subscriptions(List<GetMscSubSubscriptionsSubscription> subscriptions) {
             this.subscriptions = Objects.requireNonNull(subscriptions);
             return this;
         }
         public Builder subscriptions(GetMscSubSubscriptionsSubscription... subscriptions) {
             return subscriptions(List.of(subscriptions));
-        }
-        public GetMscSubSubscriptionsResult build() {
-            final var o = new GetMscSubSubscriptionsResult();
-            o.id = id;
-            o.outputFile = outputFile;
-            o.subscriptions = subscriptions;
-            return o;
+        }        public GetMscSubSubscriptionsResult build() {
+            return new GetMscSubSubscriptionsResult(id, outputFile, subscriptions);
         }
     }
 }

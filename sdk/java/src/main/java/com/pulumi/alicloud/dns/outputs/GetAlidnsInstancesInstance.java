@@ -13,44 +13,63 @@ public final class GetAlidnsInstancesInstance {
      * @return DNS security level.
      * 
      */
-    private String dnsSecurity;
+    private final String dnsSecurity;
     /**
      * @return (Available in 1.124.1+) The domain name.
      * 
      */
-    private String domain;
+    private final String domain;
     /**
      * @return Number of domain names bound.
      * 
      */
-    private String domainNumbers;
+    private final String domainNumbers;
     /**
      * @return Id of the instance.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Id of the instance resource.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return (Available in 1.124.1+) The payment type of alidns instance.
      * 
      */
-    private String paymentType;
+    private final String paymentType;
     /**
      * @return Paid package version.
      * 
      */
-    private String versionCode;
+    private final String versionCode;
     /**
      * @return Paid package version name.
      * 
      */
-    private String versionName;
+    private final String versionName;
 
-    private GetAlidnsInstancesInstance() {}
+    @CustomType.Constructor
+    private GetAlidnsInstancesInstance(
+        @CustomType.Parameter("dnsSecurity") String dnsSecurity,
+        @CustomType.Parameter("domain") String domain,
+        @CustomType.Parameter("domainNumbers") String domainNumbers,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("paymentType") String paymentType,
+        @CustomType.Parameter("versionCode") String versionCode,
+        @CustomType.Parameter("versionName") String versionName) {
+        this.dnsSecurity = dnsSecurity;
+        this.domain = domain;
+        this.domainNumbers = domainNumbers;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.paymentType = paymentType;
+        this.versionCode = versionCode;
+        this.versionName = versionName;
+    }
+
     /**
      * @return DNS security level.
      * 
@@ -115,7 +134,7 @@ public final class GetAlidnsInstancesInstance {
     public static Builder builder(GetAlidnsInstancesInstance defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String dnsSecurity;
         private String domain;
@@ -125,7 +144,11 @@ public final class GetAlidnsInstancesInstance {
         private String paymentType;
         private String versionCode;
         private String versionName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAlidnsInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dnsSecurity = defaults.dnsSecurity;
@@ -138,57 +161,39 @@ public final class GetAlidnsInstancesInstance {
     	      this.versionName = defaults.versionName;
         }
 
-        @CustomType.Setter
         public Builder dnsSecurity(String dnsSecurity) {
             this.dnsSecurity = Objects.requireNonNull(dnsSecurity);
             return this;
         }
-        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
-        @CustomType.Setter
         public Builder domainNumbers(String domainNumbers) {
             this.domainNumbers = Objects.requireNonNull(domainNumbers);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
-        @CustomType.Setter
         public Builder versionCode(String versionCode) {
             this.versionCode = Objects.requireNonNull(versionCode);
             return this;
         }
-        @CustomType.Setter
         public Builder versionName(String versionName) {
             this.versionName = Objects.requireNonNull(versionName);
             return this;
-        }
-        public GetAlidnsInstancesInstance build() {
-            final var o = new GetAlidnsInstancesInstance();
-            o.dnsSecurity = dnsSecurity;
-            o.domain = domain;
-            o.domainNumbers = domainNumbers;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.paymentType = paymentType;
-            o.versionCode = versionCode;
-            o.versionName = versionName;
-            return o;
+        }        public GetAlidnsInstancesInstance build() {
+            return new GetAlidnsInstancesInstance(dnsSecurity, domain, domainNumbers, id, instanceId, paymentType, versionCode, versionName);
         }
     }
 }

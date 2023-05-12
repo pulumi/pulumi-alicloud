@@ -65,7 +65,8 @@ type GetControlPoliciesArgs struct {
 	// The ip version.
 	IpVersion *string `pulumi:"ipVersion"`
 	// DestPortGroupPorts. Valid values: `en`, `zh`.
-	Lang       *string `pulumi:"lang"`
+	Lang *string `pulumi:"lang"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
 	Proto *string `pulumi:"proto"`
@@ -122,7 +123,8 @@ type GetControlPoliciesOutputArgs struct {
 	// The ip version.
 	IpVersion pulumi.StringPtrInput `pulumi:"ipVersion"`
 	// DestPortGroupPorts. Valid values: `en`, `zh`.
-	Lang       pulumi.StringPtrInput `pulumi:"lang"`
+	Lang pulumi.StringPtrInput `pulumi:"lang"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
 	Proto pulumi.StringPtrInput `pulumi:"proto"`

@@ -19,35 +19,52 @@ public final class GetAclsAcl {
      * @return A list of entry (IP addresses or CIDR blocks).  Each entry contains two sub-fields as `Entry Block` follows.
      * 
      */
-    private List<GetAclsAclEntryList> entryLists;
+    private final List<GetAclsAclEntryList> entryLists;
     /**
      * @return Acl ID.
      * 
      */
-    private String id;
-    private String ipVersion;
+    private final String id;
+    private final String ipVersion;
     /**
      * @return Acl name.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return A list of listener are attached by the acl.  Each listener contains four sub-fields as `Listener Block` follows.
      * 
      */
-    private List<GetAclsAclRelatedListener> relatedListeners;
+    private final List<GetAclsAclRelatedListener> relatedListeners;
     /**
      * @return The Id of resource group which acl belongs.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private final @Nullable Map<String,Object> tags;
 
-    private GetAclsAcl() {}
+    @CustomType.Constructor
+    private GetAclsAcl(
+        @CustomType.Parameter("entryLists") List<GetAclsAclEntryList> entryLists,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ipVersion") String ipVersion,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("relatedListeners") List<GetAclsAclRelatedListener> relatedListeners,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
+        this.entryLists = entryLists;
+        this.id = id;
+        this.ipVersion = ipVersion;
+        this.name = name;
+        this.relatedListeners = relatedListeners;
+        this.resourceGroupId = resourceGroupId;
+        this.tags = tags;
+    }
+
     /**
      * @return A list of entry (IP addresses or CIDR blocks).  Each entry contains two sub-fields as `Entry Block` follows.
      * 
@@ -101,7 +118,7 @@ public final class GetAclsAcl {
     public static Builder builder(GetAclsAcl defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetAclsAclEntryList> entryLists;
         private String id;
@@ -110,7 +127,11 @@ public final class GetAclsAcl {
         private List<GetAclsAclRelatedListener> relatedListeners;
         private String resourceGroupId;
         private @Nullable Map<String,Object> tags;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAclsAcl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.entryLists = defaults.entryLists;
@@ -122,7 +143,6 @@ public final class GetAclsAcl {
     	      this.tags = defaults.tags;
         }
 
-        @CustomType.Setter
         public Builder entryLists(List<GetAclsAclEntryList> entryLists) {
             this.entryLists = Objects.requireNonNull(entryLists);
             return this;
@@ -130,22 +150,18 @@ public final class GetAclsAcl {
         public Builder entryLists(GetAclsAclEntryList... entryLists) {
             return entryLists(List.of(entryLists));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ipVersion(String ipVersion) {
             this.ipVersion = Objects.requireNonNull(ipVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder relatedListeners(List<GetAclsAclRelatedListener> relatedListeners) {
             this.relatedListeners = Objects.requireNonNull(relatedListeners);
             return this;
@@ -153,26 +169,15 @@ public final class GetAclsAcl {
         public Builder relatedListeners(GetAclsAclRelatedListener... relatedListeners) {
             return relatedListeners(List.of(relatedListeners));
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }
-        public GetAclsAcl build() {
-            final var o = new GetAclsAcl();
-            o.entryLists = entryLists;
-            o.id = id;
-            o.ipVersion = ipVersion;
-            o.name = name;
-            o.relatedListeners = relatedListeners;
-            o.resourceGroupId = resourceGroupId;
-            o.tags = tags;
-            return o;
+        }        public GetAclsAcl build() {
+            return new GetAclsAcl(entryLists, id, ipVersion, name, relatedListeners, resourceGroupId, tags);
         }
     }
 }

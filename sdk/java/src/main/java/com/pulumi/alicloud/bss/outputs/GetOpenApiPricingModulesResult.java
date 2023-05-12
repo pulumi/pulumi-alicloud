@@ -17,25 +17,46 @@ public final class GetOpenApiPricingModulesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
+    private final String id;
+    private final List<String> ids;
     /**
      * @return A list of Pricing Module Entries. Each element contains the following attributes:
      * 
      */
-    private List<GetOpenApiPricingModulesModule> modules;
-    private @Nullable String nameRegex;
+    private final List<GetOpenApiPricingModulesModule> modules;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of name of Pricing Modules.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
-    private String productCode;
-    private @Nullable String productType;
-    private String subscriptionType;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final String productCode;
+    private final @Nullable String productType;
+    private final String subscriptionType;
 
-    private GetOpenApiPricingModulesResult() {}
+    @CustomType.Constructor
+    private GetOpenApiPricingModulesResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("modules") List<GetOpenApiPricingModulesModule> modules,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("productCode") String productCode,
+        @CustomType.Parameter("productType") @Nullable String productType,
+        @CustomType.Parameter("subscriptionType") String subscriptionType) {
+        this.id = id;
+        this.ids = ids;
+        this.modules = modules;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.productCode = productCode;
+        this.productType = productType;
+        this.subscriptionType = subscriptionType;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -83,7 +104,7 @@ public final class GetOpenApiPricingModulesResult {
     public static Builder builder(GetOpenApiPricingModulesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -94,7 +115,11 @@ public final class GetOpenApiPricingModulesResult {
         private String productCode;
         private @Nullable String productType;
         private String subscriptionType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetOpenApiPricingModulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -108,12 +133,10 @@ public final class GetOpenApiPricingModulesResult {
     	      this.subscriptionType = defaults.subscriptionType;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -121,7 +144,6 @@ public final class GetOpenApiPricingModulesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder modules(List<GetOpenApiPricingModulesModule> modules) {
             this.modules = Objects.requireNonNull(modules);
             return this;
@@ -129,12 +151,10 @@ public final class GetOpenApiPricingModulesResult {
         public Builder modules(GetOpenApiPricingModulesModule... modules) {
             return modules(List.of(modules));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -142,38 +162,23 @@ public final class GetOpenApiPricingModulesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder productCode(String productCode) {
             this.productCode = Objects.requireNonNull(productCode);
             return this;
         }
-        @CustomType.Setter
         public Builder productType(@Nullable String productType) {
             this.productType = productType;
             return this;
         }
-        @CustomType.Setter
         public Builder subscriptionType(String subscriptionType) {
             this.subscriptionType = Objects.requireNonNull(subscriptionType);
             return this;
-        }
-        public GetOpenApiPricingModulesResult build() {
-            final var o = new GetOpenApiPricingModulesResult();
-            o.id = id;
-            o.ids = ids;
-            o.modules = modules;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.productCode = productCode;
-            o.productType = productType;
-            o.subscriptionType = subscriptionType;
-            return o;
+        }        public GetOpenApiPricingModulesResult build() {
+            return new GetOpenApiPricingModulesResult(id, ids, modules, nameRegex, names, outputFile, productCode, productType, subscriptionType);
         }
     }
 }

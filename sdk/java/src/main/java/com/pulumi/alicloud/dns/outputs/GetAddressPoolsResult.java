@@ -14,20 +14,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAddressPoolsResult {
-    private @Nullable Boolean enableDetails;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private String instanceId;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private List<GetAddressPoolsPool> pools;
+    private final String id;
+    private final List<String> ids;
+    private final String instanceId;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final List<GetAddressPoolsPool> pools;
 
-    private GetAddressPoolsResult() {}
+    @CustomType.Constructor
+    private GetAddressPoolsResult(
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pools") List<GetAddressPoolsPool> pools) {
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.instanceId = instanceId;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.pools = pools;
+    }
+
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -64,7 +83,7 @@ public final class GetAddressPoolsResult {
     public static Builder builder(GetAddressPoolsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private String id;
@@ -74,7 +93,11 @@ public final class GetAddressPoolsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private List<GetAddressPoolsPool> pools;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAddressPoolsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -87,17 +110,14 @@ public final class GetAddressPoolsResult {
     	      this.pools = defaults.pools;
         }
 
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -105,17 +125,14 @@ public final class GetAddressPoolsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -123,30 +140,18 @@ public final class GetAddressPoolsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pools(List<GetAddressPoolsPool> pools) {
             this.pools = Objects.requireNonNull(pools);
             return this;
         }
         public Builder pools(GetAddressPoolsPool... pools) {
             return pools(List.of(pools));
-        }
-        public GetAddressPoolsResult build() {
-            final var o = new GetAddressPoolsResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pools = pools;
-            return o;
+        }        public GetAddressPoolsResult build() {
+            return new GetAddressPoolsResult(enableDetails, id, ids, instanceId, nameRegex, names, outputFile, pools);
         }
     }
 }

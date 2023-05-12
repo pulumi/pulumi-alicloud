@@ -135,6 +135,7 @@ def get_bundles(bundle_ids: Optional[Sequence[str]] = None,
     :param str bundle_type: The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
     :param Sequence[str] ids: A list of Bundle IDs.
     :param str name_regex: A regex string to filter results by Bundle name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['bundleIds'] = bundle_ids
@@ -184,5 +185,6 @@ def get_bundles_output(bundle_ids: Optional[pulumi.Input[Optional[Sequence[str]]
     :param str bundle_type: The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
     :param Sequence[str] ids: A list of Bundle IDs.
     :param str name_regex: A regex string to filter results by Bundle name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

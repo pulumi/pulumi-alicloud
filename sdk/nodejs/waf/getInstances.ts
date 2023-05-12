@@ -53,6 +53,9 @@ export interface GetInstancesArgs {
      * The source of the WAF instance.
      */
     instanceSource?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of resource group to which WAF instance belongs.
@@ -126,6 +129,9 @@ export interface GetInstancesOutputArgs {
      * The source of the WAF instance.
      */
     instanceSource?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of resource group to which WAF instance belongs.

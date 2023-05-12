@@ -27,6 +27,9 @@ namespace Pulumi.AliCloud.Cen
     {
         /// <summary>
         /// The dry run.
+        /// 
+        /// &gt; **NOTE:** If transit_router_route_entry_next_hop_type is `Attachment`, transit_router_route_entry_next_hop_id is required.
+        /// If transit_router_route_entry_next_hop_type is `BlackHole`, transit_router_route_entry_next_hop_id cannot be filled.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
@@ -127,6 +130,9 @@ namespace Pulumi.AliCloud.Cen
     {
         /// <summary>
         /// The dry run.
+        /// 
+        /// &gt; **NOTE:** If transit_router_route_entry_next_hop_type is `Attachment`, transit_router_route_entry_next_hop_id is required.
+        /// If transit_router_route_entry_next_hop_type is `BlackHole`, transit_router_route_entry_next_hop_id cannot be filled.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -177,6 +183,9 @@ namespace Pulumi.AliCloud.Cen
     {
         /// <summary>
         /// The dry run.
+        /// 
+        /// &gt; **NOTE:** If transit_router_route_entry_next_hop_type is `Attachment`, transit_router_route_entry_next_hop_id is required.
+        /// If transit_router_route_entry_next_hop_type is `BlackHole`, transit_router_route_entry_next_hop_id cannot be filled.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }

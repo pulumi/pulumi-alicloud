@@ -15,14 +15,21 @@ public final class NodePoolLabel {
      * @return The label key.
      * 
      */
-    private String key;
+    private final String key;
     /**
      * @return The label value.
      * 
      */
-    private @Nullable String value;
+    private final @Nullable String value;
 
-    private NodePoolLabel() {}
+    @CustomType.Constructor
+    private NodePoolLabel(
+        @CustomType.Parameter("key") String key,
+        @CustomType.Parameter("value") @Nullable String value) {
+        this.key = key;
+        this.value = value;
+    }
+
     /**
      * @return The label key.
      * 
@@ -45,32 +52,30 @@ public final class NodePoolLabel {
     public static Builder builder(NodePoolLabel defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String key;
         private @Nullable String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(NodePoolLabel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
-        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }
-        public NodePoolLabel build() {
-            final var o = new NodePoolLabel();
-            o.key = key;
-            o.value = value;
-            return o;
+        }        public NodePoolLabel build() {
+            return new NodePoolLabel(key, value);
         }
     }
 }

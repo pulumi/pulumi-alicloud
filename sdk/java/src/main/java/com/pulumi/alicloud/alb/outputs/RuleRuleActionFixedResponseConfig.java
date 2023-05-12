@@ -15,19 +15,28 @@ public final class RuleRuleActionFixedResponseConfig {
      * @return The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
      * 
      */
-    private String content;
+    private final String content;
     /**
      * @return The format of the fixed response.  Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
      * 
      */
-    private @Nullable String contentType;
+    private final @Nullable String contentType;
     /**
      * @return The redirect method. Valid values:301, 302, 303, 307, and 308.
      * 
      */
-    private @Nullable String httpCode;
+    private final @Nullable String httpCode;
 
-    private RuleRuleActionFixedResponseConfig() {}
+    @CustomType.Constructor
+    private RuleRuleActionFixedResponseConfig(
+        @CustomType.Parameter("content") String content,
+        @CustomType.Parameter("contentType") @Nullable String contentType,
+        @CustomType.Parameter("httpCode") @Nullable String httpCode) {
+        this.content = content;
+        this.contentType = contentType;
+        this.httpCode = httpCode;
+    }
+
     /**
      * @return The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
      * 
@@ -57,12 +66,16 @@ public final class RuleRuleActionFixedResponseConfig {
     public static Builder builder(RuleRuleActionFixedResponseConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String content;
         private @Nullable String contentType;
         private @Nullable String httpCode;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(RuleRuleActionFixedResponseConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
@@ -70,27 +83,19 @@ public final class RuleRuleActionFixedResponseConfig {
     	      this.httpCode = defaults.httpCode;
         }
 
-        @CustomType.Setter
         public Builder content(String content) {
             this.content = Objects.requireNonNull(content);
             return this;
         }
-        @CustomType.Setter
         public Builder contentType(@Nullable String contentType) {
             this.contentType = contentType;
             return this;
         }
-        @CustomType.Setter
         public Builder httpCode(@Nullable String httpCode) {
             this.httpCode = httpCode;
             return this;
-        }
-        public RuleRuleActionFixedResponseConfig build() {
-            final var o = new RuleRuleActionFixedResponseConfig();
-            o.content = content;
-            o.contentType = contentType;
-            o.httpCode = httpCode;
-            return o;
+        }        public RuleRuleActionFixedResponseConfig build() {
+            return new RuleRuleActionFixedResponseConfig(content, contentType, httpCode);
         }
     }
 }

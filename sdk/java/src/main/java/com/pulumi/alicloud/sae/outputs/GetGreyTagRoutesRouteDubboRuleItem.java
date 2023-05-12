@@ -14,29 +14,42 @@ public final class GetGreyTagRoutesRouteDubboRuleItem {
      * @return The comparison operator.
      * 
      */
-    private String cond;
+    private final String cond;
     /**
      * @return The parameter value gets the expression.
      * 
      */
-    private String expr;
+    private final String expr;
     /**
      * @return The parameter number.
      * 
      */
-    private Integer index;
+    private final Integer index;
     /**
      * @return The operator.
      * 
      */
-    private String operator;
+    private final String operator;
     /**
      * @return The value of the parameter.
      * 
      */
-    private String value;
+    private final String value;
 
-    private GetGreyTagRoutesRouteDubboRuleItem() {}
+    @CustomType.Constructor
+    private GetGreyTagRoutesRouteDubboRuleItem(
+        @CustomType.Parameter("cond") String cond,
+        @CustomType.Parameter("expr") String expr,
+        @CustomType.Parameter("index") Integer index,
+        @CustomType.Parameter("operator") String operator,
+        @CustomType.Parameter("value") String value) {
+        this.cond = cond;
+        this.expr = expr;
+        this.index = index;
+        this.operator = operator;
+        this.value = value;
+    }
+
     /**
      * @return The comparison operator.
      * 
@@ -80,14 +93,18 @@ public final class GetGreyTagRoutesRouteDubboRuleItem {
     public static Builder builder(GetGreyTagRoutesRouteDubboRuleItem defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String cond;
         private String expr;
         private Integer index;
         private String operator;
         private String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetGreyTagRoutesRouteDubboRuleItem defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cond = defaults.cond;
@@ -97,39 +114,27 @@ public final class GetGreyTagRoutesRouteDubboRuleItem {
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder cond(String cond) {
             this.cond = Objects.requireNonNull(cond);
             return this;
         }
-        @CustomType.Setter
         public Builder expr(String expr) {
             this.expr = Objects.requireNonNull(expr);
             return this;
         }
-        @CustomType.Setter
         public Builder index(Integer index) {
             this.index = Objects.requireNonNull(index);
             return this;
         }
-        @CustomType.Setter
         public Builder operator(String operator) {
             this.operator = Objects.requireNonNull(operator);
             return this;
         }
-        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }
-        public GetGreyTagRoutesRouteDubboRuleItem build() {
-            final var o = new GetGreyTagRoutesRouteDubboRuleItem();
-            o.cond = cond;
-            o.expr = expr;
-            o.index = index;
-            o.operator = operator;
-            o.value = value;
-            return o;
+        }        public GetGreyTagRoutesRouteDubboRuleItem build() {
+            return new GetGreyTagRoutesRouteDubboRuleItem(cond, expr, index, operator, value);
         }
     }
 }

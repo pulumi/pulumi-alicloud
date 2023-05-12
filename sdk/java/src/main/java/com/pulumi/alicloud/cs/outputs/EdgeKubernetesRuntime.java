@@ -15,14 +15,21 @@ public final class EdgeKubernetesRuntime {
      * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
      * 
      */
-    private @Nullable String name;
+    private final @Nullable String name;
     /**
      * @return Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
      * 
      */
-    private @Nullable String version;
+    private final @Nullable String version;
 
-    private EdgeKubernetesRuntime() {}
+    @CustomType.Constructor
+    private EdgeKubernetesRuntime(
+        @CustomType.Parameter("name") @Nullable String name,
+        @CustomType.Parameter("version") @Nullable String version) {
+        this.name = name;
+        this.version = version;
+    }
+
     /**
      * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
      * 
@@ -45,32 +52,30 @@ public final class EdgeKubernetesRuntime {
     public static Builder builder(EdgeKubernetesRuntime defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String name;
         private @Nullable String version;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(EdgeKubernetesRuntime defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.version = defaults.version;
         }
 
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
-        @CustomType.Setter
         public Builder version(@Nullable String version) {
             this.version = version;
             return this;
-        }
-        public EdgeKubernetesRuntime build() {
-            final var o = new EdgeKubernetesRuntime();
-            o.name = name;
-            o.version = version;
-            return o;
+        }        public EdgeKubernetesRuntime build() {
+            return new EdgeKubernetesRuntime(name, version);
         }
     }
 }

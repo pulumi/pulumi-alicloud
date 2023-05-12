@@ -51,6 +51,9 @@ export interface GetWebLockConfigsArgs {
      * The language of the content within the request and the response. Valid values: `zh`, `en`.
      */
     lang?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     pageNumber?: number;
     pageSize?: number;
@@ -125,6 +128,9 @@ export interface GetWebLockConfigsOutputArgs {
      * The language of the content within the request and the response. Valid values: `zh`, `en`.
      */
     lang?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;

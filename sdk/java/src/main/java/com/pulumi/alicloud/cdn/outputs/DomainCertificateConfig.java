@@ -11,11 +11,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DomainCertificateConfig {
-    private @Nullable String privateKey;
-    private @Nullable String serverCertificate;
-    private @Nullable String serverCertificateStatus;
+    private final @Nullable String privateKey;
+    private final @Nullable String serverCertificate;
+    private final @Nullable String serverCertificateStatus;
 
-    private DomainCertificateConfig() {}
+    @CustomType.Constructor
+    private DomainCertificateConfig(
+        @CustomType.Parameter("privateKey") @Nullable String privateKey,
+        @CustomType.Parameter("serverCertificate") @Nullable String serverCertificate,
+        @CustomType.Parameter("serverCertificateStatus") @Nullable String serverCertificateStatus) {
+        this.privateKey = privateKey;
+        this.serverCertificate = serverCertificate;
+        this.serverCertificateStatus = serverCertificateStatus;
+    }
+
     public Optional<String> privateKey() {
         return Optional.ofNullable(this.privateKey);
     }
@@ -33,12 +42,16 @@ public final class DomainCertificateConfig {
     public static Builder builder(DomainCertificateConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String privateKey;
         private @Nullable String serverCertificate;
         private @Nullable String serverCertificateStatus;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(DomainCertificateConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.privateKey = defaults.privateKey;
@@ -46,27 +59,19 @@ public final class DomainCertificateConfig {
     	      this.serverCertificateStatus = defaults.serverCertificateStatus;
         }
 
-        @CustomType.Setter
         public Builder privateKey(@Nullable String privateKey) {
             this.privateKey = privateKey;
             return this;
         }
-        @CustomType.Setter
         public Builder serverCertificate(@Nullable String serverCertificate) {
             this.serverCertificate = serverCertificate;
             return this;
         }
-        @CustomType.Setter
         public Builder serverCertificateStatus(@Nullable String serverCertificateStatus) {
             this.serverCertificateStatus = serverCertificateStatus;
             return this;
-        }
-        public DomainCertificateConfig build() {
-            final var o = new DomainCertificateConfig();
-            o.privateKey = privateKey;
-            o.serverCertificate = serverCertificate;
-            o.serverCertificateStatus = serverCertificateStatus;
-            return o;
+        }        public DomainCertificateConfig build() {
+            return new DomainCertificateConfig(privateKey, serverCertificate, serverCertificateStatus);
         }
     }
 }

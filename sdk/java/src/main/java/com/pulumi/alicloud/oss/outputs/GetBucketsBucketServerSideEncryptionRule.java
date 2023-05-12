@@ -13,14 +13,21 @@ public final class GetBucketsBucketServerSideEncryptionRule {
      * @return The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
      * 
      */
-    private String kmsMasterKeyId;
+    private final String kmsMasterKeyId;
     /**
      * @return The server-side encryption algorithm to use.
      * 
      */
-    private String sseAlgorithm;
+    private final String sseAlgorithm;
 
-    private GetBucketsBucketServerSideEncryptionRule() {}
+    @CustomType.Constructor
+    private GetBucketsBucketServerSideEncryptionRule(
+        @CustomType.Parameter("kmsMasterKeyId") String kmsMasterKeyId,
+        @CustomType.Parameter("sseAlgorithm") String sseAlgorithm) {
+        this.kmsMasterKeyId = kmsMasterKeyId;
+        this.sseAlgorithm = sseAlgorithm;
+    }
+
     /**
      * @return The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
      * 
@@ -43,32 +50,30 @@ public final class GetBucketsBucketServerSideEncryptionRule {
     public static Builder builder(GetBucketsBucketServerSideEncryptionRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String kmsMasterKeyId;
         private String sseAlgorithm;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBucketsBucketServerSideEncryptionRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kmsMasterKeyId = defaults.kmsMasterKeyId;
     	      this.sseAlgorithm = defaults.sseAlgorithm;
         }
 
-        @CustomType.Setter
         public Builder kmsMasterKeyId(String kmsMasterKeyId) {
             this.kmsMasterKeyId = Objects.requireNonNull(kmsMasterKeyId);
             return this;
         }
-        @CustomType.Setter
         public Builder sseAlgorithm(String sseAlgorithm) {
             this.sseAlgorithm = Objects.requireNonNull(sseAlgorithm);
             return this;
-        }
-        public GetBucketsBucketServerSideEncryptionRule build() {
-            final var o = new GetBucketsBucketServerSideEncryptionRule();
-            o.kmsMasterKeyId = kmsMasterKeyId;
-            o.sseAlgorithm = sseAlgorithm;
-            return o;
+        }        public GetBucketsBucketServerSideEncryptionRule build() {
+            return new GetBucketsBucketServerSideEncryptionRule(kmsMasterKeyId, sseAlgorithm);
         }
     }
 }

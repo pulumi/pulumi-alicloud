@@ -29,6 +29,8 @@ class AccountPrivilegeArgs:
                - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+               
+               Default to "ReadOnly".
         """
         pulumi.set(__self__, "account_name", account_name)
         pulumi.set(__self__, "db_names", db_names)
@@ -82,6 +84,8 @@ class AccountPrivilegeArgs:
         - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+
+        Default to "ReadOnly".
         """
         return pulumi.get(self, "privilege")
 
@@ -108,6 +112,8 @@ class _AccountPrivilegeState:
                - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+               
+               Default to "ReadOnly".
         """
         if account_name is not None:
             pulumi.set(__self__, "account_name", account_name)
@@ -164,6 +170,8 @@ class _AccountPrivilegeState:
         - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+
+        Default to "ReadOnly".
         """
         return pulumi.get(self, "privilege")
 
@@ -251,6 +259,8 @@ class AccountPrivilege(pulumi.CustomResource):
                - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+               
+               Default to "ReadOnly".
         """
         ...
     @overload
@@ -384,6 +394,8 @@ class AccountPrivilege(pulumi.CustomResource):
                - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+               
+               Default to "ReadOnly".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -429,6 +441,8 @@ class AccountPrivilege(pulumi.CustomResource):
         - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+
+        Default to "ReadOnly".
         """
         return pulumi.get(self, "privilege")
 

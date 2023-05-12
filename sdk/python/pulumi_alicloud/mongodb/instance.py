@@ -1185,6 +1185,45 @@ class Instance(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Provides a MongoDB instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
+        It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
+        You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
+
+        > **NOTE:**  Available in 1.37.0+
+
+        > **NOTE:**  The following regions don't support create Classic network MongoDB instance.
+        [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
+
+        > **NOTE:**  Create MongoDB instance or change instance type and storage would cost 5~10 minutes. Please make full preparation
+
+        ## Example Usage
+        ### Create a Mongodb instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones(available_resource_creation="MongoDB")
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id)
+        example = alicloud.mongodb.Instance("example",
+            engine_version="3.4",
+            db_instance_class="dds.mongo.mid",
+            db_instance_storage=10,
+            vswitch_id=default_switch.id,
+            security_ip_lists=[
+                "10.168.1.12",
+                "100.69.7.112",
+            ])
+        ```
+        ## Module Support
+
+        You can use to the existing mongodb module
+        to create a MongoDB instance resource one-click.
+
         ## Import
 
         MongoDB can be imported using the id, e.g.
@@ -1243,6 +1282,45 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a MongoDB instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
+        It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
+        You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
+
+        > **NOTE:**  Available in 1.37.0+
+
+        > **NOTE:**  The following regions don't support create Classic network MongoDB instance.
+        [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
+
+        > **NOTE:**  Create MongoDB instance or change instance type and storage would cost 5~10 minutes. Please make full preparation
+
+        ## Example Usage
+        ### Create a Mongodb instance
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones(available_resource_creation="MongoDB")
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id)
+        example = alicloud.mongodb.Instance("example",
+            engine_version="3.4",
+            db_instance_class="dds.mongo.mid",
+            db_instance_storage=10,
+            vswitch_id=default_switch.id,
+            security_ip_lists=[
+                "10.168.1.12",
+                "100.69.7.112",
+            ])
+        ```
+        ## Module Support
+
+        You can use to the existing mongodb module
+        to create a MongoDB instance resource one-click.
+
         ## Import
 
         MongoDB can be imported using the id, e.g.

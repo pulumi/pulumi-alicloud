@@ -212,6 +212,7 @@ def get_mount_targets(access_group_name: Optional[str] = None,
     :param Sequence[str] ids: A list of MountTargetDomain.
     :param str mount_target_domain: Field `mount_target_domain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
     :param str network_type: Filter results by a specific NetworkType.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
     :param str type: Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
     :param str vpc_id: Filter results by a specific VpcId.
@@ -280,6 +281,7 @@ def get_mount_targets_output(access_group_name: Optional[pulumi.Input[Optional[s
     :param Sequence[str] ids: A list of MountTargetDomain.
     :param str mount_target_domain: Field `mount_target_domain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
     :param str network_type: Filter results by a specific NetworkType.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
     :param str type: Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
     :param str vpc_id: Filter results by a specific VpcId.

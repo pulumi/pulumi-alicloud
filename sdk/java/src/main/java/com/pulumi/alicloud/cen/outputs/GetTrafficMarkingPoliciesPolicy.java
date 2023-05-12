@@ -14,44 +14,63 @@ public final class GetTrafficMarkingPoliciesPolicy {
      * @return The description of the Traffic Marking Policy.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the resource. The value is formatted `&lt;transit_router_id&gt;:&lt;traffic_marking_policy_id&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy.
      * 
      */
-    private Integer markingDscp;
+    private final Integer markingDscp;
     /**
      * @return The Priority of the Traffic Marking Policy.
      * 
      */
-    private Integer priority;
+    private final Integer priority;
     /**
      * @return The status of the resource.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The ID of the Traffic Marking Policy.
      * 
      */
-    private String trafficMarkingPolicyId;
+    private final String trafficMarkingPolicyId;
     /**
      * @return The name of the Traffic Marking Policy.
      * 
      */
-    private String trafficMarkingPolicyName;
+    private final String trafficMarkingPolicyName;
     /**
      * @return The ID of the transit router.
      * 
      */
-    private String transitRouterId;
+    private final String transitRouterId;
 
-    private GetTrafficMarkingPoliciesPolicy() {}
+    @CustomType.Constructor
+    private GetTrafficMarkingPoliciesPolicy(
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("markingDscp") Integer markingDscp,
+        @CustomType.Parameter("priority") Integer priority,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("trafficMarkingPolicyId") String trafficMarkingPolicyId,
+        @CustomType.Parameter("trafficMarkingPolicyName") String trafficMarkingPolicyName,
+        @CustomType.Parameter("transitRouterId") String transitRouterId) {
+        this.description = description;
+        this.id = id;
+        this.markingDscp = markingDscp;
+        this.priority = priority;
+        this.status = status;
+        this.trafficMarkingPolicyId = trafficMarkingPolicyId;
+        this.trafficMarkingPolicyName = trafficMarkingPolicyName;
+        this.transitRouterId = transitRouterId;
+    }
+
     /**
      * @return The description of the Traffic Marking Policy.
      * 
@@ -116,7 +135,7 @@ public final class GetTrafficMarkingPoliciesPolicy {
     public static Builder builder(GetTrafficMarkingPoliciesPolicy defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String description;
         private String id;
@@ -126,7 +145,11 @@ public final class GetTrafficMarkingPoliciesPolicy {
         private String trafficMarkingPolicyId;
         private String trafficMarkingPolicyName;
         private String transitRouterId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTrafficMarkingPoliciesPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -139,57 +162,39 @@ public final class GetTrafficMarkingPoliciesPolicy {
     	      this.transitRouterId = defaults.transitRouterId;
         }
 
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder markingDscp(Integer markingDscp) {
             this.markingDscp = Objects.requireNonNull(markingDscp);
             return this;
         }
-        @CustomType.Setter
         public Builder priority(Integer priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder trafficMarkingPolicyId(String trafficMarkingPolicyId) {
             this.trafficMarkingPolicyId = Objects.requireNonNull(trafficMarkingPolicyId);
             return this;
         }
-        @CustomType.Setter
         public Builder trafficMarkingPolicyName(String trafficMarkingPolicyName) {
             this.trafficMarkingPolicyName = Objects.requireNonNull(trafficMarkingPolicyName);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
             this.transitRouterId = Objects.requireNonNull(transitRouterId);
             return this;
-        }
-        public GetTrafficMarkingPoliciesPolicy build() {
-            final var o = new GetTrafficMarkingPoliciesPolicy();
-            o.description = description;
-            o.id = id;
-            o.markingDscp = markingDscp;
-            o.priority = priority;
-            o.status = status;
-            o.trafficMarkingPolicyId = trafficMarkingPolicyId;
-            o.trafficMarkingPolicyName = trafficMarkingPolicyName;
-            o.transitRouterId = transitRouterId;
-            return o;
+        }        public GetTrafficMarkingPoliciesPolicy build() {
+            return new GetTrafficMarkingPoliciesPolicy(description, id, markingDscp, priority, status, trafficMarkingPolicyId, trafficMarkingPolicyName, transitRouterId);
         }
     }
 }

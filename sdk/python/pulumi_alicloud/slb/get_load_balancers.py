@@ -334,6 +334,10 @@ def get_load_balancers(address: Optional[str] = None,
                        vswitch_id: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancersResult:
     """
+    > **DEPRECATED:** This datasource has been renamed to slb_get_application_load_balancers from version 1.123.1.
+
+    This data source provides the server load balancers of the current Alibaba Cloud user.
+
     ## Example Usage
 
     ```python
@@ -350,6 +354,7 @@ def get_load_balancers(address: Optional[str] = None,
     :param Sequence[str] ids: A list of SLBs IDs.
     :param str name_regex: A regex string to filter results by SLB name.
     :param str network_type: Network type of the SLBs. Valid values: `vpc` and `classic`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which SLB belongs.
     :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
     :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
@@ -446,6 +451,10 @@ def get_load_balancers_output(address: Optional[pulumi.Input[Optional[str]]] = N
                               vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLoadBalancersResult]:
     """
+    > **DEPRECATED:** This datasource has been renamed to slb_get_application_load_balancers from version 1.123.1.
+
+    This data source provides the server load balancers of the current Alibaba Cloud user.
+
     ## Example Usage
 
     ```python
@@ -462,6 +471,7 @@ def get_load_balancers_output(address: Optional[pulumi.Input[Optional[str]]] = N
     :param Sequence[str] ids: A list of SLBs IDs.
     :param str name_regex: A regex string to filter results by SLB name.
     :param str network_type: Network type of the SLBs. Valid values: `vpc` and `classic`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which SLB belongs.
     :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
     :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:

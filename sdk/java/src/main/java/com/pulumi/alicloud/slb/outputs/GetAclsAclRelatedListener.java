@@ -10,12 +10,23 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAclsAclRelatedListener {
-    private String aclType;
-    private Integer frontendPort;
-    private String loadBalancerId;
-    private String protocol;
+    private final String aclType;
+    private final Integer frontendPort;
+    private final String loadBalancerId;
+    private final String protocol;
 
-    private GetAclsAclRelatedListener() {}
+    @CustomType.Constructor
+    private GetAclsAclRelatedListener(
+        @CustomType.Parameter("aclType") String aclType,
+        @CustomType.Parameter("frontendPort") Integer frontendPort,
+        @CustomType.Parameter("loadBalancerId") String loadBalancerId,
+        @CustomType.Parameter("protocol") String protocol) {
+        this.aclType = aclType;
+        this.frontendPort = frontendPort;
+        this.loadBalancerId = loadBalancerId;
+        this.protocol = protocol;
+    }
+
     public String aclType() {
         return this.aclType;
     }
@@ -36,13 +47,17 @@ public final class GetAclsAclRelatedListener {
     public static Builder builder(GetAclsAclRelatedListener defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String aclType;
         private Integer frontendPort;
         private String loadBalancerId;
         private String protocol;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAclsAclRelatedListener defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aclType = defaults.aclType;
@@ -51,33 +66,23 @@ public final class GetAclsAclRelatedListener {
     	      this.protocol = defaults.protocol;
         }
 
-        @CustomType.Setter
         public Builder aclType(String aclType) {
             this.aclType = Objects.requireNonNull(aclType);
             return this;
         }
-        @CustomType.Setter
         public Builder frontendPort(Integer frontendPort) {
             this.frontendPort = Objects.requireNonNull(frontendPort);
             return this;
         }
-        @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
             this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
             return this;
         }
-        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
-        }
-        public GetAclsAclRelatedListener build() {
-            final var o = new GetAclsAclRelatedListener();
-            o.aclType = aclType;
-            o.frontendPort = frontendPort;
-            o.loadBalancerId = loadBalancerId;
-            o.protocol = protocol;
-            return o;
+        }        public GetAclsAclRelatedListener build() {
+            return new GetAclsAclRelatedListener(aclType, frontendPort, loadBalancerId, protocol);
         }
     }
 }

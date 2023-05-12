@@ -16,24 +16,35 @@ public final class GroupMetricRuleEscalationsInfo {
      * @return The comparison operator of the threshold for critical-level alerts.
      * 
      */
-    private @Nullable String comparisonOperator;
+    private final @Nullable String comparisonOperator;
     /**
      * @return The statistical aggregation method for critical-level alerts.
      * 
      */
-    private @Nullable String statistics;
+    private final @Nullable String statistics;
     /**
      * @return The threshold for critical-level alerts.
      * 
      */
-    private @Nullable String threshold;
+    private final @Nullable String threshold;
     /**
      * @return The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
      * 
      */
-    private @Nullable Integer times;
+    private final @Nullable Integer times;
 
-    private GroupMetricRuleEscalationsInfo() {}
+    @CustomType.Constructor
+    private GroupMetricRuleEscalationsInfo(
+        @CustomType.Parameter("comparisonOperator") @Nullable String comparisonOperator,
+        @CustomType.Parameter("statistics") @Nullable String statistics,
+        @CustomType.Parameter("threshold") @Nullable String threshold,
+        @CustomType.Parameter("times") @Nullable Integer times) {
+        this.comparisonOperator = comparisonOperator;
+        this.statistics = statistics;
+        this.threshold = threshold;
+        this.times = times;
+    }
+
     /**
      * @return The comparison operator of the threshold for critical-level alerts.
      * 
@@ -70,13 +81,17 @@ public final class GroupMetricRuleEscalationsInfo {
     public static Builder builder(GroupMetricRuleEscalationsInfo defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String comparisonOperator;
         private @Nullable String statistics;
         private @Nullable String threshold;
         private @Nullable Integer times;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GroupMetricRuleEscalationsInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comparisonOperator = defaults.comparisonOperator;
@@ -85,33 +100,23 @@ public final class GroupMetricRuleEscalationsInfo {
     	      this.times = defaults.times;
         }
 
-        @CustomType.Setter
         public Builder comparisonOperator(@Nullable String comparisonOperator) {
             this.comparisonOperator = comparisonOperator;
             return this;
         }
-        @CustomType.Setter
         public Builder statistics(@Nullable String statistics) {
             this.statistics = statistics;
             return this;
         }
-        @CustomType.Setter
         public Builder threshold(@Nullable String threshold) {
             this.threshold = threshold;
             return this;
         }
-        @CustomType.Setter
         public Builder times(@Nullable Integer times) {
             this.times = times;
             return this;
-        }
-        public GroupMetricRuleEscalationsInfo build() {
-            final var o = new GroupMetricRuleEscalationsInfo();
-            o.comparisonOperator = comparisonOperator;
-            o.statistics = statistics;
-            o.threshold = threshold;
-            o.times = times;
-            return o;
+        }        public GroupMetricRuleEscalationsInfo build() {
+            return new GroupMetricRuleEscalationsInfo(comparisonOperator, statistics, threshold, times);
         }
     }
 }

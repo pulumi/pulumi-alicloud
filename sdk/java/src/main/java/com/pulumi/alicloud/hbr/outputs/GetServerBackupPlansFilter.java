@@ -16,14 +16,21 @@ public final class GetServerBackupPlansFilter {
      * @return The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
      * 
      */
-    private @Nullable String key;
+    private final @Nullable String key;
     /**
      * @return Set of values that are accepted for the given field.
      * 
      */
-    private @Nullable List<String> values;
+    private final @Nullable List<String> values;
 
-    private GetServerBackupPlansFilter() {}
+    @CustomType.Constructor
+    private GetServerBackupPlansFilter(
+        @CustomType.Parameter("key") @Nullable String key,
+        @CustomType.Parameter("values") @Nullable List<String> values) {
+        this.key = key;
+        this.values = values;
+    }
+
     /**
      * @return The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
      * 
@@ -46,35 +53,33 @@ public final class GetServerBackupPlansFilter {
     public static Builder builder(GetServerBackupPlansFilter defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String key;
         private @Nullable List<String> values;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServerBackupPlansFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.values = defaults.values;
         }
 
-        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
-        @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
             this.values = values;
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }
-        public GetServerBackupPlansFilter build() {
-            final var o = new GetServerBackupPlansFilter();
-            o.key = key;
-            o.values = values;
-            return o;
+        }        public GetServerBackupPlansFilter build() {
+            return new GetServerBackupPlansFilter(key, values);
         }
     }
 }

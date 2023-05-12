@@ -39,6 +39,9 @@ export interface GetListenersArgs {
      * The ID of the NLB instance. You can specify at most 20 IDs.
      */
     loadBalancerIds?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -81,5 +84,8 @@ export interface GetListenersOutputArgs {
      * The ID of the NLB instance. You can specify at most 20 IDs.
      */
     loadBalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

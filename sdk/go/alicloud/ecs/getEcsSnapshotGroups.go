@@ -81,7 +81,8 @@ type GetEcsSnapshotGroupsArgs struct {
 	// The ID of the instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// A regex string to filter results by Snapshot Group name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The name of the snapshot-consistent group.
 	SnapshotGroupName *string `pulumi:"snapshotGroupName"`
@@ -126,7 +127,8 @@ type GetEcsSnapshotGroupsOutputArgs struct {
 	// The ID of the instance.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
 	// A regex string to filter results by Snapshot Group name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The name of the snapshot-consistent group.
 	SnapshotGroupName pulumi.StringPtrInput `pulumi:"snapshotGroupName"`

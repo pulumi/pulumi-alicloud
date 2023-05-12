@@ -5,6 +5,8 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .get_subnets import *
 from .get_vpds import *
+from .subnet import *
 from .vpd import *
 from . import outputs

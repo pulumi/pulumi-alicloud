@@ -9,9 +9,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEcsDisksDiskOperationLock {
-    private String lockReason;
+    private final String lockReason;
 
-    private GetEcsDisksDiskOperationLock() {}
+    @CustomType.Constructor
+    private GetEcsDisksDiskOperationLock(@CustomType.Parameter("lockReason") String lockReason) {
+        this.lockReason = lockReason;
+    }
+
     public String lockReason() {
         return this.lockReason;
     }
@@ -23,24 +27,24 @@ public final class GetEcsDisksDiskOperationLock {
     public static Builder builder(GetEcsDisksDiskOperationLock defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String lockReason;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEcsDisksDiskOperationLock defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.lockReason = defaults.lockReason;
         }
 
-        @CustomType.Setter
         public Builder lockReason(String lockReason) {
             this.lockReason = Objects.requireNonNull(lockReason);
             return this;
-        }
-        public GetEcsDisksDiskOperationLock build() {
-            final var o = new GetEcsDisksDiskOperationLock();
-            o.lockReason = lockReason;
-            return o;
+        }        public GetEcsDisksDiskOperationLock build() {
+            return new GetEcsDisksDiskOperationLock(lockReason);
         }
     }
 }

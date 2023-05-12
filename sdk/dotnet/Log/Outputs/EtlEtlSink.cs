@@ -51,6 +51,8 @@ namespace Pulumi.AliCloud.Log.Outputs
         public readonly string? RoleArn;
         /// <summary>
         /// ETL sinks type, the default value is AliyunLOG.
+        /// 
+        /// &gt; **Note:** `from_time` and `to_time` no modification allowed after successful creation.
         /// </summary>
         public readonly string? Type;
 

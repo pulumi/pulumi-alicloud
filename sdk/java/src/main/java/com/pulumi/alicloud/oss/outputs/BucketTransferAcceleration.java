@@ -13,9 +13,13 @@ public final class BucketTransferAcceleration {
      * @return Specifies lifecycle rule status.
      * 
      */
-    private Boolean enabled;
+    private final Boolean enabled;
 
-    private BucketTransferAcceleration() {}
+    @CustomType.Constructor
+    private BucketTransferAcceleration(@CustomType.Parameter("enabled") Boolean enabled) {
+        this.enabled = enabled;
+    }
+
     /**
      * @return Specifies lifecycle rule status.
      * 
@@ -31,24 +35,24 @@ public final class BucketTransferAcceleration {
     public static Builder builder(BucketTransferAcceleration defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean enabled;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(BucketTransferAcceleration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
-        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
-        }
-        public BucketTransferAcceleration build() {
-            final var o = new BucketTransferAcceleration();
-            o.enabled = enabled;
-            return o;
+        }        public BucketTransferAcceleration build() {
+            return new BucketTransferAcceleration(enabled);
         }
     }
 }

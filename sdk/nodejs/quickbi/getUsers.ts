@@ -53,6 +53,9 @@ export interface GetUsersArgs {
      * The keywords of the nicknames or usernames of the members of the organization.
      */
     keyword?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -109,5 +112,8 @@ export interface GetUsersOutputArgs {
      * The keywords of the nicknames or usernames of the members of the organization.
      */
     keyword?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

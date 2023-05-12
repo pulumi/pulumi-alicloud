@@ -233,10 +233,16 @@ func (o AclAclEntryArrayOutput) Index(i pulumi.IntInput) AclAclEntryOutput {
 
 type ListenerAccessLogTracingConfig struct {
 	// Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+	//
+	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
 	TracingEnabled *bool `pulumi:"tracingEnabled"`
 	// Xtrace Sampling Rate. Value: `1` to `10000`.
+	//
+	// > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
 	TracingSample *int `pulumi:"tracingSample"`
 	// Xtrace Type Value Is `Zipkin`.
+	//
+	// > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
 	TracingType *string `pulumi:"tracingType"`
 }
 
@@ -253,10 +259,16 @@ type ListenerAccessLogTracingConfigInput interface {
 
 type ListenerAccessLogTracingConfigArgs struct {
 	// Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+	//
+	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
 	TracingEnabled pulumi.BoolPtrInput `pulumi:"tracingEnabled"`
 	// Xtrace Sampling Rate. Value: `1` to `10000`.
+	//
+	// > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
 	TracingSample pulumi.IntPtrInput `pulumi:"tracingSample"`
 	// Xtrace Type Value Is `Zipkin`.
+	//
+	// > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
 	TracingType pulumi.StringPtrInput `pulumi:"tracingType"`
 }
 
@@ -338,16 +350,22 @@ func (o ListenerAccessLogTracingConfigOutput) ToListenerAccessLogTracingConfigPt
 }
 
 // Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+//
+// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
 func (o ListenerAccessLogTracingConfigOutput) TracingEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerAccessLogTracingConfig) *bool { return v.TracingEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Xtrace Sampling Rate. Value: `1` to `10000`.
+//
+// > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
 func (o ListenerAccessLogTracingConfigOutput) TracingSample() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ListenerAccessLogTracingConfig) *int { return v.TracingSample }).(pulumi.IntPtrOutput)
 }
 
 // Xtrace Type Value Is `Zipkin`.
+//
+// > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
 func (o ListenerAccessLogTracingConfigOutput) TracingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListenerAccessLogTracingConfig) *string { return v.TracingType }).(pulumi.StringPtrOutput)
 }
@@ -377,6 +395,8 @@ func (o ListenerAccessLogTracingConfigPtrOutput) Elem() ListenerAccessLogTracing
 }
 
 // Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+//
+// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
 func (o ListenerAccessLogTracingConfigPtrOutput) TracingEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerAccessLogTracingConfig) *bool {
 		if v == nil {
@@ -387,6 +407,8 @@ func (o ListenerAccessLogTracingConfigPtrOutput) TracingEnabled() pulumi.BoolPtr
 }
 
 // Xtrace Sampling Rate. Value: `1` to `10000`.
+//
+// > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
 func (o ListenerAccessLogTracingConfigPtrOutput) TracingSample() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ListenerAccessLogTracingConfig) *int {
 		if v == nil {
@@ -397,6 +419,8 @@ func (o ListenerAccessLogTracingConfigPtrOutput) TracingSample() pulumi.IntPtrOu
 }
 
 // Xtrace Type Value Is `Zipkin`.
+//
+// > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
 func (o ListenerAccessLogTracingConfigPtrOutput) TracingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListenerAccessLogTracingConfig) *string {
 		if v == nil {
@@ -1066,6 +1090,8 @@ type ListenerQuicConfig struct {
 	// There Is a Need to Correlate the QuIC Listener ID. The Https Listener, in Effect at the Time. quicupgradeenabled True When Required.
 	QuicListenerId *string `pulumi:"quicListenerId"`
 	// Indicates Whether to Enable the QuIC Upgrade.
+	//
+	// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
 	QuicUpgradeEnabled *bool `pulumi:"quicUpgradeEnabled"`
 }
 
@@ -1084,6 +1110,8 @@ type ListenerQuicConfigArgs struct {
 	// There Is a Need to Correlate the QuIC Listener ID. The Https Listener, in Effect at the Time. quicupgradeenabled True When Required.
 	QuicListenerId pulumi.StringPtrInput `pulumi:"quicListenerId"`
 	// Indicates Whether to Enable the QuIC Upgrade.
+	//
+	// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
 	QuicUpgradeEnabled pulumi.BoolPtrInput `pulumi:"quicUpgradeEnabled"`
 }
 
@@ -1170,6 +1198,8 @@ func (o ListenerQuicConfigOutput) QuicListenerId() pulumi.StringPtrOutput {
 }
 
 // Indicates Whether to Enable the QuIC Upgrade.
+//
+// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
 func (o ListenerQuicConfigOutput) QuicUpgradeEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListenerQuicConfig) *bool { return v.QuicUpgradeEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -1209,6 +1239,8 @@ func (o ListenerQuicConfigPtrOutput) QuicListenerId() pulumi.StringPtrOutput {
 }
 
 // Indicates Whether to Enable the QuIC Upgrade.
+//
+// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
 func (o ListenerQuicConfigPtrOutput) QuicUpgradeEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListenerQuicConfig) *bool {
 		if v == nil {
@@ -7098,6 +7130,8 @@ func (o GetHealthCheckTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) Get
 
 type GetListenersListener struct {
 	// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+	//
+	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 	AccessLogRecordCustomizedHeadersEnabled bool `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
 	// Xtrace Configuration Information.
 	AccessLogTracingConfigs []GetListenersListenerAccessLogTracingConfig `pulumi:"accessLogTracingConfigs"`
@@ -7110,6 +7144,8 @@ type GetListenersListener struct {
 	// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: `True` Or `False`. Default Value: `True`.
 	GzipEnabled bool `pulumi:"gzipEnabled"`
 	// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+	//
+	// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
 	Http2Enabled bool `pulumi:"http2Enabled"`
 	// The ID of the Listener.
 	Id string `pulumi:"id"`
@@ -7134,6 +7170,8 @@ type GetListenersListener struct {
 	// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout int `pulumi:"requestTimeout"`
 	// Security Policy.
+	//
+	// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
 	SecurityPolicyId string `pulumi:"securityPolicyId"`
 	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
 	Status string `pulumi:"status"`
@@ -7154,6 +7192,8 @@ type GetListenersListenerInput interface {
 
 type GetListenersListenerArgs struct {
 	// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+	//
+	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 	AccessLogRecordCustomizedHeadersEnabled pulumi.BoolInput `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
 	// Xtrace Configuration Information.
 	AccessLogTracingConfigs GetListenersListenerAccessLogTracingConfigArrayInput `pulumi:"accessLogTracingConfigs"`
@@ -7166,6 +7206,8 @@ type GetListenersListenerArgs struct {
 	// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: `True` Or `False`. Default Value: `True`.
 	GzipEnabled pulumi.BoolInput `pulumi:"gzipEnabled"`
 	// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+	//
+	// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
 	Http2Enabled pulumi.BoolInput `pulumi:"http2Enabled"`
 	// The ID of the Listener.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -7190,6 +7232,8 @@ type GetListenersListenerArgs struct {
 	// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout pulumi.IntInput `pulumi:"requestTimeout"`
 	// Security Policy.
+	//
+	// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
 	SecurityPolicyId pulumi.StringInput `pulumi:"securityPolicyId"`
 	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
 	Status pulumi.StringInput `pulumi:"status"`
@@ -7249,6 +7293,8 @@ func (o GetListenersListenerOutput) ToGetListenersListenerOutputWithContext(ctx 
 }
 
 // Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+//
+// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 func (o GetListenersListenerOutput) AccessLogRecordCustomizedHeadersEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListener) bool { return v.AccessLogRecordCustomizedHeadersEnabled }).(pulumi.BoolOutput)
 }
@@ -7281,6 +7327,8 @@ func (o GetListenersListenerOutput) GzipEnabled() pulumi.BoolOutput {
 }
 
 // Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+//
+// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
 func (o GetListenersListenerOutput) Http2Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListener) bool { return v.Http2Enabled }).(pulumi.BoolOutput)
 }
@@ -7341,6 +7389,8 @@ func (o GetListenersListenerOutput) RequestTimeout() pulumi.IntOutput {
 }
 
 // Security Policy.
+//
+// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
 func (o GetListenersListenerOutput) SecurityPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.SecurityPolicyId }).(pulumi.StringOutput)
 }
@@ -7377,10 +7427,16 @@ func (o GetListenersListenerArrayOutput) Index(i pulumi.IntInput) GetListenersLi
 
 type GetListenersListenerAccessLogTracingConfig struct {
 	// Xtrace Function. Value: True Or False. Default Value: False.
+	//
+	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 	TracingEnabled bool `pulumi:"tracingEnabled"`
 	// Xtrace Sampling Rate. Value: **1~10000**.
+	//
+	// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
 	TracingSample int `pulumi:"tracingSample"`
 	// Xtrace Type Value Is **Zipkin**.
+	//
+	// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
 	TracingType string `pulumi:"tracingType"`
 }
 
@@ -7397,10 +7453,16 @@ type GetListenersListenerAccessLogTracingConfigInput interface {
 
 type GetListenersListenerAccessLogTracingConfigArgs struct {
 	// Xtrace Function. Value: True Or False. Default Value: False.
+	//
+	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 	TracingEnabled pulumi.BoolInput `pulumi:"tracingEnabled"`
 	// Xtrace Sampling Rate. Value: **1~10000**.
+	//
+	// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
 	TracingSample pulumi.IntInput `pulumi:"tracingSample"`
 	// Xtrace Type Value Is **Zipkin**.
+	//
+	// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
 	TracingType pulumi.StringInput `pulumi:"tracingType"`
 }
 
@@ -7456,16 +7518,22 @@ func (o GetListenersListenerAccessLogTracingConfigOutput) ToGetListenersListener
 }
 
 // Xtrace Function. Value: True Or False. Default Value: False.
+//
+// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 func (o GetListenersListenerAccessLogTracingConfigOutput) TracingEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerAccessLogTracingConfig) bool { return v.TracingEnabled }).(pulumi.BoolOutput)
 }
 
 // Xtrace Sampling Rate. Value: **1~10000**.
+//
+// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
 func (o GetListenersListenerAccessLogTracingConfigOutput) TracingSample() pulumi.IntOutput {
 	return o.ApplyT(func(v GetListenersListenerAccessLogTracingConfig) int { return v.TracingSample }).(pulumi.IntOutput)
 }
 
 // Xtrace Type Value Is **Zipkin**.
+//
+// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
 func (o GetListenersListenerAccessLogTracingConfigOutput) TracingType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerAccessLogTracingConfig) string { return v.TracingType }).(pulumi.StringOutput)
 }

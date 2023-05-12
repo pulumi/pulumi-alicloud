@@ -15,19 +15,28 @@ public final class EdgeKubernetesCertificateAuthority {
      * @return The path of client certificate, like `~/.kube/client-cert.pem`.
      * 
      */
-    private @Nullable String clientCert;
+    private final @Nullable String clientCert;
     /**
      * @return The path of client key, like `~/.kube/client-key.pem`.
      * 
      */
-    private @Nullable String clientKey;
+    private final @Nullable String clientKey;
     /**
      * @return The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
      * 
      */
-    private @Nullable String clusterCert;
+    private final @Nullable String clusterCert;
 
-    private EdgeKubernetesCertificateAuthority() {}
+    @CustomType.Constructor
+    private EdgeKubernetesCertificateAuthority(
+        @CustomType.Parameter("clientCert") @Nullable String clientCert,
+        @CustomType.Parameter("clientKey") @Nullable String clientKey,
+        @CustomType.Parameter("clusterCert") @Nullable String clusterCert) {
+        this.clientCert = clientCert;
+        this.clientKey = clientKey;
+        this.clusterCert = clusterCert;
+    }
+
     /**
      * @return The path of client certificate, like `~/.kube/client-cert.pem`.
      * 
@@ -57,12 +66,16 @@ public final class EdgeKubernetesCertificateAuthority {
     public static Builder builder(EdgeKubernetesCertificateAuthority defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String clientCert;
         private @Nullable String clientKey;
         private @Nullable String clusterCert;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(EdgeKubernetesCertificateAuthority defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientCert = defaults.clientCert;
@@ -70,27 +83,19 @@ public final class EdgeKubernetesCertificateAuthority {
     	      this.clusterCert = defaults.clusterCert;
         }
 
-        @CustomType.Setter
         public Builder clientCert(@Nullable String clientCert) {
             this.clientCert = clientCert;
             return this;
         }
-        @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
             this.clientKey = clientKey;
             return this;
         }
-        @CustomType.Setter
         public Builder clusterCert(@Nullable String clusterCert) {
             this.clusterCert = clusterCert;
             return this;
-        }
-        public EdgeKubernetesCertificateAuthority build() {
-            final var o = new EdgeKubernetesCertificateAuthority();
-            o.clientCert = clientCert;
-            o.clientKey = clientKey;
-            o.clusterCert = clusterCert;
-            return o;
+        }        public EdgeKubernetesCertificateAuthority build() {
+            return new EdgeKubernetesCertificateAuthority(clientCert, clientKey, clusterCert);
         }
     }
 }

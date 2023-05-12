@@ -17,29 +17,42 @@ public final class ConnectionHealthCheckConfig {
      * @return The destination IP address.
      * 
      */
-    private @Nullable String dip;
+    private final @Nullable String dip;
     /**
      * @return Whether to enable Health Check.
      * 
      */
-    private @Nullable Boolean enable;
+    private final @Nullable Boolean enable;
     /**
      * @return The interval between two consecutive health checks. Unit: seconds.
      * 
      */
-    private @Nullable Integer interval;
+    private final @Nullable Integer interval;
     /**
      * @return The maximum number of health check retries.
      * 
      */
-    private @Nullable Integer retry;
+    private final @Nullable Integer retry;
     /**
      * @return The source IP address.
      * 
      */
-    private @Nullable String sip;
+    private final @Nullable String sip;
 
-    private ConnectionHealthCheckConfig() {}
+    @CustomType.Constructor
+    private ConnectionHealthCheckConfig(
+        @CustomType.Parameter("dip") @Nullable String dip,
+        @CustomType.Parameter("enable") @Nullable Boolean enable,
+        @CustomType.Parameter("interval") @Nullable Integer interval,
+        @CustomType.Parameter("retry") @Nullable Integer retry,
+        @CustomType.Parameter("sip") @Nullable String sip) {
+        this.dip = dip;
+        this.enable = enable;
+        this.interval = interval;
+        this.retry = retry;
+        this.sip = sip;
+    }
+
     /**
      * @return The destination IP address.
      * 
@@ -83,14 +96,18 @@ public final class ConnectionHealthCheckConfig {
     public static Builder builder(ConnectionHealthCheckConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String dip;
         private @Nullable Boolean enable;
         private @Nullable Integer interval;
         private @Nullable Integer retry;
         private @Nullable String sip;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ConnectionHealthCheckConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dip = defaults.dip;
@@ -100,39 +117,27 @@ public final class ConnectionHealthCheckConfig {
     	      this.sip = defaults.sip;
         }
 
-        @CustomType.Setter
         public Builder dip(@Nullable String dip) {
             this.dip = dip;
             return this;
         }
-        @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
             this.enable = enable;
             return this;
         }
-        @CustomType.Setter
         public Builder interval(@Nullable Integer interval) {
             this.interval = interval;
             return this;
         }
-        @CustomType.Setter
         public Builder retry(@Nullable Integer retry) {
             this.retry = retry;
             return this;
         }
-        @CustomType.Setter
         public Builder sip(@Nullable String sip) {
             this.sip = sip;
             return this;
-        }
-        public ConnectionHealthCheckConfig build() {
-            final var o = new ConnectionHealthCheckConfig();
-            o.dip = dip;
-            o.enable = enable;
-            o.interval = interval;
-            o.retry = retry;
-            o.sip = sip;
-            return o;
+        }        public ConnectionHealthCheckConfig build() {
+            return new ConnectionHealthCheckConfig(dip, enable, interval, retry, sip);
         }
     }
 }

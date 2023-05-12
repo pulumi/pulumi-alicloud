@@ -15,44 +15,63 @@ public final class ApiRequestParameter {
      * @return The default value of the parameter.
      * 
      */
-    private @Nullable String defaultValue;
+    private final @Nullable String defaultValue;
     /**
      * @return The description of the api. Defaults to null.
      * 
      */
-    private @Nullable String description;
+    private final @Nullable String description;
     /**
      * @return Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
      * 
      */
-    private String in;
+    private final String in;
     /**
      * @return Backend service&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
      * 
      */
-    private String inService;
+    private final String inService;
     /**
      * @return The name of the api gateway api. Defaults to null.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return Backend service&#39;s parameter name.
      * 
      */
-    private String nameService;
+    private final String nameService;
     /**
      * @return Parameter required or not; values: REQUIRED and OPTIONAL.
      * 
      */
-    private String required;
+    private final String required;
     /**
      * @return Parameter type which supports values of &#39;STRING&#39;,&#39;INT&#39;,&#39;BOOLEAN&#39;,&#39;LONG&#39;,&#34;FLOAT&#34; and &#34;DOUBLE&#34;.
      * 
      */
-    private String type;
+    private final String type;
 
-    private ApiRequestParameter() {}
+    @CustomType.Constructor
+    private ApiRequestParameter(
+        @CustomType.Parameter("defaultValue") @Nullable String defaultValue,
+        @CustomType.Parameter("description") @Nullable String description,
+        @CustomType.Parameter("in") String in,
+        @CustomType.Parameter("inService") String inService,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("nameService") String nameService,
+        @CustomType.Parameter("required") String required,
+        @CustomType.Parameter("type") String type) {
+        this.defaultValue = defaultValue;
+        this.description = description;
+        this.in = in;
+        this.inService = inService;
+        this.name = name;
+        this.nameService = nameService;
+        this.required = required;
+        this.type = type;
+    }
+
     /**
      * @return The default value of the parameter.
      * 
@@ -117,7 +136,7 @@ public final class ApiRequestParameter {
     public static Builder builder(ApiRequestParameter defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String defaultValue;
         private @Nullable String description;
@@ -127,7 +146,11 @@ public final class ApiRequestParameter {
         private String nameService;
         private String required;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ApiRequestParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultValue = defaults.defaultValue;
@@ -140,57 +163,39 @@ public final class ApiRequestParameter {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder defaultValue(@Nullable String defaultValue) {
             this.defaultValue = defaultValue;
             return this;
         }
-        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
-        @CustomType.Setter
         public Builder in(String in) {
             this.in = Objects.requireNonNull(in);
             return this;
         }
-        @CustomType.Setter
         public Builder inService(String inService) {
             this.inService = Objects.requireNonNull(inService);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder nameService(String nameService) {
             this.nameService = Objects.requireNonNull(nameService);
             return this;
         }
-        @CustomType.Setter
         public Builder required(String required) {
             this.required = Objects.requireNonNull(required);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public ApiRequestParameter build() {
-            final var o = new ApiRequestParameter();
-            o.defaultValue = defaultValue;
-            o.description = description;
-            o.in = in;
-            o.inService = inService;
-            o.name = name;
-            o.nameService = nameService;
-            o.required = required;
-            o.type = type;
-            return o;
+        }        public ApiRequestParameter build() {
+            return new ApiRequestParameter(defaultValue, description, in, inService, name, nameService, required, type);
         }
     }
 }

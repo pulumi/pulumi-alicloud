@@ -218,12 +218,16 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
     /**
      * The owner id of the transit router vbr attachment.
      * 
+     * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
+     * 
      */
     @Export(name="vbrOwnerId", type=String.class, parameters={})
     private Output<String> vbrOwnerId;
 
     /**
      * @return The owner id of the transit router vbr attachment.
+     * 
+     * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
      * 
      */
     public Output<String> vbrOwnerId() {

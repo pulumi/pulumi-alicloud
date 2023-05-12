@@ -61,7 +61,8 @@ type GetServerGroupsArgs struct {
 	// A list of Server Group IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Server Group name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the resource group to which the security group belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -109,7 +110,8 @@ type GetServerGroupsOutputArgs struct {
 	// A list of Server Group IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Server Group name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the resource group to which the security group belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`

@@ -14,44 +14,63 @@ public final class GetIpv6InternetBandwidthsBandwidth {
      * @return The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`.
      * 
      */
-    private Integer bandwidth;
+    private final Integer bandwidth;
     /**
      * @return The ID of the Ipv6 Internet Bandwidth.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The metering method of the Internet bandwidth resources of the IPv6 gateway.
      * 
      */
-    private String internetChargeType;
+    private final String internetChargeType;
     /**
      * @return The ID of the IPv6 address.
      * 
      */
-    private String ipv6AddressId;
+    private final String ipv6AddressId;
     /**
      * @return The ID of the IPv6 gateway.
      * 
      */
-    private String ipv6GatewayId;
+    private final String ipv6GatewayId;
     /**
      * @return The ID of the Ipv6 Internet Bandwidth.
      * 
      */
-    private String ipv6InternetBandwidthId;
+    private final String ipv6InternetBandwidthId;
     /**
      * @return The payment type of the resource.
      * 
      */
-    private String paymentType;
+    private final String paymentType;
     /**
      * @return The status of the resource. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetIpv6InternetBandwidthsBandwidth() {}
+    @CustomType.Constructor
+    private GetIpv6InternetBandwidthsBandwidth(
+        @CustomType.Parameter("bandwidth") Integer bandwidth,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("internetChargeType") String internetChargeType,
+        @CustomType.Parameter("ipv6AddressId") String ipv6AddressId,
+        @CustomType.Parameter("ipv6GatewayId") String ipv6GatewayId,
+        @CustomType.Parameter("ipv6InternetBandwidthId") String ipv6InternetBandwidthId,
+        @CustomType.Parameter("paymentType") String paymentType,
+        @CustomType.Parameter("status") String status) {
+        this.bandwidth = bandwidth;
+        this.id = id;
+        this.internetChargeType = internetChargeType;
+        this.ipv6AddressId = ipv6AddressId;
+        this.ipv6GatewayId = ipv6GatewayId;
+        this.ipv6InternetBandwidthId = ipv6InternetBandwidthId;
+        this.paymentType = paymentType;
+        this.status = status;
+    }
+
     /**
      * @return The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`.
      * 
@@ -116,7 +135,7 @@ public final class GetIpv6InternetBandwidthsBandwidth {
     public static Builder builder(GetIpv6InternetBandwidthsBandwidth defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer bandwidth;
         private String id;
@@ -126,7 +145,11 @@ public final class GetIpv6InternetBandwidthsBandwidth {
         private String ipv6InternetBandwidthId;
         private String paymentType;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetIpv6InternetBandwidthsBandwidth defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidth = defaults.bandwidth;
@@ -139,57 +162,39 @@ public final class GetIpv6InternetBandwidthsBandwidth {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder internetChargeType(String internetChargeType) {
             this.internetChargeType = Objects.requireNonNull(internetChargeType);
             return this;
         }
-        @CustomType.Setter
         public Builder ipv6AddressId(String ipv6AddressId) {
             this.ipv6AddressId = Objects.requireNonNull(ipv6AddressId);
             return this;
         }
-        @CustomType.Setter
         public Builder ipv6GatewayId(String ipv6GatewayId) {
             this.ipv6GatewayId = Objects.requireNonNull(ipv6GatewayId);
             return this;
         }
-        @CustomType.Setter
         public Builder ipv6InternetBandwidthId(String ipv6InternetBandwidthId) {
             this.ipv6InternetBandwidthId = Objects.requireNonNull(ipv6InternetBandwidthId);
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetIpv6InternetBandwidthsBandwidth build() {
-            final var o = new GetIpv6InternetBandwidthsBandwidth();
-            o.bandwidth = bandwidth;
-            o.id = id;
-            o.internetChargeType = internetChargeType;
-            o.ipv6AddressId = ipv6AddressId;
-            o.ipv6GatewayId = ipv6GatewayId;
-            o.ipv6InternetBandwidthId = ipv6InternetBandwidthId;
-            o.paymentType = paymentType;
-            o.status = status;
-            return o;
+        }        public GetIpv6InternetBandwidthsBandwidth build() {
+            return new GetIpv6InternetBandwidthsBandwidth(bandwidth, id, internetChargeType, ipv6AddressId, ipv6GatewayId, ipv6InternetBandwidthId, paymentType, status);
         }
     }
 }

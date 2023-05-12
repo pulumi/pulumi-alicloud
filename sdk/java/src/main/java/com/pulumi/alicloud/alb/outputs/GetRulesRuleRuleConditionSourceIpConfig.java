@@ -14,9 +14,13 @@ public final class GetRulesRuleRuleConditionSourceIpConfig {
      * @return Add one or more IP addresses or IP address segments.
      * 
      */
-    private List<String> values;
+    private final List<String> values;
 
-    private GetRulesRuleRuleConditionSourceIpConfig() {}
+    @CustomType.Constructor
+    private GetRulesRuleRuleConditionSourceIpConfig(@CustomType.Parameter("values") List<String> values) {
+        this.values = values;
+    }
+
     /**
      * @return Add one or more IP addresses or IP address segments.
      * 
@@ -32,27 +36,27 @@ public final class GetRulesRuleRuleConditionSourceIpConfig {
     public static Builder builder(GetRulesRuleRuleConditionSourceIpConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<String> values;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRulesRuleRuleConditionSourceIpConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.values = defaults.values;
         }
 
-        @CustomType.Setter
         public Builder values(List<String> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }
-        public GetRulesRuleRuleConditionSourceIpConfig build() {
-            final var o = new GetRulesRuleRuleConditionSourceIpConfig();
-            o.values = values;
-            return o;
+        }        public GetRulesRuleRuleConditionSourceIpConfig build() {
+            return new GetRulesRuleRuleConditionSourceIpConfig(values);
         }
     }
 }

@@ -13,24 +13,35 @@ public final class GetDomainsDomainCertInfo {
      * @return If You Enable HTTPS Here Certificate Name.
      * 
      */
-    private String certName;
+    private final String certName;
     /**
      * @return Certificate Type. Value Range: Upload: Certificate. CAS: Certificate Authority Certificate. Free: Free Certificate.
      * 
      */
-    private String certType;
+    private final String certType;
     /**
      * @return Whether to Enable SSL Certificate. Valid Values: on, off.
      * 
      */
-    private String sslProtocol;
+    private final String sslProtocol;
     /**
      * @return If You Enable HTTPS Here Key.
      * 
      */
-    private String sslPub;
+    private final String sslPub;
 
-    private GetDomainsDomainCertInfo() {}
+    @CustomType.Constructor
+    private GetDomainsDomainCertInfo(
+        @CustomType.Parameter("certName") String certName,
+        @CustomType.Parameter("certType") String certType,
+        @CustomType.Parameter("sslProtocol") String sslProtocol,
+        @CustomType.Parameter("sslPub") String sslPub) {
+        this.certName = certName;
+        this.certType = certType;
+        this.sslProtocol = sslProtocol;
+        this.sslPub = sslPub;
+    }
+
     /**
      * @return If You Enable HTTPS Here Certificate Name.
      * 
@@ -67,13 +78,17 @@ public final class GetDomainsDomainCertInfo {
     public static Builder builder(GetDomainsDomainCertInfo defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String certName;
         private String certType;
         private String sslProtocol;
         private String sslPub;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDomainsDomainCertInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certName = defaults.certName;
@@ -82,33 +97,23 @@ public final class GetDomainsDomainCertInfo {
     	      this.sslPub = defaults.sslPub;
         }
 
-        @CustomType.Setter
         public Builder certName(String certName) {
             this.certName = Objects.requireNonNull(certName);
             return this;
         }
-        @CustomType.Setter
         public Builder certType(String certType) {
             this.certType = Objects.requireNonNull(certType);
             return this;
         }
-        @CustomType.Setter
         public Builder sslProtocol(String sslProtocol) {
             this.sslProtocol = Objects.requireNonNull(sslProtocol);
             return this;
         }
-        @CustomType.Setter
         public Builder sslPub(String sslPub) {
             this.sslPub = Objects.requireNonNull(sslPub);
             return this;
-        }
-        public GetDomainsDomainCertInfo build() {
-            final var o = new GetDomainsDomainCertInfo();
-            o.certName = certName;
-            o.certType = certType;
-            o.sslProtocol = sslProtocol;
-            o.sslPub = sslPub;
-            return o;
+        }        public GetDomainsDomainCertInfo build() {
+            return new GetDomainsDomainCertInfo(certName, certType, sslProtocol, sslPub);
         }
     }
 }

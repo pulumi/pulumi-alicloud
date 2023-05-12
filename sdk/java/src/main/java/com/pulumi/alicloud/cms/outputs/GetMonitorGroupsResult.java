@@ -16,25 +16,54 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMonitorGroupsResult {
-    private @Nullable String dynamicTagRuleId;
-    private List<GetMonitorGroupsGroup> groups;
+    private final @Nullable String dynamicTagRuleId;
+    private final List<GetMonitorGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable Boolean includeTemplateHistory;
-    private @Nullable String keyword;
-    private @Nullable String monitorGroupName;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable Boolean selectContactGroups;
-    private @Nullable Map<String,Object> tags;
-    private @Nullable String type;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable Boolean includeTemplateHistory;
+    private final @Nullable String keyword;
+    private final @Nullable String monitorGroupName;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable Boolean selectContactGroups;
+    private final @Nullable Map<String,Object> tags;
+    private final @Nullable String type;
 
-    private GetMonitorGroupsResult() {}
+    @CustomType.Constructor
+    private GetMonitorGroupsResult(
+        @CustomType.Parameter("dynamicTagRuleId") @Nullable String dynamicTagRuleId,
+        @CustomType.Parameter("groups") List<GetMonitorGroupsGroup> groups,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("includeTemplateHistory") @Nullable Boolean includeTemplateHistory,
+        @CustomType.Parameter("keyword") @Nullable String keyword,
+        @CustomType.Parameter("monitorGroupName") @Nullable String monitorGroupName,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("selectContactGroups") @Nullable Boolean selectContactGroups,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
+        @CustomType.Parameter("type") @Nullable String type) {
+        this.dynamicTagRuleId = dynamicTagRuleId;
+        this.groups = groups;
+        this.id = id;
+        this.ids = ids;
+        this.includeTemplateHistory = includeTemplateHistory;
+        this.keyword = keyword;
+        this.monitorGroupName = monitorGroupName;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.selectContactGroups = selectContactGroups;
+        this.tags = tags;
+        this.type = type;
+    }
+
     public Optional<String> dynamicTagRuleId() {
         return Optional.ofNullable(this.dynamicTagRuleId);
     }
@@ -86,7 +115,7 @@ public final class GetMonitorGroupsResult {
     public static Builder builder(GetMonitorGroupsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String dynamicTagRuleId;
         private List<GetMonitorGroupsGroup> groups;
@@ -101,7 +130,11 @@ public final class GetMonitorGroupsResult {
         private @Nullable Boolean selectContactGroups;
         private @Nullable Map<String,Object> tags;
         private @Nullable String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetMonitorGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dynamicTagRuleId = defaults.dynamicTagRuleId;
@@ -119,12 +152,10 @@ public final class GetMonitorGroupsResult {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder dynamicTagRuleId(@Nullable String dynamicTagRuleId) {
             this.dynamicTagRuleId = dynamicTagRuleId;
             return this;
         }
-        @CustomType.Setter
         public Builder groups(List<GetMonitorGroupsGroup> groups) {
             this.groups = Objects.requireNonNull(groups);
             return this;
@@ -132,12 +163,10 @@ public final class GetMonitorGroupsResult {
         public Builder groups(GetMonitorGroupsGroup... groups) {
             return groups(List.of(groups));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -145,27 +174,22 @@ public final class GetMonitorGroupsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder includeTemplateHistory(@Nullable Boolean includeTemplateHistory) {
             this.includeTemplateHistory = includeTemplateHistory;
             return this;
         }
-        @CustomType.Setter
         public Builder keyword(@Nullable String keyword) {
             this.keyword = keyword;
             return this;
         }
-        @CustomType.Setter
         public Builder monitorGroupName(@Nullable String monitorGroupName) {
             this.monitorGroupName = monitorGroupName;
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -173,42 +197,23 @@ public final class GetMonitorGroupsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder selectContactGroups(@Nullable Boolean selectContactGroups) {
             this.selectContactGroups = selectContactGroups;
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
-        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }
-        public GetMonitorGroupsResult build() {
-            final var o = new GetMonitorGroupsResult();
-            o.dynamicTagRuleId = dynamicTagRuleId;
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.includeTemplateHistory = includeTemplateHistory;
-            o.keyword = keyword;
-            o.monitorGroupName = monitorGroupName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.selectContactGroups = selectContactGroups;
-            o.tags = tags;
-            o.type = type;
-            return o;
+        }        public GetMonitorGroupsResult build() {
+            return new GetMonitorGroupsResult(dynamicTagRuleId, groups, id, ids, includeTemplateHistory, keyword, monitorGroupName, nameRegex, names, outputFile, selectContactGroups, tags, type);
         }
     }
 }

@@ -15,44 +15,63 @@ public final class GetAggregatorsAggregator {
      * @return Aggregator account uid.
      * 
      */
-    private String accountId;
+    private final String accountId;
     /**
      * @return Account information in aggregator.
      * 
      */
-    private List<GetAggregatorsAggregatorAggregatorAccount> aggregatorAccounts;
+    private final List<GetAggregatorsAggregatorAggregatorAccount> aggregatorAccounts;
     /**
      * @return The id of aggregator.
      * 
      */
-    private String aggregatorId;
+    private final String aggregatorId;
     /**
      * @return The name of aggregator.
      * 
      */
-    private String aggregatorName;
+    private final String aggregatorName;
     /**
      * @return The type of aggregator.
      * 
      */
-    private String aggregatorType;
+    private final String aggregatorType;
     /**
      * @return The description of aggregator.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The id of the aggregator.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The status of the resource. Valid Values:  `0`: creating `1`: normal `2`: deleting.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetAggregatorsAggregator() {}
+    @CustomType.Constructor
+    private GetAggregatorsAggregator(
+        @CustomType.Parameter("accountId") String accountId,
+        @CustomType.Parameter("aggregatorAccounts") List<GetAggregatorsAggregatorAggregatorAccount> aggregatorAccounts,
+        @CustomType.Parameter("aggregatorId") String aggregatorId,
+        @CustomType.Parameter("aggregatorName") String aggregatorName,
+        @CustomType.Parameter("aggregatorType") String aggregatorType,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("status") String status) {
+        this.accountId = accountId;
+        this.aggregatorAccounts = aggregatorAccounts;
+        this.aggregatorId = aggregatorId;
+        this.aggregatorName = aggregatorName;
+        this.aggregatorType = aggregatorType;
+        this.description = description;
+        this.id = id;
+        this.status = status;
+    }
+
     /**
      * @return Aggregator account uid.
      * 
@@ -117,7 +136,7 @@ public final class GetAggregatorsAggregator {
     public static Builder builder(GetAggregatorsAggregator defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String accountId;
         private List<GetAggregatorsAggregatorAggregatorAccount> aggregatorAccounts;
@@ -127,7 +146,11 @@ public final class GetAggregatorsAggregator {
         private String description;
         private String id;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAggregatorsAggregator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -140,12 +163,10 @@ public final class GetAggregatorsAggregator {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
-        @CustomType.Setter
         public Builder aggregatorAccounts(List<GetAggregatorsAggregatorAggregatorAccount> aggregatorAccounts) {
             this.aggregatorAccounts = Objects.requireNonNull(aggregatorAccounts);
             return this;
@@ -153,47 +174,31 @@ public final class GetAggregatorsAggregator {
         public Builder aggregatorAccounts(GetAggregatorsAggregatorAggregatorAccount... aggregatorAccounts) {
             return aggregatorAccounts(List.of(aggregatorAccounts));
         }
-        @CustomType.Setter
         public Builder aggregatorId(String aggregatorId) {
             this.aggregatorId = Objects.requireNonNull(aggregatorId);
             return this;
         }
-        @CustomType.Setter
         public Builder aggregatorName(String aggregatorName) {
             this.aggregatorName = Objects.requireNonNull(aggregatorName);
             return this;
         }
-        @CustomType.Setter
         public Builder aggregatorType(String aggregatorType) {
             this.aggregatorType = Objects.requireNonNull(aggregatorType);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetAggregatorsAggregator build() {
-            final var o = new GetAggregatorsAggregator();
-            o.accountId = accountId;
-            o.aggregatorAccounts = aggregatorAccounts;
-            o.aggregatorId = aggregatorId;
-            o.aggregatorName = aggregatorName;
-            o.aggregatorType = aggregatorType;
-            o.description = description;
-            o.id = id;
-            o.status = status;
-            return o;
+        }        public GetAggregatorsAggregator build() {
+            return new GetAggregatorsAggregator(accountId, aggregatorAccounts, aggregatorId, aggregatorName, aggregatorType, description, id, status);
         }
     }
 }

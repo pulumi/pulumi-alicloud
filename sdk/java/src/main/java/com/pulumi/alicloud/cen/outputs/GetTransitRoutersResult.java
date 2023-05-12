@@ -17,38 +17,61 @@ public final class GetTransitRoutersResult {
      * @return The ID of the CEN instance.
      * 
      */
-    private String cenId;
+    private final String cenId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private @Nullable List<String> ids;
-    private @Nullable String nameRegex;
+    private final String id;
+    private final @Nullable List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of  CEN Transit Routers names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
     /**
      * @return The status of the transit router attachment.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
     /**
      * @return The ID of the transit router.
      * 
      */
-    private @Nullable String transitRouterId;
-    private @Nullable List<String> transitRouterIds;
+    private final @Nullable String transitRouterId;
+    private final @Nullable List<String> transitRouterIds;
     /**
      * @return A list of CEN Transit Routers. Each element contains the following attributes:
      * 
      */
-    private List<GetTransitRoutersTransitRouter> transitRouters;
+    private final List<GetTransitRoutersTransitRouter> transitRouters;
 
-    private GetTransitRoutersResult() {}
+    @CustomType.Constructor
+    private GetTransitRoutersResult(
+        @CustomType.Parameter("cenId") String cenId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") @Nullable List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("transitRouterId") @Nullable String transitRouterId,
+        @CustomType.Parameter("transitRouterIds") @Nullable List<String> transitRouterIds,
+        @CustomType.Parameter("transitRouters") List<GetTransitRoutersTransitRouter> transitRouters) {
+        this.cenId = cenId;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.status = status;
+        this.transitRouterId = transitRouterId;
+        this.transitRouterIds = transitRouterIds;
+        this.transitRouters = transitRouters;
+    }
+
     /**
      * @return The ID of the CEN instance.
      * 
@@ -111,7 +134,7 @@ public final class GetTransitRoutersResult {
     public static Builder builder(GetTransitRoutersResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String cenId;
         private String id;
@@ -123,7 +146,11 @@ public final class GetTransitRoutersResult {
         private @Nullable String transitRouterId;
         private @Nullable List<String> transitRouterIds;
         private List<GetTransitRoutersTransitRouter> transitRouters;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTransitRoutersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cenId = defaults.cenId;
@@ -138,17 +165,14 @@ public final class GetTransitRoutersResult {
     	      this.transitRouters = defaults.transitRouters;
         }
 
-        @CustomType.Setter
         public Builder cenId(String cenId) {
             this.cenId = Objects.requireNonNull(cenId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(@Nullable List<String> ids) {
             this.ids = ids;
             return this;
@@ -156,12 +180,10 @@ public final class GetTransitRoutersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -169,22 +191,18 @@ public final class GetTransitRoutersResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterId(@Nullable String transitRouterId) {
             this.transitRouterId = transitRouterId;
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterIds(@Nullable List<String> transitRouterIds) {
             this.transitRouterIds = transitRouterIds;
             return this;
@@ -192,27 +210,14 @@ public final class GetTransitRoutersResult {
         public Builder transitRouterIds(String... transitRouterIds) {
             return transitRouterIds(List.of(transitRouterIds));
         }
-        @CustomType.Setter
         public Builder transitRouters(List<GetTransitRoutersTransitRouter> transitRouters) {
             this.transitRouters = Objects.requireNonNull(transitRouters);
             return this;
         }
         public Builder transitRouters(GetTransitRoutersTransitRouter... transitRouters) {
             return transitRouters(List.of(transitRouters));
-        }
-        public GetTransitRoutersResult build() {
-            final var o = new GetTransitRoutersResult();
-            o.cenId = cenId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.transitRouterId = transitRouterId;
-            o.transitRouterIds = transitRouterIds;
-            o.transitRouters = transitRouters;
-            return o;
+        }        public GetTransitRoutersResult build() {
+            return new GetTransitRoutersResult(cenId, id, ids, nameRegex, names, outputFile, status, transitRouterId, transitRouterIds, transitRouters);
         }
     }
 }

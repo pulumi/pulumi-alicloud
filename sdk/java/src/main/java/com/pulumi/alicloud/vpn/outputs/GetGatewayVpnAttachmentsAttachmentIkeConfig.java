@@ -13,49 +13,70 @@ public final class GetGatewayVpnAttachmentsAttachmentIkeConfig {
      * @return The IKE authentication algorithm.
      * 
      */
-    private String ikeAuthAlg;
+    private final String ikeAuthAlg;
     /**
      * @return The IKE encryption algorithm.
      * 
      */
-    private String ikeEncAlg;
+    private final String ikeEncAlg;
     /**
      * @return The IKE lifetime. Unit: seconds.
      * 
      */
-    private String ikeLifetime;
+    private final String ikeLifetime;
     /**
      * @return The IKE negotiation mode.
      * 
      */
-    private String ikeMode;
+    private final String ikeMode;
     /**
      * @return The DH group.
      * 
      */
-    private String ikePfs;
+    private final String ikePfs;
     /**
      * @return The version of the IKE protocol.
      * 
      */
-    private String ikeVersion;
+    private final String ikeVersion;
     /**
      * @return The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default. The alicloud.cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
      * 
      */
-    private String localId;
+    private final String localId;
     /**
      * @return The pre-shared key.
      * 
      */
-    private String psk;
+    private final String psk;
     /**
      * @return The identifier of the peer. The default value is the IP address of the VPN gateway. The value can be a fully qualified domain name (FQDN) or an IP address.
      * 
      */
-    private String remoteId;
+    private final String remoteId;
 
-    private GetGatewayVpnAttachmentsAttachmentIkeConfig() {}
+    @CustomType.Constructor
+    private GetGatewayVpnAttachmentsAttachmentIkeConfig(
+        @CustomType.Parameter("ikeAuthAlg") String ikeAuthAlg,
+        @CustomType.Parameter("ikeEncAlg") String ikeEncAlg,
+        @CustomType.Parameter("ikeLifetime") String ikeLifetime,
+        @CustomType.Parameter("ikeMode") String ikeMode,
+        @CustomType.Parameter("ikePfs") String ikePfs,
+        @CustomType.Parameter("ikeVersion") String ikeVersion,
+        @CustomType.Parameter("localId") String localId,
+        @CustomType.Parameter("psk") String psk,
+        @CustomType.Parameter("remoteId") String remoteId) {
+        this.ikeAuthAlg = ikeAuthAlg;
+        this.ikeEncAlg = ikeEncAlg;
+        this.ikeLifetime = ikeLifetime;
+        this.ikeMode = ikeMode;
+        this.ikePfs = ikePfs;
+        this.ikeVersion = ikeVersion;
+        this.localId = localId;
+        this.psk = psk;
+        this.remoteId = remoteId;
+    }
+
     /**
      * @return The IKE authentication algorithm.
      * 
@@ -127,7 +148,7 @@ public final class GetGatewayVpnAttachmentsAttachmentIkeConfig {
     public static Builder builder(GetGatewayVpnAttachmentsAttachmentIkeConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String ikeAuthAlg;
         private String ikeEncAlg;
@@ -138,7 +159,11 @@ public final class GetGatewayVpnAttachmentsAttachmentIkeConfig {
         private String localId;
         private String psk;
         private String remoteId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetGatewayVpnAttachmentsAttachmentIkeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ikeAuthAlg = defaults.ikeAuthAlg;
@@ -152,63 +177,43 @@ public final class GetGatewayVpnAttachmentsAttachmentIkeConfig {
     	      this.remoteId = defaults.remoteId;
         }
 
-        @CustomType.Setter
         public Builder ikeAuthAlg(String ikeAuthAlg) {
             this.ikeAuthAlg = Objects.requireNonNull(ikeAuthAlg);
             return this;
         }
-        @CustomType.Setter
         public Builder ikeEncAlg(String ikeEncAlg) {
             this.ikeEncAlg = Objects.requireNonNull(ikeEncAlg);
             return this;
         }
-        @CustomType.Setter
         public Builder ikeLifetime(String ikeLifetime) {
             this.ikeLifetime = Objects.requireNonNull(ikeLifetime);
             return this;
         }
-        @CustomType.Setter
         public Builder ikeMode(String ikeMode) {
             this.ikeMode = Objects.requireNonNull(ikeMode);
             return this;
         }
-        @CustomType.Setter
         public Builder ikePfs(String ikePfs) {
             this.ikePfs = Objects.requireNonNull(ikePfs);
             return this;
         }
-        @CustomType.Setter
         public Builder ikeVersion(String ikeVersion) {
             this.ikeVersion = Objects.requireNonNull(ikeVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder localId(String localId) {
             this.localId = Objects.requireNonNull(localId);
             return this;
         }
-        @CustomType.Setter
         public Builder psk(String psk) {
             this.psk = Objects.requireNonNull(psk);
             return this;
         }
-        @CustomType.Setter
         public Builder remoteId(String remoteId) {
             this.remoteId = Objects.requireNonNull(remoteId);
             return this;
-        }
-        public GetGatewayVpnAttachmentsAttachmentIkeConfig build() {
-            final var o = new GetGatewayVpnAttachmentsAttachmentIkeConfig();
-            o.ikeAuthAlg = ikeAuthAlg;
-            o.ikeEncAlg = ikeEncAlg;
-            o.ikeLifetime = ikeLifetime;
-            o.ikeMode = ikeMode;
-            o.ikePfs = ikePfs;
-            o.ikeVersion = ikeVersion;
-            o.localId = localId;
-            o.psk = psk;
-            o.remoteId = remoteId;
-            return o;
+        }        public GetGatewayVpnAttachmentsAttachmentIkeConfig build() {
+            return new GetGatewayVpnAttachmentsAttachmentIkeConfig(ikeAuthAlg, ikeEncAlg, ikeLifetime, ikeMode, ikePfs, ikeVersion, localId, psk, remoteId);
         }
     }
 }

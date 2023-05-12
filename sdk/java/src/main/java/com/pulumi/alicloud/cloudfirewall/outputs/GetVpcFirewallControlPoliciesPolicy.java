@@ -16,124 +16,175 @@ public final class GetVpcFirewallControlPoliciesPolicy {
      * @return Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
      * 
      */
-    private String aclAction;
+    private final String aclAction;
     /**
      * @return Access control over VPC firewalls strategy unique identifier.
      * 
      */
-    private String aclUuid;
+    private final String aclUuid;
     /**
      * @return Policy specifies the application ID.
      * 
      */
-    private String applicationId;
+    private final String applicationId;
     /**
      * @return Access control over VPC firewalls policies support the application types.
      * 
      */
-    private String applicationName;
+    private final String applicationName;
     /**
      * @return Access control over VPC firewalls description of the strategy information.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return Access control over VPC firewalls strategy access traffic of the destination port.
      * 
      */
-    private String destPort;
+    private final String destPort;
     /**
      * @return Access control policy in the access traffic of the destination port address book name.
      * 
      */
-    private String destPortGroup;
+    private final String destPortGroup;
     /**
      * @return Port Address Book port list.
      * 
      */
-    private List<String> destPortGroupPorts;
+    private final List<String> destPortGroupPorts;
     /**
      * @return Access control over VPC firewalls strategy access traffic of the destination port type.
      * 
      */
-    private String destPortType;
+    private final String destPortType;
     /**
      * @return Access control over VPC firewalls strategy the destination address in.
      * 
      */
-    private String destination;
+    private final String destination;
     /**
      * @return Destination address book defined in the address list.
      * 
      */
-    private List<String> destinationGroupCidrs;
+    private final List<String> destinationGroupCidrs;
     /**
      * @return The destination address book type in the access control policy. Value: `ip`, `domain`.
      * 
      */
-    private String destinationGroupType;
+    private final String destinationGroupType;
     /**
      * @return Access control over VPC firewalls strategy in the destination address of the type.
      * 
      */
-    private String destinationType;
+    private final String destinationType;
     /**
      * @return Control strategy of hits per second.
      * 
      */
-    private Integer hitTimes;
+    private final Integer hitTimes;
     /**
      * @return The ID of the Cloud Firewall Vpc Firewall Control Policy.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The UID of the member account of the current Alibaba cloud account.
      * 
      */
-    private String memberUid;
+    private final String memberUid;
     /**
      * @return Access control over VPC firewalls policies will go into effect of priority. The priority value starts from 1, the smaller the priority number, the higher the priority. -1 represents the lowest priority.
      * 
      */
-    private Integer order;
+    private final Integer order;
     /**
      * @return Access control over VPC firewalls strategy access traffic of the protocol type.
      * 
      */
-    private String proto;
+    private final String proto;
     /**
      * @return The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
      * 
      */
-    private Boolean release;
+    private final Boolean release;
     /**
      * @return Access control over VPC firewalls strategy in the source address.
      * 
      */
-    private String source;
+    private final String source;
     /**
      * @return SOURCE address of the address list.
      * 
      */
-    private List<String> sourceGroupCidrs;
+    private final List<String> sourceGroupCidrs;
     /**
      * @return The source address type in the access control policy. Unique value: **ip**. The IP address book contains one or more IP address segments.
      * 
      */
-    private String sourceGroupType;
+    private final String sourceGroupType;
     /**
      * @return Access control over VPC firewalls policy source address type.
      * 
      */
-    private String sourceType;
+    private final String sourceType;
     /**
      * @return The ID of the VPC firewall instance.
      * 
      */
-    private String vpcFirewallId;
+    private final String vpcFirewallId;
 
-    private GetVpcFirewallControlPoliciesPolicy() {}
+    @CustomType.Constructor
+    private GetVpcFirewallControlPoliciesPolicy(
+        @CustomType.Parameter("aclAction") String aclAction,
+        @CustomType.Parameter("aclUuid") String aclUuid,
+        @CustomType.Parameter("applicationId") String applicationId,
+        @CustomType.Parameter("applicationName") String applicationName,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("destPort") String destPort,
+        @CustomType.Parameter("destPortGroup") String destPortGroup,
+        @CustomType.Parameter("destPortGroupPorts") List<String> destPortGroupPorts,
+        @CustomType.Parameter("destPortType") String destPortType,
+        @CustomType.Parameter("destination") String destination,
+        @CustomType.Parameter("destinationGroupCidrs") List<String> destinationGroupCidrs,
+        @CustomType.Parameter("destinationGroupType") String destinationGroupType,
+        @CustomType.Parameter("destinationType") String destinationType,
+        @CustomType.Parameter("hitTimes") Integer hitTimes,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("memberUid") String memberUid,
+        @CustomType.Parameter("order") Integer order,
+        @CustomType.Parameter("proto") String proto,
+        @CustomType.Parameter("release") Boolean release,
+        @CustomType.Parameter("source") String source,
+        @CustomType.Parameter("sourceGroupCidrs") List<String> sourceGroupCidrs,
+        @CustomType.Parameter("sourceGroupType") String sourceGroupType,
+        @CustomType.Parameter("sourceType") String sourceType,
+        @CustomType.Parameter("vpcFirewallId") String vpcFirewallId) {
+        this.aclAction = aclAction;
+        this.aclUuid = aclUuid;
+        this.applicationId = applicationId;
+        this.applicationName = applicationName;
+        this.description = description;
+        this.destPort = destPort;
+        this.destPortGroup = destPortGroup;
+        this.destPortGroupPorts = destPortGroupPorts;
+        this.destPortType = destPortType;
+        this.destination = destination;
+        this.destinationGroupCidrs = destinationGroupCidrs;
+        this.destinationGroupType = destinationGroupType;
+        this.destinationType = destinationType;
+        this.hitTimes = hitTimes;
+        this.id = id;
+        this.memberUid = memberUid;
+        this.order = order;
+        this.proto = proto;
+        this.release = release;
+        this.source = source;
+        this.sourceGroupCidrs = sourceGroupCidrs;
+        this.sourceGroupType = sourceGroupType;
+        this.sourceType = sourceType;
+        this.vpcFirewallId = vpcFirewallId;
+    }
+
     /**
      * @return Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
      * 
@@ -310,7 +361,7 @@ public final class GetVpcFirewallControlPoliciesPolicy {
     public static Builder builder(GetVpcFirewallControlPoliciesPolicy defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String aclAction;
         private String aclUuid;
@@ -336,7 +387,11 @@ public final class GetVpcFirewallControlPoliciesPolicy {
         private String sourceGroupType;
         private String sourceType;
         private String vpcFirewallId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVpcFirewallControlPoliciesPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aclAction = defaults.aclAction;
@@ -365,42 +420,34 @@ public final class GetVpcFirewallControlPoliciesPolicy {
     	      this.vpcFirewallId = defaults.vpcFirewallId;
         }
 
-        @CustomType.Setter
         public Builder aclAction(String aclAction) {
             this.aclAction = Objects.requireNonNull(aclAction);
             return this;
         }
-        @CustomType.Setter
         public Builder aclUuid(String aclUuid) {
             this.aclUuid = Objects.requireNonNull(aclUuid);
             return this;
         }
-        @CustomType.Setter
         public Builder applicationId(String applicationId) {
             this.applicationId = Objects.requireNonNull(applicationId);
             return this;
         }
-        @CustomType.Setter
         public Builder applicationName(String applicationName) {
             this.applicationName = Objects.requireNonNull(applicationName);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder destPort(String destPort) {
             this.destPort = Objects.requireNonNull(destPort);
             return this;
         }
-        @CustomType.Setter
         public Builder destPortGroup(String destPortGroup) {
             this.destPortGroup = Objects.requireNonNull(destPortGroup);
             return this;
         }
-        @CustomType.Setter
         public Builder destPortGroupPorts(List<String> destPortGroupPorts) {
             this.destPortGroupPorts = Objects.requireNonNull(destPortGroupPorts);
             return this;
@@ -408,17 +455,14 @@ public final class GetVpcFirewallControlPoliciesPolicy {
         public Builder destPortGroupPorts(String... destPortGroupPorts) {
             return destPortGroupPorts(List.of(destPortGroupPorts));
         }
-        @CustomType.Setter
         public Builder destPortType(String destPortType) {
             this.destPortType = Objects.requireNonNull(destPortType);
             return this;
         }
-        @CustomType.Setter
         public Builder destination(String destination) {
             this.destination = Objects.requireNonNull(destination);
             return this;
         }
-        @CustomType.Setter
         public Builder destinationGroupCidrs(List<String> destinationGroupCidrs) {
             this.destinationGroupCidrs = Objects.requireNonNull(destinationGroupCidrs);
             return this;
@@ -426,52 +470,42 @@ public final class GetVpcFirewallControlPoliciesPolicy {
         public Builder destinationGroupCidrs(String... destinationGroupCidrs) {
             return destinationGroupCidrs(List.of(destinationGroupCidrs));
         }
-        @CustomType.Setter
         public Builder destinationGroupType(String destinationGroupType) {
             this.destinationGroupType = Objects.requireNonNull(destinationGroupType);
             return this;
         }
-        @CustomType.Setter
         public Builder destinationType(String destinationType) {
             this.destinationType = Objects.requireNonNull(destinationType);
             return this;
         }
-        @CustomType.Setter
         public Builder hitTimes(Integer hitTimes) {
             this.hitTimes = Objects.requireNonNull(hitTimes);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder memberUid(String memberUid) {
             this.memberUid = Objects.requireNonNull(memberUid);
             return this;
         }
-        @CustomType.Setter
         public Builder order(Integer order) {
             this.order = Objects.requireNonNull(order);
             return this;
         }
-        @CustomType.Setter
         public Builder proto(String proto) {
             this.proto = Objects.requireNonNull(proto);
             return this;
         }
-        @CustomType.Setter
         public Builder release(Boolean release) {
             this.release = Objects.requireNonNull(release);
             return this;
         }
-        @CustomType.Setter
         public Builder source(String source) {
             this.source = Objects.requireNonNull(source);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceGroupCidrs(List<String> sourceGroupCidrs) {
             this.sourceGroupCidrs = Objects.requireNonNull(sourceGroupCidrs);
             return this;
@@ -479,48 +513,19 @@ public final class GetVpcFirewallControlPoliciesPolicy {
         public Builder sourceGroupCidrs(String... sourceGroupCidrs) {
             return sourceGroupCidrs(List.of(sourceGroupCidrs));
         }
-        @CustomType.Setter
         public Builder sourceGroupType(String sourceGroupType) {
             this.sourceGroupType = Objects.requireNonNull(sourceGroupType);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceType(String sourceType) {
             this.sourceType = Objects.requireNonNull(sourceType);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcFirewallId(String vpcFirewallId) {
             this.vpcFirewallId = Objects.requireNonNull(vpcFirewallId);
             return this;
-        }
-        public GetVpcFirewallControlPoliciesPolicy build() {
-            final var o = new GetVpcFirewallControlPoliciesPolicy();
-            o.aclAction = aclAction;
-            o.aclUuid = aclUuid;
-            o.applicationId = applicationId;
-            o.applicationName = applicationName;
-            o.description = description;
-            o.destPort = destPort;
-            o.destPortGroup = destPortGroup;
-            o.destPortGroupPorts = destPortGroupPorts;
-            o.destPortType = destPortType;
-            o.destination = destination;
-            o.destinationGroupCidrs = destinationGroupCidrs;
-            o.destinationGroupType = destinationGroupType;
-            o.destinationType = destinationType;
-            o.hitTimes = hitTimes;
-            o.id = id;
-            o.memberUid = memberUid;
-            o.order = order;
-            o.proto = proto;
-            o.release = release;
-            o.source = source;
-            o.sourceGroupCidrs = sourceGroupCidrs;
-            o.sourceGroupType = sourceGroupType;
-            o.sourceType = sourceType;
-            o.vpcFirewallId = vpcFirewallId;
-            return o;
+        }        public GetVpcFirewallControlPoliciesPolicy build() {
+            return new GetVpcFirewallControlPoliciesPolicy(aclAction, aclUuid, applicationId, applicationName, description, destPort, destPortGroup, destPortGroupPorts, destPortType, destination, destinationGroupCidrs, destinationGroupType, destinationType, hitTimes, id, memberUid, order, proto, release, source, sourceGroupCidrs, sourceGroupType, sourceType, vpcFirewallId);
         }
     }
 }

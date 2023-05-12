@@ -14,80 +14,115 @@ public final class GetDataCentersCenter {
      * @return The cluster id of dataCenters belongs to.
      * 
      */
-    private String clusterId;
+    private final String clusterId;
     /**
      * @return The commodity ID of the Cassandra dataCenter.
      * 
      */
-    private String commodityInstance;
-    private String createdTime;
+    private final String commodityInstance;
+    private final String createdTime;
     /**
      * @return The id of the Cassandra dataCenter.
      * 
      */
-    private String dataCenterId;
+    private final String dataCenterId;
     /**
      * @return The name of the Cassandra dataCenter.
      * 
      */
-    private String dataCenterName;
+    private final String dataCenterName;
     /**
      * @return One node disk size, unit:GB.
      * 
      */
-    private Integer diskSize;
+    private final Integer diskSize;
     /**
      * @return Cloud_ssd or cloud_efficiency.
      * 
      */
-    private String diskType;
+    private final String diskType;
     /**
      * @return The expire time of the dataCenter.
      * 
      */
-    private String expireTime;
+    private final String expireTime;
     /**
      * @return The instance type of the Cassandra dataCenter, eg: cassandra.c.large.
      * 
      */
-    private String instanceType;
+    private final String instanceType;
     /**
      * @return The lock mode of the dataCenter.
      * 
      */
-    private String lockMode;
+    private final String lockMode;
     /**
      * @return The node count of dataCenter.
      * 
      */
-    private Integer nodeCount;
+    private final Integer nodeCount;
     /**
      * @return Billing method. Value options are `Subscription` for Pay-As-You-Go and `PayAsYouGo` for yearly or monthly subscription.
      * 
      */
-    private String payType;
+    private final String payType;
     /**
      * @return Status of the dataCenter.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return VPC ID the dataCenter belongs to.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
     /**
      * @return VSwitch ID the dataCenter belongs to.
      * 
      */
-    private String vswitchId;
+    private final String vswitchId;
     /**
      * @return Zone ID the dataCenter belongs to.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetDataCentersCenter() {}
+    @CustomType.Constructor
+    private GetDataCentersCenter(
+        @CustomType.Parameter("clusterId") String clusterId,
+        @CustomType.Parameter("commodityInstance") String commodityInstance,
+        @CustomType.Parameter("createdTime") String createdTime,
+        @CustomType.Parameter("dataCenterId") String dataCenterId,
+        @CustomType.Parameter("dataCenterName") String dataCenterName,
+        @CustomType.Parameter("diskSize") Integer diskSize,
+        @CustomType.Parameter("diskType") String diskType,
+        @CustomType.Parameter("expireTime") String expireTime,
+        @CustomType.Parameter("instanceType") String instanceType,
+        @CustomType.Parameter("lockMode") String lockMode,
+        @CustomType.Parameter("nodeCount") Integer nodeCount,
+        @CustomType.Parameter("payType") String payType,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("vswitchId") String vswitchId,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.clusterId = clusterId;
+        this.commodityInstance = commodityInstance;
+        this.createdTime = createdTime;
+        this.dataCenterId = dataCenterId;
+        this.dataCenterName = dataCenterName;
+        this.diskSize = diskSize;
+        this.diskType = diskType;
+        this.expireTime = expireTime;
+        this.instanceType = instanceType;
+        this.lockMode = lockMode;
+        this.nodeCount = nodeCount;
+        this.payType = payType;
+        this.status = status;
+        this.vpcId = vpcId;
+        this.vswitchId = vswitchId;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return The cluster id of dataCenters belongs to.
      * 
@@ -204,7 +239,7 @@ public final class GetDataCentersCenter {
     public static Builder builder(GetDataCentersCenter defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String clusterId;
         private String commodityInstance;
@@ -222,7 +257,11 @@ public final class GetDataCentersCenter {
         private String vpcId;
         private String vswitchId;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDataCentersCenter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterId = defaults.clusterId;
@@ -243,105 +282,71 @@ public final class GetDataCentersCenter {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder commodityInstance(String commodityInstance) {
             this.commodityInstance = Objects.requireNonNull(commodityInstance);
             return this;
         }
-        @CustomType.Setter
         public Builder createdTime(String createdTime) {
             this.createdTime = Objects.requireNonNull(createdTime);
             return this;
         }
-        @CustomType.Setter
         public Builder dataCenterId(String dataCenterId) {
             this.dataCenterId = Objects.requireNonNull(dataCenterId);
             return this;
         }
-        @CustomType.Setter
         public Builder dataCenterName(String dataCenterName) {
             this.dataCenterName = Objects.requireNonNull(dataCenterName);
             return this;
         }
-        @CustomType.Setter
         public Builder diskSize(Integer diskSize) {
             this.diskSize = Objects.requireNonNull(diskSize);
             return this;
         }
-        @CustomType.Setter
         public Builder diskType(String diskType) {
             this.diskType = Objects.requireNonNull(diskType);
             return this;
         }
-        @CustomType.Setter
         public Builder expireTime(String expireTime) {
             this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
-        @CustomType.Setter
         public Builder lockMode(String lockMode) {
             this.lockMode = Objects.requireNonNull(lockMode);
             return this;
         }
-        @CustomType.Setter
         public Builder nodeCount(Integer nodeCount) {
             this.nodeCount = Objects.requireNonNull(nodeCount);
             return this;
         }
-        @CustomType.Setter
         public Builder payType(String payType) {
             this.payType = Objects.requireNonNull(payType);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetDataCentersCenter build() {
-            final var o = new GetDataCentersCenter();
-            o.clusterId = clusterId;
-            o.commodityInstance = commodityInstance;
-            o.createdTime = createdTime;
-            o.dataCenterId = dataCenterId;
-            o.dataCenterName = dataCenterName;
-            o.diskSize = diskSize;
-            o.diskType = diskType;
-            o.expireTime = expireTime;
-            o.instanceType = instanceType;
-            o.lockMode = lockMode;
-            o.nodeCount = nodeCount;
-            o.payType = payType;
-            o.status = status;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetDataCentersCenter build() {
+            return new GetDataCentersCenter(clusterId, commodityInstance, createdTime, dataCenterId, dataCenterName, diskSize, diskType, expireTime, instanceType, lockMode, nodeCount, payType, status, vpcId, vswitchId, zoneId);
         }
     }
 }

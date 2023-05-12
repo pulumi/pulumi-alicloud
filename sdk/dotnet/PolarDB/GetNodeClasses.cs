@@ -110,6 +110,9 @@ namespace Pulumi.AliCloud.PolarDB
         [Input("dbVersion")]
         public string? DbVersion { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi up`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -160,6 +163,9 @@ namespace Pulumi.AliCloud.PolarDB
         [Input("dbVersion")]
         public Input<string>? DbVersion { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi up`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

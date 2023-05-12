@@ -15,74 +15,105 @@ public final class GetHealthCheckTemplatesTemplate {
      * @return The HTTP status code that indicates a successful health check.
      * 
      */
-    private List<String> healthCheckCodes;
+    private final List<String> healthCheckCodes;
     /**
      * @return The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:`  0 `. This default value indicates that the backend server is used for health checks.
      * 
      */
-    private Integer healthCheckConnectPort;
+    private final Integer healthCheckConnectPort;
     /**
      * @return The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.
      * 
      */
-    private String healthCheckHost;
+    private final String healthCheckHost;
     /**
      * @return The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`.
      * 
      */
-    private String healthCheckHttpVersion;
+    private final String healthCheckHttpVersion;
     /**
      * @return The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
      * 
      */
-    private Integer healthCheckInterval;
+    private final Integer healthCheckInterval;
     /**
      * @return The health check method.  Valid values: `GET` and `HEAD`.  Default value: `HEAD`.
      * 
      */
-    private String healthCheckMethod;
+    private final String healthCheckMethod;
     /**
      * @return The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: `  _ ; ~ ! ( )* [ ] @ $ ^ : &#39; , +. The URL must start with a forward slash (/) `.
      * 
      */
-    private String healthCheckPath;
+    private final String healthCheckPath;
     /**
      * @return The protocol that is used for health checks.  Valid values: HTTP and TCP.  Default value: HTTP.
      * 
      */
-    private String healthCheckProtocol;
+    private final String healthCheckProtocol;
     /**
      * @return The ID of the resource.
      * 
      */
-    private String healthCheckTemplateId;
+    private final String healthCheckTemplateId;
     /**
      * @return The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      * 
      */
-    private String healthCheckTemplateName;
+    private final String healthCheckTemplateName;
     /**
      * @return The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: `1` to `300`. Unit: seconds.  Default value: `5`.
      * 
      */
-    private Integer healthCheckTimeout;
+    private final Integer healthCheckTimeout;
     /**
      * @return The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
      * 
      */
-    private Integer healthyThreshold;
+    private final Integer healthyThreshold;
     /**
      * @return The ID of the Health Check Template.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
      * 
      */
-    private Integer unhealthyThreshold;
+    private final Integer unhealthyThreshold;
 
-    private GetHealthCheckTemplatesTemplate() {}
+    @CustomType.Constructor
+    private GetHealthCheckTemplatesTemplate(
+        @CustomType.Parameter("healthCheckCodes") List<String> healthCheckCodes,
+        @CustomType.Parameter("healthCheckConnectPort") Integer healthCheckConnectPort,
+        @CustomType.Parameter("healthCheckHost") String healthCheckHost,
+        @CustomType.Parameter("healthCheckHttpVersion") String healthCheckHttpVersion,
+        @CustomType.Parameter("healthCheckInterval") Integer healthCheckInterval,
+        @CustomType.Parameter("healthCheckMethod") String healthCheckMethod,
+        @CustomType.Parameter("healthCheckPath") String healthCheckPath,
+        @CustomType.Parameter("healthCheckProtocol") String healthCheckProtocol,
+        @CustomType.Parameter("healthCheckTemplateId") String healthCheckTemplateId,
+        @CustomType.Parameter("healthCheckTemplateName") String healthCheckTemplateName,
+        @CustomType.Parameter("healthCheckTimeout") Integer healthCheckTimeout,
+        @CustomType.Parameter("healthyThreshold") Integer healthyThreshold,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("unhealthyThreshold") Integer unhealthyThreshold) {
+        this.healthCheckCodes = healthCheckCodes;
+        this.healthCheckConnectPort = healthCheckConnectPort;
+        this.healthCheckHost = healthCheckHost;
+        this.healthCheckHttpVersion = healthCheckHttpVersion;
+        this.healthCheckInterval = healthCheckInterval;
+        this.healthCheckMethod = healthCheckMethod;
+        this.healthCheckPath = healthCheckPath;
+        this.healthCheckProtocol = healthCheckProtocol;
+        this.healthCheckTemplateId = healthCheckTemplateId;
+        this.healthCheckTemplateName = healthCheckTemplateName;
+        this.healthCheckTimeout = healthCheckTimeout;
+        this.healthyThreshold = healthyThreshold;
+        this.id = id;
+        this.unhealthyThreshold = unhealthyThreshold;
+    }
+
     /**
      * @return The HTTP status code that indicates a successful health check.
      * 
@@ -189,7 +220,7 @@ public final class GetHealthCheckTemplatesTemplate {
     public static Builder builder(GetHealthCheckTemplatesTemplate defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<String> healthCheckCodes;
         private Integer healthCheckConnectPort;
@@ -205,7 +236,11 @@ public final class GetHealthCheckTemplatesTemplate {
         private Integer healthyThreshold;
         private String id;
         private Integer unhealthyThreshold;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetHealthCheckTemplatesTemplate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.healthCheckCodes = defaults.healthCheckCodes;
@@ -224,7 +259,6 @@ public final class GetHealthCheckTemplatesTemplate {
     	      this.unhealthyThreshold = defaults.unhealthyThreshold;
         }
 
-        @CustomType.Setter
         public Builder healthCheckCodes(List<String> healthCheckCodes) {
             this.healthCheckCodes = Objects.requireNonNull(healthCheckCodes);
             return this;
@@ -232,88 +266,59 @@ public final class GetHealthCheckTemplatesTemplate {
         public Builder healthCheckCodes(String... healthCheckCodes) {
             return healthCheckCodes(List.of(healthCheckCodes));
         }
-        @CustomType.Setter
         public Builder healthCheckConnectPort(Integer healthCheckConnectPort) {
             this.healthCheckConnectPort = Objects.requireNonNull(healthCheckConnectPort);
             return this;
         }
-        @CustomType.Setter
         public Builder healthCheckHost(String healthCheckHost) {
             this.healthCheckHost = Objects.requireNonNull(healthCheckHost);
             return this;
         }
-        @CustomType.Setter
         public Builder healthCheckHttpVersion(String healthCheckHttpVersion) {
             this.healthCheckHttpVersion = Objects.requireNonNull(healthCheckHttpVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder healthCheckInterval(Integer healthCheckInterval) {
             this.healthCheckInterval = Objects.requireNonNull(healthCheckInterval);
             return this;
         }
-        @CustomType.Setter
         public Builder healthCheckMethod(String healthCheckMethod) {
             this.healthCheckMethod = Objects.requireNonNull(healthCheckMethod);
             return this;
         }
-        @CustomType.Setter
         public Builder healthCheckPath(String healthCheckPath) {
             this.healthCheckPath = Objects.requireNonNull(healthCheckPath);
             return this;
         }
-        @CustomType.Setter
         public Builder healthCheckProtocol(String healthCheckProtocol) {
             this.healthCheckProtocol = Objects.requireNonNull(healthCheckProtocol);
             return this;
         }
-        @CustomType.Setter
         public Builder healthCheckTemplateId(String healthCheckTemplateId) {
             this.healthCheckTemplateId = Objects.requireNonNull(healthCheckTemplateId);
             return this;
         }
-        @CustomType.Setter
         public Builder healthCheckTemplateName(String healthCheckTemplateName) {
             this.healthCheckTemplateName = Objects.requireNonNull(healthCheckTemplateName);
             return this;
         }
-        @CustomType.Setter
         public Builder healthCheckTimeout(Integer healthCheckTimeout) {
             this.healthCheckTimeout = Objects.requireNonNull(healthCheckTimeout);
             return this;
         }
-        @CustomType.Setter
         public Builder healthyThreshold(Integer healthyThreshold) {
             this.healthyThreshold = Objects.requireNonNull(healthyThreshold);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder unhealthyThreshold(Integer unhealthyThreshold) {
             this.unhealthyThreshold = Objects.requireNonNull(unhealthyThreshold);
             return this;
-        }
-        public GetHealthCheckTemplatesTemplate build() {
-            final var o = new GetHealthCheckTemplatesTemplate();
-            o.healthCheckCodes = healthCheckCodes;
-            o.healthCheckConnectPort = healthCheckConnectPort;
-            o.healthCheckHost = healthCheckHost;
-            o.healthCheckHttpVersion = healthCheckHttpVersion;
-            o.healthCheckInterval = healthCheckInterval;
-            o.healthCheckMethod = healthCheckMethod;
-            o.healthCheckPath = healthCheckPath;
-            o.healthCheckProtocol = healthCheckProtocol;
-            o.healthCheckTemplateId = healthCheckTemplateId;
-            o.healthCheckTemplateName = healthCheckTemplateName;
-            o.healthCheckTimeout = healthCheckTimeout;
-            o.healthyThreshold = healthyThreshold;
-            o.id = id;
-            o.unhealthyThreshold = unhealthyThreshold;
-            return o;
+        }        public GetHealthCheckTemplatesTemplate build() {
+            return new GetHealthCheckTemplatesTemplate(healthCheckCodes, healthCheckConnectPort, healthCheckHost, healthCheckHttpVersion, healthCheckInterval, healthCheckMethod, healthCheckPath, healthCheckProtocol, healthCheckTemplateId, healthCheckTemplateName, healthCheckTimeout, healthyThreshold, id, unhealthyThreshold);
         }
     }
 }

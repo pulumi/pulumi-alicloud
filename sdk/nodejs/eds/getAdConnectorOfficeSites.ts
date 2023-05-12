@@ -51,6 +51,9 @@ export interface GetAdConnectorOfficeSitesArgs {
      * A regex string to filter results by Ad Connector Office Site name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The workspace status.
@@ -110,6 +113,9 @@ export interface GetAdConnectorOfficeSitesOutputArgs {
      * A regex string to filter results by Ad Connector Office Site name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The workspace status.

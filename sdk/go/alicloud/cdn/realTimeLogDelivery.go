@@ -67,6 +67,8 @@ type RealTimeLogDelivery struct {
 	// The name of the Log Service project that is used for real-time log delivery.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The region where the Log Service project is deployed.
+	//
+	// > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
 	SlsRegion pulumi.StringOutput `pulumi:"slsRegion"`
 	// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -120,6 +122,8 @@ type realTimeLogDeliveryState struct {
 	// The name of the Log Service project that is used for real-time log delivery.
 	Project *string `pulumi:"project"`
 	// The region where the Log Service project is deployed.
+	//
+	// > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
 	SlsRegion *string `pulumi:"slsRegion"`
 	// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
 	Status *string `pulumi:"status"`
@@ -133,6 +137,8 @@ type RealTimeLogDeliveryState struct {
 	// The name of the Log Service project that is used for real-time log delivery.
 	Project pulumi.StringPtrInput
 	// The region where the Log Service project is deployed.
+	//
+	// > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
 	SlsRegion pulumi.StringPtrInput
 	// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
 	Status pulumi.StringPtrInput
@@ -150,6 +156,8 @@ type realTimeLogDeliveryArgs struct {
 	// The name of the Log Service project that is used for real-time log delivery.
 	Project string `pulumi:"project"`
 	// The region where the Log Service project is deployed.
+	//
+	// > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
 	SlsRegion string `pulumi:"slsRegion"`
 }
 
@@ -162,6 +170,8 @@ type RealTimeLogDeliveryArgs struct {
 	// The name of the Log Service project that is used for real-time log delivery.
 	Project pulumi.StringInput
 	// The region where the Log Service project is deployed.
+	//
+	// > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
 	SlsRegion pulumi.StringInput
 }
 
@@ -268,6 +278,8 @@ func (o RealTimeLogDeliveryOutput) Project() pulumi.StringOutput {
 }
 
 // The region where the Log Service project is deployed.
+//
+// > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
 func (o RealTimeLogDeliveryOutput) SlsRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v *RealTimeLogDelivery) pulumi.StringOutput { return v.SlsRegion }).(pulumi.StringOutput)
 }

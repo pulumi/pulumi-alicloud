@@ -25,7 +25,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Basic Usage
- * 
  * ```java
  * package generated_program;
  * 
@@ -53,7 +52,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var domain = new Domain(&#34;domain&#34;, DomainArgs.builder()        
  *             .domainName(&#34;mydomain.alicloud-provider.cn&#34;)
- *             .cdnType(&#34;web&#34;)
  *             .scope(&#34;overseas&#34;)
  *             .sources(DomainSourceArgs.builder()
  *                 .content(&#34;1.1.1.1&#34;)

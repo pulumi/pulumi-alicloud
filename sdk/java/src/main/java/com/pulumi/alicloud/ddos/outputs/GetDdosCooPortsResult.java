@@ -13,19 +13,36 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDdosCooPortsResult {
-    private @Nullable String frontendPort;
-    private @Nullable String frontendProtocol;
+    private final @Nullable String frontendPort;
+    private final @Nullable String frontendProtocol;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private String instanceId;
-    private @Nullable String outputFile;
-    private List<GetDdosCooPortsPort> ports;
+    private final String id;
+    private final List<String> ids;
+    private final String instanceId;
+    private final @Nullable String outputFile;
+    private final List<GetDdosCooPortsPort> ports;
 
-    private GetDdosCooPortsResult() {}
+    @CustomType.Constructor
+    private GetDdosCooPortsResult(
+        @CustomType.Parameter("frontendPort") @Nullable String frontendPort,
+        @CustomType.Parameter("frontendProtocol") @Nullable String frontendProtocol,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("ports") List<GetDdosCooPortsPort> ports) {
+        this.frontendPort = frontendPort;
+        this.frontendProtocol = frontendProtocol;
+        this.id = id;
+        this.ids = ids;
+        this.instanceId = instanceId;
+        this.outputFile = outputFile;
+        this.ports = ports;
+    }
+
     public Optional<String> frontendPort() {
         return Optional.ofNullable(this.frontendPort);
     }
@@ -59,7 +76,7 @@ public final class GetDdosCooPortsResult {
     public static Builder builder(GetDdosCooPortsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String frontendPort;
         private @Nullable String frontendProtocol;
@@ -68,7 +85,11 @@ public final class GetDdosCooPortsResult {
         private String instanceId;
         private @Nullable String outputFile;
         private List<GetDdosCooPortsPort> ports;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDdosCooPortsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.frontendPort = defaults.frontendPort;
@@ -80,22 +101,18 @@ public final class GetDdosCooPortsResult {
     	      this.ports = defaults.ports;
         }
 
-        @CustomType.Setter
         public Builder frontendPort(@Nullable String frontendPort) {
             this.frontendPort = frontendPort;
             return this;
         }
-        @CustomType.Setter
         public Builder frontendProtocol(@Nullable String frontendProtocol) {
             this.frontendProtocol = frontendProtocol;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -103,34 +120,22 @@ public final class GetDdosCooPortsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder ports(List<GetDdosCooPortsPort> ports) {
             this.ports = Objects.requireNonNull(ports);
             return this;
         }
         public Builder ports(GetDdosCooPortsPort... ports) {
             return ports(List.of(ports));
-        }
-        public GetDdosCooPortsResult build() {
-            final var o = new GetDdosCooPortsResult();
-            o.frontendPort = frontendPort;
-            o.frontendProtocol = frontendProtocol;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.outputFile = outputFile;
-            o.ports = ports;
-            return o;
+        }        public GetDdosCooPortsResult build() {
+            return new GetDdosCooPortsResult(frontendPort, frontendProtocol, id, ids, instanceId, outputFile, ports);
         }
     }
 }

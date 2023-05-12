@@ -143,6 +143,7 @@ def get_application_groups(application_name: Optional[str] = None,
     :param str deploy_region_id: The region ID of the deployment.
     :param Sequence[str] ids: A list of Application Group IDs. Its element value is same as Application Group Name.
     :param str name_regex: A regex string to filter results by Application Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['applicationName'] = application_name
@@ -200,5 +201,6 @@ def get_application_groups_output(application_name: Optional[pulumi.Input[str]] 
     :param str deploy_region_id: The region ID of the deployment.
     :param Sequence[str] ids: A list of Application Group IDs. Its element value is same as Application Group Name.
     :param str name_regex: A regex string to filter results by Application Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

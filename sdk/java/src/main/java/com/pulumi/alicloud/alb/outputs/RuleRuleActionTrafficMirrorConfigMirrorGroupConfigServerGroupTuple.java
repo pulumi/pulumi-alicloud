@@ -15,9 +15,13 @@ public final class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroup
      * @return The ID of the destination server group to which requests are forwarded.
      * 
      */
-    private @Nullable String serverGroupId;
+    private final @Nullable String serverGroupId;
 
-    private RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple() {}
+    @CustomType.Constructor
+    private RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple(@CustomType.Parameter("serverGroupId") @Nullable String serverGroupId) {
+        this.serverGroupId = serverGroupId;
+    }
+
     /**
      * @return The ID of the destination server group to which requests are forwarded.
      * 
@@ -33,24 +37,24 @@ public final class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroup
     public static Builder builder(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String serverGroupId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.serverGroupId = defaults.serverGroupId;
         }
 
-        @CustomType.Setter
         public Builder serverGroupId(@Nullable String serverGroupId) {
             this.serverGroupId = serverGroupId;
             return this;
-        }
-        public RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple build() {
-            final var o = new RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple();
-            o.serverGroupId = serverGroupId;
-            return o;
+        }        public RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple build() {
+            return new RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple(serverGroupId);
         }
     }
 }

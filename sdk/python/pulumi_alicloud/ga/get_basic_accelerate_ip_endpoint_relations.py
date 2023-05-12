@@ -153,6 +153,7 @@ def get_basic_accelerate_ip_endpoint_relations(accelerate_ip_id: Optional[str] =
     :param str accelerator_id: The ID of the Global Accelerator Basic Accelerator instance.
     :param str endpoint_id: The ID of the Basic Endpoint.
     :param Sequence[str] ids: A list of Global Accelerator Basic Accelerate Ip Endpoint Relations IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.
     """
     __args__ = dict()
@@ -207,6 +208,7 @@ def get_basic_accelerate_ip_endpoint_relations_output(accelerate_ip_id: Optional
     :param str accelerator_id: The ID of the Global Accelerator Basic Accelerator instance.
     :param str endpoint_id: The ID of the Basic Endpoint.
     :param Sequence[str] ids: A list of Global Accelerator Basic Accelerate Ip Endpoint Relations IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.
     """
     ...

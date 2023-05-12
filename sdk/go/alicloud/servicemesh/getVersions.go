@@ -56,8 +56,9 @@ type GetVersionsArgs struct {
 	// The edition of the ASM instance.
 	Edition *string `pulumi:"edition"`
 	// A list of ASM versions. Its element formats as `<edition>:<version>`.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getVersions.
@@ -88,8 +89,9 @@ type GetVersionsOutputArgs struct {
 	// The edition of the ASM instance.
 	Edition pulumi.StringPtrInput `pulumi:"edition"`
 	// A list of ASM versions. Its element formats as `<edition>:<version>`.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetVersionsOutputArgs) ElementType() reflect.Type {

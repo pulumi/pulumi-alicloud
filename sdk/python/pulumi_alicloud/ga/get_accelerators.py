@@ -125,6 +125,7 @@ def get_accelerators(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Accelerator IDs.
     :param str name_regex: A regex string to filter results by Accelerator name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the GA instance.
     """
     __args__ = dict()
@@ -172,6 +173,7 @@ def get_accelerators_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     :param Sequence[str] ids: A list of Accelerator IDs.
     :param str name_regex: A regex string to filter results by Accelerator name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the GA instance.
     """
     ...

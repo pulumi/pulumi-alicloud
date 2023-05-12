@@ -16,28 +16,51 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEcsKeyPairsResult {
-    private @Nullable String fingerPrint;
+    private final @Nullable String fingerPrint;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
+    private final String id;
+    private final List<String> ids;
     /**
      * @deprecated
      * Field &#39;key_pairs&#39; has been deprecated from provider version 1.121.0. New field &#39;pairs&#39; instead.
      * 
      */
     @Deprecated /* Field 'key_pairs' has been deprecated from provider version 1.121.0. New field 'pairs' instead. */
-    private List<GetEcsKeyPairsKeyPair> keyPairs;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private List<GetEcsKeyPairsPair> pairs;
-    private @Nullable String resourceGroupId;
-    private @Nullable Map<String,Object> tags;
+    private final List<GetEcsKeyPairsKeyPair> keyPairs;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final List<GetEcsKeyPairsPair> pairs;
+    private final @Nullable String resourceGroupId;
+    private final @Nullable Map<String,Object> tags;
 
-    private GetEcsKeyPairsResult() {}
+    @CustomType.Constructor
+    private GetEcsKeyPairsResult(
+        @CustomType.Parameter("fingerPrint") @Nullable String fingerPrint,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("keyPairs") List<GetEcsKeyPairsKeyPair> keyPairs,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pairs") List<GetEcsKeyPairsPair> pairs,
+        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
+        this.fingerPrint = fingerPrint;
+        this.id = id;
+        this.ids = ids;
+        this.keyPairs = keyPairs;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.pairs = pairs;
+        this.resourceGroupId = resourceGroupId;
+        this.tags = tags;
+    }
+
     public Optional<String> fingerPrint() {
         return Optional.ofNullable(this.fingerPrint);
     }
@@ -86,7 +109,7 @@ public final class GetEcsKeyPairsResult {
     public static Builder builder(GetEcsKeyPairsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String fingerPrint;
         private String id;
@@ -98,7 +121,11 @@ public final class GetEcsKeyPairsResult {
         private List<GetEcsKeyPairsPair> pairs;
         private @Nullable String resourceGroupId;
         private @Nullable Map<String,Object> tags;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEcsKeyPairsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fingerPrint = defaults.fingerPrint;
@@ -113,17 +140,14 @@ public final class GetEcsKeyPairsResult {
     	      this.tags = defaults.tags;
         }
 
-        @CustomType.Setter
         public Builder fingerPrint(@Nullable String fingerPrint) {
             this.fingerPrint = fingerPrint;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -131,7 +155,6 @@ public final class GetEcsKeyPairsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder keyPairs(List<GetEcsKeyPairsKeyPair> keyPairs) {
             this.keyPairs = Objects.requireNonNull(keyPairs);
             return this;
@@ -139,12 +162,10 @@ public final class GetEcsKeyPairsResult {
         public Builder keyPairs(GetEcsKeyPairsKeyPair... keyPairs) {
             return keyPairs(List.of(keyPairs));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -152,12 +173,10 @@ public final class GetEcsKeyPairsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pairs(List<GetEcsKeyPairsPair> pairs) {
             this.pairs = Objects.requireNonNull(pairs);
             return this;
@@ -165,29 +184,15 @@ public final class GetEcsKeyPairsResult {
         public Builder pairs(GetEcsKeyPairsPair... pairs) {
             return pairs(List.of(pairs));
         }
-        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }
-        public GetEcsKeyPairsResult build() {
-            final var o = new GetEcsKeyPairsResult();
-            o.fingerPrint = fingerPrint;
-            o.id = id;
-            o.ids = ids;
-            o.keyPairs = keyPairs;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pairs = pairs;
-            o.resourceGroupId = resourceGroupId;
-            o.tags = tags;
-            return o;
+        }        public GetEcsKeyPairsResult build() {
+            return new GetEcsKeyPairsResult(fingerPrint, id, ids, keyPairs, nameRegex, names, outputFile, pairs, resourceGroupId, tags);
         }
     }
 }

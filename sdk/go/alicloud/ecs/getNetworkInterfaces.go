@@ -10,6 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:** This datasource has been renamed to ecs.getEcsNetworkInterfaces from version 1.123.1.
+//
+// Use this data source to get a list of elastic network interfaces according to the specified filters in an Alibaba Cloud account.
+//
+// For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
+//
 // ## Argument Reference
 //
 // The following arguments are supported:

@@ -15,29 +15,42 @@ public final class LaunchTemplateNetworkInterfaces {
      * @return The description of the data disk.
      * 
      */
-    private @Nullable String description;
+    private final @Nullable String description;
     /**
      * @return The name of the data disk.
      * 
      */
-    private @Nullable String name;
+    private final @Nullable String name;
     /**
      * @return The primary private IP address of the ENI.
      * 
      */
-    private @Nullable String primaryIp;
+    private final @Nullable String primaryIp;
     /**
      * @return The security group ID must be one in the same VPC.
      * 
      */
-    private @Nullable String securityGroupId;
+    private final @Nullable String securityGroupId;
     /**
      * @return The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
      * 
      */
-    private @Nullable String vswitchId;
+    private final @Nullable String vswitchId;
 
-    private LaunchTemplateNetworkInterfaces() {}
+    @CustomType.Constructor
+    private LaunchTemplateNetworkInterfaces(
+        @CustomType.Parameter("description") @Nullable String description,
+        @CustomType.Parameter("name") @Nullable String name,
+        @CustomType.Parameter("primaryIp") @Nullable String primaryIp,
+        @CustomType.Parameter("securityGroupId") @Nullable String securityGroupId,
+        @CustomType.Parameter("vswitchId") @Nullable String vswitchId) {
+        this.description = description;
+        this.name = name;
+        this.primaryIp = primaryIp;
+        this.securityGroupId = securityGroupId;
+        this.vswitchId = vswitchId;
+    }
+
     /**
      * @return The description of the data disk.
      * 
@@ -81,14 +94,18 @@ public final class LaunchTemplateNetworkInterfaces {
     public static Builder builder(LaunchTemplateNetworkInterfaces defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String description;
         private @Nullable String name;
         private @Nullable String primaryIp;
         private @Nullable String securityGroupId;
         private @Nullable String vswitchId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(LaunchTemplateNetworkInterfaces defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -98,39 +115,27 @@ public final class LaunchTemplateNetworkInterfaces {
     	      this.vswitchId = defaults.vswitchId;
         }
 
-        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
-        @CustomType.Setter
         public Builder primaryIp(@Nullable String primaryIp) {
             this.primaryIp = primaryIp;
             return this;
         }
-        @CustomType.Setter
         public Builder securityGroupId(@Nullable String securityGroupId) {
             this.securityGroupId = securityGroupId;
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
             this.vswitchId = vswitchId;
             return this;
-        }
-        public LaunchTemplateNetworkInterfaces build() {
-            final var o = new LaunchTemplateNetworkInterfaces();
-            o.description = description;
-            o.name = name;
-            o.primaryIp = primaryIp;
-            o.securityGroupId = securityGroupId;
-            o.vswitchId = vswitchId;
-            return o;
+        }        public LaunchTemplateNetworkInterfaces build() {
+            return new LaunchTemplateNetworkInterfaces(description, name, primaryIp, securityGroupId, vswitchId);
         }
     }
 }

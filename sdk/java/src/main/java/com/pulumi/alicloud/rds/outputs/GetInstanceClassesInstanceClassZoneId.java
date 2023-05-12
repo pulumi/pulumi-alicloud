@@ -14,14 +14,21 @@ public final class GetInstanceClassesInstanceClassZoneId {
      * @return The Zone to launch the DB instance
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of sub zone ids which in the id - e.g If `id` is `cn-beijing-MAZ5(a,b)`, `sub_zone_ids` will be `[&#34;cn-beijing-a&#34;, &#34;cn-beijing-b&#34;]`.
      * 
      */
-    private List<String> subZoneIds;
+    private final List<String> subZoneIds;
 
-    private GetInstanceClassesInstanceClassZoneId() {}
+    @CustomType.Constructor
+    private GetInstanceClassesInstanceClassZoneId(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("subZoneIds") List<String> subZoneIds) {
+        this.id = id;
+        this.subZoneIds = subZoneIds;
+    }
+
     /**
      * @return The Zone to launch the DB instance
      * 
@@ -44,35 +51,33 @@ public final class GetInstanceClassesInstanceClassZoneId {
     public static Builder builder(GetInstanceClassesInstanceClassZoneId defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> subZoneIds;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstanceClassesInstanceClassZoneId defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.subZoneIds = defaults.subZoneIds;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder subZoneIds(List<String> subZoneIds) {
             this.subZoneIds = Objects.requireNonNull(subZoneIds);
             return this;
         }
         public Builder subZoneIds(String... subZoneIds) {
             return subZoneIds(List.of(subZoneIds));
-        }
-        public GetInstanceClassesInstanceClassZoneId build() {
-            final var o = new GetInstanceClassesInstanceClassZoneId();
-            o.id = id;
-            o.subZoneIds = subZoneIds;
-            return o;
+        }        public GetInstanceClassesInstanceClassZoneId build() {
+            return new GetInstanceClassesInstanceClassZoneId(id, subZoneIds);
         }
     }
 }

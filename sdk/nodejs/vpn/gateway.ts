@@ -83,6 +83,8 @@ export class Gateway extends pulumi.CustomResource {
      * The network type of the VPN gateway. Value:
      * - public (default): Public VPN gateway.
      * - private: Private VPN gateway.
+     *
+     * > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
      */
     public readonly networkType!: pulumi.Output<string>;
     /**
@@ -218,6 +220,8 @@ export interface GatewayState {
      * The network type of the VPN gateway. Value:
      * - public (default): Public VPN gateway.
      * - private: Private VPN gateway.
+     *
+     * > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
      */
     networkType?: pulumi.Input<string>;
     /**
@@ -285,6 +289,8 @@ export interface GatewayArgs {
      * The network type of the VPN gateway. Value:
      * - public (default): Public VPN gateway.
      * - private: Private VPN gateway.
+     *
+     * > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
      */
     networkType?: pulumi.Input<string>;
     /**

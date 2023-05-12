@@ -29,7 +29,8 @@ type GetProductsArgs struct {
 	// A list of product code.
 	Ids []string `pulumi:"ids"`
 	// A regex string to apply to the product name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The type of products, Valid values: `APP`, `SERVICE`, `MIRROR`, `DOWNLOAD` and `API_SERVICE`.
 	ProductType *string `pulumi:"productType"`
@@ -87,7 +88,8 @@ type GetProductsOutputArgs struct {
 	// A list of product code.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to apply to the product name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The type of products, Valid values: `APP`, `SERVICE`, `MIRROR`, `DOWNLOAD` and `API_SERVICE`.
 	ProductType pulumi.StringPtrInput `pulumi:"productType"`

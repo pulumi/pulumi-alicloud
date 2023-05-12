@@ -22,55 +22,55 @@ public final class GetLoadBalancersBalancer {
      * @return The Access Logging Configuration Structure.
      * 
      */
-    private List<GetLoadBalancersBalancerAccessLogConfig> accessLogConfigs;
+    private final List<GetLoadBalancersBalancerAccessLogConfig> accessLogConfigs;
     /**
      * @return The method in which IP addresses are assigned. Valid values:  Fixed: The ALB instance
      * uses a fixed IP address. Dynamic (default): An IP address is dynamically assigned to each zone of the ALB
      * instance.
      * 
      */
-    private String addressAllocatedMode;
+    private final String addressAllocatedMode;
     /**
      * @return The type of IP address that the ALB instance uses to provide services.
      * 
      */
-    private String addressType;
+    private final String addressType;
     /**
      * @return The ID of the EIP bandwidth plan which is associated with an ALB instance that uses a
      * public IP address.
      * 
      */
-    private String bandwidthPackageId;
+    private final String bandwidthPackageId;
     /**
      * @return The creation time of the resource.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return Remove the Protection Configuration.
      * 
      */
-    private List<GetLoadBalancersBalancerDeletionProtectionConfig> deletionProtectionConfigs;
+    private final List<GetLoadBalancersBalancerDeletionProtectionConfig> deletionProtectionConfigs;
     /**
      * @return DNS Domain Name.
      * 
      */
-    private String dnsName;
+    private final String dnsName;
     /**
      * @return The ID of the Load Balancer.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The configuration of the billing method.
      * 
      */
-    private List<GetLoadBalancersBalancerLoadBalancerBillingConfig> loadBalancerBillingConfigs;
+    private final List<GetLoadBalancersBalancerLoadBalancerBillingConfig> loadBalancerBillingConfigs;
     /**
      * @return Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
      * 
      */
-    private String loadBalancerBusinessStatus;
+    private final String loadBalancerBusinessStatus;
     /**
      * @return Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0.
      * 
@@ -79,59 +79,104 @@ public final class GetLoadBalancersBalancer {
      * 
      */
     @Deprecated /* Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new parameter 'load_balancer_business_status' instead. */
-    private String loadBalancerBussinessStatus;
+    private final String loadBalancerBussinessStatus;
     /**
      * @return The edition of the ALB instance.
      * 
      */
-    private String loadBalancerEdition;
+    private final String loadBalancerEdition;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private String loadBalancerId;
+    private final String loadBalancerId;
     /**
      * @return The name of the resource.
      * 
      */
-    private String loadBalancerName;
+    private final String loadBalancerName;
     /**
      * @return The Load Balancing Operations Lock Configuration.
      * 
      */
-    private List<GetLoadBalancersBalancerLoadBalancerOperationLock> loadBalancerOperationLocks;
+    private final List<GetLoadBalancersBalancerLoadBalancerOperationLock> loadBalancerOperationLocks;
     /**
      * @return Modify the Protection Configuration.
      * 
      */
-    private List<GetLoadBalancersBalancerModificationProtectionConfig> modificationProtectionConfigs;
+    private final List<GetLoadBalancersBalancerModificationProtectionConfig> modificationProtectionConfigs;
     /**
      * @return The ID of the resource group.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The tag of the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
     /**
      * @return The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
     /**
      * @return The zones and vSwitches. You must specify at least two zones.
      * 
      */
-    private List<GetLoadBalancersBalancerZoneMapping> zoneMappings;
+    private final List<GetLoadBalancersBalancerZoneMapping> zoneMappings;
 
-    private GetLoadBalancersBalancer() {}
+    @CustomType.Constructor
+    private GetLoadBalancersBalancer(
+        @CustomType.Parameter("accessLogConfigs") List<GetLoadBalancersBalancerAccessLogConfig> accessLogConfigs,
+        @CustomType.Parameter("addressAllocatedMode") String addressAllocatedMode,
+        @CustomType.Parameter("addressType") String addressType,
+        @CustomType.Parameter("bandwidthPackageId") String bandwidthPackageId,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("deletionProtectionConfigs") List<GetLoadBalancersBalancerDeletionProtectionConfig> deletionProtectionConfigs,
+        @CustomType.Parameter("dnsName") String dnsName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("loadBalancerBillingConfigs") List<GetLoadBalancersBalancerLoadBalancerBillingConfig> loadBalancerBillingConfigs,
+        @CustomType.Parameter("loadBalancerBusinessStatus") String loadBalancerBusinessStatus,
+        @CustomType.Parameter("loadBalancerBussinessStatus") String loadBalancerBussinessStatus,
+        @CustomType.Parameter("loadBalancerEdition") String loadBalancerEdition,
+        @CustomType.Parameter("loadBalancerId") String loadBalancerId,
+        @CustomType.Parameter("loadBalancerName") String loadBalancerName,
+        @CustomType.Parameter("loadBalancerOperationLocks") List<GetLoadBalancersBalancerLoadBalancerOperationLock> loadBalancerOperationLocks,
+        @CustomType.Parameter("modificationProtectionConfigs") List<GetLoadBalancersBalancerModificationProtectionConfig> modificationProtectionConfigs,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("tags") Map<String,Object> tags,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("zoneMappings") List<GetLoadBalancersBalancerZoneMapping> zoneMappings) {
+        this.accessLogConfigs = accessLogConfigs;
+        this.addressAllocatedMode = addressAllocatedMode;
+        this.addressType = addressType;
+        this.bandwidthPackageId = bandwidthPackageId;
+        this.createTime = createTime;
+        this.deletionProtectionConfigs = deletionProtectionConfigs;
+        this.dnsName = dnsName;
+        this.id = id;
+        this.loadBalancerBillingConfigs = loadBalancerBillingConfigs;
+        this.loadBalancerBusinessStatus = loadBalancerBusinessStatus;
+        this.loadBalancerBussinessStatus = loadBalancerBussinessStatus;
+        this.loadBalancerEdition = loadBalancerEdition;
+        this.loadBalancerId = loadBalancerId;
+        this.loadBalancerName = loadBalancerName;
+        this.loadBalancerOperationLocks = loadBalancerOperationLocks;
+        this.modificationProtectionConfigs = modificationProtectionConfigs;
+        this.resourceGroupId = resourceGroupId;
+        this.status = status;
+        this.tags = tags;
+        this.vpcId = vpcId;
+        this.zoneMappings = zoneMappings;
+    }
+
     /**
      * @return The Access Logging Configuration Structure.
      * 
@@ -294,7 +339,7 @@ public final class GetLoadBalancersBalancer {
     public static Builder builder(GetLoadBalancersBalancer defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetLoadBalancersBalancerAccessLogConfig> accessLogConfigs;
         private String addressAllocatedMode;
@@ -317,7 +362,11 @@ public final class GetLoadBalancersBalancer {
         private Map<String,Object> tags;
         private String vpcId;
         private List<GetLoadBalancersBalancerZoneMapping> zoneMappings;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetLoadBalancersBalancer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessLogConfigs = defaults.accessLogConfigs;
@@ -343,7 +392,6 @@ public final class GetLoadBalancersBalancer {
     	      this.zoneMappings = defaults.zoneMappings;
         }
 
-        @CustomType.Setter
         public Builder accessLogConfigs(List<GetLoadBalancersBalancerAccessLogConfig> accessLogConfigs) {
             this.accessLogConfigs = Objects.requireNonNull(accessLogConfigs);
             return this;
@@ -351,27 +399,22 @@ public final class GetLoadBalancersBalancer {
         public Builder accessLogConfigs(GetLoadBalancersBalancerAccessLogConfig... accessLogConfigs) {
             return accessLogConfigs(List.of(accessLogConfigs));
         }
-        @CustomType.Setter
         public Builder addressAllocatedMode(String addressAllocatedMode) {
             this.addressAllocatedMode = Objects.requireNonNull(addressAllocatedMode);
             return this;
         }
-        @CustomType.Setter
         public Builder addressType(String addressType) {
             this.addressType = Objects.requireNonNull(addressType);
             return this;
         }
-        @CustomType.Setter
         public Builder bandwidthPackageId(String bandwidthPackageId) {
             this.bandwidthPackageId = Objects.requireNonNull(bandwidthPackageId);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder deletionProtectionConfigs(List<GetLoadBalancersBalancerDeletionProtectionConfig> deletionProtectionConfigs) {
             this.deletionProtectionConfigs = Objects.requireNonNull(deletionProtectionConfigs);
             return this;
@@ -379,17 +422,14 @@ public final class GetLoadBalancersBalancer {
         public Builder deletionProtectionConfigs(GetLoadBalancersBalancerDeletionProtectionConfig... deletionProtectionConfigs) {
             return deletionProtectionConfigs(List.of(deletionProtectionConfigs));
         }
-        @CustomType.Setter
         public Builder dnsName(String dnsName) {
             this.dnsName = Objects.requireNonNull(dnsName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder loadBalancerBillingConfigs(List<GetLoadBalancersBalancerLoadBalancerBillingConfig> loadBalancerBillingConfigs) {
             this.loadBalancerBillingConfigs = Objects.requireNonNull(loadBalancerBillingConfigs);
             return this;
@@ -397,32 +437,26 @@ public final class GetLoadBalancersBalancer {
         public Builder loadBalancerBillingConfigs(GetLoadBalancersBalancerLoadBalancerBillingConfig... loadBalancerBillingConfigs) {
             return loadBalancerBillingConfigs(List.of(loadBalancerBillingConfigs));
         }
-        @CustomType.Setter
         public Builder loadBalancerBusinessStatus(String loadBalancerBusinessStatus) {
             this.loadBalancerBusinessStatus = Objects.requireNonNull(loadBalancerBusinessStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder loadBalancerBussinessStatus(String loadBalancerBussinessStatus) {
             this.loadBalancerBussinessStatus = Objects.requireNonNull(loadBalancerBussinessStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder loadBalancerEdition(String loadBalancerEdition) {
             this.loadBalancerEdition = Objects.requireNonNull(loadBalancerEdition);
             return this;
         }
-        @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
             this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
             return this;
         }
-        @CustomType.Setter
         public Builder loadBalancerName(String loadBalancerName) {
             this.loadBalancerName = Objects.requireNonNull(loadBalancerName);
             return this;
         }
-        @CustomType.Setter
         public Builder loadBalancerOperationLocks(List<GetLoadBalancersBalancerLoadBalancerOperationLock> loadBalancerOperationLocks) {
             this.loadBalancerOperationLocks = Objects.requireNonNull(loadBalancerOperationLocks);
             return this;
@@ -430,7 +464,6 @@ public final class GetLoadBalancersBalancer {
         public Builder loadBalancerOperationLocks(GetLoadBalancersBalancerLoadBalancerOperationLock... loadBalancerOperationLocks) {
             return loadBalancerOperationLocks(List.of(loadBalancerOperationLocks));
         }
-        @CustomType.Setter
         public Builder modificationProtectionConfigs(List<GetLoadBalancersBalancerModificationProtectionConfig> modificationProtectionConfigs) {
             this.modificationProtectionConfigs = Objects.requireNonNull(modificationProtectionConfigs);
             return this;
@@ -438,58 +471,30 @@ public final class GetLoadBalancersBalancer {
         public Builder modificationProtectionConfigs(GetLoadBalancersBalancerModificationProtectionConfig... modificationProtectionConfigs) {
             return modificationProtectionConfigs(List.of(modificationProtectionConfigs));
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneMappings(List<GetLoadBalancersBalancerZoneMapping> zoneMappings) {
             this.zoneMappings = Objects.requireNonNull(zoneMappings);
             return this;
         }
         public Builder zoneMappings(GetLoadBalancersBalancerZoneMapping... zoneMappings) {
             return zoneMappings(List.of(zoneMappings));
-        }
-        public GetLoadBalancersBalancer build() {
-            final var o = new GetLoadBalancersBalancer();
-            o.accessLogConfigs = accessLogConfigs;
-            o.addressAllocatedMode = addressAllocatedMode;
-            o.addressType = addressType;
-            o.bandwidthPackageId = bandwidthPackageId;
-            o.createTime = createTime;
-            o.deletionProtectionConfigs = deletionProtectionConfigs;
-            o.dnsName = dnsName;
-            o.id = id;
-            o.loadBalancerBillingConfigs = loadBalancerBillingConfigs;
-            o.loadBalancerBusinessStatus = loadBalancerBusinessStatus;
-            o.loadBalancerBussinessStatus = loadBalancerBussinessStatus;
-            o.loadBalancerEdition = loadBalancerEdition;
-            o.loadBalancerId = loadBalancerId;
-            o.loadBalancerName = loadBalancerName;
-            o.loadBalancerOperationLocks = loadBalancerOperationLocks;
-            o.modificationProtectionConfigs = modificationProtectionConfigs;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.zoneMappings = zoneMappings;
-            return o;
+        }        public GetLoadBalancersBalancer build() {
+            return new GetLoadBalancersBalancer(accessLogConfigs, addressAllocatedMode, addressType, bandwidthPackageId, createTime, deletionProtectionConfigs, dnsName, id, loadBalancerBillingConfigs, loadBalancerBusinessStatus, loadBalancerBussinessStatus, loadBalancerEdition, loadBalancerId, loadBalancerName, loadBalancerOperationLocks, modificationProtectionConfigs, resourceGroupId, status, tags, vpcId, zoneMappings);
         }
     }
 }

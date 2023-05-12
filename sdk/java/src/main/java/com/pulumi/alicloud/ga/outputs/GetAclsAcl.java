@@ -15,34 +15,49 @@ public final class GetAclsAcl {
      * @return The entries of the Acl.
      * 
      */
-    private List<GetAclsAclAclEntry> aclEntries;
+    private final List<GetAclsAclAclEntry> aclEntries;
     /**
      * @return The  ID of the Acl.
      * 
      */
-    private String aclId;
+    private final String aclId;
     /**
      * @return The name of the acl.
      * 
      */
-    private String aclName;
+    private final String aclName;
     /**
      * @return The address ip version.
      * 
      */
-    private String addressIpVersion;
+    private final String addressIpVersion;
     /**
      * @return The ID of the Acl. Its value is same as `acl_id`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The status of the resource.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetAclsAcl() {}
+    @CustomType.Constructor
+    private GetAclsAcl(
+        @CustomType.Parameter("aclEntries") List<GetAclsAclAclEntry> aclEntries,
+        @CustomType.Parameter("aclId") String aclId,
+        @CustomType.Parameter("aclName") String aclName,
+        @CustomType.Parameter("addressIpVersion") String addressIpVersion,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("status") String status) {
+        this.aclEntries = aclEntries;
+        this.aclId = aclId;
+        this.aclName = aclName;
+        this.addressIpVersion = addressIpVersion;
+        this.id = id;
+        this.status = status;
+    }
+
     /**
      * @return The entries of the Acl.
      * 
@@ -93,7 +108,7 @@ public final class GetAclsAcl {
     public static Builder builder(GetAclsAcl defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetAclsAclAclEntry> aclEntries;
         private String aclId;
@@ -101,7 +116,11 @@ public final class GetAclsAcl {
         private String addressIpVersion;
         private String id;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAclsAcl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aclEntries = defaults.aclEntries;
@@ -112,7 +131,6 @@ public final class GetAclsAcl {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder aclEntries(List<GetAclsAclAclEntry> aclEntries) {
             this.aclEntries = Objects.requireNonNull(aclEntries);
             return this;
@@ -120,40 +138,27 @@ public final class GetAclsAcl {
         public Builder aclEntries(GetAclsAclAclEntry... aclEntries) {
             return aclEntries(List.of(aclEntries));
         }
-        @CustomType.Setter
         public Builder aclId(String aclId) {
             this.aclId = Objects.requireNonNull(aclId);
             return this;
         }
-        @CustomType.Setter
         public Builder aclName(String aclName) {
             this.aclName = Objects.requireNonNull(aclName);
             return this;
         }
-        @CustomType.Setter
         public Builder addressIpVersion(String addressIpVersion) {
             this.addressIpVersion = Objects.requireNonNull(addressIpVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetAclsAcl build() {
-            final var o = new GetAclsAcl();
-            o.aclEntries = aclEntries;
-            o.aclId = aclId;
-            o.aclName = aclName;
-            o.addressIpVersion = addressIpVersion;
-            o.id = id;
-            o.status = status;
-            return o;
+        }        public GetAclsAcl build() {
+            return new GetAclsAcl(aclEntries, aclId, aclName, addressIpVersion, id, status);
         }
     }
 }

@@ -258,6 +258,7 @@ def get_forward_entries(external_ip: Optional[str] = None,
     :param str internal_port: The internal port.
     :param str ip_protocol: The ip protocol. Valid values: `any`,`tcp` and `udp`.
     :param str name_regex: A regex string to filter results by forward entry name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
     """
     __args__ = dict()
@@ -359,6 +360,7 @@ def get_forward_entries_output(external_ip: Optional[pulumi.Input[Optional[str]]
     :param str internal_port: The internal port.
     :param str ip_protocol: The ip protocol. Valid values: `any`,`tcp` and `udp`.
     :param str name_regex: A regex string to filter results by forward entry name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
     """
     ...

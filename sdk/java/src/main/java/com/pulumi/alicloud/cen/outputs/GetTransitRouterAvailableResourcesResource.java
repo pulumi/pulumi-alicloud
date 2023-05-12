@@ -14,14 +14,21 @@ public final class GetTransitRouterAvailableResourcesResource {
      * @return The list of primary zones.
      * 
      */
-    private List<String> masterZones;
+    private final List<String> masterZones;
     /**
      * @return The list of secondary zones.
      * 
      */
-    private List<String> slaveZones;
+    private final List<String> slaveZones;
 
-    private GetTransitRouterAvailableResourcesResource() {}
+    @CustomType.Constructor
+    private GetTransitRouterAvailableResourcesResource(
+        @CustomType.Parameter("masterZones") List<String> masterZones,
+        @CustomType.Parameter("slaveZones") List<String> slaveZones) {
+        this.masterZones = masterZones;
+        this.slaveZones = slaveZones;
+    }
+
     /**
      * @return The list of primary zones.
      * 
@@ -44,18 +51,21 @@ public final class GetTransitRouterAvailableResourcesResource {
     public static Builder builder(GetTransitRouterAvailableResourcesResource defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<String> masterZones;
         private List<String> slaveZones;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTransitRouterAvailableResourcesResource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.masterZones = defaults.masterZones;
     	      this.slaveZones = defaults.slaveZones;
         }
 
-        @CustomType.Setter
         public Builder masterZones(List<String> masterZones) {
             this.masterZones = Objects.requireNonNull(masterZones);
             return this;
@@ -63,19 +73,14 @@ public final class GetTransitRouterAvailableResourcesResource {
         public Builder masterZones(String... masterZones) {
             return masterZones(List.of(masterZones));
         }
-        @CustomType.Setter
         public Builder slaveZones(List<String> slaveZones) {
             this.slaveZones = Objects.requireNonNull(slaveZones);
             return this;
         }
         public Builder slaveZones(String... slaveZones) {
             return slaveZones(List.of(slaveZones));
-        }
-        public GetTransitRouterAvailableResourcesResource build() {
-            final var o = new GetTransitRouterAvailableResourcesResource();
-            o.masterZones = masterZones;
-            o.slaveZones = slaveZones;
-            return o;
+        }        public GetTransitRouterAvailableResourcesResource build() {
+            return new GetTransitRouterAvailableResourcesResource(masterZones, slaveZones);
         }
     }
 }

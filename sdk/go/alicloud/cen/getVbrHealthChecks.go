@@ -25,7 +25,8 @@ func GetVbrHealthChecks(ctx *pulumi.Context, args *GetVbrHealthChecksArgs, opts 
 // A collection of arguments for invoking getVbrHealthChecks.
 type GetVbrHealthChecksArgs struct {
 	// The ID of the Cloud Enterprise Network (CEN) instance.
-	CenId      *string `pulumi:"cenId"`
+	CenId *string `pulumi:"cenId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the VBR instance.
 	VbrInstanceId *string `pulumi:"vbrInstanceId"`
@@ -69,7 +70,8 @@ func GetVbrHealthChecksOutput(ctx *pulumi.Context, args GetVbrHealthChecksOutput
 // A collection of arguments for invoking getVbrHealthChecks.
 type GetVbrHealthChecksOutputArgs struct {
 	// The ID of the Cloud Enterprise Network (CEN) instance.
-	CenId      pulumi.StringPtrInput `pulumi:"cenId"`
+	CenId pulumi.StringPtrInput `pulumi:"cenId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the VBR instance.
 	VbrInstanceId pulumi.StringPtrInput `pulumi:"vbrInstanceId"`

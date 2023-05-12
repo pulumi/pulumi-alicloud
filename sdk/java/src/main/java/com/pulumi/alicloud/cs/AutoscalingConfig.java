@@ -15,6 +15,53 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * This resource will help you configure auto scaling for the kubernetes cluster.
+ * 
+ * &gt; **NOTE:** Available in v1.127.0+.
+ * **NOTE:** From version 1.164.0, support for specifying whether to allow the scale-in of nodes by parameter `scale_down_enabled`.
+ * **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
+ * 
+ * ## Example Usage
+ * 
+ * If you do not have an existing cluster, you need to create an ACK cluster through alicloud.cs.ManagedKubernetes first, and then configure automatic scaling.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cs.AutoscalingConfig;
+ * import com.pulumi.alicloud.cs.AutoscalingConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new AutoscalingConfig(&#34;default&#34;, AutoscalingConfigArgs.builder()        
+ *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
+ *             .coolDownDuration(&#34;10m&#34;)
+ *             .unneededDuration(&#34;10m&#34;)
+ *             .utilizationThreshold(&#34;0.5&#34;)
+ *             .gpuUtilizationThreshold(&#34;0.5&#34;)
+ *             .scanInterval(&#34;30s&#34;)
+ *             .scaleDownEnabled(true)
+ *             .expander(&#34;least-waste&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="alicloud:cs/autoscalingConfig:AutoscalingConfig")
 public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
     /**

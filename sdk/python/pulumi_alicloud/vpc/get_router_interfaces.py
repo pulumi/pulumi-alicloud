@@ -195,6 +195,11 @@ def get_router_interfaces(ids: Optional[Sequence[str]] = None,
                           status: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouterInterfacesResult:
     """
+    This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+    that connect VPCs together.
+
+    > **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new resource alicloud_express_connect_router_interfaces.
+
     ## Example Usage
 
     ```python
@@ -211,6 +216,7 @@ def get_router_interfaces(ids: Optional[Sequence[str]] = None,
     :param str name_regex: A regex string used to filter by router interface name.
     :param str opposite_interface_id: ID of the peer router interface.
     :param str opposite_interface_owner_id: Account ID of the owner of the peer router interface.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str role: Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
            `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
     :param str router_id: ID of the VRouter located in the local region.
@@ -261,6 +267,11 @@ def get_router_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[st
                                  status: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouterInterfacesResult]:
     """
+    This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+    that connect VPCs together.
+
+    > **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new resource alicloud_express_connect_router_interfaces.
+
     ## Example Usage
 
     ```python
@@ -277,6 +288,7 @@ def get_router_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     :param str name_regex: A regex string used to filter by router interface name.
     :param str opposite_interface_id: ID of the peer router interface.
     :param str opposite_interface_owner_id: Account ID of the owner of the peer router interface.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str role: Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
            `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
     :param str router_id: ID of the VRouter located in the local region.

@@ -55,6 +55,9 @@ export interface GetVpcEndpointLinkedVpcsArgs {
      * The name of the module that you want to access. Valid Values:
      */
     moduleName: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
@@ -130,6 +133,9 @@ export interface GetVpcEndpointLinkedVpcsOutputArgs {
      * The name of the module that you want to access. Valid Values:
      */
     moduleName: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.

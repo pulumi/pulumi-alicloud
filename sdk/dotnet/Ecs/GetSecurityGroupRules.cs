@@ -135,6 +135,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("nicType")]
         public string? NicType { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -176,6 +179,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("nicType")]
         public Input<string>? NicType { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

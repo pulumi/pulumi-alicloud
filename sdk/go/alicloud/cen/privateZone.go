@@ -95,6 +95,8 @@ type PrivateZone struct {
 	// The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
 	HostRegionId pulumi.StringOutput `pulumi:"hostRegionId"`
 	// The VPC that belongs to the service region.
+	//
+	// ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
 	HostVpcId pulumi.StringOutput `pulumi:"hostVpcId"`
 	// The status of the PrivateZone service. Valid values: ["Creating", "Active", "Deleting"].
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -148,6 +150,8 @@ type privateZoneState struct {
 	// The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
 	HostRegionId *string `pulumi:"hostRegionId"`
 	// The VPC that belongs to the service region.
+	//
+	// ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
 	HostVpcId *string `pulumi:"hostVpcId"`
 	// The status of the PrivateZone service. Valid values: ["Creating", "Active", "Deleting"].
 	Status *string `pulumi:"status"`
@@ -161,6 +165,8 @@ type PrivateZoneState struct {
 	// The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
 	HostRegionId pulumi.StringPtrInput
 	// The VPC that belongs to the service region.
+	//
+	// ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
 	HostVpcId pulumi.StringPtrInput
 	// The status of the PrivateZone service. Valid values: ["Creating", "Active", "Deleting"].
 	Status pulumi.StringPtrInput
@@ -178,6 +184,8 @@ type privateZoneArgs struct {
 	// The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
 	HostRegionId string `pulumi:"hostRegionId"`
 	// The VPC that belongs to the service region.
+	//
+	// ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
 	HostVpcId string `pulumi:"hostVpcId"`
 }
 
@@ -190,6 +198,8 @@ type PrivateZoneArgs struct {
 	// The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
 	HostRegionId pulumi.StringInput
 	// The VPC that belongs to the service region.
+	//
+	// ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
 	HostVpcId pulumi.StringInput
 }
 
@@ -296,6 +306,8 @@ func (o PrivateZoneOutput) HostRegionId() pulumi.StringOutput {
 }
 
 // The VPC that belongs to the service region.
+//
+// ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
 func (o PrivateZoneOutput) HostVpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateZone) pulumi.StringOutput { return v.HostVpcId }).(pulumi.StringOutput)
 }

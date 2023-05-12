@@ -13,14 +13,21 @@ public final class GetStackGroupsGroupParameter {
      * @return The parameter key.
      * 
      */
-    private String parameterKey;
+    private final String parameterKey;
     /**
      * @return The parameter value.
      * 
      */
-    private String parameterValue;
+    private final String parameterValue;
 
-    private GetStackGroupsGroupParameter() {}
+    @CustomType.Constructor
+    private GetStackGroupsGroupParameter(
+        @CustomType.Parameter("parameterKey") String parameterKey,
+        @CustomType.Parameter("parameterValue") String parameterValue) {
+        this.parameterKey = parameterKey;
+        this.parameterValue = parameterValue;
+    }
+
     /**
      * @return The parameter key.
      * 
@@ -43,32 +50,30 @@ public final class GetStackGroupsGroupParameter {
     public static Builder builder(GetStackGroupsGroupParameter defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String parameterKey;
         private String parameterValue;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetStackGroupsGroupParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parameterKey = defaults.parameterKey;
     	      this.parameterValue = defaults.parameterValue;
         }
 
-        @CustomType.Setter
         public Builder parameterKey(String parameterKey) {
             this.parameterKey = Objects.requireNonNull(parameterKey);
             return this;
         }
-        @CustomType.Setter
         public Builder parameterValue(String parameterValue) {
             this.parameterValue = Objects.requireNonNull(parameterValue);
             return this;
-        }
-        public GetStackGroupsGroupParameter build() {
-            final var o = new GetStackGroupsGroupParameter();
-            o.parameterKey = parameterKey;
-            o.parameterValue = parameterValue;
-            return o;
+        }        public GetStackGroupsGroupParameter build() {
+            return new GetStackGroupsGroupParameter(parameterKey, parameterValue);
         }
     }
 }

@@ -14,14 +14,21 @@ public final class GetZonesZone {
      * @return ID of the zone.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of zone ids in which the multi zone. Removed from v1.99.0.
      * 
      */
-    private List<String> multiZoneIds;
+    private final List<String> multiZoneIds;
 
-    private GetZonesZone() {}
+    @CustomType.Constructor
+    private GetZonesZone(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("multiZoneIds") List<String> multiZoneIds) {
+        this.id = id;
+        this.multiZoneIds = multiZoneIds;
+    }
+
     /**
      * @return ID of the zone.
      * 
@@ -44,35 +51,33 @@ public final class GetZonesZone {
     public static Builder builder(GetZonesZone defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> multiZoneIds;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetZonesZone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.multiZoneIds = defaults.multiZoneIds;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder multiZoneIds(List<String> multiZoneIds) {
             this.multiZoneIds = Objects.requireNonNull(multiZoneIds);
             return this;
         }
         public Builder multiZoneIds(String... multiZoneIds) {
             return multiZoneIds(List.of(multiZoneIds));
-        }
-        public GetZonesZone build() {
-            final var o = new GetZonesZone();
-            o.id = id;
-            o.multiZoneIds = multiZoneIds;
-            return o;
+        }        public GetZonesZone build() {
+            return new GetZonesZone(id, multiZoneIds);
         }
     }
 }

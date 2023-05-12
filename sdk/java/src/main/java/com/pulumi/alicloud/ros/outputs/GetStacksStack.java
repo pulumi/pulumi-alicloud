@@ -19,94 +19,133 @@ public final class GetStacksStack {
      * @return Specifies whether to enable deletion protection on the stack.
      * 
      */
-    private String deletionProtection;
+    private final String deletionProtection;
     /**
      * @return The Description of the Stack.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return Specifies whether to disable rollback on stack creation failure..
      * 
      */
-    private Boolean disableRollback;
+    private final Boolean disableRollback;
     /**
      * @return Drift DetectionTime.
      * 
      */
-    private String driftDetectionTime;
+    private final String driftDetectionTime;
     /**
      * @return The ID of the Stack.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The parameters.
      * 
      */
-    private List<GetStacksStackParameter> parameters;
+    private final List<GetStacksStackParameter> parameters;
     /**
      * @return Parent Stack Id.
      * 
      */
-    private String parentStackId;
+    private final String parentStackId;
     /**
      * @return The RamRoleName.
      * 
      */
-    private String ramRoleName;
+    private final String ramRoleName;
     /**
      * @return Root Stack Id.
      * 
      */
-    private String rootStackId;
+    private final String rootStackId;
     /**
      * @return Stack DriftStatus.
      * 
      */
-    private String stackDriftStatus;
+    private final String stackDriftStatus;
     /**
      * @return Stack Id.
      * 
      */
-    private String stackId;
+    private final String stackId;
     /**
      * @return Stack Name.
      * 
      */
-    private String stackName;
+    private final String stackName;
     /**
      * @return The structure that contains the stack policy body.
      * 
      */
-    private String stackPolicyBody;
+    private final String stackPolicyBody;
     /**
      * @return The status of Stack. Valid Values: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `DELETE_COMPLETE`, `DELETE_FAILED`, `DELETE_IN_PROGRESS`, `ROLLBACK_COMPLETE`, `ROLLBACK_FAILED`, `ROLLBACK_IN_PROGRESS`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return Status Reason.
      * 
      */
-    private String statusReason;
+    private final String statusReason;
     /**
      * @return Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{&#34;key1&#34;:&#34;value1&#34;}`.
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
     /**
      * @return Template Description.
      * 
      */
-    private String templateDescription;
+    private final String templateDescription;
     /**
      * @return Specifies whether to use the values that were passed last time for the parameters that you do not specify in the current request.
      * 
      */
-    private Integer timeoutInMinutes;
+    private final Integer timeoutInMinutes;
 
-    private GetStacksStack() {}
+    @CustomType.Constructor
+    private GetStacksStack(
+        @CustomType.Parameter("deletionProtection") String deletionProtection,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("disableRollback") Boolean disableRollback,
+        @CustomType.Parameter("driftDetectionTime") String driftDetectionTime,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("parameters") List<GetStacksStackParameter> parameters,
+        @CustomType.Parameter("parentStackId") String parentStackId,
+        @CustomType.Parameter("ramRoleName") String ramRoleName,
+        @CustomType.Parameter("rootStackId") String rootStackId,
+        @CustomType.Parameter("stackDriftStatus") String stackDriftStatus,
+        @CustomType.Parameter("stackId") String stackId,
+        @CustomType.Parameter("stackName") String stackName,
+        @CustomType.Parameter("stackPolicyBody") String stackPolicyBody,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("statusReason") String statusReason,
+        @CustomType.Parameter("tags") Map<String,Object> tags,
+        @CustomType.Parameter("templateDescription") String templateDescription,
+        @CustomType.Parameter("timeoutInMinutes") Integer timeoutInMinutes) {
+        this.deletionProtection = deletionProtection;
+        this.description = description;
+        this.disableRollback = disableRollback;
+        this.driftDetectionTime = driftDetectionTime;
+        this.id = id;
+        this.parameters = parameters;
+        this.parentStackId = parentStackId;
+        this.ramRoleName = ramRoleName;
+        this.rootStackId = rootStackId;
+        this.stackDriftStatus = stackDriftStatus;
+        this.stackId = stackId;
+        this.stackName = stackName;
+        this.stackPolicyBody = stackPolicyBody;
+        this.status = status;
+        this.statusReason = statusReason;
+        this.tags = tags;
+        this.templateDescription = templateDescription;
+        this.timeoutInMinutes = timeoutInMinutes;
+    }
+
     /**
      * @return Specifies whether to enable deletion protection on the stack.
      * 
@@ -241,7 +280,7 @@ public final class GetStacksStack {
     public static Builder builder(GetStacksStack defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String deletionProtection;
         private String description;
@@ -261,7 +300,11 @@ public final class GetStacksStack {
         private Map<String,Object> tags;
         private String templateDescription;
         private Integer timeoutInMinutes;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetStacksStack defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deletionProtection = defaults.deletionProtection;
@@ -284,32 +327,26 @@ public final class GetStacksStack {
     	      this.timeoutInMinutes = defaults.timeoutInMinutes;
         }
 
-        @CustomType.Setter
         public Builder deletionProtection(String deletionProtection) {
             this.deletionProtection = Objects.requireNonNull(deletionProtection);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder disableRollback(Boolean disableRollback) {
             this.disableRollback = Objects.requireNonNull(disableRollback);
             return this;
         }
-        @CustomType.Setter
         public Builder driftDetectionTime(String driftDetectionTime) {
             this.driftDetectionTime = Objects.requireNonNull(driftDetectionTime);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder parameters(List<GetStacksStackParameter> parameters) {
             this.parameters = Objects.requireNonNull(parameters);
             return this;
@@ -317,87 +354,55 @@ public final class GetStacksStack {
         public Builder parameters(GetStacksStackParameter... parameters) {
             return parameters(List.of(parameters));
         }
-        @CustomType.Setter
         public Builder parentStackId(String parentStackId) {
             this.parentStackId = Objects.requireNonNull(parentStackId);
             return this;
         }
-        @CustomType.Setter
         public Builder ramRoleName(String ramRoleName) {
             this.ramRoleName = Objects.requireNonNull(ramRoleName);
             return this;
         }
-        @CustomType.Setter
         public Builder rootStackId(String rootStackId) {
             this.rootStackId = Objects.requireNonNull(rootStackId);
             return this;
         }
-        @CustomType.Setter
         public Builder stackDriftStatus(String stackDriftStatus) {
             this.stackDriftStatus = Objects.requireNonNull(stackDriftStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder stackId(String stackId) {
             this.stackId = Objects.requireNonNull(stackId);
             return this;
         }
-        @CustomType.Setter
         public Builder stackName(String stackName) {
             this.stackName = Objects.requireNonNull(stackName);
             return this;
         }
-        @CustomType.Setter
         public Builder stackPolicyBody(String stackPolicyBody) {
             this.stackPolicyBody = Objects.requireNonNull(stackPolicyBody);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder statusReason(String statusReason) {
             this.statusReason = Objects.requireNonNull(statusReason);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
-        @CustomType.Setter
         public Builder templateDescription(String templateDescription) {
             this.templateDescription = Objects.requireNonNull(templateDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder timeoutInMinutes(Integer timeoutInMinutes) {
             this.timeoutInMinutes = Objects.requireNonNull(timeoutInMinutes);
             return this;
-        }
-        public GetStacksStack build() {
-            final var o = new GetStacksStack();
-            o.deletionProtection = deletionProtection;
-            o.description = description;
-            o.disableRollback = disableRollback;
-            o.driftDetectionTime = driftDetectionTime;
-            o.id = id;
-            o.parameters = parameters;
-            o.parentStackId = parentStackId;
-            o.ramRoleName = ramRoleName;
-            o.rootStackId = rootStackId;
-            o.stackDriftStatus = stackDriftStatus;
-            o.stackId = stackId;
-            o.stackName = stackName;
-            o.stackPolicyBody = stackPolicyBody;
-            o.status = status;
-            o.statusReason = statusReason;
-            o.tags = tags;
-            o.templateDescription = templateDescription;
-            o.timeoutInMinutes = timeoutInMinutes;
-            return o;
+        }        public GetStacksStack build() {
+            return new GetStacksStack(deletionProtection, description, disableRollback, driftDetectionTime, id, parameters, parentStackId, ramRoleName, rootStackId, stackDriftStatus, stackId, stackName, stackPolicyBody, status, statusReason, tags, templateDescription, timeoutInMinutes);
         }
     }
 }

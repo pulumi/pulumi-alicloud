@@ -57,6 +57,9 @@ export interface GetIpv4GatewaysArgs {
      * A regex string to filter results by Ipv4 Gateway name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the resource.
@@ -126,6 +129,9 @@ export interface GetIpv4GatewaysOutputArgs {
      * A regex string to filter results by Ipv4 Gateway name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the resource.

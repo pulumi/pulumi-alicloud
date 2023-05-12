@@ -242,14 +242,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.paymentType;
     }
     /**
-     * The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+     * The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
      * 
      */
     @Export(name="period", type=Integer.class, parameters={})
     private Output<Integer> period;
 
     /**
-     * @return The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+     * @return The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
      * 
      */
     public Output<Integer> period() {

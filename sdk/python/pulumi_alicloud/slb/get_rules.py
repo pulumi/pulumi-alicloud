@@ -171,6 +171,7 @@ def get_rules(frontend_port: Optional[int] = None,
     :param Sequence[str] ids: A list of rules IDs to filter results.
     :param str load_balancer_id: ID of the SLB with listener rules.
     :param str name_regex: A regex string to filter results by rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['frontendPort'] = frontend_port
@@ -247,5 +248,6 @@ def get_rules_output(frontend_port: Optional[pulumi.Input[int]] = None,
     :param Sequence[str] ids: A list of rules IDs to filter results.
     :param str load_balancer_id: ID of the SLB with listener rules.
     :param str name_regex: A regex string to filter results by rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

@@ -13,14 +13,21 @@ public final class GetRulesRuleRuleConditionCookieConfigValue {
      * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
      * 
      */
-    private String key;
+    private final String key;
     /**
      * @return The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | &lt; &gt; &amp;.
      * 
      */
-    private String value;
+    private final String value;
 
-    private GetRulesRuleRuleConditionCookieConfigValue() {}
+    @CustomType.Constructor
+    private GetRulesRuleRuleConditionCookieConfigValue(
+        @CustomType.Parameter("key") String key,
+        @CustomType.Parameter("value") String value) {
+        this.key = key;
+        this.value = value;
+    }
+
     /**
      * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
      * 
@@ -43,32 +50,30 @@ public final class GetRulesRuleRuleConditionCookieConfigValue {
     public static Builder builder(GetRulesRuleRuleConditionCookieConfigValue defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String key;
         private String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRulesRuleRuleConditionCookieConfigValue defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
-        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }
-        public GetRulesRuleRuleConditionCookieConfigValue build() {
-            final var o = new GetRulesRuleRuleConditionCookieConfigValue();
-            o.key = key;
-            o.value = value;
-            return o;
+        }        public GetRulesRuleRuleConditionCookieConfigValue build() {
+            return new GetRulesRuleRuleConditionCookieConfigValue(key, value);
         }
     }
 }

@@ -17,15 +17,24 @@ public final class GetResourceDirectoriesResult {
      * @return A list of resource directories. Each element contains the following attributes:
      * 
      */
-    private List<GetResourceDirectoriesDirectory> directories;
+    private final List<GetResourceDirectoriesDirectory> directories;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private @Nullable String outputFile;
+    private final String id;
+    private final @Nullable String outputFile;
 
-    private GetResourceDirectoriesResult() {}
+    @CustomType.Constructor
+    private GetResourceDirectoriesResult(
+        @CustomType.Parameter("directories") List<GetResourceDirectoriesDirectory> directories,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.directories = directories;
+        this.id = id;
+        this.outputFile = outputFile;
+    }
+
     /**
      * @return A list of resource directories. Each element contains the following attributes:
      * 
@@ -51,12 +60,16 @@ public final class GetResourceDirectoriesResult {
     public static Builder builder(GetResourceDirectoriesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetResourceDirectoriesDirectory> directories;
         private String id;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetResourceDirectoriesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.directories = defaults.directories;
@@ -64,7 +77,6 @@ public final class GetResourceDirectoriesResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder directories(List<GetResourceDirectoriesDirectory> directories) {
             this.directories = Objects.requireNonNull(directories);
             return this;
@@ -72,22 +84,15 @@ public final class GetResourceDirectoriesResult {
         public Builder directories(GetResourceDirectoriesDirectory... directories) {
             return directories(List.of(directories));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetResourceDirectoriesResult build() {
-            final var o = new GetResourceDirectoriesResult();
-            o.directories = directories;
-            o.id = id;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetResourceDirectoriesResult build() {
+            return new GetResourceDirectoriesResult(directories, id, outputFile);
         }
     }
 }

@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a ECS disk resource.
+ *
+ * > **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.122.0.
+ *
+ * > **NOTE:** One of `size` or `snapshotId` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshotId` represents. Currently, `alicloud.ecs.Disk` doesn't resize disk.
+ *
  * ## Example Usage
  *
  * ```typescript

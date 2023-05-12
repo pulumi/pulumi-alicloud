@@ -54,6 +54,16 @@ class InstanceArgs:
         :param pulumi.Input[int] partition_num: The number of partitions.
         :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
+               
+               > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
+               
+               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+               |------|-------------|:----:|:-----:|
+               |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
+               |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
+               |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
+               |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
+               |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
         :param pulumi.Input[str] service_version: The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -267,6 +277,16 @@ class InstanceArgs:
     def selected_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The zones among which you want to deploy the instance.
+
+        > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
+
+        | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+        |------|-------------|:----:|:-----:|
+        |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
+        |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
+        |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
+        |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
+        |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
         """
         return pulumi.get(self, "selected_zones")
 
@@ -393,6 +413,16 @@ class _InstanceState:
         :param pulumi.Input[int] partition_num: The number of partitions.
         :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
+               
+               > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
+               
+               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+               |------|-------------|:----:|:-----:|
+               |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
+               |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
+               |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
+               |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
+               |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
         :param pulumi.Input[str] service_version: The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[int] status: The status of the instance. Valid values:
@@ -620,6 +650,16 @@ class _InstanceState:
     def selected_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The zones among which you want to deploy the instance.
+
+        > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
+
+        | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+        |------|-------------|:----:|:-----:|
+        |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
+        |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
+        |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
+        |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
+        |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
         """
         return pulumi.get(self, "selected_zones")
 
@@ -825,6 +865,16 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] partition_num: The number of partitions.
         :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
+               
+               > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
+               
+               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+               |------|-------------|:----:|:-----:|
+               |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
+               |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
+               |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
+               |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
+               |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
         :param pulumi.Input[str] service_version: The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -1025,6 +1075,16 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] partition_num: The number of partitions.
         :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
+               
+               > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
+               
+               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+               |------|-------------|:----:|:-----:|
+               |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
+               |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
+               |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
+               |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
+               |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
         :param pulumi.Input[str] service_version: The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[int] status: The status of the instance. Valid values:
@@ -1180,6 +1240,16 @@ class Instance(pulumi.CustomResource):
     def selected_zones(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The zones among which you want to deploy the instance.
+
+        > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
+
+        | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+        |------|-------------|:----:|:-----:|
+        |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
+        |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
+        |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
+        |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
+        |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
         """
         return pulumi.get(self, "selected_zones")
 

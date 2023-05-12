@@ -43,6 +43,9 @@ namespace Pulumi.AliCloud.Cddc
         [Input("imageCategory")]
         public string? ImageCategory { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -78,6 +81,9 @@ namespace Pulumi.AliCloud.Cddc
         [Input("imageCategory")]
         public Input<string>? ImageCategory { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

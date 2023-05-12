@@ -13,14 +13,21 @@ public final class MonitorConfigIspCityNode {
      * @return The code of the city node to monitor.
      * 
      */
-    private String cityCode;
+    private final String cityCode;
     /**
      * @return The code of the Internet provider service (ISP) node to monitor.
      * 
      */
-    private String ispCode;
+    private final String ispCode;
 
-    private MonitorConfigIspCityNode() {}
+    @CustomType.Constructor
+    private MonitorConfigIspCityNode(
+        @CustomType.Parameter("cityCode") String cityCode,
+        @CustomType.Parameter("ispCode") String ispCode) {
+        this.cityCode = cityCode;
+        this.ispCode = ispCode;
+    }
+
     /**
      * @return The code of the city node to monitor.
      * 
@@ -43,32 +50,30 @@ public final class MonitorConfigIspCityNode {
     public static Builder builder(MonitorConfigIspCityNode defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String cityCode;
         private String ispCode;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(MonitorConfigIspCityNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cityCode = defaults.cityCode;
     	      this.ispCode = defaults.ispCode;
         }
 
-        @CustomType.Setter
         public Builder cityCode(String cityCode) {
             this.cityCode = Objects.requireNonNull(cityCode);
             return this;
         }
-        @CustomType.Setter
         public Builder ispCode(String ispCode) {
             this.ispCode = Objects.requireNonNull(ispCode);
             return this;
-        }
-        public MonitorConfigIspCityNode build() {
-            final var o = new MonitorConfigIspCityNode();
-            o.cityCode = cityCode;
-            o.ispCode = ispCode;
-            return o;
+        }        public MonitorConfigIspCityNode build() {
+            return new MonitorConfigIspCityNode(cityCode, ispCode);
         }
     }
 }

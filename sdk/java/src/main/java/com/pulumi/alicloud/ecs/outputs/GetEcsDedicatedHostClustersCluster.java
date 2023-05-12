@@ -17,49 +17,70 @@ public final class GetEcsDedicatedHostClustersCluster {
      * @return The capacity of the dedicated host cluster.
      * 
      */
-    private List<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity> dedicatedHostClusterCapacities;
+    private final List<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity> dedicatedHostClusterCapacities;
     /**
      * @return The ID of the dedicated host cluster.
      * 
      */
-    private String dedicatedHostClusterId;
+    private final String dedicatedHostClusterId;
     /**
      * @return The name of the dedicated host cluster.
      * 
      */
-    private String dedicatedHostClusterName;
+    private final String dedicatedHostClusterName;
     /**
      * @return The IDs of dedicated hosts in the dedicated host cluster.
      * 
      */
-    private List<String> dedicatedHostIds;
+    private final List<String> dedicatedHostIds;
     /**
      * @return The description of the dedicated host cluster.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the Dedicated Host Cluster.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the resource group to which the dedicated host cluster belongs.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
     /**
      * @return The zone ID of the dedicated host cluster.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetEcsDedicatedHostClustersCluster() {}
+    @CustomType.Constructor
+    private GetEcsDedicatedHostClustersCluster(
+        @CustomType.Parameter("dedicatedHostClusterCapacities") List<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity> dedicatedHostClusterCapacities,
+        @CustomType.Parameter("dedicatedHostClusterId") String dedicatedHostClusterId,
+        @CustomType.Parameter("dedicatedHostClusterName") String dedicatedHostClusterName,
+        @CustomType.Parameter("dedicatedHostIds") List<String> dedicatedHostIds,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("tags") Map<String,Object> tags,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.dedicatedHostClusterCapacities = dedicatedHostClusterCapacities;
+        this.dedicatedHostClusterId = dedicatedHostClusterId;
+        this.dedicatedHostClusterName = dedicatedHostClusterName;
+        this.dedicatedHostIds = dedicatedHostIds;
+        this.description = description;
+        this.id = id;
+        this.resourceGroupId = resourceGroupId;
+        this.tags = tags;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return The capacity of the dedicated host cluster.
      * 
@@ -131,7 +152,7 @@ public final class GetEcsDedicatedHostClustersCluster {
     public static Builder builder(GetEcsDedicatedHostClustersCluster defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity> dedicatedHostClusterCapacities;
         private String dedicatedHostClusterId;
@@ -142,7 +163,11 @@ public final class GetEcsDedicatedHostClustersCluster {
         private String resourceGroupId;
         private Map<String,Object> tags;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEcsDedicatedHostClustersCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dedicatedHostClusterCapacities = defaults.dedicatedHostClusterCapacities;
@@ -156,7 +181,6 @@ public final class GetEcsDedicatedHostClustersCluster {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder dedicatedHostClusterCapacities(List<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity> dedicatedHostClusterCapacities) {
             this.dedicatedHostClusterCapacities = Objects.requireNonNull(dedicatedHostClusterCapacities);
             return this;
@@ -164,17 +188,14 @@ public final class GetEcsDedicatedHostClustersCluster {
         public Builder dedicatedHostClusterCapacities(GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity... dedicatedHostClusterCapacities) {
             return dedicatedHostClusterCapacities(List.of(dedicatedHostClusterCapacities));
         }
-        @CustomType.Setter
         public Builder dedicatedHostClusterId(String dedicatedHostClusterId) {
             this.dedicatedHostClusterId = Objects.requireNonNull(dedicatedHostClusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder dedicatedHostClusterName(String dedicatedHostClusterName) {
             this.dedicatedHostClusterName = Objects.requireNonNull(dedicatedHostClusterName);
             return this;
         }
-        @CustomType.Setter
         public Builder dedicatedHostIds(List<String> dedicatedHostIds) {
             this.dedicatedHostIds = Objects.requireNonNull(dedicatedHostIds);
             return this;
@@ -182,43 +203,27 @@ public final class GetEcsDedicatedHostClustersCluster {
         public Builder dedicatedHostIds(String... dedicatedHostIds) {
             return dedicatedHostIds(List.of(dedicatedHostIds));
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetEcsDedicatedHostClustersCluster build() {
-            final var o = new GetEcsDedicatedHostClustersCluster();
-            o.dedicatedHostClusterCapacities = dedicatedHostClusterCapacities;
-            o.dedicatedHostClusterId = dedicatedHostClusterId;
-            o.dedicatedHostClusterName = dedicatedHostClusterName;
-            o.dedicatedHostIds = dedicatedHostIds;
-            o.description = description;
-            o.id = id;
-            o.resourceGroupId = resourceGroupId;
-            o.tags = tags;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetEcsDedicatedHostClustersCluster build() {
+            return new GetEcsDedicatedHostClustersCluster(dedicatedHostClusterCapacities, dedicatedHostClusterId, dedicatedHostClusterName, dedicatedHostIds, description, id, resourceGroupId, tags, zoneId);
         }
     }
 }

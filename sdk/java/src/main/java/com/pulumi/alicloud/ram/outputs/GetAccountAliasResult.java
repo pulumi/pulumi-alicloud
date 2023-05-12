@@ -11,15 +11,24 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountAliasResult {
-    private String accountAlias;
+    private final String accountAlias;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private @Nullable String outputFile;
+    private final String id;
+    private final @Nullable String outputFile;
 
-    private GetAccountAliasResult() {}
+    @CustomType.Constructor
+    private GetAccountAliasResult(
+        @CustomType.Parameter("accountAlias") String accountAlias,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.accountAlias = accountAlias;
+        this.id = id;
+        this.outputFile = outputFile;
+    }
+
     public String accountAlias() {
         return this.accountAlias;
     }
@@ -41,12 +50,16 @@ public final class GetAccountAliasResult {
     public static Builder builder(GetAccountAliasResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String accountAlias;
         private String id;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAccountAliasResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountAlias = defaults.accountAlias;
@@ -54,27 +67,19 @@ public final class GetAccountAliasResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder accountAlias(String accountAlias) {
             this.accountAlias = Objects.requireNonNull(accountAlias);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetAccountAliasResult build() {
-            final var o = new GetAccountAliasResult();
-            o.accountAlias = accountAlias;
-            o.id = id;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetAccountAliasResult build() {
+            return new GetAccountAliasResult(accountAlias, id, outputFile);
         }
     }
 }

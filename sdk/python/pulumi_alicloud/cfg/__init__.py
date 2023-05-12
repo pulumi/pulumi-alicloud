@@ -22,6 +22,7 @@ from .get_configuration_recorders import *
 from .get_deliveries import *
 from .get_delivery_channels import *
 from .get_rules import *
+from .remediation import *
 from .rule import *
 from ._inputs import *
 from . import outputs

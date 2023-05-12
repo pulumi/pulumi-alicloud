@@ -64,7 +64,8 @@ type GetAggregateCompliancePacksArgs struct {
 	// A list of Aggregate Compliance Pack IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Aggregate Compliance Pack name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
 	Status *string `pulumi:"status"`
@@ -109,7 +110,8 @@ type GetAggregateCompliancePacksOutputArgs struct {
 	// A list of Aggregate Compliance Pack IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Aggregate Compliance Pack name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

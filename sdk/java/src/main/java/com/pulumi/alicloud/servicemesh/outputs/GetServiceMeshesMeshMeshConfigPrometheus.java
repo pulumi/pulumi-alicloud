@@ -14,14 +14,21 @@ public final class GetServiceMeshesMeshMeshConfigPrometheus {
      * @return The  service addresses of the Prometheus.
      * 
      */
-    private String externalUrl;
+    private final String externalUrl;
     /**
      * @return Whether to enable external Prometheus.
      * 
      */
-    private Boolean useExternal;
+    private final Boolean useExternal;
 
-    private GetServiceMeshesMeshMeshConfigPrometheus() {}
+    @CustomType.Constructor
+    private GetServiceMeshesMeshMeshConfigPrometheus(
+        @CustomType.Parameter("externalUrl") String externalUrl,
+        @CustomType.Parameter("useExternal") Boolean useExternal) {
+        this.externalUrl = externalUrl;
+        this.useExternal = useExternal;
+    }
+
     /**
      * @return The  service addresses of the Prometheus.
      * 
@@ -44,32 +51,30 @@ public final class GetServiceMeshesMeshMeshConfigPrometheus {
     public static Builder builder(GetServiceMeshesMeshMeshConfigPrometheus defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String externalUrl;
         private Boolean useExternal;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServiceMeshesMeshMeshConfigPrometheus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.externalUrl = defaults.externalUrl;
     	      this.useExternal = defaults.useExternal;
         }
 
-        @CustomType.Setter
         public Builder externalUrl(String externalUrl) {
             this.externalUrl = Objects.requireNonNull(externalUrl);
             return this;
         }
-        @CustomType.Setter
         public Builder useExternal(Boolean useExternal) {
             this.useExternal = Objects.requireNonNull(useExternal);
             return this;
-        }
-        public GetServiceMeshesMeshMeshConfigPrometheus build() {
-            final var o = new GetServiceMeshesMeshMeshConfigPrometheus();
-            o.externalUrl = externalUrl;
-            o.useExternal = useExternal;
-            return o;
+        }        public GetServiceMeshesMeshMeshConfigPrometheus build() {
+            return new GetServiceMeshesMeshMeshConfigPrometheus(externalUrl, useExternal);
         }
     }
 }

@@ -167,6 +167,8 @@ class ZoneAttachmentVpcArgs:
         """
         :param pulumi.Input[str] vpc_id: The Id of the vpc.
         :param pulumi.Input[str] region_id: The region of the vpc. If not set, the current region will instead of.
+               
+               Recommend to use `vpcs`.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
         if region_id is not None:
@@ -189,6 +191,8 @@ class ZoneAttachmentVpcArgs:
     def region_id(self) -> Optional[pulumi.Input[str]]:
         """
         The region of the vpc. If not set, the current region will instead of.
+
+        Recommend to use `vpcs`.
         """
         return pulumi.get(self, "region_id")
 

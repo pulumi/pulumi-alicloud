@@ -56,8 +56,9 @@ type GetZonesArgs struct {
 	// keyword for zone name.
 	Keyword *string `pulumi:"keyword"`
 	// User language.
-	Lang       *string `pulumi:"lang"`
-	NameRegex  *string `pulumi:"nameRegex"`
+	Lang      *string `pulumi:"lang"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// query_region_id for zone regionId.
 	QueryRegionId *string `pulumi:"queryRegionId"`
@@ -115,8 +116,9 @@ type GetZonesOutputArgs struct {
 	// keyword for zone name.
 	Keyword pulumi.StringPtrInput `pulumi:"keyword"`
 	// User language.
-	Lang       pulumi.StringPtrInput `pulumi:"lang"`
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	Lang      pulumi.StringPtrInput `pulumi:"lang"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// query_region_id for zone regionId.
 	QueryRegionId pulumi.StringPtrInput `pulumi:"queryRegionId"`

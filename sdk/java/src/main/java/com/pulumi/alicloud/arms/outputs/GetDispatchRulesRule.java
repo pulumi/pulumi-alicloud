@@ -17,40 +17,59 @@ public final class GetDispatchRulesRule {
      * @return Dispatch rule ID.
      * 
      */
-    private String dispatchRuleId;
+    private final String dispatchRuleId;
     /**
      * @return The name of the dispatch rule.
      * 
      */
-    private String dispatchRuleName;
-    private String dispatchType;
+    private final String dispatchRuleName;
+    private final String dispatchType;
     /**
      * @return Sets the event group.
      * 
      */
-    private List<GetDispatchRulesRuleGroupRule> groupRules;
+    private final List<GetDispatchRulesRuleGroupRule> groupRules;
     /**
      * @return The ID of the Dispatch Rule.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Sets the dispatch rule.
      * 
      */
-    private List<GetDispatchRulesRuleLabelMatchExpressionGrid> labelMatchExpressionGrids;
+    private final List<GetDispatchRulesRuleLabelMatchExpressionGrid> labelMatchExpressionGrids;
     /**
      * @return Sets the notification rule.
      * 
      */
-    private List<GetDispatchRulesRuleNotifyRule> notifyRules;
+    private final List<GetDispatchRulesRuleNotifyRule> notifyRules;
     /**
      * @return The resource status of Alert Dispatch Rule.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetDispatchRulesRule() {}
+    @CustomType.Constructor
+    private GetDispatchRulesRule(
+        @CustomType.Parameter("dispatchRuleId") String dispatchRuleId,
+        @CustomType.Parameter("dispatchRuleName") String dispatchRuleName,
+        @CustomType.Parameter("dispatchType") String dispatchType,
+        @CustomType.Parameter("groupRules") List<GetDispatchRulesRuleGroupRule> groupRules,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("labelMatchExpressionGrids") List<GetDispatchRulesRuleLabelMatchExpressionGrid> labelMatchExpressionGrids,
+        @CustomType.Parameter("notifyRules") List<GetDispatchRulesRuleNotifyRule> notifyRules,
+        @CustomType.Parameter("status") String status) {
+        this.dispatchRuleId = dispatchRuleId;
+        this.dispatchRuleName = dispatchRuleName;
+        this.dispatchType = dispatchType;
+        this.groupRules = groupRules;
+        this.id = id;
+        this.labelMatchExpressionGrids = labelMatchExpressionGrids;
+        this.notifyRules = notifyRules;
+        this.status = status;
+    }
+
     /**
      * @return Dispatch rule ID.
      * 
@@ -111,7 +130,7 @@ public final class GetDispatchRulesRule {
     public static Builder builder(GetDispatchRulesRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String dispatchRuleId;
         private String dispatchRuleName;
@@ -121,7 +140,11 @@ public final class GetDispatchRulesRule {
         private List<GetDispatchRulesRuleLabelMatchExpressionGrid> labelMatchExpressionGrids;
         private List<GetDispatchRulesRuleNotifyRule> notifyRules;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDispatchRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dispatchRuleId = defaults.dispatchRuleId;
@@ -134,22 +157,18 @@ public final class GetDispatchRulesRule {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder dispatchRuleId(String dispatchRuleId) {
             this.dispatchRuleId = Objects.requireNonNull(dispatchRuleId);
             return this;
         }
-        @CustomType.Setter
         public Builder dispatchRuleName(String dispatchRuleName) {
             this.dispatchRuleName = Objects.requireNonNull(dispatchRuleName);
             return this;
         }
-        @CustomType.Setter
         public Builder dispatchType(String dispatchType) {
             this.dispatchType = Objects.requireNonNull(dispatchType);
             return this;
         }
-        @CustomType.Setter
         public Builder groupRules(List<GetDispatchRulesRuleGroupRule> groupRules) {
             this.groupRules = Objects.requireNonNull(groupRules);
             return this;
@@ -157,12 +176,10 @@ public final class GetDispatchRulesRule {
         public Builder groupRules(GetDispatchRulesRuleGroupRule... groupRules) {
             return groupRules(List.of(groupRules));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder labelMatchExpressionGrids(List<GetDispatchRulesRuleLabelMatchExpressionGrid> labelMatchExpressionGrids) {
             this.labelMatchExpressionGrids = Objects.requireNonNull(labelMatchExpressionGrids);
             return this;
@@ -170,7 +187,6 @@ public final class GetDispatchRulesRule {
         public Builder labelMatchExpressionGrids(GetDispatchRulesRuleLabelMatchExpressionGrid... labelMatchExpressionGrids) {
             return labelMatchExpressionGrids(List.of(labelMatchExpressionGrids));
         }
-        @CustomType.Setter
         public Builder notifyRules(List<GetDispatchRulesRuleNotifyRule> notifyRules) {
             this.notifyRules = Objects.requireNonNull(notifyRules);
             return this;
@@ -178,22 +194,11 @@ public final class GetDispatchRulesRule {
         public Builder notifyRules(GetDispatchRulesRuleNotifyRule... notifyRules) {
             return notifyRules(List.of(notifyRules));
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetDispatchRulesRule build() {
-            final var o = new GetDispatchRulesRule();
-            o.dispatchRuleId = dispatchRuleId;
-            o.dispatchRuleName = dispatchRuleName;
-            o.dispatchType = dispatchType;
-            o.groupRules = groupRules;
-            o.id = id;
-            o.labelMatchExpressionGrids = labelMatchExpressionGrids;
-            o.notifyRules = notifyRules;
-            o.status = status;
-            return o;
+        }        public GetDispatchRulesRule build() {
+            return new GetDispatchRulesRule(dispatchRuleId, dispatchRuleName, dispatchType, groupRules, id, labelMatchExpressionGrids, notifyRules, status);
         }
     }
 }

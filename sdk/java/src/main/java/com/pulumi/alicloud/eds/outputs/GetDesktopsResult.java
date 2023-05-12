@@ -13,23 +13,48 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDesktopsResult {
-    private @Nullable String desktopName;
-    private List<GetDesktopsDesktop> desktops;
-    private @Nullable List<String> endUserIds;
+    private final @Nullable String desktopName;
+    private final List<GetDesktopsDesktop> desktops;
+    private final @Nullable List<String> endUserIds;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String officeSiteId;
-    private @Nullable String outputFile;
-    private @Nullable String policyGroupId;
-    private @Nullable String status;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String officeSiteId;
+    private final @Nullable String outputFile;
+    private final @Nullable String policyGroupId;
+    private final @Nullable String status;
 
-    private GetDesktopsResult() {}
+    @CustomType.Constructor
+    private GetDesktopsResult(
+        @CustomType.Parameter("desktopName") @Nullable String desktopName,
+        @CustomType.Parameter("desktops") List<GetDesktopsDesktop> desktops,
+        @CustomType.Parameter("endUserIds") @Nullable List<String> endUserIds,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("officeSiteId") @Nullable String officeSiteId,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("policyGroupId") @Nullable String policyGroupId,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.desktopName = desktopName;
+        this.desktops = desktops;
+        this.endUserIds = endUserIds;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.officeSiteId = officeSiteId;
+        this.outputFile = outputFile;
+        this.policyGroupId = policyGroupId;
+        this.status = status;
+    }
+
     public Optional<String> desktopName() {
         return Optional.ofNullable(this.desktopName);
     }
@@ -75,7 +100,7 @@ public final class GetDesktopsResult {
     public static Builder builder(GetDesktopsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String desktopName;
         private List<GetDesktopsDesktop> desktops;
@@ -88,7 +113,11 @@ public final class GetDesktopsResult {
         private @Nullable String outputFile;
         private @Nullable String policyGroupId;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDesktopsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.desktopName = defaults.desktopName;
@@ -104,12 +133,10 @@ public final class GetDesktopsResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder desktopName(@Nullable String desktopName) {
             this.desktopName = desktopName;
             return this;
         }
-        @CustomType.Setter
         public Builder desktops(List<GetDesktopsDesktop> desktops) {
             this.desktops = Objects.requireNonNull(desktops);
             return this;
@@ -117,7 +144,6 @@ public final class GetDesktopsResult {
         public Builder desktops(GetDesktopsDesktop... desktops) {
             return desktops(List.of(desktops));
         }
-        @CustomType.Setter
         public Builder endUserIds(@Nullable List<String> endUserIds) {
             this.endUserIds = endUserIds;
             return this;
@@ -125,12 +151,10 @@ public final class GetDesktopsResult {
         public Builder endUserIds(String... endUserIds) {
             return endUserIds(List.of(endUserIds));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -138,12 +162,10 @@ public final class GetDesktopsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -151,40 +173,23 @@ public final class GetDesktopsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder officeSiteId(@Nullable String officeSiteId) {
             this.officeSiteId = officeSiteId;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder policyGroupId(@Nullable String policyGroupId) {
             this.policyGroupId = policyGroupId;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetDesktopsResult build() {
-            final var o = new GetDesktopsResult();
-            o.desktopName = desktopName;
-            o.desktops = desktops;
-            o.endUserIds = endUserIds;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.officeSiteId = officeSiteId;
-            o.outputFile = outputFile;
-            o.policyGroupId = policyGroupId;
-            o.status = status;
-            return o;
+        }        public GetDesktopsResult build() {
+            return new GetDesktopsResult(desktopName, desktops, endUserIds, id, ids, nameRegex, names, officeSiteId, outputFile, policyGroupId, status);
         }
     }
 }

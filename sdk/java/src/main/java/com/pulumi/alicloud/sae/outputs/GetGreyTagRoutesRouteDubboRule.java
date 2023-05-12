@@ -15,34 +15,49 @@ public final class GetGreyTagRoutesRouteDubboRule {
      * @return The Conditional Patterns for Grayscale Rules.
      * 
      */
-    private String condition;
+    private final String condition;
     /**
      * @return The service group.
      * 
      */
-    private String group;
+    private final String group;
     /**
      * @return A list of conditions items.
      * 
      */
-    private List<GetGreyTagRoutesRouteDubboRuleItem> items;
+    private final List<GetGreyTagRoutesRouteDubboRuleItem> items;
     /**
      * @return The method name
      * 
      */
-    private String methodName;
+    private final String methodName;
     /**
      * @return The service name.
      * 
      */
-    private String serviceName;
+    private final String serviceName;
     /**
      * @return The service version.
      * 
      */
-    private String version;
+    private final String version;
 
-    private GetGreyTagRoutesRouteDubboRule() {}
+    @CustomType.Constructor
+    private GetGreyTagRoutesRouteDubboRule(
+        @CustomType.Parameter("condition") String condition,
+        @CustomType.Parameter("group") String group,
+        @CustomType.Parameter("items") List<GetGreyTagRoutesRouteDubboRuleItem> items,
+        @CustomType.Parameter("methodName") String methodName,
+        @CustomType.Parameter("serviceName") String serviceName,
+        @CustomType.Parameter("version") String version) {
+        this.condition = condition;
+        this.group = group;
+        this.items = items;
+        this.methodName = methodName;
+        this.serviceName = serviceName;
+        this.version = version;
+    }
+
     /**
      * @return The Conditional Patterns for Grayscale Rules.
      * 
@@ -93,7 +108,7 @@ public final class GetGreyTagRoutesRouteDubboRule {
     public static Builder builder(GetGreyTagRoutesRouteDubboRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String condition;
         private String group;
@@ -101,7 +116,11 @@ public final class GetGreyTagRoutesRouteDubboRule {
         private String methodName;
         private String serviceName;
         private String version;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetGreyTagRoutesRouteDubboRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.condition = defaults.condition;
@@ -112,17 +131,14 @@ public final class GetGreyTagRoutesRouteDubboRule {
     	      this.version = defaults.version;
         }
 
-        @CustomType.Setter
         public Builder condition(String condition) {
             this.condition = Objects.requireNonNull(condition);
             return this;
         }
-        @CustomType.Setter
         public Builder group(String group) {
             this.group = Objects.requireNonNull(group);
             return this;
         }
-        @CustomType.Setter
         public Builder items(List<GetGreyTagRoutesRouteDubboRuleItem> items) {
             this.items = Objects.requireNonNull(items);
             return this;
@@ -130,30 +146,19 @@ public final class GetGreyTagRoutesRouteDubboRule {
         public Builder items(GetGreyTagRoutesRouteDubboRuleItem... items) {
             return items(List.of(items));
         }
-        @CustomType.Setter
         public Builder methodName(String methodName) {
             this.methodName = Objects.requireNonNull(methodName);
             return this;
         }
-        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
         }
-        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }
-        public GetGreyTagRoutesRouteDubboRule build() {
-            final var o = new GetGreyTagRoutesRouteDubboRule();
-            o.condition = condition;
-            o.group = group;
-            o.items = items;
-            o.methodName = methodName;
-            o.serviceName = serviceName;
-            o.version = version;
-            return o;
+        }        public GetGreyTagRoutesRouteDubboRule build() {
+            return new GetGreyTagRoutesRouteDubboRule(condition, group, items, methodName, serviceName, version);
         }
     }
 }

@@ -109,6 +109,8 @@ namespace Pulumi.AliCloud.FC
 
         /// <summary>
         /// The ZIP package of the function code that is encoded in the Base64 format.
+        /// 
+        /// &gt; **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
         /// </summary>
         [Output("zipFile")]
         public Output<string?> ZipFile { get; private set; } = null!;
@@ -203,6 +205,8 @@ namespace Pulumi.AliCloud.FC
 
         /// <summary>
         /// The ZIP package of the function code that is encoded in the Base64 format.
+        /// 
+        /// &gt; **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
         /// </summary>
         [Input("zipFile")]
         public Input<string>? ZipFile { get; set; }
@@ -283,6 +287,8 @@ namespace Pulumi.AliCloud.FC
 
         /// <summary>
         /// The ZIP package of the function code that is encoded in the Base64 format.
+        /// 
+        /// &gt; **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
         /// </summary>
         [Input("zipFile")]
         public Input<string>? ZipFile { get; set; }

@@ -15,24 +15,35 @@ public final class GetTopicsTopic {
      * @return The id of the topic. The value is set to `name`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Whether to enable logging.
      * 
      */
-    private Boolean loggingEnabled;
+    private final Boolean loggingEnabled;
     /**
      * @return This indicates the maximum length, in bytes, of any message body sent to the topic.
      * 
      */
-    private Integer maximumMessageSize;
+    private final Integer maximumMessageSize;
     /**
      * @return The name of the topic.
      * 
      */
-    private String name;
+    private final String name;
 
-    private GetTopicsTopic() {}
+    @CustomType.Constructor
+    private GetTopicsTopic(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("loggingEnabled") Boolean loggingEnabled,
+        @CustomType.Parameter("maximumMessageSize") Integer maximumMessageSize,
+        @CustomType.Parameter("name") String name) {
+        this.id = id;
+        this.loggingEnabled = loggingEnabled;
+        this.maximumMessageSize = maximumMessageSize;
+        this.name = name;
+    }
+
     /**
      * @return The id of the topic. The value is set to `name`.
      * 
@@ -69,13 +80,17 @@ public final class GetTopicsTopic {
     public static Builder builder(GetTopicsTopic defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private Boolean loggingEnabled;
         private Integer maximumMessageSize;
         private String name;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTopicsTopic defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -84,33 +99,23 @@ public final class GetTopicsTopic {
     	      this.name = defaults.name;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder loggingEnabled(Boolean loggingEnabled) {
             this.loggingEnabled = Objects.requireNonNull(loggingEnabled);
             return this;
         }
-        @CustomType.Setter
         public Builder maximumMessageSize(Integer maximumMessageSize) {
             this.maximumMessageSize = Objects.requireNonNull(maximumMessageSize);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }
-        public GetTopicsTopic build() {
-            final var o = new GetTopicsTopic();
-            o.id = id;
-            o.loggingEnabled = loggingEnabled;
-            o.maximumMessageSize = maximumMessageSize;
-            o.name = name;
-            return o;
+        }        public GetTopicsTopic build() {
+            return new GetTopicsTopic(id, loggingEnabled, maximumMessageSize, name);
         }
     }
 }

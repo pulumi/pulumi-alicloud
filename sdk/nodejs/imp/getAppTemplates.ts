@@ -51,6 +51,9 @@ export interface GetAppTemplatesArgs {
      * A regex string to filter results by App Template name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Application template usage status.
@@ -110,6 +113,9 @@ export interface GetAppTemplatesOutputArgs {
      * A regex string to filter results by App Template name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Application template usage status.

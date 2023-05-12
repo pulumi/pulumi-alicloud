@@ -13,19 +13,28 @@ public final class GetInstancesInstanceIpWhitelist {
      * @return The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
      * 
      */
-    private String ipGroupAttribute;
+    private final String ipGroupAttribute;
     /**
      * @return IP whitelist group name
      * 
      */
-    private String ipGroupName;
+    private final String ipGroupName;
     /**
      * @return List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `[&#34;127.0.0.1&#34;]`.
      * 
      */
-    private String securityIpList;
+    private final String securityIpList;
 
-    private GetInstancesInstanceIpWhitelist() {}
+    @CustomType.Constructor
+    private GetInstancesInstanceIpWhitelist(
+        @CustomType.Parameter("ipGroupAttribute") String ipGroupAttribute,
+        @CustomType.Parameter("ipGroupName") String ipGroupName,
+        @CustomType.Parameter("securityIpList") String securityIpList) {
+        this.ipGroupAttribute = ipGroupAttribute;
+        this.ipGroupName = ipGroupName;
+        this.securityIpList = securityIpList;
+    }
+
     /**
      * @return The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
      * 
@@ -55,12 +64,16 @@ public final class GetInstancesInstanceIpWhitelist {
     public static Builder builder(GetInstancesInstanceIpWhitelist defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String ipGroupAttribute;
         private String ipGroupName;
         private String securityIpList;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstancesInstanceIpWhitelist defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipGroupAttribute = defaults.ipGroupAttribute;
@@ -68,27 +81,19 @@ public final class GetInstancesInstanceIpWhitelist {
     	      this.securityIpList = defaults.securityIpList;
         }
 
-        @CustomType.Setter
         public Builder ipGroupAttribute(String ipGroupAttribute) {
             this.ipGroupAttribute = Objects.requireNonNull(ipGroupAttribute);
             return this;
         }
-        @CustomType.Setter
         public Builder ipGroupName(String ipGroupName) {
             this.ipGroupName = Objects.requireNonNull(ipGroupName);
             return this;
         }
-        @CustomType.Setter
         public Builder securityIpList(String securityIpList) {
             this.securityIpList = Objects.requireNonNull(securityIpList);
             return this;
-        }
-        public GetInstancesInstanceIpWhitelist build() {
-            final var o = new GetInstancesInstanceIpWhitelist();
-            o.ipGroupAttribute = ipGroupAttribute;
-            o.ipGroupName = ipGroupName;
-            o.securityIpList = securityIpList;
-            return o;
+        }        public GetInstancesInstanceIpWhitelist build() {
+            return new GetInstancesInstanceIpWhitelist(ipGroupAttribute, ipGroupName, securityIpList);
         }
     }
 }

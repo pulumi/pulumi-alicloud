@@ -17,12 +17,16 @@ public final class BucketReplicationPrefixSetArgs extends com.pulumi.resources.R
     /**
      * The list of object key name prefix identifying one or more objects to which the rule applies.
      * 
+     * `NOTE`: The prefix must be less than or equal to 1024 characters in length.
+     * 
      */
     @Import(name="prefixes", required=true)
     private Output<List<String>> prefixes;
 
     /**
      * @return The list of object key name prefix identifying one or more objects to which the rule applies.
+     * 
+     * `NOTE`: The prefix must be less than or equal to 1024 characters in length.
      * 
      */
     public Output<List<String>> prefixes() {
@@ -56,6 +60,8 @@ public final class BucketReplicationPrefixSetArgs extends com.pulumi.resources.R
         /**
          * @param prefixes The list of object key name prefix identifying one or more objects to which the rule applies.
          * 
+         * `NOTE`: The prefix must be less than or equal to 1024 characters in length.
+         * 
          * @return builder
          * 
          */
@@ -67,6 +73,8 @@ public final class BucketReplicationPrefixSetArgs extends com.pulumi.resources.R
         /**
          * @param prefixes The list of object key name prefix identifying one or more objects to which the rule applies.
          * 
+         * `NOTE`: The prefix must be less than or equal to 1024 characters in length.
+         * 
          * @return builder
          * 
          */
@@ -76,6 +84,8 @@ public final class BucketReplicationPrefixSetArgs extends com.pulumi.resources.R
 
         /**
          * @param prefixes The list of object key name prefix identifying one or more objects to which the rule applies.
+         * 
+         * `NOTE`: The prefix must be less than or equal to 1024 characters in length.
          * 
          * @return builder
          * 

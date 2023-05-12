@@ -65,6 +65,8 @@ type MscSubContract struct {
 	// The User's Telephone.
 	Mobile pulumi.StringOutput `pulumi:"mobile"`
 	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+	//
+	// > **NOTE:** When the user creates a contact, the user should use `getMscSubContactVerificationMessage` to receive the verification message and confirm it.
 	Position pulumi.StringOutput `pulumi:"position"`
 }
 
@@ -116,6 +118,8 @@ type mscSubContractState struct {
 	// The User's Telephone.
 	Mobile *string `pulumi:"mobile"`
 	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+	//
+	// > **NOTE:** When the user creates a contact, the user should use `getMscSubContactVerificationMessage` to receive the verification message and confirm it.
 	Position *string `pulumi:"position"`
 }
 
@@ -127,6 +131,8 @@ type MscSubContractState struct {
 	// The User's Telephone.
 	Mobile pulumi.StringPtrInput
 	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+	//
+	// > **NOTE:** When the user creates a contact, the user should use `getMscSubContactVerificationMessage` to receive the verification message and confirm it.
 	Position pulumi.StringPtrInput
 }
 
@@ -142,6 +148,8 @@ type mscSubContractArgs struct {
 	// The User's Telephone.
 	Mobile string `pulumi:"mobile"`
 	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+	//
+	// > **NOTE:** When the user creates a contact, the user should use `getMscSubContactVerificationMessage` to receive the verification message and confirm it.
 	Position string `pulumi:"position"`
 }
 
@@ -154,6 +162,8 @@ type MscSubContractArgs struct {
 	// The User's Telephone.
 	Mobile pulumi.StringInput
 	// The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+	//
+	// > **NOTE:** When the user creates a contact, the user should use `getMscSubContactVerificationMessage` to receive the verification message and confirm it.
 	Position pulumi.StringInput
 }
 
@@ -260,6 +270,8 @@ func (o MscSubContractOutput) Mobile() pulumi.StringOutput {
 }
 
 // The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+//
+// > **NOTE:** When the user creates a contact, the user should use `getMscSubContactVerificationMessage` to receive the verification message and confirm it.
 func (o MscSubContractOutput) Position() pulumi.StringOutput {
 	return o.ApplyT(func(v *MscSubContract) pulumi.StringOutput { return v.Position }).(pulumi.StringOutput)
 }

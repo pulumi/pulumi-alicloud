@@ -171,6 +171,7 @@ def get_models(group_id: Optional[str] = None,
     :param Sequence[str] ids: A list of Model IDs.
     :param str model_name: The name of the Model.
     :param str name_regex: A regex string to filter results by Model name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['groupId'] = group_id
@@ -230,5 +231,6 @@ def get_models_output(group_id: Optional[pulumi.Input[str]] = None,
     :param Sequence[str] ids: A list of Model IDs.
     :param str model_name: The name of the Model.
     :param str name_regex: A regex string to filter results by Model name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

@@ -14,22 +14,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGlobalDatabaseNetworksResult {
-    private @Nullable String dbClusterId;
-    private @Nullable String description;
-    private @Nullable String gdnId;
+    private final @Nullable String dbClusterId;
+    private final @Nullable String description;
+    private final @Nullable String gdnId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private List<GetGlobalDatabaseNetworksNetwork> networks;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
-    private @Nullable String status;
+    private final String id;
+    private final List<String> ids;
+    private final List<GetGlobalDatabaseNetworksNetwork> networks;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
+    private final @Nullable String status;
 
-    private GetGlobalDatabaseNetworksResult() {}
+    @CustomType.Constructor
+    private GetGlobalDatabaseNetworksResult(
+        @CustomType.Parameter("dbClusterId") @Nullable String dbClusterId,
+        @CustomType.Parameter("description") @Nullable String description,
+        @CustomType.Parameter("gdnId") @Nullable String gdnId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("networks") List<GetGlobalDatabaseNetworksNetwork> networks,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.dbClusterId = dbClusterId;
+        this.description = description;
+        this.gdnId = gdnId;
+        this.id = id;
+        this.ids = ids;
+        this.networks = networks;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+        this.status = status;
+    }
+
     public Optional<String> dbClusterId() {
         return Optional.ofNullable(this.dbClusterId);
     }
@@ -72,7 +95,7 @@ public final class GetGlobalDatabaseNetworksResult {
     public static Builder builder(GetGlobalDatabaseNetworksResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String dbClusterId;
         private @Nullable String description;
@@ -84,7 +107,11 @@ public final class GetGlobalDatabaseNetworksResult {
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetGlobalDatabaseNetworksResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbClusterId = defaults.dbClusterId;
@@ -99,27 +126,22 @@ public final class GetGlobalDatabaseNetworksResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder dbClusterId(@Nullable String dbClusterId) {
             this.dbClusterId = dbClusterId;
             return this;
         }
-        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
-        @CustomType.Setter
         public Builder gdnId(@Nullable String gdnId) {
             this.gdnId = gdnId;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -127,7 +149,6 @@ public final class GetGlobalDatabaseNetworksResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder networks(List<GetGlobalDatabaseNetworksNetwork> networks) {
             this.networks = Objects.requireNonNull(networks);
             return this;
@@ -135,39 +156,23 @@ public final class GetGlobalDatabaseNetworksResult {
         public Builder networks(GetGlobalDatabaseNetworksNetwork... networks) {
             return networks(List.of(networks));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetGlobalDatabaseNetworksResult build() {
-            final var o = new GetGlobalDatabaseNetworksResult();
-            o.dbClusterId = dbClusterId;
-            o.description = description;
-            o.gdnId = gdnId;
-            o.id = id;
-            o.ids = ids;
-            o.networks = networks;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.status = status;
-            return o;
+        }        public GetGlobalDatabaseNetworksResult build() {
+            return new GetGlobalDatabaseNetworksResult(dbClusterId, description, gdnId, id, ids, networks, outputFile, pageNumber, pageSize, status);
         }
     }
 }

@@ -44,6 +44,9 @@ export interface GetGroupsArgs {
      * A regex string to filter the returned groups by their names.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Filter the results by a specific policy name. If you set this parameter without setting `policyType`, it will be automatically set to `System`.
@@ -110,6 +113,9 @@ export interface GetGroupsOutputArgs {
      * A regex string to filter the returned groups by their names.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Filter the results by a specific policy name. If you set this parameter without setting `policyType`, it will be automatically set to `System`.

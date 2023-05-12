@@ -10,6 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:** This resource has been renamed to ecs.EcsKeyPair from version 1.121.0.
+//
+// Provides a key pair resource.
+//
 // ## Example Usage
 //
 // # Basic Usage

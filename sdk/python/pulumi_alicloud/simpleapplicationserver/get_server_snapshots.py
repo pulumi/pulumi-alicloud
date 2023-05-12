@@ -154,6 +154,7 @@ def get_server_snapshots(disk_id: Optional[str] = None,
     :param Sequence[str] ids: A list of Snapshot IDs.
     :param str instance_id: The ID of the simple application server.
     :param str name_regex: A regex string to filter results by Snapshot name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the snapshots. Valid values: `Progressing`, `Accomplished` and `Failed`.
     """
     __args__ = dict()
@@ -216,6 +217,7 @@ def get_server_snapshots_output(disk_id: Optional[pulumi.Input[Optional[str]]] =
     :param Sequence[str] ids: A list of Snapshot IDs.
     :param str instance_id: The ID of the simple application server.
     :param str name_regex: A regex string to filter results by Snapshot name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the snapshots. Valid values: `Progressing`, `Accomplished` and `Failed`.
     """
     ...

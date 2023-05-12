@@ -15,69 +15,98 @@ public final class GetHanaInstancesInstance {
      * @return The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
      * 
      */
-    private String alertSetting;
+    private final String alertSetting;
     /**
      * @return The ID of the SAP HANA instance.
      * 
      */
-    private String hanaInstanceId;
+    private final String hanaInstanceId;
     /**
      * @return The name of the SAP HANA instance.
      * 
      */
-    private String hanaName;
+    private final String hanaName;
     /**
      * @return The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
      * 
      */
-    private String host;
+    private final String host;
     /**
      * @return The ID of the Hana Instance. The value formats as `&lt;vault_id&gt;:&lt;hana_instance_id&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The instance number of the SAP HANA system.
      * 
      */
-    private Integer instanceNumber;
+    private final Integer instanceNumber;
     /**
      * @return The ID of the resource group.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return The status of the SAP HANA instance.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The status information.
      * 
      */
-    private String statusMessage;
+    private final String statusMessage;
     /**
      * @return Indicates whether the SAP HANA instance is connected over Secure Sockets Layer (SSL).
      * 
      */
-    private Boolean useSsl;
+    private final Boolean useSsl;
     /**
      * @return The username of the SYSTEMDB database.
      * 
      */
-    private String userName;
+    private final String userName;
     /**
      * @return Indicates whether the SSL certificate of the SAP HANA instance is verified.
      * 
      */
-    private Boolean validateCertificate;
+    private final Boolean validateCertificate;
     /**
      * @return The ID of the backup vault.
      * 
      */
-    private String vaultId;
+    private final String vaultId;
 
-    private GetHanaInstancesInstance() {}
+    @CustomType.Constructor
+    private GetHanaInstancesInstance(
+        @CustomType.Parameter("alertSetting") String alertSetting,
+        @CustomType.Parameter("hanaInstanceId") String hanaInstanceId,
+        @CustomType.Parameter("hanaName") String hanaName,
+        @CustomType.Parameter("host") String host,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceNumber") Integer instanceNumber,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("statusMessage") String statusMessage,
+        @CustomType.Parameter("useSsl") Boolean useSsl,
+        @CustomType.Parameter("userName") String userName,
+        @CustomType.Parameter("validateCertificate") Boolean validateCertificate,
+        @CustomType.Parameter("vaultId") String vaultId) {
+        this.alertSetting = alertSetting;
+        this.hanaInstanceId = hanaInstanceId;
+        this.hanaName = hanaName;
+        this.host = host;
+        this.id = id;
+        this.instanceNumber = instanceNumber;
+        this.resourceGroupId = resourceGroupId;
+        this.status = status;
+        this.statusMessage = statusMessage;
+        this.useSsl = useSsl;
+        this.userName = userName;
+        this.validateCertificate = validateCertificate;
+        this.vaultId = vaultId;
+    }
+
     /**
      * @return The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
      * 
@@ -177,7 +206,7 @@ public final class GetHanaInstancesInstance {
     public static Builder builder(GetHanaInstancesInstance defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String alertSetting;
         private String hanaInstanceId;
@@ -192,7 +221,11 @@ public final class GetHanaInstancesInstance {
         private String userName;
         private Boolean validateCertificate;
         private String vaultId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetHanaInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alertSetting = defaults.alertSetting;
@@ -210,87 +243,59 @@ public final class GetHanaInstancesInstance {
     	      this.vaultId = defaults.vaultId;
         }
 
-        @CustomType.Setter
         public Builder alertSetting(String alertSetting) {
             this.alertSetting = Objects.requireNonNull(alertSetting);
             return this;
         }
-        @CustomType.Setter
         public Builder hanaInstanceId(String hanaInstanceId) {
             this.hanaInstanceId = Objects.requireNonNull(hanaInstanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder hanaName(String hanaName) {
             this.hanaName = Objects.requireNonNull(hanaName);
             return this;
         }
-        @CustomType.Setter
         public Builder host(String host) {
             this.host = Objects.requireNonNull(host);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceNumber(Integer instanceNumber) {
             this.instanceNumber = Objects.requireNonNull(instanceNumber);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder statusMessage(String statusMessage) {
             this.statusMessage = Objects.requireNonNull(statusMessage);
             return this;
         }
-        @CustomType.Setter
         public Builder useSsl(Boolean useSsl) {
             this.useSsl = Objects.requireNonNull(useSsl);
             return this;
         }
-        @CustomType.Setter
         public Builder userName(String userName) {
             this.userName = Objects.requireNonNull(userName);
             return this;
         }
-        @CustomType.Setter
         public Builder validateCertificate(Boolean validateCertificate) {
             this.validateCertificate = Objects.requireNonNull(validateCertificate);
             return this;
         }
-        @CustomType.Setter
         public Builder vaultId(String vaultId) {
             this.vaultId = Objects.requireNonNull(vaultId);
             return this;
-        }
-        public GetHanaInstancesInstance build() {
-            final var o = new GetHanaInstancesInstance();
-            o.alertSetting = alertSetting;
-            o.hanaInstanceId = hanaInstanceId;
-            o.hanaName = hanaName;
-            o.host = host;
-            o.id = id;
-            o.instanceNumber = instanceNumber;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.statusMessage = statusMessage;
-            o.useSsl = useSsl;
-            o.userName = userName;
-            o.validateCertificate = validateCertificate;
-            o.vaultId = vaultId;
-            return o;
+        }        public GetHanaInstancesInstance build() {
+            return new GetHanaInstancesInstance(alertSetting, hanaInstanceId, hanaName, host, id, instanceNumber, resourceGroupId, status, statusMessage, useSsl, userName, validateCertificate, vaultId);
         }
     }
 }

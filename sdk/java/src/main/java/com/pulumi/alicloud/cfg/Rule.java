@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cfg;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cfg.RuleArgs;
 import com.pulumi.alicloud.cfg.inputs.RuleState;
+import com.pulumi.alicloud.cfg.outputs.RuleCompliance;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -19,16 +20,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a a Alicloud Config Rule resource. Cloud Config checks the validity of resources based on rules. You can create rules to evaluate resources as needed.
- * For information about Alicloud Config Rule and how to use it, see [What is Alicloud Config Rule](https://www.alibabacloud.com/help/doc-detail/154216.html).
+ * Provides a Config Rule resource.
  * 
- * &gt; **NOTE:** Available in v1.99.0+.
+ * For information about Config Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/).
  * 
- * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
- * 
- * &gt; **NOTE:** If you use custom rules, you need to create your own rule functions in advance. Please refer to the link for [Create a custom rule.](https://www.alibabacloud.com/help/en/doc-detail/127405.htm)
+ * &gt; **NOTE:** Available in v1.204.0+.
  * 
  * ## Example Usage
+ * 
+ * Basic Usage
  * ```java
  * package generated_program;
  * 
@@ -50,15 +50,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Rule(&#34;example&#34;, RuleArgs.builder()        
+ *         var default_ = new Rule(&#34;default&#34;, RuleArgs.builder()        
  *             .configRuleTriggerTypes(&#34;ConfigurationItemChangeNotification&#34;)
- *             .description(&#34;ecs instances in vpc&#34;)
- *             .inputParameters(Map.of(&#34;vpcIds&#34;, &#34;vpc-uf6gksw4ctjd******&#34;))
- *             .resourceTypesScopes(&#34;ACS::ECS::Instance&#34;)
+ *             .description(&#34;关联的资源类型下实体资源均已有指定标签，存在没有指定标签的资源则视为“不合规”。&#34;)
+ *             .excludeResourceIdsScope(&#34;test&#34;)
+ *             .inputParameters(Map.ofEntries(
+ *                 Map.entry(&#34;foo&#34;, &#34;terraform&#34;),
+ *                 Map.entry(&#34;var&#34;, &#34;terraform&#34;)
+ *             ))
+ *             .regionIdsScope(&#34;cn-hangzhou&#34;)
+ *             .resourceGroupIdsScope(&#34;rg-acfmvoh45rhcfly&#34;)
+ *             .resourceTypesScopes(&#34;ACS::RDS::DBInstance&#34;)
  *             .riskLevel(1)
- *             .ruleName(&#34;instances-in-vpc&#34;)
- *             .sourceIdentifier(&#34;ecs-instances-in-vpc&#34;)
+ *             .ruleName(&#34;tf-cicd-rule-by-required-tags&#34;)
+ *             .sourceIdentifier(&#34;required-tags&#34;)
  *             .sourceOwner(&#34;ALIYUN&#34;)
+ *             .tagKeyScope(&#34;test&#34;)
+ *             .tagValueScope(&#34;test&#34;)
  *             .build());
  * 
  *     }
@@ -67,84 +75,196 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Alicloud Config Rule can be imported using the id, e.g.
+ * Config Rule can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cfg/rule:Rule this cr-ed4bad756057********
+ *  $ pulumi import alicloud:cfg/rule:Rule example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:cfg/rule:Rule")
 public class Rule extends com.pulumi.resources.CustomResource {
     /**
-     * The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+     * The ID of Alicloud account.
+     * 
+     */
+    @Export(name="accountId", type=Integer.class, parameters={})
+    private Output<Integer> accountId;
+
+    /**
+     * @return The ID of Alicloud account.
+     * 
+     */
+    public Output<Integer> accountId() {
+        return this.accountId;
+    }
+    /**
+     * compliance information.
+     * 
+     */
+    @Export(name="compliance", type=RuleCompliance.class, parameters={})
+    private Output<RuleCompliance> compliance;
+
+    /**
+     * @return compliance information.
+     * 
+     */
+    public Output<RuleCompliance> compliance() {
+        return this.compliance;
+    }
+    /**
+     * Compliance Package ID.
+     * 
+     */
+    @Export(name="compliancePackId", type=String.class, parameters={})
+    private Output<String> compliancePackId;
+
+    /**
+     * @return Compliance Package ID.
+     * 
+     */
+    public Output<String> compliancePackId() {
+        return this.compliancePackId;
+    }
+    /**
+     * config rule arn.
+     * 
+     */
+    @Export(name="configRuleArn", type=String.class, parameters={})
+    private Output<String> configRuleArn;
+
+    /**
+     * @return config rule arn.
+     * 
+     */
+    public Output<String> configRuleArn() {
+        return this.configRuleArn;
+    }
+    /**
+     * The ID of the rule.
+     * 
+     */
+    @Export(name="configRuleId", type=String.class, parameters={})
+    private Output<String> configRuleId;
+
+    /**
+     * @return The ID of the rule.
+     * 
+     */
+    public Output<String> configRuleId() {
+        return this.configRuleId;
+    }
+    /**
+     * The trigger type of the rule. Valid values:  `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
      * 
      */
     @Export(name="configRuleTriggerTypes", type=String.class, parameters={})
     private Output<String> configRuleTriggerTypes;
 
     /**
-     * @return The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+     * @return The trigger type of the rule. Valid values:  `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
      * 
      */
     public Output<String> configRuleTriggerTypes() {
         return this.configRuleTriggerTypes;
     }
     /**
-     * The description of the Config Rule.
+     * The timestamp when the rule was created.
+     * 
+     */
+    @Export(name="createTime", type=Integer.class, parameters={})
+    private Output<Integer> createTime;
+
+    /**
+     * @return The timestamp when the rule was created.
+     * 
+     */
+    public Output<Integer> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The description of the rule.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the Config Rule.
+     * @return The description of the rule.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, custom rule this field is empty.
+     * The event source of the rule.
+     * 
+     */
+    @Export(name="eventSource", type=String.class, parameters={})
+    private Output<String> eventSource;
+
+    /**
+     * @return The event source of the rule.
+     * 
+     */
+    public Output<String> eventSource() {
+        return this.eventSource;
+    }
+    /**
+     * The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
      * 
      */
     @Export(name="excludeResourceIdsScope", type=String.class, parameters={})
     private Output</* @Nullable */ String> excludeResourceIdsScope;
 
     /**
-     * @return The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, custom rule this field is empty.
+     * @return The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
      * 
      */
     public Output<Optional<String>> excludeResourceIdsScope() {
         return Codegen.optional(this.excludeResourceIdsScope);
     }
     /**
-     * Threshold value for managed rule triggering.
+     * The settings of the input parameters for the rule.
      * 
      */
     @Export(name="inputParameters", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> inputParameters;
 
     /**
-     * @return Threshold value for managed rule triggering.
+     * @return The settings of the input parameters for the rule.
      * 
      */
     public Output<Optional<Map<String,Object>>> inputParameters() {
         return Codegen.optional(this.inputParameters);
     }
     /**
-     * The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
+     * The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
      * 
      */
     @Export(name="maximumExecutionFrequency", type=String.class, parameters={})
     private Output<String> maximumExecutionFrequency;
 
     /**
-     * @return The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
+     * @return The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
      * 
      */
     public Output<String> maximumExecutionFrequency() {
         return this.maximumExecutionFrequency;
+    }
+    /**
+     * The timestamp when the rule was last modified.
+     * 
+     */
+    @Export(name="modifiedTimestamp", type=Integer.class, parameters={})
+    private Output<Integer> modifiedTimestamp;
+
+    /**
+     * @return The timestamp when the rule was last modified.
+     * 
+     */
+    public Output<Integer> modifiedTimestamp() {
+        return this.modifiedTimestamp;
     }
     /**
      * The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
@@ -175,67 +295,67 @@ public class Rule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.resourceGroupIdsScope);
     }
     /**
-     * Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+     * The types of the resources to be evaluated against the rule.
      * 
      */
     @Export(name="resourceTypesScopes", type=List.class, parameters={String.class})
     private Output<List<String>> resourceTypesScopes;
 
     /**
-     * @return Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+     * @return The types of the resources to be evaluated against the rule.
      * 
      */
     public Output<List<String>> resourceTypesScopes() {
         return this.resourceTypesScopes;
     }
     /**
-     * The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+     * The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info
      * 
      */
     @Export(name="riskLevel", type=Integer.class, parameters={})
     private Output<Integer> riskLevel;
 
     /**
-     * @return The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+     * @return The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info
      * 
      */
     public Output<Integer> riskLevel() {
         return this.riskLevel;
     }
     /**
-     * The name of the Config Rule.
+     * The name of the rule.
      * 
      */
     @Export(name="ruleName", type=String.class, parameters={})
     private Output<String> ruleName;
 
     /**
-     * @return The name of the Config Rule.
+     * @return The name of the rule.
      * 
      */
     public Output<String> ruleName() {
         return this.ruleName;
     }
     /**
-     * Field `scope_compliance_resource_types` has been deprecated from provider version 1.124.1. New field `resource_types_scope` instead.
+     * Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
      * 
      * @deprecated
      * Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
      * 
      */
     @Deprecated /* Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead. */
-    @Export(name="scopeComplianceResourceTypes", type=List.class, parameters={String.class})
-    private Output<List<String>> scopeComplianceResourceTypes;
+    @Export(name="scopeComplianceResourceTypes", type=String.class, parameters={})
+    private Output<String> scopeComplianceResourceTypes;
 
     /**
-     * @return Field `scope_compliance_resource_types` has been deprecated from provider version 1.124.1. New field `resource_types_scope` instead.
+     * @return Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
      * 
      */
-    public Output<List<String>> scopeComplianceResourceTypes() {
+    public Output<String> scopeComplianceResourceTypes() {
         return this.scopeComplianceResourceTypes;
     }
     /**
-     * Field `source_detail_message_type` has been deprecated from provider version 1.124.1. New field `config_rule_trigger_types` instead.
+     * Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
      * 
      * @deprecated
      * Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
@@ -246,28 +366,28 @@ public class Rule extends com.pulumi.resources.CustomResource {
     private Output<String> sourceDetailMessageType;
 
     /**
-     * @return Field `source_detail_message_type` has been deprecated from provider version 1.124.1. New field `config_rule_trigger_types` instead.
+     * @return Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
      * 
      */
     public Output<String> sourceDetailMessageType() {
         return this.sourceDetailMessageType;
     }
     /**
-     * The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+     * The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
      * 
      */
     @Export(name="sourceIdentifier", type=String.class, parameters={})
     private Output<String> sourceIdentifier;
 
     /**
-     * @return The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+     * @return The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
      * 
      */
     public Output<String> sourceIdentifier() {
         return this.sourceIdentifier;
     }
     /**
-     * Field `source_maximum_execution_frequency` has been deprecated from provider version 1.124.1. New field `maximum_execution_frequency` instead.
+     * Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
      * 
      * @deprecated
      * Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
@@ -278,35 +398,35 @@ public class Rule extends com.pulumi.resources.CustomResource {
     private Output<String> sourceMaximumExecutionFrequency;
 
     /**
-     * @return Field `source_maximum_execution_frequency` has been deprecated from provider version 1.124.1. New field `maximum_execution_frequency` instead.
+     * @return Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
      * 
      */
     public Output<String> sourceMaximumExecutionFrequency() {
         return this.sourceMaximumExecutionFrequency;
     }
     /**
-     * Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
+     * Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values:  `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule
      * 
      */
     @Export(name="sourceOwner", type=String.class, parameters={})
     private Output<String> sourceOwner;
 
     /**
-     * @return Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
+     * @return Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values:  `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule
      * 
      */
     public Output<String> sourceOwner() {
         return this.sourceOwner;
     }
     /**
-     * The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+     * The status of the rule. Valid values: ACTIVE: The rule is monitoring the configurations of target resources. DELETING_RESULTS: The compliance evaluation result returned by the rule is being deleted. EVALUATING: The rule is triggered and is evaluating whether the configurations of target resources are compliant. INACTIVE: The rule is disabled from monitoring the configurations of target resources.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+     * @return The status of the rule. Valid values: ACTIVE: The rule is monitoring the configurations of target resources. DELETING_RESULTS: The compliance evaluation result returned by the rule is being deleted. EVALUATING: The rule is triggered and is evaluating whether the configurations of target resources are compliant. INACTIVE: The rule is disabled from monitoring the configurations of target resources.
      * 
      */
     public Output<String> status() {
@@ -327,14 +447,18 @@ public class Rule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tagKeyScope);
     }
     /**
-     * The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
+     * The rule monitors the tag value, only applies to rules created based on managed rules.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Export(name="tagValueScope", type=String.class, parameters={})
     private Output</* @Nullable */ String> tagValueScope;
 
     /**
-     * @return The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
+     * @return The rule monitors the tag value, only applies to rules created based on managed rules.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<Optional<String>> tagValueScope() {

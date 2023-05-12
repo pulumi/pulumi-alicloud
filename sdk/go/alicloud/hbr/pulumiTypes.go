@@ -561,6 +561,8 @@ type GetBackupJobsFilter struct {
 	// The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
 	Operator *string `pulumi:"operator"`
 	// Set of values that are accepted for the given field.
+	//
+	// > **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
 	Values []string `pulumi:"values"`
 }
 
@@ -581,6 +583,8 @@ type GetBackupJobsFilterArgs struct {
 	// The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// Set of values that are accepted for the given field.
+	//
+	// > **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -646,6 +650,8 @@ func (o GetBackupJobsFilterOutput) Operator() pulumi.StringPtrOutput {
 }
 
 // Set of values that are accepted for the given field.
+//
+// > **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
 func (o GetBackupJobsFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBackupJobsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }

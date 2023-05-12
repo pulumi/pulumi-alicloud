@@ -28,7 +28,8 @@ type GetHostEcsLevelInfosArgs struct {
 	DbType string `pulumi:"dbType"`
 	// Host image. Valid values: `WindowsWithMssqlEntAlwaysonLicense`, `WindowsWithMssqlStdLicense`, `WindowsWithMssqlEntLicense`, `WindowsWithMssqlWebLicense`, `AliLinux`.
 	ImageCategory *string `pulumi:"imageCategory"`
-	OutputFile    *string `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The storage type of the host ecs level info. Valid values: `localSsd`, `cloudEssd`, `cloudEssd2`, `cloudEssd3`.
 	StorageType string `pulumi:"storageType"`
 	// The ID of the zone in the region.
@@ -66,7 +67,8 @@ type GetHostEcsLevelInfosOutputArgs struct {
 	DbType pulumi.StringInput `pulumi:"dbType"`
 	// Host image. Valid values: `WindowsWithMssqlEntAlwaysonLicense`, `WindowsWithMssqlStdLicense`, `WindowsWithMssqlEntLicense`, `WindowsWithMssqlWebLicense`, `AliLinux`.
 	ImageCategory pulumi.StringPtrInput `pulumi:"imageCategory"`
-	OutputFile    pulumi.StringPtrInput `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The storage type of the host ecs level info. Valid values: `localSsd`, `cloudEssd`, `cloudEssd2`, `cloudEssd3`.
 	StorageType pulumi.StringInput `pulumi:"storageType"`
 	// The ID of the zone in the region.

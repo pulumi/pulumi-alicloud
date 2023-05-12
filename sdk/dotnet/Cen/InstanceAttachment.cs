@@ -62,6 +62,8 @@ namespace Pulumi.AliCloud.Cen
     {
         /// <summary>
         /// The account ID to which the CEN instance belongs.
+        /// 
+        /// -&gt;**NOTE:** Ensure that the child instance is not used in Express Connect.
         /// </summary>
         [Output("cenOwnerId")]
         public Output<int?> CenOwnerId { get; private set; } = null!;
@@ -150,6 +152,8 @@ namespace Pulumi.AliCloud.Cen
     {
         /// <summary>
         /// The account ID to which the CEN instance belongs.
+        /// 
+        /// -&gt;**NOTE:** Ensure that the child instance is not used in Express Connect.
         /// </summary>
         [Input("cenOwnerId")]
         public Input<int>? CenOwnerId { get; set; }
@@ -194,6 +198,8 @@ namespace Pulumi.AliCloud.Cen
     {
         /// <summary>
         /// The account ID to which the CEN instance belongs.
+        /// 
+        /// -&gt;**NOTE:** Ensure that the child instance is not used in Express Connect.
         /// </summary>
         [Input("cenOwnerId")]
         public Input<int>? CenOwnerId { get; set; }

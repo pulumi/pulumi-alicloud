@@ -15,9 +15,13 @@ public final class AccessStrategyLine {
      * @return The line code of the source region.
      * 
      */
-    private @Nullable String lineCode;
+    private final @Nullable String lineCode;
 
-    private AccessStrategyLine() {}
+    @CustomType.Constructor
+    private AccessStrategyLine(@CustomType.Parameter("lineCode") @Nullable String lineCode) {
+        this.lineCode = lineCode;
+    }
+
     /**
      * @return The line code of the source region.
      * 
@@ -33,24 +37,24 @@ public final class AccessStrategyLine {
     public static Builder builder(AccessStrategyLine defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String lineCode;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(AccessStrategyLine defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.lineCode = defaults.lineCode;
         }
 
-        @CustomType.Setter
         public Builder lineCode(@Nullable String lineCode) {
             this.lineCode = lineCode;
             return this;
-        }
-        public AccessStrategyLine build() {
-            final var o = new AccessStrategyLine();
-            o.lineCode = lineCode;
-            return o;
+        }        public AccessStrategyLine build() {
+            return new AccessStrategyLine(lineCode);
         }
     }
 }

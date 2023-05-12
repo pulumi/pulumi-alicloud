@@ -13,39 +13,56 @@ public final class GetGroupsGroup {
      * @return The Created Time of the Directory.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The Description of the Directory.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the Directory.
      * 
      */
-    private String directoryId;
+    private final String directoryId;
     /**
      * @return The Group ID of the group.
      * 
      */
-    private String groupId;
+    private final String groupId;
     /**
      * @return The Name of the group.
      * 
      */
-    private String groupName;
+    private final String groupName;
     /**
      * @return The ID of the Group.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
      * 
      */
-    private String provisionType;
+    private final String provisionType;
 
-    private GetGroupsGroup() {}
+    @CustomType.Constructor
+    private GetGroupsGroup(
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("directoryId") String directoryId,
+        @CustomType.Parameter("groupId") String groupId,
+        @CustomType.Parameter("groupName") String groupName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("provisionType") String provisionType) {
+        this.createTime = createTime;
+        this.description = description;
+        this.directoryId = directoryId;
+        this.groupId = groupId;
+        this.groupName = groupName;
+        this.id = id;
+        this.provisionType = provisionType;
+    }
+
     /**
      * @return The Created Time of the Directory.
      * 
@@ -103,7 +120,7 @@ public final class GetGroupsGroup {
     public static Builder builder(GetGroupsGroup defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String createTime;
         private String description;
@@ -112,7 +129,11 @@ public final class GetGroupsGroup {
         private String groupName;
         private String id;
         private String provisionType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -124,51 +145,35 @@ public final class GetGroupsGroup {
     	      this.provisionType = defaults.provisionType;
         }
 
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder directoryId(String directoryId) {
             this.directoryId = Objects.requireNonNull(directoryId);
             return this;
         }
-        @CustomType.Setter
         public Builder groupId(String groupId) {
             this.groupId = Objects.requireNonNull(groupId);
             return this;
         }
-        @CustomType.Setter
         public Builder groupName(String groupName) {
             this.groupName = Objects.requireNonNull(groupName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder provisionType(String provisionType) {
             this.provisionType = Objects.requireNonNull(provisionType);
             return this;
-        }
-        public GetGroupsGroup build() {
-            final var o = new GetGroupsGroup();
-            o.createTime = createTime;
-            o.description = description;
-            o.directoryId = directoryId;
-            o.groupId = groupId;
-            o.groupName = groupName;
-            o.id = id;
-            o.provisionType = provisionType;
-            return o;
+        }        public GetGroupsGroup build() {
+            return new GetGroupsGroup(createTime, description, directoryId, groupId, groupName, id, provisionType);
         }
     }
 }

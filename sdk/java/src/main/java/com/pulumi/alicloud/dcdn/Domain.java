@@ -11,8 +11,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -72,7 +74,7 @@ import javax.annotation.Nullable;
  * DCDN Domain can be imported using the id or DCDN Domain name, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:dcdn/domain:Domain example example.com
+ *  $ pulumi import alicloud:dcdn/domain:Domain example &lt;id&gt;
  * ```
  * 
  */
@@ -279,6 +281,20 @@ public class Domain extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> status() {
         return Codegen.optional(this.status);
+    }
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The top-level domain name.

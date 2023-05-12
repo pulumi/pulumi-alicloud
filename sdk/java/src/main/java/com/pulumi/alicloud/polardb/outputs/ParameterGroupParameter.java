@@ -13,14 +13,21 @@ public final class ParameterGroupParameter {
      * @return The name of a parameter in the parameter template.
      * 
      */
-    private String paramName;
+    private final String paramName;
     /**
      * @return The value of a parameter in the parameter template.
      * 
      */
-    private String paramValue;
+    private final String paramValue;
 
-    private ParameterGroupParameter() {}
+    @CustomType.Constructor
+    private ParameterGroupParameter(
+        @CustomType.Parameter("paramName") String paramName,
+        @CustomType.Parameter("paramValue") String paramValue) {
+        this.paramName = paramName;
+        this.paramValue = paramValue;
+    }
+
     /**
      * @return The name of a parameter in the parameter template.
      * 
@@ -43,32 +50,30 @@ public final class ParameterGroupParameter {
     public static Builder builder(ParameterGroupParameter defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String paramName;
         private String paramValue;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ParameterGroupParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.paramName = defaults.paramName;
     	      this.paramValue = defaults.paramValue;
         }
 
-        @CustomType.Setter
         public Builder paramName(String paramName) {
             this.paramName = Objects.requireNonNull(paramName);
             return this;
         }
-        @CustomType.Setter
         public Builder paramValue(String paramValue) {
             this.paramValue = Objects.requireNonNull(paramValue);
             return this;
-        }
-        public ParameterGroupParameter build() {
-            final var o = new ParameterGroupParameter();
-            o.paramName = paramName;
-            o.paramValue = paramValue;
-            return o;
+        }        public ParameterGroupParameter build() {
+            return new ParameterGroupParameter(paramName, paramValue);
         }
     }
 }

@@ -17,14 +17,29 @@ public final class GetListenersResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String listenerProtocol;
-    private List<GetListenersListener> listeners;
-    private @Nullable List<String> loadBalancerIds;
-    private @Nullable String outputFile;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String listenerProtocol;
+    private final List<GetListenersListener> listeners;
+    private final @Nullable List<String> loadBalancerIds;
+    private final @Nullable String outputFile;
 
-    private GetListenersResult() {}
+    @CustomType.Constructor
+    private GetListenersResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("listenerProtocol") @Nullable String listenerProtocol,
+        @CustomType.Parameter("listeners") List<GetListenersListener> listeners,
+        @CustomType.Parameter("loadBalancerIds") @Nullable List<String> loadBalancerIds,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.id = id;
+        this.ids = ids;
+        this.listenerProtocol = listenerProtocol;
+        this.listeners = listeners;
+        this.loadBalancerIds = loadBalancerIds;
+        this.outputFile = outputFile;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -55,7 +70,7 @@ public final class GetListenersResult {
     public static Builder builder(GetListenersResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -63,7 +78,11 @@ public final class GetListenersResult {
         private List<GetListenersListener> listeners;
         private @Nullable List<String> loadBalancerIds;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetListenersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -74,12 +93,10 @@ public final class GetListenersResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -87,12 +104,10 @@ public final class GetListenersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder listenerProtocol(@Nullable String listenerProtocol) {
             this.listenerProtocol = listenerProtocol;
             return this;
         }
-        @CustomType.Setter
         public Builder listeners(List<GetListenersListener> listeners) {
             this.listeners = Objects.requireNonNull(listeners);
             return this;
@@ -100,7 +115,6 @@ public final class GetListenersResult {
         public Builder listeners(GetListenersListener... listeners) {
             return listeners(List.of(listeners));
         }
-        @CustomType.Setter
         public Builder loadBalancerIds(@Nullable List<String> loadBalancerIds) {
             this.loadBalancerIds = loadBalancerIds;
             return this;
@@ -108,20 +122,11 @@ public final class GetListenersResult {
         public Builder loadBalancerIds(String... loadBalancerIds) {
             return loadBalancerIds(List.of(loadBalancerIds));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetListenersResult build() {
-            final var o = new GetListenersResult();
-            o.id = id;
-            o.ids = ids;
-            o.listenerProtocol = listenerProtocol;
-            o.listeners = listeners;
-            o.loadBalancerIds = loadBalancerIds;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetListenersResult build() {
+            return new GetListenersResult(id, ids, listenerProtocol, listeners, loadBalancerIds, outputFile);
         }
     }
 }

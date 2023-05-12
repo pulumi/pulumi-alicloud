@@ -206,12 +206,16 @@ public class LayerVersion extends com.pulumi.resources.CustomResource {
     /**
      * The ZIP package of the function code that is encoded in the Base64 format.
      * 
+     * &gt; **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
+     * 
      */
     @Export(name="zipFile", type=String.class, parameters={})
     private Output</* @Nullable */ String> zipFile;
 
     /**
      * @return The ZIP package of the function code that is encoded in the Base64 format.
+     * 
+     * &gt; **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
      * 
      */
     public Output<Optional<String>> zipFile() {

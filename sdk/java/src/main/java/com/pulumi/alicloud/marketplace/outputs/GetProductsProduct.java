@@ -14,79 +14,112 @@ public final class GetProductsProduct {
      * @return The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
      * 
      */
-    private Integer categoryId;
+    private final Integer categoryId;
     /**
      * @return The code of the product.
      * 
      */
-    private String code;
+    private final String code;
     /**
      * @return The delivery date of the product.
      * 
      */
-    private String deliveryDate;
+    private final String deliveryDate;
     /**
      * @return The delivery way of the product.
      * 
      */
-    private String deliveryWay;
+    private final String deliveryWay;
     /**
      * @return The image URL of the product.
      * 
      */
-    private String imageUrl;
+    private final String imageUrl;
     /**
      * @return The name of the product.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The operation system of the product.
      * 
      */
-    private String operationSystem;
+    private final String operationSystem;
     /**
      * @return The rating information of the product.
      * 
      */
-    private String score;
+    private final String score;
     /**
      * @return The short description of the product.
      * 
      */
-    private String shortDescription;
+    private final String shortDescription;
     /**
      * @return The suggested price of the product.
      * 
      */
-    private String suggestedPrice;
+    private final String suggestedPrice;
     /**
      * @return The supplier id of the product.
      * 
      */
-    private Integer supplierId;
+    private final Integer supplierId;
     /**
      * @return The supplier name of the product.
      * 
      */
-    private String supplierName;
+    private final String supplierName;
     /**
      * @return The tags of the product.
      * 
      */
-    private String tags;
+    private final String tags;
     /**
      * @return The detail page URL of the product.
      * 
      */
-    private String targetUrl;
+    private final String targetUrl;
     /**
      * @return The warranty date of the product.
      * 
      */
-    private String warrantyDate;
+    private final String warrantyDate;
 
-    private GetProductsProduct() {}
+    @CustomType.Constructor
+    private GetProductsProduct(
+        @CustomType.Parameter("categoryId") Integer categoryId,
+        @CustomType.Parameter("code") String code,
+        @CustomType.Parameter("deliveryDate") String deliveryDate,
+        @CustomType.Parameter("deliveryWay") String deliveryWay,
+        @CustomType.Parameter("imageUrl") String imageUrl,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("operationSystem") String operationSystem,
+        @CustomType.Parameter("score") String score,
+        @CustomType.Parameter("shortDescription") String shortDescription,
+        @CustomType.Parameter("suggestedPrice") String suggestedPrice,
+        @CustomType.Parameter("supplierId") Integer supplierId,
+        @CustomType.Parameter("supplierName") String supplierName,
+        @CustomType.Parameter("tags") String tags,
+        @CustomType.Parameter("targetUrl") String targetUrl,
+        @CustomType.Parameter("warrantyDate") String warrantyDate) {
+        this.categoryId = categoryId;
+        this.code = code;
+        this.deliveryDate = deliveryDate;
+        this.deliveryWay = deliveryWay;
+        this.imageUrl = imageUrl;
+        this.name = name;
+        this.operationSystem = operationSystem;
+        this.score = score;
+        this.shortDescription = shortDescription;
+        this.suggestedPrice = suggestedPrice;
+        this.supplierId = supplierId;
+        this.supplierName = supplierName;
+        this.tags = tags;
+        this.targetUrl = targetUrl;
+        this.warrantyDate = warrantyDate;
+    }
+
     /**
      * @return The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
      * 
@@ -200,7 +233,7 @@ public final class GetProductsProduct {
     public static Builder builder(GetProductsProduct defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer categoryId;
         private String code;
@@ -217,7 +250,11 @@ public final class GetProductsProduct {
         private String tags;
         private String targetUrl;
         private String warrantyDate;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetProductsProduct defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.categoryId = defaults.categoryId;
@@ -237,99 +274,67 @@ public final class GetProductsProduct {
     	      this.warrantyDate = defaults.warrantyDate;
         }
 
-        @CustomType.Setter
         public Builder categoryId(Integer categoryId) {
             this.categoryId = Objects.requireNonNull(categoryId);
             return this;
         }
-        @CustomType.Setter
         public Builder code(String code) {
             this.code = Objects.requireNonNull(code);
             return this;
         }
-        @CustomType.Setter
         public Builder deliveryDate(String deliveryDate) {
             this.deliveryDate = Objects.requireNonNull(deliveryDate);
             return this;
         }
-        @CustomType.Setter
         public Builder deliveryWay(String deliveryWay) {
             this.deliveryWay = Objects.requireNonNull(deliveryWay);
             return this;
         }
-        @CustomType.Setter
         public Builder imageUrl(String imageUrl) {
             this.imageUrl = Objects.requireNonNull(imageUrl);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder operationSystem(String operationSystem) {
             this.operationSystem = Objects.requireNonNull(operationSystem);
             return this;
         }
-        @CustomType.Setter
         public Builder score(String score) {
             this.score = Objects.requireNonNull(score);
             return this;
         }
-        @CustomType.Setter
         public Builder shortDescription(String shortDescription) {
             this.shortDescription = Objects.requireNonNull(shortDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder suggestedPrice(String suggestedPrice) {
             this.suggestedPrice = Objects.requireNonNull(suggestedPrice);
             return this;
         }
-        @CustomType.Setter
         public Builder supplierId(Integer supplierId) {
             this.supplierId = Objects.requireNonNull(supplierId);
             return this;
         }
-        @CustomType.Setter
         public Builder supplierName(String supplierName) {
             this.supplierName = Objects.requireNonNull(supplierName);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(String tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
-        @CustomType.Setter
         public Builder targetUrl(String targetUrl) {
             this.targetUrl = Objects.requireNonNull(targetUrl);
             return this;
         }
-        @CustomType.Setter
         public Builder warrantyDate(String warrantyDate) {
             this.warrantyDate = Objects.requireNonNull(warrantyDate);
             return this;
-        }
-        public GetProductsProduct build() {
-            final var o = new GetProductsProduct();
-            o.categoryId = categoryId;
-            o.code = code;
-            o.deliveryDate = deliveryDate;
-            o.deliveryWay = deliveryWay;
-            o.imageUrl = imageUrl;
-            o.name = name;
-            o.operationSystem = operationSystem;
-            o.score = score;
-            o.shortDescription = shortDescription;
-            o.suggestedPrice = suggestedPrice;
-            o.supplierId = supplierId;
-            o.supplierName = supplierName;
-            o.tags = tags;
-            o.targetUrl = targetUrl;
-            o.warrantyDate = warrantyDate;
-            return o;
+        }        public GetProductsProduct build() {
+            return new GetProductsProduct(categoryId, code, deliveryDate, deliveryWay, imageUrl, name, operationSystem, score, shortDescription, suggestedPrice, supplierId, supplierName, tags, targetUrl, warrantyDate);
         }
     }
 }

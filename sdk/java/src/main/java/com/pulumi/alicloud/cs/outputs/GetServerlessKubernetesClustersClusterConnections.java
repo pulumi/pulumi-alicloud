@@ -13,19 +13,28 @@ public final class GetServerlessKubernetesClustersClusterConnections {
      * @return API Server Internet endpoint.
      * 
      */
-    private String apiServerInternet;
+    private final String apiServerInternet;
     /**
      * @return API Server Intranet endpoint.
      * 
      */
-    private String apiServerIntranet;
+    private final String apiServerIntranet;
     /**
      * @return Master node SSH IP address.
      * 
      */
-    private String masterPublicIp;
+    private final String masterPublicIp;
 
-    private GetServerlessKubernetesClustersClusterConnections() {}
+    @CustomType.Constructor
+    private GetServerlessKubernetesClustersClusterConnections(
+        @CustomType.Parameter("apiServerInternet") String apiServerInternet,
+        @CustomType.Parameter("apiServerIntranet") String apiServerIntranet,
+        @CustomType.Parameter("masterPublicIp") String masterPublicIp) {
+        this.apiServerInternet = apiServerInternet;
+        this.apiServerIntranet = apiServerIntranet;
+        this.masterPublicIp = masterPublicIp;
+    }
+
     /**
      * @return API Server Internet endpoint.
      * 
@@ -55,12 +64,16 @@ public final class GetServerlessKubernetesClustersClusterConnections {
     public static Builder builder(GetServerlessKubernetesClustersClusterConnections defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String apiServerInternet;
         private String apiServerIntranet;
         private String masterPublicIp;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServerlessKubernetesClustersClusterConnections defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiServerInternet = defaults.apiServerInternet;
@@ -68,27 +81,19 @@ public final class GetServerlessKubernetesClustersClusterConnections {
     	      this.masterPublicIp = defaults.masterPublicIp;
         }
 
-        @CustomType.Setter
         public Builder apiServerInternet(String apiServerInternet) {
             this.apiServerInternet = Objects.requireNonNull(apiServerInternet);
             return this;
         }
-        @CustomType.Setter
         public Builder apiServerIntranet(String apiServerIntranet) {
             this.apiServerIntranet = Objects.requireNonNull(apiServerIntranet);
             return this;
         }
-        @CustomType.Setter
         public Builder masterPublicIp(String masterPublicIp) {
             this.masterPublicIp = Objects.requireNonNull(masterPublicIp);
             return this;
-        }
-        public GetServerlessKubernetesClustersClusterConnections build() {
-            final var o = new GetServerlessKubernetesClustersClusterConnections();
-            o.apiServerInternet = apiServerInternet;
-            o.apiServerIntranet = apiServerIntranet;
-            o.masterPublicIp = masterPublicIp;
-            return o;
+        }        public GetServerlessKubernetesClustersClusterConnections build() {
+            return new GetServerlessKubernetesClustersClusterConnections(apiServerInternet, apiServerIntranet, masterPublicIp);
         }
     }
 }

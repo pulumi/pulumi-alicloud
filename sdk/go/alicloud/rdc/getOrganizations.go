@@ -77,7 +77,8 @@ type GetOrganizationsArgs struct {
 	// A list of Organization IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Organization name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
 	RealPk *string `pulumi:"realPk"`
@@ -113,7 +114,8 @@ type GetOrganizationsOutputArgs struct {
 	// A list of Organization IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Organization name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
 	RealPk pulumi.StringPtrInput `pulumi:"realPk"`

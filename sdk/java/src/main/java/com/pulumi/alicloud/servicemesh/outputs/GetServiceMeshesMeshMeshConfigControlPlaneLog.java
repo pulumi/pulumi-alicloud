@@ -14,14 +14,21 @@ public final class GetServiceMeshesMeshMeshConfigControlPlaneLog {
      * @return Whether to enable Service grid audit.
      * 
      */
-    private Boolean enabled;
+    private final Boolean enabled;
     /**
      * @return The Service grid audit that to the project.
      * 
      */
-    private String project;
+    private final String project;
 
-    private GetServiceMeshesMeshMeshConfigControlPlaneLog() {}
+    @CustomType.Constructor
+    private GetServiceMeshesMeshMeshConfigControlPlaneLog(
+        @CustomType.Parameter("enabled") Boolean enabled,
+        @CustomType.Parameter("project") String project) {
+        this.enabled = enabled;
+        this.project = project;
+    }
+
     /**
      * @return Whether to enable Service grid audit.
      * 
@@ -44,32 +51,30 @@ public final class GetServiceMeshesMeshMeshConfigControlPlaneLog {
     public static Builder builder(GetServiceMeshesMeshMeshConfigControlPlaneLog defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean enabled;
         private String project;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServiceMeshesMeshMeshConfigControlPlaneLog defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.project = defaults.project;
         }
 
-        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
-        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
-        }
-        public GetServiceMeshesMeshMeshConfigControlPlaneLog build() {
-            final var o = new GetServiceMeshesMeshMeshConfigControlPlaneLog();
-            o.enabled = enabled;
-            o.project = project;
-            return o;
+        }        public GetServiceMeshesMeshMeshConfigControlPlaneLog build() {
+            return new GetServiceMeshesMeshMeshConfigControlPlaneLog(enabled, project);
         }
     }
 }

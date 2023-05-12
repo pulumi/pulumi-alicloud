@@ -51,6 +51,7 @@ func GetConfigurationRecorders(ctx *pulumi.Context, args *GetConfigurationRecord
 
 // A collection of arguments for invoking getConfigurationRecorders.
 type GetConfigurationRecordersArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -78,6 +79,7 @@ func GetConfigurationRecordersOutput(ctx *pulumi.Context, args GetConfigurationR
 
 // A collection of arguments for invoking getConfigurationRecorders.
 type GetConfigurationRecordersOutputArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

@@ -13,9 +13,13 @@ public final class GetTemplateScratchesScratchStack {
      * @return The ID of the Resource stack.
      * 
      */
-    private String stackId;
+    private final String stackId;
 
-    private GetTemplateScratchesScratchStack() {}
+    @CustomType.Constructor
+    private GetTemplateScratchesScratchStack(@CustomType.Parameter("stackId") String stackId) {
+        this.stackId = stackId;
+    }
+
     /**
      * @return The ID of the Resource stack.
      * 
@@ -31,24 +35,24 @@ public final class GetTemplateScratchesScratchStack {
     public static Builder builder(GetTemplateScratchesScratchStack defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String stackId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTemplateScratchesScratchStack defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.stackId = defaults.stackId;
         }
 
-        @CustomType.Setter
         public Builder stackId(String stackId) {
             this.stackId = Objects.requireNonNull(stackId);
             return this;
-        }
-        public GetTemplateScratchesScratchStack build() {
-            final var o = new GetTemplateScratchesScratchStack();
-            o.stackId = stackId;
-            return o;
+        }        public GetTemplateScratchesScratchStack build() {
+            return new GetTemplateScratchesScratchStack(stackId);
         }
     }
 }

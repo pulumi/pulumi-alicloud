@@ -13,21 +13,42 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountsResult {
-    private @Nullable String accountName;
-    private List<GetAccountsAccount> accounts;
+    private final @Nullable String accountName;
+    private final List<GetAccountsAccount> accounts;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private String instanceId;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String status;
+    private final String id;
+    private final List<String> ids;
+    private final String instanceId;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String status;
 
-    private GetAccountsResult() {}
+    @CustomType.Constructor
+    private GetAccountsResult(
+        @CustomType.Parameter("accountName") @Nullable String accountName,
+        @CustomType.Parameter("accounts") List<GetAccountsAccount> accounts,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.accountName = accountName;
+        this.accounts = accounts;
+        this.id = id;
+        this.ids = ids;
+        this.instanceId = instanceId;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.status = status;
+    }
+
     public Optional<String> accountName() {
         return Optional.ofNullable(this.accountName);
     }
@@ -67,7 +88,7 @@ public final class GetAccountsResult {
     public static Builder builder(GetAccountsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String accountName;
         private List<GetAccountsAccount> accounts;
@@ -78,7 +99,11 @@ public final class GetAccountsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAccountsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountName = defaults.accountName;
@@ -92,12 +117,10 @@ public final class GetAccountsResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder accountName(@Nullable String accountName) {
             this.accountName = accountName;
             return this;
         }
-        @CustomType.Setter
         public Builder accounts(List<GetAccountsAccount> accounts) {
             this.accounts = Objects.requireNonNull(accounts);
             return this;
@@ -105,12 +128,10 @@ public final class GetAccountsResult {
         public Builder accounts(GetAccountsAccount... accounts) {
             return accounts(List.of(accounts));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -118,17 +139,14 @@ public final class GetAccountsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -136,28 +154,15 @@ public final class GetAccountsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetAccountsResult build() {
-            final var o = new GetAccountsResult();
-            o.accountName = accountName;
-            o.accounts = accounts;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+        }        public GetAccountsResult build() {
+            return new GetAccountsResult(accountName, accounts, id, ids, instanceId, nameRegex, names, outputFile, status);
         }
     }
 }

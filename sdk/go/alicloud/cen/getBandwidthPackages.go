@@ -57,7 +57,8 @@ type GetBandwidthPackagesArgs struct {
 	// ID of a CEN instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// A regex string to filter CEN Bandwidth Package by name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
 	Status *string `pulumi:"status"`
@@ -104,7 +105,8 @@ type GetBandwidthPackagesOutputArgs struct {
 	// ID of a CEN instance.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
 	// A regex string to filter CEN Bandwidth Package by name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

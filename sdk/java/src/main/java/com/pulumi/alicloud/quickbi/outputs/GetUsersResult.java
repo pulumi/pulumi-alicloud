@@ -14,18 +14,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetUsersResult {
-    private @Nullable Boolean enableDetails;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String keyword;
-    private @Nullable String outputFile;
-    private List<GetUsersUser> users;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String keyword;
+    private final @Nullable String outputFile;
+    private final List<GetUsersUser> users;
 
-    private GetUsersResult() {}
+    @CustomType.Constructor
+    private GetUsersResult(
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("keyword") @Nullable String keyword,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("users") List<GetUsersUser> users) {
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.keyword = keyword;
+        this.outputFile = outputFile;
+        this.users = users;
+    }
+
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -56,7 +71,7 @@ public final class GetUsersResult {
     public static Builder builder(GetUsersResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private String id;
@@ -64,7 +79,11 @@ public final class GetUsersResult {
         private @Nullable String keyword;
         private @Nullable String outputFile;
         private List<GetUsersUser> users;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetUsersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -75,17 +94,14 @@ public final class GetUsersResult {
     	      this.users = defaults.users;
         }
 
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -93,33 +109,22 @@ public final class GetUsersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder keyword(@Nullable String keyword) {
             this.keyword = keyword;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder users(List<GetUsersUser> users) {
             this.users = Objects.requireNonNull(users);
             return this;
         }
         public Builder users(GetUsersUser... users) {
             return users(List.of(users));
-        }
-        public GetUsersResult build() {
-            final var o = new GetUsersResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.keyword = keyword;
-            o.outputFile = outputFile;
-            o.users = users;
-            return o;
+        }        public GetUsersResult build() {
+            return new GetUsersResult(enableDetails, id, ids, keyword, outputFile, users);
         }
     }
 }

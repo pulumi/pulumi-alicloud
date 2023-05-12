@@ -28,6 +28,8 @@ type TransitRouterRouteTableAssociation struct {
 	pulumi.CustomResourceState
 
 	// The dry run.
+	//
+	// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The associating status of the network.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -73,6 +75,8 @@ func GetTransitRouterRouteTableAssociation(ctx *pulumi.Context,
 // Input properties used for looking up and filtering TransitRouterRouteTableAssociation resources.
 type transitRouterRouteTableAssociationState struct {
 	// The dry run.
+	//
+	// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
 	DryRun *bool `pulumi:"dryRun"`
 	// The associating status of the network.
 	Status *string `pulumi:"status"`
@@ -84,6 +88,8 @@ type transitRouterRouteTableAssociationState struct {
 
 type TransitRouterRouteTableAssociationState struct {
 	// The dry run.
+	//
+	// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
 	DryRun pulumi.BoolPtrInput
 	// The associating status of the network.
 	Status pulumi.StringPtrInput
@@ -99,6 +105,8 @@ func (TransitRouterRouteTableAssociationState) ElementType() reflect.Type {
 
 type transitRouterRouteTableAssociationArgs struct {
 	// The dry run.
+	//
+	// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID the transit router attachment.
 	TransitRouterAttachmentId string `pulumi:"transitRouterAttachmentId"`
@@ -109,6 +117,8 @@ type transitRouterRouteTableAssociationArgs struct {
 // The set of arguments for constructing a TransitRouterRouteTableAssociation resource.
 type TransitRouterRouteTableAssociationArgs struct {
 	// The dry run.
+	//
+	// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
 	DryRun pulumi.BoolPtrInput
 	// The ID the transit router attachment.
 	TransitRouterAttachmentId pulumi.StringInput
@@ -204,6 +214,8 @@ func (o TransitRouterRouteTableAssociationOutput) ToTransitRouterRouteTableAssoc
 }
 
 // The dry run.
+//
+// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
 func (o TransitRouterRouteTableAssociationOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TransitRouterRouteTableAssociation) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }

@@ -109,6 +109,7 @@ type GetSnapshotsArgs struct {
 	// The ID of ECS instance.
 	InstanceId *string `pulumi:"instanceId"`
 	Limit      *int    `pulumi:"limit"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	Query      *string `pulumi:"query"`
 	// Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
@@ -169,6 +170,7 @@ type GetSnapshotsOutputArgs struct {
 	// The ID of ECS instance.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
 	Limit      pulumi.IntPtrInput    `pulumi:"limit"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	Query      pulumi.StringPtrInput `pulumi:"query"`
 	// Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.

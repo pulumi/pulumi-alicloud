@@ -69,6 +69,9 @@ export interface GetZnodesArgs {
      * A regex string to filter results by Znode name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The Node path.
@@ -147,6 +150,9 @@ export interface GetZnodesOutputArgs {
      * A regex string to filter results by Znode name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The Node path.

@@ -17,27 +17,44 @@ public final class GetTransitRouterVbrAttachmentsResult {
      * @return A list of CEN Transit Router VBR Attachments. Each element contains the following attributes:
      * 
      */
-    private List<GetTransitRouterVbrAttachmentsAttachment> attachments;
-    private String cenId;
+    private final List<GetTransitRouterVbrAttachmentsAttachment> attachments;
+    private final String cenId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of CEN Transit Router VBR attachment IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String outputFile;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
     /**
      * @return The status of the transit router attachment.
      * 
      */
-    private @Nullable String status;
-    private @Nullable String transitRouterId;
+    private final @Nullable String status;
+    private final @Nullable String transitRouterId;
 
-    private GetTransitRouterVbrAttachmentsResult() {}
+    @CustomType.Constructor
+    private GetTransitRouterVbrAttachmentsResult(
+        @CustomType.Parameter("attachments") List<GetTransitRouterVbrAttachmentsAttachment> attachments,
+        @CustomType.Parameter("cenId") String cenId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("transitRouterId") @Nullable String transitRouterId) {
+        this.attachments = attachments;
+        this.cenId = cenId;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.status = status;
+        this.transitRouterId = transitRouterId;
+    }
+
     /**
      * @return A list of CEN Transit Router VBR Attachments. Each element contains the following attributes:
      * 
@@ -83,7 +100,7 @@ public final class GetTransitRouterVbrAttachmentsResult {
     public static Builder builder(GetTransitRouterVbrAttachmentsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetTransitRouterVbrAttachmentsAttachment> attachments;
         private String cenId;
@@ -92,7 +109,11 @@ public final class GetTransitRouterVbrAttachmentsResult {
         private @Nullable String outputFile;
         private @Nullable String status;
         private @Nullable String transitRouterId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTransitRouterVbrAttachmentsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attachments = defaults.attachments;
@@ -104,7 +125,6 @@ public final class GetTransitRouterVbrAttachmentsResult {
     	      this.transitRouterId = defaults.transitRouterId;
         }
 
-        @CustomType.Setter
         public Builder attachments(List<GetTransitRouterVbrAttachmentsAttachment> attachments) {
             this.attachments = Objects.requireNonNull(attachments);
             return this;
@@ -112,17 +132,14 @@ public final class GetTransitRouterVbrAttachmentsResult {
         public Builder attachments(GetTransitRouterVbrAttachmentsAttachment... attachments) {
             return attachments(List.of(attachments));
         }
-        @CustomType.Setter
         public Builder cenId(String cenId) {
             this.cenId = Objects.requireNonNull(cenId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -130,31 +147,19 @@ public final class GetTransitRouterVbrAttachmentsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterId(@Nullable String transitRouterId) {
             this.transitRouterId = transitRouterId;
             return this;
-        }
-        public GetTransitRouterVbrAttachmentsResult build() {
-            final var o = new GetTransitRouterVbrAttachmentsResult();
-            o.attachments = attachments;
-            o.cenId = cenId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.transitRouterId = transitRouterId;
-            return o;
+        }        public GetTransitRouterVbrAttachmentsResult build() {
+            return new GetTransitRouterVbrAttachmentsResult(attachments, cenId, id, ids, outputFile, status, transitRouterId);
         }
     }
 }

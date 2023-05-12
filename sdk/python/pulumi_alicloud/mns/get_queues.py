@@ -91,6 +91,10 @@ def get_queues(name_prefix: Optional[str] = None,
                output_file: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQueuesResult:
     """
+    This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
+
+    > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
+
     ## Example Usage
 
     ```python
@@ -103,6 +107,7 @@ def get_queues(name_prefix: Optional[str] = None,
 
 
     :param str name_prefix: A string to filter resulting queues by their name prefixs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['namePrefix'] = name_prefix
@@ -123,6 +128,10 @@ def get_queues_output(name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQueuesResult]:
     """
+    This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
+
+    > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
+
     ## Example Usage
 
     ```python
@@ -135,5 +144,6 @@ def get_queues_output(name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
 
 
     :param str name_prefix: A string to filter resulting queues by their name prefixs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

@@ -15,49 +15,70 @@ public final class GetVpcEndpointServicesService {
      * @return Whether to automatically accept terminal node connections..
      * 
      */
-    private Boolean autoAcceptConnection;
+    private final Boolean autoAcceptConnection;
     /**
      * @return The connection bandwidth.
      * 
      */
-    private Integer connectBandwidth;
+    private final Integer connectBandwidth;
     /**
      * @return The ID of the Vpc Endpoint Service.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The business status of the terminal node service..
      * 
      */
-    private String serviceBusinessStatus;
+    private final String serviceBusinessStatus;
     /**
      * @return The description of the terminal node service.
      * 
      */
-    private String serviceDescription;
+    private final String serviceDescription;
     /**
      * @return The domain of service.
      * 
      */
-    private String serviceDomain;
+    private final String serviceDomain;
     /**
      * @return The ID of the Vpc Endpoint Service.
      * 
      */
-    private String serviceId;
+    private final String serviceId;
     /**
      * @return The Status of Vpc Endpoint Service.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The name of Vpc Endpoint Service.
      * 
      */
-    private String vpcEndpointServiceName;
+    private final String vpcEndpointServiceName;
 
-    private GetVpcEndpointServicesService() {}
+    @CustomType.Constructor
+    private GetVpcEndpointServicesService(
+        @CustomType.Parameter("autoAcceptConnection") Boolean autoAcceptConnection,
+        @CustomType.Parameter("connectBandwidth") Integer connectBandwidth,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("serviceBusinessStatus") String serviceBusinessStatus,
+        @CustomType.Parameter("serviceDescription") String serviceDescription,
+        @CustomType.Parameter("serviceDomain") String serviceDomain,
+        @CustomType.Parameter("serviceId") String serviceId,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("vpcEndpointServiceName") String vpcEndpointServiceName) {
+        this.autoAcceptConnection = autoAcceptConnection;
+        this.connectBandwidth = connectBandwidth;
+        this.id = id;
+        this.serviceBusinessStatus = serviceBusinessStatus;
+        this.serviceDescription = serviceDescription;
+        this.serviceDomain = serviceDomain;
+        this.serviceId = serviceId;
+        this.status = status;
+        this.vpcEndpointServiceName = vpcEndpointServiceName;
+    }
+
     /**
      * @return Whether to automatically accept terminal node connections..
      * 
@@ -129,7 +150,7 @@ public final class GetVpcEndpointServicesService {
     public static Builder builder(GetVpcEndpointServicesService defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean autoAcceptConnection;
         private Integer connectBandwidth;
@@ -140,7 +161,11 @@ public final class GetVpcEndpointServicesService {
         private String serviceId;
         private String status;
         private String vpcEndpointServiceName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVpcEndpointServicesService defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoAcceptConnection = defaults.autoAcceptConnection;
@@ -154,63 +179,43 @@ public final class GetVpcEndpointServicesService {
     	      this.vpcEndpointServiceName = defaults.vpcEndpointServiceName;
         }
 
-        @CustomType.Setter
         public Builder autoAcceptConnection(Boolean autoAcceptConnection) {
             this.autoAcceptConnection = Objects.requireNonNull(autoAcceptConnection);
             return this;
         }
-        @CustomType.Setter
         public Builder connectBandwidth(Integer connectBandwidth) {
             this.connectBandwidth = Objects.requireNonNull(connectBandwidth);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder serviceBusinessStatus(String serviceBusinessStatus) {
             this.serviceBusinessStatus = Objects.requireNonNull(serviceBusinessStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder serviceDescription(String serviceDescription) {
             this.serviceDescription = Objects.requireNonNull(serviceDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder serviceDomain(String serviceDomain) {
             this.serviceDomain = Objects.requireNonNull(serviceDomain);
             return this;
         }
-        @CustomType.Setter
         public Builder serviceId(String serviceId) {
             this.serviceId = Objects.requireNonNull(serviceId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcEndpointServiceName(String vpcEndpointServiceName) {
             this.vpcEndpointServiceName = Objects.requireNonNull(vpcEndpointServiceName);
             return this;
-        }
-        public GetVpcEndpointServicesService build() {
-            final var o = new GetVpcEndpointServicesService();
-            o.autoAcceptConnection = autoAcceptConnection;
-            o.connectBandwidth = connectBandwidth;
-            o.id = id;
-            o.serviceBusinessStatus = serviceBusinessStatus;
-            o.serviceDescription = serviceDescription;
-            o.serviceDomain = serviceDomain;
-            o.serviceId = serviceId;
-            o.status = status;
-            o.vpcEndpointServiceName = vpcEndpointServiceName;
-            return o;
+        }        public GetVpcEndpointServicesService build() {
+            return new GetVpcEndpointServicesService(autoAcceptConnection, connectBandwidth, id, serviceBusinessStatus, serviceDescription, serviceDomain, serviceId, status, vpcEndpointServiceName);
         }
     }
 }

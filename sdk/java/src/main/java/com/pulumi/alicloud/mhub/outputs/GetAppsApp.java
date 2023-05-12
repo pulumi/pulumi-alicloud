@@ -13,54 +13,77 @@ public final class GetAppsApp {
      * @return Application AppKey, which uniquely identifies an application when requested by the interface
      * 
      */
-    private String appKey;
+    private final String appKey;
     /**
      * @return The Name of the App.
      * 
      */
-    private String appName;
+    private final String appName;
     /**
      * @return iOS application ID. Required when creating an iOS app. **NOTE:** Either `bundle_id` or `package_name` must be set.
      * 
      */
-    private String bundleId;
+    private final String bundleId;
     /**
      * @return The CreateTime of the App.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return Base64 string of picture.
      * 
      */
-    private String encodedIcon;
+    private final String encodedIcon;
     /**
      * @return The ID of the App.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The Industry ID of the app. For information about Industry and how to use it, MHUB[Industry](https://help.aliyun.com/document_detail/201638.html).
      * 
      */
-    private String industryId;
+    private final String industryId;
     /**
      * @return Android App package name.  **NOTE:** Either `bundle_id` or `package_name` must be set.
      * 
      */
-    private String packageName;
+    private final String packageName;
     /**
      * @return The ID of the Product.
      * 
      */
-    private String productId;
+    private final String productId;
     /**
      * @return The type of the App. Valid values: `Android` and `iOS`.
      * 
      */
-    private String type;
+    private final String type;
 
-    private GetAppsApp() {}
+    @CustomType.Constructor
+    private GetAppsApp(
+        @CustomType.Parameter("appKey") String appKey,
+        @CustomType.Parameter("appName") String appName,
+        @CustomType.Parameter("bundleId") String bundleId,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("encodedIcon") String encodedIcon,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("industryId") String industryId,
+        @CustomType.Parameter("packageName") String packageName,
+        @CustomType.Parameter("productId") String productId,
+        @CustomType.Parameter("type") String type) {
+        this.appKey = appKey;
+        this.appName = appName;
+        this.bundleId = bundleId;
+        this.createTime = createTime;
+        this.encodedIcon = encodedIcon;
+        this.id = id;
+        this.industryId = industryId;
+        this.packageName = packageName;
+        this.productId = productId;
+        this.type = type;
+    }
+
     /**
      * @return Application AppKey, which uniquely identifies an application when requested by the interface
      * 
@@ -139,7 +162,7 @@ public final class GetAppsApp {
     public static Builder builder(GetAppsApp defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String appKey;
         private String appName;
@@ -151,7 +174,11 @@ public final class GetAppsApp {
         private String packageName;
         private String productId;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAppsApp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appKey = defaults.appKey;
@@ -166,69 +193,47 @@ public final class GetAppsApp {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder appKey(String appKey) {
             this.appKey = Objects.requireNonNull(appKey);
             return this;
         }
-        @CustomType.Setter
         public Builder appName(String appName) {
             this.appName = Objects.requireNonNull(appName);
             return this;
         }
-        @CustomType.Setter
         public Builder bundleId(String bundleId) {
             this.bundleId = Objects.requireNonNull(bundleId);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder encodedIcon(String encodedIcon) {
             this.encodedIcon = Objects.requireNonNull(encodedIcon);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder industryId(String industryId) {
             this.industryId = Objects.requireNonNull(industryId);
             return this;
         }
-        @CustomType.Setter
         public Builder packageName(String packageName) {
             this.packageName = Objects.requireNonNull(packageName);
             return this;
         }
-        @CustomType.Setter
         public Builder productId(String productId) {
             this.productId = Objects.requireNonNull(productId);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetAppsApp build() {
-            final var o = new GetAppsApp();
-            o.appKey = appKey;
-            o.appName = appName;
-            o.bundleId = bundleId;
-            o.createTime = createTime;
-            o.encodedIcon = encodedIcon;
-            o.id = id;
-            o.industryId = industryId;
-            o.packageName = packageName;
-            o.productId = productId;
-            o.type = type;
-            return o;
+        }        public GetAppsApp build() {
+            return new GetAppsApp(appKey, appName, bundleId, createTime, encodedIcon, id, industryId, packageName, productId, type);
         }
     }
 }

@@ -76,6 +76,8 @@ class EdgeKubernetesArgs:
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
         :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+               
+               ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
         :param pulumi.Input['EdgeKubernetesLogConfigArgs'] log_config: A list of one element containing information about the associated log store. It contains the following attributes:
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
@@ -370,6 +372,8 @@ class EdgeKubernetesArgs:
     def load_balancer_spec(self) -> Optional[pulumi.Input[str]]:
         """
         The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+
+        ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
         """
         return pulumi.get(self, "load_balancer_spec")
 
@@ -730,6 +734,8 @@ class _EdgeKubernetesState:
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
         :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+               
+               ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
         :param pulumi.Input['EdgeKubernetesLogConfigArgs'] log_config: A list of one element containing information about the associated log store. It contains the following attributes:
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[str] nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
@@ -1040,6 +1046,8 @@ class _EdgeKubernetesState:
     def load_balancer_spec(self) -> Optional[pulumi.Input[str]]:
         """
         The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+
+        ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
         """
         return pulumi.get(self, "load_balancer_spec")
 
@@ -1485,9 +1493,28 @@ class EdgeKubernetes(pulumi.CustomResource):
                  worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
+        This resource will help you to manage a Edge Kubernetes Cluster in Alibaba Cloud Kubernetes Service.
+
+        > **NOTE:** Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
+        A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
+        VPC, you can set `new_nat_gateway` to "true" to create one automatically.
+
+        > **NOTE:** Creating kubernetes cluster need to install several packages and it will cost about 15 minutes. Please be patient.
+
+        > **NOTE:** The provider supports to download kube config, client certificate, client key and cluster ca certificate
+        after creating cluster successfully, and you can put them into the specified location, like '~/.kube/config'.
+
+        > **NOTE:** The provider supports disabling internet load balancer for API Server by setting `false` to `slb_internet_enabled`.
+
+        > **NOTE:** If you want to manage Kubernetes, you can use Kubernetes Provider.
+
+        > **NOTE:** Available in v1.103.0+.
+
+        > **NOTE:** From version 1.185.0+, support new fields `cluster_spec`, `runtime` and `load_balancer_spec`.
+
         ## Import
 
-        Kubernetes edge cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
+        Kubernetes edge cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
 
         ```sh
          $ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes main cluster-id
@@ -1510,6 +1537,8 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
         :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+               
+               ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
         :param pulumi.Input[pulumi.InputType['EdgeKubernetesLogConfigArgs']] log_config: A list of one element containing information about the associated log store. It contains the following attributes:
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
@@ -1543,9 +1572,28 @@ class EdgeKubernetes(pulumi.CustomResource):
                  args: EdgeKubernetesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        This resource will help you to manage a Edge Kubernetes Cluster in Alibaba Cloud Kubernetes Service.
+
+        > **NOTE:** Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
+        A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
+        VPC, you can set `new_nat_gateway` to "true" to create one automatically.
+
+        > **NOTE:** Creating kubernetes cluster need to install several packages and it will cost about 15 minutes. Please be patient.
+
+        > **NOTE:** The provider supports to download kube config, client certificate, client key and cluster ca certificate
+        after creating cluster successfully, and you can put them into the specified location, like '~/.kube/config'.
+
+        > **NOTE:** The provider supports disabling internet load balancer for API Server by setting `false` to `slb_internet_enabled`.
+
+        > **NOTE:** If you want to manage Kubernetes, you can use Kubernetes Provider.
+
+        > **NOTE:** Available in v1.103.0+.
+
+        > **NOTE:** From version 1.185.0+, support new fields `cluster_spec`, `runtime` and `load_balancer_spec`.
+
         ## Import
 
-        Kubernetes edge cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
+        Kubernetes edge cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
 
         ```sh
          $ pulumi import alicloud:cs/edgeKubernetes:EdgeKubernetes main cluster-id
@@ -1759,6 +1807,8 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] key_name: The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
         :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+               
+               ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
         :param pulumi.Input[pulumi.InputType['EdgeKubernetesLogConfigArgs']] log_config: A list of one element containing information about the associated log store. It contains the following attributes:
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[str] nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
@@ -1964,6 +2014,8 @@ class EdgeKubernetes(pulumi.CustomResource):
     def load_balancer_spec(self) -> pulumi.Output[str]:
         """
         The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+
+        ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
         """
         return pulumi.get(self, "load_balancer_spec")
 

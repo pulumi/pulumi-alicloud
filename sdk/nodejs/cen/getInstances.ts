@@ -47,6 +47,9 @@ export interface GetInstancesArgs {
      * A regex string to filter CEN instances by name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
@@ -121,6 +124,9 @@ export interface GetInstancesOutputArgs {
      * A regex string to filter CEN instances by name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.

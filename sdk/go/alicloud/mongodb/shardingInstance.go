@@ -11,6 +11,23 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a MongoDB sharding instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
+// It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
+// You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
+//
+// > **NOTE:**  Available in 1.40.0+
+//
+// > **NOTE:**  The following regions don't support create Classic network MongoDB sharding instance.
+// [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
+//
+// > **NOTE:**  Create MongoDB Sharding instance or change instance type and storage would cost 10~20 minutes. Please make full preparation
+//
+// ## Example Usage
+// ## Module Support
+//
+// You can use to the existing mongodb-sharding module
+// to create a MongoDB sharding instance resource one-click.
+//
 // ## Import
 //
 // MongoDB can be imported using the id, e.g.

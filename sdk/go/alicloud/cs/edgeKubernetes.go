@@ -11,9 +11,28 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource will help you to manage a Edge Kubernetes Cluster in Alibaba Cloud Kubernetes Service.
+//
+// > **NOTE:** Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
+// A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
+// VPC, you can set `newNatGateway` to "true" to create one automatically.
+//
+// > **NOTE:** Creating kubernetes cluster need to install several packages and it will cost about 15 minutes. Please be patient.
+//
+// > **NOTE:** The provider supports to download kube config, client certificate, client key and cluster ca certificate
+// after creating cluster successfully, and you can put them into the specified location, like '~/.kube/config'.
+//
+// > **NOTE:** The provider supports disabling internet load balancer for API Server by setting `false` to `slbInternetEnabled`.
+//
+// > **NOTE:** If you want to manage Kubernetes, you can use Kubernetes Provider.
+//
+// > **NOTE:** Available in v1.103.0+.
+//
+// > **NOTE:** From version 1.185.0+, support new fields `clusterSpec`, `runtime` and `loadBalancerSpec`.
+//
 // ## Import
 //
-// Kubernetes edge cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
+// Kubernetes edge cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
 //
 // ```sh
 //
@@ -56,6 +75,8 @@ type EdgeKubernetes struct {
 	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig pulumi.StringPtrOutput `pulumi:"kubeConfig"`
 	// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	//
+	// ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
 	LoadBalancerSpec pulumi.StringOutput `pulumi:"loadBalancerSpec"`
 	// A list of one element containing information about the associated log store. It contains the following attributes:
 	//
@@ -203,6 +224,8 @@ type edgeKubernetesState struct {
 	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig *string `pulumi:"kubeConfig"`
 	// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	//
+	// ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// A list of one element containing information about the associated log store. It contains the following attributes:
 	//
@@ -306,6 +329,8 @@ type EdgeKubernetesState struct {
 	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig pulumi.StringPtrInput
 	// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	//
+	// ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
 	LoadBalancerSpec pulumi.StringPtrInput
 	// A list of one element containing information about the associated log store. It contains the following attributes:
 	//
@@ -409,6 +434,8 @@ type edgeKubernetesArgs struct {
 	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig *string `pulumi:"kubeConfig"`
 	// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	//
+	// ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// A list of one element containing information about the associated log store. It contains the following attributes:
 	//
@@ -497,6 +524,8 @@ type EdgeKubernetesArgs struct {
 	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig pulumi.StringPtrInput
 	// The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	//
+	// ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
 	LoadBalancerSpec pulumi.StringPtrInput
 	// A list of one element containing information about the associated log store. It contains the following attributes:
 	//
@@ -716,6 +745,8 @@ func (o EdgeKubernetesOutput) KubeConfig() pulumi.StringPtrOutput {
 }
 
 // The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+//
+// ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
 func (o EdgeKubernetesOutput) LoadBalancerSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.LoadBalancerSpec }).(pulumi.StringOutput)
 }

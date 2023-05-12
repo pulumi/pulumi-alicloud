@@ -16,34 +16,49 @@ public final class GetKubernetesPermissionPermission {
      * @return ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
      * 
      */
-    private @Nullable Boolean isOwner;
+    private final @Nullable Boolean isOwner;
     /**
      * @return Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
      * 
      */
-    private @Nullable Boolean isRamRole;
+    private final @Nullable Boolean isRamRole;
     /**
      * @return The permission settings to manage ACK clusters.
      * 
      */
-    private String resourceId;
+    private final String resourceId;
     /**
      * @return The authorization type. Valid values `cluster`, `namespace` and `console`.
      * 
      */
-    private String resourceType;
+    private final String resourceType;
     /**
      * @return The name of the predefined role. If a custom role is assigned, the value is the name of the assigined custom role.
      * 
      */
-    private String roleName;
+    private final String roleName;
     /**
      * @return The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
      * 
      */
-    private @Nullable String roleType;
+    private final @Nullable String roleType;
 
-    private GetKubernetesPermissionPermission() {}
+    @CustomType.Constructor
+    private GetKubernetesPermissionPermission(
+        @CustomType.Parameter("isOwner") @Nullable Boolean isOwner,
+        @CustomType.Parameter("isRamRole") @Nullable Boolean isRamRole,
+        @CustomType.Parameter("resourceId") String resourceId,
+        @CustomType.Parameter("resourceType") String resourceType,
+        @CustomType.Parameter("roleName") String roleName,
+        @CustomType.Parameter("roleType") @Nullable String roleType) {
+        this.isOwner = isOwner;
+        this.isRamRole = isRamRole;
+        this.resourceId = resourceId;
+        this.resourceType = resourceType;
+        this.roleName = roleName;
+        this.roleType = roleType;
+    }
+
     /**
      * @return ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
      * 
@@ -94,7 +109,7 @@ public final class GetKubernetesPermissionPermission {
     public static Builder builder(GetKubernetesPermissionPermission defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean isOwner;
         private @Nullable Boolean isRamRole;
@@ -102,7 +117,11 @@ public final class GetKubernetesPermissionPermission {
         private String resourceType;
         private String roleName;
         private @Nullable String roleType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetKubernetesPermissionPermission defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.isOwner = defaults.isOwner;
@@ -113,45 +132,31 @@ public final class GetKubernetesPermissionPermission {
     	      this.roleType = defaults.roleType;
         }
 
-        @CustomType.Setter
         public Builder isOwner(@Nullable Boolean isOwner) {
             this.isOwner = isOwner;
             return this;
         }
-        @CustomType.Setter
         public Builder isRamRole(@Nullable Boolean isRamRole) {
             this.isRamRole = isRamRole;
             return this;
         }
-        @CustomType.Setter
         public Builder resourceId(String resourceId) {
             this.resourceId = Objects.requireNonNull(resourceId);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceType(String resourceType) {
             this.resourceType = Objects.requireNonNull(resourceType);
             return this;
         }
-        @CustomType.Setter
         public Builder roleName(String roleName) {
             this.roleName = Objects.requireNonNull(roleName);
             return this;
         }
-        @CustomType.Setter
         public Builder roleType(@Nullable String roleType) {
             this.roleType = roleType;
             return this;
-        }
-        public GetKubernetesPermissionPermission build() {
-            final var o = new GetKubernetesPermissionPermission();
-            o.isOwner = isOwner;
-            o.isRamRole = isRamRole;
-            o.resourceId = resourceId;
-            o.resourceType = resourceType;
-            o.roleName = roleName;
-            o.roleType = roleType;
-            return o;
+        }        public GetKubernetesPermissionPermission build() {
+            return new GetKubernetesPermissionPermission(isOwner, isRamRole, resourceId, resourceType, roleName, roleType);
         }
     }
 }

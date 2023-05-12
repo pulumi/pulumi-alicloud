@@ -76,7 +76,8 @@ type GetRulesArgs struct {
 	// The name of rule.
 	Name *string `pulumi:"name"`
 	// A regex string to filter results by Rule name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Product ID.
 	ProductId *string `pulumi:"productId"`
@@ -138,7 +139,8 @@ type GetRulesOutputArgs struct {
 	// The name of rule.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// A regex string to filter results by Rule name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Product ID.
 	ProductId pulumi.StringPtrInput `pulumi:"productId"`

@@ -53,6 +53,9 @@ export interface GetServiceTopicsArgs {
      * A regex string to filter results by Topic name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     pageNumber?: number;
     pageSize?: number;
@@ -125,6 +128,9 @@ export interface GetServiceTopicsOutputArgs {
      * A regex string to filter results by Topic name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;

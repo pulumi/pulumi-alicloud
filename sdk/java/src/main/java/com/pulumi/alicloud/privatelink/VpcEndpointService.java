@@ -141,12 +141,16 @@ public class VpcEndpointService extends com.pulumi.resources.CustomResource {
     /**
      * The description of the terminal node service.
      * 
+     * &gt; **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+     * 
      */
     @Export(name="serviceDescription", type=String.class, parameters={})
     private Output</* @Nullable */ String> serviceDescription;
 
     /**
      * @return The description of the terminal node service.
+     * 
+     * &gt; **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
      * 
      */
     public Output<Optional<String>> serviceDescription() {

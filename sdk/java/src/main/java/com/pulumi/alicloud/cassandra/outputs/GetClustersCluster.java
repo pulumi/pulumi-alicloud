@@ -17,60 +17,87 @@ public final class GetClustersCluster {
      * @return The ID of the Cassandra cluster.
      * 
      */
-    private String clusterId;
+    private final String clusterId;
     /**
      * @return The name of the Cassandra cluster.
      * 
      */
-    private String clusterName;
-    private String createdTime;
+    private final String clusterName;
+    private final String createdTime;
     /**
      * @return The count of data centers
      * 
      */
-    private Integer dataCenterCount;
+    private final Integer dataCenterCount;
     /**
      * @return The expire time of the cluster.
      * 
      */
-    private String expireTime;
+    private final String expireTime;
     /**
      * @return The ID of the Cassandra cluster.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The lock mode of the cluster.
      * 
      */
-    private String lockMode;
+    private final String lockMode;
     /**
      * @return The major version of the cluster.
      * 
      */
-    private String majorVersion;
+    private final String majorVersion;
     /**
      * @return The minor version of the cluster.
      * 
      */
-    private String minorVersion;
+    private final String minorVersion;
     /**
      * @return Billing method. Value options are `Subscription` for Pay-As-You-Go and `PayAsYouGo` for yearly or monthly subscription.
      * 
      */
-    private String payType;
+    private final String payType;
     /**
      * @return Status of the cluster.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private final @Nullable Map<String,Object> tags;
 
-    private GetClustersCluster() {}
+    @CustomType.Constructor
+    private GetClustersCluster(
+        @CustomType.Parameter("clusterId") String clusterId,
+        @CustomType.Parameter("clusterName") String clusterName,
+        @CustomType.Parameter("createdTime") String createdTime,
+        @CustomType.Parameter("dataCenterCount") Integer dataCenterCount,
+        @CustomType.Parameter("expireTime") String expireTime,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("lockMode") String lockMode,
+        @CustomType.Parameter("majorVersion") String majorVersion,
+        @CustomType.Parameter("minorVersion") String minorVersion,
+        @CustomType.Parameter("payType") String payType,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
+        this.clusterId = clusterId;
+        this.clusterName = clusterName;
+        this.createdTime = createdTime;
+        this.dataCenterCount = dataCenterCount;
+        this.expireTime = expireTime;
+        this.id = id;
+        this.lockMode = lockMode;
+        this.majorVersion = majorVersion;
+        this.minorVersion = minorVersion;
+        this.payType = payType;
+        this.status = status;
+        this.tags = tags;
+    }
+
     /**
      * @return The ID of the Cassandra cluster.
      * 
@@ -159,7 +186,7 @@ public final class GetClustersCluster {
     public static Builder builder(GetClustersCluster defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String clusterId;
         private String clusterName;
@@ -173,7 +200,11 @@ public final class GetClustersCluster {
         private String payType;
         private String status;
         private @Nullable Map<String,Object> tags;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetClustersCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterId = defaults.clusterId;
@@ -190,81 +221,55 @@ public final class GetClustersCluster {
     	      this.tags = defaults.tags;
         }
 
-        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder clusterName(String clusterName) {
             this.clusterName = Objects.requireNonNull(clusterName);
             return this;
         }
-        @CustomType.Setter
         public Builder createdTime(String createdTime) {
             this.createdTime = Objects.requireNonNull(createdTime);
             return this;
         }
-        @CustomType.Setter
         public Builder dataCenterCount(Integer dataCenterCount) {
             this.dataCenterCount = Objects.requireNonNull(dataCenterCount);
             return this;
         }
-        @CustomType.Setter
         public Builder expireTime(String expireTime) {
             this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder lockMode(String lockMode) {
             this.lockMode = Objects.requireNonNull(lockMode);
             return this;
         }
-        @CustomType.Setter
         public Builder majorVersion(String majorVersion) {
             this.majorVersion = Objects.requireNonNull(majorVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder minorVersion(String minorVersion) {
             this.minorVersion = Objects.requireNonNull(minorVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder payType(String payType) {
             this.payType = Objects.requireNonNull(payType);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }
-        public GetClustersCluster build() {
-            final var o = new GetClustersCluster();
-            o.clusterId = clusterId;
-            o.clusterName = clusterName;
-            o.createdTime = createdTime;
-            o.dataCenterCount = dataCenterCount;
-            o.expireTime = expireTime;
-            o.id = id;
-            o.lockMode = lockMode;
-            o.majorVersion = majorVersion;
-            o.minorVersion = minorVersion;
-            o.payType = payType;
-            o.status = status;
-            o.tags = tags;
-            return o;
+        }        public GetClustersCluster build() {
+            return new GetClustersCluster(clusterId, clusterName, createdTime, dataCenterCount, expireTime, id, lockMode, majorVersion, minorVersion, payType, status, tags);
         }
     }
 }

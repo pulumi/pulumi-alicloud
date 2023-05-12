@@ -13,9 +13,13 @@ public final class GetCrossRegionsRegion {
      * @return ID of the region.
      * 
      */
-    private String id;
+    private final String id;
 
-    private GetCrossRegionsRegion() {}
+    @CustomType.Constructor
+    private GetCrossRegionsRegion(@CustomType.Parameter("id") String id) {
+        this.id = id;
+    }
+
     /**
      * @return ID of the region.
      * 
@@ -31,24 +35,24 @@ public final class GetCrossRegionsRegion {
     public static Builder builder(GetCrossRegionsRegion defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetCrossRegionsRegion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }
-        public GetCrossRegionsRegion build() {
-            final var o = new GetCrossRegionsRegion();
-            o.id = id;
-            return o;
+        }        public GetCrossRegionsRegion build() {
+            return new GetCrossRegionsRegion(id);
         }
     }
 }

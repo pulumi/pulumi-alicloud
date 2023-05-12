@@ -13,19 +13,28 @@ public final class GetGlobalDatabaseNetworksNetworkDbCluster {
      * @return The ID of the PolarDB cluster.
      * 
      */
-    private String dbClusterId;
+    private final String dbClusterId;
     /**
      * @return The region ID of the cluster.
      * 
      */
-    private String regionId;
+    private final String regionId;
     /**
      * @return The role of the cluster.
      * 
      */
-    private String role;
+    private final String role;
 
-    private GetGlobalDatabaseNetworksNetworkDbCluster() {}
+    @CustomType.Constructor
+    private GetGlobalDatabaseNetworksNetworkDbCluster(
+        @CustomType.Parameter("dbClusterId") String dbClusterId,
+        @CustomType.Parameter("regionId") String regionId,
+        @CustomType.Parameter("role") String role) {
+        this.dbClusterId = dbClusterId;
+        this.regionId = regionId;
+        this.role = role;
+    }
+
     /**
      * @return The ID of the PolarDB cluster.
      * 
@@ -55,12 +64,16 @@ public final class GetGlobalDatabaseNetworksNetworkDbCluster {
     public static Builder builder(GetGlobalDatabaseNetworksNetworkDbCluster defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String dbClusterId;
         private String regionId;
         private String role;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetGlobalDatabaseNetworksNetworkDbCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbClusterId = defaults.dbClusterId;
@@ -68,27 +81,19 @@ public final class GetGlobalDatabaseNetworksNetworkDbCluster {
     	      this.role = defaults.role;
         }
 
-        @CustomType.Setter
         public Builder dbClusterId(String dbClusterId) {
             this.dbClusterId = Objects.requireNonNull(dbClusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
-        @CustomType.Setter
         public Builder role(String role) {
             this.role = Objects.requireNonNull(role);
             return this;
-        }
-        public GetGlobalDatabaseNetworksNetworkDbCluster build() {
-            final var o = new GetGlobalDatabaseNetworksNetworkDbCluster();
-            o.dbClusterId = dbClusterId;
-            o.regionId = regionId;
-            o.role = role;
-            return o;
+        }        public GetGlobalDatabaseNetworksNetworkDbCluster build() {
+            return new GetGlobalDatabaseNetworksNetworkDbCluster(dbClusterId, regionId, role);
         }
     }
 }

@@ -434,12 +434,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The id of the VPC.
      * 
+     * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
+     * 
      */
     @Export(name="vpcId", type=String.class, parameters={})
     private Output</* @Nullable */ String> vpcId;
 
     /**
      * @return The id of the VPC.
+     * 
+     * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
      * 
      */
     public Output<Optional<String>> vpcId() {

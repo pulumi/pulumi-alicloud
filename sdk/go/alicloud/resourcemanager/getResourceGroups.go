@@ -56,7 +56,8 @@ type GetResourceGroupsArgs struct {
 	// A list of resource group IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by resource group name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
 	Status *string `pulumi:"status"`
@@ -99,7 +100,8 @@ type GetResourceGroupsOutputArgs struct {
 	// A list of resource group IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by resource group name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

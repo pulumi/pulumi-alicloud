@@ -49,6 +49,9 @@ export interface GetDdosCooDomainResourcesArgs {
      * A list ID of instance that you want to associate.
      */
     instanceIds?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Match the pattern.
@@ -105,6 +108,9 @@ export interface GetDdosCooDomainResourcesOutputArgs {
      * A list ID of instance that you want to associate.
      */
     instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Match the pattern.

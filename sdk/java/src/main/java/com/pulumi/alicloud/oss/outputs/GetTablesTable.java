@@ -13,39 +13,56 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTablesTable {
-    private List<GetTablesTableDefinedColumn> definedColumns;
+    private final List<GetTablesTableDefinedColumn> definedColumns;
     /**
      * @return ID of the table. The value is `&lt;instance_name&gt;:&lt;table_name&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The name of OTS instance.
      * 
      */
-    private String instanceName;
+    private final String instanceName;
     /**
      * @return The maximum number of versions stored in this table.
      * 
      */
-    private Integer maxVersion;
+    private final Integer maxVersion;
     /**
      * @return The property of `TableMeta` which indicates the structure information of a table.
      * 
      */
-    private List<GetTablesTablePrimaryKey> primaryKeys;
+    private final List<GetTablesTablePrimaryKey> primaryKeys;
     /**
      * @return The table name of the OTS which could not be changed.
      * 
      */
-    private String tableName;
+    private final String tableName;
     /**
      * @return The retention time of data stored in this table.
      * 
      */
-    private Integer timeToLive;
+    private final Integer timeToLive;
 
-    private GetTablesTable() {}
+    @CustomType.Constructor
+    private GetTablesTable(
+        @CustomType.Parameter("definedColumns") List<GetTablesTableDefinedColumn> definedColumns,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceName") String instanceName,
+        @CustomType.Parameter("maxVersion") Integer maxVersion,
+        @CustomType.Parameter("primaryKeys") List<GetTablesTablePrimaryKey> primaryKeys,
+        @CustomType.Parameter("tableName") String tableName,
+        @CustomType.Parameter("timeToLive") Integer timeToLive) {
+        this.definedColumns = definedColumns;
+        this.id = id;
+        this.instanceName = instanceName;
+        this.maxVersion = maxVersion;
+        this.primaryKeys = primaryKeys;
+        this.tableName = tableName;
+        this.timeToLive = timeToLive;
+    }
+
     public List<GetTablesTableDefinedColumn> definedColumns() {
         return this.definedColumns;
     }
@@ -99,7 +116,7 @@ public final class GetTablesTable {
     public static Builder builder(GetTablesTable defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetTablesTableDefinedColumn> definedColumns;
         private String id;
@@ -108,7 +125,11 @@ public final class GetTablesTable {
         private List<GetTablesTablePrimaryKey> primaryKeys;
         private String tableName;
         private Integer timeToLive;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTablesTable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.definedColumns = defaults.definedColumns;
@@ -120,7 +141,6 @@ public final class GetTablesTable {
     	      this.timeToLive = defaults.timeToLive;
         }
 
-        @CustomType.Setter
         public Builder definedColumns(List<GetTablesTableDefinedColumn> definedColumns) {
             this.definedColumns = Objects.requireNonNull(definedColumns);
             return this;
@@ -128,22 +148,18 @@ public final class GetTablesTable {
         public Builder definedColumns(GetTablesTableDefinedColumn... definedColumns) {
             return definedColumns(List.of(definedColumns));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
-        @CustomType.Setter
         public Builder maxVersion(Integer maxVersion) {
             this.maxVersion = Objects.requireNonNull(maxVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder primaryKeys(List<GetTablesTablePrimaryKey> primaryKeys) {
             this.primaryKeys = Objects.requireNonNull(primaryKeys);
             return this;
@@ -151,26 +167,15 @@ public final class GetTablesTable {
         public Builder primaryKeys(GetTablesTablePrimaryKey... primaryKeys) {
             return primaryKeys(List.of(primaryKeys));
         }
-        @CustomType.Setter
         public Builder tableName(String tableName) {
             this.tableName = Objects.requireNonNull(tableName);
             return this;
         }
-        @CustomType.Setter
         public Builder timeToLive(Integer timeToLive) {
             this.timeToLive = Objects.requireNonNull(timeToLive);
             return this;
-        }
-        public GetTablesTable build() {
-            final var o = new GetTablesTable();
-            o.definedColumns = definedColumns;
-            o.id = id;
-            o.instanceName = instanceName;
-            o.maxVersion = maxVersion;
-            o.primaryKeys = primaryKeys;
-            o.tableName = tableName;
-            o.timeToLive = timeToLive;
-            return o;
+        }        public GetTablesTable build() {
+            return new GetTablesTable(definedColumns, id, instanceName, maxVersion, primaryKeys, tableName, timeToLive);
         }
     }
 }

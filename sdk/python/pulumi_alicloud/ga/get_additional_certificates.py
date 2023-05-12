@@ -121,6 +121,7 @@ def get_additional_certificates(accelerator_id: Optional[str] = None,
     :param str accelerator_id: The ID of the GA instance.
     :param Sequence[str] ids: A list of Additional Certificate IDs.
     :param str listener_id: The ID of the listener. Only HTTPS listeners support this parameter.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['acceleratorId'] = accelerator_id
@@ -171,5 +172,6 @@ def get_additional_certificates_output(accelerator_id: Optional[pulumi.Input[str
     :param str accelerator_id: The ID of the GA instance.
     :param Sequence[str] ids: A list of Additional Certificate IDs.
     :param str listener_id: The ID of the listener. Only HTTPS listeners support this parameter.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

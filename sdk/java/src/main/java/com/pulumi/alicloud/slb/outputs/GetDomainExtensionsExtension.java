@@ -13,19 +13,28 @@ public final class GetDomainExtensionsExtension {
      * @return The domain name.
      * 
      */
-    private String domain;
+    private final String domain;
     /**
      * @return The ID of the domain extension.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the certificate used by the domain name.
      * 
      */
-    private String serverCertificateId;
+    private final String serverCertificateId;
 
-    private GetDomainExtensionsExtension() {}
+    @CustomType.Constructor
+    private GetDomainExtensionsExtension(
+        @CustomType.Parameter("domain") String domain,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("serverCertificateId") String serverCertificateId) {
+        this.domain = domain;
+        this.id = id;
+        this.serverCertificateId = serverCertificateId;
+    }
+
     /**
      * @return The domain name.
      * 
@@ -55,12 +64,16 @@ public final class GetDomainExtensionsExtension {
     public static Builder builder(GetDomainExtensionsExtension defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String domain;
         private String id;
         private String serverCertificateId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDomainExtensionsExtension defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domain = defaults.domain;
@@ -68,27 +81,19 @@ public final class GetDomainExtensionsExtension {
     	      this.serverCertificateId = defaults.serverCertificateId;
         }
 
-        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder serverCertificateId(String serverCertificateId) {
             this.serverCertificateId = Objects.requireNonNull(serverCertificateId);
             return this;
-        }
-        public GetDomainExtensionsExtension build() {
-            final var o = new GetDomainExtensionsExtension();
-            o.domain = domain;
-            o.id = id;
-            o.serverCertificateId = serverCertificateId;
-            return o;
+        }        public GetDomainExtensionsExtension build() {
+            return new GetDomainExtensionsExtension(domain, id, serverCertificateId);
         }
     }
 }

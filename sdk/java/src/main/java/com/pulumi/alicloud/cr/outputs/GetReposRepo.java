@@ -16,34 +16,49 @@ public final class GetReposRepo {
      * @return The repository domain list.
      * 
      */
-    private GetReposRepoDomainList domainList;
+    private final GetReposRepoDomainList domainList;
     /**
      * @return Name of container registry namespace.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return Name of container registry namespace where the repositories are located in.
      * 
      */
-    private String namespace;
+    private final String namespace;
     /**
      * @return `PUBLIC` or `PRIVATE`, repository&#39;s visibility.
      * 
      */
-    private String repoType;
+    private final String repoType;
     /**
      * @return The repository general information.
      * 
      */
-    private String summary;
+    private final String summary;
     /**
      * @return A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
      * 
      */
-    private List<GetReposRepoTag> tags;
+    private final List<GetReposRepoTag> tags;
 
-    private GetReposRepo() {}
+    @CustomType.Constructor
+    private GetReposRepo(
+        @CustomType.Parameter("domainList") GetReposRepoDomainList domainList,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("namespace") String namespace,
+        @CustomType.Parameter("repoType") String repoType,
+        @CustomType.Parameter("summary") String summary,
+        @CustomType.Parameter("tags") List<GetReposRepoTag> tags) {
+        this.domainList = domainList;
+        this.name = name;
+        this.namespace = namespace;
+        this.repoType = repoType;
+        this.summary = summary;
+        this.tags = tags;
+    }
+
     /**
      * @return The repository domain list.
      * 
@@ -94,7 +109,7 @@ public final class GetReposRepo {
     public static Builder builder(GetReposRepo defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private GetReposRepoDomainList domainList;
         private String name;
@@ -102,7 +117,11 @@ public final class GetReposRepo {
         private String repoType;
         private String summary;
         private List<GetReposRepoTag> tags;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetReposRepo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domainList = defaults.domainList;
@@ -113,48 +132,34 @@ public final class GetReposRepo {
     	      this.tags = defaults.tags;
         }
 
-        @CustomType.Setter
         public Builder domainList(GetReposRepoDomainList domainList) {
             this.domainList = Objects.requireNonNull(domainList);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder namespace(String namespace) {
             this.namespace = Objects.requireNonNull(namespace);
             return this;
         }
-        @CustomType.Setter
         public Builder repoType(String repoType) {
             this.repoType = Objects.requireNonNull(repoType);
             return this;
         }
-        @CustomType.Setter
         public Builder summary(String summary) {
             this.summary = Objects.requireNonNull(summary);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(List<GetReposRepoTag> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
         public Builder tags(GetReposRepoTag... tags) {
             return tags(List.of(tags));
-        }
-        public GetReposRepo build() {
-            final var o = new GetReposRepo();
-            o.domainList = domainList;
-            o.name = name;
-            o.namespace = namespace;
-            o.repoType = repoType;
-            o.summary = summary;
-            o.tags = tags;
-            return o;
+        }        public GetReposRepo build() {
+            return new GetReposRepo(domainList, name, namespace, repoType, summary, tags);
         }
     }
 }

@@ -16,35 +16,52 @@ public final class GetEventSourcesSource {
      * @return The detail describe of event source.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The code name of event source.
      * 
      */
-    private String eventSourceName;
+    private final String eventSourceName;
     /**
      * @return The config of external data source.
      * 
      */
-    private Map<String,Object> externalSourceConfig;
+    private final Map<String,Object> externalSourceConfig;
     /**
      * @return The type of external data source.
      * 
      */
-    private String externalSourceType;
+    private final String externalSourceType;
     /**
      * @return The ID of the Event Source.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Whether to connect to an external data source.
      * 
      */
-    private Boolean linkedExternalSource;
-    private String type;
+    private final Boolean linkedExternalSource;
+    private final String type;
 
-    private GetEventSourcesSource() {}
+    @CustomType.Constructor
+    private GetEventSourcesSource(
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("eventSourceName") String eventSourceName,
+        @CustomType.Parameter("externalSourceConfig") Map<String,Object> externalSourceConfig,
+        @CustomType.Parameter("externalSourceType") String externalSourceType,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("linkedExternalSource") Boolean linkedExternalSource,
+        @CustomType.Parameter("type") String type) {
+        this.description = description;
+        this.eventSourceName = eventSourceName;
+        this.externalSourceConfig = externalSourceConfig;
+        this.externalSourceType = externalSourceType;
+        this.id = id;
+        this.linkedExternalSource = linkedExternalSource;
+        this.type = type;
+    }
+
     /**
      * @return The detail describe of event source.
      * 
@@ -98,7 +115,7 @@ public final class GetEventSourcesSource {
     public static Builder builder(GetEventSourcesSource defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String description;
         private String eventSourceName;
@@ -107,7 +124,11 @@ public final class GetEventSourcesSource {
         private String id;
         private Boolean linkedExternalSource;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEventSourcesSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -119,51 +140,35 @@ public final class GetEventSourcesSource {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder eventSourceName(String eventSourceName) {
             this.eventSourceName = Objects.requireNonNull(eventSourceName);
             return this;
         }
-        @CustomType.Setter
         public Builder externalSourceConfig(Map<String,Object> externalSourceConfig) {
             this.externalSourceConfig = Objects.requireNonNull(externalSourceConfig);
             return this;
         }
-        @CustomType.Setter
         public Builder externalSourceType(String externalSourceType) {
             this.externalSourceType = Objects.requireNonNull(externalSourceType);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder linkedExternalSource(Boolean linkedExternalSource) {
             this.linkedExternalSource = Objects.requireNonNull(linkedExternalSource);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetEventSourcesSource build() {
-            final var o = new GetEventSourcesSource();
-            o.description = description;
-            o.eventSourceName = eventSourceName;
-            o.externalSourceConfig = externalSourceConfig;
-            o.externalSourceType = externalSourceType;
-            o.id = id;
-            o.linkedExternalSource = linkedExternalSource;
-            o.type = type;
-            return o;
+        }        public GetEventSourcesSource build() {
+            return new GetEventSourcesSource(description, eventSourceName, externalSourceConfig, externalSourceType, id, linkedExternalSource, type);
         }
     }
 }

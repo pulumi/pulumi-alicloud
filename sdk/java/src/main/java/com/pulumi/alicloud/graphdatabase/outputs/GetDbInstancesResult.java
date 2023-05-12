@@ -14,19 +14,36 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDbInstancesResult {
-    private @Nullable String dbInstanceDescription;
-    private @Nullable Boolean enableDetails;
+    private final @Nullable String dbInstanceDescription;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private List<GetDbInstancesInstance> instances;
-    private @Nullable String outputFile;
-    private @Nullable String status;
+    private final String id;
+    private final List<String> ids;
+    private final List<GetDbInstancesInstance> instances;
+    private final @Nullable String outputFile;
+    private final @Nullable String status;
 
-    private GetDbInstancesResult() {}
+    @CustomType.Constructor
+    private GetDbInstancesResult(
+        @CustomType.Parameter("dbInstanceDescription") @Nullable String dbInstanceDescription,
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instances") List<GetDbInstancesInstance> instances,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.dbInstanceDescription = dbInstanceDescription;
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.instances = instances;
+        this.outputFile = outputFile;
+        this.status = status;
+    }
+
     public Optional<String> dbInstanceDescription() {
         return Optional.ofNullable(this.dbInstanceDescription);
     }
@@ -60,7 +77,7 @@ public final class GetDbInstancesResult {
     public static Builder builder(GetDbInstancesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String dbInstanceDescription;
         private @Nullable Boolean enableDetails;
@@ -69,7 +86,11 @@ public final class GetDbInstancesResult {
         private List<GetDbInstancesInstance> instances;
         private @Nullable String outputFile;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDbInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbInstanceDescription = defaults.dbInstanceDescription;
@@ -81,22 +102,18 @@ public final class GetDbInstancesResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder dbInstanceDescription(@Nullable String dbInstanceDescription) {
             this.dbInstanceDescription = dbInstanceDescription;
             return this;
         }
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -104,7 +121,6 @@ public final class GetDbInstancesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instances(List<GetDbInstancesInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -112,26 +128,15 @@ public final class GetDbInstancesResult {
         public Builder instances(GetDbInstancesInstance... instances) {
             return instances(List.of(instances));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetDbInstancesResult build() {
-            final var o = new GetDbInstancesResult();
-            o.dbInstanceDescription = dbInstanceDescription;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.instances = instances;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+        }        public GetDbInstancesResult build() {
+            return new GetDbInstancesResult(dbInstanceDescription, enableDetails, id, ids, instances, outputFile, status);
         }
     }
 }

@@ -14,109 +14,154 @@ public final class GetExecutionsExecution {
      * @return The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.
      * 
      */
-    private String category;
+    private final String category;
     /**
      * @return The counters of OOS Execution.
      * 
      */
-    private String counters;
+    private final String counters;
     /**
      * @return The time when the execution was created.
      * 
      */
-    private String createDate;
+    private final String createDate;
     /**
      * @return The time when the execution was ended.
      * 
      */
-    private String endDate;
+    private final String endDate;
     /**
      * @return The user who execute the template.
      * 
      */
-    private String executedBy;
+    private final String executedBy;
     /**
      * @return ID of the OOS Executions.
      * 
      */
-    private String executionId;
+    private final String executionId;
     /**
      * @return ID of the OOS Executions.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Whether to include subtasks.
      * 
      */
-    private Boolean isParent;
+    private final Boolean isParent;
     /**
      * @return The mode of OOS Execution. Valid: `Automatic`, `Debug`.
      * 
      */
-    private String mode;
+    private final String mode;
     /**
      * @return The outputs of OOS Executions.
      * 
      */
-    private String outputs;
+    private final String outputs;
     /**
      * @return The parameters required by the template
      * 
      */
-    private String parameters;
+    private final String parameters;
     /**
      * @return The id of parent OOS Execution.
      * 
      */
-    private String parentExecutionId;
+    private final String parentExecutionId;
     /**
      * @return The role that executes the current template.
      * 
      */
-    private String ramRole;
+    private final String ramRole;
     /**
      * @return The time when the template was started.
      * 
      */
-    private String startDate;
+    private final String startDate;
     /**
      * @return The Status of OOS Execution. Valid: `Cancelled`, `Failed`, `Queued`, `Running`, `Started`, `Success`, `Waiting`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The message of status.
      * 
      */
-    private String statusMessage;
+    private final String statusMessage;
     /**
      * @return The reason of status.
      * 
      */
-    private String statusReason;
+    private final String statusReason;
     /**
      * @return The id of execution template.
      * 
      */
-    private String templateId;
+    private final String templateId;
     /**
      * @return The name of execution template.
      * 
      */
-    private String templateName;
+    private final String templateName;
     /**
      * @return The version of execution template.
      * 
      */
-    private String templateVersion;
+    private final String templateVersion;
     /**
      * @return The time when the template was updated.
      * 
      */
-    private String updateDate;
+    private final String updateDate;
 
-    private GetExecutionsExecution() {}
+    @CustomType.Constructor
+    private GetExecutionsExecution(
+        @CustomType.Parameter("category") String category,
+        @CustomType.Parameter("counters") String counters,
+        @CustomType.Parameter("createDate") String createDate,
+        @CustomType.Parameter("endDate") String endDate,
+        @CustomType.Parameter("executedBy") String executedBy,
+        @CustomType.Parameter("executionId") String executionId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("isParent") Boolean isParent,
+        @CustomType.Parameter("mode") String mode,
+        @CustomType.Parameter("outputs") String outputs,
+        @CustomType.Parameter("parameters") String parameters,
+        @CustomType.Parameter("parentExecutionId") String parentExecutionId,
+        @CustomType.Parameter("ramRole") String ramRole,
+        @CustomType.Parameter("startDate") String startDate,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("statusMessage") String statusMessage,
+        @CustomType.Parameter("statusReason") String statusReason,
+        @CustomType.Parameter("templateId") String templateId,
+        @CustomType.Parameter("templateName") String templateName,
+        @CustomType.Parameter("templateVersion") String templateVersion,
+        @CustomType.Parameter("updateDate") String updateDate) {
+        this.category = category;
+        this.counters = counters;
+        this.createDate = createDate;
+        this.endDate = endDate;
+        this.executedBy = executedBy;
+        this.executionId = executionId;
+        this.id = id;
+        this.isParent = isParent;
+        this.mode = mode;
+        this.outputs = outputs;
+        this.parameters = parameters;
+        this.parentExecutionId = parentExecutionId;
+        this.ramRole = ramRole;
+        this.startDate = startDate;
+        this.status = status;
+        this.statusMessage = statusMessage;
+        this.statusReason = statusReason;
+        this.templateId = templateId;
+        this.templateName = templateName;
+        this.templateVersion = templateVersion;
+        this.updateDate = updateDate;
+    }
+
     /**
      * @return The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.
      * 
@@ -272,7 +317,7 @@ public final class GetExecutionsExecution {
     public static Builder builder(GetExecutionsExecution defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String category;
         private String counters;
@@ -295,7 +340,11 @@ public final class GetExecutionsExecution {
         private String templateName;
         private String templateVersion;
         private String updateDate;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetExecutionsExecution defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -321,135 +370,91 @@ public final class GetExecutionsExecution {
     	      this.updateDate = defaults.updateDate;
         }
 
-        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
-        @CustomType.Setter
         public Builder counters(String counters) {
             this.counters = Objects.requireNonNull(counters);
             return this;
         }
-        @CustomType.Setter
         public Builder createDate(String createDate) {
             this.createDate = Objects.requireNonNull(createDate);
             return this;
         }
-        @CustomType.Setter
         public Builder endDate(String endDate) {
             this.endDate = Objects.requireNonNull(endDate);
             return this;
         }
-        @CustomType.Setter
         public Builder executedBy(String executedBy) {
             this.executedBy = Objects.requireNonNull(executedBy);
             return this;
         }
-        @CustomType.Setter
         public Builder executionId(String executionId) {
             this.executionId = Objects.requireNonNull(executionId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder isParent(Boolean isParent) {
             this.isParent = Objects.requireNonNull(isParent);
             return this;
         }
-        @CustomType.Setter
         public Builder mode(String mode) {
             this.mode = Objects.requireNonNull(mode);
             return this;
         }
-        @CustomType.Setter
         public Builder outputs(String outputs) {
             this.outputs = Objects.requireNonNull(outputs);
             return this;
         }
-        @CustomType.Setter
         public Builder parameters(String parameters) {
             this.parameters = Objects.requireNonNull(parameters);
             return this;
         }
-        @CustomType.Setter
         public Builder parentExecutionId(String parentExecutionId) {
             this.parentExecutionId = Objects.requireNonNull(parentExecutionId);
             return this;
         }
-        @CustomType.Setter
         public Builder ramRole(String ramRole) {
             this.ramRole = Objects.requireNonNull(ramRole);
             return this;
         }
-        @CustomType.Setter
         public Builder startDate(String startDate) {
             this.startDate = Objects.requireNonNull(startDate);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder statusMessage(String statusMessage) {
             this.statusMessage = Objects.requireNonNull(statusMessage);
             return this;
         }
-        @CustomType.Setter
         public Builder statusReason(String statusReason) {
             this.statusReason = Objects.requireNonNull(statusReason);
             return this;
         }
-        @CustomType.Setter
         public Builder templateId(String templateId) {
             this.templateId = Objects.requireNonNull(templateId);
             return this;
         }
-        @CustomType.Setter
         public Builder templateName(String templateName) {
             this.templateName = Objects.requireNonNull(templateName);
             return this;
         }
-        @CustomType.Setter
         public Builder templateVersion(String templateVersion) {
             this.templateVersion = Objects.requireNonNull(templateVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder updateDate(String updateDate) {
             this.updateDate = Objects.requireNonNull(updateDate);
             return this;
-        }
-        public GetExecutionsExecution build() {
-            final var o = new GetExecutionsExecution();
-            o.category = category;
-            o.counters = counters;
-            o.createDate = createDate;
-            o.endDate = endDate;
-            o.executedBy = executedBy;
-            o.executionId = executionId;
-            o.id = id;
-            o.isParent = isParent;
-            o.mode = mode;
-            o.outputs = outputs;
-            o.parameters = parameters;
-            o.parentExecutionId = parentExecutionId;
-            o.ramRole = ramRole;
-            o.startDate = startDate;
-            o.status = status;
-            o.statusMessage = statusMessage;
-            o.statusReason = statusReason;
-            o.templateId = templateId;
-            o.templateName = templateName;
-            o.templateVersion = templateVersion;
-            o.updateDate = updateDate;
-            return o;
+        }        public GetExecutionsExecution build() {
+            return new GetExecutionsExecution(category, counters, createDate, endDate, executedBy, executionId, id, isParent, mode, outputs, parameters, parentExecutionId, ramRole, startDate, status, statusMessage, statusReason, templateId, templateName, templateVersion, updateDate);
         }
     }
 }

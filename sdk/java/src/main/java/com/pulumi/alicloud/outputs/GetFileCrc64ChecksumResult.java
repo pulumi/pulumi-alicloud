@@ -15,16 +15,27 @@ public final class GetFileCrc64ChecksumResult {
      * @return the file checksum of crc64.
      * 
      */
-    private String checksum;
-    private String filename;
+    private final String checksum;
+    private final String filename;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private @Nullable String outputFile;
+    private final String id;
+    private final @Nullable String outputFile;
 
-    private GetFileCrc64ChecksumResult() {}
+    @CustomType.Constructor
+    private GetFileCrc64ChecksumResult(
+        @CustomType.Parameter("checksum") String checksum,
+        @CustomType.Parameter("filename") String filename,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.checksum = checksum;
+        this.filename = filename;
+        this.id = id;
+        this.outputFile = outputFile;
+    }
+
     /**
      * @return the file checksum of crc64.
      * 
@@ -53,13 +64,17 @@ public final class GetFileCrc64ChecksumResult {
     public static Builder builder(GetFileCrc64ChecksumResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String checksum;
         private String filename;
         private String id;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetFileCrc64ChecksumResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.checksum = defaults.checksum;
@@ -68,33 +83,23 @@ public final class GetFileCrc64ChecksumResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder checksum(String checksum) {
             this.checksum = Objects.requireNonNull(checksum);
             return this;
         }
-        @CustomType.Setter
         public Builder filename(String filename) {
             this.filename = Objects.requireNonNull(filename);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetFileCrc64ChecksumResult build() {
-            final var o = new GetFileCrc64ChecksumResult();
-            o.checksum = checksum;
-            o.filename = filename;
-            o.id = id;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetFileCrc64ChecksumResult build() {
+            return new GetFileCrc64ChecksumResult(checksum, filename, id, outputFile);
         }
     }
 }

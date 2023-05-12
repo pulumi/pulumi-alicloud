@@ -19,21 +19,34 @@ public final class GetSystemSecurityPoliciesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of System Security Policy IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String outputFile;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
     /**
      * @return A list of ALB Security Policies. Each element contains the following attributes:
      * 
      */
-    private List<GetSystemSecurityPoliciesPolicy> policies;
-    private @Nullable Map<String,Object> tags;
+    private final List<GetSystemSecurityPoliciesPolicy> policies;
+    private final @Nullable Map<String,Object> tags;
 
-    private GetSystemSecurityPoliciesResult() {}
+    @CustomType.Constructor
+    private GetSystemSecurityPoliciesResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("policies") List<GetSystemSecurityPoliciesPolicy> policies,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.policies = policies;
+        this.tags = tags;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -69,14 +82,18 @@ public final class GetSystemSecurityPoliciesResult {
     public static Builder builder(GetSystemSecurityPoliciesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
         private List<GetSystemSecurityPoliciesPolicy> policies;
         private @Nullable Map<String,Object> tags;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetSystemSecurityPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -86,12 +103,10 @@ public final class GetSystemSecurityPoliciesResult {
     	      this.tags = defaults.tags;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -99,12 +114,10 @@ public final class GetSystemSecurityPoliciesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder policies(List<GetSystemSecurityPoliciesPolicy> policies) {
             this.policies = Objects.requireNonNull(policies);
             return this;
@@ -112,19 +125,11 @@ public final class GetSystemSecurityPoliciesResult {
         public Builder policies(GetSystemSecurityPoliciesPolicy... policies) {
             return policies(List.of(policies));
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }
-        public GetSystemSecurityPoliciesResult build() {
-            final var o = new GetSystemSecurityPoliciesResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.policies = policies;
-            o.tags = tags;
-            return o;
+        }        public GetSystemSecurityPoliciesResult build() {
+            return new GetSystemSecurityPoliciesResult(id, ids, outputFile, policies, tags);
         }
     }
 }

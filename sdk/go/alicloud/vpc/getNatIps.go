@@ -122,7 +122,8 @@ type GetNatIpsArgs struct {
 	NatIpIds  []string `pulumi:"natIpIds"`
 	// The name of the NAT IP address.
 	NatIpNames []string `pulumi:"natIpNames"`
-	OutputFile *string  `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
 	Status *string `pulumi:"status"`
 }
@@ -169,7 +170,8 @@ type GetNatIpsOutputArgs struct {
 	NatIpIds  pulumi.StringArrayInput `pulumi:"natIpIds"`
 	// The name of the NAT IP address.
 	NatIpNames pulumi.StringArrayInput `pulumi:"natIpNames"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }

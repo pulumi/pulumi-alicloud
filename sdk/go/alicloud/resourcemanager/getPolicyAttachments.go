@@ -50,7 +50,8 @@ func GetPolicyAttachments(ctx *pulumi.Context, args *GetPolicyAttachmentsArgs, o
 // A collection of arguments for invoking getPolicyAttachments.
 type GetPolicyAttachmentsArgs struct {
 	// The language that is used to return the description of the system policy. Valid values:`en`: English, `zh-CN`: Chinese, `ja`: Japanese.
-	Language   *string `pulumi:"language"`
+	Language *string `pulumi:"language"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The name of the policy. The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
 	PolicyName *string `pulumi:"policyName"`
@@ -102,7 +103,8 @@ func GetPolicyAttachmentsOutput(ctx *pulumi.Context, args GetPolicyAttachmentsOu
 // A collection of arguments for invoking getPolicyAttachments.
 type GetPolicyAttachmentsOutputArgs struct {
 	// The language that is used to return the description of the system policy. Valid values:`en`: English, `zh-CN`: Chinese, `ja`: Japanese.
-	Language   pulumi.StringPtrInput `pulumi:"language"`
+	Language pulumi.StringPtrInput `pulumi:"language"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The name of the policy. The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
 	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`

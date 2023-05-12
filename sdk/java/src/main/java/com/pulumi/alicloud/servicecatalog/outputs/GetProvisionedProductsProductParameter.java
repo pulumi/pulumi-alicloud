@@ -9,10 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProvisionedProductsProductParameter {
-    private String parameterKey;
-    private String parameterValue;
+    private final String parameterKey;
+    private final String parameterValue;
 
-    private GetProvisionedProductsProductParameter() {}
+    @CustomType.Constructor
+    private GetProvisionedProductsProductParameter(
+        @CustomType.Parameter("parameterKey") String parameterKey,
+        @CustomType.Parameter("parameterValue") String parameterValue) {
+        this.parameterKey = parameterKey;
+        this.parameterValue = parameterValue;
+    }
+
     public String parameterKey() {
         return this.parameterKey;
     }
@@ -27,32 +34,30 @@ public final class GetProvisionedProductsProductParameter {
     public static Builder builder(GetProvisionedProductsProductParameter defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String parameterKey;
         private String parameterValue;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetProvisionedProductsProductParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parameterKey = defaults.parameterKey;
     	      this.parameterValue = defaults.parameterValue;
         }
 
-        @CustomType.Setter
         public Builder parameterKey(String parameterKey) {
             this.parameterKey = Objects.requireNonNull(parameterKey);
             return this;
         }
-        @CustomType.Setter
         public Builder parameterValue(String parameterValue) {
             this.parameterValue = Objects.requireNonNull(parameterValue);
             return this;
-        }
-        public GetProvisionedProductsProductParameter build() {
-            final var o = new GetProvisionedProductsProductParameter();
-            o.parameterKey = parameterKey;
-            o.parameterValue = parameterValue;
-            return o;
+        }        public GetProvisionedProductsProductParameter build() {
+            return new GetProvisionedProductsProductParameter(parameterKey, parameterValue);
         }
     }
 }

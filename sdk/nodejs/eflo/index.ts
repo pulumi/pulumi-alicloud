@@ -5,10 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GetSubnetsArgs, GetSubnetsResult, GetSubnetsOutputArgs } from "./getSubnets";
+export const getSubnets: typeof import("./getSubnets").getSubnets = null as any;
+export const getSubnetsOutput: typeof import("./getSubnets").getSubnetsOutput = null as any;
+utilities.lazyLoad(exports, ["getSubnets","getSubnetsOutput"], () => require("./getSubnets"));
+
 export { GetVpdsArgs, GetVpdsResult, GetVpdsOutputArgs } from "./getVpds";
 export const getVpds: typeof import("./getVpds").getVpds = null as any;
 export const getVpdsOutput: typeof import("./getVpds").getVpdsOutput = null as any;
 utilities.lazyLoad(exports, ["getVpds","getVpdsOutput"], () => require("./getVpds"));
+
+export { SubnetArgs, SubnetState } from "./subnet";
+export type Subnet = import("./subnet").Subnet;
+export const Subnet: typeof import("./subnet").Subnet = null as any;
+utilities.lazyLoad(exports, ["Subnet"], () => require("./subnet"));
 
 export { VpdArgs, VpdState } from "./vpd";
 export type Vpd = import("./vpd").Vpd;
@@ -20,6 +30,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:eflo/subnet:Subnet":
+                return new Subnet(name, <any>undefined, { urn })
             case "alicloud:eflo/vpd:Vpd":
                 return new Vpd(name, <any>undefined, { urn })
             default:
@@ -27,4 +39,5 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "eflo/subnet", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/vpd", _module)

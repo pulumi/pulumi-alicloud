@@ -51,6 +51,7 @@ func GetReplicationVaultRegions(ctx *pulumi.Context, args *GetReplicationVaultRe
 
 // A collection of arguments for invoking getReplicationVaultRegions.
 type GetReplicationVaultRegionsArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -77,6 +78,7 @@ func GetReplicationVaultRegionsOutput(ctx *pulumi.Context, args GetReplicationVa
 
 // A collection of arguments for invoking getReplicationVaultRegions.
 type GetReplicationVaultRegionsOutputArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

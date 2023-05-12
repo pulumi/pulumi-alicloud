@@ -30,7 +30,8 @@ type GetCapacityReservationsArgs struct {
 	// Instance type. Currently, you can only set the capacity reservation service for one instance type.
 	InstanceType *string `pulumi:"instanceType"`
 	// A regex string to filter results by Group Metric Rule name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The payment type of the resource. value range `PostPaid`, `PrePaid`.
 	PaymentType *string `pulumi:"paymentType"`
@@ -92,7 +93,8 @@ type GetCapacityReservationsOutputArgs struct {
 	// Instance type. Currently, you can only set the capacity reservation service for one instance type.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
 	// A regex string to filter results by Group Metric Rule name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The payment type of the resource. value range `PostPaid`, `PrePaid`.
 	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`

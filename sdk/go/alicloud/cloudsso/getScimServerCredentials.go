@@ -62,8 +62,9 @@ type GetScimServerCredentialsArgs struct {
 	// The ID of the Directory.
 	DirectoryId string `pulumi:"directoryId"`
 	// A list of SCIM Server Credential IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The Status of the resource. Valid values: `Disabled`, `Enabled`.
 	Status *string `pulumi:"status"`
 }
@@ -97,8 +98,9 @@ type GetScimServerCredentialsOutputArgs struct {
 	// The ID of the Directory.
 	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
 	// A list of SCIM Server Credential IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The Status of the resource. Valid values: `Disabled`, `Enabled`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }

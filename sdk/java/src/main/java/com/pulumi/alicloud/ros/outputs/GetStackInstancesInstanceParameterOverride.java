@@ -13,14 +13,21 @@ public final class GetStackInstancesInstanceParameterOverride {
      * @return The key of override parameter.
      * 
      */
-    private String parameterKey;
+    private final String parameterKey;
     /**
      * @return The value of override parameter.
      * 
      */
-    private String parameterValue;
+    private final String parameterValue;
 
-    private GetStackInstancesInstanceParameterOverride() {}
+    @CustomType.Constructor
+    private GetStackInstancesInstanceParameterOverride(
+        @CustomType.Parameter("parameterKey") String parameterKey,
+        @CustomType.Parameter("parameterValue") String parameterValue) {
+        this.parameterKey = parameterKey;
+        this.parameterValue = parameterValue;
+    }
+
     /**
      * @return The key of override parameter.
      * 
@@ -43,32 +50,30 @@ public final class GetStackInstancesInstanceParameterOverride {
     public static Builder builder(GetStackInstancesInstanceParameterOverride defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String parameterKey;
         private String parameterValue;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetStackInstancesInstanceParameterOverride defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parameterKey = defaults.parameterKey;
     	      this.parameterValue = defaults.parameterValue;
         }
 
-        @CustomType.Setter
         public Builder parameterKey(String parameterKey) {
             this.parameterKey = Objects.requireNonNull(parameterKey);
             return this;
         }
-        @CustomType.Setter
         public Builder parameterValue(String parameterValue) {
             this.parameterValue = Objects.requireNonNull(parameterValue);
             return this;
-        }
-        public GetStackInstancesInstanceParameterOverride build() {
-            final var o = new GetStackInstancesInstanceParameterOverride();
-            o.parameterKey = parameterKey;
-            o.parameterValue = parameterValue;
-            return o;
+        }        public GetStackInstancesInstanceParameterOverride build() {
+            return new GetStackInstancesInstanceParameterOverride(parameterKey, parameterValue);
         }
     }
 }

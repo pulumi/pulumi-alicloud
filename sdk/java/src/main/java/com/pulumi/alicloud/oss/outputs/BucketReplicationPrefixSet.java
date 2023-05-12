@@ -13,12 +13,20 @@ public final class BucketReplicationPrefixSet {
     /**
      * @return The list of object key name prefix identifying one or more objects to which the rule applies.
      * 
+     * `NOTE`: The prefix must be less than or equal to 1024 characters in length.
+     * 
      */
-    private List<String> prefixes;
+    private final List<String> prefixes;
 
-    private BucketReplicationPrefixSet() {}
+    @CustomType.Constructor
+    private BucketReplicationPrefixSet(@CustomType.Parameter("prefixes") List<String> prefixes) {
+        this.prefixes = prefixes;
+    }
+
     /**
      * @return The list of object key name prefix identifying one or more objects to which the rule applies.
+     * 
+     * `NOTE`: The prefix must be less than or equal to 1024 characters in length.
      * 
      */
     public List<String> prefixes() {
@@ -32,27 +40,27 @@ public final class BucketReplicationPrefixSet {
     public static Builder builder(BucketReplicationPrefixSet defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<String> prefixes;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(BucketReplicationPrefixSet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.prefixes = defaults.prefixes;
         }
 
-        @CustomType.Setter
         public Builder prefixes(List<String> prefixes) {
             this.prefixes = Objects.requireNonNull(prefixes);
             return this;
         }
         public Builder prefixes(String... prefixes) {
             return prefixes(List.of(prefixes));
-        }
-        public BucketReplicationPrefixSet build() {
-            final var o = new BucketReplicationPrefixSet();
-            o.prefixes = prefixes;
-            return o;
+        }        public BucketReplicationPrefixSet build() {
+            return new BucketReplicationPrefixSet(prefixes);
         }
     }
 }

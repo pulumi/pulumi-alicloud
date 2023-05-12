@@ -64,6 +64,10 @@ type GetEndpointAclServiceArgs struct {
 	// The ID of the CR Instance.
 	InstanceId string `pulumi:"instanceId"`
 	// The ModuleName. Valid values: `Registry`.
+	//
+	// > **NOTE:** After You enable access over the Internet, the Classless Inter-Domain Routing (CIDR) block `127.0.0.1/32` is automatically added to the whitelist.
+	//
+	// > **NOTE:** You may want to allow all ECS instances to access the Container Registry Enterprise Edition instance over the Internet. To achieve this purpose, you can enable access over the Internet and delete all IP addresses from the whitelist for Internet access. After you perform the preceding operation, the Container Registry Enterprise Edition instance is completely exposed to the Internet and may be attacked.
 	ModuleName *string `pulumi:"moduleName"`
 }
 
@@ -100,6 +104,10 @@ type GetEndpointAclServiceOutputArgs struct {
 	// The ID of the CR Instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// The ModuleName. Valid values: `Registry`.
+	//
+	// > **NOTE:** After You enable access over the Internet, the Classless Inter-Domain Routing (CIDR) block `127.0.0.1/32` is automatically added to the whitelist.
+	//
+	// > **NOTE:** You may want to allow all ECS instances to access the Container Registry Enterprise Edition instance over the Internet. To achieve this purpose, you can enable access over the Internet and delete all IP addresses from the whitelist for Internet access. After you perform the preceding operation, the Container Registry Enterprise Edition instance is completely exposed to the Internet and may be attacked.
 	ModuleName pulumi.StringPtrInput `pulumi:"moduleName"`
 }
 

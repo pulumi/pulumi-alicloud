@@ -34,6 +34,8 @@ class ForwardEntryArgs:
         :param pulumi.Input[str] forward_entry_name: The name of forward entry.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
         :param pulumi.Input[bool] port_break: Specifies whether to remove limits on the port range. Default value is `false`.
+               
+               > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
         """
         pulumi.set(__self__, "external_ip", external_ip)
         pulumi.set(__self__, "external_port", external_port)
@@ -152,6 +154,8 @@ class ForwardEntryArgs:
     def port_break(self) -> Optional[pulumi.Input[bool]]:
         """
         Specifies whether to remove limits on the port range. Default value is `false`.
+
+        > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
         """
         return pulumi.get(self, "port_break")
 
@@ -186,6 +190,8 @@ class _ForwardEntryState:
         :param pulumi.Input[str] ip_protocol: The ip protocol, valid value is tcp|udp|any.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
         :param pulumi.Input[bool] port_break: Specifies whether to remove limits on the port range. Default value is `false`.
+               
+               > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
         :param pulumi.Input[str] status: (Available in 1.119.1+) The status of forward entry.
         """
         if external_ip is not None:
@@ -327,6 +333,8 @@ class _ForwardEntryState:
     def port_break(self) -> Optional[pulumi.Input[bool]]:
         """
         Specifies whether to remove limits on the port range. Default value is `false`.
+
+        > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
         """
         return pulumi.get(self, "port_break")
 
@@ -424,6 +432,8 @@ class ForwardEntry(pulumi.CustomResource):
         :param pulumi.Input[str] ip_protocol: The ip protocol, valid value is tcp|udp|any.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
         :param pulumi.Input[bool] port_break: Specifies whether to remove limits on the port range. Default value is `false`.
+               
+               > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
         """
         ...
     @overload
@@ -579,6 +589,8 @@ class ForwardEntry(pulumi.CustomResource):
         :param pulumi.Input[str] ip_protocol: The ip protocol, valid value is tcp|udp|any.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
         :param pulumi.Input[bool] port_break: Specifies whether to remove limits on the port range. Default value is `false`.
+               
+               > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
         :param pulumi.Input[str] status: (Available in 1.119.1+) The status of forward entry.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -675,6 +687,8 @@ class ForwardEntry(pulumi.CustomResource):
     def port_break(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies whether to remove limits on the port range. Default value is `false`.
+
+        > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
         """
         return pulumi.get(self, "port_break")
 

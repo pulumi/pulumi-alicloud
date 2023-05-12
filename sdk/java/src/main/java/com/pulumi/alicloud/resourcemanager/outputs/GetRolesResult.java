@@ -14,31 +14,48 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRolesResult {
-    private @Nullable Boolean enableDetails;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of role IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of role names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
     /**
      * @return A list of roles. Each element contains the following attributes:
      * 
      */
-    private List<GetRolesRole> roles;
+    private final List<GetRolesRole> roles;
 
-    private GetRolesResult() {}
+    @CustomType.Constructor
+    private GetRolesResult(
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("roles") List<GetRolesRole> roles) {
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.roles = roles;
+    }
+
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -84,7 +101,7 @@ public final class GetRolesResult {
     public static Builder builder(GetRolesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private String id;
@@ -93,7 +110,11 @@ public final class GetRolesResult {
         private List<String> names;
         private @Nullable String outputFile;
         private List<GetRolesRole> roles;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRolesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -105,17 +126,14 @@ public final class GetRolesResult {
     	      this.roles = defaults.roles;
         }
 
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -123,12 +141,10 @@ public final class GetRolesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -136,29 +152,18 @@ public final class GetRolesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder roles(List<GetRolesRole> roles) {
             this.roles = Objects.requireNonNull(roles);
             return this;
         }
         public Builder roles(GetRolesRole... roles) {
             return roles(List.of(roles));
-        }
-        public GetRolesResult build() {
-            final var o = new GetRolesResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.roles = roles;
-            return o;
+        }        public GetRolesResult build() {
+            return new GetRolesResult(enableDetails, id, ids, nameRegex, names, outputFile, roles);
         }
     }
 }

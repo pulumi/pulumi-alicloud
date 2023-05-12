@@ -10,6 +10,104 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
+    /// Provides a ECS instance resource.
+    /// 
+    /// &gt; **NOTE:** You can launch an ECS instance for a VPC network via specifying parameter `vswitch_id`. One instance can only belong to one VSwitch.
+    /// 
+    /// &gt; **NOTE:** If a VSwitchId is specified for creating an instance, SecurityGroupId and VSwitchId must belong to one VPC, VSwitchId Cannot be modified after creation.
+    /// 
+    /// &gt; **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `is_outdated` to true. For more about the upgraded instance type, refer to `alicloud.ecs.getInstanceTypes` datasource.
+    /// 
+    /// &gt; **NOTE:** At present, 'PrePaid' instance cannot be deleted and must wait it to be outdated and release it automatically.
+    /// 
+    /// &gt; **NOTE:** The resource supports modifying instance charge type from 'PrePaid' to 'PostPaid' from version 1.9.6.
+    ///  However, at present, this modification has some limitation about CPU core count in one month, so strongly recommand that `Don't modify instance charge type frequentlly in one month`.
+    /// 
+    /// &gt; **NOTE:**  There is unsupported 'deletion_protection' attribute when the instance is spot
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "auto_provisioning_group";
+    ///     // Create a new ECS instance for VPC
+    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     // Create a new ECS instance for a VPC
+    ///     var @group = new AliCloud.Ecs.SecurityGroup("group", new()
+    ///     {
+    ///         Description = "foo",
+    ///         VpcId = vpc.Id,
+    ///     });
+    /// 
+    ///     var key = new AliCloud.Kms.Key("key", new()
+    ///     {
+    ///         Description = "Hello KMS",
+    ///         PendingWindowInDays = 7,
+    ///         Status = "Enabled",
+    ///     });
+    /// 
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableDiskCategory = "cloud_efficiency",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var vswitch = new AliCloud.Vpc.Switch("vswitch", new()
+    ///     {
+    ///         VpcId = vpc.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var instance = new AliCloud.Ecs.Instance("instance", new()
+    ///     {
+    ///         AvailabilityZone = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             @group,
+    ///         }.Select(__item =&gt; __item.Id).ToList(),
+    ///         InstanceType = "ecs.n4.large",
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         SystemDiskName = "test_foo_system_disk_name",
+    ///         SystemDiskDescription = "test_foo_system_disk_description",
+    ///         ImageId = "ubuntu_18_04_64_20G_alibase_20190624.vhd",
+    ///         InstanceName = "test_foo",
+    ///         VswitchId = vswitch.Id,
+    ///         InternetMaxBandwidthOut = 10,
+    ///         DataDisks = new[]
+    ///         {
+    ///             new AliCloud.Ecs.Inputs.InstanceDataDiskArgs
+    ///             {
+    ///                 Name = "disk2",
+    ///                 Size = 20,
+    ///                 Category = "cloud_efficiency",
+    ///                 Description = "disk2",
+    ///                 Encrypted = true,
+    ///                 KmsKeyId = key.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Module Support
+    /// 
+    /// You can use the existing ecs-instance module
+    /// to create several ECS instances one-click.
+    /// 
     /// ## Import
     /// 
     /// Instance can be imported using the id, e.g.
@@ -69,6 +167,20 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+        /// 
+        /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+        /// Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        /// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Output("dedicatedHostId")]
         public Output<string?> DedicatedHostId { get; private set; } = null!;
@@ -282,6 +394,12 @@ namespace Pulumi.AliCloud.Ecs
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
+        /// <summary>
+        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
+        /// - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
+        /// - [1-3] when `period_unit` in "Week"
+        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
@@ -370,6 +488,8 @@ namespace Pulumi.AliCloud.Ecs
         /// - NoSpot: A regular Pay-As-You-Go instance.
         /// - SpotWithPriceLimit: A price threshold for a spot instance
         /// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
+        /// 
+        /// Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
         /// </summary>
         [Output("spotStrategy")]
         public Output<string> SpotStrategy { get; private set; } = null!;
@@ -578,6 +698,20 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+        /// 
+        /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+        /// Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        /// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Input("dedicatedHostId")]
         public Input<string>? DedicatedHostId { get; set; }
@@ -789,6 +923,12 @@ namespace Pulumi.AliCloud.Ecs
             }
         }
 
+        /// <summary>
+        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
+        /// - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
+        /// - [1-3] when `period_unit` in "Week"
+        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -877,6 +1017,8 @@ namespace Pulumi.AliCloud.Ecs
         /// - NoSpot: A regular Pay-As-You-Go instance.
         /// - SpotWithPriceLimit: A price threshold for a spot instance
         /// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
+        /// 
+        /// Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }
@@ -1061,6 +1203,20 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+        /// 
+        /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+        /// Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        /// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Input("dedicatedHostId")]
         public Input<string>? DedicatedHostId { get; set; }
@@ -1296,6 +1452,12 @@ namespace Pulumi.AliCloud.Ecs
             }
         }
 
+        /// <summary>
+        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
+        /// - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
+        /// - [1-3] when `period_unit` in "Week"
+        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -1396,6 +1558,8 @@ namespace Pulumi.AliCloud.Ecs
         /// - NoSpot: A regular Pay-As-You-Go instance.
         /// - SpotWithPriceLimit: A price threshold for a spot instance
         /// - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
+        /// 
+        /// Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }

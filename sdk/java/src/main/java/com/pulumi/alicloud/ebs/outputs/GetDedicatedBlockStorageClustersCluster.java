@@ -13,85 +13,122 @@ public final class GetDedicatedBlockStorageClustersCluster {
      * @return The available capacity of the dedicated block storage cluster. Unit: GiB.
      * 
      */
-    private String availableCapacity;
+    private final String availableCapacity;
     /**
      * @return The type of cloud disk that can be created by a dedicated block storage cluster.
      * 
      */
-    private String category;
+    private final String category;
     /**
      * @return The creation time of the resource
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The first ID of the resource
      * 
      */
-    private String dedicatedBlockStorageClusterId;
+    private final String dedicatedBlockStorageClusterId;
     /**
      * @return The name of the resource
      * 
      */
-    private String dedicatedBlockStorageClusterName;
+    private final String dedicatedBlockStorageClusterName;
     /**
      * @return Capacity to be delivered in GB.
      * 
      */
-    private String deliveryCapacity;
+    private final String deliveryCapacity;
     /**
      * @return The description of the dedicated block storage cluster.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The expiration time of the dedicated block storage cluster, in the Unix timestamp format, in seconds.
      * 
      */
-    private String expiredTime;
-    private String id;
+    private final String expiredTime;
+    private final String id;
     /**
      * @return Cloud disk performance level, possible values:-PL0.-PL1.-PL2.-PL3.&gt; Only valid in SupportedCategory = cloud_essd.
      * 
      */
-    private String performanceLevel;
+    private final String performanceLevel;
     /**
      * @return The ID of the resource group
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return The status of the resource
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return This parameter is not supported.
      * 
      */
-    private String supportedCategory;
+    private final String supportedCategory;
     /**
      * @return The total capacity of the dedicated block storage cluster. Unit: GiB.
      * 
      */
-    private String totalCapacity;
+    private final String totalCapacity;
     /**
      * @return The dedicated block storage cluster performance type. Possible values:-Standard: Basic type. This type of dedicated block storage cluster can create an ESSD PL0 cloud disk.-Premium: performance type. This type of dedicated block storage cluster can create an ESSD PL1 cloud disk.
      * 
      */
-    private String type;
+    private final String type;
     /**
      * @return The used (created disk) capacity of the current cluster, in GB
      * 
      */
-    private String usedCapacity;
+    private final String usedCapacity;
     /**
      * @return The zone ID  of the resource
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetDedicatedBlockStorageClustersCluster() {}
+    @CustomType.Constructor
+    private GetDedicatedBlockStorageClustersCluster(
+        @CustomType.Parameter("availableCapacity") String availableCapacity,
+        @CustomType.Parameter("category") String category,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("dedicatedBlockStorageClusterId") String dedicatedBlockStorageClusterId,
+        @CustomType.Parameter("dedicatedBlockStorageClusterName") String dedicatedBlockStorageClusterName,
+        @CustomType.Parameter("deliveryCapacity") String deliveryCapacity,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("expiredTime") String expiredTime,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("performanceLevel") String performanceLevel,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("supportedCategory") String supportedCategory,
+        @CustomType.Parameter("totalCapacity") String totalCapacity,
+        @CustomType.Parameter("type") String type,
+        @CustomType.Parameter("usedCapacity") String usedCapacity,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.availableCapacity = availableCapacity;
+        this.category = category;
+        this.createTime = createTime;
+        this.dedicatedBlockStorageClusterId = dedicatedBlockStorageClusterId;
+        this.dedicatedBlockStorageClusterName = dedicatedBlockStorageClusterName;
+        this.deliveryCapacity = deliveryCapacity;
+        this.description = description;
+        this.expiredTime = expiredTime;
+        this.id = id;
+        this.performanceLevel = performanceLevel;
+        this.resourceGroupId = resourceGroupId;
+        this.status = status;
+        this.supportedCategory = supportedCategory;
+        this.totalCapacity = totalCapacity;
+        this.type = type;
+        this.usedCapacity = usedCapacity;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return The available capacity of the dedicated block storage cluster. Unit: GiB.
      * 
@@ -215,7 +252,7 @@ public final class GetDedicatedBlockStorageClustersCluster {
     public static Builder builder(GetDedicatedBlockStorageClustersCluster defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String availableCapacity;
         private String category;
@@ -234,7 +271,11 @@ public final class GetDedicatedBlockStorageClustersCluster {
         private String type;
         private String usedCapacity;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDedicatedBlockStorageClustersCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availableCapacity = defaults.availableCapacity;
@@ -256,111 +297,75 @@ public final class GetDedicatedBlockStorageClustersCluster {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder availableCapacity(String availableCapacity) {
             this.availableCapacity = Objects.requireNonNull(availableCapacity);
             return this;
         }
-        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder dedicatedBlockStorageClusterId(String dedicatedBlockStorageClusterId) {
             this.dedicatedBlockStorageClusterId = Objects.requireNonNull(dedicatedBlockStorageClusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder dedicatedBlockStorageClusterName(String dedicatedBlockStorageClusterName) {
             this.dedicatedBlockStorageClusterName = Objects.requireNonNull(dedicatedBlockStorageClusterName);
             return this;
         }
-        @CustomType.Setter
         public Builder deliveryCapacity(String deliveryCapacity) {
             this.deliveryCapacity = Objects.requireNonNull(deliveryCapacity);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder performanceLevel(String performanceLevel) {
             this.performanceLevel = Objects.requireNonNull(performanceLevel);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder supportedCategory(String supportedCategory) {
             this.supportedCategory = Objects.requireNonNull(supportedCategory);
             return this;
         }
-        @CustomType.Setter
         public Builder totalCapacity(String totalCapacity) {
             this.totalCapacity = Objects.requireNonNull(totalCapacity);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
-        @CustomType.Setter
         public Builder usedCapacity(String usedCapacity) {
             this.usedCapacity = Objects.requireNonNull(usedCapacity);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetDedicatedBlockStorageClustersCluster build() {
-            final var o = new GetDedicatedBlockStorageClustersCluster();
-            o.availableCapacity = availableCapacity;
-            o.category = category;
-            o.createTime = createTime;
-            o.dedicatedBlockStorageClusterId = dedicatedBlockStorageClusterId;
-            o.dedicatedBlockStorageClusterName = dedicatedBlockStorageClusterName;
-            o.deliveryCapacity = deliveryCapacity;
-            o.description = description;
-            o.expiredTime = expiredTime;
-            o.id = id;
-            o.performanceLevel = performanceLevel;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.supportedCategory = supportedCategory;
-            o.totalCapacity = totalCapacity;
-            o.type = type;
-            o.usedCapacity = usedCapacity;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetDedicatedBlockStorageClustersCluster build() {
+            return new GetDedicatedBlockStorageClustersCluster(availableCapacity, category, createTime, dedicatedBlockStorageClusterId, dedicatedBlockStorageClusterName, deliveryCapacity, description, expiredTime, id, performanceLevel, resourceGroupId, status, supportedCategory, totalCapacity, type, usedCapacity, zoneId);
         }
     }
 }

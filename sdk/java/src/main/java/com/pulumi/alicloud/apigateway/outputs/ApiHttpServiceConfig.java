@@ -16,25 +16,38 @@ public final class ApiHttpServiceConfig {
      * @return The address of backend service.
      * 
      */
-    private String address;
-    private @Nullable String aoneName;
+    private final String address;
+    private final @Nullable String aoneName;
     /**
      * @return The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
      * 
      */
-    private String method;
+    private final String method;
     /**
      * @return The request path of the api.
      * 
      */
-    private String path;
+    private final String path;
     /**
      * @return Backend service time-out time; unit: millisecond.
      * 
      */
-    private Integer timeout;
+    private final Integer timeout;
 
-    private ApiHttpServiceConfig() {}
+    @CustomType.Constructor
+    private ApiHttpServiceConfig(
+        @CustomType.Parameter("address") String address,
+        @CustomType.Parameter("aoneName") @Nullable String aoneName,
+        @CustomType.Parameter("method") String method,
+        @CustomType.Parameter("path") String path,
+        @CustomType.Parameter("timeout") Integer timeout) {
+        this.address = address;
+        this.aoneName = aoneName;
+        this.method = method;
+        this.path = path;
+        this.timeout = timeout;
+    }
+
     /**
      * @return The address of backend service.
      * 
@@ -74,14 +87,18 @@ public final class ApiHttpServiceConfig {
     public static Builder builder(ApiHttpServiceConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String address;
         private @Nullable String aoneName;
         private String method;
         private String path;
         private Integer timeout;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ApiHttpServiceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
@@ -91,39 +108,27 @@ public final class ApiHttpServiceConfig {
     	      this.timeout = defaults.timeout;
         }
 
-        @CustomType.Setter
         public Builder address(String address) {
             this.address = Objects.requireNonNull(address);
             return this;
         }
-        @CustomType.Setter
         public Builder aoneName(@Nullable String aoneName) {
             this.aoneName = aoneName;
             return this;
         }
-        @CustomType.Setter
         public Builder method(String method) {
             this.method = Objects.requireNonNull(method);
             return this;
         }
-        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
-        @CustomType.Setter
         public Builder timeout(Integer timeout) {
             this.timeout = Objects.requireNonNull(timeout);
             return this;
-        }
-        public ApiHttpServiceConfig build() {
-            final var o = new ApiHttpServiceConfig();
-            o.address = address;
-            o.aoneName = aoneName;
-            o.method = method;
-            o.path = path;
-            o.timeout = timeout;
-            return o;
+        }        public ApiHttpServiceConfig build() {
+            return new ApiHttpServiceConfig(address, aoneName, method, path, timeout);
         }
     }
 }

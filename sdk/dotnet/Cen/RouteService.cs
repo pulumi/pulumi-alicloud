@@ -102,6 +102,8 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The VPC associated with the cloud service.
+        /// 
+        /// &gt; **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
         /// </summary>
         [Output("hostVpcId")]
         public Output<string> HostVpcId { get; private set; } = null!;
@@ -190,6 +192,8 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The VPC associated with the cloud service.
+        /// 
+        /// &gt; **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
         /// </summary>
         [Input("hostVpcId", required: true)]
         public Input<string> HostVpcId { get; set; } = null!;
@@ -234,6 +238,8 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The VPC associated with the cloud service.
+        /// 
+        /// &gt; **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
         /// </summary>
         [Input("hostVpcId")]
         public Input<string>? HostVpcId { get; set; }

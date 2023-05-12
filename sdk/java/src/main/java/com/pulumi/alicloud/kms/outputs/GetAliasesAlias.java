@@ -13,19 +13,28 @@ public final class GetAliasesAlias {
      * @return The unique identifier of the alias.
      * 
      */
-    private String aliasName;
+    private final String aliasName;
     /**
      * @return ID of the alias. The value is same as KMS alias_name.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return ID of the key.
      * 
      */
-    private String keyId;
+    private final String keyId;
 
-    private GetAliasesAlias() {}
+    @CustomType.Constructor
+    private GetAliasesAlias(
+        @CustomType.Parameter("aliasName") String aliasName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("keyId") String keyId) {
+        this.aliasName = aliasName;
+        this.id = id;
+        this.keyId = keyId;
+    }
+
     /**
      * @return The unique identifier of the alias.
      * 
@@ -55,12 +64,16 @@ public final class GetAliasesAlias {
     public static Builder builder(GetAliasesAlias defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String aliasName;
         private String id;
         private String keyId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAliasesAlias defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aliasName = defaults.aliasName;
@@ -68,27 +81,19 @@ public final class GetAliasesAlias {
     	      this.keyId = defaults.keyId;
         }
 
-        @CustomType.Setter
         public Builder aliasName(String aliasName) {
             this.aliasName = Objects.requireNonNull(aliasName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder keyId(String keyId) {
             this.keyId = Objects.requireNonNull(keyId);
             return this;
-        }
-        public GetAliasesAlias build() {
-            final var o = new GetAliasesAlias();
-            o.aliasName = aliasName;
-            o.id = id;
-            o.keyId = keyId;
-            return o;
+        }        public GetAliasesAlias build() {
+            return new GetAliasesAlias(aliasName, id, keyId);
         }
     }
 }

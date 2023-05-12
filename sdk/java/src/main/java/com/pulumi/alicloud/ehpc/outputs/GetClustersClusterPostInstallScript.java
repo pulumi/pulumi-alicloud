@@ -9,10 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClustersClusterPostInstallScript {
-    private String args;
-    private String url;
+    private final String args;
+    private final String url;
 
-    private GetClustersClusterPostInstallScript() {}
+    @CustomType.Constructor
+    private GetClustersClusterPostInstallScript(
+        @CustomType.Parameter("args") String args,
+        @CustomType.Parameter("url") String url) {
+        this.args = args;
+        this.url = url;
+    }
+
     public String args() {
         return this.args;
     }
@@ -27,32 +34,30 @@ public final class GetClustersClusterPostInstallScript {
     public static Builder builder(GetClustersClusterPostInstallScript defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String args;
         private String url;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetClustersClusterPostInstallScript defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.args = defaults.args;
     	      this.url = defaults.url;
         }
 
-        @CustomType.Setter
         public Builder args(String args) {
             this.args = Objects.requireNonNull(args);
             return this;
         }
-        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }
-        public GetClustersClusterPostInstallScript build() {
-            final var o = new GetClustersClusterPostInstallScript();
-            o.args = args;
-            o.url = url;
-            return o;
+        }        public GetClustersClusterPostInstallScript build() {
+            return new GetClustersClusterPostInstallScript(args, url);
         }
     }
 }

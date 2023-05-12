@@ -18,144 +18,203 @@ public final class GetSubscriptionJobsJob {
      * @return Subscription start time in Unix timestamp format.
      * 
      */
-    private String checkpoint;
+    private final String checkpoint;
     /**
      * @return The creation time of subscription job instance.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return Subscription object, in the format of JSON strings.
      * 
      */
-    private String dbList;
+    private final String dbList;
     /**
      * @return The ID of subscription job instance.
      * 
      */
-    private String dtsInstanceId;
+    private final String dtsInstanceId;
     /**
      * @return The ID of subscription job instance.
      * 
      */
-    private String dtsJobId;
+    private final String dtsJobId;
     /**
      * @return The name of subscription job instance.
      * 
      */
-    private String dtsJobName;
+    private final String dtsJobName;
     /**
      * @return The Expiration Time. Formatting with yyyy-MM-ddTHH:mm:ssZ(UTC time).
      * 
      */
-    private String expireTime;
+    private final String expireTime;
     /**
      * @return The ID of the Subscription Job.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
      * 
      */
-    private String paymentType;
+    private final String paymentType;
     /**
      * @return To subscribe to the name of the database.
      * 
      */
-    private String sourceEndpointDatabaseName;
+    private final String sourceEndpointDatabaseName;
     /**
      * @return The source database type value is MySQL or Oracle.
      * 
      */
-    private String sourceEndpointEngineName;
+    private final String sourceEndpointEngineName;
     /**
      * @return The ID of source instance. Only when the type of source database instance was RDS MySQL, PolarDB-X 1.0, PolarDB MySQL, this parameter can be available and must be set.
      * 
      */
-    private String sourceEndpointInstanceId;
+    private final String sourceEndpointInstanceId;
     /**
      * @return The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
      * 
      */
-    private String sourceEndpointInstanceType;
+    private final String sourceEndpointInstanceType;
     /**
      * @return The IP of source endpoint.
      * 
      */
-    private String sourceEndpointIp;
+    private final String sourceEndpointIp;
     /**
      * @return The SID of Oracle Database. When the source database is self-built Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
      * 
      */
-    private String sourceEndpointOracleSid;
+    private final String sourceEndpointOracleSid;
     /**
      * @return The Alibaba Cloud account ID to which the source instance belongs. This parameter is only available when configuring data subscriptions across Alibaba Cloud accounts and must be passed in.
      * 
      */
-    private String sourceEndpointOwnerId;
+    private final String sourceEndpointOwnerId;
     /**
      * @return The  port of source database.
      * 
      */
-    private String sourceEndpointPort;
+    private final String sourceEndpointPort;
     /**
      * @return The region of source database.
      * 
      */
-    private String sourceEndpointRegion;
+    private final String sourceEndpointRegion;
     /**
      * @return Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
      * 
      */
-    private String sourceEndpointRole;
+    private final String sourceEndpointRole;
     /**
      * @return The username of source database instance account.
      * 
      */
-    private String sourceEndpointUserName;
+    private final String sourceEndpointUserName;
     /**
      * @return The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return Whether to subscribe the DDL type of data. Valid values: `true`, `false`.
      * 
      */
-    private Boolean subscriptionDataTypeDdl;
+    private final Boolean subscriptionDataTypeDdl;
     /**
      * @return Whether to subscribe the DML type of data. Valid values: `true`, `false`.
      * 
      */
-    private Boolean subscriptionDataTypeDml;
+    private final Boolean subscriptionDataTypeDml;
     /**
      * @return Network information.
      * 
      */
-    private List<GetSubscriptionJobsJobSubscriptionHost> subscriptionHosts;
+    private final List<GetSubscriptionJobsJobSubscriptionHost> subscriptionHosts;
     /**
      * @return The type of subscription instance network. Valid value: `classic`, `vpc`.
      * 
      */
-    private String subscriptionInstanceNetworkType;
+    private final String subscriptionInstanceNetworkType;
     /**
      * @return The ID of subscription instance vpc.
      * 
      */
-    private String subscriptionInstanceVpcId;
+    private final String subscriptionInstanceVpcId;
     /**
      * @return The ID of subscription instance vswitch.
      * 
      */
-    private String subscriptionInstanceVswitchId;
+    private final String subscriptionInstanceVswitchId;
     /**
      * @return The tag of the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
 
-    private GetSubscriptionJobsJob() {}
+    @CustomType.Constructor
+    private GetSubscriptionJobsJob(
+        @CustomType.Parameter("checkpoint") String checkpoint,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("dbList") String dbList,
+        @CustomType.Parameter("dtsInstanceId") String dtsInstanceId,
+        @CustomType.Parameter("dtsJobId") String dtsJobId,
+        @CustomType.Parameter("dtsJobName") String dtsJobName,
+        @CustomType.Parameter("expireTime") String expireTime,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("paymentType") String paymentType,
+        @CustomType.Parameter("sourceEndpointDatabaseName") String sourceEndpointDatabaseName,
+        @CustomType.Parameter("sourceEndpointEngineName") String sourceEndpointEngineName,
+        @CustomType.Parameter("sourceEndpointInstanceId") String sourceEndpointInstanceId,
+        @CustomType.Parameter("sourceEndpointInstanceType") String sourceEndpointInstanceType,
+        @CustomType.Parameter("sourceEndpointIp") String sourceEndpointIp,
+        @CustomType.Parameter("sourceEndpointOracleSid") String sourceEndpointOracleSid,
+        @CustomType.Parameter("sourceEndpointOwnerId") String sourceEndpointOwnerId,
+        @CustomType.Parameter("sourceEndpointPort") String sourceEndpointPort,
+        @CustomType.Parameter("sourceEndpointRegion") String sourceEndpointRegion,
+        @CustomType.Parameter("sourceEndpointRole") String sourceEndpointRole,
+        @CustomType.Parameter("sourceEndpointUserName") String sourceEndpointUserName,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("subscriptionDataTypeDdl") Boolean subscriptionDataTypeDdl,
+        @CustomType.Parameter("subscriptionDataTypeDml") Boolean subscriptionDataTypeDml,
+        @CustomType.Parameter("subscriptionHosts") List<GetSubscriptionJobsJobSubscriptionHost> subscriptionHosts,
+        @CustomType.Parameter("subscriptionInstanceNetworkType") String subscriptionInstanceNetworkType,
+        @CustomType.Parameter("subscriptionInstanceVpcId") String subscriptionInstanceVpcId,
+        @CustomType.Parameter("subscriptionInstanceVswitchId") String subscriptionInstanceVswitchId,
+        @CustomType.Parameter("tags") Map<String,Object> tags) {
+        this.checkpoint = checkpoint;
+        this.createTime = createTime;
+        this.dbList = dbList;
+        this.dtsInstanceId = dtsInstanceId;
+        this.dtsJobId = dtsJobId;
+        this.dtsJobName = dtsJobName;
+        this.expireTime = expireTime;
+        this.id = id;
+        this.paymentType = paymentType;
+        this.sourceEndpointDatabaseName = sourceEndpointDatabaseName;
+        this.sourceEndpointEngineName = sourceEndpointEngineName;
+        this.sourceEndpointInstanceId = sourceEndpointInstanceId;
+        this.sourceEndpointInstanceType = sourceEndpointInstanceType;
+        this.sourceEndpointIp = sourceEndpointIp;
+        this.sourceEndpointOracleSid = sourceEndpointOracleSid;
+        this.sourceEndpointOwnerId = sourceEndpointOwnerId;
+        this.sourceEndpointPort = sourceEndpointPort;
+        this.sourceEndpointRegion = sourceEndpointRegion;
+        this.sourceEndpointRole = sourceEndpointRole;
+        this.sourceEndpointUserName = sourceEndpointUserName;
+        this.status = status;
+        this.subscriptionDataTypeDdl = subscriptionDataTypeDdl;
+        this.subscriptionDataTypeDml = subscriptionDataTypeDml;
+        this.subscriptionHosts = subscriptionHosts;
+        this.subscriptionInstanceNetworkType = subscriptionInstanceNetworkType;
+        this.subscriptionInstanceVpcId = subscriptionInstanceVpcId;
+        this.subscriptionInstanceVswitchId = subscriptionInstanceVswitchId;
+        this.tags = tags;
+    }
+
     /**
      * @return Subscription start time in Unix timestamp format.
      * 
@@ -360,7 +419,7 @@ public final class GetSubscriptionJobsJob {
     public static Builder builder(GetSubscriptionJobsJob defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String checkpoint;
         private String createTime;
@@ -390,7 +449,11 @@ public final class GetSubscriptionJobsJob {
         private String subscriptionInstanceVpcId;
         private String subscriptionInstanceVswitchId;
         private Map<String,Object> tags;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetSubscriptionJobsJob defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.checkpoint = defaults.checkpoint;
@@ -423,122 +486,98 @@ public final class GetSubscriptionJobsJob {
     	      this.tags = defaults.tags;
         }
 
-        @CustomType.Setter
         public Builder checkpoint(String checkpoint) {
             this.checkpoint = Objects.requireNonNull(checkpoint);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder dbList(String dbList) {
             this.dbList = Objects.requireNonNull(dbList);
             return this;
         }
-        @CustomType.Setter
         public Builder dtsInstanceId(String dtsInstanceId) {
             this.dtsInstanceId = Objects.requireNonNull(dtsInstanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder dtsJobId(String dtsJobId) {
             this.dtsJobId = Objects.requireNonNull(dtsJobId);
             return this;
         }
-        @CustomType.Setter
         public Builder dtsJobName(String dtsJobName) {
             this.dtsJobName = Objects.requireNonNull(dtsJobName);
             return this;
         }
-        @CustomType.Setter
         public Builder expireTime(String expireTime) {
             this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceEndpointDatabaseName(String sourceEndpointDatabaseName) {
             this.sourceEndpointDatabaseName = Objects.requireNonNull(sourceEndpointDatabaseName);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceEndpointEngineName(String sourceEndpointEngineName) {
             this.sourceEndpointEngineName = Objects.requireNonNull(sourceEndpointEngineName);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceEndpointInstanceId(String sourceEndpointInstanceId) {
             this.sourceEndpointInstanceId = Objects.requireNonNull(sourceEndpointInstanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceEndpointInstanceType(String sourceEndpointInstanceType) {
             this.sourceEndpointInstanceType = Objects.requireNonNull(sourceEndpointInstanceType);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceEndpointIp(String sourceEndpointIp) {
             this.sourceEndpointIp = Objects.requireNonNull(sourceEndpointIp);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceEndpointOracleSid(String sourceEndpointOracleSid) {
             this.sourceEndpointOracleSid = Objects.requireNonNull(sourceEndpointOracleSid);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceEndpointOwnerId(String sourceEndpointOwnerId) {
             this.sourceEndpointOwnerId = Objects.requireNonNull(sourceEndpointOwnerId);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceEndpointPort(String sourceEndpointPort) {
             this.sourceEndpointPort = Objects.requireNonNull(sourceEndpointPort);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceEndpointRegion(String sourceEndpointRegion) {
             this.sourceEndpointRegion = Objects.requireNonNull(sourceEndpointRegion);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceEndpointRole(String sourceEndpointRole) {
             this.sourceEndpointRole = Objects.requireNonNull(sourceEndpointRole);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceEndpointUserName(String sourceEndpointUserName) {
             this.sourceEndpointUserName = Objects.requireNonNull(sourceEndpointUserName);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder subscriptionDataTypeDdl(Boolean subscriptionDataTypeDdl) {
             this.subscriptionDataTypeDdl = Objects.requireNonNull(subscriptionDataTypeDdl);
             return this;
         }
-        @CustomType.Setter
         public Builder subscriptionDataTypeDml(Boolean subscriptionDataTypeDml) {
             this.subscriptionDataTypeDml = Objects.requireNonNull(subscriptionDataTypeDml);
             return this;
         }
-        @CustomType.Setter
         public Builder subscriptionHosts(List<GetSubscriptionJobsJobSubscriptionHost> subscriptionHosts) {
             this.subscriptionHosts = Objects.requireNonNull(subscriptionHosts);
             return this;
@@ -546,57 +585,23 @@ public final class GetSubscriptionJobsJob {
         public Builder subscriptionHosts(GetSubscriptionJobsJobSubscriptionHost... subscriptionHosts) {
             return subscriptionHosts(List.of(subscriptionHosts));
         }
-        @CustomType.Setter
         public Builder subscriptionInstanceNetworkType(String subscriptionInstanceNetworkType) {
             this.subscriptionInstanceNetworkType = Objects.requireNonNull(subscriptionInstanceNetworkType);
             return this;
         }
-        @CustomType.Setter
         public Builder subscriptionInstanceVpcId(String subscriptionInstanceVpcId) {
             this.subscriptionInstanceVpcId = Objects.requireNonNull(subscriptionInstanceVpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder subscriptionInstanceVswitchId(String subscriptionInstanceVswitchId) {
             this.subscriptionInstanceVswitchId = Objects.requireNonNull(subscriptionInstanceVswitchId);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
-        }
-        public GetSubscriptionJobsJob build() {
-            final var o = new GetSubscriptionJobsJob();
-            o.checkpoint = checkpoint;
-            o.createTime = createTime;
-            o.dbList = dbList;
-            o.dtsInstanceId = dtsInstanceId;
-            o.dtsJobId = dtsJobId;
-            o.dtsJobName = dtsJobName;
-            o.expireTime = expireTime;
-            o.id = id;
-            o.paymentType = paymentType;
-            o.sourceEndpointDatabaseName = sourceEndpointDatabaseName;
-            o.sourceEndpointEngineName = sourceEndpointEngineName;
-            o.sourceEndpointInstanceId = sourceEndpointInstanceId;
-            o.sourceEndpointInstanceType = sourceEndpointInstanceType;
-            o.sourceEndpointIp = sourceEndpointIp;
-            o.sourceEndpointOracleSid = sourceEndpointOracleSid;
-            o.sourceEndpointOwnerId = sourceEndpointOwnerId;
-            o.sourceEndpointPort = sourceEndpointPort;
-            o.sourceEndpointRegion = sourceEndpointRegion;
-            o.sourceEndpointRole = sourceEndpointRole;
-            o.sourceEndpointUserName = sourceEndpointUserName;
-            o.status = status;
-            o.subscriptionDataTypeDdl = subscriptionDataTypeDdl;
-            o.subscriptionDataTypeDml = subscriptionDataTypeDml;
-            o.subscriptionHosts = subscriptionHosts;
-            o.subscriptionInstanceNetworkType = subscriptionInstanceNetworkType;
-            o.subscriptionInstanceVpcId = subscriptionInstanceVpcId;
-            o.subscriptionInstanceVswitchId = subscriptionInstanceVswitchId;
-            o.tags = tags;
-            return o;
+        }        public GetSubscriptionJobsJob build() {
+            return new GetSubscriptionJobsJob(checkpoint, createTime, dbList, dtsInstanceId, dtsJobId, dtsJobName, expireTime, id, paymentType, sourceEndpointDatabaseName, sourceEndpointEngineName, sourceEndpointInstanceId, sourceEndpointInstanceType, sourceEndpointIp, sourceEndpointOracleSid, sourceEndpointOwnerId, sourceEndpointPort, sourceEndpointRegion, sourceEndpointRole, sourceEndpointUserName, status, subscriptionDataTypeDdl, subscriptionDataTypeDml, subscriptionHosts, subscriptionInstanceNetworkType, subscriptionInstanceVpcId, subscriptionInstanceVswitchId, tags);
         }
     }
 }

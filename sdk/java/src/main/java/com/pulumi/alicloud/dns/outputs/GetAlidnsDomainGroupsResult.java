@@ -17,26 +17,41 @@ public final class GetAlidnsDomainGroupsResult {
      * @return A list of instances. Each element contains the following attributes:
      * 
      */
-    private List<GetAlidnsDomainGroupsGroup> groups;
+    private final List<GetAlidnsDomainGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of instance IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of domain group names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
 
-    private GetAlidnsDomainGroupsResult() {}
+    @CustomType.Constructor
+    private GetAlidnsDomainGroupsResult(
+        @CustomType.Parameter("groups") List<GetAlidnsDomainGroupsGroup> groups,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.groups = groups;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+    }
+
     /**
      * @return A list of instances. Each element contains the following attributes:
      * 
@@ -79,7 +94,7 @@ public final class GetAlidnsDomainGroupsResult {
     public static Builder builder(GetAlidnsDomainGroupsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetAlidnsDomainGroupsGroup> groups;
         private String id;
@@ -87,7 +102,11 @@ public final class GetAlidnsDomainGroupsResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAlidnsDomainGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groups = defaults.groups;
@@ -98,7 +117,6 @@ public final class GetAlidnsDomainGroupsResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder groups(List<GetAlidnsDomainGroupsGroup> groups) {
             this.groups = Objects.requireNonNull(groups);
             return this;
@@ -106,12 +124,10 @@ public final class GetAlidnsDomainGroupsResult {
         public Builder groups(GetAlidnsDomainGroupsGroup... groups) {
             return groups(List.of(groups));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -119,12 +135,10 @@ public final class GetAlidnsDomainGroupsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -132,20 +146,11 @@ public final class GetAlidnsDomainGroupsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetAlidnsDomainGroupsResult build() {
-            final var o = new GetAlidnsDomainGroupsResult();
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetAlidnsDomainGroupsResult build() {
+            return new GetAlidnsDomainGroupsResult(groups, id, ids, nameRegex, names, outputFile);
         }
     }
 }

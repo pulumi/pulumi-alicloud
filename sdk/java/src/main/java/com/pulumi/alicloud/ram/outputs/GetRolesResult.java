@@ -17,28 +17,47 @@ public final class GetRolesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of ram role IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of ram role names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String policyName;
-    private @Nullable String policyType;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String policyName;
+    private final @Nullable String policyType;
     /**
      * @return A list of roles. Each element contains the following attributes:
      * 
      */
-    private List<GetRolesRole> roles;
+    private final List<GetRolesRole> roles;
 
-    private GetRolesResult() {}
+    @CustomType.Constructor
+    private GetRolesResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("policyName") @Nullable String policyName,
+        @CustomType.Parameter("policyType") @Nullable String policyType,
+        @CustomType.Parameter("roles") List<GetRolesRole> roles) {
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.policyName = policyName;
+        this.policyType = policyType;
+        this.roles = roles;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -87,7 +106,7 @@ public final class GetRolesResult {
     public static Builder builder(GetRolesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -97,7 +116,11 @@ public final class GetRolesResult {
         private @Nullable String policyName;
         private @Nullable String policyType;
         private List<GetRolesRole> roles;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRolesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -110,12 +133,10 @@ public final class GetRolesResult {
     	      this.roles = defaults.roles;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -123,12 +144,10 @@ public final class GetRolesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -136,40 +155,26 @@ public final class GetRolesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder policyName(@Nullable String policyName) {
             this.policyName = policyName;
             return this;
         }
-        @CustomType.Setter
         public Builder policyType(@Nullable String policyType) {
             this.policyType = policyType;
             return this;
         }
-        @CustomType.Setter
         public Builder roles(List<GetRolesRole> roles) {
             this.roles = Objects.requireNonNull(roles);
             return this;
         }
         public Builder roles(GetRolesRole... roles) {
             return roles(List.of(roles));
-        }
-        public GetRolesResult build() {
-            final var o = new GetRolesResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.policyName = policyName;
-            o.policyType = policyType;
-            o.roles = roles;
-            return o;
+        }        public GetRolesResult build() {
+            return new GetRolesResult(id, ids, nameRegex, names, outputFile, policyName, policyType, roles);
         }
     }
 }

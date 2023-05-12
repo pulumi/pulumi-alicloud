@@ -13,30 +13,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMainVersionsResult {
-    private @Nullable List<String> clusterTypes;
+    private final @Nullable List<String> clusterTypes;
     /**
      * @return The version of the emr cluster instance.
      * 
      */
-    private @Nullable String emrVersion;
+    private final @Nullable String emrVersion;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of emr instance types IDs.
      * 
      */
-    private List<String> ids;
+    private final List<String> ids;
     /**
      * @return A list of versions of the emr cluster instance. Each element contains the following attributes:
      * 
      */
-    private List<GetMainVersionsMainVersion> mainVersions;
-    private @Nullable String outputFile;
+    private final List<GetMainVersionsMainVersion> mainVersions;
+    private final @Nullable String outputFile;
 
-    private GetMainVersionsResult() {}
+    @CustomType.Constructor
+    private GetMainVersionsResult(
+        @CustomType.Parameter("clusterTypes") @Nullable List<String> clusterTypes,
+        @CustomType.Parameter("emrVersion") @Nullable String emrVersion,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("mainVersions") List<GetMainVersionsMainVersion> mainVersions,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.clusterTypes = clusterTypes;
+        this.emrVersion = emrVersion;
+        this.id = id;
+        this.ids = ids;
+        this.mainVersions = mainVersions;
+        this.outputFile = outputFile;
+    }
+
     public List<String> clusterTypes() {
         return this.clusterTypes == null ? List.of() : this.clusterTypes;
     }
@@ -79,7 +94,7 @@ public final class GetMainVersionsResult {
     public static Builder builder(GetMainVersionsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<String> clusterTypes;
         private @Nullable String emrVersion;
@@ -87,7 +102,11 @@ public final class GetMainVersionsResult {
         private List<String> ids;
         private List<GetMainVersionsMainVersion> mainVersions;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetMainVersionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterTypes = defaults.clusterTypes;
@@ -98,7 +117,6 @@ public final class GetMainVersionsResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder clusterTypes(@Nullable List<String> clusterTypes) {
             this.clusterTypes = clusterTypes;
             return this;
@@ -106,17 +124,14 @@ public final class GetMainVersionsResult {
         public Builder clusterTypes(String... clusterTypes) {
             return clusterTypes(List.of(clusterTypes));
         }
-        @CustomType.Setter
         public Builder emrVersion(@Nullable String emrVersion) {
             this.emrVersion = emrVersion;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -124,7 +139,6 @@ public final class GetMainVersionsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder mainVersions(List<GetMainVersionsMainVersion> mainVersions) {
             this.mainVersions = Objects.requireNonNull(mainVersions);
             return this;
@@ -132,20 +146,11 @@ public final class GetMainVersionsResult {
         public Builder mainVersions(GetMainVersionsMainVersion... mainVersions) {
             return mainVersions(List.of(mainVersions));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetMainVersionsResult build() {
-            final var o = new GetMainVersionsResult();
-            o.clusterTypes = clusterTypes;
-            o.emrVersion = emrVersion;
-            o.id = id;
-            o.ids = ids;
-            o.mainVersions = mainVersions;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetMainVersionsResult build() {
+            return new GetMainVersionsResult(clusterTypes, emrVersion, id, ids, mainVersions, outputFile);
         }
     }
 }

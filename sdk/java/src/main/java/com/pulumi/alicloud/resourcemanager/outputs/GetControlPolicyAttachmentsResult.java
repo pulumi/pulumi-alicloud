@@ -13,19 +13,36 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetControlPolicyAttachmentsResult {
-    private List<GetControlPolicyAttachmentsAttachment> attachments;
+    private final List<GetControlPolicyAttachmentsAttachment> attachments;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String language;
-    private @Nullable String outputFile;
-    private @Nullable String policyType;
-    private String targetId;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String language;
+    private final @Nullable String outputFile;
+    private final @Nullable String policyType;
+    private final String targetId;
 
-    private GetControlPolicyAttachmentsResult() {}
+    @CustomType.Constructor
+    private GetControlPolicyAttachmentsResult(
+        @CustomType.Parameter("attachments") List<GetControlPolicyAttachmentsAttachment> attachments,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("language") @Nullable String language,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("policyType") @Nullable String policyType,
+        @CustomType.Parameter("targetId") String targetId) {
+        this.attachments = attachments;
+        this.id = id;
+        this.ids = ids;
+        this.language = language;
+        this.outputFile = outputFile;
+        this.policyType = policyType;
+        this.targetId = targetId;
+    }
+
     public List<GetControlPolicyAttachmentsAttachment> attachments() {
         return this.attachments;
     }
@@ -59,7 +76,7 @@ public final class GetControlPolicyAttachmentsResult {
     public static Builder builder(GetControlPolicyAttachmentsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetControlPolicyAttachmentsAttachment> attachments;
         private String id;
@@ -68,7 +85,11 @@ public final class GetControlPolicyAttachmentsResult {
         private @Nullable String outputFile;
         private @Nullable String policyType;
         private String targetId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetControlPolicyAttachmentsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attachments = defaults.attachments;
@@ -80,7 +101,6 @@ public final class GetControlPolicyAttachmentsResult {
     	      this.targetId = defaults.targetId;
         }
 
-        @CustomType.Setter
         public Builder attachments(List<GetControlPolicyAttachmentsAttachment> attachments) {
             this.attachments = Objects.requireNonNull(attachments);
             return this;
@@ -88,12 +108,10 @@ public final class GetControlPolicyAttachmentsResult {
         public Builder attachments(GetControlPolicyAttachmentsAttachment... attachments) {
             return attachments(List.of(attachments));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -101,36 +119,23 @@ public final class GetControlPolicyAttachmentsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder language(@Nullable String language) {
             this.language = language;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder policyType(@Nullable String policyType) {
             this.policyType = policyType;
             return this;
         }
-        @CustomType.Setter
         public Builder targetId(String targetId) {
             this.targetId = Objects.requireNonNull(targetId);
             return this;
-        }
-        public GetControlPolicyAttachmentsResult build() {
-            final var o = new GetControlPolicyAttachmentsResult();
-            o.attachments = attachments;
-            o.id = id;
-            o.ids = ids;
-            o.language = language;
-            o.outputFile = outputFile;
-            o.policyType = policyType;
-            o.targetId = targetId;
-            return o;
+        }        public GetControlPolicyAttachmentsResult build() {
+            return new GetControlPolicyAttachmentsResult(attachments, id, ids, language, outputFile, policyType, targetId);
         }
     }
 }

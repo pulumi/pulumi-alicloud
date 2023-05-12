@@ -25,6 +25,10 @@ class DomainResourceArgs:
         """
         The set of arguments for constructing a DomainResource resource.
         :param pulumi.Input[str] domain: The domain name of the website that you want to add to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+               **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
+               So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
+               and you can use tolist to convert it to a list.
         :param pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]] proxy_types: Protocol type and port number information.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: the IP address. This field is required and must be a string array.
         :param pulumi.Input[int] rs_type: The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
@@ -53,6 +57,12 @@ class DomainResourceArgs:
     @property
     @pulumi.getter(name="instanceIds")
     def instance_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+        **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
+        So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
+        and you can use tolist to convert it to a list.
+        """
         return pulumi.get(self, "instance_ids")
 
     @instance_ids.setter
@@ -121,6 +131,10 @@ class _DomainResourceState:
         Input properties used for looking up and filtering DomainResource resources.
         :param pulumi.Input[str] domain: The domain name of the website that you want to add to the instance.
         :param pulumi.Input[str] https_ext: The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+               **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
+               So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
+               and you can use tolist to convert it to a list.
         :param pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]] proxy_types: Protocol type and port number information.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: the IP address. This field is required and must be a string array.
         :param pulumi.Input[int] rs_type: The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
@@ -165,6 +179,12 @@ class _DomainResourceState:
     @property
     @pulumi.getter(name="instanceIds")
     def instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+        **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
+        So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
+        and you can use tolist to convert it to a list.
+        """
         return pulumi.get(self, "instance_ids")
 
     @instance_ids.setter
@@ -259,6 +279,10 @@ class DomainResource(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The domain name of the website that you want to add to the instance.
         :param pulumi.Input[str] https_ext: The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+               **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
+               So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
+               and you can use tolist to convert it to a list.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainResourceProxyTypeArgs']]]] proxy_types: Protocol type and port number information.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: the IP address. This field is required and must be a string array.
         :param pulumi.Input[int] rs_type: The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
@@ -375,6 +399,10 @@ class DomainResource(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The domain name of the website that you want to add to the instance.
         :param pulumi.Input[str] https_ext: The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+               **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
+               So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
+               and you can use tolist to convert it to a list.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainResourceProxyTypeArgs']]]] proxy_types: Protocol type and port number information.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: the IP address. This field is required and must be a string array.
         :param pulumi.Input[int] rs_type: The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
@@ -410,6 +438,12 @@ class DomainResource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="instanceIds")
     def instance_ids(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+        **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
+        So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
+        and you can use tolist to convert it to a list.
+        """
         return pulumi.get(self, "instance_ids")
 
     @property

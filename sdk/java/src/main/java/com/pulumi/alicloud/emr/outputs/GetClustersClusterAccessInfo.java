@@ -14,9 +14,13 @@ public final class GetClustersClusterAccessInfo {
      * @return Link address information list of ZooKeeper.
      * 
      */
-    private List<GetClustersClusterAccessInfoZkLink> zkLinks;
+    private final List<GetClustersClusterAccessInfoZkLink> zkLinks;
 
-    private GetClustersClusterAccessInfo() {}
+    @CustomType.Constructor
+    private GetClustersClusterAccessInfo(@CustomType.Parameter("zkLinks") List<GetClustersClusterAccessInfoZkLink> zkLinks) {
+        this.zkLinks = zkLinks;
+    }
+
     /**
      * @return Link address information list of ZooKeeper.
      * 
@@ -32,27 +36,27 @@ public final class GetClustersClusterAccessInfo {
     public static Builder builder(GetClustersClusterAccessInfo defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetClustersClusterAccessInfoZkLink> zkLinks;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetClustersClusterAccessInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.zkLinks = defaults.zkLinks;
         }
 
-        @CustomType.Setter
         public Builder zkLinks(List<GetClustersClusterAccessInfoZkLink> zkLinks) {
             this.zkLinks = Objects.requireNonNull(zkLinks);
             return this;
         }
         public Builder zkLinks(GetClustersClusterAccessInfoZkLink... zkLinks) {
             return zkLinks(List.of(zkLinks));
-        }
-        public GetClustersClusterAccessInfo build() {
-            final var o = new GetClustersClusterAccessInfo();
-            o.zkLinks = zkLinks;
-            return o;
+        }        public GetClustersClusterAccessInfo build() {
+            return new GetClustersClusterAccessInfo(zkLinks);
         }
     }
 }

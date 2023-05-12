@@ -13,14 +13,21 @@ public final class GetProjectsProjectIpWhiteList {
      * @return Classic network IP white list.
      * 
      */
-    private String ipList;
+    private final String ipList;
     /**
      * @return VPC network whitelist.
      * 
      */
-    private String vpcIpList;
+    private final String vpcIpList;
 
-    private GetProjectsProjectIpWhiteList() {}
+    @CustomType.Constructor
+    private GetProjectsProjectIpWhiteList(
+        @CustomType.Parameter("ipList") String ipList,
+        @CustomType.Parameter("vpcIpList") String vpcIpList) {
+        this.ipList = ipList;
+        this.vpcIpList = vpcIpList;
+    }
+
     /**
      * @return Classic network IP white list.
      * 
@@ -43,32 +50,30 @@ public final class GetProjectsProjectIpWhiteList {
     public static Builder builder(GetProjectsProjectIpWhiteList defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String ipList;
         private String vpcIpList;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetProjectsProjectIpWhiteList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipList = defaults.ipList;
     	      this.vpcIpList = defaults.vpcIpList;
         }
 
-        @CustomType.Setter
         public Builder ipList(String ipList) {
             this.ipList = Objects.requireNonNull(ipList);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcIpList(String vpcIpList) {
             this.vpcIpList = Objects.requireNonNull(vpcIpList);
             return this;
-        }
-        public GetProjectsProjectIpWhiteList build() {
-            final var o = new GetProjectsProjectIpWhiteList();
-            o.ipList = ipList;
-            o.vpcIpList = vpcIpList;
-            return o;
+        }        public GetProjectsProjectIpWhiteList build() {
+            return new GetProjectsProjectIpWhiteList(ipList, vpcIpList);
         }
     }
 }

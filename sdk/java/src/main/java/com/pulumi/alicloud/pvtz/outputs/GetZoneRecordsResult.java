@@ -17,31 +17,56 @@ public final class GetZoneRecordsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of Private Zone Record IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String keyword;
-    private @Nullable String lang;
-    private @Nullable String outputFile;
+    private final List<String> ids;
+    private final @Nullable String keyword;
+    private final @Nullable String lang;
+    private final @Nullable String outputFile;
     /**
      * @return A list of zone records. Each element contains the following attributes:
      * 
      */
-    private List<GetZoneRecordsRecord> records;
-    private @Nullable String searchMode;
+    private final List<GetZoneRecordsRecord> records;
+    private final @Nullable String searchMode;
     /**
      * @return Status of the Private Zone Record.
      * 
      */
-    private @Nullable String status;
-    private @Nullable String tag;
-    private @Nullable String userClientIp;
-    private String zoneId;
+    private final @Nullable String status;
+    private final @Nullable String tag;
+    private final @Nullable String userClientIp;
+    private final String zoneId;
 
-    private GetZoneRecordsResult() {}
+    @CustomType.Constructor
+    private GetZoneRecordsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("keyword") @Nullable String keyword,
+        @CustomType.Parameter("lang") @Nullable String lang,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("records") List<GetZoneRecordsRecord> records,
+        @CustomType.Parameter("searchMode") @Nullable String searchMode,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("tag") @Nullable String tag,
+        @CustomType.Parameter("userClientIp") @Nullable String userClientIp,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.id = id;
+        this.ids = ids;
+        this.keyword = keyword;
+        this.lang = lang;
+        this.outputFile = outputFile;
+        this.records = records;
+        this.searchMode = searchMode;
+        this.status = status;
+        this.tag = tag;
+        this.userClientIp = userClientIp;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -99,7 +124,7 @@ public final class GetZoneRecordsResult {
     public static Builder builder(GetZoneRecordsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -112,7 +137,11 @@ public final class GetZoneRecordsResult {
         private @Nullable String tag;
         private @Nullable String userClientIp;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetZoneRecordsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -128,12 +157,10 @@ public final class GetZoneRecordsResult {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -141,22 +168,18 @@ public final class GetZoneRecordsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder keyword(@Nullable String keyword) {
             this.keyword = keyword;
             return this;
         }
-        @CustomType.Setter
         public Builder lang(@Nullable String lang) {
             this.lang = lang;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder records(List<GetZoneRecordsRecord> records) {
             this.records = Objects.requireNonNull(records);
             return this;
@@ -164,45 +187,27 @@ public final class GetZoneRecordsResult {
         public Builder records(GetZoneRecordsRecord... records) {
             return records(List.of(records));
         }
-        @CustomType.Setter
         public Builder searchMode(@Nullable String searchMode) {
             this.searchMode = searchMode;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder tag(@Nullable String tag) {
             this.tag = tag;
             return this;
         }
-        @CustomType.Setter
         public Builder userClientIp(@Nullable String userClientIp) {
             this.userClientIp = userClientIp;
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetZoneRecordsResult build() {
-            final var o = new GetZoneRecordsResult();
-            o.id = id;
-            o.ids = ids;
-            o.keyword = keyword;
-            o.lang = lang;
-            o.outputFile = outputFile;
-            o.records = records;
-            o.searchMode = searchMode;
-            o.status = status;
-            o.tag = tag;
-            o.userClientIp = userClientIp;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetZoneRecordsResult build() {
+            return new GetZoneRecordsResult(id, ids, keyword, lang, outputFile, records, searchMode, status, tag, userClientIp, zoneId);
         }
     }
 }

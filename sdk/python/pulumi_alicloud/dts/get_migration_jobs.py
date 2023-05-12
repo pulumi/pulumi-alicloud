@@ -125,6 +125,7 @@ def get_migration_jobs(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Synchronization Job IDs.
     :param str name_regex: A regex string to filter results by Migration Job name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -171,5 +172,6 @@ def get_migration_jobs_output(enable_details: Optional[pulumi.Input[Optional[boo
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Synchronization Job IDs.
     :param str name_regex: A regex string to filter results by Migration Job name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

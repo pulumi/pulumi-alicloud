@@ -66,7 +66,8 @@ type GetEnterpriseInstancesArgs struct {
 	// A regex string to filter the results by the DMS Enterprise Instance instance_alias.
 	NameRegex *string `pulumi:"nameRegex"`
 	// The network type of the database instance. Valid values: CLASSIC and VPC. For more information about the valid values, see the description of the RegisterInstance operation.
-	NetType    *string `pulumi:"netType"`
+	NetType *string `pulumi:"netType"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The keyword used to query database instances.
 	SearchKey *string `pulumi:"searchKey"`
@@ -128,7 +129,8 @@ type GetEnterpriseInstancesOutputArgs struct {
 	// A regex string to filter the results by the DMS Enterprise Instance instance_alias.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The network type of the database instance. Valid values: CLASSIC and VPC. For more information about the valid values, see the description of the RegisterInstance operation.
-	NetType    pulumi.StringPtrInput `pulumi:"netType"`
+	NetType pulumi.StringPtrInput `pulumi:"netType"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The keyword used to query database instances.
 	SearchKey pulumi.StringPtrInput `pulumi:"searchKey"`

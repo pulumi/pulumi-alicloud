@@ -57,7 +57,8 @@ type GetInstancesArgs struct {
 	// The ids list of HBase instances
 	Ids []string `pulumi:"ids"`
 	// A regex string to apply to the instance name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// The name of file that can save the collection of instances after running `pulumi preview`.
 	OutputFile *string `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -100,7 +101,8 @@ type GetInstancesOutputArgs struct {
 	// The ids list of HBase instances
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to apply to the instance name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// The name of file that can save the collection of instances after running `pulumi preview`.
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`

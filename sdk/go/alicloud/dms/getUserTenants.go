@@ -52,8 +52,9 @@ func GetUserTenants(ctx *pulumi.Context, args *GetUserTenantsArgs, opts ...pulum
 // A collection of arguments for invoking getUserTenants.
 type GetUserTenantsArgs struct {
 	// A list of DMS User Tenant IDs (TID).
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The status of the user tenant.
 	Status *string `pulumi:"status"`
 }
@@ -89,8 +90,9 @@ func GetUserTenantsOutput(ctx *pulumi.Context, args GetUserTenantsOutputArgs, op
 // A collection of arguments for invoking getUserTenants.
 type GetUserTenantsOutputArgs struct {
 	// A list of DMS User Tenant IDs (TID).
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the user tenant.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }

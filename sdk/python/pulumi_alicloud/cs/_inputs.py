@@ -1444,6 +1444,11 @@ class ManagedKubernetesMaintenanceWindowArgs:
         :param pulumi.Input[bool] enable: Whether to open the maintenance window. The following parameters take effect only `enable = true`.
         :param pulumi.Input[str] maintenance_time: Initial maintenance time, For example:"03:00:00Z".
         :param pulumi.Input[str] weekly_period: Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+               
+               for example:
+               ```python
+               import pulumi
+               ```
         """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "enable", enable)
@@ -1491,6 +1496,11 @@ class ManagedKubernetesMaintenanceWindowArgs:
     def weekly_period(self) -> pulumi.Input[str]:
         """
         Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+
+        for example:
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "weekly_period")
 
@@ -2567,6 +2577,8 @@ class ServerlessKubernetesAddonArgs:
         """
         :param pulumi.Input[str] config: The ACK add-on configurations.
         :param pulumi.Input[bool] disabled: Disables the automatic installation of a component. Default is `false`.
+               
+               The following example is the definition of addons block, The type of this field is list:
         :param pulumi.Input[str] name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         """
         if config is not None:
@@ -2593,6 +2605,8 @@ class ServerlessKubernetesAddonArgs:
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Disables the automatic installation of a component. Default is `false`.
+
+        The following example is the definition of addons block, The type of this field is list:
         """
         return pulumi.get(self, "disabled")
 

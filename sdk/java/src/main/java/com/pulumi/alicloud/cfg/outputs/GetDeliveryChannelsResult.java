@@ -18,31 +18,48 @@ public final class GetDeliveryChannelsResult {
      * @return A list of Config Delivery Channels. Each element contains the following attributes:
      * 
      */
-    private List<GetDeliveryChannelsChannel> channels;
+    private final List<GetDeliveryChannelsChannel> channels;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of Config Delivery Channel IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of Config Delivery Channel names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
     /**
      * @return The status of the delivery channel.
      * 
      */
-    private @Nullable Integer status;
+    private final @Nullable Integer status;
 
-    private GetDeliveryChannelsResult() {}
+    @CustomType.Constructor
+    private GetDeliveryChannelsResult(
+        @CustomType.Parameter("channels") List<GetDeliveryChannelsChannel> channels,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable Integer status) {
+        this.channels = channels;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.status = status;
+    }
+
     /**
      * @return A list of Config Delivery Channels. Each element contains the following attributes:
      * 
@@ -92,7 +109,7 @@ public final class GetDeliveryChannelsResult {
     public static Builder builder(GetDeliveryChannelsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetDeliveryChannelsChannel> channels;
         private String id;
@@ -101,7 +118,11 @@ public final class GetDeliveryChannelsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable Integer status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDeliveryChannelsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.channels = defaults.channels;
@@ -113,7 +134,6 @@ public final class GetDeliveryChannelsResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder channels(List<GetDeliveryChannelsChannel> channels) {
             this.channels = Objects.requireNonNull(channels);
             return this;
@@ -121,12 +141,10 @@ public final class GetDeliveryChannelsResult {
         public Builder channels(GetDeliveryChannelsChannel... channels) {
             return channels(List.of(channels));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -134,12 +152,10 @@ public final class GetDeliveryChannelsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -147,26 +163,15 @@ public final class GetDeliveryChannelsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable Integer status) {
             this.status = status;
             return this;
-        }
-        public GetDeliveryChannelsResult build() {
-            final var o = new GetDeliveryChannelsResult();
-            o.channels = channels;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+        }        public GetDeliveryChannelsResult build() {
+            return new GetDeliveryChannelsResult(channels, id, ids, nameRegex, names, outputFile, status);
         }
     }
 }

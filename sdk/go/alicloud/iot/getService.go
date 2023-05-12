@@ -53,6 +53,8 @@ func GetService(ctx *pulumi.Context, args *GetServiceArgs, opts ...pulumi.Invoke
 // A collection of arguments for invoking getService.
 type GetServiceArgs struct {
 	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+	//
+	// > **NOTE:** Setting `enable = "On"` to open the IOT service that means you have read and agreed the [IOT Terms of Service](https://help.aliyun.com/document_detail/44548.html). The service can not closed once it is opened.
 	Enable *string `pulumi:"enable"`
 }
 
@@ -81,6 +83,8 @@ func GetServiceOutput(ctx *pulumi.Context, args GetServiceOutputArgs, opts ...pu
 // A collection of arguments for invoking getService.
 type GetServiceOutputArgs struct {
 	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+	//
+	// > **NOTE:** Setting `enable = "On"` to open the IOT service that means you have read and agreed the [IOT Terms of Service](https://help.aliyun.com/document_detail/44548.html). The service can not closed once it is opened.
 	Enable pulumi.StringPtrInput `pulumi:"enable"`
 }
 

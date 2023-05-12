@@ -14,14 +14,21 @@ public final class GetPolicyDocumentStatementPrincipal {
      * @return The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
      * 
      */
-    private String entity;
+    private final String entity;
     /**
      * @return The identifiers of the principal.
      * 
      */
-    private List<String> identifiers;
+    private final List<String> identifiers;
 
-    private GetPolicyDocumentStatementPrincipal() {}
+    @CustomType.Constructor
+    private GetPolicyDocumentStatementPrincipal(
+        @CustomType.Parameter("entity") String entity,
+        @CustomType.Parameter("identifiers") List<String> identifiers) {
+        this.entity = entity;
+        this.identifiers = identifiers;
+    }
+
     /**
      * @return The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
      * 
@@ -44,35 +51,33 @@ public final class GetPolicyDocumentStatementPrincipal {
     public static Builder builder(GetPolicyDocumentStatementPrincipal defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String entity;
         private List<String> identifiers;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetPolicyDocumentStatementPrincipal defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.entity = defaults.entity;
     	      this.identifiers = defaults.identifiers;
         }
 
-        @CustomType.Setter
         public Builder entity(String entity) {
             this.entity = Objects.requireNonNull(entity);
             return this;
         }
-        @CustomType.Setter
         public Builder identifiers(List<String> identifiers) {
             this.identifiers = Objects.requireNonNull(identifiers);
             return this;
         }
         public Builder identifiers(String... identifiers) {
             return identifiers(List.of(identifiers));
-        }
-        public GetPolicyDocumentStatementPrincipal build() {
-            final var o = new GetPolicyDocumentStatementPrincipal();
-            o.entity = entity;
-            o.identifiers = identifiers;
-            return o;
+        }        public GetPolicyDocumentStatementPrincipal build() {
+            return new GetPolicyDocumentStatementPrincipal(entity, identifiers);
         }
     }
 }

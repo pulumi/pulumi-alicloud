@@ -14,49 +14,70 @@ public final class GetIntegrationExportersIntegrationExporter {
      * @return The ID of the Prometheus instance.
      * 
      */
-    private String clusterId;
+    private final String clusterId;
     /**
      * @return Integration Exporter Type.
      * 
      */
-    private String exporterType;
+    private final String exporterType;
     /**
      * @return The ID of the Integration Exporter. It formats as `&lt;cluster_id&gt;:&lt;integration_type&gt;:&lt;instance_id&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the Integration Exporter instance.
      * 
      */
-    private Integer instanceId;
+    private final Integer instanceId;
     /**
      * @return The name of the instance.
      * 
      */
-    private String instanceName;
+    private final String instanceName;
     /**
      * @return The type of prometheus integration.
      * 
      */
-    private String integrationType;
+    private final String integrationType;
     /**
      * @return Exporter configuration parameter json string.
      * 
      */
-    private String param;
+    private final String param;
     /**
      * @return Monitor the target address.
      * 
      */
-    private String target;
+    private final String target;
     /**
      * @return The version information.
      * 
      */
-    private String version;
+    private final String version;
 
-    private GetIntegrationExportersIntegrationExporter() {}
+    @CustomType.Constructor
+    private GetIntegrationExportersIntegrationExporter(
+        @CustomType.Parameter("clusterId") String clusterId,
+        @CustomType.Parameter("exporterType") String exporterType,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") Integer instanceId,
+        @CustomType.Parameter("instanceName") String instanceName,
+        @CustomType.Parameter("integrationType") String integrationType,
+        @CustomType.Parameter("param") String param,
+        @CustomType.Parameter("target") String target,
+        @CustomType.Parameter("version") String version) {
+        this.clusterId = clusterId;
+        this.exporterType = exporterType;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.instanceName = instanceName;
+        this.integrationType = integrationType;
+        this.param = param;
+        this.target = target;
+        this.version = version;
+    }
+
     /**
      * @return The ID of the Prometheus instance.
      * 
@@ -128,7 +149,7 @@ public final class GetIntegrationExportersIntegrationExporter {
     public static Builder builder(GetIntegrationExportersIntegrationExporter defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String clusterId;
         private String exporterType;
@@ -139,7 +160,11 @@ public final class GetIntegrationExportersIntegrationExporter {
         private String param;
         private String target;
         private String version;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetIntegrationExportersIntegrationExporter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterId = defaults.clusterId;
@@ -153,63 +178,43 @@ public final class GetIntegrationExportersIntegrationExporter {
     	      this.version = defaults.version;
         }
 
-        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder exporterType(String exporterType) {
             this.exporterType = Objects.requireNonNull(exporterType);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(Integer instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
-        @CustomType.Setter
         public Builder integrationType(String integrationType) {
             this.integrationType = Objects.requireNonNull(integrationType);
             return this;
         }
-        @CustomType.Setter
         public Builder param(String param) {
             this.param = Objects.requireNonNull(param);
             return this;
         }
-        @CustomType.Setter
         public Builder target(String target) {
             this.target = Objects.requireNonNull(target);
             return this;
         }
-        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }
-        public GetIntegrationExportersIntegrationExporter build() {
-            final var o = new GetIntegrationExportersIntegrationExporter();
-            o.clusterId = clusterId;
-            o.exporterType = exporterType;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.integrationType = integrationType;
-            o.param = param;
-            o.target = target;
-            o.version = version;
-            return o;
+        }        public GetIntegrationExportersIntegrationExporter build() {
+            return new GetIntegrationExportersIntegrationExporter(clusterId, exporterType, id, instanceId, instanceName, integrationType, param, target, version);
         }
     }
 }

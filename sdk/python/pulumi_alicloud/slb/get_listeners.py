@@ -148,6 +148,7 @@ def get_listeners(description_regex: Optional[str] = None,
     :param str description_regex: A regex string to filter results by SLB listener description.
     :param int frontend_port: Filter listeners by the specified frontend port.
     :param str load_balancer_id: ID of the SLB with listeners.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str protocol: Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
     """
     __args__ = dict()
@@ -210,6 +211,7 @@ def get_listeners_output(description_regex: Optional[pulumi.Input[Optional[str]]
     :param str description_regex: A regex string to filter results by SLB listener description.
     :param int frontend_port: Filter listeners by the specified frontend port.
     :param str load_balancer_id: ID of the SLB with listeners.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str protocol: Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
     """
     ...

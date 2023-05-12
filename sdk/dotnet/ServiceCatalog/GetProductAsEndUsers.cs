@@ -12,6 +12,13 @@ namespace Pulumi.AliCloud.ServiceCatalog
     public static class GetProductAsEndUsers
     {
         /// <summary>
+        /// &gt; **DEPRECATED:** It has been deprecated from version `1.197.0`.
+        /// Please use new datasource alicloud.servicecatalog.getEndUserProducts instead.
+        /// 
+        /// This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+        /// 
+        /// &gt; **NOTE:** Available in 1.196.0+
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -42,6 +49,13 @@ namespace Pulumi.AliCloud.ServiceCatalog
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProductAsEndUsersResult>("alicloud:servicecatalog/getProductAsEndUsers:getProductAsEndUsers", args ?? new GetProductAsEndUsersArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATED:** It has been deprecated from version `1.197.0`.
+        /// Please use new datasource alicloud.servicecatalog.getEndUserProducts instead.
+        /// 
+        /// This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+        /// 
+        /// &gt; **NOTE:** Available in 1.196.0+
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -93,6 +107,9 @@ namespace Pulumi.AliCloud.ServiceCatalog
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -128,6 +145,9 @@ namespace Pulumi.AliCloud.ServiceCatalog
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

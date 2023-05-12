@@ -16,29 +16,42 @@ public final class ApiFcServiceConfig {
      * @return RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
      * 
      */
-    private @Nullable String arnRole;
+    private final @Nullable String arnRole;
     /**
      * @return The function name of function compute service.
      * 
      */
-    private String functionName;
+    private final String functionName;
     /**
      * @return The region that the function compute service belongs to.
      * 
      */
-    private String region;
+    private final String region;
     /**
      * @return The service name of function compute service.
      * 
      */
-    private String serviceName;
+    private final String serviceName;
     /**
      * @return Backend service time-out time; unit: millisecond.
      * 
      */
-    private Integer timeout;
+    private final Integer timeout;
 
-    private ApiFcServiceConfig() {}
+    @CustomType.Constructor
+    private ApiFcServiceConfig(
+        @CustomType.Parameter("arnRole") @Nullable String arnRole,
+        @CustomType.Parameter("functionName") String functionName,
+        @CustomType.Parameter("region") String region,
+        @CustomType.Parameter("serviceName") String serviceName,
+        @CustomType.Parameter("timeout") Integer timeout) {
+        this.arnRole = arnRole;
+        this.functionName = functionName;
+        this.region = region;
+        this.serviceName = serviceName;
+        this.timeout = timeout;
+    }
+
     /**
      * @return RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
      * 
@@ -82,14 +95,18 @@ public final class ApiFcServiceConfig {
     public static Builder builder(ApiFcServiceConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String arnRole;
         private String functionName;
         private String region;
         private String serviceName;
         private Integer timeout;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ApiFcServiceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arnRole = defaults.arnRole;
@@ -99,39 +116,27 @@ public final class ApiFcServiceConfig {
     	      this.timeout = defaults.timeout;
         }
 
-        @CustomType.Setter
         public Builder arnRole(@Nullable String arnRole) {
             this.arnRole = arnRole;
             return this;
         }
-        @CustomType.Setter
         public Builder functionName(String functionName) {
             this.functionName = Objects.requireNonNull(functionName);
             return this;
         }
-        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
-        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
         }
-        @CustomType.Setter
         public Builder timeout(Integer timeout) {
             this.timeout = Objects.requireNonNull(timeout);
             return this;
-        }
-        public ApiFcServiceConfig build() {
-            final var o = new ApiFcServiceConfig();
-            o.arnRole = arnRole;
-            o.functionName = functionName;
-            o.region = region;
-            o.serviceName = serviceName;
-            o.timeout = timeout;
-            return o;
+        }        public ApiFcServiceConfig build() {
+            return new ApiFcServiceConfig(arnRole, functionName, region, serviceName, timeout);
         }
     }
 }

@@ -17,19 +17,28 @@ public final class GroupMetricRuleEscalations {
      * @return The critical level.
      * 
      */
-    private @Nullable GroupMetricRuleEscalationsCritical critical;
+    private final @Nullable GroupMetricRuleEscalationsCritical critical;
     /**
      * @return The info level.
      * 
      */
-    private @Nullable GroupMetricRuleEscalationsInfo info;
+    private final @Nullable GroupMetricRuleEscalationsInfo info;
     /**
      * @return The warn level.
      * 
      */
-    private @Nullable GroupMetricRuleEscalationsWarn warn;
+    private final @Nullable GroupMetricRuleEscalationsWarn warn;
 
-    private GroupMetricRuleEscalations() {}
+    @CustomType.Constructor
+    private GroupMetricRuleEscalations(
+        @CustomType.Parameter("critical") @Nullable GroupMetricRuleEscalationsCritical critical,
+        @CustomType.Parameter("info") @Nullable GroupMetricRuleEscalationsInfo info,
+        @CustomType.Parameter("warn") @Nullable GroupMetricRuleEscalationsWarn warn) {
+        this.critical = critical;
+        this.info = info;
+        this.warn = warn;
+    }
+
     /**
      * @return The critical level.
      * 
@@ -59,12 +68,16 @@ public final class GroupMetricRuleEscalations {
     public static Builder builder(GroupMetricRuleEscalations defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable GroupMetricRuleEscalationsCritical critical;
         private @Nullable GroupMetricRuleEscalationsInfo info;
         private @Nullable GroupMetricRuleEscalationsWarn warn;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GroupMetricRuleEscalations defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.critical = defaults.critical;
@@ -72,27 +85,19 @@ public final class GroupMetricRuleEscalations {
     	      this.warn = defaults.warn;
         }
 
-        @CustomType.Setter
         public Builder critical(@Nullable GroupMetricRuleEscalationsCritical critical) {
             this.critical = critical;
             return this;
         }
-        @CustomType.Setter
         public Builder info(@Nullable GroupMetricRuleEscalationsInfo info) {
             this.info = info;
             return this;
         }
-        @CustomType.Setter
         public Builder warn(@Nullable GroupMetricRuleEscalationsWarn warn) {
             this.warn = warn;
             return this;
-        }
-        public GroupMetricRuleEscalations build() {
-            final var o = new GroupMetricRuleEscalations();
-            o.critical = critical;
-            o.info = info;
-            o.warn = warn;
-            return o;
+        }        public GroupMetricRuleEscalations build() {
+            return new GroupMetricRuleEscalations(critical, info, warn);
         }
     }
 }

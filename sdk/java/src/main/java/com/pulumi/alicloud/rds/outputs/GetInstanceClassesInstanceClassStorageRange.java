@@ -13,19 +13,28 @@ public final class GetInstanceClassesInstanceClassStorageRange {
      * @return DB Instance available storage max value.
      * 
      */
-    private String max;
+    private final String max;
     /**
      * @return DB Instance available storage min value.
      * 
      */
-    private String min;
+    private final String min;
     /**
      * @return DB Instance available storage increase step.
      * 
      */
-    private String step;
+    private final String step;
 
-    private GetInstanceClassesInstanceClassStorageRange() {}
+    @CustomType.Constructor
+    private GetInstanceClassesInstanceClassStorageRange(
+        @CustomType.Parameter("max") String max,
+        @CustomType.Parameter("min") String min,
+        @CustomType.Parameter("step") String step) {
+        this.max = max;
+        this.min = min;
+        this.step = step;
+    }
+
     /**
      * @return DB Instance available storage max value.
      * 
@@ -55,12 +64,16 @@ public final class GetInstanceClassesInstanceClassStorageRange {
     public static Builder builder(GetInstanceClassesInstanceClassStorageRange defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String max;
         private String min;
         private String step;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstanceClassesInstanceClassStorageRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.max = defaults.max;
@@ -68,27 +81,19 @@ public final class GetInstanceClassesInstanceClassStorageRange {
     	      this.step = defaults.step;
         }
 
-        @CustomType.Setter
         public Builder max(String max) {
             this.max = Objects.requireNonNull(max);
             return this;
         }
-        @CustomType.Setter
         public Builder min(String min) {
             this.min = Objects.requireNonNull(min);
             return this;
         }
-        @CustomType.Setter
         public Builder step(String step) {
             this.step = Objects.requireNonNull(step);
             return this;
-        }
-        public GetInstanceClassesInstanceClassStorageRange build() {
-            final var o = new GetInstanceClassesInstanceClassStorageRange();
-            o.max = max;
-            o.min = min;
-            o.step = step;
-            return o;
+        }        public GetInstanceClassesInstanceClassStorageRange build() {
+            return new GetInstanceClassesInstanceClassStorageRange(max, min, step);
         }
     }
 }

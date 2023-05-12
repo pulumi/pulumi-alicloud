@@ -14,32 +14,51 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSecretVersionsResult {
-    private @Nullable Boolean enableDetails;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of Kms Secret Version ids.
      * 
      */
-    private List<String> ids;
-    private @Nullable String includeDeprecated;
-    private @Nullable String outputFile;
+    private final List<String> ids;
+    private final @Nullable String includeDeprecated;
+    private final @Nullable String outputFile;
     /**
      * @return The name of the secret.
      * 
      */
-    private String secretName;
-    private @Nullable String versionStage;
+    private final String secretName;
+    private final @Nullable String versionStage;
     /**
      * @return A list of KMS Secret Versions. Each element contains the following attributes:
      * 
      */
-    private List<GetSecretVersionsVersion> versions;
+    private final List<GetSecretVersionsVersion> versions;
 
-    private GetSecretVersionsResult() {}
+    @CustomType.Constructor
+    private GetSecretVersionsResult(
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("includeDeprecated") @Nullable String includeDeprecated,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("secretName") String secretName,
+        @CustomType.Parameter("versionStage") @Nullable String versionStage,
+        @CustomType.Parameter("versions") List<GetSecretVersionsVersion> versions) {
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.includeDeprecated = includeDeprecated;
+        this.outputFile = outputFile;
+        this.secretName = secretName;
+        this.versionStage = versionStage;
+        this.versions = versions;
+    }
+
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -88,7 +107,7 @@ public final class GetSecretVersionsResult {
     public static Builder builder(GetSecretVersionsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private String id;
@@ -98,7 +117,11 @@ public final class GetSecretVersionsResult {
         private String secretName;
         private @Nullable String versionStage;
         private List<GetSecretVersionsVersion> versions;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetSecretVersionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -111,17 +134,14 @@ public final class GetSecretVersionsResult {
     	      this.versions = defaults.versions;
         }
 
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -129,45 +149,30 @@ public final class GetSecretVersionsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder includeDeprecated(@Nullable String includeDeprecated) {
             this.includeDeprecated = includeDeprecated;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder secretName(String secretName) {
             this.secretName = Objects.requireNonNull(secretName);
             return this;
         }
-        @CustomType.Setter
         public Builder versionStage(@Nullable String versionStage) {
             this.versionStage = versionStage;
             return this;
         }
-        @CustomType.Setter
         public Builder versions(List<GetSecretVersionsVersion> versions) {
             this.versions = Objects.requireNonNull(versions);
             return this;
         }
         public Builder versions(GetSecretVersionsVersion... versions) {
             return versions(List.of(versions));
-        }
-        public GetSecretVersionsResult build() {
-            final var o = new GetSecretVersionsResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.includeDeprecated = includeDeprecated;
-            o.outputFile = outputFile;
-            o.secretName = secretName;
-            o.versionStage = versionStage;
-            o.versions = versions;
-            return o;
+        }        public GetSecretVersionsResult build() {
+            return new GetSecretVersionsResult(enableDetails, id, ids, includeDeprecated, outputFile, secretName, versionStage, versions);
         }
     }
 }

@@ -18,44 +18,71 @@ public final class GetMetricRuleBlackListsResult {
      * @return Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
      * 
      */
-    private @Nullable String category;
+    private final @Nullable String category;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of Metric Rule Black List IDs.
      * 
      */
-    private List<String> ids;
+    private final List<String> ids;
     /**
      * @return A list of Metric Rule Black List Entries. Each element contains the following attributes:
      * 
      */
-    private List<GetMetricRuleBlackListsList> lists;
+    private final List<GetMetricRuleBlackListsList> lists;
     /**
      * @return The first ID of the resource
      * 
      */
-    private @Nullable String metricRuleBlackListId;
-    private @Nullable String nameRegex;
+    private final @Nullable String metricRuleBlackListId;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of name of Metric Rule Black Lists.
      * 
      */
-    private List<String> names;
+    private final List<String> names;
     /**
      * @return The data namespace of the cloud service.
      * 
      */
-    private @Nullable String namespace;
-    private @Nullable Integer order;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
+    private final @Nullable String namespace;
+    private final @Nullable Integer order;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
 
-    private GetMetricRuleBlackListsResult() {}
+    @CustomType.Constructor
+    private GetMetricRuleBlackListsResult(
+        @CustomType.Parameter("category") @Nullable String category,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("lists") List<GetMetricRuleBlackListsList> lists,
+        @CustomType.Parameter("metricRuleBlackListId") @Nullable String metricRuleBlackListId,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("namespace") @Nullable String namespace,
+        @CustomType.Parameter("order") @Nullable Integer order,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize) {
+        this.category = category;
+        this.id = id;
+        this.ids = ids;
+        this.lists = lists;
+        this.metricRuleBlackListId = metricRuleBlackListId;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.namespace = namespace;
+        this.order = order;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+    }
+
     /**
      * @return Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
      * 
@@ -128,7 +155,7 @@ public final class GetMetricRuleBlackListsResult {
     public static Builder builder(GetMetricRuleBlackListsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String category;
         private String id;
@@ -142,7 +169,11 @@ public final class GetMetricRuleBlackListsResult {
         private @Nullable String outputFile;
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetMetricRuleBlackListsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -159,17 +190,14 @@ public final class GetMetricRuleBlackListsResult {
     	      this.pageSize = defaults.pageSize;
         }
 
-        @CustomType.Setter
         public Builder category(@Nullable String category) {
             this.category = category;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -177,7 +205,6 @@ public final class GetMetricRuleBlackListsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder lists(List<GetMetricRuleBlackListsList> lists) {
             this.lists = Objects.requireNonNull(lists);
             return this;
@@ -185,17 +212,14 @@ public final class GetMetricRuleBlackListsResult {
         public Builder lists(GetMetricRuleBlackListsList... lists) {
             return lists(List.of(lists));
         }
-        @CustomType.Setter
         public Builder metricRuleBlackListId(@Nullable String metricRuleBlackListId) {
             this.metricRuleBlackListId = metricRuleBlackListId;
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -203,46 +227,27 @@ public final class GetMetricRuleBlackListsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
             this.namespace = namespace;
             return this;
         }
-        @CustomType.Setter
         public Builder order(@Nullable Integer order) {
             this.order = order;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
-        }
-        public GetMetricRuleBlackListsResult build() {
-            final var o = new GetMetricRuleBlackListsResult();
-            o.category = category;
-            o.id = id;
-            o.ids = ids;
-            o.lists = lists;
-            o.metricRuleBlackListId = metricRuleBlackListId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.namespace = namespace;
-            o.order = order;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            return o;
+        }        public GetMetricRuleBlackListsResult build() {
+            return new GetMetricRuleBlackListsResult(category, id, ids, lists, metricRuleBlackListId, nameRegex, names, namespace, order, outputFile, pageNumber, pageSize);
         }
     }
 }

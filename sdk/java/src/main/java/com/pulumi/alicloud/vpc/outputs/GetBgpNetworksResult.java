@@ -17,14 +17,29 @@ public final class GetBgpNetworksResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private List<GetBgpNetworksNetwork> networks;
-    private @Nullable String outputFile;
-    private @Nullable String routerId;
-    private @Nullable String status;
+    private final String id;
+    private final List<String> ids;
+    private final List<GetBgpNetworksNetwork> networks;
+    private final @Nullable String outputFile;
+    private final @Nullable String routerId;
+    private final @Nullable String status;
 
-    private GetBgpNetworksResult() {}
+    @CustomType.Constructor
+    private GetBgpNetworksResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("networks") List<GetBgpNetworksNetwork> networks,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("routerId") @Nullable String routerId,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.id = id;
+        this.ids = ids;
+        this.networks = networks;
+        this.outputFile = outputFile;
+        this.routerId = routerId;
+        this.status = status;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -55,7 +70,7 @@ public final class GetBgpNetworksResult {
     public static Builder builder(GetBgpNetworksResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -63,7 +78,11 @@ public final class GetBgpNetworksResult {
         private @Nullable String outputFile;
         private @Nullable String routerId;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBgpNetworksResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -74,12 +93,10 @@ public final class GetBgpNetworksResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -87,7 +104,6 @@ public final class GetBgpNetworksResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder networks(List<GetBgpNetworksNetwork> networks) {
             this.networks = Objects.requireNonNull(networks);
             return this;
@@ -95,30 +111,19 @@ public final class GetBgpNetworksResult {
         public Builder networks(GetBgpNetworksNetwork... networks) {
             return networks(List.of(networks));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder routerId(@Nullable String routerId) {
             this.routerId = routerId;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetBgpNetworksResult build() {
-            final var o = new GetBgpNetworksResult();
-            o.id = id;
-            o.ids = ids;
-            o.networks = networks;
-            o.outputFile = outputFile;
-            o.routerId = routerId;
-            o.status = status;
-            return o;
+        }        public GetBgpNetworksResult build() {
+            return new GetBgpNetworksResult(id, ids, networks, outputFile, routerId, status);
         }
     }
 }

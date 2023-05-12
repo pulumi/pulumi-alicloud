@@ -16,24 +16,35 @@ public final class GetConnectionsConnectionIpsecConfig {
      * @return The authentication algorithm of phase-two negotiation.
      * 
      */
-    private @Nullable String ipsecAuthAlg;
+    private final @Nullable String ipsecAuthAlg;
     /**
      * @return The encryption algorithm of phase-two negotiation.
      * 
      */
-    private @Nullable String ipsecEncAlg;
+    private final @Nullable String ipsecEncAlg;
     /**
      * @return The SA lifecycle as the result of phase-two negotiation.
      * 
      */
-    private @Nullable Integer ipsecLifetime;
+    private final @Nullable Integer ipsecLifetime;
     /**
      * @return The Diffie-Hellman key exchange algorithm used by phase-two negotiation.
      * 
      */
-    private @Nullable String ipsecPfs;
+    private final @Nullable String ipsecPfs;
 
-    private GetConnectionsConnectionIpsecConfig() {}
+    @CustomType.Constructor
+    private GetConnectionsConnectionIpsecConfig(
+        @CustomType.Parameter("ipsecAuthAlg") @Nullable String ipsecAuthAlg,
+        @CustomType.Parameter("ipsecEncAlg") @Nullable String ipsecEncAlg,
+        @CustomType.Parameter("ipsecLifetime") @Nullable Integer ipsecLifetime,
+        @CustomType.Parameter("ipsecPfs") @Nullable String ipsecPfs) {
+        this.ipsecAuthAlg = ipsecAuthAlg;
+        this.ipsecEncAlg = ipsecEncAlg;
+        this.ipsecLifetime = ipsecLifetime;
+        this.ipsecPfs = ipsecPfs;
+    }
+
     /**
      * @return The authentication algorithm of phase-two negotiation.
      * 
@@ -70,13 +81,17 @@ public final class GetConnectionsConnectionIpsecConfig {
     public static Builder builder(GetConnectionsConnectionIpsecConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String ipsecAuthAlg;
         private @Nullable String ipsecEncAlg;
         private @Nullable Integer ipsecLifetime;
         private @Nullable String ipsecPfs;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetConnectionsConnectionIpsecConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipsecAuthAlg = defaults.ipsecAuthAlg;
@@ -85,33 +100,23 @@ public final class GetConnectionsConnectionIpsecConfig {
     	      this.ipsecPfs = defaults.ipsecPfs;
         }
 
-        @CustomType.Setter
         public Builder ipsecAuthAlg(@Nullable String ipsecAuthAlg) {
             this.ipsecAuthAlg = ipsecAuthAlg;
             return this;
         }
-        @CustomType.Setter
         public Builder ipsecEncAlg(@Nullable String ipsecEncAlg) {
             this.ipsecEncAlg = ipsecEncAlg;
             return this;
         }
-        @CustomType.Setter
         public Builder ipsecLifetime(@Nullable Integer ipsecLifetime) {
             this.ipsecLifetime = ipsecLifetime;
             return this;
         }
-        @CustomType.Setter
         public Builder ipsecPfs(@Nullable String ipsecPfs) {
             this.ipsecPfs = ipsecPfs;
             return this;
-        }
-        public GetConnectionsConnectionIpsecConfig build() {
-            final var o = new GetConnectionsConnectionIpsecConfig();
-            o.ipsecAuthAlg = ipsecAuthAlg;
-            o.ipsecEncAlg = ipsecEncAlg;
-            o.ipsecLifetime = ipsecLifetime;
-            o.ipsecPfs = ipsecPfs;
-            return o;
+        }        public GetConnectionsConnectionIpsecConfig build() {
+            return new GetConnectionsConnectionIpsecConfig(ipsecAuthAlg, ipsecEncAlg, ipsecLifetime, ipsecPfs);
         }
     }
 }

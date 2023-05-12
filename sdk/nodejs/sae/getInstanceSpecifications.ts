@@ -41,6 +41,9 @@ export interface GetInstanceSpecificationsArgs {
      * A list of Instance Specification IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -85,5 +88,8 @@ export interface GetInstanceSpecificationsOutputArgs {
      * A list of Instance Specification IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

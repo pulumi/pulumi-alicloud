@@ -157,6 +157,7 @@ def get_smartag_flow_logs(description: Optional[str] = None,
     :param str description: The description of the flow log.
     :param Sequence[str] ids: A list of Flow Log IDs.
     :param str name_regex: A regex string to filter results by Flow Log name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
     """
     __args__ = dict()
@@ -215,6 +216,7 @@ def get_smartag_flow_logs_output(description: Optional[pulumi.Input[Optional[str
     :param str description: The description of the flow log.
     :param Sequence[str] ids: A list of Flow Log IDs.
     :param str name_regex: A regex string to filter results by Flow Log name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
     """
     ...

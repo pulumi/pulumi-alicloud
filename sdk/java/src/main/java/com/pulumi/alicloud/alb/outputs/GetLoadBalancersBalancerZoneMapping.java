@@ -11,19 +11,28 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLoadBalancersBalancerZoneMapping {
-    private List<GetLoadBalancersBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses;
+    private final List<GetLoadBalancersBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses;
     /**
      * @return The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
      * 
      */
-    private String vswitchId;
+    private final String vswitchId;
     /**
      * @return The ID of the zone to which the ALB instance belongs.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetLoadBalancersBalancerZoneMapping() {}
+    @CustomType.Constructor
+    private GetLoadBalancersBalancerZoneMapping(
+        @CustomType.Parameter("loadBalancerAddresses") List<GetLoadBalancersBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses,
+        @CustomType.Parameter("vswitchId") String vswitchId,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.loadBalancerAddresses = loadBalancerAddresses;
+        this.vswitchId = vswitchId;
+        this.zoneId = zoneId;
+    }
+
     public List<GetLoadBalancersBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses() {
         return this.loadBalancerAddresses;
     }
@@ -49,12 +58,16 @@ public final class GetLoadBalancersBalancerZoneMapping {
     public static Builder builder(GetLoadBalancersBalancerZoneMapping defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetLoadBalancersBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses;
         private String vswitchId;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetLoadBalancersBalancerZoneMapping defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.loadBalancerAddresses = defaults.loadBalancerAddresses;
@@ -62,7 +75,6 @@ public final class GetLoadBalancersBalancerZoneMapping {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder loadBalancerAddresses(List<GetLoadBalancersBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses) {
             this.loadBalancerAddresses = Objects.requireNonNull(loadBalancerAddresses);
             return this;
@@ -70,22 +82,15 @@ public final class GetLoadBalancersBalancerZoneMapping {
         public Builder loadBalancerAddresses(GetLoadBalancersBalancerZoneMappingLoadBalancerAddress... loadBalancerAddresses) {
             return loadBalancerAddresses(List.of(loadBalancerAddresses));
         }
-        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetLoadBalancersBalancerZoneMapping build() {
-            final var o = new GetLoadBalancersBalancerZoneMapping();
-            o.loadBalancerAddresses = loadBalancerAddresses;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetLoadBalancersBalancerZoneMapping build() {
+            return new GetLoadBalancersBalancerZoneMapping(loadBalancerAddresses, vswitchId, zoneId);
         }
     }
 }

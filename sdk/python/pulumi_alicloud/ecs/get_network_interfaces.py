@@ -260,6 +260,12 @@ def get_network_interfaces(ids: Optional[Sequence[str]] = None,
                            vswitch_id: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkInterfacesResult:
     """
+    > **DEPRECATED:** This datasource has been renamed to ecs_get_ecs_network_interfaces from version 1.123.1.
+
+    Use this data source to get a list of elastic network interfaces according to the specified filters in an Alibaba Cloud account.
+
+    For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
+
     ## Example Usage
 
     ```python
@@ -401,6 +407,12 @@ def get_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[s
                                   vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkInterfacesResult]:
     """
+    > **DEPRECATED:** This datasource has been renamed to ecs_get_ecs_network_interfaces from version 1.123.1.
+
+    Use this data source to get a list of elastic network interfaces according to the specified filters in an Alibaba Cloud account.
+
+    For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
+
     ## Example Usage
 
     ```python

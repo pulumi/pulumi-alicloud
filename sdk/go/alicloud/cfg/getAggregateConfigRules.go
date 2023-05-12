@@ -66,7 +66,8 @@ type GetAggregateConfigRulesArgs struct {
 	// A list of Aggregate Config Rule IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Aggregate Config Rule name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
 	RiskLevel *int `pulumi:"riskLevel"`
@@ -120,7 +121,8 @@ type GetAggregateConfigRulesOutputArgs struct {
 	// A list of Aggregate Config Rule IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Aggregate Config Rule name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
 	RiskLevel pulumi.IntPtrInput `pulumi:"riskLevel"`

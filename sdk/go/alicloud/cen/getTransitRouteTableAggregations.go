@@ -67,7 +67,8 @@ type GetTransitRouteTableAggregationsArgs struct {
 	// A list of Transit Route Table Aggregation IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Transit Route Table Aggregation name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of Transit Route Table Aggregation. Valid Values: `AllConfigured`, `Configuring`, `ConfigFailed`, `PartialConfigured`, `Deleting`.
 	Status *string `pulumi:"status"`
@@ -114,7 +115,8 @@ type GetTransitRouteTableAggregationsOutputArgs struct {
 	// A list of Transit Route Table Aggregation IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Transit Route Table Aggregation name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of Transit Route Table Aggregation. Valid Values: `AllConfigured`, `Configuring`, `ConfigFailed`, `PartialConfigured`, `Deleting`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

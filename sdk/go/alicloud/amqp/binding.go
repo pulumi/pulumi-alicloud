@@ -90,6 +90,8 @@ type Binding struct {
 	// X-match Attributes. Valid Values:
 	// * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
 	// * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
+	//
+	// **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
 	Argument pulumi.StringOutput `pulumi:"argument"`
 	// The Binding Key.
 	// * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
@@ -160,6 +162,8 @@ type bindingState struct {
 	// X-match Attributes. Valid Values:
 	// * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
 	// * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
+	//
+	// **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
 	Argument *string `pulumi:"argument"`
 	// The Binding Key.
 	// * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
@@ -184,6 +188,8 @@ type BindingState struct {
 	// X-match Attributes. Valid Values:
 	// * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
 	// * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
+	//
+	// **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
 	Argument pulumi.StringPtrInput
 	// The Binding Key.
 	// * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
@@ -212,6 +218,8 @@ type bindingArgs struct {
 	// X-match Attributes. Valid Values:
 	// * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
 	// * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
+	//
+	// **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
 	Argument *string `pulumi:"argument"`
 	// The Binding Key.
 	// * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
@@ -237,6 +245,8 @@ type BindingArgs struct {
 	// X-match Attributes. Valid Values:
 	// * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
 	// * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
+	//
+	// **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
 	Argument pulumi.StringPtrInput
 	// The Binding Key.
 	// * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
@@ -347,6 +357,8 @@ func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOu
 // X-match Attributes. Valid Values:
 // * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
 // * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
+//
+// **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
 func (o BindingOutput) Argument() pulumi.StringOutput {
 	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.Argument }).(pulumi.StringOutput)
 }

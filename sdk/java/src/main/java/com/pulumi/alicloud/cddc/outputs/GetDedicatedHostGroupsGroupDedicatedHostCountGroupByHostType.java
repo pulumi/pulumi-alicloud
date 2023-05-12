@@ -9,9 +9,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType {
-    private String placeHolder;
+    private final String placeHolder;
 
-    private GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType() {}
+    @CustomType.Constructor
+    private GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType(@CustomType.Parameter("placeHolder") String placeHolder) {
+        this.placeHolder = placeHolder;
+    }
+
     public String placeHolder() {
         return this.placeHolder;
     }
@@ -23,24 +27,24 @@ public final class GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType 
     public static Builder builder(GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String placeHolder;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.placeHolder = defaults.placeHolder;
         }
 
-        @CustomType.Setter
         public Builder placeHolder(String placeHolder) {
             this.placeHolder = Objects.requireNonNull(placeHolder);
             return this;
-        }
-        public GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType build() {
-            final var o = new GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType();
-            o.placeHolder = placeHolder;
-            return o;
+        }        public GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType build() {
+            return new GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostType(placeHolder);
         }
     }
 }

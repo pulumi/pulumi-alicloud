@@ -152,6 +152,16 @@ namespace Pulumi.AliCloud.Ess
     {
         /// <summary>
         /// Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+        /// 
+        /// &gt; **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
+        /// 
+        /// &gt; **NOTE:** Restrictions on attaching ECS instances:
+        /// 
+        /// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+        /// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+        /// - The attached ECS instances must in the running state.
+        /// - The attached ECS instances has not been attached to other scaling groups.
+        /// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
@@ -216,6 +226,16 @@ namespace Pulumi.AliCloud.Ess
     {
         /// <summary>
         /// Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+        /// 
+        /// &gt; **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
+        /// 
+        /// &gt; **NOTE:** Restrictions on attaching ECS instances:
+        /// 
+        /// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+        /// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+        /// - The attached ECS instances must in the running state.
+        /// - The attached ECS instances has not been attached to other scaling groups.
+        /// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -248,6 +268,16 @@ namespace Pulumi.AliCloud.Ess
     {
         /// <summary>
         /// Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+        /// 
+        /// &gt; **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
+        /// 
+        /// &gt; **NOTE:** Restrictions on attaching ECS instances:
+        /// 
+        /// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+        /// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+        /// - The attached ECS instances must in the running state.
+        /// - The attached ECS instances has not been attached to other scaling groups.
+        /// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }

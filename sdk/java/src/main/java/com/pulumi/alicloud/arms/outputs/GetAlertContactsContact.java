@@ -14,49 +14,70 @@ public final class GetAlertContactsContact {
      * @return Contact ID.
      * 
      */
-    private String alertContactId;
+    private final String alertContactId;
     /**
      * @return The name of the alert contact.
      * 
      */
-    private String alertContactName;
+    private final String alertContactName;
     /**
      * @return The Creation Time Timestamp.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The webhook URL of the DingTalk chatbot.
      * 
      */
-    private String dingRobotWebhookUrl;
+    private final String dingRobotWebhookUrl;
     /**
      * @return The email address of the alert contact.
      * 
      */
-    private String email;
+    private final String email;
     /**
      * @return The ID of the Alert Contact.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The mobile number of the alert contact.
      * 
      */
-    private String phoneNum;
+    private final String phoneNum;
     /**
      * @return Specifies whether the alert contact receives system notifications.
      * 
      */
-    private Boolean systemNoc;
+    private final Boolean systemNoc;
     /**
      * @return Webhook Information.
      * 
      */
-    private String webhook;
+    private final String webhook;
 
-    private GetAlertContactsContact() {}
+    @CustomType.Constructor
+    private GetAlertContactsContact(
+        @CustomType.Parameter("alertContactId") String alertContactId,
+        @CustomType.Parameter("alertContactName") String alertContactName,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("dingRobotWebhookUrl") String dingRobotWebhookUrl,
+        @CustomType.Parameter("email") String email,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("phoneNum") String phoneNum,
+        @CustomType.Parameter("systemNoc") Boolean systemNoc,
+        @CustomType.Parameter("webhook") String webhook) {
+        this.alertContactId = alertContactId;
+        this.alertContactName = alertContactName;
+        this.createTime = createTime;
+        this.dingRobotWebhookUrl = dingRobotWebhookUrl;
+        this.email = email;
+        this.id = id;
+        this.phoneNum = phoneNum;
+        this.systemNoc = systemNoc;
+        this.webhook = webhook;
+    }
+
     /**
      * @return Contact ID.
      * 
@@ -128,7 +149,7 @@ public final class GetAlertContactsContact {
     public static Builder builder(GetAlertContactsContact defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String alertContactId;
         private String alertContactName;
@@ -139,7 +160,11 @@ public final class GetAlertContactsContact {
         private String phoneNum;
         private Boolean systemNoc;
         private String webhook;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAlertContactsContact defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alertContactId = defaults.alertContactId;
@@ -153,63 +178,43 @@ public final class GetAlertContactsContact {
     	      this.webhook = defaults.webhook;
         }
 
-        @CustomType.Setter
         public Builder alertContactId(String alertContactId) {
             this.alertContactId = Objects.requireNonNull(alertContactId);
             return this;
         }
-        @CustomType.Setter
         public Builder alertContactName(String alertContactName) {
             this.alertContactName = Objects.requireNonNull(alertContactName);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder dingRobotWebhookUrl(String dingRobotWebhookUrl) {
             this.dingRobotWebhookUrl = Objects.requireNonNull(dingRobotWebhookUrl);
             return this;
         }
-        @CustomType.Setter
         public Builder email(String email) {
             this.email = Objects.requireNonNull(email);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder phoneNum(String phoneNum) {
             this.phoneNum = Objects.requireNonNull(phoneNum);
             return this;
         }
-        @CustomType.Setter
         public Builder systemNoc(Boolean systemNoc) {
             this.systemNoc = Objects.requireNonNull(systemNoc);
             return this;
         }
-        @CustomType.Setter
         public Builder webhook(String webhook) {
             this.webhook = Objects.requireNonNull(webhook);
             return this;
-        }
-        public GetAlertContactsContact build() {
-            final var o = new GetAlertContactsContact();
-            o.alertContactId = alertContactId;
-            o.alertContactName = alertContactName;
-            o.createTime = createTime;
-            o.dingRobotWebhookUrl = dingRobotWebhookUrl;
-            o.email = email;
-            o.id = id;
-            o.phoneNum = phoneNum;
-            o.systemNoc = systemNoc;
-            o.webhook = webhook;
-            return o;
+        }        public GetAlertContactsContact build() {
+            return new GetAlertContactsContact(alertContactId, alertContactName, createTime, dingRobotWebhookUrl, email, id, phoneNum, systemNoc, webhook);
         }
     }
 }

@@ -16,34 +16,49 @@ public final class GetConnectionsConnectionVcoHealthCheck {
      * @return The destination ip address.
      * 
      */
-    private @Nullable String dip;
+    private final @Nullable String dip;
     /**
      * @return The health check on status. Valid values: `true`, `false`.
      * 
      */
-    private @Nullable String enable;
+    private final @Nullable String enable;
     /**
      * @return The time interval between health checks.
      * 
      */
-    private @Nullable Integer interval;
+    private final @Nullable Integer interval;
     /**
      * @return The number of retries for health checks issued.
      * 
      */
-    private @Nullable Integer retry;
+    private final @Nullable Integer retry;
     /**
      * @return The source ip address.
      * 
      */
-    private @Nullable String sip;
+    private final @Nullable String sip;
     /**
      * @return The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
 
-    private GetConnectionsConnectionVcoHealthCheck() {}
+    @CustomType.Constructor
+    private GetConnectionsConnectionVcoHealthCheck(
+        @CustomType.Parameter("dip") @Nullable String dip,
+        @CustomType.Parameter("enable") @Nullable String enable,
+        @CustomType.Parameter("interval") @Nullable Integer interval,
+        @CustomType.Parameter("retry") @Nullable Integer retry,
+        @CustomType.Parameter("sip") @Nullable String sip,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.dip = dip;
+        this.enable = enable;
+        this.interval = interval;
+        this.retry = retry;
+        this.sip = sip;
+        this.status = status;
+    }
+
     /**
      * @return The destination ip address.
      * 
@@ -94,7 +109,7 @@ public final class GetConnectionsConnectionVcoHealthCheck {
     public static Builder builder(GetConnectionsConnectionVcoHealthCheck defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String dip;
         private @Nullable String enable;
@@ -102,7 +117,11 @@ public final class GetConnectionsConnectionVcoHealthCheck {
         private @Nullable Integer retry;
         private @Nullable String sip;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetConnectionsConnectionVcoHealthCheck defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dip = defaults.dip;
@@ -113,45 +132,31 @@ public final class GetConnectionsConnectionVcoHealthCheck {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder dip(@Nullable String dip) {
             this.dip = dip;
             return this;
         }
-        @CustomType.Setter
         public Builder enable(@Nullable String enable) {
             this.enable = enable;
             return this;
         }
-        @CustomType.Setter
         public Builder interval(@Nullable Integer interval) {
             this.interval = interval;
             return this;
         }
-        @CustomType.Setter
         public Builder retry(@Nullable Integer retry) {
             this.retry = retry;
             return this;
         }
-        @CustomType.Setter
         public Builder sip(@Nullable String sip) {
             this.sip = sip;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetConnectionsConnectionVcoHealthCheck build() {
-            final var o = new GetConnectionsConnectionVcoHealthCheck();
-            o.dip = dip;
-            o.enable = enable;
-            o.interval = interval;
-            o.retry = retry;
-            o.sip = sip;
-            o.status = status;
-            return o;
+        }        public GetConnectionsConnectionVcoHealthCheck build() {
+            return new GetConnectionsConnectionVcoHealthCheck(dip, enable, interval, retry, sip, status);
         }
     }
 }

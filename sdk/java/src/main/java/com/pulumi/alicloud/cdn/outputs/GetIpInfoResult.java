@@ -9,19 +9,36 @@ import java.util.Objects;
 
 @CustomType
 public final class GetIpInfoResult {
-    private String cdnIp;
+    private final String cdnIp;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private String ip;
-    private String isp;
-    private String ispEname;
-    private String region;
-    private String regionEname;
+    private final String id;
+    private final String ip;
+    private final String isp;
+    private final String ispEname;
+    private final String region;
+    private final String regionEname;
 
-    private GetIpInfoResult() {}
+    @CustomType.Constructor
+    private GetIpInfoResult(
+        @CustomType.Parameter("cdnIp") String cdnIp,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ip") String ip,
+        @CustomType.Parameter("isp") String isp,
+        @CustomType.Parameter("ispEname") String ispEname,
+        @CustomType.Parameter("region") String region,
+        @CustomType.Parameter("regionEname") String regionEname) {
+        this.cdnIp = cdnIp;
+        this.id = id;
+        this.ip = ip;
+        this.isp = isp;
+        this.ispEname = ispEname;
+        this.region = region;
+        this.regionEname = regionEname;
+    }
+
     public String cdnIp() {
         return this.cdnIp;
     }
@@ -55,7 +72,7 @@ public final class GetIpInfoResult {
     public static Builder builder(GetIpInfoResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String cdnIp;
         private String id;
@@ -64,7 +81,11 @@ public final class GetIpInfoResult {
         private String ispEname;
         private String region;
         private String regionEname;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetIpInfoResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cdnIp = defaults.cdnIp;
@@ -76,51 +97,35 @@ public final class GetIpInfoResult {
     	      this.regionEname = defaults.regionEname;
         }
 
-        @CustomType.Setter
         public Builder cdnIp(String cdnIp) {
             this.cdnIp = Objects.requireNonNull(cdnIp);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ip(String ip) {
             this.ip = Objects.requireNonNull(ip);
             return this;
         }
-        @CustomType.Setter
         public Builder isp(String isp) {
             this.isp = Objects.requireNonNull(isp);
             return this;
         }
-        @CustomType.Setter
         public Builder ispEname(String ispEname) {
             this.ispEname = Objects.requireNonNull(ispEname);
             return this;
         }
-        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
-        @CustomType.Setter
         public Builder regionEname(String regionEname) {
             this.regionEname = Objects.requireNonNull(regionEname);
             return this;
-        }
-        public GetIpInfoResult build() {
-            final var o = new GetIpInfoResult();
-            o.cdnIp = cdnIp;
-            o.id = id;
-            o.ip = ip;
-            o.isp = isp;
-            o.ispEname = ispEname;
-            o.region = region;
-            o.regionEname = regionEname;
-            return o;
+        }        public GetIpInfoResult build() {
+            return new GetIpInfoResult(cdnIp, id, ip, isp, ispEname, region, regionEname);
         }
     }
 }

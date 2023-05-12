@@ -9,10 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnhancedNatAvailableZonesZone {
-    private String localName;
-    private String zoneId;
+    private final String localName;
+    private final String zoneId;
 
-    private GetEnhancedNatAvailableZonesZone() {}
+    @CustomType.Constructor
+    private GetEnhancedNatAvailableZonesZone(
+        @CustomType.Parameter("localName") String localName,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.localName = localName;
+        this.zoneId = zoneId;
+    }
+
     public String localName() {
         return this.localName;
     }
@@ -27,32 +34,30 @@ public final class GetEnhancedNatAvailableZonesZone {
     public static Builder builder(GetEnhancedNatAvailableZonesZone defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String localName;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEnhancedNatAvailableZonesZone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.localName = defaults.localName;
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder localName(String localName) {
             this.localName = Objects.requireNonNull(localName);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetEnhancedNatAvailableZonesZone build() {
-            final var o = new GetEnhancedNatAvailableZonesZone();
-            o.localName = localName;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetEnhancedNatAvailableZonesZone build() {
+            return new GetEnhancedNatAvailableZonesZone(localName, zoneId);
         }
     }
 }

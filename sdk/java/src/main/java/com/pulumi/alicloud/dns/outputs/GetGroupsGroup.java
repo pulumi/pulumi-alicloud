@@ -13,14 +13,21 @@ public final class GetGroupsGroup {
      * @return Id of the group.
      * 
      */
-    private String groupId;
+    private final String groupId;
     /**
      * @return Name of the group.
      * 
      */
-    private String groupName;
+    private final String groupName;
 
-    private GetGroupsGroup() {}
+    @CustomType.Constructor
+    private GetGroupsGroup(
+        @CustomType.Parameter("groupId") String groupId,
+        @CustomType.Parameter("groupName") String groupName) {
+        this.groupId = groupId;
+        this.groupName = groupName;
+    }
+
     /**
      * @return Id of the group.
      * 
@@ -43,32 +50,30 @@ public final class GetGroupsGroup {
     public static Builder builder(GetGroupsGroup defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String groupId;
         private String groupName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groupId = defaults.groupId;
     	      this.groupName = defaults.groupName;
         }
 
-        @CustomType.Setter
         public Builder groupId(String groupId) {
             this.groupId = Objects.requireNonNull(groupId);
             return this;
         }
-        @CustomType.Setter
         public Builder groupName(String groupName) {
             this.groupName = Objects.requireNonNull(groupName);
             return this;
-        }
-        public GetGroupsGroup build() {
-            final var o = new GetGroupsGroup();
-            o.groupId = groupId;
-            o.groupName = groupName;
-            return o;
+        }        public GetGroupsGroup build() {
+            return new GetGroupsGroup(groupId, groupName);
         }
     }
 }

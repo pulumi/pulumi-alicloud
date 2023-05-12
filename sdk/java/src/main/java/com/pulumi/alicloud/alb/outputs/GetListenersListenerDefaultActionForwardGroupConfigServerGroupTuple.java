@@ -13,9 +13,13 @@ public final class GetListenersListenerDefaultActionForwardGroupConfigServerGrou
      * @return The ID of the destination server group to which requests are forwarded.
      * 
      */
-    private String serverGroupId;
+    private final String serverGroupId;
 
-    private GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple() {}
+    @CustomType.Constructor
+    private GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple(@CustomType.Parameter("serverGroupId") String serverGroupId) {
+        this.serverGroupId = serverGroupId;
+    }
+
     /**
      * @return The ID of the destination server group to which requests are forwarded.
      * 
@@ -31,24 +35,24 @@ public final class GetListenersListenerDefaultActionForwardGroupConfigServerGrou
     public static Builder builder(GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String serverGroupId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.serverGroupId = defaults.serverGroupId;
         }
 
-        @CustomType.Setter
         public Builder serverGroupId(String serverGroupId) {
             this.serverGroupId = Objects.requireNonNull(serverGroupId);
             return this;
-        }
-        public GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple build() {
-            final var o = new GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple();
-            o.serverGroupId = serverGroupId;
-            return o;
+        }        public GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple build() {
+            return new GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple(serverGroupId);
         }
     }
 }

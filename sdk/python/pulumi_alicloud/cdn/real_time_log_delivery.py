@@ -24,6 +24,8 @@ class RealTimeLogDeliveryArgs:
         :param pulumi.Input[str] logstore: The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
         :param pulumi.Input[str] project: The name of the Log Service project that is used for real-time log delivery.
         :param pulumi.Input[str] sls_region: The region where the Log Service project is deployed.
+               
+               > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "logstore", logstore)
@@ -71,6 +73,8 @@ class RealTimeLogDeliveryArgs:
     def sls_region(self) -> pulumi.Input[str]:
         """
         The region where the Log Service project is deployed.
+
+        > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
         """
         return pulumi.get(self, "sls_region")
 
@@ -93,6 +97,8 @@ class _RealTimeLogDeliveryState:
         :param pulumi.Input[str] logstore: The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
         :param pulumi.Input[str] project: The name of the Log Service project that is used for real-time log delivery.
         :param pulumi.Input[str] sls_region: The region where the Log Service project is deployed.
+               
+               > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
         :param pulumi.Input[str] status: The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
         """
         if domain is not None:
@@ -147,6 +153,8 @@ class _RealTimeLogDeliveryState:
     def sls_region(self) -> Optional[pulumi.Input[str]]:
         """
         The region where the Log Service project is deployed.
+
+        > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
         """
         return pulumi.get(self, "sls_region")
 
@@ -213,6 +221,8 @@ class RealTimeLogDelivery(pulumi.CustomResource):
         :param pulumi.Input[str] logstore: The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
         :param pulumi.Input[str] project: The name of the Log Service project that is used for real-time log delivery.
         :param pulumi.Input[str] sls_region: The region where the Log Service project is deployed.
+               
+               > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
         """
         ...
     @overload
@@ -317,6 +327,8 @@ class RealTimeLogDelivery(pulumi.CustomResource):
         :param pulumi.Input[str] logstore: The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
         :param pulumi.Input[str] project: The name of the Log Service project that is used for real-time log delivery.
         :param pulumi.Input[str] sls_region: The region where the Log Service project is deployed.
+               
+               > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
         :param pulumi.Input[str] status: The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -359,6 +371,8 @@ class RealTimeLogDelivery(pulumi.CustomResource):
     def sls_region(self) -> pulumi.Output[str]:
         """
         The region where the Log Service project is deployed.
+
+        > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
         """
         return pulumi.get(self, "sls_region")
 

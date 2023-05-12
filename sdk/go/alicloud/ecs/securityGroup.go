@@ -10,6 +10,76 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a security group resource.
+//
+// > **NOTE:** `ecs.SecurityGroup` is used to build and manage a security group, and `ecs.SecurityGroupRule` can define ingress or egress rules for it.
+//
+// > **NOTE:** From version 1.7.2, `ecs.SecurityGroup` has supported to segregate different ECS instance in which the same security group.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
+//				Description: pulumi.String("New security group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// Basic usage for vpc
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("10.1.0.0/21"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
+//				VpcId: vpc.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Module Support
+//
+// You can use the existing security-group module
+// to create a security group and add several rules one-click.
+//
 // ## Import
 //
 // Security Group can be imported using the id, e.g.
@@ -39,6 +109,8 @@ type SecurityGroup struct {
 	// `enterprise`: advanced security group For more information.
 	SecurityGroupType pulumi.StringPtrOutput `pulumi:"securityGroupType"`
 	// A mapping of tags to assign to the resource.
+	//
+	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The VPC ID.
 	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
@@ -90,6 +162,8 @@ type securityGroupState struct {
 	// `enterprise`: advanced security group For more information.
 	SecurityGroupType *string `pulumi:"securityGroupType"`
 	// A mapping of tags to assign to the resource.
+	//
+	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The VPC ID.
 	VpcId *string `pulumi:"vpcId"`
@@ -113,6 +187,8 @@ type SecurityGroupState struct {
 	// `enterprise`: advanced security group For more information.
 	SecurityGroupType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
+	//
+	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
 	Tags pulumi.MapInput
 	// The VPC ID.
 	VpcId pulumi.StringPtrInput
@@ -140,6 +216,8 @@ type securityGroupArgs struct {
 	// `enterprise`: advanced security group For more information.
 	SecurityGroupType *string `pulumi:"securityGroupType"`
 	// A mapping of tags to assign to the resource.
+	//
+	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The VPC ID.
 	VpcId *string `pulumi:"vpcId"`
@@ -164,6 +242,8 @@ type SecurityGroupArgs struct {
 	// `enterprise`: advanced security group For more information.
 	SecurityGroupType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
+	//
+	// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
 	Tags pulumi.MapInput
 	// The VPC ID.
 	VpcId pulumi.StringPtrInput
@@ -291,6 +371,8 @@ func (o SecurityGroupOutput) SecurityGroupType() pulumi.StringPtrOutput {
 }
 
 // A mapping of tags to assign to the resource.
+//
+// Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
 func (o SecurityGroupOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }

@@ -13,24 +13,35 @@ public final class GetAgentsAgent {
      * @return The agent id.
      * 
      */
-    private String agentId;
+    private final String agentId;
     /**
      * @return Service space signature, which is used when PAAS interface specifies the service space.
      * 
      */
-    private String agentKey;
+    private final String agentKey;
     /**
      * @return The name of the agent.
      * 
      */
-    private String agentName;
+    private final String agentName;
     /**
      * @return ID of the agent.
      * 
      */
-    private String id;
+    private final String id;
 
-    private GetAgentsAgent() {}
+    @CustomType.Constructor
+    private GetAgentsAgent(
+        @CustomType.Parameter("agentId") String agentId,
+        @CustomType.Parameter("agentKey") String agentKey,
+        @CustomType.Parameter("agentName") String agentName,
+        @CustomType.Parameter("id") String id) {
+        this.agentId = agentId;
+        this.agentKey = agentKey;
+        this.agentName = agentName;
+        this.id = id;
+    }
+
     /**
      * @return The agent id.
      * 
@@ -67,13 +78,17 @@ public final class GetAgentsAgent {
     public static Builder builder(GetAgentsAgent defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String agentId;
         private String agentKey;
         private String agentName;
         private String id;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAgentsAgent defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.agentId = defaults.agentId;
@@ -82,33 +97,23 @@ public final class GetAgentsAgent {
     	      this.id = defaults.id;
         }
 
-        @CustomType.Setter
         public Builder agentId(String agentId) {
             this.agentId = Objects.requireNonNull(agentId);
             return this;
         }
-        @CustomType.Setter
         public Builder agentKey(String agentKey) {
             this.agentKey = Objects.requireNonNull(agentKey);
             return this;
         }
-        @CustomType.Setter
         public Builder agentName(String agentName) {
             this.agentName = Objects.requireNonNull(agentName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }
-        public GetAgentsAgent build() {
-            final var o = new GetAgentsAgent();
-            o.agentId = agentId;
-            o.agentKey = agentKey;
-            o.agentName = agentName;
-            o.id = id;
-            return o;
+        }        public GetAgentsAgent build() {
+            return new GetAgentsAgent(agentId, agentKey, agentName, id);
         }
     }
 }

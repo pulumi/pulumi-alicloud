@@ -76,7 +76,10 @@ type GetImagesArgs struct {
 	// A regex string to filter resulting images by name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// The operating system type of the image. Valid values: `windows` and `linux`.
-	OsType     *string `pulumi:"osType"`
+	OsType *string `pulumi:"osType"`
+	// File name where to save data source results (after running `pulumi preview`).
+	//
+	// > **NOTE:** At least one of the `nameRegex`, `mostRecent` and `owners` must be set.
 	OutputFile *string `pulumi:"outputFile"`
 	// Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
 	Owners *string `pulumi:"owners"`
@@ -165,7 +168,10 @@ type GetImagesOutputArgs struct {
 	// A regex string to filter resulting images by name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The operating system type of the image. Valid values: `windows` and `linux`.
-	OsType     pulumi.StringPtrInput `pulumi:"osType"`
+	OsType pulumi.StringPtrInput `pulumi:"osType"`
+	// File name where to save data source results (after running `pulumi preview`).
+	//
+	// > **NOTE:** At least one of the `nameRegex`, `mostRecent` and `owners` must be set.
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
 	Owners pulumi.StringPtrInput `pulumi:"owners"`

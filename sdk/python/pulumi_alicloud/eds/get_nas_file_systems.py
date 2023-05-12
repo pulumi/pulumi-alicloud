@@ -146,6 +146,7 @@ def get_nas_file_systems(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Nas File System IDs.
     :param str name_regex: A regex string to filter results by Nas File System name.
     :param str office_site_id: The ID of office site.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
     """
     __args__ = dict()
@@ -207,6 +208,7 @@ def get_nas_file_systems_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     :param Sequence[str] ids: A list of Nas File System IDs.
     :param str name_regex: A regex string to filter results by Nas File System name.
     :param str office_site_id: The ID of office site.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
     """
     ...

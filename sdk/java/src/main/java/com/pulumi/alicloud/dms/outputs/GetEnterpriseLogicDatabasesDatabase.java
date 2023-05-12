@@ -15,59 +15,84 @@ public final class GetEnterpriseLogicDatabasesDatabase {
      * @return Logical Library alias.
      * 
      */
-    private String alias;
+    private final String alias;
     /**
      * @return Sub-Database ID.
      * 
      */
-    private List<String> databaseIds;
+    private final List<String> databaseIds;
     /**
      * @return Database type.
      * 
      */
-    private String dbType;
+    private final String dbType;
     /**
      * @return Environment type, return value is as follows:-product: production environment-dev: development environment-pre: Advance Environment-test: test environment-sit:SIT environment-uat:UAT environment-pet: Pressure measurement environment-stag:STAG environment
      * 
      */
-    private String envType;
+    private final String envType;
     /**
      * @return Logic Database ID.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Whether it is a logical Library, the return value is true.
      * 
      */
-    private Boolean logic;
+    private final Boolean logic;
     /**
      * @return The ID of the logical Library.
      * 
      */
-    private String logicDatabaseId;
+    private final String logicDatabaseId;
     /**
      * @return The user ID list of the logical library Owner.
      * 
      */
-    private List<String> ownerIdLists;
+    private final List<String> ownerIdLists;
     /**
      * @return The nickname list of the logical library Owner.
      * 
      */
-    private List<String> ownerNameLists;
+    private final List<String> ownerNameLists;
     /**
      * @return Logical Library name.
      * 
      */
-    private String schemaName;
+    private final String schemaName;
     /**
      * @return Logical library search name.
      * 
      */
-    private String searchName;
+    private final String searchName;
 
-    private GetEnterpriseLogicDatabasesDatabase() {}
+    @CustomType.Constructor
+    private GetEnterpriseLogicDatabasesDatabase(
+        @CustomType.Parameter("alias") String alias,
+        @CustomType.Parameter("databaseIds") List<String> databaseIds,
+        @CustomType.Parameter("dbType") String dbType,
+        @CustomType.Parameter("envType") String envType,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("logic") Boolean logic,
+        @CustomType.Parameter("logicDatabaseId") String logicDatabaseId,
+        @CustomType.Parameter("ownerIdLists") List<String> ownerIdLists,
+        @CustomType.Parameter("ownerNameLists") List<String> ownerNameLists,
+        @CustomType.Parameter("schemaName") String schemaName,
+        @CustomType.Parameter("searchName") String searchName) {
+        this.alias = alias;
+        this.databaseIds = databaseIds;
+        this.dbType = dbType;
+        this.envType = envType;
+        this.id = id;
+        this.logic = logic;
+        this.logicDatabaseId = logicDatabaseId;
+        this.ownerIdLists = ownerIdLists;
+        this.ownerNameLists = ownerNameLists;
+        this.schemaName = schemaName;
+        this.searchName = searchName;
+    }
+
     /**
      * @return Logical Library alias.
      * 
@@ -153,7 +178,7 @@ public final class GetEnterpriseLogicDatabasesDatabase {
     public static Builder builder(GetEnterpriseLogicDatabasesDatabase defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String alias;
         private List<String> databaseIds;
@@ -166,7 +191,11 @@ public final class GetEnterpriseLogicDatabasesDatabase {
         private List<String> ownerNameLists;
         private String schemaName;
         private String searchName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEnterpriseLogicDatabasesDatabase defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alias = defaults.alias;
@@ -182,12 +211,10 @@ public final class GetEnterpriseLogicDatabasesDatabase {
     	      this.searchName = defaults.searchName;
         }
 
-        @CustomType.Setter
         public Builder alias(String alias) {
             this.alias = Objects.requireNonNull(alias);
             return this;
         }
-        @CustomType.Setter
         public Builder databaseIds(List<String> databaseIds) {
             this.databaseIds = Objects.requireNonNull(databaseIds);
             return this;
@@ -195,32 +222,26 @@ public final class GetEnterpriseLogicDatabasesDatabase {
         public Builder databaseIds(String... databaseIds) {
             return databaseIds(List.of(databaseIds));
         }
-        @CustomType.Setter
         public Builder dbType(String dbType) {
             this.dbType = Objects.requireNonNull(dbType);
             return this;
         }
-        @CustomType.Setter
         public Builder envType(String envType) {
             this.envType = Objects.requireNonNull(envType);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder logic(Boolean logic) {
             this.logic = Objects.requireNonNull(logic);
             return this;
         }
-        @CustomType.Setter
         public Builder logicDatabaseId(String logicDatabaseId) {
             this.logicDatabaseId = Objects.requireNonNull(logicDatabaseId);
             return this;
         }
-        @CustomType.Setter
         public Builder ownerIdLists(List<String> ownerIdLists) {
             this.ownerIdLists = Objects.requireNonNull(ownerIdLists);
             return this;
@@ -228,7 +249,6 @@ public final class GetEnterpriseLogicDatabasesDatabase {
         public Builder ownerIdLists(String... ownerIdLists) {
             return ownerIdLists(List.of(ownerIdLists));
         }
-        @CustomType.Setter
         public Builder ownerNameLists(List<String> ownerNameLists) {
             this.ownerNameLists = Objects.requireNonNull(ownerNameLists);
             return this;
@@ -236,30 +256,15 @@ public final class GetEnterpriseLogicDatabasesDatabase {
         public Builder ownerNameLists(String... ownerNameLists) {
             return ownerNameLists(List.of(ownerNameLists));
         }
-        @CustomType.Setter
         public Builder schemaName(String schemaName) {
             this.schemaName = Objects.requireNonNull(schemaName);
             return this;
         }
-        @CustomType.Setter
         public Builder searchName(String searchName) {
             this.searchName = Objects.requireNonNull(searchName);
             return this;
-        }
-        public GetEnterpriseLogicDatabasesDatabase build() {
-            final var o = new GetEnterpriseLogicDatabasesDatabase();
-            o.alias = alias;
-            o.databaseIds = databaseIds;
-            o.dbType = dbType;
-            o.envType = envType;
-            o.id = id;
-            o.logic = logic;
-            o.logicDatabaseId = logicDatabaseId;
-            o.ownerIdLists = ownerIdLists;
-            o.ownerNameLists = ownerNameLists;
-            o.schemaName = schemaName;
-            o.searchName = searchName;
-            return o;
+        }        public GetEnterpriseLogicDatabasesDatabase build() {
+            return new GetEnterpriseLogicDatabasesDatabase(alias, databaseIds, dbType, envType, id, logic, logicDatabaseId, ownerIdLists, ownerNameLists, schemaName, searchName);
         }
     }
 }

@@ -34,6 +34,9 @@ export interface GetShardingNetworkPrivateAddressesArgs {
      * The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
      */
     nodeId?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The role of the node.
@@ -76,6 +79,9 @@ export interface GetShardingNetworkPrivateAddressesOutputArgs {
      * The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
      */
     nodeId?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The role of the node.

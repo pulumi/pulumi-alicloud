@@ -15,24 +15,35 @@ public final class SlsGroupSlsGroupConfig {
      * @return The name of the Log Store.
      * 
      */
-    private String slsLogstore;
+    private final String slsLogstore;
     /**
      * @return The name of the Project.
      * 
      */
-    private String slsProject;
+    private final String slsProject;
     /**
      * @return The Sls Region.
      * 
      */
-    private String slsRegion;
+    private final String slsRegion;
     /**
      * @return The ID of the Sls User.
      * 
      */
-    private @Nullable String slsUserId;
+    private final @Nullable String slsUserId;
 
-    private SlsGroupSlsGroupConfig() {}
+    @CustomType.Constructor
+    private SlsGroupSlsGroupConfig(
+        @CustomType.Parameter("slsLogstore") String slsLogstore,
+        @CustomType.Parameter("slsProject") String slsProject,
+        @CustomType.Parameter("slsRegion") String slsRegion,
+        @CustomType.Parameter("slsUserId") @Nullable String slsUserId) {
+        this.slsLogstore = slsLogstore;
+        this.slsProject = slsProject;
+        this.slsRegion = slsRegion;
+        this.slsUserId = slsUserId;
+    }
+
     /**
      * @return The name of the Log Store.
      * 
@@ -69,13 +80,17 @@ public final class SlsGroupSlsGroupConfig {
     public static Builder builder(SlsGroupSlsGroupConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String slsLogstore;
         private String slsProject;
         private String slsRegion;
         private @Nullable String slsUserId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(SlsGroupSlsGroupConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.slsLogstore = defaults.slsLogstore;
@@ -84,33 +99,23 @@ public final class SlsGroupSlsGroupConfig {
     	      this.slsUserId = defaults.slsUserId;
         }
 
-        @CustomType.Setter
         public Builder slsLogstore(String slsLogstore) {
             this.slsLogstore = Objects.requireNonNull(slsLogstore);
             return this;
         }
-        @CustomType.Setter
         public Builder slsProject(String slsProject) {
             this.slsProject = Objects.requireNonNull(slsProject);
             return this;
         }
-        @CustomType.Setter
         public Builder slsRegion(String slsRegion) {
             this.slsRegion = Objects.requireNonNull(slsRegion);
             return this;
         }
-        @CustomType.Setter
         public Builder slsUserId(@Nullable String slsUserId) {
             this.slsUserId = slsUserId;
             return this;
-        }
-        public SlsGroupSlsGroupConfig build() {
-            final var o = new SlsGroupSlsGroupConfig();
-            o.slsLogstore = slsLogstore;
-            o.slsProject = slsProject;
-            o.slsRegion = slsRegion;
-            o.slsUserId = slsUserId;
-            return o;
+        }        public SlsGroupSlsGroupConfig build() {
+            return new SlsGroupSlsGroupConfig(slsLogstore, slsProject, slsRegion, slsUserId);
         }
     }
 }

@@ -84,6 +84,8 @@ export class VpcEndpointService extends pulumi.CustomResource {
     public /*out*/ readonly serviceBusinessStatus!: pulumi.Output<string>;
     /**
      * The description of the terminal node service.
+     *
+     * > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
      */
     public readonly serviceDescription!: pulumi.Output<string | undefined>;
     /**
@@ -158,6 +160,8 @@ export interface VpcEndpointServiceState {
     serviceBusinessStatus?: pulumi.Input<string>;
     /**
      * The description of the terminal node service.
+     *
+     * > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
      */
     serviceDescription?: pulumi.Input<string>;
     /**
@@ -192,6 +196,8 @@ export interface VpcEndpointServiceArgs {
     payer?: pulumi.Input<string>;
     /**
      * The description of the terminal node service.
+     *
+     * > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
      */
     serviceDescription?: pulumi.Input<string>;
 }

@@ -16,14 +16,23 @@ public final class ListenerQuicConfig {
      * @return There Is a Need to Correlate the QuIC Listener ID. The Https Listener, in Effect at the Time. quicupgradeenabled True When Required.
      * 
      */
-    private @Nullable String quicListenerId;
+    private final @Nullable String quicListenerId;
     /**
      * @return Indicates Whether to Enable the QuIC Upgrade.
      * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
+     * 
      */
-    private @Nullable Boolean quicUpgradeEnabled;
+    private final @Nullable Boolean quicUpgradeEnabled;
 
-    private ListenerQuicConfig() {}
+    @CustomType.Constructor
+    private ListenerQuicConfig(
+        @CustomType.Parameter("quicListenerId") @Nullable String quicListenerId,
+        @CustomType.Parameter("quicUpgradeEnabled") @Nullable Boolean quicUpgradeEnabled) {
+        this.quicListenerId = quicListenerId;
+        this.quicUpgradeEnabled = quicUpgradeEnabled;
+    }
+
     /**
      * @return There Is a Need to Correlate the QuIC Listener ID. The Https Listener, in Effect at the Time. quicupgradeenabled True When Required.
      * 
@@ -33,6 +42,8 @@ public final class ListenerQuicConfig {
     }
     /**
      * @return Indicates Whether to Enable the QuIC Upgrade.
+     * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
      * 
      */
     public Optional<Boolean> quicUpgradeEnabled() {
@@ -46,32 +57,30 @@ public final class ListenerQuicConfig {
     public static Builder builder(ListenerQuicConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String quicListenerId;
         private @Nullable Boolean quicUpgradeEnabled;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ListenerQuicConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.quicListenerId = defaults.quicListenerId;
     	      this.quicUpgradeEnabled = defaults.quicUpgradeEnabled;
         }
 
-        @CustomType.Setter
         public Builder quicListenerId(@Nullable String quicListenerId) {
             this.quicListenerId = quicListenerId;
             return this;
         }
-        @CustomType.Setter
         public Builder quicUpgradeEnabled(@Nullable Boolean quicUpgradeEnabled) {
             this.quicUpgradeEnabled = quicUpgradeEnabled;
             return this;
-        }
-        public ListenerQuicConfig build() {
-            final var o = new ListenerQuicConfig();
-            o.quicListenerId = quicListenerId;
-            o.quicUpgradeEnabled = quicUpgradeEnabled;
-            return o;
+        }        public ListenerQuicConfig build() {
+            return new ListenerQuicConfig(quicListenerId, quicUpgradeEnabled);
         }
     }
 }

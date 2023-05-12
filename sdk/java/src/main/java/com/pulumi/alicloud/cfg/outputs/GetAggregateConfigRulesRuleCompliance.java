@@ -14,14 +14,21 @@ public final class GetAggregateConfigRulesRuleCompliance {
      * @return The Compliance Type.
      * 
      */
-    private String complianceType;
+    private final String complianceType;
     /**
      * @return The Count.
      * 
      */
-    private Integer count;
+    private final Integer count;
 
-    private GetAggregateConfigRulesRuleCompliance() {}
+    @CustomType.Constructor
+    private GetAggregateConfigRulesRuleCompliance(
+        @CustomType.Parameter("complianceType") String complianceType,
+        @CustomType.Parameter("count") Integer count) {
+        this.complianceType = complianceType;
+        this.count = count;
+    }
+
     /**
      * @return The Compliance Type.
      * 
@@ -44,32 +51,30 @@ public final class GetAggregateConfigRulesRuleCompliance {
     public static Builder builder(GetAggregateConfigRulesRuleCompliance defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String complianceType;
         private Integer count;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAggregateConfigRulesRuleCompliance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.complianceType = defaults.complianceType;
     	      this.count = defaults.count;
         }
 
-        @CustomType.Setter
         public Builder complianceType(String complianceType) {
             this.complianceType = Objects.requireNonNull(complianceType);
             return this;
         }
-        @CustomType.Setter
         public Builder count(Integer count) {
             this.count = Objects.requireNonNull(count);
             return this;
-        }
-        public GetAggregateConfigRulesRuleCompliance build() {
-            final var o = new GetAggregateConfigRulesRuleCompliance();
-            o.complianceType = complianceType;
-            o.count = count;
-            return o;
+        }        public GetAggregateConfigRulesRuleCompliance build() {
+            return new GetAggregateConfigRulesRuleCompliance(complianceType, count);
         }
     }
 }

@@ -16,24 +16,35 @@ public final class IpsecServerIpsecConfig {
      * @return The authentication algorithm that is used in Phase 2 negotiations. Default value: `sha1`.
      * 
      */
-    private @Nullable String ipsecAuthAlg;
+    private final @Nullable String ipsecAuthAlg;
     /**
      * @return The encryption algorithm that is used in Phase 2 negotiations. Default value: `aes`.
      * 
      */
-    private @Nullable String ipsecEncAlg;
+    private final @Nullable String ipsecEncAlg;
     /**
      * @return The SA lifetime determined by Phase 2 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
      * 
      */
-    private @Nullable Integer ipsecLifetime;
+    private final @Nullable Integer ipsecLifetime;
     /**
      * @return Forwards packets of all protocols. The Diffie-Hellman key exchange algorithm used in Phase 2 negotiations. Default value: `group2`.
      * 
      */
-    private @Nullable String ipsecPfs;
+    private final @Nullable String ipsecPfs;
 
-    private IpsecServerIpsecConfig() {}
+    @CustomType.Constructor
+    private IpsecServerIpsecConfig(
+        @CustomType.Parameter("ipsecAuthAlg") @Nullable String ipsecAuthAlg,
+        @CustomType.Parameter("ipsecEncAlg") @Nullable String ipsecEncAlg,
+        @CustomType.Parameter("ipsecLifetime") @Nullable Integer ipsecLifetime,
+        @CustomType.Parameter("ipsecPfs") @Nullable String ipsecPfs) {
+        this.ipsecAuthAlg = ipsecAuthAlg;
+        this.ipsecEncAlg = ipsecEncAlg;
+        this.ipsecLifetime = ipsecLifetime;
+        this.ipsecPfs = ipsecPfs;
+    }
+
     /**
      * @return The authentication algorithm that is used in Phase 2 negotiations. Default value: `sha1`.
      * 
@@ -70,13 +81,17 @@ public final class IpsecServerIpsecConfig {
     public static Builder builder(IpsecServerIpsecConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String ipsecAuthAlg;
         private @Nullable String ipsecEncAlg;
         private @Nullable Integer ipsecLifetime;
         private @Nullable String ipsecPfs;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(IpsecServerIpsecConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipsecAuthAlg = defaults.ipsecAuthAlg;
@@ -85,33 +100,23 @@ public final class IpsecServerIpsecConfig {
     	      this.ipsecPfs = defaults.ipsecPfs;
         }
 
-        @CustomType.Setter
         public Builder ipsecAuthAlg(@Nullable String ipsecAuthAlg) {
             this.ipsecAuthAlg = ipsecAuthAlg;
             return this;
         }
-        @CustomType.Setter
         public Builder ipsecEncAlg(@Nullable String ipsecEncAlg) {
             this.ipsecEncAlg = ipsecEncAlg;
             return this;
         }
-        @CustomType.Setter
         public Builder ipsecLifetime(@Nullable Integer ipsecLifetime) {
             this.ipsecLifetime = ipsecLifetime;
             return this;
         }
-        @CustomType.Setter
         public Builder ipsecPfs(@Nullable String ipsecPfs) {
             this.ipsecPfs = ipsecPfs;
             return this;
-        }
-        public IpsecServerIpsecConfig build() {
-            final var o = new IpsecServerIpsecConfig();
-            o.ipsecAuthAlg = ipsecAuthAlg;
-            o.ipsecEncAlg = ipsecEncAlg;
-            o.ipsecLifetime = ipsecLifetime;
-            o.ipsecPfs = ipsecPfs;
-            return o;
+        }        public IpsecServerIpsecConfig build() {
+            return new IpsecServerIpsecConfig(ipsecAuthAlg, ipsecEncAlg, ipsecLifetime, ipsecPfs);
         }
     }
 }

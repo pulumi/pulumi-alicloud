@@ -13,19 +13,28 @@ public final class GetVirtualHostsHost {
      * @return The ID of the Virtual Host.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return InstanceId.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return VirtualHostName.
      * 
      */
-    private String virtualHostName;
+    private final String virtualHostName;
 
-    private GetVirtualHostsHost() {}
+    @CustomType.Constructor
+    private GetVirtualHostsHost(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("virtualHostName") String virtualHostName) {
+        this.id = id;
+        this.instanceId = instanceId;
+        this.virtualHostName = virtualHostName;
+    }
+
     /**
      * @return The ID of the Virtual Host.
      * 
@@ -55,12 +64,16 @@ public final class GetVirtualHostsHost {
     public static Builder builder(GetVirtualHostsHost defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private String instanceId;
         private String virtualHostName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVirtualHostsHost defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -68,27 +81,19 @@ public final class GetVirtualHostsHost {
     	      this.virtualHostName = defaults.virtualHostName;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder virtualHostName(String virtualHostName) {
             this.virtualHostName = Objects.requireNonNull(virtualHostName);
             return this;
-        }
-        public GetVirtualHostsHost build() {
-            final var o = new GetVirtualHostsHost();
-            o.id = id;
-            o.instanceId = instanceId;
-            o.virtualHostName = virtualHostName;
-            return o;
+        }        public GetVirtualHostsHost build() {
+            return new GetVirtualHostsHost(id, instanceId, virtualHostName);
         }
     }
 }

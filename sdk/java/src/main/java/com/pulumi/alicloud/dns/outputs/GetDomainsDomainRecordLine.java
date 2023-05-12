@@ -9,12 +9,23 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDomainsDomainRecordLine {
-    private String fatherCode;
-    private String lineCode;
-    private String lineDisplayName;
-    private String lineName;
+    private final String fatherCode;
+    private final String lineCode;
+    private final String lineDisplayName;
+    private final String lineName;
 
-    private GetDomainsDomainRecordLine() {}
+    @CustomType.Constructor
+    private GetDomainsDomainRecordLine(
+        @CustomType.Parameter("fatherCode") String fatherCode,
+        @CustomType.Parameter("lineCode") String lineCode,
+        @CustomType.Parameter("lineDisplayName") String lineDisplayName,
+        @CustomType.Parameter("lineName") String lineName) {
+        this.fatherCode = fatherCode;
+        this.lineCode = lineCode;
+        this.lineDisplayName = lineDisplayName;
+        this.lineName = lineName;
+    }
+
     public String fatherCode() {
         return this.fatherCode;
     }
@@ -35,13 +46,17 @@ public final class GetDomainsDomainRecordLine {
     public static Builder builder(GetDomainsDomainRecordLine defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String fatherCode;
         private String lineCode;
         private String lineDisplayName;
         private String lineName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDomainsDomainRecordLine defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fatherCode = defaults.fatherCode;
@@ -50,33 +65,23 @@ public final class GetDomainsDomainRecordLine {
     	      this.lineName = defaults.lineName;
         }
 
-        @CustomType.Setter
         public Builder fatherCode(String fatherCode) {
             this.fatherCode = Objects.requireNonNull(fatherCode);
             return this;
         }
-        @CustomType.Setter
         public Builder lineCode(String lineCode) {
             this.lineCode = Objects.requireNonNull(lineCode);
             return this;
         }
-        @CustomType.Setter
         public Builder lineDisplayName(String lineDisplayName) {
             this.lineDisplayName = Objects.requireNonNull(lineDisplayName);
             return this;
         }
-        @CustomType.Setter
         public Builder lineName(String lineName) {
             this.lineName = Objects.requireNonNull(lineName);
             return this;
-        }
-        public GetDomainsDomainRecordLine build() {
-            final var o = new GetDomainsDomainRecordLine();
-            o.fatherCode = fatherCode;
-            o.lineCode = lineCode;
-            o.lineDisplayName = lineDisplayName;
-            o.lineName = lineName;
-            return o;
+        }        public GetDomainsDomainRecordLine build() {
+            return new GetDomainsDomainRecordLine(fatherCode, lineCode, lineDisplayName, lineName);
         }
     }
 }

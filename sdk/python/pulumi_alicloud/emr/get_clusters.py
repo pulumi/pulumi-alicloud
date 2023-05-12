@@ -236,6 +236,8 @@ def get_clusters(cluster_name: Optional[str] = None,
     """
     This data source provides the Emr Clusters of the current Alibaba Cloud user.
 
+    > **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
+
     > **NOTE:** Available in v1.146.0+.
 
     ## Example Usage
@@ -362,6 +364,7 @@ def get_clusters(cluster_name: Optional[str] = None,
     :param bool is_desc: The is desc.
     :param str machine_type: The host type of the cluster. The default is ECS.
     :param str name_regex: A regex string to filter results by Cluster name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Resource Group ID.
     :param Sequence[str] status_lists: The status list. Valid values: `ABNORMAL`, `CREATE_FAILED`, `CREATING`, `IDLE`, `RELEASED`, `RELEASE_FAILED`, `RELEASING`, `RUNNING`, `WAIT_FOR_PAY`.
     :param str vpc_id: The VPC ID.
@@ -430,6 +433,8 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
     """
     This data source provides the Emr Clusters of the current Alibaba Cloud user.
 
+    > **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
+
     > **NOTE:** Available in v1.146.0+.
 
     ## Example Usage
@@ -556,6 +561,7 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
     :param bool is_desc: The is desc.
     :param str machine_type: The host type of the cluster. The default is ECS.
     :param str name_regex: A regex string to filter results by Cluster name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Resource Group ID.
     :param Sequence[str] status_lists: The status list. Valid values: `ABNORMAL`, `CREATE_FAILED`, `CREATING`, `IDLE`, `RELEASED`, `RELEASE_FAILED`, `RELEASING`, `RUNNING`, `WAIT_FOR_PAY`.
     :param str vpc_id: The VPC ID.

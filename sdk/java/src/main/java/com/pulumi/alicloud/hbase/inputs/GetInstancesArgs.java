@@ -63,9 +63,17 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.nameRegex);
     }
 
+    /**
+     * The name of file that can save the collection of instances after running `pulumi preview`.
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable Output<String> outputFile;
 
+    /**
+     * @return The name of file that can save the collection of instances after running `pulumi preview`.
+     * 
+     */
     public Optional<Output<String>> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -186,11 +194,23 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
             return nameRegex(Output.of(nameRegex));
         }
 
+        /**
+         * @param outputFile The name of file that can save the collection of instances after running `pulumi preview`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable Output<String> outputFile) {
             $.outputFile = outputFile;
             return this;
         }
 
+        /**
+         * @param outputFile The name of file that can save the collection of instances after running `pulumi preview`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(String outputFile) {
             return outputFile(Output.of(outputFile));
         }

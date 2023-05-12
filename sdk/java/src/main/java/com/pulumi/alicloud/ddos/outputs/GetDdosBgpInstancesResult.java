@@ -17,26 +17,41 @@ public final class GetDdosBgpInstancesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of instance IDs.
      * 
      */
-    private List<String> ids;
+    private final List<String> ids;
     /**
      * @return A list of apis. Each element contains the following attributes:
      * 
      */
-    private List<GetDdosBgpInstancesInstance> instances;
-    private @Nullable String nameRegex;
+    private final List<GetDdosBgpInstancesInstance> instances;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of instance names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
 
-    private GetDdosBgpInstancesResult() {}
+    @CustomType.Constructor
+    private GetDdosBgpInstancesResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instances") List<GetDdosBgpInstancesInstance> instances,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.id = id;
+        this.ids = ids;
+        this.instances = instances;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -79,7 +94,7 @@ public final class GetDdosBgpInstancesResult {
     public static Builder builder(GetDdosBgpInstancesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -87,7 +102,11 @@ public final class GetDdosBgpInstancesResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDdosBgpInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -98,12 +117,10 @@ public final class GetDdosBgpInstancesResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -111,7 +128,6 @@ public final class GetDdosBgpInstancesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instances(List<GetDdosBgpInstancesInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -119,12 +135,10 @@ public final class GetDdosBgpInstancesResult {
         public Builder instances(GetDdosBgpInstancesInstance... instances) {
             return instances(List.of(instances));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -132,20 +146,11 @@ public final class GetDdosBgpInstancesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetDdosBgpInstancesResult build() {
-            final var o = new GetDdosBgpInstancesResult();
-            o.id = id;
-            o.ids = ids;
-            o.instances = instances;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetDdosBgpInstancesResult build() {
+            return new GetDdosBgpInstancesResult(id, ids, instances, nameRegex, names, outputFile);
         }
     }
 }

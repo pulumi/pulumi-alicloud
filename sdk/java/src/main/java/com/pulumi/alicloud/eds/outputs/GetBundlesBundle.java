@@ -16,54 +16,77 @@ public final class GetBundlesBundle {
      * @return The bundle id of the bundle.
      * 
      */
-    private String bundleId;
+    private final String bundleId;
     /**
      * @return The name of the bundle.
      * 
      */
-    private String bundleName;
+    private final String bundleName;
     /**
      * @return The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
      * 
      */
-    private String bundleType;
+    private final String bundleType;
     /**
      * @return The description of the bundle.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The desktop type of the bundle.
      * 
      */
-    private String desktopType;
+    private final String desktopType;
     /**
      * @return The desktop type attribute of the bundle.
      * 
      */
-    private List<GetBundlesBundleDesktopTypeAttribute> desktopTypeAttributes;
+    private final List<GetBundlesBundleDesktopTypeAttribute> desktopTypeAttributes;
     /**
      * @return The disks of the bundle.
      * 
      */
-    private List<GetBundlesBundleDisk> disks;
+    private final List<GetBundlesBundleDisk> disks;
     /**
      * @return The ID of the bundle.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The image id attribute of the bundle.
      * 
      */
-    private String imageId;
+    private final String imageId;
     /**
      * @return The os type attribute of the bundle.
      * 
      */
-    private String osType;
+    private final String osType;
 
-    private GetBundlesBundle() {}
+    @CustomType.Constructor
+    private GetBundlesBundle(
+        @CustomType.Parameter("bundleId") String bundleId,
+        @CustomType.Parameter("bundleName") String bundleName,
+        @CustomType.Parameter("bundleType") String bundleType,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("desktopType") String desktopType,
+        @CustomType.Parameter("desktopTypeAttributes") List<GetBundlesBundleDesktopTypeAttribute> desktopTypeAttributes,
+        @CustomType.Parameter("disks") List<GetBundlesBundleDisk> disks,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("imageId") String imageId,
+        @CustomType.Parameter("osType") String osType) {
+        this.bundleId = bundleId;
+        this.bundleName = bundleName;
+        this.bundleType = bundleType;
+        this.description = description;
+        this.desktopType = desktopType;
+        this.desktopTypeAttributes = desktopTypeAttributes;
+        this.disks = disks;
+        this.id = id;
+        this.imageId = imageId;
+        this.osType = osType;
+    }
+
     /**
      * @return The bundle id of the bundle.
      * 
@@ -142,7 +165,7 @@ public final class GetBundlesBundle {
     public static Builder builder(GetBundlesBundle defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String bundleId;
         private String bundleName;
@@ -154,7 +177,11 @@ public final class GetBundlesBundle {
         private String id;
         private String imageId;
         private String osType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBundlesBundle defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bundleId = defaults.bundleId;
@@ -169,32 +196,26 @@ public final class GetBundlesBundle {
     	      this.osType = defaults.osType;
         }
 
-        @CustomType.Setter
         public Builder bundleId(String bundleId) {
             this.bundleId = Objects.requireNonNull(bundleId);
             return this;
         }
-        @CustomType.Setter
         public Builder bundleName(String bundleName) {
             this.bundleName = Objects.requireNonNull(bundleName);
             return this;
         }
-        @CustomType.Setter
         public Builder bundleType(String bundleType) {
             this.bundleType = Objects.requireNonNull(bundleType);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder desktopType(String desktopType) {
             this.desktopType = Objects.requireNonNull(desktopType);
             return this;
         }
-        @CustomType.Setter
         public Builder desktopTypeAttributes(List<GetBundlesBundleDesktopTypeAttribute> desktopTypeAttributes) {
             this.desktopTypeAttributes = Objects.requireNonNull(desktopTypeAttributes);
             return this;
@@ -202,7 +223,6 @@ public final class GetBundlesBundle {
         public Builder desktopTypeAttributes(GetBundlesBundleDesktopTypeAttribute... desktopTypeAttributes) {
             return desktopTypeAttributes(List.of(desktopTypeAttributes));
         }
-        @CustomType.Setter
         public Builder disks(List<GetBundlesBundleDisk> disks) {
             this.disks = Objects.requireNonNull(disks);
             return this;
@@ -210,34 +230,19 @@ public final class GetBundlesBundle {
         public Builder disks(GetBundlesBundleDisk... disks) {
             return disks(List.of(disks));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder imageId(String imageId) {
             this.imageId = Objects.requireNonNull(imageId);
             return this;
         }
-        @CustomType.Setter
         public Builder osType(String osType) {
             this.osType = Objects.requireNonNull(osType);
             return this;
-        }
-        public GetBundlesBundle build() {
-            final var o = new GetBundlesBundle();
-            o.bundleId = bundleId;
-            o.bundleName = bundleName;
-            o.bundleType = bundleType;
-            o.description = description;
-            o.desktopType = desktopType;
-            o.desktopTypeAttributes = desktopTypeAttributes;
-            o.disks = disks;
-            o.id = id;
-            o.imageId = imageId;
-            o.osType = osType;
-            return o;
+        }        public GetBundlesBundle build() {
+            return new GetBundlesBundle(bundleId, bundleName, bundleType, description, desktopType, desktopTypeAttributes, disks, id, imageId, osType);
         }
     }
 }

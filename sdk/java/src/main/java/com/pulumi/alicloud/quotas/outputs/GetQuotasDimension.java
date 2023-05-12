@@ -15,14 +15,21 @@ public final class GetQuotasDimension {
      * @return The key of dimensions.
      * 
      */
-    private @Nullable String key;
+    private final @Nullable String key;
     /**
      * @return The value of dimensions.
      * 
      */
-    private @Nullable String value;
+    private final @Nullable String value;
 
-    private GetQuotasDimension() {}
+    @CustomType.Constructor
+    private GetQuotasDimension(
+        @CustomType.Parameter("key") @Nullable String key,
+        @CustomType.Parameter("value") @Nullable String value) {
+        this.key = key;
+        this.value = value;
+    }
+
     /**
      * @return The key of dimensions.
      * 
@@ -45,32 +52,30 @@ public final class GetQuotasDimension {
     public static Builder builder(GetQuotasDimension defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String key;
         private @Nullable String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetQuotasDimension defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
-        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }
-        public GetQuotasDimension build() {
-            final var o = new GetQuotasDimension();
-            o.key = key;
-            o.value = value;
-            return o;
+        }        public GetQuotasDimension build() {
+            return new GetQuotasDimension(key, value);
         }
     }
 }

@@ -14,24 +14,35 @@ public final class GetIpsecServersServerIpsecConfig {
      * @return IPsec authentication algorithm.
      * 
      */
-    private String ipsecAuthAlg;
+    private final String ipsecAuthAlg;
     /**
      * @return IPsec encryption algorithm.
      * 
      */
-    private String ipsecEncAlg;
+    private final String ipsecEncAlg;
     /**
      * @return IPsec survival time. Unit: seconds.
      * 
      */
-    private Integer ipsecLifetime;
+    private final Integer ipsecLifetime;
     /**
      * @return Diffie-Hellman key exchange algorithm.
      * 
      */
-    private String ipsecPfs;
+    private final String ipsecPfs;
 
-    private GetIpsecServersServerIpsecConfig() {}
+    @CustomType.Constructor
+    private GetIpsecServersServerIpsecConfig(
+        @CustomType.Parameter("ipsecAuthAlg") String ipsecAuthAlg,
+        @CustomType.Parameter("ipsecEncAlg") String ipsecEncAlg,
+        @CustomType.Parameter("ipsecLifetime") Integer ipsecLifetime,
+        @CustomType.Parameter("ipsecPfs") String ipsecPfs) {
+        this.ipsecAuthAlg = ipsecAuthAlg;
+        this.ipsecEncAlg = ipsecEncAlg;
+        this.ipsecLifetime = ipsecLifetime;
+        this.ipsecPfs = ipsecPfs;
+    }
+
     /**
      * @return IPsec authentication algorithm.
      * 
@@ -68,13 +79,17 @@ public final class GetIpsecServersServerIpsecConfig {
     public static Builder builder(GetIpsecServersServerIpsecConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String ipsecAuthAlg;
         private String ipsecEncAlg;
         private Integer ipsecLifetime;
         private String ipsecPfs;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetIpsecServersServerIpsecConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipsecAuthAlg = defaults.ipsecAuthAlg;
@@ -83,33 +98,23 @@ public final class GetIpsecServersServerIpsecConfig {
     	      this.ipsecPfs = defaults.ipsecPfs;
         }
 
-        @CustomType.Setter
         public Builder ipsecAuthAlg(String ipsecAuthAlg) {
             this.ipsecAuthAlg = Objects.requireNonNull(ipsecAuthAlg);
             return this;
         }
-        @CustomType.Setter
         public Builder ipsecEncAlg(String ipsecEncAlg) {
             this.ipsecEncAlg = Objects.requireNonNull(ipsecEncAlg);
             return this;
         }
-        @CustomType.Setter
         public Builder ipsecLifetime(Integer ipsecLifetime) {
             this.ipsecLifetime = Objects.requireNonNull(ipsecLifetime);
             return this;
         }
-        @CustomType.Setter
         public Builder ipsecPfs(String ipsecPfs) {
             this.ipsecPfs = Objects.requireNonNull(ipsecPfs);
             return this;
-        }
-        public GetIpsecServersServerIpsecConfig build() {
-            final var o = new GetIpsecServersServerIpsecConfig();
-            o.ipsecAuthAlg = ipsecAuthAlg;
-            o.ipsecEncAlg = ipsecEncAlg;
-            o.ipsecLifetime = ipsecLifetime;
-            o.ipsecPfs = ipsecPfs;
-            return o;
+        }        public GetIpsecServersServerIpsecConfig build() {
+            return new GetIpsecServersServerIpsecConfig(ipsecAuthAlg, ipsecEncAlg, ipsecLifetime, ipsecPfs);
         }
     }
 }

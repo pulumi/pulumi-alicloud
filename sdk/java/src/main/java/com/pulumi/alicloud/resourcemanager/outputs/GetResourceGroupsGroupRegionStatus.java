@@ -13,14 +13,21 @@ public final class GetResourceGroupsGroupRegionStatus {
      * @return The region ID.
      * 
      */
-    private String regionId;
+    private final String regionId;
     /**
      * @return The status of the resource group. Possible values:`Creating`,`Deleted`,`Deleting`(Available 1.114.0+) `OK` and `PendingDelete`.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetResourceGroupsGroupRegionStatus() {}
+    @CustomType.Constructor
+    private GetResourceGroupsGroupRegionStatus(
+        @CustomType.Parameter("regionId") String regionId,
+        @CustomType.Parameter("status") String status) {
+        this.regionId = regionId;
+        this.status = status;
+    }
+
     /**
      * @return The region ID.
      * 
@@ -43,32 +50,30 @@ public final class GetResourceGroupsGroupRegionStatus {
     public static Builder builder(GetResourceGroupsGroupRegionStatus defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String regionId;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetResourceGroupsGroupRegionStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.regionId = defaults.regionId;
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetResourceGroupsGroupRegionStatus build() {
-            final var o = new GetResourceGroupsGroupRegionStatus();
-            o.regionId = regionId;
-            o.status = status;
-            return o;
+        }        public GetResourceGroupsGroupRegionStatus build() {
+            return new GetResourceGroupsGroupRegionStatus(regionId, status);
         }
     }
 }

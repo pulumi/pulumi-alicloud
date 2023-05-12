@@ -11,136 +11,395 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class Endpoints {
-    private @Nullable String acr;
-    private @Nullable String actiontrail;
-    private @Nullable String adb;
-    private @Nullable String alb;
-    private @Nullable String alidfs;
-    private @Nullable String alidns;
-    private @Nullable String alikafka;
-    private @Nullable String apigateway;
-    private @Nullable String arms;
-    private @Nullable String bastionhost;
-    private @Nullable String beebot;
-    private @Nullable String bpstudio;
-    private @Nullable String brainIndustrial;
-    private @Nullable String bssopenapi;
-    private @Nullable String cas;
-    private @Nullable String cassandra;
-    private @Nullable String cbn;
-    private @Nullable String cbs;
-    private @Nullable String cddc;
-    private @Nullable String cdn;
-    private @Nullable String cds;
-    private @Nullable String clickhouse;
-    private @Nullable String cloudauth;
-    private @Nullable String cloudfirewall;
-    private @Nullable String cloudfw;
-    private @Nullable String cloudphone;
-    private @Nullable String cloudsso;
-    private @Nullable String cms;
-    private @Nullable String config;
-    private @Nullable String cr;
-    private @Nullable String cs;
-    private @Nullable String das;
-    private @Nullable String datahub;
-    private @Nullable String dataworkspublic;
-    private @Nullable String dbfs;
-    private @Nullable String dcdn;
-    private @Nullable String ddosbasic;
-    private @Nullable String ddosbgp;
-    private @Nullable String ddoscoo;
-    private @Nullable String dds;
-    private @Nullable String devopsrdc;
-    private @Nullable String dg;
-    private @Nullable String dm;
-    private @Nullable String dmsEnterprise;
-    private @Nullable String dmsenterprise;
-    private @Nullable String dns;
-    private @Nullable String drds;
-    private @Nullable String dts;
-    private @Nullable String dysms;
-    private @Nullable String eais;
-    private @Nullable String ebs;
-    private @Nullable String eci;
-    private @Nullable String ecs;
-    private @Nullable String edas;
-    private @Nullable String edasschedulerx;
-    private @Nullable String edsuser;
-    private @Nullable String eflo;
-    private @Nullable String ehpc;
-    private @Nullable String ehs;
-    private @Nullable String eipanycast;
-    private @Nullable String elasticsearch;
-    private @Nullable String emr;
-    private @Nullable String ens;
-    private @Nullable String ess;
-    private @Nullable String eventbridge;
-    private @Nullable String fc;
-    private @Nullable String fnf;
-    private @Nullable String ga;
-    private @Nullable String gaplus;
-    private @Nullable String gds;
-    private @Nullable String gpdb;
-    private @Nullable String gwsecd;
-    private @Nullable String hbr;
-    private @Nullable String hcsSgw;
-    private @Nullable String hitsdb;
-    private @Nullable String imm;
-    private @Nullable String imp;
-    private @Nullable String ims;
-    private @Nullable String iot;
-    private @Nullable String kms;
-    private @Nullable String kvstore;
-    private @Nullable String location;
-    private @Nullable String log;
-    private @Nullable String market;
-    private @Nullable String maxcompute;
-    private @Nullable String mhub;
-    private @Nullable String mns;
-    private @Nullable String mscopensubscription;
-    private @Nullable String mse;
-    private @Nullable String nas;
-    private @Nullable String nlb;
-    private @Nullable String oceanbase;
-    private @Nullable String ons;
-    private @Nullable String onsproxy;
-    private @Nullable String oos;
-    private @Nullable String opensearch;
-    private @Nullable String oss;
-    private @Nullable String ots;
-    private @Nullable String polardb;
-    private @Nullable String privatelink;
-    private @Nullable String pvtz;
-    private @Nullable String quickbi;
-    private @Nullable String quotas;
-    private @Nullable String rKvstore;
-    private @Nullable String ram;
-    private @Nullable String rds;
-    private @Nullable String redisa;
-    private @Nullable String resourcemanager;
-    private @Nullable String resourcesharing;
-    private @Nullable String ros;
-    private @Nullable String sas;
-    private @Nullable String scdn;
-    private @Nullable String sddp;
-    private @Nullable String serverless;
-    private @Nullable String servicemesh;
-    private @Nullable String sgw;
-    private @Nullable String slb;
-    private @Nullable String smartag;
-    private @Nullable String srvcatalog;
-    private @Nullable String sts;
-    private @Nullable String swas;
-    private @Nullable String tag;
-    private @Nullable String vod;
-    private @Nullable String vpc;
-    private @Nullable String vpcpeer;
-    private @Nullable String vs;
-    private @Nullable String waf;
-    private @Nullable String wafOpenapi;
+    private final @Nullable String acr;
+    private final @Nullable String actiontrail;
+    private final @Nullable String adb;
+    private final @Nullable String alb;
+    private final @Nullable String alidfs;
+    private final @Nullable String alidns;
+    private final @Nullable String alikafka;
+    private final @Nullable String apigateway;
+    private final @Nullable String arms;
+    private final @Nullable String bastionhost;
+    private final @Nullable String beebot;
+    private final @Nullable String bpstudio;
+    private final @Nullable String brainIndustrial;
+    private final @Nullable String bssopenapi;
+    private final @Nullable String cas;
+    private final @Nullable String cassandra;
+    private final @Nullable String cbn;
+    private final @Nullable String cbs;
+    private final @Nullable String cddc;
+    private final @Nullable String cdn;
+    private final @Nullable String cds;
+    private final @Nullable String clickhouse;
+    private final @Nullable String cloudauth;
+    private final @Nullable String cloudfirewall;
+    private final @Nullable String cloudfw;
+    private final @Nullable String cloudphone;
+    private final @Nullable String cloudsso;
+    private final @Nullable String cms;
+    private final @Nullable String config;
+    private final @Nullable String cr;
+    private final @Nullable String cs;
+    private final @Nullable String das;
+    private final @Nullable String datahub;
+    private final @Nullable String dataworkspublic;
+    private final @Nullable String dbfs;
+    private final @Nullable String dcdn;
+    private final @Nullable String ddosbasic;
+    private final @Nullable String ddosbgp;
+    private final @Nullable String ddoscoo;
+    private final @Nullable String dds;
+    private final @Nullable String devopsrdc;
+    private final @Nullable String dg;
+    private final @Nullable String dm;
+    private final @Nullable String dmsEnterprise;
+    private final @Nullable String dmsenterprise;
+    private final @Nullable String dns;
+    private final @Nullable String drds;
+    private final @Nullable String dts;
+    private final @Nullable String dysms;
+    private final @Nullable String eais;
+    private final @Nullable String ebs;
+    private final @Nullable String eci;
+    private final @Nullable String ecs;
+    private final @Nullable String edas;
+    private final @Nullable String edasschedulerx;
+    private final @Nullable String edsuser;
+    private final @Nullable String eflo;
+    private final @Nullable String ehpc;
+    private final @Nullable String ehs;
+    private final @Nullable String eipanycast;
+    private final @Nullable String elasticsearch;
+    private final @Nullable String emr;
+    private final @Nullable String ens;
+    private final @Nullable String ess;
+    private final @Nullable String eventbridge;
+    private final @Nullable String fc;
+    private final @Nullable String fnf;
+    private final @Nullable String ga;
+    private final @Nullable String gaplus;
+    private final @Nullable String gds;
+    private final @Nullable String gpdb;
+    private final @Nullable String gwsecd;
+    private final @Nullable String hbr;
+    private final @Nullable String hcsSgw;
+    private final @Nullable String hitsdb;
+    private final @Nullable String imm;
+    private final @Nullable String imp;
+    private final @Nullable String ims;
+    private final @Nullable String iot;
+    private final @Nullable String kms;
+    private final @Nullable String kvstore;
+    private final @Nullable String location;
+    private final @Nullable String log;
+    private final @Nullable String market;
+    private final @Nullable String maxcompute;
+    private final @Nullable String mhub;
+    private final @Nullable String mns;
+    private final @Nullable String mscopensubscription;
+    private final @Nullable String mse;
+    private final @Nullable String nas;
+    private final @Nullable String nlb;
+    private final @Nullable String oceanbase;
+    private final @Nullable String ons;
+    private final @Nullable String onsproxy;
+    private final @Nullable String oos;
+    private final @Nullable String opensearch;
+    private final @Nullable String oss;
+    private final @Nullable String ots;
+    private final @Nullable String polardb;
+    private final @Nullable String privatelink;
+    private final @Nullable String pvtz;
+    private final @Nullable String quickbi;
+    private final @Nullable String quotas;
+    private final @Nullable String rKvstore;
+    private final @Nullable String ram;
+    private final @Nullable String rds;
+    private final @Nullable String redisa;
+    private final @Nullable String resourcemanager;
+    private final @Nullable String resourcesharing;
+    private final @Nullable String ros;
+    private final @Nullable String sas;
+    private final @Nullable String scdn;
+    private final @Nullable String sddp;
+    private final @Nullable String serverless;
+    private final @Nullable String servicemesh;
+    private final @Nullable String sgw;
+    private final @Nullable String slb;
+    private final @Nullable String smartag;
+    private final @Nullable String srvcatalog;
+    private final @Nullable String sts;
+    private final @Nullable String swas;
+    private final @Nullable String tag;
+    private final @Nullable String vod;
+    private final @Nullable String vpc;
+    private final @Nullable String vpcpeer;
+    private final @Nullable String vs;
+    private final @Nullable String waf;
+    private final @Nullable String wafOpenapi;
 
-    private Endpoints() {}
+    @CustomType.Constructor
+    private Endpoints(
+        @CustomType.Parameter("acr") @Nullable String acr,
+        @CustomType.Parameter("actiontrail") @Nullable String actiontrail,
+        @CustomType.Parameter("adb") @Nullable String adb,
+        @CustomType.Parameter("alb") @Nullable String alb,
+        @CustomType.Parameter("alidfs") @Nullable String alidfs,
+        @CustomType.Parameter("alidns") @Nullable String alidns,
+        @CustomType.Parameter("alikafka") @Nullable String alikafka,
+        @CustomType.Parameter("apigateway") @Nullable String apigateway,
+        @CustomType.Parameter("arms") @Nullable String arms,
+        @CustomType.Parameter("bastionhost") @Nullable String bastionhost,
+        @CustomType.Parameter("beebot") @Nullable String beebot,
+        @CustomType.Parameter("bpstudio") @Nullable String bpstudio,
+        @CustomType.Parameter("brainIndustrial") @Nullable String brainIndustrial,
+        @CustomType.Parameter("bssopenapi") @Nullable String bssopenapi,
+        @CustomType.Parameter("cas") @Nullable String cas,
+        @CustomType.Parameter("cassandra") @Nullable String cassandra,
+        @CustomType.Parameter("cbn") @Nullable String cbn,
+        @CustomType.Parameter("cbs") @Nullable String cbs,
+        @CustomType.Parameter("cddc") @Nullable String cddc,
+        @CustomType.Parameter("cdn") @Nullable String cdn,
+        @CustomType.Parameter("cds") @Nullable String cds,
+        @CustomType.Parameter("clickhouse") @Nullable String clickhouse,
+        @CustomType.Parameter("cloudauth") @Nullable String cloudauth,
+        @CustomType.Parameter("cloudfirewall") @Nullable String cloudfirewall,
+        @CustomType.Parameter("cloudfw") @Nullable String cloudfw,
+        @CustomType.Parameter("cloudphone") @Nullable String cloudphone,
+        @CustomType.Parameter("cloudsso") @Nullable String cloudsso,
+        @CustomType.Parameter("cms") @Nullable String cms,
+        @CustomType.Parameter("config") @Nullable String config,
+        @CustomType.Parameter("cr") @Nullable String cr,
+        @CustomType.Parameter("cs") @Nullable String cs,
+        @CustomType.Parameter("das") @Nullable String das,
+        @CustomType.Parameter("datahub") @Nullable String datahub,
+        @CustomType.Parameter("dataworkspublic") @Nullable String dataworkspublic,
+        @CustomType.Parameter("dbfs") @Nullable String dbfs,
+        @CustomType.Parameter("dcdn") @Nullable String dcdn,
+        @CustomType.Parameter("ddosbasic") @Nullable String ddosbasic,
+        @CustomType.Parameter("ddosbgp") @Nullable String ddosbgp,
+        @CustomType.Parameter("ddoscoo") @Nullable String ddoscoo,
+        @CustomType.Parameter("dds") @Nullable String dds,
+        @CustomType.Parameter("devopsrdc") @Nullable String devopsrdc,
+        @CustomType.Parameter("dg") @Nullable String dg,
+        @CustomType.Parameter("dm") @Nullable String dm,
+        @CustomType.Parameter("dmsEnterprise") @Nullable String dmsEnterprise,
+        @CustomType.Parameter("dmsenterprise") @Nullable String dmsenterprise,
+        @CustomType.Parameter("dns") @Nullable String dns,
+        @CustomType.Parameter("drds") @Nullable String drds,
+        @CustomType.Parameter("dts") @Nullable String dts,
+        @CustomType.Parameter("dysms") @Nullable String dysms,
+        @CustomType.Parameter("eais") @Nullable String eais,
+        @CustomType.Parameter("ebs") @Nullable String ebs,
+        @CustomType.Parameter("eci") @Nullable String eci,
+        @CustomType.Parameter("ecs") @Nullable String ecs,
+        @CustomType.Parameter("edas") @Nullable String edas,
+        @CustomType.Parameter("edasschedulerx") @Nullable String edasschedulerx,
+        @CustomType.Parameter("edsuser") @Nullable String edsuser,
+        @CustomType.Parameter("eflo") @Nullable String eflo,
+        @CustomType.Parameter("ehpc") @Nullable String ehpc,
+        @CustomType.Parameter("ehs") @Nullable String ehs,
+        @CustomType.Parameter("eipanycast") @Nullable String eipanycast,
+        @CustomType.Parameter("elasticsearch") @Nullable String elasticsearch,
+        @CustomType.Parameter("emr") @Nullable String emr,
+        @CustomType.Parameter("ens") @Nullable String ens,
+        @CustomType.Parameter("ess") @Nullable String ess,
+        @CustomType.Parameter("eventbridge") @Nullable String eventbridge,
+        @CustomType.Parameter("fc") @Nullable String fc,
+        @CustomType.Parameter("fnf") @Nullable String fnf,
+        @CustomType.Parameter("ga") @Nullable String ga,
+        @CustomType.Parameter("gaplus") @Nullable String gaplus,
+        @CustomType.Parameter("gds") @Nullable String gds,
+        @CustomType.Parameter("gpdb") @Nullable String gpdb,
+        @CustomType.Parameter("gwsecd") @Nullable String gwsecd,
+        @CustomType.Parameter("hbr") @Nullable String hbr,
+        @CustomType.Parameter("hcsSgw") @Nullable String hcsSgw,
+        @CustomType.Parameter("hitsdb") @Nullable String hitsdb,
+        @CustomType.Parameter("imm") @Nullable String imm,
+        @CustomType.Parameter("imp") @Nullable String imp,
+        @CustomType.Parameter("ims") @Nullable String ims,
+        @CustomType.Parameter("iot") @Nullable String iot,
+        @CustomType.Parameter("kms") @Nullable String kms,
+        @CustomType.Parameter("kvstore") @Nullable String kvstore,
+        @CustomType.Parameter("location") @Nullable String location,
+        @CustomType.Parameter("log") @Nullable String log,
+        @CustomType.Parameter("market") @Nullable String market,
+        @CustomType.Parameter("maxcompute") @Nullable String maxcompute,
+        @CustomType.Parameter("mhub") @Nullable String mhub,
+        @CustomType.Parameter("mns") @Nullable String mns,
+        @CustomType.Parameter("mscopensubscription") @Nullable String mscopensubscription,
+        @CustomType.Parameter("mse") @Nullable String mse,
+        @CustomType.Parameter("nas") @Nullable String nas,
+        @CustomType.Parameter("nlb") @Nullable String nlb,
+        @CustomType.Parameter("oceanbase") @Nullable String oceanbase,
+        @CustomType.Parameter("ons") @Nullable String ons,
+        @CustomType.Parameter("onsproxy") @Nullable String onsproxy,
+        @CustomType.Parameter("oos") @Nullable String oos,
+        @CustomType.Parameter("opensearch") @Nullable String opensearch,
+        @CustomType.Parameter("oss") @Nullable String oss,
+        @CustomType.Parameter("ots") @Nullable String ots,
+        @CustomType.Parameter("polardb") @Nullable String polardb,
+        @CustomType.Parameter("privatelink") @Nullable String privatelink,
+        @CustomType.Parameter("pvtz") @Nullable String pvtz,
+        @CustomType.Parameter("quickbi") @Nullable String quickbi,
+        @CustomType.Parameter("quotas") @Nullable String quotas,
+        @CustomType.Parameter("rKvstore") @Nullable String rKvstore,
+        @CustomType.Parameter("ram") @Nullable String ram,
+        @CustomType.Parameter("rds") @Nullable String rds,
+        @CustomType.Parameter("redisa") @Nullable String redisa,
+        @CustomType.Parameter("resourcemanager") @Nullable String resourcemanager,
+        @CustomType.Parameter("resourcesharing") @Nullable String resourcesharing,
+        @CustomType.Parameter("ros") @Nullable String ros,
+        @CustomType.Parameter("sas") @Nullable String sas,
+        @CustomType.Parameter("scdn") @Nullable String scdn,
+        @CustomType.Parameter("sddp") @Nullable String sddp,
+        @CustomType.Parameter("serverless") @Nullable String serverless,
+        @CustomType.Parameter("servicemesh") @Nullable String servicemesh,
+        @CustomType.Parameter("sgw") @Nullable String sgw,
+        @CustomType.Parameter("slb") @Nullable String slb,
+        @CustomType.Parameter("smartag") @Nullable String smartag,
+        @CustomType.Parameter("srvcatalog") @Nullable String srvcatalog,
+        @CustomType.Parameter("sts") @Nullable String sts,
+        @CustomType.Parameter("swas") @Nullable String swas,
+        @CustomType.Parameter("tag") @Nullable String tag,
+        @CustomType.Parameter("vod") @Nullable String vod,
+        @CustomType.Parameter("vpc") @Nullable String vpc,
+        @CustomType.Parameter("vpcpeer") @Nullable String vpcpeer,
+        @CustomType.Parameter("vs") @Nullable String vs,
+        @CustomType.Parameter("waf") @Nullable String waf,
+        @CustomType.Parameter("wafOpenapi") @Nullable String wafOpenapi) {
+        this.acr = acr;
+        this.actiontrail = actiontrail;
+        this.adb = adb;
+        this.alb = alb;
+        this.alidfs = alidfs;
+        this.alidns = alidns;
+        this.alikafka = alikafka;
+        this.apigateway = apigateway;
+        this.arms = arms;
+        this.bastionhost = bastionhost;
+        this.beebot = beebot;
+        this.bpstudio = bpstudio;
+        this.brainIndustrial = brainIndustrial;
+        this.bssopenapi = bssopenapi;
+        this.cas = cas;
+        this.cassandra = cassandra;
+        this.cbn = cbn;
+        this.cbs = cbs;
+        this.cddc = cddc;
+        this.cdn = cdn;
+        this.cds = cds;
+        this.clickhouse = clickhouse;
+        this.cloudauth = cloudauth;
+        this.cloudfirewall = cloudfirewall;
+        this.cloudfw = cloudfw;
+        this.cloudphone = cloudphone;
+        this.cloudsso = cloudsso;
+        this.cms = cms;
+        this.config = config;
+        this.cr = cr;
+        this.cs = cs;
+        this.das = das;
+        this.datahub = datahub;
+        this.dataworkspublic = dataworkspublic;
+        this.dbfs = dbfs;
+        this.dcdn = dcdn;
+        this.ddosbasic = ddosbasic;
+        this.ddosbgp = ddosbgp;
+        this.ddoscoo = ddoscoo;
+        this.dds = dds;
+        this.devopsrdc = devopsrdc;
+        this.dg = dg;
+        this.dm = dm;
+        this.dmsEnterprise = dmsEnterprise;
+        this.dmsenterprise = dmsenterprise;
+        this.dns = dns;
+        this.drds = drds;
+        this.dts = dts;
+        this.dysms = dysms;
+        this.eais = eais;
+        this.ebs = ebs;
+        this.eci = eci;
+        this.ecs = ecs;
+        this.edas = edas;
+        this.edasschedulerx = edasschedulerx;
+        this.edsuser = edsuser;
+        this.eflo = eflo;
+        this.ehpc = ehpc;
+        this.ehs = ehs;
+        this.eipanycast = eipanycast;
+        this.elasticsearch = elasticsearch;
+        this.emr = emr;
+        this.ens = ens;
+        this.ess = ess;
+        this.eventbridge = eventbridge;
+        this.fc = fc;
+        this.fnf = fnf;
+        this.ga = ga;
+        this.gaplus = gaplus;
+        this.gds = gds;
+        this.gpdb = gpdb;
+        this.gwsecd = gwsecd;
+        this.hbr = hbr;
+        this.hcsSgw = hcsSgw;
+        this.hitsdb = hitsdb;
+        this.imm = imm;
+        this.imp = imp;
+        this.ims = ims;
+        this.iot = iot;
+        this.kms = kms;
+        this.kvstore = kvstore;
+        this.location = location;
+        this.log = log;
+        this.market = market;
+        this.maxcompute = maxcompute;
+        this.mhub = mhub;
+        this.mns = mns;
+        this.mscopensubscription = mscopensubscription;
+        this.mse = mse;
+        this.nas = nas;
+        this.nlb = nlb;
+        this.oceanbase = oceanbase;
+        this.ons = ons;
+        this.onsproxy = onsproxy;
+        this.oos = oos;
+        this.opensearch = opensearch;
+        this.oss = oss;
+        this.ots = ots;
+        this.polardb = polardb;
+        this.privatelink = privatelink;
+        this.pvtz = pvtz;
+        this.quickbi = quickbi;
+        this.quotas = quotas;
+        this.rKvstore = rKvstore;
+        this.ram = ram;
+        this.rds = rds;
+        this.redisa = redisa;
+        this.resourcemanager = resourcemanager;
+        this.resourcesharing = resourcesharing;
+        this.ros = ros;
+        this.sas = sas;
+        this.scdn = scdn;
+        this.sddp = sddp;
+        this.serverless = serverless;
+        this.servicemesh = servicemesh;
+        this.sgw = sgw;
+        this.slb = slb;
+        this.smartag = smartag;
+        this.srvcatalog = srvcatalog;
+        this.sts = sts;
+        this.swas = swas;
+        this.tag = tag;
+        this.vod = vod;
+        this.vpc = vpc;
+        this.vpcpeer = vpcpeer;
+        this.vs = vs;
+        this.waf = waf;
+        this.wafOpenapi = wafOpenapi;
+    }
+
     public Optional<String> acr() {
         return Optional.ofNullable(this.acr);
     }
@@ -533,7 +792,7 @@ public final class Endpoints {
     public static Builder builder(Endpoints defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String acr;
         private @Nullable String actiontrail;
@@ -663,7 +922,11 @@ public final class Endpoints {
         private @Nullable String vs;
         private @Nullable String waf;
         private @Nullable String wafOpenapi;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(Endpoints defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acr = defaults.acr;
@@ -796,777 +1059,519 @@ public final class Endpoints {
     	      this.wafOpenapi = defaults.wafOpenapi;
         }
 
-        @CustomType.Setter
         public Builder acr(@Nullable String acr) {
             this.acr = acr;
             return this;
         }
-        @CustomType.Setter
         public Builder actiontrail(@Nullable String actiontrail) {
             this.actiontrail = actiontrail;
             return this;
         }
-        @CustomType.Setter
         public Builder adb(@Nullable String adb) {
             this.adb = adb;
             return this;
         }
-        @CustomType.Setter
         public Builder alb(@Nullable String alb) {
             this.alb = alb;
             return this;
         }
-        @CustomType.Setter
         public Builder alidfs(@Nullable String alidfs) {
             this.alidfs = alidfs;
             return this;
         }
-        @CustomType.Setter
         public Builder alidns(@Nullable String alidns) {
             this.alidns = alidns;
             return this;
         }
-        @CustomType.Setter
         public Builder alikafka(@Nullable String alikafka) {
             this.alikafka = alikafka;
             return this;
         }
-        @CustomType.Setter
         public Builder apigateway(@Nullable String apigateway) {
             this.apigateway = apigateway;
             return this;
         }
-        @CustomType.Setter
         public Builder arms(@Nullable String arms) {
             this.arms = arms;
             return this;
         }
-        @CustomType.Setter
         public Builder bastionhost(@Nullable String bastionhost) {
             this.bastionhost = bastionhost;
             return this;
         }
-        @CustomType.Setter
         public Builder beebot(@Nullable String beebot) {
             this.beebot = beebot;
             return this;
         }
-        @CustomType.Setter
         public Builder bpstudio(@Nullable String bpstudio) {
             this.bpstudio = bpstudio;
             return this;
         }
-        @CustomType.Setter
         public Builder brainIndustrial(@Nullable String brainIndustrial) {
             this.brainIndustrial = brainIndustrial;
             return this;
         }
-        @CustomType.Setter
         public Builder bssopenapi(@Nullable String bssopenapi) {
             this.bssopenapi = bssopenapi;
             return this;
         }
-        @CustomType.Setter
         public Builder cas(@Nullable String cas) {
             this.cas = cas;
             return this;
         }
-        @CustomType.Setter
         public Builder cassandra(@Nullable String cassandra) {
             this.cassandra = cassandra;
             return this;
         }
-        @CustomType.Setter
         public Builder cbn(@Nullable String cbn) {
             this.cbn = cbn;
             return this;
         }
-        @CustomType.Setter
         public Builder cbs(@Nullable String cbs) {
             this.cbs = cbs;
             return this;
         }
-        @CustomType.Setter
         public Builder cddc(@Nullable String cddc) {
             this.cddc = cddc;
             return this;
         }
-        @CustomType.Setter
         public Builder cdn(@Nullable String cdn) {
             this.cdn = cdn;
             return this;
         }
-        @CustomType.Setter
         public Builder cds(@Nullable String cds) {
             this.cds = cds;
             return this;
         }
-        @CustomType.Setter
         public Builder clickhouse(@Nullable String clickhouse) {
             this.clickhouse = clickhouse;
             return this;
         }
-        @CustomType.Setter
         public Builder cloudauth(@Nullable String cloudauth) {
             this.cloudauth = cloudauth;
             return this;
         }
-        @CustomType.Setter
         public Builder cloudfirewall(@Nullable String cloudfirewall) {
             this.cloudfirewall = cloudfirewall;
             return this;
         }
-        @CustomType.Setter
         public Builder cloudfw(@Nullable String cloudfw) {
             this.cloudfw = cloudfw;
             return this;
         }
-        @CustomType.Setter
         public Builder cloudphone(@Nullable String cloudphone) {
             this.cloudphone = cloudphone;
             return this;
         }
-        @CustomType.Setter
         public Builder cloudsso(@Nullable String cloudsso) {
             this.cloudsso = cloudsso;
             return this;
         }
-        @CustomType.Setter
         public Builder cms(@Nullable String cms) {
             this.cms = cms;
             return this;
         }
-        @CustomType.Setter
         public Builder config(@Nullable String config) {
             this.config = config;
             return this;
         }
-        @CustomType.Setter
         public Builder cr(@Nullable String cr) {
             this.cr = cr;
             return this;
         }
-        @CustomType.Setter
         public Builder cs(@Nullable String cs) {
             this.cs = cs;
             return this;
         }
-        @CustomType.Setter
         public Builder das(@Nullable String das) {
             this.das = das;
             return this;
         }
-        @CustomType.Setter
         public Builder datahub(@Nullable String datahub) {
             this.datahub = datahub;
             return this;
         }
-        @CustomType.Setter
         public Builder dataworkspublic(@Nullable String dataworkspublic) {
             this.dataworkspublic = dataworkspublic;
             return this;
         }
-        @CustomType.Setter
         public Builder dbfs(@Nullable String dbfs) {
             this.dbfs = dbfs;
             return this;
         }
-        @CustomType.Setter
         public Builder dcdn(@Nullable String dcdn) {
             this.dcdn = dcdn;
             return this;
         }
-        @CustomType.Setter
         public Builder ddosbasic(@Nullable String ddosbasic) {
             this.ddosbasic = ddosbasic;
             return this;
         }
-        @CustomType.Setter
         public Builder ddosbgp(@Nullable String ddosbgp) {
             this.ddosbgp = ddosbgp;
             return this;
         }
-        @CustomType.Setter
         public Builder ddoscoo(@Nullable String ddoscoo) {
             this.ddoscoo = ddoscoo;
             return this;
         }
-        @CustomType.Setter
         public Builder dds(@Nullable String dds) {
             this.dds = dds;
             return this;
         }
-        @CustomType.Setter
         public Builder devopsrdc(@Nullable String devopsrdc) {
             this.devopsrdc = devopsrdc;
             return this;
         }
-        @CustomType.Setter
         public Builder dg(@Nullable String dg) {
             this.dg = dg;
             return this;
         }
-        @CustomType.Setter
         public Builder dm(@Nullable String dm) {
             this.dm = dm;
             return this;
         }
-        @CustomType.Setter
         public Builder dmsEnterprise(@Nullable String dmsEnterprise) {
             this.dmsEnterprise = dmsEnterprise;
             return this;
         }
-        @CustomType.Setter
         public Builder dmsenterprise(@Nullable String dmsenterprise) {
             this.dmsenterprise = dmsenterprise;
             return this;
         }
-        @CustomType.Setter
         public Builder dns(@Nullable String dns) {
             this.dns = dns;
             return this;
         }
-        @CustomType.Setter
         public Builder drds(@Nullable String drds) {
             this.drds = drds;
             return this;
         }
-        @CustomType.Setter
         public Builder dts(@Nullable String dts) {
             this.dts = dts;
             return this;
         }
-        @CustomType.Setter
         public Builder dysms(@Nullable String dysms) {
             this.dysms = dysms;
             return this;
         }
-        @CustomType.Setter
         public Builder eais(@Nullable String eais) {
             this.eais = eais;
             return this;
         }
-        @CustomType.Setter
         public Builder ebs(@Nullable String ebs) {
             this.ebs = ebs;
             return this;
         }
-        @CustomType.Setter
         public Builder eci(@Nullable String eci) {
             this.eci = eci;
             return this;
         }
-        @CustomType.Setter
         public Builder ecs(@Nullable String ecs) {
             this.ecs = ecs;
             return this;
         }
-        @CustomType.Setter
         public Builder edas(@Nullable String edas) {
             this.edas = edas;
             return this;
         }
-        @CustomType.Setter
         public Builder edasschedulerx(@Nullable String edasschedulerx) {
             this.edasschedulerx = edasschedulerx;
             return this;
         }
-        @CustomType.Setter
         public Builder edsuser(@Nullable String edsuser) {
             this.edsuser = edsuser;
             return this;
         }
-        @CustomType.Setter
         public Builder eflo(@Nullable String eflo) {
             this.eflo = eflo;
             return this;
         }
-        @CustomType.Setter
         public Builder ehpc(@Nullable String ehpc) {
             this.ehpc = ehpc;
             return this;
         }
-        @CustomType.Setter
         public Builder ehs(@Nullable String ehs) {
             this.ehs = ehs;
             return this;
         }
-        @CustomType.Setter
         public Builder eipanycast(@Nullable String eipanycast) {
             this.eipanycast = eipanycast;
             return this;
         }
-        @CustomType.Setter
         public Builder elasticsearch(@Nullable String elasticsearch) {
             this.elasticsearch = elasticsearch;
             return this;
         }
-        @CustomType.Setter
         public Builder emr(@Nullable String emr) {
             this.emr = emr;
             return this;
         }
-        @CustomType.Setter
         public Builder ens(@Nullable String ens) {
             this.ens = ens;
             return this;
         }
-        @CustomType.Setter
         public Builder ess(@Nullable String ess) {
             this.ess = ess;
             return this;
         }
-        @CustomType.Setter
         public Builder eventbridge(@Nullable String eventbridge) {
             this.eventbridge = eventbridge;
             return this;
         }
-        @CustomType.Setter
         public Builder fc(@Nullable String fc) {
             this.fc = fc;
             return this;
         }
-        @CustomType.Setter
         public Builder fnf(@Nullable String fnf) {
             this.fnf = fnf;
             return this;
         }
-        @CustomType.Setter
         public Builder ga(@Nullable String ga) {
             this.ga = ga;
             return this;
         }
-        @CustomType.Setter
         public Builder gaplus(@Nullable String gaplus) {
             this.gaplus = gaplus;
             return this;
         }
-        @CustomType.Setter
         public Builder gds(@Nullable String gds) {
             this.gds = gds;
             return this;
         }
-        @CustomType.Setter
         public Builder gpdb(@Nullable String gpdb) {
             this.gpdb = gpdb;
             return this;
         }
-        @CustomType.Setter
         public Builder gwsecd(@Nullable String gwsecd) {
             this.gwsecd = gwsecd;
             return this;
         }
-        @CustomType.Setter
         public Builder hbr(@Nullable String hbr) {
             this.hbr = hbr;
             return this;
         }
-        @CustomType.Setter
         public Builder hcsSgw(@Nullable String hcsSgw) {
             this.hcsSgw = hcsSgw;
             return this;
         }
-        @CustomType.Setter
         public Builder hitsdb(@Nullable String hitsdb) {
             this.hitsdb = hitsdb;
             return this;
         }
-        @CustomType.Setter
         public Builder imm(@Nullable String imm) {
             this.imm = imm;
             return this;
         }
-        @CustomType.Setter
         public Builder imp(@Nullable String imp) {
             this.imp = imp;
             return this;
         }
-        @CustomType.Setter
         public Builder ims(@Nullable String ims) {
             this.ims = ims;
             return this;
         }
-        @CustomType.Setter
         public Builder iot(@Nullable String iot) {
             this.iot = iot;
             return this;
         }
-        @CustomType.Setter
         public Builder kms(@Nullable String kms) {
             this.kms = kms;
             return this;
         }
-        @CustomType.Setter
         public Builder kvstore(@Nullable String kvstore) {
             this.kvstore = kvstore;
             return this;
         }
-        @CustomType.Setter
         public Builder location(@Nullable String location) {
             this.location = location;
             return this;
         }
-        @CustomType.Setter
         public Builder log(@Nullable String log) {
             this.log = log;
             return this;
         }
-        @CustomType.Setter
         public Builder market(@Nullable String market) {
             this.market = market;
             return this;
         }
-        @CustomType.Setter
         public Builder maxcompute(@Nullable String maxcompute) {
             this.maxcompute = maxcompute;
             return this;
         }
-        @CustomType.Setter
         public Builder mhub(@Nullable String mhub) {
             this.mhub = mhub;
             return this;
         }
-        @CustomType.Setter
         public Builder mns(@Nullable String mns) {
             this.mns = mns;
             return this;
         }
-        @CustomType.Setter
         public Builder mscopensubscription(@Nullable String mscopensubscription) {
             this.mscopensubscription = mscopensubscription;
             return this;
         }
-        @CustomType.Setter
         public Builder mse(@Nullable String mse) {
             this.mse = mse;
             return this;
         }
-        @CustomType.Setter
         public Builder nas(@Nullable String nas) {
             this.nas = nas;
             return this;
         }
-        @CustomType.Setter
         public Builder nlb(@Nullable String nlb) {
             this.nlb = nlb;
             return this;
         }
-        @CustomType.Setter
         public Builder oceanbase(@Nullable String oceanbase) {
             this.oceanbase = oceanbase;
             return this;
         }
-        @CustomType.Setter
         public Builder ons(@Nullable String ons) {
             this.ons = ons;
             return this;
         }
-        @CustomType.Setter
         public Builder onsproxy(@Nullable String onsproxy) {
             this.onsproxy = onsproxy;
             return this;
         }
-        @CustomType.Setter
         public Builder oos(@Nullable String oos) {
             this.oos = oos;
             return this;
         }
-        @CustomType.Setter
         public Builder opensearch(@Nullable String opensearch) {
             this.opensearch = opensearch;
             return this;
         }
-        @CustomType.Setter
         public Builder oss(@Nullable String oss) {
             this.oss = oss;
             return this;
         }
-        @CustomType.Setter
         public Builder ots(@Nullable String ots) {
             this.ots = ots;
             return this;
         }
-        @CustomType.Setter
         public Builder polardb(@Nullable String polardb) {
             this.polardb = polardb;
             return this;
         }
-        @CustomType.Setter
         public Builder privatelink(@Nullable String privatelink) {
             this.privatelink = privatelink;
             return this;
         }
-        @CustomType.Setter
         public Builder pvtz(@Nullable String pvtz) {
             this.pvtz = pvtz;
             return this;
         }
-        @CustomType.Setter
         public Builder quickbi(@Nullable String quickbi) {
             this.quickbi = quickbi;
             return this;
         }
-        @CustomType.Setter
         public Builder quotas(@Nullable String quotas) {
             this.quotas = quotas;
             return this;
         }
-        @CustomType.Setter
         public Builder rKvstore(@Nullable String rKvstore) {
             this.rKvstore = rKvstore;
             return this;
         }
-        @CustomType.Setter
         public Builder ram(@Nullable String ram) {
             this.ram = ram;
             return this;
         }
-        @CustomType.Setter
         public Builder rds(@Nullable String rds) {
             this.rds = rds;
             return this;
         }
-        @CustomType.Setter
         public Builder redisa(@Nullable String redisa) {
             this.redisa = redisa;
             return this;
         }
-        @CustomType.Setter
         public Builder resourcemanager(@Nullable String resourcemanager) {
             this.resourcemanager = resourcemanager;
             return this;
         }
-        @CustomType.Setter
         public Builder resourcesharing(@Nullable String resourcesharing) {
             this.resourcesharing = resourcesharing;
             return this;
         }
-        @CustomType.Setter
         public Builder ros(@Nullable String ros) {
             this.ros = ros;
             return this;
         }
-        @CustomType.Setter
         public Builder sas(@Nullable String sas) {
             this.sas = sas;
             return this;
         }
-        @CustomType.Setter
         public Builder scdn(@Nullable String scdn) {
             this.scdn = scdn;
             return this;
         }
-        @CustomType.Setter
         public Builder sddp(@Nullable String sddp) {
             this.sddp = sddp;
             return this;
         }
-        @CustomType.Setter
         public Builder serverless(@Nullable String serverless) {
             this.serverless = serverless;
             return this;
         }
-        @CustomType.Setter
         public Builder servicemesh(@Nullable String servicemesh) {
             this.servicemesh = servicemesh;
             return this;
         }
-        @CustomType.Setter
         public Builder sgw(@Nullable String sgw) {
             this.sgw = sgw;
             return this;
         }
-        @CustomType.Setter
         public Builder slb(@Nullable String slb) {
             this.slb = slb;
             return this;
         }
-        @CustomType.Setter
         public Builder smartag(@Nullable String smartag) {
             this.smartag = smartag;
             return this;
         }
-        @CustomType.Setter
         public Builder srvcatalog(@Nullable String srvcatalog) {
             this.srvcatalog = srvcatalog;
             return this;
         }
-        @CustomType.Setter
         public Builder sts(@Nullable String sts) {
             this.sts = sts;
             return this;
         }
-        @CustomType.Setter
         public Builder swas(@Nullable String swas) {
             this.swas = swas;
             return this;
         }
-        @CustomType.Setter
         public Builder tag(@Nullable String tag) {
             this.tag = tag;
             return this;
         }
-        @CustomType.Setter
         public Builder vod(@Nullable String vod) {
             this.vod = vod;
             return this;
         }
-        @CustomType.Setter
         public Builder vpc(@Nullable String vpc) {
             this.vpc = vpc;
             return this;
         }
-        @CustomType.Setter
         public Builder vpcpeer(@Nullable String vpcpeer) {
             this.vpcpeer = vpcpeer;
             return this;
         }
-        @CustomType.Setter
         public Builder vs(@Nullable String vs) {
             this.vs = vs;
             return this;
         }
-        @CustomType.Setter
         public Builder waf(@Nullable String waf) {
             this.waf = waf;
             return this;
         }
-        @CustomType.Setter
         public Builder wafOpenapi(@Nullable String wafOpenapi) {
             this.wafOpenapi = wafOpenapi;
             return this;
-        }
-        public Endpoints build() {
-            final var o = new Endpoints();
-            o.acr = acr;
-            o.actiontrail = actiontrail;
-            o.adb = adb;
-            o.alb = alb;
-            o.alidfs = alidfs;
-            o.alidns = alidns;
-            o.alikafka = alikafka;
-            o.apigateway = apigateway;
-            o.arms = arms;
-            o.bastionhost = bastionhost;
-            o.beebot = beebot;
-            o.bpstudio = bpstudio;
-            o.brainIndustrial = brainIndustrial;
-            o.bssopenapi = bssopenapi;
-            o.cas = cas;
-            o.cassandra = cassandra;
-            o.cbn = cbn;
-            o.cbs = cbs;
-            o.cddc = cddc;
-            o.cdn = cdn;
-            o.cds = cds;
-            o.clickhouse = clickhouse;
-            o.cloudauth = cloudauth;
-            o.cloudfirewall = cloudfirewall;
-            o.cloudfw = cloudfw;
-            o.cloudphone = cloudphone;
-            o.cloudsso = cloudsso;
-            o.cms = cms;
-            o.config = config;
-            o.cr = cr;
-            o.cs = cs;
-            o.das = das;
-            o.datahub = datahub;
-            o.dataworkspublic = dataworkspublic;
-            o.dbfs = dbfs;
-            o.dcdn = dcdn;
-            o.ddosbasic = ddosbasic;
-            o.ddosbgp = ddosbgp;
-            o.ddoscoo = ddoscoo;
-            o.dds = dds;
-            o.devopsrdc = devopsrdc;
-            o.dg = dg;
-            o.dm = dm;
-            o.dmsEnterprise = dmsEnterprise;
-            o.dmsenterprise = dmsenterprise;
-            o.dns = dns;
-            o.drds = drds;
-            o.dts = dts;
-            o.dysms = dysms;
-            o.eais = eais;
-            o.ebs = ebs;
-            o.eci = eci;
-            o.ecs = ecs;
-            o.edas = edas;
-            o.edasschedulerx = edasschedulerx;
-            o.edsuser = edsuser;
-            o.eflo = eflo;
-            o.ehpc = ehpc;
-            o.ehs = ehs;
-            o.eipanycast = eipanycast;
-            o.elasticsearch = elasticsearch;
-            o.emr = emr;
-            o.ens = ens;
-            o.ess = ess;
-            o.eventbridge = eventbridge;
-            o.fc = fc;
-            o.fnf = fnf;
-            o.ga = ga;
-            o.gaplus = gaplus;
-            o.gds = gds;
-            o.gpdb = gpdb;
-            o.gwsecd = gwsecd;
-            o.hbr = hbr;
-            o.hcsSgw = hcsSgw;
-            o.hitsdb = hitsdb;
-            o.imm = imm;
-            o.imp = imp;
-            o.ims = ims;
-            o.iot = iot;
-            o.kms = kms;
-            o.kvstore = kvstore;
-            o.location = location;
-            o.log = log;
-            o.market = market;
-            o.maxcompute = maxcompute;
-            o.mhub = mhub;
-            o.mns = mns;
-            o.mscopensubscription = mscopensubscription;
-            o.mse = mse;
-            o.nas = nas;
-            o.nlb = nlb;
-            o.oceanbase = oceanbase;
-            o.ons = ons;
-            o.onsproxy = onsproxy;
-            o.oos = oos;
-            o.opensearch = opensearch;
-            o.oss = oss;
-            o.ots = ots;
-            o.polardb = polardb;
-            o.privatelink = privatelink;
-            o.pvtz = pvtz;
-            o.quickbi = quickbi;
-            o.quotas = quotas;
-            o.rKvstore = rKvstore;
-            o.ram = ram;
-            o.rds = rds;
-            o.redisa = redisa;
-            o.resourcemanager = resourcemanager;
-            o.resourcesharing = resourcesharing;
-            o.ros = ros;
-            o.sas = sas;
-            o.scdn = scdn;
-            o.sddp = sddp;
-            o.serverless = serverless;
-            o.servicemesh = servicemesh;
-            o.sgw = sgw;
-            o.slb = slb;
-            o.smartag = smartag;
-            o.srvcatalog = srvcatalog;
-            o.sts = sts;
-            o.swas = swas;
-            o.tag = tag;
-            o.vod = vod;
-            o.vpc = vpc;
-            o.vpcpeer = vpcpeer;
-            o.vs = vs;
-            o.waf = waf;
-            o.wafOpenapi = wafOpenapi;
-            return o;
+        }        public Endpoints build() {
+            return new Endpoints(acr, actiontrail, adb, alb, alidfs, alidns, alikafka, apigateway, arms, bastionhost, beebot, bpstudio, brainIndustrial, bssopenapi, cas, cassandra, cbn, cbs, cddc, cdn, cds, clickhouse, cloudauth, cloudfirewall, cloudfw, cloudphone, cloudsso, cms, config, cr, cs, das, datahub, dataworkspublic, dbfs, dcdn, ddosbasic, ddosbgp, ddoscoo, dds, devopsrdc, dg, dm, dmsEnterprise, dmsenterprise, dns, drds, dts, dysms, eais, ebs, eci, ecs, edas, edasschedulerx, edsuser, eflo, ehpc, ehs, eipanycast, elasticsearch, emr, ens, ess, eventbridge, fc, fnf, ga, gaplus, gds, gpdb, gwsecd, hbr, hcsSgw, hitsdb, imm, imp, ims, iot, kms, kvstore, location, log, market, maxcompute, mhub, mns, mscopensubscription, mse, nas, nlb, oceanbase, ons, onsproxy, oos, opensearch, oss, ots, polardb, privatelink, pvtz, quickbi, quotas, rKvstore, ram, rds, redisa, resourcemanager, resourcesharing, ros, sas, scdn, sddp, serverless, servicemesh, sgw, slb, smartag, srvcatalog, sts, swas, tag, vod, vpc, vpcpeer, vs, waf, wafOpenapi);
         }
     }
 }

@@ -15,14 +15,21 @@ public final class BucketReplicationProgress {
      * @return The percentage of the replicated historical data. This element is valid only when historical_object_replication is set to enabled.
      * 
      */
-    private @Nullable String historicalObject;
+    private final @Nullable String historicalObject;
     /**
      * @return The time used to distinguish new data from historical data. Data that is written to the source bucket before the time is replicated to the destination bucket as new data. The value of this element is in GMT.
      * 
      */
-    private @Nullable String newObject;
+    private final @Nullable String newObject;
 
-    private BucketReplicationProgress() {}
+    @CustomType.Constructor
+    private BucketReplicationProgress(
+        @CustomType.Parameter("historicalObject") @Nullable String historicalObject,
+        @CustomType.Parameter("newObject") @Nullable String newObject) {
+        this.historicalObject = historicalObject;
+        this.newObject = newObject;
+    }
+
     /**
      * @return The percentage of the replicated historical data. This element is valid only when historical_object_replication is set to enabled.
      * 
@@ -45,32 +52,30 @@ public final class BucketReplicationProgress {
     public static Builder builder(BucketReplicationProgress defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String historicalObject;
         private @Nullable String newObject;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(BucketReplicationProgress defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.historicalObject = defaults.historicalObject;
     	      this.newObject = defaults.newObject;
         }
 
-        @CustomType.Setter
         public Builder historicalObject(@Nullable String historicalObject) {
             this.historicalObject = historicalObject;
             return this;
         }
-        @CustomType.Setter
         public Builder newObject(@Nullable String newObject) {
             this.newObject = newObject;
             return this;
-        }
-        public BucketReplicationProgress build() {
-            final var o = new BucketReplicationProgress();
-            o.historicalObject = historicalObject;
-            o.newObject = newObject;
-            return o;
+        }        public BucketReplicationProgress build() {
+            return new BucketReplicationProgress(historicalObject, newObject);
         }
     }
 }

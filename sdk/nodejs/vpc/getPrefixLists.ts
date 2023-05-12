@@ -56,6 +56,9 @@ export interface GetPrefixListsArgs {
      * A regex string to filter results by Prefix List name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The name of the prefix list.
@@ -120,6 +123,9 @@ export interface GetPrefixListsOutputArgs {
      * A regex string to filter results by Prefix List name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The name of the prefix list.

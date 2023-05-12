@@ -111,12 +111,16 @@ public class RealTimeLogDelivery extends com.pulumi.resources.CustomResource {
     /**
      * The region where the Log Service project is deployed.
      * 
+     * &gt; **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+     * 
      */
     @Export(name="slsRegion", type=String.class, parameters={})
     private Output<String> slsRegion;
 
     /**
      * @return The region where the Log Service project is deployed.
+     * 
+     * &gt; **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
      * 
      */
     public Output<String> slsRegion() {

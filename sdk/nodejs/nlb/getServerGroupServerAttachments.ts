@@ -46,6 +46,9 @@ export interface GetServerGroupServerAttachmentsArgs {
      * A list of Server Group Server Attachment IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the server group.
@@ -107,6 +110,9 @@ export interface GetServerGroupServerAttachmentsOutputArgs {
      * A list of Server Group Server Attachment IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the server group.

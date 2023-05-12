@@ -142,6 +142,7 @@ def get_accounts(db_instance_id: Optional[str] = None,
     :param str db_instance_id: The ID of the instance.
     :param Sequence[str] ids: A list of Account IDs. Its element value is same as Account Name.
     :param str name_regex: A regex string to filter results by Account name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
     """
     __args__ = dict()
@@ -199,6 +200,7 @@ def get_accounts_output(db_instance_id: Optional[pulumi.Input[str]] = None,
     :param str db_instance_id: The ID of the instance.
     :param Sequence[str] ids: A list of Account IDs. Its element value is same as Account Name.
     :param str name_regex: A regex string to filter results by Account name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
     """
     ...

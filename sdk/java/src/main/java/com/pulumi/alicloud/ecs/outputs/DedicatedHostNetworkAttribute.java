@@ -15,14 +15,21 @@ public final class DedicatedHostNetworkAttribute {
      * @return The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
      * 
      */
-    private @Nullable Integer slbUdpTimeout;
+    private final @Nullable Integer slbUdpTimeout;
     /**
      * @return The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
      * 
      */
-    private @Nullable Integer udpTimeout;
+    private final @Nullable Integer udpTimeout;
 
-    private DedicatedHostNetworkAttribute() {}
+    @CustomType.Constructor
+    private DedicatedHostNetworkAttribute(
+        @CustomType.Parameter("slbUdpTimeout") @Nullable Integer slbUdpTimeout,
+        @CustomType.Parameter("udpTimeout") @Nullable Integer udpTimeout) {
+        this.slbUdpTimeout = slbUdpTimeout;
+        this.udpTimeout = udpTimeout;
+    }
+
     /**
      * @return The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
      * 
@@ -45,32 +52,30 @@ public final class DedicatedHostNetworkAttribute {
     public static Builder builder(DedicatedHostNetworkAttribute defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Integer slbUdpTimeout;
         private @Nullable Integer udpTimeout;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(DedicatedHostNetworkAttribute defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.slbUdpTimeout = defaults.slbUdpTimeout;
     	      this.udpTimeout = defaults.udpTimeout;
         }
 
-        @CustomType.Setter
         public Builder slbUdpTimeout(@Nullable Integer slbUdpTimeout) {
             this.slbUdpTimeout = slbUdpTimeout;
             return this;
         }
-        @CustomType.Setter
         public Builder udpTimeout(@Nullable Integer udpTimeout) {
             this.udpTimeout = udpTimeout;
             return this;
-        }
-        public DedicatedHostNetworkAttribute build() {
-            final var o = new DedicatedHostNetworkAttribute();
-            o.slbUdpTimeout = slbUdpTimeout;
-            o.udpTimeout = udpTimeout;
-            return o;
+        }        public DedicatedHostNetworkAttribute build() {
+            return new DedicatedHostNetworkAttribute(slbUdpTimeout, udpTimeout);
         }
     }
 }

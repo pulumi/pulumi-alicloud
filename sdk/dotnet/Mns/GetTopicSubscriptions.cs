@@ -12,6 +12,10 @@ namespace Pulumi.AliCloud.Mns
     public static class GetTopicSubscriptions
     {
         /// <summary>
+        /// This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
+        /// 
+        /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -43,6 +47,10 @@ namespace Pulumi.AliCloud.Mns
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTopicSubscriptionsResult>("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", args ?? new GetTopicSubscriptionsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
+        /// 
+        /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -83,6 +91,9 @@ namespace Pulumi.AliCloud.Mns
         [Input("namePrefix")]
         public string? NamePrefix { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -106,6 +117,9 @@ namespace Pulumi.AliCloud.Mns
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

@@ -313,7 +313,7 @@ class Policy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userType")
-    def user_type(self) -> pulumi.Output[Optional[str]]:
+    def user_type(self) -> pulumi.Output[str]:
         """
         The type of the tag policy. Valid values: `USER`, `RD`.
         """

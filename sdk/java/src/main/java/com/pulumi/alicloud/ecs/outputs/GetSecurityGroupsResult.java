@@ -17,49 +17,78 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSecurityGroupsResult {
-    private @Nullable Boolean enableDetails;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return A list of Security Groups. Each element contains the following attributes:
      * 
      */
-    private List<GetSecurityGroupsGroup> groups;
+    private final List<GetSecurityGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of Security Group IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of Security Group names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
     /**
      * @return The Id of resource group which the security_group belongs.
      * 
      */
-    private @Nullable String resourceGroupId;
+    private final @Nullable String resourceGroupId;
     /**
      * @return A map of tags assigned to the ECS instance.
      * 
      */
-    private @Nullable Map<String,Object> tags;
-    private Integer totalCount;
+    private final @Nullable Map<String,Object> tags;
+    private final Integer totalCount;
     /**
      * @return The ID of the VPC that owns the security group.
      * 
      */
-    private @Nullable String vpcId;
+    private final @Nullable String vpcId;
 
-    private GetSecurityGroupsResult() {}
+    @CustomType.Constructor
+    private GetSecurityGroupsResult(
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("groups") List<GetSecurityGroupsGroup> groups,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
+        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
+        @CustomType.Parameter("totalCount") Integer totalCount,
+        @CustomType.Parameter("vpcId") @Nullable String vpcId) {
+        this.enableDetails = enableDetails;
+        this.groups = groups;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+        this.resourceGroupId = resourceGroupId;
+        this.tags = tags;
+        this.totalCount = totalCount;
+        this.vpcId = vpcId;
+    }
+
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -135,7 +164,7 @@ public final class GetSecurityGroupsResult {
     public static Builder builder(GetSecurityGroupsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private List<GetSecurityGroupsGroup> groups;
@@ -150,7 +179,11 @@ public final class GetSecurityGroupsResult {
         private @Nullable Map<String,Object> tags;
         private Integer totalCount;
         private @Nullable String vpcId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetSecurityGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -168,12 +201,10 @@ public final class GetSecurityGroupsResult {
     	      this.vpcId = defaults.vpcId;
         }
 
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder groups(List<GetSecurityGroupsGroup> groups) {
             this.groups = Objects.requireNonNull(groups);
             return this;
@@ -181,12 +212,10 @@ public final class GetSecurityGroupsResult {
         public Builder groups(GetSecurityGroupsGroup... groups) {
             return groups(List.of(groups));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -194,12 +223,10 @@ public final class GetSecurityGroupsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -207,57 +234,35 @@ public final class GetSecurityGroupsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
-        @CustomType.Setter
         public Builder totalCount(Integer totalCount) {
             this.totalCount = Objects.requireNonNull(totalCount);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
-        }
-        public GetSecurityGroupsResult build() {
-            final var o = new GetSecurityGroupsResult();
-            o.enableDetails = enableDetails;
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.resourceGroupId = resourceGroupId;
-            o.tags = tags;
-            o.totalCount = totalCount;
-            o.vpcId = vpcId;
-            return o;
+        }        public GetSecurityGroupsResult build() {
+            return new GetSecurityGroupsResult(enableDetails, groups, id, ids, nameRegex, names, outputFile, pageNumber, pageSize, resourceGroupId, tags, totalCount, vpcId);
         }
     }
 }

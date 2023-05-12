@@ -136,12 +136,16 @@ public class NasBackupPlan extends com.pulumi.resources.CustomResource {
     /**
      * The role name created in the original account RAM backup by the cross account managed by the current account.
      * 
+     * &gt; **Note** `alicloud.hbr.NasBackupPlan` depends on the `alicloud.nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
+     * 
      */
     @Export(name="crossAccountRoleName", type=String.class, parameters={})
     private Output</* @Nullable */ String> crossAccountRoleName;
 
     /**
      * @return The role name created in the original account RAM backup by the cross account managed by the current account.
+     * 
+     * &gt; **Note** `alicloud.hbr.NasBackupPlan` depends on the `alicloud.nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
      * 
      */
     public Output<Optional<String>> crossAccountRoleName() {

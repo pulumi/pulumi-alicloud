@@ -16,19 +16,30 @@ public final class ServerlessKubernetesAddon {
      * @return The ACK add-on configurations.
      * 
      */
-    private @Nullable String config;
+    private final @Nullable String config;
     /**
      * @return Disables the automatic installation of a component. Default is `false`.
      * 
+     * The following example is the definition of addons block, The type of this field is list:
+     * 
      */
-    private @Nullable Boolean disabled;
+    private final @Nullable Boolean disabled;
     /**
      * @return Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
      * 
      */
-    private @Nullable String name;
+    private final @Nullable String name;
 
-    private ServerlessKubernetesAddon() {}
+    @CustomType.Constructor
+    private ServerlessKubernetesAddon(
+        @CustomType.Parameter("config") @Nullable String config,
+        @CustomType.Parameter("disabled") @Nullable Boolean disabled,
+        @CustomType.Parameter("name") @Nullable String name) {
+        this.config = config;
+        this.disabled = disabled;
+        this.name = name;
+    }
+
     /**
      * @return The ACK add-on configurations.
      * 
@@ -38,6 +49,8 @@ public final class ServerlessKubernetesAddon {
     }
     /**
      * @return Disables the automatic installation of a component. Default is `false`.
+     * 
+     * The following example is the definition of addons block, The type of this field is list:
      * 
      */
     public Optional<Boolean> disabled() {
@@ -58,12 +71,16 @@ public final class ServerlessKubernetesAddon {
     public static Builder builder(ServerlessKubernetesAddon defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String config;
         private @Nullable Boolean disabled;
         private @Nullable String name;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ServerlessKubernetesAddon defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.config = defaults.config;
@@ -71,27 +88,19 @@ public final class ServerlessKubernetesAddon {
     	      this.name = defaults.name;
         }
 
-        @CustomType.Setter
         public Builder config(@Nullable String config) {
             this.config = config;
             return this;
         }
-        @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
             this.disabled = disabled;
             return this;
         }
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
-        }
-        public ServerlessKubernetesAddon build() {
-            final var o = new ServerlessKubernetesAddon();
-            o.config = config;
-            o.disabled = disabled;
-            o.name = name;
-            return o;
+        }        public ServerlessKubernetesAddon build() {
+            return new ServerlessKubernetesAddon(config, disabled, name);
         }
     }
 }

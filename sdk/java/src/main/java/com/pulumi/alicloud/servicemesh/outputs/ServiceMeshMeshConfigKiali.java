@@ -15,9 +15,13 @@ public final class ServiceMeshMeshConfigKiali {
      * @return Whether to enable of the access logging. Valid values: `true` and `false`.
      * 
      */
-    private @Nullable Boolean enabled;
+    private final @Nullable Boolean enabled;
 
-    private ServiceMeshMeshConfigKiali() {}
+    @CustomType.Constructor
+    private ServiceMeshMeshConfigKiali(@CustomType.Parameter("enabled") @Nullable Boolean enabled) {
+        this.enabled = enabled;
+    }
+
     /**
      * @return Whether to enable of the access logging. Valid values: `true` and `false`.
      * 
@@ -33,24 +37,24 @@ public final class ServiceMeshMeshConfigKiali {
     public static Builder builder(ServiceMeshMeshConfigKiali defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean enabled;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ServiceMeshMeshConfigKiali defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
         }
 
-        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
-        }
-        public ServiceMeshMeshConfigKiali build() {
-            final var o = new ServiceMeshMeshConfigKiali();
-            o.enabled = enabled;
-            return o;
+        }        public ServiceMeshMeshConfigKiali build() {
+            return new ServiceMeshMeshConfigKiali(enabled);
         }
     }
 }

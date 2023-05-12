@@ -28,6 +28,10 @@ class TriggerArgs:
         :param pulumi.Input[str] function: The Function Compute function name.
         :param pulumi.Input[str] service: The Function Compute service name.
         :param pulumi.Input[str] type: The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
+               
+               > **NOTE:** Config does not support modification when type is mns_topic.
+               > **NOTE:** type = cdn_events, available in 1.47.0+.
+               > **NOTE:** type = eventbridge, available in 1.173.0+.
         :param pulumi.Input[str] config: The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
         :param pulumi.Input[str] config_mns: The config of Function Compute trigger when the type is "mns_topic".It is conflict with `config`.
         :param pulumi.Input[str] name: The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
@@ -80,6 +84,10 @@ class TriggerArgs:
     def type(self) -> pulumi.Input[str]:
         """
         The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
+
+        > **NOTE:** Config does not support modification when type is mns_topic.
+        > **NOTE:** type = cdn_events, available in 1.47.0+.
+        > **NOTE:** type = eventbridge, available in 1.173.0+.
         """
         return pulumi.get(self, "type")
 
@@ -187,6 +195,10 @@ class _TriggerState:
         :param pulumi.Input[str] source_arn: Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
         :param pulumi.Input[str] trigger_id: The Function Compute trigger ID.
         :param pulumi.Input[str] type: The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
+               
+               > **NOTE:** Config does not support modification when type is mns_topic.
+               > **NOTE:** type = cdn_events, available in 1.47.0+.
+               > **NOTE:** type = eventbridge, available in 1.173.0+.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -336,6 +348,10 @@ class _TriggerState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
+
+        > **NOTE:** Config does not support modification when type is mns_topic.
+        > **NOTE:** type = cdn_events, available in 1.47.0+.
+        > **NOTE:** type = eventbridge, available in 1.173.0+.
         """
         return pulumi.get(self, "type")
 
@@ -360,6 +376,366 @@ class Trigger(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Provides an Alicloud Function Compute Trigger resource. Based on trigger, execute your code in response to events in Alibaba Cloud.
+         For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/doc-detail/52895.htm).
+
+        > **NOTE:** The resource requires a provider field 'account_id'. See account_id.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        account = config.get("account")
+        if account is None:
+            account = "12345"
+        foo_role = alicloud.ram.Role("fooRole",
+            document=\"\"\"  {
+            "Statement": [
+              {
+                "Action": "sts:AssumeRole",
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": [
+                    "log.aliyuncs.com"
+                  ]
+                }
+              }
+            ],
+            "Version": "1"
+          }
+          
+        \"\"\",
+            description="this is a test",
+            force=True)
+        foo_role_policy_attachment = alicloud.ram.RolePolicyAttachment("fooRolePolicyAttachment",
+            role_name=foo_role.name,
+            policy_name="AliyunLogFullAccess",
+            policy_type="System")
+        foo_trigger = alicloud.fc.Trigger("fooTrigger",
+            service="my-fc-service",
+            function="hello-world",
+            role=foo_role.arn,
+            source_arn=f"acs:log:{region}:{account}:project/{alicloud_log_project['foo']['name']}",
+            type="log",
+            config=\"\"\"    {
+                "sourceConfig": {
+                    "project": "project-for-fc",
+                    "logstore": "project-for-fc"
+                },
+                "jobConfig": {
+                    "maxRetryTime": 3,
+                    "triggerInterval": 60
+                },
+                "functionParameter": {
+                    "a": "b",
+                    "c": "d"
+                },
+                "logConfig": {
+                    "project": "project-for-fc-log",
+                    "logstore": "project-for-fc-log"
+                },
+                "enable": true
+            }
+          
+        \"\"\",
+            opts=pulumi.ResourceOptions(depends_on=[foo_role_policy_attachment]))
+        ```
+
+        MNS topic trigger:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "fctriggermnstopic"
+        current_region = alicloud.get_regions(current=True)
+        current = alicloud.get_account()
+        foo_project = alicloud.log.Project("fooProject", description="tf unit test")
+        bar = alicloud.log.Store("bar",
+            project=foo_project.name,
+            retention_period=3000,
+            shard_count=1)
+        foo_store = alicloud.log.Store("fooStore",
+            project=foo_project.name,
+            retention_period=3000,
+            shard_count=1)
+        foo_topic = alicloud.mns.Topic("fooTopic")
+        foo_service = alicloud.fc.Service("fooService", internet_access=False)
+        foo_bucket = alicloud.oss.Bucket("fooBucket", bucket=name)
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+        foo_bucket_object = alicloud.oss.BucketObject("fooBucketObject",
+            bucket=foo_bucket.id,
+            key="fc/hello.zip",
+            source="./hello.zip")
+        foo_function = alicloud.fc.Function("fooFunction",
+            handler="hello.handler",
+            memory_size=512,
+            oss_bucket=foo_bucket.id,
+            oss_key=foo_bucket_object.key,
+            runtime="python2.7",
+            service=foo_service.name)
+        foo_role = alicloud.ram.Role("fooRole",
+            description="this is a test",
+            document=\"\"\"  {
+            "Statement": [
+              {
+                "Action": "sts:AssumeRole",
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": [
+                    "mns.aliyuncs.com"
+                  ]
+                }
+              }
+            ],
+            "Version": "1"
+          }
+          
+        \"\"\",
+            force=True)
+        foo_role_policy_attachment = alicloud.ram.RolePolicyAttachment("fooRolePolicyAttachment",
+            policy_name="AliyunMNSNotificationRolePolicy",
+            policy_type="System",
+            role_name=foo_role.name)
+        foo_trigger = alicloud.fc.Trigger("fooTrigger",
+            config_mns=\"\"\"  {
+            "filterTag":"testTag",
+            "notifyContentFormat":"STREAM",
+            "notifyStrategy":"BACKOFF_RETRY"
+          }
+          
+        \"\"\",
+            function=foo_function.name,
+            role=foo_role.arn,
+            service=foo_service.name,
+            source_arn=foo_topic.name.apply(lambda name: f"acs:mns:{current_region.regions[0].id}:{current.id}:/topics/{name}"),
+            type="mns_topic",
+            opts=pulumi.ResourceOptions(depends_on=["alicloud_ram_role_policy_attachment.foo"]))
+        ```
+
+        CDN events trigger:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "fctriggercdneventsconfig"
+        current = alicloud.get_account()
+        domain = alicloud.cdn.DomainNew("domain",
+            cdn_type="web",
+            domain_name=f"{name}.tf.com",
+            scope="overseas",
+            sources=[alicloud.cdn.DomainNewSourceArgs(
+                content="1.1.1.1",
+                port=80,
+                priority=20,
+                type="ipaddr",
+                weight=10,
+            )])
+        foo_service = alicloud.fc.Service("fooService", internet_access=False)
+        foo_bucket = alicloud.oss.Bucket("fooBucket", bucket=name)
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+        foo_bucket_object = alicloud.oss.BucketObject("fooBucketObject",
+            bucket=foo_bucket.id,
+            key="fc/hello.zip",
+            source="./hello.zip")
+        foo_function = alicloud.fc.Function("fooFunction",
+            handler="hello.handler",
+            memory_size=512,
+            oss_bucket=foo_bucket.id,
+            oss_key=foo_bucket_object.key,
+            runtime="python2.7",
+            service=foo_service.name)
+        foo_role = alicloud.ram.Role("fooRole",
+            description="this is a test",
+            document=\"\"\"    {
+                "Version": "1",
+                "Statement": [
+                    {
+                        "Action": "cdn:Describe*",
+                        "Resource": "*",
+                        "Effect": "Allow",
+        		        "Principal": {
+                        "Service":
+                            ["log.aliyuncs.com"]
+                        }
+                    }
+                ]
+            }
+            
+        \"\"\",
+            force=True)
+        foo_policy = alicloud.ram.Policy("fooPolicy",
+            description="this is a test",
+            document=\"\"\"    {
+                "Version": "1",
+                "Statement": [
+                {
+                    "Action": [
+                    "fc:InvokeFunction"
+                    ],
+                "Resource": [
+                    "acs:fc:*:*:services/tf_cdnEvents/functions/*",
+                    "acs:fc:*:*:services/tf_cdnEvents.*/functions/*"
+                ],
+                "Effect": "Allow"
+                }
+                ]
+            }
+            
+        \"\"\",
+            force=True)
+        foo_role_policy_attachment = alicloud.ram.RolePolicyAttachment("fooRolePolicyAttachment",
+            policy_name=foo_policy.name,
+            policy_type="Custom",
+            role_name=foo_role.name)
+        default = alicloud.fc.Trigger("default",
+            config=domain.domain_name.apply(lambda domain_name: f\"\"\"      {{"eventName":"LogFileCreated",
+             "eventVersion":"1.0.0",
+             "notes":"cdn events trigger",
+             "filter":{{
+                "domain": ["{domain_name}"]
+                }}
+            }}
+
+        \"\"\"),
+            function=foo_function.name,
+            role=foo_role.arn,
+            service=foo_service.name,
+            source_arn=f"acs:cdn:*:{current.id}",
+            type="cdn_events",
+            opts=pulumi.ResourceOptions(depends_on=["alicloud_ram_role_policy_attachment.foo"]))
+        ```
+
+        EventBridge trigger:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "fctriggereventbridgeconfig"
+        current = alicloud.get_account()
+        # Please make eventbridge available and then assume a specific service-linked role, which refers to https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/event_bridge_service_linked_role
+        service_linked_role = alicloud.eventbridge.ServiceLinkedRole("serviceLinkedRole", product_name="AliyunServiceRoleForEventBridgeSendToFC")
+        foo_service = alicloud.fc.Service("fooService", internet_access=False)
+        foo_bucket = alicloud.oss.Bucket("fooBucket", bucket=name)
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+        foo_bucket_object = alicloud.oss.BucketObject("fooBucketObject",
+            bucket=foo_bucket.id,
+            key="fc/hello.zip",
+            source="./hello.zip")
+        foo_function = alicloud.fc.Function("fooFunction",
+            handler="hello.handler",
+            memory_size=512,
+            oss_bucket=foo_bucket.id,
+            oss_key=foo_bucket_object.key,
+            runtime="python2.7",
+            service=foo_service.name)
+        default = alicloud.fc.Trigger("default",
+            config=\"\"\"    {
+                "triggerEnable": false,
+                "asyncInvocationType": false,
+                "eventRuleFilterPattern": "{\\"source\\":[\\"acs.oss\\"],\\"type\\":[\\"oss:BucketCreated:PutBucket\\"]}",
+                "eventSourceConfig": {
+                    "eventSourceType": "Default"
+                }
+            }
+
+        \"\"\",
+            function=foo_function.name,
+            service=foo_service.name,
+            type="eventbridge")
+        mns = alicloud.fc.Trigger("mns",
+            config=\"\"\"    {
+                "triggerEnable": false,
+                "asyncInvocationType": false,
+                "eventRuleFilterPattern": "{}",
+                "eventSourceConfig": {
+                    "eventSourceType": "MNS",
+                    "eventSourceParameters": {
+                        "sourceMNSParameters": {
+                            "RegionId": "cn-hangzhou",
+                            "QueueName": "mns-queue",
+                            "IsBase64Decode": true
+                        }
+                    }
+                }
+            }
+
+        \"\"\",
+            function=foo_function.name,
+            service=foo_service.name,
+            type="eventbridge")
+        rocketmq = alicloud.fc.Trigger("rocketmq",
+            config=\"\"\"    {
+                "triggerEnable": false,
+                "asyncInvocationType": false,
+                "eventRuleFilterPattern": "{}",
+                "eventSourceConfig": {
+                    "eventSourceType": "RocketMQ",
+                    "eventSourceParameters": {
+                        "sourceRocketMQParameters": {
+                            "RegionId": "cn-hangzhou",
+                            "InstanceId": "MQ_INST_164901546557****_BAAN****",
+                            "GroupID": "GID_group1",
+                            "Topic": "mytopic",
+                            "Timestamp": 1636597951984,
+                            "Tag": "test-tag",
+                            "Offset": "CONSUME_FROM_LAST_OFFSET"
+                        }
+                    }
+                }
+            }
+
+        \"\"\",
+            function=foo_function.name,
+            service=foo_service.name,
+            type="eventbridge")
+        rabbitmq = alicloud.fc.Trigger("rabbitmq",
+            config=\"\"\"    {
+                "triggerEnable": false,
+                "asyncInvocationType": false,
+                "eventRuleFilterPattern": "{}",
+                "eventSourceConfig": {
+                    "eventSourceType": "RabbitMQ",
+                    "eventSourceParameters": {
+                        "sourceRabbitMQParameters": {
+                            "RegionId": "cn-hangzhou",
+                            "InstanceId": "amqp-cn-****** ",
+                            "VirtualHostName": "test-virtual",
+                            "QueueName": "test-queue"
+                        }
+                    }
+                }
+            }
+
+        \"\"\",
+            function=foo_function.name,
+            service=foo_service.name,
+            type="eventbridge")
+        ```
+        ## Module Support
+
+        You can use to the existing fc module
+        to create several triggers quickly.
+
         ## Import
 
         Function Compute trigger can be imported using the id, e.g.
@@ -379,6 +755,10 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] service: The Function Compute service name.
         :param pulumi.Input[str] source_arn: Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
         :param pulumi.Input[str] type: The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
+               
+               > **NOTE:** Config does not support modification when type is mns_topic.
+               > **NOTE:** type = cdn_events, available in 1.47.0+.
+               > **NOTE:** type = eventbridge, available in 1.173.0+.
         """
         ...
     @overload
@@ -387,6 +767,366 @@ class Trigger(pulumi.CustomResource):
                  args: TriggerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides an Alicloud Function Compute Trigger resource. Based on trigger, execute your code in response to events in Alibaba Cloud.
+         For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/doc-detail/52895.htm).
+
+        > **NOTE:** The resource requires a provider field 'account_id'. See account_id.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        account = config.get("account")
+        if account is None:
+            account = "12345"
+        foo_role = alicloud.ram.Role("fooRole",
+            document=\"\"\"  {
+            "Statement": [
+              {
+                "Action": "sts:AssumeRole",
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": [
+                    "log.aliyuncs.com"
+                  ]
+                }
+              }
+            ],
+            "Version": "1"
+          }
+          
+        \"\"\",
+            description="this is a test",
+            force=True)
+        foo_role_policy_attachment = alicloud.ram.RolePolicyAttachment("fooRolePolicyAttachment",
+            role_name=foo_role.name,
+            policy_name="AliyunLogFullAccess",
+            policy_type="System")
+        foo_trigger = alicloud.fc.Trigger("fooTrigger",
+            service="my-fc-service",
+            function="hello-world",
+            role=foo_role.arn,
+            source_arn=f"acs:log:{region}:{account}:project/{alicloud_log_project['foo']['name']}",
+            type="log",
+            config=\"\"\"    {
+                "sourceConfig": {
+                    "project": "project-for-fc",
+                    "logstore": "project-for-fc"
+                },
+                "jobConfig": {
+                    "maxRetryTime": 3,
+                    "triggerInterval": 60
+                },
+                "functionParameter": {
+                    "a": "b",
+                    "c": "d"
+                },
+                "logConfig": {
+                    "project": "project-for-fc-log",
+                    "logstore": "project-for-fc-log"
+                },
+                "enable": true
+            }
+          
+        \"\"\",
+            opts=pulumi.ResourceOptions(depends_on=[foo_role_policy_attachment]))
+        ```
+
+        MNS topic trigger:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "fctriggermnstopic"
+        current_region = alicloud.get_regions(current=True)
+        current = alicloud.get_account()
+        foo_project = alicloud.log.Project("fooProject", description="tf unit test")
+        bar = alicloud.log.Store("bar",
+            project=foo_project.name,
+            retention_period=3000,
+            shard_count=1)
+        foo_store = alicloud.log.Store("fooStore",
+            project=foo_project.name,
+            retention_period=3000,
+            shard_count=1)
+        foo_topic = alicloud.mns.Topic("fooTopic")
+        foo_service = alicloud.fc.Service("fooService", internet_access=False)
+        foo_bucket = alicloud.oss.Bucket("fooBucket", bucket=name)
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+        foo_bucket_object = alicloud.oss.BucketObject("fooBucketObject",
+            bucket=foo_bucket.id,
+            key="fc/hello.zip",
+            source="./hello.zip")
+        foo_function = alicloud.fc.Function("fooFunction",
+            handler="hello.handler",
+            memory_size=512,
+            oss_bucket=foo_bucket.id,
+            oss_key=foo_bucket_object.key,
+            runtime="python2.7",
+            service=foo_service.name)
+        foo_role = alicloud.ram.Role("fooRole",
+            description="this is a test",
+            document=\"\"\"  {
+            "Statement": [
+              {
+                "Action": "sts:AssumeRole",
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": [
+                    "mns.aliyuncs.com"
+                  ]
+                }
+              }
+            ],
+            "Version": "1"
+          }
+          
+        \"\"\",
+            force=True)
+        foo_role_policy_attachment = alicloud.ram.RolePolicyAttachment("fooRolePolicyAttachment",
+            policy_name="AliyunMNSNotificationRolePolicy",
+            policy_type="System",
+            role_name=foo_role.name)
+        foo_trigger = alicloud.fc.Trigger("fooTrigger",
+            config_mns=\"\"\"  {
+            "filterTag":"testTag",
+            "notifyContentFormat":"STREAM",
+            "notifyStrategy":"BACKOFF_RETRY"
+          }
+          
+        \"\"\",
+            function=foo_function.name,
+            role=foo_role.arn,
+            service=foo_service.name,
+            source_arn=foo_topic.name.apply(lambda name: f"acs:mns:{current_region.regions[0].id}:{current.id}:/topics/{name}"),
+            type="mns_topic",
+            opts=pulumi.ResourceOptions(depends_on=["alicloud_ram_role_policy_attachment.foo"]))
+        ```
+
+        CDN events trigger:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "fctriggercdneventsconfig"
+        current = alicloud.get_account()
+        domain = alicloud.cdn.DomainNew("domain",
+            cdn_type="web",
+            domain_name=f"{name}.tf.com",
+            scope="overseas",
+            sources=[alicloud.cdn.DomainNewSourceArgs(
+                content="1.1.1.1",
+                port=80,
+                priority=20,
+                type="ipaddr",
+                weight=10,
+            )])
+        foo_service = alicloud.fc.Service("fooService", internet_access=False)
+        foo_bucket = alicloud.oss.Bucket("fooBucket", bucket=name)
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+        foo_bucket_object = alicloud.oss.BucketObject("fooBucketObject",
+            bucket=foo_bucket.id,
+            key="fc/hello.zip",
+            source="./hello.zip")
+        foo_function = alicloud.fc.Function("fooFunction",
+            handler="hello.handler",
+            memory_size=512,
+            oss_bucket=foo_bucket.id,
+            oss_key=foo_bucket_object.key,
+            runtime="python2.7",
+            service=foo_service.name)
+        foo_role = alicloud.ram.Role("fooRole",
+            description="this is a test",
+            document=\"\"\"    {
+                "Version": "1",
+                "Statement": [
+                    {
+                        "Action": "cdn:Describe*",
+                        "Resource": "*",
+                        "Effect": "Allow",
+        		        "Principal": {
+                        "Service":
+                            ["log.aliyuncs.com"]
+                        }
+                    }
+                ]
+            }
+            
+        \"\"\",
+            force=True)
+        foo_policy = alicloud.ram.Policy("fooPolicy",
+            description="this is a test",
+            document=\"\"\"    {
+                "Version": "1",
+                "Statement": [
+                {
+                    "Action": [
+                    "fc:InvokeFunction"
+                    ],
+                "Resource": [
+                    "acs:fc:*:*:services/tf_cdnEvents/functions/*",
+                    "acs:fc:*:*:services/tf_cdnEvents.*/functions/*"
+                ],
+                "Effect": "Allow"
+                }
+                ]
+            }
+            
+        \"\"\",
+            force=True)
+        foo_role_policy_attachment = alicloud.ram.RolePolicyAttachment("fooRolePolicyAttachment",
+            policy_name=foo_policy.name,
+            policy_type="Custom",
+            role_name=foo_role.name)
+        default = alicloud.fc.Trigger("default",
+            config=domain.domain_name.apply(lambda domain_name: f\"\"\"      {{"eventName":"LogFileCreated",
+             "eventVersion":"1.0.0",
+             "notes":"cdn events trigger",
+             "filter":{{
+                "domain": ["{domain_name}"]
+                }}
+            }}
+
+        \"\"\"),
+            function=foo_function.name,
+            role=foo_role.arn,
+            service=foo_service.name,
+            source_arn=f"acs:cdn:*:{current.id}",
+            type="cdn_events",
+            opts=pulumi.ResourceOptions(depends_on=["alicloud_ram_role_policy_attachment.foo"]))
+        ```
+
+        EventBridge trigger:
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "fctriggereventbridgeconfig"
+        current = alicloud.get_account()
+        # Please make eventbridge available and then assume a specific service-linked role, which refers to https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/event_bridge_service_linked_role
+        service_linked_role = alicloud.eventbridge.ServiceLinkedRole("serviceLinkedRole", product_name="AliyunServiceRoleForEventBridgeSendToFC")
+        foo_service = alicloud.fc.Service("fooService", internet_access=False)
+        foo_bucket = alicloud.oss.Bucket("fooBucket", bucket=name)
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+        foo_bucket_object = alicloud.oss.BucketObject("fooBucketObject",
+            bucket=foo_bucket.id,
+            key="fc/hello.zip",
+            source="./hello.zip")
+        foo_function = alicloud.fc.Function("fooFunction",
+            handler="hello.handler",
+            memory_size=512,
+            oss_bucket=foo_bucket.id,
+            oss_key=foo_bucket_object.key,
+            runtime="python2.7",
+            service=foo_service.name)
+        default = alicloud.fc.Trigger("default",
+            config=\"\"\"    {
+                "triggerEnable": false,
+                "asyncInvocationType": false,
+                "eventRuleFilterPattern": "{\\"source\\":[\\"acs.oss\\"],\\"type\\":[\\"oss:BucketCreated:PutBucket\\"]}",
+                "eventSourceConfig": {
+                    "eventSourceType": "Default"
+                }
+            }
+
+        \"\"\",
+            function=foo_function.name,
+            service=foo_service.name,
+            type="eventbridge")
+        mns = alicloud.fc.Trigger("mns",
+            config=\"\"\"    {
+                "triggerEnable": false,
+                "asyncInvocationType": false,
+                "eventRuleFilterPattern": "{}",
+                "eventSourceConfig": {
+                    "eventSourceType": "MNS",
+                    "eventSourceParameters": {
+                        "sourceMNSParameters": {
+                            "RegionId": "cn-hangzhou",
+                            "QueueName": "mns-queue",
+                            "IsBase64Decode": true
+                        }
+                    }
+                }
+            }
+
+        \"\"\",
+            function=foo_function.name,
+            service=foo_service.name,
+            type="eventbridge")
+        rocketmq = alicloud.fc.Trigger("rocketmq",
+            config=\"\"\"    {
+                "triggerEnable": false,
+                "asyncInvocationType": false,
+                "eventRuleFilterPattern": "{}",
+                "eventSourceConfig": {
+                    "eventSourceType": "RocketMQ",
+                    "eventSourceParameters": {
+                        "sourceRocketMQParameters": {
+                            "RegionId": "cn-hangzhou",
+                            "InstanceId": "MQ_INST_164901546557****_BAAN****",
+                            "GroupID": "GID_group1",
+                            "Topic": "mytopic",
+                            "Timestamp": 1636597951984,
+                            "Tag": "test-tag",
+                            "Offset": "CONSUME_FROM_LAST_OFFSET"
+                        }
+                    }
+                }
+            }
+
+        \"\"\",
+            function=foo_function.name,
+            service=foo_service.name,
+            type="eventbridge")
+        rabbitmq = alicloud.fc.Trigger("rabbitmq",
+            config=\"\"\"    {
+                "triggerEnable": false,
+                "asyncInvocationType": false,
+                "eventRuleFilterPattern": "{}",
+                "eventSourceConfig": {
+                    "eventSourceType": "RabbitMQ",
+                    "eventSourceParameters": {
+                        "sourceRabbitMQParameters": {
+                            "RegionId": "cn-hangzhou",
+                            "InstanceId": "amqp-cn-****** ",
+                            "VirtualHostName": "test-virtual",
+                            "QueueName": "test-queue"
+                        }
+                    }
+                }
+            }
+
+        \"\"\",
+            function=foo_function.name,
+            service=foo_service.name,
+            type="eventbridge")
+        ```
+        ## Module Support
+
+        You can use to the existing fc module
+        to create several triggers quickly.
+
         ## Import
 
         Function Compute trigger can be imported using the id, e.g.
@@ -484,6 +1224,10 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] source_arn: Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
         :param pulumi.Input[str] trigger_id: The Function Compute trigger ID.
         :param pulumi.Input[str] type: The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
+               
+               > **NOTE:** Config does not support modification when type is mns_topic.
+               > **NOTE:** type = cdn_events, available in 1.47.0+.
+               > **NOTE:** type = eventbridge, available in 1.173.0+.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -587,6 +1331,10 @@ class Trigger(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
+
+        > **NOTE:** Config does not support modification when type is mns_topic.
+        > **NOTE:** type = cdn_events, available in 1.47.0+.
+        > **NOTE:** type = eventbridge, available in 1.173.0+.
         """
         return pulumi.get(self, "type")
 

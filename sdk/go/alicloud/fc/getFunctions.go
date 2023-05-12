@@ -53,7 +53,8 @@ type GetFunctionsArgs struct {
 	// A list of functions ids.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by function name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Name of the service that contains the functions to find.
 	ServiceName string `pulumi:"serviceName"`
@@ -92,7 +93,8 @@ type GetFunctionsOutputArgs struct {
 	// A list of functions ids.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by function name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Name of the service that contains the functions to find.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`

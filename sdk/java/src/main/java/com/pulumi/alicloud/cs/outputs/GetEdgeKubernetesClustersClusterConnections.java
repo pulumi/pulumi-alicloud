@@ -13,14 +13,21 @@ public final class GetEdgeKubernetesClustersClusterConnections {
      * @return API Server Internet endpoint.
      * 
      */
-    private String apiServerInternet;
+    private final String apiServerInternet;
     /**
      * @return API Server Intranet endpoint.
      * 
      */
-    private String apiServerIntranet;
+    private final String apiServerIntranet;
 
-    private GetEdgeKubernetesClustersClusterConnections() {}
+    @CustomType.Constructor
+    private GetEdgeKubernetesClustersClusterConnections(
+        @CustomType.Parameter("apiServerInternet") String apiServerInternet,
+        @CustomType.Parameter("apiServerIntranet") String apiServerIntranet) {
+        this.apiServerInternet = apiServerInternet;
+        this.apiServerIntranet = apiServerIntranet;
+    }
+
     /**
      * @return API Server Internet endpoint.
      * 
@@ -43,32 +50,30 @@ public final class GetEdgeKubernetesClustersClusterConnections {
     public static Builder builder(GetEdgeKubernetesClustersClusterConnections defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String apiServerInternet;
         private String apiServerIntranet;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEdgeKubernetesClustersClusterConnections defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiServerInternet = defaults.apiServerInternet;
     	      this.apiServerIntranet = defaults.apiServerIntranet;
         }
 
-        @CustomType.Setter
         public Builder apiServerInternet(String apiServerInternet) {
             this.apiServerInternet = Objects.requireNonNull(apiServerInternet);
             return this;
         }
-        @CustomType.Setter
         public Builder apiServerIntranet(String apiServerIntranet) {
             this.apiServerIntranet = Objects.requireNonNull(apiServerIntranet);
             return this;
-        }
-        public GetEdgeKubernetesClustersClusterConnections build() {
-            final var o = new GetEdgeKubernetesClustersClusterConnections();
-            o.apiServerInternet = apiServerInternet;
-            o.apiServerIntranet = apiServerIntranet;
-            return o;
+        }        public GetEdgeKubernetesClustersClusterConnections build() {
+            return new GetEdgeKubernetesClustersClusterConnections(apiServerInternet, apiServerIntranet);
         }
     }
 }

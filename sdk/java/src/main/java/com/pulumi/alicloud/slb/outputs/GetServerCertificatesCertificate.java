@@ -20,74 +20,105 @@ public final class GetServerCertificatesCertificate {
      * @return Id of server certificate issued by alibaba cloud.
      * 
      */
-    private String alicloudCertificateId;
+    private final String alicloudCertificateId;
     /**
      * @return Name of server certificate issued by alibaba cloud.
      * 
      */
-    private String alicloudCertificateName;
+    private final String alicloudCertificateName;
     /**
      * @return Server certificate common name.
      * 
      */
-    private String commonName;
+    private final String commonName;
     /**
      * @return Server certificate created time.
      * 
      */
-    private String createdTime;
+    private final String createdTime;
     /**
      * @return Server certificate created timestamp.
      * 
      */
-    private Integer createdTimestamp;
+    private final Integer createdTimestamp;
     /**
      * @return Server certificate expired time.
      * 
      */
-    private String expiredTime;
+    private final String expiredTime;
     /**
      * @return Server certificate expired timestamp.
      * 
      */
-    private Integer expiredTimestamp;
+    private final Integer expiredTimestamp;
     /**
      * @return Server certificate fingerprint.
      * 
      */
-    private String fingerprint;
+    private final String fingerprint;
     /**
      * @return Server certificate ID.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Is server certificate issued by alibaba cloud or not.
      * 
      */
-    private Boolean isAlicloudCertificate;
+    private final Boolean isAlicloudCertificate;
     /**
      * @return Server certificate name.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The Id of resource group which the slb server certificates belongs.
      * 
      */
-    private @Nullable String resourceGroupId;
+    private final @Nullable String resourceGroupId;
     /**
      * @return Server certificate subject alternative name list.
      * 
      */
-    private List<String> subjectAlternativeNames;
+    private final List<String> subjectAlternativeNames;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private final @Nullable Map<String,Object> tags;
 
-    private GetServerCertificatesCertificate() {}
+    @CustomType.Constructor
+    private GetServerCertificatesCertificate(
+        @CustomType.Parameter("alicloudCertificateId") String alicloudCertificateId,
+        @CustomType.Parameter("alicloudCertificateName") String alicloudCertificateName,
+        @CustomType.Parameter("commonName") String commonName,
+        @CustomType.Parameter("createdTime") String createdTime,
+        @CustomType.Parameter("createdTimestamp") Integer createdTimestamp,
+        @CustomType.Parameter("expiredTime") String expiredTime,
+        @CustomType.Parameter("expiredTimestamp") Integer expiredTimestamp,
+        @CustomType.Parameter("fingerprint") String fingerprint,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("isAlicloudCertificate") Boolean isAlicloudCertificate,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
+        @CustomType.Parameter("subjectAlternativeNames") List<String> subjectAlternativeNames,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
+        this.alicloudCertificateId = alicloudCertificateId;
+        this.alicloudCertificateName = alicloudCertificateName;
+        this.commonName = commonName;
+        this.createdTime = createdTime;
+        this.createdTimestamp = createdTimestamp;
+        this.expiredTime = expiredTime;
+        this.expiredTimestamp = expiredTimestamp;
+        this.fingerprint = fingerprint;
+        this.id = id;
+        this.isAlicloudCertificate = isAlicloudCertificate;
+        this.name = name;
+        this.resourceGroupId = resourceGroupId;
+        this.subjectAlternativeNames = subjectAlternativeNames;
+        this.tags = tags;
+    }
+
     /**
      * @return Id of server certificate issued by alibaba cloud.
      * 
@@ -194,7 +225,7 @@ public final class GetServerCertificatesCertificate {
     public static Builder builder(GetServerCertificatesCertificate defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String alicloudCertificateId;
         private String alicloudCertificateName;
@@ -210,7 +241,11 @@ public final class GetServerCertificatesCertificate {
         private @Nullable String resourceGroupId;
         private List<String> subjectAlternativeNames;
         private @Nullable Map<String,Object> tags;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServerCertificatesCertificate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alicloudCertificateId = defaults.alicloudCertificateId;
@@ -229,67 +264,54 @@ public final class GetServerCertificatesCertificate {
     	      this.tags = defaults.tags;
         }
 
-        @CustomType.Setter
         public Builder alicloudCertificateId(String alicloudCertificateId) {
             this.alicloudCertificateId = Objects.requireNonNull(alicloudCertificateId);
             return this;
         }
-        @CustomType.Setter
         public Builder alicloudCertificateName(String alicloudCertificateName) {
             this.alicloudCertificateName = Objects.requireNonNull(alicloudCertificateName);
             return this;
         }
-        @CustomType.Setter
         public Builder commonName(String commonName) {
             this.commonName = Objects.requireNonNull(commonName);
             return this;
         }
-        @CustomType.Setter
         public Builder createdTime(String createdTime) {
             this.createdTime = Objects.requireNonNull(createdTime);
             return this;
         }
-        @CustomType.Setter
         public Builder createdTimestamp(Integer createdTimestamp) {
             this.createdTimestamp = Objects.requireNonNull(createdTimestamp);
             return this;
         }
-        @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
-        @CustomType.Setter
         public Builder expiredTimestamp(Integer expiredTimestamp) {
             this.expiredTimestamp = Objects.requireNonNull(expiredTimestamp);
             return this;
         }
-        @CustomType.Setter
         public Builder fingerprint(String fingerprint) {
             this.fingerprint = Objects.requireNonNull(fingerprint);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder isAlicloudCertificate(Boolean isAlicloudCertificate) {
             this.isAlicloudCertificate = Objects.requireNonNull(isAlicloudCertificate);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
-        @CustomType.Setter
         public Builder subjectAlternativeNames(List<String> subjectAlternativeNames) {
             this.subjectAlternativeNames = Objects.requireNonNull(subjectAlternativeNames);
             return this;
@@ -297,28 +319,11 @@ public final class GetServerCertificatesCertificate {
         public Builder subjectAlternativeNames(String... subjectAlternativeNames) {
             return subjectAlternativeNames(List.of(subjectAlternativeNames));
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }
-        public GetServerCertificatesCertificate build() {
-            final var o = new GetServerCertificatesCertificate();
-            o.alicloudCertificateId = alicloudCertificateId;
-            o.alicloudCertificateName = alicloudCertificateName;
-            o.commonName = commonName;
-            o.createdTime = createdTime;
-            o.createdTimestamp = createdTimestamp;
-            o.expiredTime = expiredTime;
-            o.expiredTimestamp = expiredTimestamp;
-            o.fingerprint = fingerprint;
-            o.id = id;
-            o.isAlicloudCertificate = isAlicloudCertificate;
-            o.name = name;
-            o.resourceGroupId = resourceGroupId;
-            o.subjectAlternativeNames = subjectAlternativeNames;
-            o.tags = tags;
-            return o;
+        }        public GetServerCertificatesCertificate build() {
+            return new GetServerCertificatesCertificate(alicloudCertificateId, alicloudCertificateName, commonName, createdTime, createdTimestamp, expiredTime, expiredTimestamp, fingerprint, id, isAlicloudCertificate, name, resourceGroupId, subjectAlternativeNames, tags);
         }
     }
 }

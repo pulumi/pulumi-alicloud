@@ -332,6 +332,8 @@ func (o ChainChainConfigNodeNodeConfigArrayOutput) Index(i pulumi.IntInput) Chai
 
 type ChainChainConfigNodeNodeConfigDenyPolicy struct {
 	// The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+	//
+	// > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `nodeName` are fixed. You can refer to the template given in the example for configuration.
 	Action *string `pulumi:"action"`
 	// The count of scanning vulnerabilities that triggers blocking.
 	IssueCount *string `pulumi:"issueCount"`
@@ -354,6 +356,8 @@ type ChainChainConfigNodeNodeConfigDenyPolicyInput interface {
 
 type ChainChainConfigNodeNodeConfigDenyPolicyArgs struct {
 	// The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+	//
+	// > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `nodeName` are fixed. You can refer to the template given in the example for configuration.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// The count of scanning vulnerabilities that triggers blocking.
 	IssueCount pulumi.StringPtrInput `pulumi:"issueCount"`
@@ -415,6 +419,8 @@ func (o ChainChainConfigNodeNodeConfigDenyPolicyOutput) ToChainChainConfigNodeNo
 }
 
 // The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+//
+// > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `nodeName` are fixed. You can refer to the template given in the example for configuration.
 func (o ChainChainConfigNodeNodeConfigDenyPolicyOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ChainChainConfigNodeNodeConfigDenyPolicy) *string { return v.Action }).(pulumi.StringPtrOutput)
 }

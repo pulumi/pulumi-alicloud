@@ -14,54 +14,77 @@ public final class GetProductVersionsVersion {
      * @return Whether the version is activated
      * 
      */
-    private Boolean active;
+    private final Boolean active;
     /**
      * @return The creation time of the resource
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return Version description
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return Administrator guidance
      * 
      */
-    private String guidance;
+    private final String guidance;
     /**
      * @return ID of product version.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Product ID
      * 
      */
-    private String productId;
+    private final String productId;
     /**
      * @return The first ID of the resource
      * 
      */
-    private String productVersionId;
+    private final String productVersionId;
     /**
      * @return The name of the resource
      * 
      */
-    private String productVersionName;
+    private final String productVersionName;
     /**
      * @return Template Type
      * 
      */
-    private String templateType;
+    private final String templateType;
     /**
      * @return Template URL
      * 
      */
-    private String templateUrl;
+    private final String templateUrl;
 
-    private GetProductVersionsVersion() {}
+    @CustomType.Constructor
+    private GetProductVersionsVersion(
+        @CustomType.Parameter("active") Boolean active,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("guidance") String guidance,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("productId") String productId,
+        @CustomType.Parameter("productVersionId") String productVersionId,
+        @CustomType.Parameter("productVersionName") String productVersionName,
+        @CustomType.Parameter("templateType") String templateType,
+        @CustomType.Parameter("templateUrl") String templateUrl) {
+        this.active = active;
+        this.createTime = createTime;
+        this.description = description;
+        this.guidance = guidance;
+        this.id = id;
+        this.productId = productId;
+        this.productVersionId = productVersionId;
+        this.productVersionName = productVersionName;
+        this.templateType = templateType;
+        this.templateUrl = templateUrl;
+    }
+
     /**
      * @return Whether the version is activated
      * 
@@ -140,7 +163,7 @@ public final class GetProductVersionsVersion {
     public static Builder builder(GetProductVersionsVersion defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean active;
         private String createTime;
@@ -152,7 +175,11 @@ public final class GetProductVersionsVersion {
         private String productVersionName;
         private String templateType;
         private String templateUrl;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetProductVersionsVersion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.active = defaults.active;
@@ -167,69 +194,47 @@ public final class GetProductVersionsVersion {
     	      this.templateUrl = defaults.templateUrl;
         }
 
-        @CustomType.Setter
         public Builder active(Boolean active) {
             this.active = Objects.requireNonNull(active);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder guidance(String guidance) {
             this.guidance = Objects.requireNonNull(guidance);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder productId(String productId) {
             this.productId = Objects.requireNonNull(productId);
             return this;
         }
-        @CustomType.Setter
         public Builder productVersionId(String productVersionId) {
             this.productVersionId = Objects.requireNonNull(productVersionId);
             return this;
         }
-        @CustomType.Setter
         public Builder productVersionName(String productVersionName) {
             this.productVersionName = Objects.requireNonNull(productVersionName);
             return this;
         }
-        @CustomType.Setter
         public Builder templateType(String templateType) {
             this.templateType = Objects.requireNonNull(templateType);
             return this;
         }
-        @CustomType.Setter
         public Builder templateUrl(String templateUrl) {
             this.templateUrl = Objects.requireNonNull(templateUrl);
             return this;
-        }
-        public GetProductVersionsVersion build() {
-            final var o = new GetProductVersionsVersion();
-            o.active = active;
-            o.createTime = createTime;
-            o.description = description;
-            o.guidance = guidance;
-            o.id = id;
-            o.productId = productId;
-            o.productVersionId = productVersionId;
-            o.productVersionName = productVersionName;
-            o.templateType = templateType;
-            o.templateUrl = templateUrl;
-            return o;
+        }        public GetProductVersionsVersion build() {
+            return new GetProductVersionsVersion(active, createTime, description, guidance, id, productId, productVersionId, productVersionName, templateType, templateUrl);
         }
     }
 }

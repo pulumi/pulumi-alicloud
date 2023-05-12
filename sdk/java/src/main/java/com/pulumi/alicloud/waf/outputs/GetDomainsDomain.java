@@ -16,99 +16,140 @@ public final class GetDomainsDomain {
      * @return The type of the WAF cluster.
      * 
      */
-    private String clusterType;
+    private final String clusterType;
     /**
      * @return The CNAME record assigned by the WAF instance to the specified domain.
      * 
      */
-    private String cname;
+    private final String cname;
     /**
      * @return The connection timeout for WAF exclusive clusters. Valid values: `PhysicalCluster` and `VirtualCluster`. Default to `PhysicalCluster`.
      * 
      */
-    private Integer connectionTime;
+    private final Integer connectionTime;
     /**
      * @return Field `domain` has been deprecated from version 1.94.0. Use `domain_name` instead.
      * 
      */
-    private String domain;
+    private final String domain;
     /**
      * @return Name of the domain.
      * 
      */
-    private String domainName;
+    private final String domainName;
     /**
      * @return List of the HTTP 2.0 ports.
      * 
      */
-    private List<String> http2Ports;
+    private final List<String> http2Ports;
     /**
      * @return List of the HTTP ports.
      * 
      */
-    private List<String> httpPorts;
+    private final List<String> httpPorts;
     /**
      * @return Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
      * 
      */
-    private String httpToUserIp;
+    private final String httpToUserIp;
     /**
      * @return List of the HTTPS ports.
      * 
      */
-    private List<String> httpsPorts;
+    private final List<String> httpsPorts;
     /**
      * @return Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: `On` and `Off`. Default to `Off`.
      * 
      */
-    private String httpsRedirect;
+    private final String httpsRedirect;
     /**
      * @return The ID of domain self ID, value as `domain_name`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: `On` and &#34;Off&#34;. Default to `Off`.
      * 
      */
-    private String isAccessProduct;
+    private final String isAccessProduct;
     /**
      * @return The load balancing algorithm that is used to forward requests to the origin. Valid values: `IpHash` and `RoundRobin`. Default to `IpHash`.
      * 
      */
-    private String loadBalancing;
+    private final String loadBalancing;
     /**
      * @return The key-value pair that is used to mark the traffic that flows through WAF to the domain. Each item contains two field:
      * 
      */
-    private List<GetDomainsDomainLogHeader> logHeaders;
+    private final List<GetDomainsDomainLogHeader> logHeaders;
     /**
      * @return The read timeout of a WAF exclusive cluster. Unit: seconds.
      * 
      */
-    private Integer readTime;
+    private final Integer readTime;
     /**
      * @return The ID of the resource group to which the queried domain belongs in Resource Management.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return List of the IP address or domain of the origin server to which the specified domain points.
      * 
      */
-    private List<String> sourceIps;
+    private final List<String> sourceIps;
     /**
      * @return The system data identifier that is used to control optimistic locking.
      * 
      */
-    private Integer version;
+    private final Integer version;
     /**
      * @return The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
      * 
      */
-    private Integer writeTime;
+    private final Integer writeTime;
 
-    private GetDomainsDomain() {}
+    @CustomType.Constructor
+    private GetDomainsDomain(
+        @CustomType.Parameter("clusterType") String clusterType,
+        @CustomType.Parameter("cname") String cname,
+        @CustomType.Parameter("connectionTime") Integer connectionTime,
+        @CustomType.Parameter("domain") String domain,
+        @CustomType.Parameter("domainName") String domainName,
+        @CustomType.Parameter("http2Ports") List<String> http2Ports,
+        @CustomType.Parameter("httpPorts") List<String> httpPorts,
+        @CustomType.Parameter("httpToUserIp") String httpToUserIp,
+        @CustomType.Parameter("httpsPorts") List<String> httpsPorts,
+        @CustomType.Parameter("httpsRedirect") String httpsRedirect,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("isAccessProduct") String isAccessProduct,
+        @CustomType.Parameter("loadBalancing") String loadBalancing,
+        @CustomType.Parameter("logHeaders") List<GetDomainsDomainLogHeader> logHeaders,
+        @CustomType.Parameter("readTime") Integer readTime,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("sourceIps") List<String> sourceIps,
+        @CustomType.Parameter("version") Integer version,
+        @CustomType.Parameter("writeTime") Integer writeTime) {
+        this.clusterType = clusterType;
+        this.cname = cname;
+        this.connectionTime = connectionTime;
+        this.domain = domain;
+        this.domainName = domainName;
+        this.http2Ports = http2Ports;
+        this.httpPorts = httpPorts;
+        this.httpToUserIp = httpToUserIp;
+        this.httpsPorts = httpsPorts;
+        this.httpsRedirect = httpsRedirect;
+        this.id = id;
+        this.isAccessProduct = isAccessProduct;
+        this.loadBalancing = loadBalancing;
+        this.logHeaders = logHeaders;
+        this.readTime = readTime;
+        this.resourceGroupId = resourceGroupId;
+        this.sourceIps = sourceIps;
+        this.version = version;
+        this.writeTime = writeTime;
+    }
+
     /**
      * @return The type of the WAF cluster.
      * 
@@ -250,7 +291,7 @@ public final class GetDomainsDomain {
     public static Builder builder(GetDomainsDomain defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String clusterType;
         private String cname;
@@ -271,7 +312,11 @@ public final class GetDomainsDomain {
         private List<String> sourceIps;
         private Integer version;
         private Integer writeTime;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDomainsDomain defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterType = defaults.clusterType;
@@ -295,32 +340,26 @@ public final class GetDomainsDomain {
     	      this.writeTime = defaults.writeTime;
         }
 
-        @CustomType.Setter
         public Builder clusterType(String clusterType) {
             this.clusterType = Objects.requireNonNull(clusterType);
             return this;
         }
-        @CustomType.Setter
         public Builder cname(String cname) {
             this.cname = Objects.requireNonNull(cname);
             return this;
         }
-        @CustomType.Setter
         public Builder connectionTime(Integer connectionTime) {
             this.connectionTime = Objects.requireNonNull(connectionTime);
             return this;
         }
-        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
-        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
-        @CustomType.Setter
         public Builder http2Ports(List<String> http2Ports) {
             this.http2Ports = Objects.requireNonNull(http2Ports);
             return this;
@@ -328,7 +367,6 @@ public final class GetDomainsDomain {
         public Builder http2Ports(String... http2Ports) {
             return http2Ports(List.of(http2Ports));
         }
-        @CustomType.Setter
         public Builder httpPorts(List<String> httpPorts) {
             this.httpPorts = Objects.requireNonNull(httpPorts);
             return this;
@@ -336,12 +374,10 @@ public final class GetDomainsDomain {
         public Builder httpPorts(String... httpPorts) {
             return httpPorts(List.of(httpPorts));
         }
-        @CustomType.Setter
         public Builder httpToUserIp(String httpToUserIp) {
             this.httpToUserIp = Objects.requireNonNull(httpToUserIp);
             return this;
         }
-        @CustomType.Setter
         public Builder httpsPorts(List<String> httpsPorts) {
             this.httpsPorts = Objects.requireNonNull(httpsPorts);
             return this;
@@ -349,27 +385,22 @@ public final class GetDomainsDomain {
         public Builder httpsPorts(String... httpsPorts) {
             return httpsPorts(List.of(httpsPorts));
         }
-        @CustomType.Setter
         public Builder httpsRedirect(String httpsRedirect) {
             this.httpsRedirect = Objects.requireNonNull(httpsRedirect);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder isAccessProduct(String isAccessProduct) {
             this.isAccessProduct = Objects.requireNonNull(isAccessProduct);
             return this;
         }
-        @CustomType.Setter
         public Builder loadBalancing(String loadBalancing) {
             this.loadBalancing = Objects.requireNonNull(loadBalancing);
             return this;
         }
-        @CustomType.Setter
         public Builder logHeaders(List<GetDomainsDomainLogHeader> logHeaders) {
             this.logHeaders = Objects.requireNonNull(logHeaders);
             return this;
@@ -377,17 +408,14 @@ public final class GetDomainsDomain {
         public Builder logHeaders(GetDomainsDomainLogHeader... logHeaders) {
             return logHeaders(List.of(logHeaders));
         }
-        @CustomType.Setter
         public Builder readTime(Integer readTime) {
             this.readTime = Objects.requireNonNull(readTime);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceIps(List<String> sourceIps) {
             this.sourceIps = Objects.requireNonNull(sourceIps);
             return this;
@@ -395,38 +423,15 @@ public final class GetDomainsDomain {
         public Builder sourceIps(String... sourceIps) {
             return sourceIps(List.of(sourceIps));
         }
-        @CustomType.Setter
         public Builder version(Integer version) {
             this.version = Objects.requireNonNull(version);
             return this;
         }
-        @CustomType.Setter
         public Builder writeTime(Integer writeTime) {
             this.writeTime = Objects.requireNonNull(writeTime);
             return this;
-        }
-        public GetDomainsDomain build() {
-            final var o = new GetDomainsDomain();
-            o.clusterType = clusterType;
-            o.cname = cname;
-            o.connectionTime = connectionTime;
-            o.domain = domain;
-            o.domainName = domainName;
-            o.http2Ports = http2Ports;
-            o.httpPorts = httpPorts;
-            o.httpToUserIp = httpToUserIp;
-            o.httpsPorts = httpsPorts;
-            o.httpsRedirect = httpsRedirect;
-            o.id = id;
-            o.isAccessProduct = isAccessProduct;
-            o.loadBalancing = loadBalancing;
-            o.logHeaders = logHeaders;
-            o.readTime = readTime;
-            o.resourceGroupId = resourceGroupId;
-            o.sourceIps = sourceIps;
-            o.version = version;
-            o.writeTime = writeTime;
-            return o;
+        }        public GetDomainsDomain build() {
+            return new GetDomainsDomain(clusterType, cname, connectionTime, domain, domainName, http2Ports, httpPorts, httpToUserIp, httpsPorts, httpsRedirect, id, isAccessProduct, loadBalancing, logHeaders, readTime, resourceGroupId, sourceIps, version, writeTime);
         }
     }
 }

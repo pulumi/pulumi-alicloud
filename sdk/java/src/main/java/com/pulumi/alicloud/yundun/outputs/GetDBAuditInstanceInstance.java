@@ -13,17 +13,38 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDBAuditInstanceInstance {
-    private String description;
-    private String id;
-    private String instanceStatus;
-    private String licenseCode;
-    private String privateDomain;
-    private String publicDomain;
-    private Boolean publicNetworkAccess;
-    private @Nullable Map<String,Object> tags;
-    private String userVswitchId;
+    private final String description;
+    private final String id;
+    private final String instanceStatus;
+    private final String licenseCode;
+    private final String privateDomain;
+    private final String publicDomain;
+    private final Boolean publicNetworkAccess;
+    private final @Nullable Map<String,Object> tags;
+    private final String userVswitchId;
 
-    private GetDBAuditInstanceInstance() {}
+    @CustomType.Constructor
+    private GetDBAuditInstanceInstance(
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceStatus") String instanceStatus,
+        @CustomType.Parameter("licenseCode") String licenseCode,
+        @CustomType.Parameter("privateDomain") String privateDomain,
+        @CustomType.Parameter("publicDomain") String publicDomain,
+        @CustomType.Parameter("publicNetworkAccess") Boolean publicNetworkAccess,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
+        @CustomType.Parameter("userVswitchId") String userVswitchId) {
+        this.description = description;
+        this.id = id;
+        this.instanceStatus = instanceStatus;
+        this.licenseCode = licenseCode;
+        this.privateDomain = privateDomain;
+        this.publicDomain = publicDomain;
+        this.publicNetworkAccess = publicNetworkAccess;
+        this.tags = tags;
+        this.userVswitchId = userVswitchId;
+    }
+
     public String description() {
         return this.description;
     }
@@ -59,7 +80,7 @@ public final class GetDBAuditInstanceInstance {
     public static Builder builder(GetDBAuditInstanceInstance defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String description;
         private String id;
@@ -70,7 +91,11 @@ public final class GetDBAuditInstanceInstance {
         private Boolean publicNetworkAccess;
         private @Nullable Map<String,Object> tags;
         private String userVswitchId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDBAuditInstanceInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -84,63 +109,43 @@ public final class GetDBAuditInstanceInstance {
     	      this.userVswitchId = defaults.userVswitchId;
         }
 
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceStatus(String instanceStatus) {
             this.instanceStatus = Objects.requireNonNull(instanceStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder licenseCode(String licenseCode) {
             this.licenseCode = Objects.requireNonNull(licenseCode);
             return this;
         }
-        @CustomType.Setter
         public Builder privateDomain(String privateDomain) {
             this.privateDomain = Objects.requireNonNull(privateDomain);
             return this;
         }
-        @CustomType.Setter
         public Builder publicDomain(String publicDomain) {
             this.publicDomain = Objects.requireNonNull(publicDomain);
             return this;
         }
-        @CustomType.Setter
         public Builder publicNetworkAccess(Boolean publicNetworkAccess) {
             this.publicNetworkAccess = Objects.requireNonNull(publicNetworkAccess);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
-        @CustomType.Setter
         public Builder userVswitchId(String userVswitchId) {
             this.userVswitchId = Objects.requireNonNull(userVswitchId);
             return this;
-        }
-        public GetDBAuditInstanceInstance build() {
-            final var o = new GetDBAuditInstanceInstance();
-            o.description = description;
-            o.id = id;
-            o.instanceStatus = instanceStatus;
-            o.licenseCode = licenseCode;
-            o.privateDomain = privateDomain;
-            o.publicDomain = publicDomain;
-            o.publicNetworkAccess = publicNetworkAccess;
-            o.tags = tags;
-            o.userVswitchId = userVswitchId;
-            return o;
+        }        public GetDBAuditInstanceInstance build() {
+            return new GetDBAuditInstanceInstance(description, id, instanceStatus, licenseCode, privateDomain, publicDomain, publicNetworkAccess, tags, userVswitchId);
         }
     }
 }

@@ -69,6 +69,8 @@ export class AccessConfiguration extends pulumi.CustomResource {
     public readonly directoryId!: pulumi.Output<string>;
     /**
      * This parameter is used to force deletion `permissionPolicies`. Valid Value: `true` and `false`.
+     *
+     * * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
      */
     public readonly forceRemovePermissionPolicies!: pulumi.Output<boolean | undefined>;
     /**
@@ -149,6 +151,8 @@ export interface AccessConfigurationState {
     directoryId?: pulumi.Input<string>;
     /**
      * This parameter is used to force deletion `permissionPolicies`. Valid Value: `true` and `false`.
+     *
+     * * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
      */
     forceRemovePermissionPolicies?: pulumi.Input<boolean>;
     /**
@@ -183,6 +187,8 @@ export interface AccessConfigurationArgs {
     directoryId: pulumi.Input<string>;
     /**
      * This parameter is used to force deletion `permissionPolicies`. Valid Value: `true` and `false`.
+     *
+     * * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
      */
     forceRemovePermissionPolicies?: pulumi.Input<boolean>;
     /**

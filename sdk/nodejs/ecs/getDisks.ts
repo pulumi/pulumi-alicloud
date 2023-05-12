@@ -7,6 +7,10 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsDisks from version 1.122.0.
+ *
+ * This data source provides the disks of the current Alibaba Cloud user.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -98,6 +102,9 @@ export interface GetDisksArgs {
      */
     nameRegex?: string;
     operationLocks?: inputs.ecs.GetDisksOperationLock[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     pageNumber?: number;
     pageSize?: number;
@@ -215,6 +222,10 @@ export interface GetDisksResult {
     readonly zoneId?: string;
 }
 /**
+ * > **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsDisks from version 1.122.0.
+ *
+ * This data source provides the disks of the current Alibaba Cloud user.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -273,6 +284,9 @@ export interface GetDisksOutputArgs {
      */
     nameRegex?: pulumi.Input<string>;
     operationLocks?: pulumi.Input<pulumi.Input<inputs.ecs.GetDisksOperationLockArgs>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;

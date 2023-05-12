@@ -27,6 +27,8 @@ class RouteServiceArgs:
         :param pulumi.Input[str] host: The domain name or IP address of the cloud service.
         :param pulumi.Input[str] host_region_id: The region of the cloud service.
         :param pulumi.Input[str] host_vpc_id: The VPC associated with the cloud service.
+               
+               > **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
         :param pulumi.Input[str] description: The description of the cloud service.
         """
         pulumi.set(__self__, "access_region_id", access_region_id)
@@ -90,6 +92,8 @@ class RouteServiceArgs:
     def host_vpc_id(self) -> pulumi.Input[str]:
         """
         The VPC associated with the cloud service.
+
+        > **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
         """
         return pulumi.get(self, "host_vpc_id")
 
@@ -128,6 +132,8 @@ class _RouteServiceState:
         :param pulumi.Input[str] host: The domain name or IP address of the cloud service.
         :param pulumi.Input[str] host_region_id: The region of the cloud service.
         :param pulumi.Input[str] host_vpc_id: The VPC associated with the cloud service.
+               
+               > **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
         :param pulumi.Input[str] status: The status of the cloud service.
         """
         if access_region_id is not None:
@@ -210,6 +216,8 @@ class _RouteServiceState:
     def host_vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
         The VPC associated with the cloud service.
+
+        > **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
         """
         return pulumi.get(self, "host_vpc_id")
 
@@ -294,6 +302,8 @@ class RouteService(pulumi.CustomResource):
         :param pulumi.Input[str] host: The domain name or IP address of the cloud service.
         :param pulumi.Input[str] host_region_id: The region of the cloud service.
         :param pulumi.Input[str] host_vpc_id: The VPC associated with the cloud service.
+               
+               > **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
         """
         ...
     @overload
@@ -422,6 +432,8 @@ class RouteService(pulumi.CustomResource):
         :param pulumi.Input[str] host: The domain name or IP address of the cloud service.
         :param pulumi.Input[str] host_region_id: The region of the cloud service.
         :param pulumi.Input[str] host_vpc_id: The VPC associated with the cloud service.
+               
+               > **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
         :param pulumi.Input[str] status: The status of the cloud service.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -482,6 +494,8 @@ class RouteService(pulumi.CustomResource):
     def host_vpc_id(self) -> pulumi.Output[str]:
         """
         The VPC associated with the cloud service.
+
+        > **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
         """
         return pulumi.get(self, "host_vpc_id")
 

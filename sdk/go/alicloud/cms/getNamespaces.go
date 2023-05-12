@@ -58,7 +58,8 @@ type GetNamespacesArgs struct {
 	// A list of Namespace IDs.
 	Ids []string `pulumi:"ids"`
 	// The keywords of the `namespace` or `description` of the namespace.
-	Keyword    *string `pulumi:"keyword"`
+	Keyword *string `pulumi:"keyword"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
@@ -94,7 +95,8 @@ type GetNamespacesOutputArgs struct {
 	// A list of Namespace IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The keywords of the `namespace` or `description` of the namespace.
-	Keyword    pulumi.StringPtrInput `pulumi:"keyword"`
+	Keyword pulumi.StringPtrInput `pulumi:"keyword"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`

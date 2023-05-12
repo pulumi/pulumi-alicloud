@@ -18,15 +18,32 @@ public final class GetHybridMonitorFcTasksResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String namespace;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
-    private List<GetHybridMonitorFcTasksTask> tasks;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String namespace;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
+    private final List<GetHybridMonitorFcTasksTask> tasks;
 
-    private GetHybridMonitorFcTasksResult() {}
+    @CustomType.Constructor
+    private GetHybridMonitorFcTasksResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("namespace") @Nullable String namespace,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
+        @CustomType.Parameter("tasks") List<GetHybridMonitorFcTasksTask> tasks) {
+        this.id = id;
+        this.ids = ids;
+        this.namespace = namespace;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+        this.tasks = tasks;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -60,7 +77,7 @@ public final class GetHybridMonitorFcTasksResult {
     public static Builder builder(GetHybridMonitorFcTasksResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -69,7 +86,11 @@ public final class GetHybridMonitorFcTasksResult {
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
         private List<GetHybridMonitorFcTasksTask> tasks;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetHybridMonitorFcTasksResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -81,12 +102,10 @@ public final class GetHybridMonitorFcTasksResult {
     	      this.tasks = defaults.tasks;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -94,44 +113,30 @@ public final class GetHybridMonitorFcTasksResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
             this.namespace = namespace;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
-        @CustomType.Setter
         public Builder tasks(List<GetHybridMonitorFcTasksTask> tasks) {
             this.tasks = Objects.requireNonNull(tasks);
             return this;
         }
         public Builder tasks(GetHybridMonitorFcTasksTask... tasks) {
             return tasks(List.of(tasks));
-        }
-        public GetHybridMonitorFcTasksResult build() {
-            final var o = new GetHybridMonitorFcTasksResult();
-            o.id = id;
-            o.ids = ids;
-            o.namespace = namespace;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.tasks = tasks;
-            return o;
+        }        public GetHybridMonitorFcTasksResult build() {
+            return new GetHybridMonitorFcTasksResult(id, ids, namespace, outputFile, pageNumber, pageSize, tasks);
         }
     }
 }

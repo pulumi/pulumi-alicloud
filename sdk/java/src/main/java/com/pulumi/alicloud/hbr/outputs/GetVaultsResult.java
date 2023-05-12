@@ -17,16 +17,35 @@ public final class GetVaultsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String status;
-    private @Nullable String vaultType;
-    private List<GetVaultsVault> vaults;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String status;
+    private final @Nullable String vaultType;
+    private final List<GetVaultsVault> vaults;
 
-    private GetVaultsResult() {}
+    @CustomType.Constructor
+    private GetVaultsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("vaultType") @Nullable String vaultType,
+        @CustomType.Parameter("vaults") List<GetVaultsVault> vaults) {
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.status = status;
+        this.vaultType = vaultType;
+        this.vaults = vaults;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -63,7 +82,7 @@ public final class GetVaultsResult {
     public static Builder builder(GetVaultsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -73,7 +92,11 @@ public final class GetVaultsResult {
         private @Nullable String status;
         private @Nullable String vaultType;
         private List<GetVaultsVault> vaults;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVaultsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -86,12 +109,10 @@ public final class GetVaultsResult {
     	      this.vaults = defaults.vaults;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -99,12 +120,10 @@ public final class GetVaultsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -112,40 +131,26 @@ public final class GetVaultsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder vaultType(@Nullable String vaultType) {
             this.vaultType = vaultType;
             return this;
         }
-        @CustomType.Setter
         public Builder vaults(List<GetVaultsVault> vaults) {
             this.vaults = Objects.requireNonNull(vaults);
             return this;
         }
         public Builder vaults(GetVaultsVault... vaults) {
             return vaults(List.of(vaults));
-        }
-        public GetVaultsResult build() {
-            final var o = new GetVaultsResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.vaultType = vaultType;
-            o.vaults = vaults;
-            return o;
+        }        public GetVaultsResult build() {
+            return new GetVaultsResult(id, ids, nameRegex, names, outputFile, status, vaultType, vaults);
         }
     }
 }

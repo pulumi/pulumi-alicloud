@@ -148,6 +148,7 @@ def get_custom_lines(domain_name: Optional[str] = None,
     :param Sequence[str] ids: A list of Custom Line IDs.
     :param str lang: The lang.
     :param str name_regex: A regex string to filter results by Custom Line name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['domainName'] = domain_name
@@ -203,5 +204,6 @@ def get_custom_lines_output(domain_name: Optional[pulumi.Input[str]] = None,
     :param Sequence[str] ids: A list of Custom Line IDs.
     :param str lang: The lang.
     :param str name_regex: A regex string to filter results by Custom Line name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

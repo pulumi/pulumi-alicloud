@@ -13,22 +13,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDbInstancePlansResult {
-    private String dbInstanceId;
+    private final String dbInstanceId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String planScheduleType;
-    private @Nullable String planType;
-    private List<GetDbInstancePlansPlan> plans;
-    private @Nullable String status;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String planScheduleType;
+    private final @Nullable String planType;
+    private final List<GetDbInstancePlansPlan> plans;
+    private final @Nullable String status;
 
-    private GetDbInstancePlansResult() {}
+    @CustomType.Constructor
+    private GetDbInstancePlansResult(
+        @CustomType.Parameter("dbInstanceId") String dbInstanceId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("planScheduleType") @Nullable String planScheduleType,
+        @CustomType.Parameter("planType") @Nullable String planType,
+        @CustomType.Parameter("plans") List<GetDbInstancePlansPlan> plans,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.dbInstanceId = dbInstanceId;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.planScheduleType = planScheduleType;
+        this.planType = planType;
+        this.plans = plans;
+        this.status = status;
+    }
+
     public String dbInstanceId() {
         return this.dbInstanceId;
     }
@@ -71,7 +94,7 @@ public final class GetDbInstancePlansResult {
     public static Builder builder(GetDbInstancePlansResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String dbInstanceId;
         private String id;
@@ -83,7 +106,11 @@ public final class GetDbInstancePlansResult {
         private @Nullable String planType;
         private List<GetDbInstancePlansPlan> plans;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDbInstancePlansResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbInstanceId = defaults.dbInstanceId;
@@ -98,17 +125,14 @@ public final class GetDbInstancePlansResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder dbInstanceId(String dbInstanceId) {
             this.dbInstanceId = Objects.requireNonNull(dbInstanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -116,12 +140,10 @@ public final class GetDbInstancePlansResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -129,22 +151,18 @@ public final class GetDbInstancePlansResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder planScheduleType(@Nullable String planScheduleType) {
             this.planScheduleType = planScheduleType;
             return this;
         }
-        @CustomType.Setter
         public Builder planType(@Nullable String planType) {
             this.planType = planType;
             return this;
         }
-        @CustomType.Setter
         public Builder plans(List<GetDbInstancePlansPlan> plans) {
             this.plans = Objects.requireNonNull(plans);
             return this;
@@ -152,24 +170,11 @@ public final class GetDbInstancePlansResult {
         public Builder plans(GetDbInstancePlansPlan... plans) {
             return plans(List.of(plans));
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetDbInstancePlansResult build() {
-            final var o = new GetDbInstancePlansResult();
-            o.dbInstanceId = dbInstanceId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.planScheduleType = planScheduleType;
-            o.planType = planType;
-            o.plans = plans;
-            o.status = status;
-            return o;
+        }        public GetDbInstancePlansResult build() {
+            return new GetDbInstancePlansResult(dbInstanceId, id, ids, nameRegex, names, outputFile, planScheduleType, planType, plans, status);
         }
     }
 }

@@ -142,6 +142,7 @@ type GetRouteEntriesArgs struct {
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// The instance ID of the next hop.
 	InstanceId *string `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the router table to which the route entry belongs.
 	RouteTableId string `pulumi:"routeTableId"`
@@ -185,6 +186,7 @@ type GetRouteEntriesOutputArgs struct {
 	CidrBlock pulumi.StringPtrInput `pulumi:"cidrBlock"`
 	// The instance ID of the next hop.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the router table to which the route entry belongs.
 	RouteTableId pulumi.StringInput `pulumi:"routeTableId"`

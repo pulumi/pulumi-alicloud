@@ -73,7 +73,8 @@ type GetCustomRoutingEndpointGroupsArgs struct {
 	// The ID of the custom routing listener.
 	ListenerId *string `pulumi:"listenerId"`
 	// A regex string to filter results by Custom Routing Endpoint Group name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
@@ -128,7 +129,8 @@ type GetCustomRoutingEndpointGroupsOutputArgs struct {
 	// The ID of the custom routing listener.
 	ListenerId pulumi.StringPtrInput `pulumi:"listenerId"`
 	// A regex string to filter results by Custom Routing Endpoint Group name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`

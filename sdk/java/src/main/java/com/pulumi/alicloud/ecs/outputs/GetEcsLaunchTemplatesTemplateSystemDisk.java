@@ -15,39 +15,56 @@ public final class GetEcsLaunchTemplatesTemplateSystemDisk {
      * @return The category of the system disk.
      * 
      */
-    private String category;
+    private final String category;
     /**
      * @return Specifies whether to release the system disk when the instance is released.
      * 
      */
-    private Boolean deleteWithInstance;
+    private final Boolean deleteWithInstance;
     /**
      * @return System disk description.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The Iops.
      * 
      */
-    private String iops;
+    private final String iops;
     /**
      * @return System disk name.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The performance level of the ESSD used as the system disk.
      * 
      */
-    private String performanceLevel;
+    private final String performanceLevel;
     /**
      * @return Size of the system disk, measured in GB.
      * 
      */
-    private Integer size;
+    private final Integer size;
 
-    private GetEcsLaunchTemplatesTemplateSystemDisk() {}
+    @CustomType.Constructor
+    private GetEcsLaunchTemplatesTemplateSystemDisk(
+        @CustomType.Parameter("category") String category,
+        @CustomType.Parameter("deleteWithInstance") Boolean deleteWithInstance,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("iops") String iops,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("performanceLevel") String performanceLevel,
+        @CustomType.Parameter("size") Integer size) {
+        this.category = category;
+        this.deleteWithInstance = deleteWithInstance;
+        this.description = description;
+        this.iops = iops;
+        this.name = name;
+        this.performanceLevel = performanceLevel;
+        this.size = size;
+    }
+
     /**
      * @return The category of the system disk.
      * 
@@ -105,7 +122,7 @@ public final class GetEcsLaunchTemplatesTemplateSystemDisk {
     public static Builder builder(GetEcsLaunchTemplatesTemplateSystemDisk defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String category;
         private Boolean deleteWithInstance;
@@ -114,7 +131,11 @@ public final class GetEcsLaunchTemplatesTemplateSystemDisk {
         private String name;
         private String performanceLevel;
         private Integer size;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEcsLaunchTemplatesTemplateSystemDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -126,51 +147,35 @@ public final class GetEcsLaunchTemplatesTemplateSystemDisk {
     	      this.size = defaults.size;
         }
 
-        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
-        @CustomType.Setter
         public Builder deleteWithInstance(Boolean deleteWithInstance) {
             this.deleteWithInstance = Objects.requireNonNull(deleteWithInstance);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder iops(String iops) {
             this.iops = Objects.requireNonNull(iops);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder performanceLevel(String performanceLevel) {
             this.performanceLevel = Objects.requireNonNull(performanceLevel);
             return this;
         }
-        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
-        }
-        public GetEcsLaunchTemplatesTemplateSystemDisk build() {
-            final var o = new GetEcsLaunchTemplatesTemplateSystemDisk();
-            o.category = category;
-            o.deleteWithInstance = deleteWithInstance;
-            o.description = description;
-            o.iops = iops;
-            o.name = name;
-            o.performanceLevel = performanceLevel;
-            o.size = size;
-            return o;
+        }        public GetEcsLaunchTemplatesTemplateSystemDisk build() {
+            return new GetEcsLaunchTemplatesTemplateSystemDisk(category, deleteWithInstance, description, iops, name, performanceLevel, size);
         }
     }
 }

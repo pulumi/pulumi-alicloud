@@ -10,6 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
+    /// Provides a network acl entries resource to create ingress and egress entries.
+    /// 
+    /// &gt; **NOTE:** Available in 1.45.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
+    /// 
+    /// &gt; **NOTE:** It doesn't support concurrency and the order of the ingress and egress entries determines the priority.
+    /// 
+    /// &gt; **NOTE:** Using this resource need to open a whitelist.
+    /// 
+    /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.122.0`. Replace by `ingress_acl_entries` and `egress_acl_entries` with the resource alicloud_network_acl.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage

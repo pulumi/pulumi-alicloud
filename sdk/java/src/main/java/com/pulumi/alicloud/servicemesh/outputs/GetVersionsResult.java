@@ -13,17 +13,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVersionsResult {
-    private @Nullable String edition;
+    private final @Nullable String edition;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String outputFile;
-    private List<GetVersionsVersion> versions;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
+    private final List<GetVersionsVersion> versions;
 
-    private GetVersionsResult() {}
+    @CustomType.Constructor
+    private GetVersionsResult(
+        @CustomType.Parameter("edition") @Nullable String edition,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("versions") List<GetVersionsVersion> versions) {
+        this.edition = edition;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.versions = versions;
+    }
+
     public Optional<String> edition() {
         return Optional.ofNullable(this.edition);
     }
@@ -51,14 +64,18 @@ public final class GetVersionsResult {
     public static Builder builder(GetVersionsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String edition;
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
         private List<GetVersionsVersion> versions;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVersionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.edition = defaults.edition;
@@ -68,17 +85,14 @@ public final class GetVersionsResult {
     	      this.versions = defaults.versions;
         }
 
-        @CustomType.Setter
         public Builder edition(@Nullable String edition) {
             this.edition = edition;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -86,27 +100,18 @@ public final class GetVersionsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder versions(List<GetVersionsVersion> versions) {
             this.versions = Objects.requireNonNull(versions);
             return this;
         }
         public Builder versions(GetVersionsVersion... versions) {
             return versions(List.of(versions));
-        }
-        public GetVersionsResult build() {
-            final var o = new GetVersionsResult();
-            o.edition = edition;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.versions = versions;
-            return o;
+        }        public GetVersionsResult build() {
+            return new GetVersionsResult(edition, id, ids, outputFile, versions);
         }
     }
 }

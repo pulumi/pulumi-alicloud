@@ -12,6 +12,10 @@ namespace Pulumi.AliCloud.Dns
     public static class GetDomains
     {
         /// <summary>
+        /// &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsDomains from version 1.95.0. 
+        /// 
+        /// This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -43,6 +47,10 @@ namespace Pulumi.AliCloud.Dns
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:dns/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsDomains from version 1.95.0. 
+        /// 
+        /// This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -134,6 +142,9 @@ namespace Pulumi.AliCloud.Dns
         [Input("lang")]
         public string? Lang { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -238,6 +249,9 @@ namespace Pulumi.AliCloud.Dns
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

@@ -197,6 +197,7 @@ def get_virtual_physical_connections(business_status: Optional[str] = None,
            - **SecurityLocked**: locked for security reasons.
     :param Sequence[str] ids: A list of Virtual Physical Connection IDs.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str parent_physical_connection_id: The ID of the instance of the physical connection.
     :param Sequence[str] virtual_physical_connection_ids: The ID of the hosted connection. You can specify multiple hosted connection IDs.
     :param str virtual_physical_connection_status: The business status of the shared line. Value:
@@ -260,6 +261,7 @@ def get_virtual_physical_connections_output(business_status: Optional[pulumi.Inp
            - **SecurityLocked**: locked for security reasons.
     :param Sequence[str] ids: A list of Virtual Physical Connection IDs.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str parent_physical_connection_id: The ID of the instance of the physical connection.
     :param Sequence[str] virtual_physical_connection_ids: The ID of the hosted connection. You can specify multiple hosted connection IDs.
     :param str virtual_physical_connection_status: The business status of the shared line. Value:

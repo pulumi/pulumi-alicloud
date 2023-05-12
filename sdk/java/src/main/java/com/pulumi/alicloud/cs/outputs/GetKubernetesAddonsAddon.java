@@ -14,29 +14,42 @@ public final class GetKubernetesAddonsAddon {
      * @return The current custom configuration of the addon. **Note:** Available in v1.166.0+
      * 
      */
-    private String currentConfig;
+    private final String currentConfig;
     /**
      * @return The current version of addon, if this field is an empty string, it means that the addon is not installed.
      * 
      */
-    private String currentVersion;
+    private final String currentVersion;
     /**
      * @return The name of addon.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The next version of this addon can be upgraded to.
      * 
      */
-    private String nextVersion;
+    private final String nextVersion;
     /**
      * @return Whether the addon is a system addon.
      * 
      */
-    private Boolean required;
+    private final Boolean required;
 
-    private GetKubernetesAddonsAddon() {}
+    @CustomType.Constructor
+    private GetKubernetesAddonsAddon(
+        @CustomType.Parameter("currentConfig") String currentConfig,
+        @CustomType.Parameter("currentVersion") String currentVersion,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("nextVersion") String nextVersion,
+        @CustomType.Parameter("required") Boolean required) {
+        this.currentConfig = currentConfig;
+        this.currentVersion = currentVersion;
+        this.name = name;
+        this.nextVersion = nextVersion;
+        this.required = required;
+    }
+
     /**
      * @return The current custom configuration of the addon. **Note:** Available in v1.166.0+
      * 
@@ -80,14 +93,18 @@ public final class GetKubernetesAddonsAddon {
     public static Builder builder(GetKubernetesAddonsAddon defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String currentConfig;
         private String currentVersion;
         private String name;
         private String nextVersion;
         private Boolean required;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetKubernetesAddonsAddon defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.currentConfig = defaults.currentConfig;
@@ -97,39 +114,27 @@ public final class GetKubernetesAddonsAddon {
     	      this.required = defaults.required;
         }
 
-        @CustomType.Setter
         public Builder currentConfig(String currentConfig) {
             this.currentConfig = Objects.requireNonNull(currentConfig);
             return this;
         }
-        @CustomType.Setter
         public Builder currentVersion(String currentVersion) {
             this.currentVersion = Objects.requireNonNull(currentVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder nextVersion(String nextVersion) {
             this.nextVersion = Objects.requireNonNull(nextVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder required(Boolean required) {
             this.required = Objects.requireNonNull(required);
             return this;
-        }
-        public GetKubernetesAddonsAddon build() {
-            final var o = new GetKubernetesAddonsAddon();
-            o.currentConfig = currentConfig;
-            o.currentVersion = currentVersion;
-            o.name = name;
-            o.nextVersion = nextVersion;
-            o.required = required;
-            return o;
+        }        public GetKubernetesAddonsAddon build() {
+            return new GetKubernetesAddonsAddon(currentConfig, currentVersion, name, nextVersion, required);
         }
     }
 }

@@ -107,17 +107,9 @@ public final class EcsKeyPairArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
-    /**
-     * A mapping of tags to assign to the resource.
-     * 
-     */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
-    /**
-     * @return A mapping of tags to assign to the resource.
-     * 
-     */
     public Optional<Output<Map<String,Object>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -274,23 +266,11 @@ public final class EcsKeyPairArgs extends com.pulumi.resources.ResourceArgs {
             return resourceGroupId(Output.of(resourceGroupId));
         }
 
-        /**
-         * @param tags A mapping of tags to assign to the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(@Nullable Output<Map<String,Object>> tags) {
             $.tags = tags;
             return this;
         }
 
-        /**
-         * @param tags A mapping of tags to assign to the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(Map<String,Object> tags) {
             return tags(Output.of(tags));
         }

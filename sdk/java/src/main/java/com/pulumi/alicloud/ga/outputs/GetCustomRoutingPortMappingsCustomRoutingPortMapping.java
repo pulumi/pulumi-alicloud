@@ -16,54 +16,77 @@ public final class GetCustomRoutingPortMappingsCustomRoutingPortMapping {
      * @return The ID of the GA instance.
      * 
      */
-    private String acceleratorId;
+    private final String acceleratorId;
     /**
      * @return The acceleration port.
      * 
      */
-    private Integer acceleratorPort;
+    private final Integer acceleratorPort;
     /**
      * @return The service IP address and port of the backend instance.
      * 
      */
-    private List<GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress> destinationSocketAddresses;
+    private final List<GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress> destinationSocketAddresses;
     /**
      * @return The ID of the endpoint group.
      * 
      */
-    private String endpointGroupId;
+    private final String endpointGroupId;
     /**
      * @return The ID of the region in which the endpoint group resides.
      * 
      */
-    private String endpointGroupRegion;
+    private final String endpointGroupRegion;
     /**
      * @return The ID of the endpoint.
      * 
      */
-    private String endpointId;
+    private final String endpointId;
     /**
      * @return The ID of the listener.
      * 
      */
-    private String listenerId;
+    private final String listenerId;
     /**
      * @return The protocol of the backend service.
      * 
      */
-    private List<String> protocols;
+    private final List<String> protocols;
     /**
      * @return The access policy of traffic for the backend instance. Valid Values: `allow`, `deny`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The ID of the endpoint (vSwitch).
      * 
      */
-    private String vswitch;
+    private final String vswitch;
 
-    private GetCustomRoutingPortMappingsCustomRoutingPortMapping() {}
+    @CustomType.Constructor
+    private GetCustomRoutingPortMappingsCustomRoutingPortMapping(
+        @CustomType.Parameter("acceleratorId") String acceleratorId,
+        @CustomType.Parameter("acceleratorPort") Integer acceleratorPort,
+        @CustomType.Parameter("destinationSocketAddresses") List<GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress> destinationSocketAddresses,
+        @CustomType.Parameter("endpointGroupId") String endpointGroupId,
+        @CustomType.Parameter("endpointGroupRegion") String endpointGroupRegion,
+        @CustomType.Parameter("endpointId") String endpointId,
+        @CustomType.Parameter("listenerId") String listenerId,
+        @CustomType.Parameter("protocols") List<String> protocols,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("vswitch") String vswitch) {
+        this.acceleratorId = acceleratorId;
+        this.acceleratorPort = acceleratorPort;
+        this.destinationSocketAddresses = destinationSocketAddresses;
+        this.endpointGroupId = endpointGroupId;
+        this.endpointGroupRegion = endpointGroupRegion;
+        this.endpointId = endpointId;
+        this.listenerId = listenerId;
+        this.protocols = protocols;
+        this.status = status;
+        this.vswitch = vswitch;
+    }
+
     /**
      * @return The ID of the GA instance.
      * 
@@ -142,7 +165,7 @@ public final class GetCustomRoutingPortMappingsCustomRoutingPortMapping {
     public static Builder builder(GetCustomRoutingPortMappingsCustomRoutingPortMapping defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String acceleratorId;
         private Integer acceleratorPort;
@@ -154,7 +177,11 @@ public final class GetCustomRoutingPortMappingsCustomRoutingPortMapping {
         private List<String> protocols;
         private String status;
         private String vswitch;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetCustomRoutingPortMappingsCustomRoutingPortMapping defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorId = defaults.acceleratorId;
@@ -169,17 +196,14 @@ public final class GetCustomRoutingPortMappingsCustomRoutingPortMapping {
     	      this.vswitch = defaults.vswitch;
         }
 
-        @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
             this.acceleratorId = Objects.requireNonNull(acceleratorId);
             return this;
         }
-        @CustomType.Setter
         public Builder acceleratorPort(Integer acceleratorPort) {
             this.acceleratorPort = Objects.requireNonNull(acceleratorPort);
             return this;
         }
-        @CustomType.Setter
         public Builder destinationSocketAddresses(List<GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress> destinationSocketAddresses) {
             this.destinationSocketAddresses = Objects.requireNonNull(destinationSocketAddresses);
             return this;
@@ -187,27 +211,22 @@ public final class GetCustomRoutingPortMappingsCustomRoutingPortMapping {
         public Builder destinationSocketAddresses(GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress... destinationSocketAddresses) {
             return destinationSocketAddresses(List.of(destinationSocketAddresses));
         }
-        @CustomType.Setter
         public Builder endpointGroupId(String endpointGroupId) {
             this.endpointGroupId = Objects.requireNonNull(endpointGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointGroupRegion(String endpointGroupRegion) {
             this.endpointGroupRegion = Objects.requireNonNull(endpointGroupRegion);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointId(String endpointId) {
             this.endpointId = Objects.requireNonNull(endpointId);
             return this;
         }
-        @CustomType.Setter
         public Builder listenerId(String listenerId) {
             this.listenerId = Objects.requireNonNull(listenerId);
             return this;
         }
-        @CustomType.Setter
         public Builder protocols(List<String> protocols) {
             this.protocols = Objects.requireNonNull(protocols);
             return this;
@@ -215,29 +234,15 @@ public final class GetCustomRoutingPortMappingsCustomRoutingPortMapping {
         public Builder protocols(String... protocols) {
             return protocols(List.of(protocols));
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitch(String vswitch) {
             this.vswitch = Objects.requireNonNull(vswitch);
             return this;
-        }
-        public GetCustomRoutingPortMappingsCustomRoutingPortMapping build() {
-            final var o = new GetCustomRoutingPortMappingsCustomRoutingPortMapping();
-            o.acceleratorId = acceleratorId;
-            o.acceleratorPort = acceleratorPort;
-            o.destinationSocketAddresses = destinationSocketAddresses;
-            o.endpointGroupId = endpointGroupId;
-            o.endpointGroupRegion = endpointGroupRegion;
-            o.endpointId = endpointId;
-            o.listenerId = listenerId;
-            o.protocols = protocols;
-            o.status = status;
-            o.vswitch = vswitch;
-            return o;
+        }        public GetCustomRoutingPortMappingsCustomRoutingPortMapping build() {
+            return new GetCustomRoutingPortMappingsCustomRoutingPortMapping(acceleratorId, acceleratorPort, destinationSocketAddresses, endpointGroupId, endpointGroupRegion, endpointId, listenerId, protocols, status, vswitch);
         }
     }
 }

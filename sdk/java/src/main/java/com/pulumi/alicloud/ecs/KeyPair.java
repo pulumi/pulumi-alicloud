@@ -17,6 +17,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsKeyPair from version 1.121.0.
+ * 
+ * Provides a key pair resource.
+ * 
  * ## Example Usage
  * 
  * Basic Usage

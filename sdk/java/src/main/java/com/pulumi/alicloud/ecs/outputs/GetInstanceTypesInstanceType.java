@@ -19,41 +19,41 @@ public final class GetInstanceTypesInstanceType {
      * @return List of availability zones that support the instance type.
      * 
      */
-    private List<String> availabilityZones;
+    private final List<String> availabilityZones;
     /**
      * @return The burstable instance attribution:
      * - initial_credit: The initial CPU credit of a burstable instance.
      * - baseline_credit:  The compute performance benchmark CPU credit of a burstable instance.
      * 
      */
-    private GetInstanceTypesInstanceTypeBurstableInstance burstableInstance;
+    private final GetInstanceTypesInstanceTypeBurstableInstance burstableInstance;
     /**
      * @return Filter the results to a specific number of cpu cores.
      * 
      */
-    private Integer cpuCoreCount;
+    private final Integer cpuCoreCount;
     /**
      * @return Filter the result whose network interface number is no more than `eni_amount`.
      * 
      */
-    private Integer eniAmount;
+    private final Integer eniAmount;
     /**
      * @return The instance type family.
      * 
      */
-    private String family;
+    private final String family;
     /**
      * @return The GPU attribution of an instance type:
      * - amount: The amount of GPU of an instance type.
      * - category: The category of GPU of an instance type.
      * 
      */
-    private GetInstanceTypesInstanceTypeGpu gpu;
+    private final GetInstanceTypesInstanceTypeGpu gpu;
     /**
      * @return ID of the instance type.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Local storage of an instance type:
      * - capacity: The capacity of a local storage in GB.
@@ -61,22 +61,47 @@ public final class GetInstanceTypesInstanceType {
      * - category: The category of local storage that an instance has been attached to.
      * 
      */
-    private GetInstanceTypesInstanceTypeLocalStorage localStorage;
+    private final GetInstanceTypesInstanceTypeLocalStorage localStorage;
     /**
      * @return Filter the results to a specific memory size in GB.
      * 
      */
-    private Double memorySize;
+    private final Double memorySize;
     /**
      * @return Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol. Valid values:
      * - required: The cloud disk can be attached by using the NVMe protocol.
      * - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
      * 
      */
-    private String nvmeSupport;
-    private String price;
+    private final String nvmeSupport;
+    private final String price;
 
-    private GetInstanceTypesInstanceType() {}
+    @CustomType.Constructor
+    private GetInstanceTypesInstanceType(
+        @CustomType.Parameter("availabilityZones") List<String> availabilityZones,
+        @CustomType.Parameter("burstableInstance") GetInstanceTypesInstanceTypeBurstableInstance burstableInstance,
+        @CustomType.Parameter("cpuCoreCount") Integer cpuCoreCount,
+        @CustomType.Parameter("eniAmount") Integer eniAmount,
+        @CustomType.Parameter("family") String family,
+        @CustomType.Parameter("gpu") GetInstanceTypesInstanceTypeGpu gpu,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("localStorage") GetInstanceTypesInstanceTypeLocalStorage localStorage,
+        @CustomType.Parameter("memorySize") Double memorySize,
+        @CustomType.Parameter("nvmeSupport") String nvmeSupport,
+        @CustomType.Parameter("price") String price) {
+        this.availabilityZones = availabilityZones;
+        this.burstableInstance = burstableInstance;
+        this.cpuCoreCount = cpuCoreCount;
+        this.eniAmount = eniAmount;
+        this.family = family;
+        this.gpu = gpu;
+        this.id = id;
+        this.localStorage = localStorage;
+        this.memorySize = memorySize;
+        this.nvmeSupport = nvmeSupport;
+        this.price = price;
+    }
+
     /**
      * @return List of availability zones that support the instance type.
      * 
@@ -167,7 +192,7 @@ public final class GetInstanceTypesInstanceType {
     public static Builder builder(GetInstanceTypesInstanceType defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<String> availabilityZones;
         private GetInstanceTypesInstanceTypeBurstableInstance burstableInstance;
@@ -180,7 +205,11 @@ public final class GetInstanceTypesInstanceType {
         private Double memorySize;
         private String nvmeSupport;
         private String price;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstanceTypesInstanceType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityZones = defaults.availabilityZones;
@@ -196,7 +225,6 @@ public final class GetInstanceTypesInstanceType {
     	      this.price = defaults.price;
         }
 
-        @CustomType.Setter
         public Builder availabilityZones(List<String> availabilityZones) {
             this.availabilityZones = Objects.requireNonNull(availabilityZones);
             return this;
@@ -204,70 +232,47 @@ public final class GetInstanceTypesInstanceType {
         public Builder availabilityZones(String... availabilityZones) {
             return availabilityZones(List.of(availabilityZones));
         }
-        @CustomType.Setter
         public Builder burstableInstance(GetInstanceTypesInstanceTypeBurstableInstance burstableInstance) {
             this.burstableInstance = Objects.requireNonNull(burstableInstance);
             return this;
         }
-        @CustomType.Setter
         public Builder cpuCoreCount(Integer cpuCoreCount) {
             this.cpuCoreCount = Objects.requireNonNull(cpuCoreCount);
             return this;
         }
-        @CustomType.Setter
         public Builder eniAmount(Integer eniAmount) {
             this.eniAmount = Objects.requireNonNull(eniAmount);
             return this;
         }
-        @CustomType.Setter
         public Builder family(String family) {
             this.family = Objects.requireNonNull(family);
             return this;
         }
-        @CustomType.Setter
         public Builder gpu(GetInstanceTypesInstanceTypeGpu gpu) {
             this.gpu = Objects.requireNonNull(gpu);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder localStorage(GetInstanceTypesInstanceTypeLocalStorage localStorage) {
             this.localStorage = Objects.requireNonNull(localStorage);
             return this;
         }
-        @CustomType.Setter
         public Builder memorySize(Double memorySize) {
             this.memorySize = Objects.requireNonNull(memorySize);
             return this;
         }
-        @CustomType.Setter
         public Builder nvmeSupport(String nvmeSupport) {
             this.nvmeSupport = Objects.requireNonNull(nvmeSupport);
             return this;
         }
-        @CustomType.Setter
         public Builder price(String price) {
             this.price = Objects.requireNonNull(price);
             return this;
-        }
-        public GetInstanceTypesInstanceType build() {
-            final var o = new GetInstanceTypesInstanceType();
-            o.availabilityZones = availabilityZones;
-            o.burstableInstance = burstableInstance;
-            o.cpuCoreCount = cpuCoreCount;
-            o.eniAmount = eniAmount;
-            o.family = family;
-            o.gpu = gpu;
-            o.id = id;
-            o.localStorage = localStorage;
-            o.memorySize = memorySize;
-            o.nvmeSupport = nvmeSupport;
-            o.price = price;
-            return o;
+        }        public GetInstanceTypesInstanceType build() {
+            return new GetInstanceTypesInstanceType(availabilityZones, burstableInstance, cpuCoreCount, eniAmount, family, gpu, id, localStorage, memorySize, nvmeSupport, price);
         }
     }
 }

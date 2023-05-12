@@ -119,6 +119,7 @@ def get_folders(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Folder IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str parent_folder_path: The parent folder path.
     :param str project_id: The ID of the project.
     """
@@ -169,6 +170,7 @@ def get_folders_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
 
 
     :param Sequence[str] ids: A list of Folder IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str parent_folder_path: The parent folder path.
     :param str project_id: The ID of the project.
     """

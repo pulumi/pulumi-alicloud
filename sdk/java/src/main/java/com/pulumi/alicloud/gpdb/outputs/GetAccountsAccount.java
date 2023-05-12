@@ -13,29 +13,42 @@ public final class GetAccountsAccount {
      * @return The description of the account.
      * 
      */
-    private String accountDescription;
+    private final String accountDescription;
     /**
      * @return The name of the account.
      * 
      */
-    private String accountName;
+    private final String accountName;
     /**
      * @return The ID of the instance.
      * 
      */
-    private String dbInstanceId;
+    private final String dbInstanceId;
     /**
      * @return The ID of the Account. Its value is same as Queue Name.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetAccountsAccount() {}
+    @CustomType.Constructor
+    private GetAccountsAccount(
+        @CustomType.Parameter("accountDescription") String accountDescription,
+        @CustomType.Parameter("accountName") String accountName,
+        @CustomType.Parameter("dbInstanceId") String dbInstanceId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("status") String status) {
+        this.accountDescription = accountDescription;
+        this.accountName = accountName;
+        this.dbInstanceId = dbInstanceId;
+        this.id = id;
+        this.status = status;
+    }
+
     /**
      * @return The description of the account.
      * 
@@ -79,14 +92,18 @@ public final class GetAccountsAccount {
     public static Builder builder(GetAccountsAccount defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String accountDescription;
         private String accountName;
         private String dbInstanceId;
         private String id;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAccountsAccount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountDescription = defaults.accountDescription;
@@ -96,39 +113,27 @@ public final class GetAccountsAccount {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder accountDescription(String accountDescription) {
             this.accountDescription = Objects.requireNonNull(accountDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder accountName(String accountName) {
             this.accountName = Objects.requireNonNull(accountName);
             return this;
         }
-        @CustomType.Setter
         public Builder dbInstanceId(String dbInstanceId) {
             this.dbInstanceId = Objects.requireNonNull(dbInstanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetAccountsAccount build() {
-            final var o = new GetAccountsAccount();
-            o.accountDescription = accountDescription;
-            o.accountName = accountName;
-            o.dbInstanceId = dbInstanceId;
-            o.id = id;
-            o.status = status;
-            return o;
+        }        public GetAccountsAccount build() {
+            return new GetAccountsAccount(accountDescription, accountName, dbInstanceId, id, status);
         }
     }
 }

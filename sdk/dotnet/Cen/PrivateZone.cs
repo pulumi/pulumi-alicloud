@@ -102,6 +102,8 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The VPC that belongs to the service region.
+        /// 
+        /// -&gt;**NOTE:** The "alicloud.cen.PrivateZone" resource depends on the related "alicloud.cen.InstanceAttachment" resource.
         /// </summary>
         [Output("hostVpcId")]
         public Output<string> HostVpcId { get; private set; } = null!;
@@ -178,6 +180,8 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The VPC that belongs to the service region.
+        /// 
+        /// -&gt;**NOTE:** The "alicloud.cen.PrivateZone" resource depends on the related "alicloud.cen.InstanceAttachment" resource.
         /// </summary>
         [Input("hostVpcId", required: true)]
         public Input<string> HostVpcId { get; set; } = null!;
@@ -210,6 +214,8 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The VPC that belongs to the service region.
+        /// 
+        /// -&gt;**NOTE:** The "alicloud.cen.PrivateZone" resource depends on the related "alicloud.cen.InstanceAttachment" resource.
         /// </summary>
         [Input("hostVpcId")]
         public Input<string>? HostVpcId { get; set; }

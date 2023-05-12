@@ -40,6 +40,9 @@ class BucketObjectArgs:
         :param pulumi.Input[str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
         :param pulumi.Input[str] expires: Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
         :param pulumi.Input[str] kms_key_id: Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
+               
+               Either `source` or `content` must be provided to specify the bucket content.
+               These two arguments are mutually-exclusive.
         :param pulumi.Input[str] server_side_encryption: Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
         :param pulumi.Input[str] source: The path to the source file being uploaded to the bucket.
         """
@@ -193,6 +196,9 @@ class BucketObjectArgs:
     def kms_key_id(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
+
+        Either `source` or `content` must be provided to specify the bucket content.
+        These two arguments are mutually-exclusive.
         """
         return pulumi.get(self, "kms_key_id")
 
@@ -259,6 +265,9 @@ class _BucketObjectState:
         :param pulumi.Input[str] expires: Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
         :param pulumi.Input[str] key: The name of the object once it is in the bucket.
         :param pulumi.Input[str] kms_key_id: Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
+               
+               Either `source` or `content` must be provided to specify the bucket content.
+               These two arguments are mutually-exclusive.
         :param pulumi.Input[str] server_side_encryption: Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
         :param pulumi.Input[str] source: The path to the source file being uploaded to the bucket.
         :param pulumi.Input[str] version_id: A unique version ID value for the object, if bucket versioning is enabled.
@@ -445,6 +454,9 @@ class _BucketObjectState:
     def kms_key_id(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
+
+        Either `source` or `content` must be provided to specify the bucket content.
+        These two arguments are mutually-exclusive.
         """
         return pulumi.get(self, "kms_key_id")
 
@@ -551,6 +563,9 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] expires: Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
         :param pulumi.Input[str] key: The name of the object once it is in the bucket.
         :param pulumi.Input[str] kms_key_id: Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
+               
+               Either `source` or `content` must be provided to specify the bucket content.
+               These two arguments are mutually-exclusive.
         :param pulumi.Input[str] server_side_encryption: Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
         :param pulumi.Input[str] source: The path to the source file being uploaded to the bucket.
         """
@@ -693,6 +708,9 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] expires: Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
         :param pulumi.Input[str] key: The name of the object once it is in the bucket.
         :param pulumi.Input[str] kms_key_id: Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
+               
+               Either `source` or `content` must be provided to specify the bucket content.
+               These two arguments are mutually-exclusive.
         :param pulumi.Input[str] server_side_encryption: Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
         :param pulumi.Input[str] source: The path to the source file being uploaded to the bucket.
         :param pulumi.Input[str] version_id: A unique version ID value for the object, if bucket versioning is enabled.
@@ -820,6 +838,9 @@ class BucketObject(pulumi.CustomResource):
     def kms_key_id(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
+
+        Either `source` or `content` must be provided to specify the bucket content.
+        These two arguments are mutually-exclusive.
         """
         return pulumi.get(self, "kms_key_id")
 

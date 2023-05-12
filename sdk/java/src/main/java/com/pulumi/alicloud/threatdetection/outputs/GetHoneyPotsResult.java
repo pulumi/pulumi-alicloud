@@ -17,37 +17,58 @@ public final class GetHoneyPotsResult {
      * @return Honeypot ID.
      * 
      */
-    private @Nullable String honeypotId;
+    private final @Nullable String honeypotId;
     /**
      * @return Honeypot custom name.
      * 
      */
-    private @Nullable String honeypotName;
+    private final @Nullable String honeypotName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of Honey Pot IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return The ID of the honeypot management node.
      * 
      */
-    private @Nullable String nodeId;
-    private @Nullable String nodeName;
-    private @Nullable String outputFile;
+    private final @Nullable String nodeId;
+    private final @Nullable String nodeName;
+    private final @Nullable String outputFile;
     /**
      * @return A list of Honey Pot Entries. Each element contains the following attributes:
      * 
      */
-    private List<GetHoneyPotsPot> pots;
+    private final List<GetHoneyPotsPot> pots;
 
-    private GetHoneyPotsResult() {}
+    @CustomType.Constructor
+    private GetHoneyPotsResult(
+        @CustomType.Parameter("honeypotId") @Nullable String honeypotId,
+        @CustomType.Parameter("honeypotName") @Nullable String honeypotName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("nodeId") @Nullable String nodeId,
+        @CustomType.Parameter("nodeName") @Nullable String nodeName,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pots") List<GetHoneyPotsPot> pots) {
+        this.honeypotId = honeypotId;
+        this.honeypotName = honeypotName;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.nodeId = nodeId;
+        this.nodeName = nodeName;
+        this.outputFile = outputFile;
+        this.pots = pots;
+    }
+
     /**
      * @return Honeypot ID.
      * 
@@ -107,7 +128,7 @@ public final class GetHoneyPotsResult {
     public static Builder builder(GetHoneyPotsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String honeypotId;
         private @Nullable String honeypotName;
@@ -118,7 +139,11 @@ public final class GetHoneyPotsResult {
         private @Nullable String nodeName;
         private @Nullable String outputFile;
         private List<GetHoneyPotsPot> pots;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetHoneyPotsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.honeypotId = defaults.honeypotId;
@@ -132,22 +157,18 @@ public final class GetHoneyPotsResult {
     	      this.pots = defaults.pots;
         }
 
-        @CustomType.Setter
         public Builder honeypotId(@Nullable String honeypotId) {
             this.honeypotId = honeypotId;
             return this;
         }
-        @CustomType.Setter
         public Builder honeypotName(@Nullable String honeypotName) {
             this.honeypotName = honeypotName;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -155,46 +176,30 @@ public final class GetHoneyPotsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
             this.nodeId = nodeId;
             return this;
         }
-        @CustomType.Setter
         public Builder nodeName(@Nullable String nodeName) {
             this.nodeName = nodeName;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pots(List<GetHoneyPotsPot> pots) {
             this.pots = Objects.requireNonNull(pots);
             return this;
         }
         public Builder pots(GetHoneyPotsPot... pots) {
             return pots(List.of(pots));
-        }
-        public GetHoneyPotsResult build() {
-            final var o = new GetHoneyPotsResult();
-            o.honeypotId = honeypotId;
-            o.honeypotName = honeypotName;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.nodeId = nodeId;
-            o.nodeName = nodeName;
-            o.outputFile = outputFile;
-            o.pots = pots;
-            return o;
+        }        public GetHoneyPotsResult build() {
+            return new GetHoneyPotsResult(honeypotId, honeypotName, id, ids, nameRegex, nodeId, nodeName, outputFile, pots);
         }
     }
 }

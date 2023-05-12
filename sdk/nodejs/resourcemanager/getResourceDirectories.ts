@@ -34,6 +34,9 @@ export function getResourceDirectories(args?: GetResourceDirectoriesArgs, opts?:
  * A collection of arguments for invoking getResourceDirectories.
  */
 export interface GetResourceDirectoriesArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -74,5 +77,8 @@ export function getResourceDirectoriesOutput(args?: GetResourceDirectoriesOutput
  * A collection of arguments for invoking getResourceDirectories.
  */
 export interface GetResourceDirectoriesOutputArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

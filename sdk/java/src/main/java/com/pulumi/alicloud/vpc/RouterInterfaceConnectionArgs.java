@@ -45,9 +45,17 @@ public final class RouterInterfaceConnectionArgs extends com.pulumi.resources.Re
         return this.oppositeInterfaceId;
     }
 
+    /**
+     * Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info &gt; Account Management to check the account ID. Default to Provider account_id.
+     * 
+     */
     @Import(name="oppositeInterfaceOwnerId")
     private @Nullable Output<String> oppositeInterfaceOwnerId;
 
+    /**
+     * @return Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info &gt; Account Management to check the account ID. Default to Provider account_id.
+     * 
+     */
     public Optional<Output<String>> oppositeInterfaceOwnerId() {
         return Optional.ofNullable(this.oppositeInterfaceOwnerId);
     }
@@ -70,12 +78,16 @@ public final class RouterInterfaceConnectionArgs extends com.pulumi.resources.Re
     /**
      * Another side router Type. Optional value: VRouter, VBR. It is valid when field &#34;opposite_interface_owner_id&#34; is specified.
      * 
+     * &gt; **NOTE:** The value of &#34;opposite_interface_owner_id&#34; or &#34;account_id&#34; must be main account and not be sub account.
+     * 
      */
     @Import(name="oppositeRouterType")
     private @Nullable Output<String> oppositeRouterType;
 
     /**
      * @return Another side router Type. Optional value: VRouter, VBR. It is valid when field &#34;opposite_interface_owner_id&#34; is specified.
+     * 
+     * &gt; **NOTE:** The value of &#34;opposite_interface_owner_id&#34; or &#34;account_id&#34; must be main account and not be sub account.
      * 
      */
     public Optional<Output<String>> oppositeRouterType() {
@@ -152,11 +164,23 @@ public final class RouterInterfaceConnectionArgs extends com.pulumi.resources.Re
             return oppositeInterfaceId(Output.of(oppositeInterfaceId));
         }
 
+        /**
+         * @param oppositeInterfaceOwnerId Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info &gt; Account Management to check the account ID. Default to Provider account_id.
+         * 
+         * @return builder
+         * 
+         */
         public Builder oppositeInterfaceOwnerId(@Nullable Output<String> oppositeInterfaceOwnerId) {
             $.oppositeInterfaceOwnerId = oppositeInterfaceOwnerId;
             return this;
         }
 
+        /**
+         * @param oppositeInterfaceOwnerId Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info &gt; Account Management to check the account ID. Default to Provider account_id.
+         * 
+         * @return builder
+         * 
+         */
         public Builder oppositeInterfaceOwnerId(String oppositeInterfaceOwnerId) {
             return oppositeInterfaceOwnerId(Output.of(oppositeInterfaceOwnerId));
         }
@@ -185,6 +209,8 @@ public final class RouterInterfaceConnectionArgs extends com.pulumi.resources.Re
         /**
          * @param oppositeRouterType Another side router Type. Optional value: VRouter, VBR. It is valid when field &#34;opposite_interface_owner_id&#34; is specified.
          * 
+         * &gt; **NOTE:** The value of &#34;opposite_interface_owner_id&#34; or &#34;account_id&#34; must be main account and not be sub account.
+         * 
          * @return builder
          * 
          */
@@ -195,6 +221,8 @@ public final class RouterInterfaceConnectionArgs extends com.pulumi.resources.Re
 
         /**
          * @param oppositeRouterType Another side router Type. Optional value: VRouter, VBR. It is valid when field &#34;opposite_interface_owner_id&#34; is specified.
+         * 
+         * &gt; **NOTE:** The value of &#34;opposite_interface_owner_id&#34; or &#34;account_id&#34; must be main account and not be sub account.
          * 
          * @return builder
          * 

@@ -79,7 +79,8 @@ type GetEipAddressesArgs struct {
 	// The lock reason.
 	LockReason *string `pulumi:"lockReason"`
 	// A regex string to filter results by Address name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The billing method of the EIP.
 	PaymentType *string `pulumi:"paymentType"`
@@ -160,7 +161,8 @@ type GetEipAddressesOutputArgs struct {
 	// The lock reason.
 	LockReason pulumi.StringPtrInput `pulumi:"lockReason"`
 	// A regex string to filter results by Address name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The billing method of the EIP.
 	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`

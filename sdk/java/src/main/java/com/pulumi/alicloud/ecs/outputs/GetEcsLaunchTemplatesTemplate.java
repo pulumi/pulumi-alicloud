@@ -22,219 +22,308 @@ public final class GetEcsLaunchTemplatesTemplate {
      * @return Instance auto release time.
      * 
      */
-    private String autoReleaseTime;
+    private final String autoReleaseTime;
     /**
      * @return CreatedBy.
      * 
      */
-    private String createdBy;
+    private final String createdBy;
     /**
      * @return The list of data disks created with instance.
      * 
      */
-    private List<GetEcsLaunchTemplatesTemplateDataDisk> dataDisks;
+    private final List<GetEcsLaunchTemplatesTemplateDataDisk> dataDisks;
     /**
      * @return The Default Version Number.
      * 
      */
-    private Integer defaultVersionNumber;
+    private final Integer defaultVersionNumber;
     /**
      * @return The Deployment Set Id.
      * 
      */
-    private String deploymentSetId;
+    private final String deploymentSetId;
     /**
      * @return System disk description.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return Whether to enable the instance operating system configuration.
      * 
      */
-    private Boolean enableVmOsConfig;
+    private final Boolean enableVmOsConfig;
     /**
      * @return Instance host name.
      * 
      */
-    private String hostName;
+    private final String hostName;
     /**
      * @return The ID of the Launch Template.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The Image Id.
      * 
      */
-    private String imageId;
+    private final String imageId;
     /**
      * @return Mirror source.
      * 
      */
-    private String imageOwnerAlias;
+    private final String imageOwnerAlias;
     /**
      * @return Internet bandwidth billing method.
      * 
      */
-    private String instanceChargeType;
+    private final String instanceChargeType;
     /**
      * @return The Instance Name.
      * 
      */
-    private String instanceName;
+    private final String instanceName;
     /**
      * @return Instance type.
      * 
      */
-    private String instanceType;
+    private final String instanceType;
     /**
      * @return Internet bandwidth billing method.
      * 
      */
-    private String internetChargeType;
+    private final String internetChargeType;
     /**
      * @return The maximum inbound bandwidth from the Internet network, measured in Mbit/s.
      * 
      */
-    private Integer internetMaxBandwidthIn;
+    private final Integer internetMaxBandwidthIn;
     /**
      * @return Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s.
      * 
      */
-    private Integer internetMaxBandwidthOut;
+    private final Integer internetMaxBandwidthOut;
     /**
      * @return Whether it is an I/O-optimized instance or not.
      * 
      */
-    private String ioOptimized;
+    private final String ioOptimized;
     /**
      * @return The name of the key pair.
      * 
      */
-    private String keyPairName;
+    private final String keyPairName;
     /**
      * @return The Latest Version Number.
      * 
      */
-    private Integer latestVersionNumber;
+    private final Integer latestVersionNumber;
     /**
      * @return The ID of the Launch Template.
      * 
      */
-    private String launchTemplateId;
+    private final String launchTemplateId;
     /**
      * @return The Launch Template Name.
      * 
      */
-    private String launchTemplateName;
+    private final String launchTemplateName;
     /**
      * @return The Modified Time.
      * 
      */
-    private String modifiedTime;
+    private final String modifiedTime;
     /**
      * @return The list of network interfaces created with instance.
      * 
      */
-    private List<GetEcsLaunchTemplatesTemplateNetworkInterface> networkInterfaces;
+    private final List<GetEcsLaunchTemplatesTemplateNetworkInterface> networkInterfaces;
     /**
      * @return Network type of the instance.
      * 
      */
-    private String networkType;
+    private final String networkType;
     /**
      * @return Whether to use the password preset by the mirror.
      * 
      */
-    private Boolean passwordInherit;
+    private final Boolean passwordInherit;
     /**
      * @return The subscription period of the instance.
      * 
      */
-    private Integer period;
+    private final Integer period;
     /**
      * @return The private IP address of the instance.
      * 
      */
-    private String privateIpAddress;
+    private final String privateIpAddress;
     /**
      * @return The RAM role name of the instance.
      * 
      */
-    private String ramRoleName;
+    private final String ramRoleName;
     /**
      * @return The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return Whether or not to activate the security enhancement feature and install network security software free of charge.
      * 
      */
-    private String securityEnhancementStrategy;
+    private final String securityEnhancementStrategy;
     /**
      * @return The security group ID.
      * 
      */
-    private String securityGroupId;
+    private final String securityGroupId;
     /**
      * @return The security group IDs.
      * 
      */
-    private List<String> securityGroupIds;
+    private final List<String> securityGroupIds;
     /**
      * @return The protection period of the preemptible instance.
      * 
      */
-    private String spotDuration;
+    private final String spotDuration;
     /**
      * @return Sets the maximum hourly instance price.
      * 
      */
-    private Double spotPriceLimit;
+    private final Double spotPriceLimit;
     /**
      * @return The spot strategy for a Pay-As-You-Go instance.
      * 
      */
-    private String spotStrategy;
+    private final String spotStrategy;
     /**
      * @return The System Disk.
      * 
      */
-    private List<GetEcsLaunchTemplatesTemplateSystemDisk> systemDisks;
+    private final List<GetEcsLaunchTemplatesTemplateSystemDisk> systemDisks;
     /**
      * @return The template tags.
      * 
      */
-    private Map<String,Object> templateTags;
+    private final Map<String,Object> templateTags;
     /**
      * @return The User Data.
      * 
      */
-    private String userData;
+    private final String userData;
     /**
      * @return The Version Description.
      * 
      */
-    private String versionDescription;
+    private final String versionDescription;
     /**
      * @return VpcId.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
     /**
      * @return The vswitch id.
      * 
      */
-    private String vswitchId;
+    private final String vswitchId;
     /**
      * @return The Zone Id.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetEcsLaunchTemplatesTemplate() {}
+    @CustomType.Constructor
+    private GetEcsLaunchTemplatesTemplate(
+        @CustomType.Parameter("autoReleaseTime") String autoReleaseTime,
+        @CustomType.Parameter("createdBy") String createdBy,
+        @CustomType.Parameter("dataDisks") List<GetEcsLaunchTemplatesTemplateDataDisk> dataDisks,
+        @CustomType.Parameter("defaultVersionNumber") Integer defaultVersionNumber,
+        @CustomType.Parameter("deploymentSetId") String deploymentSetId,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("enableVmOsConfig") Boolean enableVmOsConfig,
+        @CustomType.Parameter("hostName") String hostName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("imageId") String imageId,
+        @CustomType.Parameter("imageOwnerAlias") String imageOwnerAlias,
+        @CustomType.Parameter("instanceChargeType") String instanceChargeType,
+        @CustomType.Parameter("instanceName") String instanceName,
+        @CustomType.Parameter("instanceType") String instanceType,
+        @CustomType.Parameter("internetChargeType") String internetChargeType,
+        @CustomType.Parameter("internetMaxBandwidthIn") Integer internetMaxBandwidthIn,
+        @CustomType.Parameter("internetMaxBandwidthOut") Integer internetMaxBandwidthOut,
+        @CustomType.Parameter("ioOptimized") String ioOptimized,
+        @CustomType.Parameter("keyPairName") String keyPairName,
+        @CustomType.Parameter("latestVersionNumber") Integer latestVersionNumber,
+        @CustomType.Parameter("launchTemplateId") String launchTemplateId,
+        @CustomType.Parameter("launchTemplateName") String launchTemplateName,
+        @CustomType.Parameter("modifiedTime") String modifiedTime,
+        @CustomType.Parameter("networkInterfaces") List<GetEcsLaunchTemplatesTemplateNetworkInterface> networkInterfaces,
+        @CustomType.Parameter("networkType") String networkType,
+        @CustomType.Parameter("passwordInherit") Boolean passwordInherit,
+        @CustomType.Parameter("period") Integer period,
+        @CustomType.Parameter("privateIpAddress") String privateIpAddress,
+        @CustomType.Parameter("ramRoleName") String ramRoleName,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("securityEnhancementStrategy") String securityEnhancementStrategy,
+        @CustomType.Parameter("securityGroupId") String securityGroupId,
+        @CustomType.Parameter("securityGroupIds") List<String> securityGroupIds,
+        @CustomType.Parameter("spotDuration") String spotDuration,
+        @CustomType.Parameter("spotPriceLimit") Double spotPriceLimit,
+        @CustomType.Parameter("spotStrategy") String spotStrategy,
+        @CustomType.Parameter("systemDisks") List<GetEcsLaunchTemplatesTemplateSystemDisk> systemDisks,
+        @CustomType.Parameter("templateTags") Map<String,Object> templateTags,
+        @CustomType.Parameter("userData") String userData,
+        @CustomType.Parameter("versionDescription") String versionDescription,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("vswitchId") String vswitchId,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.autoReleaseTime = autoReleaseTime;
+        this.createdBy = createdBy;
+        this.dataDisks = dataDisks;
+        this.defaultVersionNumber = defaultVersionNumber;
+        this.deploymentSetId = deploymentSetId;
+        this.description = description;
+        this.enableVmOsConfig = enableVmOsConfig;
+        this.hostName = hostName;
+        this.id = id;
+        this.imageId = imageId;
+        this.imageOwnerAlias = imageOwnerAlias;
+        this.instanceChargeType = instanceChargeType;
+        this.instanceName = instanceName;
+        this.instanceType = instanceType;
+        this.internetChargeType = internetChargeType;
+        this.internetMaxBandwidthIn = internetMaxBandwidthIn;
+        this.internetMaxBandwidthOut = internetMaxBandwidthOut;
+        this.ioOptimized = ioOptimized;
+        this.keyPairName = keyPairName;
+        this.latestVersionNumber = latestVersionNumber;
+        this.launchTemplateId = launchTemplateId;
+        this.launchTemplateName = launchTemplateName;
+        this.modifiedTime = modifiedTime;
+        this.networkInterfaces = networkInterfaces;
+        this.networkType = networkType;
+        this.passwordInherit = passwordInherit;
+        this.period = period;
+        this.privateIpAddress = privateIpAddress;
+        this.ramRoleName = ramRoleName;
+        this.resourceGroupId = resourceGroupId;
+        this.securityEnhancementStrategy = securityEnhancementStrategy;
+        this.securityGroupId = securityGroupId;
+        this.securityGroupIds = securityGroupIds;
+        this.spotDuration = spotDuration;
+        this.spotPriceLimit = spotPriceLimit;
+        this.spotStrategy = spotStrategy;
+        this.systemDisks = systemDisks;
+        this.templateTags = templateTags;
+        this.userData = userData;
+        this.versionDescription = versionDescription;
+        this.vpcId = vpcId;
+        this.vswitchId = vswitchId;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return Instance auto release time.
      * 
@@ -544,7 +633,7 @@ public final class GetEcsLaunchTemplatesTemplate {
     public static Builder builder(GetEcsLaunchTemplatesTemplate defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String autoReleaseTime;
         private String createdBy;
@@ -589,7 +678,11 @@ public final class GetEcsLaunchTemplatesTemplate {
         private String vpcId;
         private String vswitchId;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEcsLaunchTemplatesTemplate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoReleaseTime = defaults.autoReleaseTime;
@@ -637,17 +730,14 @@ public final class GetEcsLaunchTemplatesTemplate {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder autoReleaseTime(String autoReleaseTime) {
             this.autoReleaseTime = Objects.requireNonNull(autoReleaseTime);
             return this;
         }
-        @CustomType.Setter
         public Builder createdBy(String createdBy) {
             this.createdBy = Objects.requireNonNull(createdBy);
             return this;
         }
-        @CustomType.Setter
         public Builder dataDisks(List<GetEcsLaunchTemplatesTemplateDataDisk> dataDisks) {
             this.dataDisks = Objects.requireNonNull(dataDisks);
             return this;
@@ -655,107 +745,86 @@ public final class GetEcsLaunchTemplatesTemplate {
         public Builder dataDisks(GetEcsLaunchTemplatesTemplateDataDisk... dataDisks) {
             return dataDisks(List.of(dataDisks));
         }
-        @CustomType.Setter
         public Builder defaultVersionNumber(Integer defaultVersionNumber) {
             this.defaultVersionNumber = Objects.requireNonNull(defaultVersionNumber);
             return this;
         }
-        @CustomType.Setter
         public Builder deploymentSetId(String deploymentSetId) {
             this.deploymentSetId = Objects.requireNonNull(deploymentSetId);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder enableVmOsConfig(Boolean enableVmOsConfig) {
             this.enableVmOsConfig = Objects.requireNonNull(enableVmOsConfig);
             return this;
         }
-        @CustomType.Setter
         public Builder hostName(String hostName) {
             this.hostName = Objects.requireNonNull(hostName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder imageId(String imageId) {
             this.imageId = Objects.requireNonNull(imageId);
             return this;
         }
-        @CustomType.Setter
         public Builder imageOwnerAlias(String imageOwnerAlias) {
             this.imageOwnerAlias = Objects.requireNonNull(imageOwnerAlias);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceChargeType(String instanceChargeType) {
             this.instanceChargeType = Objects.requireNonNull(instanceChargeType);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
-        @CustomType.Setter
         public Builder internetChargeType(String internetChargeType) {
             this.internetChargeType = Objects.requireNonNull(internetChargeType);
             return this;
         }
-        @CustomType.Setter
         public Builder internetMaxBandwidthIn(Integer internetMaxBandwidthIn) {
             this.internetMaxBandwidthIn = Objects.requireNonNull(internetMaxBandwidthIn);
             return this;
         }
-        @CustomType.Setter
         public Builder internetMaxBandwidthOut(Integer internetMaxBandwidthOut) {
             this.internetMaxBandwidthOut = Objects.requireNonNull(internetMaxBandwidthOut);
             return this;
         }
-        @CustomType.Setter
         public Builder ioOptimized(String ioOptimized) {
             this.ioOptimized = Objects.requireNonNull(ioOptimized);
             return this;
         }
-        @CustomType.Setter
         public Builder keyPairName(String keyPairName) {
             this.keyPairName = Objects.requireNonNull(keyPairName);
             return this;
         }
-        @CustomType.Setter
         public Builder latestVersionNumber(Integer latestVersionNumber) {
             this.latestVersionNumber = Objects.requireNonNull(latestVersionNumber);
             return this;
         }
-        @CustomType.Setter
         public Builder launchTemplateId(String launchTemplateId) {
             this.launchTemplateId = Objects.requireNonNull(launchTemplateId);
             return this;
         }
-        @CustomType.Setter
         public Builder launchTemplateName(String launchTemplateName) {
             this.launchTemplateName = Objects.requireNonNull(launchTemplateName);
             return this;
         }
-        @CustomType.Setter
         public Builder modifiedTime(String modifiedTime) {
             this.modifiedTime = Objects.requireNonNull(modifiedTime);
             return this;
         }
-        @CustomType.Setter
         public Builder networkInterfaces(List<GetEcsLaunchTemplatesTemplateNetworkInterface> networkInterfaces) {
             this.networkInterfaces = Objects.requireNonNull(networkInterfaces);
             return this;
@@ -763,47 +832,38 @@ public final class GetEcsLaunchTemplatesTemplate {
         public Builder networkInterfaces(GetEcsLaunchTemplatesTemplateNetworkInterface... networkInterfaces) {
             return networkInterfaces(List.of(networkInterfaces));
         }
-        @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
             return this;
         }
-        @CustomType.Setter
         public Builder passwordInherit(Boolean passwordInherit) {
             this.passwordInherit = Objects.requireNonNull(passwordInherit);
             return this;
         }
-        @CustomType.Setter
         public Builder period(Integer period) {
             this.period = Objects.requireNonNull(period);
             return this;
         }
-        @CustomType.Setter
         public Builder privateIpAddress(String privateIpAddress) {
             this.privateIpAddress = Objects.requireNonNull(privateIpAddress);
             return this;
         }
-        @CustomType.Setter
         public Builder ramRoleName(String ramRoleName) {
             this.ramRoleName = Objects.requireNonNull(ramRoleName);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder securityEnhancementStrategy(String securityEnhancementStrategy) {
             this.securityEnhancementStrategy = Objects.requireNonNull(securityEnhancementStrategy);
             return this;
         }
-        @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
             this.securityGroupId = Objects.requireNonNull(securityGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder securityGroupIds(List<String> securityGroupIds) {
             this.securityGroupIds = Objects.requireNonNull(securityGroupIds);
             return this;
@@ -811,22 +871,18 @@ public final class GetEcsLaunchTemplatesTemplate {
         public Builder securityGroupIds(String... securityGroupIds) {
             return securityGroupIds(List.of(securityGroupIds));
         }
-        @CustomType.Setter
         public Builder spotDuration(String spotDuration) {
             this.spotDuration = Objects.requireNonNull(spotDuration);
             return this;
         }
-        @CustomType.Setter
         public Builder spotPriceLimit(Double spotPriceLimit) {
             this.spotPriceLimit = Objects.requireNonNull(spotPriceLimit);
             return this;
         }
-        @CustomType.Setter
         public Builder spotStrategy(String spotStrategy) {
             this.spotStrategy = Objects.requireNonNull(spotStrategy);
             return this;
         }
-        @CustomType.Setter
         public Builder systemDisks(List<GetEcsLaunchTemplatesTemplateSystemDisk> systemDisks) {
             this.systemDisks = Objects.requireNonNull(systemDisks);
             return this;
@@ -834,82 +890,31 @@ public final class GetEcsLaunchTemplatesTemplate {
         public Builder systemDisks(GetEcsLaunchTemplatesTemplateSystemDisk... systemDisks) {
             return systemDisks(List.of(systemDisks));
         }
-        @CustomType.Setter
         public Builder templateTags(Map<String,Object> templateTags) {
             this.templateTags = Objects.requireNonNull(templateTags);
             return this;
         }
-        @CustomType.Setter
         public Builder userData(String userData) {
             this.userData = Objects.requireNonNull(userData);
             return this;
         }
-        @CustomType.Setter
         public Builder versionDescription(String versionDescription) {
             this.versionDescription = Objects.requireNonNull(versionDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetEcsLaunchTemplatesTemplate build() {
-            final var o = new GetEcsLaunchTemplatesTemplate();
-            o.autoReleaseTime = autoReleaseTime;
-            o.createdBy = createdBy;
-            o.dataDisks = dataDisks;
-            o.defaultVersionNumber = defaultVersionNumber;
-            o.deploymentSetId = deploymentSetId;
-            o.description = description;
-            o.enableVmOsConfig = enableVmOsConfig;
-            o.hostName = hostName;
-            o.id = id;
-            o.imageId = imageId;
-            o.imageOwnerAlias = imageOwnerAlias;
-            o.instanceChargeType = instanceChargeType;
-            o.instanceName = instanceName;
-            o.instanceType = instanceType;
-            o.internetChargeType = internetChargeType;
-            o.internetMaxBandwidthIn = internetMaxBandwidthIn;
-            o.internetMaxBandwidthOut = internetMaxBandwidthOut;
-            o.ioOptimized = ioOptimized;
-            o.keyPairName = keyPairName;
-            o.latestVersionNumber = latestVersionNumber;
-            o.launchTemplateId = launchTemplateId;
-            o.launchTemplateName = launchTemplateName;
-            o.modifiedTime = modifiedTime;
-            o.networkInterfaces = networkInterfaces;
-            o.networkType = networkType;
-            o.passwordInherit = passwordInherit;
-            o.period = period;
-            o.privateIpAddress = privateIpAddress;
-            o.ramRoleName = ramRoleName;
-            o.resourceGroupId = resourceGroupId;
-            o.securityEnhancementStrategy = securityEnhancementStrategy;
-            o.securityGroupId = securityGroupId;
-            o.securityGroupIds = securityGroupIds;
-            o.spotDuration = spotDuration;
-            o.spotPriceLimit = spotPriceLimit;
-            o.spotStrategy = spotStrategy;
-            o.systemDisks = systemDisks;
-            o.templateTags = templateTags;
-            o.userData = userData;
-            o.versionDescription = versionDescription;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetEcsLaunchTemplatesTemplate build() {
+            return new GetEcsLaunchTemplatesTemplate(autoReleaseTime, createdBy, dataDisks, defaultVersionNumber, deploymentSetId, description, enableVmOsConfig, hostName, id, imageId, imageOwnerAlias, instanceChargeType, instanceName, instanceType, internetChargeType, internetMaxBandwidthIn, internetMaxBandwidthOut, ioOptimized, keyPairName, latestVersionNumber, launchTemplateId, launchTemplateName, modifiedTime, networkInterfaces, networkType, passwordInherit, period, privateIpAddress, ramRoleName, resourceGroupId, securityEnhancementStrategy, securityGroupId, securityGroupIds, spotDuration, spotPriceLimit, spotStrategy, systemDisks, templateTags, userData, versionDescription, vpcId, vswitchId, zoneId);
         }
     }
 }

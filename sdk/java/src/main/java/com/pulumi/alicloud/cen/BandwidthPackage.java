@@ -45,12 +45,20 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
     /**
      * The name of the bandwidth package. Defaults to null.
      * 
+     * -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can&#39;t be deleted before expired time.
+     * 
+     * -&gt;**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
+     * 
      */
     @Export(name="cenBandwidthPackageName", type=String.class, parameters={})
     private Output<String> cenBandwidthPackageName;
 
     /**
      * @return The name of the bandwidth package. Defaults to null.
+     * 
+     * -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can&#39;t be deleted before expired time.
+     * 
+     * -&gt;**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
      * 
      */
     public Output<String> cenBandwidthPackageName() {
@@ -180,9 +188,19 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
     public Output<String> paymentType() {
         return this.paymentType;
     }
+    /**
+     * The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     @Export(name="period", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> period;
 
+    /**
+     * @return The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }

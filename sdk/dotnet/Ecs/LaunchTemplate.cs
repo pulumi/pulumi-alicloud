@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
+    /// Provides an ECS Launch Template resource.
+    /// 
+    /// For information about Launch Template and how to use it, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html).
+    /// 
+    /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.120.0`. Please use new resource alicloud_ecs_launch_template.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -140,6 +146,8 @@ namespace Pulumi.AliCloud.Ecs
         /// Billing methods. Optional values:
         /// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
         /// - PostPaid: Pay-As-You-Go.
+        /// 
+        /// Default value: PostPaid.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string?> InstanceChargeType { get; private set; } = null!;
@@ -430,6 +438,8 @@ namespace Pulumi.AliCloud.Ecs
         /// Billing methods. Optional values:
         /// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
         /// - PostPaid: Pay-As-You-Go.
+        /// 
+        /// Default value: PostPaid.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -698,6 +708,8 @@ namespace Pulumi.AliCloud.Ecs
         /// Billing methods. Optional values:
         /// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
         /// - PostPaid: Pay-As-You-Go.
+        /// 
+        /// Default value: PostPaid.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }

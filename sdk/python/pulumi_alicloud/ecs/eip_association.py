@@ -230,6 +230,55 @@ class EipAssociation(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Provides an Alicloud EIP Association resource for associating Elastic IP to ECS Instance, SLB Instance or Nat Gateway.
+
+        > **NOTE:** `ecs.EipAssociation` is useful in scenarios where EIPs are either
+         pre-existing or distributed to customers or users and therefore cannot be changed.
+
+        > **NOTE:** From version 1.7.1, the resource support to associate EIP to SLB Instance or Nat Gateway.
+
+        > **NOTE:** One EIP can only be associated with ECS or SLB instance which in the VPC.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones()
+        vpc = alicloud.vpc.Network("vpc", cidr_block="10.1.0.0/21")
+        vsw = alicloud.vpc.Switch("vsw",
+            vpc_id=vpc.id,
+            cidr_block="10.1.1.0/24",
+            zone_id=default_zones.zones[0].id,
+            opts=pulumi.ResourceOptions(depends_on=[vpc]))
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        group = alicloud.ecs.SecurityGroup("group",
+            description="New security group",
+            vpc_id=vpc.id)
+        ecs_instance = alicloud.ecs.Instance("ecsInstance",
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            availability_zone=default_zones.zones[0].id,
+            security_groups=[group.id],
+            vswitch_id=vsw.id,
+            instance_name="hello",
+            tags={
+                "Name": "TerraformTest-instance",
+            })
+        eip = alicloud.ecs.EipAddress("eip")
+        eip_asso = alicloud.ecs.EipAssociation("eipAsso",
+            allocation_id=eip.id,
+            instance_id=ecs_instance.id)
+        ```
+        ## Module Support
+
+        You can use the existing eip module
+        to create several EIP instances and associate them with other resources one-click, like ECS instances, SLB, Nat Gateway and so on.
+
         ## Import
 
         Elastic IP address association can be imported using the id, e.g.
@@ -254,6 +303,55 @@ class EipAssociation(pulumi.CustomResource):
                  args: EipAssociationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides an Alicloud EIP Association resource for associating Elastic IP to ECS Instance, SLB Instance or Nat Gateway.
+
+        > **NOTE:** `ecs.EipAssociation` is useful in scenarios where EIPs are either
+         pre-existing or distributed to customers or users and therefore cannot be changed.
+
+        > **NOTE:** From version 1.7.1, the resource support to associate EIP to SLB Instance or Nat Gateway.
+
+        > **NOTE:** One EIP can only be associated with ECS or SLB instance which in the VPC.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones()
+        vpc = alicloud.vpc.Network("vpc", cidr_block="10.1.0.0/21")
+        vsw = alicloud.vpc.Switch("vsw",
+            vpc_id=vpc.id,
+            cidr_block="10.1.1.0/24",
+            zone_id=default_zones.zones[0].id,
+            opts=pulumi.ResourceOptions(depends_on=[vpc]))
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        group = alicloud.ecs.SecurityGroup("group",
+            description="New security group",
+            vpc_id=vpc.id)
+        ecs_instance = alicloud.ecs.Instance("ecsInstance",
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            availability_zone=default_zones.zones[0].id,
+            security_groups=[group.id],
+            vswitch_id=vsw.id,
+            instance_name="hello",
+            tags={
+                "Name": "TerraformTest-instance",
+            })
+        eip = alicloud.ecs.EipAddress("eip")
+        eip_asso = alicloud.ecs.EipAssociation("eipAsso",
+            allocation_id=eip.id,
+            instance_id=ecs_instance.id)
+        ```
+        ## Module Support
+
+        You can use the existing eip module
+        to create several EIP instances and associate them with other resources one-click, like ECS instances, SLB, Nat Gateway and so on.
+
         ## Import
 
         Elastic IP address association can be imported using the id, e.g.

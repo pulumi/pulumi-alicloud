@@ -53,6 +53,9 @@ export interface GetDedicatedHostGroupsArgs {
      * A regex string to filter results by Dedicated Host Group name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -110,5 +113,8 @@ export interface GetDedicatedHostGroupsOutputArgs {
      * A regex string to filter results by Dedicated Host Group name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

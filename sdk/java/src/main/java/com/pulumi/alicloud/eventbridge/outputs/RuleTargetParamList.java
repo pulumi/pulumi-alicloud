@@ -15,24 +15,62 @@ public final class RuleTargetParamList {
      * @return The format of param.  Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
      * 
      */
-    private String form;
+    private final String form;
     /**
      * @return The resource key of param.  For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
      * 
      */
-    private String resourceKey;
+    private final String resourceKey;
     /**
      * @return The template of param.
      * 
+     * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * In order to fix the diff, from version 1.160.0,
+     * this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
+     * If you want to set `resource_key = &#34;IsBase64Encode&#34;`, please avoid to set `value = &#34;false&#34;`.
+     * 
      */
-    private @Nullable String template;
+    private final @Nullable String template;
     /**
      * @return The value of param.
      * 
      */
-    private @Nullable String value;
+    private final @Nullable String value;
 
-    private RuleTargetParamList() {}
+    @CustomType.Constructor
+    private RuleTargetParamList(
+        @CustomType.Parameter("form") String form,
+        @CustomType.Parameter("resourceKey") String resourceKey,
+        @CustomType.Parameter("template") @Nullable String template,
+        @CustomType.Parameter("value") @Nullable String value) {
+        this.form = form;
+        this.resourceKey = resourceKey;
+        this.template = template;
+        this.value = value;
+    }
+
     /**
      * @return The format of param.  Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
      * 
@@ -49,6 +87,33 @@ public final class RuleTargetParamList {
     }
     /**
      * @return The template of param.
+     * 
+     * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * In order to fix the diff, from version 1.160.0,
+     * this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
+     * If you want to set `resource_key = &#34;IsBase64Encode&#34;`, please avoid to set `value = &#34;false&#34;`.
      * 
      */
     public Optional<String> template() {
@@ -69,13 +134,17 @@ public final class RuleTargetParamList {
     public static Builder builder(RuleTargetParamList defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String form;
         private String resourceKey;
         private @Nullable String template;
         private @Nullable String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(RuleTargetParamList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.form = defaults.form;
@@ -84,33 +153,23 @@ public final class RuleTargetParamList {
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder form(String form) {
             this.form = Objects.requireNonNull(form);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceKey(String resourceKey) {
             this.resourceKey = Objects.requireNonNull(resourceKey);
             return this;
         }
-        @CustomType.Setter
         public Builder template(@Nullable String template) {
             this.template = template;
             return this;
         }
-        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }
-        public RuleTargetParamList build() {
-            final var o = new RuleTargetParamList();
-            o.form = form;
-            o.resourceKey = resourceKey;
-            o.template = template;
-            o.value = value;
-            return o;
+        }        public RuleTargetParamList build() {
+            return new RuleTargetParamList(form, resourceKey, template, value);
         }
     }
 }

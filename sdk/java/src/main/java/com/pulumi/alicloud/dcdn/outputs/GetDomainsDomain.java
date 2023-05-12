@@ -15,64 +15,91 @@ public final class GetDomainsDomain {
      * @return Indicates the name of the certificate.
      * 
      */
-    private String certName;
+    private final String certName;
     /**
      * @return The canonical name (CNAME) of the accelerated domain.
      * 
      */
-    private String cname;
+    private final String cname;
     /**
      * @return The reason that causes the review failure.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The name of the DCDN Domain.
      * 
      */
-    private String domainName;
+    private final String domainName;
     /**
      * @return The time when the accelerated domain was last modified.
      * 
      */
-    private String gmtModified;
+    private final String gmtModified;
     /**
      * @return The ID of the DCDN Domain.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the resource group.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return The acceleration region.
      * 
      */
-    private String scope;
+    private final String scope;
     /**
      * @return The origin information.
      * 
      */
-    private List<GetDomainsDomainSource> sources;
+    private final List<GetDomainsDomainSource> sources;
     /**
      * @return Indicates whether the SSL certificate is enabled.
      * 
      */
-    private String sslProtocol;
+    private final String sslProtocol;
     /**
      * @return Indicates the public key of the certificate.
      * 
      */
-    private String sslPub;
+    private final String sslPub;
     /**
      * @return The status of DCDN Domain.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetDomainsDomain() {}
+    @CustomType.Constructor
+    private GetDomainsDomain(
+        @CustomType.Parameter("certName") String certName,
+        @CustomType.Parameter("cname") String cname,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("domainName") String domainName,
+        @CustomType.Parameter("gmtModified") String gmtModified,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("scope") String scope,
+        @CustomType.Parameter("sources") List<GetDomainsDomainSource> sources,
+        @CustomType.Parameter("sslProtocol") String sslProtocol,
+        @CustomType.Parameter("sslPub") String sslPub,
+        @CustomType.Parameter("status") String status) {
+        this.certName = certName;
+        this.cname = cname;
+        this.description = description;
+        this.domainName = domainName;
+        this.gmtModified = gmtModified;
+        this.id = id;
+        this.resourceGroupId = resourceGroupId;
+        this.scope = scope;
+        this.sources = sources;
+        this.sslProtocol = sslProtocol;
+        this.sslPub = sslPub;
+        this.status = status;
+    }
+
     /**
      * @return Indicates the name of the certificate.
      * 
@@ -165,7 +192,7 @@ public final class GetDomainsDomain {
     public static Builder builder(GetDomainsDomain defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String certName;
         private String cname;
@@ -179,7 +206,11 @@ public final class GetDomainsDomain {
         private String sslProtocol;
         private String sslPub;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDomainsDomain defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certName = defaults.certName;
@@ -196,47 +227,38 @@ public final class GetDomainsDomain {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder certName(String certName) {
             this.certName = Objects.requireNonNull(certName);
             return this;
         }
-        @CustomType.Setter
         public Builder cname(String cname) {
             this.cname = Objects.requireNonNull(cname);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
-        @CustomType.Setter
         public Builder gmtModified(String gmtModified) {
             this.gmtModified = Objects.requireNonNull(gmtModified);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder scope(String scope) {
             this.scope = Objects.requireNonNull(scope);
             return this;
         }
-        @CustomType.Setter
         public Builder sources(List<GetDomainsDomainSource> sources) {
             this.sources = Objects.requireNonNull(sources);
             return this;
@@ -244,36 +266,19 @@ public final class GetDomainsDomain {
         public Builder sources(GetDomainsDomainSource... sources) {
             return sources(List.of(sources));
         }
-        @CustomType.Setter
         public Builder sslProtocol(String sslProtocol) {
             this.sslProtocol = Objects.requireNonNull(sslProtocol);
             return this;
         }
-        @CustomType.Setter
         public Builder sslPub(String sslPub) {
             this.sslPub = Objects.requireNonNull(sslPub);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetDomainsDomain build() {
-            final var o = new GetDomainsDomain();
-            o.certName = certName;
-            o.cname = cname;
-            o.description = description;
-            o.domainName = domainName;
-            o.gmtModified = gmtModified;
-            o.id = id;
-            o.resourceGroupId = resourceGroupId;
-            o.scope = scope;
-            o.sources = sources;
-            o.sslProtocol = sslProtocol;
-            o.sslPub = sslPub;
-            o.status = status;
-            return o;
+        }        public GetDomainsDomain build() {
+            return new GetDomainsDomain(certName, cname, description, domainName, gmtModified, id, resourceGroupId, scope, sources, sslProtocol, sslPub, status);
         }
     }
 }

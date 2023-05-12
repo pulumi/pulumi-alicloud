@@ -170,6 +170,7 @@ def get_ipv6_egress_rules(ids: Optional[Sequence[str]] = None,
     :param str ipv6_egress_rule_name: The name of the resource.
     :param str ipv6_gateway_id: The ID of the IPv6 gateway.
     :param str name_regex: A regex string to filter results by Ipv6 Egress Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
     """
     __args__ = dict()
@@ -241,6 +242,7 @@ def get_ipv6_egress_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     :param str ipv6_egress_rule_name: The name of the resource.
     :param str ipv6_gateway_id: The ID of the IPv6 gateway.
     :param str name_regex: A regex string to filter results by Ipv6 Egress Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
     """
     ...

@@ -88,6 +88,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+        /// 
+        /// &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         /// </summary>
         [Output("bandwidthType")]
         public Output<string?> BandwidthType { get; private set; } = null!;
@@ -232,6 +234,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+        /// 
+        /// &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         /// </summary>
         [Input("bandwidthType")]
         public Input<string>? BandwidthType { get; set; }
@@ -332,6 +336,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+        /// 
+        /// &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
         /// </summary>
         [Input("bandwidthType")]
         public Input<string>? BandwidthType { get; set; }

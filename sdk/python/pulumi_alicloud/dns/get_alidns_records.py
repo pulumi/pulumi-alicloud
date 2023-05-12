@@ -270,6 +270,7 @@ def get_alidns_records(direction: Optional[str] = None,
     :param str lang: User language.
     :param str line: ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
     :param str order_by: Sort by. Sort from newest to oldest according to the time added by resolution.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str rr_key_word: The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
     :param str rr_regex: Host record regex.
     :param str search_mode: Search mode, Valid values: `LIKE`, `EXACT`, `ADVANCED`, `LIKE` (fuzzy), `EXACT` (accurate) search supports KeyWord field, `ADVANCED` (advanced) mode supports other fields.
@@ -368,6 +369,7 @@ def get_alidns_records_output(direction: Optional[pulumi.Input[Optional[str]]] =
     :param str lang: User language.
     :param str line: ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
     :param str order_by: Sort by. Sort from newest to oldest according to the time added by resolution.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str rr_key_word: The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
     :param str rr_regex: Host record regex.
     :param str search_mode: Search mode, Valid values: `LIKE`, `EXACT`, `ADVANCED`, `LIKE` (fuzzy), `EXACT` (accurate) search supports KeyWord field, `ADVANCED` (advanced) mode supports other fields.

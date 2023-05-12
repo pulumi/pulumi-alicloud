@@ -16,43 +16,72 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProvisionedProductsResult {
-    private @Nullable String accessLevelFilter;
-    private @Nullable Boolean enableDetails;
+    private final @Nullable String accessLevelFilter;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of Provisioned Product IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of name of Provisioned Products.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
     /**
      * @deprecated
      * Field &#39;products&#39; has been deprecated from provider version 1.197.0.
      * 
      */
     @Deprecated /* Field 'products' has been deprecated from provider version 1.197.0. */
-    private List<GetProvisionedProductsProduct> products;
+    private final List<GetProvisionedProductsProduct> products;
     /**
      * @return A list of Provisioned Product Entries. Each element contains the following attributes:
      * 
      */
-    private List<GetProvisionedProductsProvisionedProduct> provisionedProducts;
-    private @Nullable String sortBy;
-    private @Nullable String sortOrder;
+    private final List<GetProvisionedProductsProvisionedProduct> provisionedProducts;
+    private final @Nullable String sortBy;
+    private final @Nullable String sortOrder;
 
-    private GetProvisionedProductsResult() {}
+    @CustomType.Constructor
+    private GetProvisionedProductsResult(
+        @CustomType.Parameter("accessLevelFilter") @Nullable String accessLevelFilter,
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
+        @CustomType.Parameter("products") List<GetProvisionedProductsProduct> products,
+        @CustomType.Parameter("provisionedProducts") List<GetProvisionedProductsProvisionedProduct> provisionedProducts,
+        @CustomType.Parameter("sortBy") @Nullable String sortBy,
+        @CustomType.Parameter("sortOrder") @Nullable String sortOrder) {
+        this.accessLevelFilter = accessLevelFilter;
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+        this.products = products;
+        this.provisionedProducts = provisionedProducts;
+        this.sortBy = sortBy;
+        this.sortOrder = sortOrder;
+    }
+
     public Optional<String> accessLevelFilter() {
         return Optional.ofNullable(this.accessLevelFilter);
     }
@@ -122,7 +151,7 @@ public final class GetProvisionedProductsResult {
     public static Builder builder(GetProvisionedProductsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String accessLevelFilter;
         private @Nullable Boolean enableDetails;
@@ -137,7 +166,11 @@ public final class GetProvisionedProductsResult {
         private List<GetProvisionedProductsProvisionedProduct> provisionedProducts;
         private @Nullable String sortBy;
         private @Nullable String sortOrder;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetProvisionedProductsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessLevelFilter = defaults.accessLevelFilter;
@@ -155,22 +188,18 @@ public final class GetProvisionedProductsResult {
     	      this.sortOrder = defaults.sortOrder;
         }
 
-        @CustomType.Setter
         public Builder accessLevelFilter(@Nullable String accessLevelFilter) {
             this.accessLevelFilter = accessLevelFilter;
             return this;
         }
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -178,12 +207,10 @@ public final class GetProvisionedProductsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -191,22 +218,18 @@ public final class GetProvisionedProductsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
-        @CustomType.Setter
         public Builder products(List<GetProvisionedProductsProduct> products) {
             this.products = Objects.requireNonNull(products);
             return this;
@@ -214,7 +237,6 @@ public final class GetProvisionedProductsResult {
         public Builder products(GetProvisionedProductsProduct... products) {
             return products(List.of(products));
         }
-        @CustomType.Setter
         public Builder provisionedProducts(List<GetProvisionedProductsProvisionedProduct> provisionedProducts) {
             this.provisionedProducts = Objects.requireNonNull(provisionedProducts);
             return this;
@@ -222,32 +244,15 @@ public final class GetProvisionedProductsResult {
         public Builder provisionedProducts(GetProvisionedProductsProvisionedProduct... provisionedProducts) {
             return provisionedProducts(List.of(provisionedProducts));
         }
-        @CustomType.Setter
         public Builder sortBy(@Nullable String sortBy) {
             this.sortBy = sortBy;
             return this;
         }
-        @CustomType.Setter
         public Builder sortOrder(@Nullable String sortOrder) {
             this.sortOrder = sortOrder;
             return this;
-        }
-        public GetProvisionedProductsResult build() {
-            final var o = new GetProvisionedProductsResult();
-            o.accessLevelFilter = accessLevelFilter;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.products = products;
-            o.provisionedProducts = provisionedProducts;
-            o.sortBy = sortBy;
-            o.sortOrder = sortOrder;
-            return o;
+        }        public GetProvisionedProductsResult build() {
+            return new GetProvisionedProductsResult(accessLevelFilter, enableDetails, id, ids, nameRegex, names, outputFile, pageNumber, pageSize, products, provisionedProducts, sortBy, sortOrder);
         }
     }
 }

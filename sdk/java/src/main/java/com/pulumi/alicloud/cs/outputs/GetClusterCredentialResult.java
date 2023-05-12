@@ -17,36 +17,55 @@ public final class GetClusterCredentialResult {
      * @return (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
      * 
      */
-    private GetClusterCredentialCertificateAuthority certificateAuthority;
+    private final GetClusterCredentialCertificateAuthority certificateAuthority;
     /**
      * @return The id of target cluster.
      * 
      */
-    private String clusterId;
+    private final String clusterId;
     /**
      * @return The name of target cluster.
      * 
      */
-    private String clusterName;
+    private final String clusterName;
     /**
      * @return Expiration time of kube config. Format: UTC time in rfc3339.
      * 
      */
-    private String expiration;
+    private final String expiration;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return (Sensitive) The kube config to use to authenticate with the cluster.
      * 
      */
-    private String kubeConfig;
-    private @Nullable String outputFile;
-    private @Nullable Integer temporaryDurationMinutes;
+    private final String kubeConfig;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer temporaryDurationMinutes;
 
-    private GetClusterCredentialResult() {}
+    @CustomType.Constructor
+    private GetClusterCredentialResult(
+        @CustomType.Parameter("certificateAuthority") GetClusterCredentialCertificateAuthority certificateAuthority,
+        @CustomType.Parameter("clusterId") String clusterId,
+        @CustomType.Parameter("clusterName") String clusterName,
+        @CustomType.Parameter("expiration") String expiration,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("kubeConfig") String kubeConfig,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("temporaryDurationMinutes") @Nullable Integer temporaryDurationMinutes) {
+        this.certificateAuthority = certificateAuthority;
+        this.clusterId = clusterId;
+        this.clusterName = clusterName;
+        this.expiration = expiration;
+        this.id = id;
+        this.kubeConfig = kubeConfig;
+        this.outputFile = outputFile;
+        this.temporaryDurationMinutes = temporaryDurationMinutes;
+    }
+
     /**
      * @return (Available in 1.105.0+) Nested attribute containing certificate authority data for your cluster.
      * 
@@ -103,7 +122,7 @@ public final class GetClusterCredentialResult {
     public static Builder builder(GetClusterCredentialResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private GetClusterCredentialCertificateAuthority certificateAuthority;
         private String clusterId;
@@ -113,7 +132,11 @@ public final class GetClusterCredentialResult {
         private String kubeConfig;
         private @Nullable String outputFile;
         private @Nullable Integer temporaryDurationMinutes;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetClusterCredentialResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificateAuthority = defaults.certificateAuthority;
@@ -126,57 +149,39 @@ public final class GetClusterCredentialResult {
     	      this.temporaryDurationMinutes = defaults.temporaryDurationMinutes;
         }
 
-        @CustomType.Setter
         public Builder certificateAuthority(GetClusterCredentialCertificateAuthority certificateAuthority) {
             this.certificateAuthority = Objects.requireNonNull(certificateAuthority);
             return this;
         }
-        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder clusterName(String clusterName) {
             this.clusterName = Objects.requireNonNull(clusterName);
             return this;
         }
-        @CustomType.Setter
         public Builder expiration(String expiration) {
             this.expiration = Objects.requireNonNull(expiration);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder kubeConfig(String kubeConfig) {
             this.kubeConfig = Objects.requireNonNull(kubeConfig);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder temporaryDurationMinutes(@Nullable Integer temporaryDurationMinutes) {
             this.temporaryDurationMinutes = temporaryDurationMinutes;
             return this;
-        }
-        public GetClusterCredentialResult build() {
-            final var o = new GetClusterCredentialResult();
-            o.certificateAuthority = certificateAuthority;
-            o.clusterId = clusterId;
-            o.clusterName = clusterName;
-            o.expiration = expiration;
-            o.id = id;
-            o.kubeConfig = kubeConfig;
-            o.outputFile = outputFile;
-            o.temporaryDurationMinutes = temporaryDurationMinutes;
-            return o;
+        }        public GetClusterCredentialResult build() {
+            return new GetClusterCredentialResult(certificateAuthority, clusterId, clusterName, expiration, id, kubeConfig, outputFile, temporaryDurationMinutes);
         }
     }
 }

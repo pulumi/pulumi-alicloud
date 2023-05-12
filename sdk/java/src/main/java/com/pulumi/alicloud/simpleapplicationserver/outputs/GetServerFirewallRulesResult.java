@@ -17,13 +17,26 @@ public final class GetServerFirewallRulesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private String instanceId;
-    private @Nullable String outputFile;
-    private List<GetServerFirewallRulesRule> rules;
+    private final String id;
+    private final List<String> ids;
+    private final String instanceId;
+    private final @Nullable String outputFile;
+    private final List<GetServerFirewallRulesRule> rules;
 
-    private GetServerFirewallRulesResult() {}
+    @CustomType.Constructor
+    private GetServerFirewallRulesResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("rules") List<GetServerFirewallRulesRule> rules) {
+        this.id = id;
+        this.ids = ids;
+        this.instanceId = instanceId;
+        this.outputFile = outputFile;
+        this.rules = rules;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -51,14 +64,18 @@ public final class GetServerFirewallRulesResult {
     public static Builder builder(GetServerFirewallRulesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
         private String instanceId;
         private @Nullable String outputFile;
         private List<GetServerFirewallRulesRule> rules;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServerFirewallRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -68,12 +85,10 @@ public final class GetServerFirewallRulesResult {
     	      this.rules = defaults.rules;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -81,32 +96,22 @@ public final class GetServerFirewallRulesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder rules(List<GetServerFirewallRulesRule> rules) {
             this.rules = Objects.requireNonNull(rules);
             return this;
         }
         public Builder rules(GetServerFirewallRulesRule... rules) {
             return rules(List.of(rules));
-        }
-        public GetServerFirewallRulesResult build() {
-            final var o = new GetServerFirewallRulesResult();
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.outputFile = outputFile;
-            o.rules = rules;
-            return o;
+        }        public GetServerFirewallRulesResult build() {
+            return new GetServerFirewallRulesResult(id, ids, instanceId, outputFile, rules);
         }
     }
 }

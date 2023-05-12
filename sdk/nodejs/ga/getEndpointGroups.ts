@@ -65,6 +65,9 @@ export interface GetEndpointGroupsArgs {
      * A regex string to filter results by Endpoint Group name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the endpoint group.
@@ -139,6 +142,9 @@ export interface GetEndpointGroupsOutputArgs {
      * A regex string to filter results by Endpoint Group name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the endpoint group.

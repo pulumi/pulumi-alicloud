@@ -139,12 +139,16 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+        /// 
+        /// &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
         /// </summary>
         [Output("endpointGroupType")]
         public Output<string> EndpointGroupType { get; private set; } = null!;
 
         /// <summary>
         /// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
+        /// 
+        /// &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
         /// </summary>
         [Output("endpointRequestProtocol")]
         public Output<string?> EndpointRequestProtocol { get; private set; } = null!;
@@ -187,6 +191,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+        /// 
+        /// &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         /// </summary>
         [Output("portOverrides")]
         public Output<Outputs.EndpointGroupPortOverrides?> PortOverrides { get; private set; } = null!;
@@ -287,12 +293,16 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+        /// 
+        /// &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
         /// </summary>
         [Input("endpointGroupType")]
         public Input<string>? EndpointGroupType { get; set; }
 
         /// <summary>
         /// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
+        /// 
+        /// &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
         /// </summary>
         [Input("endpointRequestProtocol")]
         public Input<string>? EndpointRequestProtocol { get; set; }
@@ -335,6 +345,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+        /// 
+        /// &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         /// </summary>
         [Input("portOverrides")]
         public Input<Inputs.EndpointGroupPortOverridesArgs>? PortOverrides { get; set; }
@@ -391,12 +403,16 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+        /// 
+        /// &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
         /// </summary>
         [Input("endpointGroupType")]
         public Input<string>? EndpointGroupType { get; set; }
 
         /// <summary>
         /// The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
+        /// 
+        /// &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
         /// </summary>
         [Input("endpointRequestProtocol")]
         public Input<string>? EndpointRequestProtocol { get; set; }
@@ -439,6 +455,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+        /// 
+        /// &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         /// </summary>
         [Input("portOverrides")]
         public Input<Inputs.EndpointGroupPortOverridesGetArgs>? PortOverrides { get; set; }

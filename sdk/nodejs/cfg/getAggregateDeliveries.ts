@@ -54,6 +54,9 @@ export interface GetAggregateDeliveriesArgs {
      */
     ids?: string[];
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
@@ -117,6 +120,9 @@ export interface GetAggregateDeliveriesOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.

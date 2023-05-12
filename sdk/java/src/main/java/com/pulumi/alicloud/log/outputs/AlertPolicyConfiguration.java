@@ -15,19 +15,28 @@ public final class AlertPolicyConfiguration {
      * @return Action Policy Id.
      * 
      */
-    private @Nullable String actionPolicyId;
+    private final @Nullable String actionPolicyId;
     /**
      * @return Alert Policy Id.
      * 
      */
-    private String alertPolicyId;
+    private final String alertPolicyId;
     /**
      * @return Repeat interval used by alert policy, 1h, 1m.e.g.
      * 
      */
-    private String repeatInterval;
+    private final String repeatInterval;
 
-    private AlertPolicyConfiguration() {}
+    @CustomType.Constructor
+    private AlertPolicyConfiguration(
+        @CustomType.Parameter("actionPolicyId") @Nullable String actionPolicyId,
+        @CustomType.Parameter("alertPolicyId") String alertPolicyId,
+        @CustomType.Parameter("repeatInterval") String repeatInterval) {
+        this.actionPolicyId = actionPolicyId;
+        this.alertPolicyId = alertPolicyId;
+        this.repeatInterval = repeatInterval;
+    }
+
     /**
      * @return Action Policy Id.
      * 
@@ -57,12 +66,16 @@ public final class AlertPolicyConfiguration {
     public static Builder builder(AlertPolicyConfiguration defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String actionPolicyId;
         private String alertPolicyId;
         private String repeatInterval;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(AlertPolicyConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.actionPolicyId = defaults.actionPolicyId;
@@ -70,27 +83,19 @@ public final class AlertPolicyConfiguration {
     	      this.repeatInterval = defaults.repeatInterval;
         }
 
-        @CustomType.Setter
         public Builder actionPolicyId(@Nullable String actionPolicyId) {
             this.actionPolicyId = actionPolicyId;
             return this;
         }
-        @CustomType.Setter
         public Builder alertPolicyId(String alertPolicyId) {
             this.alertPolicyId = Objects.requireNonNull(alertPolicyId);
             return this;
         }
-        @CustomType.Setter
         public Builder repeatInterval(String repeatInterval) {
             this.repeatInterval = Objects.requireNonNull(repeatInterval);
             return this;
-        }
-        public AlertPolicyConfiguration build() {
-            final var o = new AlertPolicyConfiguration();
-            o.actionPolicyId = actionPolicyId;
-            o.alertPolicyId = alertPolicyId;
-            o.repeatInterval = repeatInterval;
-            return o;
+        }        public AlertPolicyConfiguration build() {
+            return new AlertPolicyConfiguration(actionPolicyId, alertPolicyId, repeatInterval);
         }
     }
 }

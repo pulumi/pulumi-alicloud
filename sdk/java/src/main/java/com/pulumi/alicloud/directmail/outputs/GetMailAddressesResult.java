@@ -13,19 +13,36 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMailAddressesResult {
-    private List<GetMailAddressesAddress> addresses;
+    private final List<GetMailAddressesAddress> addresses;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String keyWord;
-    private @Nullable String outputFile;
-    private @Nullable String sendtype;
-    private @Nullable String status;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String keyWord;
+    private final @Nullable String outputFile;
+    private final @Nullable String sendtype;
+    private final @Nullable String status;
 
-    private GetMailAddressesResult() {}
+    @CustomType.Constructor
+    private GetMailAddressesResult(
+        @CustomType.Parameter("addresses") List<GetMailAddressesAddress> addresses,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("keyWord") @Nullable String keyWord,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("sendtype") @Nullable String sendtype,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.addresses = addresses;
+        this.id = id;
+        this.ids = ids;
+        this.keyWord = keyWord;
+        this.outputFile = outputFile;
+        this.sendtype = sendtype;
+        this.status = status;
+    }
+
     public List<GetMailAddressesAddress> addresses() {
         return this.addresses;
     }
@@ -59,7 +76,7 @@ public final class GetMailAddressesResult {
     public static Builder builder(GetMailAddressesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetMailAddressesAddress> addresses;
         private String id;
@@ -68,7 +85,11 @@ public final class GetMailAddressesResult {
         private @Nullable String outputFile;
         private @Nullable String sendtype;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetMailAddressesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addresses = defaults.addresses;
@@ -80,7 +101,6 @@ public final class GetMailAddressesResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder addresses(List<GetMailAddressesAddress> addresses) {
             this.addresses = Objects.requireNonNull(addresses);
             return this;
@@ -88,12 +108,10 @@ public final class GetMailAddressesResult {
         public Builder addresses(GetMailAddressesAddress... addresses) {
             return addresses(List.of(addresses));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -101,36 +119,23 @@ public final class GetMailAddressesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder keyWord(@Nullable String keyWord) {
             this.keyWord = keyWord;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder sendtype(@Nullable String sendtype) {
             this.sendtype = sendtype;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetMailAddressesResult build() {
-            final var o = new GetMailAddressesResult();
-            o.addresses = addresses;
-            o.id = id;
-            o.ids = ids;
-            o.keyWord = keyWord;
-            o.outputFile = outputFile;
-            o.sendtype = sendtype;
-            o.status = status;
-            return o;
+        }        public GetMailAddressesResult build() {
+            return new GetMailAddressesResult(addresses, id, ids, keyWord, outputFile, sendtype, status);
         }
     }
 }

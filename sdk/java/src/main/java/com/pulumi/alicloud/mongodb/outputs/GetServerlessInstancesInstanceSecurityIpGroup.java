@@ -13,19 +13,28 @@ public final class GetServerlessInstancesInstanceSecurityIpGroup {
      * @return The attribute of the IP whitelist. This parameter is empty by default.
      * 
      */
-    private String securityIpGroupAttribute;
+    private final String securityIpGroupAttribute;
     /**
      * @return The name of the IP whitelist.
      * 
      */
-    private String securityIpGroupName;
+    private final String securityIpGroupName;
     /**
      * @return The IP addresses in the whitelist.
      * 
      */
-    private String securityIpList;
+    private final String securityIpList;
 
-    private GetServerlessInstancesInstanceSecurityIpGroup() {}
+    @CustomType.Constructor
+    private GetServerlessInstancesInstanceSecurityIpGroup(
+        @CustomType.Parameter("securityIpGroupAttribute") String securityIpGroupAttribute,
+        @CustomType.Parameter("securityIpGroupName") String securityIpGroupName,
+        @CustomType.Parameter("securityIpList") String securityIpList) {
+        this.securityIpGroupAttribute = securityIpGroupAttribute;
+        this.securityIpGroupName = securityIpGroupName;
+        this.securityIpList = securityIpList;
+    }
+
     /**
      * @return The attribute of the IP whitelist. This parameter is empty by default.
      * 
@@ -55,12 +64,16 @@ public final class GetServerlessInstancesInstanceSecurityIpGroup {
     public static Builder builder(GetServerlessInstancesInstanceSecurityIpGroup defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String securityIpGroupAttribute;
         private String securityIpGroupName;
         private String securityIpList;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServerlessInstancesInstanceSecurityIpGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.securityIpGroupAttribute = defaults.securityIpGroupAttribute;
@@ -68,27 +81,19 @@ public final class GetServerlessInstancesInstanceSecurityIpGroup {
     	      this.securityIpList = defaults.securityIpList;
         }
 
-        @CustomType.Setter
         public Builder securityIpGroupAttribute(String securityIpGroupAttribute) {
             this.securityIpGroupAttribute = Objects.requireNonNull(securityIpGroupAttribute);
             return this;
         }
-        @CustomType.Setter
         public Builder securityIpGroupName(String securityIpGroupName) {
             this.securityIpGroupName = Objects.requireNonNull(securityIpGroupName);
             return this;
         }
-        @CustomType.Setter
         public Builder securityIpList(String securityIpList) {
             this.securityIpList = Objects.requireNonNull(securityIpList);
             return this;
-        }
-        public GetServerlessInstancesInstanceSecurityIpGroup build() {
-            final var o = new GetServerlessInstancesInstanceSecurityIpGroup();
-            o.securityIpGroupAttribute = securityIpGroupAttribute;
-            o.securityIpGroupName = securityIpGroupName;
-            o.securityIpList = securityIpList;
-            return o;
+        }        public GetServerlessInstancesInstanceSecurityIpGroup build() {
+            return new GetServerlessInstancesInstanceSecurityIpGroup(securityIpGroupAttribute, securityIpGroupName, securityIpList);
         }
     }
 }

@@ -15,15 +15,26 @@ public final class BucketReplicationDestination {
      * @return The destination bucket to which the data is replicated.
      * 
      */
-    private String bucket;
-    private String location;
+    private final String bucket;
+    private final String location;
     /**
      * @return The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
      * 
+     * `NOTE`: You can set transfer_type to oss_acc only when you create cross-region replication (CRR) rules.
+     * 
      */
-    private @Nullable String transferType;
+    private final @Nullable String transferType;
 
-    private BucketReplicationDestination() {}
+    @CustomType.Constructor
+    private BucketReplicationDestination(
+        @CustomType.Parameter("bucket") String bucket,
+        @CustomType.Parameter("location") String location,
+        @CustomType.Parameter("transferType") @Nullable String transferType) {
+        this.bucket = bucket;
+        this.location = location;
+        this.transferType = transferType;
+    }
+
     /**
      * @return The destination bucket to which the data is replicated.
      * 
@@ -37,6 +48,8 @@ public final class BucketReplicationDestination {
     /**
      * @return The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
      * 
+     * `NOTE`: You can set transfer_type to oss_acc only when you create cross-region replication (CRR) rules.
+     * 
      */
     public Optional<String> transferType() {
         return Optional.ofNullable(this.transferType);
@@ -49,12 +62,16 @@ public final class BucketReplicationDestination {
     public static Builder builder(BucketReplicationDestination defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String bucket;
         private String location;
         private @Nullable String transferType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(BucketReplicationDestination defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucket = defaults.bucket;
@@ -62,27 +79,19 @@ public final class BucketReplicationDestination {
     	      this.transferType = defaults.transferType;
         }
 
-        @CustomType.Setter
         public Builder bucket(String bucket) {
             this.bucket = Objects.requireNonNull(bucket);
             return this;
         }
-        @CustomType.Setter
         public Builder location(String location) {
             this.location = Objects.requireNonNull(location);
             return this;
         }
-        @CustomType.Setter
         public Builder transferType(@Nullable String transferType) {
             this.transferType = transferType;
             return this;
-        }
-        public BucketReplicationDestination build() {
-            final var o = new BucketReplicationDestination();
-            o.bucket = bucket;
-            o.location = location;
-            o.transferType = transferType;
-            return o;
+        }        public BucketReplicationDestination build() {
+            return new BucketReplicationDestination(bucket, location, transferType);
         }
     }
 }

@@ -15,29 +15,42 @@ public final class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacit
      * @return The available memory size. Unit: `GiB`.
      * 
      */
-    private Integer availableMemory;
+    private final Integer availableMemory;
     /**
      * @return The number of available vCPUs.
      * 
      */
-    private Integer availableVcpus;
+    private final Integer availableVcpus;
     /**
      * @return The local storage.
      * 
      */
-    private List<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity> localStorageCapacities;
+    private final List<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity> localStorageCapacities;
     /**
      * @return The total memory size. Unit: `GiB`.
      * 
      */
-    private Integer totalMemory;
+    private final Integer totalMemory;
     /**
      * @return The total number of vCPUs.
      * 
      */
-    private Integer totalVcpus;
+    private final Integer totalVcpus;
 
-    private GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity() {}
+    @CustomType.Constructor
+    private GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity(
+        @CustomType.Parameter("availableMemory") Integer availableMemory,
+        @CustomType.Parameter("availableVcpus") Integer availableVcpus,
+        @CustomType.Parameter("localStorageCapacities") List<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity> localStorageCapacities,
+        @CustomType.Parameter("totalMemory") Integer totalMemory,
+        @CustomType.Parameter("totalVcpus") Integer totalVcpus) {
+        this.availableMemory = availableMemory;
+        this.availableVcpus = availableVcpus;
+        this.localStorageCapacities = localStorageCapacities;
+        this.totalMemory = totalMemory;
+        this.totalVcpus = totalVcpus;
+    }
+
     /**
      * @return The available memory size. Unit: `GiB`.
      * 
@@ -81,14 +94,18 @@ public final class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacit
     public static Builder builder(GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer availableMemory;
         private Integer availableVcpus;
         private List<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity> localStorageCapacities;
         private Integer totalMemory;
         private Integer totalVcpus;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availableMemory = defaults.availableMemory;
@@ -98,17 +115,14 @@ public final class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacit
     	      this.totalVcpus = defaults.totalVcpus;
         }
 
-        @CustomType.Setter
         public Builder availableMemory(Integer availableMemory) {
             this.availableMemory = Objects.requireNonNull(availableMemory);
             return this;
         }
-        @CustomType.Setter
         public Builder availableVcpus(Integer availableVcpus) {
             this.availableVcpus = Objects.requireNonNull(availableVcpus);
             return this;
         }
-        @CustomType.Setter
         public Builder localStorageCapacities(List<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity> localStorageCapacities) {
             this.localStorageCapacities = Objects.requireNonNull(localStorageCapacities);
             return this;
@@ -116,24 +130,15 @@ public final class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacit
         public Builder localStorageCapacities(GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity... localStorageCapacities) {
             return localStorageCapacities(List.of(localStorageCapacities));
         }
-        @CustomType.Setter
         public Builder totalMemory(Integer totalMemory) {
             this.totalMemory = Objects.requireNonNull(totalMemory);
             return this;
         }
-        @CustomType.Setter
         public Builder totalVcpus(Integer totalVcpus) {
             this.totalVcpus = Objects.requireNonNull(totalVcpus);
             return this;
-        }
-        public GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity build() {
-            final var o = new GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity();
-            o.availableMemory = availableMemory;
-            o.availableVcpus = availableVcpus;
-            o.localStorageCapacities = localStorageCapacities;
-            o.totalMemory = totalMemory;
-            o.totalVcpus = totalVcpus;
-            return o;
+        }        public GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity build() {
+            return new GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity(availableMemory, availableVcpus, localStorageCapacities, totalMemory, totalVcpus);
         }
     }
 }

@@ -54,7 +54,8 @@ func GetBindings(ctx *pulumi.Context, args *GetBindingsArgs, opts ...pulumi.Invo
 // A collection of arguments for invoking getBindings.
 type GetBindingsArgs struct {
 	// Instance Id.
-	InstanceId string  `pulumi:"instanceId"`
+	InstanceId string `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Virtualhost Name.
 	VirtualHostName string `pulumi:"virtualHostName"`
@@ -87,7 +88,8 @@ func GetBindingsOutput(ctx *pulumi.Context, args GetBindingsOutputArgs, opts ...
 // A collection of arguments for invoking getBindings.
 type GetBindingsOutputArgs struct {
 	// Instance Id.
-	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Virtualhost Name.
 	VirtualHostName pulumi.StringInput `pulumi:"virtualHostName"`

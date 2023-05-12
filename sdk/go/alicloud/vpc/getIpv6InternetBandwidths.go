@@ -82,7 +82,8 @@ type GetIpv6InternetBandwidthsArgs struct {
 	Ipv6AddressId *string `pulumi:"ipv6AddressId"`
 	// The ID of the Ipv6 Internet Bandwidth.
 	Ipv6InternetBandwidthId *string `pulumi:"ipv6InternetBandwidthId"`
-	OutputFile              *string `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The status of the resource. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
 	Status *string `pulumi:"status"`
 }
@@ -120,7 +121,8 @@ type GetIpv6InternetBandwidthsOutputArgs struct {
 	Ipv6AddressId pulumi.StringPtrInput `pulumi:"ipv6AddressId"`
 	// The ID of the Ipv6 Internet Bandwidth.
 	Ipv6InternetBandwidthId pulumi.StringPtrInput `pulumi:"ipv6InternetBandwidthId"`
-	OutputFile              pulumi.StringPtrInput `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the resource. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }

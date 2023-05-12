@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:** This resource has been renamed to ecs.EcsKeyPairAttachment from version 1.121.0.
+//
+// Provides a key pair attachment resource to bind key pair for several ECS instances.
+//
+// > **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
 type KeyPairAttachment struct {
 	pulumi.CustomResourceState
 

@@ -44,6 +44,8 @@ class RdsAccountArgs:
         :param pulumi.Input[str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         :param pulumi.Input[bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
         :param pulumi.Input[str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+               
+               > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
         """
         if account_description is not None:
             pulumi.set(__self__, "account_description", account_description)
@@ -238,6 +240,8 @@ class RdsAccountArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+
+        > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
         """
         return pulumi.get(self, "type")
 
@@ -281,6 +285,8 @@ class _RdsAccountState:
         :param pulumi.Input[bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Available`, `Unavailable`.
         :param pulumi.Input[str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+               
+               > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
         """
         if account_description is not None:
             pulumi.set(__self__, "account_description", account_description)
@@ -489,6 +495,8 @@ class _RdsAccountState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+
+        > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
         """
         return pulumi.get(self, "type")
 
@@ -585,6 +593,8 @@ class RdsAccount(pulumi.CustomResource):
         :param pulumi.Input[str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         :param pulumi.Input[bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
         :param pulumi.Input[str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+               
+               > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
         """
         ...
     @overload
@@ -759,6 +769,8 @@ class RdsAccount(pulumi.CustomResource):
         :param pulumi.Input[bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Available`, `Unavailable`.
         :param pulumi.Input[str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+               
+               > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -891,6 +903,8 @@ class RdsAccount(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+
+        > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
         """
         return pulumi.get(self, "type")
 

@@ -16,14 +16,21 @@ public final class ServiceMeshMeshConfigControlPlaneLog {
      * @return Whether to enable of the access logging. Valid values: `true` and `false`.
      * 
      */
-    private @Nullable Boolean enabled;
+    private final @Nullable Boolean enabled;
     /**
      * @return The SLS Project of the access logging.
      * 
      */
-    private @Nullable String project;
+    private final @Nullable String project;
 
-    private ServiceMeshMeshConfigControlPlaneLog() {}
+    @CustomType.Constructor
+    private ServiceMeshMeshConfigControlPlaneLog(
+        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
+        @CustomType.Parameter("project") @Nullable String project) {
+        this.enabled = enabled;
+        this.project = project;
+    }
+
     /**
      * @return Whether to enable of the access logging. Valid values: `true` and `false`.
      * 
@@ -46,32 +53,30 @@ public final class ServiceMeshMeshConfigControlPlaneLog {
     public static Builder builder(ServiceMeshMeshConfigControlPlaneLog defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean enabled;
         private @Nullable String project;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ServiceMeshMeshConfigControlPlaneLog defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.project = defaults.project;
         }
 
-        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
-        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
-        }
-        public ServiceMeshMeshConfigControlPlaneLog build() {
-            final var o = new ServiceMeshMeshConfigControlPlaneLog();
-            o.enabled = enabled;
-            o.project = project;
-            return o;
+        }        public ServiceMeshMeshConfigControlPlaneLog build() {
+            return new ServiceMeshMeshConfigControlPlaneLog(enabled, project);
         }
     }
 }

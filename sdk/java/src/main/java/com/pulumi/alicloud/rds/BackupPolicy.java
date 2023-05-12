@@ -152,6 +152,8 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * - 480: A snapshot backup is performed once every 480 minutes.
      * - 720: A snapshot backup is performed once every 720 minutes.
      * 
+     * &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
+     * 
      */
     @Export(name="backupInterval", type=String.class, parameters={})
     private Output<String> backupInterval;
@@ -166,6 +168,8 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * - 360: A snapshot backup is performed once every 360 minutes.
      * - 480: A snapshot backup is performed once every 480 minutes.
      * - 720: A snapshot backup is performed once every 720 minutes.
+     * 
+     * &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
      * 
      */
     public Output<String> backupInterval() {

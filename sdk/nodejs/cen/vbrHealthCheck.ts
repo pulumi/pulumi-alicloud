@@ -107,6 +107,8 @@ export class VbrHealthCheck extends pulumi.CustomResource {
     public readonly vbrInstanceOwnerId!: pulumi.Output<number | undefined>;
     /**
      * The ID of the region to which the VBR belongs.
+     *
+     * ->**NOTE:** The `alicloud.cen.VbrHealthCheck` resource depends on the related `alicloud.cen.InstanceAttachment` resource.
      */
     public readonly vbrInstanceRegionId!: pulumi.Output<string>;
 
@@ -193,6 +195,8 @@ export interface VbrHealthCheckState {
     vbrInstanceOwnerId?: pulumi.Input<number>;
     /**
      * The ID of the region to which the VBR belongs.
+     *
+     * ->**NOTE:** The `alicloud.cen.VbrHealthCheck` resource depends on the related `alicloud.cen.InstanceAttachment` resource.
      */
     vbrInstanceRegionId?: pulumi.Input<string>;
 }
@@ -231,6 +235,8 @@ export interface VbrHealthCheckArgs {
     vbrInstanceOwnerId?: pulumi.Input<number>;
     /**
      * The ID of the region to which the VBR belongs.
+     *
+     * ->**NOTE:** The `alicloud.cen.VbrHealthCheck` resource depends on the related `alicloud.cen.InstanceAttachment` resource.
      */
     vbrInstanceRegionId: pulumi.Input<string>;
 }

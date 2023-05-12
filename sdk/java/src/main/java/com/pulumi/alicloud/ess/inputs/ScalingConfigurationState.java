@@ -492,12 +492,40 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
     /**
      * Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
      * 
+     * &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+     * 
+     * &gt; **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+     * 
+     * &gt; **NOTE:** Restrictions on attaching ECS instances:
+     * 
+     * - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+     * - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+     * - The attached ECS instances must in the running state.
+     * - The attached ECS instances has not been attached to other scaling groups.
+     * - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+     * 
+     * &gt; **NOTE:** The last scaling configuration can&#39;t be set to inactive and deleted alone.
+     * 
      */
     @Import(name="spotPriceLimits")
     private @Nullable Output<List<ScalingConfigurationSpotPriceLimitArgs>> spotPriceLimits;
 
     /**
      * @return Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+     * 
+     * &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+     * 
+     * &gt; **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+     * 
+     * &gt; **NOTE:** Restrictions on attaching ECS instances:
+     * 
+     * - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+     * - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+     * - The attached ECS instances must in the running state.
+     * - The attached ECS instances has not been attached to other scaling groups.
+     * - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+     * 
+     * &gt; **NOTE:** The last scaling configuration can&#39;t be set to inactive and deleted alone.
      * 
      */
     public Optional<Output<List<ScalingConfigurationSpotPriceLimitArgs>>> spotPriceLimits() {
@@ -1441,6 +1469,20 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
         /**
          * @param spotPriceLimits Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
          * 
+         * &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+         * 
+         * &gt; **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+         * 
+         * &gt; **NOTE:** Restrictions on attaching ECS instances:
+         * 
+         * - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+         * - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+         * - The attached ECS instances must in the running state.
+         * - The attached ECS instances has not been attached to other scaling groups.
+         * - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+         * 
+         * &gt; **NOTE:** The last scaling configuration can&#39;t be set to inactive and deleted alone.
+         * 
          * @return builder
          * 
          */
@@ -1452,6 +1494,20 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
         /**
          * @param spotPriceLimits Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
          * 
+         * &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+         * 
+         * &gt; **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+         * 
+         * &gt; **NOTE:** Restrictions on attaching ECS instances:
+         * 
+         * - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+         * - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+         * - The attached ECS instances must in the running state.
+         * - The attached ECS instances has not been attached to other scaling groups.
+         * - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+         * 
+         * &gt; **NOTE:** The last scaling configuration can&#39;t be set to inactive and deleted alone.
+         * 
          * @return builder
          * 
          */
@@ -1461,6 +1517,20 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
 
         /**
          * @param spotPriceLimits Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+         * 
+         * &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+         * 
+         * &gt; **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+         * 
+         * &gt; **NOTE:** Restrictions on attaching ECS instances:
+         * 
+         * - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+         * - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+         * - The attached ECS instances must in the running state.
+         * - The attached ECS instances has not been attached to other scaling groups.
+         * - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+         * 
+         * &gt; **NOTE:** The last scaling configuration can&#39;t be set to inactive and deleted alone.
          * 
          * @return builder
          * 

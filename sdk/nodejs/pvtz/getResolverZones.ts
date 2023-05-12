@@ -39,6 +39,9 @@ export function getResolverZones(args?: GetResolverZonesArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getResolverZones.
  */
 export interface GetResolverZonesArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the Zone.
@@ -85,6 +88,9 @@ export function getResolverZonesOutput(args?: GetResolverZonesOutputArgs, opts?:
  * A collection of arguments for invoking getResolverZones.
  */
 export interface GetResolverZonesOutputArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the Zone.

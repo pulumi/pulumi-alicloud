@@ -9,12 +9,23 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMonitorGroupInstancesInstanceInstance {
-    private String category;
-    private String instanceId;
-    private String instanceName;
-    private String regionId;
+    private final String category;
+    private final String instanceId;
+    private final String instanceName;
+    private final String regionId;
 
-    private GetMonitorGroupInstancesInstanceInstance() {}
+    @CustomType.Constructor
+    private GetMonitorGroupInstancesInstanceInstance(
+        @CustomType.Parameter("category") String category,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("instanceName") String instanceName,
+        @CustomType.Parameter("regionId") String regionId) {
+        this.category = category;
+        this.instanceId = instanceId;
+        this.instanceName = instanceName;
+        this.regionId = regionId;
+    }
+
     public String category() {
         return this.category;
     }
@@ -35,13 +46,17 @@ public final class GetMonitorGroupInstancesInstanceInstance {
     public static Builder builder(GetMonitorGroupInstancesInstanceInstance defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String category;
         private String instanceId;
         private String instanceName;
         private String regionId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetMonitorGroupInstancesInstanceInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -50,33 +65,23 @@ public final class GetMonitorGroupInstancesInstanceInstance {
     	      this.regionId = defaults.regionId;
         }
 
-        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
-        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
-        }
-        public GetMonitorGroupInstancesInstanceInstance build() {
-            final var o = new GetMonitorGroupInstancesInstanceInstance();
-            o.category = category;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.regionId = regionId;
-            return o;
+        }        public GetMonitorGroupInstancesInstanceInstance build() {
+            return new GetMonitorGroupInstancesInstanceInstance(category, instanceId, instanceName, regionId);
         }
     }
 }

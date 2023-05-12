@@ -18,26 +18,41 @@ public final class GetEnterpriseProxyAccessesResult {
      * @return A list of Proxy Access Entries. Each element contains the following attributes:
      * 
      */
-    private List<GetEnterpriseProxyAccessesAccess> accesses;
-    private @Nullable Boolean enableDetails;
+    private final List<GetEnterpriseProxyAccessesAccess> accesses;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of Proxy Access IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String outputFile;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
     /**
      * @return The ID of the security agent.
      * 
      */
-    private String proxyId;
+    private final String proxyId;
 
-    private GetEnterpriseProxyAccessesResult() {}
+    @CustomType.Constructor
+    private GetEnterpriseProxyAccessesResult(
+        @CustomType.Parameter("accesses") List<GetEnterpriseProxyAccessesAccess> accesses,
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("proxyId") String proxyId) {
+        this.accesses = accesses;
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.proxyId = proxyId;
+    }
+
     /**
      * @return A list of Proxy Access Entries. Each element contains the following attributes:
      * 
@@ -80,7 +95,7 @@ public final class GetEnterpriseProxyAccessesResult {
     public static Builder builder(GetEnterpriseProxyAccessesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetEnterpriseProxyAccessesAccess> accesses;
         private @Nullable Boolean enableDetails;
@@ -88,7 +103,11 @@ public final class GetEnterpriseProxyAccessesResult {
         private List<String> ids;
         private @Nullable String outputFile;
         private String proxyId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEnterpriseProxyAccessesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accesses = defaults.accesses;
@@ -99,7 +118,6 @@ public final class GetEnterpriseProxyAccessesResult {
     	      this.proxyId = defaults.proxyId;
         }
 
-        @CustomType.Setter
         public Builder accesses(List<GetEnterpriseProxyAccessesAccess> accesses) {
             this.accesses = Objects.requireNonNull(accesses);
             return this;
@@ -107,17 +125,14 @@ public final class GetEnterpriseProxyAccessesResult {
         public Builder accesses(GetEnterpriseProxyAccessesAccess... accesses) {
             return accesses(List.of(accesses));
         }
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -125,25 +140,15 @@ public final class GetEnterpriseProxyAccessesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder proxyId(String proxyId) {
             this.proxyId = Objects.requireNonNull(proxyId);
             return this;
-        }
-        public GetEnterpriseProxyAccessesResult build() {
-            final var o = new GetEnterpriseProxyAccessesResult();
-            o.accesses = accesses;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.proxyId = proxyId;
-            return o;
+        }        public GetEnterpriseProxyAccessesResult build() {
+            return new GetEnterpriseProxyAccessesResult(accesses, enableDetails, id, ids, outputFile, proxyId);
         }
     }
 }

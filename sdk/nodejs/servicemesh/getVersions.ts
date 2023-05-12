@@ -48,6 +48,9 @@ export interface GetVersionsArgs {
      * A list of ASM versions. Its element formats as `<edition>:<version>`.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -99,5 +102,8 @@ export interface GetVersionsOutputArgs {
      * A list of ASM versions. Its element formats as `<edition>:<version>`.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

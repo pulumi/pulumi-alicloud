@@ -15,21 +15,42 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDesktopTypesResult {
-    private @Nullable Integer cpuCount;
-    private @Nullable Double gpuCount;
+    private final @Nullable Integer cpuCount;
+    private final @Nullable Double gpuCount;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String instanceTypeFamily;
-    private @Nullable Integer memorySize;
-    private @Nullable String outputFile;
-    private @Nullable String status;
-    private List<GetDesktopTypesType> types;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String instanceTypeFamily;
+    private final @Nullable Integer memorySize;
+    private final @Nullable String outputFile;
+    private final @Nullable String status;
+    private final List<GetDesktopTypesType> types;
 
-    private GetDesktopTypesResult() {}
+    @CustomType.Constructor
+    private GetDesktopTypesResult(
+        @CustomType.Parameter("cpuCount") @Nullable Integer cpuCount,
+        @CustomType.Parameter("gpuCount") @Nullable Double gpuCount,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceTypeFamily") @Nullable String instanceTypeFamily,
+        @CustomType.Parameter("memorySize") @Nullable Integer memorySize,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("types") List<GetDesktopTypesType> types) {
+        this.cpuCount = cpuCount;
+        this.gpuCount = gpuCount;
+        this.id = id;
+        this.ids = ids;
+        this.instanceTypeFamily = instanceTypeFamily;
+        this.memorySize = memorySize;
+        this.outputFile = outputFile;
+        this.status = status;
+        this.types = types;
+    }
+
     public Optional<Integer> cpuCount() {
         return Optional.ofNullable(this.cpuCount);
     }
@@ -69,7 +90,7 @@ public final class GetDesktopTypesResult {
     public static Builder builder(GetDesktopTypesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Integer cpuCount;
         private @Nullable Double gpuCount;
@@ -80,7 +101,11 @@ public final class GetDesktopTypesResult {
         private @Nullable String outputFile;
         private @Nullable String status;
         private List<GetDesktopTypesType> types;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDesktopTypesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuCount = defaults.cpuCount;
@@ -94,22 +119,18 @@ public final class GetDesktopTypesResult {
     	      this.types = defaults.types;
         }
 
-        @CustomType.Setter
         public Builder cpuCount(@Nullable Integer cpuCount) {
             this.cpuCount = cpuCount;
             return this;
         }
-        @CustomType.Setter
         public Builder gpuCount(@Nullable Double gpuCount) {
             this.gpuCount = gpuCount;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -117,46 +138,30 @@ public final class GetDesktopTypesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceTypeFamily(@Nullable String instanceTypeFamily) {
             this.instanceTypeFamily = instanceTypeFamily;
             return this;
         }
-        @CustomType.Setter
         public Builder memorySize(@Nullable Integer memorySize) {
             this.memorySize = memorySize;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder types(List<GetDesktopTypesType> types) {
             this.types = Objects.requireNonNull(types);
             return this;
         }
         public Builder types(GetDesktopTypesType... types) {
             return types(List.of(types));
-        }
-        public GetDesktopTypesResult build() {
-            final var o = new GetDesktopTypesResult();
-            o.cpuCount = cpuCount;
-            o.gpuCount = gpuCount;
-            o.id = id;
-            o.ids = ids;
-            o.instanceTypeFamily = instanceTypeFamily;
-            o.memorySize = memorySize;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.types = types;
-            return o;
+        }        public GetDesktopTypesResult build() {
+            return new GetDesktopTypesResult(cpuCount, gpuCount, id, ids, instanceTypeFamily, memorySize, outputFile, status, types);
         }
     }
 }

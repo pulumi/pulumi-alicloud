@@ -20,6 +20,8 @@ namespace Pulumi.AliCloud.Alb.Inputs
 
         /// <summary>
         /// Indicates Whether to Enable the QuIC Upgrade.
+        /// 
+        /// &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
         /// </summary>
         [Input("quicUpgradeEnabled")]
         public Input<bool>? QuicUpgradeEnabled { get; set; }

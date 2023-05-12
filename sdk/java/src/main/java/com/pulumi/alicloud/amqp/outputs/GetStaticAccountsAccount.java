@@ -13,39 +13,56 @@ public final class GetStaticAccountsAccount {
      * @return Access key.
      * 
      */
-    private String accessKey;
+    private final String accessKey;
     /**
      * @return Create time stamp. Unix timestamp, to millisecond level.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The `key` of the resource supplied above.The value is formulated as `&lt;instance_id&gt;:&lt;access_key&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return InstanceId
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return The ID of the user&#39;s primary account.
      * 
      */
-    private String masterUid;
+    private final String masterUid;
     /**
      * @return Static password.
      * 
      */
-    private String password;
+    private final String password;
     /**
      * @return Static username.
      * 
      */
-    private String userName;
+    private final String userName;
 
-    private GetStaticAccountsAccount() {}
+    @CustomType.Constructor
+    private GetStaticAccountsAccount(
+        @CustomType.Parameter("accessKey") String accessKey,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("masterUid") String masterUid,
+        @CustomType.Parameter("password") String password,
+        @CustomType.Parameter("userName") String userName) {
+        this.accessKey = accessKey;
+        this.createTime = createTime;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.masterUid = masterUid;
+        this.password = password;
+        this.userName = userName;
+    }
+
     /**
      * @return Access key.
      * 
@@ -103,7 +120,7 @@ public final class GetStaticAccountsAccount {
     public static Builder builder(GetStaticAccountsAccount defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String accessKey;
         private String createTime;
@@ -112,7 +129,11 @@ public final class GetStaticAccountsAccount {
         private String masterUid;
         private String password;
         private String userName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetStaticAccountsAccount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessKey = defaults.accessKey;
@@ -124,51 +145,35 @@ public final class GetStaticAccountsAccount {
     	      this.userName = defaults.userName;
         }
 
-        @CustomType.Setter
         public Builder accessKey(String accessKey) {
             this.accessKey = Objects.requireNonNull(accessKey);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder masterUid(String masterUid) {
             this.masterUid = Objects.requireNonNull(masterUid);
             return this;
         }
-        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
-        @CustomType.Setter
         public Builder userName(String userName) {
             this.userName = Objects.requireNonNull(userName);
             return this;
-        }
-        public GetStaticAccountsAccount build() {
-            final var o = new GetStaticAccountsAccount();
-            o.accessKey = accessKey;
-            o.createTime = createTime;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.masterUid = masterUid;
-            o.password = password;
-            o.userName = userName;
-            return o;
+        }        public GetStaticAccountsAccount build() {
+            return new GetStaticAccountsAccount(accessKey, createTime, id, instanceId, masterUid, password, userName);
         }
     }
 }

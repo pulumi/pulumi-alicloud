@@ -15,14 +15,21 @@ public final class QuotaApplicationDimension {
      * @return The key of dimensions.
      * 
      */
-    private @Nullable String key;
+    private final @Nullable String key;
     /**
      * @return The value of dimensions.
      * 
      */
-    private @Nullable String value;
+    private final @Nullable String value;
 
-    private QuotaApplicationDimension() {}
+    @CustomType.Constructor
+    private QuotaApplicationDimension(
+        @CustomType.Parameter("key") @Nullable String key,
+        @CustomType.Parameter("value") @Nullable String value) {
+        this.key = key;
+        this.value = value;
+    }
+
     /**
      * @return The key of dimensions.
      * 
@@ -45,32 +52,30 @@ public final class QuotaApplicationDimension {
     public static Builder builder(QuotaApplicationDimension defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String key;
         private @Nullable String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(QuotaApplicationDimension defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
-        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }
-        public QuotaApplicationDimension build() {
-            final var o = new QuotaApplicationDimension();
-            o.key = key;
-            o.value = value;
-            return o;
+        }        public QuotaApplicationDimension build() {
+            return new QuotaApplicationDimension(key, value);
         }
     }
 }

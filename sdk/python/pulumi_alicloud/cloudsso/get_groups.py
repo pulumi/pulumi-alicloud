@@ -144,6 +144,7 @@ def get_groups(directory_id: Optional[str] = None,
     :param str directory_id: The ID of the Directory.
     :param Sequence[str] ids: A list of Group IDs.
     :param str name_regex: A regex string to filter results by Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str provision_type: The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
     """
     __args__ = dict()
@@ -203,6 +204,7 @@ def get_groups_output(directory_id: Optional[pulumi.Input[str]] = None,
     :param str directory_id: The ID of the Directory.
     :param Sequence[str] ids: A list of Group IDs.
     :param str name_regex: A regex string to filter results by Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str provision_type: The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
     """
     ...

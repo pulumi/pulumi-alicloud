@@ -138,6 +138,7 @@ def get_aggregate_deliveries(aggregator_id: Optional[str] = None,
 
     :param str aggregator_id: The ID of the Aggregator.
     :param Sequence[str] ids: A list of Aggregate Delivery IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int status: The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
     """
     __args__ = dict()
@@ -191,6 +192,7 @@ def get_aggregate_deliveries_output(aggregator_id: Optional[pulumi.Input[str]] =
 
     :param str aggregator_id: The ID of the Aggregator.
     :param Sequence[str] ids: A list of Aggregate Delivery IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int status: The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
     """
     ...

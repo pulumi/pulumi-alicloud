@@ -13,69 +13,98 @@ public final class GetMailAddressesAddress {
      * @return The sender address.
      * 
      */
-    private String accountName;
+    private final String accountName;
     /**
      * @return The creation of the record time.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return On the quota limit.
      * 
      */
-    private String dailyCount;
+    private final String dailyCount;
     /**
      * @return On the quota.
      * 
      */
-    private String dailyReqCount;
+    private final String dailyReqCount;
     /**
      * @return Domain name status. Valid values: `0`, `1`.
      * 
      */
-    private String domainStatus;
+    private final String domainStatus;
     /**
      * @return The ID of the Mail Address.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The sender address ID.
      * 
      */
-    private String mailAddressId;
+    private final String mailAddressId;
     /**
      * @return Monthly quota limit.
      * 
      */
-    private String monthCount;
+    private final String monthCount;
     /**
      * @return Months amount.
      * 
      */
-    private String monthReqCount;
+    private final String monthReqCount;
     /**
      * @return Return address.
      * 
      */
-    private String replyAddress;
+    private final String replyAddress;
     /**
      * @return If using STMP address status.
      * 
      */
-    private String replyStatus;
+    private final String replyStatus;
     /**
      * @return Account type.
      * 
      */
-    private String sendtype;
+    private final String sendtype;
     /**
      * @return Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetMailAddressesAddress() {}
+    @CustomType.Constructor
+    private GetMailAddressesAddress(
+        @CustomType.Parameter("accountName") String accountName,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("dailyCount") String dailyCount,
+        @CustomType.Parameter("dailyReqCount") String dailyReqCount,
+        @CustomType.Parameter("domainStatus") String domainStatus,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("mailAddressId") String mailAddressId,
+        @CustomType.Parameter("monthCount") String monthCount,
+        @CustomType.Parameter("monthReqCount") String monthReqCount,
+        @CustomType.Parameter("replyAddress") String replyAddress,
+        @CustomType.Parameter("replyStatus") String replyStatus,
+        @CustomType.Parameter("sendtype") String sendtype,
+        @CustomType.Parameter("status") String status) {
+        this.accountName = accountName;
+        this.createTime = createTime;
+        this.dailyCount = dailyCount;
+        this.dailyReqCount = dailyReqCount;
+        this.domainStatus = domainStatus;
+        this.id = id;
+        this.mailAddressId = mailAddressId;
+        this.monthCount = monthCount;
+        this.monthReqCount = monthReqCount;
+        this.replyAddress = replyAddress;
+        this.replyStatus = replyStatus;
+        this.sendtype = sendtype;
+        this.status = status;
+    }
+
     /**
      * @return The sender address.
      * 
@@ -175,7 +204,7 @@ public final class GetMailAddressesAddress {
     public static Builder builder(GetMailAddressesAddress defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String accountName;
         private String createTime;
@@ -190,7 +219,11 @@ public final class GetMailAddressesAddress {
         private String replyStatus;
         private String sendtype;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetMailAddressesAddress defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountName = defaults.accountName;
@@ -208,87 +241,59 @@ public final class GetMailAddressesAddress {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder accountName(String accountName) {
             this.accountName = Objects.requireNonNull(accountName);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder dailyCount(String dailyCount) {
             this.dailyCount = Objects.requireNonNull(dailyCount);
             return this;
         }
-        @CustomType.Setter
         public Builder dailyReqCount(String dailyReqCount) {
             this.dailyReqCount = Objects.requireNonNull(dailyReqCount);
             return this;
         }
-        @CustomType.Setter
         public Builder domainStatus(String domainStatus) {
             this.domainStatus = Objects.requireNonNull(domainStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder mailAddressId(String mailAddressId) {
             this.mailAddressId = Objects.requireNonNull(mailAddressId);
             return this;
         }
-        @CustomType.Setter
         public Builder monthCount(String monthCount) {
             this.monthCount = Objects.requireNonNull(monthCount);
             return this;
         }
-        @CustomType.Setter
         public Builder monthReqCount(String monthReqCount) {
             this.monthReqCount = Objects.requireNonNull(monthReqCount);
             return this;
         }
-        @CustomType.Setter
         public Builder replyAddress(String replyAddress) {
             this.replyAddress = Objects.requireNonNull(replyAddress);
             return this;
         }
-        @CustomType.Setter
         public Builder replyStatus(String replyStatus) {
             this.replyStatus = Objects.requireNonNull(replyStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder sendtype(String sendtype) {
             this.sendtype = Objects.requireNonNull(sendtype);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetMailAddressesAddress build() {
-            final var o = new GetMailAddressesAddress();
-            o.accountName = accountName;
-            o.createTime = createTime;
-            o.dailyCount = dailyCount;
-            o.dailyReqCount = dailyReqCount;
-            o.domainStatus = domainStatus;
-            o.id = id;
-            o.mailAddressId = mailAddressId;
-            o.monthCount = monthCount;
-            o.monthReqCount = monthReqCount;
-            o.replyAddress = replyAddress;
-            o.replyStatus = replyStatus;
-            o.sendtype = sendtype;
-            o.status = status;
-            return o;
+        }        public GetMailAddressesAddress build() {
+            return new GetMailAddressesAddress(accountName, createTime, dailyCount, dailyReqCount, domainStatus, id, mailAddressId, monthCount, monthReqCount, replyAddress, replyStatus, sendtype, status);
         }
     }
 }

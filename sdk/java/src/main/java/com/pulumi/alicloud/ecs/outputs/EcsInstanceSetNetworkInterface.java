@@ -15,29 +15,42 @@ public final class EcsInstanceSetNetworkInterface {
      * @return The description of ENI.
      * 
      */
-    private @Nullable String description;
+    private final @Nullable String description;
     /**
      * @return The name of ENI.
      * 
      */
-    private @Nullable String networkInterfaceName;
+    private final @Nullable String networkInterfaceName;
     /**
      * @return The primary private IP address of ENI.
      * 
      */
-    private @Nullable String primaryIpAddress;
+    private final @Nullable String primaryIpAddress;
     /**
      * @return The ID of the security group to which to assign secondary ENI.
      * 
      */
-    private String securityGroupId;
+    private final String securityGroupId;
     /**
      * @return The ID of the vSwitch to which to connect ENI.
      * 
      */
-    private @Nullable String vswitchId;
+    private final @Nullable String vswitchId;
 
-    private EcsInstanceSetNetworkInterface() {}
+    @CustomType.Constructor
+    private EcsInstanceSetNetworkInterface(
+        @CustomType.Parameter("description") @Nullable String description,
+        @CustomType.Parameter("networkInterfaceName") @Nullable String networkInterfaceName,
+        @CustomType.Parameter("primaryIpAddress") @Nullable String primaryIpAddress,
+        @CustomType.Parameter("securityGroupId") String securityGroupId,
+        @CustomType.Parameter("vswitchId") @Nullable String vswitchId) {
+        this.description = description;
+        this.networkInterfaceName = networkInterfaceName;
+        this.primaryIpAddress = primaryIpAddress;
+        this.securityGroupId = securityGroupId;
+        this.vswitchId = vswitchId;
+    }
+
     /**
      * @return The description of ENI.
      * 
@@ -81,14 +94,18 @@ public final class EcsInstanceSetNetworkInterface {
     public static Builder builder(EcsInstanceSetNetworkInterface defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String description;
         private @Nullable String networkInterfaceName;
         private @Nullable String primaryIpAddress;
         private String securityGroupId;
         private @Nullable String vswitchId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(EcsInstanceSetNetworkInterface defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -98,39 +115,27 @@ public final class EcsInstanceSetNetworkInterface {
     	      this.vswitchId = defaults.vswitchId;
         }
 
-        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
-        @CustomType.Setter
         public Builder networkInterfaceName(@Nullable String networkInterfaceName) {
             this.networkInterfaceName = networkInterfaceName;
             return this;
         }
-        @CustomType.Setter
         public Builder primaryIpAddress(@Nullable String primaryIpAddress) {
             this.primaryIpAddress = primaryIpAddress;
             return this;
         }
-        @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
             this.securityGroupId = Objects.requireNonNull(securityGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
             this.vswitchId = vswitchId;
             return this;
-        }
-        public EcsInstanceSetNetworkInterface build() {
-            final var o = new EcsInstanceSetNetworkInterface();
-            o.description = description;
-            o.networkInterfaceName = networkInterfaceName;
-            o.primaryIpAddress = primaryIpAddress;
-            o.securityGroupId = securityGroupId;
-            o.vswitchId = vswitchId;
-            return o;
+        }        public EcsInstanceSetNetworkInterface build() {
+            return new EcsInstanceSetNetworkInterface(description, networkInterfaceName, primaryIpAddress, securityGroupId, vswitchId);
         }
     }
 }

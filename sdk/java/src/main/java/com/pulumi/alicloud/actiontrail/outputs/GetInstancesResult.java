@@ -14,31 +14,48 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstancesResult {
-    private @Nullable Boolean enableDetails;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of instance IDs.
      * 
      */
-    private List<String> ids;
+    private final List<String> ids;
     /**
      * @return A list of instances. Each element contains the following attributes:
      * 
      */
-    private List<GetInstancesInstance> instances;
-    private @Nullable String nameRegex;
+    private final List<GetInstancesInstance> instances;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of instance names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
 
-    private GetInstancesResult() {}
+    @CustomType.Constructor
+    private GetInstancesResult(
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instances") List<GetInstancesInstance> instances,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.instances = instances;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+    }
+
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -84,7 +101,7 @@ public final class GetInstancesResult {
     public static Builder builder(GetInstancesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private String id;
@@ -93,7 +110,11 @@ public final class GetInstancesResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -105,17 +126,14 @@ public final class GetInstancesResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -123,7 +141,6 @@ public final class GetInstancesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instances(List<GetInstancesInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -131,12 +148,10 @@ public final class GetInstancesResult {
         public Builder instances(GetInstancesInstance... instances) {
             return instances(List.of(instances));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -144,21 +159,11 @@ public final class GetInstancesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetInstancesResult build() {
-            final var o = new GetInstancesResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.instances = instances;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetInstancesResult build() {
+            return new GetInstancesResult(enableDetails, id, ids, instances, nameRegex, names, outputFile);
         }
     }
 }

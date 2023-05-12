@@ -13,14 +13,21 @@ public final class GetMetricRuleBlackListsListMetric {
      * @return The name of the monitoring indicator.
      * 
      */
-    private String metricName;
+    private final String metricName;
     /**
      * @return The extended dimension information of the instance. For example, &#39;{&#34;device&#34;:&#34;C:&#34;}&#39; indicates that the blacklist policy is applied to all C disks under the ECS instance.
      * 
      */
-    private String resource;
+    private final String resource;
 
-    private GetMetricRuleBlackListsListMetric() {}
+    @CustomType.Constructor
+    private GetMetricRuleBlackListsListMetric(
+        @CustomType.Parameter("metricName") String metricName,
+        @CustomType.Parameter("resource") String resource) {
+        this.metricName = metricName;
+        this.resource = resource;
+    }
+
     /**
      * @return The name of the monitoring indicator.
      * 
@@ -43,32 +50,30 @@ public final class GetMetricRuleBlackListsListMetric {
     public static Builder builder(GetMetricRuleBlackListsListMetric defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String metricName;
         private String resource;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetMetricRuleBlackListsListMetric defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.metricName = defaults.metricName;
     	      this.resource = defaults.resource;
         }
 
-        @CustomType.Setter
         public Builder metricName(String metricName) {
             this.metricName = Objects.requireNonNull(metricName);
             return this;
         }
-        @CustomType.Setter
         public Builder resource(String resource) {
             this.resource = Objects.requireNonNull(resource);
             return this;
-        }
-        public GetMetricRuleBlackListsListMetric build() {
-            final var o = new GetMetricRuleBlackListsListMetric();
-            o.metricName = metricName;
-            o.resource = resource;
-            return o;
+        }        public GetMetricRuleBlackListsListMetric build() {
+            return new GetMetricRuleBlackListsListMetric(metricName, resource);
         }
     }
 }

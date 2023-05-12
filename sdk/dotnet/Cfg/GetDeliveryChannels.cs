@@ -12,6 +12,15 @@ namespace Pulumi.AliCloud.Cfg
     public static class GetDeliveryChannels
     {
         /// <summary>
+        /// &gt; **DEPRECATED:**  This resource is based on Config's old version OpenAPI, and it has been deprecated from version `1.173.0`.
+        /// Please use new datasource alicloud.cfg.getDeliveries instead.
+        /// 
+        /// This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.99.0+.
+        /// 
+        /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -46,6 +55,15 @@ namespace Pulumi.AliCloud.Cfg
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeliveryChannelsResult>("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", args ?? new GetDeliveryChannelsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATED:**  This resource is based on Config's old version OpenAPI, and it has been deprecated from version `1.173.0`.
+        /// Please use new datasource alicloud.cfg.getDeliveries instead.
+        /// 
+        /// This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:**  Available in 1.99.0+.
+        /// 
+        /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -101,6 +119,9 @@ namespace Pulumi.AliCloud.Cfg
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -136,6 +157,9 @@ namespace Pulumi.AliCloud.Cfg
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

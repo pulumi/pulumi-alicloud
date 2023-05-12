@@ -13,9 +13,13 @@ public final class GetReplicationVaultRegionsRegion {
      * @return The ID of the replication region.
      * 
      */
-    private String replicationRegionId;
+    private final String replicationRegionId;
 
-    private GetReplicationVaultRegionsRegion() {}
+    @CustomType.Constructor
+    private GetReplicationVaultRegionsRegion(@CustomType.Parameter("replicationRegionId") String replicationRegionId) {
+        this.replicationRegionId = replicationRegionId;
+    }
+
     /**
      * @return The ID of the replication region.
      * 
@@ -31,24 +35,24 @@ public final class GetReplicationVaultRegionsRegion {
     public static Builder builder(GetReplicationVaultRegionsRegion defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String replicationRegionId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetReplicationVaultRegionsRegion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.replicationRegionId = defaults.replicationRegionId;
         }
 
-        @CustomType.Setter
         public Builder replicationRegionId(String replicationRegionId) {
             this.replicationRegionId = Objects.requireNonNull(replicationRegionId);
             return this;
-        }
-        public GetReplicationVaultRegionsRegion build() {
-            final var o = new GetReplicationVaultRegionsRegion();
-            o.replicationRegionId = replicationRegionId;
-            return o;
+        }        public GetReplicationVaultRegionsRegion build() {
+            return new GetReplicationVaultRegionsRegion(replicationRegionId);
         }
     }
 }

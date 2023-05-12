@@ -13,6 +13,18 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
     public sealed class ClusterNodeAttributeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether to enable data disk encryption.
+        /// </summary>
+        [Input("dataDiskEncrypted")]
+        public Input<bool>? DataDiskEncrypted { get; set; }
+
+        /// <summary>
+        /// The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
+        /// </summary>
+        [Input("dataDiskKmsKeyId")]
+        public Input<string>? DataDiskKmsKeyId { get; set; }
+
+        /// <summary>
         /// The name of the key pair.
         /// </summary>
         [Input("keyPairName", required: true)]

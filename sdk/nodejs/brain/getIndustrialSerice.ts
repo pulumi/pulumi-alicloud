@@ -37,6 +37,8 @@ export function getIndustrialSerice(args?: GetIndustrialSericeArgs, opts?: pulum
 export interface GetIndustrialSericeArgs {
     /**
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+     *
+     * > **NOTE:** Setting `enable = "On"` to open the Brain Industrial service. The service can not closed once it is opened.
      */
     enable?: string;
 }
@@ -83,6 +85,8 @@ export function getIndustrialSericeOutput(args?: GetIndustrialSericeOutputArgs, 
 export interface GetIndustrialSericeOutputArgs {
     /**
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+     *
+     * > **NOTE:** Setting `enable = "On"` to open the Brain Industrial service. The service can not closed once it is opened.
      */
     enable?: pulumi.Input<string>;
 }

@@ -59,7 +59,8 @@ func GetLaunchOptions(ctx *pulumi.Context, args *GetLaunchOptionsArgs, opts ...p
 type GetLaunchOptionsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by portfolio name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Product ID.
 	ProductId string `pulumi:"productId"`
@@ -96,7 +97,8 @@ func GetLaunchOptionsOutput(ctx *pulumi.Context, args GetLaunchOptionsOutputArgs
 type GetLaunchOptionsOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by portfolio name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Product ID.
 	ProductId pulumi.StringInput `pulumi:"productId"`

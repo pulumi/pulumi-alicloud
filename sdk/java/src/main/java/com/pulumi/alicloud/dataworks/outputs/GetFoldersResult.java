@@ -13,18 +13,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFoldersResult {
-    private List<GetFoldersFolder> folders;
+    private final List<GetFoldersFolder> folders;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String outputFile;
-    private String parentFolderPath;
-    private String projectId;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
+    private final String parentFolderPath;
+    private final String projectId;
 
-    private GetFoldersResult() {}
+    @CustomType.Constructor
+    private GetFoldersResult(
+        @CustomType.Parameter("folders") List<GetFoldersFolder> folders,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("parentFolderPath") String parentFolderPath,
+        @CustomType.Parameter("projectId") String projectId) {
+        this.folders = folders;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.parentFolderPath = parentFolderPath;
+        this.projectId = projectId;
+    }
+
     public List<GetFoldersFolder> folders() {
         return this.folders;
     }
@@ -55,7 +70,7 @@ public final class GetFoldersResult {
     public static Builder builder(GetFoldersResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetFoldersFolder> folders;
         private String id;
@@ -63,7 +78,11 @@ public final class GetFoldersResult {
         private @Nullable String outputFile;
         private String parentFolderPath;
         private String projectId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetFoldersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.folders = defaults.folders;
@@ -74,7 +93,6 @@ public final class GetFoldersResult {
     	      this.projectId = defaults.projectId;
         }
 
-        @CustomType.Setter
         public Builder folders(List<GetFoldersFolder> folders) {
             this.folders = Objects.requireNonNull(folders);
             return this;
@@ -82,12 +100,10 @@ public final class GetFoldersResult {
         public Builder folders(GetFoldersFolder... folders) {
             return folders(List.of(folders));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -95,30 +111,19 @@ public final class GetFoldersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder parentFolderPath(String parentFolderPath) {
             this.parentFolderPath = Objects.requireNonNull(parentFolderPath);
             return this;
         }
-        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
-        }
-        public GetFoldersResult build() {
-            final var o = new GetFoldersResult();
-            o.folders = folders;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.parentFolderPath = parentFolderPath;
-            o.projectId = projectId;
-            return o;
+        }        public GetFoldersResult build() {
+            return new GetFoldersResult(folders, id, ids, outputFile, parentFolderPath, projectId);
         }
     }
 }

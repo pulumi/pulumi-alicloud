@@ -4,6 +4,13 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * > **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsKeyPairAttachment from version 1.121.0.
+ *
+ * Provides a key pair attachment resource to bind key pair for several ECS instances.
+ *
+ * > **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
+ */
 export class KeyPairAttachment extends pulumi.CustomResource {
     /**
      * Get an existing KeyPairAttachment resource's state with the given name, ID, and optional extra

@@ -17,17 +17,38 @@ public final class GetOtsBackupPlansResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String planId;
-    private @Nullable String planName;
-    private List<GetOtsBackupPlansPlan> plans;
-    private @Nullable String vaultId;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String planId;
+    private final @Nullable String planName;
+    private final List<GetOtsBackupPlansPlan> plans;
+    private final @Nullable String vaultId;
 
-    private GetOtsBackupPlansResult() {}
+    @CustomType.Constructor
+    private GetOtsBackupPlansResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("planId") @Nullable String planId,
+        @CustomType.Parameter("planName") @Nullable String planName,
+        @CustomType.Parameter("plans") List<GetOtsBackupPlansPlan> plans,
+        @CustomType.Parameter("vaultId") @Nullable String vaultId) {
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.planId = planId;
+        this.planName = planName;
+        this.plans = plans;
+        this.vaultId = vaultId;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -67,7 +88,7 @@ public final class GetOtsBackupPlansResult {
     public static Builder builder(GetOtsBackupPlansResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -78,7 +99,11 @@ public final class GetOtsBackupPlansResult {
         private @Nullable String planName;
         private List<GetOtsBackupPlansPlan> plans;
         private @Nullable String vaultId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetOtsBackupPlansResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -92,12 +117,10 @@ public final class GetOtsBackupPlansResult {
     	      this.vaultId = defaults.vaultId;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -105,12 +128,10 @@ public final class GetOtsBackupPlansResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -118,22 +139,18 @@ public final class GetOtsBackupPlansResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder planId(@Nullable String planId) {
             this.planId = planId;
             return this;
         }
-        @CustomType.Setter
         public Builder planName(@Nullable String planName) {
             this.planName = planName;
             return this;
         }
-        @CustomType.Setter
         public Builder plans(List<GetOtsBackupPlansPlan> plans) {
             this.plans = Objects.requireNonNull(plans);
             return this;
@@ -141,23 +158,11 @@ public final class GetOtsBackupPlansResult {
         public Builder plans(GetOtsBackupPlansPlan... plans) {
             return plans(List.of(plans));
         }
-        @CustomType.Setter
         public Builder vaultId(@Nullable String vaultId) {
             this.vaultId = vaultId;
             return this;
-        }
-        public GetOtsBackupPlansResult build() {
-            final var o = new GetOtsBackupPlansResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.planId = planId;
-            o.planName = planName;
-            o.plans = plans;
-            o.vaultId = vaultId;
-            return o;
+        }        public GetOtsBackupPlansResult build() {
+            return new GetOtsBackupPlansResult(id, ids, nameRegex, names, outputFile, planId, planName, plans, vaultId);
         }
     }
 }

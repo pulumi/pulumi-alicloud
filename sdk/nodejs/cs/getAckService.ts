@@ -42,6 +42,8 @@ export interface GetAckServiceArgs {
     enable?: string;
     /**
      * Types of services opened. Valid values: `propayasgo`: Container service ack Pro managed version, `edgepayasgo`: Edge container service, `gspayasgo`: Gene computing services.
+     *
+     * > **NOTE:** Setting `enable = "On"` to open the Container Service (CS) service that means you have read and agreed the [Container Service (CS) Terms of Service](https://help.aliyun.com/document_detail/157971.html). The service can not closed once it is opened.
      */
     type: string;
 }
@@ -94,6 +96,8 @@ export interface GetAckServiceOutputArgs {
     enable?: pulumi.Input<string>;
     /**
      * Types of services opened. Valid values: `propayasgo`: Container service ack Pro managed version, `edgepayasgo`: Edge container service, `gspayasgo`: Gene computing services.
+     *
+     * > **NOTE:** Setting `enable = "On"` to open the Container Service (CS) service that means you have read and agreed the [Container Service (CS) Terms of Service](https://help.aliyun.com/document_detail/157971.html). The service can not closed once it is opened.
      */
     type: pulumi.Input<string>;
 }

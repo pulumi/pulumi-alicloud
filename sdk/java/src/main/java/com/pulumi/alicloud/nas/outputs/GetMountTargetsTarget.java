@@ -13,44 +13,63 @@ public final class GetMountTargetsTarget {
      * @return Filter results by a specific AccessGroupName.
      * 
      */
-    private String accessGroupName;
+    private final String accessGroupName;
     /**
      * @return ID of the MountTargetDomain.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Field `mount_target_domain` has been deprecated from provider version 1.53.0. New field `ids` replaces it.
      * 
      */
-    private String mountTargetDomain;
+    private final String mountTargetDomain;
     /**
      * @return Filter results by a specific NetworkType.
      * 
      */
-    private String networkType;
+    private final String networkType;
     /**
      * @return Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
      * 
      */
-    private String type;
+    private final String type;
     /**
      * @return Filter results by a specific VpcId.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
     /**
      * @return Filter results by a specific VSwitchId.
      * 
      */
-    private String vswitchId;
+    private final String vswitchId;
 
-    private GetMountTargetsTarget() {}
+    @CustomType.Constructor
+    private GetMountTargetsTarget(
+        @CustomType.Parameter("accessGroupName") String accessGroupName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("mountTargetDomain") String mountTargetDomain,
+        @CustomType.Parameter("networkType") String networkType,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("type") String type,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("vswitchId") String vswitchId) {
+        this.accessGroupName = accessGroupName;
+        this.id = id;
+        this.mountTargetDomain = mountTargetDomain;
+        this.networkType = networkType;
+        this.status = status;
+        this.type = type;
+        this.vpcId = vpcId;
+        this.vswitchId = vswitchId;
+    }
+
     /**
      * @return Filter results by a specific AccessGroupName.
      * 
@@ -115,7 +134,7 @@ public final class GetMountTargetsTarget {
     public static Builder builder(GetMountTargetsTarget defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String accessGroupName;
         private String id;
@@ -125,7 +144,11 @@ public final class GetMountTargetsTarget {
         private String type;
         private String vpcId;
         private String vswitchId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetMountTargetsTarget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessGroupName = defaults.accessGroupName;
@@ -138,57 +161,39 @@ public final class GetMountTargetsTarget {
     	      this.vswitchId = defaults.vswitchId;
         }
 
-        @CustomType.Setter
         public Builder accessGroupName(String accessGroupName) {
             this.accessGroupName = Objects.requireNonNull(accessGroupName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder mountTargetDomain(String mountTargetDomain) {
             this.mountTargetDomain = Objects.requireNonNull(mountTargetDomain);
             return this;
         }
-        @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }
-        public GetMountTargetsTarget build() {
-            final var o = new GetMountTargetsTarget();
-            o.accessGroupName = accessGroupName;
-            o.id = id;
-            o.mountTargetDomain = mountTargetDomain;
-            o.networkType = networkType;
-            o.status = status;
-            o.type = type;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+        }        public GetMountTargetsTarget build() {
+            return new GetMountTargetsTarget(accessGroupName, id, mountTargetDomain, networkType, status, type, vpcId, vswitchId);
         }
     }
 }

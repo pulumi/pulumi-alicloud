@@ -11,11 +11,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OpenApiImageCacheImageRegistryCredential {
-    private @Nullable String password;
-    private @Nullable String server;
-    private @Nullable String userName;
+    private final @Nullable String password;
+    private final @Nullable String server;
+    private final @Nullable String userName;
 
-    private OpenApiImageCacheImageRegistryCredential() {}
+    @CustomType.Constructor
+    private OpenApiImageCacheImageRegistryCredential(
+        @CustomType.Parameter("password") @Nullable String password,
+        @CustomType.Parameter("server") @Nullable String server,
+        @CustomType.Parameter("userName") @Nullable String userName) {
+        this.password = password;
+        this.server = server;
+        this.userName = userName;
+    }
+
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
@@ -33,12 +42,16 @@ public final class OpenApiImageCacheImageRegistryCredential {
     public static Builder builder(OpenApiImageCacheImageRegistryCredential defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String password;
         private @Nullable String server;
         private @Nullable String userName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(OpenApiImageCacheImageRegistryCredential defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.password = defaults.password;
@@ -46,27 +59,19 @@ public final class OpenApiImageCacheImageRegistryCredential {
     	      this.userName = defaults.userName;
         }
 
-        @CustomType.Setter
         public Builder password(@Nullable String password) {
             this.password = password;
             return this;
         }
-        @CustomType.Setter
         public Builder server(@Nullable String server) {
             this.server = server;
             return this;
         }
-        @CustomType.Setter
         public Builder userName(@Nullable String userName) {
             this.userName = userName;
             return this;
-        }
-        public OpenApiImageCacheImageRegistryCredential build() {
-            final var o = new OpenApiImageCacheImageRegistryCredential();
-            o.password = password;
-            o.server = server;
-            o.userName = userName;
-            return o;
+        }        public OpenApiImageCacheImageRegistryCredential build() {
+            return new OpenApiImageCacheImageRegistryCredential(password, server, userName);
         }
     }
 }

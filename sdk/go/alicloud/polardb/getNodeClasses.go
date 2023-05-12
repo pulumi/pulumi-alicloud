@@ -60,7 +60,8 @@ type GetNodeClassesArgs struct {
 	// Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If dbType is set, dbVersion also needs to be set.
 	DbType *string `pulumi:"dbType"`
 	// Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If dbVersion is set, dbType also needs to be set.
-	DbVersion  *string `pulumi:"dbVersion"`
+	DbVersion *string `pulumi:"dbVersion"`
+	// File name where to save data source results (after running `pulumi up`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`.
 	PayType string `pulumi:"payType"`
@@ -109,7 +110,8 @@ type GetNodeClassesOutputArgs struct {
 	// Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If dbType is set, dbVersion also needs to be set.
 	DbType pulumi.StringPtrInput `pulumi:"dbType"`
 	// Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If dbVersion is set, dbType also needs to be set.
-	DbVersion  pulumi.StringPtrInput `pulumi:"dbVersion"`
+	DbVersion pulumi.StringPtrInput `pulumi:"dbVersion"`
+	// File name where to save data source results (after running `pulumi up`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`.
 	PayType pulumi.StringInput `pulumi:"payType"`

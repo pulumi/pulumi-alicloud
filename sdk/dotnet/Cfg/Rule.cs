@@ -10,16 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cfg
 {
     /// <summary>
-    /// Provides a a Alicloud Config Rule resource. Cloud Config checks the validity of resources based on rules. You can create rules to evaluate resources as needed.
-    /// For information about Alicloud Config Rule and how to use it, see [What is Alicloud Config Rule](https://www.alibabacloud.com/help/doc-detail/154216.html).
+    /// Provides a Config Rule resource.
     /// 
-    /// &gt; **NOTE:** Available in v1.99.0+.
+    /// For information about Config Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/).
     /// 
-    /// &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
-    /// 
-    /// &gt; **NOTE:** If you use custom rules, you need to create your own rule functions in advance. Please refer to the link for [Create a custom rule.](https://www.alibabacloud.com/help/en/doc-detail/127405.htm)
+    /// &gt; **NOTE:** Available in v1.204.0+.
     /// 
     /// ## Example Usage
+    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -29,23 +28,28 @@ namespace Pulumi.AliCloud.Cfg
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Audit ECS instances under VPC using preset rules
-    ///     var example = new AliCloud.Cfg.Rule("example", new()
+    ///     var @default = new AliCloud.Cfg.Rule("default", new()
     ///     {
     ///         ConfigRuleTriggerTypes = "ConfigurationItemChangeNotification",
-    ///         Description = "ecs instances in vpc",
+    ///         Description = "关联的资源类型下实体资源均已有指定标签，存在没有指定标签的资源则视为“不合规”。",
+    ///         ExcludeResourceIdsScope = "test",
     ///         InputParameters = 
     ///         {
-    ///             { "vpcIds", "vpc-uf6gksw4ctjd******" },
+    ///             { "foo", "terraform" },
+    ///             { "var", "terraform" },
     ///         },
+    ///         RegionIdsScope = "cn-hangzhou",
+    ///         ResourceGroupIdsScope = "rg-acfmvoh45rhcfly",
     ///         ResourceTypesScopes = new[]
     ///         {
-    ///             "ACS::ECS::Instance",
+    ///             "ACS::RDS::DBInstance",
     ///         },
     ///         RiskLevel = 1,
-    ///         RuleName = "instances-in-vpc",
-    ///         SourceIdentifier = "ecs-instances-in-vpc",
+    ///         RuleName = "tf-cicd-rule-by-required-tags",
+    ///         SourceIdentifier = "required-tags",
     ///         SourceOwner = "ALIYUN",
+    ///         TagKeyScope = "test",
+    ///         TagValueScope = "test",
     ///     });
     /// 
     /// });
@@ -53,44 +57,92 @@ namespace Pulumi.AliCloud.Cfg
     /// 
     /// ## Import
     /// 
-    /// Alicloud Config Rule can be imported using the id, e.g.
+    /// Config Rule can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cfg/rule:Rule this cr-ed4bad756057********
+    ///  $ pulumi import alicloud:cfg/rule:Rule example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cfg/rule:Rule")]
     public partial class Rule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+        /// The ID of Alicloud account.
+        /// </summary>
+        [Output("accountId")]
+        public Output<int> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// compliance information.
+        /// </summary>
+        [Output("compliance")]
+        public Output<Outputs.RuleCompliance> Compliance { get; private set; } = null!;
+
+        /// <summary>
+        /// Compliance Package ID.
+        /// </summary>
+        [Output("compliancePackId")]
+        public Output<string> CompliancePackId { get; private set; } = null!;
+
+        /// <summary>
+        /// config rule arn.
+        /// </summary>
+        [Output("configRuleArn")]
+        public Output<string> ConfigRuleArn { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the rule.
+        /// </summary>
+        [Output("configRuleId")]
+        public Output<string> ConfigRuleId { get; private set; } = null!;
+
+        /// <summary>
+        /// The trigger type of the rule. Valid values:  `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
         /// </summary>
         [Output("configRuleTriggerTypes")]
         public Output<string> ConfigRuleTriggerTypes { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the Config Rule.
+        /// The timestamp when the rule was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<int> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the rule.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, custom rule this field is empty.
+        /// The event source of the rule.
+        /// </summary>
+        [Output("eventSource")]
+        public Output<string> EventSource { get; private set; } = null!;
+
+        /// <summary>
+        /// The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
         /// </summary>
         [Output("excludeResourceIdsScope")]
         public Output<string?> ExcludeResourceIdsScope { get; private set; } = null!;
 
         /// <summary>
-        /// Threshold value for managed rule triggering.
+        /// The settings of the input parameters for the rule.
         /// </summary>
         [Output("inputParameters")]
         public Output<ImmutableDictionary<string, object>?> InputParameters { get; private set; } = null!;
 
         /// <summary>
-        /// The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
+        /// The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
         /// </summary>
         [Output("maximumExecutionFrequency")]
         public Output<string> MaximumExecutionFrequency { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp when the rule was last modified.
+        /// </summary>
+        [Output("modifiedTimestamp")]
+        public Output<int> ModifiedTimestamp { get; private set; } = null!;
 
         /// <summary>
         /// The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
@@ -105,55 +157,55 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string?> ResourceGroupIdsScope { get; private set; } = null!;
 
         /// <summary>
-        /// Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        /// The types of the resources to be evaluated against the rule.
         /// </summary>
         [Output("resourceTypesScopes")]
         public Output<ImmutableArray<string>> ResourceTypesScopes { get; private set; } = null!;
 
         /// <summary>
-        /// The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+        /// The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info
         /// </summary>
         [Output("riskLevel")]
         public Output<int> RiskLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Config Rule.
+        /// The name of the rule.
         /// </summary>
         [Output("ruleName")]
         public Output<string> RuleName { get; private set; } = null!;
 
         /// <summary>
-        /// Field `scope_compliance_resource_types` has been deprecated from provider version 1.124.1. New field `resource_types_scope` instead.
+        /// Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
         /// </summary>
         [Output("scopeComplianceResourceTypes")]
-        public Output<ImmutableArray<string>> ScopeComplianceResourceTypes { get; private set; } = null!;
+        public Output<string> ScopeComplianceResourceTypes { get; private set; } = null!;
 
         /// <summary>
-        /// Field `source_detail_message_type` has been deprecated from provider version 1.124.1. New field `config_rule_trigger_types` instead.
+        /// Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
         /// </summary>
         [Output("sourceDetailMessageType")]
         public Output<string> SourceDetailMessageType { get; private set; } = null!;
 
         /// <summary>
-        /// The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        /// The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
         /// </summary>
         [Output("sourceIdentifier")]
         public Output<string> SourceIdentifier { get; private set; } = null!;
 
         /// <summary>
-        /// Field `source_maximum_execution_frequency` has been deprecated from provider version 1.124.1. New field `maximum_execution_frequency` instead.
+        /// Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
         /// </summary>
         [Output("sourceMaximumExecutionFrequency")]
         public Output<string> SourceMaximumExecutionFrequency { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
+        /// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values:  `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule
         /// </summary>
         [Output("sourceOwner")]
         public Output<string> SourceOwner { get; private set; } = null!;
 
         /// <summary>
-        /// The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+        /// The status of the rule. Valid values: ACTIVE: The rule is monitoring the configurations of target resources. DELETING_RESULTS: The compliance evaluation result returned by the rule is being deleted. EVALUATING: The rule is triggered and is evaluating whether the configurations of target resources are compliant. INACTIVE: The rule is disabled from monitoring the configurations of target resources.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -165,7 +217,9 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string?> TagKeyScope { get; private set; } = null!;
 
         /// <summary>
-        /// The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
+        /// The rule monitors the tag value, only applies to rules created based on managed rules.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("tagValueScope")]
         public Output<string?> TagValueScope { get; private set; } = null!;
@@ -217,19 +271,19 @@ namespace Pulumi.AliCloud.Cfg
     public sealed class RuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+        /// The trigger type of the rule. Valid values:  `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
         /// </summary>
         [Input("configRuleTriggerTypes")]
         public Input<string>? ConfigRuleTriggerTypes { get; set; }
 
         /// <summary>
-        /// The description of the Config Rule.
+        /// The description of the rule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, custom rule this field is empty.
+        /// The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
         /// </summary>
         [Input("excludeResourceIdsScope")]
         public Input<string>? ExcludeResourceIdsScope { get; set; }
@@ -238,7 +292,7 @@ namespace Pulumi.AliCloud.Cfg
         private InputMap<object>? _inputParameters;
 
         /// <summary>
-        /// Threshold value for managed rule triggering.
+        /// The settings of the input parameters for the rule.
         /// </summary>
         public InputMap<object> InputParameters
         {
@@ -247,7 +301,7 @@ namespace Pulumi.AliCloud.Cfg
         }
 
         /// <summary>
-        /// The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
+        /// The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
         /// </summary>
         [Input("maximumExecutionFrequency")]
         public Input<string>? MaximumExecutionFrequency { get; set; }
@@ -268,7 +322,7 @@ namespace Pulumi.AliCloud.Cfg
         private InputList<string>? _resourceTypesScopes;
 
         /// <summary>
-        /// Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        /// The types of the resources to be evaluated against the rule.
         /// </summary>
         public InputList<string> ResourceTypesScopes
         {
@@ -277,56 +331,49 @@ namespace Pulumi.AliCloud.Cfg
         }
 
         /// <summary>
-        /// The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+        /// The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info
         /// </summary>
         [Input("riskLevel", required: true)]
         public Input<int> RiskLevel { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Config Rule.
+        /// The name of the rule.
         /// </summary>
         [Input("ruleName", required: true)]
         public Input<string> RuleName { get; set; } = null!;
 
-        [Input("scopeComplianceResourceTypes")]
-        private InputList<string>? _scopeComplianceResourceTypes;
-
         /// <summary>
-        /// Field `scope_compliance_resource_types` has been deprecated from provider version 1.124.1. New field `resource_types_scope` instead.
+        /// Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
         /// </summary>
-        [Obsolete(@"Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.")]
-        public InputList<string> ScopeComplianceResourceTypes
-        {
-            get => _scopeComplianceResourceTypes ?? (_scopeComplianceResourceTypes = new InputList<string>());
-            set => _scopeComplianceResourceTypes = value;
-        }
+        [Input("scopeComplianceResourceTypes")]
+        public Input<string>? ScopeComplianceResourceTypes { get; set; }
 
         /// <summary>
-        /// Field `source_detail_message_type` has been deprecated from provider version 1.124.1. New field `config_rule_trigger_types` instead.
+        /// Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
         /// </summary>
         [Input("sourceDetailMessageType")]
         public Input<string>? SourceDetailMessageType { get; set; }
 
         /// <summary>
-        /// The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        /// The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
         /// </summary>
         [Input("sourceIdentifier", required: true)]
         public Input<string> SourceIdentifier { get; set; } = null!;
 
         /// <summary>
-        /// Field `source_maximum_execution_frequency` has been deprecated from provider version 1.124.1. New field `maximum_execution_frequency` instead.
+        /// Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
         /// </summary>
         [Input("sourceMaximumExecutionFrequency")]
         public Input<string>? SourceMaximumExecutionFrequency { get; set; }
 
         /// <summary>
-        /// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
+        /// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values:  `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule
         /// </summary>
         [Input("sourceOwner", required: true)]
         public Input<string> SourceOwner { get; set; } = null!;
 
         /// <summary>
-        /// The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+        /// The status of the rule. Valid values: ACTIVE: The rule is monitoring the configurations of target resources. DELETING_RESULTS: The compliance evaluation result returned by the rule is being deleted. EVALUATING: The rule is triggered and is evaluating whether the configurations of target resources are compliant. INACTIVE: The rule is disabled from monitoring the configurations of target resources.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -338,7 +385,9 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? TagKeyScope { get; set; }
 
         /// <summary>
-        /// The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
+        /// The rule monitors the tag value, only applies to rules created based on managed rules.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("tagValueScope")]
         public Input<string>? TagValueScope { get; set; }
@@ -352,19 +401,61 @@ namespace Pulumi.AliCloud.Cfg
     public sealed class RuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+        /// The ID of Alicloud account.
+        /// </summary>
+        [Input("accountId")]
+        public Input<int>? AccountId { get; set; }
+
+        /// <summary>
+        /// compliance information.
+        /// </summary>
+        [Input("compliance")]
+        public Input<Inputs.RuleComplianceGetArgs>? Compliance { get; set; }
+
+        /// <summary>
+        /// Compliance Package ID.
+        /// </summary>
+        [Input("compliancePackId")]
+        public Input<string>? CompliancePackId { get; set; }
+
+        /// <summary>
+        /// config rule arn.
+        /// </summary>
+        [Input("configRuleArn")]
+        public Input<string>? ConfigRuleArn { get; set; }
+
+        /// <summary>
+        /// The ID of the rule.
+        /// </summary>
+        [Input("configRuleId")]
+        public Input<string>? ConfigRuleId { get; set; }
+
+        /// <summary>
+        /// The trigger type of the rule. Valid values:  `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
         /// </summary>
         [Input("configRuleTriggerTypes")]
         public Input<string>? ConfigRuleTriggerTypes { get; set; }
 
         /// <summary>
-        /// The description of the Config Rule.
+        /// The timestamp when the rule was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<int>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The description of the rule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, custom rule this field is empty.
+        /// The event source of the rule.
+        /// </summary>
+        [Input("eventSource")]
+        public Input<string>? EventSource { get; set; }
+
+        /// <summary>
+        /// The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
         /// </summary>
         [Input("excludeResourceIdsScope")]
         public Input<string>? ExcludeResourceIdsScope { get; set; }
@@ -373,7 +464,7 @@ namespace Pulumi.AliCloud.Cfg
         private InputMap<object>? _inputParameters;
 
         /// <summary>
-        /// Threshold value for managed rule triggering.
+        /// The settings of the input parameters for the rule.
         /// </summary>
         public InputMap<object> InputParameters
         {
@@ -382,10 +473,16 @@ namespace Pulumi.AliCloud.Cfg
         }
 
         /// <summary>
-        /// The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
+        /// The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
         /// </summary>
         [Input("maximumExecutionFrequency")]
         public Input<string>? MaximumExecutionFrequency { get; set; }
+
+        /// <summary>
+        /// The timestamp when the rule was last modified.
+        /// </summary>
+        [Input("modifiedTimestamp")]
+        public Input<int>? ModifiedTimestamp { get; set; }
 
         /// <summary>
         /// The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
@@ -403,7 +500,7 @@ namespace Pulumi.AliCloud.Cfg
         private InputList<string>? _resourceTypesScopes;
 
         /// <summary>
-        /// Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
+        /// The types of the resources to be evaluated against the rule.
         /// </summary>
         public InputList<string> ResourceTypesScopes
         {
@@ -412,56 +509,49 @@ namespace Pulumi.AliCloud.Cfg
         }
 
         /// <summary>
-        /// The risk level of the Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
+        /// The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info
         /// </summary>
         [Input("riskLevel")]
         public Input<int>? RiskLevel { get; set; }
 
         /// <summary>
-        /// The name of the Config Rule.
+        /// The name of the rule.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
 
-        [Input("scopeComplianceResourceTypes")]
-        private InputList<string>? _scopeComplianceResourceTypes;
-
         /// <summary>
-        /// Field `scope_compliance_resource_types` has been deprecated from provider version 1.124.1. New field `resource_types_scope` instead.
+        /// Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
         /// </summary>
-        [Obsolete(@"Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.")]
-        public InputList<string> ScopeComplianceResourceTypes
-        {
-            get => _scopeComplianceResourceTypes ?? (_scopeComplianceResourceTypes = new InputList<string>());
-            set => _scopeComplianceResourceTypes = value;
-        }
+        [Input("scopeComplianceResourceTypes")]
+        public Input<string>? ScopeComplianceResourceTypes { get; set; }
 
         /// <summary>
-        /// Field `source_detail_message_type` has been deprecated from provider version 1.124.1. New field `config_rule_trigger_types` instead.
+        /// Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
         /// </summary>
         [Input("sourceDetailMessageType")]
         public Input<string>? SourceDetailMessageType { get; set; }
 
         /// <summary>
-        /// The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
+        /// The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
         /// </summary>
         [Input("sourceIdentifier")]
         public Input<string>? SourceIdentifier { get; set; }
 
         /// <summary>
-        /// Field `source_maximum_execution_frequency` has been deprecated from provider version 1.124.1. New field `maximum_execution_frequency` instead.
+        /// Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
         /// </summary>
         [Input("sourceMaximumExecutionFrequency")]
         public Input<string>? SourceMaximumExecutionFrequency { get; set; }
 
         /// <summary>
-        /// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
+        /// Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values:  `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule
         /// </summary>
         [Input("sourceOwner")]
         public Input<string>? SourceOwner { get; set; }
 
         /// <summary>
-        /// The rule status. The valid values: `ACTIVE`, `INACTIVE`.
+        /// The status of the rule. Valid values: ACTIVE: The rule is monitoring the configurations of target resources. DELETING_RESULTS: The compliance evaluation result returned by the rule is being deleted. EVALUATING: The rule is triggered and is evaluating whether the configurations of target resources are compliant. INACTIVE: The rule is disabled from monitoring the configurations of target resources.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -473,7 +563,9 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? TagKeyScope { get; set; }
 
         /// <summary>
-        /// The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
+        /// The rule monitors the tag value, only applies to rules created based on managed rules.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("tagValueScope")]
         public Input<string>? TagValueScope { get; set; }

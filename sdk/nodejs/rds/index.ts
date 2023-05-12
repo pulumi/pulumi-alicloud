@@ -35,6 +35,11 @@ export type DbInstanceEndpoint = import("./dbInstanceEndpoint").DbInstanceEndpoi
 export const DbInstanceEndpoint: typeof import("./dbInstanceEndpoint").DbInstanceEndpoint = null as any;
 utilities.lazyLoad(exports, ["DbInstanceEndpoint"], () => require("./dbInstanceEndpoint"));
 
+export { DbInstanceEndpointAddressArgs, DbInstanceEndpointAddressState } from "./dbInstanceEndpointAddress";
+export type DbInstanceEndpointAddress = import("./dbInstanceEndpointAddress").DbInstanceEndpointAddress;
+export const DbInstanceEndpointAddress: typeof import("./dbInstanceEndpointAddress").DbInstanceEndpointAddress = null as any;
+utilities.lazyLoad(exports, ["DbInstanceEndpointAddress"], () => require("./dbInstanceEndpointAddress"));
+
 export { DbNodeArgs, DbNodeState } from "./dbNode";
 export type DbNode = import("./dbNode").DbNode;
 export const DbNode: typeof import("./dbNode").DbNode = null as any;
@@ -104,6 +109,11 @@ export { GetRdsParameterGroupsArgs, GetRdsParameterGroupsResult, GetRdsParameter
 export const getRdsParameterGroups: typeof import("./getRdsParameterGroups").getRdsParameterGroups = null as any;
 export const getRdsParameterGroupsOutput: typeof import("./getRdsParameterGroups").getRdsParameterGroupsOutput = null as any;
 utilities.lazyLoad(exports, ["getRdsParameterGroups","getRdsParameterGroupsOutput"], () => require("./getRdsParameterGroups"));
+
+export { GetSlotsArgs, GetSlotsResult, GetSlotsOutputArgs } from "./getSlots";
+export const getSlots: typeof import("./getSlots").getSlots = null as any;
+export const getSlotsOutput: typeof import("./getSlots").getSlotsOutput = null as any;
+utilities.lazyLoad(exports, ["getSlots","getSlotsOutput"], () => require("./getSlots"));
 
 export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
 export const getZones: typeof import("./getZones").getZones = null as any;
@@ -182,6 +192,8 @@ const _module = {
                 return new Database(name, <any>undefined, { urn })
             case "alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint":
                 return new DbInstanceEndpoint(name, <any>undefined, { urn })
+            case "alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress":
+                return new DbInstanceEndpointAddress(name, <any>undefined, { urn })
             case "alicloud:rds/dbNode:DbNode":
                 return new DbNode(name, <any>undefined, { urn })
             case "alicloud:rds/ddrInstance:DdrInstance":
@@ -219,6 +231,7 @@ pulumi.runtime.registerResourceModule("alicloud", "rds/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/connection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/database", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/dbInstanceEndpoint", _module)
+pulumi.runtime.registerResourceModule("alicloud", "rds/dbInstanceEndpointAddress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/dbNode", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/ddrInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/instance", _module)

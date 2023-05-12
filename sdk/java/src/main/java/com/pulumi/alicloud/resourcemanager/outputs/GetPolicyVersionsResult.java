@@ -14,27 +14,44 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPolicyVersionsResult {
-    private @Nullable Boolean enableDetails;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of policy version IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String outputFile;
-    private String policyName;
-    private String policyType;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
+    private final String policyName;
+    private final String policyType;
     /**
      * @return A list of policy versions. Each element contains the following attributes:
      * 
      */
-    private List<GetPolicyVersionsVersion> versions;
+    private final List<GetPolicyVersionsVersion> versions;
 
-    private GetPolicyVersionsResult() {}
+    @CustomType.Constructor
+    private GetPolicyVersionsResult(
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("policyName") String policyName,
+        @CustomType.Parameter("policyType") String policyType,
+        @CustomType.Parameter("versions") List<GetPolicyVersionsVersion> versions) {
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.policyName = policyName;
+        this.policyType = policyType;
+        this.versions = versions;
+    }
+
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -76,7 +93,7 @@ public final class GetPolicyVersionsResult {
     public static Builder builder(GetPolicyVersionsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private String id;
@@ -85,7 +102,11 @@ public final class GetPolicyVersionsResult {
         private String policyName;
         private String policyType;
         private List<GetPolicyVersionsVersion> versions;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetPolicyVersionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -97,17 +118,14 @@ public final class GetPolicyVersionsResult {
     	      this.versions = defaults.versions;
         }
 
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -115,39 +133,26 @@ public final class GetPolicyVersionsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder policyName(String policyName) {
             this.policyName = Objects.requireNonNull(policyName);
             return this;
         }
-        @CustomType.Setter
         public Builder policyType(String policyType) {
             this.policyType = Objects.requireNonNull(policyType);
             return this;
         }
-        @CustomType.Setter
         public Builder versions(List<GetPolicyVersionsVersion> versions) {
             this.versions = Objects.requireNonNull(versions);
             return this;
         }
         public Builder versions(GetPolicyVersionsVersion... versions) {
             return versions(List.of(versions));
-        }
-        public GetPolicyVersionsResult build() {
-            final var o = new GetPolicyVersionsResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.policyName = policyName;
-            o.policyType = policyType;
-            o.versions = versions;
-            return o;
+        }        public GetPolicyVersionsResult build() {
+            return new GetPolicyVersionsResult(enableDetails, id, ids, outputFile, policyName, policyType, versions);
         }
     }
 }

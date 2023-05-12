@@ -149,6 +149,7 @@ def get_ddos_bgp_ips(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Ip IDs.
     :param str instance_id: The ID of the native protection enterprise instance to be operated.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_name: The product name. Valid Value:`ECS`, `SLB`, `EIP`, `WAF`.
     :param str status: The current state of the IP address.
     """
@@ -208,6 +209,7 @@ def get_ddos_bgp_ips_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     :param Sequence[str] ids: A list of Ip IDs.
     :param str instance_id: The ID of the native protection enterprise instance to be operated.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_name: The product name. Valid Value:`ECS`, `SLB`, `EIP`, `WAF`.
     :param str status: The current state of the IP address.
     """

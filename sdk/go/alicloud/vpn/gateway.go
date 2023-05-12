@@ -46,6 +46,8 @@ type Gateway struct {
 	// The network type of the VPN gateway. Value:
 	// - public (default): Public VPN gateway.
 	// - private: Private VPN gateway.
+	//
+	// > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
 	NetworkType pulumi.StringOutput `pulumi:"networkType"`
 	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
@@ -120,6 +122,8 @@ type gatewayState struct {
 	// The network type of the VPN gateway. Value:
 	// - public (default): Public VPN gateway.
 	// - private: Private VPN gateway.
+	//
+	// > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
 	NetworkType *string `pulumi:"networkType"`
 	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
 	Period *int `pulumi:"period"`
@@ -160,6 +164,8 @@ type GatewayState struct {
 	// The network type of the VPN gateway. Value:
 	// - public (default): Public VPN gateway.
 	// - private: Private VPN gateway.
+	//
+	// > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
 	NetworkType pulumi.StringPtrInput
 	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
 	Period pulumi.IntPtrInput
@@ -200,6 +206,8 @@ type gatewayArgs struct {
 	// The network type of the VPN gateway. Value:
 	// - public (default): Public VPN gateway.
 	// - private: Private VPN gateway.
+	//
+	// > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
 	NetworkType *string `pulumi:"networkType"`
 	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
 	Period *int `pulumi:"period"`
@@ -235,6 +243,8 @@ type GatewayArgs struct {
 	// The network type of the VPN gateway. Value:
 	// - public (default): Public VPN gateway.
 	// - private: Private VPN gateway.
+	//
+	// > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
 	NetworkType pulumi.StringPtrInput
 	// The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
 	Period pulumi.IntPtrInput
@@ -389,6 +399,8 @@ func (o GatewayOutput) Name() pulumi.StringOutput {
 // The network type of the VPN gateway. Value:
 // - public (default): Public VPN gateway.
 // - private: Private VPN gateway.
+//
+// > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
 func (o GatewayOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
 }

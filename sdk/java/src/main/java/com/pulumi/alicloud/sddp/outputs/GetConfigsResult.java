@@ -13,17 +13,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConfigsResult {
-    private List<GetConfigsConfig> configs;
+    private final List<GetConfigsConfig> configs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String lang;
-    private @Nullable String outputFile;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String lang;
+    private final @Nullable String outputFile;
 
-    private GetConfigsResult() {}
+    @CustomType.Constructor
+    private GetConfigsResult(
+        @CustomType.Parameter("configs") List<GetConfigsConfig> configs,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("lang") @Nullable String lang,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.configs = configs;
+        this.id = id;
+        this.ids = ids;
+        this.lang = lang;
+        this.outputFile = outputFile;
+    }
+
     public List<GetConfigsConfig> configs() {
         return this.configs;
     }
@@ -51,14 +64,18 @@ public final class GetConfigsResult {
     public static Builder builder(GetConfigsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetConfigsConfig> configs;
         private String id;
         private List<String> ids;
         private @Nullable String lang;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetConfigsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configs = defaults.configs;
@@ -68,7 +85,6 @@ public final class GetConfigsResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder configs(List<GetConfigsConfig> configs) {
             this.configs = Objects.requireNonNull(configs);
             return this;
@@ -76,12 +92,10 @@ public final class GetConfigsResult {
         public Builder configs(GetConfigsConfig... configs) {
             return configs(List.of(configs));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -89,24 +103,15 @@ public final class GetConfigsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder lang(@Nullable String lang) {
             this.lang = lang;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetConfigsResult build() {
-            final var o = new GetConfigsResult();
-            o.configs = configs;
-            o.id = id;
-            o.ids = ids;
-            o.lang = lang;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetConfigsResult build() {
+            return new GetConfigsResult(configs, id, ids, lang, outputFile);
         }
     }
 }

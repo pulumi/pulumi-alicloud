@@ -263,6 +263,7 @@ def get_alidns_domains(ali_domain: Optional[bool] = None,
     :param str instance_id: Cloud analysis product ID.
     :param str key_word: The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
     :param str lang: User language.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the dns belongs.
     :param str search_mode: Search mode, `LIKE` fuzzy search, `EXACT` exact search.
     :param bool starmark: Whether to query the domain name star.
@@ -351,6 +352,7 @@ def get_alidns_domains_output(ali_domain: Optional[pulumi.Input[Optional[bool]]]
     :param str instance_id: Cloud analysis product ID.
     :param str key_word: The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
     :param str lang: User language.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the dns belongs.
     :param str search_mode: Search mode, `LIKE` fuzzy search, `EXACT` exact search.
     :param bool starmark: Whether to query the domain name star.

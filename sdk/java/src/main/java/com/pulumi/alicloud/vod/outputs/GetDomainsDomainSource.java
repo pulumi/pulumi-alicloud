@@ -9,12 +9,23 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDomainsDomainSource {
-    private String sourceContent;
-    private String sourcePort;
-    private String sourcePriority;
-    private String sourceType;
+    private final String sourceContent;
+    private final String sourcePort;
+    private final String sourcePriority;
+    private final String sourceType;
 
-    private GetDomainsDomainSource() {}
+    @CustomType.Constructor
+    private GetDomainsDomainSource(
+        @CustomType.Parameter("sourceContent") String sourceContent,
+        @CustomType.Parameter("sourcePort") String sourcePort,
+        @CustomType.Parameter("sourcePriority") String sourcePriority,
+        @CustomType.Parameter("sourceType") String sourceType) {
+        this.sourceContent = sourceContent;
+        this.sourcePort = sourcePort;
+        this.sourcePriority = sourcePriority;
+        this.sourceType = sourceType;
+    }
+
     public String sourceContent() {
         return this.sourceContent;
     }
@@ -35,13 +46,17 @@ public final class GetDomainsDomainSource {
     public static Builder builder(GetDomainsDomainSource defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String sourceContent;
         private String sourcePort;
         private String sourcePriority;
         private String sourceType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDomainsDomainSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sourceContent = defaults.sourceContent;
@@ -50,33 +65,23 @@ public final class GetDomainsDomainSource {
     	      this.sourceType = defaults.sourceType;
         }
 
-        @CustomType.Setter
         public Builder sourceContent(String sourceContent) {
             this.sourceContent = Objects.requireNonNull(sourceContent);
             return this;
         }
-        @CustomType.Setter
         public Builder sourcePort(String sourcePort) {
             this.sourcePort = Objects.requireNonNull(sourcePort);
             return this;
         }
-        @CustomType.Setter
         public Builder sourcePriority(String sourcePriority) {
             this.sourcePriority = Objects.requireNonNull(sourcePriority);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceType(String sourceType) {
             this.sourceType = Objects.requireNonNull(sourceType);
             return this;
-        }
-        public GetDomainsDomainSource build() {
-            final var o = new GetDomainsDomainSource();
-            o.sourceContent = sourceContent;
-            o.sourcePort = sourcePort;
-            o.sourcePriority = sourcePriority;
-            o.sourceType = sourceType;
-            return o;
+        }        public GetDomainsDomainSource build() {
+            return new GetDomainsDomainSource(sourceContent, sourcePort, sourcePriority, sourceType);
         }
     }
 }

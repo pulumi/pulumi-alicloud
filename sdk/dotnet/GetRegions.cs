@@ -91,6 +91,12 @@ namespace Pulumi.AliCloud
         [Input("name")]
         public string? Name { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// 
+        /// &gt; **NOTE:** You will get an error if you set `current` to true and `name` to a different value from the one you configured in the provider.
+        /// It is better to either use `name` or `current`, but not both at the same time.
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -114,6 +120,12 @@ namespace Pulumi.AliCloud
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// 
+        /// &gt; **NOTE:** You will get an error if you set `current` to true and `name` to a different value from the one you configured in the provider.
+        /// It is better to either use `name` or `current`, but not both at the same time.
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

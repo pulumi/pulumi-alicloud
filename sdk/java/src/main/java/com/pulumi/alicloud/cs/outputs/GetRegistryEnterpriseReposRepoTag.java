@@ -14,39 +14,56 @@ public final class GetRegistryEnterpriseReposRepoTag {
      * @return Digest of this image.
      * 
      */
-    private String digest;
+    private final String digest;
     /**
      * @return Create time of this image, unix time in nanoseconds.
      * 
      */
-    private String imageCreate;
+    private final String imageCreate;
     /**
      * @return Id of this image.
      * 
      */
-    private String imageId;
+    private final String imageId;
     /**
      * @return Status of this image, in bytes.
      * 
      */
-    private Integer imageSize;
+    private final Integer imageSize;
     /**
      * @return Last update time of this image, unix time in nanoseconds.
      * 
      */
-    private String imageUpdate;
+    private final String imageUpdate;
     /**
      * @return Status of this image.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return Tag of this image.
      * 
      */
-    private String tag;
+    private final String tag;
 
-    private GetRegistryEnterpriseReposRepoTag() {}
+    @CustomType.Constructor
+    private GetRegistryEnterpriseReposRepoTag(
+        @CustomType.Parameter("digest") String digest,
+        @CustomType.Parameter("imageCreate") String imageCreate,
+        @CustomType.Parameter("imageId") String imageId,
+        @CustomType.Parameter("imageSize") Integer imageSize,
+        @CustomType.Parameter("imageUpdate") String imageUpdate,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("tag") String tag) {
+        this.digest = digest;
+        this.imageCreate = imageCreate;
+        this.imageId = imageId;
+        this.imageSize = imageSize;
+        this.imageUpdate = imageUpdate;
+        this.status = status;
+        this.tag = tag;
+    }
+
     /**
      * @return Digest of this image.
      * 
@@ -104,7 +121,7 @@ public final class GetRegistryEnterpriseReposRepoTag {
     public static Builder builder(GetRegistryEnterpriseReposRepoTag defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String digest;
         private String imageCreate;
@@ -113,7 +130,11 @@ public final class GetRegistryEnterpriseReposRepoTag {
         private String imageUpdate;
         private String status;
         private String tag;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRegistryEnterpriseReposRepoTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.digest = defaults.digest;
@@ -125,51 +146,35 @@ public final class GetRegistryEnterpriseReposRepoTag {
     	      this.tag = defaults.tag;
         }
 
-        @CustomType.Setter
         public Builder digest(String digest) {
             this.digest = Objects.requireNonNull(digest);
             return this;
         }
-        @CustomType.Setter
         public Builder imageCreate(String imageCreate) {
             this.imageCreate = Objects.requireNonNull(imageCreate);
             return this;
         }
-        @CustomType.Setter
         public Builder imageId(String imageId) {
             this.imageId = Objects.requireNonNull(imageId);
             return this;
         }
-        @CustomType.Setter
         public Builder imageSize(Integer imageSize) {
             this.imageSize = Objects.requireNonNull(imageSize);
             return this;
         }
-        @CustomType.Setter
         public Builder imageUpdate(String imageUpdate) {
             this.imageUpdate = Objects.requireNonNull(imageUpdate);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder tag(String tag) {
             this.tag = Objects.requireNonNull(tag);
             return this;
-        }
-        public GetRegistryEnterpriseReposRepoTag build() {
-            final var o = new GetRegistryEnterpriseReposRepoTag();
-            o.digest = digest;
-            o.imageCreate = imageCreate;
-            o.imageId = imageId;
-            o.imageSize = imageSize;
-            o.imageUpdate = imageUpdate;
-            o.status = status;
-            o.tag = tag;
-            return o;
+        }        public GetRegistryEnterpriseReposRepoTag build() {
+            return new GetRegistryEnterpriseReposRepoTag(digest, imageCreate, imageId, imageSize, imageUpdate, status, tag);
         }
     }
 }

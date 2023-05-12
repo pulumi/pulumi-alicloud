@@ -138,6 +138,7 @@ def get_schedules(flow_name: Optional[str] = None,
     :param Sequence[str] ids: A list of Schedule IDs.
     :param int limit: The number of resource queries.
     :param str name_regex: A regex string to filter results by Schedule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['flowName'] = flow_name
@@ -190,5 +191,6 @@ def get_schedules_output(flow_name: Optional[pulumi.Input[str]] = None,
     :param Sequence[str] ids: A list of Schedule IDs.
     :param int limit: The number of resource queries.
     :param str name_regex: A regex string to filter results by Schedule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

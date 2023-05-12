@@ -5,6 +5,78 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a VPC switch resource.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     vpcName: "tf_test_foo",
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const vsw = new alicloud.vpc.Switch("vsw", {
+ *     vpcId: vpc.id,
+ *     cidrBlock: "172.16.0.0/21",
+ *     zoneId: "cn-beijing-b",
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     vpcName: "tf_test_foo",
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const cidrBlocks = new alicloud.vpc.Ipv4CidrBlock("cidrBlocks", {
+ *     vpcId: vpc.id,
+ *     secondaryCidrBlock: "192.163.0.0/16",
+ * });
+ * const island_nat = new alicloud.vpc.Switch("island-nat", {
+ *     vpcId: cidrBlocks.vpcId,
+ *     cidrBlock: "172.16.0.0/21",
+ *     zoneId: "cn-beijing-b",
+ *     vswitchName: "example_value",
+ *     tags: {
+ *         BuiltBy: "example_value",
+ *         cnm_version: "example_value",
+ *         Environment: "example_value",
+ *         ManagedBy: "example_value",
+ *     },
+ * });
+ * ```
+ *
+ * Create a switch associated with the additional network segment
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     vpcName: "tf_test_foo",
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const example = new alicloud.vpc.Ipv4CidrBlock("example", {
+ *     vpcId: alicloud_vpc["default"].id,
+ *     secondaryCidrBlock: "192.163.0.0/16",
+ * });
+ * const vsw = new alicloud.vpc.Switch("vsw", {
+ *     vpcId: example.vpcId,
+ *     cidrBlock: "192.163.0.0/24",
+ *     zoneId: "cn-beijing-b",
+ * });
+ * ```
+ * ## Module Support
+ *
+ * You can use to the existing vpc module
+ * to create a VPC and several VSwitches one-click.
+ *
  * ## Import
  *
  * Vswitch can be imported using the id, e.g.

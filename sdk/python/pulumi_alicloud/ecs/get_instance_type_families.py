@@ -139,6 +139,7 @@ def get_instance_type_families(generation: Optional[str] = None,
 
     :param str generation: The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
     :param str instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str spot_strategy: Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
     :param str zone_id: The Zone to launch the instance.
     """
@@ -188,6 +189,7 @@ def get_instance_type_families_output(generation: Optional[pulumi.Input[Optional
 
     :param str generation: The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
     :param str instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str spot_strategy: Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
     :param str zone_id: The Zone to launch the instance.
     """

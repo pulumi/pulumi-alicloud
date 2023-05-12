@@ -168,6 +168,8 @@ export class Key extends pulumi.CustomResource {
      * For example, you can use either 7d or 604800s to specify a seven-day interval.
      * The interval can range from 7 days to 730 days.
      * **NOTE**: It is Required when `automaticRotation = "Enabled"`
+     *
+     * > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
      */
     public readonly rotationInterval!: pulumi.Output<string | undefined>;
     /**
@@ -353,6 +355,8 @@ export interface KeyState {
      * For example, you can use either 7d or 604800s to specify a seven-day interval.
      * The interval can range from 7 days to 730 days.
      * **NOTE**: It is Required when `automaticRotation = "Enabled"`
+     *
+     * > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
      */
     rotationInterval?: pulumi.Input<string>;
     /**
@@ -444,6 +448,8 @@ export interface KeyArgs {
      * For example, you can use either 7d or 604800s to specify a seven-day interval.
      * The interval can range from 7 days to 730 days.
      * **NOTE**: It is Required when `automaticRotation = "Enabled"`
+     *
+     * > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
      */
     rotationInterval?: pulumi.Input<string>;
     /**

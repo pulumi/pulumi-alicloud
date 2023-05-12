@@ -13,44 +13,63 @@ public final class GetFlowsFlow {
      * @return The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
      * 
      */
-    private String definition;
+    private final String definition;
     /**
      * @return The description of the flow.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The unique ID of the flow.
      * 
      */
-    private String flowId;
+    private final String flowId;
     /**
      * @return The ID of the Flow.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The time when the flow was last modified.
      * 
      */
-    private String lastModifiedTime;
+    private final String lastModifiedTime;
     /**
      * @return The name of the flow. The name must be unique in an Alibaba Cloud account.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
      * 
      */
-    private String roleArn;
+    private final String roleArn;
     /**
      * @return The type of the flow. Set the value to `FDL`.
      * 
      */
-    private String type;
+    private final String type;
 
-    private GetFlowsFlow() {}
+    @CustomType.Constructor
+    private GetFlowsFlow(
+        @CustomType.Parameter("definition") String definition,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("flowId") String flowId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("lastModifiedTime") String lastModifiedTime,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("roleArn") String roleArn,
+        @CustomType.Parameter("type") String type) {
+        this.definition = definition;
+        this.description = description;
+        this.flowId = flowId;
+        this.id = id;
+        this.lastModifiedTime = lastModifiedTime;
+        this.name = name;
+        this.roleArn = roleArn;
+        this.type = type;
+    }
+
     /**
      * @return The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
      * 
@@ -115,7 +134,7 @@ public final class GetFlowsFlow {
     public static Builder builder(GetFlowsFlow defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String definition;
         private String description;
@@ -125,7 +144,11 @@ public final class GetFlowsFlow {
         private String name;
         private String roleArn;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetFlowsFlow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.definition = defaults.definition;
@@ -138,57 +161,39 @@ public final class GetFlowsFlow {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder definition(String definition) {
             this.definition = Objects.requireNonNull(definition);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder flowId(String flowId) {
             this.flowId = Objects.requireNonNull(flowId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder lastModifiedTime(String lastModifiedTime) {
             this.lastModifiedTime = Objects.requireNonNull(lastModifiedTime);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder roleArn(String roleArn) {
             this.roleArn = Objects.requireNonNull(roleArn);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetFlowsFlow build() {
-            final var o = new GetFlowsFlow();
-            o.definition = definition;
-            o.description = description;
-            o.flowId = flowId;
-            o.id = id;
-            o.lastModifiedTime = lastModifiedTime;
-            o.name = name;
-            o.roleArn = roleArn;
-            o.type = type;
-            return o;
+        }        public GetFlowsFlow build() {
+            return new GetFlowsFlow(definition, description, flowId, id, lastModifiedTime, name, roleArn, type);
         }
     }
 }

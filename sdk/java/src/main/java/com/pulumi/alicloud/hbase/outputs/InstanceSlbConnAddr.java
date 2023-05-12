@@ -11,11 +11,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceSlbConnAddr {
-    private @Nullable String connAddr;
-    private @Nullable String connAddrPort;
-    private @Nullable String netType;
+    private final @Nullable String connAddr;
+    private final @Nullable String connAddrPort;
+    private final @Nullable String netType;
 
-    private InstanceSlbConnAddr() {}
+    @CustomType.Constructor
+    private InstanceSlbConnAddr(
+        @CustomType.Parameter("connAddr") @Nullable String connAddr,
+        @CustomType.Parameter("connAddrPort") @Nullable String connAddrPort,
+        @CustomType.Parameter("netType") @Nullable String netType) {
+        this.connAddr = connAddr;
+        this.connAddrPort = connAddrPort;
+        this.netType = netType;
+    }
+
     public Optional<String> connAddr() {
         return Optional.ofNullable(this.connAddr);
     }
@@ -33,12 +42,16 @@ public final class InstanceSlbConnAddr {
     public static Builder builder(InstanceSlbConnAddr defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String connAddr;
         private @Nullable String connAddrPort;
         private @Nullable String netType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(InstanceSlbConnAddr defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connAddr = defaults.connAddr;
@@ -46,27 +59,19 @@ public final class InstanceSlbConnAddr {
     	      this.netType = defaults.netType;
         }
 
-        @CustomType.Setter
         public Builder connAddr(@Nullable String connAddr) {
             this.connAddr = connAddr;
             return this;
         }
-        @CustomType.Setter
         public Builder connAddrPort(@Nullable String connAddrPort) {
             this.connAddrPort = connAddrPort;
             return this;
         }
-        @CustomType.Setter
         public Builder netType(@Nullable String netType) {
             this.netType = netType;
             return this;
-        }
-        public InstanceSlbConnAddr build() {
-            final var o = new InstanceSlbConnAddr();
-            o.connAddr = connAddr;
-            o.connAddrPort = connAddrPort;
-            o.netType = netType;
-            return o;
+        }        public InstanceSlbConnAddr build() {
+            return new InstanceSlbConnAddr(connAddr, connAddrPort, netType);
         }
     }
 }

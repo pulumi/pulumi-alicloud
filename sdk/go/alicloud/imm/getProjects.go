@@ -56,8 +56,9 @@ func GetProjects(ctx *pulumi.Context, args *GetProjectsArgs, opts ...pulumi.Invo
 // A collection of arguments for invoking getProjects.
 type GetProjectsArgs struct {
 	// A list of Project IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getProjects.
@@ -85,8 +86,9 @@ func GetProjectsOutput(ctx *pulumi.Context, args GetProjectsOutputArgs, opts ...
 // A collection of arguments for invoking getProjects.
 type GetProjectsOutputArgs struct {
 	// A list of Project IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetProjectsOutputArgs) ElementType() reflect.Type {

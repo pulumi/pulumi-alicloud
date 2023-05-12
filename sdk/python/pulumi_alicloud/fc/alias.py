@@ -28,6 +28,8 @@ class AliasArgs:
         :param pulumi.Input[str] service_version: The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
         :param pulumi.Input[str] description: Description of the alias.
         :param pulumi.Input['AliasRoutingConfigArgs'] routing_config: The Function Compute alias' route configuration settings. Fields documented below.
+               
+               **routing_config** includes the following arguments:
         """
         pulumi.set(__self__, "alias_name", alias_name)
         pulumi.set(__self__, "service_name", service_name)
@@ -90,6 +92,8 @@ class AliasArgs:
     def routing_config(self) -> Optional[pulumi.Input['AliasRoutingConfigArgs']]:
         """
         The Function Compute alias' route configuration settings. Fields documented below.
+
+        **routing_config** includes the following arguments:
         """
         return pulumi.get(self, "routing_config")
 
@@ -111,6 +115,8 @@ class _AliasState:
         :param pulumi.Input[str] alias_name: Name for the alias you are creating.
         :param pulumi.Input[str] description: Description of the alias.
         :param pulumi.Input['AliasRoutingConfigArgs'] routing_config: The Function Compute alias' route configuration settings. Fields documented below.
+               
+               **routing_config** includes the following arguments:
         :param pulumi.Input[str] service_name: The Function Compute service name.
         :param pulumi.Input[str] service_version: The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
         """
@@ -154,6 +160,8 @@ class _AliasState:
     def routing_config(self) -> Optional[pulumi.Input['AliasRoutingConfigArgs']]:
         """
         The Function Compute alias' route configuration settings. Fields documented below.
+
+        **routing_config** includes the following arguments:
         """
         return pulumi.get(self, "routing_config")
 
@@ -236,6 +244,8 @@ class Alias(pulumi.CustomResource):
         :param pulumi.Input[str] alias_name: Name for the alias you are creating.
         :param pulumi.Input[str] description: Description of the alias.
         :param pulumi.Input[pulumi.InputType['AliasRoutingConfigArgs']] routing_config: The Function Compute alias' route configuration settings. Fields documented below.
+               
+               **routing_config** includes the following arguments:
         :param pulumi.Input[str] service_name: The Function Compute service name.
         :param pulumi.Input[str] service_version: The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
         """
@@ -344,6 +354,8 @@ class Alias(pulumi.CustomResource):
         :param pulumi.Input[str] alias_name: Name for the alias you are creating.
         :param pulumi.Input[str] description: Description of the alias.
         :param pulumi.Input[pulumi.InputType['AliasRoutingConfigArgs']] routing_config: The Function Compute alias' route configuration settings. Fields documented below.
+               
+               **routing_config** includes the following arguments:
         :param pulumi.Input[str] service_name: The Function Compute service name.
         :param pulumi.Input[str] service_version: The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
         """
@@ -379,6 +391,8 @@ class Alias(pulumi.CustomResource):
     def routing_config(self) -> pulumi.Output[Optional['outputs.AliasRoutingConfig']]:
         """
         The Function Compute alias' route configuration settings. Fields documented below.
+
+        **routing_config** includes the following arguments:
         """
         return pulumi.get(self, "routing_config")
 

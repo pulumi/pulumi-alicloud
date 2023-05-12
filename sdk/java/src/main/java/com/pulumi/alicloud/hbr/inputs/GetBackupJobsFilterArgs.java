@@ -49,12 +49,16 @@ public final class GetBackupJobsFilterArgs extends com.pulumi.resources.Resource
     /**
      * Set of values that are accepted for the given field.
      * 
+     * &gt; **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
+     * 
      */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
     /**
      * @return Set of values that are accepted for the given field.
+     * 
+     * &gt; **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
      * 
      */
     public Optional<Output<List<String>>> values() {
@@ -132,6 +136,8 @@ public final class GetBackupJobsFilterArgs extends com.pulumi.resources.Resource
         /**
          * @param values Set of values that are accepted for the given field.
          * 
+         * &gt; **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
+         * 
          * @return builder
          * 
          */
@@ -143,6 +149,8 @@ public final class GetBackupJobsFilterArgs extends com.pulumi.resources.Resource
         /**
          * @param values Set of values that are accepted for the given field.
          * 
+         * &gt; **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
+         * 
          * @return builder
          * 
          */
@@ -152,6 +160,8 @@ public final class GetBackupJobsFilterArgs extends com.pulumi.resources.Resource
 
         /**
          * @param values Set of values that are accepted for the given field.
+         * 
+         * &gt; **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
          * 
          * @return builder
          * 

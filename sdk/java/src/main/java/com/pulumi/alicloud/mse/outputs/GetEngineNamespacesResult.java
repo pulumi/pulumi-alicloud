@@ -13,18 +13,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEngineNamespacesResult {
-    private @Nullable String acceptLanguage;
-    private String clusterId;
+    private final @Nullable String acceptLanguage;
+    private final String clusterId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private List<GetEngineNamespacesNamespace> namespaces;
-    private @Nullable String outputFile;
+    private final String id;
+    private final List<String> ids;
+    private final List<GetEngineNamespacesNamespace> namespaces;
+    private final @Nullable String outputFile;
 
-    private GetEngineNamespacesResult() {}
+    @CustomType.Constructor
+    private GetEngineNamespacesResult(
+        @CustomType.Parameter("acceptLanguage") @Nullable String acceptLanguage,
+        @CustomType.Parameter("clusterId") String clusterId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("namespaces") List<GetEngineNamespacesNamespace> namespaces,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.acceptLanguage = acceptLanguage;
+        this.clusterId = clusterId;
+        this.id = id;
+        this.ids = ids;
+        this.namespaces = namespaces;
+        this.outputFile = outputFile;
+    }
+
     public Optional<String> acceptLanguage() {
         return Optional.ofNullable(this.acceptLanguage);
     }
@@ -55,7 +70,7 @@ public final class GetEngineNamespacesResult {
     public static Builder builder(GetEngineNamespacesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String acceptLanguage;
         private String clusterId;
@@ -63,7 +78,11 @@ public final class GetEngineNamespacesResult {
         private List<String> ids;
         private List<GetEngineNamespacesNamespace> namespaces;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEngineNamespacesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceptLanguage = defaults.acceptLanguage;
@@ -74,22 +93,18 @@ public final class GetEngineNamespacesResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder acceptLanguage(@Nullable String acceptLanguage) {
             this.acceptLanguage = acceptLanguage;
             return this;
         }
-        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -97,7 +112,6 @@ public final class GetEngineNamespacesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder namespaces(List<GetEngineNamespacesNamespace> namespaces) {
             this.namespaces = Objects.requireNonNull(namespaces);
             return this;
@@ -105,20 +119,11 @@ public final class GetEngineNamespacesResult {
         public Builder namespaces(GetEngineNamespacesNamespace... namespaces) {
             return namespaces(List.of(namespaces));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetEngineNamespacesResult build() {
-            final var o = new GetEngineNamespacesResult();
-            o.acceptLanguage = acceptLanguage;
-            o.clusterId = clusterId;
-            o.id = id;
-            o.ids = ids;
-            o.namespaces = namespaces;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetEngineNamespacesResult build() {
+            return new GetEngineNamespacesResult(acceptLanguage, clusterId, id, ids, namespaces, outputFile);
         }
     }
 }

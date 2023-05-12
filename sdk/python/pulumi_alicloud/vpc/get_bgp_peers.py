@@ -134,6 +134,7 @@ def get_bgp_peers(bgp_group_id: Optional[str] = None,
 
     :param str bgp_group_id: The ID of the BGP group.
     :param Sequence[str] ids: A list of Bgp Peer IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str router_id: The ID of the router.
     :param str status: The status of the BGP peer.
     """
@@ -192,6 +193,7 @@ def get_bgp_peers_output(bgp_group_id: Optional[pulumi.Input[Optional[str]]] = N
 
     :param str bgp_group_id: The ID of the BGP group.
     :param Sequence[str] ids: A list of Bgp Peer IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str router_id: The ID of the router.
     :param str status: The status of the BGP peer.
     """

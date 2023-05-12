@@ -15,7 +15,7 @@ public final class DomainCertInfo {
      * @return If You Enable HTTPS Here Certificate Name.
      * 
      */
-    private @Nullable String certName;
+    private final @Nullable String certName;
     /**
      * @return Certificate Type. Value Range:
      * * upload: Certificate
@@ -23,24 +23,37 @@ public final class DomainCertInfo {
      * * free: Free Certificate.
      * 
      */
-    private @Nullable String certType;
+    private final @Nullable String certType;
     /**
      * @return Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
      * 
      */
-    private @Nullable String sslPri;
+    private final @Nullable String sslPri;
     /**
      * @return Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
      * 
      */
-    private @Nullable String sslProtocol;
+    private final @Nullable String sslProtocol;
     /**
      * @return If You Enable HTTPS Here Key.
      * 
      */
-    private @Nullable String sslPub;
+    private final @Nullable String sslPub;
 
-    private DomainCertInfo() {}
+    @CustomType.Constructor
+    private DomainCertInfo(
+        @CustomType.Parameter("certName") @Nullable String certName,
+        @CustomType.Parameter("certType") @Nullable String certType,
+        @CustomType.Parameter("sslPri") @Nullable String sslPri,
+        @CustomType.Parameter("sslProtocol") @Nullable String sslProtocol,
+        @CustomType.Parameter("sslPub") @Nullable String sslPub) {
+        this.certName = certName;
+        this.certType = certType;
+        this.sslPri = sslPri;
+        this.sslProtocol = sslProtocol;
+        this.sslPub = sslPub;
+    }
+
     /**
      * @return If You Enable HTTPS Here Certificate Name.
      * 
@@ -87,14 +100,18 @@ public final class DomainCertInfo {
     public static Builder builder(DomainCertInfo defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String certName;
         private @Nullable String certType;
         private @Nullable String sslPri;
         private @Nullable String sslProtocol;
         private @Nullable String sslPub;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(DomainCertInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certName = defaults.certName;
@@ -104,39 +121,27 @@ public final class DomainCertInfo {
     	      this.sslPub = defaults.sslPub;
         }
 
-        @CustomType.Setter
         public Builder certName(@Nullable String certName) {
             this.certName = certName;
             return this;
         }
-        @CustomType.Setter
         public Builder certType(@Nullable String certType) {
             this.certType = certType;
             return this;
         }
-        @CustomType.Setter
         public Builder sslPri(@Nullable String sslPri) {
             this.sslPri = sslPri;
             return this;
         }
-        @CustomType.Setter
         public Builder sslProtocol(@Nullable String sslProtocol) {
             this.sslProtocol = sslProtocol;
             return this;
         }
-        @CustomType.Setter
         public Builder sslPub(@Nullable String sslPub) {
             this.sslPub = sslPub;
             return this;
-        }
-        public DomainCertInfo build() {
-            final var o = new DomainCertInfo();
-            o.certName = certName;
-            o.certType = certType;
-            o.sslPri = sslPri;
-            o.sslProtocol = sslProtocol;
-            o.sslPub = sslPub;
-            return o;
+        }        public DomainCertInfo build() {
+            return new DomainCertInfo(certName, certType, sslPri, sslProtocol, sslPub);
         }
     }
 }

@@ -14,40 +14,60 @@ public final class GetZonesZone {
      * @return Set of supported disk categories.
      * 
      */
-    private List<String> availableDiskCategories;
+    private final List<String> availableDiskCategories;
     /**
      * @return Allowed instance types.
      * 
      */
-    private List<String> availableInstanceTypes;
+    private final List<String> availableInstanceTypes;
     /**
      * @return Filter the results by a specific resource type.
      * Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
      * 
+     * &gt; **NOTE:** From version 1.134.0, the `available_resource_creation` value &#34;Rds&#34; has been deprecated.
+     * If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
+     * 
      */
-    private List<String> availableResourceCreations;
+    private final List<String> availableResourceCreations;
     /**
      * @return ID of the zone.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Name of the zone in the local language.
      * 
      */
-    private String localName;
+    private final String localName;
     /**
      * @return A list of zone ids in which the multi zone.
      * 
      */
-    private List<String> multiZoneIds;
+    private final List<String> multiZoneIds;
     /**
      * @return A list of slb slave zone ids in which the slb master zone.
      * 
      */
-    private List<String> slbSlaveZoneIds;
+    private final List<String> slbSlaveZoneIds;
 
-    private GetZonesZone() {}
+    @CustomType.Constructor
+    private GetZonesZone(
+        @CustomType.Parameter("availableDiskCategories") List<String> availableDiskCategories,
+        @CustomType.Parameter("availableInstanceTypes") List<String> availableInstanceTypes,
+        @CustomType.Parameter("availableResourceCreations") List<String> availableResourceCreations,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("localName") String localName,
+        @CustomType.Parameter("multiZoneIds") List<String> multiZoneIds,
+        @CustomType.Parameter("slbSlaveZoneIds") List<String> slbSlaveZoneIds) {
+        this.availableDiskCategories = availableDiskCategories;
+        this.availableInstanceTypes = availableInstanceTypes;
+        this.availableResourceCreations = availableResourceCreations;
+        this.id = id;
+        this.localName = localName;
+        this.multiZoneIds = multiZoneIds;
+        this.slbSlaveZoneIds = slbSlaveZoneIds;
+    }
+
     /**
      * @return Set of supported disk categories.
      * 
@@ -65,6 +85,9 @@ public final class GetZonesZone {
     /**
      * @return Filter the results by a specific resource type.
      * Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
+     * 
+     * &gt; **NOTE:** From version 1.134.0, the `available_resource_creation` value &#34;Rds&#34; has been deprecated.
+     * If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
      * 
      */
     public List<String> availableResourceCreations() {
@@ -106,7 +129,7 @@ public final class GetZonesZone {
     public static Builder builder(GetZonesZone defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<String> availableDiskCategories;
         private List<String> availableInstanceTypes;
@@ -115,7 +138,11 @@ public final class GetZonesZone {
         private String localName;
         private List<String> multiZoneIds;
         private List<String> slbSlaveZoneIds;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetZonesZone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availableDiskCategories = defaults.availableDiskCategories;
@@ -127,7 +154,6 @@ public final class GetZonesZone {
     	      this.slbSlaveZoneIds = defaults.slbSlaveZoneIds;
         }
 
-        @CustomType.Setter
         public Builder availableDiskCategories(List<String> availableDiskCategories) {
             this.availableDiskCategories = Objects.requireNonNull(availableDiskCategories);
             return this;
@@ -135,7 +161,6 @@ public final class GetZonesZone {
         public Builder availableDiskCategories(String... availableDiskCategories) {
             return availableDiskCategories(List.of(availableDiskCategories));
         }
-        @CustomType.Setter
         public Builder availableInstanceTypes(List<String> availableInstanceTypes) {
             this.availableInstanceTypes = Objects.requireNonNull(availableInstanceTypes);
             return this;
@@ -143,7 +168,6 @@ public final class GetZonesZone {
         public Builder availableInstanceTypes(String... availableInstanceTypes) {
             return availableInstanceTypes(List.of(availableInstanceTypes));
         }
-        @CustomType.Setter
         public Builder availableResourceCreations(List<String> availableResourceCreations) {
             this.availableResourceCreations = Objects.requireNonNull(availableResourceCreations);
             return this;
@@ -151,17 +175,14 @@ public final class GetZonesZone {
         public Builder availableResourceCreations(String... availableResourceCreations) {
             return availableResourceCreations(List.of(availableResourceCreations));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder localName(String localName) {
             this.localName = Objects.requireNonNull(localName);
             return this;
         }
-        @CustomType.Setter
         public Builder multiZoneIds(List<String> multiZoneIds) {
             this.multiZoneIds = Objects.requireNonNull(multiZoneIds);
             return this;
@@ -169,24 +190,14 @@ public final class GetZonesZone {
         public Builder multiZoneIds(String... multiZoneIds) {
             return multiZoneIds(List.of(multiZoneIds));
         }
-        @CustomType.Setter
         public Builder slbSlaveZoneIds(List<String> slbSlaveZoneIds) {
             this.slbSlaveZoneIds = Objects.requireNonNull(slbSlaveZoneIds);
             return this;
         }
         public Builder slbSlaveZoneIds(String... slbSlaveZoneIds) {
             return slbSlaveZoneIds(List.of(slbSlaveZoneIds));
-        }
-        public GetZonesZone build() {
-            final var o = new GetZonesZone();
-            o.availableDiskCategories = availableDiskCategories;
-            o.availableInstanceTypes = availableInstanceTypes;
-            o.availableResourceCreations = availableResourceCreations;
-            o.id = id;
-            o.localName = localName;
-            o.multiZoneIds = multiZoneIds;
-            o.slbSlaveZoneIds = slbSlaveZoneIds;
-            return o;
+        }        public GetZonesZone build() {
+            return new GetZonesZone(availableDiskCategories, availableInstanceTypes, availableResourceCreations, id, localName, multiZoneIds, slbSlaveZoneIds);
         }
     }
 }

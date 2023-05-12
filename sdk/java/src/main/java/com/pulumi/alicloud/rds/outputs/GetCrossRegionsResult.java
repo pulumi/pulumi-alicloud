@@ -17,20 +17,31 @@ public final class GetCrossRegionsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of region IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String outputFile;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
     /**
      * @return The list of destination regions that support cross-region backup. Each element contains the following attributes:
      * 
      */
-    private List<GetCrossRegionsRegion> regions;
+    private final List<GetCrossRegionsRegion> regions;
 
-    private GetCrossRegionsResult() {}
+    @CustomType.Constructor
+    private GetCrossRegionsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("regions") List<GetCrossRegionsRegion> regions) {
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.regions = regions;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -63,13 +74,17 @@ public final class GetCrossRegionsResult {
     public static Builder builder(GetCrossRegionsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
         private List<GetCrossRegionsRegion> regions;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetCrossRegionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -78,12 +93,10 @@ public final class GetCrossRegionsResult {
     	      this.regions = defaults.regions;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -91,26 +104,18 @@ public final class GetCrossRegionsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder regions(List<GetCrossRegionsRegion> regions) {
             this.regions = Objects.requireNonNull(regions);
             return this;
         }
         public Builder regions(GetCrossRegionsRegion... regions) {
             return regions(List.of(regions));
-        }
-        public GetCrossRegionsResult build() {
-            final var o = new GetCrossRegionsResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.regions = regions;
-            return o;
+        }        public GetCrossRegionsResult build() {
+            return new GetCrossRegionsResult(id, ids, outputFile, regions);
         }
     }
 }

@@ -65,6 +65,8 @@ class KeyArgs:
                For example, you can use either 7d or 604800s to specify a seven-day interval.
                The interval can range from 7 days to 730 days.
                **NOTE**: It is Required when `automatic_rotation = "Enabled"`
+               
+               > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
         :param pulumi.Input[str] status: The status of CMK. Valid Values: 
                - Disabled
                - Enabled (default value)
@@ -267,6 +269,8 @@ class KeyArgs:
         For example, you can use either 7d or 604800s to specify a seven-day interval.
         The interval can range from 7 days to 730 days.
         **NOTE**: It is Required when `automatic_rotation = "Enabled"`
+
+        > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
         """
         return pulumi.get(self, "rotation_interval")
 
@@ -360,6 +364,8 @@ class _KeyState:
                For example, you can use either 7d or 604800s to specify a seven-day interval.
                The interval can range from 7 days to 730 days.
                **NOTE**: It is Required when `automatic_rotation = "Enabled"`
+               
+               > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
         :param pulumi.Input[str] status: The status of CMK. Valid Values: 
                - Disabled
                - Enabled (default value)
@@ -674,6 +680,8 @@ class _KeyState:
         For example, you can use either 7d or 604800s to specify a seven-day interval.
         The interval can range from 7 days to 730 days.
         **NOTE**: It is Required when `automatic_rotation = "Enabled"`
+
+        > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
         """
         return pulumi.get(self, "rotation_interval")
 
@@ -781,6 +789,8 @@ class Key(pulumi.CustomResource):
                For example, you can use either 7d or 604800s to specify a seven-day interval.
                The interval can range from 7 days to 730 days.
                **NOTE**: It is Required when `automatic_rotation = "Enabled"`
+               
+               > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
         :param pulumi.Input[str] status: The status of CMK. Valid Values: 
                - Disabled
                - Enabled (default value)
@@ -968,6 +978,8 @@ class Key(pulumi.CustomResource):
                For example, you can use either 7d or 604800s to specify a seven-day interval.
                The interval can range from 7 days to 730 days.
                **NOTE**: It is Required when `automatic_rotation = "Enabled"`
+               
+               > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
         :param pulumi.Input[str] status: The status of CMK. Valid Values: 
                - Disabled
                - Enabled (default value)
@@ -1181,6 +1193,8 @@ class Key(pulumi.CustomResource):
         For example, you can use either 7d or 604800s to specify a seven-day interval.
         The interval can range from 7 days to 730 days.
         **NOTE**: It is Required when `automatic_rotation = "Enabled"`
+
+        > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
         """
         return pulumi.get(self, "rotation_interval")
 

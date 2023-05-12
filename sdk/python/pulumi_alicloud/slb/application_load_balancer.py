@@ -54,6 +54,7 @@ class ApplicationLoadBalancerArgs:
         :param pulumi.Input[str] modification_protection_status: The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value is `NonProtection`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. This attribute is only used to create `Subscription` instance or modify the `PayAsYouGo` instance to `Subscription`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         :param pulumi.Input[str] resource_group_id: The id of resource group which the SLB belongs.
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
@@ -282,6 +283,9 @@ class ApplicationLoadBalancerArgs:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. This attribute is only used to create `Subscription` instance or modify the `PayAsYouGo` instance to `Subscription`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -404,6 +408,7 @@ class _ApplicationLoadBalancerState:
         :param pulumi.Input[str] modification_protection_status: The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value is `NonProtection`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. This attribute is only used to create `Subscription` instance or modify the `PayAsYouGo` instance to `Subscription`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         :param pulumi.Input[str] resource_group_id: The id of resource group which the SLB belongs.
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
@@ -632,6 +637,9 @@ class _ApplicationLoadBalancerState:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. This attribute is only used to create `Subscription` instance or modify the `PayAsYouGo` instance to `Subscription`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -766,6 +774,7 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] modification_protection_status: The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value is `NonProtection`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. This attribute is only used to create `Subscription` instance or modify the `PayAsYouGo` instance to `Subscription`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         :param pulumi.Input[str] resource_group_id: The id of resource group which the SLB belongs.
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
@@ -915,6 +924,7 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] modification_protection_status: The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value is `NonProtection`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. This attribute is only used to create `Subscription` instance or modify the `PayAsYouGo` instance to `Subscription`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         :param pulumi.Input[str] resource_group_id: The id of resource group which the SLB belongs.
         :param pulumi.Input[str] slave_zone_id: The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
         :param pulumi.Input[str] specification: Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
@@ -1065,6 +1075,9 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
     @property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
+        """
+        The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. This attribute is only used to create `Subscription` instance or modify the `PayAsYouGo` instance to `Subscription`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+        """
         return pulumi.get(self, "period")
 
     @property

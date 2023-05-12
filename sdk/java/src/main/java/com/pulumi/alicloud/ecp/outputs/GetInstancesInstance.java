@@ -13,70 +13,101 @@ public final class GetInstancesInstance {
      * @return Instance Description.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the Instance.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID Of The Image.
      * 
      */
-    private String imageId;
+    private final String imageId;
     /**
      * @return InstanceId.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return Instance Name.
      * 
      */
-    private String instanceName;
+    private final String instanceName;
     /**
      * @return Instance Type.
      * 
      */
-    private String instanceType;
+    private final String instanceType;
     /**
      * @return The Key Name.
      * 
      */
-    private String keyPairName;
+    private final String keyPairName;
     /**
      * @return The payment type.Valid values: `PayAsYouGo`,`Subscription`
      * 
      */
-    private String paymentType;
+    private final String paymentType;
     /**
      * @return Resolution.
      * 
      */
-    private String resolution;
+    private final String resolution;
     /**
      * @return Security Group ID.
      * 
      */
-    private String securityGroupId;
+    private final String securityGroupId;
     /**
      * @return Instance Status.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return VNC login address.
      * 
      */
-    private String vncUrl;
+    private final String vncUrl;
     /**
      * @return The vswitch id.
      * 
      */
-    private String vswitchId;
-    private String zoneId;
+    private final String vswitchId;
+    private final String zoneId;
 
-    private GetInstancesInstance() {}
+    @CustomType.Constructor
+    private GetInstancesInstance(
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("imageId") String imageId,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("instanceName") String instanceName,
+        @CustomType.Parameter("instanceType") String instanceType,
+        @CustomType.Parameter("keyPairName") String keyPairName,
+        @CustomType.Parameter("paymentType") String paymentType,
+        @CustomType.Parameter("resolution") String resolution,
+        @CustomType.Parameter("securityGroupId") String securityGroupId,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("vncUrl") String vncUrl,
+        @CustomType.Parameter("vswitchId") String vswitchId,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.description = description;
+        this.id = id;
+        this.imageId = imageId;
+        this.instanceId = instanceId;
+        this.instanceName = instanceName;
+        this.instanceType = instanceType;
+        this.keyPairName = keyPairName;
+        this.paymentType = paymentType;
+        this.resolution = resolution;
+        this.securityGroupId = securityGroupId;
+        this.status = status;
+        this.vncUrl = vncUrl;
+        this.vswitchId = vswitchId;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return Instance Description.
      * 
@@ -179,7 +210,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String description;
         private String id;
@@ -195,7 +226,11 @@ public final class GetInstancesInstance {
         private String vncUrl;
         private String vswitchId;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -214,93 +249,63 @@ public final class GetInstancesInstance {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder imageId(String imageId) {
             this.imageId = Objects.requireNonNull(imageId);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
-        @CustomType.Setter
         public Builder keyPairName(String keyPairName) {
             this.keyPairName = Objects.requireNonNull(keyPairName);
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
-        @CustomType.Setter
         public Builder resolution(String resolution) {
             this.resolution = Objects.requireNonNull(resolution);
             return this;
         }
-        @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
             this.securityGroupId = Objects.requireNonNull(securityGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder vncUrl(String vncUrl) {
             this.vncUrl = Objects.requireNonNull(vncUrl);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.description = description;
-            o.id = id;
-            o.imageId = imageId;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.instanceType = instanceType;
-            o.keyPairName = keyPairName;
-            o.paymentType = paymentType;
-            o.resolution = resolution;
-            o.securityGroupId = securityGroupId;
-            o.status = status;
-            o.vncUrl = vncUrl;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetInstancesInstance build() {
+            return new GetInstancesInstance(description, id, imageId, instanceId, instanceName, instanceType, keyPairName, paymentType, resolution, securityGroupId, status, vncUrl, vswitchId, zoneId);
         }
     }
 }

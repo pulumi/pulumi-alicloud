@@ -9,10 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTypesInstanceTypeBurstableInstance {
-    private String baselineCredit;
-    private String initialCredit;
+    private final String baselineCredit;
+    private final String initialCredit;
 
-    private GetInstanceTypesInstanceTypeBurstableInstance() {}
+    @CustomType.Constructor
+    private GetInstanceTypesInstanceTypeBurstableInstance(
+        @CustomType.Parameter("baselineCredit") String baselineCredit,
+        @CustomType.Parameter("initialCredit") String initialCredit) {
+        this.baselineCredit = baselineCredit;
+        this.initialCredit = initialCredit;
+    }
+
     public String baselineCredit() {
         return this.baselineCredit;
     }
@@ -27,32 +34,30 @@ public final class GetInstanceTypesInstanceTypeBurstableInstance {
     public static Builder builder(GetInstanceTypesInstanceTypeBurstableInstance defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String baselineCredit;
         private String initialCredit;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstanceTypesInstanceTypeBurstableInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.baselineCredit = defaults.baselineCredit;
     	      this.initialCredit = defaults.initialCredit;
         }
 
-        @CustomType.Setter
         public Builder baselineCredit(String baselineCredit) {
             this.baselineCredit = Objects.requireNonNull(baselineCredit);
             return this;
         }
-        @CustomType.Setter
         public Builder initialCredit(String initialCredit) {
             this.initialCredit = Objects.requireNonNull(initialCredit);
             return this;
-        }
-        public GetInstanceTypesInstanceTypeBurstableInstance build() {
-            final var o = new GetInstanceTypesInstanceTypeBurstableInstance();
-            o.baselineCredit = baselineCredit;
-            o.initialCredit = initialCredit;
-            return o;
+        }        public GetInstanceTypesInstanceTypeBurstableInstance build() {
+            return new GetInstanceTypesInstanceTypeBurstableInstance(baselineCredit, initialCredit);
         }
     }
 }

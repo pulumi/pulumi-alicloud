@@ -17,22 +17,37 @@ public final class GetSaslUsersResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private String instanceId;
-    private @Nullable String nameRegex;
+    private final String id;
+    private final String instanceId;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of sasl usernames.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
     /**
      * @return A list of sasl users. Each element contains the following attributes:
      * 
      */
-    private List<GetSaslUsersUser> users;
+    private final List<GetSaslUsersUser> users;
 
-    private GetSaslUsersResult() {}
+    @CustomType.Constructor
+    private GetSaslUsersResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("users") List<GetSaslUsersUser> users) {
+        this.id = id;
+        this.instanceId = instanceId;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.users = users;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -71,7 +86,7 @@ public final class GetSaslUsersResult {
     public static Builder builder(GetSaslUsersResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private String instanceId;
@@ -79,7 +94,11 @@ public final class GetSaslUsersResult {
         private List<String> names;
         private @Nullable String outputFile;
         private List<GetSaslUsersUser> users;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetSaslUsersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -90,22 +109,18 @@ public final class GetSaslUsersResult {
     	      this.users = defaults.users;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -113,28 +128,18 @@ public final class GetSaslUsersResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder users(List<GetSaslUsersUser> users) {
             this.users = Objects.requireNonNull(users);
             return this;
         }
         public Builder users(GetSaslUsersUser... users) {
             return users(List.of(users));
-        }
-        public GetSaslUsersResult build() {
-            final var o = new GetSaslUsersResult();
-            o.id = id;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.users = users;
-            return o;
+        }        public GetSaslUsersResult build() {
+            return new GetSaslUsersResult(id, instanceId, nameRegex, names, outputFile, users);
         }
     }
 }

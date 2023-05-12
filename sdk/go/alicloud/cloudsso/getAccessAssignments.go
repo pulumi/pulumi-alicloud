@@ -64,8 +64,9 @@ type GetAccessAssignmentsArgs struct {
 	// Directory ID.
 	DirectoryId string `pulumi:"directoryId"`
 	// A list of Access Assignment IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// Create the identity type of the access assignment, which can be a user or a user group.
 	PrincipalType *string `pulumi:"principalType"`
 	// The ID of the target to create the resource range.
@@ -108,8 +109,9 @@ type GetAccessAssignmentsOutputArgs struct {
 	// Directory ID.
 	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
 	// A list of Access Assignment IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Create the identity type of the access assignment, which can be a user or a user group.
 	PrincipalType pulumi.StringPtrInput `pulumi:"principalType"`
 	// The ID of the target to create the resource range.

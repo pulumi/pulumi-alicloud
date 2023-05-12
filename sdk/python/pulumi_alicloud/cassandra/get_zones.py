@@ -109,6 +109,7 @@ def get_zones(multi: Optional[bool] = None,
 
 
     :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Cassandra clusters.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['multi'] = multi
@@ -147,5 +148,6 @@ def get_zones_output(multi: Optional[pulumi.Input[Optional[bool]]] = None,
 
 
     :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Cassandra clusters.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

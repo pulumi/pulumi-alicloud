@@ -15,190 +15,269 @@ public final class GetRouterInterfacesInterface {
      * @return The access point ID to which the VBR belongs.
      * 
      */
-    private String accessPointId;
+    private final String accessPointId;
     /**
      * @return The bandwidth of the resource.
      * 
      */
-    private Integer bandwidth;
+    private final Integer bandwidth;
     /**
      * @return The businessStatus of the resource. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
      * 
      */
-    private String businessStatus;
+    private final String businessStatus;
     /**
      * @return The connected time of the resource.
      * 
      */
-    private String connectedTime;
+    private final String connectedTime;
     /**
      * @return The creation time of the resource
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The cross border of the resource.
      * 
      */
-    private Boolean crossBorder;
+    private final Boolean crossBorder;
     /**
      * @return The description of the router interface.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The end time of the resource.
      * 
      */
-    private String endTime;
+    private final String endTime;
     /**
      * @return The has reservation data of the resource.
      * 
      */
-    private String hasReservationData;
+    private final String hasReservationData;
     /**
      * @return The hc rate of the resource.
      * 
      */
-    private Integer hcRate;
+    private final Integer hcRate;
     /**
      * @return The hc threshold of the resource.
      * 
      */
-    private String hcThreshold;
+    private final String hcThreshold;
     /**
      * @return The health check source IP address, must be an unused IP within the local VPC.
      * 
      */
-    private String healthCheckSourceIp;
+    private final String healthCheckSourceIp;
     /**
      * @return The IP address for health screening purposes.
      * 
      */
-    private String healthCheckTargetIp;
-    private String id;
+    private final String healthCheckTargetIp;
+    private final String id;
     /**
      * @return The Access point ID to which the other end belongs.
      * 
      */
-    private String oppositeAccessPointId;
+    private final String oppositeAccessPointId;
     /**
      * @return The opposite bandwidth of the router on the other side.
      * 
      */
-    private Integer oppositeBandwidth;
+    private final Integer oppositeBandwidth;
     /**
      * @return The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
      * 
      */
-    private String oppositeInterfaceBusinessStatus;
+    private final String oppositeInterfaceBusinessStatus;
     /**
      * @return The Interface ID of the router at the other end.
      * 
      */
-    private String oppositeInterfaceId;
+    private final String oppositeInterfaceId;
     /**
      * @return The AliCloud account ID of the owner of the router interface on the other end.
      * 
      */
-    private String oppositeInterfaceOwnerId;
+    private final String oppositeInterfaceOwnerId;
     /**
      * @return The opposite interface spec of the router on the other side. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
      * 
      */
-    private String oppositeInterfaceSpec;
+    private final String oppositeInterfaceSpec;
     /**
      * @return The opposite interface status of the router on the other side. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
      * 
      */
-    private String oppositeInterfaceStatus;
+    private final String oppositeInterfaceStatus;
     /**
      * @return The geographical ID of the location of the receiving end of the connection.
      * 
      */
-    private String oppositeRegionId;
+    private final String oppositeRegionId;
     /**
      * @return The id of the router at the other end.
      * 
      */
-    private String oppositeRouterId;
+    private final String oppositeRouterId;
     /**
      * @return The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
      * 
      */
-    private String oppositeRouterType;
+    private final String oppositeRouterType;
     /**
      * @return The opposite vpc instance id of the router on the other side.
      * 
      */
-    private String oppositeVpcInstanceId;
+    private final String oppositeVpcInstanceId;
     /**
      * @return The payment methods for router interfaces. Valid Values: `PrePaid`, `PostPaid`.
      * 
      */
-    private String paymentType;
+    private final String paymentType;
     /**
      * @return The reservation active time of the resource.
      * 
      */
-    private String reservationActiveTime;
+    private final String reservationActiveTime;
     /**
      * @return The reservation bandwidth of the resource.
      * 
      */
-    private String reservationBandwidth;
+    private final String reservationBandwidth;
     /**
      * @return The reservation internet charge type of the resource.
      * 
      */
-    private String reservationInternetChargeType;
+    private final String reservationInternetChargeType;
     /**
      * @return The reservation order type of the resource.
      * 
      */
-    private String reservationOrderType;
+    private final String reservationOrderType;
     /**
      * @return The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
      * 
      */
-    private String role;
+    private final String role;
     /**
      * @return The router id associated with the router interface.
      * 
      */
-    private String routerId;
+    private final String routerId;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private String routerInterfaceId;
+    private final String routerInterfaceId;
     /**
      * @return The name of the resource.
      * 
      */
-    private String routerInterfaceName;
+    private final String routerInterfaceName;
     /**
      * @return The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
      * 
      */
-    private String routerType;
+    private final String routerType;
     /**
      * @return The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
      * 
      */
-    private String spec;
+    private final String spec;
     /**
      * @return The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The vpc instance id of the resource.
      * 
      */
-    private String vpcInstanceId;
+    private final String vpcInstanceId;
 
-    private GetRouterInterfacesInterface() {}
+    @CustomType.Constructor
+    private GetRouterInterfacesInterface(
+        @CustomType.Parameter("accessPointId") String accessPointId,
+        @CustomType.Parameter("bandwidth") Integer bandwidth,
+        @CustomType.Parameter("businessStatus") String businessStatus,
+        @CustomType.Parameter("connectedTime") String connectedTime,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("crossBorder") Boolean crossBorder,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("endTime") String endTime,
+        @CustomType.Parameter("hasReservationData") String hasReservationData,
+        @CustomType.Parameter("hcRate") Integer hcRate,
+        @CustomType.Parameter("hcThreshold") String hcThreshold,
+        @CustomType.Parameter("healthCheckSourceIp") String healthCheckSourceIp,
+        @CustomType.Parameter("healthCheckTargetIp") String healthCheckTargetIp,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("oppositeAccessPointId") String oppositeAccessPointId,
+        @CustomType.Parameter("oppositeBandwidth") Integer oppositeBandwidth,
+        @CustomType.Parameter("oppositeInterfaceBusinessStatus") String oppositeInterfaceBusinessStatus,
+        @CustomType.Parameter("oppositeInterfaceId") String oppositeInterfaceId,
+        @CustomType.Parameter("oppositeInterfaceOwnerId") String oppositeInterfaceOwnerId,
+        @CustomType.Parameter("oppositeInterfaceSpec") String oppositeInterfaceSpec,
+        @CustomType.Parameter("oppositeInterfaceStatus") String oppositeInterfaceStatus,
+        @CustomType.Parameter("oppositeRegionId") String oppositeRegionId,
+        @CustomType.Parameter("oppositeRouterId") String oppositeRouterId,
+        @CustomType.Parameter("oppositeRouterType") String oppositeRouterType,
+        @CustomType.Parameter("oppositeVpcInstanceId") String oppositeVpcInstanceId,
+        @CustomType.Parameter("paymentType") String paymentType,
+        @CustomType.Parameter("reservationActiveTime") String reservationActiveTime,
+        @CustomType.Parameter("reservationBandwidth") String reservationBandwidth,
+        @CustomType.Parameter("reservationInternetChargeType") String reservationInternetChargeType,
+        @CustomType.Parameter("reservationOrderType") String reservationOrderType,
+        @CustomType.Parameter("role") String role,
+        @CustomType.Parameter("routerId") String routerId,
+        @CustomType.Parameter("routerInterfaceId") String routerInterfaceId,
+        @CustomType.Parameter("routerInterfaceName") String routerInterfaceName,
+        @CustomType.Parameter("routerType") String routerType,
+        @CustomType.Parameter("spec") String spec,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("vpcInstanceId") String vpcInstanceId) {
+        this.accessPointId = accessPointId;
+        this.bandwidth = bandwidth;
+        this.businessStatus = businessStatus;
+        this.connectedTime = connectedTime;
+        this.createTime = createTime;
+        this.crossBorder = crossBorder;
+        this.description = description;
+        this.endTime = endTime;
+        this.hasReservationData = hasReservationData;
+        this.hcRate = hcRate;
+        this.hcThreshold = hcThreshold;
+        this.healthCheckSourceIp = healthCheckSourceIp;
+        this.healthCheckTargetIp = healthCheckTargetIp;
+        this.id = id;
+        this.oppositeAccessPointId = oppositeAccessPointId;
+        this.oppositeBandwidth = oppositeBandwidth;
+        this.oppositeInterfaceBusinessStatus = oppositeInterfaceBusinessStatus;
+        this.oppositeInterfaceId = oppositeInterfaceId;
+        this.oppositeInterfaceOwnerId = oppositeInterfaceOwnerId;
+        this.oppositeInterfaceSpec = oppositeInterfaceSpec;
+        this.oppositeInterfaceStatus = oppositeInterfaceStatus;
+        this.oppositeRegionId = oppositeRegionId;
+        this.oppositeRouterId = oppositeRouterId;
+        this.oppositeRouterType = oppositeRouterType;
+        this.oppositeVpcInstanceId = oppositeVpcInstanceId;
+        this.paymentType = paymentType;
+        this.reservationActiveTime = reservationActiveTime;
+        this.reservationBandwidth = reservationBandwidth;
+        this.reservationInternetChargeType = reservationInternetChargeType;
+        this.reservationOrderType = reservationOrderType;
+        this.role = role;
+        this.routerId = routerId;
+        this.routerInterfaceId = routerInterfaceId;
+        this.routerInterfaceName = routerInterfaceName;
+        this.routerType = routerType;
+        this.spec = spec;
+        this.status = status;
+        this.vpcInstanceId = vpcInstanceId;
+    }
+
     /**
      * @return The access point ID to which the VBR belongs.
      * 
@@ -469,7 +548,7 @@ public final class GetRouterInterfacesInterface {
     public static Builder builder(GetRouterInterfacesInterface defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String accessPointId;
         private Integer bandwidth;
@@ -509,7 +588,11 @@ public final class GetRouterInterfacesInterface {
         private String spec;
         private String status;
         private String vpcInstanceId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRouterInterfacesInterface defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessPointId = defaults.accessPointId;
@@ -552,237 +635,159 @@ public final class GetRouterInterfacesInterface {
     	      this.vpcInstanceId = defaults.vpcInstanceId;
         }
 
-        @CustomType.Setter
         public Builder accessPointId(String accessPointId) {
             this.accessPointId = Objects.requireNonNull(accessPointId);
             return this;
         }
-        @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
-        @CustomType.Setter
         public Builder businessStatus(String businessStatus) {
             this.businessStatus = Objects.requireNonNull(businessStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder connectedTime(String connectedTime) {
             this.connectedTime = Objects.requireNonNull(connectedTime);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder crossBorder(Boolean crossBorder) {
             this.crossBorder = Objects.requireNonNull(crossBorder);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder endTime(String endTime) {
             this.endTime = Objects.requireNonNull(endTime);
             return this;
         }
-        @CustomType.Setter
         public Builder hasReservationData(String hasReservationData) {
             this.hasReservationData = Objects.requireNonNull(hasReservationData);
             return this;
         }
-        @CustomType.Setter
         public Builder hcRate(Integer hcRate) {
             this.hcRate = Objects.requireNonNull(hcRate);
             return this;
         }
-        @CustomType.Setter
         public Builder hcThreshold(String hcThreshold) {
             this.hcThreshold = Objects.requireNonNull(hcThreshold);
             return this;
         }
-        @CustomType.Setter
         public Builder healthCheckSourceIp(String healthCheckSourceIp) {
             this.healthCheckSourceIp = Objects.requireNonNull(healthCheckSourceIp);
             return this;
         }
-        @CustomType.Setter
         public Builder healthCheckTargetIp(String healthCheckTargetIp) {
             this.healthCheckTargetIp = Objects.requireNonNull(healthCheckTargetIp);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder oppositeAccessPointId(String oppositeAccessPointId) {
             this.oppositeAccessPointId = Objects.requireNonNull(oppositeAccessPointId);
             return this;
         }
-        @CustomType.Setter
         public Builder oppositeBandwidth(Integer oppositeBandwidth) {
             this.oppositeBandwidth = Objects.requireNonNull(oppositeBandwidth);
             return this;
         }
-        @CustomType.Setter
         public Builder oppositeInterfaceBusinessStatus(String oppositeInterfaceBusinessStatus) {
             this.oppositeInterfaceBusinessStatus = Objects.requireNonNull(oppositeInterfaceBusinessStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder oppositeInterfaceId(String oppositeInterfaceId) {
             this.oppositeInterfaceId = Objects.requireNonNull(oppositeInterfaceId);
             return this;
         }
-        @CustomType.Setter
         public Builder oppositeInterfaceOwnerId(String oppositeInterfaceOwnerId) {
             this.oppositeInterfaceOwnerId = Objects.requireNonNull(oppositeInterfaceOwnerId);
             return this;
         }
-        @CustomType.Setter
         public Builder oppositeInterfaceSpec(String oppositeInterfaceSpec) {
             this.oppositeInterfaceSpec = Objects.requireNonNull(oppositeInterfaceSpec);
             return this;
         }
-        @CustomType.Setter
         public Builder oppositeInterfaceStatus(String oppositeInterfaceStatus) {
             this.oppositeInterfaceStatus = Objects.requireNonNull(oppositeInterfaceStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder oppositeRegionId(String oppositeRegionId) {
             this.oppositeRegionId = Objects.requireNonNull(oppositeRegionId);
             return this;
         }
-        @CustomType.Setter
         public Builder oppositeRouterId(String oppositeRouterId) {
             this.oppositeRouterId = Objects.requireNonNull(oppositeRouterId);
             return this;
         }
-        @CustomType.Setter
         public Builder oppositeRouterType(String oppositeRouterType) {
             this.oppositeRouterType = Objects.requireNonNull(oppositeRouterType);
             return this;
         }
-        @CustomType.Setter
         public Builder oppositeVpcInstanceId(String oppositeVpcInstanceId) {
             this.oppositeVpcInstanceId = Objects.requireNonNull(oppositeVpcInstanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
-        @CustomType.Setter
         public Builder reservationActiveTime(String reservationActiveTime) {
             this.reservationActiveTime = Objects.requireNonNull(reservationActiveTime);
             return this;
         }
-        @CustomType.Setter
         public Builder reservationBandwidth(String reservationBandwidth) {
             this.reservationBandwidth = Objects.requireNonNull(reservationBandwidth);
             return this;
         }
-        @CustomType.Setter
         public Builder reservationInternetChargeType(String reservationInternetChargeType) {
             this.reservationInternetChargeType = Objects.requireNonNull(reservationInternetChargeType);
             return this;
         }
-        @CustomType.Setter
         public Builder reservationOrderType(String reservationOrderType) {
             this.reservationOrderType = Objects.requireNonNull(reservationOrderType);
             return this;
         }
-        @CustomType.Setter
         public Builder role(String role) {
             this.role = Objects.requireNonNull(role);
             return this;
         }
-        @CustomType.Setter
         public Builder routerId(String routerId) {
             this.routerId = Objects.requireNonNull(routerId);
             return this;
         }
-        @CustomType.Setter
         public Builder routerInterfaceId(String routerInterfaceId) {
             this.routerInterfaceId = Objects.requireNonNull(routerInterfaceId);
             return this;
         }
-        @CustomType.Setter
         public Builder routerInterfaceName(String routerInterfaceName) {
             this.routerInterfaceName = Objects.requireNonNull(routerInterfaceName);
             return this;
         }
-        @CustomType.Setter
         public Builder routerType(String routerType) {
             this.routerType = Objects.requireNonNull(routerType);
             return this;
         }
-        @CustomType.Setter
         public Builder spec(String spec) {
             this.spec = Objects.requireNonNull(spec);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcInstanceId(String vpcInstanceId) {
             this.vpcInstanceId = Objects.requireNonNull(vpcInstanceId);
             return this;
-        }
-        public GetRouterInterfacesInterface build() {
-            final var o = new GetRouterInterfacesInterface();
-            o.accessPointId = accessPointId;
-            o.bandwidth = bandwidth;
-            o.businessStatus = businessStatus;
-            o.connectedTime = connectedTime;
-            o.createTime = createTime;
-            o.crossBorder = crossBorder;
-            o.description = description;
-            o.endTime = endTime;
-            o.hasReservationData = hasReservationData;
-            o.hcRate = hcRate;
-            o.hcThreshold = hcThreshold;
-            o.healthCheckSourceIp = healthCheckSourceIp;
-            o.healthCheckTargetIp = healthCheckTargetIp;
-            o.id = id;
-            o.oppositeAccessPointId = oppositeAccessPointId;
-            o.oppositeBandwidth = oppositeBandwidth;
-            o.oppositeInterfaceBusinessStatus = oppositeInterfaceBusinessStatus;
-            o.oppositeInterfaceId = oppositeInterfaceId;
-            o.oppositeInterfaceOwnerId = oppositeInterfaceOwnerId;
-            o.oppositeInterfaceSpec = oppositeInterfaceSpec;
-            o.oppositeInterfaceStatus = oppositeInterfaceStatus;
-            o.oppositeRegionId = oppositeRegionId;
-            o.oppositeRouterId = oppositeRouterId;
-            o.oppositeRouterType = oppositeRouterType;
-            o.oppositeVpcInstanceId = oppositeVpcInstanceId;
-            o.paymentType = paymentType;
-            o.reservationActiveTime = reservationActiveTime;
-            o.reservationBandwidth = reservationBandwidth;
-            o.reservationInternetChargeType = reservationInternetChargeType;
-            o.reservationOrderType = reservationOrderType;
-            o.role = role;
-            o.routerId = routerId;
-            o.routerInterfaceId = routerInterfaceId;
-            o.routerInterfaceName = routerInterfaceName;
-            o.routerType = routerType;
-            o.spec = spec;
-            o.status = status;
-            o.vpcInstanceId = vpcInstanceId;
-            return o;
+        }        public GetRouterInterfacesInterface build() {
+            return new GetRouterInterfacesInterface(accessPointId, bandwidth, businessStatus, connectedTime, createTime, crossBorder, description, endTime, hasReservationData, hcRate, hcThreshold, healthCheckSourceIp, healthCheckTargetIp, id, oppositeAccessPointId, oppositeBandwidth, oppositeInterfaceBusinessStatus, oppositeInterfaceId, oppositeInterfaceOwnerId, oppositeInterfaceSpec, oppositeInterfaceStatus, oppositeRegionId, oppositeRouterId, oppositeRouterType, oppositeVpcInstanceId, paymentType, reservationActiveTime, reservationBandwidth, reservationInternetChargeType, reservationOrderType, role, routerId, routerInterfaceId, routerInterfaceName, routerType, spec, status, vpcInstanceId);
         }
     }
 }

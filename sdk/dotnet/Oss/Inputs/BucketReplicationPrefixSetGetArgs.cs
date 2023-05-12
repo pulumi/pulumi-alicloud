@@ -17,6 +17,8 @@ namespace Pulumi.AliCloud.Oss.Inputs
 
         /// <summary>
         /// The list of object key name prefix identifying one or more objects to which the rule applies.
+        /// 
+        /// `NOTE`: The prefix must be less than or equal to 1024 characters in length.
         /// </summary>
         public InputList<string> Prefixes
         {

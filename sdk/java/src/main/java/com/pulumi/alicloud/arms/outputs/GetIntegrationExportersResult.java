@@ -17,26 +17,41 @@ public final class GetIntegrationExportersResult {
      * @return The ID of the Prometheus instance.
      * 
      */
-    private String clusterId;
+    private final String clusterId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
+    private final String id;
+    private final List<String> ids;
     /**
      * @return A list of Integration Exporters. Each element contains the following attributes:
      * 
      */
-    private List<GetIntegrationExportersIntegrationExporter> integrationExporters;
+    private final List<GetIntegrationExportersIntegrationExporter> integrationExporters;
     /**
      * @return The type of prometheus integration.
      * 
      */
-    private String integrationType;
-    private @Nullable String outputFile;
+    private final String integrationType;
+    private final @Nullable String outputFile;
 
-    private GetIntegrationExportersResult() {}
+    @CustomType.Constructor
+    private GetIntegrationExportersResult(
+        @CustomType.Parameter("clusterId") String clusterId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("integrationExporters") List<GetIntegrationExportersIntegrationExporter> integrationExporters,
+        @CustomType.Parameter("integrationType") String integrationType,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.clusterId = clusterId;
+        this.id = id;
+        this.ids = ids;
+        this.integrationExporters = integrationExporters;
+        this.integrationType = integrationType;
+        this.outputFile = outputFile;
+    }
+
     /**
      * @return The ID of the Prometheus instance.
      * 
@@ -79,7 +94,7 @@ public final class GetIntegrationExportersResult {
     public static Builder builder(GetIntegrationExportersResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String clusterId;
         private String id;
@@ -87,7 +102,11 @@ public final class GetIntegrationExportersResult {
         private List<GetIntegrationExportersIntegrationExporter> integrationExporters;
         private String integrationType;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetIntegrationExportersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterId = defaults.clusterId;
@@ -98,17 +117,14 @@ public final class GetIntegrationExportersResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -116,7 +132,6 @@ public final class GetIntegrationExportersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder integrationExporters(List<GetIntegrationExportersIntegrationExporter> integrationExporters) {
             this.integrationExporters = Objects.requireNonNull(integrationExporters);
             return this;
@@ -124,25 +139,15 @@ public final class GetIntegrationExportersResult {
         public Builder integrationExporters(GetIntegrationExportersIntegrationExporter... integrationExporters) {
             return integrationExporters(List.of(integrationExporters));
         }
-        @CustomType.Setter
         public Builder integrationType(String integrationType) {
             this.integrationType = Objects.requireNonNull(integrationType);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetIntegrationExportersResult build() {
-            final var o = new GetIntegrationExportersResult();
-            o.clusterId = clusterId;
-            o.id = id;
-            o.ids = ids;
-            o.integrationExporters = integrationExporters;
-            o.integrationType = integrationType;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetIntegrationExportersResult build() {
+            return new GetIntegrationExportersResult(clusterId, id, ids, integrationExporters, integrationType, outputFile);
         }
     }
 }

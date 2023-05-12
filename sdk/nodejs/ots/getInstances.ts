@@ -46,6 +46,9 @@ export interface GetInstancesArgs {
      * A regex string to filter results by instance name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * A map of tags assigned to the instance. It must be in the format:
@@ -123,6 +126,9 @@ export interface GetInstancesOutputArgs {
      * A regex string to filter results by instance name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * A map of tags assigned to the instance. It must be in the format:

@@ -10,6 +10,46 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource will help you configure auto scaling for the kubernetes cluster.
+//
+// > **NOTE:** Available in v1.127.0+.
+// **NOTE:** From version 1.164.0, support for specifying whether to allow the scale-in of nodes by parameter `scaleDownEnabled`.
+// **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
+//
+// ## Example Usage
+//
+// If you do not have an existing cluster, you need to create an ACK cluster through cs.ManagedKubernetes first, and then configure automatic scaling.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cs.NewAutoscalingConfig(ctx, "default", &cs.AutoscalingConfigArgs{
+//				ClusterId:               pulumi.Any(alicloud_cs_managed_kubernetes.Default[0].Id),
+//				CoolDownDuration:        pulumi.String("10m"),
+//				UnneededDuration:        pulumi.String("10m"),
+//				UtilizationThreshold:    pulumi.String("0.5"),
+//				GpuUtilizationThreshold: pulumi.String("0.5"),
+//				ScanInterval:            pulumi.String("30s"),
+//				ScaleDownEnabled:        pulumi.Bool(true),
+//				Expander:                pulumi.String("least-waste"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type AutoscalingConfig struct {
 	pulumi.CustomResourceState
 

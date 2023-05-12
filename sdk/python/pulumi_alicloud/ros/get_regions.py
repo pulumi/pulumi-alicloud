@@ -81,6 +81,9 @@ def get_regions(output_file: Optional[str] = None,
     all = alicloud.ros.get_regions()
     pulumi.export("rosRegionRegionId1", all.regions[0].region_id)
     ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
@@ -112,5 +115,8 @@ def get_regions_output(output_file: Optional[pulumi.Input[Optional[str]]] = None
     all = alicloud.ros.get_regions()
     pulumi.export("rosRegionRegionId1", all.regions[0].region_id)
     ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

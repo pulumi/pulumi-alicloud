@@ -17,48 +17,75 @@ public final class GetSnatEntriesResult {
      * @return A list of Snat Entries. Each element contains the following attributes:
      * 
      */
-    private List<GetSnatEntriesEntry> entries;
+    private final List<GetSnatEntriesEntry> entries;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return (Optional) A list of Snat Entries IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
     /**
      * @return The name of snat entry.
      * 
      */
-    private @Nullable String snatEntryName;
+    private final @Nullable String snatEntryName;
     /**
      * @return The public IP of the Snat Entry.
      * 
      */
-    private @Nullable String snatIp;
-    private String snatTableId;
+    private final @Nullable String snatIp;
+    private final String snatTableId;
     /**
      * @return The source CIDR block of the Snat Entry.
      * 
      */
-    private @Nullable String sourceCidr;
+    private final @Nullable String sourceCidr;
     /**
      * @return The source vswitch ID.
      * 
      */
-    private @Nullable String sourceVswitchId;
+    private final @Nullable String sourceVswitchId;
     /**
      * @return The status of the Snat Entry.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
 
-    private GetSnatEntriesResult() {}
+    @CustomType.Constructor
+    private GetSnatEntriesResult(
+        @CustomType.Parameter("entries") List<GetSnatEntriesEntry> entries,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("snatEntryName") @Nullable String snatEntryName,
+        @CustomType.Parameter("snatIp") @Nullable String snatIp,
+        @CustomType.Parameter("snatTableId") String snatTableId,
+        @CustomType.Parameter("sourceCidr") @Nullable String sourceCidr,
+        @CustomType.Parameter("sourceVswitchId") @Nullable String sourceVswitchId,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.entries = entries;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.snatEntryName = snatEntryName;
+        this.snatIp = snatIp;
+        this.snatTableId = snatTableId;
+        this.sourceCidr = sourceCidr;
+        this.sourceVswitchId = sourceVswitchId;
+        this.status = status;
+    }
+
     /**
      * @return A list of Snat Entries. Each element contains the following attributes:
      * 
@@ -135,7 +162,7 @@ public final class GetSnatEntriesResult {
     public static Builder builder(GetSnatEntriesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetSnatEntriesEntry> entries;
         private String id;
@@ -149,7 +176,11 @@ public final class GetSnatEntriesResult {
         private @Nullable String sourceCidr;
         private @Nullable String sourceVswitchId;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetSnatEntriesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.entries = defaults.entries;
@@ -166,7 +197,6 @@ public final class GetSnatEntriesResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder entries(List<GetSnatEntriesEntry> entries) {
             this.entries = Objects.requireNonNull(entries);
             return this;
@@ -174,12 +204,10 @@ public final class GetSnatEntriesResult {
         public Builder entries(GetSnatEntriesEntry... entries) {
             return entries(List.of(entries));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -187,12 +215,10 @@ public final class GetSnatEntriesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -200,56 +226,35 @@ public final class GetSnatEntriesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder snatEntryName(@Nullable String snatEntryName) {
             this.snatEntryName = snatEntryName;
             return this;
         }
-        @CustomType.Setter
         public Builder snatIp(@Nullable String snatIp) {
             this.snatIp = snatIp;
             return this;
         }
-        @CustomType.Setter
         public Builder snatTableId(String snatTableId) {
             this.snatTableId = Objects.requireNonNull(snatTableId);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceCidr(@Nullable String sourceCidr) {
             this.sourceCidr = sourceCidr;
             return this;
         }
-        @CustomType.Setter
         public Builder sourceVswitchId(@Nullable String sourceVswitchId) {
             this.sourceVswitchId = sourceVswitchId;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetSnatEntriesResult build() {
-            final var o = new GetSnatEntriesResult();
-            o.entries = entries;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.snatEntryName = snatEntryName;
-            o.snatIp = snatIp;
-            o.snatTableId = snatTableId;
-            o.sourceCidr = sourceCidr;
-            o.sourceVswitchId = sourceVswitchId;
-            o.status = status;
-            return o;
+        }        public GetSnatEntriesResult build() {
+            return new GetSnatEntriesResult(entries, id, ids, nameRegex, names, outputFile, snatEntryName, snatIp, snatTableId, sourceCidr, sourceVswitchId, status);
         }
     }
 }

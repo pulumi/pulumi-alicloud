@@ -119,6 +119,8 @@ type Alarm struct {
 	// The current alarm rule status.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
+	//
+	// > **NOTE:** Each resource supports the creation of one of the following three levels.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
 	//
@@ -220,6 +222,8 @@ type alarmState struct {
 	// The current alarm rule status.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
+	//
+	// > **NOTE:** Each resource supports the creation of one of the following three levels.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
 	//
@@ -284,6 +288,8 @@ type AlarmState struct {
 	// The current alarm rule status.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
+	//
+	// > **NOTE:** Each resource supports the creation of one of the following three levels.
 	Tags pulumi.MapInput
 	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
 	//
@@ -350,6 +356,8 @@ type alarmArgs struct {
 	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics *string `pulumi:"statistics"`
 	// A mapping of tags to assign to the resource.
+	//
+	// > **NOTE:** Each resource supports the creation of one of the following three levels.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
 	//
@@ -413,6 +421,8 @@ type AlarmArgs struct {
 	// Deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.
 	Statistics pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
+	//
+	// > **NOTE:** Each resource supports the creation of one of the following three levels.
 	Tags pulumi.MapInput
 	// It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
 	//
@@ -620,6 +630,8 @@ func (o AlarmOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
+//
+// > **NOTE:** Each resource supports the creation of one of the following three levels.
 func (o AlarmOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }

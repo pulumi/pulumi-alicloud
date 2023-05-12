@@ -10,6 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:**  This resource has been renamed to actiontrail.Trail from version 1.95.0.
+//
+// Provides a new resource to manage [Action Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
+//
+// > **NOTE:** Available in 1.35.0+
+//
 // ## Example Usage
 //
 // ```go
@@ -74,6 +80,8 @@ type TrailDeprecated struct {
 	// The unique ARN of the Log Service project.
 	SlsProjectArn pulumi.StringPtrOutput `pulumi:"slsProjectArn"`
 	// The unique ARN of the Log Service role.
+	//
+	// > **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
 	SlsWriteRoleArn pulumi.StringOutput    `pulumi:"slsWriteRoleArn"`
 	Status          pulumi.StringPtrOutput `pulumi:"status"`
 	TrailName       pulumi.StringOutput    `pulumi:"trailName"`
@@ -130,6 +138,8 @@ type trailDeprecatedState struct {
 	// The unique ARN of the Log Service project.
 	SlsProjectArn *string `pulumi:"slsProjectArn"`
 	// The unique ARN of the Log Service role.
+	//
+	// > **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
 	SlsWriteRoleArn *string `pulumi:"slsWriteRoleArn"`
 	Status          *string `pulumi:"status"`
 	TrailName       *string `pulumi:"trailName"`
@@ -158,6 +168,8 @@ type TrailDeprecatedState struct {
 	// The unique ARN of the Log Service project.
 	SlsProjectArn pulumi.StringPtrInput
 	// The unique ARN of the Log Service role.
+	//
+	// > **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
 	SlsWriteRoleArn pulumi.StringPtrInput
 	Status          pulumi.StringPtrInput
 	TrailName       pulumi.StringPtrInput
@@ -190,6 +202,8 @@ type trailDeprecatedArgs struct {
 	// The unique ARN of the Log Service project.
 	SlsProjectArn *string `pulumi:"slsProjectArn"`
 	// The unique ARN of the Log Service role.
+	//
+	// > **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
 	SlsWriteRoleArn *string `pulumi:"slsWriteRoleArn"`
 	Status          *string `pulumi:"status"`
 	TrailName       *string `pulumi:"trailName"`
@@ -219,6 +233,8 @@ type TrailDeprecatedArgs struct {
 	// The unique ARN of the Log Service project.
 	SlsProjectArn pulumi.StringPtrInput
 	// The unique ARN of the Log Service role.
+	//
+	// > **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
 	SlsWriteRoleArn pulumi.StringPtrInput
 	Status          pulumi.StringPtrInput
 	TrailName       pulumi.StringPtrInput
@@ -360,6 +376,8 @@ func (o TrailDeprecatedOutput) SlsProjectArn() pulumi.StringPtrOutput {
 }
 
 // The unique ARN of the Log Service role.
+//
+// > **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
 func (o TrailDeprecatedOutput) SlsWriteRoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrailDeprecated) pulumi.StringOutput { return v.SlsWriteRoleArn }).(pulumi.StringOutput)
 }

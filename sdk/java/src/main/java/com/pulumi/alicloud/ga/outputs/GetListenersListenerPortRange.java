@@ -13,14 +13,21 @@ public final class GetListenersListenerPortRange {
      * @return The initial listening port used to receive requests and forward them to terminal nodes.
      * 
      */
-    private Integer fromPort;
+    private final Integer fromPort;
     /**
      * @return The end listening port used to receive requests and forward them to terminal nodes.
      * 
      */
-    private Integer toPort;
+    private final Integer toPort;
 
-    private GetListenersListenerPortRange() {}
+    @CustomType.Constructor
+    private GetListenersListenerPortRange(
+        @CustomType.Parameter("fromPort") Integer fromPort,
+        @CustomType.Parameter("toPort") Integer toPort) {
+        this.fromPort = fromPort;
+        this.toPort = toPort;
+    }
+
     /**
      * @return The initial listening port used to receive requests and forward them to terminal nodes.
      * 
@@ -43,32 +50,30 @@ public final class GetListenersListenerPortRange {
     public static Builder builder(GetListenersListenerPortRange defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer fromPort;
         private Integer toPort;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetListenersListenerPortRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fromPort = defaults.fromPort;
     	      this.toPort = defaults.toPort;
         }
 
-        @CustomType.Setter
         public Builder fromPort(Integer fromPort) {
             this.fromPort = Objects.requireNonNull(fromPort);
             return this;
         }
-        @CustomType.Setter
         public Builder toPort(Integer toPort) {
             this.toPort = Objects.requireNonNull(toPort);
             return this;
-        }
-        public GetListenersListenerPortRange build() {
-            final var o = new GetListenersListenerPortRange();
-            o.fromPort = fromPort;
-            o.toPort = toPort;
-            return o;
+        }        public GetListenersListenerPortRange build() {
+            return new GetListenersListenerPortRange(fromPort, toPort);
         }
     }
 }

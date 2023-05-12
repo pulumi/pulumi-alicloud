@@ -16,41 +16,78 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTemplatesResult {
-    private @Nullable String category;
-    private @Nullable String createdBy;
-    private @Nullable String createdDate;
-    private @Nullable String createdDateAfter;
-    private @Nullable Boolean hasTrigger;
+    private final @Nullable String category;
+    private final @Nullable String createdBy;
+    private final @Nullable String createdDate;
+    private final @Nullable String createdDateAfter;
+    private final @Nullable Boolean hasTrigger;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of OOS Template ids. Each element in the list is same as template_name.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return (Available in v1.114.0+) A list of OOS Template names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String shareType;
-    private @Nullable String sortField;
-    private @Nullable String sortOrder;
-    private @Nullable Map<String,Object> tags;
-    private @Nullable String templateFormat;
-    private @Nullable String templateType;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String shareType;
+    private final @Nullable String sortField;
+    private final @Nullable String sortOrder;
+    private final @Nullable Map<String,Object> tags;
+    private final @Nullable String templateFormat;
+    private final @Nullable String templateType;
     /**
      * @return A list of OOS Templates. Each element contains the following attributes:
      * 
      */
-    private List<GetTemplatesTemplate> templates;
+    private final List<GetTemplatesTemplate> templates;
 
-    private GetTemplatesResult() {}
+    @CustomType.Constructor
+    private GetTemplatesResult(
+        @CustomType.Parameter("category") @Nullable String category,
+        @CustomType.Parameter("createdBy") @Nullable String createdBy,
+        @CustomType.Parameter("createdDate") @Nullable String createdDate,
+        @CustomType.Parameter("createdDateAfter") @Nullable String createdDateAfter,
+        @CustomType.Parameter("hasTrigger") @Nullable Boolean hasTrigger,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("shareType") @Nullable String shareType,
+        @CustomType.Parameter("sortField") @Nullable String sortField,
+        @CustomType.Parameter("sortOrder") @Nullable String sortOrder,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
+        @CustomType.Parameter("templateFormat") @Nullable String templateFormat,
+        @CustomType.Parameter("templateType") @Nullable String templateType,
+        @CustomType.Parameter("templates") List<GetTemplatesTemplate> templates) {
+        this.category = category;
+        this.createdBy = createdBy;
+        this.createdDate = createdDate;
+        this.createdDateAfter = createdDateAfter;
+        this.hasTrigger = hasTrigger;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.shareType = shareType;
+        this.sortField = sortField;
+        this.sortOrder = sortOrder;
+        this.tags = tags;
+        this.templateFormat = templateFormat;
+        this.templateType = templateType;
+        this.templates = templates;
+    }
+
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
@@ -126,7 +163,7 @@ public final class GetTemplatesResult {
     public static Builder builder(GetTemplatesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String category;
         private @Nullable String createdBy;
@@ -145,7 +182,11 @@ public final class GetTemplatesResult {
         private @Nullable String templateFormat;
         private @Nullable String templateType;
         private List<GetTemplatesTemplate> templates;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTemplatesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -167,37 +208,30 @@ public final class GetTemplatesResult {
     	      this.templates = defaults.templates;
         }
 
-        @CustomType.Setter
         public Builder category(@Nullable String category) {
             this.category = category;
             return this;
         }
-        @CustomType.Setter
         public Builder createdBy(@Nullable String createdBy) {
             this.createdBy = createdBy;
             return this;
         }
-        @CustomType.Setter
         public Builder createdDate(@Nullable String createdDate) {
             this.createdDate = createdDate;
             return this;
         }
-        @CustomType.Setter
         public Builder createdDateAfter(@Nullable String createdDateAfter) {
             this.createdDateAfter = createdDateAfter;
             return this;
         }
-        @CustomType.Setter
         public Builder hasTrigger(@Nullable Boolean hasTrigger) {
             this.hasTrigger = hasTrigger;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -205,12 +239,10 @@ public final class GetTemplatesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -218,69 +250,42 @@ public final class GetTemplatesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder shareType(@Nullable String shareType) {
             this.shareType = shareType;
             return this;
         }
-        @CustomType.Setter
         public Builder sortField(@Nullable String sortField) {
             this.sortField = sortField;
             return this;
         }
-        @CustomType.Setter
         public Builder sortOrder(@Nullable String sortOrder) {
             this.sortOrder = sortOrder;
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
-        @CustomType.Setter
         public Builder templateFormat(@Nullable String templateFormat) {
             this.templateFormat = templateFormat;
             return this;
         }
-        @CustomType.Setter
         public Builder templateType(@Nullable String templateType) {
             this.templateType = templateType;
             return this;
         }
-        @CustomType.Setter
         public Builder templates(List<GetTemplatesTemplate> templates) {
             this.templates = Objects.requireNonNull(templates);
             return this;
         }
         public Builder templates(GetTemplatesTemplate... templates) {
             return templates(List.of(templates));
-        }
-        public GetTemplatesResult build() {
-            final var o = new GetTemplatesResult();
-            o.category = category;
-            o.createdBy = createdBy;
-            o.createdDate = createdDate;
-            o.createdDateAfter = createdDateAfter;
-            o.hasTrigger = hasTrigger;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.shareType = shareType;
-            o.sortField = sortField;
-            o.sortOrder = sortOrder;
-            o.tags = tags;
-            o.templateFormat = templateFormat;
-            o.templateType = templateType;
-            o.templates = templates;
-            return o;
+        }        public GetTemplatesResult build() {
+            return new GetTemplatesResult(category, createdBy, createdDate, createdDateAfter, hasTrigger, id, ids, nameRegex, names, outputFile, shareType, sortField, sortOrder, tags, templateFormat, templateType, templates);
         }
     }
 }

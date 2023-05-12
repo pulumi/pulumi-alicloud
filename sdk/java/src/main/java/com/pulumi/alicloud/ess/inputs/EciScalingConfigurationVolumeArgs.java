@@ -170,12 +170,16 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
     /**
      * The address of the NFS server.
      * 
+     * &gt; **NOTE:** Every volume mounted must have a name and type attributes.
+     * 
      */
     @Import(name="nfsVolumeServer")
     private @Nullable Output<String> nfsVolumeServer;
 
     /**
      * @return The address of the NFS server.
+     * 
+     * &gt; **NOTE:** Every volume mounted must have a name and type attributes.
      * 
      */
     public Optional<Output<String>> nfsVolumeServer() {
@@ -450,6 +454,8 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
         /**
          * @param nfsVolumeServer The address of the NFS server.
          * 
+         * &gt; **NOTE:** Every volume mounted must have a name and type attributes.
+         * 
          * @return builder
          * 
          */
@@ -460,6 +466,8 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
 
         /**
          * @param nfsVolumeServer The address of the NFS server.
+         * 
+         * &gt; **NOTE:** Every volume mounted must have a name and type attributes.
          * 
          * @return builder
          * 

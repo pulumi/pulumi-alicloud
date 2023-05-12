@@ -14,30 +14,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHandshakesResult {
-    private @Nullable Boolean enableDetails;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return A list of Resource Manager Handshakes. Each element contains the following attributes:
      * 
      */
-    private List<GetHandshakesHandshake> handshakes;
+    private final List<GetHandshakesHandshake> handshakes;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of Resource Manager Handshake IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String outputFile;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
     /**
      * @return The status of the invitation.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
 
-    private GetHandshakesResult() {}
+    @CustomType.Constructor
+    private GetHandshakesResult(
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("handshakes") List<GetHandshakesHandshake> handshakes,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.enableDetails = enableDetails;
+        this.handshakes = handshakes;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.status = status;
+    }
+
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -80,7 +95,7 @@ public final class GetHandshakesResult {
     public static Builder builder(GetHandshakesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private List<GetHandshakesHandshake> handshakes;
@@ -88,7 +103,11 @@ public final class GetHandshakesResult {
         private List<String> ids;
         private @Nullable String outputFile;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetHandshakesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -99,12 +118,10 @@ public final class GetHandshakesResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder handshakes(List<GetHandshakesHandshake> handshakes) {
             this.handshakes = Objects.requireNonNull(handshakes);
             return this;
@@ -112,12 +129,10 @@ public final class GetHandshakesResult {
         public Builder handshakes(GetHandshakesHandshake... handshakes) {
             return handshakes(List.of(handshakes));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -125,25 +140,15 @@ public final class GetHandshakesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetHandshakesResult build() {
-            final var o = new GetHandshakesResult();
-            o.enableDetails = enableDetails;
-            o.handshakes = handshakes;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+        }        public GetHandshakesResult build() {
+            return new GetHandshakesResult(enableDetails, handshakes, id, ids, outputFile, status);
         }
     }
 }

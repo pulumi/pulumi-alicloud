@@ -62,7 +62,8 @@ type GetZonesArgs struct {
 	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
-	Multi       *bool   `pulumi:"multi"`
+	Multi *bool `pulumi:"multi"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile  *string `pulumi:"outputFile"`
 	ProductType *string `pulumi:"productType"`
 }
@@ -105,7 +106,8 @@ type GetZonesOutputArgs struct {
 	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`
 	// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
-	Multi       pulumi.BoolPtrInput   `pulumi:"multi"`
+	Multi pulumi.BoolPtrInput `pulumi:"multi"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
 	ProductType pulumi.StringPtrInput `pulumi:"productType"`
 }

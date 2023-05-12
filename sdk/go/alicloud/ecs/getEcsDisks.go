@@ -93,9 +93,10 @@ type GetEcsDisksArgs struct {
 	// A regex string to filter results by Disk name.
 	NameRegex      *string                    `pulumi:"nameRegex"`
 	OperationLocks []GetEcsDisksOperationLock `pulumi:"operationLocks"`
-	OutputFile     *string                    `pulumi:"outputFile"`
-	PageNumber     *int                       `pulumi:"pageNumber"`
-	PageSize       *int                       `pulumi:"pageSize"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
 	// Payment method for disk.
 	PaymentType *string `pulumi:"paymentType"`
 	// Whether the disk is unmountable.
@@ -208,9 +209,10 @@ type GetEcsDisksOutputArgs struct {
 	// A regex string to filter results by Disk name.
 	NameRegex      pulumi.StringPtrInput              `pulumi:"nameRegex"`
 	OperationLocks GetEcsDisksOperationLockArrayInput `pulumi:"operationLocks"`
-	OutputFile     pulumi.StringPtrInput              `pulumi:"outputFile"`
-	PageNumber     pulumi.IntPtrInput                 `pulumi:"pageNumber"`
-	PageSize       pulumi.IntPtrInput                 `pulumi:"pageSize"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 	// Payment method for disk.
 	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
 	// Whether the disk is unmountable.

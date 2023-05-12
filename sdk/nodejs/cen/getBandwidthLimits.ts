@@ -39,6 +39,9 @@ export interface GetBandwidthLimitsArgs {
      * A list of CEN instances IDs.
      */
     instanceIds?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -84,5 +87,8 @@ export interface GetBandwidthLimitsOutputArgs {
      * A list of CEN instances IDs.
      */
     instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

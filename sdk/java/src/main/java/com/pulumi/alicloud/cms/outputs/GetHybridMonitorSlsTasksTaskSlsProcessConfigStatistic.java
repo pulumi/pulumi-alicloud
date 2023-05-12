@@ -13,29 +13,42 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic {
      * @return The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
      * 
      */
-    private String alias;
+    private final String alias;
     /**
      * @return The function that is used to aggregate log data within a statistical period.
      * 
      */
-    private String function;
+    private final String function;
     /**
      * @return The value of the function that is used to aggregate logs imported from Log Service.
      * 
      */
-    private String parameterOne;
+    private final String parameterOne;
     /**
      * @return The value of the function that is used to aggregate logs imported from Log Service.
      * 
      */
-    private String parameterTwo;
+    private final String parameterTwo;
     /**
      * @return The name of the key that is used to filter logs imported from Log Service.
      * 
      */
-    private String slsKeyName;
+    private final String slsKeyName;
 
-    private GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic() {}
+    @CustomType.Constructor
+    private GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic(
+        @CustomType.Parameter("alias") String alias,
+        @CustomType.Parameter("function") String function,
+        @CustomType.Parameter("parameterOne") String parameterOne,
+        @CustomType.Parameter("parameterTwo") String parameterTwo,
+        @CustomType.Parameter("slsKeyName") String slsKeyName) {
+        this.alias = alias;
+        this.function = function;
+        this.parameterOne = parameterOne;
+        this.parameterTwo = parameterTwo;
+        this.slsKeyName = slsKeyName;
+    }
+
     /**
      * @return The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
      * 
@@ -79,14 +92,18 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic {
     public static Builder builder(GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String alias;
         private String function;
         private String parameterOne;
         private String parameterTwo;
         private String slsKeyName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alias = defaults.alias;
@@ -96,39 +113,27 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic {
     	      this.slsKeyName = defaults.slsKeyName;
         }
 
-        @CustomType.Setter
         public Builder alias(String alias) {
             this.alias = Objects.requireNonNull(alias);
             return this;
         }
-        @CustomType.Setter
         public Builder function(String function) {
             this.function = Objects.requireNonNull(function);
             return this;
         }
-        @CustomType.Setter
         public Builder parameterOne(String parameterOne) {
             this.parameterOne = Objects.requireNonNull(parameterOne);
             return this;
         }
-        @CustomType.Setter
         public Builder parameterTwo(String parameterTwo) {
             this.parameterTwo = Objects.requireNonNull(parameterTwo);
             return this;
         }
-        @CustomType.Setter
         public Builder slsKeyName(String slsKeyName) {
             this.slsKeyName = Objects.requireNonNull(slsKeyName);
             return this;
-        }
-        public GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic build() {
-            final var o = new GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic();
-            o.alias = alias;
-            o.function = function;
-            o.parameterOne = parameterOne;
-            o.parameterTwo = parameterTwo;
-            o.slsKeyName = slsKeyName;
-            return o;
+        }        public GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic build() {
+            return new GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic(alias, function, parameterOne, parameterTwo, slsKeyName);
         }
     }
 }

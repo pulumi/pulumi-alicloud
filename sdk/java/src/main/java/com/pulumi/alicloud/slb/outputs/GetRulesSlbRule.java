@@ -13,29 +13,42 @@ public final class GetRulesSlbRule {
      * @return Domain name in the HTTP request where the rule applies (e.g. &#34;*.aliyun.com&#34;).
      * 
      */
-    private String domain;
+    private final String domain;
     /**
      * @return Rule ID.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Rule name.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return ID of the linked VServer group.
      * 
      */
-    private String serverGroupId;
+    private final String serverGroupId;
     /**
      * @return Path in the HTTP request where the rule applies (e.g. &#34;/image&#34;).
      * 
      */
-    private String url;
+    private final String url;
 
-    private GetRulesSlbRule() {}
+    @CustomType.Constructor
+    private GetRulesSlbRule(
+        @CustomType.Parameter("domain") String domain,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("serverGroupId") String serverGroupId,
+        @CustomType.Parameter("url") String url) {
+        this.domain = domain;
+        this.id = id;
+        this.name = name;
+        this.serverGroupId = serverGroupId;
+        this.url = url;
+    }
+
     /**
      * @return Domain name in the HTTP request where the rule applies (e.g. &#34;*.aliyun.com&#34;).
      * 
@@ -79,14 +92,18 @@ public final class GetRulesSlbRule {
     public static Builder builder(GetRulesSlbRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String domain;
         private String id;
         private String name;
         private String serverGroupId;
         private String url;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRulesSlbRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domain = defaults.domain;
@@ -96,39 +113,27 @@ public final class GetRulesSlbRule {
     	      this.url = defaults.url;
         }
 
-        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder serverGroupId(String serverGroupId) {
             this.serverGroupId = Objects.requireNonNull(serverGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }
-        public GetRulesSlbRule build() {
-            final var o = new GetRulesSlbRule();
-            o.domain = domain;
-            o.id = id;
-            o.name = name;
-            o.serverGroupId = serverGroupId;
-            o.url = url;
-            return o;
+        }        public GetRulesSlbRule build() {
+            return new GetRulesSlbRule(domain, id, name, serverGroupId, url);
         }
     }
 }

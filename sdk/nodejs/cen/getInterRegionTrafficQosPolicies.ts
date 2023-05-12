@@ -61,6 +61,9 @@ export interface GetInterRegionTrafficQosPoliciesArgs {
      * A regex string to filter results by Inter Region Traffic Qos Policy name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the traffic scheduling policy. Valid Value: `Creating`, `Active`, `Modifying`, `Deleting`, `Deleted`.
@@ -166,6 +169,9 @@ export interface GetInterRegionTrafficQosPoliciesOutputArgs {
      * A regex string to filter results by Inter Region Traffic Qos Policy name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the traffic scheduling policy. Valid Value: `Creating`, `Active`, `Modifying`, `Deleting`, `Deleted`.

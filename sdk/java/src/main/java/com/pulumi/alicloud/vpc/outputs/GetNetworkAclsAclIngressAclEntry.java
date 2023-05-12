@@ -13,34 +13,49 @@ public final class GetNetworkAclsAclIngressAclEntry {
      * @return Description of the entry direction rule.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The name of the entry direction rule entry.
      * 
      */
-    private String networkAclEntryName;
+    private final String networkAclEntryName;
     /**
      * @return The authorization policy.
      * 
      */
-    private String policy;
+    private final String policy;
     /**
      * @return Source port range.
      * 
      */
-    private String port;
+    private final String port;
     /**
      * @return Transport layer protocol.
      * 
      */
-    private String protocol;
+    private final String protocol;
     /**
      * @return The source address field.
      * 
      */
-    private String sourceCidrIp;
+    private final String sourceCidrIp;
 
-    private GetNetworkAclsAclIngressAclEntry() {}
+    @CustomType.Constructor
+    private GetNetworkAclsAclIngressAclEntry(
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("networkAclEntryName") String networkAclEntryName,
+        @CustomType.Parameter("policy") String policy,
+        @CustomType.Parameter("port") String port,
+        @CustomType.Parameter("protocol") String protocol,
+        @CustomType.Parameter("sourceCidrIp") String sourceCidrIp) {
+        this.description = description;
+        this.networkAclEntryName = networkAclEntryName;
+        this.policy = policy;
+        this.port = port;
+        this.protocol = protocol;
+        this.sourceCidrIp = sourceCidrIp;
+    }
+
     /**
      * @return Description of the entry direction rule.
      * 
@@ -91,7 +106,7 @@ public final class GetNetworkAclsAclIngressAclEntry {
     public static Builder builder(GetNetworkAclsAclIngressAclEntry defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String description;
         private String networkAclEntryName;
@@ -99,7 +114,11 @@ public final class GetNetworkAclsAclIngressAclEntry {
         private String port;
         private String protocol;
         private String sourceCidrIp;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetNetworkAclsAclIngressAclEntry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -110,45 +129,31 @@ public final class GetNetworkAclsAclIngressAclEntry {
     	      this.sourceCidrIp = defaults.sourceCidrIp;
         }
 
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder networkAclEntryName(String networkAclEntryName) {
             this.networkAclEntryName = Objects.requireNonNull(networkAclEntryName);
             return this;
         }
-        @CustomType.Setter
         public Builder policy(String policy) {
             this.policy = Objects.requireNonNull(policy);
             return this;
         }
-        @CustomType.Setter
         public Builder port(String port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
-        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceCidrIp(String sourceCidrIp) {
             this.sourceCidrIp = Objects.requireNonNull(sourceCidrIp);
             return this;
-        }
-        public GetNetworkAclsAclIngressAclEntry build() {
-            final var o = new GetNetworkAclsAclIngressAclEntry();
-            o.description = description;
-            o.networkAclEntryName = networkAclEntryName;
-            o.policy = policy;
-            o.port = port;
-            o.protocol = protocol;
-            o.sourceCidrIp = sourceCidrIp;
-            return o;
+        }        public GetNetworkAclsAclIngressAclEntry build() {
+            return new GetNetworkAclsAclIngressAclEntry(description, networkAclEntryName, policy, port, protocol, sourceCidrIp);
         }
     }
 }

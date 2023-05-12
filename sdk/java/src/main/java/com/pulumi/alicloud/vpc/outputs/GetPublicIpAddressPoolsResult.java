@@ -17,18 +17,41 @@ public final class GetPublicIpAddressPoolsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String isp;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private List<GetPublicIpAddressPoolsPool> pools;
-    private @Nullable List<String> publicIpAddressPoolIds;
-    private @Nullable String publicIpAddressPoolName;
-    private @Nullable String status;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String isp;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final List<GetPublicIpAddressPoolsPool> pools;
+    private final @Nullable List<String> publicIpAddressPoolIds;
+    private final @Nullable String publicIpAddressPoolName;
+    private final @Nullable String status;
 
-    private GetPublicIpAddressPoolsResult() {}
+    @CustomType.Constructor
+    private GetPublicIpAddressPoolsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("isp") @Nullable String isp,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pools") List<GetPublicIpAddressPoolsPool> pools,
+        @CustomType.Parameter("publicIpAddressPoolIds") @Nullable List<String> publicIpAddressPoolIds,
+        @CustomType.Parameter("publicIpAddressPoolName") @Nullable String publicIpAddressPoolName,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.id = id;
+        this.ids = ids;
+        this.isp = isp;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.pools = pools;
+        this.publicIpAddressPoolIds = publicIpAddressPoolIds;
+        this.publicIpAddressPoolName = publicIpAddressPoolName;
+        this.status = status;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -71,7 +94,7 @@ public final class GetPublicIpAddressPoolsResult {
     public static Builder builder(GetPublicIpAddressPoolsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -83,7 +106,11 @@ public final class GetPublicIpAddressPoolsResult {
         private @Nullable List<String> publicIpAddressPoolIds;
         private @Nullable String publicIpAddressPoolName;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetPublicIpAddressPoolsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -98,12 +125,10 @@ public final class GetPublicIpAddressPoolsResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -111,17 +136,14 @@ public final class GetPublicIpAddressPoolsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder isp(@Nullable String isp) {
             this.isp = isp;
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -129,12 +151,10 @@ public final class GetPublicIpAddressPoolsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pools(List<GetPublicIpAddressPoolsPool> pools) {
             this.pools = Objects.requireNonNull(pools);
             return this;
@@ -142,7 +162,6 @@ public final class GetPublicIpAddressPoolsResult {
         public Builder pools(GetPublicIpAddressPoolsPool... pools) {
             return pools(List.of(pools));
         }
-        @CustomType.Setter
         public Builder publicIpAddressPoolIds(@Nullable List<String> publicIpAddressPoolIds) {
             this.publicIpAddressPoolIds = publicIpAddressPoolIds;
             return this;
@@ -150,29 +169,15 @@ public final class GetPublicIpAddressPoolsResult {
         public Builder publicIpAddressPoolIds(String... publicIpAddressPoolIds) {
             return publicIpAddressPoolIds(List.of(publicIpAddressPoolIds));
         }
-        @CustomType.Setter
         public Builder publicIpAddressPoolName(@Nullable String publicIpAddressPoolName) {
             this.publicIpAddressPoolName = publicIpAddressPoolName;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetPublicIpAddressPoolsResult build() {
-            final var o = new GetPublicIpAddressPoolsResult();
-            o.id = id;
-            o.ids = ids;
-            o.isp = isp;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pools = pools;
-            o.publicIpAddressPoolIds = publicIpAddressPoolIds;
-            o.publicIpAddressPoolName = publicIpAddressPoolName;
-            o.status = status;
-            return o;
+        }        public GetPublicIpAddressPoolsResult build() {
+            return new GetPublicIpAddressPoolsResult(id, ids, isp, nameRegex, names, outputFile, pools, publicIpAddressPoolIds, publicIpAddressPoolName, status);
         }
     }
 }

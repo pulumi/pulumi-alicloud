@@ -132,7 +132,8 @@ type GetDesktopsArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// The ID of the Simple Office Site.
 	OfficeSiteId *string `pulumi:"officeSiteId"`
-	OutputFile   *string `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The policy group id of the Desktop.
 	PolicyGroupId *string `pulumi:"policyGroupId"`
 	// The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
@@ -180,7 +181,8 @@ type GetDesktopsOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The ID of the Simple Office Site.
 	OfficeSiteId pulumi.StringPtrInput `pulumi:"officeSiteId"`
-	OutputFile   pulumi.StringPtrInput `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The policy group id of the Desktop.
 	PolicyGroupId pulumi.StringPtrInput `pulumi:"policyGroupId"`
 	// The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.

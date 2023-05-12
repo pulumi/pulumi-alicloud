@@ -15,39 +15,56 @@ public final class GetEndpointsEndpoint {
      * @return A list of endpoint addresses. Each element contains the following attributes.
      * 
      */
-    private List<GetEndpointsEndpointAddressItem> addressItems;
+    private final List<GetEndpointsEndpointAddressItem> addressItems;
     /**
      * @return Whether the new node is automatically added to the default cluster address.Options are `Enable` and `Disable`.
      * 
      */
-    private String autoAddNewNodes;
+    private final String autoAddNewNodes;
     /**
      * @return endpoint of the cluster.
      * 
      */
-    private String dbEndpointId;
+    private final String dbEndpointId;
     /**
      * @return The Endpoint configuration. `ConsistLevel`: session consistency level, value:`0`: final consistency,`1`: session consistency;`LoadBalanceStrategy`: load balancing strategy. Based on the automatic scheduling of load, the value is: `load`.
      * 
      */
-    private String endpointConfig;
+    private final String endpointConfig;
     /**
      * @return Cluster address type.`Cluster`: the default address of the Cluster.`Primary`: Primary address.`Custom`: Custom cluster addresses.
      * 
      */
-    private String endpointType;
+    private final String endpointType;
     /**
      * @return A list of nodes that connect to the address configuration.
      * 
      */
-    private String nodes;
+    private final String nodes;
     /**
      * @return Read-write mode:`ReadWrite`: readable and writable (automatic read-write separation).`ReadOnly`: ReadOnly.
      * 
      */
-    private String readWriteMode;
+    private final String readWriteMode;
 
-    private GetEndpointsEndpoint() {}
+    @CustomType.Constructor
+    private GetEndpointsEndpoint(
+        @CustomType.Parameter("addressItems") List<GetEndpointsEndpointAddressItem> addressItems,
+        @CustomType.Parameter("autoAddNewNodes") String autoAddNewNodes,
+        @CustomType.Parameter("dbEndpointId") String dbEndpointId,
+        @CustomType.Parameter("endpointConfig") String endpointConfig,
+        @CustomType.Parameter("endpointType") String endpointType,
+        @CustomType.Parameter("nodes") String nodes,
+        @CustomType.Parameter("readWriteMode") String readWriteMode) {
+        this.addressItems = addressItems;
+        this.autoAddNewNodes = autoAddNewNodes;
+        this.dbEndpointId = dbEndpointId;
+        this.endpointConfig = endpointConfig;
+        this.endpointType = endpointType;
+        this.nodes = nodes;
+        this.readWriteMode = readWriteMode;
+    }
+
     /**
      * @return A list of endpoint addresses. Each element contains the following attributes.
      * 
@@ -105,7 +122,7 @@ public final class GetEndpointsEndpoint {
     public static Builder builder(GetEndpointsEndpoint defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetEndpointsEndpointAddressItem> addressItems;
         private String autoAddNewNodes;
@@ -114,7 +131,11 @@ public final class GetEndpointsEndpoint {
         private String endpointType;
         private String nodes;
         private String readWriteMode;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEndpointsEndpoint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addressItems = defaults.addressItems;
@@ -126,7 +147,6 @@ public final class GetEndpointsEndpoint {
     	      this.readWriteMode = defaults.readWriteMode;
         }
 
-        @CustomType.Setter
         public Builder addressItems(List<GetEndpointsEndpointAddressItem> addressItems) {
             this.addressItems = Objects.requireNonNull(addressItems);
             return this;
@@ -134,46 +154,31 @@ public final class GetEndpointsEndpoint {
         public Builder addressItems(GetEndpointsEndpointAddressItem... addressItems) {
             return addressItems(List.of(addressItems));
         }
-        @CustomType.Setter
         public Builder autoAddNewNodes(String autoAddNewNodes) {
             this.autoAddNewNodes = Objects.requireNonNull(autoAddNewNodes);
             return this;
         }
-        @CustomType.Setter
         public Builder dbEndpointId(String dbEndpointId) {
             this.dbEndpointId = Objects.requireNonNull(dbEndpointId);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointConfig(String endpointConfig) {
             this.endpointConfig = Objects.requireNonNull(endpointConfig);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointType(String endpointType) {
             this.endpointType = Objects.requireNonNull(endpointType);
             return this;
         }
-        @CustomType.Setter
         public Builder nodes(String nodes) {
             this.nodes = Objects.requireNonNull(nodes);
             return this;
         }
-        @CustomType.Setter
         public Builder readWriteMode(String readWriteMode) {
             this.readWriteMode = Objects.requireNonNull(readWriteMode);
             return this;
-        }
-        public GetEndpointsEndpoint build() {
-            final var o = new GetEndpointsEndpoint();
-            o.addressItems = addressItems;
-            o.autoAddNewNodes = autoAddNewNodes;
-            o.dbEndpointId = dbEndpointId;
-            o.endpointConfig = endpointConfig;
-            o.endpointType = endpointType;
-            o.nodes = nodes;
-            o.readWriteMode = readWriteMode;
-            return o;
+        }        public GetEndpointsEndpoint build() {
+            return new GetEndpointsEndpoint(addressItems, autoAddNewNodes, dbEndpointId, endpointConfig, endpointType, nodes, readWriteMode);
         }
     }
 }

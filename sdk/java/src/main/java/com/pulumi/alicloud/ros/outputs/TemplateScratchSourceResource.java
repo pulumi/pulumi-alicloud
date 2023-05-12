@@ -13,14 +13,21 @@ public final class TemplateScratchSourceResource {
      * @return The ID of the Source Resource.
      * 
      */
-    private String resourceId;
+    private final String resourceId;
     /**
      * @return The type of the Source resource.
      * 
      */
-    private String resourceType;
+    private final String resourceType;
 
-    private TemplateScratchSourceResource() {}
+    @CustomType.Constructor
+    private TemplateScratchSourceResource(
+        @CustomType.Parameter("resourceId") String resourceId,
+        @CustomType.Parameter("resourceType") String resourceType) {
+        this.resourceId = resourceId;
+        this.resourceType = resourceType;
+    }
+
     /**
      * @return The ID of the Source Resource.
      * 
@@ -43,32 +50,30 @@ public final class TemplateScratchSourceResource {
     public static Builder builder(TemplateScratchSourceResource defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String resourceId;
         private String resourceType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(TemplateScratchSourceResource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.resourceId = defaults.resourceId;
     	      this.resourceType = defaults.resourceType;
         }
 
-        @CustomType.Setter
         public Builder resourceId(String resourceId) {
             this.resourceId = Objects.requireNonNull(resourceId);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceType(String resourceType) {
             this.resourceType = Objects.requireNonNull(resourceType);
             return this;
-        }
-        public TemplateScratchSourceResource build() {
-            final var o = new TemplateScratchSourceResource();
-            o.resourceId = resourceId;
-            o.resourceType = resourceType;
-            return o;
+        }        public TemplateScratchSourceResource build() {
+            return new TemplateScratchSourceResource(resourceId, resourceType);
         }
     }
 }

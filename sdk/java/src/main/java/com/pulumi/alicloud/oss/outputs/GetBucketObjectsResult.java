@@ -13,22 +13,37 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBucketObjectsResult {
-    private String bucketName;
+    private final String bucketName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private @Nullable String keyPrefix;
-    private @Nullable String keyRegex;
+    private final String id;
+    private final @Nullable String keyPrefix;
+    private final @Nullable String keyRegex;
     /**
      * @return A list of bucket objects. Each element contains the following attributes:
      * 
      */
-    private List<GetBucketObjectsObject> objects;
-    private @Nullable String outputFile;
+    private final List<GetBucketObjectsObject> objects;
+    private final @Nullable String outputFile;
 
-    private GetBucketObjectsResult() {}
+    @CustomType.Constructor
+    private GetBucketObjectsResult(
+        @CustomType.Parameter("bucketName") String bucketName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("keyPrefix") @Nullable String keyPrefix,
+        @CustomType.Parameter("keyRegex") @Nullable String keyRegex,
+        @CustomType.Parameter("objects") List<GetBucketObjectsObject> objects,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.bucketName = bucketName;
+        this.id = id;
+        this.keyPrefix = keyPrefix;
+        this.keyRegex = keyRegex;
+        this.objects = objects;
+        this.outputFile = outputFile;
+    }
+
     public String bucketName() {
         return this.bucketName;
     }
@@ -63,7 +78,7 @@ public final class GetBucketObjectsResult {
     public static Builder builder(GetBucketObjectsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String bucketName;
         private String id;
@@ -71,7 +86,11 @@ public final class GetBucketObjectsResult {
         private @Nullable String keyRegex;
         private List<GetBucketObjectsObject> objects;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBucketObjectsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucketName = defaults.bucketName;
@@ -82,27 +101,22 @@ public final class GetBucketObjectsResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder bucketName(String bucketName) {
             this.bucketName = Objects.requireNonNull(bucketName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder keyPrefix(@Nullable String keyPrefix) {
             this.keyPrefix = keyPrefix;
             return this;
         }
-        @CustomType.Setter
         public Builder keyRegex(@Nullable String keyRegex) {
             this.keyRegex = keyRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder objects(List<GetBucketObjectsObject> objects) {
             this.objects = Objects.requireNonNull(objects);
             return this;
@@ -110,20 +124,11 @@ public final class GetBucketObjectsResult {
         public Builder objects(GetBucketObjectsObject... objects) {
             return objects(List.of(objects));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetBucketObjectsResult build() {
-            final var o = new GetBucketObjectsResult();
-            o.bucketName = bucketName;
-            o.id = id;
-            o.keyPrefix = keyPrefix;
-            o.keyRegex = keyRegex;
-            o.objects = objects;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetBucketObjectsResult build() {
+            return new GetBucketObjectsResult(bucketName, id, keyPrefix, keyRegex, objects, outputFile);
         }
     }
 }

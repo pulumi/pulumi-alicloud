@@ -21,25 +21,29 @@ class SecretArgs:
                  dkms_instance_id: Optional[pulumi.Input[str]] = None,
                  enable_automatic_rotation: Optional[pulumi.Input[bool]] = None,
                  encryption_key_id: Optional[pulumi.Input[str]] = None,
+                 extended_config: Optional[pulumi.Input[str]] = None,
                  force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
                  recovery_window_in_days: Optional[pulumi.Input[int]] = None,
                  rotation_interval: Optional[pulumi.Input[str]] = None,
                  secret_data_type: Optional[pulumi.Input[str]] = None,
+                 secret_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  version_stages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Secret resource.
-        :param pulumi.Input[str] secret_data: The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
+        :param pulumi.Input[str] secret_data: The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
         :param pulumi.Input[str] secret_name: The name of the secret.
         :param pulumi.Input[str] version_id: The version number of the initial version. Version numbers are unique in each secret object.
         :param pulumi.Input[str] description: The description of the secret.
         :param pulumi.Input[str] dkms_instance_id: The instance ID of the exclusive KMS instance.
         :param pulumi.Input[bool] enable_automatic_rotation: Whether to enable automatic key rotation.
         :param pulumi.Input[str] encryption_key_id: The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
+        :param pulumi.Input[str] extended_config: The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         :param pulumi.Input[bool] force_delete_without_recovery: Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
         :param pulumi.Input[int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
         :param pulumi.Input[str] rotation_interval: The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
         :param pulumi.Input[str] secret_data_type: The type of the secret value. Valid values: text, binary. Default to "text".
+        :param pulumi.Input[str] secret_type: The type of the secret. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] version_stages: ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
         """
@@ -54,6 +58,8 @@ class SecretArgs:
             pulumi.set(__self__, "enable_automatic_rotation", enable_automatic_rotation)
         if encryption_key_id is not None:
             pulumi.set(__self__, "encryption_key_id", encryption_key_id)
+        if extended_config is not None:
+            pulumi.set(__self__, "extended_config", extended_config)
         if force_delete_without_recovery is not None:
             pulumi.set(__self__, "force_delete_without_recovery", force_delete_without_recovery)
         if recovery_window_in_days is not None:
@@ -62,6 +68,8 @@ class SecretArgs:
             pulumi.set(__self__, "rotation_interval", rotation_interval)
         if secret_data_type is not None:
             pulumi.set(__self__, "secret_data_type", secret_data_type)
+        if secret_type is not None:
+            pulumi.set(__self__, "secret_type", secret_type)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if version_stages is not None:
@@ -71,7 +79,7 @@ class SecretArgs:
     @pulumi.getter(name="secretData")
     def secret_data(self) -> pulumi.Input[str]:
         """
-        The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
+        The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
         """
         return pulumi.get(self, "secret_data")
 
@@ -152,6 +160,18 @@ class SecretArgs:
         pulumi.set(self, "encryption_key_id", value)
 
     @property
+    @pulumi.getter(name="extendedConfig")
+    def extended_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+        """
+        return pulumi.get(self, "extended_config")
+
+    @extended_config.setter
+    def extended_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "extended_config", value)
+
+    @property
     @pulumi.getter(name="forceDeleteWithoutRecovery")
     def force_delete_without_recovery(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -200,6 +220,18 @@ class SecretArgs:
         pulumi.set(self, "secret_data_type", value)
 
     @property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the secret. Valid values:
+        """
+        return pulumi.get(self, "secret_type")
+
+    @secret_type.setter
+    def secret_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_type", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
@@ -232,6 +264,7 @@ class _SecretState:
                  dkms_instance_id: Optional[pulumi.Input[str]] = None,
                  enable_automatic_rotation: Optional[pulumi.Input[bool]] = None,
                  encryption_key_id: Optional[pulumi.Input[str]] = None,
+                 extended_config: Optional[pulumi.Input[str]] = None,
                  force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
                  planned_delete_time: Optional[pulumi.Input[str]] = None,
                  recovery_window_in_days: Optional[pulumi.Input[int]] = None,
@@ -239,6 +272,7 @@ class _SecretState:
                  secret_data: Optional[pulumi.Input[str]] = None,
                  secret_data_type: Optional[pulumi.Input[str]] = None,
                  secret_name: Optional[pulumi.Input[str]] = None,
+                 secret_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
                  version_stages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -249,13 +283,15 @@ class _SecretState:
         :param pulumi.Input[str] dkms_instance_id: The instance ID of the exclusive KMS instance.
         :param pulumi.Input[bool] enable_automatic_rotation: Whether to enable automatic key rotation.
         :param pulumi.Input[str] encryption_key_id: The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
+        :param pulumi.Input[str] extended_config: The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         :param pulumi.Input[bool] force_delete_without_recovery: Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
         :param pulumi.Input[str] planned_delete_time: The time when the secret is scheduled to be deleted.
         :param pulumi.Input[int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
         :param pulumi.Input[str] rotation_interval: The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
-        :param pulumi.Input[str] secret_data: The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
+        :param pulumi.Input[str] secret_data: The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
         :param pulumi.Input[str] secret_data_type: The type of the secret value. Valid values: text, binary. Default to "text".
         :param pulumi.Input[str] secret_name: The name of the secret.
+        :param pulumi.Input[str] secret_type: The type of the secret. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] version_id: The version number of the initial version. Version numbers are unique in each secret object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] version_stages: ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
@@ -270,6 +306,8 @@ class _SecretState:
             pulumi.set(__self__, "enable_automatic_rotation", enable_automatic_rotation)
         if encryption_key_id is not None:
             pulumi.set(__self__, "encryption_key_id", encryption_key_id)
+        if extended_config is not None:
+            pulumi.set(__self__, "extended_config", extended_config)
         if force_delete_without_recovery is not None:
             pulumi.set(__self__, "force_delete_without_recovery", force_delete_without_recovery)
         if planned_delete_time is not None:
@@ -284,6 +322,8 @@ class _SecretState:
             pulumi.set(__self__, "secret_data_type", secret_data_type)
         if secret_name is not None:
             pulumi.set(__self__, "secret_name", secret_name)
+        if secret_type is not None:
+            pulumi.set(__self__, "secret_type", secret_type)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if version_id is not None:
@@ -352,6 +392,18 @@ class _SecretState:
         pulumi.set(self, "encryption_key_id", value)
 
     @property
+    @pulumi.getter(name="extendedConfig")
+    def extended_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+        """
+        return pulumi.get(self, "extended_config")
+
+    @extended_config.setter
+    def extended_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "extended_config", value)
+
+    @property
     @pulumi.getter(name="forceDeleteWithoutRecovery")
     def force_delete_without_recovery(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -403,7 +455,7 @@ class _SecretState:
     @pulumi.getter(name="secretData")
     def secret_data(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
+        The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
         """
         return pulumi.get(self, "secret_data")
 
@@ -434,6 +486,18 @@ class _SecretState:
     @secret_name.setter
     def secret_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_name", value)
+
+    @property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the secret. Valid values:
+        """
+        return pulumi.get(self, "secret_type")
+
+    @secret_type.setter
+    def secret_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_type", value)
 
     @property
     @pulumi.getter
@@ -481,12 +545,14 @@ class Secret(pulumi.CustomResource):
                  dkms_instance_id: Optional[pulumi.Input[str]] = None,
                  enable_automatic_rotation: Optional[pulumi.Input[bool]] = None,
                  encryption_key_id: Optional[pulumi.Input[str]] = None,
+                 extended_config: Optional[pulumi.Input[str]] = None,
                  force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
                  recovery_window_in_days: Optional[pulumi.Input[int]] = None,
                  rotation_interval: Optional[pulumi.Input[str]] = None,
                  secret_data: Optional[pulumi.Input[str]] = None,
                  secret_data_type: Optional[pulumi.Input[str]] = None,
                  secret_name: Optional[pulumi.Input[str]] = None,
+                 secret_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
                  version_stages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -517,7 +583,7 @@ class Secret(pulumi.CustomResource):
         KMS secret can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:kms/secret:Secret default secret-foo
+         $ pulumi import alicloud:kms/secret:Secret default <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -526,12 +592,14 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[str] dkms_instance_id: The instance ID of the exclusive KMS instance.
         :param pulumi.Input[bool] enable_automatic_rotation: Whether to enable automatic key rotation.
         :param pulumi.Input[str] encryption_key_id: The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
+        :param pulumi.Input[str] extended_config: The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         :param pulumi.Input[bool] force_delete_without_recovery: Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
         :param pulumi.Input[int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
         :param pulumi.Input[str] rotation_interval: The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
-        :param pulumi.Input[str] secret_data: The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
+        :param pulumi.Input[str] secret_data: The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
         :param pulumi.Input[str] secret_data_type: The type of the secret value. Valid values: text, binary. Default to "text".
         :param pulumi.Input[str] secret_name: The name of the secret.
+        :param pulumi.Input[str] secret_type: The type of the secret. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] version_id: The version number of the initial version. Version numbers are unique in each secret object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] version_stages: ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
@@ -568,7 +636,7 @@ class Secret(pulumi.CustomResource):
         KMS secret can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:kms/secret:Secret default secret-foo
+         $ pulumi import alicloud:kms/secret:Secret default <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -590,12 +658,14 @@ class Secret(pulumi.CustomResource):
                  dkms_instance_id: Optional[pulumi.Input[str]] = None,
                  enable_automatic_rotation: Optional[pulumi.Input[bool]] = None,
                  encryption_key_id: Optional[pulumi.Input[str]] = None,
+                 extended_config: Optional[pulumi.Input[str]] = None,
                  force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
                  recovery_window_in_days: Optional[pulumi.Input[int]] = None,
                  rotation_interval: Optional[pulumi.Input[str]] = None,
                  secret_data: Optional[pulumi.Input[str]] = None,
                  secret_data_type: Optional[pulumi.Input[str]] = None,
                  secret_name: Optional[pulumi.Input[str]] = None,
+                 secret_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  version_id: Optional[pulumi.Input[str]] = None,
                  version_stages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -612,6 +682,7 @@ class Secret(pulumi.CustomResource):
             __props__.__dict__["dkms_instance_id"] = dkms_instance_id
             __props__.__dict__["enable_automatic_rotation"] = enable_automatic_rotation
             __props__.__dict__["encryption_key_id"] = encryption_key_id
+            __props__.__dict__["extended_config"] = extended_config
             __props__.__dict__["force_delete_without_recovery"] = force_delete_without_recovery
             __props__.__dict__["recovery_window_in_days"] = recovery_window_in_days
             __props__.__dict__["rotation_interval"] = rotation_interval
@@ -622,6 +693,7 @@ class Secret(pulumi.CustomResource):
             if secret_name is None and not opts.urn:
                 raise TypeError("Missing required property 'secret_name'")
             __props__.__dict__["secret_name"] = secret_name
+            __props__.__dict__["secret_type"] = secret_type
             __props__.__dict__["tags"] = tags
             if version_id is None and not opts.urn:
                 raise TypeError("Missing required property 'version_id'")
@@ -646,6 +718,7 @@ class Secret(pulumi.CustomResource):
             dkms_instance_id: Optional[pulumi.Input[str]] = None,
             enable_automatic_rotation: Optional[pulumi.Input[bool]] = None,
             encryption_key_id: Optional[pulumi.Input[str]] = None,
+            extended_config: Optional[pulumi.Input[str]] = None,
             force_delete_without_recovery: Optional[pulumi.Input[bool]] = None,
             planned_delete_time: Optional[pulumi.Input[str]] = None,
             recovery_window_in_days: Optional[pulumi.Input[int]] = None,
@@ -653,6 +726,7 @@ class Secret(pulumi.CustomResource):
             secret_data: Optional[pulumi.Input[str]] = None,
             secret_data_type: Optional[pulumi.Input[str]] = None,
             secret_name: Optional[pulumi.Input[str]] = None,
+            secret_type: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             version_id: Optional[pulumi.Input[str]] = None,
             version_stages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Secret':
@@ -668,13 +742,15 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[str] dkms_instance_id: The instance ID of the exclusive KMS instance.
         :param pulumi.Input[bool] enable_automatic_rotation: Whether to enable automatic key rotation.
         :param pulumi.Input[str] encryption_key_id: The ID of the KMS CMK that is used to encrypt the secret value. If you do not specify this parameter, Secrets Manager automatically creates an encryption key to encrypt the secret.
+        :param pulumi.Input[str] extended_config: The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         :param pulumi.Input[bool] force_delete_without_recovery: Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
         :param pulumi.Input[str] planned_delete_time: The time when the secret is scheduled to be deleted.
         :param pulumi.Input[int] recovery_window_in_days: Specifies the recovery period of the secret if you do not forcibly delete it. Default value: 30. It will be ignored when `force_delete_without_recovery` is true.
         :param pulumi.Input[str] rotation_interval: The time period of automatic rotation. The format is integer[unit], where integer represents the length of time, and unit represents the unit of time. The legal unit units are: d (day), h (hour), m (minute), s (second). 7d or 604800s both indicate a 7-day cycle.
-        :param pulumi.Input[str] secret_data: The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
+        :param pulumi.Input[str] secret_data: The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
         :param pulumi.Input[str] secret_data_type: The type of the secret value. Valid values: text, binary. Default to "text".
         :param pulumi.Input[str] secret_name: The name of the secret.
+        :param pulumi.Input[str] secret_type: The type of the secret. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] version_id: The version number of the initial version. Version numbers are unique in each secret object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] version_stages: ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
@@ -688,6 +764,7 @@ class Secret(pulumi.CustomResource):
         __props__.__dict__["dkms_instance_id"] = dkms_instance_id
         __props__.__dict__["enable_automatic_rotation"] = enable_automatic_rotation
         __props__.__dict__["encryption_key_id"] = encryption_key_id
+        __props__.__dict__["extended_config"] = extended_config
         __props__.__dict__["force_delete_without_recovery"] = force_delete_without_recovery
         __props__.__dict__["planned_delete_time"] = planned_delete_time
         __props__.__dict__["recovery_window_in_days"] = recovery_window_in_days
@@ -695,6 +772,7 @@ class Secret(pulumi.CustomResource):
         __props__.__dict__["secret_data"] = secret_data
         __props__.__dict__["secret_data_type"] = secret_data_type
         __props__.__dict__["secret_name"] = secret_name
+        __props__.__dict__["secret_type"] = secret_type
         __props__.__dict__["tags"] = tags
         __props__.__dict__["version_id"] = version_id
         __props__.__dict__["version_stages"] = version_stages
@@ -741,6 +819,14 @@ class Secret(pulumi.CustomResource):
         return pulumi.get(self, "encryption_key_id")
 
     @property
+    @pulumi.getter(name="extendedConfig")
+    def extended_config(self) -> pulumi.Output[Optional[str]]:
+        """
+        The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+        """
+        return pulumi.get(self, "extended_config")
+
+    @property
     @pulumi.getter(name="forceDeleteWithoutRecovery")
     def force_delete_without_recovery(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -776,7 +862,7 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter(name="secretData")
     def secret_data(self) -> pulumi.Output[str]:
         """
-        The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
+        The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
         """
         return pulumi.get(self, "secret_data")
 
@@ -795,6 +881,14 @@ class Secret(pulumi.CustomResource):
         The name of the secret.
         """
         return pulumi.get(self, "secret_name")
+
+    @property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> pulumi.Output[str]:
+        """
+        The type of the secret. Valid values:
+        """
+        return pulumi.get(self, "secret_type")
 
     @property
     @pulumi.getter

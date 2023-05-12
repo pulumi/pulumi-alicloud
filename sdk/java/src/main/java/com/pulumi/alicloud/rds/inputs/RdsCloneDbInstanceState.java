@@ -58,12 +58,16 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
     /**
      * The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
      * 
+     * &gt; **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type=&#34;Serverless&#34;` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+     * 
      */
     @Import(name="backupId")
     private @Nullable Output<String> backupId;
 
     /**
      * @return The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+     * 
+     * &gt; **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type=&#34;Serverless&#34;` and when modifying, do not perform `instance_storage` check. Otherwise, check.
      * 
      */
     public Optional<Output<String>> backupId() {
@@ -271,12 +275,16 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
     /**
      * The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
      * 
+     * &gt; **NOTE:** The default value of this parameter is the storage capacity of the original instance.
+     * 
      */
     @Import(name="dbInstanceStorage")
     private @Nullable Output<Integer> dbInstanceStorage;
 
     /**
      * @return The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+     * 
+     * &gt; **NOTE:** The default value of this parameter is the storage capacity of the original instance.
      * 
      */
     public Optional<Output<Integer>> dbInstanceStorage() {
@@ -311,12 +319,16 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
     /**
      * The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
      * 
+     * &gt; **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+     * 
      */
     @Import(name="dbName")
     private @Nullable Output<String> dbName;
 
     /**
      * @return The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+     * 
+     * &gt; **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      * 
      */
     public Optional<Output<String>> dbName() {
@@ -358,6 +370,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
      * - true: delete protect.
      * - false: no delete protect.
      * 
+     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+     * 
      */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
@@ -366,6 +380,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
      * @return The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
+     * 
+     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
      * 
      */
     public Optional<Output<Boolean>> deletionProtection() {
@@ -405,12 +421,16 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
     /**
      * The ID of the private key.
      * 
+     * &gt; **NOTE:** This parameter is available only when the instance runs MySQL.
+     * 
      */
     @Import(name="encryptionKey")
     private @Nullable Output<String> encryptionKey;
 
     /**
      * @return The ID of the private key.
+     * 
+     * &gt; **NOTE:** This parameter is available only when the instance runs MySQL.
      * 
      */
     public Optional<Output<String>> encryptionKey() {
@@ -541,12 +561,16 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
     /**
      * The password of the certificate.
      * 
+     * &gt; **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+     * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
      * @return The password of the certificate.
+     * 
+     * &gt; **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      * 
      */
     public Optional<Output<String>> password() {
@@ -571,12 +595,16 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
     /**
      * The period. Valid values: `Month`, `Year`.
      * 
+     * &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
+     * 
      */
     @Import(name="period")
     private @Nullable Output<String> period;
 
     /**
      * @return The period. Valid values: `Month`, `Year`.
+     * 
+     * &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
      * 
      */
     public Optional<Output<String>> period() {
@@ -721,12 +749,16 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
     /**
      * The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
      * 
+     * &gt; **NOTE:** This parameter is available only when the instance runs MySQL.
+     * 
      */
     @Import(name="roleArn")
     private @Nullable Output<String> roleArn;
 
     /**
      * @return The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+     * 
+     * &gt; **NOTE:** This parameter is available only when the instance runs MySQL.
      * 
      */
     public Optional<Output<String>> roleArn() {
@@ -738,6 +770,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
      * * IP address form, for example: 10.23.12.24.
      * * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
      * 
+     * &gt; **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
+     * 
      */
     @Import(name="securityIps")
     private @Nullable Output<List<String>> securityIps;
@@ -746,6 +780,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
      * @return The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
      * * IP address form, for example: 10.23.12.24.
      * * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+     * 
+     * &gt; **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
      * 
      */
     public Optional<Output<List<String>>> securityIps() {
@@ -863,6 +899,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
      * * **Semi-sync**: Semi-synchronous
      * * **Async**: asynchronous
      * 
+     * &gt; **NOTE:** SQL Server 2017 cluster version is currently not supported.
+     * 
      */
     @Import(name="syncMode")
     private @Nullable Output<String> syncMode;
@@ -872,6 +910,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
      * * **Sync**: strong synchronization
      * * **Semi-sync**: Semi-synchronous
      * * **Async**: asynchronous
+     * 
+     * &gt; **NOTE:** SQL Server 2017 cluster version is currently not supported.
      * 
      */
     public Optional<Output<String>> syncMode() {
@@ -938,6 +978,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
      * * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
      * * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
      * 
+     * &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the used_time parameter.
+     * 
      */
     @Import(name="usedTime")
     private @Nullable Output<Integer> usedTime;
@@ -947,6 +989,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
      * * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
      * * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
      * 
+     * &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the used_time parameter.
+     * 
      */
     public Optional<Output<Integer>> usedTime() {
         return Optional.ofNullable(this.usedTime);
@@ -955,12 +999,16 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
     /**
      * The ID of the VPC to which the new instance belongs.
      * 
+     * &gt; **NOTE:** Make sure that the VPC resides in the specified region.
+     * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
      * @return The ID of the VPC to which the new instance belongs.
+     * 
+     * &gt; **NOTE:** Make sure that the VPC resides in the specified region.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -970,12 +1018,16 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
     /**
      * The ID of the vSwitch associated with the specified VPC.
      * 
+     * &gt; **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
+     * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
      * @return The ID of the vSwitch associated with the specified VPC.
+     * 
+     * &gt; **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -985,12 +1037,16 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
     /**
      * The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
      * 
+     * &gt; **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
+     * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
      * @return The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+     * 
+     * &gt; **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -1129,6 +1185,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
         /**
          * @param backupId The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
          * 
+         * &gt; **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type=&#34;Serverless&#34;` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+         * 
          * @return builder
          * 
          */
@@ -1139,6 +1197,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
 
         /**
          * @param backupId The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+         * 
+         * &gt; **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type=&#34;Serverless&#34;` and when modifying, do not perform `instance_storage` check. Otherwise, check.
          * 
          * @return builder
          * 
@@ -1420,6 +1480,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
         /**
          * @param dbInstanceStorage The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
          * 
+         * &gt; **NOTE:** The default value of this parameter is the storage capacity of the original instance.
+         * 
          * @return builder
          * 
          */
@@ -1430,6 +1492,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
 
         /**
          * @param dbInstanceStorage The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+         * 
+         * &gt; **NOTE:** The default value of this parameter is the storage capacity of the original instance.
          * 
          * @return builder
          * 
@@ -1472,6 +1536,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
         /**
          * @param dbName The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
          * 
+         * &gt; **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+         * 
          * @return builder
          * 
          */
@@ -1482,6 +1548,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
 
         /**
          * @param dbName The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+         * 
+         * &gt; **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
          * 
          * @return builder
          * 
@@ -1537,6 +1605,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
          * - true: delete protect.
          * - false: no delete protect.
          * 
+         * &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+         * 
          * @return builder
          * 
          */
@@ -1549,6 +1619,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
          * @param deletionProtection The switch of delete protection. Valid values:
          * - true: delete protect.
          * - false: no delete protect.
+         * 
+         * &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
          * 
          * @return builder
          * 
@@ -1602,6 +1674,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
         /**
          * @param encryptionKey The ID of the private key.
          * 
+         * &gt; **NOTE:** This parameter is available only when the instance runs MySQL.
+         * 
          * @return builder
          * 
          */
@@ -1612,6 +1686,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
 
         /**
          * @param encryptionKey The ID of the private key.
+         * 
+         * &gt; **NOTE:** This parameter is available only when the instance runs MySQL.
          * 
          * @return builder
          * 
@@ -1796,6 +1872,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
         /**
          * @param password The password of the certificate.
          * 
+         * &gt; **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+         * 
          * @return builder
          * 
          */
@@ -1806,6 +1884,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
 
         /**
          * @param password The password of the certificate.
+         * 
+         * &gt; **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
          * 
          * @return builder
          * 
@@ -1838,6 +1918,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
         /**
          * @param period The period. Valid values: `Month`, `Year`.
          * 
+         * &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
+         * 
          * @return builder
          * 
          */
@@ -1848,6 +1930,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
 
         /**
          * @param period The period. Valid values: `Month`, `Year`.
+         * 
+         * &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
          * 
          * @return builder
          * 
@@ -2058,6 +2142,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
         /**
          * @param roleArn The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
          * 
+         * &gt; **NOTE:** This parameter is available only when the instance runs MySQL.
+         * 
          * @return builder
          * 
          */
@@ -2068,6 +2154,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
 
         /**
          * @param roleArn The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+         * 
+         * &gt; **NOTE:** This parameter is available only when the instance runs MySQL.
          * 
          * @return builder
          * 
@@ -2080,6 +2168,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
          * @param securityIps The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
          * * IP address form, for example: 10.23.12.24.
          * * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+         * 
+         * &gt; **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
          * 
          * @return builder
          * 
@@ -2094,6 +2184,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
          * * IP address form, for example: 10.23.12.24.
          * * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
          * 
+         * &gt; **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
+         * 
          * @return builder
          * 
          */
@@ -2105,6 +2197,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
          * @param securityIps The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
          * * IP address form, for example: 10.23.12.24.
          * * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+         * 
+         * &gt; **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
          * 
          * @return builder
          * 
@@ -2276,6 +2370,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
          * * **Semi-sync**: Semi-synchronous
          * * **Async**: asynchronous
          * 
+         * &gt; **NOTE:** SQL Server 2017 cluster version is currently not supported.
+         * 
          * @return builder
          * 
          */
@@ -2289,6 +2385,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
          * * **Sync**: strong synchronization
          * * **Semi-sync**: Semi-synchronous
          * * **Async**: asynchronous
+         * 
+         * &gt; **NOTE:** SQL Server 2017 cluster version is currently not supported.
          * 
          * @return builder
          * 
@@ -2375,6 +2473,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
          * * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
          * * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
          * 
+         * &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the used_time parameter.
+         * 
          * @return builder
          * 
          */
@@ -2388,6 +2488,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
          * * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
          * * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
          * 
+         * &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the used_time parameter.
+         * 
          * @return builder
          * 
          */
@@ -2397,6 +2499,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
 
         /**
          * @param vpcId The ID of the VPC to which the new instance belongs.
+         * 
+         * &gt; **NOTE:** Make sure that the VPC resides in the specified region.
          * 
          * @return builder
          * 
@@ -2409,6 +2513,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
         /**
          * @param vpcId The ID of the VPC to which the new instance belongs.
          * 
+         * &gt; **NOTE:** Make sure that the VPC resides in the specified region.
+         * 
          * @return builder
          * 
          */
@@ -2418,6 +2524,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
 
         /**
          * @param vswitchId The ID of the vSwitch associated with the specified VPC.
+         * 
+         * &gt; **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
          * 
          * @return builder
          * 
@@ -2430,6 +2538,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
         /**
          * @param vswitchId The ID of the vSwitch associated with the specified VPC.
          * 
+         * &gt; **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
+         * 
          * @return builder
          * 
          */
@@ -2439,6 +2549,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
 
         /**
          * @param zoneId The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+         * 
+         * &gt; **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
          * 
          * @return builder
          * 
@@ -2450,6 +2562,8 @@ public final class RdsCloneDbInstanceState extends com.pulumi.resources.Resource
 
         /**
          * @param zoneId The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+         * 
+         * &gt; **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
          * 
          * @return builder
          * 

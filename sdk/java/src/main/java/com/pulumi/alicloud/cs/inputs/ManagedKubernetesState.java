@@ -936,12 +936,18 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     /**
      * Whether to create internet load balancer for API Server. Default to true.
      * 
+     * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
+     * If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+     * 
      */
     @Import(name="slbInternetEnabled")
     private @Nullable Output<Boolean> slbInternetEnabled;
 
     /**
      * @return Whether to create internet load balancer for API Server. Default to true.
+     * 
+     * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
+     * If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
      * 
      */
     public Optional<Output<Boolean>> slbInternetEnabled() {
@@ -2829,6 +2835,9 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         /**
          * @param slbInternetEnabled Whether to create internet load balancer for API Server. Default to true.
          * 
+         * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
+         * If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+         * 
          * @return builder
          * 
          */
@@ -2839,6 +2848,9 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
 
         /**
          * @param slbInternetEnabled Whether to create internet load balancer for API Server. Default to true.
+         * 
+         * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
+         * If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
          * 
          * @return builder
          * 

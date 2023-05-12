@@ -17,15 +17,32 @@ public final class GetKeyPairsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String keyPairFingerPrint;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private List<GetKeyPairsPair> pairs;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String keyPairFingerPrint;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final List<GetKeyPairsPair> pairs;
 
-    private GetKeyPairsResult() {}
+    @CustomType.Constructor
+    private GetKeyPairsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("keyPairFingerPrint") @Nullable String keyPairFingerPrint,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pairs") List<GetKeyPairsPair> pairs) {
+        this.id = id;
+        this.ids = ids;
+        this.keyPairFingerPrint = keyPairFingerPrint;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.pairs = pairs;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -59,7 +76,7 @@ public final class GetKeyPairsResult {
     public static Builder builder(GetKeyPairsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -68,7 +85,11 @@ public final class GetKeyPairsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private List<GetKeyPairsPair> pairs;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetKeyPairsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -80,12 +101,10 @@ public final class GetKeyPairsResult {
     	      this.pairs = defaults.pairs;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -93,17 +112,14 @@ public final class GetKeyPairsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder keyPairFingerPrint(@Nullable String keyPairFingerPrint) {
             this.keyPairFingerPrint = keyPairFingerPrint;
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -111,29 +127,18 @@ public final class GetKeyPairsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pairs(List<GetKeyPairsPair> pairs) {
             this.pairs = Objects.requireNonNull(pairs);
             return this;
         }
         public Builder pairs(GetKeyPairsPair... pairs) {
             return pairs(List.of(pairs));
-        }
-        public GetKeyPairsResult build() {
-            final var o = new GetKeyPairsResult();
-            o.id = id;
-            o.ids = ids;
-            o.keyPairFingerPrint = keyPairFingerPrint;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pairs = pairs;
-            return o;
+        }        public GetKeyPairsResult build() {
+            return new GetKeyPairsResult(id, ids, keyPairFingerPrint, nameRegex, names, outputFile, pairs);
         }
     }
 }

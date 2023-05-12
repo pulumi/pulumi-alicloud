@@ -76,6 +76,9 @@ export interface GetEcsDedicatedHostClustersArgs {
      * A regex string to filter results by Dedicated Host Cluster name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * A mapping of tags to assign to the resource.
@@ -164,6 +167,9 @@ export interface GetEcsDedicatedHostClustersOutputArgs {
      * A regex string to filter results by Dedicated Host Cluster name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.

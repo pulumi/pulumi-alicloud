@@ -126,6 +126,8 @@ type Instance struct {
 	// (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
 	UiProxyConnAddrs InstanceUiProxyConnAddrArrayOutput `pulumi:"uiProxyConnAddrs"`
 	// The id of the VPC.
+	//
+	// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 	// If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
@@ -232,6 +234,8 @@ type instanceState struct {
 	// (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
 	UiProxyConnAddrs []InstanceUiProxyConnAddr `pulumi:"uiProxyConnAddrs"`
 	// The id of the VPC.
+	//
+	// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 	VpcId *string `pulumi:"vpcId"`
 	// If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -294,6 +298,8 @@ type InstanceState struct {
 	// (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
 	UiProxyConnAddrs InstanceUiProxyConnAddrArrayInput
 	// The id of the VPC.
+	//
+	// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 	VpcId pulumi.StringPtrInput
 	// If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
 	VswitchId pulumi.StringPtrInput
@@ -354,6 +360,8 @@ type instanceArgs struct {
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The id of the VPC.
+	//
+	// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 	VpcId *string `pulumi:"vpcId"`
 	// If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -409,6 +417,8 @@ type InstanceArgs struct {
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The id of the VPC.
+	//
+	// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 	VpcId pulumi.StringPtrInput
 	// If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
 	VswitchId pulumi.StringPtrInput
@@ -627,6 +637,8 @@ func (o InstanceOutput) UiProxyConnAddrs() InstanceUiProxyConnAddrArrayOutput {
 }
 
 // The id of the VPC.
+//
+// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 func (o InstanceOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
 }

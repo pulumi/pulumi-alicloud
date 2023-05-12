@@ -13,31 +13,44 @@ public final class GetModifyParameterLogsLog {
      * @return The time when the parameter was reconfigured. This value is a UNIX timestamp. Unit: milliseconds.
      * 
      */
-    private String modifyTime;
+    private final String modifyTime;
     /**
      * @return The new value of the parameter.
      * 
      */
-    private String newParameterValue;
+    private final String newParameterValue;
     /**
      * @return The original value of the parameter.
      * 
      */
-    private String oldParameterValue;
+    private final String oldParameterValue;
     /**
      * @return The name of the parameter.
      * 
      */
-    private String parameterName;
+    private final String parameterName;
     /**
      * @return The status of the new value specified for the parameter. Valid values:
      * * **Applied**: The new value has taken effect.
      * * **Syncing**: The new value is being applied and has not taken effect.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetModifyParameterLogsLog() {}
+    @CustomType.Constructor
+    private GetModifyParameterLogsLog(
+        @CustomType.Parameter("modifyTime") String modifyTime,
+        @CustomType.Parameter("newParameterValue") String newParameterValue,
+        @CustomType.Parameter("oldParameterValue") String oldParameterValue,
+        @CustomType.Parameter("parameterName") String parameterName,
+        @CustomType.Parameter("status") String status) {
+        this.modifyTime = modifyTime;
+        this.newParameterValue = newParameterValue;
+        this.oldParameterValue = oldParameterValue;
+        this.parameterName = parameterName;
+        this.status = status;
+    }
+
     /**
      * @return The time when the parameter was reconfigured. This value is a UNIX timestamp. Unit: milliseconds.
      * 
@@ -83,14 +96,18 @@ public final class GetModifyParameterLogsLog {
     public static Builder builder(GetModifyParameterLogsLog defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String modifyTime;
         private String newParameterValue;
         private String oldParameterValue;
         private String parameterName;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetModifyParameterLogsLog defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.modifyTime = defaults.modifyTime;
@@ -100,39 +117,27 @@ public final class GetModifyParameterLogsLog {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder modifyTime(String modifyTime) {
             this.modifyTime = Objects.requireNonNull(modifyTime);
             return this;
         }
-        @CustomType.Setter
         public Builder newParameterValue(String newParameterValue) {
             this.newParameterValue = Objects.requireNonNull(newParameterValue);
             return this;
         }
-        @CustomType.Setter
         public Builder oldParameterValue(String oldParameterValue) {
             this.oldParameterValue = Objects.requireNonNull(oldParameterValue);
             return this;
         }
-        @CustomType.Setter
         public Builder parameterName(String parameterName) {
             this.parameterName = Objects.requireNonNull(parameterName);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetModifyParameterLogsLog build() {
-            final var o = new GetModifyParameterLogsLog();
-            o.modifyTime = modifyTime;
-            o.newParameterValue = newParameterValue;
-            o.oldParameterValue = oldParameterValue;
-            o.parameterName = parameterName;
-            o.status = status;
-            return o;
+        }        public GetModifyParameterLogsLog build() {
+            return new GetModifyParameterLogsLog(modifyTime, newParameterValue, oldParameterValue, parameterName, status);
         }
     }
 }

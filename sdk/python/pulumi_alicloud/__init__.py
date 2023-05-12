@@ -790,6 +790,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "arms/remoteWrite",
+  "fqn": "pulumi_alicloud.arms",
+  "classes": {
+   "alicloud:arms/remoteWrite:RemoteWrite": "RemoteWrite"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "bastionhost/host",
   "fqn": "pulumi_alicloud.bastionhost",
   "classes": {
@@ -1370,6 +1378,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cfg",
   "classes": {
    "alicloud:cfg/deliveryChannel:DeliveryChannel": "DeliveryChannel"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cfg/remediation",
+  "fqn": "pulumi_alicloud.cfg",
+  "classes": {
+   "alicloud:cfg/remediation:Remediation": "Remediation"
   }
  },
  {
@@ -3170,6 +3186,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.eds",
   "classes": {
    "alicloud:eds/user:User": "User"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "eflo/subnet",
+  "fqn": "pulumi_alicloud.eflo",
+  "classes": {
+   "alicloud:eflo/subnet:Subnet": "Subnet"
   }
  },
  {
@@ -4982,6 +5006,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "rds/dbInstanceEndpointAddress",
+  "fqn": "pulumi_alicloud.rds",
+  "classes": {
+   "alicloud:rds/dbInstanceEndpointAddress:DbInstanceEndpointAddress": "DbInstanceEndpointAddress"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "rds/dbNode",
   "fqn": "pulumi_alicloud.rds",
   "classes": {
@@ -5494,6 +5526,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "servicecatalog/portfolio",
+  "fqn": "pulumi_alicloud.servicecatalog",
+  "classes": {
+   "alicloud:servicecatalog/portfolio:Portfolio": "Portfolio"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "servicecatalog/provisionedProduct",
   "fqn": "pulumi_alicloud.servicecatalog",
   "classes": {
@@ -5690,6 +5730,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.tag",
   "classes": {
    "alicloud:tag/policy:Policy": "Policy"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "tag/policyAttachment",
+  "fqn": "pulumi_alicloud.tag",
+  "classes": {
+   "alicloud:tag/policyAttachment:PolicyAttachment": "PolicyAttachment"
   }
  },
  {

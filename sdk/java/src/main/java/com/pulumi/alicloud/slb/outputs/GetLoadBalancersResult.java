@@ -22,43 +22,43 @@ public final class GetLoadBalancersResult {
      * @return Service address of the SLB.
      * 
      */
-    private @Nullable String address;
-    private @Nullable String addressIpVersion;
-    private @Nullable String addressType;
-    private List<GetLoadBalancersBalancer> balancers;
-    private @Nullable Boolean enableDetails;
+    private final @Nullable String address;
+    private final @Nullable String addressIpVersion;
+    private final @Nullable String addressType;
+    private final List<GetLoadBalancersBalancer> balancers;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of slb IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String internetChargeType;
-    private @Nullable String loadBalancerName;
-    private @Nullable String masterZoneId;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String internetChargeType;
+    private final @Nullable String loadBalancerName;
+    private final @Nullable String masterZoneId;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of slb names.
      * 
      */
-    private List<String> names;
+    private final List<String> names;
     /**
      * @return Network type of the SLB. Possible values: `vpc` and `classic`.
      * 
      */
-    private @Nullable String networkType;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
-    private @Nullable String paymentType;
-    private @Nullable String resourceGroupId;
-    private @Nullable String serverId;
-    private @Nullable String serverIntranetAddress;
-    private @Nullable String slaveZoneId;
+    private final @Nullable String networkType;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
+    private final @Nullable String paymentType;
+    private final @Nullable String resourceGroupId;
+    private final @Nullable String serverId;
+    private final @Nullable String serverIntranetAddress;
+    private final @Nullable String slaveZoneId;
     /**
      * @return A list of SLBs. Each element contains the following attributes:
      * 
@@ -67,30 +67,87 @@ public final class GetLoadBalancersResult {
      * 
      */
     @Deprecated /* Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'. */
-    private List<GetLoadBalancersSlb> slbs;
+    private final List<GetLoadBalancersSlb> slbs;
     /**
      * @return SLB current status. Possible values: `inactive`, `active` and `locked`.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
     /**
      * @return A map of tags assigned to the SLB instance.
      * 
      */
-    private @Nullable Map<String,Object> tags;
-    private Integer totalCount;
+    private final @Nullable Map<String,Object> tags;
+    private final Integer totalCount;
     /**
      * @return ID of the VPC the SLB belongs to.
      * 
      */
-    private @Nullable String vpcId;
+    private final @Nullable String vpcId;
     /**
      * @return ID of the VSwitch the SLB belongs to.
      * 
      */
-    private @Nullable String vswitchId;
+    private final @Nullable String vswitchId;
 
-    private GetLoadBalancersResult() {}
+    @CustomType.Constructor
+    private GetLoadBalancersResult(
+        @CustomType.Parameter("address") @Nullable String address,
+        @CustomType.Parameter("addressIpVersion") @Nullable String addressIpVersion,
+        @CustomType.Parameter("addressType") @Nullable String addressType,
+        @CustomType.Parameter("balancers") List<GetLoadBalancersBalancer> balancers,
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("internetChargeType") @Nullable String internetChargeType,
+        @CustomType.Parameter("loadBalancerName") @Nullable String loadBalancerName,
+        @CustomType.Parameter("masterZoneId") @Nullable String masterZoneId,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("networkType") @Nullable String networkType,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
+        @CustomType.Parameter("paymentType") @Nullable String paymentType,
+        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
+        @CustomType.Parameter("serverId") @Nullable String serverId,
+        @CustomType.Parameter("serverIntranetAddress") @Nullable String serverIntranetAddress,
+        @CustomType.Parameter("slaveZoneId") @Nullable String slaveZoneId,
+        @CustomType.Parameter("slbs") List<GetLoadBalancersSlb> slbs,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
+        @CustomType.Parameter("totalCount") Integer totalCount,
+        @CustomType.Parameter("vpcId") @Nullable String vpcId,
+        @CustomType.Parameter("vswitchId") @Nullable String vswitchId) {
+        this.address = address;
+        this.addressIpVersion = addressIpVersion;
+        this.addressType = addressType;
+        this.balancers = balancers;
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.internetChargeType = internetChargeType;
+        this.loadBalancerName = loadBalancerName;
+        this.masterZoneId = masterZoneId;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.networkType = networkType;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+        this.paymentType = paymentType;
+        this.resourceGroupId = resourceGroupId;
+        this.serverId = serverId;
+        this.serverIntranetAddress = serverIntranetAddress;
+        this.slaveZoneId = slaveZoneId;
+        this.slbs = slbs;
+        this.status = status;
+        this.tags = tags;
+        this.totalCount = totalCount;
+        this.vpcId = vpcId;
+        this.vswitchId = vswitchId;
+    }
+
     /**
      * @return Service address of the SLB.
      * 
@@ -224,7 +281,7 @@ public final class GetLoadBalancersResult {
     public static Builder builder(GetLoadBalancersResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String address;
         private @Nullable String addressIpVersion;
@@ -253,7 +310,11 @@ public final class GetLoadBalancersResult {
         private Integer totalCount;
         private @Nullable String vpcId;
         private @Nullable String vswitchId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetLoadBalancersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
@@ -285,22 +346,18 @@ public final class GetLoadBalancersResult {
     	      this.vswitchId = defaults.vswitchId;
         }
 
-        @CustomType.Setter
         public Builder address(@Nullable String address) {
             this.address = address;
             return this;
         }
-        @CustomType.Setter
         public Builder addressIpVersion(@Nullable String addressIpVersion) {
             this.addressIpVersion = addressIpVersion;
             return this;
         }
-        @CustomType.Setter
         public Builder addressType(@Nullable String addressType) {
             this.addressType = addressType;
             return this;
         }
-        @CustomType.Setter
         public Builder balancers(List<GetLoadBalancersBalancer> balancers) {
             this.balancers = Objects.requireNonNull(balancers);
             return this;
@@ -308,17 +365,14 @@ public final class GetLoadBalancersResult {
         public Builder balancers(GetLoadBalancersBalancer... balancers) {
             return balancers(List.of(balancers));
         }
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -326,27 +380,22 @@ public final class GetLoadBalancersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder internetChargeType(@Nullable String internetChargeType) {
             this.internetChargeType = internetChargeType;
             return this;
         }
-        @CustomType.Setter
         public Builder loadBalancerName(@Nullable String loadBalancerName) {
             this.loadBalancerName = loadBalancerName;
             return this;
         }
-        @CustomType.Setter
         public Builder masterZoneId(@Nullable String masterZoneId) {
             this.masterZoneId = masterZoneId;
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -354,52 +403,42 @@ public final class GetLoadBalancersResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder networkType(@Nullable String networkType) {
             this.networkType = networkType;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(@Nullable String paymentType) {
             this.paymentType = paymentType;
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
-        @CustomType.Setter
         public Builder serverId(@Nullable String serverId) {
             this.serverId = serverId;
             return this;
         }
-        @CustomType.Setter
         public Builder serverIntranetAddress(@Nullable String serverIntranetAddress) {
             this.serverIntranetAddress = serverIntranetAddress;
             return this;
         }
-        @CustomType.Setter
         public Builder slaveZoneId(@Nullable String slaveZoneId) {
             this.slaveZoneId = slaveZoneId;
             return this;
         }
-        @CustomType.Setter
         public Builder slbs(List<GetLoadBalancersSlb> slbs) {
             this.slbs = Objects.requireNonNull(slbs);
             return this;
@@ -407,61 +446,27 @@ public final class GetLoadBalancersResult {
         public Builder slbs(GetLoadBalancersSlb... slbs) {
             return slbs(List.of(slbs));
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
-        @CustomType.Setter
         public Builder totalCount(Integer totalCount) {
             this.totalCount = Objects.requireNonNull(totalCount);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
             this.vswitchId = vswitchId;
             return this;
-        }
-        public GetLoadBalancersResult build() {
-            final var o = new GetLoadBalancersResult();
-            o.address = address;
-            o.addressIpVersion = addressIpVersion;
-            o.addressType = addressType;
-            o.balancers = balancers;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.internetChargeType = internetChargeType;
-            o.loadBalancerName = loadBalancerName;
-            o.masterZoneId = masterZoneId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.networkType = networkType;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.paymentType = paymentType;
-            o.resourceGroupId = resourceGroupId;
-            o.serverId = serverId;
-            o.serverIntranetAddress = serverIntranetAddress;
-            o.slaveZoneId = slaveZoneId;
-            o.slbs = slbs;
-            o.status = status;
-            o.tags = tags;
-            o.totalCount = totalCount;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+        }        public GetLoadBalancersResult build() {
+            return new GetLoadBalancersResult(address, addressIpVersion, addressType, balancers, enableDetails, id, ids, internetChargeType, loadBalancerName, masterZoneId, nameRegex, names, networkType, outputFile, pageNumber, pageSize, paymentType, resourceGroupId, serverId, serverIntranetAddress, slaveZoneId, slbs, status, tags, totalCount, vpcId, vswitchId);
         }
     }
 }

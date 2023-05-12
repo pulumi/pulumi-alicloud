@@ -14,26 +14,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRegionsResult {
-    private Boolean current;
+    private final Boolean current;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of region IDs.
      * 
      */
-    private List<String> ids;
-    private String name;
-    private @Nullable String outputFile;
+    private final List<String> ids;
+    private final String name;
+    private final @Nullable String outputFile;
     /**
      * @return A list of regions. Each element contains the following attributes:
      * 
      */
-    private List<GetRegionsRegion> regions;
+    private final List<GetRegionsRegion> regions;
 
-    private GetRegionsResult() {}
+    @CustomType.Constructor
+    private GetRegionsResult(
+        @CustomType.Parameter("current") Boolean current,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("regions") List<GetRegionsRegion> regions) {
+        this.current = current;
+        this.id = id;
+        this.ids = ids;
+        this.name = name;
+        this.outputFile = outputFile;
+        this.regions = regions;
+    }
+
     public Boolean current() {
         return this.current;
     }
@@ -72,7 +87,7 @@ public final class GetRegionsResult {
     public static Builder builder(GetRegionsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean current;
         private String id;
@@ -80,7 +95,11 @@ public final class GetRegionsResult {
         private String name;
         private @Nullable String outputFile;
         private List<GetRegionsRegion> regions;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRegionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.current = defaults.current;
@@ -91,17 +110,14 @@ public final class GetRegionsResult {
     	      this.regions = defaults.regions;
         }
 
-        @CustomType.Setter
         public Builder current(Boolean current) {
             this.current = Objects.requireNonNull(current);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -109,33 +125,22 @@ public final class GetRegionsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder regions(List<GetRegionsRegion> regions) {
             this.regions = Objects.requireNonNull(regions);
             return this;
         }
         public Builder regions(GetRegionsRegion... regions) {
             return regions(List.of(regions));
-        }
-        public GetRegionsResult build() {
-            final var o = new GetRegionsResult();
-            o.current = current;
-            o.id = id;
-            o.ids = ids;
-            o.name = name;
-            o.outputFile = outputFile;
-            o.regions = regions;
-            return o;
+        }        public GetRegionsResult build() {
+            return new GetRegionsResult(current, id, ids, name, outputFile, regions);
         }
     }
 }

@@ -10,6 +10,95 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
+    /// Provides an Alicloud EIP Association resource for associating Elastic IP to ECS Instance, SLB Instance or Nat Gateway.
+    /// 
+    /// &gt; **NOTE:** `alicloud.ecs.EipAssociation` is useful in scenarios where EIPs are either
+    ///  pre-existing or distributed to customers or users and therefore cannot be changed.
+    /// 
+    /// &gt; **NOTE:** From version 1.7.1, the resource support to associate EIP to SLB Instance or Nat Gateway.
+    /// 
+    /// &gt; **NOTE:** One EIP can only be associated with ECS or SLB instance which in the VPC.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultZones = AliCloud.GetZones.Invoke();
+    /// 
+    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     {
+    ///         CidrBlock = "10.1.0.0/21",
+    ///     });
+    /// 
+    ///     var vsw = new AliCloud.Vpc.Switch("vsw", new()
+    ///     {
+    ///         VpcId = vpc.Id,
+    ///         CidrBlock = "10.1.1.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             vpc,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_18.*64",
+    ///         MostRecent = true,
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var @group = new AliCloud.Ecs.SecurityGroup("group", new()
+    ///     {
+    ///         Description = "New security group",
+    ///         VpcId = vpc.Id,
+    ///     });
+    /// 
+    ///     var ecsInstance = new AliCloud.Ecs.Instance("ecsInstance", new()
+    ///     {
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             @group.Id,
+    ///         },
+    ///         VswitchId = vsw.Id,
+    ///         InstanceName = "hello",
+    ///         Tags = 
+    ///         {
+    ///             { "Name", "TerraformTest-instance" },
+    ///         },
+    ///     });
+    /// 
+    ///     var eip = new AliCloud.Ecs.EipAddress("eip");
+    /// 
+    ///     var eipAsso = new AliCloud.Ecs.EipAssociation("eipAsso", new()
+    ///     {
+    ///         AllocationId = eip.Id,
+    ///         InstanceId = ecsInstance.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Module Support
+    /// 
+    /// You can use the existing eip module
+    /// to create several EIP instances and associate them with other resources one-click, like ECS instances, SLB, Nat Gateway and so on.
+    /// 
     /// ## Import
     /// 
     /// Elastic IP address association can be imported using the id, e.g.

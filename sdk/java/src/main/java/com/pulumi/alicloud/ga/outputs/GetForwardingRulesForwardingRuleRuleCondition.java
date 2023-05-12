@@ -12,11 +12,20 @@ import java.util.Objects;
 
 @CustomType
 public final class GetForwardingRulesForwardingRuleRuleCondition {
-    private List<GetForwardingRulesForwardingRuleRuleConditionHostConfig> hostConfigs;
-    private List<GetForwardingRulesForwardingRuleRuleConditionPathConfig> pathConfigs;
-    private String ruleConditionType;
+    private final List<GetForwardingRulesForwardingRuleRuleConditionHostConfig> hostConfigs;
+    private final List<GetForwardingRulesForwardingRuleRuleConditionPathConfig> pathConfigs;
+    private final String ruleConditionType;
 
-    private GetForwardingRulesForwardingRuleRuleCondition() {}
+    @CustomType.Constructor
+    private GetForwardingRulesForwardingRuleRuleCondition(
+        @CustomType.Parameter("hostConfigs") List<GetForwardingRulesForwardingRuleRuleConditionHostConfig> hostConfigs,
+        @CustomType.Parameter("pathConfigs") List<GetForwardingRulesForwardingRuleRuleConditionPathConfig> pathConfigs,
+        @CustomType.Parameter("ruleConditionType") String ruleConditionType) {
+        this.hostConfigs = hostConfigs;
+        this.pathConfigs = pathConfigs;
+        this.ruleConditionType = ruleConditionType;
+    }
+
     public List<GetForwardingRulesForwardingRuleRuleConditionHostConfig> hostConfigs() {
         return this.hostConfigs;
     }
@@ -34,12 +43,16 @@ public final class GetForwardingRulesForwardingRuleRuleCondition {
     public static Builder builder(GetForwardingRulesForwardingRuleRuleCondition defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetForwardingRulesForwardingRuleRuleConditionHostConfig> hostConfigs;
         private List<GetForwardingRulesForwardingRuleRuleConditionPathConfig> pathConfigs;
         private String ruleConditionType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetForwardingRulesForwardingRuleRuleCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hostConfigs = defaults.hostConfigs;
@@ -47,7 +60,6 @@ public final class GetForwardingRulesForwardingRuleRuleCondition {
     	      this.ruleConditionType = defaults.ruleConditionType;
         }
 
-        @CustomType.Setter
         public Builder hostConfigs(List<GetForwardingRulesForwardingRuleRuleConditionHostConfig> hostConfigs) {
             this.hostConfigs = Objects.requireNonNull(hostConfigs);
             return this;
@@ -55,7 +67,6 @@ public final class GetForwardingRulesForwardingRuleRuleCondition {
         public Builder hostConfigs(GetForwardingRulesForwardingRuleRuleConditionHostConfig... hostConfigs) {
             return hostConfigs(List.of(hostConfigs));
         }
-        @CustomType.Setter
         public Builder pathConfigs(List<GetForwardingRulesForwardingRuleRuleConditionPathConfig> pathConfigs) {
             this.pathConfigs = Objects.requireNonNull(pathConfigs);
             return this;
@@ -63,17 +74,11 @@ public final class GetForwardingRulesForwardingRuleRuleCondition {
         public Builder pathConfigs(GetForwardingRulesForwardingRuleRuleConditionPathConfig... pathConfigs) {
             return pathConfigs(List.of(pathConfigs));
         }
-        @CustomType.Setter
         public Builder ruleConditionType(String ruleConditionType) {
             this.ruleConditionType = Objects.requireNonNull(ruleConditionType);
             return this;
-        }
-        public GetForwardingRulesForwardingRuleRuleCondition build() {
-            final var o = new GetForwardingRulesForwardingRuleRuleCondition();
-            o.hostConfigs = hostConfigs;
-            o.pathConfigs = pathConfigs;
-            o.ruleConditionType = ruleConditionType;
-            return o;
+        }        public GetForwardingRulesForwardingRuleRuleCondition build() {
+            return new GetForwardingRulesForwardingRuleRuleCondition(hostConfigs, pathConfigs, ruleConditionType);
         }
     }
 }

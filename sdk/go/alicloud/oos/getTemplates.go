@@ -70,7 +70,8 @@ type GetTemplatesArgs struct {
 	// A list of OOS Template ids. Each element in the list is same as template_name.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter the results by the template_name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The sharing type of the template. Valid values: `Private`, `Public`.
 	ShareType *string `pulumi:"shareType"`
@@ -139,7 +140,8 @@ type GetTemplatesOutputArgs struct {
 	// A list of OOS Template ids. Each element in the list is same as template_name.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter the results by the template_name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The sharing type of the template. Valid values: `Private`, `Public`.
 	ShareType pulumi.StringPtrInput `pulumi:"shareType"`

@@ -14,29 +14,42 @@ public final class GetIpaDomainsDomainSource {
      * @return The address of the origin server.
      * 
      */
-    private String content;
+    private final String content;
     /**
      * @return The custom port.
      * 
      */
-    private Integer port;
+    private final Integer port;
     /**
      * @return The priority of the origin server if multiple origin servers are specified.
      * 
      */
-    private String priority;
+    private final String priority;
     /**
      * @return The type of the origin server.
      * 
      */
-    private String type;
+    private final String type;
     /**
      * @return The weight of the origin server if multiple origin servers are specified.
      * 
      */
-    private Integer weight;
+    private final Integer weight;
 
-    private GetIpaDomainsDomainSource() {}
+    @CustomType.Constructor
+    private GetIpaDomainsDomainSource(
+        @CustomType.Parameter("content") String content,
+        @CustomType.Parameter("port") Integer port,
+        @CustomType.Parameter("priority") String priority,
+        @CustomType.Parameter("type") String type,
+        @CustomType.Parameter("weight") Integer weight) {
+        this.content = content;
+        this.port = port;
+        this.priority = priority;
+        this.type = type;
+        this.weight = weight;
+    }
+
     /**
      * @return The address of the origin server.
      * 
@@ -80,14 +93,18 @@ public final class GetIpaDomainsDomainSource {
     public static Builder builder(GetIpaDomainsDomainSource defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String content;
         private Integer port;
         private String priority;
         private String type;
         private Integer weight;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetIpaDomainsDomainSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
@@ -97,39 +114,27 @@ public final class GetIpaDomainsDomainSource {
     	      this.weight = defaults.weight;
         }
 
-        @CustomType.Setter
         public Builder content(String content) {
             this.content = Objects.requireNonNull(content);
             return this;
         }
-        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
-        @CustomType.Setter
         public Builder priority(String priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
-        @CustomType.Setter
         public Builder weight(Integer weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
-        }
-        public GetIpaDomainsDomainSource build() {
-            final var o = new GetIpaDomainsDomainSource();
-            o.content = content;
-            o.port = port;
-            o.priority = priority;
-            o.type = type;
-            o.weight = weight;
-            return o;
+        }        public GetIpaDomainsDomainSource build() {
+            return new GetIpaDomainsDomainSource(content, port, priority, type, weight);
         }
     }
 }

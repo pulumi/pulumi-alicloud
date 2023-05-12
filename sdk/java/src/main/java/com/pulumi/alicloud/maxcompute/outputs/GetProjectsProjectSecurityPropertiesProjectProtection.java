@@ -14,14 +14,21 @@ public final class GetProjectsProjectSecurityPropertiesProjectProtection {
      * @return Exclusion policy.
      * 
      */
-    private String exceptionPolicy;
+    private final String exceptionPolicy;
     /**
      * @return Is it turned on.
      * 
      */
-    private Boolean protected_;
+    private final Boolean protected_;
 
-    private GetProjectsProjectSecurityPropertiesProjectProtection() {}
+    @CustomType.Constructor
+    private GetProjectsProjectSecurityPropertiesProjectProtection(
+        @CustomType.Parameter("exceptionPolicy") String exceptionPolicy,
+        @CustomType.Parameter("protected") Boolean protected_) {
+        this.exceptionPolicy = exceptionPolicy;
+        this.protected_ = protected_;
+    }
+
     /**
      * @return Exclusion policy.
      * 
@@ -44,32 +51,30 @@ public final class GetProjectsProjectSecurityPropertiesProjectProtection {
     public static Builder builder(GetProjectsProjectSecurityPropertiesProjectProtection defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String exceptionPolicy;
         private Boolean protected_;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetProjectsProjectSecurityPropertiesProjectProtection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.exceptionPolicy = defaults.exceptionPolicy;
     	      this.protected_ = defaults.protected_;
         }
 
-        @CustomType.Setter
         public Builder exceptionPolicy(String exceptionPolicy) {
             this.exceptionPolicy = Objects.requireNonNull(exceptionPolicy);
             return this;
         }
-        @CustomType.Setter("protected")
         public Builder protected_(Boolean protected_) {
             this.protected_ = Objects.requireNonNull(protected_);
             return this;
-        }
-        public GetProjectsProjectSecurityPropertiesProjectProtection build() {
-            final var o = new GetProjectsProjectSecurityPropertiesProjectProtection();
-            o.exceptionPolicy = exceptionPolicy;
-            o.protected_ = protected_;
-            return o;
+        }        public GetProjectsProjectSecurityPropertiesProjectProtection build() {
+            return new GetProjectsProjectSecurityPropertiesProjectProtection(exceptionPolicy, protected_);
         }
     }
 }

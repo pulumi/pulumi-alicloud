@@ -13,31 +13,44 @@ public final class GetOpenApiProductsProduct {
      * @return The ID of the product. The value is formulated as `&lt;product_code&gt;:&lt;product_type&gt;:&lt;subscription_type&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Product code.
      * 
      */
-    private String productCode;
+    private final String productCode;
     /**
      * @return Product name.
      * 
      */
-    private String productName;
+    private final String productName;
     /**
      * @return Type of product.
      * 
      */
-    private String productType;
+    private final String productType;
     /**
      * @return Subscription type. Value:
      * * Subscription: Prepaid.
      * * PayAsYouGo: postpaid.
      * 
      */
-    private String subscriptionType;
+    private final String subscriptionType;
 
-    private GetOpenApiProductsProduct() {}
+    @CustomType.Constructor
+    private GetOpenApiProductsProduct(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("productCode") String productCode,
+        @CustomType.Parameter("productName") String productName,
+        @CustomType.Parameter("productType") String productType,
+        @CustomType.Parameter("subscriptionType") String subscriptionType) {
+        this.id = id;
+        this.productCode = productCode;
+        this.productName = productName;
+        this.productType = productType;
+        this.subscriptionType = subscriptionType;
+    }
+
     /**
      * @return The ID of the product. The value is formulated as `&lt;product_code&gt;:&lt;product_type&gt;:&lt;subscription_type&gt;`.
      * 
@@ -83,14 +96,18 @@ public final class GetOpenApiProductsProduct {
     public static Builder builder(GetOpenApiProductsProduct defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private String productCode;
         private String productName;
         private String productType;
         private String subscriptionType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetOpenApiProductsProduct defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -100,39 +117,27 @@ public final class GetOpenApiProductsProduct {
     	      this.subscriptionType = defaults.subscriptionType;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder productCode(String productCode) {
             this.productCode = Objects.requireNonNull(productCode);
             return this;
         }
-        @CustomType.Setter
         public Builder productName(String productName) {
             this.productName = Objects.requireNonNull(productName);
             return this;
         }
-        @CustomType.Setter
         public Builder productType(String productType) {
             this.productType = Objects.requireNonNull(productType);
             return this;
         }
-        @CustomType.Setter
         public Builder subscriptionType(String subscriptionType) {
             this.subscriptionType = Objects.requireNonNull(subscriptionType);
             return this;
-        }
-        public GetOpenApiProductsProduct build() {
-            final var o = new GetOpenApiProductsProduct();
-            o.id = id;
-            o.productCode = productCode;
-            o.productName = productName;
-            o.productType = productType;
-            o.subscriptionType = subscriptionType;
-            return o;
+        }        public GetOpenApiProductsProduct build() {
+            return new GetOpenApiProductsProduct(id, productCode, productName, productType, subscriptionType);
         }
     }
 }

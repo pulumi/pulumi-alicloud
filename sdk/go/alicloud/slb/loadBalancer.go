@@ -10,6 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:** This resource has been renamed to slb.ApplicationLoadBalancer from version 1.123.1.
+//
+// Provides an Application Load Balancer resource.
+//
+// > **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create "paybybandwidth" instance.
+//
+// > **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
+// For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
+//
 // ## Example Usage
 //
 // ```go
@@ -120,8 +129,16 @@ type LoadBalancer struct {
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead
 	Name        pulumi.StringOutput `pulumi:"name"`
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	Period      pulumi.IntPtrOutput `pulumi:"period"`
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The Id of resource group which the SLB belongs.
+	//
+	// > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+	//
+	// > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+	//
+	// > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	SlaveZoneId pulumi.StringOutput `pulumi:"slaveZoneId"`
@@ -195,8 +212,16 @@ type loadBalancerState struct {
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead
 	Name        *string `pulumi:"name"`
 	PaymentType *string `pulumi:"paymentType"`
-	Period      *int    `pulumi:"period"`
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period *int `pulumi:"period"`
 	// The Id of resource group which the SLB belongs.
+	//
+	// > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+	//
+	// > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+	//
+	// > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	SlaveZoneId *string `pulumi:"slaveZoneId"`
@@ -242,8 +267,16 @@ type LoadBalancerState struct {
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead
 	Name        pulumi.StringPtrInput
 	PaymentType pulumi.StringPtrInput
-	Period      pulumi.IntPtrInput
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period pulumi.IntPtrInput
 	// The Id of resource group which the SLB belongs.
+	//
+	// > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+	//
+	// > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+	//
+	// > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
 	ResourceGroupId pulumi.StringPtrInput
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	SlaveZoneId pulumi.StringPtrInput
@@ -293,8 +326,16 @@ type loadBalancerArgs struct {
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead
 	Name        *string `pulumi:"name"`
 	PaymentType *string `pulumi:"paymentType"`
-	Period      *int    `pulumi:"period"`
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period *int `pulumi:"period"`
 	// The Id of resource group which the SLB belongs.
+	//
+	// > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+	//
+	// > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+	//
+	// > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	SlaveZoneId *string `pulumi:"slaveZoneId"`
@@ -341,8 +382,16 @@ type LoadBalancerArgs struct {
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead
 	Name        pulumi.StringPtrInput
 	PaymentType pulumi.StringPtrInput
-	Period      pulumi.IntPtrInput
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period pulumi.IntPtrInput
 	// The Id of resource group which the SLB belongs.
+	//
+	// > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+	//
+	// > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+	//
+	// > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
 	ResourceGroupId pulumi.StringPtrInput
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
 	SlaveZoneId pulumi.StringPtrInput
@@ -516,11 +565,19 @@ func (o LoadBalancerOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
+// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 func (o LoadBalancerOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
 // The Id of resource group which the SLB belongs.
+//
+// > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+//
+// > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+//
+// > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
 func (o LoadBalancerOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }

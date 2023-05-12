@@ -19,84 +19,119 @@ public final class GetGatewayVpnAttachmentsAttachment {
      * @return The configurations of the BGP routing protocol.
      * 
      */
-    private List<GetGatewayVpnAttachmentsAttachmentBgpConfig> bgpConfigs;
+    private final List<GetGatewayVpnAttachmentsAttachmentBgpConfig> bgpConfigs;
     /**
      * @return The status of the IPsec-VPN connection.
      * 
      */
-    private String connectionStatus;
+    private final String connectionStatus;
     /**
      * @return The creation time of the resource.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The ID of the customer gateway.
      * 
      */
-    private String customerGatewayId;
+    private final String customerGatewayId;
     /**
      * @return Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
      * 
      */
-    private Boolean effectImmediately;
+    private final Boolean effectImmediately;
     /**
      * @return The health check configurations.
      * 
      */
-    private List<GetGatewayVpnAttachmentsAttachmentHealthCheckConfig> healthCheckConfigs;
+    private final List<GetGatewayVpnAttachmentsAttachmentHealthCheckConfig> healthCheckConfigs;
     /**
      * @return The ID of the Vpn Attachment.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Configuration negotiated in the second stage.
      * 
      */
-    private List<GetGatewayVpnAttachmentsAttachmentIkeConfig> ikeConfigs;
+    private final List<GetGatewayVpnAttachmentsAttachmentIkeConfig> ikeConfigs;
     /**
      * @return The internet ip of the resource. The alicloud.cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
      * 
      */
-    private String internetIp;
+    private final String internetIp;
     /**
      * @return The configuration of Phase 2 negotiations.
      * 
      */
-    private List<GetGatewayVpnAttachmentsAttachmentIpsecConfig> ipsecConfigs;
+    private final List<GetGatewayVpnAttachmentsAttachmentIpsecConfig> ipsecConfigs;
     /**
      * @return The CIDR block of the virtual private cloud (VPC).
      * 
      */
-    private String localSubnet;
+    private final String localSubnet;
     /**
      * @return The network type.
      * 
      */
-    private String networkType;
+    private final String networkType;
     /**
      * @return The CIDR block of the on-premises data center.
      * 
      */
-    private String remoteSubnet;
+    private final String remoteSubnet;
     /**
      * @return The status of the resource.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The name of the IPsec-VPN connection.
      * 
      */
-    private String vpnAttachmentName;
+    private final String vpnAttachmentName;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private String vpnConnectionId;
+    private final String vpnConnectionId;
 
-    private GetGatewayVpnAttachmentsAttachment() {}
+    @CustomType.Constructor
+    private GetGatewayVpnAttachmentsAttachment(
+        @CustomType.Parameter("bgpConfigs") List<GetGatewayVpnAttachmentsAttachmentBgpConfig> bgpConfigs,
+        @CustomType.Parameter("connectionStatus") String connectionStatus,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("customerGatewayId") String customerGatewayId,
+        @CustomType.Parameter("effectImmediately") Boolean effectImmediately,
+        @CustomType.Parameter("healthCheckConfigs") List<GetGatewayVpnAttachmentsAttachmentHealthCheckConfig> healthCheckConfigs,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ikeConfigs") List<GetGatewayVpnAttachmentsAttachmentIkeConfig> ikeConfigs,
+        @CustomType.Parameter("internetIp") String internetIp,
+        @CustomType.Parameter("ipsecConfigs") List<GetGatewayVpnAttachmentsAttachmentIpsecConfig> ipsecConfigs,
+        @CustomType.Parameter("localSubnet") String localSubnet,
+        @CustomType.Parameter("networkType") String networkType,
+        @CustomType.Parameter("remoteSubnet") String remoteSubnet,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("vpnAttachmentName") String vpnAttachmentName,
+        @CustomType.Parameter("vpnConnectionId") String vpnConnectionId) {
+        this.bgpConfigs = bgpConfigs;
+        this.connectionStatus = connectionStatus;
+        this.createTime = createTime;
+        this.customerGatewayId = customerGatewayId;
+        this.effectImmediately = effectImmediately;
+        this.healthCheckConfigs = healthCheckConfigs;
+        this.id = id;
+        this.ikeConfigs = ikeConfigs;
+        this.internetIp = internetIp;
+        this.ipsecConfigs = ipsecConfigs;
+        this.localSubnet = localSubnet;
+        this.networkType = networkType;
+        this.remoteSubnet = remoteSubnet;
+        this.status = status;
+        this.vpnAttachmentName = vpnAttachmentName;
+        this.vpnConnectionId = vpnConnectionId;
+    }
+
     /**
      * @return The configurations of the BGP routing protocol.
      * 
@@ -217,7 +252,7 @@ public final class GetGatewayVpnAttachmentsAttachment {
     public static Builder builder(GetGatewayVpnAttachmentsAttachment defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetGatewayVpnAttachmentsAttachmentBgpConfig> bgpConfigs;
         private String connectionStatus;
@@ -235,7 +270,11 @@ public final class GetGatewayVpnAttachmentsAttachment {
         private String status;
         private String vpnAttachmentName;
         private String vpnConnectionId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetGatewayVpnAttachmentsAttachment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bgpConfigs = defaults.bgpConfigs;
@@ -256,7 +295,6 @@ public final class GetGatewayVpnAttachmentsAttachment {
     	      this.vpnConnectionId = defaults.vpnConnectionId;
         }
 
-        @CustomType.Setter
         public Builder bgpConfigs(List<GetGatewayVpnAttachmentsAttachmentBgpConfig> bgpConfigs) {
             this.bgpConfigs = Objects.requireNonNull(bgpConfigs);
             return this;
@@ -264,27 +302,22 @@ public final class GetGatewayVpnAttachmentsAttachment {
         public Builder bgpConfigs(GetGatewayVpnAttachmentsAttachmentBgpConfig... bgpConfigs) {
             return bgpConfigs(List.of(bgpConfigs));
         }
-        @CustomType.Setter
         public Builder connectionStatus(String connectionStatus) {
             this.connectionStatus = Objects.requireNonNull(connectionStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder customerGatewayId(String customerGatewayId) {
             this.customerGatewayId = Objects.requireNonNull(customerGatewayId);
             return this;
         }
-        @CustomType.Setter
         public Builder effectImmediately(Boolean effectImmediately) {
             this.effectImmediately = Objects.requireNonNull(effectImmediately);
             return this;
         }
-        @CustomType.Setter
         public Builder healthCheckConfigs(List<GetGatewayVpnAttachmentsAttachmentHealthCheckConfig> healthCheckConfigs) {
             this.healthCheckConfigs = Objects.requireNonNull(healthCheckConfigs);
             return this;
@@ -292,12 +325,10 @@ public final class GetGatewayVpnAttachmentsAttachment {
         public Builder healthCheckConfigs(GetGatewayVpnAttachmentsAttachmentHealthCheckConfig... healthCheckConfigs) {
             return healthCheckConfigs(List.of(healthCheckConfigs));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ikeConfigs(List<GetGatewayVpnAttachmentsAttachmentIkeConfig> ikeConfigs) {
             this.ikeConfigs = Objects.requireNonNull(ikeConfigs);
             return this;
@@ -305,12 +336,10 @@ public final class GetGatewayVpnAttachmentsAttachment {
         public Builder ikeConfigs(GetGatewayVpnAttachmentsAttachmentIkeConfig... ikeConfigs) {
             return ikeConfigs(List.of(ikeConfigs));
         }
-        @CustomType.Setter
         public Builder internetIp(String internetIp) {
             this.internetIp = Objects.requireNonNull(internetIp);
             return this;
         }
-        @CustomType.Setter
         public Builder ipsecConfigs(List<GetGatewayVpnAttachmentsAttachmentIpsecConfig> ipsecConfigs) {
             this.ipsecConfigs = Objects.requireNonNull(ipsecConfigs);
             return this;
@@ -318,55 +347,31 @@ public final class GetGatewayVpnAttachmentsAttachment {
         public Builder ipsecConfigs(GetGatewayVpnAttachmentsAttachmentIpsecConfig... ipsecConfigs) {
             return ipsecConfigs(List.of(ipsecConfigs));
         }
-        @CustomType.Setter
         public Builder localSubnet(String localSubnet) {
             this.localSubnet = Objects.requireNonNull(localSubnet);
             return this;
         }
-        @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
             return this;
         }
-        @CustomType.Setter
         public Builder remoteSubnet(String remoteSubnet) {
             this.remoteSubnet = Objects.requireNonNull(remoteSubnet);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder vpnAttachmentName(String vpnAttachmentName) {
             this.vpnAttachmentName = Objects.requireNonNull(vpnAttachmentName);
             return this;
         }
-        @CustomType.Setter
         public Builder vpnConnectionId(String vpnConnectionId) {
             this.vpnConnectionId = Objects.requireNonNull(vpnConnectionId);
             return this;
-        }
-        public GetGatewayVpnAttachmentsAttachment build() {
-            final var o = new GetGatewayVpnAttachmentsAttachment();
-            o.bgpConfigs = bgpConfigs;
-            o.connectionStatus = connectionStatus;
-            o.createTime = createTime;
-            o.customerGatewayId = customerGatewayId;
-            o.effectImmediately = effectImmediately;
-            o.healthCheckConfigs = healthCheckConfigs;
-            o.id = id;
-            o.ikeConfigs = ikeConfigs;
-            o.internetIp = internetIp;
-            o.ipsecConfigs = ipsecConfigs;
-            o.localSubnet = localSubnet;
-            o.networkType = networkType;
-            o.remoteSubnet = remoteSubnet;
-            o.status = status;
-            o.vpnAttachmentName = vpnAttachmentName;
-            o.vpnConnectionId = vpnConnectionId;
-            return o;
+        }        public GetGatewayVpnAttachmentsAttachment build() {
+            return new GetGatewayVpnAttachmentsAttachment(bgpConfigs, connectionStatus, createTime, customerGatewayId, effectImmediately, healthCheckConfigs, id, ikeConfigs, internetIp, ipsecConfigs, localSubnet, networkType, remoteSubnet, status, vpnAttachmentName, vpnConnectionId);
         }
     }
 }

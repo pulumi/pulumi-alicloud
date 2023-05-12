@@ -193,6 +193,7 @@ def get_common_bandwidth_packages(bandwidth_package_name: Optional[str] = None,
     :param Sequence[str] ids: A list of Common Bandwidth Packages IDs.
     :param bool include_reservation_data: Specifies whether to return data of orders that have not taken effect.
     :param str name_regex: A regex string to filter results by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the common bandwidth package belongs.
     :param str status: The status of bandwidth package. Valid values: `Available` and `Pending`.
     """
@@ -263,6 +264,7 @@ def get_common_bandwidth_packages_output(bandwidth_package_name: Optional[pulumi
     :param Sequence[str] ids: A list of Common Bandwidth Packages IDs.
     :param bool include_reservation_data: Specifies whether to return data of orders that have not taken effect.
     :param str name_regex: A regex string to filter results by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the common bandwidth package belongs.
     :param str status: The status of bandwidth package. Valid values: `Available` and `Pending`.
     """

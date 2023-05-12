@@ -13,24 +13,35 @@ public final class GetCallerIdentityResult {
      * @return Account ID.
      * 
      */
-    private String accountId;
+    private final String accountId;
     /**
      * @return The Alibaba Cloud Resource Name (ARN) of the user making the call.
      * 
      */
-    private String arn;
+    private final String arn;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The type of the princiapal. RAMUser for users.
      * 
      */
-    private String identityType;
+    private final String identityType;
 
-    private GetCallerIdentityResult() {}
+    @CustomType.Constructor
+    private GetCallerIdentityResult(
+        @CustomType.Parameter("accountId") String accountId,
+        @CustomType.Parameter("arn") String arn,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("identityType") String identityType) {
+        this.accountId = accountId;
+        this.arn = arn;
+        this.id = id;
+        this.identityType = identityType;
+    }
+
     /**
      * @return Account ID.
      * 
@@ -67,13 +78,17 @@ public final class GetCallerIdentityResult {
     public static Builder builder(GetCallerIdentityResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String accountId;
         private String arn;
         private String id;
         private String identityType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetCallerIdentityResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -82,33 +97,23 @@ public final class GetCallerIdentityResult {
     	      this.identityType = defaults.identityType;
         }
 
-        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
-        @CustomType.Setter
         public Builder arn(String arn) {
             this.arn = Objects.requireNonNull(arn);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder identityType(String identityType) {
             this.identityType = Objects.requireNonNull(identityType);
             return this;
-        }
-        public GetCallerIdentityResult build() {
-            final var o = new GetCallerIdentityResult();
-            o.accountId = accountId;
-            o.arn = arn;
-            o.id = id;
-            o.identityType = identityType;
-            return o;
+        }        public GetCallerIdentityResult build() {
+            return new GetCallerIdentityResult(accountId, arn, id, identityType);
         }
     }
 }

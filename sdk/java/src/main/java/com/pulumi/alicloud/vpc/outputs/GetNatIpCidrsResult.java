@@ -13,22 +13,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNatIpCidrsResult {
-    private List<GetNatIpCidrsCidr> cidrs;
+    private final List<GetNatIpCidrsCidr> cidrs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private String natGatewayId;
-    private @Nullable List<String> natIpCidrNames;
-    private @Nullable List<String> natIpCidrs;
-    private @Nullable String outputFile;
-    private @Nullable String status;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final String natGatewayId;
+    private final @Nullable List<String> natIpCidrNames;
+    private final @Nullable List<String> natIpCidrs;
+    private final @Nullable String outputFile;
+    private final @Nullable String status;
 
-    private GetNatIpCidrsResult() {}
+    @CustomType.Constructor
+    private GetNatIpCidrsResult(
+        @CustomType.Parameter("cidrs") List<GetNatIpCidrsCidr> cidrs,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("natGatewayId") String natGatewayId,
+        @CustomType.Parameter("natIpCidrNames") @Nullable List<String> natIpCidrNames,
+        @CustomType.Parameter("natIpCidrs") @Nullable List<String> natIpCidrs,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.cidrs = cidrs;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.natGatewayId = natGatewayId;
+        this.natIpCidrNames = natIpCidrNames;
+        this.natIpCidrs = natIpCidrs;
+        this.outputFile = outputFile;
+        this.status = status;
+    }
+
     public List<GetNatIpCidrsCidr> cidrs() {
         return this.cidrs;
     }
@@ -71,7 +94,7 @@ public final class GetNatIpCidrsResult {
     public static Builder builder(GetNatIpCidrsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetNatIpCidrsCidr> cidrs;
         private String id;
@@ -83,7 +106,11 @@ public final class GetNatIpCidrsResult {
         private @Nullable List<String> natIpCidrs;
         private @Nullable String outputFile;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetNatIpCidrsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrs = defaults.cidrs;
@@ -98,7 +125,6 @@ public final class GetNatIpCidrsResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder cidrs(List<GetNatIpCidrsCidr> cidrs) {
             this.cidrs = Objects.requireNonNull(cidrs);
             return this;
@@ -106,12 +132,10 @@ public final class GetNatIpCidrsResult {
         public Builder cidrs(GetNatIpCidrsCidr... cidrs) {
             return cidrs(List.of(cidrs));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -119,12 +143,10 @@ public final class GetNatIpCidrsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -132,12 +154,10 @@ public final class GetNatIpCidrsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder natGatewayId(String natGatewayId) {
             this.natGatewayId = Objects.requireNonNull(natGatewayId);
             return this;
         }
-        @CustomType.Setter
         public Builder natIpCidrNames(@Nullable List<String> natIpCidrNames) {
             this.natIpCidrNames = natIpCidrNames;
             return this;
@@ -145,7 +165,6 @@ public final class GetNatIpCidrsResult {
         public Builder natIpCidrNames(String... natIpCidrNames) {
             return natIpCidrNames(List.of(natIpCidrNames));
         }
-        @CustomType.Setter
         public Builder natIpCidrs(@Nullable List<String> natIpCidrs) {
             this.natIpCidrs = natIpCidrs;
             return this;
@@ -153,29 +172,15 @@ public final class GetNatIpCidrsResult {
         public Builder natIpCidrs(String... natIpCidrs) {
             return natIpCidrs(List.of(natIpCidrs));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetNatIpCidrsResult build() {
-            final var o = new GetNatIpCidrsResult();
-            o.cidrs = cidrs;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.natGatewayId = natGatewayId;
-            o.natIpCidrNames = natIpCidrNames;
-            o.natIpCidrs = natIpCidrs;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+        }        public GetNatIpCidrsResult build() {
+            return new GetNatIpCidrsResult(cidrs, id, ids, nameRegex, names, natGatewayId, natIpCidrNames, natIpCidrs, outputFile, status);
         }
     }
 }

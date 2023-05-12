@@ -176,6 +176,16 @@ type Attachment struct {
 	pulumi.CustomResourceState
 
 	// Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+	//
+	// > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
+	//
+	// > **NOTE:** Restrictions on attaching ECS instances:
+	//
+	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+	// - The attached ECS instances must in the running state.
+	// - The attached ECS instances has not been attached to other scaling groups.
+	// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
 	InstanceIds pulumi.StringArrayOutput `pulumi:"instanceIds"`
@@ -219,6 +229,16 @@ func GetAttachment(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Attachment resources.
 type attachmentState struct {
 	// Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+	//
+	// > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
+	//
+	// > **NOTE:** Restrictions on attaching ECS instances:
+	//
+	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+	// - The attached ECS instances must in the running state.
+	// - The attached ECS instances has not been attached to other scaling groups.
+	// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
 	Force *bool `pulumi:"force"`
 	// ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
 	InstanceIds []string `pulumi:"instanceIds"`
@@ -228,6 +248,16 @@ type attachmentState struct {
 
 type AttachmentState struct {
 	// Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+	//
+	// > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
+	//
+	// > **NOTE:** Restrictions on attaching ECS instances:
+	//
+	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+	// - The attached ECS instances must in the running state.
+	// - The attached ECS instances has not been attached to other scaling groups.
+	// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
 	Force pulumi.BoolPtrInput
 	// ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
 	InstanceIds pulumi.StringArrayInput
@@ -241,6 +271,16 @@ func (AttachmentState) ElementType() reflect.Type {
 
 type attachmentArgs struct {
 	// Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+	//
+	// > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
+	//
+	// > **NOTE:** Restrictions on attaching ECS instances:
+	//
+	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+	// - The attached ECS instances must in the running state.
+	// - The attached ECS instances has not been attached to other scaling groups.
+	// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
 	Force *bool `pulumi:"force"`
 	// ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
 	InstanceIds []string `pulumi:"instanceIds"`
@@ -251,6 +291,16 @@ type attachmentArgs struct {
 // The set of arguments for constructing a Attachment resource.
 type AttachmentArgs struct {
 	// Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+	//
+	// > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
+	//
+	// > **NOTE:** Restrictions on attaching ECS instances:
+	//
+	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+	// - The attached ECS instances must in the running state.
+	// - The attached ECS instances has not been attached to other scaling groups.
+	// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
 	Force pulumi.BoolPtrInput
 	// ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
 	InstanceIds pulumi.StringArrayInput
@@ -346,6 +396,16 @@ func (o AttachmentOutput) ToAttachmentOutputWithContext(ctx context.Context) Att
 }
 
 // Whether to remove forcibly "AutoCreated" ECS instances in order to release scaling group capacity "MaxSize" for attaching ECS instances. Default to false.
+//
+// > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
+//
+// > **NOTE:** Restrictions on attaching ECS instances:
+//
+// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+// - The attached ECS instances must in the running state.
+// - The attached ECS instances has not been attached to other scaling groups.
+// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
 func (o AttachmentOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Attachment) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }

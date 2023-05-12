@@ -56,7 +56,8 @@ type GetDomainTxtGuidArgs struct {
 	// Verified domain name.
 	DomainName string `pulumi:"domainName"`
 	// User language.
-	Lang       *string `pulumi:"lang"`
+	Lang *string `pulumi:"lang"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Txt verification function. Value:`ADD_SUB_DOMAIN`, `RETRIEVAL`.
 	Type string `pulumi:"type"`
@@ -94,7 +95,8 @@ type GetDomainTxtGuidOutputArgs struct {
 	// Verified domain name.
 	DomainName pulumi.StringInput `pulumi:"domainName"`
 	// User language.
-	Lang       pulumi.StringPtrInput `pulumi:"lang"`
+	Lang pulumi.StringPtrInput `pulumi:"lang"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Txt verification function. Value:`ADD_SUB_DOMAIN`, `RETRIEVAL`.
 	Type pulumi.StringInput `pulumi:"type"`

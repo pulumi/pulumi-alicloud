@@ -17,89 +17,126 @@ public final class GetInstancesInstance {
      * @return the number of nodes of the Database file system.
      * 
      */
-    private Integer attachNodeNumber;
+    private final Integer attachNodeNumber;
     /**
      * @return The type of the Database file system. Valid values: `standard`.
      * 
      */
-    private String category;
+    private final String category;
     /**
      * @return The create time of the Database file system.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The cluster ID of the Database file system.
      * 
      */
-    private String dbfsClusterId;
+    private final String dbfsClusterId;
     /**
      * @return The collection of ECS instances mounted to the Database file system.
      * 
      */
-    private List<GetInstancesInstanceEcsList> ecsLists;
+    private final List<GetInstancesInstanceEcsList> ecsLists;
     /**
      * @return Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
      * 
      */
-    private Boolean enableRaid;
+    private final Boolean enableRaid;
     /**
      * @return Whether to encrypt the Database file system. Valid values: `true` and `false`.
      * 
      */
-    private Boolean encryption;
+    private final Boolean encryption;
     /**
      * @return The ID of the Instance.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the Database File System
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return The name of the Database file system.
      * 
      */
-    private String instanceName;
+    private final String instanceName;
     /**
      * @return The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
      * 
      */
-    private String kmsKeyId;
+    private final String kmsKeyId;
     /**
      * @return Thr payment type of the Database file system. Valid value: `PayAsYouGo`.
      * 
      */
-    private String paymentType;
+    private final String paymentType;
     /**
      * @return The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
      * 
      */
-    private String performanceLevel;
+    private final String performanceLevel;
     /**
      * @return The number of strip . When `enable_raid` parameter is set to `true` will transfer. This parameter is valid When `enable_raid` parameter is set to `true`.
      * 
      */
-    private String raidStripeUnitNumber;
+    private final String raidStripeUnitNumber;
     /**
      * @return The size Of the Database file system. Unit: GiB.
      * 
      */
-    private Integer size;
+    private final Integer size;
     /**
      * @return The status of the Database file system.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The Zone ID of the Database file system.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetInstancesInstance() {}
+    @CustomType.Constructor
+    private GetInstancesInstance(
+        @CustomType.Parameter("attachNodeNumber") Integer attachNodeNumber,
+        @CustomType.Parameter("category") String category,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("dbfsClusterId") String dbfsClusterId,
+        @CustomType.Parameter("ecsLists") List<GetInstancesInstanceEcsList> ecsLists,
+        @CustomType.Parameter("enableRaid") Boolean enableRaid,
+        @CustomType.Parameter("encryption") Boolean encryption,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("instanceName") String instanceName,
+        @CustomType.Parameter("kmsKeyId") String kmsKeyId,
+        @CustomType.Parameter("paymentType") String paymentType,
+        @CustomType.Parameter("performanceLevel") String performanceLevel,
+        @CustomType.Parameter("raidStripeUnitNumber") String raidStripeUnitNumber,
+        @CustomType.Parameter("size") Integer size,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.attachNodeNumber = attachNodeNumber;
+        this.category = category;
+        this.createTime = createTime;
+        this.dbfsClusterId = dbfsClusterId;
+        this.ecsLists = ecsLists;
+        this.enableRaid = enableRaid;
+        this.encryption = encryption;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.instanceName = instanceName;
+        this.kmsKeyId = kmsKeyId;
+        this.paymentType = paymentType;
+        this.performanceLevel = performanceLevel;
+        this.raidStripeUnitNumber = raidStripeUnitNumber;
+        this.size = size;
+        this.status = status;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return the number of nodes of the Database file system.
      * 
@@ -227,7 +264,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer attachNodeNumber;
         private String category;
@@ -246,7 +283,11 @@ public final class GetInstancesInstance {
         private Integer size;
         private String status;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attachNodeNumber = defaults.attachNodeNumber;
@@ -268,27 +309,22 @@ public final class GetInstancesInstance {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder attachNodeNumber(Integer attachNodeNumber) {
             this.attachNodeNumber = Objects.requireNonNull(attachNodeNumber);
             return this;
         }
-        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder dbfsClusterId(String dbfsClusterId) {
             this.dbfsClusterId = Objects.requireNonNull(dbfsClusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder ecsLists(List<GetInstancesInstanceEcsList> ecsLists) {
             this.ecsLists = Objects.requireNonNull(ecsLists);
             return this;
@@ -296,86 +332,55 @@ public final class GetInstancesInstance {
         public Builder ecsLists(GetInstancesInstanceEcsList... ecsLists) {
             return ecsLists(List.of(ecsLists));
         }
-        @CustomType.Setter
         public Builder enableRaid(Boolean enableRaid) {
             this.enableRaid = Objects.requireNonNull(enableRaid);
             return this;
         }
-        @CustomType.Setter
         public Builder encryption(Boolean encryption) {
             this.encryption = Objects.requireNonNull(encryption);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
-        @CustomType.Setter
         public Builder kmsKeyId(String kmsKeyId) {
             this.kmsKeyId = Objects.requireNonNull(kmsKeyId);
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
-        @CustomType.Setter
         public Builder performanceLevel(String performanceLevel) {
             this.performanceLevel = Objects.requireNonNull(performanceLevel);
             return this;
         }
-        @CustomType.Setter
         public Builder raidStripeUnitNumber(String raidStripeUnitNumber) {
             this.raidStripeUnitNumber = Objects.requireNonNull(raidStripeUnitNumber);
             return this;
         }
-        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.attachNodeNumber = attachNodeNumber;
-            o.category = category;
-            o.createTime = createTime;
-            o.dbfsClusterId = dbfsClusterId;
-            o.ecsLists = ecsLists;
-            o.enableRaid = enableRaid;
-            o.encryption = encryption;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.kmsKeyId = kmsKeyId;
-            o.paymentType = paymentType;
-            o.performanceLevel = performanceLevel;
-            o.raidStripeUnitNumber = raidStripeUnitNumber;
-            o.size = size;
-            o.status = status;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetInstancesInstance build() {
+            return new GetInstancesInstance(attachNodeNumber, category, createTime, dbfsClusterId, ecsLists, enableRaid, encryption, id, instanceId, instanceName, kmsKeyId, paymentType, performanceLevel, raidStripeUnitNumber, size, status, zoneId);
         }
     }
 }

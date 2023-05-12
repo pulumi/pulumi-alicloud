@@ -14,59 +14,84 @@ public final class GetDataLimitsLimit {
      * @return Whether to enable the log auditing feature.
      * 
      */
-    private Integer auditStatus;
+    private final Integer auditStatus;
     /**
      * @return The status of the connectivity test between the data asset and SDDP.
      * 
      */
-    private Integer checkStatus;
+    private final Integer checkStatus;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private String dataLimitId;
+    private final String dataLimitId;
     /**
      * @return The type of the database.
      * 
      */
-    private String engineType;
+    private final String engineType;
     /**
      * @return The ID of the Data Limit.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The name of the service to which the data asset belongs.
      * 
      */
-    private String localName;
+    private final String localName;
     /**
      * @return The retention period of raw logs after you enable the log auditing feature.
      * 
      */
-    private Integer logStoreDay;
+    private final Integer logStoreDay;
     /**
      * @return The ID of the data asset.
      * 
      */
-    private String parentId;
+    private final String parentId;
     /**
      * @return The port that is used to connect to the database.
      * 
      */
-    private Integer port;
+    private final Integer port;
     /**
      * @return The type of the service to which the data asset belongs.
      * 
      */
-    private String resourceType;
+    private final String resourceType;
     /**
      * @return The name of the user who owns the data asset.
      * 
      */
-    private String userName;
+    private final String userName;
 
-    private GetDataLimitsLimit() {}
+    @CustomType.Constructor
+    private GetDataLimitsLimit(
+        @CustomType.Parameter("auditStatus") Integer auditStatus,
+        @CustomType.Parameter("checkStatus") Integer checkStatus,
+        @CustomType.Parameter("dataLimitId") String dataLimitId,
+        @CustomType.Parameter("engineType") String engineType,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("localName") String localName,
+        @CustomType.Parameter("logStoreDay") Integer logStoreDay,
+        @CustomType.Parameter("parentId") String parentId,
+        @CustomType.Parameter("port") Integer port,
+        @CustomType.Parameter("resourceType") String resourceType,
+        @CustomType.Parameter("userName") String userName) {
+        this.auditStatus = auditStatus;
+        this.checkStatus = checkStatus;
+        this.dataLimitId = dataLimitId;
+        this.engineType = engineType;
+        this.id = id;
+        this.localName = localName;
+        this.logStoreDay = logStoreDay;
+        this.parentId = parentId;
+        this.port = port;
+        this.resourceType = resourceType;
+        this.userName = userName;
+    }
+
     /**
      * @return Whether to enable the log auditing feature.
      * 
@@ -152,7 +177,7 @@ public final class GetDataLimitsLimit {
     public static Builder builder(GetDataLimitsLimit defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer auditStatus;
         private Integer checkStatus;
@@ -165,7 +190,11 @@ public final class GetDataLimitsLimit {
         private Integer port;
         private String resourceType;
         private String userName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDataLimitsLimit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.auditStatus = defaults.auditStatus;
@@ -181,75 +210,51 @@ public final class GetDataLimitsLimit {
     	      this.userName = defaults.userName;
         }
 
-        @CustomType.Setter
         public Builder auditStatus(Integer auditStatus) {
             this.auditStatus = Objects.requireNonNull(auditStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder checkStatus(Integer checkStatus) {
             this.checkStatus = Objects.requireNonNull(checkStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder dataLimitId(String dataLimitId) {
             this.dataLimitId = Objects.requireNonNull(dataLimitId);
             return this;
         }
-        @CustomType.Setter
         public Builder engineType(String engineType) {
             this.engineType = Objects.requireNonNull(engineType);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder localName(String localName) {
             this.localName = Objects.requireNonNull(localName);
             return this;
         }
-        @CustomType.Setter
         public Builder logStoreDay(Integer logStoreDay) {
             this.logStoreDay = Objects.requireNonNull(logStoreDay);
             return this;
         }
-        @CustomType.Setter
         public Builder parentId(String parentId) {
             this.parentId = Objects.requireNonNull(parentId);
             return this;
         }
-        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceType(String resourceType) {
             this.resourceType = Objects.requireNonNull(resourceType);
             return this;
         }
-        @CustomType.Setter
         public Builder userName(String userName) {
             this.userName = Objects.requireNonNull(userName);
             return this;
-        }
-        public GetDataLimitsLimit build() {
-            final var o = new GetDataLimitsLimit();
-            o.auditStatus = auditStatus;
-            o.checkStatus = checkStatus;
-            o.dataLimitId = dataLimitId;
-            o.engineType = engineType;
-            o.id = id;
-            o.localName = localName;
-            o.logStoreDay = logStoreDay;
-            o.parentId = parentId;
-            o.port = port;
-            o.resourceType = resourceType;
-            o.userName = userName;
-            return o;
+        }        public GetDataLimitsLimit build() {
+            return new GetDataLimitsLimit(auditStatus, checkStatus, dataLimitId, engineType, id, localName, logStoreDay, parentId, port, resourceType, userName);
         }
     }
 }

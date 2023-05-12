@@ -137,7 +137,8 @@ type GetTrafficMirrorSessionsArgs struct {
 	// A list of Traffic Mirror Session IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Traffic Mirror Session name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The priority of the traffic mirror session. A smaller value indicates a higher priority.
 	Priority *int `pulumi:"priority"`
@@ -191,7 +192,8 @@ type GetTrafficMirrorSessionsOutputArgs struct {
 	// A list of Traffic Mirror Session IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Traffic Mirror Session name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The priority of the traffic mirror session. A smaller value indicates a higher priority.
 	Priority pulumi.IntPtrInput `pulumi:"priority"`

@@ -198,6 +198,7 @@ def get_records(domain_name: Optional[str] = None,
     :param Sequence[str] ids: A list of record IDs.
     :param bool is_locked: Whether the record is locked or not.
     :param str line: ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: Record status. Valid items are `ENABLE` and `DISABLE`.
     :param str type: Record type. Valid items are `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
     :param str value_regex: Host record value regex.
@@ -264,6 +265,7 @@ def get_records_output(domain_name: Optional[pulumi.Input[str]] = None,
     :param Sequence[str] ids: A list of record IDs.
     :param bool is_locked: Whether the record is locked or not.
     :param str line: ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: Record status. Valid items are `ENABLE` and `DISABLE`.
     :param str type: Record type. Valid items are `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
     :param str value_regex: Host record value regex.

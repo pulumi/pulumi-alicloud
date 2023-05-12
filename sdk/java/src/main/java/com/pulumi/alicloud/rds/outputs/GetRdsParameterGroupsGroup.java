@@ -12,18 +12,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRdsParameterGroupsGroup {
-    private String engine;
-    private String engineVersion;
-    private Integer forceRestart;
-    private String id;
-    private Integer paramCounts;
-    private List<GetRdsParameterGroupsGroupParamDetail> paramDetails;
-    private String parameterGroupDesc;
-    private String parameterGroupId;
-    private String parameterGroupName;
-    private Integer parameterGroupType;
+    private final String engine;
+    private final String engineVersion;
+    private final Integer forceRestart;
+    private final String id;
+    private final Integer paramCounts;
+    private final List<GetRdsParameterGroupsGroupParamDetail> paramDetails;
+    private final String parameterGroupDesc;
+    private final String parameterGroupId;
+    private final String parameterGroupName;
+    private final Integer parameterGroupType;
 
-    private GetRdsParameterGroupsGroup() {}
+    @CustomType.Constructor
+    private GetRdsParameterGroupsGroup(
+        @CustomType.Parameter("engine") String engine,
+        @CustomType.Parameter("engineVersion") String engineVersion,
+        @CustomType.Parameter("forceRestart") Integer forceRestart,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("paramCounts") Integer paramCounts,
+        @CustomType.Parameter("paramDetails") List<GetRdsParameterGroupsGroupParamDetail> paramDetails,
+        @CustomType.Parameter("parameterGroupDesc") String parameterGroupDesc,
+        @CustomType.Parameter("parameterGroupId") String parameterGroupId,
+        @CustomType.Parameter("parameterGroupName") String parameterGroupName,
+        @CustomType.Parameter("parameterGroupType") Integer parameterGroupType) {
+        this.engine = engine;
+        this.engineVersion = engineVersion;
+        this.forceRestart = forceRestart;
+        this.id = id;
+        this.paramCounts = paramCounts;
+        this.paramDetails = paramDetails;
+        this.parameterGroupDesc = parameterGroupDesc;
+        this.parameterGroupId = parameterGroupId;
+        this.parameterGroupName = parameterGroupName;
+        this.parameterGroupType = parameterGroupType;
+    }
+
     public String engine() {
         return this.engine;
     }
@@ -62,7 +85,7 @@ public final class GetRdsParameterGroupsGroup {
     public static Builder builder(GetRdsParameterGroupsGroup defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String engine;
         private String engineVersion;
@@ -74,7 +97,11 @@ public final class GetRdsParameterGroupsGroup {
         private String parameterGroupId;
         private String parameterGroupName;
         private Integer parameterGroupType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRdsParameterGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.engine = defaults.engine;
@@ -89,32 +116,26 @@ public final class GetRdsParameterGroupsGroup {
     	      this.parameterGroupType = defaults.parameterGroupType;
         }
 
-        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
         }
-        @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
             this.engineVersion = Objects.requireNonNull(engineVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder forceRestart(Integer forceRestart) {
             this.forceRestart = Objects.requireNonNull(forceRestart);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder paramCounts(Integer paramCounts) {
             this.paramCounts = Objects.requireNonNull(paramCounts);
             return this;
         }
-        @CustomType.Setter
         public Builder paramDetails(List<GetRdsParameterGroupsGroupParamDetail> paramDetails) {
             this.paramDetails = Objects.requireNonNull(paramDetails);
             return this;
@@ -122,39 +143,23 @@ public final class GetRdsParameterGroupsGroup {
         public Builder paramDetails(GetRdsParameterGroupsGroupParamDetail... paramDetails) {
             return paramDetails(List.of(paramDetails));
         }
-        @CustomType.Setter
         public Builder parameterGroupDesc(String parameterGroupDesc) {
             this.parameterGroupDesc = Objects.requireNonNull(parameterGroupDesc);
             return this;
         }
-        @CustomType.Setter
         public Builder parameterGroupId(String parameterGroupId) {
             this.parameterGroupId = Objects.requireNonNull(parameterGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder parameterGroupName(String parameterGroupName) {
             this.parameterGroupName = Objects.requireNonNull(parameterGroupName);
             return this;
         }
-        @CustomType.Setter
         public Builder parameterGroupType(Integer parameterGroupType) {
             this.parameterGroupType = Objects.requireNonNull(parameterGroupType);
             return this;
-        }
-        public GetRdsParameterGroupsGroup build() {
-            final var o = new GetRdsParameterGroupsGroup();
-            o.engine = engine;
-            o.engineVersion = engineVersion;
-            o.forceRestart = forceRestart;
-            o.id = id;
-            o.paramCounts = paramCounts;
-            o.paramDetails = paramDetails;
-            o.parameterGroupDesc = parameterGroupDesc;
-            o.parameterGroupId = parameterGroupId;
-            o.parameterGroupName = parameterGroupName;
-            o.parameterGroupType = parameterGroupType;
-            return o;
+        }        public GetRdsParameterGroupsGroup build() {
+            return new GetRdsParameterGroupsGroup(engine, engineVersion, forceRestart, id, paramCounts, paramDetails, parameterGroupDesc, parameterGroupId, parameterGroupName, parameterGroupType);
         }
     }
 }

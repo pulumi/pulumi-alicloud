@@ -13,104 +13,147 @@ public final class GetDomainsDomain {
      * @return Track verification.
      * 
      */
-    private String cnameAuthStatus;
+    private final String cnameAuthStatus;
     /**
      * @return Indicates whether the CNAME record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
      * 
      */
-    private String cnameConfirmStatus;
+    private final String cnameConfirmStatus;
     /**
      * @return The value of the CNAME record.
      * 
      */
-    private String cnameRecord;
+    private final String cnameRecord;
     /**
      * @return The time when the DNS record was created.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The default domain name.
      * 
      */
-    private String defaultDomain;
+    private final String defaultDomain;
     /**
      * @return The value of the MX record.
      * 
      */
-    private String dnsMx;
+    private final String dnsMx;
     /**
      * @return The value of the SPF record.
      * 
      */
-    private String dnsSpf;
+    private final String dnsSpf;
     /**
      * @return The value of the TXT ownership record.
      * 
      */
-    private String dnsTxt;
+    private final String dnsTxt;
     /**
      * @return The ID of the domain name.
      * 
      */
-    private String domainId;
+    private final String domainId;
     /**
      * @return The domain name.
      * 
      */
-    private String domainName;
+    private final String domainName;
     /**
      * @return The type of the domain.
      * 
      */
-    private String domainType;
+    private final String domainType;
     /**
      * @return The status of ICP filing. Valid values: `0` and `1`. `0`: indicates that the domain name is not filed. `1`: indicates that the domain name is filed.
      * 
      */
-    private String icpStatus;
+    private final String icpStatus;
     /**
      * @return The ID of the Domain.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Indicates whether the MX record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
      * 
      */
-    private String mxAuthStatus;
+    private final String mxAuthStatus;
     /**
      * @return The MX verification record provided by Alibaba Cloud DNS.
      * 
      */
-    private String mxRecord;
+    private final String mxRecord;
     /**
      * @return Indicates whether the SPF record is successfully verified. Valid values: `0` and `1`. `0`: indicates the verification is successful. `1`: indicates that the verification fails.
      * 
      */
-    private String spfAuthStatus;
+    private final String spfAuthStatus;
     /**
      * @return The SPF verification record provided by Alibaba Cloud DNS.
      * 
      */
-    private String spfRecord;
+    private final String spfRecord;
     /**
      * @return The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The primary domain name.
      * 
      */
-    private String tlDomainName;
+    private final String tlDomainName;
     /**
      * @return The CNAME verification record provided by Alibaba Cloud DNS.
      * 
      */
-    private String tracefRecord;
+    private final String tracefRecord;
 
-    private GetDomainsDomain() {}
+    @CustomType.Constructor
+    private GetDomainsDomain(
+        @CustomType.Parameter("cnameAuthStatus") String cnameAuthStatus,
+        @CustomType.Parameter("cnameConfirmStatus") String cnameConfirmStatus,
+        @CustomType.Parameter("cnameRecord") String cnameRecord,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("defaultDomain") String defaultDomain,
+        @CustomType.Parameter("dnsMx") String dnsMx,
+        @CustomType.Parameter("dnsSpf") String dnsSpf,
+        @CustomType.Parameter("dnsTxt") String dnsTxt,
+        @CustomType.Parameter("domainId") String domainId,
+        @CustomType.Parameter("domainName") String domainName,
+        @CustomType.Parameter("domainType") String domainType,
+        @CustomType.Parameter("icpStatus") String icpStatus,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("mxAuthStatus") String mxAuthStatus,
+        @CustomType.Parameter("mxRecord") String mxRecord,
+        @CustomType.Parameter("spfAuthStatus") String spfAuthStatus,
+        @CustomType.Parameter("spfRecord") String spfRecord,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("tlDomainName") String tlDomainName,
+        @CustomType.Parameter("tracefRecord") String tracefRecord) {
+        this.cnameAuthStatus = cnameAuthStatus;
+        this.cnameConfirmStatus = cnameConfirmStatus;
+        this.cnameRecord = cnameRecord;
+        this.createTime = createTime;
+        this.defaultDomain = defaultDomain;
+        this.dnsMx = dnsMx;
+        this.dnsSpf = dnsSpf;
+        this.dnsTxt = dnsTxt;
+        this.domainId = domainId;
+        this.domainName = domainName;
+        this.domainType = domainType;
+        this.icpStatus = icpStatus;
+        this.id = id;
+        this.mxAuthStatus = mxAuthStatus;
+        this.mxRecord = mxRecord;
+        this.spfAuthStatus = spfAuthStatus;
+        this.spfRecord = spfRecord;
+        this.status = status;
+        this.tlDomainName = tlDomainName;
+        this.tracefRecord = tracefRecord;
+    }
+
     /**
      * @return Track verification.
      * 
@@ -259,7 +302,7 @@ public final class GetDomainsDomain {
     public static Builder builder(GetDomainsDomain defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String cnameAuthStatus;
         private String cnameConfirmStatus;
@@ -281,7 +324,11 @@ public final class GetDomainsDomain {
         private String status;
         private String tlDomainName;
         private String tracefRecord;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDomainsDomain defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cnameAuthStatus = defaults.cnameAuthStatus;
@@ -306,129 +353,87 @@ public final class GetDomainsDomain {
     	      this.tracefRecord = defaults.tracefRecord;
         }
 
-        @CustomType.Setter
         public Builder cnameAuthStatus(String cnameAuthStatus) {
             this.cnameAuthStatus = Objects.requireNonNull(cnameAuthStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder cnameConfirmStatus(String cnameConfirmStatus) {
             this.cnameConfirmStatus = Objects.requireNonNull(cnameConfirmStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder cnameRecord(String cnameRecord) {
             this.cnameRecord = Objects.requireNonNull(cnameRecord);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder defaultDomain(String defaultDomain) {
             this.defaultDomain = Objects.requireNonNull(defaultDomain);
             return this;
         }
-        @CustomType.Setter
         public Builder dnsMx(String dnsMx) {
             this.dnsMx = Objects.requireNonNull(dnsMx);
             return this;
         }
-        @CustomType.Setter
         public Builder dnsSpf(String dnsSpf) {
             this.dnsSpf = Objects.requireNonNull(dnsSpf);
             return this;
         }
-        @CustomType.Setter
         public Builder dnsTxt(String dnsTxt) {
             this.dnsTxt = Objects.requireNonNull(dnsTxt);
             return this;
         }
-        @CustomType.Setter
         public Builder domainId(String domainId) {
             this.domainId = Objects.requireNonNull(domainId);
             return this;
         }
-        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
-        @CustomType.Setter
         public Builder domainType(String domainType) {
             this.domainType = Objects.requireNonNull(domainType);
             return this;
         }
-        @CustomType.Setter
         public Builder icpStatus(String icpStatus) {
             this.icpStatus = Objects.requireNonNull(icpStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder mxAuthStatus(String mxAuthStatus) {
             this.mxAuthStatus = Objects.requireNonNull(mxAuthStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder mxRecord(String mxRecord) {
             this.mxRecord = Objects.requireNonNull(mxRecord);
             return this;
         }
-        @CustomType.Setter
         public Builder spfAuthStatus(String spfAuthStatus) {
             this.spfAuthStatus = Objects.requireNonNull(spfAuthStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder spfRecord(String spfRecord) {
             this.spfRecord = Objects.requireNonNull(spfRecord);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder tlDomainName(String tlDomainName) {
             this.tlDomainName = Objects.requireNonNull(tlDomainName);
             return this;
         }
-        @CustomType.Setter
         public Builder tracefRecord(String tracefRecord) {
             this.tracefRecord = Objects.requireNonNull(tracefRecord);
             return this;
-        }
-        public GetDomainsDomain build() {
-            final var o = new GetDomainsDomain();
-            o.cnameAuthStatus = cnameAuthStatus;
-            o.cnameConfirmStatus = cnameConfirmStatus;
-            o.cnameRecord = cnameRecord;
-            o.createTime = createTime;
-            o.defaultDomain = defaultDomain;
-            o.dnsMx = dnsMx;
-            o.dnsSpf = dnsSpf;
-            o.dnsTxt = dnsTxt;
-            o.domainId = domainId;
-            o.domainName = domainName;
-            o.domainType = domainType;
-            o.icpStatus = icpStatus;
-            o.id = id;
-            o.mxAuthStatus = mxAuthStatus;
-            o.mxRecord = mxRecord;
-            o.spfAuthStatus = spfAuthStatus;
-            o.spfRecord = spfRecord;
-            o.status = status;
-            o.tlDomainName = tlDomainName;
-            o.tracefRecord = tracefRecord;
-            return o;
+        }        public GetDomainsDomain build() {
+            return new GetDomainsDomain(cnameAuthStatus, cnameConfirmStatus, cnameRecord, createTime, defaultDomain, dnsMx, dnsSpf, dnsTxt, domainId, domainName, domainType, icpStatus, id, mxAuthStatus, mxRecord, spfAuthStatus, spfRecord, status, tlDomainName, tracefRecord);
         }
     }
 }

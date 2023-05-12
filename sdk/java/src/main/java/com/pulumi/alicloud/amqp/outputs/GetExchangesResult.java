@@ -13,20 +13,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetExchangesResult {
-    private List<GetExchangesExchange> exchanges;
+    private final List<GetExchangesExchange> exchanges;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private String instanceId;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private String virtualHostName;
+    private final String id;
+    private final List<String> ids;
+    private final String instanceId;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final String virtualHostName;
 
-    private GetExchangesResult() {}
+    @CustomType.Constructor
+    private GetExchangesResult(
+        @CustomType.Parameter("exchanges") List<GetExchangesExchange> exchanges,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("virtualHostName") String virtualHostName) {
+        this.exchanges = exchanges;
+        this.id = id;
+        this.ids = ids;
+        this.instanceId = instanceId;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.virtualHostName = virtualHostName;
+    }
+
     public List<GetExchangesExchange> exchanges() {
         return this.exchanges;
     }
@@ -63,7 +82,7 @@ public final class GetExchangesResult {
     public static Builder builder(GetExchangesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetExchangesExchange> exchanges;
         private String id;
@@ -73,7 +92,11 @@ public final class GetExchangesResult {
         private List<String> names;
         private @Nullable String outputFile;
         private String virtualHostName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetExchangesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.exchanges = defaults.exchanges;
@@ -86,7 +109,6 @@ public final class GetExchangesResult {
     	      this.virtualHostName = defaults.virtualHostName;
         }
 
-        @CustomType.Setter
         public Builder exchanges(List<GetExchangesExchange> exchanges) {
             this.exchanges = Objects.requireNonNull(exchanges);
             return this;
@@ -94,12 +116,10 @@ public final class GetExchangesResult {
         public Builder exchanges(GetExchangesExchange... exchanges) {
             return exchanges(List.of(exchanges));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -107,17 +127,14 @@ public final class GetExchangesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -125,27 +142,15 @@ public final class GetExchangesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder virtualHostName(String virtualHostName) {
             this.virtualHostName = Objects.requireNonNull(virtualHostName);
             return this;
-        }
-        public GetExchangesResult build() {
-            final var o = new GetExchangesResult();
-            o.exchanges = exchanges;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.virtualHostName = virtualHostName;
-            return o;
+        }        public GetExchangesResult build() {
+            return new GetExchangesResult(exchanges, id, ids, instanceId, nameRegex, names, outputFile, virtualHostName);
         }
     }
 }

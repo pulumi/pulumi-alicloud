@@ -15,39 +15,56 @@ public final class GetAclsAcl {
      * @return ACL Entries.
      * 
      */
-    private List<GetAclsAclAclEntry> aclEntries;
+    private final List<GetAclsAclAclEntry> aclEntries;
     /**
      * @return Access Control Policy ID.
      * 
      */
-    private String aclId;
+    private final String aclId;
     /**
      * @return The ACL Name.
      * 
      */
-    private String aclName;
+    private final String aclName;
     /**
      * @return Address Protocol Version.
      * 
      */
-    private String addressIpVersion;
+    private final String addressIpVersion;
     /**
      * @return The ID of the Acl.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Resource Group to Which the Number.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetAclsAcl() {}
+    @CustomType.Constructor
+    private GetAclsAcl(
+        @CustomType.Parameter("aclEntries") List<GetAclsAclAclEntry> aclEntries,
+        @CustomType.Parameter("aclId") String aclId,
+        @CustomType.Parameter("aclName") String aclName,
+        @CustomType.Parameter("addressIpVersion") String addressIpVersion,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("status") String status) {
+        this.aclEntries = aclEntries;
+        this.aclId = aclId;
+        this.aclName = aclName;
+        this.addressIpVersion = addressIpVersion;
+        this.id = id;
+        this.resourceGroupId = resourceGroupId;
+        this.status = status;
+    }
+
     /**
      * @return ACL Entries.
      * 
@@ -105,7 +122,7 @@ public final class GetAclsAcl {
     public static Builder builder(GetAclsAcl defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetAclsAclAclEntry> aclEntries;
         private String aclId;
@@ -114,7 +131,11 @@ public final class GetAclsAcl {
         private String id;
         private String resourceGroupId;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAclsAcl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aclEntries = defaults.aclEntries;
@@ -126,7 +147,6 @@ public final class GetAclsAcl {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder aclEntries(List<GetAclsAclAclEntry> aclEntries) {
             this.aclEntries = Objects.requireNonNull(aclEntries);
             return this;
@@ -134,46 +154,31 @@ public final class GetAclsAcl {
         public Builder aclEntries(GetAclsAclAclEntry... aclEntries) {
             return aclEntries(List.of(aclEntries));
         }
-        @CustomType.Setter
         public Builder aclId(String aclId) {
             this.aclId = Objects.requireNonNull(aclId);
             return this;
         }
-        @CustomType.Setter
         public Builder aclName(String aclName) {
             this.aclName = Objects.requireNonNull(aclName);
             return this;
         }
-        @CustomType.Setter
         public Builder addressIpVersion(String addressIpVersion) {
             this.addressIpVersion = Objects.requireNonNull(addressIpVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetAclsAcl build() {
-            final var o = new GetAclsAcl();
-            o.aclEntries = aclEntries;
-            o.aclId = aclId;
-            o.aclName = aclName;
-            o.addressIpVersion = addressIpVersion;
-            o.id = id;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            return o;
+        }        public GetAclsAcl build() {
+            return new GetAclsAcl(aclEntries, aclId, aclName, addressIpVersion, id, resourceGroupId, status);
         }
     }
 }

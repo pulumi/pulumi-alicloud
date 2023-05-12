@@ -15,50 +15,73 @@ public final class GetEnterpriseUsersUser {
      * @return The Alibaba Cloud unique ID (UID) of the user.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The DingTalk number or mobile number of the user.
      * 
      */
-    private String mobile;
+    private final String mobile;
     /**
      * @return The nickname of the user.
      * 
      */
-    private String nickName;
+    private final String nickName;
     /**
      * @return The Alibaba Cloud unique ID (UID) of the parent account if the user corresponds to a Resource Access Management (RAM) user.
      * 
      */
-    private Integer parentUid;
+    private final Integer parentUid;
     /**
      * @return The list ids of the role that the user plays.
      * 
      */
-    private List<Integer> roleIds;
+    private final List<Integer> roleIds;
     /**
      * @return The list names of the role that he user plays.
      * 
      */
-    private List<String> roleNames;
+    private final List<String> roleNames;
     /**
      * @return The status of the user.
      * 
      */
-    private String status;
-    private String uid;
+    private final String status;
+    private final String uid;
     /**
      * @return The ID of the user.
      * 
      */
-    private String userId;
+    private final String userId;
     /**
      * @return The nickname of the user.
      * 
      */
-    private String userName;
+    private final String userName;
 
-    private GetEnterpriseUsersUser() {}
+    @CustomType.Constructor
+    private GetEnterpriseUsersUser(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("mobile") String mobile,
+        @CustomType.Parameter("nickName") String nickName,
+        @CustomType.Parameter("parentUid") Integer parentUid,
+        @CustomType.Parameter("roleIds") List<Integer> roleIds,
+        @CustomType.Parameter("roleNames") List<String> roleNames,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("uid") String uid,
+        @CustomType.Parameter("userId") String userId,
+        @CustomType.Parameter("userName") String userName) {
+        this.id = id;
+        this.mobile = mobile;
+        this.nickName = nickName;
+        this.parentUid = parentUid;
+        this.roleIds = roleIds;
+        this.roleNames = roleNames;
+        this.status = status;
+        this.uid = uid;
+        this.userId = userId;
+        this.userName = userName;
+    }
+
     /**
      * @return The Alibaba Cloud unique ID (UID) of the user.
      * 
@@ -133,7 +156,7 @@ public final class GetEnterpriseUsersUser {
     public static Builder builder(GetEnterpriseUsersUser defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private String mobile;
@@ -145,7 +168,11 @@ public final class GetEnterpriseUsersUser {
         private String uid;
         private String userId;
         private String userName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEnterpriseUsersUser defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -160,27 +187,22 @@ public final class GetEnterpriseUsersUser {
     	      this.userName = defaults.userName;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder mobile(String mobile) {
             this.mobile = Objects.requireNonNull(mobile);
             return this;
         }
-        @CustomType.Setter
         public Builder nickName(String nickName) {
             this.nickName = Objects.requireNonNull(nickName);
             return this;
         }
-        @CustomType.Setter
         public Builder parentUid(Integer parentUid) {
             this.parentUid = Objects.requireNonNull(parentUid);
             return this;
         }
-        @CustomType.Setter
         public Builder roleIds(List<Integer> roleIds) {
             this.roleIds = Objects.requireNonNull(roleIds);
             return this;
@@ -188,7 +210,6 @@ public final class GetEnterpriseUsersUser {
         public Builder roleIds(Integer... roleIds) {
             return roleIds(List.of(roleIds));
         }
-        @CustomType.Setter
         public Builder roleNames(List<String> roleNames) {
             this.roleNames = Objects.requireNonNull(roleNames);
             return this;
@@ -196,39 +217,23 @@ public final class GetEnterpriseUsersUser {
         public Builder roleNames(String... roleNames) {
             return roleNames(List.of(roleNames));
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder uid(String uid) {
             this.uid = Objects.requireNonNull(uid);
             return this;
         }
-        @CustomType.Setter
         public Builder userId(String userId) {
             this.userId = Objects.requireNonNull(userId);
             return this;
         }
-        @CustomType.Setter
         public Builder userName(String userName) {
             this.userName = Objects.requireNonNull(userName);
             return this;
-        }
-        public GetEnterpriseUsersUser build() {
-            final var o = new GetEnterpriseUsersUser();
-            o.id = id;
-            o.mobile = mobile;
-            o.nickName = nickName;
-            o.parentUid = parentUid;
-            o.roleIds = roleIds;
-            o.roleNames = roleNames;
-            o.status = status;
-            o.uid = uid;
-            o.userId = userId;
-            o.userName = userName;
-            return o;
+        }        public GetEnterpriseUsersUser build() {
+            return new GetEnterpriseUsersUser(id, mobile, nickName, parentUid, roleIds, roleNames, status, uid, userId, userName);
         }
     }
 }

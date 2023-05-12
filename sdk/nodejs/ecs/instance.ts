@@ -7,6 +7,80 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a ECS instance resource.
+ *
+ * > **NOTE:** You can launch an ECS instance for a VPC network via specifying parameter `vswitchId`. One instance can only belong to one VSwitch.
+ *
+ * > **NOTE:** If a VSwitchId is specified for creating an instance, SecurityGroupId and VSwitchId must belong to one VPC, VSwitchId Cannot be modified after creation.
+ *
+ * > **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `isOutdated` to true. For more about the upgraded instance type, refer to `alicloud.ecs.getInstanceTypes` datasource.
+ *
+ * > **NOTE:** At present, 'PrePaid' instance cannot be deleted and must wait it to be outdated and release it automatically.
+ *
+ * > **NOTE:** The resource supports modifying instance charge type from 'PrePaid' to 'PostPaid' from version 1.9.6.
+ *  However, at present, this modification has some limitation about CPU core count in one month, so strongly recommand that `Don't modify instance charge type frequentlly in one month`.
+ *
+ * > **NOTE:**  There is unsupported 'deletion_protection' attribute when the instance is spot
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "auto_provisioning_group";
+ * // Create a new ECS instance for VPC
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * // Create a new ECS instance for a VPC
+ * const group = new alicloud.ecs.SecurityGroup("group", {
+ *     description: "foo",
+ *     vpcId: vpc.id,
+ * });
+ * const key = new alicloud.kms.Key("key", {
+ *     description: "Hello KMS",
+ *     pendingWindowInDays: 7,
+ *     status: "Enabled",
+ * });
+ * const default = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const vswitch = new alicloud.vpc.Switch("vswitch", {
+ *     vpcId: vpc.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const instance = new alicloud.ecs.Instance("instance", {
+ *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
+ *     securityGroups: [group].map(__item => __item.id),
+ *     instanceType: "ecs.n4.large",
+ *     systemDiskCategory: "cloud_efficiency",
+ *     systemDiskName: "test_foo_system_disk_name",
+ *     systemDiskDescription: "test_foo_system_disk_description",
+ *     imageId: "ubuntu_18_04_64_20G_alibase_20190624.vhd",
+ *     instanceName: "test_foo",
+ *     vswitchId: vswitch.id,
+ *     internetMaxBandwidthOut: 10,
+ *     dataDisks: [{
+ *         name: "disk2",
+ *         size: 20,
+ *         category: "cloud_efficiency",
+ *         description: "disk2",
+ *         encrypted: true,
+ *         kmsKeyId: key.id,
+ *     }],
+ * });
+ * ```
+ * ## Module Support
+ *
+ * You can use the existing ecs-instance module
+ * to create several ECS instances one-click.
+ *
  * ## Import
  *
  * Instance can be imported using the id, e.g.
@@ -79,6 +153,20 @@ export class Instance extends pulumi.CustomResource {
     public readonly dataDisks!: pulumi.Output<outputs.ecs.InstanceDataDisk[] | undefined>;
     /**
      * The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+     *
+     * > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+     *
+     * > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
+     *
+     * > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+     *
+     * > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+     *
+     * > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
+     * Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+     *
+     * > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
      */
     public readonly dedicatedHostId!: pulumi.Output<string | undefined>;
     /**
@@ -226,6 +314,12 @@ export class Instance extends pulumi.CustomResource {
      * Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
      */
     public readonly password!: pulumi.Output<string | undefined>;
+    /**
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values:
+     * - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
+     * - [1-3] when `periodUnit` in "Week"
+     * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
@@ -286,6 +380,8 @@ export class Instance extends pulumi.CustomResource {
      * - NoSpot: A regular Pay-As-You-Go instance.
      * - SpotWithPriceLimit: A price threshold for a spot instance
      * - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
+     *
+     * Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
      */
     public readonly spotStrategy!: pulumi.Output<string>;
     /**
@@ -584,6 +680,20 @@ export interface InstanceState {
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.InstanceDataDisk>[]>;
     /**
      * The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+     *
+     * > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+     *
+     * > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
+     *
+     * > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+     *
+     * > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+     *
+     * > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
+     * Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+     *
+     * > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
      */
     dedicatedHostId?: pulumi.Input<string>;
     /**
@@ -731,6 +841,12 @@ export interface InstanceState {
      * Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
      */
     password?: pulumi.Input<string>;
+    /**
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values:
+     * - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
+     * - [1-3] when `periodUnit` in "Week"
+     * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     period?: pulumi.Input<number>;
     /**
      * The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
@@ -791,6 +907,8 @@ export interface InstanceState {
      * - NoSpot: A regular Pay-As-You-Go instance.
      * - SpotWithPriceLimit: A price threshold for a spot instance
      * - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
+     *
+     * Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
      */
     spotStrategy?: pulumi.Input<string>;
     /**
@@ -906,6 +1024,20 @@ export interface InstanceArgs {
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.InstanceDataDisk>[]>;
     /**
      * The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+     *
+     * > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+     *
+     * > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
+     *
+     * > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+     *
+     * > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+     *
+     * > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
+     * Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+     *
+     * > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
      */
     dedicatedHostId?: pulumi.Input<string>;
     /**
@@ -1037,6 +1169,12 @@ export interface InstanceArgs {
      * Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
      */
     password?: pulumi.Input<string>;
+    /**
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values:
+     * - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
+     * - [1-3] when `periodUnit` in "Week"
+     * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     period?: pulumi.Input<number>;
     /**
      * The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
@@ -1089,6 +1227,8 @@ export interface InstanceArgs {
      * - NoSpot: A regular Pay-As-You-Go instance.
      * - SpotWithPriceLimit: A price threshold for a spot instance
      * - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
+     *
+     * Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
      */
     spotStrategy?: pulumi.Input<string>;
     /**

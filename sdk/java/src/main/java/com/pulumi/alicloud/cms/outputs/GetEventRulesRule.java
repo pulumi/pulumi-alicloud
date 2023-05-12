@@ -16,44 +16,63 @@ public final class GetEventRulesRule {
      * @return The description of the rule.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return Event mode, used to describe the trigger conditions for this event.
      * 
      */
-    private List<GetEventRulesRuleEventPattern> eventPatterns;
+    private final List<GetEventRulesRuleEventPattern> eventPatterns;
     /**
      * @return The name of the event rule.
      * 
      */
-    private String eventRuleName;
+    private final String eventRuleName;
     /**
      * @return The type of event.
      * 
      */
-    private String eventType;
+    private final String eventType;
     /**
      * @return The ID of the application Group.
      * 
      */
-    private String groupId;
+    private final String groupId;
     /**
      * @return The ID of the Event Rule. Its value is same as Event Rule Name.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The mute period during which new alerts are not sent even if the trigger conditions are met.
      * 
      */
-    private Integer silenceTime;
+    private final Integer silenceTime;
     /**
      * @return The status of the resource.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetEventRulesRule() {}
+    @CustomType.Constructor
+    private GetEventRulesRule(
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("eventPatterns") List<GetEventRulesRuleEventPattern> eventPatterns,
+        @CustomType.Parameter("eventRuleName") String eventRuleName,
+        @CustomType.Parameter("eventType") String eventType,
+        @CustomType.Parameter("groupId") String groupId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("silenceTime") Integer silenceTime,
+        @CustomType.Parameter("status") String status) {
+        this.description = description;
+        this.eventPatterns = eventPatterns;
+        this.eventRuleName = eventRuleName;
+        this.eventType = eventType;
+        this.groupId = groupId;
+        this.id = id;
+        this.silenceTime = silenceTime;
+        this.status = status;
+    }
+
     /**
      * @return The description of the rule.
      * 
@@ -118,7 +137,7 @@ public final class GetEventRulesRule {
     public static Builder builder(GetEventRulesRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String description;
         private List<GetEventRulesRuleEventPattern> eventPatterns;
@@ -128,7 +147,11 @@ public final class GetEventRulesRule {
         private String id;
         private Integer silenceTime;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEventRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -141,12 +164,10 @@ public final class GetEventRulesRule {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder eventPatterns(List<GetEventRulesRuleEventPattern> eventPatterns) {
             this.eventPatterns = Objects.requireNonNull(eventPatterns);
             return this;
@@ -154,47 +175,31 @@ public final class GetEventRulesRule {
         public Builder eventPatterns(GetEventRulesRuleEventPattern... eventPatterns) {
             return eventPatterns(List.of(eventPatterns));
         }
-        @CustomType.Setter
         public Builder eventRuleName(String eventRuleName) {
             this.eventRuleName = Objects.requireNonNull(eventRuleName);
             return this;
         }
-        @CustomType.Setter
         public Builder eventType(String eventType) {
             this.eventType = Objects.requireNonNull(eventType);
             return this;
         }
-        @CustomType.Setter
         public Builder groupId(String groupId) {
             this.groupId = Objects.requireNonNull(groupId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder silenceTime(Integer silenceTime) {
             this.silenceTime = Objects.requireNonNull(silenceTime);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetEventRulesRule build() {
-            final var o = new GetEventRulesRule();
-            o.description = description;
-            o.eventPatterns = eventPatterns;
-            o.eventRuleName = eventRuleName;
-            o.eventType = eventType;
-            o.groupId = groupId;
-            o.id = id;
-            o.silenceTime = silenceTime;
-            o.status = status;
-            return o;
+        }        public GetEventRulesRule build() {
+            return new GetEventRulesRule(description, eventPatterns, eventRuleName, eventType, groupId, id, silenceTime, status);
         }
     }
 }

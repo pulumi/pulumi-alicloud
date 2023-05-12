@@ -124,6 +124,7 @@ def get_deliveries(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Delivery IDs.
     :param str name_regex: A regex string to filter results by delivery channel name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int status: The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
     """
     __args__ = dict()
@@ -170,6 +171,7 @@ def get_deliveries_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
 
     :param Sequence[str] ids: A list of Delivery IDs.
     :param str name_regex: A regex string to filter results by delivery channel name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int status: The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
     """
     ...

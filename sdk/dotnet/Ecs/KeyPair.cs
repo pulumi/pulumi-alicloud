@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
+    /// &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsKeyPair from version 1.121.0.
+    /// 
+    /// Provides a key pair resource.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage

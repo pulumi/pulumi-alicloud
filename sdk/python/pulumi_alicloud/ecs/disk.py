@@ -803,6 +803,12 @@ class Disk(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Provides a ECS disk resource.
+
+        > **DEPRECATED:** This resource has been renamed to ecs.EcsDisk from version 1.122.0.
+
+        > **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `ecs.Disk` doesn't resize disk.
+
         ## Example Usage
 
         ```python
@@ -855,6 +861,12 @@ class Disk(pulumi.CustomResource):
                  args: Optional[DiskArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a ECS disk resource.
+
+        > **DEPRECATED:** This resource has been renamed to ecs.EcsDisk from version 1.122.0.
+
+        > **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `ecs.Disk` doesn't resize disk.
+
         ## Example Usage
 
         ```python

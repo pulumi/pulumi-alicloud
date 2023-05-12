@@ -19,27 +19,44 @@ public final class GetAppsResult {
      * @return A list of apps. Each element contains the following attributes:
      * 
      */
-    private List<GetAppsApp> apps;
+    private final List<GetAppsApp> apps;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of app IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of app names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable Map<String,Object> tags;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable Map<String,Object> tags;
 
-    private GetAppsResult() {}
+    @CustomType.Constructor
+    private GetAppsResult(
+        @CustomType.Parameter("apps") List<GetAppsApp> apps,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
+        this.apps = apps;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.tags = tags;
+    }
+
     /**
      * @return A list of apps. Each element contains the following attributes:
      * 
@@ -85,7 +102,7 @@ public final class GetAppsResult {
     public static Builder builder(GetAppsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetAppsApp> apps;
         private String id;
@@ -94,7 +111,11 @@ public final class GetAppsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable Map<String,Object> tags;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAppsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apps = defaults.apps;
@@ -106,7 +127,6 @@ public final class GetAppsResult {
     	      this.tags = defaults.tags;
         }
 
-        @CustomType.Setter
         public Builder apps(List<GetAppsApp> apps) {
             this.apps = Objects.requireNonNull(apps);
             return this;
@@ -114,12 +134,10 @@ public final class GetAppsResult {
         public Builder apps(GetAppsApp... apps) {
             return apps(List.of(apps));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -127,12 +145,10 @@ public final class GetAppsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -140,26 +156,15 @@ public final class GetAppsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }
-        public GetAppsResult build() {
-            final var o = new GetAppsResult();
-            o.apps = apps;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.tags = tags;
-            return o;
+        }        public GetAppsResult build() {
+            return new GetAppsResult(apps, id, ids, nameRegex, names, outputFile, tags);
         }
     }
 }

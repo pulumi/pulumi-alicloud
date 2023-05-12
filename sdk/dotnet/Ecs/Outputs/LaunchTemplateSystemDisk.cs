@@ -20,10 +20,14 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// - cloud_ssd: SSD cloud Disks.
         /// - ephemeral_ssd: local SSD Disks
         /// - cloud_essd: ESSD cloud Disks.
+        /// 
+        /// Default to `cloud_efficiency`.
         /// </summary>
         public readonly string? Category;
         /// <summary>
         /// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+        /// 
+        /// Default to true
         /// </summary>
         public readonly bool? DeleteWithInstance;
         /// <summary>

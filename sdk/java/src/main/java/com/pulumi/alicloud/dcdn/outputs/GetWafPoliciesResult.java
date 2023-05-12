@@ -17,16 +17,35 @@ public final class GetWafPoliciesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private List<GetWafPoliciesPolicy> policies;
-    private @Nullable String queryArgs;
-    private @Nullable String status;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final List<GetWafPoliciesPolicy> policies;
+    private final @Nullable String queryArgs;
+    private final @Nullable String status;
 
-    private GetWafPoliciesResult() {}
+    @CustomType.Constructor
+    private GetWafPoliciesResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("policies") List<GetWafPoliciesPolicy> policies,
+        @CustomType.Parameter("queryArgs") @Nullable String queryArgs,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.policies = policies;
+        this.queryArgs = queryArgs;
+        this.status = status;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -63,7 +82,7 @@ public final class GetWafPoliciesResult {
     public static Builder builder(GetWafPoliciesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -73,7 +92,11 @@ public final class GetWafPoliciesResult {
         private List<GetWafPoliciesPolicy> policies;
         private @Nullable String queryArgs;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetWafPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -86,12 +109,10 @@ public final class GetWafPoliciesResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -99,12 +120,10 @@ public final class GetWafPoliciesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -112,12 +131,10 @@ public final class GetWafPoliciesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder policies(List<GetWafPoliciesPolicy> policies) {
             this.policies = Objects.requireNonNull(policies);
             return this;
@@ -125,27 +142,15 @@ public final class GetWafPoliciesResult {
         public Builder policies(GetWafPoliciesPolicy... policies) {
             return policies(List.of(policies));
         }
-        @CustomType.Setter
         public Builder queryArgs(@Nullable String queryArgs) {
             this.queryArgs = queryArgs;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetWafPoliciesResult build() {
-            final var o = new GetWafPoliciesResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.policies = policies;
-            o.queryArgs = queryArgs;
-            o.status = status;
-            return o;
+        }        public GetWafPoliciesResult build() {
+            return new GetWafPoliciesResult(id, ids, nameRegex, names, outputFile, policies, queryArgs, status);
         }
     }
 }

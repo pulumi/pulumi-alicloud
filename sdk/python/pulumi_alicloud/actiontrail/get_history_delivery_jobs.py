@@ -117,6 +117,7 @@ def get_history_delivery_jobs(enable_details: Optional[bool] = None,
 
 
     :param Sequence[str] ids: A list of History Delivery Job IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int status: The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
     """
     __args__ = dict()
@@ -164,6 +165,7 @@ def get_history_delivery_jobs_output(enable_details: Optional[pulumi.Input[Optio
 
 
     :param Sequence[str] ids: A list of History Delivery Job IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int status: The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
     """
     ...

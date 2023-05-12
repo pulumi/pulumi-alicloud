@@ -13,34 +13,49 @@ public final class GetControlPolicyAttachmentsAttachment {
      * @return The attach date.
      * 
      */
-    private String attachDate;
+    private final String attachDate;
     /**
      * @return The description of policy.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the Control Policy Attachment.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of policy.
      * 
      */
-    private String policyId;
+    private final String policyId;
     /**
      * @return The name of policy.
      * 
      */
-    private String policyName;
+    private final String policyName;
     /**
      * @return The type of policy.
      * 
      */
-    private String policyType;
+    private final String policyType;
 
-    private GetControlPolicyAttachmentsAttachment() {}
+    @CustomType.Constructor
+    private GetControlPolicyAttachmentsAttachment(
+        @CustomType.Parameter("attachDate") String attachDate,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("policyId") String policyId,
+        @CustomType.Parameter("policyName") String policyName,
+        @CustomType.Parameter("policyType") String policyType) {
+        this.attachDate = attachDate;
+        this.description = description;
+        this.id = id;
+        this.policyId = policyId;
+        this.policyName = policyName;
+        this.policyType = policyType;
+    }
+
     /**
      * @return The attach date.
      * 
@@ -91,7 +106,7 @@ public final class GetControlPolicyAttachmentsAttachment {
     public static Builder builder(GetControlPolicyAttachmentsAttachment defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String attachDate;
         private String description;
@@ -99,7 +114,11 @@ public final class GetControlPolicyAttachmentsAttachment {
         private String policyId;
         private String policyName;
         private String policyType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetControlPolicyAttachmentsAttachment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attachDate = defaults.attachDate;
@@ -110,45 +129,31 @@ public final class GetControlPolicyAttachmentsAttachment {
     	      this.policyType = defaults.policyType;
         }
 
-        @CustomType.Setter
         public Builder attachDate(String attachDate) {
             this.attachDate = Objects.requireNonNull(attachDate);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder policyId(String policyId) {
             this.policyId = Objects.requireNonNull(policyId);
             return this;
         }
-        @CustomType.Setter
         public Builder policyName(String policyName) {
             this.policyName = Objects.requireNonNull(policyName);
             return this;
         }
-        @CustomType.Setter
         public Builder policyType(String policyType) {
             this.policyType = Objects.requireNonNull(policyType);
             return this;
-        }
-        public GetControlPolicyAttachmentsAttachment build() {
-            final var o = new GetControlPolicyAttachmentsAttachment();
-            o.attachDate = attachDate;
-            o.description = description;
-            o.id = id;
-            o.policyId = policyId;
-            o.policyName = policyName;
-            o.policyType = policyType;
-            return o;
+        }        public GetControlPolicyAttachmentsAttachment build() {
+            return new GetControlPolicyAttachmentsAttachment(attachDate, description, id, policyId, policyName, policyType);
         }
     }
 }

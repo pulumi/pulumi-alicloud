@@ -18,34 +18,49 @@ public final class RuleTarget {
      * @return Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block dead_letter_queue`.
      * 
      */
-    private @Nullable RuleTargetDeadLetterQueue deadLetterQueue;
+    private final @Nullable RuleTargetDeadLetterQueue deadLetterQueue;
     /**
      * @return The endpoint of target.
      * 
      */
-    private String endpoint;
+    private final String endpoint;
     /**
      * @return A list of param. See the following `Block param_list`.
      * 
      */
-    private List<RuleTargetParamList> paramLists;
+    private final List<RuleTargetParamList> paramLists;
     /**
      * @return The retry policy that is used to push the event. Valid values:
      * 
      */
-    private @Nullable String pushRetryStrategy;
+    private final @Nullable String pushRetryStrategy;
     /**
      * @return The ID of target.
      * 
      */
-    private String targetId;
+    private final String targetId;
     /**
      * @return The type of target. Valid values: `acs.fc.function`, `acs.mns.topic`, `acs.mns.queue`,`http`,`acs.sms`,`acs.mail`,`acs.dingtalk`,`https`, `acs.eventbridge`,`acs.rabbitmq` and `acs.rocketmq`.
      * 
      */
-    private String type;
+    private final String type;
 
-    private RuleTarget() {}
+    @CustomType.Constructor
+    private RuleTarget(
+        @CustomType.Parameter("deadLetterQueue") @Nullable RuleTargetDeadLetterQueue deadLetterQueue,
+        @CustomType.Parameter("endpoint") String endpoint,
+        @CustomType.Parameter("paramLists") List<RuleTargetParamList> paramLists,
+        @CustomType.Parameter("pushRetryStrategy") @Nullable String pushRetryStrategy,
+        @CustomType.Parameter("targetId") String targetId,
+        @CustomType.Parameter("type") String type) {
+        this.deadLetterQueue = deadLetterQueue;
+        this.endpoint = endpoint;
+        this.paramLists = paramLists;
+        this.pushRetryStrategy = pushRetryStrategy;
+        this.targetId = targetId;
+        this.type = type;
+    }
+
     /**
      * @return Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See the following `Block dead_letter_queue`.
      * 
@@ -96,7 +111,7 @@ public final class RuleTarget {
     public static Builder builder(RuleTarget defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable RuleTargetDeadLetterQueue deadLetterQueue;
         private String endpoint;
@@ -104,7 +119,11 @@ public final class RuleTarget {
         private @Nullable String pushRetryStrategy;
         private String targetId;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(RuleTarget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deadLetterQueue = defaults.deadLetterQueue;
@@ -115,17 +134,14 @@ public final class RuleTarget {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder deadLetterQueue(@Nullable RuleTargetDeadLetterQueue deadLetterQueue) {
             this.deadLetterQueue = deadLetterQueue;
             return this;
         }
-        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
-        @CustomType.Setter
         public Builder paramLists(List<RuleTargetParamList> paramLists) {
             this.paramLists = Objects.requireNonNull(paramLists);
             return this;
@@ -133,30 +149,19 @@ public final class RuleTarget {
         public Builder paramLists(RuleTargetParamList... paramLists) {
             return paramLists(List.of(paramLists));
         }
-        @CustomType.Setter
         public Builder pushRetryStrategy(@Nullable String pushRetryStrategy) {
             this.pushRetryStrategy = pushRetryStrategy;
             return this;
         }
-        @CustomType.Setter
         public Builder targetId(String targetId) {
             this.targetId = Objects.requireNonNull(targetId);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public RuleTarget build() {
-            final var o = new RuleTarget();
-            o.deadLetterQueue = deadLetterQueue;
-            o.endpoint = endpoint;
-            o.paramLists = paramLists;
-            o.pushRetryStrategy = pushRetryStrategy;
-            o.targetId = targetId;
-            o.type = type;
-            return o;
+        }        public RuleTarget build() {
+            return new RuleTarget(deadLetterQueue, endpoint, paramLists, pushRetryStrategy, targetId, type);
         }
     }
 }

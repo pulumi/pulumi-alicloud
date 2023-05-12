@@ -15,24 +15,35 @@ public final class DomainSource {
      * @return The address of the origin server. You can specify an IP address or a domain name.
      * 
      */
-    private String sourceContent;
+    private final String sourceContent;
     /**
      * @return The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
      * 
      */
-    private String sourcePort;
+    private final String sourcePort;
     /**
      * @return The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
      * 
      */
-    private @Nullable String sourcePriority;
+    private final @Nullable String sourcePriority;
     /**
      * @return The type of the origin server. Valid values:
      * 
      */
-    private String sourceType;
+    private final String sourceType;
 
-    private DomainSource() {}
+    @CustomType.Constructor
+    private DomainSource(
+        @CustomType.Parameter("sourceContent") String sourceContent,
+        @CustomType.Parameter("sourcePort") String sourcePort,
+        @CustomType.Parameter("sourcePriority") @Nullable String sourcePriority,
+        @CustomType.Parameter("sourceType") String sourceType) {
+        this.sourceContent = sourceContent;
+        this.sourcePort = sourcePort;
+        this.sourcePriority = sourcePriority;
+        this.sourceType = sourceType;
+    }
+
     /**
      * @return The address of the origin server. You can specify an IP address or a domain name.
      * 
@@ -69,13 +80,17 @@ public final class DomainSource {
     public static Builder builder(DomainSource defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String sourceContent;
         private String sourcePort;
         private @Nullable String sourcePriority;
         private String sourceType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(DomainSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sourceContent = defaults.sourceContent;
@@ -84,33 +99,23 @@ public final class DomainSource {
     	      this.sourceType = defaults.sourceType;
         }
 
-        @CustomType.Setter
         public Builder sourceContent(String sourceContent) {
             this.sourceContent = Objects.requireNonNull(sourceContent);
             return this;
         }
-        @CustomType.Setter
         public Builder sourcePort(String sourcePort) {
             this.sourcePort = Objects.requireNonNull(sourcePort);
             return this;
         }
-        @CustomType.Setter
         public Builder sourcePriority(@Nullable String sourcePriority) {
             this.sourcePriority = sourcePriority;
             return this;
         }
-        @CustomType.Setter
         public Builder sourceType(String sourceType) {
             this.sourceType = Objects.requireNonNull(sourceType);
             return this;
-        }
-        public DomainSource build() {
-            final var o = new DomainSource();
-            o.sourceContent = sourceContent;
-            o.sourcePort = sourcePort;
-            o.sourcePriority = sourcePriority;
-            o.sourceType = sourceType;
-            return o;
+        }        public DomainSource build() {
+            return new DomainSource(sourceContent, sourcePort, sourcePriority, sourceType);
         }
     }
 }

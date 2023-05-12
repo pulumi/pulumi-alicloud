@@ -15,19 +15,28 @@ public final class GetMasterSlaveServerGroupsGroup {
      * @return master slave server group ID.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return master slave server group name.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return ECS instances associated to the group. Each element contains the following attributes:
      * 
      */
-    private List<GetMasterSlaveServerGroupsGroupServer> servers;
+    private final List<GetMasterSlaveServerGroupsGroupServer> servers;
 
-    private GetMasterSlaveServerGroupsGroup() {}
+    @CustomType.Constructor
+    private GetMasterSlaveServerGroupsGroup(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("servers") List<GetMasterSlaveServerGroupsGroupServer> servers) {
+        this.id = id;
+        this.name = name;
+        this.servers = servers;
+    }
+
     /**
      * @return master slave server group ID.
      * 
@@ -57,12 +66,16 @@ public final class GetMasterSlaveServerGroupsGroup {
     public static Builder builder(GetMasterSlaveServerGroupsGroup defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private String name;
         private List<GetMasterSlaveServerGroupsGroupServer> servers;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetMasterSlaveServerGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -70,30 +83,22 @@ public final class GetMasterSlaveServerGroupsGroup {
     	      this.servers = defaults.servers;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder servers(List<GetMasterSlaveServerGroupsGroupServer> servers) {
             this.servers = Objects.requireNonNull(servers);
             return this;
         }
         public Builder servers(GetMasterSlaveServerGroupsGroupServer... servers) {
             return servers(List.of(servers));
-        }
-        public GetMasterSlaveServerGroupsGroup build() {
-            final var o = new GetMasterSlaveServerGroupsGroup();
-            o.id = id;
-            o.name = name;
-            o.servers = servers;
-            return o;
+        }        public GetMasterSlaveServerGroupsGroup build() {
+            return new GetMasterSlaveServerGroupsGroup(id, name, servers);
         }
     }
 }

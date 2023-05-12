@@ -67,8 +67,9 @@ func GetHistoryDeliveryJobs(ctx *pulumi.Context, args *GetHistoryDeliveryJobsArg
 type GetHistoryDeliveryJobsArgs struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of History Delivery Job IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
 	Status *int `pulumi:"status"`
 }
@@ -101,8 +102,9 @@ func GetHistoryDeliveryJobsOutput(ctx *pulumi.Context, args GetHistoryDeliveryJo
 type GetHistoryDeliveryJobsOutputArgs struct {
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of History Delivery Job IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
 	Status pulumi.IntPtrInput `pulumi:"status"`
 }

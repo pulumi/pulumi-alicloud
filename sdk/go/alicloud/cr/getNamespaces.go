@@ -53,7 +53,8 @@ func GetNamespaces(ctx *pulumi.Context, args *GetNamespacesArgs, opts ...pulumi.
 // A collection of arguments for invoking getNamespaces.
 type GetNamespacesArgs struct {
 	// A regex string to filter results by namespace name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -87,7 +88,8 @@ func GetNamespacesOutput(ctx *pulumi.Context, args GetNamespacesOutputArgs, opts
 // A collection of arguments for invoking getNamespaces.
 type GetNamespacesOutputArgs struct {
 	// A regex string to filter results by namespace name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

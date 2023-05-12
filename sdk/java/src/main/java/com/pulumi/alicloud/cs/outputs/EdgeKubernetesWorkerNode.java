@@ -15,19 +15,28 @@ public final class EdgeKubernetesWorkerNode {
      * @return ID of the node.
      * 
      */
-    private @Nullable String id;
+    private final @Nullable String id;
     /**
      * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
      * 
      */
-    private @Nullable String name;
+    private final @Nullable String name;
     /**
      * @return The private IP address of node.
      * 
      */
-    private @Nullable String privateIp;
+    private final @Nullable String privateIp;
 
-    private EdgeKubernetesWorkerNode() {}
+    @CustomType.Constructor
+    private EdgeKubernetesWorkerNode(
+        @CustomType.Parameter("id") @Nullable String id,
+        @CustomType.Parameter("name") @Nullable String name,
+        @CustomType.Parameter("privateIp") @Nullable String privateIp) {
+        this.id = id;
+        this.name = name;
+        this.privateIp = privateIp;
+    }
+
     /**
      * @return ID of the node.
      * 
@@ -57,12 +66,16 @@ public final class EdgeKubernetesWorkerNode {
     public static Builder builder(EdgeKubernetesWorkerNode defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String id;
         private @Nullable String name;
         private @Nullable String privateIp;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(EdgeKubernetesWorkerNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -70,27 +83,19 @@ public final class EdgeKubernetesWorkerNode {
     	      this.privateIp = defaults.privateIp;
         }
 
-        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
-        @CustomType.Setter
         public Builder privateIp(@Nullable String privateIp) {
             this.privateIp = privateIp;
             return this;
-        }
-        public EdgeKubernetesWorkerNode build() {
-            final var o = new EdgeKubernetesWorkerNode();
-            o.id = id;
-            o.name = name;
-            o.privateIp = privateIp;
-            return o;
+        }        public EdgeKubernetesWorkerNode build() {
+            return new EdgeKubernetesWorkerNode(id, name, privateIp);
         }
     }
 }

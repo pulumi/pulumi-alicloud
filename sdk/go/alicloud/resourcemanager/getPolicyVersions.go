@@ -55,8 +55,9 @@ type GetPolicyVersionsArgs struct {
 	// Default to `false`. Set it to true can output more details.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of policy version IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The name of the policy.
 	PolicyName string `pulumi:"policyName"`
 	// The type of the policy. Valid values:`Custom` and `System`.
@@ -95,8 +96,9 @@ type GetPolicyVersionsOutputArgs struct {
 	// Default to `false`. Set it to true can output more details.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of policy version IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The name of the policy.
 	PolicyName pulumi.StringInput `pulumi:"policyName"`
 	// The type of the policy. Valid values:`Custom` and `System`.

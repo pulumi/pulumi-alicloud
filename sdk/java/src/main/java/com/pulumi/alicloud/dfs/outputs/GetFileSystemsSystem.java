@@ -15,84 +15,119 @@ public final class GetFileSystemsSystem {
      * @return The creation time of the File system.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The description of the File system.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the File System.
      * 
      */
-    private String fileSystemId;
+    private final String fileSystemId;
     /**
      * @return The name of the File system.
      * 
      */
-    private String fileSystemName;
+    private final String fileSystemName;
     /**
      * @return The ID of the File System.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The number of Mount points.
      * 
      */
-    private Integer mountPointCount;
+    private final Integer mountPointCount;
     /**
      * @return The number of directories.
      * 
      */
-    private Integer numberOfDirectories;
+    private final Integer numberOfDirectories;
     /**
      * @return The number of files.
      * 
      */
-    private Integer numberOfFiles;
+    private final Integer numberOfFiles;
     /**
      * @return The protocol type. Valid values: `HDFS`.
      * 
      */
-    private String protocolType;
+    private final String protocolType;
     /**
      * @return The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s.
      * 
      */
-    private Integer provisionedThroughputInMiBps;
+    private final Integer provisionedThroughputInMiBps;
     /**
      * @return The capacity budget of the File system.
      * 
      */
-    private Integer spaceCapacity;
+    private final Integer spaceCapacity;
     /**
      * @return Storage package Id.
      * 
      */
-    private String storagePackageId;
+    private final String storagePackageId;
     /**
      * @return The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
      * 
      */
-    private String storageType;
+    private final String storageType;
     /**
      * @return The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
      * 
      */
-    private String throughputMode;
+    private final String throughputMode;
     /**
      * @return The used space of the File system.
      * 
      */
-    private Double usedSpaceSize;
+    private final Double usedSpaceSize;
     /**
      * @return The zone ID of the File system.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetFileSystemsSystem() {}
+    @CustomType.Constructor
+    private GetFileSystemsSystem(
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("fileSystemId") String fileSystemId,
+        @CustomType.Parameter("fileSystemName") String fileSystemName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("mountPointCount") Integer mountPointCount,
+        @CustomType.Parameter("numberOfDirectories") Integer numberOfDirectories,
+        @CustomType.Parameter("numberOfFiles") Integer numberOfFiles,
+        @CustomType.Parameter("protocolType") String protocolType,
+        @CustomType.Parameter("provisionedThroughputInMiBps") Integer provisionedThroughputInMiBps,
+        @CustomType.Parameter("spaceCapacity") Integer spaceCapacity,
+        @CustomType.Parameter("storagePackageId") String storagePackageId,
+        @CustomType.Parameter("storageType") String storageType,
+        @CustomType.Parameter("throughputMode") String throughputMode,
+        @CustomType.Parameter("usedSpaceSize") Double usedSpaceSize,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.createTime = createTime;
+        this.description = description;
+        this.fileSystemId = fileSystemId;
+        this.fileSystemName = fileSystemName;
+        this.id = id;
+        this.mountPointCount = mountPointCount;
+        this.numberOfDirectories = numberOfDirectories;
+        this.numberOfFiles = numberOfFiles;
+        this.protocolType = protocolType;
+        this.provisionedThroughputInMiBps = provisionedThroughputInMiBps;
+        this.spaceCapacity = spaceCapacity;
+        this.storagePackageId = storagePackageId;
+        this.storageType = storageType;
+        this.throughputMode = throughputMode;
+        this.usedSpaceSize = usedSpaceSize;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return The creation time of the File system.
      * 
@@ -213,7 +248,7 @@ public final class GetFileSystemsSystem {
     public static Builder builder(GetFileSystemsSystem defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String createTime;
         private String description;
@@ -231,7 +266,11 @@ public final class GetFileSystemsSystem {
         private String throughputMode;
         private Double usedSpaceSize;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetFileSystemsSystem defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -252,105 +291,71 @@ public final class GetFileSystemsSystem {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder fileSystemId(String fileSystemId) {
             this.fileSystemId = Objects.requireNonNull(fileSystemId);
             return this;
         }
-        @CustomType.Setter
         public Builder fileSystemName(String fileSystemName) {
             this.fileSystemName = Objects.requireNonNull(fileSystemName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder mountPointCount(Integer mountPointCount) {
             this.mountPointCount = Objects.requireNonNull(mountPointCount);
             return this;
         }
-        @CustomType.Setter
         public Builder numberOfDirectories(Integer numberOfDirectories) {
             this.numberOfDirectories = Objects.requireNonNull(numberOfDirectories);
             return this;
         }
-        @CustomType.Setter
         public Builder numberOfFiles(Integer numberOfFiles) {
             this.numberOfFiles = Objects.requireNonNull(numberOfFiles);
             return this;
         }
-        @CustomType.Setter
         public Builder protocolType(String protocolType) {
             this.protocolType = Objects.requireNonNull(protocolType);
             return this;
         }
-        @CustomType.Setter
         public Builder provisionedThroughputInMiBps(Integer provisionedThroughputInMiBps) {
             this.provisionedThroughputInMiBps = Objects.requireNonNull(provisionedThroughputInMiBps);
             return this;
         }
-        @CustomType.Setter
         public Builder spaceCapacity(Integer spaceCapacity) {
             this.spaceCapacity = Objects.requireNonNull(spaceCapacity);
             return this;
         }
-        @CustomType.Setter
         public Builder storagePackageId(String storagePackageId) {
             this.storagePackageId = Objects.requireNonNull(storagePackageId);
             return this;
         }
-        @CustomType.Setter
         public Builder storageType(String storageType) {
             this.storageType = Objects.requireNonNull(storageType);
             return this;
         }
-        @CustomType.Setter
         public Builder throughputMode(String throughputMode) {
             this.throughputMode = Objects.requireNonNull(throughputMode);
             return this;
         }
-        @CustomType.Setter
         public Builder usedSpaceSize(Double usedSpaceSize) {
             this.usedSpaceSize = Objects.requireNonNull(usedSpaceSize);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetFileSystemsSystem build() {
-            final var o = new GetFileSystemsSystem();
-            o.createTime = createTime;
-            o.description = description;
-            o.fileSystemId = fileSystemId;
-            o.fileSystemName = fileSystemName;
-            o.id = id;
-            o.mountPointCount = mountPointCount;
-            o.numberOfDirectories = numberOfDirectories;
-            o.numberOfFiles = numberOfFiles;
-            o.protocolType = protocolType;
-            o.provisionedThroughputInMiBps = provisionedThroughputInMiBps;
-            o.spaceCapacity = spaceCapacity;
-            o.storagePackageId = storagePackageId;
-            o.storageType = storageType;
-            o.throughputMode = throughputMode;
-            o.usedSpaceSize = usedSpaceSize;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetFileSystemsSystem build() {
+            return new GetFileSystemsSystem(createTime, description, fileSystemId, fileSystemName, id, mountPointCount, numberOfDirectories, numberOfFiles, protocolType, provisionedThroughputInMiBps, spaceCapacity, storagePackageId, storageType, throughputMode, usedSpaceSize, zoneId);
         }
     }
 }

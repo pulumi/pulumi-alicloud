@@ -13,44 +13,63 @@ public final class GetExecutionsExecution {
      * @return The name of the execution.
      * 
      */
-    private String executionName;
+    private final String executionName;
     /**
      * @return The name of the flow.
      * 
      */
-    private String flowName;
+    private final String flowName;
     /**
      * @return The ID of the Execution. The value formats as `&lt;flow_name&gt;:&lt;execution_name&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The Input information for this execution.
      * 
      */
-    private String input;
+    private final String input;
     /**
      * @return The output of the execution.
      * 
      */
-    private String output;
+    private final String output;
     /**
      * @return The started time of the execution.
      * 
      */
-    private String startedTime;
+    private final String startedTime;
     /**
      * @return The status of the resource.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The stopped time of the execution.
      * 
      */
-    private String stoppedTime;
+    private final String stoppedTime;
 
-    private GetExecutionsExecution() {}
+    @CustomType.Constructor
+    private GetExecutionsExecution(
+        @CustomType.Parameter("executionName") String executionName,
+        @CustomType.Parameter("flowName") String flowName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("input") String input,
+        @CustomType.Parameter("output") String output,
+        @CustomType.Parameter("startedTime") String startedTime,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("stoppedTime") String stoppedTime) {
+        this.executionName = executionName;
+        this.flowName = flowName;
+        this.id = id;
+        this.input = input;
+        this.output = output;
+        this.startedTime = startedTime;
+        this.status = status;
+        this.stoppedTime = stoppedTime;
+    }
+
     /**
      * @return The name of the execution.
      * 
@@ -115,7 +134,7 @@ public final class GetExecutionsExecution {
     public static Builder builder(GetExecutionsExecution defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String executionName;
         private String flowName;
@@ -125,7 +144,11 @@ public final class GetExecutionsExecution {
         private String startedTime;
         private String status;
         private String stoppedTime;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetExecutionsExecution defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.executionName = defaults.executionName;
@@ -138,57 +161,39 @@ public final class GetExecutionsExecution {
     	      this.stoppedTime = defaults.stoppedTime;
         }
 
-        @CustomType.Setter
         public Builder executionName(String executionName) {
             this.executionName = Objects.requireNonNull(executionName);
             return this;
         }
-        @CustomType.Setter
         public Builder flowName(String flowName) {
             this.flowName = Objects.requireNonNull(flowName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder input(String input) {
             this.input = Objects.requireNonNull(input);
             return this;
         }
-        @CustomType.Setter
         public Builder output(String output) {
             this.output = Objects.requireNonNull(output);
             return this;
         }
-        @CustomType.Setter
         public Builder startedTime(String startedTime) {
             this.startedTime = Objects.requireNonNull(startedTime);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder stoppedTime(String stoppedTime) {
             this.stoppedTime = Objects.requireNonNull(stoppedTime);
             return this;
-        }
-        public GetExecutionsExecution build() {
-            final var o = new GetExecutionsExecution();
-            o.executionName = executionName;
-            o.flowName = flowName;
-            o.id = id;
-            o.input = input;
-            o.output = output;
-            o.startedTime = startedTime;
-            o.status = status;
-            o.stoppedTime = stoppedTime;
-            return o;
+        }        public GetExecutionsExecution build() {
+            return new GetExecutionsExecution(executionName, flowName, id, input, output, startedTime, status, stoppedTime);
         }
     }
 }

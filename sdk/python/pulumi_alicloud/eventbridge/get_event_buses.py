@@ -138,6 +138,7 @@ def get_event_buses(event_bus_type: Optional[str] = None,
     :param Sequence[str] ids: A list of Event Bus IDs. Its element value is same as Event Bus Name.
     :param str name_prefix: The name prefix.
     :param str name_regex: A regex string to filter results by Event Bus name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['eventBusType'] = event_bus_type
@@ -190,5 +191,6 @@ def get_event_buses_output(event_bus_type: Optional[pulumi.Input[Optional[str]]]
     :param Sequence[str] ids: A list of Event Bus IDs. Its element value is same as Event Bus Name.
     :param str name_prefix: The name prefix.
     :param str name_regex: A regex string to filter results by Event Bus name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

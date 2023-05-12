@@ -15,49 +15,70 @@ public final class GetPluginsPlugin {
      * @return The CreateTime of the resource.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The description of the plug-in, which cannot exceed 200 characters.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the Plugin.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ModifiedTime of the resource.
      * 
      */
-    private String modifiedTime;
+    private final String modifiedTime;
     /**
      * @return The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
      * 
      */
-    private String pluginData;
+    private final String pluginData;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private String pluginId;
+    private final String pluginId;
     /**
      * @return The name of the plug-in that you want to create.
      * 
      */
-    private String pluginName;
+    private final String pluginName;
     /**
      * @return The type of the plug-in.
      * 
      */
-    private String pluginType;
+    private final String pluginType;
     /**
      * @return The tag of the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
 
-    private GetPluginsPlugin() {}
+    @CustomType.Constructor
+    private GetPluginsPlugin(
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("modifiedTime") String modifiedTime,
+        @CustomType.Parameter("pluginData") String pluginData,
+        @CustomType.Parameter("pluginId") String pluginId,
+        @CustomType.Parameter("pluginName") String pluginName,
+        @CustomType.Parameter("pluginType") String pluginType,
+        @CustomType.Parameter("tags") Map<String,Object> tags) {
+        this.createTime = createTime;
+        this.description = description;
+        this.id = id;
+        this.modifiedTime = modifiedTime;
+        this.pluginData = pluginData;
+        this.pluginId = pluginId;
+        this.pluginName = pluginName;
+        this.pluginType = pluginType;
+        this.tags = tags;
+    }
+
     /**
      * @return The CreateTime of the resource.
      * 
@@ -129,7 +150,7 @@ public final class GetPluginsPlugin {
     public static Builder builder(GetPluginsPlugin defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String createTime;
         private String description;
@@ -140,7 +161,11 @@ public final class GetPluginsPlugin {
         private String pluginName;
         private String pluginType;
         private Map<String,Object> tags;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetPluginsPlugin defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -154,63 +179,43 @@ public final class GetPluginsPlugin {
     	      this.tags = defaults.tags;
         }
 
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder modifiedTime(String modifiedTime) {
             this.modifiedTime = Objects.requireNonNull(modifiedTime);
             return this;
         }
-        @CustomType.Setter
         public Builder pluginData(String pluginData) {
             this.pluginData = Objects.requireNonNull(pluginData);
             return this;
         }
-        @CustomType.Setter
         public Builder pluginId(String pluginId) {
             this.pluginId = Objects.requireNonNull(pluginId);
             return this;
         }
-        @CustomType.Setter
         public Builder pluginName(String pluginName) {
             this.pluginName = Objects.requireNonNull(pluginName);
             return this;
         }
-        @CustomType.Setter
         public Builder pluginType(String pluginType) {
             this.pluginType = Objects.requireNonNull(pluginType);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
-        }
-        public GetPluginsPlugin build() {
-            final var o = new GetPluginsPlugin();
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.modifiedTime = modifiedTime;
-            o.pluginData = pluginData;
-            o.pluginId = pluginId;
-            o.pluginName = pluginName;
-            o.pluginType = pluginType;
-            o.tags = tags;
-            return o;
+        }        public GetPluginsPlugin build() {
+            return new GetPluginsPlugin(createTime, description, id, modifiedTime, pluginData, pluginId, pluginName, pluginType, tags);
         }
     }
 }

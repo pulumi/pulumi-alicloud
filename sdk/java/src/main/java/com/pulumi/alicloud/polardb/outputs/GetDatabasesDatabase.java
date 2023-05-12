@@ -15,34 +15,49 @@ public final class GetDatabasesDatabase {
      * @return A list of accounts of database. Each element contains the following attributes.
      * 
      */
-    private List<GetDatabasesDatabaseAccount> accounts;
+    private final List<GetDatabasesDatabaseAccount> accounts;
     /**
      * @return The character set name of database.
      * 
      */
-    private String characterSetName;
+    private final String characterSetName;
     /**
      * @return Database description.
      * 
      */
-    private String dbDescription;
+    private final String dbDescription;
     /**
      * @return Database name.
      * 
      */
-    private String dbName;
+    private final String dbName;
     /**
      * @return The status of database.
      * 
      */
-    private String dbStatus;
+    private final String dbStatus;
     /**
      * @return The engine of database.
      * 
      */
-    private String engine;
+    private final String engine;
 
-    private GetDatabasesDatabase() {}
+    @CustomType.Constructor
+    private GetDatabasesDatabase(
+        @CustomType.Parameter("accounts") List<GetDatabasesDatabaseAccount> accounts,
+        @CustomType.Parameter("characterSetName") String characterSetName,
+        @CustomType.Parameter("dbDescription") String dbDescription,
+        @CustomType.Parameter("dbName") String dbName,
+        @CustomType.Parameter("dbStatus") String dbStatus,
+        @CustomType.Parameter("engine") String engine) {
+        this.accounts = accounts;
+        this.characterSetName = characterSetName;
+        this.dbDescription = dbDescription;
+        this.dbName = dbName;
+        this.dbStatus = dbStatus;
+        this.engine = engine;
+    }
+
     /**
      * @return A list of accounts of database. Each element contains the following attributes.
      * 
@@ -93,7 +108,7 @@ public final class GetDatabasesDatabase {
     public static Builder builder(GetDatabasesDatabase defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetDatabasesDatabaseAccount> accounts;
         private String characterSetName;
@@ -101,7 +116,11 @@ public final class GetDatabasesDatabase {
         private String dbName;
         private String dbStatus;
         private String engine;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDatabasesDatabase defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accounts = defaults.accounts;
@@ -112,7 +131,6 @@ public final class GetDatabasesDatabase {
     	      this.engine = defaults.engine;
         }
 
-        @CustomType.Setter
         public Builder accounts(List<GetDatabasesDatabaseAccount> accounts) {
             this.accounts = Objects.requireNonNull(accounts);
             return this;
@@ -120,40 +138,27 @@ public final class GetDatabasesDatabase {
         public Builder accounts(GetDatabasesDatabaseAccount... accounts) {
             return accounts(List.of(accounts));
         }
-        @CustomType.Setter
         public Builder characterSetName(String characterSetName) {
             this.characterSetName = Objects.requireNonNull(characterSetName);
             return this;
         }
-        @CustomType.Setter
         public Builder dbDescription(String dbDescription) {
             this.dbDescription = Objects.requireNonNull(dbDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder dbName(String dbName) {
             this.dbName = Objects.requireNonNull(dbName);
             return this;
         }
-        @CustomType.Setter
         public Builder dbStatus(String dbStatus) {
             this.dbStatus = Objects.requireNonNull(dbStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
-        }
-        public GetDatabasesDatabase build() {
-            final var o = new GetDatabasesDatabase();
-            o.accounts = accounts;
-            o.characterSetName = characterSetName;
-            o.dbDescription = dbDescription;
-            o.dbName = dbName;
-            o.dbStatus = dbStatus;
-            o.engine = engine;
-            return o;
+        }        public GetDatabasesDatabase build() {
+            return new GetDatabasesDatabase(accounts, characterSetName, dbDescription, dbName, dbStatus, engine);
         }
     }
 }

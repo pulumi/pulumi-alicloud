@@ -11,14 +11,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertGroupConfiguration {
-    private @Nullable List<String> fields;
+    private final @Nullable List<String> fields;
     /**
      * @return including FixedRate,Hourly,Daily,Weekly,Cron.
      * 
      */
-    private String type;
+    private final String type;
 
-    private AlertGroupConfiguration() {}
+    @CustomType.Constructor
+    private AlertGroupConfiguration(
+        @CustomType.Parameter("fields") @Nullable List<String> fields,
+        @CustomType.Parameter("type") String type) {
+        this.fields = fields;
+        this.type = type;
+    }
+
     public List<String> fields() {
         return this.fields == null ? List.of() : this.fields;
     }
@@ -37,18 +44,21 @@ public final class AlertGroupConfiguration {
     public static Builder builder(AlertGroupConfiguration defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<String> fields;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(AlertGroupConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fields = defaults.fields;
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder fields(@Nullable List<String> fields) {
             this.fields = fields;
             return this;
@@ -56,16 +66,11 @@ public final class AlertGroupConfiguration {
         public Builder fields(String... fields) {
             return fields(List.of(fields));
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public AlertGroupConfiguration build() {
-            final var o = new AlertGroupConfiguration();
-            o.fields = fields;
-            o.type = type;
-            return o;
+        }        public AlertGroupConfiguration build() {
+            return new AlertGroupConfiguration(fields, type);
         }
     }
 }

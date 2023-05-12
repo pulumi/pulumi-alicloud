@@ -50,6 +50,9 @@ export interface GetScalingConfigurationsArgs {
      * A regex string to filter resulting scaling configurations by name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Scaling group id the scaling configurations belong to.
@@ -120,6 +123,9 @@ export interface GetScalingConfigurationsOutputArgs {
      * A regex string to filter resulting scaling configurations by name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Scaling group id the scaling configurations belong to.

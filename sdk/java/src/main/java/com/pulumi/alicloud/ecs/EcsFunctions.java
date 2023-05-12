@@ -1380,6 +1380,10 @@ public final class EcsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:ecs/getDedicatedHosts:getDedicatedHosts", TypeShape.of(GetDedicatedHostsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsDisks from version 1.122.0.
+     * 
+     * This data source provides the disks of the current Alibaba Cloud user.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1416,6 +1420,10 @@ public final class EcsFunctions {
         return getDisks(GetDisksArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsDisks from version 1.122.0.
+     * 
+     * This data source provides the disks of the current Alibaba Cloud user.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1452,6 +1460,10 @@ public final class EcsFunctions {
         return getDisksPlain(GetDisksPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsDisks from version 1.122.0.
+     * 
+     * This data source provides the disks of the current Alibaba Cloud user.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1488,6 +1500,10 @@ public final class EcsFunctions {
         return getDisks(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsDisks from version 1.122.0.
+     * 
+     * This data source provides the disks of the current Alibaba Cloud user.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1524,6 +1540,10 @@ public final class EcsFunctions {
         return getDisksPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsDisks from version 1.122.0.
+     * 
+     * This data source provides the disks of the current Alibaba Cloud user.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1560,6 +1580,10 @@ public final class EcsFunctions {
         return Deployment.getInstance().invoke("alicloud:ecs/getDisks:getDisks", TypeShape.of(GetDisksResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsDisks from version 1.122.0.
+     * 
+     * This data source provides the disks of the current Alibaba Cloud user.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -5656,6 +5680,10 @@ public final class EcsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:ecs/getEipAddresses:getEipAddresses", TypeShape.of(GetEipAddressesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.126.0`. Please use new datasource alicloud_eip_addresses.
+     * 
+     * This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -5694,6 +5722,10 @@ public final class EcsFunctions {
         return getEips(GetEipsArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.126.0`. Please use new datasource alicloud_eip_addresses.
+     * 
+     * This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -5732,6 +5764,10 @@ public final class EcsFunctions {
         return getEipsPlain(GetEipsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.126.0`. Please use new datasource alicloud_eip_addresses.
+     * 
+     * This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -5770,6 +5806,10 @@ public final class EcsFunctions {
         return getEips(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.126.0`. Please use new datasource alicloud_eip_addresses.
+     * 
+     * This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -5808,6 +5848,10 @@ public final class EcsFunctions {
         return getEipsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.126.0`. Please use new datasource alicloud_eip_addresses.
+     * 
+     * This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -5846,6 +5890,10 @@ public final class EcsFunctions {
         return Deployment.getInstance().invoke("alicloud:ecs/getEips:getEips", TypeShape.of(GetEipsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.126.0`. Please use new datasource alicloud_eip_addresses.
+     * 
+     * This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -7560,6 +7608,10 @@ public final class EcsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:ecs/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsKeyPairs from version 1.121.0.
+     * 
+     * This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -7601,6 +7653,10 @@ public final class EcsFunctions {
         return getKeyPairs(GetKeyPairsArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsKeyPairs from version 1.121.0.
+     * 
+     * This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -7642,6 +7698,10 @@ public final class EcsFunctions {
         return getKeyPairsPlain(GetKeyPairsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsKeyPairs from version 1.121.0.
+     * 
+     * This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -7683,6 +7743,10 @@ public final class EcsFunctions {
         return getKeyPairs(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsKeyPairs from version 1.121.0.
+     * 
+     * This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -7724,6 +7788,10 @@ public final class EcsFunctions {
         return getKeyPairsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsKeyPairs from version 1.121.0.
+     * 
+     * This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -7765,6 +7833,10 @@ public final class EcsFunctions {
         return Deployment.getInstance().invoke("alicloud:ecs/getKeyPairs:getKeyPairs", TypeShape.of(GetKeyPairsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsKeyPairs from version 1.121.0.
+     * 
+     * This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -7806,6 +7878,12 @@ public final class EcsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:ecs/getKeyPairs:getKeyPairs", TypeShape.of(GetKeyPairsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsNetworkInterfaces from version 1.123.1.
+     * 
+     * Use this data source to get a list of elastic network interfaces according to the specified filters in an Alibaba Cloud account.
+     * 
+     * For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -7926,6 +8004,12 @@ public final class EcsFunctions {
         return getNetworkInterfaces(GetNetworkInterfacesArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsNetworkInterfaces from version 1.123.1.
+     * 
+     * Use this data source to get a list of elastic network interfaces according to the specified filters in an Alibaba Cloud account.
+     * 
+     * For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -8046,6 +8130,12 @@ public final class EcsFunctions {
         return getNetworkInterfacesPlain(GetNetworkInterfacesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsNetworkInterfaces from version 1.123.1.
+     * 
+     * Use this data source to get a list of elastic network interfaces according to the specified filters in an Alibaba Cloud account.
+     * 
+     * For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -8166,6 +8256,12 @@ public final class EcsFunctions {
         return getNetworkInterfaces(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsNetworkInterfaces from version 1.123.1.
+     * 
+     * Use this data source to get a list of elastic network interfaces according to the specified filters in an Alibaba Cloud account.
+     * 
+     * For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -8286,6 +8382,12 @@ public final class EcsFunctions {
         return getNetworkInterfacesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsNetworkInterfaces from version 1.123.1.
+     * 
+     * Use this data source to get a list of elastic network interfaces according to the specified filters in an Alibaba Cloud account.
+     * 
+     * For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -8406,6 +8508,12 @@ public final class EcsFunctions {
         return Deployment.getInstance().invoke("alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces", TypeShape.of(GetNetworkInterfacesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsNetworkInterfaces from version 1.123.1.
+     * 
+     * Use this data source to get a list of elastic network interfaces according to the specified filters in an Alibaba Cloud account.
+     * 
+     * For information about elastic network interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html)
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -9030,6 +9138,14 @@ public final class EcsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:ecs/getSecurityGroups:getSecurityGroups", TypeShape.of(GetSecurityGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsSnapshots from version 1.120.0.
+     * 
+     * Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
+     * 
+     * For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+     * 
+     * &gt; **NOTE:**  Available in 1.40.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -9094,6 +9210,14 @@ public final class EcsFunctions {
         return getSnapshots(GetSnapshotsArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsSnapshots from version 1.120.0.
+     * 
+     * Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
+     * 
+     * For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+     * 
+     * &gt; **NOTE:**  Available in 1.40.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -9158,6 +9282,14 @@ public final class EcsFunctions {
         return getSnapshotsPlain(GetSnapshotsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsSnapshots from version 1.120.0.
+     * 
+     * Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
+     * 
+     * For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+     * 
+     * &gt; **NOTE:**  Available in 1.40.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -9222,6 +9354,14 @@ public final class EcsFunctions {
         return getSnapshots(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsSnapshots from version 1.120.0.
+     * 
+     * Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
+     * 
+     * For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+     * 
+     * &gt; **NOTE:**  Available in 1.40.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -9286,6 +9426,14 @@ public final class EcsFunctions {
         return getSnapshotsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsSnapshots from version 1.120.0.
+     * 
+     * Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
+     * 
+     * For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+     * 
+     * &gt; **NOTE:**  Available in 1.40.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -9350,6 +9498,14 @@ public final class EcsFunctions {
         return Deployment.getInstance().invoke("alicloud:ecs/getSnapshots:getSnapshots", TypeShape.of(GetSnapshotsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsSnapshots from version 1.120.0.
+     * 
+     * Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
+     * 
+     * For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+     * 
+     * &gt; **NOTE:**  Available in 1.40.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;

@@ -107,6 +107,7 @@ def get_instance_keywords(key: Optional[str] = None,
 
 
     :param str key: The type of reserved keyword to query. Valid values: `account`, `database`.
+    :param str output_file: File name where to save data source results (after running `pulumi up`).
     """
     __args__ = dict()
     __args__['key'] = key
@@ -144,5 +145,6 @@ def get_instance_keywords_output(key: Optional[pulumi.Input[str]] = None,
 
 
     :param str key: The type of reserved keyword to query. Valid values: `account`, `database`.
+    :param str output_file: File name where to save data source results (after running `pulumi up`).
     """
     ...

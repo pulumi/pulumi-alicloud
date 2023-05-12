@@ -206,6 +206,7 @@ def get_hosts(enable_details: Optional[bool] = None,
     :param str instance_id: Specify the new create a host where the Bastion host ID of.
     :param str name_regex: A regex string to filter results by Host name.
     :param str os_type: Specify the new create the host's operating system. Valid values: Linux Windows.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str source: Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
     :param str source_instance_id: Specify the newly created ECS instance ID or dedicated cluster host ID.
     :param str source_instance_state: The source instance state.
@@ -287,6 +288,7 @@ def get_hosts_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
     :param str instance_id: Specify the new create a host where the Bastion host ID of.
     :param str name_regex: A regex string to filter results by Host name.
     :param str os_type: Specify the new create the host's operating system. Valid values: Linux Windows.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str source: Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
     :param str source_instance_id: Specify the newly created ECS instance ID or dedicated cluster host ID.
     :param str source_instance_state: The source instance state.

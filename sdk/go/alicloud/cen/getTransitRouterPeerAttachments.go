@@ -29,7 +29,8 @@ type GetTransitRouterPeerAttachmentsArgs struct {
 	// A list of CEN Transit Router peer attachments IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter CEN Transit Router peer attachments by name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of CEN Transit Router peer attachment. Valid values `Attached`, `Attaching` and `Detaching`.
 	Status *string `pulumi:"status"`
@@ -79,7 +80,8 @@ type GetTransitRouterPeerAttachmentsOutputArgs struct {
 	// A list of CEN Transit Router peer attachments IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter CEN Transit Router peer attachments by name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of CEN Transit Router peer attachment. Valid values `Attached`, `Attaching` and `Detaching`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

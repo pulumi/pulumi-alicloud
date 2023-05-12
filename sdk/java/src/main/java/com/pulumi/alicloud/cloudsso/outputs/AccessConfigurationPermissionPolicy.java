@@ -15,19 +15,28 @@ public final class AccessConfigurationPermissionPolicy {
      * @return The Content of Policy.
      * 
      */
-    private @Nullable String permissionPolicyDocument;
+    private final @Nullable String permissionPolicyDocument;
     /**
      * @return The Policy Name of policy. The name of the resource.
      * 
      */
-    private String permissionPolicyName;
+    private final String permissionPolicyName;
     /**
      * @return The Policy Type of policy. Valid values: `System`, `Inline`.
      * 
      */
-    private String permissionPolicyType;
+    private final String permissionPolicyType;
 
-    private AccessConfigurationPermissionPolicy() {}
+    @CustomType.Constructor
+    private AccessConfigurationPermissionPolicy(
+        @CustomType.Parameter("permissionPolicyDocument") @Nullable String permissionPolicyDocument,
+        @CustomType.Parameter("permissionPolicyName") String permissionPolicyName,
+        @CustomType.Parameter("permissionPolicyType") String permissionPolicyType) {
+        this.permissionPolicyDocument = permissionPolicyDocument;
+        this.permissionPolicyName = permissionPolicyName;
+        this.permissionPolicyType = permissionPolicyType;
+    }
+
     /**
      * @return The Content of Policy.
      * 
@@ -57,12 +66,16 @@ public final class AccessConfigurationPermissionPolicy {
     public static Builder builder(AccessConfigurationPermissionPolicy defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String permissionPolicyDocument;
         private String permissionPolicyName;
         private String permissionPolicyType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(AccessConfigurationPermissionPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.permissionPolicyDocument = defaults.permissionPolicyDocument;
@@ -70,27 +83,19 @@ public final class AccessConfigurationPermissionPolicy {
     	      this.permissionPolicyType = defaults.permissionPolicyType;
         }
 
-        @CustomType.Setter
         public Builder permissionPolicyDocument(@Nullable String permissionPolicyDocument) {
             this.permissionPolicyDocument = permissionPolicyDocument;
             return this;
         }
-        @CustomType.Setter
         public Builder permissionPolicyName(String permissionPolicyName) {
             this.permissionPolicyName = Objects.requireNonNull(permissionPolicyName);
             return this;
         }
-        @CustomType.Setter
         public Builder permissionPolicyType(String permissionPolicyType) {
             this.permissionPolicyType = Objects.requireNonNull(permissionPolicyType);
             return this;
-        }
-        public AccessConfigurationPermissionPolicy build() {
-            final var o = new AccessConfigurationPermissionPolicy();
-            o.permissionPolicyDocument = permissionPolicyDocument;
-            o.permissionPolicyName = permissionPolicyName;
-            o.permissionPolicyType = permissionPolicyType;
-            return o;
+        }        public AccessConfigurationPermissionPolicy build() {
+            return new AccessConfigurationPermissionPolicy(permissionPolicyDocument, permissionPolicyName, permissionPolicyType);
         }
     }
 }

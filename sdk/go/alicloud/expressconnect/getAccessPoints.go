@@ -65,7 +65,8 @@ type GetAccessPointsArgs struct {
 	// A list of Access Point IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Access Point name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The Physical Connection to Which the Access Point State.
 	Status *string `pulumi:"status"`
@@ -101,7 +102,8 @@ type GetAccessPointsOutputArgs struct {
 	// A list of Access Point IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Access Point name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The Physical Connection to Which the Access Point State.
 	Status pulumi.StringPtrInput `pulumi:"status"`

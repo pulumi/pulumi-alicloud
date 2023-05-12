@@ -39,12 +39,17 @@ class InstanceArgs:
         :param pulumi.Input[str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost. 
+               **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+               So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+               and you can use tolist to convert it to a list.
         :param pulumi.Input[str] storage: The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
         :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]] ad_auth_servers: The AD auth server of the Instance. See the following `Block ad_auth_server`.
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] public_white_lists: The public IP address that you want to add to the whitelist.
+        :param pulumi.Input[int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
         :param pulumi.Input[str] renewal_period_unit: The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
         :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
@@ -130,6 +135,12 @@ class InstanceArgs:
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        security group IDs configured to Bastionhost. 
+        **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+        So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+        and you can use tolist to convert it to a list.
+        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -199,6 +210,10 @@ class InstanceArgs:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+        > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -208,9 +223,6 @@ class InstanceArgs:
     @property
     @pulumi.getter(name="publicWhiteLists")
     def public_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The public IP address that you want to add to the whitelist.
-        """
         return pulumi.get(self, "public_white_lists")
 
     @public_white_lists.setter
@@ -306,12 +318,17 @@ class _InstanceState:
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        :param pulumi.Input[int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] public_white_lists: The public IP address that you want to add to the whitelist.
         :param pulumi.Input[int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
         :param pulumi.Input[str] renewal_period_unit: The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
         :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost. 
+               **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+               So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+               and you can use tolist to convert it to a list.
         :param pulumi.Input[str] storage: The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
@@ -426,6 +443,10 @@ class _InstanceState:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+        > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -447,9 +468,6 @@ class _InstanceState:
     @property
     @pulumi.getter(name="publicWhiteLists")
     def public_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The public IP address that you want to add to the whitelist.
-        """
         return pulumi.get(self, "public_white_lists")
 
     @public_white_lists.setter
@@ -507,6 +525,12 @@ class _InstanceState:
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        security group IDs configured to Bastionhost. 
+        **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+        So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+        and you can use tolist to convert it to a list.
+        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -590,12 +614,17 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        :param pulumi.Input[int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] public_white_lists: The public IP address that you want to add to the whitelist.
         :param pulumi.Input[int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
         :param pulumi.Input[str] renewal_period_unit: The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
         :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost. 
+               **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+               So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+               and you can use tolist to convert it to a list.
         :param pulumi.Input[str] storage: The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
@@ -727,12 +756,17 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceLdapAuthServerArgs']]]] ldap_auth_servers: The LDAP auth server of the Instance. See the following `Block ldap_auth_server`.
         :param pulumi.Input[str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+        :param pulumi.Input[int] period: Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] public_white_lists: The public IP address that you want to add to the whitelist.
         :param pulumi.Input[int] renew_period: Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renew_period` is required under the condition that `renewal_status` is `AutoRenewal`. From version 1.193.0, `renew_period` can be modified.
         :param pulumi.Input[str] renewal_period_unit: The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
         :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: security group IDs configured to Bastionhost. 
+               **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+               So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+               and you can use tolist to convert it to a list.
         :param pulumi.Input[str] storage: The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: VSwitch ID configured to Bastionhost.
@@ -811,6 +845,10 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
+        """
+        Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+        > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        """
         return pulumi.get(self, "period")
 
     @property
@@ -824,9 +862,6 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="publicWhiteLists")
     def public_white_lists(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        The public IP address that you want to add to the whitelist.
-        """
         return pulumi.get(self, "public_white_lists")
 
     @property
@@ -864,6 +899,12 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Sequence[str]]:
+        """
+        security group IDs configured to Bastionhost. 
+        **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+        So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+        and you can use tolist to convert it to a list.
+        """
         return pulumi.get(self, "security_group_ids")
 
     @property

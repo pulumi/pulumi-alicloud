@@ -114,6 +114,7 @@ def get_shared_targets(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Shared Target IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_share_id: The resource shared ID of resource manager.
     :param str status: The status of shared target.
     """
@@ -159,6 +160,7 @@ def get_shared_targets_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
 
 
     :param Sequence[str] ids: A list of Shared Target IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_share_id: The resource shared ID of resource manager.
     :param str status: The status of shared target.
     """

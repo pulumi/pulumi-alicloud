@@ -15,14 +15,21 @@ public final class PrometheusAlertRuleLabel {
      * @return The name of the label.
      * 
      */
-    private @Nullable String name;
+    private final @Nullable String name;
     /**
      * @return The value of the label.
      * 
      */
-    private @Nullable String value;
+    private final @Nullable String value;
 
-    private PrometheusAlertRuleLabel() {}
+    @CustomType.Constructor
+    private PrometheusAlertRuleLabel(
+        @CustomType.Parameter("name") @Nullable String name,
+        @CustomType.Parameter("value") @Nullable String value) {
+        this.name = name;
+        this.value = value;
+    }
+
     /**
      * @return The name of the label.
      * 
@@ -45,32 +52,30 @@ public final class PrometheusAlertRuleLabel {
     public static Builder builder(PrometheusAlertRuleLabel defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String name;
         private @Nullable String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(PrometheusAlertRuleLabel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
-        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }
-        public PrometheusAlertRuleLabel build() {
-            final var o = new PrometheusAlertRuleLabel();
-            o.name = name;
-            o.value = value;
-            return o;
+        }        public PrometheusAlertRuleLabel build() {
+            return new PrometheusAlertRuleLabel(name, value);
         }
     }
 }

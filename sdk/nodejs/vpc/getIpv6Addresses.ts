@@ -60,6 +60,9 @@ export interface GetIpv6AddressesArgs {
      */
     associatedInstanceId?: string;
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the IPv6 address. Valid values:`Pending` or `Available`.
@@ -136,6 +139,9 @@ export interface GetIpv6AddressesOutputArgs {
      */
     associatedInstanceId?: pulumi.Input<string>;
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the IPv6 address. Valid values:`Pending` or `Available`.

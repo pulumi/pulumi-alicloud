@@ -15,14 +15,21 @@ public final class CompliancePackConfigRuleConfigRuleParameter {
      * @return The parameter name.
      * 
      */
-    private @Nullable String parameterName;
+    private final @Nullable String parameterName;
     /**
      * @return The parameter value.
      * 
      */
-    private @Nullable String parameterValue;
+    private final @Nullable String parameterValue;
 
-    private CompliancePackConfigRuleConfigRuleParameter() {}
+    @CustomType.Constructor
+    private CompliancePackConfigRuleConfigRuleParameter(
+        @CustomType.Parameter("parameterName") @Nullable String parameterName,
+        @CustomType.Parameter("parameterValue") @Nullable String parameterValue) {
+        this.parameterName = parameterName;
+        this.parameterValue = parameterValue;
+    }
+
     /**
      * @return The parameter name.
      * 
@@ -45,32 +52,30 @@ public final class CompliancePackConfigRuleConfigRuleParameter {
     public static Builder builder(CompliancePackConfigRuleConfigRuleParameter defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String parameterName;
         private @Nullable String parameterValue;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(CompliancePackConfigRuleConfigRuleParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parameterName = defaults.parameterName;
     	      this.parameterValue = defaults.parameterValue;
         }
 
-        @CustomType.Setter
         public Builder parameterName(@Nullable String parameterName) {
             this.parameterName = parameterName;
             return this;
         }
-        @CustomType.Setter
         public Builder parameterValue(@Nullable String parameterValue) {
             this.parameterValue = parameterValue;
             return this;
-        }
-        public CompliancePackConfigRuleConfigRuleParameter build() {
-            final var o = new CompliancePackConfigRuleConfigRuleParameter();
-            o.parameterName = parameterName;
-            o.parameterValue = parameterValue;
-            return o;
+        }        public CompliancePackConfigRuleConfigRuleParameter build() {
+            return new CompliancePackConfigRuleConfigRuleParameter(parameterName, parameterValue);
         }
     }
 }

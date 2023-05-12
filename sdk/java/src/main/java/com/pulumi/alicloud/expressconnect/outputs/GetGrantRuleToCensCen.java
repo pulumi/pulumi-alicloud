@@ -14,24 +14,35 @@ public final class GetGrantRuleToCensCen {
      * @return The ID of the authorized CEN instance.
      * 
      */
-    private String cenId;
+    private final String cenId;
     /**
      * @return The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
      * 
      */
-    private Integer cenOwnerId;
+    private final Integer cenOwnerId;
     /**
      * @return The time when the instance was created.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The ID of the Grant Rule To Cen. It formats as `&lt;cen_id&gt;:&lt;cen_owner_id&gt;:&lt;instance_id&gt;`.
      * 
      */
-    private String id;
+    private final String id;
 
-    private GetGrantRuleToCensCen() {}
+    @CustomType.Constructor
+    private GetGrantRuleToCensCen(
+        @CustomType.Parameter("cenId") String cenId,
+        @CustomType.Parameter("cenOwnerId") Integer cenOwnerId,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("id") String id) {
+        this.cenId = cenId;
+        this.cenOwnerId = cenOwnerId;
+        this.createTime = createTime;
+        this.id = id;
+    }
+
     /**
      * @return The ID of the authorized CEN instance.
      * 
@@ -68,13 +79,17 @@ public final class GetGrantRuleToCensCen {
     public static Builder builder(GetGrantRuleToCensCen defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String cenId;
         private Integer cenOwnerId;
         private String createTime;
         private String id;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetGrantRuleToCensCen defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cenId = defaults.cenId;
@@ -83,33 +98,23 @@ public final class GetGrantRuleToCensCen {
     	      this.id = defaults.id;
         }
 
-        @CustomType.Setter
         public Builder cenId(String cenId) {
             this.cenId = Objects.requireNonNull(cenId);
             return this;
         }
-        @CustomType.Setter
         public Builder cenOwnerId(Integer cenOwnerId) {
             this.cenOwnerId = Objects.requireNonNull(cenOwnerId);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }
-        public GetGrantRuleToCensCen build() {
-            final var o = new GetGrantRuleToCensCen();
-            o.cenId = cenId;
-            o.cenOwnerId = cenOwnerId;
-            o.createTime = createTime;
-            o.id = id;
-            return o;
+        }        public GetGrantRuleToCensCen build() {
+            return new GetGrantRuleToCensCen(cenId, cenOwnerId, createTime, id);
         }
     }
 }

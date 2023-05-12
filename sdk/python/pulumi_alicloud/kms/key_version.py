@@ -18,6 +18,8 @@ class KeyVersionArgs:
         """
         The set of arguments for constructing a KeyVersion resource.
         :param pulumi.Input[str] key_id: The id of the master key (CMK).
+               
+               > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
         """
         pulumi.set(__self__, "key_id", key_id)
 
@@ -26,6 +28,8 @@ class KeyVersionArgs:
     def key_id(self) -> pulumi.Input[str]:
         """
         The id of the master key (CMK).
+
+        > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
         """
         return pulumi.get(self, "key_id")
 
@@ -42,6 +46,8 @@ class _KeyVersionState:
         """
         Input properties used for looking up and filtering KeyVersion resources.
         :param pulumi.Input[str] key_id: The id of the master key (CMK).
+               
+               > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
         :param pulumi.Input[str] key_version_id: The id of the Alikms key version.
         """
         if key_id is not None:
@@ -54,6 +60,8 @@ class _KeyVersionState:
     def key_id(self) -> Optional[pulumi.Input[str]]:
         """
         The id of the master key (CMK).
+
+        > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
         """
         return pulumi.get(self, "key_id")
 
@@ -109,6 +117,8 @@ class KeyVersion(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_id: The id of the master key (CMK).
+               
+               > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
         """
         ...
     @overload
@@ -190,6 +200,8 @@ class KeyVersion(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key_id: The id of the master key (CMK).
+               
+               > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
         :param pulumi.Input[str] key_version_id: The id of the Alikms key version.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -205,6 +217,8 @@ class KeyVersion(pulumi.CustomResource):
     def key_id(self) -> pulumi.Output[str]:
         """
         The id of the master key (CMK).
+
+        > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
         """
         return pulumi.get(self, "key_id")
 

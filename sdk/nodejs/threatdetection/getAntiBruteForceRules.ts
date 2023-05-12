@@ -34,6 +34,9 @@ export interface GetAntiBruteForceRulesArgs {
      * A regex string to filter results by the name of the defense rule.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -81,5 +84,8 @@ export interface GetAntiBruteForceRulesOutputArgs {
      * A regex string to filter results by the name of the defense rule.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

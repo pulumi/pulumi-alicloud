@@ -114,6 +114,7 @@ def get_state_configurations(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of State Configuration IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param Mapping[str, Any] tags: The tag of the resource.
     """
@@ -159,6 +160,7 @@ def get_state_configurations_output(ids: Optional[pulumi.Input[Optional[Sequence
 
 
     :param Sequence[str] ids: A list of State Configuration IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param Mapping[str, Any] tags: The tag of the resource.
     """

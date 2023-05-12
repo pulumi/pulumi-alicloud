@@ -17,19 +17,28 @@ public final class MetricRuleTemplateAlertTemplateEscalations {
      * @return The condition for triggering critical-level alerts. See the following `Block critical`.
      * 
      */
-    private @Nullable MetricRuleTemplateAlertTemplateEscalationsCritical critical;
+    private final @Nullable MetricRuleTemplateAlertTemplateEscalationsCritical critical;
     /**
      * @return The condition for triggering info-level alerts. See the following `Block info`.
      * 
      */
-    private @Nullable MetricRuleTemplateAlertTemplateEscalationsInfo info;
+    private final @Nullable MetricRuleTemplateAlertTemplateEscalationsInfo info;
     /**
      * @return The condition for triggering warn-level alerts. See the following `Block warn`.
      * 
      */
-    private @Nullable MetricRuleTemplateAlertTemplateEscalationsWarn warn;
+    private final @Nullable MetricRuleTemplateAlertTemplateEscalationsWarn warn;
 
-    private MetricRuleTemplateAlertTemplateEscalations() {}
+    @CustomType.Constructor
+    private MetricRuleTemplateAlertTemplateEscalations(
+        @CustomType.Parameter("critical") @Nullable MetricRuleTemplateAlertTemplateEscalationsCritical critical,
+        @CustomType.Parameter("info") @Nullable MetricRuleTemplateAlertTemplateEscalationsInfo info,
+        @CustomType.Parameter("warn") @Nullable MetricRuleTemplateAlertTemplateEscalationsWarn warn) {
+        this.critical = critical;
+        this.info = info;
+        this.warn = warn;
+    }
+
     /**
      * @return The condition for triggering critical-level alerts. See the following `Block critical`.
      * 
@@ -59,12 +68,16 @@ public final class MetricRuleTemplateAlertTemplateEscalations {
     public static Builder builder(MetricRuleTemplateAlertTemplateEscalations defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable MetricRuleTemplateAlertTemplateEscalationsCritical critical;
         private @Nullable MetricRuleTemplateAlertTemplateEscalationsInfo info;
         private @Nullable MetricRuleTemplateAlertTemplateEscalationsWarn warn;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(MetricRuleTemplateAlertTemplateEscalations defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.critical = defaults.critical;
@@ -72,27 +85,19 @@ public final class MetricRuleTemplateAlertTemplateEscalations {
     	      this.warn = defaults.warn;
         }
 
-        @CustomType.Setter
         public Builder critical(@Nullable MetricRuleTemplateAlertTemplateEscalationsCritical critical) {
             this.critical = critical;
             return this;
         }
-        @CustomType.Setter
         public Builder info(@Nullable MetricRuleTemplateAlertTemplateEscalationsInfo info) {
             this.info = info;
             return this;
         }
-        @CustomType.Setter
         public Builder warn(@Nullable MetricRuleTemplateAlertTemplateEscalationsWarn warn) {
             this.warn = warn;
             return this;
-        }
-        public MetricRuleTemplateAlertTemplateEscalations build() {
-            final var o = new MetricRuleTemplateAlertTemplateEscalations();
-            o.critical = critical;
-            o.info = info;
-            o.warn = warn;
-            return o;
+        }        public MetricRuleTemplateAlertTemplateEscalations build() {
+            return new MetricRuleTemplateAlertTemplateEscalations(critical, info, warn);
         }
     }
 }

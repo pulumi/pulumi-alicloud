@@ -129,6 +129,7 @@ def get_template_scratches(enable_details: Optional[bool] = None,
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Template Scratch IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource.
     :param str template_scratch_type: The type of the Template Scratch.
     """
@@ -182,6 +183,7 @@ def get_template_scratches_output(enable_details: Optional[pulumi.Input[Optional
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Template Scratch IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource.
     :param str template_scratch_type: The type of the Template Scratch.
     """

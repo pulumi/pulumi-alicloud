@@ -58,6 +58,9 @@ export interface GetPhysicalConnectionsArgs {
      * A regex string to filter results by Physical Connection name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Resources on Behalf of a State of the Resource Attribute Field.
@@ -124,6 +127,9 @@ export interface GetPhysicalConnectionsOutputArgs {
      * A regex string to filter results by Physical Connection name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Resources on Behalf of a State of the Resource Attribute Field.

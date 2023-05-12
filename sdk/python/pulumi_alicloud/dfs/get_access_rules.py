@@ -109,6 +109,7 @@ def get_access_rules(access_group_id: Optional[str] = None,
 
     :param str access_group_id: The resource ID of the Access Group.
     :param Sequence[str] ids: A list of Access Rule IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['accessGroupId'] = access_group_id
@@ -154,5 +155,6 @@ def get_access_rules_output(access_group_id: Optional[pulumi.Input[str]] = None,
 
     :param str access_group_id: The resource ID of the Access Group.
     :param Sequence[str] ids: A list of Access Rule IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

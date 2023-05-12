@@ -17,49 +17,70 @@ public final class GetNetworkAclsAcl {
      * @return Description of the entry direction rule.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return Output direction rule information.
      * 
      */
-    private List<GetNetworkAclsAclEgressAclEntry> egressAclEntries;
+    private final List<GetNetworkAclsAclEgressAclEntry> egressAclEntries;
     /**
      * @return The ID of the Network Acl.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Entry direction rule information.
      * 
      */
-    private List<GetNetworkAclsAclIngressAclEntry> ingressAclEntries;
+    private final List<GetNetworkAclsAclIngressAclEntry> ingressAclEntries;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private String networkAclId;
+    private final String networkAclId;
     /**
      * @return The name of the network ACL.
      * 
      */
-    private String networkAclName;
+    private final String networkAclName;
     /**
      * @return The associated resource.
      * 
      */
-    private List<GetNetworkAclsAclResource> resources;
+    private final List<GetNetworkAclsAclResource> resources;
     /**
      * @return The state of the network ACL.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The ID of the associated VPC.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
 
-    private GetNetworkAclsAcl() {}
+    @CustomType.Constructor
+    private GetNetworkAclsAcl(
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("egressAclEntries") List<GetNetworkAclsAclEgressAclEntry> egressAclEntries,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ingressAclEntries") List<GetNetworkAclsAclIngressAclEntry> ingressAclEntries,
+        @CustomType.Parameter("networkAclId") String networkAclId,
+        @CustomType.Parameter("networkAclName") String networkAclName,
+        @CustomType.Parameter("resources") List<GetNetworkAclsAclResource> resources,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("vpcId") String vpcId) {
+        this.description = description;
+        this.egressAclEntries = egressAclEntries;
+        this.id = id;
+        this.ingressAclEntries = ingressAclEntries;
+        this.networkAclId = networkAclId;
+        this.networkAclName = networkAclName;
+        this.resources = resources;
+        this.status = status;
+        this.vpcId = vpcId;
+    }
+
     /**
      * @return Description of the entry direction rule.
      * 
@@ -131,7 +152,7 @@ public final class GetNetworkAclsAcl {
     public static Builder builder(GetNetworkAclsAcl defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String description;
         private List<GetNetworkAclsAclEgressAclEntry> egressAclEntries;
@@ -142,7 +163,11 @@ public final class GetNetworkAclsAcl {
         private List<GetNetworkAclsAclResource> resources;
         private String status;
         private String vpcId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetNetworkAclsAcl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -156,12 +181,10 @@ public final class GetNetworkAclsAcl {
     	      this.vpcId = defaults.vpcId;
         }
 
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder egressAclEntries(List<GetNetworkAclsAclEgressAclEntry> egressAclEntries) {
             this.egressAclEntries = Objects.requireNonNull(egressAclEntries);
             return this;
@@ -169,12 +192,10 @@ public final class GetNetworkAclsAcl {
         public Builder egressAclEntries(GetNetworkAclsAclEgressAclEntry... egressAclEntries) {
             return egressAclEntries(List.of(egressAclEntries));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ingressAclEntries(List<GetNetworkAclsAclIngressAclEntry> ingressAclEntries) {
             this.ingressAclEntries = Objects.requireNonNull(ingressAclEntries);
             return this;
@@ -182,17 +203,14 @@ public final class GetNetworkAclsAcl {
         public Builder ingressAclEntries(GetNetworkAclsAclIngressAclEntry... ingressAclEntries) {
             return ingressAclEntries(List.of(ingressAclEntries));
         }
-        @CustomType.Setter
         public Builder networkAclId(String networkAclId) {
             this.networkAclId = Objects.requireNonNull(networkAclId);
             return this;
         }
-        @CustomType.Setter
         public Builder networkAclName(String networkAclName) {
             this.networkAclName = Objects.requireNonNull(networkAclName);
             return this;
         }
-        @CustomType.Setter
         public Builder resources(List<GetNetworkAclsAclResource> resources) {
             this.resources = Objects.requireNonNull(resources);
             return this;
@@ -200,28 +218,15 @@ public final class GetNetworkAclsAcl {
         public Builder resources(GetNetworkAclsAclResource... resources) {
             return resources(List.of(resources));
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }
-        public GetNetworkAclsAcl build() {
-            final var o = new GetNetworkAclsAcl();
-            o.description = description;
-            o.egressAclEntries = egressAclEntries;
-            o.id = id;
-            o.ingressAclEntries = ingressAclEntries;
-            o.networkAclId = networkAclId;
-            o.networkAclName = networkAclName;
-            o.resources = resources;
-            o.status = status;
-            o.vpcId = vpcId;
-            return o;
+        }        public GetNetworkAclsAcl build() {
+            return new GetNetworkAclsAcl(description, egressAclEntries, id, ingressAclEntries, networkAclId, networkAclName, resources, status, vpcId);
         }
     }
 }

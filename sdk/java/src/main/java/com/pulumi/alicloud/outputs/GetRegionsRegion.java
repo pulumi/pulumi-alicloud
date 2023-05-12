@@ -13,15 +13,24 @@ public final class GetRegionsRegion {
      * @return ID of the region.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Name of the region in the local language.
      * 
      */
-    private String localName;
-    private String regionId;
+    private final String localName;
+    private final String regionId;
 
-    private GetRegionsRegion() {}
+    @CustomType.Constructor
+    private GetRegionsRegion(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("localName") String localName,
+        @CustomType.Parameter("regionId") String regionId) {
+        this.id = id;
+        this.localName = localName;
+        this.regionId = regionId;
+    }
+
     /**
      * @return ID of the region.
      * 
@@ -47,12 +56,16 @@ public final class GetRegionsRegion {
     public static Builder builder(GetRegionsRegion defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private String localName;
         private String regionId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRegionsRegion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -60,27 +73,19 @@ public final class GetRegionsRegion {
     	      this.regionId = defaults.regionId;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder localName(String localName) {
             this.localName = Objects.requireNonNull(localName);
             return this;
         }
-        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
-        }
-        public GetRegionsRegion build() {
-            final var o = new GetRegionsRegion();
-            o.id = id;
-            o.localName = localName;
-            o.regionId = regionId;
-            return o;
+        }        public GetRegionsRegion build() {
+            return new GetRegionsRegion(id, localName, regionId);
         }
     }
 }

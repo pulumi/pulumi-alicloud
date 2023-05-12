@@ -104,6 +104,7 @@ def get_enterprise_proxies(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Proxy IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str tid: The ID of the tenant.
     """
     __args__ = dict()
@@ -145,6 +146,7 @@ def get_enterprise_proxies_output(ids: Optional[pulumi.Input[Optional[Sequence[s
 
 
     :param Sequence[str] ids: A list of Proxy IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str tid: The ID of the tenant.
     """
     ...

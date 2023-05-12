@@ -13,29 +13,42 @@ public final class GetVulWhitelistsWhitelist {
      * @return The ID of the Vul Whitelist.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Reason for adding whitelist.
      * 
      */
-    private String reason;
+    private final String reason;
     /**
      * @return Set the effective range of the whitelist.
      * 
      */
-    private String targetInfo;
+    private final String targetInfo;
     /**
      * @return The ID of the Vul Whitelist.
      * 
      */
-    private String vulWhitelistId;
+    private final String vulWhitelistId;
     /**
      * @return Information about the vulnerability to be added to the whitelist.
      * 
      */
-    private String whitelist;
+    private final String whitelist;
 
-    private GetVulWhitelistsWhitelist() {}
+    @CustomType.Constructor
+    private GetVulWhitelistsWhitelist(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("reason") String reason,
+        @CustomType.Parameter("targetInfo") String targetInfo,
+        @CustomType.Parameter("vulWhitelistId") String vulWhitelistId,
+        @CustomType.Parameter("whitelist") String whitelist) {
+        this.id = id;
+        this.reason = reason;
+        this.targetInfo = targetInfo;
+        this.vulWhitelistId = vulWhitelistId;
+        this.whitelist = whitelist;
+    }
+
     /**
      * @return The ID of the Vul Whitelist.
      * 
@@ -79,14 +92,18 @@ public final class GetVulWhitelistsWhitelist {
     public static Builder builder(GetVulWhitelistsWhitelist defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private String reason;
         private String targetInfo;
         private String vulWhitelistId;
         private String whitelist;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVulWhitelistsWhitelist defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -96,39 +113,27 @@ public final class GetVulWhitelistsWhitelist {
     	      this.whitelist = defaults.whitelist;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder reason(String reason) {
             this.reason = Objects.requireNonNull(reason);
             return this;
         }
-        @CustomType.Setter
         public Builder targetInfo(String targetInfo) {
             this.targetInfo = Objects.requireNonNull(targetInfo);
             return this;
         }
-        @CustomType.Setter
         public Builder vulWhitelistId(String vulWhitelistId) {
             this.vulWhitelistId = Objects.requireNonNull(vulWhitelistId);
             return this;
         }
-        @CustomType.Setter
         public Builder whitelist(String whitelist) {
             this.whitelist = Objects.requireNonNull(whitelist);
             return this;
-        }
-        public GetVulWhitelistsWhitelist build() {
-            final var o = new GetVulWhitelistsWhitelist();
-            o.id = id;
-            o.reason = reason;
-            o.targetInfo = targetInfo;
-            o.vulWhitelistId = vulWhitelistId;
-            o.whitelist = whitelist;
-            return o;
+        }        public GetVulWhitelistsWhitelist build() {
+            return new GetVulWhitelistsWhitelist(id, reason, targetInfo, vulWhitelistId, whitelist);
         }
     }
 }

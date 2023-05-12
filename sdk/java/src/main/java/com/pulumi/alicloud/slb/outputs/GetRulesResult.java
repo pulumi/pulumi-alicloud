@@ -14,32 +14,51 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesResult {
-    private Integer frontendPort;
+    private final Integer frontendPort;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of SLB listener rules IDs.
      * 
      */
-    private List<String> ids;
-    private String loadBalancerId;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final String loadBalancerId;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of SLB listener rules names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
     /**
      * @return A list of SLB listener rules. Each element contains the following attributes:
      * 
      */
-    private List<GetRulesSlbRule> slbRules;
+    private final List<GetRulesSlbRule> slbRules;
 
-    private GetRulesResult() {}
+    @CustomType.Constructor
+    private GetRulesResult(
+        @CustomType.Parameter("frontendPort") Integer frontendPort,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("loadBalancerId") String loadBalancerId,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("slbRules") List<GetRulesSlbRule> slbRules) {
+        this.frontendPort = frontendPort;
+        this.id = id;
+        this.ids = ids;
+        this.loadBalancerId = loadBalancerId;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.slbRules = slbRules;
+    }
+
     public Integer frontendPort() {
         return this.frontendPort;
     }
@@ -88,7 +107,7 @@ public final class GetRulesResult {
     public static Builder builder(GetRulesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer frontendPort;
         private String id;
@@ -98,7 +117,11 @@ public final class GetRulesResult {
         private List<String> names;
         private @Nullable String outputFile;
         private List<GetRulesSlbRule> slbRules;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.frontendPort = defaults.frontendPort;
@@ -111,17 +134,14 @@ public final class GetRulesResult {
     	      this.slbRules = defaults.slbRules;
         }
 
-        @CustomType.Setter
         public Builder frontendPort(Integer frontendPort) {
             this.frontendPort = Objects.requireNonNull(frontendPort);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -129,17 +149,14 @@ public final class GetRulesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
             this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -147,30 +164,18 @@ public final class GetRulesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder slbRules(List<GetRulesSlbRule> slbRules) {
             this.slbRules = Objects.requireNonNull(slbRules);
             return this;
         }
         public Builder slbRules(GetRulesSlbRule... slbRules) {
             return slbRules(List.of(slbRules));
-        }
-        public GetRulesResult build() {
-            final var o = new GetRulesResult();
-            o.frontendPort = frontendPort;
-            o.id = id;
-            o.ids = ids;
-            o.loadBalancerId = loadBalancerId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.slbRules = slbRules;
-            return o;
+        }        public GetRulesResult build() {
+            return new GetRulesResult(frontendPort, id, ids, loadBalancerId, nameRegex, names, outputFile, slbRules);
         }
     }
 }

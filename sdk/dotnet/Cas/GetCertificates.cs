@@ -13,6 +13,10 @@ namespace Pulumi.AliCloud.Cas
     public static class GetCertificates
     {
         /// <summary>
+        /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
+        /// 
+        /// This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -44,6 +48,10 @@ namespace Pulumi.AliCloud.Cas
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCertificatesResult>("alicloud:cas/getCertificates:getCertificates", args ?? new GetCertificatesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
+        /// 
+        /// This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -102,6 +110,9 @@ namespace Pulumi.AliCloud.Cas
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -137,6 +148,9 @@ namespace Pulumi.AliCloud.Cas
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

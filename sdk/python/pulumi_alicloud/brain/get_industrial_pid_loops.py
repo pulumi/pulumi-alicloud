@@ -156,6 +156,7 @@ def get_industrial_pid_loops(enable_details: Optional[bool] = None,
 
     :param Sequence[str] ids: A list of Pid Loop IDs.
     :param str name_regex: A regex string to filter results by Pid Loop name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str pid_loop_name: The name of Pid Loop.
     :param str pid_project_id: The pid project id.
     :param str status: The status of Pid Loop.
@@ -215,6 +216,7 @@ def get_industrial_pid_loops_output(enable_details: Optional[pulumi.Input[Option
 
     :param Sequence[str] ids: A list of Pid Loop IDs.
     :param str name_regex: A regex string to filter results by Pid Loop name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str pid_loop_name: The name of Pid Loop.
     :param str pid_project_id: The pid project id.
     :param str status: The status of Pid Loop.

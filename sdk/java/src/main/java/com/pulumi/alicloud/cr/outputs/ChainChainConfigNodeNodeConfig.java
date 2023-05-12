@@ -15,9 +15,13 @@ public final class ChainChainConfigNodeNodeConfig {
      * @return Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
      * 
      */
-    private @Nullable List<ChainChainConfigNodeNodeConfigDenyPolicy> denyPolicies;
+    private final @Nullable List<ChainChainConfigNodeNodeConfigDenyPolicy> denyPolicies;
 
-    private ChainChainConfigNodeNodeConfig() {}
+    @CustomType.Constructor
+    private ChainChainConfigNodeNodeConfig(@CustomType.Parameter("denyPolicies") @Nullable List<ChainChainConfigNodeNodeConfigDenyPolicy> denyPolicies) {
+        this.denyPolicies = denyPolicies;
+    }
+
     /**
      * @return Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
      * 
@@ -33,27 +37,27 @@ public final class ChainChainConfigNodeNodeConfig {
     public static Builder builder(ChainChainConfigNodeNodeConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<ChainChainConfigNodeNodeConfigDenyPolicy> denyPolicies;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ChainChainConfigNodeNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.denyPolicies = defaults.denyPolicies;
         }
 
-        @CustomType.Setter
         public Builder denyPolicies(@Nullable List<ChainChainConfigNodeNodeConfigDenyPolicy> denyPolicies) {
             this.denyPolicies = denyPolicies;
             return this;
         }
         public Builder denyPolicies(ChainChainConfigNodeNodeConfigDenyPolicy... denyPolicies) {
             return denyPolicies(List.of(denyPolicies));
-        }
-        public ChainChainConfigNodeNodeConfig build() {
-            final var o = new ChainChainConfigNodeNodeConfig();
-            o.denyPolicies = denyPolicies;
-            return o;
+        }        public ChainChainConfigNodeNodeConfig build() {
+            return new ChainChainConfigNodeNodeConfig(denyPolicies);
         }
     }
 }

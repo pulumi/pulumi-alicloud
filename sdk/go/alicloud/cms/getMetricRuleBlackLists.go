@@ -33,8 +33,9 @@ type GetMetricRuleBlackListsArgs struct {
 	// A regex string to filter results by Group Metric Rule name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// The data namespace of the cloud service.
-	Namespace  *string `pulumi:"namespace"`
-	Order      *int    `pulumi:"order"`
+	Namespace *string `pulumi:"namespace"`
+	Order     *int    `pulumi:"order"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
@@ -87,8 +88,9 @@ type GetMetricRuleBlackListsOutputArgs struct {
 	// A regex string to filter results by Group Metric Rule name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The data namespace of the cloud service.
-	Namespace  pulumi.StringPtrInput `pulumi:"namespace"`
-	Order      pulumi.IntPtrInput    `pulumi:"order"`
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	Order     pulumi.IntPtrInput    `pulumi:"order"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`

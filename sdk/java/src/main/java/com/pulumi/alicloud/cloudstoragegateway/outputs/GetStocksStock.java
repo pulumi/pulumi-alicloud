@@ -14,14 +14,21 @@ public final class GetStocksStock {
      * @return A list of available gateway class in this Zone ID.
      * 
      */
-    private List<String> availableGatewayClasses;
+    private final List<String> availableGatewayClasses;
     /**
      * @return The Zone ID.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetStocksStock() {}
+    @CustomType.Constructor
+    private GetStocksStock(
+        @CustomType.Parameter("availableGatewayClasses") List<String> availableGatewayClasses,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.availableGatewayClasses = availableGatewayClasses;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return A list of available gateway class in this Zone ID.
      * 
@@ -44,18 +51,21 @@ public final class GetStocksStock {
     public static Builder builder(GetStocksStock defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<String> availableGatewayClasses;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetStocksStock defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availableGatewayClasses = defaults.availableGatewayClasses;
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder availableGatewayClasses(List<String> availableGatewayClasses) {
             this.availableGatewayClasses = Objects.requireNonNull(availableGatewayClasses);
             return this;
@@ -63,16 +73,11 @@ public final class GetStocksStock {
         public Builder availableGatewayClasses(String... availableGatewayClasses) {
             return availableGatewayClasses(List.of(availableGatewayClasses));
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetStocksStock build() {
-            final var o = new GetStocksStock();
-            o.availableGatewayClasses = availableGatewayClasses;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetStocksStock build() {
+            return new GetStocksStock(availableGatewayClasses, zoneId);
         }
     }
 }

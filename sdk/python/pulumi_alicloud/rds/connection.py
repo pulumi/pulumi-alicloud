@@ -22,6 +22,8 @@ class ConnectionArgs:
         The set of arguments for constructing a Connection resource.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[str] babelfish_port: The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+               
+               > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         :param pulumi.Input[str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
         :param pulumi.Input[str] port: Internet connection port. Valid value: [1000-5999]. Default to 3306.
         """
@@ -50,6 +52,8 @@ class ConnectionArgs:
     def babelfish_port(self) -> Optional[pulumi.Input[str]]:
         """
         The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+
+        > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         """
         return pulumi.get(self, "babelfish_port")
 
@@ -94,6 +98,8 @@ class _ConnectionState:
         """
         Input properties used for looking up and filtering Connection resources.
         :param pulumi.Input[str] babelfish_port: The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+               
+               > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         :param pulumi.Input[str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
         :param pulumi.Input[str] connection_string: Connection instance string.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
@@ -118,6 +124,8 @@ class _ConnectionState:
     def babelfish_port(self) -> Optional[pulumi.Input[str]]:
         """
         The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+
+        > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         """
         return pulumi.get(self, "babelfish_port")
 
@@ -247,6 +255,8 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] babelfish_port: The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+               
+               > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         :param pulumi.Input[str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[str] port: Internet connection port. Valid value: [1000-5999]. Default to 3306.
@@ -365,6 +375,8 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] babelfish_port: The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+               
+               > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         :param pulumi.Input[str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
         :param pulumi.Input[str] connection_string: Connection instance string.
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
@@ -388,6 +400,8 @@ class Connection(pulumi.CustomResource):
     def babelfish_port(self) -> pulumi.Output[str]:
         """
         The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+
+        > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         """
         return pulumi.get(self, "babelfish_port")
 

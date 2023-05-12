@@ -47,6 +47,9 @@ export interface GetInstanceTypesArgs {
      * The hbase instance type of create hbase cluster instance.
      */
     instanceType?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The dest region id, default client region.
@@ -133,6 +136,9 @@ export interface GetInstanceTypesOutputArgs {
      * The hbase instance type of create hbase cluster instance.
      */
     instanceType?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The dest region id, default client region.

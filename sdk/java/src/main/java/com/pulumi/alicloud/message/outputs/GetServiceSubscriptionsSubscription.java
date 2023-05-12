@@ -14,59 +14,84 @@ public final class GetServiceSubscriptionsSubscription {
      * @return The time when the subscription was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
      * 
      */
-    private Integer createTime;
+    private final Integer createTime;
     /**
      * @return The endpoint to which the messages are pushed.
      * 
      */
-    private String endpoint;
+    private final String endpoint;
     /**
      * @return The tag that is used to filter messages. Only the messages that are attached with the specified tag can be pushed.
      * 
      */
-    private String filterTag;
+    private final String filterTag;
     /**
      * @return The id of the Subscription.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The time when the subscription was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
      * 
      */
-    private Integer lastModifyTime;
+    private final Integer lastModifyTime;
     /**
      * @return The content format of the messages that are pushed to the endpoint.
      * 
      */
-    private String notifyContentFormat;
+    private final String notifyContentFormat;
     /**
      * @return The retry policy that is applied if an error occurs when MNS pushes messages to the endpoint.
      * 
      */
-    private String notifyStrategy;
+    private final String notifyStrategy;
     /**
      * @return The name of the subscription.
      * 
      */
-    private String subscriptionName;
+    private final String subscriptionName;
     /**
      * @return The url of the subscription.
      * 
      */
-    private String subscriptionUrl;
+    private final String subscriptionUrl;
     /**
      * @return The name of the topic.
      * 
      */
-    private String topicName;
+    private final String topicName;
     /**
      * @return The account ID of the topic owner.
      * 
      */
-    private String topicOwner;
+    private final String topicOwner;
 
-    private GetServiceSubscriptionsSubscription() {}
+    @CustomType.Constructor
+    private GetServiceSubscriptionsSubscription(
+        @CustomType.Parameter("createTime") Integer createTime,
+        @CustomType.Parameter("endpoint") String endpoint,
+        @CustomType.Parameter("filterTag") String filterTag,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("lastModifyTime") Integer lastModifyTime,
+        @CustomType.Parameter("notifyContentFormat") String notifyContentFormat,
+        @CustomType.Parameter("notifyStrategy") String notifyStrategy,
+        @CustomType.Parameter("subscriptionName") String subscriptionName,
+        @CustomType.Parameter("subscriptionUrl") String subscriptionUrl,
+        @CustomType.Parameter("topicName") String topicName,
+        @CustomType.Parameter("topicOwner") String topicOwner) {
+        this.createTime = createTime;
+        this.endpoint = endpoint;
+        this.filterTag = filterTag;
+        this.id = id;
+        this.lastModifyTime = lastModifyTime;
+        this.notifyContentFormat = notifyContentFormat;
+        this.notifyStrategy = notifyStrategy;
+        this.subscriptionName = subscriptionName;
+        this.subscriptionUrl = subscriptionUrl;
+        this.topicName = topicName;
+        this.topicOwner = topicOwner;
+    }
+
     /**
      * @return The time when the subscription was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
      * 
@@ -152,7 +177,7 @@ public final class GetServiceSubscriptionsSubscription {
     public static Builder builder(GetServiceSubscriptionsSubscription defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer createTime;
         private String endpoint;
@@ -165,7 +190,11 @@ public final class GetServiceSubscriptionsSubscription {
         private String subscriptionUrl;
         private String topicName;
         private String topicOwner;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServiceSubscriptionsSubscription defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -181,75 +210,51 @@ public final class GetServiceSubscriptionsSubscription {
     	      this.topicOwner = defaults.topicOwner;
         }
 
-        @CustomType.Setter
         public Builder createTime(Integer createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
-        @CustomType.Setter
         public Builder filterTag(String filterTag) {
             this.filterTag = Objects.requireNonNull(filterTag);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder lastModifyTime(Integer lastModifyTime) {
             this.lastModifyTime = Objects.requireNonNull(lastModifyTime);
             return this;
         }
-        @CustomType.Setter
         public Builder notifyContentFormat(String notifyContentFormat) {
             this.notifyContentFormat = Objects.requireNonNull(notifyContentFormat);
             return this;
         }
-        @CustomType.Setter
         public Builder notifyStrategy(String notifyStrategy) {
             this.notifyStrategy = Objects.requireNonNull(notifyStrategy);
             return this;
         }
-        @CustomType.Setter
         public Builder subscriptionName(String subscriptionName) {
             this.subscriptionName = Objects.requireNonNull(subscriptionName);
             return this;
         }
-        @CustomType.Setter
         public Builder subscriptionUrl(String subscriptionUrl) {
             this.subscriptionUrl = Objects.requireNonNull(subscriptionUrl);
             return this;
         }
-        @CustomType.Setter
         public Builder topicName(String topicName) {
             this.topicName = Objects.requireNonNull(topicName);
             return this;
         }
-        @CustomType.Setter
         public Builder topicOwner(String topicOwner) {
             this.topicOwner = Objects.requireNonNull(topicOwner);
             return this;
-        }
-        public GetServiceSubscriptionsSubscription build() {
-            final var o = new GetServiceSubscriptionsSubscription();
-            o.createTime = createTime;
-            o.endpoint = endpoint;
-            o.filterTag = filterTag;
-            o.id = id;
-            o.lastModifyTime = lastModifyTime;
-            o.notifyContentFormat = notifyContentFormat;
-            o.notifyStrategy = notifyStrategy;
-            o.subscriptionName = subscriptionName;
-            o.subscriptionUrl = subscriptionUrl;
-            o.topicName = topicName;
-            o.topicOwner = topicOwner;
-            return o;
+        }        public GetServiceSubscriptionsSubscription build() {
+            return new GetServiceSubscriptionsSubscription(createTime, endpoint, filterTag, id, lastModifyTime, notifyContentFormat, notifyStrategy, subscriptionName, subscriptionUrl, topicName, topicOwner);
         }
     }
 }

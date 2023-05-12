@@ -373,12 +373,16 @@ public class Alarm extends com.pulumi.resources.CustomResource {
     /**
      * A mapping of tags to assign to the resource.
      * 
+     * &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
+     * 
      */
     @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
      * @return A mapping of tags to assign to the resource.
+     * 
+     * &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {

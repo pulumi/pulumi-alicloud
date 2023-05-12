@@ -17,22 +17,22 @@ public final class EcsInstanceSetDataDisk {
      * @return The ID of the automatic snapshot policy applied to the system disk.
      * 
      */
-    private @Nullable String autoSnapshotPolicyId;
+    private final @Nullable String autoSnapshotPolicyId;
     /**
      * @return The category of the disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
      * 
      */
-    private @Nullable String diskCategory;
+    private final @Nullable String diskCategory;
     /**
      * @return The description of the data disk.
      * 
      */
-    private @Nullable String diskDescription;
+    private final @Nullable String diskDescription;
     /**
      * @return The name of the data disk.
      * 
      */
-    private @Nullable String diskName;
+    private final @Nullable String diskName;
     /**
      * @return The size of the data disk. Unit: GiB.
      * - When `disk_category` is `cloud_efficiency`, Valid values: `20` to `32768`.
@@ -41,25 +41,46 @@ public final class EcsInstanceSetDataDisk {
      * - When `disk_category` is `cloud`, Valid values: `5` to `200`.
      * 
      */
-    private Integer diskSize;
-    private @Nullable Boolean encrypted;
+    private final Integer diskSize;
+    private final @Nullable Boolean encrypted;
     /**
      * @return The KMS key ID corresponding to the data disk.
      * 
      */
-    private @Nullable String kmsKeyId;
+    private final @Nullable String kmsKeyId;
     /**
      * @return The performance level of the ESSD used as data disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
      * 
      */
-    private @Nullable String performanceLevel;
+    private final @Nullable String performanceLevel;
     /**
      * @return The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
      * 
      */
-    private @Nullable String snapshotId;
+    private final @Nullable String snapshotId;
 
-    private EcsInstanceSetDataDisk() {}
+    @CustomType.Constructor
+    private EcsInstanceSetDataDisk(
+        @CustomType.Parameter("autoSnapshotPolicyId") @Nullable String autoSnapshotPolicyId,
+        @CustomType.Parameter("diskCategory") @Nullable String diskCategory,
+        @CustomType.Parameter("diskDescription") @Nullable String diskDescription,
+        @CustomType.Parameter("diskName") @Nullable String diskName,
+        @CustomType.Parameter("diskSize") Integer diskSize,
+        @CustomType.Parameter("encrypted") @Nullable Boolean encrypted,
+        @CustomType.Parameter("kmsKeyId") @Nullable String kmsKeyId,
+        @CustomType.Parameter("performanceLevel") @Nullable String performanceLevel,
+        @CustomType.Parameter("snapshotId") @Nullable String snapshotId) {
+        this.autoSnapshotPolicyId = autoSnapshotPolicyId;
+        this.diskCategory = diskCategory;
+        this.diskDescription = diskDescription;
+        this.diskName = diskName;
+        this.diskSize = diskSize;
+        this.encrypted = encrypted;
+        this.kmsKeyId = kmsKeyId;
+        this.performanceLevel = performanceLevel;
+        this.snapshotId = snapshotId;
+    }
+
     /**
      * @return The ID of the automatic snapshot policy applied to the system disk.
      * 
@@ -131,7 +152,7 @@ public final class EcsInstanceSetDataDisk {
     public static Builder builder(EcsInstanceSetDataDisk defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String autoSnapshotPolicyId;
         private @Nullable String diskCategory;
@@ -142,7 +163,11 @@ public final class EcsInstanceSetDataDisk {
         private @Nullable String kmsKeyId;
         private @Nullable String performanceLevel;
         private @Nullable String snapshotId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(EcsInstanceSetDataDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoSnapshotPolicyId = defaults.autoSnapshotPolicyId;
@@ -156,63 +181,43 @@ public final class EcsInstanceSetDataDisk {
     	      this.snapshotId = defaults.snapshotId;
         }
 
-        @CustomType.Setter
         public Builder autoSnapshotPolicyId(@Nullable String autoSnapshotPolicyId) {
             this.autoSnapshotPolicyId = autoSnapshotPolicyId;
             return this;
         }
-        @CustomType.Setter
         public Builder diskCategory(@Nullable String diskCategory) {
             this.diskCategory = diskCategory;
             return this;
         }
-        @CustomType.Setter
         public Builder diskDescription(@Nullable String diskDescription) {
             this.diskDescription = diskDescription;
             return this;
         }
-        @CustomType.Setter
         public Builder diskName(@Nullable String diskName) {
             this.diskName = diskName;
             return this;
         }
-        @CustomType.Setter
         public Builder diskSize(Integer diskSize) {
             this.diskSize = Objects.requireNonNull(diskSize);
             return this;
         }
-        @CustomType.Setter
         public Builder encrypted(@Nullable Boolean encrypted) {
             this.encrypted = encrypted;
             return this;
         }
-        @CustomType.Setter
         public Builder kmsKeyId(@Nullable String kmsKeyId) {
             this.kmsKeyId = kmsKeyId;
             return this;
         }
-        @CustomType.Setter
         public Builder performanceLevel(@Nullable String performanceLevel) {
             this.performanceLevel = performanceLevel;
             return this;
         }
-        @CustomType.Setter
         public Builder snapshotId(@Nullable String snapshotId) {
             this.snapshotId = snapshotId;
             return this;
-        }
-        public EcsInstanceSetDataDisk build() {
-            final var o = new EcsInstanceSetDataDisk();
-            o.autoSnapshotPolicyId = autoSnapshotPolicyId;
-            o.diskCategory = diskCategory;
-            o.diskDescription = diskDescription;
-            o.diskName = diskName;
-            o.diskSize = diskSize;
-            o.encrypted = encrypted;
-            o.kmsKeyId = kmsKeyId;
-            o.performanceLevel = performanceLevel;
-            o.snapshotId = snapshotId;
-            return o;
+        }        public EcsInstanceSetDataDisk build() {
+            return new EcsInstanceSetDataDisk(autoSnapshotPolicyId, diskCategory, diskDescription, diskName, diskSize, encrypted, kmsKeyId, performanceLevel, snapshotId);
         }
     }
 }

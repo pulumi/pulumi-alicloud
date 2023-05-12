@@ -47,6 +47,9 @@ export interface GetJobTemplatesArgs {
      * A list of Job Template IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -97,5 +100,8 @@ export interface GetJobTemplatesOutputArgs {
      * A list of Job Template IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

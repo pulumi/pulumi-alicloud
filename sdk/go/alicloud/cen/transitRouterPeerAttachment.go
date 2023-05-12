@@ -74,18 +74,14 @@ import (
 //				return err
 //			}
 //			cnTransitRouter, err := cen.NewTransitRouter(ctx, "cnTransitRouter", &cen.TransitRouterArgs{
-//				CenId: defaultInstance.ID(),
-//			}, pulumi.Provider(alicloud.Cn), pulumi.DependsOn([]pulumi.Resource{
-//				defaultBandwidthPackageAttachment,
-//			}))
+//				CenId: defaultBandwidthPackageAttachment.InstanceId,
+//			}, pulumi.Provider(alicloud.Cn))
 //			if err != nil {
 //				return err
 //			}
 //			usTransitRouter, err := cen.NewTransitRouter(ctx, "usTransitRouter", &cen.TransitRouterArgs{
-//				CenId: defaultInstance.ID(),
-//			}, pulumi.Provider(alicloud.Us), pulumi.DependsOn([]pulumi.Resource{
-//				alicloud_cen_transit_router.Default_0,
-//			}))
+//				CenId: cnTransitRouter.ID(),
+//			}, pulumi.Provider(alicloud.Us))
 //			if err != nil {
 //				return err
 //			}

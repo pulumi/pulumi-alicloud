@@ -26,8 +26,9 @@ func GetBackupJobs(ctx *pulumi.Context, args *GetBackupJobsArgs, opts ...pulumi.
 type GetBackupJobsArgs struct {
 	Filters []GetBackupJobsFilter `pulumi:"filters"`
 	// A list of Backup Job IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The sort direction, sort results by ascending or descending order based on the value jobs id. Valid values: `ASCEND`, `DESCEND`.
 	SortDirection *string `pulumi:"sortDirection"`
 	// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
@@ -66,8 +67,9 @@ func GetBackupJobsOutput(ctx *pulumi.Context, args GetBackupJobsOutputArgs, opts
 type GetBackupJobsOutputArgs struct {
 	Filters GetBackupJobsFilterArrayInput `pulumi:"filters"`
 	// A list of Backup Job IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The sort direction, sort results by ascending or descending order based on the value jobs id. Valid values: `ASCEND`, `DESCEND`.
 	SortDirection pulumi.StringPtrInput `pulumi:"sortDirection"`
 	// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.

@@ -136,6 +136,7 @@ def get_vbr_health_checks(cen_id: Optional[str] = None,
 
 
     :param str cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str vbr_instance_id: The ID of the VBR instance.
     :param int vbr_instance_owner_id: The User ID (UID) of the account to which the VBR instance belongs.
     :param str vbr_instance_region_id: The ID of the region where the VBR instance is deployed.
@@ -174,6 +175,7 @@ def get_vbr_health_checks_output(cen_id: Optional[pulumi.Input[Optional[str]]] =
 
 
     :param str cen_id: The ID of the Cloud Enterprise Network (CEN) instance.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str vbr_instance_id: The ID of the VBR instance.
     :param int vbr_instance_owner_id: The User ID (UID) of the account to which the VBR instance belongs.
     :param str vbr_instance_region_id: The ID of the region where the VBR instance is deployed.

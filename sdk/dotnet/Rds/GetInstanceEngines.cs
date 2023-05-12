@@ -125,6 +125,9 @@ namespace Pulumi.AliCloud.Rds
         [Input("multiZone")]
         public bool? MultiZone { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi up`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -178,6 +181,9 @@ namespace Pulumi.AliCloud.Rds
         [Input("multiZone")]
         public Input<bool>? MultiZone { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi up`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

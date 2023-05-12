@@ -84,8 +84,9 @@ func GetDynamicTagGroups(ctx *pulumi.Context, args *GetDynamicTagGroupsArgs, opt
 // A collection of arguments for invoking getDynamicTagGroups.
 type GetDynamicTagGroupsArgs struct {
 	// A list of Dynamic Tag Group IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The status of the resource. Valid values: `RUNNING`, `FINISH`.
 	Status *string `pulumi:"status"`
 	// The tag key of the tag.
@@ -119,8 +120,9 @@ func GetDynamicTagGroupsOutput(ctx *pulumi.Context, args GetDynamicTagGroupsOutp
 // A collection of arguments for invoking getDynamicTagGroups.
 type GetDynamicTagGroupsOutputArgs struct {
 	// A list of Dynamic Tag Group IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the resource. Valid values: `RUNNING`, `FINISH`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The tag key of the tag.

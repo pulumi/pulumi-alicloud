@@ -56,7 +56,7 @@ type GetInstancesArgs struct {
 	EditionType *string `pulumi:"editionType"`
 	// Default to `false`. Set it to true can output more details.
 	EnableDetails *bool `pulumi:"enableDetails"`
-	// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+	// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// The expiration status of the instance.
 	Expired *string `pulumi:"expired"`
@@ -72,7 +72,8 @@ type GetInstancesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// The type of the network. Valid values: `CLASSIC`, `VPC`.
 	NetworkType *string `pulumi:"networkType"`
-	OutputFile  *string `pulumi:"outputFile"`
+	// The name of file that can save the collection of instances after running `pulumi preview`.
+	OutputFile *string `pulumi:"outputFile"`
 	// The payment type. Valid values: `PostPaid`, `PrePaid`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The ID of the resource group.
@@ -153,7 +154,7 @@ type GetInstancesOutputArgs struct {
 	EditionType pulumi.StringPtrInput `pulumi:"editionType"`
 	// Default to `false`. Set it to true can output more details.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
-	// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+	// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
 	EngineVersion pulumi.StringPtrInput `pulumi:"engineVersion"`
 	// The expiration status of the instance.
 	Expired pulumi.StringPtrInput `pulumi:"expired"`
@@ -169,7 +170,8 @@ type GetInstancesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The type of the network. Valid values: `CLASSIC`, `VPC`.
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
-	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The name of file that can save the collection of instances after running `pulumi preview`.
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The payment type. Valid values: `PostPaid`, `PrePaid`.
 	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
 	// The ID of the resource group.

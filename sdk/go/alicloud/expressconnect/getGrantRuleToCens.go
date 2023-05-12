@@ -59,7 +59,8 @@ type GetGrantRuleToCensArgs struct {
 	// A list of Grant Rule To Cen IDs.
 	Ids []string `pulumi:"ids"`
 	// The ID of the VBR.
-	InstanceId string  `pulumi:"instanceId"`
+	InstanceId string `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
@@ -96,7 +97,8 @@ type GetGrantRuleToCensOutputArgs struct {
 	// A list of Grant Rule To Cen IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The ID of the VBR.
-	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`

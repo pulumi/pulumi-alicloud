@@ -15,34 +15,49 @@ public final class GetDynamicTagGroupsGroup {
      * @return The ID of the tag rule.
      * 
      */
-    private String dynamicTagRuleId;
+    private final String dynamicTagRuleId;
     /**
      * @return The ID of the Dynamic Tag Group.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The relationship between conditional expressions. Valid values: `and`, `or`.
      * 
      */
-    private String matchExpressFilterRelation;
+    private final String matchExpressFilterRelation;
     /**
      * @return The label generates a matching expression that applies the grouping. See the following `Block match_express`.
      * 
      */
-    private List<GetDynamicTagGroupsGroupMatchExpress> matchExpresses;
+    private final List<GetDynamicTagGroupsGroupMatchExpress> matchExpresses;
     /**
      * @return The status of the resource. Valid values: `RUNNING`, `FINISH`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The tag key of the tag.
      * 
      */
-    private String tagKey;
+    private final String tagKey;
 
-    private GetDynamicTagGroupsGroup() {}
+    @CustomType.Constructor
+    private GetDynamicTagGroupsGroup(
+        @CustomType.Parameter("dynamicTagRuleId") String dynamicTagRuleId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("matchExpressFilterRelation") String matchExpressFilterRelation,
+        @CustomType.Parameter("matchExpresses") List<GetDynamicTagGroupsGroupMatchExpress> matchExpresses,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("tagKey") String tagKey) {
+        this.dynamicTagRuleId = dynamicTagRuleId;
+        this.id = id;
+        this.matchExpressFilterRelation = matchExpressFilterRelation;
+        this.matchExpresses = matchExpresses;
+        this.status = status;
+        this.tagKey = tagKey;
+    }
+
     /**
      * @return The ID of the tag rule.
      * 
@@ -93,7 +108,7 @@ public final class GetDynamicTagGroupsGroup {
     public static Builder builder(GetDynamicTagGroupsGroup defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String dynamicTagRuleId;
         private String id;
@@ -101,7 +116,11 @@ public final class GetDynamicTagGroupsGroup {
         private List<GetDynamicTagGroupsGroupMatchExpress> matchExpresses;
         private String status;
         private String tagKey;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDynamicTagGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dynamicTagRuleId = defaults.dynamicTagRuleId;
@@ -112,22 +131,18 @@ public final class GetDynamicTagGroupsGroup {
     	      this.tagKey = defaults.tagKey;
         }
 
-        @CustomType.Setter
         public Builder dynamicTagRuleId(String dynamicTagRuleId) {
             this.dynamicTagRuleId = Objects.requireNonNull(dynamicTagRuleId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder matchExpressFilterRelation(String matchExpressFilterRelation) {
             this.matchExpressFilterRelation = Objects.requireNonNull(matchExpressFilterRelation);
             return this;
         }
-        @CustomType.Setter
         public Builder matchExpresses(List<GetDynamicTagGroupsGroupMatchExpress> matchExpresses) {
             this.matchExpresses = Objects.requireNonNull(matchExpresses);
             return this;
@@ -135,25 +150,15 @@ public final class GetDynamicTagGroupsGroup {
         public Builder matchExpresses(GetDynamicTagGroupsGroupMatchExpress... matchExpresses) {
             return matchExpresses(List.of(matchExpresses));
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder tagKey(String tagKey) {
             this.tagKey = Objects.requireNonNull(tagKey);
             return this;
-        }
-        public GetDynamicTagGroupsGroup build() {
-            final var o = new GetDynamicTagGroupsGroup();
-            o.dynamicTagRuleId = dynamicTagRuleId;
-            o.id = id;
-            o.matchExpressFilterRelation = matchExpressFilterRelation;
-            o.matchExpresses = matchExpresses;
-            o.status = status;
-            o.tagKey = tagKey;
-            return o;
+        }        public GetDynamicTagGroupsGroup build() {
+            return new GetDynamicTagGroupsGroup(dynamicTagRuleId, id, matchExpressFilterRelation, matchExpresses, status, tagKey);
         }
     }
 }

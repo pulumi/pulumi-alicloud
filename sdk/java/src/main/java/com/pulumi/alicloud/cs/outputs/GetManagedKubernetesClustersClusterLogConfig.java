@@ -13,14 +13,21 @@ public final class GetManagedKubernetesClustersClusterLogConfig {
      * @return Log Service project name.
      * 
      */
-    private String project;
+    private final String project;
     /**
      * @return Type of collecting logs.
      * 
      */
-    private String type;
+    private final String type;
 
-    private GetManagedKubernetesClustersClusterLogConfig() {}
+    @CustomType.Constructor
+    private GetManagedKubernetesClustersClusterLogConfig(
+        @CustomType.Parameter("project") String project,
+        @CustomType.Parameter("type") String type) {
+        this.project = project;
+        this.type = type;
+    }
+
     /**
      * @return Log Service project name.
      * 
@@ -43,32 +50,30 @@ public final class GetManagedKubernetesClustersClusterLogConfig {
     public static Builder builder(GetManagedKubernetesClustersClusterLogConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String project;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetManagedKubernetesClustersClusterLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.project = defaults.project;
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetManagedKubernetesClustersClusterLogConfig build() {
-            final var o = new GetManagedKubernetesClustersClusterLogConfig();
-            o.project = project;
-            o.type = type;
-            return o;
+        }        public GetManagedKubernetesClustersClusterLogConfig build() {
+            return new GetManagedKubernetesClustersClusterLogConfig(project, type);
         }
     }
 }

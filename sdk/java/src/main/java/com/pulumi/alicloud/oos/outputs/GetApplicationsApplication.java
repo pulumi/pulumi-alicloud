@@ -15,39 +15,56 @@ public final class GetApplicationsApplication {
      * @return The name of the application.
      * 
      */
-    private String applicationName;
+    private final String applicationName;
     /**
      * @return The Created time of the application.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return Application group description information.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the Application. The value is formate as &lt;application_name&gt;.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the resource group.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return The tag of the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
     /**
      * @return The Updated time of the application.
      * 
      */
-    private String updateTime;
+    private final String updateTime;
 
-    private GetApplicationsApplication() {}
+    @CustomType.Constructor
+    private GetApplicationsApplication(
+        @CustomType.Parameter("applicationName") String applicationName,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("tags") Map<String,Object> tags,
+        @CustomType.Parameter("updateTime") String updateTime) {
+        this.applicationName = applicationName;
+        this.createTime = createTime;
+        this.description = description;
+        this.id = id;
+        this.resourceGroupId = resourceGroupId;
+        this.tags = tags;
+        this.updateTime = updateTime;
+    }
+
     /**
      * @return The name of the application.
      * 
@@ -105,7 +122,7 @@ public final class GetApplicationsApplication {
     public static Builder builder(GetApplicationsApplication defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String applicationName;
         private String createTime;
@@ -114,7 +131,11 @@ public final class GetApplicationsApplication {
         private String resourceGroupId;
         private Map<String,Object> tags;
         private String updateTime;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetApplicationsApplication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applicationName = defaults.applicationName;
@@ -126,51 +147,35 @@ public final class GetApplicationsApplication {
     	      this.updateTime = defaults.updateTime;
         }
 
-        @CustomType.Setter
         public Builder applicationName(String applicationName) {
             this.applicationName = Objects.requireNonNull(applicationName);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
-        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
-        }
-        public GetApplicationsApplication build() {
-            final var o = new GetApplicationsApplication();
-            o.applicationName = applicationName;
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.resourceGroupId = resourceGroupId;
-            o.tags = tags;
-            o.updateTime = updateTime;
-            return o;
+        }        public GetApplicationsApplication build() {
+            return new GetApplicationsApplication(applicationName, createTime, description, id, resourceGroupId, tags, updateTime);
         }
     }
 }

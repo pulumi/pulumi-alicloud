@@ -13,24 +13,35 @@ public final class MonitorGroupInstancesInstance {
      * @return The category of instance.
      * 
      */
-    private String category;
+    private final String category;
     /**
      * @return The id of instance.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return The name of instance.
      * 
      */
-    private String instanceName;
+    private final String instanceName;
     /**
      * @return The region id of instance.
      * 
      */
-    private String regionId;
+    private final String regionId;
 
-    private MonitorGroupInstancesInstance() {}
+    @CustomType.Constructor
+    private MonitorGroupInstancesInstance(
+        @CustomType.Parameter("category") String category,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("instanceName") String instanceName,
+        @CustomType.Parameter("regionId") String regionId) {
+        this.category = category;
+        this.instanceId = instanceId;
+        this.instanceName = instanceName;
+        this.regionId = regionId;
+    }
+
     /**
      * @return The category of instance.
      * 
@@ -67,13 +78,17 @@ public final class MonitorGroupInstancesInstance {
     public static Builder builder(MonitorGroupInstancesInstance defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String category;
         private String instanceId;
         private String instanceName;
         private String regionId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(MonitorGroupInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -82,33 +97,23 @@ public final class MonitorGroupInstancesInstance {
     	      this.regionId = defaults.regionId;
         }
 
-        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
-        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
-        }
-        public MonitorGroupInstancesInstance build() {
-            final var o = new MonitorGroupInstancesInstance();
-            o.category = category;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.regionId = regionId;
-            return o;
+        }        public MonitorGroupInstancesInstance build() {
+            return new MonitorGroupInstancesInstance(category, instanceId, instanceName, regionId);
         }
     }
 }

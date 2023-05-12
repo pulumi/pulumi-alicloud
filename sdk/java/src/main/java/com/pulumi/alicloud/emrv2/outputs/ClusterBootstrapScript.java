@@ -17,39 +17,56 @@ public final class ClusterBootstrapScript {
      * @return The bootstrap scripts execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ .
      * 
      */
-    private String executionFailStrategy;
+    private final String executionFailStrategy;
     /**
      * @return The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
      * 
      */
-    private String executionMoment;
+    private final String executionMoment;
     /**
      * @return The bootstrap scripts execution target.
      * 
      */
-    private ClusterBootstrapScriptNodeSelector nodeSelector;
+    private final ClusterBootstrapScriptNodeSelector nodeSelector;
     /**
      * @return The bootstrap scripts priority.
      * 
      */
-    private @Nullable Integer priority;
+    private final @Nullable Integer priority;
     /**
      * @return The bootstrap script args, e.g. &#34;--a=b&#34;.
      * 
      */
-    private String scriptArgs;
+    private final String scriptArgs;
     /**
      * @return The bootstrap script name.
      * 
      */
-    private String scriptName;
+    private final String scriptName;
     /**
      * @return The bootstrap script path, e.g. &#34;oss://bucket/path&#34;.
      * 
      */
-    private String scriptPath;
+    private final String scriptPath;
 
-    private ClusterBootstrapScript() {}
+    @CustomType.Constructor
+    private ClusterBootstrapScript(
+        @CustomType.Parameter("executionFailStrategy") String executionFailStrategy,
+        @CustomType.Parameter("executionMoment") String executionMoment,
+        @CustomType.Parameter("nodeSelector") ClusterBootstrapScriptNodeSelector nodeSelector,
+        @CustomType.Parameter("priority") @Nullable Integer priority,
+        @CustomType.Parameter("scriptArgs") String scriptArgs,
+        @CustomType.Parameter("scriptName") String scriptName,
+        @CustomType.Parameter("scriptPath") String scriptPath) {
+        this.executionFailStrategy = executionFailStrategy;
+        this.executionMoment = executionMoment;
+        this.nodeSelector = nodeSelector;
+        this.priority = priority;
+        this.scriptArgs = scriptArgs;
+        this.scriptName = scriptName;
+        this.scriptPath = scriptPath;
+    }
+
     /**
      * @return The bootstrap scripts execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ .
      * 
@@ -107,7 +124,7 @@ public final class ClusterBootstrapScript {
     public static Builder builder(ClusterBootstrapScript defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String executionFailStrategy;
         private String executionMoment;
@@ -116,7 +133,11 @@ public final class ClusterBootstrapScript {
         private String scriptArgs;
         private String scriptName;
         private String scriptPath;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ClusterBootstrapScript defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.executionFailStrategy = defaults.executionFailStrategy;
@@ -128,51 +149,35 @@ public final class ClusterBootstrapScript {
     	      this.scriptPath = defaults.scriptPath;
         }
 
-        @CustomType.Setter
         public Builder executionFailStrategy(String executionFailStrategy) {
             this.executionFailStrategy = Objects.requireNonNull(executionFailStrategy);
             return this;
         }
-        @CustomType.Setter
         public Builder executionMoment(String executionMoment) {
             this.executionMoment = Objects.requireNonNull(executionMoment);
             return this;
         }
-        @CustomType.Setter
         public Builder nodeSelector(ClusterBootstrapScriptNodeSelector nodeSelector) {
             this.nodeSelector = Objects.requireNonNull(nodeSelector);
             return this;
         }
-        @CustomType.Setter
         public Builder priority(@Nullable Integer priority) {
             this.priority = priority;
             return this;
         }
-        @CustomType.Setter
         public Builder scriptArgs(String scriptArgs) {
             this.scriptArgs = Objects.requireNonNull(scriptArgs);
             return this;
         }
-        @CustomType.Setter
         public Builder scriptName(String scriptName) {
             this.scriptName = Objects.requireNonNull(scriptName);
             return this;
         }
-        @CustomType.Setter
         public Builder scriptPath(String scriptPath) {
             this.scriptPath = Objects.requireNonNull(scriptPath);
             return this;
-        }
-        public ClusterBootstrapScript build() {
-            final var o = new ClusterBootstrapScript();
-            o.executionFailStrategy = executionFailStrategy;
-            o.executionMoment = executionMoment;
-            o.nodeSelector = nodeSelector;
-            o.priority = priority;
-            o.scriptArgs = scriptArgs;
-            o.scriptName = scriptName;
-            o.scriptPath = scriptPath;
-            return o;
+        }        public ClusterBootstrapScript build() {
+            return new ClusterBootstrapScript(executionFailStrategy, executionMoment, nodeSelector, priority, scriptArgs, scriptName, scriptPath);
         }
     }
 }

@@ -21,14 +21,21 @@ public final class EcsPrefixListEntry {
      * * For more information about CIDR blocks, see the &#34;What is CIDR block?&#34; section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `max_entries` value.
      * 
      */
-    private @Nullable String cidr;
+    private final @Nullable String cidr;
     /**
      * @return The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
      * 
      */
-    private @Nullable String description;
+    private final @Nullable String description;
 
-    private EcsPrefixListEntry() {}
+    @CustomType.Constructor
+    private EcsPrefixListEntry(
+        @CustomType.Parameter("cidr") @Nullable String cidr,
+        @CustomType.Parameter("description") @Nullable String description) {
+        this.cidr = cidr;
+        this.description = description;
+    }
+
     /**
      * @return The CIDR block in entry. This parameter is empty by default.  Take note of the following items:
      * * The total number of entries must not exceed the `max_entries` value.
@@ -57,32 +64,30 @@ public final class EcsPrefixListEntry {
     public static Builder builder(EcsPrefixListEntry defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String cidr;
         private @Nullable String description;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(EcsPrefixListEntry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidr = defaults.cidr;
     	      this.description = defaults.description;
         }
 
-        @CustomType.Setter
         public Builder cidr(@Nullable String cidr) {
             this.cidr = cidr;
             return this;
         }
-        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
-        }
-        public EcsPrefixListEntry build() {
-            final var o = new EcsPrefixListEntry();
-            o.cidr = cidr;
-            o.description = description;
-            return o;
+        }        public EcsPrefixListEntry build() {
+            return new EcsPrefixListEntry(cidr, description);
         }
     }
 }

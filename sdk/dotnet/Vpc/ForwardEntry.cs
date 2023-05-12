@@ -145,6 +145,8 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// Specifies whether to remove limits on the port range. Default value is `false`.
+        /// 
+        /// &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
         /// </summary>
         [Output("portBreak")]
         public Output<bool?> PortBreak { get; private set; } = null!;
@@ -251,6 +253,8 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// Specifies whether to remove limits on the port range. Default value is `false`.
+        /// 
+        /// &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
         /// </summary>
         [Input("portBreak")]
         public Input<bool>? PortBreak { get; set; }
@@ -319,6 +323,8 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// Specifies whether to remove limits on the port range. Default value is `false`.
+        /// 
+        /// &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
         /// </summary>
         [Input("portBreak")]
         public Input<bool>? PortBreak { get; set; }

@@ -242,6 +242,7 @@ def get_templates(category: Optional[str] = None,
     :param bool has_trigger: Is it triggered successfully.
     :param Sequence[str] ids: A list of OOS Template ids. Each element in the list is same as template_name.
     :param str name_regex: A regex string to filter the results by the template_name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str share_type: The sharing type of the template. Valid values: `Private`, `Public`.
     :param str sort_field: Sort field. Valid values: `TotalExecutionCount`, `Popularity`, `TemplateName` and `CreatedDate`. Default to `TotalExecutionCount`.
     :param str sort_order: Sort order. Valid values: `Ascending`, `Descending`. Default to `Descending`
@@ -332,6 +333,7 @@ def get_templates_output(category: Optional[pulumi.Input[Optional[str]]] = None,
     :param bool has_trigger: Is it triggered successfully.
     :param Sequence[str] ids: A list of OOS Template ids. Each element in the list is same as template_name.
     :param str name_regex: A regex string to filter the results by the template_name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str share_type: The sharing type of the template. Valid values: `Private`, `Public`.
     :param str sort_field: Sort field. Valid values: `TotalExecutionCount`, `Popularity`, `TemplateName` and `CreatedDate`. Default to `TotalExecutionCount`.
     :param str sort_order: Sort order. Valid values: `Ascending`, `Descending`. Default to `Descending`

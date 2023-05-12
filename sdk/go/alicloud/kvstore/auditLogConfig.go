@@ -62,10 +62,14 @@ type AuditLogConfig struct {
 	// Indicates Whether to Enable the Audit Log.  Valid value:
 	// * true: Default Value, Open.
 	// * false: Closed.
+	//
+	// Note: When the Instance for the Cluster Architecture Or Read/Write Split Architecture, at the Same Time to Open Or Close the Data Node and the Proxy Node of the Audit Log Doesn't Support Separate Open.
 	DbAudit pulumi.BoolPtrOutput `pulumi:"dbAudit"`
 	// Instance ID, Call the Describeinstances Get.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Audit Log Retention Period Value: 1~365.
+	//
+	// > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
 	Retention pulumi.IntPtrOutput `pulumi:"retention"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -108,10 +112,14 @@ type auditLogConfigState struct {
 	// Indicates Whether to Enable the Audit Log.  Valid value:
 	// * true: Default Value, Open.
 	// * false: Closed.
+	//
+	// Note: When the Instance for the Cluster Architecture Or Read/Write Split Architecture, at the Same Time to Open Or Close the Data Node and the Proxy Node of the Audit Log Doesn't Support Separate Open.
 	DbAudit *bool `pulumi:"dbAudit"`
 	// Instance ID, Call the Describeinstances Get.
 	InstanceId *string `pulumi:"instanceId"`
 	// Audit Log Retention Period Value: 1~365.
+	//
+	// > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
 	Retention *int `pulumi:"retention"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
@@ -123,10 +131,14 @@ type AuditLogConfigState struct {
 	// Indicates Whether to Enable the Audit Log.  Valid value:
 	// * true: Default Value, Open.
 	// * false: Closed.
+	//
+	// Note: When the Instance for the Cluster Architecture Or Read/Write Split Architecture, at the Same Time to Open Or Close the Data Node and the Proxy Node of the Audit Log Doesn't Support Separate Open.
 	DbAudit pulumi.BoolPtrInput
 	// Instance ID, Call the Describeinstances Get.
 	InstanceId pulumi.StringPtrInput
 	// Audit Log Retention Period Value: 1~365.
+	//
+	// > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
 	Retention pulumi.IntPtrInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
@@ -140,10 +152,14 @@ type auditLogConfigArgs struct {
 	// Indicates Whether to Enable the Audit Log.  Valid value:
 	// * true: Default Value, Open.
 	// * false: Closed.
+	//
+	// Note: When the Instance for the Cluster Architecture Or Read/Write Split Architecture, at the Same Time to Open Or Close the Data Node and the Proxy Node of the Audit Log Doesn't Support Separate Open.
 	DbAudit *bool `pulumi:"dbAudit"`
 	// Instance ID, Call the Describeinstances Get.
 	InstanceId string `pulumi:"instanceId"`
 	// Audit Log Retention Period Value: 1~365.
+	//
+	// > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
 	Retention *int `pulumi:"retention"`
 }
 
@@ -152,10 +168,14 @@ type AuditLogConfigArgs struct {
 	// Indicates Whether to Enable the Audit Log.  Valid value:
 	// * true: Default Value, Open.
 	// * false: Closed.
+	//
+	// Note: When the Instance for the Cluster Architecture Or Read/Write Split Architecture, at the Same Time to Open Or Close the Data Node and the Proxy Node of the Audit Log Doesn't Support Separate Open.
 	DbAudit pulumi.BoolPtrInput
 	// Instance ID, Call the Describeinstances Get.
 	InstanceId pulumi.StringInput
 	// Audit Log Retention Period Value: 1~365.
+	//
+	// > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
 	Retention pulumi.IntPtrInput
 }
 
@@ -254,6 +274,8 @@ func (o AuditLogConfigOutput) CreateTime() pulumi.StringOutput {
 // Indicates Whether to Enable the Audit Log.  Valid value:
 // * true: Default Value, Open.
 // * false: Closed.
+//
+// Note: When the Instance for the Cluster Architecture Or Read/Write Split Architecture, at the Same Time to Open Or Close the Data Node and the Proxy Node of the Audit Log Doesn't Support Separate Open.
 func (o AuditLogConfigOutput) DbAudit() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AuditLogConfig) pulumi.BoolPtrOutput { return v.DbAudit }).(pulumi.BoolPtrOutput)
 }
@@ -264,6 +286,8 @@ func (o AuditLogConfigOutput) InstanceId() pulumi.StringOutput {
 }
 
 // Audit Log Retention Period Value: 1~365.
+//
+// > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
 func (o AuditLogConfigOutput) Retention() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AuditLogConfig) pulumi.IntPtrOutput { return v.Retention }).(pulumi.IntPtrOutput)
 }

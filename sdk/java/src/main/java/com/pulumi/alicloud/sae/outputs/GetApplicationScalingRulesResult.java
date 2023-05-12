@@ -13,17 +13,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetApplicationScalingRulesResult {
-    private String appId;
+    private final String appId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String outputFile;
-    private List<GetApplicationScalingRulesRule> rules;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
+    private final List<GetApplicationScalingRulesRule> rules;
 
-    private GetApplicationScalingRulesResult() {}
+    @CustomType.Constructor
+    private GetApplicationScalingRulesResult(
+        @CustomType.Parameter("appId") String appId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("rules") List<GetApplicationScalingRulesRule> rules) {
+        this.appId = appId;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.rules = rules;
+    }
+
     public String appId() {
         return this.appId;
     }
@@ -51,14 +64,18 @@ public final class GetApplicationScalingRulesResult {
     public static Builder builder(GetApplicationScalingRulesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String appId;
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
         private List<GetApplicationScalingRulesRule> rules;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetApplicationScalingRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appId = defaults.appId;
@@ -68,17 +85,14 @@ public final class GetApplicationScalingRulesResult {
     	      this.rules = defaults.rules;
         }
 
-        @CustomType.Setter
         public Builder appId(String appId) {
             this.appId = Objects.requireNonNull(appId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -86,27 +100,18 @@ public final class GetApplicationScalingRulesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder rules(List<GetApplicationScalingRulesRule> rules) {
             this.rules = Objects.requireNonNull(rules);
             return this;
         }
         public Builder rules(GetApplicationScalingRulesRule... rules) {
             return rules(List.of(rules));
-        }
-        public GetApplicationScalingRulesResult build() {
-            final var o = new GetApplicationScalingRulesResult();
-            o.appId = appId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.rules = rules;
-            return o;
+        }        public GetApplicationScalingRulesResult build() {
+            return new GetApplicationScalingRulesResult(appId, id, ids, outputFile, rules);
         }
     }
 }

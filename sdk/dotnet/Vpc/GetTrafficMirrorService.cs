@@ -83,6 +83,8 @@ namespace Pulumi.AliCloud.Vpc
     {
         /// <summary>
         /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+        /// 
+        /// &gt; **NOTE:** Setting `enable = "On"` to open the VPC Traffic Mirror service that means you have read and agreed the [VPC Traffic Mirror Terms of Service](https://help.aliyun.com/document_detail/325573.html). The service can not closed once it is opened.
         /// </summary>
         [Input("enable")]
         public string? Enable { get; set; }
@@ -97,6 +99,8 @@ namespace Pulumi.AliCloud.Vpc
     {
         /// <summary>
         /// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+        /// 
+        /// &gt; **NOTE:** Setting `enable = "On"` to open the VPC Traffic Mirror service that means you have read and agreed the [VPC Traffic Mirror Terms of Service](https://help.aliyun.com/document_detail/325573.html). The service can not closed once it is opened.
         /// </summary>
         [Input("enable")]
         public Input<string>? Enable { get; set; }

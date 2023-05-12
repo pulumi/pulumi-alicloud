@@ -177,6 +177,7 @@ def get_backup_policies(current_page: Optional[int] = None,
     :param str machine_remark: The information that you want to use to identify the servers protected by the anti-ransomware policy. You can enter the IP address or ID of a server.
     :param str name: The name of the anti-ransomware policy that you want to query.
     :param str name_regex: A regex string to filter results by Threat Detection Backup Policies name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the anti-ransomware policy. Valid Value: `enabled`, `disabled`, `closed`.
     """
     __args__ = dict()
@@ -239,6 +240,7 @@ def get_backup_policies_output(current_page: Optional[pulumi.Input[Optional[int]
     :param str machine_remark: The information that you want to use to identify the servers protected by the anti-ransomware policy. You can enter the IP address or ID of a server.
     :param str name: The name of the anti-ransomware policy that you want to query.
     :param str name_regex: A regex string to filter results by Threat Detection Backup Policies name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the anti-ransomware policy. Valid Value: `enabled`, `disabled`, `closed`.
     """
     ...

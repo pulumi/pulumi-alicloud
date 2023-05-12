@@ -40,6 +40,8 @@ class ListenerArgs:
         :param pulumi.Input[str] listener_protocol: Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
         :param pulumi.Input[str] load_balancer_id: The ALB Instance Id.
         :param pulumi.Input[bool] access_log_record_customized_headers_enabled: Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+               
+               > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
         :param pulumi.Input['ListenerAccessLogTracingConfigArgs'] access_log_tracing_config: Xtrace Configuration Information. See the following `Block access_log_tracing_config`.
         :param pulumi.Input['ListenerAclConfigArgs'] acl_config: The configurations of the access control lists (ACLs). See the following `Block acl_config`. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
         :param pulumi.Input['ListenerCertificatesArgs'] certificates: The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
@@ -47,11 +49,15 @@ class ListenerArgs:
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
         :param pulumi.Input[bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+               
+               > **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         :param pulumi.Input[int] idle_timeout: Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
         :param pulumi.Input[str] listener_description: The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\\x00-\\xff]|[\\w.,;/@-]){2,256}$/`.
         :param pulumi.Input['ListenerQuicConfigArgs'] quic_config: Configuration Associated with the QuIC Listening. See the following `Block quic_config`.
         :param pulumi.Input[int] request_timeout: The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[str] security_policy_id: Security Policy.
+               
+               > **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         :param pulumi.Input[str] status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
         :param pulumi.Input['ListenerXForwardedForConfigArgs'] x_forwarded_for_config: The `x_forward_for` Related Attribute Configuration. See the following `Block x_forwarded_for_config`. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
@@ -133,6 +139,8 @@ class ListenerArgs:
     def access_log_record_customized_headers_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+
+        > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
         """
         return pulumi.get(self, "access_log_record_customized_headers_enabled")
 
@@ -217,6 +225,8 @@ class ListenerArgs:
     def http2_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+
+        > **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
         return pulumi.get(self, "http2_enabled")
 
@@ -277,6 +287,8 @@ class ListenerArgs:
     def security_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
         Security Policy.
+
+        > **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
         return pulumi.get(self, "security_policy_id")
 
@@ -333,6 +345,8 @@ class _ListenerState:
         """
         Input properties used for looking up and filtering Listener resources.
         :param pulumi.Input[bool] access_log_record_customized_headers_enabled: Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+               
+               > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
         :param pulumi.Input['ListenerAccessLogTracingConfigArgs'] access_log_tracing_config: Xtrace Configuration Information. See the following `Block access_log_tracing_config`.
         :param pulumi.Input['ListenerAclConfigArgs'] acl_config: The configurations of the access control lists (ACLs). See the following `Block acl_config`. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
         :param pulumi.Input['ListenerCertificatesArgs'] certificates: The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
@@ -340,6 +354,8 @@ class _ListenerState:
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
         :param pulumi.Input[bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+               
+               > **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         :param pulumi.Input[int] idle_timeout: Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
         :param pulumi.Input[str] listener_description: The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\\x00-\\xff]|[\\w.,;/@-]){2,256}$/`.
         :param pulumi.Input[int] listener_port: The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
@@ -348,6 +364,8 @@ class _ListenerState:
         :param pulumi.Input['ListenerQuicConfigArgs'] quic_config: Configuration Associated with the QuIC Listening. See the following `Block quic_config`.
         :param pulumi.Input[int] request_timeout: The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[str] security_policy_id: Security Policy.
+               
+               > **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         :param pulumi.Input[str] status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
         :param pulumi.Input['ListenerXForwardedForConfigArgs'] x_forwarded_for_config: The `x_forward_for` Related Attribute Configuration. See the following `Block x_forwarded_for_config`. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
@@ -396,6 +414,8 @@ class _ListenerState:
     def access_log_record_customized_headers_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+
+        > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
         """
         return pulumi.get(self, "access_log_record_customized_headers_enabled")
 
@@ -480,6 +500,8 @@ class _ListenerState:
     def http2_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+
+        > **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
         return pulumi.get(self, "http2_enabled")
 
@@ -576,6 +598,8 @@ class _ListenerState:
     def security_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
         Security Policy.
+
+        > **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
         return pulumi.get(self, "security_policy_id")
 
@@ -650,6 +674,8 @@ class Listener(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] access_log_record_customized_headers_enabled: Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+               
+               > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
         :param pulumi.Input[pulumi.InputType['ListenerAccessLogTracingConfigArgs']] access_log_tracing_config: Xtrace Configuration Information. See the following `Block access_log_tracing_config`.
         :param pulumi.Input[pulumi.InputType['ListenerAclConfigArgs']] acl_config: The configurations of the access control lists (ACLs). See the following `Block acl_config`. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
         :param pulumi.Input[pulumi.InputType['ListenerCertificatesArgs']] certificates: The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
@@ -657,6 +683,8 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
         :param pulumi.Input[bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+               
+               > **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         :param pulumi.Input[int] idle_timeout: Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
         :param pulumi.Input[str] listener_description: The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\\x00-\\xff]|[\\w.,;/@-]){2,256}$/`.
         :param pulumi.Input[int] listener_port: The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
@@ -665,6 +693,8 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ListenerQuicConfigArgs']] quic_config: Configuration Associated with the QuIC Listening. See the following `Block quic_config`.
         :param pulumi.Input[int] request_timeout: The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[str] security_policy_id: Security Policy.
+               
+               > **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         :param pulumi.Input[str] status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
         :param pulumi.Input[pulumi.InputType['ListenerXForwardedForConfigArgs']] x_forwarded_for_config: The `x_forward_for` Related Attribute Configuration. See the following `Block x_forwarded_for_config`. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
@@ -794,6 +824,8 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] access_log_record_customized_headers_enabled: Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+               
+               > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
         :param pulumi.Input[pulumi.InputType['ListenerAccessLogTracingConfigArgs']] access_log_tracing_config: Xtrace Configuration Information. See the following `Block access_log_tracing_config`.
         :param pulumi.Input[pulumi.InputType['ListenerAclConfigArgs']] acl_config: The configurations of the access control lists (ACLs). See the following `Block acl_config`. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
         :param pulumi.Input[pulumi.InputType['ListenerCertificatesArgs']] certificates: The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listener_protocol` is `HTTPS`, The default certificate must be set one。
@@ -801,6 +833,8 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[bool] gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
         :param pulumi.Input[bool] http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+               
+               > **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         :param pulumi.Input[int] idle_timeout: Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
         :param pulumi.Input[str] listener_description: The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\\x00-\\xff]|[\\w.,;/@-]){2,256}$/`.
         :param pulumi.Input[int] listener_port: The ALB Instance Front-End, and Those of the Ports Used. Value: `1` to `65535`.
@@ -809,6 +843,8 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ListenerQuicConfigArgs']] quic_config: Configuration Associated with the QuIC Listening. See the following `Block quic_config`.
         :param pulumi.Input[int] request_timeout: The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param pulumi.Input[str] security_policy_id: Security Policy.
+               
+               > **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         :param pulumi.Input[str] status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
         :param pulumi.Input[pulumi.InputType['ListenerXForwardedForConfigArgs']] x_forwarded_for_config: The `x_forward_for` Related Attribute Configuration. See the following `Block x_forwarded_for_config`. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
@@ -841,6 +877,8 @@ class Listener(pulumi.CustomResource):
     def access_log_record_customized_headers_enabled(self) -> pulumi.Output[bool]:
         """
         Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+
+        > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
         """
         return pulumi.get(self, "access_log_record_customized_headers_enabled")
 
@@ -897,6 +935,8 @@ class Listener(pulumi.CustomResource):
     def http2_enabled(self) -> pulumi.Output[bool]:
         """
         Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+
+        > **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
         return pulumi.get(self, "http2_enabled")
 
@@ -961,6 +1001,8 @@ class Listener(pulumi.CustomResource):
     def security_policy_id(self) -> pulumi.Output[str]:
         """
         Security Policy.
+
+        > **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
         return pulumi.get(self, "security_policy_id")
 

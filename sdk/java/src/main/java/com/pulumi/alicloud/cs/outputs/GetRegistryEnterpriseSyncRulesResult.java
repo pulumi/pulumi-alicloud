@@ -17,46 +17,69 @@ public final class GetRegistryEnterpriseSyncRulesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of matched Container Registry Enterprise Edition sync rules. Its element is a sync rule uuid.
      * 
      */
-    private List<String> ids;
+    private final List<String> ids;
     /**
      * @return ID of Container Registry Enterprise Edition local instance.
      * 
      */
-    private String instanceId;
-    private @Nullable String nameRegex;
+    private final String instanceId;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of sync rule names.
      * 
      */
-    private List<String> names;
+    private final List<String> names;
     /**
      * @return Name of Container Registry Enterprise Edition local namespace.
      * 
      */
-    private @Nullable String namespaceName;
-    private @Nullable String outputFile;
+    private final @Nullable String namespaceName;
+    private final @Nullable String outputFile;
     /**
      * @return Name of Container Registry Enterprise Edition local repo.
      * 
      */
-    private @Nullable String repoName;
+    private final @Nullable String repoName;
     /**
      * @return A list of matched Container Registry Enterprise Edition sync rules. Each element contains the following attributes:
      * 
      */
-    private List<GetRegistryEnterpriseSyncRulesRule> rules;
+    private final List<GetRegistryEnterpriseSyncRulesRule> rules;
     /**
      * @return ID of Container Registry Enterprise Edition target instance.
      * 
      */
-    private @Nullable String targetInstanceId;
+    private final @Nullable String targetInstanceId;
 
-    private GetRegistryEnterpriseSyncRulesResult() {}
+    @CustomType.Constructor
+    private GetRegistryEnterpriseSyncRulesResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("namespaceName") @Nullable String namespaceName,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("repoName") @Nullable String repoName,
+        @CustomType.Parameter("rules") List<GetRegistryEnterpriseSyncRulesRule> rules,
+        @CustomType.Parameter("targetInstanceId") @Nullable String targetInstanceId) {
+        this.id = id;
+        this.ids = ids;
+        this.instanceId = instanceId;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.namespaceName = namespaceName;
+        this.outputFile = outputFile;
+        this.repoName = repoName;
+        this.rules = rules;
+        this.targetInstanceId = targetInstanceId;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -127,7 +150,7 @@ public final class GetRegistryEnterpriseSyncRulesResult {
     public static Builder builder(GetRegistryEnterpriseSyncRulesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -139,7 +162,11 @@ public final class GetRegistryEnterpriseSyncRulesResult {
         private @Nullable String repoName;
         private List<GetRegistryEnterpriseSyncRulesRule> rules;
         private @Nullable String targetInstanceId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRegistryEnterpriseSyncRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -154,12 +181,10 @@ public final class GetRegistryEnterpriseSyncRulesResult {
     	      this.targetInstanceId = defaults.targetInstanceId;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -167,17 +192,14 @@ public final class GetRegistryEnterpriseSyncRulesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -185,22 +207,18 @@ public final class GetRegistryEnterpriseSyncRulesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder namespaceName(@Nullable String namespaceName) {
             this.namespaceName = namespaceName;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder repoName(@Nullable String repoName) {
             this.repoName = repoName;
             return this;
         }
-        @CustomType.Setter
         public Builder rules(List<GetRegistryEnterpriseSyncRulesRule> rules) {
             this.rules = Objects.requireNonNull(rules);
             return this;
@@ -208,24 +226,11 @@ public final class GetRegistryEnterpriseSyncRulesResult {
         public Builder rules(GetRegistryEnterpriseSyncRulesRule... rules) {
             return rules(List.of(rules));
         }
-        @CustomType.Setter
         public Builder targetInstanceId(@Nullable String targetInstanceId) {
             this.targetInstanceId = targetInstanceId;
             return this;
-        }
-        public GetRegistryEnterpriseSyncRulesResult build() {
-            final var o = new GetRegistryEnterpriseSyncRulesResult();
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.namespaceName = namespaceName;
-            o.outputFile = outputFile;
-            o.repoName = repoName;
-            o.rules = rules;
-            o.targetInstanceId = targetInstanceId;
-            return o;
+        }        public GetRegistryEnterpriseSyncRulesResult build() {
+            return new GetRegistryEnterpriseSyncRulesResult(id, ids, instanceId, nameRegex, names, namespaceName, outputFile, repoName, rules, targetInstanceId);
         }
     }
 }

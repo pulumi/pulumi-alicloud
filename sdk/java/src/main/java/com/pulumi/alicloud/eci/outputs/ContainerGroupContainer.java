@@ -24,76 +24,111 @@ public final class ContainerGroupContainer {
      * @return The arguments passed to the commands.
      * 
      */
-    private @Nullable List<String> args;
+    private final @Nullable List<String> args;
     /**
      * @return The commands run by the init container.
      * 
      */
-    private @Nullable List<String> commands;
+    private final @Nullable List<String> commands;
     /**
      * @return The amount of CPU resources allocated to the container group.
      * 
      */
-    private @Nullable Double cpu;
+    private final @Nullable Double cpu;
     /**
      * @return The structure of environmentVars.
      * 
      */
-    private @Nullable List<ContainerGroupContainerEnvironmentVar> environmentVars;
+    private final @Nullable List<ContainerGroupContainerEnvironmentVar> environmentVars;
     /**
      * @return The number GPUs.
      * 
      */
-    private @Nullable Integer gpu;
+    private final @Nullable Integer gpu;
     /**
      * @return The image of the container.
      * 
      */
-    private String image;
+    private final String image;
     /**
      * @return The restart policy of the image.
      * 
      */
-    private @Nullable String imagePullPolicy;
+    private final @Nullable String imagePullPolicy;
     /**
      * @return The health check of the container.
      * 
      */
-    private @Nullable List<ContainerGroupContainerLivenessProbe> livenessProbes;
+    private final @Nullable List<ContainerGroupContainerLivenessProbe> livenessProbes;
     /**
      * @return The amount of memory resources allocated to the container group.
      * 
      */
-    private @Nullable Double memory;
+    private final @Nullable Double memory;
     /**
      * @return The name of the volume.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The structure of port.
      * 
      */
-    private @Nullable List<ContainerGroupContainerPort> ports;
+    private final @Nullable List<ContainerGroupContainerPort> ports;
     /**
      * @return The health check of the container.
      * 
      */
-    private @Nullable List<ContainerGroupContainerReadinessProbe> readinessProbes;
-    private @Nullable Boolean ready;
-    private @Nullable Integer restartCount;
+    private final @Nullable List<ContainerGroupContainerReadinessProbe> readinessProbes;
+    private final @Nullable Boolean ready;
+    private final @Nullable Integer restartCount;
     /**
      * @return The structure of volumeMounts.
      * 
      */
-    private @Nullable List<ContainerGroupContainerVolumeMount> volumeMounts;
+    private final @Nullable List<ContainerGroupContainerVolumeMount> volumeMounts;
     /**
      * @return The working directory of the container.
      * 
      */
-    private @Nullable String workingDir;
+    private final @Nullable String workingDir;
 
-    private ContainerGroupContainer() {}
+    @CustomType.Constructor
+    private ContainerGroupContainer(
+        @CustomType.Parameter("args") @Nullable List<String> args,
+        @CustomType.Parameter("commands") @Nullable List<String> commands,
+        @CustomType.Parameter("cpu") @Nullable Double cpu,
+        @CustomType.Parameter("environmentVars") @Nullable List<ContainerGroupContainerEnvironmentVar> environmentVars,
+        @CustomType.Parameter("gpu") @Nullable Integer gpu,
+        @CustomType.Parameter("image") String image,
+        @CustomType.Parameter("imagePullPolicy") @Nullable String imagePullPolicy,
+        @CustomType.Parameter("livenessProbes") @Nullable List<ContainerGroupContainerLivenessProbe> livenessProbes,
+        @CustomType.Parameter("memory") @Nullable Double memory,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("ports") @Nullable List<ContainerGroupContainerPort> ports,
+        @CustomType.Parameter("readinessProbes") @Nullable List<ContainerGroupContainerReadinessProbe> readinessProbes,
+        @CustomType.Parameter("ready") @Nullable Boolean ready,
+        @CustomType.Parameter("restartCount") @Nullable Integer restartCount,
+        @CustomType.Parameter("volumeMounts") @Nullable List<ContainerGroupContainerVolumeMount> volumeMounts,
+        @CustomType.Parameter("workingDir") @Nullable String workingDir) {
+        this.args = args;
+        this.commands = commands;
+        this.cpu = cpu;
+        this.environmentVars = environmentVars;
+        this.gpu = gpu;
+        this.image = image;
+        this.imagePullPolicy = imagePullPolicy;
+        this.livenessProbes = livenessProbes;
+        this.memory = memory;
+        this.name = name;
+        this.ports = ports;
+        this.readinessProbes = readinessProbes;
+        this.ready = ready;
+        this.restartCount = restartCount;
+        this.volumeMounts = volumeMounts;
+        this.workingDir = workingDir;
+    }
+
     /**
      * @return The arguments passed to the commands.
      * 
@@ -206,7 +241,7 @@ public final class ContainerGroupContainer {
     public static Builder builder(ContainerGroupContainer defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<String> args;
         private @Nullable List<String> commands;
@@ -224,7 +259,11 @@ public final class ContainerGroupContainer {
         private @Nullable Integer restartCount;
         private @Nullable List<ContainerGroupContainerVolumeMount> volumeMounts;
         private @Nullable String workingDir;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ContainerGroupContainer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.args = defaults.args;
@@ -245,7 +284,6 @@ public final class ContainerGroupContainer {
     	      this.workingDir = defaults.workingDir;
         }
 
-        @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
             this.args = args;
             return this;
@@ -253,7 +291,6 @@ public final class ContainerGroupContainer {
         public Builder args(String... args) {
             return args(List.of(args));
         }
-        @CustomType.Setter
         public Builder commands(@Nullable List<String> commands) {
             this.commands = commands;
             return this;
@@ -261,12 +298,10 @@ public final class ContainerGroupContainer {
         public Builder commands(String... commands) {
             return commands(List.of(commands));
         }
-        @CustomType.Setter
         public Builder cpu(@Nullable Double cpu) {
             this.cpu = cpu;
             return this;
         }
-        @CustomType.Setter
         public Builder environmentVars(@Nullable List<ContainerGroupContainerEnvironmentVar> environmentVars) {
             this.environmentVars = environmentVars;
             return this;
@@ -274,22 +309,18 @@ public final class ContainerGroupContainer {
         public Builder environmentVars(ContainerGroupContainerEnvironmentVar... environmentVars) {
             return environmentVars(List.of(environmentVars));
         }
-        @CustomType.Setter
         public Builder gpu(@Nullable Integer gpu) {
             this.gpu = gpu;
             return this;
         }
-        @CustomType.Setter
         public Builder image(String image) {
             this.image = Objects.requireNonNull(image);
             return this;
         }
-        @CustomType.Setter
         public Builder imagePullPolicy(@Nullable String imagePullPolicy) {
             this.imagePullPolicy = imagePullPolicy;
             return this;
         }
-        @CustomType.Setter
         public Builder livenessProbes(@Nullable List<ContainerGroupContainerLivenessProbe> livenessProbes) {
             this.livenessProbes = livenessProbes;
             return this;
@@ -297,17 +328,14 @@ public final class ContainerGroupContainer {
         public Builder livenessProbes(ContainerGroupContainerLivenessProbe... livenessProbes) {
             return livenessProbes(List.of(livenessProbes));
         }
-        @CustomType.Setter
         public Builder memory(@Nullable Double memory) {
             this.memory = memory;
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder ports(@Nullable List<ContainerGroupContainerPort> ports) {
             this.ports = ports;
             return this;
@@ -315,7 +343,6 @@ public final class ContainerGroupContainer {
         public Builder ports(ContainerGroupContainerPort... ports) {
             return ports(List.of(ports));
         }
-        @CustomType.Setter
         public Builder readinessProbes(@Nullable List<ContainerGroupContainerReadinessProbe> readinessProbes) {
             this.readinessProbes = readinessProbes;
             return this;
@@ -323,17 +350,14 @@ public final class ContainerGroupContainer {
         public Builder readinessProbes(ContainerGroupContainerReadinessProbe... readinessProbes) {
             return readinessProbes(List.of(readinessProbes));
         }
-        @CustomType.Setter
         public Builder ready(@Nullable Boolean ready) {
             this.ready = ready;
             return this;
         }
-        @CustomType.Setter
         public Builder restartCount(@Nullable Integer restartCount) {
             this.restartCount = restartCount;
             return this;
         }
-        @CustomType.Setter
         public Builder volumeMounts(@Nullable List<ContainerGroupContainerVolumeMount> volumeMounts) {
             this.volumeMounts = volumeMounts;
             return this;
@@ -341,30 +365,11 @@ public final class ContainerGroupContainer {
         public Builder volumeMounts(ContainerGroupContainerVolumeMount... volumeMounts) {
             return volumeMounts(List.of(volumeMounts));
         }
-        @CustomType.Setter
         public Builder workingDir(@Nullable String workingDir) {
             this.workingDir = workingDir;
             return this;
-        }
-        public ContainerGroupContainer build() {
-            final var o = new ContainerGroupContainer();
-            o.args = args;
-            o.commands = commands;
-            o.cpu = cpu;
-            o.environmentVars = environmentVars;
-            o.gpu = gpu;
-            o.image = image;
-            o.imagePullPolicy = imagePullPolicy;
-            o.livenessProbes = livenessProbes;
-            o.memory = memory;
-            o.name = name;
-            o.ports = ports;
-            o.readinessProbes = readinessProbes;
-            o.ready = ready;
-            o.restartCount = restartCount;
-            o.volumeMounts = volumeMounts;
-            o.workingDir = workingDir;
-            return o;
+        }        public ContainerGroupContainer build() {
+            return new ContainerGroupContainer(args, commands, cpu, environmentVars, gpu, image, imagePullPolicy, livenessProbes, memory, name, ports, readinessProbes, ready, restartCount, volumeMounts, workingDir);
         }
     }
 }

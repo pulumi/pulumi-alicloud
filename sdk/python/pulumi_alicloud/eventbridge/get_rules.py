@@ -147,6 +147,7 @@ def get_rules(event_bus_name: Optional[str] = None,
     :param str event_bus_name: The name of event bus.
     :param Sequence[str] ids: A list of Rule IDs.
     :param str name_regex: A regex string to filter results by Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str rule_name_prefix: The rule name prefix.
     :param str status: Rule status, either Enable or Disable.
     """
@@ -203,6 +204,7 @@ def get_rules_output(event_bus_name: Optional[pulumi.Input[str]] = None,
     :param str event_bus_name: The name of event bus.
     :param Sequence[str] ids: A list of Rule IDs.
     :param str name_regex: A regex string to filter results by Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str rule_name_prefix: The rule name prefix.
     :param str status: Rule status, either Enable or Disable.
     """

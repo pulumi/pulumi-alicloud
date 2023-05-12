@@ -45,6 +45,10 @@ export class DBAuditInstance extends pulumi.CustomResource {
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+     * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     public readonly period!: pulumi.Output<number>;
     /**
      * Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
@@ -116,6 +120,10 @@ export interface DBAuditInstanceState {
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+     * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     period?: pulumi.Input<number>;
     /**
      * Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
@@ -143,6 +151,10 @@ export interface DBAuditInstanceArgs {
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
     description: pulumi.Input<string>;
+    /**
+     * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+     * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     period: pulumi.Input<number>;
     /**
      * Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)

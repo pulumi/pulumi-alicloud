@@ -16,69 +16,98 @@ public final class GetRouteTablesTable {
      * @return The description of the route table instance.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return ID of the Route Table.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Name of the route table.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The Id of resource group which route tables belongs.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return The route table id.
      * 
      */
-    private String routeTableId;
+    private final String routeTableId;
     /**
      * @return The route table name.
      * 
      */
-    private String routeTableName;
+    private final String routeTableName;
     /**
      * @return The type of route table.
      * 
      */
-    private String routeTableType;
+    private final String routeTableType;
     /**
      * @return The router ID.
      * 
      */
-    private String routerId;
+    private final String routerId;
     /**
      * @return The route type of route table. Valid values: `VRouter` and `VBR`.
      * 
      */
-    private String routerType;
+    private final String routerType;
     /**
      * @return The status of resource. Valid values: `Available` and `Pending`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
     /**
      * @return Vpc id of the route table.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
     /**
      * @return A list of vswitch id.
      * 
      */
-    private List<String> vswitchIds;
+    private final List<String> vswitchIds;
 
-    private GetRouteTablesTable() {}
+    @CustomType.Constructor
+    private GetRouteTablesTable(
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("routeTableId") String routeTableId,
+        @CustomType.Parameter("routeTableName") String routeTableName,
+        @CustomType.Parameter("routeTableType") String routeTableType,
+        @CustomType.Parameter("routerId") String routerId,
+        @CustomType.Parameter("routerType") String routerType,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("tags") Map<String,Object> tags,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("vswitchIds") List<String> vswitchIds) {
+        this.description = description;
+        this.id = id;
+        this.name = name;
+        this.resourceGroupId = resourceGroupId;
+        this.routeTableId = routeTableId;
+        this.routeTableName = routeTableName;
+        this.routeTableType = routeTableType;
+        this.routerId = routerId;
+        this.routerType = routerType;
+        this.status = status;
+        this.tags = tags;
+        this.vpcId = vpcId;
+        this.vswitchIds = vswitchIds;
+    }
+
     /**
      * @return The description of the route table instance.
      * 
@@ -178,7 +207,7 @@ public final class GetRouteTablesTable {
     public static Builder builder(GetRouteTablesTable defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String description;
         private String id;
@@ -193,7 +222,11 @@ public final class GetRouteTablesTable {
         private Map<String,Object> tags;
         private String vpcId;
         private List<String> vswitchIds;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRouteTablesTable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -211,90 +244,62 @@ public final class GetRouteTablesTable {
     	      this.vswitchIds = defaults.vswitchIds;
         }
 
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder routeTableId(String routeTableId) {
             this.routeTableId = Objects.requireNonNull(routeTableId);
             return this;
         }
-        @CustomType.Setter
         public Builder routeTableName(String routeTableName) {
             this.routeTableName = Objects.requireNonNull(routeTableName);
             return this;
         }
-        @CustomType.Setter
         public Builder routeTableType(String routeTableType) {
             this.routeTableType = Objects.requireNonNull(routeTableType);
             return this;
         }
-        @CustomType.Setter
         public Builder routerId(String routerId) {
             this.routerId = Objects.requireNonNull(routerId);
             return this;
         }
-        @CustomType.Setter
         public Builder routerType(String routerType) {
             this.routerType = Objects.requireNonNull(routerType);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchIds(List<String> vswitchIds) {
             this.vswitchIds = Objects.requireNonNull(vswitchIds);
             return this;
         }
         public Builder vswitchIds(String... vswitchIds) {
             return vswitchIds(List.of(vswitchIds));
-        }
-        public GetRouteTablesTable build() {
-            final var o = new GetRouteTablesTable();
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.resourceGroupId = resourceGroupId;
-            o.routeTableId = routeTableId;
-            o.routeTableName = routeTableName;
-            o.routeTableType = routeTableType;
-            o.routerId = routerId;
-            o.routerType = routerType;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.vswitchIds = vswitchIds;
-            return o;
+        }        public GetRouteTablesTable build() {
+            return new GetRouteTablesTable(description, id, name, resourceGroupId, routeTableId, routeTableName, routeTableType, routerId, routerType, status, tags, vpcId, vswitchIds);
         }
     }
 }

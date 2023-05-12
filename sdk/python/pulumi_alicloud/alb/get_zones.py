@@ -90,6 +90,9 @@ def get_zones(output_file: Optional[str] = None,
     example = alicloud.alb.get_zones()
     pulumi.export("firstAlbZonesId", example.zones[0].zone_id)
     ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
@@ -122,5 +125,8 @@ def get_zones_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
     example = alicloud.alb.get_zones()
     pulumi.export("firstAlbZonesId", example.zones[0].zone_id)
     ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

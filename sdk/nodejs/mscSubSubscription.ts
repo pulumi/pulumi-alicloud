@@ -67,6 +67,12 @@ export class MscSubSubscription extends pulumi.CustomResource {
      * The channel the Subscription.
      */
     public /*out*/ readonly channel!: pulumi.Output<string>;
+    /**
+     * The ids of subscribed contacts.
+     * **NOTE:** There is a potential diff error because of the order of `contactIds` values indefinite.
+     * So, from version 1.161.0, `contactIds` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     */
     public readonly contactIds!: pulumi.Output<string[]>;
     /**
      * The description of the Subscription.
@@ -153,6 +159,12 @@ export interface MscSubSubscriptionState {
      * The channel the Subscription.
      */
     channel?: pulumi.Input<string>;
+    /**
+     * The ids of subscribed contacts.
+     * **NOTE:** There is a potential diff error because of the order of `contactIds` values indefinite.
+     * So, from version 1.161.0, `contactIds` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     */
     contactIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The description of the Subscription.
@@ -192,6 +204,12 @@ export interface MscSubSubscriptionState {
  * The set of arguments for constructing a MscSubSubscription resource.
  */
 export interface MscSubSubscriptionArgs {
+    /**
+     * The ids of subscribed contacts.
+     * **NOTE:** There is a potential diff error because of the order of `contactIds` values indefinite.
+     * So, from version 1.161.0, `contactIds` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     */
     contactIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.

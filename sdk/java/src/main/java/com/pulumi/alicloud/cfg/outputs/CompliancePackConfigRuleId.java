@@ -15,9 +15,13 @@ public final class CompliancePackConfigRuleId {
      * @return The rule ID of Config Rule.
      * 
      */
-    private @Nullable String configRuleId;
+    private final @Nullable String configRuleId;
 
-    private CompliancePackConfigRuleId() {}
+    @CustomType.Constructor
+    private CompliancePackConfigRuleId(@CustomType.Parameter("configRuleId") @Nullable String configRuleId) {
+        this.configRuleId = configRuleId;
+    }
+
     /**
      * @return The rule ID of Config Rule.
      * 
@@ -33,24 +37,24 @@ public final class CompliancePackConfigRuleId {
     public static Builder builder(CompliancePackConfigRuleId defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String configRuleId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(CompliancePackConfigRuleId defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configRuleId = defaults.configRuleId;
         }
 
-        @CustomType.Setter
         public Builder configRuleId(@Nullable String configRuleId) {
             this.configRuleId = configRuleId;
             return this;
-        }
-        public CompliancePackConfigRuleId build() {
-            final var o = new CompliancePackConfigRuleId();
-            o.configRuleId = configRuleId;
-            return o;
+        }        public CompliancePackConfigRuleId build() {
+            return new CompliancePackConfigRuleId(configRuleId);
         }
     }
 }

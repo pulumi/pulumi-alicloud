@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
+    /// &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.AutoSnapshotPolicy from version 1.117.0.
+    /// 
+    /// Provides an ECS snapshot policy resource.
+    /// 
+    /// For information about snapshot policy and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+    /// 
+    /// &gt; **NOTE:** Available in 1.42.0+.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -75,6 +83,8 @@ namespace Pulumi.AliCloud.Ecs
         /// The snapshot retention time, and the unit of measurement is day. Optional values:
         /// - -1: The automatic snapshots are retained permanently.
         /// - [1, 65536]: The number of days retained.
+        /// 
+        /// Default value: -1.
         /// </summary>
         [Output("retentionDays")]
         public Output<int> RetentionDays { get; private set; } = null!;
@@ -172,6 +182,8 @@ namespace Pulumi.AliCloud.Ecs
         /// The snapshot retention time, and the unit of measurement is day. Optional values:
         /// - -1: The automatic snapshots are retained permanently.
         /// - [1, 65536]: The number of days retained.
+        /// 
+        /// Default value: -1.
         /// </summary>
         [Input("retentionDays", required: true)]
         public Input<int> RetentionDays { get; set; } = null!;
@@ -244,6 +256,8 @@ namespace Pulumi.AliCloud.Ecs
         /// The snapshot retention time, and the unit of measurement is day. Optional values:
         /// - -1: The automatic snapshots are retained permanently.
         /// - [1, 65536]: The number of days retained.
+        /// 
+        /// Default value: -1.
         /// </summary>
         [Input("retentionDays")]
         public Input<int>? RetentionDays { get; set; }

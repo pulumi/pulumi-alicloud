@@ -169,6 +169,8 @@ public class AccountPrivilege extends com.pulumi.resources.CustomResource {
      * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
      * 
+     * Default to &#34;ReadOnly&#34;.
+     * 
      */
     @Export(name="privilege", type=String.class, parameters={})
     private Output</* @Nullable */ String> privilege;
@@ -180,6 +182,8 @@ public class AccountPrivilege extends com.pulumi.resources.CustomResource {
      * - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+     * 
+     * Default to &#34;ReadOnly&#34;.
      * 
      */
     public Output<Optional<String>> privilege() {

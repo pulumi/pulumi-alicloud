@@ -12,12 +12,20 @@ public final class BucketReplicationEncryptionConfiguration {
     /**
      * @return The CMK ID used in SSE-KMS.
      * 
+     * `NOTE`: If the status of sse_kms_encrypted_objects is set to Enabled, you must specify the replica_kms_key_id.
+     * 
      */
-    private String replicaKmsKeyId;
+    private final String replicaKmsKeyId;
 
-    private BucketReplicationEncryptionConfiguration() {}
+    @CustomType.Constructor
+    private BucketReplicationEncryptionConfiguration(@CustomType.Parameter("replicaKmsKeyId") String replicaKmsKeyId) {
+        this.replicaKmsKeyId = replicaKmsKeyId;
+    }
+
     /**
      * @return The CMK ID used in SSE-KMS.
+     * 
+     * `NOTE`: If the status of sse_kms_encrypted_objects is set to Enabled, you must specify the replica_kms_key_id.
      * 
      */
     public String replicaKmsKeyId() {
@@ -31,24 +39,24 @@ public final class BucketReplicationEncryptionConfiguration {
     public static Builder builder(BucketReplicationEncryptionConfiguration defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String replicaKmsKeyId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(BucketReplicationEncryptionConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.replicaKmsKeyId = defaults.replicaKmsKeyId;
         }
 
-        @CustomType.Setter
         public Builder replicaKmsKeyId(String replicaKmsKeyId) {
             this.replicaKmsKeyId = Objects.requireNonNull(replicaKmsKeyId);
             return this;
-        }
-        public BucketReplicationEncryptionConfiguration build() {
-            final var o = new BucketReplicationEncryptionConfiguration();
-            o.replicaKmsKeyId = replicaKmsKeyId;
-            return o;
+        }        public BucketReplicationEncryptionConfiguration build() {
+            return new BucketReplicationEncryptionConfiguration(replicaKmsKeyId);
         }
     }
 }

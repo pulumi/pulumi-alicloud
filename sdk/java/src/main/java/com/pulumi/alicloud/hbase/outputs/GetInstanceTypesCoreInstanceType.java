@@ -14,49 +14,70 @@ public final class GetInstanceTypesCoreInstanceType {
      * @return Name of the category, single or cluster.
      * 
      */
-    private String category;
+    private final String category;
     /**
      * @return Cpu size of the instance type.
      * 
      */
-    private Integer cpuSize;
+    private final Integer cpuSize;
     /**
      * @return The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
      * 
      */
-    private String engine;
+    private final String engine;
     /**
      * @return The hbase instance type of create hbase cluster instance.
      * 
      */
-    private String instanceType;
+    private final String instanceType;
     /**
      * @return Max count of the core instance nodes.
      * 
      */
-    private Integer maxCoreCount;
+    private final Integer maxCoreCount;
     /**
      * @return Mem size of the instance type.
      * 
      */
-    private Integer memSize;
+    private final Integer memSize;
     /**
      * @return Name of the storage type.
      * 
      */
-    private String storageType;
+    private final String storageType;
     /**
      * @return The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
      * 
      */
-    private String version;
+    private final String version;
     /**
      * @return Name of zone id.
      * 
      */
-    private String zone;
+    private final String zone;
 
-    private GetInstanceTypesCoreInstanceType() {}
+    @CustomType.Constructor
+    private GetInstanceTypesCoreInstanceType(
+        @CustomType.Parameter("category") String category,
+        @CustomType.Parameter("cpuSize") Integer cpuSize,
+        @CustomType.Parameter("engine") String engine,
+        @CustomType.Parameter("instanceType") String instanceType,
+        @CustomType.Parameter("maxCoreCount") Integer maxCoreCount,
+        @CustomType.Parameter("memSize") Integer memSize,
+        @CustomType.Parameter("storageType") String storageType,
+        @CustomType.Parameter("version") String version,
+        @CustomType.Parameter("zone") String zone) {
+        this.category = category;
+        this.cpuSize = cpuSize;
+        this.engine = engine;
+        this.instanceType = instanceType;
+        this.maxCoreCount = maxCoreCount;
+        this.memSize = memSize;
+        this.storageType = storageType;
+        this.version = version;
+        this.zone = zone;
+    }
+
     /**
      * @return Name of the category, single or cluster.
      * 
@@ -128,7 +149,7 @@ public final class GetInstanceTypesCoreInstanceType {
     public static Builder builder(GetInstanceTypesCoreInstanceType defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String category;
         private Integer cpuSize;
@@ -139,7 +160,11 @@ public final class GetInstanceTypesCoreInstanceType {
         private String storageType;
         private String version;
         private String zone;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstanceTypesCoreInstanceType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -153,63 +178,43 @@ public final class GetInstanceTypesCoreInstanceType {
     	      this.zone = defaults.zone;
         }
 
-        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
-        @CustomType.Setter
         public Builder cpuSize(Integer cpuSize) {
             this.cpuSize = Objects.requireNonNull(cpuSize);
             return this;
         }
-        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
-        @CustomType.Setter
         public Builder maxCoreCount(Integer maxCoreCount) {
             this.maxCoreCount = Objects.requireNonNull(maxCoreCount);
             return this;
         }
-        @CustomType.Setter
         public Builder memSize(Integer memSize) {
             this.memSize = Objects.requireNonNull(memSize);
             return this;
         }
-        @CustomType.Setter
         public Builder storageType(String storageType) {
             this.storageType = Objects.requireNonNull(storageType);
             return this;
         }
-        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
         }
-        @CustomType.Setter
         public Builder zone(String zone) {
             this.zone = Objects.requireNonNull(zone);
             return this;
-        }
-        public GetInstanceTypesCoreInstanceType build() {
-            final var o = new GetInstanceTypesCoreInstanceType();
-            o.category = category;
-            o.cpuSize = cpuSize;
-            o.engine = engine;
-            o.instanceType = instanceType;
-            o.maxCoreCount = maxCoreCount;
-            o.memSize = memSize;
-            o.storageType = storageType;
-            o.version = version;
-            o.zone = zone;
-            return o;
+        }        public GetInstanceTypesCoreInstanceType build() {
+            return new GetInstanceTypesCoreInstanceType(category, cpuSize, engine, instanceType, maxCoreCount, memSize, storageType, version, zone);
         }
     }
 }

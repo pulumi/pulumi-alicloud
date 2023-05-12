@@ -153,6 +153,7 @@ def get_tunnels(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of tunnel IDs.
     :param str instance_name: The name of OTS instance.
     :param str name_regex: A regex string to filter results by tunnel name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str table_name: The name of OTS table.
     """
     __args__ = dict()
@@ -206,6 +207,7 @@ def get_tunnels_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
     :param Sequence[str] ids: A list of tunnel IDs.
     :param str instance_name: The name of OTS instance.
     :param str name_regex: A regex string to filter results by tunnel name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str table_name: The name of OTS table.
     """
     ...

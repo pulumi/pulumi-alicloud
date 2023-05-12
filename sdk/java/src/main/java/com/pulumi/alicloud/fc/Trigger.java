@@ -15,6 +15,570 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides an Alicloud Function Compute Trigger resource. Based on trigger, execute your code in response to events in Alibaba Cloud.
+ *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/doc-detail/52895.htm).
+ * 
+ * &gt; **NOTE:** The resource requires a provider field &#39;account_id&#39;. See account_id.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ram.Role;
+ * import com.pulumi.alicloud.ram.RoleArgs;
+ * import com.pulumi.alicloud.ram.RolePolicyAttachment;
+ * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
+ * import com.pulumi.alicloud.fc.Trigger;
+ * import com.pulumi.alicloud.fc.TriggerArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
+ *         final var account = config.get(&#34;account&#34;).orElse(&#34;12345&#34;);
+ *         var fooRole = new Role(&#34;fooRole&#34;, RoleArgs.builder()        
+ *             .document(&#34;&#34;&#34;
+ *   {
+ *     &#34;Statement&#34;: [
+ *       {
+ *         &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
+ *         &#34;Effect&#34;: &#34;Allow&#34;,
+ *         &#34;Principal&#34;: {
+ *           &#34;Service&#34;: [
+ *             &#34;log.aliyuncs.com&#34;
+ *           ]
+ *         }
+ *       }
+ *     ],
+ *     &#34;Version&#34;: &#34;1&#34;
+ *   }
+ *   
+ *             &#34;&#34;&#34;)
+ *             .description(&#34;this is a test&#34;)
+ *             .force(true)
+ *             .build());
+ * 
+ *         var fooRolePolicyAttachment = new RolePolicyAttachment(&#34;fooRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+ *             .roleName(fooRole.name())
+ *             .policyName(&#34;AliyunLogFullAccess&#34;)
+ *             .policyType(&#34;System&#34;)
+ *             .build());
+ * 
+ *         var fooTrigger = new Trigger(&#34;fooTrigger&#34;, TriggerArgs.builder()        
+ *             .service(&#34;my-fc-service&#34;)
+ *             .function(&#34;hello-world&#34;)
+ *             .role(fooRole.arn())
+ *             .sourceArn(String.format(&#34;acs:log:%s:%s:project/%s&#34;, region,account,alicloud_log_project.foo().name()))
+ *             .type(&#34;log&#34;)
+ *             .config(&#34;&#34;&#34;
+ *     {
+ *         &#34;sourceConfig&#34;: {
+ *             &#34;project&#34;: &#34;project-for-fc&#34;,
+ *             &#34;logstore&#34;: &#34;project-for-fc&#34;
+ *         },
+ *         &#34;jobConfig&#34;: {
+ *             &#34;maxRetryTime&#34;: 3,
+ *             &#34;triggerInterval&#34;: 60
+ *         },
+ *         &#34;functionParameter&#34;: {
+ *             &#34;a&#34;: &#34;b&#34;,
+ *             &#34;c&#34;: &#34;d&#34;
+ *         },
+ *         &#34;logConfig&#34;: {
+ *             &#34;project&#34;: &#34;project-for-fc-log&#34;,
+ *             &#34;logstore&#34;: &#34;project-for-fc-log&#34;
+ *         },
+ *         &#34;enable&#34;: true
+ *     }
+ *   
+ *             &#34;&#34;&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(fooRolePolicyAttachment)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * MNS topic trigger:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
+ * import com.pulumi.alicloud.mns.Topic;
+ * import com.pulumi.alicloud.fc.Service;
+ * import com.pulumi.alicloud.fc.ServiceArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketObject;
+ * import com.pulumi.alicloud.oss.BucketObjectArgs;
+ * import com.pulumi.alicloud.fc.Function;
+ * import com.pulumi.alicloud.fc.FunctionArgs;
+ * import com.pulumi.alicloud.ram.Role;
+ * import com.pulumi.alicloud.ram.RoleArgs;
+ * import com.pulumi.alicloud.ram.RolePolicyAttachment;
+ * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
+ * import com.pulumi.alicloud.fc.Trigger;
+ * import com.pulumi.alicloud.fc.TriggerArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;fctriggermnstopic&#34;);
+ *         final var currentRegion = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         final var current = AlicloudFunctions.getAccount();
+ * 
+ *         var fooProject = new Project(&#34;fooProject&#34;, ProjectArgs.builder()        
+ *             .description(&#34;tf unit test&#34;)
+ *             .build());
+ * 
+ *         var bar = new Store(&#34;bar&#34;, StoreArgs.builder()        
+ *             .project(fooProject.name())
+ *             .retentionPeriod(&#34;3000&#34;)
+ *             .shardCount(1)
+ *             .build());
+ * 
+ *         var fooStore = new Store(&#34;fooStore&#34;, StoreArgs.builder()        
+ *             .project(fooProject.name())
+ *             .retentionPeriod(&#34;3000&#34;)
+ *             .shardCount(1)
+ *             .build());
+ * 
+ *         var fooTopic = new Topic(&#34;fooTopic&#34;);
+ * 
+ *         var fooService = new Service(&#34;fooService&#34;, ServiceArgs.builder()        
+ *             .internetAccess(false)
+ *             .build());
+ * 
+ *         var fooBucket = new Bucket(&#34;fooBucket&#34;, BucketArgs.builder()        
+ *             .bucket(name)
+ *             .build());
+ * 
+ *         var fooBucketObject = new BucketObject(&#34;fooBucketObject&#34;, BucketObjectArgs.builder()        
+ *             .bucket(fooBucket.id())
+ *             .key(&#34;fc/hello.zip&#34;)
+ *             .source(&#34;./hello.zip&#34;)
+ *             .build());
+ * 
+ *         var fooFunction = new Function(&#34;fooFunction&#34;, FunctionArgs.builder()        
+ *             .handler(&#34;hello.handler&#34;)
+ *             .memorySize(512)
+ *             .ossBucket(fooBucket.id())
+ *             .ossKey(fooBucketObject.key())
+ *             .runtime(&#34;python2.7&#34;)
+ *             .service(fooService.name())
+ *             .build());
+ * 
+ *         var fooRole = new Role(&#34;fooRole&#34;, RoleArgs.builder()        
+ *             .description(&#34;this is a test&#34;)
+ *             .document(&#34;&#34;&#34;
+ *   {
+ *     &#34;Statement&#34;: [
+ *       {
+ *         &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
+ *         &#34;Effect&#34;: &#34;Allow&#34;,
+ *         &#34;Principal&#34;: {
+ *           &#34;Service&#34;: [
+ *             &#34;mns.aliyuncs.com&#34;
+ *           ]
+ *         }
+ *       }
+ *     ],
+ *     &#34;Version&#34;: &#34;1&#34;
+ *   }
+ *   
+ *             &#34;&#34;&#34;)
+ *             .force(true)
+ *             .build());
+ * 
+ *         var fooRolePolicyAttachment = new RolePolicyAttachment(&#34;fooRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+ *             .policyName(&#34;AliyunMNSNotificationRolePolicy&#34;)
+ *             .policyType(&#34;System&#34;)
+ *             .roleName(fooRole.name())
+ *             .build());
+ * 
+ *         var fooTrigger = new Trigger(&#34;fooTrigger&#34;, TriggerArgs.builder()        
+ *             .configMns(&#34;&#34;&#34;
+ *   {
+ *     &#34;filterTag&#34;:&#34;testTag&#34;,
+ *     &#34;notifyContentFormat&#34;:&#34;STREAM&#34;,
+ *     &#34;notifyStrategy&#34;:&#34;BACKOFF_RETRY&#34;
+ *   }
+ *   
+ *             &#34;&#34;&#34;)
+ *             .function(fooFunction.name())
+ *             .role(fooRole.arn())
+ *             .service(fooService.name())
+ *             .sourceArn(fooTopic.name().applyValue(name -&gt; String.format(&#34;acs:mns:%s:%s:/topics/%s&#34;, currentRegion.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),current.applyValue(getAccountResult -&gt; getAccountResult.id()),name)))
+ *             .type(&#34;mns_topic&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(&#34;alicloud_ram_role_policy_attachment.foo&#34;)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * CDN events trigger:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.cdn.DomainNew;
+ * import com.pulumi.alicloud.cdn.DomainNewArgs;
+ * import com.pulumi.alicloud.cdn.inputs.DomainNewSourceArgs;
+ * import com.pulumi.alicloud.fc.Service;
+ * import com.pulumi.alicloud.fc.ServiceArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketObject;
+ * import com.pulumi.alicloud.oss.BucketObjectArgs;
+ * import com.pulumi.alicloud.fc.Function;
+ * import com.pulumi.alicloud.fc.FunctionArgs;
+ * import com.pulumi.alicloud.ram.Role;
+ * import com.pulumi.alicloud.ram.RoleArgs;
+ * import com.pulumi.alicloud.ram.Policy;
+ * import com.pulumi.alicloud.ram.PolicyArgs;
+ * import com.pulumi.alicloud.ram.RolePolicyAttachment;
+ * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
+ * import com.pulumi.alicloud.fc.Trigger;
+ * import com.pulumi.alicloud.fc.TriggerArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;fctriggercdneventsconfig&#34;);
+ *         final var current = AlicloudFunctions.getAccount();
+ * 
+ *         var domain = new DomainNew(&#34;domain&#34;, DomainNewArgs.builder()        
+ *             .cdnType(&#34;web&#34;)
+ *             .domainName(String.format(&#34;%s.tf.com&#34;, name))
+ *             .scope(&#34;overseas&#34;)
+ *             .sources(DomainNewSourceArgs.builder()
+ *                 .content(&#34;1.1.1.1&#34;)
+ *                 .port(80)
+ *                 .priority(20)
+ *                 .type(&#34;ipaddr&#34;)
+ *                 .weight(10)
+ *                 .build())
+ *             .build());
+ * 
+ *         var fooService = new Service(&#34;fooService&#34;, ServiceArgs.builder()        
+ *             .internetAccess(false)
+ *             .build());
+ * 
+ *         var fooBucket = new Bucket(&#34;fooBucket&#34;, BucketArgs.builder()        
+ *             .bucket(name)
+ *             .build());
+ * 
+ *         var fooBucketObject = new BucketObject(&#34;fooBucketObject&#34;, BucketObjectArgs.builder()        
+ *             .bucket(fooBucket.id())
+ *             .key(&#34;fc/hello.zip&#34;)
+ *             .source(&#34;./hello.zip&#34;)
+ *             .build());
+ * 
+ *         var fooFunction = new Function(&#34;fooFunction&#34;, FunctionArgs.builder()        
+ *             .handler(&#34;hello.handler&#34;)
+ *             .memorySize(512)
+ *             .ossBucket(fooBucket.id())
+ *             .ossKey(fooBucketObject.key())
+ *             .runtime(&#34;python2.7&#34;)
+ *             .service(fooService.name())
+ *             .build());
+ * 
+ *         var fooRole = new Role(&#34;fooRole&#34;, RoleArgs.builder()        
+ *             .description(&#34;this is a test&#34;)
+ *             .document(&#34;&#34;&#34;
+ *     {
+ *         &#34;Version&#34;: &#34;1&#34;,
+ *         &#34;Statement&#34;: [
+ *             {
+ *                 &#34;Action&#34;: &#34;cdn:Describe*&#34;,
+ *                 &#34;Resource&#34;: &#34;*&#34;,
+ *                 &#34;Effect&#34;: &#34;Allow&#34;,
+ * 		        &#34;Principal&#34;: {
+ *                 &#34;Service&#34;:
+ *                     [&#34;log.aliyuncs.com&#34;]
+ *                 }
+ *             }
+ *         ]
+ *     }
+ *     
+ *             &#34;&#34;&#34;)
+ *             .force(true)
+ *             .build());
+ * 
+ *         var fooPolicy = new Policy(&#34;fooPolicy&#34;, PolicyArgs.builder()        
+ *             .description(&#34;this is a test&#34;)
+ *             .document(&#34;&#34;&#34;
+ *     {
+ *         &#34;Version&#34;: &#34;1&#34;,
+ *         &#34;Statement&#34;: [
+ *         {
+ *             &#34;Action&#34;: [
+ *             &#34;fc:InvokeFunction&#34;
+ *             ],
+ *         &#34;Resource&#34;: [
+ *             &#34;acs:fc:*:*:services/tf_cdnEvents/functions/*&#34;,
+ *             &#34;acs:fc:*:*:services/tf_cdnEvents.*{@literal /}functions/*&#34;
+ *         ],
+ *         &#34;Effect&#34;: &#34;Allow&#34;
+ *         }
+ *         ]
+ *     }
+ *     
+ *             &#34;&#34;&#34;)
+ *             .force(true)
+ *             .build());
+ * 
+ *         var fooRolePolicyAttachment = new RolePolicyAttachment(&#34;fooRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+ *             .policyName(fooPolicy.name())
+ *             .policyType(&#34;Custom&#34;)
+ *             .roleName(fooRole.name())
+ *             .build());
+ * 
+ *         var default_ = new Trigger(&#34;default&#34;, TriggerArgs.builder()        
+ *             .config(domain.domainName().applyValue(domainName -&gt; &#34;&#34;&#34;
+ *       {&#34;eventName&#34;:&#34;LogFileCreated&#34;,
+ *      &#34;eventVersion&#34;:&#34;1.0.0&#34;,
+ *      &#34;notes&#34;:&#34;cdn events trigger&#34;,
+ *      &#34;filter&#34;:{
+ *         &#34;domain&#34;: [&#34;%s&#34;]
+ *         }
+ *     }
+ * 
+ * &#34;, domainName)))
+ *             .function(fooFunction.name())
+ *             .role(fooRole.arn())
+ *             .service(fooService.name())
+ *             .sourceArn(String.format(&#34;acs:cdn:*:%s&#34;, current.applyValue(getAccountResult -&gt; getAccountResult.id())))
+ *             .type(&#34;cdn_events&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(&#34;alicloud_ram_role_policy_attachment.foo&#34;)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * EventBridge trigger:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.eventbridge.ServiceLinkedRole;
+ * import com.pulumi.alicloud.eventbridge.ServiceLinkedRoleArgs;
+ * import com.pulumi.alicloud.fc.Service;
+ * import com.pulumi.alicloud.fc.ServiceArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketObject;
+ * import com.pulumi.alicloud.oss.BucketObjectArgs;
+ * import com.pulumi.alicloud.fc.Function;
+ * import com.pulumi.alicloud.fc.FunctionArgs;
+ * import com.pulumi.alicloud.fc.Trigger;
+ * import com.pulumi.alicloud.fc.TriggerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;fctriggereventbridgeconfig&#34;);
+ *         final var current = AlicloudFunctions.getAccount();
+ * 
+ *         var serviceLinkedRole = new ServiceLinkedRole(&#34;serviceLinkedRole&#34;, ServiceLinkedRoleArgs.builder()        
+ *             .productName(&#34;AliyunServiceRoleForEventBridgeSendToFC&#34;)
+ *             .build());
+ * 
+ *         var fooService = new Service(&#34;fooService&#34;, ServiceArgs.builder()        
+ *             .internetAccess(false)
+ *             .build());
+ * 
+ *         var fooBucket = new Bucket(&#34;fooBucket&#34;, BucketArgs.builder()        
+ *             .bucket(name)
+ *             .build());
+ * 
+ *         var fooBucketObject = new BucketObject(&#34;fooBucketObject&#34;, BucketObjectArgs.builder()        
+ *             .bucket(fooBucket.id())
+ *             .key(&#34;fc/hello.zip&#34;)
+ *             .source(&#34;./hello.zip&#34;)
+ *             .build());
+ * 
+ *         var fooFunction = new Function(&#34;fooFunction&#34;, FunctionArgs.builder()        
+ *             .handler(&#34;hello.handler&#34;)
+ *             .memorySize(512)
+ *             .ossBucket(fooBucket.id())
+ *             .ossKey(fooBucketObject.key())
+ *             .runtime(&#34;python2.7&#34;)
+ *             .service(fooService.name())
+ *             .build());
+ * 
+ *         var default_ = new Trigger(&#34;default&#34;, TriggerArgs.builder()        
+ *             .config(&#34;&#34;&#34;
+ *     {
+ *         &#34;triggerEnable&#34;: false,
+ *         &#34;asyncInvocationType&#34;: false,
+ *         &#34;eventRuleFilterPattern&#34;: &#34;{\&#34;source\&#34;:[\&#34;acs.oss\&#34;],\&#34;type\&#34;:[\&#34;oss:BucketCreated:PutBucket\&#34;]}&#34;,
+ *         &#34;eventSourceConfig&#34;: {
+ *             &#34;eventSourceType&#34;: &#34;Default&#34;
+ *         }
+ *     }
+ * 
+ *             &#34;&#34;&#34;)
+ *             .function(fooFunction.name())
+ *             .service(fooService.name())
+ *             .type(&#34;eventbridge&#34;)
+ *             .build());
+ * 
+ *         var mns = new Trigger(&#34;mns&#34;, TriggerArgs.builder()        
+ *             .config(&#34;&#34;&#34;
+ *     {
+ *         &#34;triggerEnable&#34;: false,
+ *         &#34;asyncInvocationType&#34;: false,
+ *         &#34;eventRuleFilterPattern&#34;: &#34;{}&#34;,
+ *         &#34;eventSourceConfig&#34;: {
+ *             &#34;eventSourceType&#34;: &#34;MNS&#34;,
+ *             &#34;eventSourceParameters&#34;: {
+ *                 &#34;sourceMNSParameters&#34;: {
+ *                     &#34;RegionId&#34;: &#34;cn-hangzhou&#34;,
+ *                     &#34;QueueName&#34;: &#34;mns-queue&#34;,
+ *                     &#34;IsBase64Decode&#34;: true
+ *                 }
+ *             }
+ *         }
+ *     }
+ * 
+ *             &#34;&#34;&#34;)
+ *             .function(fooFunction.name())
+ *             .service(fooService.name())
+ *             .type(&#34;eventbridge&#34;)
+ *             .build());
+ * 
+ *         var rocketmq = new Trigger(&#34;rocketmq&#34;, TriggerArgs.builder()        
+ *             .config(&#34;&#34;&#34;
+ *     {
+ *         &#34;triggerEnable&#34;: false,
+ *         &#34;asyncInvocationType&#34;: false,
+ *         &#34;eventRuleFilterPattern&#34;: &#34;{}&#34;,
+ *         &#34;eventSourceConfig&#34;: {
+ *             &#34;eventSourceType&#34;: &#34;RocketMQ&#34;,
+ *             &#34;eventSourceParameters&#34;: {
+ *                 &#34;sourceRocketMQParameters&#34;: {
+ *                     &#34;RegionId&#34;: &#34;cn-hangzhou&#34;,
+ *                     &#34;InstanceId&#34;: &#34;MQ_INST_164901546557****_BAAN****&#34;,
+ *                     &#34;GroupID&#34;: &#34;GID_group1&#34;,
+ *                     &#34;Topic&#34;: &#34;mytopic&#34;,
+ *                     &#34;Timestamp&#34;: 1636597951984,
+ *                     &#34;Tag&#34;: &#34;test-tag&#34;,
+ *                     &#34;Offset&#34;: &#34;CONSUME_FROM_LAST_OFFSET&#34;
+ *                 }
+ *             }
+ *         }
+ *     }
+ * 
+ *             &#34;&#34;&#34;)
+ *             .function(fooFunction.name())
+ *             .service(fooService.name())
+ *             .type(&#34;eventbridge&#34;)
+ *             .build());
+ * 
+ *         var rabbitmq = new Trigger(&#34;rabbitmq&#34;, TriggerArgs.builder()        
+ *             .config(&#34;&#34;&#34;
+ *     {
+ *         &#34;triggerEnable&#34;: false,
+ *         &#34;asyncInvocationType&#34;: false,
+ *         &#34;eventRuleFilterPattern&#34;: &#34;{}&#34;,
+ *         &#34;eventSourceConfig&#34;: {
+ *             &#34;eventSourceType&#34;: &#34;RabbitMQ&#34;,
+ *             &#34;eventSourceParameters&#34;: {
+ *                 &#34;sourceRabbitMQParameters&#34;: {
+ *                     &#34;RegionId&#34;: &#34;cn-hangzhou&#34;,
+ *                     &#34;InstanceId&#34;: &#34;amqp-cn-****** &#34;,
+ *                     &#34;VirtualHostName&#34;: &#34;test-virtual&#34;,
+ *                     &#34;QueueName&#34;: &#34;test-queue&#34;
+ *                 }
+ *             }
+ *         }
+ *     }
+ * 
+ *             &#34;&#34;&#34;)
+ *             .function(fooFunction.name())
+ *             .service(fooService.name())
+ *             .type(&#34;eventbridge&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Module Support
+ * 
+ * You can use to the existing fc module
+ * to create several triggers quickly.
+ * 
  * ## Import
  * 
  * Function Compute trigger can be imported using the id, e.g.
@@ -169,12 +733,20 @@ public class Trigger extends com.pulumi.resources.CustomResource {
     /**
      * The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mns_topic&#34;, &#34;cdn_events&#34;, &#34;eventbridge&#34;].
      * 
+     * &gt; **NOTE:** Config does not support modification when type is mns_topic.
+     * **NOTE:** type = cdn_events, available in 1.47.0+.
+     * **NOTE:** type = eventbridge, available in 1.173.0+.
+     * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
      * @return The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mns_topic&#34;, &#34;cdn_events&#34;, &#34;eventbridge&#34;].
+     * 
+     * &gt; **NOTE:** Config does not support modification when type is mns_topic.
+     * **NOTE:** type = cdn_events, available in 1.47.0+.
+     * **NOTE:** type = eventbridge, available in 1.173.0+.
      * 
      */
     public Output<String> type() {

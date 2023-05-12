@@ -12,18 +12,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDomainRecordsRecord {
-    private String domainName;
-    private String hostRecord;
-    private String line;
-    private Boolean locked;
-    private Integer priority;
-    private String recordId;
-    private String status;
-    private Double ttl;
-    private String type;
-    private String value;
+    private final String domainName;
+    private final String hostRecord;
+    private final String line;
+    private final Boolean locked;
+    private final Integer priority;
+    private final String recordId;
+    private final String status;
+    private final Double ttl;
+    private final String type;
+    private final String value;
 
-    private GetDomainRecordsRecord() {}
+    @CustomType.Constructor
+    private GetDomainRecordsRecord(
+        @CustomType.Parameter("domainName") String domainName,
+        @CustomType.Parameter("hostRecord") String hostRecord,
+        @CustomType.Parameter("line") String line,
+        @CustomType.Parameter("locked") Boolean locked,
+        @CustomType.Parameter("priority") Integer priority,
+        @CustomType.Parameter("recordId") String recordId,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("ttl") Double ttl,
+        @CustomType.Parameter("type") String type,
+        @CustomType.Parameter("value") String value) {
+        this.domainName = domainName;
+        this.hostRecord = hostRecord;
+        this.line = line;
+        this.locked = locked;
+        this.priority = priority;
+        this.recordId = recordId;
+        this.status = status;
+        this.ttl = ttl;
+        this.type = type;
+        this.value = value;
+    }
+
     public String domainName() {
         return this.domainName;
     }
@@ -62,7 +85,7 @@ public final class GetDomainRecordsRecord {
     public static Builder builder(GetDomainRecordsRecord defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String domainName;
         private String hostRecord;
@@ -74,7 +97,11 @@ public final class GetDomainRecordsRecord {
         private Double ttl;
         private String type;
         private String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDomainRecordsRecord defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domainName = defaults.domainName;
@@ -89,69 +116,47 @@ public final class GetDomainRecordsRecord {
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
-        @CustomType.Setter
         public Builder hostRecord(String hostRecord) {
             this.hostRecord = Objects.requireNonNull(hostRecord);
             return this;
         }
-        @CustomType.Setter
         public Builder line(String line) {
             this.line = Objects.requireNonNull(line);
             return this;
         }
-        @CustomType.Setter
         public Builder locked(Boolean locked) {
             this.locked = Objects.requireNonNull(locked);
             return this;
         }
-        @CustomType.Setter
         public Builder priority(Integer priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
-        @CustomType.Setter
         public Builder recordId(String recordId) {
             this.recordId = Objects.requireNonNull(recordId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder ttl(Double ttl) {
             this.ttl = Objects.requireNonNull(ttl);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
-        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }
-        public GetDomainRecordsRecord build() {
-            final var o = new GetDomainRecordsRecord();
-            o.domainName = domainName;
-            o.hostRecord = hostRecord;
-            o.line = line;
-            o.locked = locked;
-            o.priority = priority;
-            o.recordId = recordId;
-            o.status = status;
-            o.ttl = ttl;
-            o.type = type;
-            o.value = value;
-            return o;
+        }        public GetDomainRecordsRecord build() {
+            return new GetDomainRecordsRecord(domainName, hostRecord, line, locked, priority, recordId, status, ttl, type, value);
         }
     }
 }

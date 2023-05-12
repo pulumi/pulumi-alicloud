@@ -16,49 +16,70 @@ public final class GetAggregateCompliancePacksPack {
      * @return The Aliyun User Id.
      * 
      */
-    private String accountId;
+    private final String accountId;
     /**
      * @return The Aggregate Compliance Package Name.
      * 
      */
-    private String aggregateCompliancePackName;
+    private final String aggregateCompliancePackName;
     /**
      * @return The Aggregate Compliance Package Id.
      * 
      */
-    private String aggregatorCompliancePackId;
+    private final String aggregatorCompliancePackId;
     /**
      * @return The template ID of the Compliance Package.
      * 
      */
-    private String compliancePackTemplateId;
+    private final String compliancePackTemplateId;
     /**
      * @return A list of The Aggregate Compliance Package Rules.
      * 
      */
-    private List<GetAggregateCompliancePacksPackConfigRule> configRules;
+    private final List<GetAggregateCompliancePacksPackConfigRule> configRules;
     /**
      * @return The description of aggregate compliance pack.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the Aggregate Compliance Pack.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The Risk Level.
      * 
      */
-    private Integer riskLevel;
+    private final Integer riskLevel;
     /**
      * @return The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetAggregateCompliancePacksPack() {}
+    @CustomType.Constructor
+    private GetAggregateCompliancePacksPack(
+        @CustomType.Parameter("accountId") String accountId,
+        @CustomType.Parameter("aggregateCompliancePackName") String aggregateCompliancePackName,
+        @CustomType.Parameter("aggregatorCompliancePackId") String aggregatorCompliancePackId,
+        @CustomType.Parameter("compliancePackTemplateId") String compliancePackTemplateId,
+        @CustomType.Parameter("configRules") List<GetAggregateCompliancePacksPackConfigRule> configRules,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("riskLevel") Integer riskLevel,
+        @CustomType.Parameter("status") String status) {
+        this.accountId = accountId;
+        this.aggregateCompliancePackName = aggregateCompliancePackName;
+        this.aggregatorCompliancePackId = aggregatorCompliancePackId;
+        this.compliancePackTemplateId = compliancePackTemplateId;
+        this.configRules = configRules;
+        this.description = description;
+        this.id = id;
+        this.riskLevel = riskLevel;
+        this.status = status;
+    }
+
     /**
      * @return The Aliyun User Id.
      * 
@@ -130,7 +151,7 @@ public final class GetAggregateCompliancePacksPack {
     public static Builder builder(GetAggregateCompliancePacksPack defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String accountId;
         private String aggregateCompliancePackName;
@@ -141,7 +162,11 @@ public final class GetAggregateCompliancePacksPack {
         private String id;
         private Integer riskLevel;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAggregateCompliancePacksPack defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -155,27 +180,22 @@ public final class GetAggregateCompliancePacksPack {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
-        @CustomType.Setter
         public Builder aggregateCompliancePackName(String aggregateCompliancePackName) {
             this.aggregateCompliancePackName = Objects.requireNonNull(aggregateCompliancePackName);
             return this;
         }
-        @CustomType.Setter
         public Builder aggregatorCompliancePackId(String aggregatorCompliancePackId) {
             this.aggregatorCompliancePackId = Objects.requireNonNull(aggregatorCompliancePackId);
             return this;
         }
-        @CustomType.Setter
         public Builder compliancePackTemplateId(String compliancePackTemplateId) {
             this.compliancePackTemplateId = Objects.requireNonNull(compliancePackTemplateId);
             return this;
         }
-        @CustomType.Setter
         public Builder configRules(List<GetAggregateCompliancePacksPackConfigRule> configRules) {
             this.configRules = Objects.requireNonNull(configRules);
             return this;
@@ -183,38 +203,23 @@ public final class GetAggregateCompliancePacksPack {
         public Builder configRules(GetAggregateCompliancePacksPackConfigRule... configRules) {
             return configRules(List.of(configRules));
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder riskLevel(Integer riskLevel) {
             this.riskLevel = Objects.requireNonNull(riskLevel);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetAggregateCompliancePacksPack build() {
-            final var o = new GetAggregateCompliancePacksPack();
-            o.accountId = accountId;
-            o.aggregateCompliancePackName = aggregateCompliancePackName;
-            o.aggregatorCompliancePackId = aggregatorCompliancePackId;
-            o.compliancePackTemplateId = compliancePackTemplateId;
-            o.configRules = configRules;
-            o.description = description;
-            o.id = id;
-            o.riskLevel = riskLevel;
-            o.status = status;
-            return o;
+        }        public GetAggregateCompliancePacksPack build() {
+            return new GetAggregateCompliancePacksPack(accountId, aggregateCompliancePackName, aggregatorCompliancePackId, compliancePackTemplateId, configRules, description, id, riskLevel, status);
         }
     }
 }

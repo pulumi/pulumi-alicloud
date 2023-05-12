@@ -11,11 +11,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KubernetesTaint {
-    private @Nullable String effect;
-    private @Nullable String key;
-    private @Nullable String value;
+    private final @Nullable String effect;
+    private final @Nullable String key;
+    private final @Nullable String value;
 
-    private KubernetesTaint() {}
+    @CustomType.Constructor
+    private KubernetesTaint(
+        @CustomType.Parameter("effect") @Nullable String effect,
+        @CustomType.Parameter("key") @Nullable String key,
+        @CustomType.Parameter("value") @Nullable String value) {
+        this.effect = effect;
+        this.key = key;
+        this.value = value;
+    }
+
     public Optional<String> effect() {
         return Optional.ofNullable(this.effect);
     }
@@ -33,12 +42,16 @@ public final class KubernetesTaint {
     public static Builder builder(KubernetesTaint defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String effect;
         private @Nullable String key;
         private @Nullable String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(KubernetesTaint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.effect = defaults.effect;
@@ -46,27 +59,19 @@ public final class KubernetesTaint {
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder effect(@Nullable String effect) {
             this.effect = effect;
             return this;
         }
-        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
-        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }
-        public KubernetesTaint build() {
-            final var o = new KubernetesTaint();
-            o.effect = effect;
-            o.key = key;
-            o.value = value;
-            return o;
+        }        public KubernetesTaint build() {
+            return new KubernetesTaint(effect, key, value);
         }
     }
 }

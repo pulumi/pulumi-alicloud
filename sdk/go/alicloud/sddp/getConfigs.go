@@ -25,9 +25,10 @@ func GetConfigs(ctx *pulumi.Context, args *GetConfigsArgs, opts ...pulumi.Invoke
 // A collection of arguments for invoking getConfigs.
 type GetConfigsArgs struct {
 	// A list of Config IDs.
-	Ids        []string `pulumi:"ids"`
-	Lang       *string  `pulumi:"lang"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids  []string `pulumi:"ids"`
+	Lang *string  `pulumi:"lang"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getConfigs.
@@ -56,9 +57,10 @@ func GetConfigsOutput(ctx *pulumi.Context, args GetConfigsOutputArgs, opts ...pu
 // A collection of arguments for invoking getConfigs.
 type GetConfigsOutputArgs struct {
 	// A list of Config IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	Lang       pulumi.StringPtrInput   `pulumi:"lang"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids  pulumi.StringArrayInput `pulumi:"ids"`
+	Lang pulumi.StringPtrInput   `pulumi:"lang"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetConfigsOutputArgs) ElementType() reflect.Type {

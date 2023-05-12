@@ -15,9 +15,13 @@ public final class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObject
      * @return Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
 
-    private BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects() {}
+    @CustomType.Constructor
+    private BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects(@CustomType.Parameter("status") @Nullable String status) {
+        this.status = status;
+    }
+
     /**
      * @return Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
      * 
@@ -33,24 +37,24 @@ public final class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObject
     public static Builder builder(BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects build() {
-            final var o = new BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects();
-            o.status = status;
-            return o;
+        }        public BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects build() {
+            return new BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects(status);
         }
     }
 }

@@ -64,7 +64,8 @@ type GetSchedulesArgs struct {
 	// The number of resource queries.
 	Limit *int `pulumi:"limit"`
 	// A regex string to filter results by Schedule name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -103,7 +104,8 @@ type GetSchedulesOutputArgs struct {
 	// The number of resource queries.
 	Limit pulumi.IntPtrInput `pulumi:"limit"`
 	// A regex string to filter results by Schedule name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

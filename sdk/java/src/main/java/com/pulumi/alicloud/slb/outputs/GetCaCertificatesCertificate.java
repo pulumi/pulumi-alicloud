@@ -16,59 +16,84 @@ public final class GetCaCertificatesCertificate {
      * @return (Available in v1.123.1+) CA certificate ID.
      * 
      */
-    private String caCertificateId;
+    private final String caCertificateId;
     /**
      * @return (Available in v1.123.1+) CA certificate name.
      * 
      */
-    private String caCertificateName;
+    private final String caCertificateName;
     /**
      * @return CA certificate common name.
      * 
      */
-    private String commonName;
+    private final String commonName;
     /**
      * @return CA certificate created timestamp.
      * 
      */
-    private Integer createdTimestamp;
+    private final Integer createdTimestamp;
     /**
      * @return CA certificate expired time.
      * 
      */
-    private String expiredTime;
+    private final String expiredTime;
     /**
      * @return CA certificate expired timestamp.
      * 
      */
-    private Integer expiredTimestamp;
+    private final Integer expiredTimestamp;
     /**
      * @return CA certificate fingerprint.
      * 
      */
-    private String fingerprint;
+    private final String fingerprint;
     /**
      * @return CA certificate ID.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return (Deprecated from v1.123.1) Deprecated and replace by `ca_certificate_name`.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The Id of resource group which ca certificates belongs.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
 
-    private GetCaCertificatesCertificate() {}
+    @CustomType.Constructor
+    private GetCaCertificatesCertificate(
+        @CustomType.Parameter("caCertificateId") String caCertificateId,
+        @CustomType.Parameter("caCertificateName") String caCertificateName,
+        @CustomType.Parameter("commonName") String commonName,
+        @CustomType.Parameter("createdTimestamp") Integer createdTimestamp,
+        @CustomType.Parameter("expiredTime") String expiredTime,
+        @CustomType.Parameter("expiredTimestamp") Integer expiredTimestamp,
+        @CustomType.Parameter("fingerprint") String fingerprint,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("tags") Map<String,Object> tags) {
+        this.caCertificateId = caCertificateId;
+        this.caCertificateName = caCertificateName;
+        this.commonName = commonName;
+        this.createdTimestamp = createdTimestamp;
+        this.expiredTime = expiredTime;
+        this.expiredTimestamp = expiredTimestamp;
+        this.fingerprint = fingerprint;
+        this.id = id;
+        this.name = name;
+        this.resourceGroupId = resourceGroupId;
+        this.tags = tags;
+    }
+
     /**
      * @return (Available in v1.123.1+) CA certificate ID.
      * 
@@ -154,7 +179,7 @@ public final class GetCaCertificatesCertificate {
     public static Builder builder(GetCaCertificatesCertificate defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String caCertificateId;
         private String caCertificateName;
@@ -167,7 +192,11 @@ public final class GetCaCertificatesCertificate {
         private String name;
         private String resourceGroupId;
         private Map<String,Object> tags;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetCaCertificatesCertificate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.caCertificateId = defaults.caCertificateId;
@@ -183,75 +212,51 @@ public final class GetCaCertificatesCertificate {
     	      this.tags = defaults.tags;
         }
 
-        @CustomType.Setter
         public Builder caCertificateId(String caCertificateId) {
             this.caCertificateId = Objects.requireNonNull(caCertificateId);
             return this;
         }
-        @CustomType.Setter
         public Builder caCertificateName(String caCertificateName) {
             this.caCertificateName = Objects.requireNonNull(caCertificateName);
             return this;
         }
-        @CustomType.Setter
         public Builder commonName(String commonName) {
             this.commonName = Objects.requireNonNull(commonName);
             return this;
         }
-        @CustomType.Setter
         public Builder createdTimestamp(Integer createdTimestamp) {
             this.createdTimestamp = Objects.requireNonNull(createdTimestamp);
             return this;
         }
-        @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
-        @CustomType.Setter
         public Builder expiredTimestamp(Integer expiredTimestamp) {
             this.expiredTimestamp = Objects.requireNonNull(expiredTimestamp);
             return this;
         }
-        @CustomType.Setter
         public Builder fingerprint(String fingerprint) {
             this.fingerprint = Objects.requireNonNull(fingerprint);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
-        }
-        public GetCaCertificatesCertificate build() {
-            final var o = new GetCaCertificatesCertificate();
-            o.caCertificateId = caCertificateId;
-            o.caCertificateName = caCertificateName;
-            o.commonName = commonName;
-            o.createdTimestamp = createdTimestamp;
-            o.expiredTime = expiredTime;
-            o.expiredTimestamp = expiredTimestamp;
-            o.fingerprint = fingerprint;
-            o.id = id;
-            o.name = name;
-            o.resourceGroupId = resourceGroupId;
-            o.tags = tags;
-            return o;
+        }        public GetCaCertificatesCertificate build() {
+            return new GetCaCertificatesCertificate(caCertificateId, caCertificateName, commonName, createdTimestamp, expiredTime, expiredTimestamp, fingerprint, id, name, resourceGroupId, tags);
         }
     }
 }

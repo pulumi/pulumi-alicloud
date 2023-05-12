@@ -14,19 +14,28 @@ public final class GetDiskTypesType {
      * @return The maximum value of the data disk to supported the specific instance type
      * 
      */
-    private Integer max;
+    private final Integer max;
     /**
      * @return The mininum value of the data disk to supported the specific instance type
      * 
      */
-    private Integer min;
+    private final Integer min;
     /**
      * @return The value of the data disk or system disk
      * 
      */
-    private String value;
+    private final String value;
 
-    private GetDiskTypesType() {}
+    @CustomType.Constructor
+    private GetDiskTypesType(
+        @CustomType.Parameter("max") Integer max,
+        @CustomType.Parameter("min") Integer min,
+        @CustomType.Parameter("value") String value) {
+        this.max = max;
+        this.min = min;
+        this.value = value;
+    }
+
     /**
      * @return The maximum value of the data disk to supported the specific instance type
      * 
@@ -56,12 +65,16 @@ public final class GetDiskTypesType {
     public static Builder builder(GetDiskTypesType defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer max;
         private Integer min;
         private String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDiskTypesType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.max = defaults.max;
@@ -69,27 +82,19 @@ public final class GetDiskTypesType {
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder max(Integer max) {
             this.max = Objects.requireNonNull(max);
             return this;
         }
-        @CustomType.Setter
         public Builder min(Integer min) {
             this.min = Objects.requireNonNull(min);
             return this;
         }
-        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }
-        public GetDiskTypesType build() {
-            final var o = new GetDiskTypesType();
-            o.max = max;
-            o.min = min;
-            o.value = value;
-            return o;
+        }        public GetDiskTypesType build() {
+            return new GetDiskTypesType(max, min, value);
         }
     }
 }

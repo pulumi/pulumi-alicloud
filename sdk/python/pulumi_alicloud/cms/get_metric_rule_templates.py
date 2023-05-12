@@ -163,6 +163,7 @@ def get_metric_rule_templates(enable_details: Optional[bool] = None,
     :param str keyword: The name of the alert template. You can perform fuzzy search based on the template name.
     :param str metric_rule_template_name: The name of the alert template.
     :param str name_regex: A regex string to filter results by Metric Rule Template name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str template_id: The ID of the alert template.
     """
     __args__ = dict()
@@ -227,6 +228,7 @@ def get_metric_rule_templates_output(enable_details: Optional[pulumi.Input[Optio
     :param str keyword: The name of the alert template. You can perform fuzzy search based on the template name.
     :param str metric_rule_template_name: The name of the alert template.
     :param str name_regex: A regex string to filter results by Metric Rule Template name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str template_id: The ID of the alert template.
     """
     ...

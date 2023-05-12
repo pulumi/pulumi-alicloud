@@ -116,6 +116,7 @@ def get_ip_sets(accelerator_id: Optional[str] = None,
 
     :param str accelerator_id: The ID of the Global Accelerator (GA) instance.
     :param Sequence[str] ids: A list of Ip Set IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the acceleration region.
     """
     __args__ = dict()
@@ -162,6 +163,7 @@ def get_ip_sets_output(accelerator_id: Optional[pulumi.Input[str]] = None,
 
     :param str accelerator_id: The ID of the Global Accelerator (GA) instance.
     :param Sequence[str] ids: A list of Ip Set IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the acceleration region.
     """
     ...

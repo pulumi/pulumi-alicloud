@@ -73,6 +73,9 @@ export interface GetAssetsArgs {
      * Specifies whether to internationalize the name of the default group. Default value: false
      */
     noGroupTrace?: boolean;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     pageNumber?: number;
     pageSize?: number;
@@ -157,6 +160,9 @@ export interface GetAssetsOutputArgs {
      * Specifies whether to internationalize the name of the default group. Default value: false
      */
     noGroupTrace?: pulumi.Input<boolean>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;

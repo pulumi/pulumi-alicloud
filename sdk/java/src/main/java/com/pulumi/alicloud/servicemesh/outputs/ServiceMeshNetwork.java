@@ -13,14 +13,21 @@ public final class ServiceMeshNetwork {
      * @return The ID of the VPC.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
     /**
      * @return The list of Virtual Switch.
      * 
      */
-    private String vswitcheList;
+    private final String vswitcheList;
 
-    private ServiceMeshNetwork() {}
+    @CustomType.Constructor
+    private ServiceMeshNetwork(
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("vswitcheList") String vswitcheList) {
+        this.vpcId = vpcId;
+        this.vswitcheList = vswitcheList;
+    }
+
     /**
      * @return The ID of the VPC.
      * 
@@ -43,32 +50,30 @@ public final class ServiceMeshNetwork {
     public static Builder builder(ServiceMeshNetwork defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String vpcId;
         private String vswitcheList;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ServiceMeshNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.vpcId = defaults.vpcId;
     	      this.vswitcheList = defaults.vswitcheList;
         }
 
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitcheList(String vswitcheList) {
             this.vswitcheList = Objects.requireNonNull(vswitcheList);
             return this;
-        }
-        public ServiceMeshNetwork build() {
-            final var o = new ServiceMeshNetwork();
-            o.vpcId = vpcId;
-            o.vswitcheList = vswitcheList;
-            return o;
+        }        public ServiceMeshNetwork build() {
+            return new ServiceMeshNetwork(vpcId, vswitcheList);
         }
     }
 }

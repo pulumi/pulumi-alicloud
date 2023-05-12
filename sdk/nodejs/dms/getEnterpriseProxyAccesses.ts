@@ -50,6 +50,9 @@ export interface GetEnterpriseProxyAccessesArgs {
      * A list of Proxy Access IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the security agent.
@@ -117,6 +120,9 @@ export interface GetEnterpriseProxyAccessesOutputArgs {
      * A list of Proxy Access IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the security agent.

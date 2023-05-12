@@ -13,19 +13,28 @@ public final class DispatchRuleNotifyRuleNotifyObject {
      * @return The name of the contact or contact group.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The ID of the contact or contact group.
      * 
      */
-    private String notifyObjectId;
+    private final String notifyObjectId;
     /**
      * @return The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
      * 
      */
-    private String notifyType;
+    private final String notifyType;
 
-    private DispatchRuleNotifyRuleNotifyObject() {}
+    @CustomType.Constructor
+    private DispatchRuleNotifyRuleNotifyObject(
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("notifyObjectId") String notifyObjectId,
+        @CustomType.Parameter("notifyType") String notifyType) {
+        this.name = name;
+        this.notifyObjectId = notifyObjectId;
+        this.notifyType = notifyType;
+    }
+
     /**
      * @return The name of the contact or contact group.
      * 
@@ -55,12 +64,16 @@ public final class DispatchRuleNotifyRuleNotifyObject {
     public static Builder builder(DispatchRuleNotifyRuleNotifyObject defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String name;
         private String notifyObjectId;
         private String notifyType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(DispatchRuleNotifyRuleNotifyObject defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
@@ -68,27 +81,19 @@ public final class DispatchRuleNotifyRuleNotifyObject {
     	      this.notifyType = defaults.notifyType;
         }
 
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder notifyObjectId(String notifyObjectId) {
             this.notifyObjectId = Objects.requireNonNull(notifyObjectId);
             return this;
         }
-        @CustomType.Setter
         public Builder notifyType(String notifyType) {
             this.notifyType = Objects.requireNonNull(notifyType);
             return this;
-        }
-        public DispatchRuleNotifyRuleNotifyObject build() {
-            final var o = new DispatchRuleNotifyRuleNotifyObject();
-            o.name = name;
-            o.notifyObjectId = notifyObjectId;
-            o.notifyType = notifyType;
-            return o;
+        }        public DispatchRuleNotifyRuleNotifyObject build() {
+            return new DispatchRuleNotifyRuleNotifyObject(name, notifyObjectId, notifyType);
         }
     }
 }

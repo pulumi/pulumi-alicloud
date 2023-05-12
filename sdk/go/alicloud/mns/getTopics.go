@@ -10,6 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
+//
+// > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
+//
 // ## Example Usage
 //
 // ```go
@@ -49,6 +53,7 @@ func GetTopics(ctx *pulumi.Context, args *GetTopicsArgs, opts ...pulumi.InvokeOp
 type GetTopicsArgs struct {
 	// A string to filter resulting topics by their name prefixs.
 	NamePrefix *string `pulumi:"namePrefix"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -81,6 +86,7 @@ func GetTopicsOutput(ctx *pulumi.Context, args GetTopicsOutputArgs, opts ...pulu
 type GetTopicsOutputArgs struct {
 	// A string to filter resulting topics by their name prefixs.
 	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

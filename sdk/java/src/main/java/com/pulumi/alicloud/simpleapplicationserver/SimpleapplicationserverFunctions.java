@@ -32,21 +32,309 @@ import com.pulumi.deployment.InvokeOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class SimpleapplicationserverFunctions {
+    /**
+     * This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.135.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
+     *             .instanceImageType(&#34;system&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, data.alicloud_simple_application_server_images().ids().images()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     * The following arguments are supported:
+     * 
+     * * `ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
+     * * `image_type` - (Optional, ForceNew) The image type. Valid values: `app`, `custom`, `system`.
+     * * `name_regex` - (Optional, ForceNew) A regex string to filter results by Image name.
+     * * `platform` - (Available in v1.161.0) The platform of Image supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
+     * * `output_file` - (Optional) File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     public static Output<GetImagesResult> getImages() {
         return getImages(GetImagesArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.135.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
+     *             .instanceImageType(&#34;system&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, data.alicloud_simple_application_server_images().ids().images()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     * The following arguments are supported:
+     * 
+     * * `ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
+     * * `image_type` - (Optional, ForceNew) The image type. Valid values: `app`, `custom`, `system`.
+     * * `name_regex` - (Optional, ForceNew) A regex string to filter results by Image name.
+     * * `platform` - (Available in v1.161.0) The platform of Image supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
+     * * `output_file` - (Optional) File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     public static CompletableFuture<GetImagesResult> getImagesPlain() {
         return getImagesPlain(GetImagesPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.135.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
+     *             .instanceImageType(&#34;system&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, data.alicloud_simple_application_server_images().ids().images()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     * The following arguments are supported:
+     * 
+     * * `ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
+     * * `image_type` - (Optional, ForceNew) The image type. Valid values: `app`, `custom`, `system`.
+     * * `name_regex` - (Optional, ForceNew) A regex string to filter results by Image name.
+     * * `platform` - (Available in v1.161.0) The platform of Image supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
+     * * `output_file` - (Optional) File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     public static Output<GetImagesResult> getImages(GetImagesArgs args) {
         return getImages(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.135.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
+     *             .instanceImageType(&#34;system&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, data.alicloud_simple_application_server_images().ids().images()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     * The following arguments are supported:
+     * 
+     * * `ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
+     * * `image_type` - (Optional, ForceNew) The image type. Valid values: `app`, `custom`, `system`.
+     * * `name_regex` - (Optional, ForceNew) A regex string to filter results by Image name.
+     * * `platform` - (Available in v1.161.0) The platform of Image supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
+     * * `output_file` - (Optional) File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     public static CompletableFuture<GetImagesResult> getImagesPlain(GetImagesPlainArgs args) {
         return getImagesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.135.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
+     *             .instanceImageType(&#34;system&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, data.alicloud_simple_application_server_images().ids().images()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     * The following arguments are supported:
+     * 
+     * * `ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
+     * * `image_type` - (Optional, ForceNew) The image type. Valid values: `app`, `custom`, `system`.
+     * * `name_regex` - (Optional, ForceNew) A regex string to filter results by Image name.
+     * * `platform` - (Available in v1.161.0) The platform of Image supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
+     * * `output_file` - (Optional) File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     public static Output<GetImagesResult> getImages(GetImagesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:simpleapplicationserver/getImages:getImages", TypeShape.of(GetImagesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.135.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
+     * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetImagesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
+     *             .instanceImageType(&#34;system&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, data.alicloud_simple_application_server_images().ids().images()[0].id());
+     *     }
+     * }
+     * ```
+     * 
+     * The following arguments are supported:
+     * 
+     * * `ids` - (Optional, ForceNew, Computed)  A list of Image IDs.
+     * * `image_type` - (Optional, ForceNew) The image type. Valid values: `app`, `custom`, `system`.
+     * * `name_regex` - (Optional, ForceNew) A regex string to filter results by Image name.
+     * * `platform` - (Available in v1.161.0) The platform of Image supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
+     * * `output_file` - (Optional) File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     public static CompletableFuture<GetImagesResult> getImagesPlain(GetImagesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:simpleapplicationserver/getImages:getImages", TypeShape.of(GetImagesResult.class), args, Utilities.withVersion(options));
     }

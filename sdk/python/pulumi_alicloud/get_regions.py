@@ -116,6 +116,10 @@ def get_regions(current: Optional[bool] = None,
 
     :param bool current: Set to true to match only the region configured in the provider.
     :param str name: The name of the region to select, such as `eu-central-1`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
+           
+           > **NOTE:** You will get an error if you set `current` to true and `name` to a different value from the one you configured in the provider.
+           It is better to either use `name` or `current`, but not both at the same time.
     """
     __args__ = dict()
     __args__['current'] = current
@@ -154,5 +158,9 @@ def get_regions_output(current: Optional[pulumi.Input[Optional[bool]]] = None,
 
     :param bool current: Set to true to match only the region configured in the provider.
     :param str name: The name of the region to select, such as `eu-central-1`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
+           
+           > **NOTE:** You will get an error if you set `current` to true and `name` to a different value from the one you configured in the provider.
+           It is better to either use `name` or `current`, but not both at the same time.
     """
     ...

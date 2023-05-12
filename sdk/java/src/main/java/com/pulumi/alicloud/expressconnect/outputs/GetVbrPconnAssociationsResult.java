@@ -18,23 +18,40 @@ public final class GetVbrPconnAssociationsResult {
      * @return A list of Vbr Pconn Association Entries. Each element contains the following attributes:
      * 
      */
-    private List<GetVbrPconnAssociationsAssociation> associations;
+    private final List<GetVbrPconnAssociationsAssociation> associations;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
     /**
      * @return The ID of the VBR instance.
      * 
      */
-    private @Nullable String vbrId;
+    private final @Nullable String vbrId;
 
-    private GetVbrPconnAssociationsResult() {}
+    @CustomType.Constructor
+    private GetVbrPconnAssociationsResult(
+        @CustomType.Parameter("associations") List<GetVbrPconnAssociationsAssociation> associations,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
+        @CustomType.Parameter("vbrId") @Nullable String vbrId) {
+        this.associations = associations;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+        this.vbrId = vbrId;
+    }
+
     /**
      * @return A list of Vbr Pconn Association Entries. Each element contains the following attributes:
      * 
@@ -76,7 +93,7 @@ public final class GetVbrPconnAssociationsResult {
     public static Builder builder(GetVbrPconnAssociationsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetVbrPconnAssociationsAssociation> associations;
         private String id;
@@ -85,7 +102,11 @@ public final class GetVbrPconnAssociationsResult {
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
         private @Nullable String vbrId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVbrPconnAssociationsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.associations = defaults.associations;
@@ -97,7 +118,6 @@ public final class GetVbrPconnAssociationsResult {
     	      this.vbrId = defaults.vbrId;
         }
 
-        @CustomType.Setter
         public Builder associations(List<GetVbrPconnAssociationsAssociation> associations) {
             this.associations = Objects.requireNonNull(associations);
             return this;
@@ -105,12 +125,10 @@ public final class GetVbrPconnAssociationsResult {
         public Builder associations(GetVbrPconnAssociationsAssociation... associations) {
             return associations(List.of(associations));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -118,36 +136,23 @@ public final class GetVbrPconnAssociationsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
-        @CustomType.Setter
         public Builder vbrId(@Nullable String vbrId) {
             this.vbrId = vbrId;
             return this;
-        }
-        public GetVbrPconnAssociationsResult build() {
-            final var o = new GetVbrPconnAssociationsResult();
-            o.associations = associations;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.vbrId = vbrId;
-            return o;
+        }        public GetVbrPconnAssociationsResult build() {
+            return new GetVbrPconnAssociationsResult(associations, id, ids, outputFile, pageNumber, pageSize, vbrId);
         }
     }
 }

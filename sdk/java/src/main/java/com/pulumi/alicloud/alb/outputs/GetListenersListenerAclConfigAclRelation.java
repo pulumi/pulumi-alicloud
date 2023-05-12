@@ -13,14 +13,21 @@ public final class GetListenersListenerAclConfigAclRelation {
      * @return Snooping Binding of the Access Policy Group ID List.
      * 
      */
-    private String aclId;
+    private final String aclId;
     /**
      * @return The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetListenersListenerAclConfigAclRelation() {}
+    @CustomType.Constructor
+    private GetListenersListenerAclConfigAclRelation(
+        @CustomType.Parameter("aclId") String aclId,
+        @CustomType.Parameter("status") String status) {
+        this.aclId = aclId;
+        this.status = status;
+    }
+
     /**
      * @return Snooping Binding of the Access Policy Group ID List.
      * 
@@ -43,32 +50,30 @@ public final class GetListenersListenerAclConfigAclRelation {
     public static Builder builder(GetListenersListenerAclConfigAclRelation defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String aclId;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetListenersListenerAclConfigAclRelation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aclId = defaults.aclId;
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder aclId(String aclId) {
             this.aclId = Objects.requireNonNull(aclId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetListenersListenerAclConfigAclRelation build() {
-            final var o = new GetListenersListenerAclConfigAclRelation();
-            o.aclId = aclId;
-            o.status = status;
-            return o;
+        }        public GetListenersListenerAclConfigAclRelation build() {
+            return new GetListenersListenerAclConfigAclRelation(aclId, status);
         }
     }
 }

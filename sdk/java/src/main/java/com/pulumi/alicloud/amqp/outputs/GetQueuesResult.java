@@ -17,16 +17,35 @@ public final class GetQueuesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private String instanceId;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private List<GetQueuesQueue> queues;
-    private String virtualHostName;
+    private final String id;
+    private final List<String> ids;
+    private final String instanceId;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final List<GetQueuesQueue> queues;
+    private final String virtualHostName;
 
-    private GetQueuesResult() {}
+    @CustomType.Constructor
+    private GetQueuesResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("queues") List<GetQueuesQueue> queues,
+        @CustomType.Parameter("virtualHostName") String virtualHostName) {
+        this.id = id;
+        this.ids = ids;
+        this.instanceId = instanceId;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.queues = queues;
+        this.virtualHostName = virtualHostName;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -63,7 +82,7 @@ public final class GetQueuesResult {
     public static Builder builder(GetQueuesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -73,7 +92,11 @@ public final class GetQueuesResult {
         private @Nullable String outputFile;
         private List<GetQueuesQueue> queues;
         private String virtualHostName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetQueuesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -86,12 +109,10 @@ public final class GetQueuesResult {
     	      this.virtualHostName = defaults.virtualHostName;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -99,17 +120,14 @@ public final class GetQueuesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -117,12 +135,10 @@ public final class GetQueuesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder queues(List<GetQueuesQueue> queues) {
             this.queues = Objects.requireNonNull(queues);
             return this;
@@ -130,22 +146,11 @@ public final class GetQueuesResult {
         public Builder queues(GetQueuesQueue... queues) {
             return queues(List.of(queues));
         }
-        @CustomType.Setter
         public Builder virtualHostName(String virtualHostName) {
             this.virtualHostName = Objects.requireNonNull(virtualHostName);
             return this;
-        }
-        public GetQueuesResult build() {
-            final var o = new GetQueuesResult();
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.queues = queues;
-            o.virtualHostName = virtualHostName;
-            return o;
+        }        public GetQueuesResult build() {
+            return new GetQueuesResult(id, ids, instanceId, nameRegex, names, outputFile, queues, virtualHostName);
         }
     }
 }

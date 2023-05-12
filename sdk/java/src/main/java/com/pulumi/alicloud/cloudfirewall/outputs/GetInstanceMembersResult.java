@@ -14,27 +14,44 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceMembersResult {
-    private @Nullable String currentPage;
+    private final @Nullable String currentPage;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of Instance Member IDs.
      * 
      */
-    private List<String> ids;
+    private final List<String> ids;
     /**
      * @return A list of Instance Member Entries. Each element contains the following attributes:
      * 
      */
-    private List<GetInstanceMembersMember> members;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
+    private final List<GetInstanceMembersMember> members;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
 
-    private GetInstanceMembersResult() {}
+    @CustomType.Constructor
+    private GetInstanceMembersResult(
+        @CustomType.Parameter("currentPage") @Nullable String currentPage,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("members") List<GetInstanceMembersMember> members,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize) {
+        this.currentPage = currentPage;
+        this.id = id;
+        this.ids = ids;
+        this.members = members;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+    }
+
     public Optional<String> currentPage() {
         return Optional.ofNullable(this.currentPage);
     }
@@ -76,7 +93,7 @@ public final class GetInstanceMembersResult {
     public static Builder builder(GetInstanceMembersResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String currentPage;
         private String id;
@@ -85,7 +102,11 @@ public final class GetInstanceMembersResult {
         private @Nullable String outputFile;
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstanceMembersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.currentPage = defaults.currentPage;
@@ -97,17 +118,14 @@ public final class GetInstanceMembersResult {
     	      this.pageSize = defaults.pageSize;
         }
 
-        @CustomType.Setter
         public Builder currentPage(@Nullable String currentPage) {
             this.currentPage = currentPage;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -115,7 +133,6 @@ public final class GetInstanceMembersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder members(List<GetInstanceMembersMember> members) {
             this.members = Objects.requireNonNull(members);
             return this;
@@ -123,31 +140,19 @@ public final class GetInstanceMembersResult {
         public Builder members(GetInstanceMembersMember... members) {
             return members(List.of(members));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
-        }
-        public GetInstanceMembersResult build() {
-            final var o = new GetInstanceMembersResult();
-            o.currentPage = currentPage;
-            o.id = id;
-            o.ids = ids;
-            o.members = members;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            return o;
+        }        public GetInstanceMembersResult build() {
+            return new GetInstanceMembersResult(currentPage, id, ids, members, outputFile, pageNumber, pageSize);
         }
     }
 }

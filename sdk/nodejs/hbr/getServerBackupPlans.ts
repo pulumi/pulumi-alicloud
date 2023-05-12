@@ -55,6 +55,9 @@ export interface GetServerBackupPlansArgs {
      * A list of Server Backup Plan IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -113,5 +116,8 @@ export interface GetServerBackupPlansOutputArgs {
      * A list of Server Backup Plan IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

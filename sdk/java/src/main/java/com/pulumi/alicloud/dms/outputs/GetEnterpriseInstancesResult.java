@@ -18,50 +18,81 @@ public final class GetEnterpriseInstancesResult {
      * @return The type of the environment to which the database instance belongs..
      * 
      */
-    private @Nullable String envType;
+    private final @Nullable String envType;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of DMS Enterprise IDs (Each of them consists of host:port).
      * 
      */
-    private List<String> ids;
-    private @Nullable String instanceAliasRegex;
+    private final List<String> ids;
+    private final @Nullable String instanceAliasRegex;
     /**
      * @return The ID of the database instance.
      * 
      */
-    private @Nullable String instanceSource;
+    private final @Nullable String instanceSource;
     /**
      * @return The ID of the database instance.
      * 
      */
-    private @Nullable String instanceType;
+    private final @Nullable String instanceType;
     /**
      * @return A list of KMS keys. Each element contains the following attributes:
      * 
      */
-    private List<GetEnterpriseInstancesInstance> instances;
-    private @Nullable String nameRegex;
+    private final List<GetEnterpriseInstancesInstance> instances;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of DMS Enterprise names.
      * 
      */
-    private List<String> names;
-    private @Nullable String netType;
-    private @Nullable String outputFile;
-    private @Nullable String searchKey;
+    private final List<String> names;
+    private final @Nullable String netType;
+    private final @Nullable String outputFile;
+    private final @Nullable String searchKey;
     /**
      * @return The status of the database instance.
      * 
      */
-    private @Nullable String status;
-    private @Nullable Integer tid;
+    private final @Nullable String status;
+    private final @Nullable Integer tid;
 
-    private GetEnterpriseInstancesResult() {}
+    @CustomType.Constructor
+    private GetEnterpriseInstancesResult(
+        @CustomType.Parameter("envType") @Nullable String envType,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceAliasRegex") @Nullable String instanceAliasRegex,
+        @CustomType.Parameter("instanceSource") @Nullable String instanceSource,
+        @CustomType.Parameter("instanceType") @Nullable String instanceType,
+        @CustomType.Parameter("instances") List<GetEnterpriseInstancesInstance> instances,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("netType") @Nullable String netType,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("searchKey") @Nullable String searchKey,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("tid") @Nullable Integer tid) {
+        this.envType = envType;
+        this.id = id;
+        this.ids = ids;
+        this.instanceAliasRegex = instanceAliasRegex;
+        this.instanceSource = instanceSource;
+        this.instanceType = instanceType;
+        this.instances = instances;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.netType = netType;
+        this.outputFile = outputFile;
+        this.searchKey = searchKey;
+        this.status = status;
+        this.tid = tid;
+    }
+
     /**
      * @return The type of the environment to which the database instance belongs..
      * 
@@ -144,7 +175,7 @@ public final class GetEnterpriseInstancesResult {
     public static Builder builder(GetEnterpriseInstancesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String envType;
         private String id;
@@ -160,7 +191,11 @@ public final class GetEnterpriseInstancesResult {
         private @Nullable String searchKey;
         private @Nullable String status;
         private @Nullable Integer tid;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEnterpriseInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.envType = defaults.envType;
@@ -179,17 +214,14 @@ public final class GetEnterpriseInstancesResult {
     	      this.tid = defaults.tid;
         }
 
-        @CustomType.Setter
         public Builder envType(@Nullable String envType) {
             this.envType = envType;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -197,22 +229,18 @@ public final class GetEnterpriseInstancesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceAliasRegex(@Nullable String instanceAliasRegex) {
             this.instanceAliasRegex = instanceAliasRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder instanceSource(@Nullable String instanceSource) {
             this.instanceSource = instanceSource;
             return this;
         }
-        @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
             this.instanceType = instanceType;
             return this;
         }
-        @CustomType.Setter
         public Builder instances(List<GetEnterpriseInstancesInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -220,12 +248,10 @@ public final class GetEnterpriseInstancesResult {
         public Builder instances(GetEnterpriseInstancesInstance... instances) {
             return instances(List.of(instances));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -233,48 +259,27 @@ public final class GetEnterpriseInstancesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder netType(@Nullable String netType) {
             this.netType = netType;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder searchKey(@Nullable String searchKey) {
             this.searchKey = searchKey;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder tid(@Nullable Integer tid) {
             this.tid = tid;
             return this;
-        }
-        public GetEnterpriseInstancesResult build() {
-            final var o = new GetEnterpriseInstancesResult();
-            o.envType = envType;
-            o.id = id;
-            o.ids = ids;
-            o.instanceAliasRegex = instanceAliasRegex;
-            o.instanceSource = instanceSource;
-            o.instanceType = instanceType;
-            o.instances = instances;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.netType = netType;
-            o.outputFile = outputFile;
-            o.searchKey = searchKey;
-            o.status = status;
-            o.tid = tid;
-            return o;
+        }        public GetEnterpriseInstancesResult build() {
+            return new GetEnterpriseInstancesResult(envType, id, ids, instanceAliasRegex, instanceSource, instanceType, instances, nameRegex, names, netType, outputFile, searchKey, status, tid);
         }
     }
 }

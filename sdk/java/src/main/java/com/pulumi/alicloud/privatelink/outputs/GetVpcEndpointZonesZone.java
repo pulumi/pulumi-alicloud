@@ -13,39 +13,56 @@ public final class GetVpcEndpointZonesZone {
      * @return Terminal node network card.
      * 
      */
-    private String eniId;
+    private final String eniId;
     /**
      * @return IP address of the terminal node network card.
      * 
      */
-    private String eniIp;
+    private final String eniIp;
     /**
      * @return The ID of the Vpc Endpoint Zone.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The Status of Vpc Endpoint Zone..
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The VSwitch id.
      * 
      */
-    private String vswitchId;
+    private final String vswitchId;
     /**
      * @return The Zone Domain.
      * 
      */
-    private String zoneDomain;
+    private final String zoneDomain;
     /**
      * @return The Zone Id.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetVpcEndpointZonesZone() {}
+    @CustomType.Constructor
+    private GetVpcEndpointZonesZone(
+        @CustomType.Parameter("eniId") String eniId,
+        @CustomType.Parameter("eniIp") String eniIp,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("vswitchId") String vswitchId,
+        @CustomType.Parameter("zoneDomain") String zoneDomain,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.eniId = eniId;
+        this.eniIp = eniIp;
+        this.id = id;
+        this.status = status;
+        this.vswitchId = vswitchId;
+        this.zoneDomain = zoneDomain;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return Terminal node network card.
      * 
@@ -103,7 +120,7 @@ public final class GetVpcEndpointZonesZone {
     public static Builder builder(GetVpcEndpointZonesZone defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String eniId;
         private String eniIp;
@@ -112,7 +129,11 @@ public final class GetVpcEndpointZonesZone {
         private String vswitchId;
         private String zoneDomain;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVpcEndpointZonesZone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.eniId = defaults.eniId;
@@ -124,51 +145,35 @@ public final class GetVpcEndpointZonesZone {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder eniId(String eniId) {
             this.eniId = Objects.requireNonNull(eniId);
             return this;
         }
-        @CustomType.Setter
         public Builder eniIp(String eniIp) {
             this.eniIp = Objects.requireNonNull(eniIp);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneDomain(String zoneDomain) {
             this.zoneDomain = Objects.requireNonNull(zoneDomain);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetVpcEndpointZonesZone build() {
-            final var o = new GetVpcEndpointZonesZone();
-            o.eniId = eniId;
-            o.eniIp = eniIp;
-            o.id = id;
-            o.status = status;
-            o.vswitchId = vswitchId;
-            o.zoneDomain = zoneDomain;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetVpcEndpointZonesZone build() {
+            return new GetVpcEndpointZonesZone(eniId, eniIp, id, status, vswitchId, zoneDomain, zoneId);
         }
     }
 }

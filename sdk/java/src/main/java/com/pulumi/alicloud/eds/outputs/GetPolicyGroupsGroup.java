@@ -17,119 +17,168 @@ public final class GetPolicyGroupsGroup {
      * @return The rule of authorize access rule.
      * 
      */
-    private List<GetPolicyGroupsGroupAuthorizeAccessPolicyRule> authorizeAccessPolicyRules;
+    private final List<GetPolicyGroupsGroupAuthorizeAccessPolicyRule> authorizeAccessPolicyRules;
     /**
      * @return The policy rule.
      * 
      */
-    private List<GetPolicyGroupsGroupAuthorizeSecurityPolicyRule> authorizeSecurityPolicyRules;
+    private final List<GetPolicyGroupsGroupAuthorizeSecurityPolicyRule> authorizeSecurityPolicyRules;
     /**
      * @return Whether to enable local camera redirection. Valid values: `on`, `off`.
      * 
      */
-    private String cameraRedirect;
+    private final String cameraRedirect;
     /**
      * @return The clipboard policy.
      * 
      */
-    private String clipboard;
+    private final String clipboard;
     /**
      * @return The list of domain.
      * 
      */
-    private String domainList;
+    private final String domainList;
     /**
      * @return The count of eds.
      * 
      */
-    private Integer edsCount;
+    private final Integer edsCount;
     /**
      * @return The access of html5.
      * 
      */
-    private String htmlAccess;
+    private final String htmlAccess;
     /**
      * @return The html5 file transfer.
      * 
      */
-    private String htmlFileTransfer;
+    private final String htmlFileTransfer;
     /**
      * @return The ID of the Policy Group.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Local drive redirect policy.
      * 
      */
-    private String localDrive;
+    private final String localDrive;
     /**
      * @return The policy group id.
      * 
      */
-    private String policyGroupId;
+    private final String policyGroupId;
     /**
      * @return The name of policy group.
      * 
      */
-    private String policyGroupName;
+    private final String policyGroupName;
     /**
      * @return The type of policy group.
      * 
      */
-    private String policyGroupType;
+    private final String policyGroupType;
     /**
      * @return Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
      * 
      */
-    private String recording;
+    private final String recording;
     /**
      * @return The end time of recording.
      * 
      */
-    private String recordingEndTime;
+    private final String recordingEndTime;
     /**
      * @return The fps of recording. Valid values: `2`, `5`, `10`, `15`.
      * 
      */
-    private Integer recordingFps;
+    private final Integer recordingFps;
     /**
      * @return The start time of recording.
      * 
      */
-    private String recordingStartTime;
+    private final String recordingStartTime;
     /**
      * @return The status of policy.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The usb redirect policy.
      * 
      */
-    private String usbRedirect;
+    private final String usbRedirect;
     /**
      * @return The quality of visual.sae_ecdsae_nameecd_po
      * 
      */
-    private String visualQuality;
+    private final String visualQuality;
     /**
      * @return The watermark policy.
      * 
      */
-    private String watermark;
+    private final String watermark;
     /**
      * @return The watermark transparency.
      * 
      */
-    private String watermarkTransparency;
+    private final String watermarkTransparency;
     /**
      * @return The type of watemark.
      * 
      */
-    private String watermarkType;
+    private final String watermarkType;
 
-    private GetPolicyGroupsGroup() {}
+    @CustomType.Constructor
+    private GetPolicyGroupsGroup(
+        @CustomType.Parameter("authorizeAccessPolicyRules") List<GetPolicyGroupsGroupAuthorizeAccessPolicyRule> authorizeAccessPolicyRules,
+        @CustomType.Parameter("authorizeSecurityPolicyRules") List<GetPolicyGroupsGroupAuthorizeSecurityPolicyRule> authorizeSecurityPolicyRules,
+        @CustomType.Parameter("cameraRedirect") String cameraRedirect,
+        @CustomType.Parameter("clipboard") String clipboard,
+        @CustomType.Parameter("domainList") String domainList,
+        @CustomType.Parameter("edsCount") Integer edsCount,
+        @CustomType.Parameter("htmlAccess") String htmlAccess,
+        @CustomType.Parameter("htmlFileTransfer") String htmlFileTransfer,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("localDrive") String localDrive,
+        @CustomType.Parameter("policyGroupId") String policyGroupId,
+        @CustomType.Parameter("policyGroupName") String policyGroupName,
+        @CustomType.Parameter("policyGroupType") String policyGroupType,
+        @CustomType.Parameter("recording") String recording,
+        @CustomType.Parameter("recordingEndTime") String recordingEndTime,
+        @CustomType.Parameter("recordingFps") Integer recordingFps,
+        @CustomType.Parameter("recordingStartTime") String recordingStartTime,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("usbRedirect") String usbRedirect,
+        @CustomType.Parameter("visualQuality") String visualQuality,
+        @CustomType.Parameter("watermark") String watermark,
+        @CustomType.Parameter("watermarkTransparency") String watermarkTransparency,
+        @CustomType.Parameter("watermarkType") String watermarkType) {
+        this.authorizeAccessPolicyRules = authorizeAccessPolicyRules;
+        this.authorizeSecurityPolicyRules = authorizeSecurityPolicyRules;
+        this.cameraRedirect = cameraRedirect;
+        this.clipboard = clipboard;
+        this.domainList = domainList;
+        this.edsCount = edsCount;
+        this.htmlAccess = htmlAccess;
+        this.htmlFileTransfer = htmlFileTransfer;
+        this.id = id;
+        this.localDrive = localDrive;
+        this.policyGroupId = policyGroupId;
+        this.policyGroupName = policyGroupName;
+        this.policyGroupType = policyGroupType;
+        this.recording = recording;
+        this.recordingEndTime = recordingEndTime;
+        this.recordingFps = recordingFps;
+        this.recordingStartTime = recordingStartTime;
+        this.status = status;
+        this.usbRedirect = usbRedirect;
+        this.visualQuality = visualQuality;
+        this.watermark = watermark;
+        this.watermarkTransparency = watermarkTransparency;
+        this.watermarkType = watermarkType;
+    }
+
     /**
      * @return The rule of authorize access rule.
      * 
@@ -299,7 +348,7 @@ public final class GetPolicyGroupsGroup {
     public static Builder builder(GetPolicyGroupsGroup defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetPolicyGroupsGroupAuthorizeAccessPolicyRule> authorizeAccessPolicyRules;
         private List<GetPolicyGroupsGroupAuthorizeSecurityPolicyRule> authorizeSecurityPolicyRules;
@@ -324,7 +373,11 @@ public final class GetPolicyGroupsGroup {
         private String watermark;
         private String watermarkTransparency;
         private String watermarkType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetPolicyGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authorizeAccessPolicyRules = defaults.authorizeAccessPolicyRules;
@@ -352,7 +405,6 @@ public final class GetPolicyGroupsGroup {
     	      this.watermarkType = defaults.watermarkType;
         }
 
-        @CustomType.Setter
         public Builder authorizeAccessPolicyRules(List<GetPolicyGroupsGroupAuthorizeAccessPolicyRule> authorizeAccessPolicyRules) {
             this.authorizeAccessPolicyRules = Objects.requireNonNull(authorizeAccessPolicyRules);
             return this;
@@ -360,7 +412,6 @@ public final class GetPolicyGroupsGroup {
         public Builder authorizeAccessPolicyRules(GetPolicyGroupsGroupAuthorizeAccessPolicyRule... authorizeAccessPolicyRules) {
             return authorizeAccessPolicyRules(List.of(authorizeAccessPolicyRules));
         }
-        @CustomType.Setter
         public Builder authorizeSecurityPolicyRules(List<GetPolicyGroupsGroupAuthorizeSecurityPolicyRule> authorizeSecurityPolicyRules) {
             this.authorizeSecurityPolicyRules = Objects.requireNonNull(authorizeSecurityPolicyRules);
             return this;
@@ -368,137 +419,91 @@ public final class GetPolicyGroupsGroup {
         public Builder authorizeSecurityPolicyRules(GetPolicyGroupsGroupAuthorizeSecurityPolicyRule... authorizeSecurityPolicyRules) {
             return authorizeSecurityPolicyRules(List.of(authorizeSecurityPolicyRules));
         }
-        @CustomType.Setter
         public Builder cameraRedirect(String cameraRedirect) {
             this.cameraRedirect = Objects.requireNonNull(cameraRedirect);
             return this;
         }
-        @CustomType.Setter
         public Builder clipboard(String clipboard) {
             this.clipboard = Objects.requireNonNull(clipboard);
             return this;
         }
-        @CustomType.Setter
         public Builder domainList(String domainList) {
             this.domainList = Objects.requireNonNull(domainList);
             return this;
         }
-        @CustomType.Setter
         public Builder edsCount(Integer edsCount) {
             this.edsCount = Objects.requireNonNull(edsCount);
             return this;
         }
-        @CustomType.Setter
         public Builder htmlAccess(String htmlAccess) {
             this.htmlAccess = Objects.requireNonNull(htmlAccess);
             return this;
         }
-        @CustomType.Setter
         public Builder htmlFileTransfer(String htmlFileTransfer) {
             this.htmlFileTransfer = Objects.requireNonNull(htmlFileTransfer);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder localDrive(String localDrive) {
             this.localDrive = Objects.requireNonNull(localDrive);
             return this;
         }
-        @CustomType.Setter
         public Builder policyGroupId(String policyGroupId) {
             this.policyGroupId = Objects.requireNonNull(policyGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder policyGroupName(String policyGroupName) {
             this.policyGroupName = Objects.requireNonNull(policyGroupName);
             return this;
         }
-        @CustomType.Setter
         public Builder policyGroupType(String policyGroupType) {
             this.policyGroupType = Objects.requireNonNull(policyGroupType);
             return this;
         }
-        @CustomType.Setter
         public Builder recording(String recording) {
             this.recording = Objects.requireNonNull(recording);
             return this;
         }
-        @CustomType.Setter
         public Builder recordingEndTime(String recordingEndTime) {
             this.recordingEndTime = Objects.requireNonNull(recordingEndTime);
             return this;
         }
-        @CustomType.Setter
         public Builder recordingFps(Integer recordingFps) {
             this.recordingFps = Objects.requireNonNull(recordingFps);
             return this;
         }
-        @CustomType.Setter
         public Builder recordingStartTime(String recordingStartTime) {
             this.recordingStartTime = Objects.requireNonNull(recordingStartTime);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder usbRedirect(String usbRedirect) {
             this.usbRedirect = Objects.requireNonNull(usbRedirect);
             return this;
         }
-        @CustomType.Setter
         public Builder visualQuality(String visualQuality) {
             this.visualQuality = Objects.requireNonNull(visualQuality);
             return this;
         }
-        @CustomType.Setter
         public Builder watermark(String watermark) {
             this.watermark = Objects.requireNonNull(watermark);
             return this;
         }
-        @CustomType.Setter
         public Builder watermarkTransparency(String watermarkTransparency) {
             this.watermarkTransparency = Objects.requireNonNull(watermarkTransparency);
             return this;
         }
-        @CustomType.Setter
         public Builder watermarkType(String watermarkType) {
             this.watermarkType = Objects.requireNonNull(watermarkType);
             return this;
-        }
-        public GetPolicyGroupsGroup build() {
-            final var o = new GetPolicyGroupsGroup();
-            o.authorizeAccessPolicyRules = authorizeAccessPolicyRules;
-            o.authorizeSecurityPolicyRules = authorizeSecurityPolicyRules;
-            o.cameraRedirect = cameraRedirect;
-            o.clipboard = clipboard;
-            o.domainList = domainList;
-            o.edsCount = edsCount;
-            o.htmlAccess = htmlAccess;
-            o.htmlFileTransfer = htmlFileTransfer;
-            o.id = id;
-            o.localDrive = localDrive;
-            o.policyGroupId = policyGroupId;
-            o.policyGroupName = policyGroupName;
-            o.policyGroupType = policyGroupType;
-            o.recording = recording;
-            o.recordingEndTime = recordingEndTime;
-            o.recordingFps = recordingFps;
-            o.recordingStartTime = recordingStartTime;
-            o.status = status;
-            o.usbRedirect = usbRedirect;
-            o.visualQuality = visualQuality;
-            o.watermark = watermark;
-            o.watermarkTransparency = watermarkTransparency;
-            o.watermarkType = watermarkType;
-            return o;
+        }        public GetPolicyGroupsGroup build() {
+            return new GetPolicyGroupsGroup(authorizeAccessPolicyRules, authorizeSecurityPolicyRules, cameraRedirect, clipboard, domainList, edsCount, htmlAccess, htmlFileTransfer, id, localDrive, policyGroupId, policyGroupName, policyGroupType, recording, recordingEndTime, recordingFps, recordingStartTime, status, usbRedirect, visualQuality, watermark, watermarkTransparency, watermarkType);
         }
     }
 }

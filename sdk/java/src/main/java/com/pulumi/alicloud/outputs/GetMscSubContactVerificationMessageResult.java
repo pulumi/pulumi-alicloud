@@ -10,20 +10,31 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMscSubContactVerificationMessageResult {
-    private String contactId;
+    private final String contactId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The sending status of the message. Valid values : `Success`, `Failed`.
      * 
      */
-    private String status;
-    private Integer type;
+    private final String status;
+    private final Integer type;
 
-    private GetMscSubContactVerificationMessageResult() {}
+    @CustomType.Constructor
+    private GetMscSubContactVerificationMessageResult(
+        @CustomType.Parameter("contactId") String contactId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("type") Integer type) {
+        this.contactId = contactId;
+        this.id = id;
+        this.status = status;
+        this.type = type;
+    }
+
     public String contactId() {
         return this.contactId;
     }
@@ -52,13 +63,17 @@ public final class GetMscSubContactVerificationMessageResult {
     public static Builder builder(GetMscSubContactVerificationMessageResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String contactId;
         private String id;
         private String status;
         private Integer type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetMscSubContactVerificationMessageResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.contactId = defaults.contactId;
@@ -67,33 +82,23 @@ public final class GetMscSubContactVerificationMessageResult {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder contactId(String contactId) {
             this.contactId = Objects.requireNonNull(contactId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder type(Integer type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetMscSubContactVerificationMessageResult build() {
-            final var o = new GetMscSubContactVerificationMessageResult();
-            o.contactId = contactId;
-            o.id = id;
-            o.status = status;
-            o.type = type;
-            return o;
+        }        public GetMscSubContactVerificationMessageResult build() {
+            return new GetMscSubContactVerificationMessageResult(contactId, id, status, type);
         }
     }
 }

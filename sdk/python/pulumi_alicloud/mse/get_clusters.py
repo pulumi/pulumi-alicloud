@@ -166,6 +166,7 @@ def get_clusters(cluster_alias_name: Optional[str] = None,
     :param str cluster_alias_name: The alias name of MSE Cluster.
     :param Sequence[str] ids: A list of MSE Cluster ids.
     :param str name_regex: A regex string to filter the results by the cluster alias name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`
     """
     __args__ = dict()
@@ -221,6 +222,7 @@ def get_clusters_output(cluster_alias_name: Optional[pulumi.Input[Optional[str]]
     :param str cluster_alias_name: The alias name of MSE Cluster.
     :param Sequence[str] ids: A list of MSE Cluster ids.
     :param str name_regex: A regex string to filter the results by the cluster alias name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`
     """
     ...

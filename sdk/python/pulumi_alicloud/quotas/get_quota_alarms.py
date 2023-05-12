@@ -167,6 +167,7 @@ def get_quota_alarms(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Quota Alarm IDs.
     :param str name_regex: A regex string to filter results by Quota Alarm name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_code: The Product Code.
     :param str quota_action_code: The Quota Action Code.
     :param str quota_alarm_name: The name of Quota Alarm.
@@ -230,6 +231,7 @@ def get_quota_alarms_output(enable_details: Optional[pulumi.Input[Optional[bool]
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Quota Alarm IDs.
     :param str name_regex: A regex string to filter results by Quota Alarm name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_code: The Product Code.
     :param str quota_action_code: The Quota Action Code.
     :param str quota_alarm_name: The name of Quota Alarm.

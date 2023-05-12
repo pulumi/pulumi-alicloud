@@ -12,12 +12,20 @@ public final class BucketVersioning {
     /**
      * @return Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
      * 
+     * `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
+     * 
      */
-    private String status;
+    private final String status;
 
-    private BucketVersioning() {}
+    @CustomType.Constructor
+    private BucketVersioning(@CustomType.Parameter("status") String status) {
+        this.status = status;
+    }
+
     /**
      * @return Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
+     * 
+     * `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
      * 
      */
     public String status() {
@@ -31,24 +39,24 @@ public final class BucketVersioning {
     public static Builder builder(BucketVersioning defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(BucketVersioning defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public BucketVersioning build() {
-            final var o = new BucketVersioning();
-            o.status = status;
-            return o;
+        }        public BucketVersioning build() {
+            return new BucketVersioning(status);
         }
     }
 }

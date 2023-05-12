@@ -62,7 +62,8 @@ type GetInstancesArgs struct {
 	Ids []string `pulumi:"ids"`
 	// The source of the WAF instance.
 	InstanceSource *string `pulumi:"instanceSource"`
-	OutputFile     *string `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The ID of resource group to which WAF instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
@@ -103,7 +104,8 @@ type GetInstancesOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The source of the WAF instance.
 	InstanceSource pulumi.StringPtrInput `pulumi:"instanceSource"`
-	OutputFile     pulumi.StringPtrInput `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of resource group to which WAF instance belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.

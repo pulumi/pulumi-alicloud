@@ -16,24 +16,37 @@ public final class StoreIndexFieldSearchJsonKey {
      * @return The alias of one field.
      * 
      */
-    private @Nullable String alias;
+    private final @Nullable String alias;
     /**
      * @return Whether to enable statistics. default to true.
      * 
+     * &gt; **Note:** At least one of the &#34;full_text&#34; and &#34;field_search&#34; should be specified.
+     * 
      */
-    private @Nullable Boolean docValue;
+    private final @Nullable Boolean docValue;
     /**
      * @return When using the json_keys field, this field is required.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;]. Default to &#34;long&#34;
      * 
      */
-    private @Nullable String type;
+    private final @Nullable String type;
 
-    private StoreIndexFieldSearchJsonKey() {}
+    @CustomType.Constructor
+    private StoreIndexFieldSearchJsonKey(
+        @CustomType.Parameter("alias") @Nullable String alias,
+        @CustomType.Parameter("docValue") @Nullable Boolean docValue,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("type") @Nullable String type) {
+        this.alias = alias;
+        this.docValue = docValue;
+        this.name = name;
+        this.type = type;
+    }
+
     /**
      * @return The alias of one field.
      * 
@@ -43,6 +56,8 @@ public final class StoreIndexFieldSearchJsonKey {
     }
     /**
      * @return Whether to enable statistics. default to true.
+     * 
+     * &gt; **Note:** At least one of the &#34;full_text&#34; and &#34;field_search&#34; should be specified.
      * 
      */
     public Optional<Boolean> docValue() {
@@ -70,13 +85,17 @@ public final class StoreIndexFieldSearchJsonKey {
     public static Builder builder(StoreIndexFieldSearchJsonKey defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String alias;
         private @Nullable Boolean docValue;
         private String name;
         private @Nullable String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(StoreIndexFieldSearchJsonKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alias = defaults.alias;
@@ -85,33 +104,23 @@ public final class StoreIndexFieldSearchJsonKey {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder alias(@Nullable String alias) {
             this.alias = alias;
             return this;
         }
-        @CustomType.Setter
         public Builder docValue(@Nullable Boolean docValue) {
             this.docValue = docValue;
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }
-        public StoreIndexFieldSearchJsonKey build() {
-            final var o = new StoreIndexFieldSearchJsonKey();
-            o.alias = alias;
-            o.docValue = docValue;
-            o.name = name;
-            o.type = type;
-            return o;
+        }        public StoreIndexFieldSearchJsonKey build() {
+            return new StoreIndexFieldSearchJsonKey(alias, docValue, name, type);
         }
     }
 }

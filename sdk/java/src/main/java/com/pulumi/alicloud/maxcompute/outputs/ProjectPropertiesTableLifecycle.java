@@ -15,14 +15,21 @@ public final class ProjectPropertiesTableLifecycle {
      * @return Life cycle type.
      * 
      */
-    private @Nullable String type;
+    private final @Nullable String type;
     /**
      * @return The value of the life cycle.
      * 
      */
-    private @Nullable String value;
+    private final @Nullable String value;
 
-    private ProjectPropertiesTableLifecycle() {}
+    @CustomType.Constructor
+    private ProjectPropertiesTableLifecycle(
+        @CustomType.Parameter("type") @Nullable String type,
+        @CustomType.Parameter("value") @Nullable String value) {
+        this.type = type;
+        this.value = value;
+    }
+
     /**
      * @return Life cycle type.
      * 
@@ -45,32 +52,30 @@ public final class ProjectPropertiesTableLifecycle {
     public static Builder builder(ProjectPropertiesTableLifecycle defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String type;
         private @Nullable String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ProjectPropertiesTableLifecycle defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.type = defaults.type;
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
         }
-        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }
-        public ProjectPropertiesTableLifecycle build() {
-            final var o = new ProjectPropertiesTableLifecycle();
-            o.type = type;
-            o.value = value;
-            return o;
+        }        public ProjectPropertiesTableLifecycle build() {
+            return new ProjectPropertiesTableLifecycle(type, value);
         }
     }
 }

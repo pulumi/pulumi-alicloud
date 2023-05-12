@@ -39,13 +39,11 @@ import * as utilities from "../utilities";
  * }, {
  *     provider: alicloud.cn,
  * });
- * const cnTransitRouter = new alicloud.cen.TransitRouter("cnTransitRouter", {cenId: defaultInstance.id}, {
+ * const cnTransitRouter = new alicloud.cen.TransitRouter("cnTransitRouter", {cenId: defaultBandwidthPackageAttachment.instanceId}, {
  *     provider: alicloud.cn,
- *     dependsOn: [defaultBandwidthPackageAttachment],
  * });
- * const usTransitRouter = new alicloud.cen.TransitRouter("usTransitRouter", {cenId: defaultInstance.id}, {
+ * const usTransitRouter = new alicloud.cen.TransitRouter("usTransitRouter", {cenId: cnTransitRouter.id}, {
  *     provider: alicloud.us,
- *     dependsOn: [alicloud_cen_transit_router.default_0],
  * });
  * const defaultTransitRouterPeerAttachment = new alicloud.cen.TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", {
  *     cenId: defaultInstance.id,

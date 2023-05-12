@@ -69,6 +69,8 @@ public final class AccountPrivilegeState extends com.pulumi.resources.ResourceAr
      * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
      * 
+     * Default to &#34;ReadOnly&#34;.
+     * 
      */
     @Import(name="privilege")
     private @Nullable Output<String> privilege;
@@ -80,6 +82,8 @@ public final class AccountPrivilegeState extends com.pulumi.resources.ResourceAr
      * - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+     * 
+     * Default to &#34;ReadOnly&#34;.
      * 
      */
     public Optional<Output<String>> privilege() {
@@ -194,6 +198,8 @@ public final class AccountPrivilegeState extends com.pulumi.resources.ResourceAr
          * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
          * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
          * 
+         * Default to &#34;ReadOnly&#34;.
+         * 
          * @return builder
          * 
          */
@@ -209,6 +215,8 @@ public final class AccountPrivilegeState extends com.pulumi.resources.ResourceAr
          * - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
          * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
          * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+         * 
+         * Default to &#34;ReadOnly&#34;.
          * 
          * @return builder
          * 

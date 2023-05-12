@@ -59,6 +59,9 @@ export interface GetBasicAccelerateIpsArgs {
      * The ID of the Basic Ip Set.
      */
     ipSetId: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `active`, `binding`, `bound`, `unbinding`, `deleting`.
@@ -141,6 +144,9 @@ export interface GetBasicAccelerateIpsOutputArgs {
      * The ID of the Basic Ip Set.
      */
     ipSetId: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `active`, `binding`, `bound`, `unbinding`, `deleting`.

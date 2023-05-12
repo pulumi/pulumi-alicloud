@@ -53,6 +53,8 @@ func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.
 // A collection of arguments for invoking getService.
 type LookupServiceArgs struct {
 	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+	//
+	// > **NOTE:** Setting `enable = "On"` to open the FC service that means you have read and agreed the [FC Terms of Service](https://help.aliyun.com/document_detail/52972.html). The service can not closed once it is opened.
 	Enable *string `pulumi:"enable"`
 }
 
@@ -81,6 +83,8 @@ func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts
 // A collection of arguments for invoking getService.
 type LookupServiceOutputArgs struct {
 	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+	//
+	// > **NOTE:** Setting `enable = "On"` to open the FC service that means you have read and agreed the [FC Terms of Service](https://help.aliyun.com/document_detail/52972.html). The service can not closed once it is opened.
 	Enable pulumi.StringPtrInput `pulumi:"enable"`
 }
 

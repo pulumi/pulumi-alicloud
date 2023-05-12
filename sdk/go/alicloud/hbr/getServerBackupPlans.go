@@ -27,8 +27,9 @@ type GetServerBackupPlansArgs struct {
 	// The filters.
 	Filters []GetServerBackupPlansFilter `pulumi:"filters"`
 	// A list of Server Backup Plan IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getServerBackupPlans.
@@ -59,8 +60,9 @@ type GetServerBackupPlansOutputArgs struct {
 	// The filters.
 	Filters GetServerBackupPlansFilterArrayInput `pulumi:"filters"`
 	// A list of Server Backup Plan IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetServerBackupPlansOutputArgs) ElementType() reflect.Type {

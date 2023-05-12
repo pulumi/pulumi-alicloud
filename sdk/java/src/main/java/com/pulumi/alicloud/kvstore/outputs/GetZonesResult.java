@@ -14,28 +14,47 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZonesResult {
-    private @Nullable String engine;
+    private final @Nullable String engine;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of zone IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String instanceChargeType;
-    private @Nullable Boolean multi;
-    private @Nullable String outputFile;
-    private @Nullable String productType;
+    private final List<String> ids;
+    private final @Nullable String instanceChargeType;
+    private final @Nullable Boolean multi;
+    private final @Nullable String outputFile;
+    private final @Nullable String productType;
     /**
      * @return A list of availability zones. Each element contains the following attributes:
      * 
      */
-    private List<GetZonesZone> zones;
+    private final List<GetZonesZone> zones;
 
-    private GetZonesResult() {}
+    @CustomType.Constructor
+    private GetZonesResult(
+        @CustomType.Parameter("engine") @Nullable String engine,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceChargeType") @Nullable String instanceChargeType,
+        @CustomType.Parameter("multi") @Nullable Boolean multi,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("productType") @Nullable String productType,
+        @CustomType.Parameter("zones") List<GetZonesZone> zones) {
+        this.engine = engine;
+        this.id = id;
+        this.ids = ids;
+        this.instanceChargeType = instanceChargeType;
+        this.multi = multi;
+        this.outputFile = outputFile;
+        this.productType = productType;
+        this.zones = zones;
+    }
+
     public Optional<String> engine() {
         return Optional.ofNullable(this.engine);
     }
@@ -80,7 +99,7 @@ public final class GetZonesResult {
     public static Builder builder(GetZonesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String engine;
         private String id;
@@ -90,7 +109,11 @@ public final class GetZonesResult {
         private @Nullable String outputFile;
         private @Nullable String productType;
         private List<GetZonesZone> zones;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetZonesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.engine = defaults.engine;
@@ -103,17 +126,14 @@ public final class GetZonesResult {
     	      this.zones = defaults.zones;
         }
 
-        @CustomType.Setter
         public Builder engine(@Nullable String engine) {
             this.engine = engine;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -121,45 +141,30 @@ public final class GetZonesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceChargeType(@Nullable String instanceChargeType) {
             this.instanceChargeType = instanceChargeType;
             return this;
         }
-        @CustomType.Setter
         public Builder multi(@Nullable Boolean multi) {
             this.multi = multi;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder productType(@Nullable String productType) {
             this.productType = productType;
             return this;
         }
-        @CustomType.Setter
         public Builder zones(List<GetZonesZone> zones) {
             this.zones = Objects.requireNonNull(zones);
             return this;
         }
         public Builder zones(GetZonesZone... zones) {
             return zones(List.of(zones));
-        }
-        public GetZonesResult build() {
-            final var o = new GetZonesResult();
-            o.engine = engine;
-            o.id = id;
-            o.ids = ids;
-            o.instanceChargeType = instanceChargeType;
-            o.multi = multi;
-            o.outputFile = outputFile;
-            o.productType = productType;
-            o.zones = zones;
-            return o;
+        }        public GetZonesResult build() {
+            return new GetZonesResult(engine, id, ids, instanceChargeType, multi, outputFile, productType, zones);
         }
     }
 }

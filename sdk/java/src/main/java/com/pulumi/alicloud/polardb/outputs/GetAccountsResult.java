@@ -17,21 +17,34 @@ public final class GetAccountsResult {
      * @return A list of PolarDB cluster accounts. Each element contains the following attributes:
      * 
      */
-    private List<GetAccountsAccount> accounts;
-    private String dbClusterId;
+    private final List<GetAccountsAccount> accounts;
+    private final String dbClusterId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private @Nullable String nameRegex;
+    private final String id;
+    private final @Nullable String nameRegex;
     /**
      * @return Account name of the cluster.
      * 
      */
-    private List<String> names;
+    private final List<String> names;
 
-    private GetAccountsResult() {}
+    @CustomType.Constructor
+    private GetAccountsResult(
+        @CustomType.Parameter("accounts") List<GetAccountsAccount> accounts,
+        @CustomType.Parameter("dbClusterId") String dbClusterId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names) {
+        this.accounts = accounts;
+        this.dbClusterId = dbClusterId;
+        this.id = id;
+        this.nameRegex = nameRegex;
+        this.names = names;
+    }
+
     /**
      * @return A list of PolarDB cluster accounts. Each element contains the following attributes:
      * 
@@ -67,14 +80,18 @@ public final class GetAccountsResult {
     public static Builder builder(GetAccountsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetAccountsAccount> accounts;
         private String dbClusterId;
         private String id;
         private @Nullable String nameRegex;
         private List<String> names;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAccountsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accounts = defaults.accounts;
@@ -84,7 +101,6 @@ public final class GetAccountsResult {
     	      this.names = defaults.names;
         }
 
-        @CustomType.Setter
         public Builder accounts(List<GetAccountsAccount> accounts) {
             this.accounts = Objects.requireNonNull(accounts);
             return this;
@@ -92,37 +108,26 @@ public final class GetAccountsResult {
         public Builder accounts(GetAccountsAccount... accounts) {
             return accounts(List.of(accounts));
         }
-        @CustomType.Setter
         public Builder dbClusterId(String dbClusterId) {
             this.dbClusterId = Objects.requireNonNull(dbClusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
         }
         public Builder names(String... names) {
             return names(List.of(names));
-        }
-        public GetAccountsResult build() {
-            final var o = new GetAccountsResult();
-            o.accounts = accounts;
-            o.dbClusterId = dbClusterId;
-            o.id = id;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            return o;
+        }        public GetAccountsResult build() {
+            return new GetAccountsResult(accounts, dbClusterId, id, nameRegex, names);
         }
     }
 }

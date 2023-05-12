@@ -16,14 +16,21 @@ public final class ZoneUserInfo {
      * @return The list of the region IDs.
      * 
      */
-    private @Nullable List<String> regionIds;
+    private final @Nullable List<String> regionIds;
     /**
      * @return The user ID belonging to the region is used for cross-account synchronization scenarios.
      * 
      */
-    private @Nullable String userId;
+    private final @Nullable String userId;
 
-    private ZoneUserInfo() {}
+    @CustomType.Constructor
+    private ZoneUserInfo(
+        @CustomType.Parameter("regionIds") @Nullable List<String> regionIds,
+        @CustomType.Parameter("userId") @Nullable String userId) {
+        this.regionIds = regionIds;
+        this.userId = userId;
+    }
+
     /**
      * @return The list of the region IDs.
      * 
@@ -46,18 +53,21 @@ public final class ZoneUserInfo {
     public static Builder builder(ZoneUserInfo defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<String> regionIds;
         private @Nullable String userId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ZoneUserInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.regionIds = defaults.regionIds;
     	      this.userId = defaults.userId;
         }
 
-        @CustomType.Setter
         public Builder regionIds(@Nullable List<String> regionIds) {
             this.regionIds = regionIds;
             return this;
@@ -65,16 +75,11 @@ public final class ZoneUserInfo {
         public Builder regionIds(String... regionIds) {
             return regionIds(List.of(regionIds));
         }
-        @CustomType.Setter
         public Builder userId(@Nullable String userId) {
             this.userId = userId;
             return this;
-        }
-        public ZoneUserInfo build() {
-            final var o = new ZoneUserInfo();
-            o.regionIds = regionIds;
-            o.userId = userId;
-            return o;
+        }        public ZoneUserInfo build() {
+            return new ZoneUserInfo(regionIds, userId);
         }
     }
 }

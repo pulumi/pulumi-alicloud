@@ -67,7 +67,8 @@ type GetPhysicalConnectionsArgs struct {
 	// The include reservation data.
 	IncludeReservationData *bool `pulumi:"includeReservationData"`
 	// A regex string to filter results by Physical Connection name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Resources on Behalf of a State of the Resource Attribute Field.
 	Status *string `pulumi:"status"`
@@ -106,7 +107,8 @@ type GetPhysicalConnectionsOutputArgs struct {
 	// The include reservation data.
 	IncludeReservationData pulumi.BoolPtrInput `pulumi:"includeReservationData"`
 	// A regex string to filter results by Physical Connection name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Resources on Behalf of a State of the Resource Attribute Field.
 	Status pulumi.StringPtrInput `pulumi:"status"`

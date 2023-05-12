@@ -15,19 +15,28 @@ public final class DbClusterDbClusterAccessWhiteList {
      * @return Field `db_cluster_ip_array_attribute` has been removed from provider.
      * 
      */
-    private @Nullable String dbClusterIpArrayAttribute;
+    private final @Nullable String dbClusterIpArrayAttribute;
     /**
      * @return Whitelist group name.
      * 
      */
-    private @Nullable String dbClusterIpArrayName;
+    private final @Nullable String dbClusterIpArrayName;
     /**
      * @return The IP address list under the whitelist group.
      * 
      */
-    private @Nullable String securityIpList;
+    private final @Nullable String securityIpList;
 
-    private DbClusterDbClusterAccessWhiteList() {}
+    @CustomType.Constructor
+    private DbClusterDbClusterAccessWhiteList(
+        @CustomType.Parameter("dbClusterIpArrayAttribute") @Nullable String dbClusterIpArrayAttribute,
+        @CustomType.Parameter("dbClusterIpArrayName") @Nullable String dbClusterIpArrayName,
+        @CustomType.Parameter("securityIpList") @Nullable String securityIpList) {
+        this.dbClusterIpArrayAttribute = dbClusterIpArrayAttribute;
+        this.dbClusterIpArrayName = dbClusterIpArrayName;
+        this.securityIpList = securityIpList;
+    }
+
     /**
      * @return Field `db_cluster_ip_array_attribute` has been removed from provider.
      * 
@@ -57,12 +66,16 @@ public final class DbClusterDbClusterAccessWhiteList {
     public static Builder builder(DbClusterDbClusterAccessWhiteList defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String dbClusterIpArrayAttribute;
         private @Nullable String dbClusterIpArrayName;
         private @Nullable String securityIpList;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(DbClusterDbClusterAccessWhiteList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbClusterIpArrayAttribute = defaults.dbClusterIpArrayAttribute;
@@ -70,27 +83,19 @@ public final class DbClusterDbClusterAccessWhiteList {
     	      this.securityIpList = defaults.securityIpList;
         }
 
-        @CustomType.Setter
         public Builder dbClusterIpArrayAttribute(@Nullable String dbClusterIpArrayAttribute) {
             this.dbClusterIpArrayAttribute = dbClusterIpArrayAttribute;
             return this;
         }
-        @CustomType.Setter
         public Builder dbClusterIpArrayName(@Nullable String dbClusterIpArrayName) {
             this.dbClusterIpArrayName = dbClusterIpArrayName;
             return this;
         }
-        @CustomType.Setter
         public Builder securityIpList(@Nullable String securityIpList) {
             this.securityIpList = securityIpList;
             return this;
-        }
-        public DbClusterDbClusterAccessWhiteList build() {
-            final var o = new DbClusterDbClusterAccessWhiteList();
-            o.dbClusterIpArrayAttribute = dbClusterIpArrayAttribute;
-            o.dbClusterIpArrayName = dbClusterIpArrayName;
-            o.securityIpList = securityIpList;
-            return o;
+        }        public DbClusterDbClusterAccessWhiteList build() {
+            return new DbClusterDbClusterAccessWhiteList(dbClusterIpArrayAttribute, dbClusterIpArrayName, securityIpList);
         }
     }
 }

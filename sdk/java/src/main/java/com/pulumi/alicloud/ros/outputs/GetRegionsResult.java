@@ -17,11 +17,20 @@ public final class GetRegionsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private @Nullable String outputFile;
-    private List<GetRegionsRegion> regions;
+    private final String id;
+    private final @Nullable String outputFile;
+    private final List<GetRegionsRegion> regions;
 
-    private GetRegionsResult() {}
+    @CustomType.Constructor
+    private GetRegionsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("regions") List<GetRegionsRegion> regions) {
+        this.id = id;
+        this.outputFile = outputFile;
+        this.regions = regions;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -43,12 +52,16 @@ public final class GetRegionsResult {
     public static Builder builder(GetRegionsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private @Nullable String outputFile;
         private List<GetRegionsRegion> regions;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRegionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -56,30 +69,22 @@ public final class GetRegionsResult {
     	      this.regions = defaults.regions;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder regions(List<GetRegionsRegion> regions) {
             this.regions = Objects.requireNonNull(regions);
             return this;
         }
         public Builder regions(GetRegionsRegion... regions) {
             return regions(List.of(regions));
-        }
-        public GetRegionsResult build() {
-            final var o = new GetRegionsResult();
-            o.id = id;
-            o.outputFile = outputFile;
-            o.regions = regions;
-            return o;
+        }        public GetRegionsResult build() {
+            return new GetRegionsResult(id, outputFile, regions);
         }
     }
 }

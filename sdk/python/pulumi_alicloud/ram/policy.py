@@ -421,6 +421,14 @@ class Policy(pulumi.CustomResource):
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Provides a RAM Policy resource.
+
+        > **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
+
+        > **NOTE:** Each policy can own at most 5 versions and the oldest version will be removed after its version achieves 5.
+
+        > **NOTE:** If the policy has multiple versions, all non-default versions will be deleted first when deleting policy.
+
         ## Example Usage
 
         ```python
@@ -479,6 +487,14 @@ class Policy(pulumi.CustomResource):
                  args: Optional[PolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a RAM Policy resource.
+
+        > **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
+
+        > **NOTE:** Each policy can own at most 5 versions and the oldest version will be removed after its version achieves 5.
+
+        > **NOTE:** If the policy has multiple versions, all non-default versions will be deleted first when deleting policy.
+
         ## Example Usage
 
         ```python

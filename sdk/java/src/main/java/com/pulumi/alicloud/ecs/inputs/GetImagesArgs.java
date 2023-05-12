@@ -213,9 +213,21 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.osType);
     }
 
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     * 
+     * &gt; **NOTE:** At least one of the `name_regex`, `most_recent` and `owners` must be set.
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable Output<String> outputFile;
 
+    /**
+     * @return File name where to save data source results (after running `pulumi preview`).
+     * 
+     * &gt; **NOTE:** At least one of the `name_regex`, `most_recent` and `owners` must be set.
+     * 
+     */
     public Optional<Output<String>> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -626,11 +638,27 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
             return osType(Output.of(osType));
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * &gt; **NOTE:** At least one of the `name_regex`, `most_recent` and `owners` must be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable Output<String> outputFile) {
             $.outputFile = outputFile;
             return this;
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * &gt; **NOTE:** At least one of the `name_regex`, `most_recent` and `owners` must be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(String outputFile) {
             return outputFile(Output.of(outputFile));
         }

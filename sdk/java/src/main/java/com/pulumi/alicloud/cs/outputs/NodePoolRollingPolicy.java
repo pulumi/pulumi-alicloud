@@ -15,9 +15,13 @@ public final class NodePoolRollingPolicy {
      * @return Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it&#39;s set to a number less than or equal to `0`, the default setting will be used.
      * 
      */
-    private @Nullable Integer maxParallelism;
+    private final @Nullable Integer maxParallelism;
 
-    private NodePoolRollingPolicy() {}
+    @CustomType.Constructor
+    private NodePoolRollingPolicy(@CustomType.Parameter("maxParallelism") @Nullable Integer maxParallelism) {
+        this.maxParallelism = maxParallelism;
+    }
+
     /**
      * @return Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it&#39;s set to a number less than or equal to `0`, the default setting will be used.
      * 
@@ -33,24 +37,24 @@ public final class NodePoolRollingPolicy {
     public static Builder builder(NodePoolRollingPolicy defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Integer maxParallelism;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(NodePoolRollingPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxParallelism = defaults.maxParallelism;
         }
 
-        @CustomType.Setter
         public Builder maxParallelism(@Nullable Integer maxParallelism) {
             this.maxParallelism = maxParallelism;
             return this;
-        }
-        public NodePoolRollingPolicy build() {
-            final var o = new NodePoolRollingPolicy();
-            o.maxParallelism = maxParallelism;
-            return o;
+        }        public NodePoolRollingPolicy build() {
+            return new NodePoolRollingPolicy(maxParallelism);
         }
     }
 }

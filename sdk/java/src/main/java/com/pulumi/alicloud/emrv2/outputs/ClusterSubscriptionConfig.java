@@ -17,29 +17,42 @@ public final class ClusterSubscriptionConfig {
      * @return Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
      * 
      */
-    private @Nullable Boolean autoRenew;
+    private final @Nullable Boolean autoRenew;
     /**
      * @return If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
      * 
      */
-    private @Nullable Integer autoRenewDuration;
+    private final @Nullable Integer autoRenewDuration;
     /**
      * @return If paymentType is Subscription, this should be specified. Supported value: Month or Year.
      * 
      */
-    private @Nullable String autoRenewDurationUnit;
+    private final @Nullable String autoRenewDurationUnit;
     /**
      * @return If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
      * 
      */
-    private Integer paymentDuration;
+    private final Integer paymentDuration;
     /**
      * @return If paymentType is Subscription, this should be specified. Supported value: Month or Year.
      * 
      */
-    private String paymentDurationUnit;
+    private final String paymentDurationUnit;
 
-    private ClusterSubscriptionConfig() {}
+    @CustomType.Constructor
+    private ClusterSubscriptionConfig(
+        @CustomType.Parameter("autoRenew") @Nullable Boolean autoRenew,
+        @CustomType.Parameter("autoRenewDuration") @Nullable Integer autoRenewDuration,
+        @CustomType.Parameter("autoRenewDurationUnit") @Nullable String autoRenewDurationUnit,
+        @CustomType.Parameter("paymentDuration") Integer paymentDuration,
+        @CustomType.Parameter("paymentDurationUnit") String paymentDurationUnit) {
+        this.autoRenew = autoRenew;
+        this.autoRenewDuration = autoRenewDuration;
+        this.autoRenewDurationUnit = autoRenewDurationUnit;
+        this.paymentDuration = paymentDuration;
+        this.paymentDurationUnit = paymentDurationUnit;
+    }
+
     /**
      * @return Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
      * 
@@ -83,14 +96,18 @@ public final class ClusterSubscriptionConfig {
     public static Builder builder(ClusterSubscriptionConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean autoRenew;
         private @Nullable Integer autoRenewDuration;
         private @Nullable String autoRenewDurationUnit;
         private Integer paymentDuration;
         private String paymentDurationUnit;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ClusterSubscriptionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoRenew = defaults.autoRenew;
@@ -100,39 +117,27 @@ public final class ClusterSubscriptionConfig {
     	      this.paymentDurationUnit = defaults.paymentDurationUnit;
         }
 
-        @CustomType.Setter
         public Builder autoRenew(@Nullable Boolean autoRenew) {
             this.autoRenew = autoRenew;
             return this;
         }
-        @CustomType.Setter
         public Builder autoRenewDuration(@Nullable Integer autoRenewDuration) {
             this.autoRenewDuration = autoRenewDuration;
             return this;
         }
-        @CustomType.Setter
         public Builder autoRenewDurationUnit(@Nullable String autoRenewDurationUnit) {
             this.autoRenewDurationUnit = autoRenewDurationUnit;
             return this;
         }
-        @CustomType.Setter
         public Builder paymentDuration(Integer paymentDuration) {
             this.paymentDuration = Objects.requireNonNull(paymentDuration);
             return this;
         }
-        @CustomType.Setter
         public Builder paymentDurationUnit(String paymentDurationUnit) {
             this.paymentDurationUnit = Objects.requireNonNull(paymentDurationUnit);
             return this;
-        }
-        public ClusterSubscriptionConfig build() {
-            final var o = new ClusterSubscriptionConfig();
-            o.autoRenew = autoRenew;
-            o.autoRenewDuration = autoRenewDuration;
-            o.autoRenewDurationUnit = autoRenewDurationUnit;
-            o.paymentDuration = paymentDuration;
-            o.paymentDurationUnit = paymentDurationUnit;
-            return o;
+        }        public ClusterSubscriptionConfig build() {
+            return new ClusterSubscriptionConfig(autoRenew, autoRenewDuration, autoRenewDurationUnit, paymentDuration, paymentDurationUnit);
         }
     }
 }

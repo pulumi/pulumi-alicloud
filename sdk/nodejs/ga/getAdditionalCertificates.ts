@@ -57,6 +57,9 @@ export interface GetAdditionalCertificatesArgs {
      * The ID of the listener. Only HTTPS listeners support this parameter.
      */
     listenerId: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -118,5 +121,8 @@ export interface GetAdditionalCertificatesOutputArgs {
      * The ID of the listener. Only HTTPS listeners support this parameter.
      */
     listenerId: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

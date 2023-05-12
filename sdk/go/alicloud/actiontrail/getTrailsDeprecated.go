@@ -10,6 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:**  This datasource has been renamed to actiontrail.getTrails from version 1.95.0.
+//
+// This data source provides a list of action trail of the current Alibaba Cloud user.
+//
 // Deprecated: DataSource has been renamed to `getTrails`
 func GetTrailsDeprecated(ctx *pulumi.Context, args *GetTrailsDeprecatedArgs, opts ...pulumi.InvokeOption) (*GetTrailsDeprecatedResult, error) {
 	var rv GetTrailsDeprecatedResult
@@ -26,7 +30,8 @@ type GetTrailsDeprecatedArgs struct {
 	IncludeOrganizationTrail *bool    `pulumi:"includeOrganizationTrail"`
 	IncludeShadowTrails      *bool    `pulumi:"includeShadowTrails"`
 	// A regex string to filter results action trail name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	Status     *string `pulumi:"status"`
 }
@@ -69,7 +74,8 @@ type GetTrailsDeprecatedOutputArgs struct {
 	IncludeOrganizationTrail pulumi.BoolPtrInput     `pulumi:"includeOrganizationTrail"`
 	IncludeShadowTrails      pulumi.BoolPtrInput     `pulumi:"includeShadowTrails"`
 	// A regex string to filter results action trail name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	Status     pulumi.StringPtrInput `pulumi:"status"`
 }

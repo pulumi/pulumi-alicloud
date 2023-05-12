@@ -6,6 +6,11 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.135.0+.
+ */
 export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetImagesResult> {
     args = args || {};
 
@@ -52,6 +57,11 @@ export interface GetImagesResult {
     readonly outputFile?: string;
     readonly platform?: string;
 }
+/**
+ * This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available in v1.135.0+.
+ */
 export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImagesResult> {
     return pulumi.output(args).apply((a: any) => getImages(a, opts))
 }

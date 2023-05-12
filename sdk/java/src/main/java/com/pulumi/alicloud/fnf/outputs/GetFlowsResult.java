@@ -14,19 +14,36 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFlowsResult {
-    private List<GetFlowsFlow> flows;
+    private final List<GetFlowsFlow> flows;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable Integer limit;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable Integer limit;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
 
-    private GetFlowsResult() {}
+    @CustomType.Constructor
+    private GetFlowsResult(
+        @CustomType.Parameter("flows") List<GetFlowsFlow> flows,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("limit") @Nullable Integer limit,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.flows = flows;
+        this.id = id;
+        this.ids = ids;
+        this.limit = limit;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+    }
+
     public List<GetFlowsFlow> flows() {
         return this.flows;
     }
@@ -60,7 +77,7 @@ public final class GetFlowsResult {
     public static Builder builder(GetFlowsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetFlowsFlow> flows;
         private String id;
@@ -69,7 +86,11 @@ public final class GetFlowsResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetFlowsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.flows = defaults.flows;
@@ -81,7 +102,6 @@ public final class GetFlowsResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder flows(List<GetFlowsFlow> flows) {
             this.flows = Objects.requireNonNull(flows);
             return this;
@@ -89,12 +109,10 @@ public final class GetFlowsResult {
         public Builder flows(GetFlowsFlow... flows) {
             return flows(List.of(flows));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -102,17 +120,14 @@ public final class GetFlowsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder limit(@Nullable Integer limit) {
             this.limit = limit;
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -120,21 +135,11 @@ public final class GetFlowsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetFlowsResult build() {
-            final var o = new GetFlowsResult();
-            o.flows = flows;
-            o.id = id;
-            o.ids = ids;
-            o.limit = limit;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetFlowsResult build() {
+            return new GetFlowsResult(flows, id, ids, limit, nameRegex, names, outputFile);
         }
     }
 }

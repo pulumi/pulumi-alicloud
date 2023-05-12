@@ -16,29 +16,42 @@ public final class AlertTemplateConfiguration {
      * @return Alert template annotations.
      * 
      */
-    private @Nullable Map<String,String> annotations;
+    private final @Nullable Map<String,String> annotations;
     /**
      * @return Alert template id.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Alert template language including `cn`, `en`.
      * 
      */
-    private @Nullable String lang;
+    private final @Nullable String lang;
     /**
      * @return Alert template tokens.
      * 
      */
-    private @Nullable Map<String,String> tokens;
+    private final @Nullable Map<String,String> tokens;
     /**
      * @return including FixedRate,Hourly,Daily,Weekly,Cron.
      * 
      */
-    private String type;
+    private final String type;
 
-    private AlertTemplateConfiguration() {}
+    @CustomType.Constructor
+    private AlertTemplateConfiguration(
+        @CustomType.Parameter("annotations") @Nullable Map<String,String> annotations,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("lang") @Nullable String lang,
+        @CustomType.Parameter("tokens") @Nullable Map<String,String> tokens,
+        @CustomType.Parameter("type") String type) {
+        this.annotations = annotations;
+        this.id = id;
+        this.lang = lang;
+        this.tokens = tokens;
+        this.type = type;
+    }
+
     /**
      * @return Alert template annotations.
      * 
@@ -82,14 +95,18 @@ public final class AlertTemplateConfiguration {
     public static Builder builder(AlertTemplateConfiguration defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Map<String,String> annotations;
         private String id;
         private @Nullable String lang;
         private @Nullable Map<String,String> tokens;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(AlertTemplateConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
@@ -99,39 +116,27 @@ public final class AlertTemplateConfiguration {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder annotations(@Nullable Map<String,String> annotations) {
             this.annotations = annotations;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder lang(@Nullable String lang) {
             this.lang = lang;
             return this;
         }
-        @CustomType.Setter
         public Builder tokens(@Nullable Map<String,String> tokens) {
             this.tokens = tokens;
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public AlertTemplateConfiguration build() {
-            final var o = new AlertTemplateConfiguration();
-            o.annotations = annotations;
-            o.id = id;
-            o.lang = lang;
-            o.tokens = tokens;
-            o.type = type;
-            return o;
+        }        public AlertTemplateConfiguration build() {
+            return new AlertTemplateConfiguration(annotations, id, lang, tokens, type);
         }
     }
 }

@@ -59,10 +59,15 @@ export interface GetZonesArgs {
     /**
      * Filter the results by a specific resource type.
      * Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
+     *
+     * > **NOTE:** From version 1.134.0, the `availableResourceCreation` value "Rds" has been deprecated.
+     * If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
      */
     availableResourceCreation?: string;
     /**
      * Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+     *
+     * > **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don't support it. It is recommended to use `cloudEfficiency` or `cloudSsd`.
      */
     availableSlbAddressIpVersion?: string;
     /**
@@ -85,6 +90,9 @@ export interface GetZonesArgs {
      * Filter the results by a specific network type. Valid values: `Classic` and `Vpc`.
      */
     networkType?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
@@ -161,10 +169,15 @@ export interface GetZonesOutputArgs {
     /**
      * Filter the results by a specific resource type.
      * Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
+     *
+     * > **NOTE:** From version 1.134.0, the `availableResourceCreation` value "Rds" has been deprecated.
+     * If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
      */
     availableResourceCreation?: pulumi.Input<string>;
     /**
      * Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+     *
+     * > **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don't support it. It is recommended to use `cloudEfficiency` or `cloudSsd`.
      */
     availableSlbAddressIpVersion?: pulumi.Input<string>;
     /**
@@ -187,6 +200,9 @@ export interface GetZonesOutputArgs {
      * Filter the results by a specific network type. Valid values: `Classic` and `Vpc`.
      */
     networkType?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.

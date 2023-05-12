@@ -18,84 +18,119 @@ public final class GetAlarmsAlarm {
      * @return The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
      * 
      */
-    private List<String> alarmActions;
+    private final List<String> alarmActions;
     /**
      * @return Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
      * 
      */
-    private Integer cloudMonitorGroupId;
+    private final Integer cloudMonitorGroupId;
     /**
      * @return The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand.
      * 
      */
-    private String comparisonOperator;
+    private final String comparisonOperator;
     /**
      * @return The description for the alarm.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The dimension map for the alarm&#39;s associated metric.
      * 
      */
-    private Map<String,Object> dimensions;
+    private final Map<String,Object> dimensions;
     /**
      * @return Whether to enable specific ess alarm.
      * 
      */
-    private Boolean enable;
+    private final Boolean enable;
     /**
      * @return The number of times that needs to satisfies comparison condition before transition into ALARM state.
      * 
      */
-    private Integer evaluationCount;
+    private final Integer evaluationCount;
     /**
      * @return The id of alarm.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The name for the alarm&#39;s associated metric. See Block_metricNames_and_dimensions below for details.
      * 
      */
-    private String metricName;
+    private final String metricName;
     /**
      * @return The type for the alarm&#39;s associated metric. Supported value: system, custom. &#34;system&#34; means the metric data is collected by Aliyun Cloud Monitor Service(CMS), &#34;custom&#34; means the metric data is upload to CMS by users. Defaults to system.
      * 
      */
-    private String metricType;
+    private final String metricType;
     /**
      * @return The name for ess alarm.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The period in seconds over which the specified statistic is applied.
      * 
      */
-    private Integer period;
+    private final Integer period;
     /**
      * @return Scaling group id the alarms belong to.
      * 
      */
-    private String scalingGroupId;
+    private final String scalingGroupId;
     /**
      * @return The state of alarm task.
      * 
      */
-    private String state;
+    private final String state;
     /**
      * @return The statistic to apply to the alarm&#39;s associated metric.
      * 
      */
-    private String statistics;
+    private final String statistics;
     /**
      * @return The value against which the specified statistics is compared.
      * 
      */
-    private String threshold;
+    private final String threshold;
 
-    private GetAlarmsAlarm() {}
+    @CustomType.Constructor
+    private GetAlarmsAlarm(
+        @CustomType.Parameter("alarmActions") List<String> alarmActions,
+        @CustomType.Parameter("cloudMonitorGroupId") Integer cloudMonitorGroupId,
+        @CustomType.Parameter("comparisonOperator") String comparisonOperator,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("dimensions") Map<String,Object> dimensions,
+        @CustomType.Parameter("enable") Boolean enable,
+        @CustomType.Parameter("evaluationCount") Integer evaluationCount,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("metricName") String metricName,
+        @CustomType.Parameter("metricType") String metricType,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("period") Integer period,
+        @CustomType.Parameter("scalingGroupId") String scalingGroupId,
+        @CustomType.Parameter("state") String state,
+        @CustomType.Parameter("statistics") String statistics,
+        @CustomType.Parameter("threshold") String threshold) {
+        this.alarmActions = alarmActions;
+        this.cloudMonitorGroupId = cloudMonitorGroupId;
+        this.comparisonOperator = comparisonOperator;
+        this.description = description;
+        this.dimensions = dimensions;
+        this.enable = enable;
+        this.evaluationCount = evaluationCount;
+        this.id = id;
+        this.metricName = metricName;
+        this.metricType = metricType;
+        this.name = name;
+        this.period = period;
+        this.scalingGroupId = scalingGroupId;
+        this.state = state;
+        this.statistics = statistics;
+        this.threshold = threshold;
+    }
+
     /**
      * @return The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
      * 
@@ -216,7 +251,7 @@ public final class GetAlarmsAlarm {
     public static Builder builder(GetAlarmsAlarm defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<String> alarmActions;
         private Integer cloudMonitorGroupId;
@@ -234,7 +269,11 @@ public final class GetAlarmsAlarm {
         private String state;
         private String statistics;
         private String threshold;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAlarmsAlarm defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alarmActions = defaults.alarmActions;
@@ -255,7 +294,6 @@ public final class GetAlarmsAlarm {
     	      this.threshold = defaults.threshold;
         }
 
-        @CustomType.Setter
         public Builder alarmActions(List<String> alarmActions) {
             this.alarmActions = Objects.requireNonNull(alarmActions);
             return this;
@@ -263,100 +301,67 @@ public final class GetAlarmsAlarm {
         public Builder alarmActions(String... alarmActions) {
             return alarmActions(List.of(alarmActions));
         }
-        @CustomType.Setter
         public Builder cloudMonitorGroupId(Integer cloudMonitorGroupId) {
             this.cloudMonitorGroupId = Objects.requireNonNull(cloudMonitorGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder comparisonOperator(String comparisonOperator) {
             this.comparisonOperator = Objects.requireNonNull(comparisonOperator);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder dimensions(Map<String,Object> dimensions) {
             this.dimensions = Objects.requireNonNull(dimensions);
             return this;
         }
-        @CustomType.Setter
         public Builder enable(Boolean enable) {
             this.enable = Objects.requireNonNull(enable);
             return this;
         }
-        @CustomType.Setter
         public Builder evaluationCount(Integer evaluationCount) {
             this.evaluationCount = Objects.requireNonNull(evaluationCount);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder metricName(String metricName) {
             this.metricName = Objects.requireNonNull(metricName);
             return this;
         }
-        @CustomType.Setter
         public Builder metricType(String metricType) {
             this.metricType = Objects.requireNonNull(metricType);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder period(Integer period) {
             this.period = Objects.requireNonNull(period);
             return this;
         }
-        @CustomType.Setter
         public Builder scalingGroupId(String scalingGroupId) {
             this.scalingGroupId = Objects.requireNonNull(scalingGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
         }
-        @CustomType.Setter
         public Builder statistics(String statistics) {
             this.statistics = Objects.requireNonNull(statistics);
             return this;
         }
-        @CustomType.Setter
         public Builder threshold(String threshold) {
             this.threshold = Objects.requireNonNull(threshold);
             return this;
-        }
-        public GetAlarmsAlarm build() {
-            final var o = new GetAlarmsAlarm();
-            o.alarmActions = alarmActions;
-            o.cloudMonitorGroupId = cloudMonitorGroupId;
-            o.comparisonOperator = comparisonOperator;
-            o.description = description;
-            o.dimensions = dimensions;
-            o.enable = enable;
-            o.evaluationCount = evaluationCount;
-            o.id = id;
-            o.metricName = metricName;
-            o.metricType = metricType;
-            o.name = name;
-            o.period = period;
-            o.scalingGroupId = scalingGroupId;
-            o.state = state;
-            o.statistics = statistics;
-            o.threshold = threshold;
-            return o;
+        }        public GetAlarmsAlarm build() {
+            return new GetAlarmsAlarm(alarmActions, cloudMonitorGroupId, comparisonOperator, description, dimensions, enable, evaluationCount, id, metricName, metricType, name, period, scalingGroupId, state, statistics, threshold);
         }
     }
 }

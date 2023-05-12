@@ -14,43 +14,64 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZonesResult {
-    private @Nullable String availableSlbAddressIpVersion;
-    private @Nullable String availableSlbAddressType;
+    private final @Nullable String availableSlbAddressIpVersion;
+    private final @Nullable String availableSlbAddressType;
     /**
      * @deprecated
      * The parameter enable_details has been deprecated from version v1.154.0+
      * 
      */
     @Deprecated /* The parameter enable_details has been deprecated from version v1.154.0+ */
-    private @Nullable Boolean enableDetails;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of primary zone IDs.
      * 
      */
-    private List<String> ids;
+    private final List<String> ids;
     /**
      * @return (Available in 1.157.0+) The primary zone.
      * 
      */
-    private @Nullable String masterZoneId;
-    private @Nullable String outputFile;
+    private final @Nullable String masterZoneId;
+    private final @Nullable String outputFile;
     /**
      * @return (Available in 1.157.0+) The secondary zone.
      * 
      */
-    private @Nullable String slaveZoneId;
+    private final @Nullable String slaveZoneId;
     /**
      * @return A list of availability zones. Each element contains the following attributes:
      * 
      */
-    private List<GetZonesZone> zones;
+    private final List<GetZonesZone> zones;
 
-    private GetZonesResult() {}
+    @CustomType.Constructor
+    private GetZonesResult(
+        @CustomType.Parameter("availableSlbAddressIpVersion") @Nullable String availableSlbAddressIpVersion,
+        @CustomType.Parameter("availableSlbAddressType") @Nullable String availableSlbAddressType,
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("masterZoneId") @Nullable String masterZoneId,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("slaveZoneId") @Nullable String slaveZoneId,
+        @CustomType.Parameter("zones") List<GetZonesZone> zones) {
+        this.availableSlbAddressIpVersion = availableSlbAddressIpVersion;
+        this.availableSlbAddressType = availableSlbAddressType;
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.masterZoneId = masterZoneId;
+        this.outputFile = outputFile;
+        this.slaveZoneId = slaveZoneId;
+        this.zones = zones;
+    }
+
     public Optional<String> availableSlbAddressIpVersion() {
         return Optional.ofNullable(this.availableSlbAddressIpVersion);
     }
@@ -112,7 +133,7 @@ public final class GetZonesResult {
     public static Builder builder(GetZonesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String availableSlbAddressIpVersion;
         private @Nullable String availableSlbAddressType;
@@ -123,7 +144,11 @@ public final class GetZonesResult {
         private @Nullable String outputFile;
         private @Nullable String slaveZoneId;
         private List<GetZonesZone> zones;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetZonesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availableSlbAddressIpVersion = defaults.availableSlbAddressIpVersion;
@@ -137,27 +162,22 @@ public final class GetZonesResult {
     	      this.zones = defaults.zones;
         }
 
-        @CustomType.Setter
         public Builder availableSlbAddressIpVersion(@Nullable String availableSlbAddressIpVersion) {
             this.availableSlbAddressIpVersion = availableSlbAddressIpVersion;
             return this;
         }
-        @CustomType.Setter
         public Builder availableSlbAddressType(@Nullable String availableSlbAddressType) {
             this.availableSlbAddressType = availableSlbAddressType;
             return this;
         }
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -165,41 +185,26 @@ public final class GetZonesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder masterZoneId(@Nullable String masterZoneId) {
             this.masterZoneId = masterZoneId;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder slaveZoneId(@Nullable String slaveZoneId) {
             this.slaveZoneId = slaveZoneId;
             return this;
         }
-        @CustomType.Setter
         public Builder zones(List<GetZonesZone> zones) {
             this.zones = Objects.requireNonNull(zones);
             return this;
         }
         public Builder zones(GetZonesZone... zones) {
             return zones(List.of(zones));
-        }
-        public GetZonesResult build() {
-            final var o = new GetZonesResult();
-            o.availableSlbAddressIpVersion = availableSlbAddressIpVersion;
-            o.availableSlbAddressType = availableSlbAddressType;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.masterZoneId = masterZoneId;
-            o.outputFile = outputFile;
-            o.slaveZoneId = slaveZoneId;
-            o.zones = zones;
-            return o;
+        }        public GetZonesResult build() {
+            return new GetZonesResult(availableSlbAddressIpVersion, availableSlbAddressType, enableDetails, id, ids, masterZoneId, outputFile, slaveZoneId, zones);
         }
     }
 }

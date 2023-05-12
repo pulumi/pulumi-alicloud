@@ -13,9 +13,13 @@ public final class GetDedicatedHostsHostOperationLock {
      * @return The reason why the dedicated host resource is locked.
      * 
      */
-    private String lockReason;
+    private final String lockReason;
 
-    private GetDedicatedHostsHostOperationLock() {}
+    @CustomType.Constructor
+    private GetDedicatedHostsHostOperationLock(@CustomType.Parameter("lockReason") String lockReason) {
+        this.lockReason = lockReason;
+    }
+
     /**
      * @return The reason why the dedicated host resource is locked.
      * 
@@ -31,24 +35,24 @@ public final class GetDedicatedHostsHostOperationLock {
     public static Builder builder(GetDedicatedHostsHostOperationLock defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String lockReason;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDedicatedHostsHostOperationLock defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.lockReason = defaults.lockReason;
         }
 
-        @CustomType.Setter
         public Builder lockReason(String lockReason) {
             this.lockReason = Objects.requireNonNull(lockReason);
             return this;
-        }
-        public GetDedicatedHostsHostOperationLock build() {
-            final var o = new GetDedicatedHostsHostOperationLock();
-            o.lockReason = lockReason;
-            return o;
+        }        public GetDedicatedHostsHostOperationLock build() {
+            return new GetDedicatedHostsHostOperationLock(lockReason);
         }
     }
 }

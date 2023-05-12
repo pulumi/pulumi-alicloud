@@ -13,24 +13,35 @@ public final class GetDomainsDomain {
      * @return The ID of the global acceleration instance.
      * 
      */
-    private String acceleratorId;
+    private final String acceleratorId;
     /**
      * @return The accelerated domain name to be added. only top-level domain names are supported, such as &#39;example.com&#39;.
      * 
      */
-    private String domain;
+    private final String domain;
     /**
      * @return The ID of the Ga Domain.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetDomainsDomain() {}
+    @CustomType.Constructor
+    private GetDomainsDomain(
+        @CustomType.Parameter("acceleratorId") String acceleratorId,
+        @CustomType.Parameter("domain") String domain,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("status") String status) {
+        this.acceleratorId = acceleratorId;
+        this.domain = domain;
+        this.id = id;
+        this.status = status;
+    }
+
     /**
      * @return The ID of the global acceleration instance.
      * 
@@ -67,13 +78,17 @@ public final class GetDomainsDomain {
     public static Builder builder(GetDomainsDomain defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String acceleratorId;
         private String domain;
         private String id;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDomainsDomain defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorId = defaults.acceleratorId;
@@ -82,33 +97,23 @@ public final class GetDomainsDomain {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
             this.acceleratorId = Objects.requireNonNull(acceleratorId);
             return this;
         }
-        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetDomainsDomain build() {
-            final var o = new GetDomainsDomain();
-            o.acceleratorId = acceleratorId;
-            o.domain = domain;
-            o.id = id;
-            o.status = status;
-            return o;
+        }        public GetDomainsDomain build() {
+            return new GetDomainsDomain(acceleratorId, domain, id, status);
         }
     }
 }

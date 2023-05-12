@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > **DEPRECATED:**  This resource  has been deprecated from version `1.104.0`. Please use resource alicloud_kvstore_instance.
+ *
+ * Provides a backup policy for ApsaraDB Redis / Memcache instance resource.
+ *
  * ## Example Usage
  *
  * Basic Usage

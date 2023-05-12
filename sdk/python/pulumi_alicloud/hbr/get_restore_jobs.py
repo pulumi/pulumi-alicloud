@@ -174,6 +174,7 @@ def get_restore_jobs(output_file: Optional[str] = None,
     ```
 
 
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] restore_ids: The list of restore job IDs.
     :param str restore_type: The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
     :param Sequence[str] source_types: The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
@@ -242,6 +243,7 @@ def get_restore_jobs_output(output_file: Optional[pulumi.Input[Optional[str]]] =
     ```
 
 
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] restore_ids: The list of restore job IDs.
     :param str restore_type: The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
     :param Sequence[str] source_types: The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.

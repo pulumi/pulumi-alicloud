@@ -16,14 +16,21 @@ public final class CompliancePackConfigRule {
      * @return A list of Config Rule Parameters.
      * 
      */
-    private @Nullable List<CompliancePackConfigRuleConfigRuleParameter> configRuleParameters;
+    private final @Nullable List<CompliancePackConfigRuleConfigRuleParameter> configRuleParameters;
     /**
      * @return The Managed Rule Identifier.
      * 
      */
-    private String managedRuleIdentifier;
+    private final String managedRuleIdentifier;
 
-    private CompliancePackConfigRule() {}
+    @CustomType.Constructor
+    private CompliancePackConfigRule(
+        @CustomType.Parameter("configRuleParameters") @Nullable List<CompliancePackConfigRuleConfigRuleParameter> configRuleParameters,
+        @CustomType.Parameter("managedRuleIdentifier") String managedRuleIdentifier) {
+        this.configRuleParameters = configRuleParameters;
+        this.managedRuleIdentifier = managedRuleIdentifier;
+    }
+
     /**
      * @return A list of Config Rule Parameters.
      * 
@@ -46,18 +53,21 @@ public final class CompliancePackConfigRule {
     public static Builder builder(CompliancePackConfigRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<CompliancePackConfigRuleConfigRuleParameter> configRuleParameters;
         private String managedRuleIdentifier;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(CompliancePackConfigRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configRuleParameters = defaults.configRuleParameters;
     	      this.managedRuleIdentifier = defaults.managedRuleIdentifier;
         }
 
-        @CustomType.Setter
         public Builder configRuleParameters(@Nullable List<CompliancePackConfigRuleConfigRuleParameter> configRuleParameters) {
             this.configRuleParameters = configRuleParameters;
             return this;
@@ -65,16 +75,11 @@ public final class CompliancePackConfigRule {
         public Builder configRuleParameters(CompliancePackConfigRuleConfigRuleParameter... configRuleParameters) {
             return configRuleParameters(List.of(configRuleParameters));
         }
-        @CustomType.Setter
         public Builder managedRuleIdentifier(String managedRuleIdentifier) {
             this.managedRuleIdentifier = Objects.requireNonNull(managedRuleIdentifier);
             return this;
-        }
-        public CompliancePackConfigRule build() {
-            final var o = new CompliancePackConfigRule();
-            o.configRuleParameters = configRuleParameters;
-            o.managedRuleIdentifier = managedRuleIdentifier;
-            return o;
+        }        public CompliancePackConfigRule build() {
+            return new CompliancePackConfigRule(configRuleParameters, managedRuleIdentifier);
         }
     }
 }

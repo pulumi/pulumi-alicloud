@@ -63,6 +63,12 @@ type Alias struct {
 	// The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
 	AliasName pulumi.StringOutput `pulumi:"aliasName"`
 	// The id of the key.
+	//
+	// > **NOTE:** Each alias represents only one master key(CMK).
+	//
+	// > **NOTE:** Within an area of the same user, alias is not reproducible.
+	//
+	// > **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
 }
 
@@ -104,6 +110,12 @@ type aliasState struct {
 	// The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
 	AliasName *string `pulumi:"aliasName"`
 	// The id of the key.
+	//
+	// > **NOTE:** Each alias represents only one master key(CMK).
+	//
+	// > **NOTE:** Within an area of the same user, alias is not reproducible.
+	//
+	// > **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
 	KeyId *string `pulumi:"keyId"`
 }
 
@@ -111,6 +123,12 @@ type AliasState struct {
 	// The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
 	AliasName pulumi.StringPtrInput
 	// The id of the key.
+	//
+	// > **NOTE:** Each alias represents only one master key(CMK).
+	//
+	// > **NOTE:** Within an area of the same user, alias is not reproducible.
+	//
+	// > **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
 	KeyId pulumi.StringPtrInput
 }
 
@@ -122,6 +140,12 @@ type aliasArgs struct {
 	// The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
 	AliasName string `pulumi:"aliasName"`
 	// The id of the key.
+	//
+	// > **NOTE:** Each alias represents only one master key(CMK).
+	//
+	// > **NOTE:** Within an area of the same user, alias is not reproducible.
+	//
+	// > **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
 	KeyId string `pulumi:"keyId"`
 }
 
@@ -130,6 +154,12 @@ type AliasArgs struct {
 	// The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
 	AliasName pulumi.StringInput
 	// The id of the key.
+	//
+	// > **NOTE:** Each alias represents only one master key(CMK).
+	//
+	// > **NOTE:** Within an area of the same user, alias is not reproducible.
+	//
+	// > **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
 	KeyId pulumi.StringInput
 }
 
@@ -226,6 +256,12 @@ func (o AliasOutput) AliasName() pulumi.StringOutput {
 }
 
 // The id of the key.
+//
+// > **NOTE:** Each alias represents only one master key(CMK).
+//
+// > **NOTE:** Within an area of the same user, alias is not reproducible.
+//
+// > **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
 func (o AliasOutput) KeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alias) pulumi.StringOutput { return v.KeyId }).(pulumi.StringOutput)
 }

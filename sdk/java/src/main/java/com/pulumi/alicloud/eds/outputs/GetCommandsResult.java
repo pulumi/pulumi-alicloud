@@ -13,20 +13,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCommandsResult {
-    private @Nullable String commandType;
-    private List<GetCommandsCommand> commands;
-    private @Nullable String contentEncoding;
-    private @Nullable String desktopId;
+    private final @Nullable String commandType;
+    private final List<GetCommandsCommand> commands;
+    private final @Nullable String contentEncoding;
+    private final @Nullable String desktopId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String outputFile;
-    private @Nullable String status;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
+    private final @Nullable String status;
 
-    private GetCommandsResult() {}
+    @CustomType.Constructor
+    private GetCommandsResult(
+        @CustomType.Parameter("commandType") @Nullable String commandType,
+        @CustomType.Parameter("commands") List<GetCommandsCommand> commands,
+        @CustomType.Parameter("contentEncoding") @Nullable String contentEncoding,
+        @CustomType.Parameter("desktopId") @Nullable String desktopId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.commandType = commandType;
+        this.commands = commands;
+        this.contentEncoding = contentEncoding;
+        this.desktopId = desktopId;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.status = status;
+    }
+
     public Optional<String> commandType() {
         return Optional.ofNullable(this.commandType);
     }
@@ -63,7 +82,7 @@ public final class GetCommandsResult {
     public static Builder builder(GetCommandsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String commandType;
         private List<GetCommandsCommand> commands;
@@ -73,7 +92,11 @@ public final class GetCommandsResult {
         private List<String> ids;
         private @Nullable String outputFile;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetCommandsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.commandType = defaults.commandType;
@@ -86,12 +109,10 @@ public final class GetCommandsResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder commandType(@Nullable String commandType) {
             this.commandType = commandType;
             return this;
         }
-        @CustomType.Setter
         public Builder commands(List<GetCommandsCommand> commands) {
             this.commands = Objects.requireNonNull(commands);
             return this;
@@ -99,22 +120,18 @@ public final class GetCommandsResult {
         public Builder commands(GetCommandsCommand... commands) {
             return commands(List.of(commands));
         }
-        @CustomType.Setter
         public Builder contentEncoding(@Nullable String contentEncoding) {
             this.contentEncoding = contentEncoding;
             return this;
         }
-        @CustomType.Setter
         public Builder desktopId(@Nullable String desktopId) {
             this.desktopId = desktopId;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -122,27 +139,15 @@ public final class GetCommandsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetCommandsResult build() {
-            final var o = new GetCommandsResult();
-            o.commandType = commandType;
-            o.commands = commands;
-            o.contentEncoding = contentEncoding;
-            o.desktopId = desktopId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+        }        public GetCommandsResult build() {
+            return new GetCommandsResult(commandType, commands, contentEncoding, desktopId, id, ids, outputFile, status);
         }
     }
 }

@@ -26,6 +26,8 @@ namespace Pulumi.AliCloud.Cms.Inputs
 
         /// <summary>
         /// The parameters of the alert callback. The parameters are in the JSON format.
+        /// 
+        /// &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
         /// </summary>
         [Input("jsonParams")]
         public Input<string>? JsonParams { get; set; }

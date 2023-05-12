@@ -120,6 +120,7 @@ def get_sasl_users(instance_id: Optional[str] = None,
 
     :param str instance_id: ID of the ALIKAFKA Instance that owns the sasl users.
     :param str name_regex: A regex string to filter results by the username.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id
@@ -162,5 +163,6 @@ def get_sasl_users_output(instance_id: Optional[pulumi.Input[str]] = None,
 
     :param str instance_id: ID of the ALIKAFKA Instance that owns the sasl users.
     :param str name_regex: A regex string to filter results by the username.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

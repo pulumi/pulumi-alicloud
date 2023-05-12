@@ -13,27 +13,38 @@ public final class GetOpenApiPricingModulesModuleValue {
      * @return The module Code corresponds to the attribute value.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return Module value description information.
      * 
      */
-    private String remark;
+    private final String remark;
     /**
      * @return The attribute value type corresponding to the module Code. Value:
      * * single_float: single value type.
      * * range_float: range value type.
      * 
      */
-    private String type;
+    private final String type;
     /**
      * @return The module Code corresponds to the attribute value.
      * &gt; format 1024-1024000 when Type = range_float: 1024 means from 1024 to 1024000, step size 1024.
      * 
      */
-    private String value;
+    private final String value;
 
-    private GetOpenApiPricingModulesModuleValue() {}
+    @CustomType.Constructor
+    private GetOpenApiPricingModulesModuleValue(
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("remark") String remark,
+        @CustomType.Parameter("type") String type,
+        @CustomType.Parameter("value") String value) {
+        this.name = name;
+        this.remark = remark;
+        this.type = type;
+        this.value = value;
+    }
+
     /**
      * @return The module Code corresponds to the attribute value.
      * 
@@ -73,13 +84,17 @@ public final class GetOpenApiPricingModulesModuleValue {
     public static Builder builder(GetOpenApiPricingModulesModuleValue defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String name;
         private String remark;
         private String type;
         private String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetOpenApiPricingModulesModuleValue defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
@@ -88,33 +103,23 @@ public final class GetOpenApiPricingModulesModuleValue {
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder remark(String remark) {
             this.remark = Objects.requireNonNull(remark);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
-        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }
-        public GetOpenApiPricingModulesModuleValue build() {
-            final var o = new GetOpenApiPricingModulesModuleValue();
-            o.name = name;
-            o.remark = remark;
-            o.type = type;
-            o.value = value;
-            return o;
+        }        public GetOpenApiPricingModulesModuleValue build() {
+            return new GetOpenApiPricingModulesModuleValue(name, remark, type, value);
         }
     }
 }

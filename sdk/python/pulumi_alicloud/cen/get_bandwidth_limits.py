@@ -93,6 +93,7 @@ def get_bandwidth_limits(instance_ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] instance_ids: A list of CEN instances IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['instanceIds'] = instance_ids
@@ -126,5 +127,6 @@ def get_bandwidth_limits_output(instance_ids: Optional[pulumi.Input[Optional[Seq
 
 
     :param Sequence[str] instance_ids: A list of CEN instances IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

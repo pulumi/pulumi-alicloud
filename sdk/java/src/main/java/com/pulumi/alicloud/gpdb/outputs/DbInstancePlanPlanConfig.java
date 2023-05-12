@@ -18,24 +18,35 @@ public final class DbInstancePlanPlanConfig {
      * @return Pause instance plan config. See the following `Block pause`.
      * 
      */
-    private @Nullable DbInstancePlanPlanConfigPause pause;
+    private final @Nullable DbInstancePlanPlanConfigPause pause;
     /**
      * @return Resume instance plan config. See the following `Block resume`.
      * 
      */
-    private @Nullable DbInstancePlanPlanConfigResume resume;
+    private final @Nullable DbInstancePlanPlanConfigResume resume;
     /**
      * @return Scale In instance plan config. See the following `Block scale_in`.
      * 
      */
-    private @Nullable DbInstancePlanPlanConfigScaleIn scaleIn;
+    private final @Nullable DbInstancePlanPlanConfigScaleIn scaleIn;
     /**
      * @return Scale out instance plan config. See the following `Block scale_out`.
      * 
      */
-    private @Nullable DbInstancePlanPlanConfigScaleOut scaleOut;
+    private final @Nullable DbInstancePlanPlanConfigScaleOut scaleOut;
 
-    private DbInstancePlanPlanConfig() {}
+    @CustomType.Constructor
+    private DbInstancePlanPlanConfig(
+        @CustomType.Parameter("pause") @Nullable DbInstancePlanPlanConfigPause pause,
+        @CustomType.Parameter("resume") @Nullable DbInstancePlanPlanConfigResume resume,
+        @CustomType.Parameter("scaleIn") @Nullable DbInstancePlanPlanConfigScaleIn scaleIn,
+        @CustomType.Parameter("scaleOut") @Nullable DbInstancePlanPlanConfigScaleOut scaleOut) {
+        this.pause = pause;
+        this.resume = resume;
+        this.scaleIn = scaleIn;
+        this.scaleOut = scaleOut;
+    }
+
     /**
      * @return Pause instance plan config. See the following `Block pause`.
      * 
@@ -72,13 +83,17 @@ public final class DbInstancePlanPlanConfig {
     public static Builder builder(DbInstancePlanPlanConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable DbInstancePlanPlanConfigPause pause;
         private @Nullable DbInstancePlanPlanConfigResume resume;
         private @Nullable DbInstancePlanPlanConfigScaleIn scaleIn;
         private @Nullable DbInstancePlanPlanConfigScaleOut scaleOut;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(DbInstancePlanPlanConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pause = defaults.pause;
@@ -87,33 +102,23 @@ public final class DbInstancePlanPlanConfig {
     	      this.scaleOut = defaults.scaleOut;
         }
 
-        @CustomType.Setter
         public Builder pause(@Nullable DbInstancePlanPlanConfigPause pause) {
             this.pause = pause;
             return this;
         }
-        @CustomType.Setter
         public Builder resume(@Nullable DbInstancePlanPlanConfigResume resume) {
             this.resume = resume;
             return this;
         }
-        @CustomType.Setter
         public Builder scaleIn(@Nullable DbInstancePlanPlanConfigScaleIn scaleIn) {
             this.scaleIn = scaleIn;
             return this;
         }
-        @CustomType.Setter
         public Builder scaleOut(@Nullable DbInstancePlanPlanConfigScaleOut scaleOut) {
             this.scaleOut = scaleOut;
             return this;
-        }
-        public DbInstancePlanPlanConfig build() {
-            final var o = new DbInstancePlanPlanConfig();
-            o.pause = pause;
-            o.resume = resume;
-            o.scaleIn = scaleIn;
-            o.scaleOut = scaleOut;
-            return o;
+        }        public DbInstancePlanPlanConfig build() {
+            return new DbInstancePlanPlanConfig(pause, resume, scaleIn, scaleOut);
         }
     }
 }

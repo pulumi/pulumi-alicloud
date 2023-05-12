@@ -25,10 +25,11 @@ func GetTransitRouterRouteEntries(ctx *pulumi.Context, args *GetTransitRouterRou
 // A collection of arguments for invoking getTransitRouterRouteEntries.
 type GetTransitRouterRouteEntriesArgs struct {
 	// A list of CEN Transit Router Route Entry IDs.
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
-	OutputFile *string  `pulumi:"outputFile"`
-	Status     *string  `pulumi:"status"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
+	Status     *string `pulumi:"status"`
 	// A list of ID of the cen transit router route entry.
 	TransitRouterRouteEntryIds []string `pulumi:"transitRouterRouteEntryIds"`
 	// A list of name of the cen transit router route entry.
@@ -75,10 +76,11 @@ func GetTransitRouterRouteEntriesOutput(ctx *pulumi.Context, args GetTransitRout
 // A collection of arguments for invoking getTransitRouterRouteEntries.
 type GetTransitRouterRouteEntriesOutputArgs struct {
 	// A list of CEN Transit Router Route Entry IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	NameRegex  pulumi.StringPtrInput   `pulumi:"nameRegex"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
-	Status     pulumi.StringPtrInput   `pulumi:"status"`
+	Ids       pulumi.StringArrayInput `pulumi:"ids"`
+	NameRegex pulumi.StringPtrInput   `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	Status     pulumi.StringPtrInput `pulumi:"status"`
 	// A list of ID of the cen transit router route entry.
 	TransitRouterRouteEntryIds pulumi.StringArrayInput `pulumi:"transitRouterRouteEntryIds"`
 	// A list of name of the cen transit router route entry.

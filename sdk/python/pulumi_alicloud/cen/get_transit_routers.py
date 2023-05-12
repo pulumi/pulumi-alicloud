@@ -168,6 +168,7 @@ def get_transit_routers(cen_id: Optional[str] = None,
     :param str cen_id: The ID of the CEN instance.
     :param Sequence[str] ids: A list of resource id. The element value is same as <cen_id>:<transit_router_id>`.
     :param str name_regex: A regex string to filter CEN Transit Routers by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
     :param str transit_router_id: The ID of the transit router.
     :param Sequence[str] transit_router_ids: A list of ID of the transit router.
@@ -224,6 +225,7 @@ def get_transit_routers_output(cen_id: Optional[pulumi.Input[str]] = None,
     :param str cen_id: The ID of the CEN instance.
     :param Sequence[str] ids: A list of resource id. The element value is same as <cen_id>:<transit_router_id>`.
     :param str name_regex: A regex string to filter CEN Transit Routers by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
     :param str transit_router_id: The ID of the transit router.
     :param Sequence[str] transit_router_ids: A list of ID of the transit router.

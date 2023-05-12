@@ -16,60 +16,87 @@ public final class GetHoneypotProbesProbe {
      * @return ARP spoofing detection.-**true**: Enable-**false**: Disabled. Available when `enable_details` is on.
      * 
      */
-    private Boolean arp;
+    private final Boolean arp;
     /**
      * @return The ID of the management node.
      * 
      */
-    private String controlNodeId;
+    private final String controlNodeId;
     /**
      * @return Probe name
      * 
      */
-    private String displayName;
-    private List<GetHoneypotProbesProbeHoneypotBindList> honeypotBindLists;
+    private final String displayName;
+    private final List<GetHoneypotProbesProbeHoneypotBindList> honeypotBindLists;
     /**
      * @return The first ID of the resource
      * 
      */
-    private String honeypotProbeId;
+    private final String honeypotProbeId;
     /**
      * @return The ID of the honeypot probe. Its value is the same as `honeypot_probe_id`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Ping scan detection. Value:**true**: Enable **false**: Disabled. Available when `enable_details` is on.
      * 
      */
-    private Boolean ping;
+    private final Boolean ping;
     /**
      * @return Probe type
      * 
      */
-    private String probeType;
+    private final String probeType;
     /**
      * @return Listen to the IP address list. Available when `enable_details` is on.
      * 
      */
-    private List<String> serviceIpLists;
+    private final List<String> serviceIpLists;
     /**
      * @return The status of the resource.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return Machine uuid. Has a value when the type is `host_probe`.
      * 
      */
-    private String uuid;
+    private final String uuid;
     /**
      * @return The ID of the VPC. Has a value when the type is `vpc_black_hole_probe`.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
 
-    private GetHoneypotProbesProbe() {}
+    @CustomType.Constructor
+    private GetHoneypotProbesProbe(
+        @CustomType.Parameter("arp") Boolean arp,
+        @CustomType.Parameter("controlNodeId") String controlNodeId,
+        @CustomType.Parameter("displayName") String displayName,
+        @CustomType.Parameter("honeypotBindLists") List<GetHoneypotProbesProbeHoneypotBindList> honeypotBindLists,
+        @CustomType.Parameter("honeypotProbeId") String honeypotProbeId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ping") Boolean ping,
+        @CustomType.Parameter("probeType") String probeType,
+        @CustomType.Parameter("serviceIpLists") List<String> serviceIpLists,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("uuid") String uuid,
+        @CustomType.Parameter("vpcId") String vpcId) {
+        this.arp = arp;
+        this.controlNodeId = controlNodeId;
+        this.displayName = displayName;
+        this.honeypotBindLists = honeypotBindLists;
+        this.honeypotProbeId = honeypotProbeId;
+        this.id = id;
+        this.ping = ping;
+        this.probeType = probeType;
+        this.serviceIpLists = serviceIpLists;
+        this.status = status;
+        this.uuid = uuid;
+        this.vpcId = vpcId;
+    }
+
     /**
      * @return ARP spoofing detection.-**true**: Enable-**false**: Disabled. Available when `enable_details` is on.
      * 
@@ -158,7 +185,7 @@ public final class GetHoneypotProbesProbe {
     public static Builder builder(GetHoneypotProbesProbe defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean arp;
         private String controlNodeId;
@@ -172,7 +199,11 @@ public final class GetHoneypotProbesProbe {
         private String status;
         private String uuid;
         private String vpcId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetHoneypotProbesProbe defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arp = defaults.arp;
@@ -189,22 +220,18 @@ public final class GetHoneypotProbesProbe {
     	      this.vpcId = defaults.vpcId;
         }
 
-        @CustomType.Setter
         public Builder arp(Boolean arp) {
             this.arp = Objects.requireNonNull(arp);
             return this;
         }
-        @CustomType.Setter
         public Builder controlNodeId(String controlNodeId) {
             this.controlNodeId = Objects.requireNonNull(controlNodeId);
             return this;
         }
-        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
-        @CustomType.Setter
         public Builder honeypotBindLists(List<GetHoneypotProbesProbeHoneypotBindList> honeypotBindLists) {
             this.honeypotBindLists = Objects.requireNonNull(honeypotBindLists);
             return this;
@@ -212,27 +239,22 @@ public final class GetHoneypotProbesProbe {
         public Builder honeypotBindLists(GetHoneypotProbesProbeHoneypotBindList... honeypotBindLists) {
             return honeypotBindLists(List.of(honeypotBindLists));
         }
-        @CustomType.Setter
         public Builder honeypotProbeId(String honeypotProbeId) {
             this.honeypotProbeId = Objects.requireNonNull(honeypotProbeId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ping(Boolean ping) {
             this.ping = Objects.requireNonNull(ping);
             return this;
         }
-        @CustomType.Setter
         public Builder probeType(String probeType) {
             this.probeType = Objects.requireNonNull(probeType);
             return this;
         }
-        @CustomType.Setter
         public Builder serviceIpLists(List<String> serviceIpLists) {
             this.serviceIpLists = Objects.requireNonNull(serviceIpLists);
             return this;
@@ -240,36 +262,19 @@ public final class GetHoneypotProbesProbe {
         public Builder serviceIpLists(String... serviceIpLists) {
             return serviceIpLists(List.of(serviceIpLists));
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder uuid(String uuid) {
             this.uuid = Objects.requireNonNull(uuid);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }
-        public GetHoneypotProbesProbe build() {
-            final var o = new GetHoneypotProbesProbe();
-            o.arp = arp;
-            o.controlNodeId = controlNodeId;
-            o.displayName = displayName;
-            o.honeypotBindLists = honeypotBindLists;
-            o.honeypotProbeId = honeypotProbeId;
-            o.id = id;
-            o.ping = ping;
-            o.probeType = probeType;
-            o.serviceIpLists = serviceIpLists;
-            o.status = status;
-            o.uuid = uuid;
-            o.vpcId = vpcId;
-            return o;
+        }        public GetHoneypotProbesProbe build() {
+            return new GetHoneypotProbesProbe(arp, controlNodeId, displayName, honeypotBindLists, honeypotProbeId, id, ping, probeType, serviceIpLists, status, uuid, vpcId);
         }
     }
 }

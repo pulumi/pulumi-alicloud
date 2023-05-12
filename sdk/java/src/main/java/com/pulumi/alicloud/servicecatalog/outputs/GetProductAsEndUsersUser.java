@@ -14,49 +14,70 @@ public final class GetProductAsEndUsersUser {
      * @return Product creation time.According to ISO8601 standard, UTC time is used in the format: YYYY-MM-DDThh:mm:ssZ.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return Product description.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return Whether there is a default Startup option. Value:-true: There is a default Startup option, and there is no need to fill in the portfolio when starting the product or updating the instance.-false: there is no default Startup option. You must fill in the portfolio when starting the product or updating the instance. &gt; If the product is added to only one product portfolio, there will be a default Startup option. If the product is added to multiple product combinations, there will be multiple startup options at the same time, but there is no default Startup option at this time.
      * 
      */
-    private Boolean hasDefaultLaunchOption;
+    private final Boolean hasDefaultLaunchOption;
     /**
      * @return ID of product, Its value is the same as `product_id`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Product ARN.
      * 
      */
-    private String productArn;
+    private final String productArn;
     /**
      * @return Product ID.
      * 
      */
-    private String productId;
+    private final String productId;
     /**
      * @return Product name.
      * 
      */
-    private String productName;
+    private final String productName;
     /**
      * @return Type of product.The value is Ros, which indicates the resource orchestration service (ROS).
      * 
      */
-    private String productType;
+    private final String productType;
     /**
      * @return Product provider.
      * 
      */
-    private String providerName;
+    private final String providerName;
 
-    private GetProductAsEndUsersUser() {}
+    @CustomType.Constructor
+    private GetProductAsEndUsersUser(
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("hasDefaultLaunchOption") Boolean hasDefaultLaunchOption,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("productArn") String productArn,
+        @CustomType.Parameter("productId") String productId,
+        @CustomType.Parameter("productName") String productName,
+        @CustomType.Parameter("productType") String productType,
+        @CustomType.Parameter("providerName") String providerName) {
+        this.createTime = createTime;
+        this.description = description;
+        this.hasDefaultLaunchOption = hasDefaultLaunchOption;
+        this.id = id;
+        this.productArn = productArn;
+        this.productId = productId;
+        this.productName = productName;
+        this.productType = productType;
+        this.providerName = providerName;
+    }
+
     /**
      * @return Product creation time.According to ISO8601 standard, UTC time is used in the format: YYYY-MM-DDThh:mm:ssZ.
      * 
@@ -128,7 +149,7 @@ public final class GetProductAsEndUsersUser {
     public static Builder builder(GetProductAsEndUsersUser defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String createTime;
         private String description;
@@ -139,7 +160,11 @@ public final class GetProductAsEndUsersUser {
         private String productName;
         private String productType;
         private String providerName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetProductAsEndUsersUser defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -153,63 +178,43 @@ public final class GetProductAsEndUsersUser {
     	      this.providerName = defaults.providerName;
         }
 
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder hasDefaultLaunchOption(Boolean hasDefaultLaunchOption) {
             this.hasDefaultLaunchOption = Objects.requireNonNull(hasDefaultLaunchOption);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder productArn(String productArn) {
             this.productArn = Objects.requireNonNull(productArn);
             return this;
         }
-        @CustomType.Setter
         public Builder productId(String productId) {
             this.productId = Objects.requireNonNull(productId);
             return this;
         }
-        @CustomType.Setter
         public Builder productName(String productName) {
             this.productName = Objects.requireNonNull(productName);
             return this;
         }
-        @CustomType.Setter
         public Builder productType(String productType) {
             this.productType = Objects.requireNonNull(productType);
             return this;
         }
-        @CustomType.Setter
         public Builder providerName(String providerName) {
             this.providerName = Objects.requireNonNull(providerName);
             return this;
-        }
-        public GetProductAsEndUsersUser build() {
-            final var o = new GetProductAsEndUsersUser();
-            o.createTime = createTime;
-            o.description = description;
-            o.hasDefaultLaunchOption = hasDefaultLaunchOption;
-            o.id = id;
-            o.productArn = productArn;
-            o.productId = productId;
-            o.productName = productName;
-            o.productType = productType;
-            o.providerName = providerName;
-            return o;
+        }        public GetProductAsEndUsersUser build() {
+            return new GetProductAsEndUsersUser(createTime, description, hasDefaultLaunchOption, id, productArn, productId, productName, productType, providerName);
         }
     }
 }

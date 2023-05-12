@@ -119,6 +119,9 @@ namespace Pulumi.AliCloud.KVStore
         [Input("instanceChargeType")]
         public string? InstanceChargeType { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi up`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -154,6 +157,9 @@ namespace Pulumi.AliCloud.KVStore
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi up`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

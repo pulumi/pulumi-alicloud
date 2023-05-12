@@ -14,19 +14,28 @@ public final class GetNamespacesNamespace {
      * @return Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
      * 
      */
-    private Boolean autoCreate;
+    private final Boolean autoCreate;
     /**
      * @return `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
      * 
      */
-    private String defaultVisibility;
+    private final String defaultVisibility;
     /**
      * @return Name of Container Registry namespace.
      * 
      */
-    private String name;
+    private final String name;
 
-    private GetNamespacesNamespace() {}
+    @CustomType.Constructor
+    private GetNamespacesNamespace(
+        @CustomType.Parameter("autoCreate") Boolean autoCreate,
+        @CustomType.Parameter("defaultVisibility") String defaultVisibility,
+        @CustomType.Parameter("name") String name) {
+        this.autoCreate = autoCreate;
+        this.defaultVisibility = defaultVisibility;
+        this.name = name;
+    }
+
     /**
      * @return Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
      * 
@@ -56,12 +65,16 @@ public final class GetNamespacesNamespace {
     public static Builder builder(GetNamespacesNamespace defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean autoCreate;
         private String defaultVisibility;
         private String name;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetNamespacesNamespace defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoCreate = defaults.autoCreate;
@@ -69,27 +82,19 @@ public final class GetNamespacesNamespace {
     	      this.name = defaults.name;
         }
 
-        @CustomType.Setter
         public Builder autoCreate(Boolean autoCreate) {
             this.autoCreate = Objects.requireNonNull(autoCreate);
             return this;
         }
-        @CustomType.Setter
         public Builder defaultVisibility(String defaultVisibility) {
             this.defaultVisibility = Objects.requireNonNull(defaultVisibility);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }
-        public GetNamespacesNamespace build() {
-            final var o = new GetNamespacesNamespace();
-            o.autoCreate = autoCreate;
-            o.defaultVisibility = defaultVisibility;
-            o.name = name;
-            return o;
+        }        public GetNamespacesNamespace build() {
+            return new GetNamespacesNamespace(autoCreate, defaultVisibility, name);
         }
     }
 }

@@ -17,114 +17,161 @@ public final class GetCommonBandwidthPackagesPackage {
      * @return The peak bandwidth of the Internet Shared Bandwidth instance.
      * 
      */
-    private String bandwidth;
+    private final String bandwidth;
     /**
      * @return The resource ID of bandwidth package.
      * 
      */
-    private String bandwidthPackageId;
+    private final String bandwidthPackageId;
     /**
      * @return The name of bandwidth package.
      * 
      */
-    private String bandwidthPackageName;
+    private final String bandwidthPackageName;
     /**
      * @return The business status of the Common Bandwidth Package instance.
      * 
      */
-    private String businessStatus;
+    private final String businessStatus;
     /**
      * @return The deletion protection of bandwidth package.
      * 
      */
-    private Boolean deletionProtection;
+    private final Boolean deletionProtection;
     /**
      * @return The description of the Common Bandwidth Package instance.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The expired time of bandwidth package.
      * 
      */
-    private String expiredTime;
+    private final String expiredTime;
     /**
      * @return Is has reservation data.
      * 
      */
-    private Boolean hasReservationData;
+    private final Boolean hasReservationData;
     /**
      * @return ID of the Common Bandwidth Package.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The internet charge type of bandwidth package.
      * 
      */
-    private String internetChargeType;
+    private final String internetChargeType;
     /**
      * @return ISP of the Common Bandwidth Package.
      * 
      */
-    private String isp;
+    private final String isp;
     /**
      * @return Name of the Common Bandwidth Package.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The payment type of bandwidth package.
      * 
      */
-    private String paymentType;
+    private final String paymentType;
     /**
      * @return Public ip addresses that in the Common Bandwidth Pakcage.
      * 
      */
-    private List<GetCommonBandwidthPackagesPackagePublicIpAddress> publicIpAddresses;
+    private final List<GetCommonBandwidthPackagesPackagePublicIpAddress> publicIpAddresses;
     /**
      * @return The ratio of bandwidth package.
      * 
      */
-    private Integer ratio;
+    private final Integer ratio;
     /**
      * @return The active time of reservation.
      * 
      */
-    private String reservationActiveTime;
+    private final String reservationActiveTime;
     /**
      * @return The bandwidth of reservation.
      * 
      */
-    private String reservationBandwidth;
+    private final String reservationBandwidth;
     /**
      * @return The charge type of reservation internet.
      * 
      */
-    private String reservationInternetChargeType;
+    private final String reservationInternetChargeType;
     /**
      * @return The type of reservation order.
      * 
      */
-    private String reservationOrderType;
+    private final String reservationOrderType;
     /**
      * @return The Id of resource group which the common bandwidth package belongs.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return The service managed.
      * 
      */
-    private Integer serviceManaged;
+    private final Integer serviceManaged;
     /**
      * @return The status of bandwidth package. Valid values: `Available` and `Pending`.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetCommonBandwidthPackagesPackage() {}
+    @CustomType.Constructor
+    private GetCommonBandwidthPackagesPackage(
+        @CustomType.Parameter("bandwidth") String bandwidth,
+        @CustomType.Parameter("bandwidthPackageId") String bandwidthPackageId,
+        @CustomType.Parameter("bandwidthPackageName") String bandwidthPackageName,
+        @CustomType.Parameter("businessStatus") String businessStatus,
+        @CustomType.Parameter("deletionProtection") Boolean deletionProtection,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("expiredTime") String expiredTime,
+        @CustomType.Parameter("hasReservationData") Boolean hasReservationData,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("internetChargeType") String internetChargeType,
+        @CustomType.Parameter("isp") String isp,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("paymentType") String paymentType,
+        @CustomType.Parameter("publicIpAddresses") List<GetCommonBandwidthPackagesPackagePublicIpAddress> publicIpAddresses,
+        @CustomType.Parameter("ratio") Integer ratio,
+        @CustomType.Parameter("reservationActiveTime") String reservationActiveTime,
+        @CustomType.Parameter("reservationBandwidth") String reservationBandwidth,
+        @CustomType.Parameter("reservationInternetChargeType") String reservationInternetChargeType,
+        @CustomType.Parameter("reservationOrderType") String reservationOrderType,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("serviceManaged") Integer serviceManaged,
+        @CustomType.Parameter("status") String status) {
+        this.bandwidth = bandwidth;
+        this.bandwidthPackageId = bandwidthPackageId;
+        this.bandwidthPackageName = bandwidthPackageName;
+        this.businessStatus = businessStatus;
+        this.deletionProtection = deletionProtection;
+        this.description = description;
+        this.expiredTime = expiredTime;
+        this.hasReservationData = hasReservationData;
+        this.id = id;
+        this.internetChargeType = internetChargeType;
+        this.isp = isp;
+        this.name = name;
+        this.paymentType = paymentType;
+        this.publicIpAddresses = publicIpAddresses;
+        this.ratio = ratio;
+        this.reservationActiveTime = reservationActiveTime;
+        this.reservationBandwidth = reservationBandwidth;
+        this.reservationInternetChargeType = reservationInternetChargeType;
+        this.reservationOrderType = reservationOrderType;
+        this.resourceGroupId = resourceGroupId;
+        this.serviceManaged = serviceManaged;
+        this.status = status;
+    }
+
     /**
      * @return The peak bandwidth of the Internet Shared Bandwidth instance.
      * 
@@ -287,7 +334,7 @@ public final class GetCommonBandwidthPackagesPackage {
     public static Builder builder(GetCommonBandwidthPackagesPackage defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String bandwidth;
         private String bandwidthPackageId;
@@ -311,7 +358,11 @@ public final class GetCommonBandwidthPackagesPackage {
         private String resourceGroupId;
         private Integer serviceManaged;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetCommonBandwidthPackagesPackage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidth = defaults.bandwidth;
@@ -338,72 +389,58 @@ public final class GetCommonBandwidthPackagesPackage {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder bandwidth(String bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
-        @CustomType.Setter
         public Builder bandwidthPackageId(String bandwidthPackageId) {
             this.bandwidthPackageId = Objects.requireNonNull(bandwidthPackageId);
             return this;
         }
-        @CustomType.Setter
         public Builder bandwidthPackageName(String bandwidthPackageName) {
             this.bandwidthPackageName = Objects.requireNonNull(bandwidthPackageName);
             return this;
         }
-        @CustomType.Setter
         public Builder businessStatus(String businessStatus) {
             this.businessStatus = Objects.requireNonNull(businessStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder deletionProtection(Boolean deletionProtection) {
             this.deletionProtection = Objects.requireNonNull(deletionProtection);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
-        @CustomType.Setter
         public Builder hasReservationData(Boolean hasReservationData) {
             this.hasReservationData = Objects.requireNonNull(hasReservationData);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder internetChargeType(String internetChargeType) {
             this.internetChargeType = Objects.requireNonNull(internetChargeType);
             return this;
         }
-        @CustomType.Setter
         public Builder isp(String isp) {
             this.isp = Objects.requireNonNull(isp);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
-        @CustomType.Setter
         public Builder publicIpAddresses(List<GetCommonBandwidthPackagesPackagePublicIpAddress> publicIpAddresses) {
             this.publicIpAddresses = Objects.requireNonNull(publicIpAddresses);
             return this;
@@ -411,71 +448,39 @@ public final class GetCommonBandwidthPackagesPackage {
         public Builder publicIpAddresses(GetCommonBandwidthPackagesPackagePublicIpAddress... publicIpAddresses) {
             return publicIpAddresses(List.of(publicIpAddresses));
         }
-        @CustomType.Setter
         public Builder ratio(Integer ratio) {
             this.ratio = Objects.requireNonNull(ratio);
             return this;
         }
-        @CustomType.Setter
         public Builder reservationActiveTime(String reservationActiveTime) {
             this.reservationActiveTime = Objects.requireNonNull(reservationActiveTime);
             return this;
         }
-        @CustomType.Setter
         public Builder reservationBandwidth(String reservationBandwidth) {
             this.reservationBandwidth = Objects.requireNonNull(reservationBandwidth);
             return this;
         }
-        @CustomType.Setter
         public Builder reservationInternetChargeType(String reservationInternetChargeType) {
             this.reservationInternetChargeType = Objects.requireNonNull(reservationInternetChargeType);
             return this;
         }
-        @CustomType.Setter
         public Builder reservationOrderType(String reservationOrderType) {
             this.reservationOrderType = Objects.requireNonNull(reservationOrderType);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder serviceManaged(Integer serviceManaged) {
             this.serviceManaged = Objects.requireNonNull(serviceManaged);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetCommonBandwidthPackagesPackage build() {
-            final var o = new GetCommonBandwidthPackagesPackage();
-            o.bandwidth = bandwidth;
-            o.bandwidthPackageId = bandwidthPackageId;
-            o.bandwidthPackageName = bandwidthPackageName;
-            o.businessStatus = businessStatus;
-            o.deletionProtection = deletionProtection;
-            o.description = description;
-            o.expiredTime = expiredTime;
-            o.hasReservationData = hasReservationData;
-            o.id = id;
-            o.internetChargeType = internetChargeType;
-            o.isp = isp;
-            o.name = name;
-            o.paymentType = paymentType;
-            o.publicIpAddresses = publicIpAddresses;
-            o.ratio = ratio;
-            o.reservationActiveTime = reservationActiveTime;
-            o.reservationBandwidth = reservationBandwidth;
-            o.reservationInternetChargeType = reservationInternetChargeType;
-            o.reservationOrderType = reservationOrderType;
-            o.resourceGroupId = resourceGroupId;
-            o.serviceManaged = serviceManaged;
-            o.status = status;
-            return o;
+        }        public GetCommonBandwidthPackagesPackage build() {
+            return new GetCommonBandwidthPackagesPackage(bandwidth, bandwidthPackageId, bandwidthPackageName, businessStatus, deletionProtection, description, expiredTime, hasReservationData, id, internetChargeType, isp, name, paymentType, publicIpAddresses, ratio, reservationActiveTime, reservationBandwidth, reservationInternetChargeType, reservationOrderType, resourceGroupId, serviceManaged, status);
         }
     }
 }

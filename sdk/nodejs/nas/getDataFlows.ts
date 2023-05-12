@@ -57,6 +57,9 @@ export interface GetDataFlowsArgs {
      * A list of Data Flow IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the Data flow.
@@ -122,6 +125,9 @@ export interface GetDataFlowsOutputArgs {
      * A list of Data Flow IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the Data flow.

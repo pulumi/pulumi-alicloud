@@ -150,6 +150,7 @@ def get_executions(enable_details: Optional[bool] = None,
     :param str flow_name: The name of the flow.
     :param Sequence[str] ids: A list of Execution IDs. The value formats as `<flow_name>:<execution_name>`.
     :param str name_regex: A regex string to filter results by Execution name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource.
     """
     __args__ = dict()
@@ -208,6 +209,7 @@ def get_executions_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
     :param str flow_name: The name of the flow.
     :param Sequence[str] ids: A list of Execution IDs. The value formats as `<flow_name>:<execution_name>`.
     :param str name_regex: A regex string to filter results by Execution name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource.
     """
     ...

@@ -15,14 +15,21 @@ public final class HybridMonitorSlsTaskAttachLabel {
      * @return The tag key of the metric.
      * 
      */
-    private @Nullable String name;
+    private final @Nullable String name;
     /**
      * @return The value of the key that is used to filter logs imported from Log Service.
      * 
      */
-    private @Nullable String value;
+    private final @Nullable String value;
 
-    private HybridMonitorSlsTaskAttachLabel() {}
+    @CustomType.Constructor
+    private HybridMonitorSlsTaskAttachLabel(
+        @CustomType.Parameter("name") @Nullable String name,
+        @CustomType.Parameter("value") @Nullable String value) {
+        this.name = name;
+        this.value = value;
+    }
+
     /**
      * @return The tag key of the metric.
      * 
@@ -45,32 +52,30 @@ public final class HybridMonitorSlsTaskAttachLabel {
     public static Builder builder(HybridMonitorSlsTaskAttachLabel defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String name;
         private @Nullable String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(HybridMonitorSlsTaskAttachLabel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
-        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }
-        public HybridMonitorSlsTaskAttachLabel build() {
-            final var o = new HybridMonitorSlsTaskAttachLabel();
-            o.name = name;
-            o.value = value;
-            return o;
+        }        public HybridMonitorSlsTaskAttachLabel build() {
+            return new HybridMonitorSlsTaskAttachLabel(name, value);
         }
     }
 }

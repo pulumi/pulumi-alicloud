@@ -16,26 +16,37 @@ public final class RdsCloneDbInstanceServerlessConfig {
      * - false: disables the feature. This is the default value.
      * 
      */
-    private Boolean autoPause;
+    private final Boolean autoPause;
     /**
      * @return The maximum number of RDS Capacity Units (RCUs). Valid values: 0.5 to 8. The value of this parameter must be greater than or equal to the value of the `min_capacity` parameter.
      * 
      */
-    private Double maxCapacity;
+    private final Double maxCapacity;
     /**
      * @return The minimum number of RCUs. Valid values: 0.5 to 8. The value of this parameter must be less than or equal to the value of the `max_capacity` parameter.
      * 
      */
-    private Double minCapacity;
+    private final Double minCapacity;
     /**
      * @return Specifies whether to enable the forced scaling feature for the serverless instance. If you set this parameter to true, a transient connection that lasts approximately 1 minute occurs during the forced scaling process. Process with caution. The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance. Valid values:
      * - true: enables the feature.
      * - false: disables the feature. This is the default value.
      * 
      */
-    private Boolean switchForce;
+    private final Boolean switchForce;
 
-    private RdsCloneDbInstanceServerlessConfig() {}
+    @CustomType.Constructor
+    private RdsCloneDbInstanceServerlessConfig(
+        @CustomType.Parameter("autoPause") Boolean autoPause,
+        @CustomType.Parameter("maxCapacity") Double maxCapacity,
+        @CustomType.Parameter("minCapacity") Double minCapacity,
+        @CustomType.Parameter("switchForce") Boolean switchForce) {
+        this.autoPause = autoPause;
+        this.maxCapacity = maxCapacity;
+        this.minCapacity = minCapacity;
+        this.switchForce = switchForce;
+    }
+
     /**
      * @return Specifies whether to enable the smart startup and stop feature for the serverless instance. After the smart startup and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is stopped. After a connection is established to the instance, the instance is automatically woken up. Valid values:
      * - true: enables the feature.
@@ -76,13 +87,17 @@ public final class RdsCloneDbInstanceServerlessConfig {
     public static Builder builder(RdsCloneDbInstanceServerlessConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean autoPause;
         private Double maxCapacity;
         private Double minCapacity;
         private Boolean switchForce;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(RdsCloneDbInstanceServerlessConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoPause = defaults.autoPause;
@@ -91,33 +106,23 @@ public final class RdsCloneDbInstanceServerlessConfig {
     	      this.switchForce = defaults.switchForce;
         }
 
-        @CustomType.Setter
         public Builder autoPause(Boolean autoPause) {
             this.autoPause = Objects.requireNonNull(autoPause);
             return this;
         }
-        @CustomType.Setter
         public Builder maxCapacity(Double maxCapacity) {
             this.maxCapacity = Objects.requireNonNull(maxCapacity);
             return this;
         }
-        @CustomType.Setter
         public Builder minCapacity(Double minCapacity) {
             this.minCapacity = Objects.requireNonNull(minCapacity);
             return this;
         }
-        @CustomType.Setter
         public Builder switchForce(Boolean switchForce) {
             this.switchForce = Objects.requireNonNull(switchForce);
             return this;
-        }
-        public RdsCloneDbInstanceServerlessConfig build() {
-            final var o = new RdsCloneDbInstanceServerlessConfig();
-            o.autoPause = autoPause;
-            o.maxCapacity = maxCapacity;
-            o.minCapacity = minCapacity;
-            o.switchForce = switchForce;
-            return o;
+        }        public RdsCloneDbInstanceServerlessConfig build() {
+            return new RdsCloneDbInstanceServerlessConfig(autoPause, maxCapacity, minCapacity, switchForce);
         }
     }
 }

@@ -146,6 +146,7 @@ def get_instances(availability_zone: Optional[str] = None,
     :param str availability_zone: Instance availability zone.
     :param Sequence[str] ids: The ids list of HBase instances
     :param str name_regex: A regex string to apply to the instance name.
+    :param str output_file: The name of file that can save the collection of instances after running `pulumi preview`.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
@@ -195,6 +196,7 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
     :param str availability_zone: Instance availability zone.
     :param Sequence[str] ids: The ids list of HBase instances
     :param str name_regex: A regex string to apply to the instance name.
+    :param str output_file: The name of file that can save the collection of instances after running `pulumi preview`.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     ...

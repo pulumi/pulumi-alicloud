@@ -13,29 +13,42 @@ public final class GetUsersUser {
      * @return The email of the user email.
      * 
      */
-    private String email;
+    private final String email;
     /**
      * @return The Username. The custom setting is composed of lowercase letters, numbers and underscores, and the length is 3~24 characters.
      * 
      */
-    private String endUserId;
+    private final String endUserId;
     /**
      * @return The ID of the user id.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The phone of the mobile phone number.
      * 
      */
-    private String phone;
+    private final String phone;
     /**
      * @return The status of the resource.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetUsersUser() {}
+    @CustomType.Constructor
+    private GetUsersUser(
+        @CustomType.Parameter("email") String email,
+        @CustomType.Parameter("endUserId") String endUserId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("phone") String phone,
+        @CustomType.Parameter("status") String status) {
+        this.email = email;
+        this.endUserId = endUserId;
+        this.id = id;
+        this.phone = phone;
+        this.status = status;
+    }
+
     /**
      * @return The email of the user email.
      * 
@@ -79,14 +92,18 @@ public final class GetUsersUser {
     public static Builder builder(GetUsersUser defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String email;
         private String endUserId;
         private String id;
         private String phone;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetUsersUser defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.email = defaults.email;
@@ -96,39 +113,27 @@ public final class GetUsersUser {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder email(String email) {
             this.email = Objects.requireNonNull(email);
             return this;
         }
-        @CustomType.Setter
         public Builder endUserId(String endUserId) {
             this.endUserId = Objects.requireNonNull(endUserId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder phone(String phone) {
             this.phone = Objects.requireNonNull(phone);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetUsersUser build() {
-            final var o = new GetUsersUser();
-            o.email = email;
-            o.endUserId = endUserId;
-            o.id = id;
-            o.phone = phone;
-            o.status = status;
-            return o;
+        }        public GetUsersUser build() {
+            return new GetUsersUser(email, endUserId, id, phone, status);
         }
     }
 }

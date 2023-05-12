@@ -14,6 +14,10 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.84.0`. Please use new resource alicloud_alidns_domain_group.
+ * 
+ * Provides a DNS Group resource.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;

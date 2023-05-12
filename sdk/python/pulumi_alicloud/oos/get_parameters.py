@@ -196,6 +196,7 @@ def get_parameters(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Parameter IDs. Its element value is same as Parameter Name.
     :param str name_regex: A regex string to filter results by Parameter name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str parameter_name: The name of the common parameter.
     :param str resource_group_id: The ID of the Resource Group.
     :param Mapping[str, Any] tags: The tag of the resource.
@@ -275,6 +276,7 @@ def get_parameters_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Parameter IDs. Its element value is same as Parameter Name.
     :param str name_regex: A regex string to filter results by Parameter name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str parameter_name: The name of the common parameter.
     :param str resource_group_id: The ID of the Resource Group.
     :param Mapping[str, Any] tags: The tag of the resource.

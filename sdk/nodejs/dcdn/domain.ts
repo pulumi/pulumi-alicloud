@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * DCDN Domain can be imported using the id or DCDN Domain name, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:dcdn/domain:Domain example example.com
+ *  $ pulumi import alicloud:dcdn/domain:Domain example <id>
  * ```
  */
 export class Domain extends pulumi.CustomResource {
@@ -133,6 +133,10 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly status!: pulumi.Output<string | undefined>;
     /**
+     * A mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * The top-level domain name.
      */
     public readonly topLevelDomain!: pulumi.Output<string | undefined>;
@@ -164,6 +168,7 @@ export class Domain extends pulumi.CustomResource {
             resourceInputs["sslProtocol"] = state ? state.sslProtocol : undefined;
             resourceInputs["sslPub"] = state ? state.sslPub : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["topLevelDomain"] = state ? state.topLevelDomain : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
@@ -186,6 +191,7 @@ export class Domain extends pulumi.CustomResource {
             resourceInputs["sslProtocol"] = args ? args.sslProtocol : undefined;
             resourceInputs["sslPub"] = args ? args.sslPub : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["topLevelDomain"] = args ? args.topLevelDomain : undefined;
             resourceInputs["cname"] = undefined /*out*/;
         }
@@ -258,6 +264,10 @@ export interface DomainState {
      */
     status?: pulumi.Input<string>;
     /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
      * The top-level domain name.
      */
     topLevelDomain?: pulumi.Input<string>;
@@ -322,6 +332,10 @@ export interface DomainArgs {
      * The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The top-level domain name.
      */

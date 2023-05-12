@@ -10,9 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetForwardingRulesForwardingRuleRuleConditionPathConfig {
-    private List<String> values;
+    private final List<String> values;
 
-    private GetForwardingRulesForwardingRuleRuleConditionPathConfig() {}
+    @CustomType.Constructor
+    private GetForwardingRulesForwardingRuleRuleConditionPathConfig(@CustomType.Parameter("values") List<String> values) {
+        this.values = values;
+    }
+
     public List<String> values() {
         return this.values;
     }
@@ -24,27 +28,27 @@ public final class GetForwardingRulesForwardingRuleRuleConditionPathConfig {
     public static Builder builder(GetForwardingRulesForwardingRuleRuleConditionPathConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<String> values;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetForwardingRulesForwardingRuleRuleConditionPathConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.values = defaults.values;
         }
 
-        @CustomType.Setter
         public Builder values(List<String> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }
-        public GetForwardingRulesForwardingRuleRuleConditionPathConfig build() {
-            final var o = new GetForwardingRulesForwardingRuleRuleConditionPathConfig();
-            o.values = values;
-            return o;
+        }        public GetForwardingRulesForwardingRuleRuleConditionPathConfig build() {
+            return new GetForwardingRulesForwardingRuleRuleConditionPathConfig(values);
         }
     }
 }

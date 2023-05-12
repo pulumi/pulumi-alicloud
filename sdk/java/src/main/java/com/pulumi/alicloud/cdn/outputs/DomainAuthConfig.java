@@ -12,12 +12,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DomainAuthConfig {
-    private @Nullable String authType;
-    private @Nullable String masterKey;
-    private @Nullable String slaveKey;
-    private @Nullable Integer timeout;
+    private final @Nullable String authType;
+    private final @Nullable String masterKey;
+    private final @Nullable String slaveKey;
+    private final @Nullable Integer timeout;
 
-    private DomainAuthConfig() {}
+    @CustomType.Constructor
+    private DomainAuthConfig(
+        @CustomType.Parameter("authType") @Nullable String authType,
+        @CustomType.Parameter("masterKey") @Nullable String masterKey,
+        @CustomType.Parameter("slaveKey") @Nullable String slaveKey,
+        @CustomType.Parameter("timeout") @Nullable Integer timeout) {
+        this.authType = authType;
+        this.masterKey = masterKey;
+        this.slaveKey = slaveKey;
+        this.timeout = timeout;
+    }
+
     public Optional<String> authType() {
         return Optional.ofNullable(this.authType);
     }
@@ -38,13 +49,17 @@ public final class DomainAuthConfig {
     public static Builder builder(DomainAuthConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String authType;
         private @Nullable String masterKey;
         private @Nullable String slaveKey;
         private @Nullable Integer timeout;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(DomainAuthConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authType = defaults.authType;
@@ -53,33 +68,23 @@ public final class DomainAuthConfig {
     	      this.timeout = defaults.timeout;
         }
 
-        @CustomType.Setter
         public Builder authType(@Nullable String authType) {
             this.authType = authType;
             return this;
         }
-        @CustomType.Setter
         public Builder masterKey(@Nullable String masterKey) {
             this.masterKey = masterKey;
             return this;
         }
-        @CustomType.Setter
         public Builder slaveKey(@Nullable String slaveKey) {
             this.slaveKey = slaveKey;
             return this;
         }
-        @CustomType.Setter
         public Builder timeout(@Nullable Integer timeout) {
             this.timeout = timeout;
             return this;
-        }
-        public DomainAuthConfig build() {
-            final var o = new DomainAuthConfig();
-            o.authType = authType;
-            o.masterKey = masterKey;
-            o.slaveKey = slaveKey;
-            o.timeout = timeout;
-            return o;
+        }        public DomainAuthConfig build() {
+            return new DomainAuthConfig(authType, masterKey, slaveKey, timeout);
         }
     }
 }

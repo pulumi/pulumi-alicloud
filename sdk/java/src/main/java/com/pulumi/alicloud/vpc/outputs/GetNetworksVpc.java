@@ -17,94 +17,133 @@ public final class GetNetworksVpc {
      * @return Filter results by a specific CIDR block. For example: &#34;172.16.0.0/12&#34;.
      * 
      */
-    private String cidrBlock;
+    private final String cidrBlock;
     /**
      * @return Time of creation.
      * 
      */
-    private String creationTime;
+    private final String creationTime;
     /**
      * @return Description of the VPC
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return ID of the VPC.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The IPv6 CIDR block of the VPC.
      * 
      */
-    private String ipv6CidrBlock;
+    private final String ipv6CidrBlock;
     /**
      * @return Indicate whether the VPC is the default one in the specified region.
      * 
      */
-    private Boolean isDefault;
+    private final Boolean isDefault;
     /**
      * @return ID of the region where the VPC is located.
      * 
      */
-    private String regionId;
+    private final String regionId;
     /**
      * @return The Id of resource group which VPC belongs.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return Route table ID of the VRouter.
      * 
      */
-    private String routeTableId;
+    private final String routeTableId;
     /**
      * @return The ID of the VRouter.
      * 
      */
-    private String routerId;
+    private final String routerId;
     /**
      * @return A list of secondary IPv4 CIDR blocks of the VPC.
      * 
      */
-    private List<String> secondaryCidrBlocks;
+    private final List<String> secondaryCidrBlocks;
     /**
      * @return Filter results by a specific status. Valid value are `Pending` and `Available`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
     /**
      * @return A list of user CIDRs.
      * 
      */
-    private List<String> userCidrs;
+    private final List<String> userCidrs;
     /**
      * @return ID of the VPC.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
     /**
      * @return The name of the VPC.
      * 
      */
-    private String vpcName;
+    private final String vpcName;
     /**
      * @return ID of the VRouter.
      * 
      */
-    private String vrouterId;
+    private final String vrouterId;
     /**
      * @return List of VSwitch IDs in the specified VPC
      * 
      */
-    private List<String> vswitchIds;
+    private final List<String> vswitchIds;
 
-    private GetNetworksVpc() {}
+    @CustomType.Constructor
+    private GetNetworksVpc(
+        @CustomType.Parameter("cidrBlock") String cidrBlock,
+        @CustomType.Parameter("creationTime") String creationTime,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ipv6CidrBlock") String ipv6CidrBlock,
+        @CustomType.Parameter("isDefault") Boolean isDefault,
+        @CustomType.Parameter("regionId") String regionId,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("routeTableId") String routeTableId,
+        @CustomType.Parameter("routerId") String routerId,
+        @CustomType.Parameter("secondaryCidrBlocks") List<String> secondaryCidrBlocks,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("tags") Map<String,Object> tags,
+        @CustomType.Parameter("userCidrs") List<String> userCidrs,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("vpcName") String vpcName,
+        @CustomType.Parameter("vrouterId") String vrouterId,
+        @CustomType.Parameter("vswitchIds") List<String> vswitchIds) {
+        this.cidrBlock = cidrBlock;
+        this.creationTime = creationTime;
+        this.description = description;
+        this.id = id;
+        this.ipv6CidrBlock = ipv6CidrBlock;
+        this.isDefault = isDefault;
+        this.regionId = regionId;
+        this.resourceGroupId = resourceGroupId;
+        this.routeTableId = routeTableId;
+        this.routerId = routerId;
+        this.secondaryCidrBlocks = secondaryCidrBlocks;
+        this.status = status;
+        this.tags = tags;
+        this.userCidrs = userCidrs;
+        this.vpcId = vpcId;
+        this.vpcName = vpcName;
+        this.vrouterId = vrouterId;
+        this.vswitchIds = vswitchIds;
+    }
+
     /**
      * @return Filter results by a specific CIDR block. For example: &#34;172.16.0.0/12&#34;.
      * 
@@ -239,7 +278,7 @@ public final class GetNetworksVpc {
     public static Builder builder(GetNetworksVpc defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String cidrBlock;
         private String creationTime;
@@ -259,7 +298,11 @@ public final class GetNetworksVpc {
         private String vpcName;
         private String vrouterId;
         private List<String> vswitchIds;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetNetworksVpc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrBlock = defaults.cidrBlock;
@@ -282,57 +325,46 @@ public final class GetNetworksVpc {
     	      this.vswitchIds = defaults.vswitchIds;
         }
 
-        @CustomType.Setter
         public Builder cidrBlock(String cidrBlock) {
             this.cidrBlock = Objects.requireNonNull(cidrBlock);
             return this;
         }
-        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ipv6CidrBlock(String ipv6CidrBlock) {
             this.ipv6CidrBlock = Objects.requireNonNull(ipv6CidrBlock);
             return this;
         }
-        @CustomType.Setter
         public Builder isDefault(Boolean isDefault) {
             this.isDefault = Objects.requireNonNull(isDefault);
             return this;
         }
-        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder routeTableId(String routeTableId) {
             this.routeTableId = Objects.requireNonNull(routeTableId);
             return this;
         }
-        @CustomType.Setter
         public Builder routerId(String routerId) {
             this.routerId = Objects.requireNonNull(routerId);
             return this;
         }
-        @CustomType.Setter
         public Builder secondaryCidrBlocks(List<String> secondaryCidrBlocks) {
             this.secondaryCidrBlocks = Objects.requireNonNull(secondaryCidrBlocks);
             return this;
@@ -340,17 +372,14 @@ public final class GetNetworksVpc {
         public Builder secondaryCidrBlocks(String... secondaryCidrBlocks) {
             return secondaryCidrBlocks(List.of(secondaryCidrBlocks));
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
-        @CustomType.Setter
         public Builder userCidrs(List<String> userCidrs) {
             this.userCidrs = Objects.requireNonNull(userCidrs);
             return this;
@@ -358,50 +387,26 @@ public final class GetNetworksVpc {
         public Builder userCidrs(String... userCidrs) {
             return userCidrs(List.of(userCidrs));
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcName(String vpcName) {
             this.vpcName = Objects.requireNonNull(vpcName);
             return this;
         }
-        @CustomType.Setter
         public Builder vrouterId(String vrouterId) {
             this.vrouterId = Objects.requireNonNull(vrouterId);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchIds(List<String> vswitchIds) {
             this.vswitchIds = Objects.requireNonNull(vswitchIds);
             return this;
         }
         public Builder vswitchIds(String... vswitchIds) {
             return vswitchIds(List.of(vswitchIds));
-        }
-        public GetNetworksVpc build() {
-            final var o = new GetNetworksVpc();
-            o.cidrBlock = cidrBlock;
-            o.creationTime = creationTime;
-            o.description = description;
-            o.id = id;
-            o.ipv6CidrBlock = ipv6CidrBlock;
-            o.isDefault = isDefault;
-            o.regionId = regionId;
-            o.resourceGroupId = resourceGroupId;
-            o.routeTableId = routeTableId;
-            o.routerId = routerId;
-            o.secondaryCidrBlocks = secondaryCidrBlocks;
-            o.status = status;
-            o.tags = tags;
-            o.userCidrs = userCidrs;
-            o.vpcId = vpcId;
-            o.vpcName = vpcName;
-            o.vrouterId = vrouterId;
-            o.vswitchIds = vswitchIds;
-            return o;
+        }        public GetNetworksVpc build() {
+            return new GetNetworksVpc(cidrBlock, creationTime, description, id, ipv6CidrBlock, isDefault, regionId, resourceGroupId, routeTableId, routerId, secondaryCidrBlocks, status, tags, userCidrs, vpcId, vpcName, vrouterId, vswitchIds);
         }
     }
 }

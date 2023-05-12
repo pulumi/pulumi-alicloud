@@ -17,27 +17,38 @@ public final class EciScalingConfigurationAcrRegistryInfo {
      * when `acr_registry_info` is configured.
      * 
      */
-    private @Nullable List<String> domains;
+    private final @Nullable List<String> domains;
     /**
      * @return The ID of Container Registry Enterprise Edition instance. It is required
      * when `acr_registry_info` is configured.
      * 
      */
-    private @Nullable String instanceId;
+    private final @Nullable String instanceId;
     /**
      * @return The name of Container Registry Enterprise Edition instance. It is required when `acr_registry_info` is
      * configured.
      * 
      */
-    private @Nullable String instanceName;
+    private final @Nullable String instanceName;
     /**
      * @return The region ID of Container Registry Enterprise Edition instance. It is required
      * when `acr_registry_info` is configured.
      * 
      */
-    private @Nullable String regionId;
+    private final @Nullable String regionId;
 
-    private EciScalingConfigurationAcrRegistryInfo() {}
+    @CustomType.Constructor
+    private EciScalingConfigurationAcrRegistryInfo(
+        @CustomType.Parameter("domains") @Nullable List<String> domains,
+        @CustomType.Parameter("instanceId") @Nullable String instanceId,
+        @CustomType.Parameter("instanceName") @Nullable String instanceName,
+        @CustomType.Parameter("regionId") @Nullable String regionId) {
+        this.domains = domains;
+        this.instanceId = instanceId;
+        this.instanceName = instanceName;
+        this.regionId = regionId;
+    }
+
     /**
      * @return Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
      * when `acr_registry_info` is configured.
@@ -78,13 +89,17 @@ public final class EciScalingConfigurationAcrRegistryInfo {
     public static Builder builder(EciScalingConfigurationAcrRegistryInfo defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<String> domains;
         private @Nullable String instanceId;
         private @Nullable String instanceName;
         private @Nullable String regionId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(EciScalingConfigurationAcrRegistryInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domains = defaults.domains;
@@ -93,7 +108,6 @@ public final class EciScalingConfigurationAcrRegistryInfo {
     	      this.regionId = defaults.regionId;
         }
 
-        @CustomType.Setter
         public Builder domains(@Nullable List<String> domains) {
             this.domains = domains;
             return this;
@@ -101,28 +115,19 @@ public final class EciScalingConfigurationAcrRegistryInfo {
         public Builder domains(String... domains) {
             return domains(List.of(domains));
         }
-        @CustomType.Setter
         public Builder instanceId(@Nullable String instanceId) {
             this.instanceId = instanceId;
             return this;
         }
-        @CustomType.Setter
         public Builder instanceName(@Nullable String instanceName) {
             this.instanceName = instanceName;
             return this;
         }
-        @CustomType.Setter
         public Builder regionId(@Nullable String regionId) {
             this.regionId = regionId;
             return this;
-        }
-        public EciScalingConfigurationAcrRegistryInfo build() {
-            final var o = new EciScalingConfigurationAcrRegistryInfo();
-            o.domains = domains;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.regionId = regionId;
-            return o;
+        }        public EciScalingConfigurationAcrRegistryInfo build() {
+            return new EciScalingConfigurationAcrRegistryInfo(domains, instanceId, instanceName, regionId);
         }
     }
 }

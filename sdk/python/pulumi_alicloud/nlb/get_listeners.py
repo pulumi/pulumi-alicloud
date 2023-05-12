@@ -104,6 +104,7 @@ def get_listeners(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Listener IDs.
     :param str listener_protocol: The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
     :param Sequence[str] load_balancer_ids: The ID of the NLB instance. You can specify at most 20 IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -137,5 +138,6 @@ def get_listeners_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     :param Sequence[str] ids: A list of Listener IDs.
     :param str listener_protocol: The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
     :param Sequence[str] load_balancer_ids: The ID of the NLB instance. You can specify at most 20 IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

@@ -46,6 +46,9 @@ export interface GetAlidnsDomainGroupsArgs {
      * A regex string to filter results by the domain group name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -105,5 +108,8 @@ export interface GetAlidnsDomainGroupsOutputArgs {
      * A regex string to filter results by the domain group name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

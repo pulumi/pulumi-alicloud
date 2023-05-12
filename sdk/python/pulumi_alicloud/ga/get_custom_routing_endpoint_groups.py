@@ -199,6 +199,7 @@ def get_custom_routing_endpoint_groups(accelerator_id: Optional[str] = None,
     :param Sequence[str] ids: A list of Custom Routing Endpoint Group IDs.
     :param str listener_id: The ID of the custom routing listener.
     :param str name_regex: A regex string to filter results by Custom Routing Endpoint Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the endpoint group. Valid Values: `init`, `active`, `updating`, `deleting`.
     """
     __args__ = dict()
@@ -267,6 +268,7 @@ def get_custom_routing_endpoint_groups_output(accelerator_id: Optional[pulumi.In
     :param Sequence[str] ids: A list of Custom Routing Endpoint Group IDs.
     :param str listener_id: The ID of the custom routing listener.
     :param str name_regex: A regex string to filter results by Custom Routing Endpoint Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the endpoint group. Valid Values: `init`, `active`, `updating`, `deleting`.
     """
     ...

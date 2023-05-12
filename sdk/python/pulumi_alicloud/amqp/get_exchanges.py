@@ -144,6 +144,7 @@ def get_exchanges(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Exchange IDs. Its element value is same as Exchange Name.
     :param str instance_id: The ID of the instance.
     :param str name_regex: A regex string to filter results by Exchange name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str virtual_host_name: The name of virtual host where an exchange resides.
     """
     __args__ = dict()
@@ -203,6 +204,7 @@ def get_exchanges_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     :param Sequence[str] ids: A list of Exchange IDs. Its element value is same as Exchange Name.
     :param str instance_id: The ID of the instance.
     :param str name_regex: A regex string to filter results by Exchange name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str virtual_host_name: The name of virtual host where an exchange resides.
     """
     ...

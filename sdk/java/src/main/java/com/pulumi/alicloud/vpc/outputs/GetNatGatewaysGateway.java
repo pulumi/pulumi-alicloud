@@ -17,119 +17,168 @@ public final class GetNatGatewaysGateway {
      * @return The state of the NAT gateway.
      * 
      */
-    private String businessStatus;
+    private final String businessStatus;
     /**
      * @return Indicates whether deletion protection is enabled.
      * 
      */
-    private Boolean deletionProtection;
+    private final Boolean deletionProtection;
     /**
      * @return The description of the NAT gateway.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return Indicates whether the traffic monitoring feature is enabled.
      * 
      */
-    private Boolean ecsMetricEnabled;
+    private final Boolean ecsMetricEnabled;
     /**
      * @return The time when the NAT gateway expires.
      * 
      */
-    private String expiredTime;
+    private final String expiredTime;
     /**
      * @return The ID of the DNAT table.
      * 
      */
-    private List<String> forwardTableIds;
+    private final List<String> forwardTableIds;
     /**
      * @return The ID of the NAT gateway.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The metering method of the NAT gateway.
      * 
      */
-    private String internetChargeType;
+    private final String internetChargeType;
     /**
      * @return The ip address of the bind eip.
      * 
      */
-    private List<String> ipLists;
+    private final List<String> ipLists;
     /**
      * @return Name of the NAT gateway.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The ID of the NAT gateway.
      * 
      */
-    private String natGatewayId;
+    private final String natGatewayId;
     /**
      * @return The name of NAT gateway.
      * 
      */
-    private String natGatewayName;
+    private final String natGatewayName;
     /**
      * @return The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
      * 
      */
-    private String natType;
+    private final String natType;
     /**
      * @return (Available in 1.137.0+) Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`.
      * 
      */
-    private String networkType;
+    private final String networkType;
     /**
      * @return The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
      * 
      */
-    private String paymentType;
+    private final String paymentType;
     /**
      * @return The resource group id of NAT gateway.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return The ID of the SNAT table that is associated with the NAT gateway.
      * 
      */
-    private List<String> snatTableIds;
+    private final List<String> snatTableIds;
     /**
      * @return The specification of the NAT gateway.
      * 
      */
-    private String spec;
+    private final String spec;
     /**
      * @return The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.
      * 
      */
-    private String specification;
+    private final String specification;
     /**
      * @return The status of NAT gateway. Valid values `Available`, `Converting`, `Creating`, `Deleting` and `Modifying`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The tags of NAT gateway.
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
     /**
      * @return The ID of the VPC.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
     /**
      * @return The ID of the vSwitch to which the NAT gateway belongs.
      * 
      */
-    private String vswitchId;
+    private final String vswitchId;
 
-    private GetNatGatewaysGateway() {}
+    @CustomType.Constructor
+    private GetNatGatewaysGateway(
+        @CustomType.Parameter("businessStatus") String businessStatus,
+        @CustomType.Parameter("deletionProtection") Boolean deletionProtection,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("ecsMetricEnabled") Boolean ecsMetricEnabled,
+        @CustomType.Parameter("expiredTime") String expiredTime,
+        @CustomType.Parameter("forwardTableIds") List<String> forwardTableIds,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("internetChargeType") String internetChargeType,
+        @CustomType.Parameter("ipLists") List<String> ipLists,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("natGatewayId") String natGatewayId,
+        @CustomType.Parameter("natGatewayName") String natGatewayName,
+        @CustomType.Parameter("natType") String natType,
+        @CustomType.Parameter("networkType") String networkType,
+        @CustomType.Parameter("paymentType") String paymentType,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("snatTableIds") List<String> snatTableIds,
+        @CustomType.Parameter("spec") String spec,
+        @CustomType.Parameter("specification") String specification,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("tags") Map<String,Object> tags,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("vswitchId") String vswitchId) {
+        this.businessStatus = businessStatus;
+        this.deletionProtection = deletionProtection;
+        this.description = description;
+        this.ecsMetricEnabled = ecsMetricEnabled;
+        this.expiredTime = expiredTime;
+        this.forwardTableIds = forwardTableIds;
+        this.id = id;
+        this.internetChargeType = internetChargeType;
+        this.ipLists = ipLists;
+        this.name = name;
+        this.natGatewayId = natGatewayId;
+        this.natGatewayName = natGatewayName;
+        this.natType = natType;
+        this.networkType = networkType;
+        this.paymentType = paymentType;
+        this.resourceGroupId = resourceGroupId;
+        this.snatTableIds = snatTableIds;
+        this.spec = spec;
+        this.specification = specification;
+        this.status = status;
+        this.tags = tags;
+        this.vpcId = vpcId;
+        this.vswitchId = vswitchId;
+    }
+
     /**
      * @return The state of the NAT gateway.
      * 
@@ -299,7 +348,7 @@ public final class GetNatGatewaysGateway {
     public static Builder builder(GetNatGatewaysGateway defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String businessStatus;
         private Boolean deletionProtection;
@@ -324,7 +373,11 @@ public final class GetNatGatewaysGateway {
         private Map<String,Object> tags;
         private String vpcId;
         private String vswitchId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetNatGatewaysGateway defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.businessStatus = defaults.businessStatus;
@@ -352,32 +405,26 @@ public final class GetNatGatewaysGateway {
     	      this.vswitchId = defaults.vswitchId;
         }
 
-        @CustomType.Setter
         public Builder businessStatus(String businessStatus) {
             this.businessStatus = Objects.requireNonNull(businessStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder deletionProtection(Boolean deletionProtection) {
             this.deletionProtection = Objects.requireNonNull(deletionProtection);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder ecsMetricEnabled(Boolean ecsMetricEnabled) {
             this.ecsMetricEnabled = Objects.requireNonNull(ecsMetricEnabled);
             return this;
         }
-        @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
-        @CustomType.Setter
         public Builder forwardTableIds(List<String> forwardTableIds) {
             this.forwardTableIds = Objects.requireNonNull(forwardTableIds);
             return this;
@@ -385,17 +432,14 @@ public final class GetNatGatewaysGateway {
         public Builder forwardTableIds(String... forwardTableIds) {
             return forwardTableIds(List.of(forwardTableIds));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder internetChargeType(String internetChargeType) {
             this.internetChargeType = Objects.requireNonNull(internetChargeType);
             return this;
         }
-        @CustomType.Setter
         public Builder ipLists(List<String> ipLists) {
             this.ipLists = Objects.requireNonNull(ipLists);
             return this;
@@ -403,42 +447,34 @@ public final class GetNatGatewaysGateway {
         public Builder ipLists(String... ipLists) {
             return ipLists(List.of(ipLists));
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder natGatewayId(String natGatewayId) {
             this.natGatewayId = Objects.requireNonNull(natGatewayId);
             return this;
         }
-        @CustomType.Setter
         public Builder natGatewayName(String natGatewayName) {
             this.natGatewayName = Objects.requireNonNull(natGatewayName);
             return this;
         }
-        @CustomType.Setter
         public Builder natType(String natType) {
             this.natType = Objects.requireNonNull(natType);
             return this;
         }
-        @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder snatTableIds(List<String> snatTableIds) {
             this.snatTableIds = Objects.requireNonNull(snatTableIds);
             return this;
@@ -446,62 +482,31 @@ public final class GetNatGatewaysGateway {
         public Builder snatTableIds(String... snatTableIds) {
             return snatTableIds(List.of(snatTableIds));
         }
-        @CustomType.Setter
         public Builder spec(String spec) {
             this.spec = Objects.requireNonNull(spec);
             return this;
         }
-        @CustomType.Setter
         public Builder specification(String specification) {
             this.specification = Objects.requireNonNull(specification);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }
-        public GetNatGatewaysGateway build() {
-            final var o = new GetNatGatewaysGateway();
-            o.businessStatus = businessStatus;
-            o.deletionProtection = deletionProtection;
-            o.description = description;
-            o.ecsMetricEnabled = ecsMetricEnabled;
-            o.expiredTime = expiredTime;
-            o.forwardTableIds = forwardTableIds;
-            o.id = id;
-            o.internetChargeType = internetChargeType;
-            o.ipLists = ipLists;
-            o.name = name;
-            o.natGatewayId = natGatewayId;
-            o.natGatewayName = natGatewayName;
-            o.natType = natType;
-            o.networkType = networkType;
-            o.paymentType = paymentType;
-            o.resourceGroupId = resourceGroupId;
-            o.snatTableIds = snatTableIds;
-            o.spec = spec;
-            o.specification = specification;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+        }        public GetNatGatewaysGateway build() {
+            return new GetNatGatewaysGateway(businessStatus, deletionProtection, description, ecsMetricEnabled, expiredTime, forwardTableIds, id, internetChargeType, ipLists, name, natGatewayId, natGatewayName, natType, networkType, paymentType, resourceGroupId, snatTableIds, spec, specification, status, tags, vpcId, vswitchId);
         }
     }
 }

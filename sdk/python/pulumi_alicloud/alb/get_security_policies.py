@@ -166,6 +166,7 @@ def get_security_policies(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Security Policy IDs.
     :param str name_regex: A regex string to filter results by Security Policy name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param Sequence[str] security_policy_ids: The security policy ids.
     :param str security_policy_name: The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
@@ -229,6 +230,7 @@ def get_security_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[st
 
     :param Sequence[str] ids: A list of Security Policy IDs.
     :param str name_regex: A regex string to filter results by Security Policy name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param Sequence[str] security_policy_ids: The security policy ids.
     :param str security_policy_name: The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).

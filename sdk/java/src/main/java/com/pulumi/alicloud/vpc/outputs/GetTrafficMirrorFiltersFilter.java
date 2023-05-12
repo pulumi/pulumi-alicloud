@@ -13,29 +13,42 @@ public final class GetTrafficMirrorFiltersFilter {
      * @return The ID of the Traffic Mirror Filter.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The description of the filter.
      * 
      */
-    private String trafficMirrorFilterDescription;
+    private final String trafficMirrorFilterDescription;
     /**
      * @return The ID of the filter.
      * 
      */
-    private String trafficMirrorFilterId;
+    private final String trafficMirrorFilterId;
     /**
      * @return The name of the filter.
      * 
      */
-    private String trafficMirrorFilterName;
+    private final String trafficMirrorFilterName;
 
-    private GetTrafficMirrorFiltersFilter() {}
+    @CustomType.Constructor
+    private GetTrafficMirrorFiltersFilter(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("trafficMirrorFilterDescription") String trafficMirrorFilterDescription,
+        @CustomType.Parameter("trafficMirrorFilterId") String trafficMirrorFilterId,
+        @CustomType.Parameter("trafficMirrorFilterName") String trafficMirrorFilterName) {
+        this.id = id;
+        this.status = status;
+        this.trafficMirrorFilterDescription = trafficMirrorFilterDescription;
+        this.trafficMirrorFilterId = trafficMirrorFilterId;
+        this.trafficMirrorFilterName = trafficMirrorFilterName;
+    }
+
     /**
      * @return The ID of the Traffic Mirror Filter.
      * 
@@ -79,14 +92,18 @@ public final class GetTrafficMirrorFiltersFilter {
     public static Builder builder(GetTrafficMirrorFiltersFilter defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private String status;
         private String trafficMirrorFilterDescription;
         private String trafficMirrorFilterId;
         private String trafficMirrorFilterName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTrafficMirrorFiltersFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -96,39 +113,27 @@ public final class GetTrafficMirrorFiltersFilter {
     	      this.trafficMirrorFilterName = defaults.trafficMirrorFilterName;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder trafficMirrorFilterDescription(String trafficMirrorFilterDescription) {
             this.trafficMirrorFilterDescription = Objects.requireNonNull(trafficMirrorFilterDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder trafficMirrorFilterId(String trafficMirrorFilterId) {
             this.trafficMirrorFilterId = Objects.requireNonNull(trafficMirrorFilterId);
             return this;
         }
-        @CustomType.Setter
         public Builder trafficMirrorFilterName(String trafficMirrorFilterName) {
             this.trafficMirrorFilterName = Objects.requireNonNull(trafficMirrorFilterName);
             return this;
-        }
-        public GetTrafficMirrorFiltersFilter build() {
-            final var o = new GetTrafficMirrorFiltersFilter();
-            o.id = id;
-            o.status = status;
-            o.trafficMirrorFilterDescription = trafficMirrorFilterDescription;
-            o.trafficMirrorFilterId = trafficMirrorFilterId;
-            o.trafficMirrorFilterName = trafficMirrorFilterName;
-            return o;
+        }        public GetTrafficMirrorFiltersFilter build() {
+            return new GetTrafficMirrorFiltersFilter(id, status, trafficMirrorFilterDescription, trafficMirrorFilterId, trafficMirrorFilterName);
         }
     }
 }

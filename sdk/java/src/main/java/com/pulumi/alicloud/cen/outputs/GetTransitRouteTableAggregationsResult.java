@@ -17,37 +17,58 @@ public final class GetTransitRouteTableAggregationsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of Transit Route Table Aggregation names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
     /**
      * @return The status of the Transit Route Table Aggregation.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
     /**
      * @return The destination CIDR block of the aggregate route.
      * 
      */
-    private @Nullable String transitRouteTableAggregationCidr;
+    private final @Nullable String transitRouteTableAggregationCidr;
     /**
      * @return A list of Cen Transit Route Table Aggregations. Each element contains the following attributes:
      * 
      */
-    private List<GetTransitRouteTableAggregationsTransitRouteTableAggregation> transitRouteTableAggregations;
+    private final List<GetTransitRouteTableAggregationsTransitRouteTableAggregation> transitRouteTableAggregations;
     /**
      * @return The ID of the route table of the Enterprise Edition transit router.
      * 
      */
-    private String transitRouteTableId;
+    private final String transitRouteTableId;
 
-    private GetTransitRouteTableAggregationsResult() {}
+    @CustomType.Constructor
+    private GetTransitRouteTableAggregationsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("transitRouteTableAggregationCidr") @Nullable String transitRouteTableAggregationCidr,
+        @CustomType.Parameter("transitRouteTableAggregations") List<GetTransitRouteTableAggregationsTransitRouteTableAggregation> transitRouteTableAggregations,
+        @CustomType.Parameter("transitRouteTableId") String transitRouteTableId) {
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.status = status;
+        this.transitRouteTableAggregationCidr = transitRouteTableAggregationCidr;
+        this.transitRouteTableAggregations = transitRouteTableAggregations;
+        this.transitRouteTableId = transitRouteTableId;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -107,7 +128,7 @@ public final class GetTransitRouteTableAggregationsResult {
     public static Builder builder(GetTransitRouteTableAggregationsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -118,7 +139,11 @@ public final class GetTransitRouteTableAggregationsResult {
         private @Nullable String transitRouteTableAggregationCidr;
         private List<GetTransitRouteTableAggregationsTransitRouteTableAggregation> transitRouteTableAggregations;
         private String transitRouteTableId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTransitRouteTableAggregationsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -132,12 +157,10 @@ public final class GetTransitRouteTableAggregationsResult {
     	      this.transitRouteTableId = defaults.transitRouteTableId;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -145,12 +168,10 @@ public final class GetTransitRouteTableAggregationsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -158,22 +179,18 @@ public final class GetTransitRouteTableAggregationsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouteTableAggregationCidr(@Nullable String transitRouteTableAggregationCidr) {
             this.transitRouteTableAggregationCidr = transitRouteTableAggregationCidr;
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouteTableAggregations(List<GetTransitRouteTableAggregationsTransitRouteTableAggregation> transitRouteTableAggregations) {
             this.transitRouteTableAggregations = Objects.requireNonNull(transitRouteTableAggregations);
             return this;
@@ -181,23 +198,11 @@ public final class GetTransitRouteTableAggregationsResult {
         public Builder transitRouteTableAggregations(GetTransitRouteTableAggregationsTransitRouteTableAggregation... transitRouteTableAggregations) {
             return transitRouteTableAggregations(List.of(transitRouteTableAggregations));
         }
-        @CustomType.Setter
         public Builder transitRouteTableId(String transitRouteTableId) {
             this.transitRouteTableId = Objects.requireNonNull(transitRouteTableId);
             return this;
-        }
-        public GetTransitRouteTableAggregationsResult build() {
-            final var o = new GetTransitRouteTableAggregationsResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.transitRouteTableAggregationCidr = transitRouteTableAggregationCidr;
-            o.transitRouteTableAggregations = transitRouteTableAggregations;
-            o.transitRouteTableId = transitRouteTableId;
-            return o;
+        }        public GetTransitRouteTableAggregationsResult build() {
+            return new GetTransitRouteTableAggregationsResult(id, ids, nameRegex, names, outputFile, status, transitRouteTableAggregationCidr, transitRouteTableAggregations, transitRouteTableId);
         }
     }
 }

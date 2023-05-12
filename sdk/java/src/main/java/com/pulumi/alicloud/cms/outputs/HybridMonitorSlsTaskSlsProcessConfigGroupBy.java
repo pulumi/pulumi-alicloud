@@ -15,14 +15,21 @@ public final class HybridMonitorSlsTaskSlsProcessConfigGroupBy {
      * @return The alias of the aggregation result.
      * 
      */
-    private @Nullable String alias;
+    private final @Nullable String alias;
     /**
      * @return The name of the key that is used to aggregate logs imported from Log Service.
      * 
      */
-    private @Nullable String slsKeyName;
+    private final @Nullable String slsKeyName;
 
-    private HybridMonitorSlsTaskSlsProcessConfigGroupBy() {}
+    @CustomType.Constructor
+    private HybridMonitorSlsTaskSlsProcessConfigGroupBy(
+        @CustomType.Parameter("alias") @Nullable String alias,
+        @CustomType.Parameter("slsKeyName") @Nullable String slsKeyName) {
+        this.alias = alias;
+        this.slsKeyName = slsKeyName;
+    }
+
     /**
      * @return The alias of the aggregation result.
      * 
@@ -45,32 +52,30 @@ public final class HybridMonitorSlsTaskSlsProcessConfigGroupBy {
     public static Builder builder(HybridMonitorSlsTaskSlsProcessConfigGroupBy defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String alias;
         private @Nullable String slsKeyName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(HybridMonitorSlsTaskSlsProcessConfigGroupBy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alias = defaults.alias;
     	      this.slsKeyName = defaults.slsKeyName;
         }
 
-        @CustomType.Setter
         public Builder alias(@Nullable String alias) {
             this.alias = alias;
             return this;
         }
-        @CustomType.Setter
         public Builder slsKeyName(@Nullable String slsKeyName) {
             this.slsKeyName = slsKeyName;
             return this;
-        }
-        public HybridMonitorSlsTaskSlsProcessConfigGroupBy build() {
-            final var o = new HybridMonitorSlsTaskSlsProcessConfigGroupBy();
-            o.alias = alias;
-            o.slsKeyName = slsKeyName;
-            return o;
+        }        public HybridMonitorSlsTaskSlsProcessConfigGroupBy build() {
+            return new HybridMonitorSlsTaskSlsProcessConfigGroupBy(alias, slsKeyName);
         }
     }
 }

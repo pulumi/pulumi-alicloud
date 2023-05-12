@@ -68,6 +68,9 @@ export interface GetSecretsArgs {
      * A regex string to filter the results by the KMS secret_name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * A mapping of tags to assign to the resource.
@@ -156,6 +159,9 @@ export interface GetSecretsOutputArgs {
      * A regex string to filter the results by the KMS secret_name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.

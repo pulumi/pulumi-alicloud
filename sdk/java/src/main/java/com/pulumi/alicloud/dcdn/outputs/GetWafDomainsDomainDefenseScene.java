@@ -13,14 +13,21 @@ public final class GetWafDomainsDomainDefenseScene {
      * @return The type of protection policy.
      * 
      */
-    private String defenseScene;
+    private final String defenseScene;
     /**
      * @return The protection policy ID.
      * 
      */
-    private String policyId;
+    private final String policyId;
 
-    private GetWafDomainsDomainDefenseScene() {}
+    @CustomType.Constructor
+    private GetWafDomainsDomainDefenseScene(
+        @CustomType.Parameter("defenseScene") String defenseScene,
+        @CustomType.Parameter("policyId") String policyId) {
+        this.defenseScene = defenseScene;
+        this.policyId = policyId;
+    }
+
     /**
      * @return The type of protection policy.
      * 
@@ -43,32 +50,30 @@ public final class GetWafDomainsDomainDefenseScene {
     public static Builder builder(GetWafDomainsDomainDefenseScene defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String defenseScene;
         private String policyId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetWafDomainsDomainDefenseScene defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defenseScene = defaults.defenseScene;
     	      this.policyId = defaults.policyId;
         }
 
-        @CustomType.Setter
         public Builder defenseScene(String defenseScene) {
             this.defenseScene = Objects.requireNonNull(defenseScene);
             return this;
         }
-        @CustomType.Setter
         public Builder policyId(String policyId) {
             this.policyId = Objects.requireNonNull(policyId);
             return this;
-        }
-        public GetWafDomainsDomainDefenseScene build() {
-            final var o = new GetWafDomainsDomainDefenseScene();
-            o.defenseScene = defenseScene;
-            o.policyId = policyId;
-            return o;
+        }        public GetWafDomainsDomainDefenseScene build() {
+            return new GetWafDomainsDomainDefenseScene(defenseScene, policyId);
         }
     }
 }

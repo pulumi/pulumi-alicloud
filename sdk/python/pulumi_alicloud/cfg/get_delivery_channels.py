@@ -117,6 +117,15 @@ def get_delivery_channels(ids: Optional[Sequence[str]] = None,
                           status: Optional[int] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDeliveryChannelsResult:
     """
+    > **DEPRECATED:**  This resource is based on Config's old version OpenAPI, and it has been deprecated from version `1.173.0`.
+    Please use new datasource cfg_get_deliveries instead.
+
+    This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
+
+    > **NOTE:**  Available in 1.99.0+.
+
+    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+
     ## Example Usage
 
     ```python
@@ -131,6 +140,7 @@ def get_delivery_channels(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Config Delivery Channel IDs.
     :param str name_regex: A regex string to filter results by delivery channel name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int status: The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
     """
     __args__ = dict()
@@ -158,6 +168,15 @@ def get_delivery_channels_output(ids: Optional[pulumi.Input[Optional[Sequence[st
                                  status: Optional[pulumi.Input[Optional[int]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeliveryChannelsResult]:
     """
+    > **DEPRECATED:**  This resource is based on Config's old version OpenAPI, and it has been deprecated from version `1.173.0`.
+    Please use new datasource cfg_get_deliveries instead.
+
+    This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
+
+    > **NOTE:**  Available in 1.99.0+.
+
+    > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+
     ## Example Usage
 
     ```python
@@ -172,6 +191,7 @@ def get_delivery_channels_output(ids: Optional[pulumi.Input[Optional[Sequence[st
 
     :param Sequence[str] ids: A list of Config Delivery Channel IDs.
     :param str name_regex: A regex string to filter results by delivery channel name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int status: The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
     """
     ...

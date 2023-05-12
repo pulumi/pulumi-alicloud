@@ -19,36 +19,55 @@ public final class GetApisResult {
      * 
      */
     @Deprecated /* Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it. */
-    private @Nullable String apiId;
+    private final @Nullable String apiId;
     /**
      * @return A list of apis. Each element contains the following attributes:
      * 
      */
-    private List<GetApisApi> apis;
+    private final List<GetApisApi> apis;
     /**
      * @return The group id that the apis belong to.
      * 
      */
-    private @Nullable String groupId;
+    private final @Nullable String groupId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of api IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of api names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
 
-    private GetApisResult() {}
+    @CustomType.Constructor
+    private GetApisResult(
+        @CustomType.Parameter("apiId") @Nullable String apiId,
+        @CustomType.Parameter("apis") List<GetApisApi> apis,
+        @CustomType.Parameter("groupId") @Nullable String groupId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.apiId = apiId;
+        this.apis = apis;
+        this.groupId = groupId;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+    }
+
     /**
      * @deprecated
      * Field &#39;api_id&#39; has been deprecated from provider version 1.52.2. New field &#39;ids&#39; replaces it.
@@ -107,7 +126,7 @@ public final class GetApisResult {
     public static Builder builder(GetApisResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String apiId;
         private List<GetApisApi> apis;
@@ -117,7 +136,11 @@ public final class GetApisResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetApisResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiId = defaults.apiId;
@@ -130,12 +153,10 @@ public final class GetApisResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder apiId(@Nullable String apiId) {
             this.apiId = apiId;
             return this;
         }
-        @CustomType.Setter
         public Builder apis(List<GetApisApi> apis) {
             this.apis = Objects.requireNonNull(apis);
             return this;
@@ -143,17 +164,14 @@ public final class GetApisResult {
         public Builder apis(GetApisApi... apis) {
             return apis(List.of(apis));
         }
-        @CustomType.Setter
         public Builder groupId(@Nullable String groupId) {
             this.groupId = groupId;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -161,12 +179,10 @@ public final class GetApisResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -174,22 +190,11 @@ public final class GetApisResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetApisResult build() {
-            final var o = new GetApisResult();
-            o.apiId = apiId;
-            o.apis = apis;
-            o.groupId = groupId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetApisResult build() {
+            return new GetApisResult(apiId, apis, groupId, id, ids, nameRegex, names, outputFile);
         }
     }
 }

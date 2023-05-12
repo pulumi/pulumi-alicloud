@@ -15,9 +15,13 @@ public final class ContainerGroupContainerLivenessProbeExec {
      * @return The commands run by the init container.
      * 
      */
-    private @Nullable List<String> commands;
+    private final @Nullable List<String> commands;
 
-    private ContainerGroupContainerLivenessProbeExec() {}
+    @CustomType.Constructor
+    private ContainerGroupContainerLivenessProbeExec(@CustomType.Parameter("commands") @Nullable List<String> commands) {
+        this.commands = commands;
+    }
+
     /**
      * @return The commands run by the init container.
      * 
@@ -33,27 +37,27 @@ public final class ContainerGroupContainerLivenessProbeExec {
     public static Builder builder(ContainerGroupContainerLivenessProbeExec defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<String> commands;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ContainerGroupContainerLivenessProbeExec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.commands = defaults.commands;
         }
 
-        @CustomType.Setter
         public Builder commands(@Nullable List<String> commands) {
             this.commands = commands;
             return this;
         }
         public Builder commands(String... commands) {
             return commands(List.of(commands));
-        }
-        public ContainerGroupContainerLivenessProbeExec build() {
-            final var o = new ContainerGroupContainerLivenessProbeExec();
-            o.commands = commands;
-            return o;
+        }        public ContainerGroupContainerLivenessProbeExec build() {
+            return new ContainerGroupContainerLivenessProbeExec(commands);
         }
     }
 }

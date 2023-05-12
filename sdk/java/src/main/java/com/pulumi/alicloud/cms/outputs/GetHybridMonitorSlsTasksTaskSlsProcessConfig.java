@@ -17,24 +17,35 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfig {
      * @return The extended field that specifies the result of basic operations that are performed on aggregation results.
      * 
      */
-    private List<GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress> expresses;
+    private final List<GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress> expresses;
     /**
      * @return The conditions that are used to filter logs imported from Log Service.
      * 
      */
-    private List<GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter> filters;
+    private final List<GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter> filters;
     /**
      * @return The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL.
      * 
      */
-    private List<GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy> groupBies;
+    private final List<GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy> groupBies;
     /**
      * @return The method that is used to aggregate logs imported from Log Service.
      * 
      */
-    private List<GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic> statistics;
+    private final List<GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic> statistics;
 
-    private GetHybridMonitorSlsTasksTaskSlsProcessConfig() {}
+    @CustomType.Constructor
+    private GetHybridMonitorSlsTasksTaskSlsProcessConfig(
+        @CustomType.Parameter("expresses") List<GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress> expresses,
+        @CustomType.Parameter("filters") List<GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter> filters,
+        @CustomType.Parameter("groupBies") List<GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy> groupBies,
+        @CustomType.Parameter("statistics") List<GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic> statistics) {
+        this.expresses = expresses;
+        this.filters = filters;
+        this.groupBies = groupBies;
+        this.statistics = statistics;
+    }
+
     /**
      * @return The extended field that specifies the result of basic operations that are performed on aggregation results.
      * 
@@ -71,13 +82,17 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfig {
     public static Builder builder(GetHybridMonitorSlsTasksTaskSlsProcessConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress> expresses;
         private List<GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter> filters;
         private List<GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy> groupBies;
         private List<GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic> statistics;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetHybridMonitorSlsTasksTaskSlsProcessConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expresses = defaults.expresses;
@@ -86,7 +101,6 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfig {
     	      this.statistics = defaults.statistics;
         }
 
-        @CustomType.Setter
         public Builder expresses(List<GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress> expresses) {
             this.expresses = Objects.requireNonNull(expresses);
             return this;
@@ -94,7 +108,6 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfig {
         public Builder expresses(GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress... expresses) {
             return expresses(List.of(expresses));
         }
-        @CustomType.Setter
         public Builder filters(List<GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter> filters) {
             this.filters = Objects.requireNonNull(filters);
             return this;
@@ -102,7 +115,6 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfig {
         public Builder filters(GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter... filters) {
             return filters(List.of(filters));
         }
-        @CustomType.Setter
         public Builder groupBies(List<GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy> groupBies) {
             this.groupBies = Objects.requireNonNull(groupBies);
             return this;
@@ -110,21 +122,14 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfig {
         public Builder groupBies(GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy... groupBies) {
             return groupBies(List.of(groupBies));
         }
-        @CustomType.Setter
         public Builder statistics(List<GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic> statistics) {
             this.statistics = Objects.requireNonNull(statistics);
             return this;
         }
         public Builder statistics(GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic... statistics) {
             return statistics(List.of(statistics));
-        }
-        public GetHybridMonitorSlsTasksTaskSlsProcessConfig build() {
-            final var o = new GetHybridMonitorSlsTasksTaskSlsProcessConfig();
-            o.expresses = expresses;
-            o.filters = filters;
-            o.groupBies = groupBies;
-            o.statistics = statistics;
-            return o;
+        }        public GetHybridMonitorSlsTasksTaskSlsProcessConfig build() {
+            return new GetHybridMonitorSlsTasksTaskSlsProcessConfig(expresses, filters, groupBies, statistics);
         }
     }
 }

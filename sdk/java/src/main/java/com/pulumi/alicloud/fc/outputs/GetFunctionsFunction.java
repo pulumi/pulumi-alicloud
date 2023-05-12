@@ -19,94 +19,133 @@ public final class GetFunctionsFunction {
      * @return The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
      * 
      */
-    private Integer caPort;
+    private final Integer caPort;
     /**
      * @return Checksum (crc64) of the function code.
      * 
      */
-    private String codeChecksum;
+    private final String codeChecksum;
     /**
      * @return Function code size in bytes.
      * 
      */
-    private Integer codeSize;
+    private final Integer codeSize;
     /**
      * @return Function creation time.
      * 
      */
-    private String creationTime;
+    private final String creationTime;
     /**
      * @return The configuration for custom container runtime. It contains following attributes:
      * 
      */
-    private @Nullable GetFunctionsFunctionCustomContainerConfig customContainerConfig;
+    private final @Nullable GetFunctionsFunctionCustomContainerConfig customContainerConfig;
     /**
      * @return Function description.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return A map that defines environment variables for the function.
      * 
      */
-    private Map<String,Object> environmentVariables;
+    private final Map<String,Object> environmentVariables;
     /**
      * @return Function [entry point](https://www.alibabacloud.com/help/doc-detail/62213.htm) in the code.
      * 
      */
-    private String handler;
+    private final String handler;
     /**
      * @return Function ID.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The maximum length of time, in seconds, that the function&#39;s initialization should be run for.
      * 
      */
-    private Integer initializationTimeout;
+    private final Integer initializationTimeout;
     /**
      * @return The entry point of the function&#39;s [initialization](https://www.alibabacloud.com/help/doc-detail/157704.htm).
      * 
      */
-    private String initializer;
+    private final String initializer;
     /**
      * @return The maximum number of requests can be executed concurrently within the single function instance.
      * 
      */
-    private Integer instanceConcurrency;
+    private final Integer instanceConcurrency;
     /**
      * @return The instance type of the function.
      * 
      */
-    private String instanceType;
+    private final String instanceType;
     /**
      * @return Function last modification time.
      * 
      */
-    private String lastModificationTime;
+    private final String lastModificationTime;
     /**
      * @return Amount of memory in MB the function can use at runtime.
      * 
      */
-    private Integer memorySize;
+    private final Integer memorySize;
     /**
      * @return Function name.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return Function runtime. The list of possible values is [available here](https://www.alibabacloud.com/help/doc-detail/52077.htm).
      * 
      */
-    private String runtime;
+    private final String runtime;
     /**
      * @return Maximum amount of time the function can run in seconds.
      * 
      */
-    private Integer timeout;
+    private final Integer timeout;
 
-    private GetFunctionsFunction() {}
+    @CustomType.Constructor
+    private GetFunctionsFunction(
+        @CustomType.Parameter("caPort") Integer caPort,
+        @CustomType.Parameter("codeChecksum") String codeChecksum,
+        @CustomType.Parameter("codeSize") Integer codeSize,
+        @CustomType.Parameter("creationTime") String creationTime,
+        @CustomType.Parameter("customContainerConfig") @Nullable GetFunctionsFunctionCustomContainerConfig customContainerConfig,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("environmentVariables") Map<String,Object> environmentVariables,
+        @CustomType.Parameter("handler") String handler,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("initializationTimeout") Integer initializationTimeout,
+        @CustomType.Parameter("initializer") String initializer,
+        @CustomType.Parameter("instanceConcurrency") Integer instanceConcurrency,
+        @CustomType.Parameter("instanceType") String instanceType,
+        @CustomType.Parameter("lastModificationTime") String lastModificationTime,
+        @CustomType.Parameter("memorySize") Integer memorySize,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("runtime") String runtime,
+        @CustomType.Parameter("timeout") Integer timeout) {
+        this.caPort = caPort;
+        this.codeChecksum = codeChecksum;
+        this.codeSize = codeSize;
+        this.creationTime = creationTime;
+        this.customContainerConfig = customContainerConfig;
+        this.description = description;
+        this.environmentVariables = environmentVariables;
+        this.handler = handler;
+        this.id = id;
+        this.initializationTimeout = initializationTimeout;
+        this.initializer = initializer;
+        this.instanceConcurrency = instanceConcurrency;
+        this.instanceType = instanceType;
+        this.lastModificationTime = lastModificationTime;
+        this.memorySize = memorySize;
+        this.name = name;
+        this.runtime = runtime;
+        this.timeout = timeout;
+    }
+
     /**
      * @return The port that the function listen to, only valid for [custom runtime](https://www.alibabacloud.com/help/doc-detail/132044.htm) and [custom container runtime](https://www.alibabacloud.com/help/doc-detail/179368.htm).
      * 
@@ -241,7 +280,7 @@ public final class GetFunctionsFunction {
     public static Builder builder(GetFunctionsFunction defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer caPort;
         private String codeChecksum;
@@ -261,7 +300,11 @@ public final class GetFunctionsFunction {
         private String name;
         private String runtime;
         private Integer timeout;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetFunctionsFunction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.caPort = defaults.caPort;
@@ -284,117 +327,79 @@ public final class GetFunctionsFunction {
     	      this.timeout = defaults.timeout;
         }
 
-        @CustomType.Setter
         public Builder caPort(Integer caPort) {
             this.caPort = Objects.requireNonNull(caPort);
             return this;
         }
-        @CustomType.Setter
         public Builder codeChecksum(String codeChecksum) {
             this.codeChecksum = Objects.requireNonNull(codeChecksum);
             return this;
         }
-        @CustomType.Setter
         public Builder codeSize(Integer codeSize) {
             this.codeSize = Objects.requireNonNull(codeSize);
             return this;
         }
-        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
             return this;
         }
-        @CustomType.Setter
         public Builder customContainerConfig(@Nullable GetFunctionsFunctionCustomContainerConfig customContainerConfig) {
             this.customContainerConfig = customContainerConfig;
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder environmentVariables(Map<String,Object> environmentVariables) {
             this.environmentVariables = Objects.requireNonNull(environmentVariables);
             return this;
         }
-        @CustomType.Setter
         public Builder handler(String handler) {
             this.handler = Objects.requireNonNull(handler);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder initializationTimeout(Integer initializationTimeout) {
             this.initializationTimeout = Objects.requireNonNull(initializationTimeout);
             return this;
         }
-        @CustomType.Setter
         public Builder initializer(String initializer) {
             this.initializer = Objects.requireNonNull(initializer);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceConcurrency(Integer instanceConcurrency) {
             this.instanceConcurrency = Objects.requireNonNull(instanceConcurrency);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
-        @CustomType.Setter
         public Builder lastModificationTime(String lastModificationTime) {
             this.lastModificationTime = Objects.requireNonNull(lastModificationTime);
             return this;
         }
-        @CustomType.Setter
         public Builder memorySize(Integer memorySize) {
             this.memorySize = Objects.requireNonNull(memorySize);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder runtime(String runtime) {
             this.runtime = Objects.requireNonNull(runtime);
             return this;
         }
-        @CustomType.Setter
         public Builder timeout(Integer timeout) {
             this.timeout = Objects.requireNonNull(timeout);
             return this;
-        }
-        public GetFunctionsFunction build() {
-            final var o = new GetFunctionsFunction();
-            o.caPort = caPort;
-            o.codeChecksum = codeChecksum;
-            o.codeSize = codeSize;
-            o.creationTime = creationTime;
-            o.customContainerConfig = customContainerConfig;
-            o.description = description;
-            o.environmentVariables = environmentVariables;
-            o.handler = handler;
-            o.id = id;
-            o.initializationTimeout = initializationTimeout;
-            o.initializer = initializer;
-            o.instanceConcurrency = instanceConcurrency;
-            o.instanceType = instanceType;
-            o.lastModificationTime = lastModificationTime;
-            o.memorySize = memorySize;
-            o.name = name;
-            o.runtime = runtime;
-            o.timeout = timeout;
-            return o;
+        }        public GetFunctionsFunction build() {
+            return new GetFunctionsFunction(caPort, codeChecksum, codeSize, creationTime, customContainerConfig, description, environmentVariables, handler, id, initializationTimeout, initializer, instanceConcurrency, instanceType, lastModificationTime, memorySize, name, runtime, timeout);
         }
     }
 }

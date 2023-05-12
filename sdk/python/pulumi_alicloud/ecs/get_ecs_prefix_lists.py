@@ -136,6 +136,7 @@ def get_ecs_prefix_lists(address_family: Optional[str] = None,
     :param str address_family: The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
     :param Sequence[str] ids: A list of Prefix List IDs.
     :param str name_regex: A regex string to filter results by `prefix_list_name`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['addressFamily'] = address_family
@@ -186,5 +187,6 @@ def get_ecs_prefix_lists_output(address_family: Optional[pulumi.Input[Optional[s
     :param str address_family: The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
     :param Sequence[str] ids: A list of Prefix List IDs.
     :param str name_regex: A regex string to filter results by `prefix_list_name`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

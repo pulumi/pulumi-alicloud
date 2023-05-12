@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.KVStore
         public bool? EnableDetails { get; set; }
 
         /// <summary>
-        /// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+        /// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
         /// </summary>
         [Input("engineVersion")]
         public string? EngineVersion { get; set; }
@@ -153,6 +153,9 @@ namespace Pulumi.AliCloud.KVStore
         [Input("networkType")]
         public string? NetworkType { get; set; }
 
+        /// <summary>
+        /// The name of file that can save the collection of instances after running `pulumi preview`.
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -237,7 +240,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<bool>? EnableDetails { get; set; }
 
         /// <summary>
-        /// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+        /// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
@@ -290,6 +293,9 @@ namespace Pulumi.AliCloud.KVStore
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
 
+        /// <summary>
+        /// The name of file that can save the collection of instances after running `pulumi preview`.
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

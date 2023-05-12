@@ -19,6 +19,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides an RDS account resource and used to manage databases.
+ * 
+ * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.120.0`. Please use new resource alicloud_rds_account.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -244,6 +248,8 @@ public class Account extends com.pulumi.resources.CustomResource {
      * - Normal: Common privilege.
      * - Super: High privilege.
      * 
+     * Default to Normal.
+     * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated from provider version 1.120.0. New field &#39;account_type&#39; instead.
      * 
@@ -256,6 +262,8 @@ public class Account extends com.pulumi.resources.CustomResource {
      * @return Privilege type of account.
      * - Normal: Common privilege.
      * - Super: High privilege.
+     * 
+     * Default to Normal.
      * 
      */
     public Output<String> type() {

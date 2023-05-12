@@ -14,69 +14,98 @@ public final class GetSecurityGroupRulesRule {
      * @return The description of the rule.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return Target IP address segment for egress authorization.
      * 
      */
-    private String destCidrIp;
+    private final String destCidrIp;
     /**
      * @return Target security group id for ingress authorization.
      * 
      */
-    private String destGroupId;
+    private final String destGroupId;
     /**
      * @return Alibaba Cloud account of the target security group.
      * 
      */
-    private String destGroupOwnerAccount;
+    private final String destGroupOwnerAccount;
     /**
      * @return Authorization direction. Valid values are: `ingress` or `egress`.
      * 
      */
-    private String direction;
+    private final String direction;
     /**
      * @return The IP protocol. Valid values are: `tcp`, `udp`, `icmp`, `gre` and `all`.
      * 
      */
-    private String ipProtocol;
+    private final String ipProtocol;
     /**
      * @return Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
      * 
      */
-    private String nicType;
+    private final String nicType;
     /**
      * @return Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
      * 
      */
-    private String policy;
+    private final String policy;
     /**
      * @return The range of port numbers.
      * 
      */
-    private String portRange;
+    private final String portRange;
     /**
      * @return Rule priority.
      * 
      */
-    private Integer priority;
+    private final Integer priority;
     /**
      * @return Source IP address segment for ingress authorization.
      * 
      */
-    private String sourceCidrIp;
+    private final String sourceCidrIp;
     /**
      * @return Source security group ID for ingress authorization.
      * 
      */
-    private String sourceGroupId;
+    private final String sourceGroupId;
     /**
      * @return Alibaba Cloud account of the source security group.
      * 
      */
-    private String sourceGroupOwnerAccount;
+    private final String sourceGroupOwnerAccount;
 
-    private GetSecurityGroupRulesRule() {}
+    @CustomType.Constructor
+    private GetSecurityGroupRulesRule(
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("destCidrIp") String destCidrIp,
+        @CustomType.Parameter("destGroupId") String destGroupId,
+        @CustomType.Parameter("destGroupOwnerAccount") String destGroupOwnerAccount,
+        @CustomType.Parameter("direction") String direction,
+        @CustomType.Parameter("ipProtocol") String ipProtocol,
+        @CustomType.Parameter("nicType") String nicType,
+        @CustomType.Parameter("policy") String policy,
+        @CustomType.Parameter("portRange") String portRange,
+        @CustomType.Parameter("priority") Integer priority,
+        @CustomType.Parameter("sourceCidrIp") String sourceCidrIp,
+        @CustomType.Parameter("sourceGroupId") String sourceGroupId,
+        @CustomType.Parameter("sourceGroupOwnerAccount") String sourceGroupOwnerAccount) {
+        this.description = description;
+        this.destCidrIp = destCidrIp;
+        this.destGroupId = destGroupId;
+        this.destGroupOwnerAccount = destGroupOwnerAccount;
+        this.direction = direction;
+        this.ipProtocol = ipProtocol;
+        this.nicType = nicType;
+        this.policy = policy;
+        this.portRange = portRange;
+        this.priority = priority;
+        this.sourceCidrIp = sourceCidrIp;
+        this.sourceGroupId = sourceGroupId;
+        this.sourceGroupOwnerAccount = sourceGroupOwnerAccount;
+    }
+
     /**
      * @return The description of the rule.
      * 
@@ -176,7 +205,7 @@ public final class GetSecurityGroupRulesRule {
     public static Builder builder(GetSecurityGroupRulesRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String description;
         private String destCidrIp;
@@ -191,7 +220,11 @@ public final class GetSecurityGroupRulesRule {
         private String sourceCidrIp;
         private String sourceGroupId;
         private String sourceGroupOwnerAccount;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetSecurityGroupRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -209,87 +242,59 @@ public final class GetSecurityGroupRulesRule {
     	      this.sourceGroupOwnerAccount = defaults.sourceGroupOwnerAccount;
         }
 
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder destCidrIp(String destCidrIp) {
             this.destCidrIp = Objects.requireNonNull(destCidrIp);
             return this;
         }
-        @CustomType.Setter
         public Builder destGroupId(String destGroupId) {
             this.destGroupId = Objects.requireNonNull(destGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder destGroupOwnerAccount(String destGroupOwnerAccount) {
             this.destGroupOwnerAccount = Objects.requireNonNull(destGroupOwnerAccount);
             return this;
         }
-        @CustomType.Setter
         public Builder direction(String direction) {
             this.direction = Objects.requireNonNull(direction);
             return this;
         }
-        @CustomType.Setter
         public Builder ipProtocol(String ipProtocol) {
             this.ipProtocol = Objects.requireNonNull(ipProtocol);
             return this;
         }
-        @CustomType.Setter
         public Builder nicType(String nicType) {
             this.nicType = Objects.requireNonNull(nicType);
             return this;
         }
-        @CustomType.Setter
         public Builder policy(String policy) {
             this.policy = Objects.requireNonNull(policy);
             return this;
         }
-        @CustomType.Setter
         public Builder portRange(String portRange) {
             this.portRange = Objects.requireNonNull(portRange);
             return this;
         }
-        @CustomType.Setter
         public Builder priority(Integer priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceCidrIp(String sourceCidrIp) {
             this.sourceCidrIp = Objects.requireNonNull(sourceCidrIp);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceGroupId(String sourceGroupId) {
             this.sourceGroupId = Objects.requireNonNull(sourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceGroupOwnerAccount(String sourceGroupOwnerAccount) {
             this.sourceGroupOwnerAccount = Objects.requireNonNull(sourceGroupOwnerAccount);
             return this;
-        }
-        public GetSecurityGroupRulesRule build() {
-            final var o = new GetSecurityGroupRulesRule();
-            o.description = description;
-            o.destCidrIp = destCidrIp;
-            o.destGroupId = destGroupId;
-            o.destGroupOwnerAccount = destGroupOwnerAccount;
-            o.direction = direction;
-            o.ipProtocol = ipProtocol;
-            o.nicType = nicType;
-            o.policy = policy;
-            o.portRange = portRange;
-            o.priority = priority;
-            o.sourceCidrIp = sourceCidrIp;
-            o.sourceGroupId = sourceGroupId;
-            o.sourceGroupOwnerAccount = sourceGroupOwnerAccount;
-            return o;
+        }        public GetSecurityGroupRulesRule build() {
+            return new GetSecurityGroupRulesRule(description, destCidrIp, destGroupId, destGroupOwnerAccount, direction, ipProtocol, nicType, policy, portRange, priority, sourceCidrIp, sourceGroupId, sourceGroupOwnerAccount);
         }
     }
 }

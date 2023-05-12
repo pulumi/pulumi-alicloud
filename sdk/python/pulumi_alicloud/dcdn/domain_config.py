@@ -170,6 +170,34 @@ class DomainConfig(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.131.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new Domain config.
+        domain = alicloud.dcdn.Domain("domain",
+            domain_name="mydomain.alicloud-provider.cn",
+            scope="overseas",
+            sources=[alicloud.dcdn.DomainSourceArgs(
+                content="1.1.1.1",
+                type="ipaddr",
+                priority="20",
+                port=80,
+                weight="15",
+            )])
+        config = alicloud.dcdn.DomainConfig("config",
+            domain_name=domain.domain_name,
+            function_name="ip_allow_list_set",
+            function_args=[alicloud.dcdn.DomainConfigFunctionArgArgs(
+                arg_name="ip_list",
+                arg_value="110.110.110.110",
+            )])
+        ```
+
         ## Import
 
         DCDN domain config can be imported using the id, e.g.
@@ -196,6 +224,34 @@ class DomainConfig(pulumi.CustomResource):
         For information about domain config and how to use it, see [Batch set config](https://www.alibabacloud.com/help/zh/doc-detail/130632.htm)
 
         > **NOTE:** Available in v1.131.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new Domain config.
+        domain = alicloud.dcdn.Domain("domain",
+            domain_name="mydomain.alicloud-provider.cn",
+            scope="overseas",
+            sources=[alicloud.dcdn.DomainSourceArgs(
+                content="1.1.1.1",
+                type="ipaddr",
+                priority="20",
+                port=80,
+                weight="15",
+            )])
+        config = alicloud.dcdn.DomainConfig("config",
+            domain_name=domain.domain_name,
+            function_name="ip_allow_list_set",
+            function_args=[alicloud.dcdn.DomainConfigFunctionArgArgs(
+                arg_name="ip_list",
+                arg_value="110.110.110.110",
+            )])
+        ```
 
         ## Import
 

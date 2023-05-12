@@ -256,6 +256,7 @@ def get_ecs_network_interfaces(ids: Optional[Sequence[str]] = None,
     :param str name: The network interface name.
     :param str name_regex: A regex string to filter results by Network Interface name.
     :param str network_interface_name: The network interface name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str primary_ip_address: The primary private IP address of the ENI.
     :param str private_ip: The primary private IP address of the ENI.
     :param str resource_group_id: The resource group id.
@@ -351,6 +352,7 @@ def get_ecs_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequen
     :param str name: The network interface name.
     :param str name_regex: A regex string to filter results by Network Interface name.
     :param str network_interface_name: The network interface name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str primary_ip_address: The primary private IP address of the ENI.
     :param str private_ip: The primary private IP address of the ENI.
     :param str resource_group_id: The resource group id.

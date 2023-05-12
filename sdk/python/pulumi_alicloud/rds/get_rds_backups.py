@@ -155,6 +155,7 @@ def get_rds_backups(backup_mode: Optional[str] = None,
     :param str db_instance_id: The db instance id.
     :param str end_time: The end time.
     :param Sequence[str] ids: A list of Backup IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str start_time: The start time.
     """
     __args__ = dict()
@@ -219,6 +220,7 @@ def get_rds_backups_output(backup_mode: Optional[pulumi.Input[Optional[str]]] = 
     :param str db_instance_id: The db instance id.
     :param str end_time: The end time.
     :param Sequence[str] ids: A list of Backup IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str start_time: The start time.
     """
     ...

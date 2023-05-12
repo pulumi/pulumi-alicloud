@@ -14,24 +14,35 @@ public final class GetAccessStrategiesStrategyDefaultAddrPool {
      * @return The number of addresses in the address pool.
      * 
      */
-    private Integer addrCount;
+    private final Integer addrCount;
     /**
      * @return The ID of the address pool.
      * 
      */
-    private String addrPoolId;
+    private final String addrPoolId;
     /**
      * @return The weight of the address pool.
      * 
      */
-    private Integer lbaWeight;
+    private final Integer lbaWeight;
     /**
      * @return The name of the address pool.
      * 
      */
-    private String name;
+    private final String name;
 
-    private GetAccessStrategiesStrategyDefaultAddrPool() {}
+    @CustomType.Constructor
+    private GetAccessStrategiesStrategyDefaultAddrPool(
+        @CustomType.Parameter("addrCount") Integer addrCount,
+        @CustomType.Parameter("addrPoolId") String addrPoolId,
+        @CustomType.Parameter("lbaWeight") Integer lbaWeight,
+        @CustomType.Parameter("name") String name) {
+        this.addrCount = addrCount;
+        this.addrPoolId = addrPoolId;
+        this.lbaWeight = lbaWeight;
+        this.name = name;
+    }
+
     /**
      * @return The number of addresses in the address pool.
      * 
@@ -68,13 +79,17 @@ public final class GetAccessStrategiesStrategyDefaultAddrPool {
     public static Builder builder(GetAccessStrategiesStrategyDefaultAddrPool defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer addrCount;
         private String addrPoolId;
         private Integer lbaWeight;
         private String name;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAccessStrategiesStrategyDefaultAddrPool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addrCount = defaults.addrCount;
@@ -83,33 +98,23 @@ public final class GetAccessStrategiesStrategyDefaultAddrPool {
     	      this.name = defaults.name;
         }
 
-        @CustomType.Setter
         public Builder addrCount(Integer addrCount) {
             this.addrCount = Objects.requireNonNull(addrCount);
             return this;
         }
-        @CustomType.Setter
         public Builder addrPoolId(String addrPoolId) {
             this.addrPoolId = Objects.requireNonNull(addrPoolId);
             return this;
         }
-        @CustomType.Setter
         public Builder lbaWeight(Integer lbaWeight) {
             this.lbaWeight = Objects.requireNonNull(lbaWeight);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }
-        public GetAccessStrategiesStrategyDefaultAddrPool build() {
-            final var o = new GetAccessStrategiesStrategyDefaultAddrPool();
-            o.addrCount = addrCount;
-            o.addrPoolId = addrPoolId;
-            o.lbaWeight = lbaWeight;
-            o.name = name;
-            return o;
+        }        public GetAccessStrategiesStrategyDefaultAddrPool build() {
+            return new GetAccessStrategiesStrategyDefaultAddrPool(addrCount, addrPoolId, lbaWeight, name);
         }
     }
 }

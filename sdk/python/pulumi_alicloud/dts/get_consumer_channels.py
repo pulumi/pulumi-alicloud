@@ -105,6 +105,7 @@ def get_consumer_channels(dts_instance_id: Optional[str] = None,
 
     :param str dts_instance_id: Subscription instance ID.
     :param Sequence[str] ids: A list of Consumer Channel IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['dtsInstanceId'] = dts_instance_id
@@ -146,5 +147,6 @@ def get_consumer_channels_output(dts_instance_id: Optional[pulumi.Input[str]] = 
 
     :param str dts_instance_id: Subscription instance ID.
     :param Sequence[str] ids: A list of Consumer Channel IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

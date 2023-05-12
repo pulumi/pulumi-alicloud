@@ -13,9 +13,13 @@ public final class GetChainsChainChainConfigRouterTo {
      * @return The name of delivery chain node.
      * 
      */
-    private String nodeName;
+    private final String nodeName;
 
-    private GetChainsChainChainConfigRouterTo() {}
+    @CustomType.Constructor
+    private GetChainsChainChainConfigRouterTo(@CustomType.Parameter("nodeName") String nodeName) {
+        this.nodeName = nodeName;
+    }
+
     /**
      * @return The name of delivery chain node.
      * 
@@ -31,24 +35,24 @@ public final class GetChainsChainChainConfigRouterTo {
     public static Builder builder(GetChainsChainChainConfigRouterTo defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String nodeName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetChainsChainChainConfigRouterTo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.nodeName = defaults.nodeName;
         }
 
-        @CustomType.Setter
         public Builder nodeName(String nodeName) {
             this.nodeName = Objects.requireNonNull(nodeName);
             return this;
-        }
-        public GetChainsChainChainConfigRouterTo build() {
-            final var o = new GetChainsChainChainConfigRouterTo();
-            o.nodeName = nodeName;
-            return o;
+        }        public GetChainsChainChainConfigRouterTo build() {
+            return new GetChainsChainChainConfigRouterTo(nodeName);
         }
     }
 }

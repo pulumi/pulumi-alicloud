@@ -38,6 +38,8 @@ class AccountArgs:
         :param pulumi.Input[str] type: Privilege type of account.
                - Normal: Common privilege.
                - Super: High privilege.
+               
+               Default to Normal.
         """
         if account_description is not None:
             pulumi.set(__self__, "account_description", account_description)
@@ -214,6 +216,8 @@ class AccountArgs:
         Privilege type of account.
         - Normal: Common privilege.
         - Super: High privilege.
+
+        Default to Normal.
         """
         return pulumi.get(self, "type")
 
@@ -250,6 +254,8 @@ class _AccountState:
         :param pulumi.Input[str] type: Privilege type of account.
                - Normal: Common privilege.
                - Super: High privilege.
+               
+               Default to Normal.
         """
         if account_description is not None:
             pulumi.set(__self__, "account_description", account_description)
@@ -437,6 +443,8 @@ class _AccountState:
         Privilege type of account.
         - Normal: Common privilege.
         - Super: High privilege.
+
+        Default to Normal.
         """
         return pulumi.get(self, "type")
 
@@ -465,6 +473,10 @@ class Account(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Provides an RDS account resource and used to manage databases.
+
+        > **DEPRECATED:**  This resource  has been deprecated from version `1.120.0`. Please use new resource alicloud_rds_account.
+
         ## Example Usage
 
         ```python
@@ -518,6 +530,8 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] type: Privilege type of account.
                - Normal: Common privilege.
                - Super: High privilege.
+               
+               Default to Normal.
         """
         ...
     @overload
@@ -526,6 +540,10 @@ class Account(pulumi.CustomResource):
                  args: Optional[AccountArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides an RDS account resource and used to manage databases.
+
+        > **DEPRECATED:**  This resource  has been deprecated from version `1.120.0`. Please use new resource alicloud_rds_account.
+
         ## Example Usage
 
         ```python
@@ -676,6 +694,8 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] type: Privilege type of account.
                - Normal: Common privilege.
                - Super: High privilege.
+               
+               Default to Normal.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -787,6 +807,8 @@ class Account(pulumi.CustomResource):
         Privilege type of account.
         - Normal: Common privilege.
         - Super: High privilege.
+
+        Default to Normal.
         """
         return pulumi.get(self, "type")
 

@@ -17,69 +17,98 @@ public final class NodePoolKubeletConfiguration {
      * @return Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
      * 
      */
-    private @Nullable String cpuManagerPolicy;
+    private final @Nullable String cpuManagerPolicy;
     /**
      * @return Same as eventBurst. The maximum size of a burst of event creations, temporarily allows event creations to burst to this number, while still not exceeding `event_record_qps`. It is only used when `event_record_qps` is greater than 0. Valid value is `[0-100]`.
      * 
      */
-    private @Nullable String eventBurst;
+    private final @Nullable String eventBurst;
     /**
      * @return Same as eventRecordQPS. The maximum event creations per second. If 0, there is no limit enforced. Valid value is `[0-50]`.
      * 
      */
-    private @Nullable String eventRecordQps;
+    private final @Nullable String eventRecordQps;
     /**
      * @return Same as evictionHard. The map of signal names to quantities that defines hard eviction thresholds. For example: `{&#34;memory.available&#34; = &#34;300Mi&#34;}`.
      * 
      */
-    private @Nullable Map<String,Object> evictionHard;
+    private final @Nullable Map<String,Object> evictionHard;
     /**
      * @return Same as evictionSoft. The map of signal names to quantities that defines soft eviction thresholds. For example: `{&#34;memory.available&#34; = &#34;300Mi&#34;}`.
      * 
      */
-    private @Nullable Map<String,Object> evictionSoft;
+    private final @Nullable Map<String,Object> evictionSoft;
     /**
      * @return Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{&#34;memory.available&#34; = &#34;30s&#34;}`.
      * 
      */
-    private @Nullable Map<String,Object> evictionSoftGracePeriod;
+    private final @Nullable Map<String,Object> evictionSoftGracePeriod;
     /**
      * @return Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
      * 
      */
-    private @Nullable String kubeApiBurst;
+    private final @Nullable String kubeApiBurst;
     /**
      * @return Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
      * 
      */
-    private @Nullable String kubeApiQps;
+    private final @Nullable String kubeApiQps;
     /**
      * @return Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
      * 
      */
-    private @Nullable Map<String,Object> kubeReserved;
+    private final @Nullable Map<String,Object> kubeReserved;
     /**
      * @return Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
      * 
      */
-    private @Nullable String registryBurst;
+    private final @Nullable String registryBurst;
     /**
      * @return Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
      * 
      */
-    private @Nullable String registryPullQps;
+    private final @Nullable String registryPullQps;
     /**
      * @return Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version &lt; 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
      * 
      */
-    private @Nullable String serializeImagePulls;
+    private final @Nullable String serializeImagePulls;
     /**
      * @return Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
      * 
      */
-    private @Nullable Map<String,Object> systemReserved;
+    private final @Nullable Map<String,Object> systemReserved;
 
-    private NodePoolKubeletConfiguration() {}
+    @CustomType.Constructor
+    private NodePoolKubeletConfiguration(
+        @CustomType.Parameter("cpuManagerPolicy") @Nullable String cpuManagerPolicy,
+        @CustomType.Parameter("eventBurst") @Nullable String eventBurst,
+        @CustomType.Parameter("eventRecordQps") @Nullable String eventRecordQps,
+        @CustomType.Parameter("evictionHard") @Nullable Map<String,Object> evictionHard,
+        @CustomType.Parameter("evictionSoft") @Nullable Map<String,Object> evictionSoft,
+        @CustomType.Parameter("evictionSoftGracePeriod") @Nullable Map<String,Object> evictionSoftGracePeriod,
+        @CustomType.Parameter("kubeApiBurst") @Nullable String kubeApiBurst,
+        @CustomType.Parameter("kubeApiQps") @Nullable String kubeApiQps,
+        @CustomType.Parameter("kubeReserved") @Nullable Map<String,Object> kubeReserved,
+        @CustomType.Parameter("registryBurst") @Nullable String registryBurst,
+        @CustomType.Parameter("registryPullQps") @Nullable String registryPullQps,
+        @CustomType.Parameter("serializeImagePulls") @Nullable String serializeImagePulls,
+        @CustomType.Parameter("systemReserved") @Nullable Map<String,Object> systemReserved) {
+        this.cpuManagerPolicy = cpuManagerPolicy;
+        this.eventBurst = eventBurst;
+        this.eventRecordQps = eventRecordQps;
+        this.evictionHard = evictionHard;
+        this.evictionSoft = evictionSoft;
+        this.evictionSoftGracePeriod = evictionSoftGracePeriod;
+        this.kubeApiBurst = kubeApiBurst;
+        this.kubeApiQps = kubeApiQps;
+        this.kubeReserved = kubeReserved;
+        this.registryBurst = registryBurst;
+        this.registryPullQps = registryPullQps;
+        this.serializeImagePulls = serializeImagePulls;
+        this.systemReserved = systemReserved;
+    }
+
     /**
      * @return Same as cpuManagerPolicy. The name of the policy to use. Requires the CPUManager feature gate to be enabled. Valid value is `none` or `static`.
      * 
@@ -179,7 +208,7 @@ public final class NodePoolKubeletConfiguration {
     public static Builder builder(NodePoolKubeletConfiguration defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String cpuManagerPolicy;
         private @Nullable String eventBurst;
@@ -194,7 +223,11 @@ public final class NodePoolKubeletConfiguration {
         private @Nullable String registryPullQps;
         private @Nullable String serializeImagePulls;
         private @Nullable Map<String,Object> systemReserved;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(NodePoolKubeletConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuManagerPolicy = defaults.cpuManagerPolicy;
@@ -212,87 +245,59 @@ public final class NodePoolKubeletConfiguration {
     	      this.systemReserved = defaults.systemReserved;
         }
 
-        @CustomType.Setter
         public Builder cpuManagerPolicy(@Nullable String cpuManagerPolicy) {
             this.cpuManagerPolicy = cpuManagerPolicy;
             return this;
         }
-        @CustomType.Setter
         public Builder eventBurst(@Nullable String eventBurst) {
             this.eventBurst = eventBurst;
             return this;
         }
-        @CustomType.Setter
         public Builder eventRecordQps(@Nullable String eventRecordQps) {
             this.eventRecordQps = eventRecordQps;
             return this;
         }
-        @CustomType.Setter
         public Builder evictionHard(@Nullable Map<String,Object> evictionHard) {
             this.evictionHard = evictionHard;
             return this;
         }
-        @CustomType.Setter
         public Builder evictionSoft(@Nullable Map<String,Object> evictionSoft) {
             this.evictionSoft = evictionSoft;
             return this;
         }
-        @CustomType.Setter
         public Builder evictionSoftGracePeriod(@Nullable Map<String,Object> evictionSoftGracePeriod) {
             this.evictionSoftGracePeriod = evictionSoftGracePeriod;
             return this;
         }
-        @CustomType.Setter
         public Builder kubeApiBurst(@Nullable String kubeApiBurst) {
             this.kubeApiBurst = kubeApiBurst;
             return this;
         }
-        @CustomType.Setter
         public Builder kubeApiQps(@Nullable String kubeApiQps) {
             this.kubeApiQps = kubeApiQps;
             return this;
         }
-        @CustomType.Setter
         public Builder kubeReserved(@Nullable Map<String,Object> kubeReserved) {
             this.kubeReserved = kubeReserved;
             return this;
         }
-        @CustomType.Setter
         public Builder registryBurst(@Nullable String registryBurst) {
             this.registryBurst = registryBurst;
             return this;
         }
-        @CustomType.Setter
         public Builder registryPullQps(@Nullable String registryPullQps) {
             this.registryPullQps = registryPullQps;
             return this;
         }
-        @CustomType.Setter
         public Builder serializeImagePulls(@Nullable String serializeImagePulls) {
             this.serializeImagePulls = serializeImagePulls;
             return this;
         }
-        @CustomType.Setter
         public Builder systemReserved(@Nullable Map<String,Object> systemReserved) {
             this.systemReserved = systemReserved;
             return this;
-        }
-        public NodePoolKubeletConfiguration build() {
-            final var o = new NodePoolKubeletConfiguration();
-            o.cpuManagerPolicy = cpuManagerPolicy;
-            o.eventBurst = eventBurst;
-            o.eventRecordQps = eventRecordQps;
-            o.evictionHard = evictionHard;
-            o.evictionSoft = evictionSoft;
-            o.evictionSoftGracePeriod = evictionSoftGracePeriod;
-            o.kubeApiBurst = kubeApiBurst;
-            o.kubeApiQps = kubeApiQps;
-            o.kubeReserved = kubeReserved;
-            o.registryBurst = registryBurst;
-            o.registryPullQps = registryPullQps;
-            o.serializeImagePulls = serializeImagePulls;
-            o.systemReserved = systemReserved;
-            return o;
+        }        public NodePoolKubeletConfiguration build() {
+            return new NodePoolKubeletConfiguration(cpuManagerPolicy, eventBurst, eventRecordQps, evictionHard, evictionSoft, evictionSoftGracePeriod, kubeApiBurst, kubeApiQps, kubeReserved, registryBurst, registryPullQps, serializeImagePulls, systemReserved);
         }
     }
 }

@@ -59,12 +59,16 @@ public final class NasBackupPlanState extends com.pulumi.resources.ResourceArgs 
     /**
      * The role name created in the original account RAM backup by the cross account managed by the current account.
      * 
+     * &gt; **Note** `alicloud.hbr.NasBackupPlan` depends on the `alicloud.nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
+     * 
      */
     @Import(name="crossAccountRoleName")
     private @Nullable Output<String> crossAccountRoleName;
 
     /**
      * @return The role name created in the original account RAM backup by the cross account managed by the current account.
+     * 
+     * &gt; **Note** `alicloud.hbr.NasBackupPlan` depends on the `alicloud.nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
      * 
      */
     public Optional<Output<String>> crossAccountRoleName() {
@@ -310,6 +314,8 @@ public final class NasBackupPlanState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param crossAccountRoleName The role name created in the original account RAM backup by the cross account managed by the current account.
          * 
+         * &gt; **Note** `alicloud.hbr.NasBackupPlan` depends on the `alicloud.nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
+         * 
          * @return builder
          * 
          */
@@ -320,6 +326,8 @@ public final class NasBackupPlanState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param crossAccountRoleName The role name created in the original account RAM backup by the cross account managed by the current account.
+         * 
+         * &gt; **Note** `alicloud.hbr.NasBackupPlan` depends on the `alicloud.nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
          * 
          * @return builder
          * 

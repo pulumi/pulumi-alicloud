@@ -180,12 +180,16 @@ public final class EcsSnapshotArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A mapping of tags to assign to the snapshot.
      * 
+     * &gt; **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+     * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
      * @return A mapping of tags to assign to the snapshot.
+     * 
+     * &gt; **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -447,6 +451,8 @@ public final class EcsSnapshotArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tags A mapping of tags to assign to the snapshot.
          * 
+         * &gt; **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+         * 
          * @return builder
          * 
          */
@@ -457,6 +463,8 @@ public final class EcsSnapshotArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags A mapping of tags to assign to the snapshot.
+         * 
+         * &gt; **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
          * 
          * @return builder
          * 

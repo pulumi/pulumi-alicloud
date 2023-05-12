@@ -11,6 +11,54 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Log Service manages all the ECS instances whose logs need to be collected by using the Logtail client in the form of machine groups.
+//
+//	[Refer to details](https://www.alibabacloud.com/help/doc-detail/28966.htm)
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+//				Description: pulumi.String("created by terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewMachineGroup(ctx, "exampleMachineGroup", &log.MachineGroupArgs{
+//				Project:      exampleProject.Name,
+//				IdentifyType: pulumi.String("ip"),
+//				Topic:        pulumi.String("terraform"),
+//				IdentifyLists: pulumi.StringArray{
+//					pulumi.String("10.0.0.1"),
+//					pulumi.String("10.0.0.2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Module Support
+//
+// You can use the existing sls-logtail module
+// to create logtail config, machine group, install logtail on ECS instances and join instances into machine group one-click.
+//
 // ## Import
 //
 // Log machine group can be imported using the id, e.g.

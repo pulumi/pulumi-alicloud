@@ -14,36 +14,55 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetReposResult {
-    private @Nullable Boolean enableDetails;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of matched Container Registry Repositories. Its element is set to `names`.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of repository names.
      * 
      */
-    private List<String> names;
+    private final List<String> names;
     /**
      * @return Name of container registry namespace where repo is located.
      * 
      */
-    private @Nullable String namespace;
-    private @Nullable String outputFile;
+    private final @Nullable String namespace;
+    private final @Nullable String outputFile;
     /**
      * @return A list of matched Container Registry Namespaces. Each element contains the following attributes:
      * 
      */
-    private List<GetReposRepo> repos;
+    private final List<GetReposRepo> repos;
 
-    private GetReposResult() {}
+    @CustomType.Constructor
+    private GetReposResult(
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("namespace") @Nullable String namespace,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("repos") List<GetReposRepo> repos) {
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.namespace = namespace;
+        this.outputFile = outputFile;
+        this.repos = repos;
+    }
+
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -96,7 +115,7 @@ public final class GetReposResult {
     public static Builder builder(GetReposResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private String id;
@@ -106,7 +125,11 @@ public final class GetReposResult {
         private @Nullable String namespace;
         private @Nullable String outputFile;
         private List<GetReposRepo> repos;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetReposResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -119,17 +142,14 @@ public final class GetReposResult {
     	      this.repos = defaults.repos;
         }
 
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -137,12 +157,10 @@ public final class GetReposResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -150,35 +168,22 @@ public final class GetReposResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
             this.namespace = namespace;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder repos(List<GetReposRepo> repos) {
             this.repos = Objects.requireNonNull(repos);
             return this;
         }
         public Builder repos(GetReposRepo... repos) {
             return repos(List.of(repos));
-        }
-        public GetReposResult build() {
-            final var o = new GetReposResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.namespace = namespace;
-            o.outputFile = outputFile;
-            o.repos = repos;
-            return o;
+        }        public GetReposResult build() {
+            return new GetReposResult(enableDetails, id, ids, nameRegex, names, namespace, outputFile, repos);
         }
     }
 }

@@ -14,14 +14,21 @@ public final class GetListenersListenerQuicConfig {
      * @return The ID of the QUIC listener to be associated. If QuicUpgradeEnabled is set to true, this parameter is required. Only HTTPS listeners support this parameter.
      * 
      */
-    private String quicListenerId;
+    private final String quicListenerId;
     /**
      * @return Indicates whether quic upgrade is enabled. Valid values: true and false. Default value: false.
      * 
      */
-    private Boolean quicUpgradeEnabled;
+    private final Boolean quicUpgradeEnabled;
 
-    private GetListenersListenerQuicConfig() {}
+    @CustomType.Constructor
+    private GetListenersListenerQuicConfig(
+        @CustomType.Parameter("quicListenerId") String quicListenerId,
+        @CustomType.Parameter("quicUpgradeEnabled") Boolean quicUpgradeEnabled) {
+        this.quicListenerId = quicListenerId;
+        this.quicUpgradeEnabled = quicUpgradeEnabled;
+    }
+
     /**
      * @return The ID of the QUIC listener to be associated. If QuicUpgradeEnabled is set to true, this parameter is required. Only HTTPS listeners support this parameter.
      * 
@@ -44,32 +51,30 @@ public final class GetListenersListenerQuicConfig {
     public static Builder builder(GetListenersListenerQuicConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String quicListenerId;
         private Boolean quicUpgradeEnabled;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetListenersListenerQuicConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.quicListenerId = defaults.quicListenerId;
     	      this.quicUpgradeEnabled = defaults.quicUpgradeEnabled;
         }
 
-        @CustomType.Setter
         public Builder quicListenerId(String quicListenerId) {
             this.quicListenerId = Objects.requireNonNull(quicListenerId);
             return this;
         }
-        @CustomType.Setter
         public Builder quicUpgradeEnabled(Boolean quicUpgradeEnabled) {
             this.quicUpgradeEnabled = Objects.requireNonNull(quicUpgradeEnabled);
             return this;
-        }
-        public GetListenersListenerQuicConfig build() {
-            final var o = new GetListenersListenerQuicConfig();
-            o.quicListenerId = quicListenerId;
-            o.quicUpgradeEnabled = quicUpgradeEnabled;
-            return o;
+        }        public GetListenersListenerQuicConfig build() {
+            return new GetListenersListenerQuicConfig(quicListenerId, quicUpgradeEnabled);
         }
     }
 }

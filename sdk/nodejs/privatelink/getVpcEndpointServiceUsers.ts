@@ -39,6 +39,9 @@ export function getVpcEndpointServiceUsers(args: GetVpcEndpointServiceUsersArgs,
  * A collection of arguments for invoking getVpcEndpointServiceUsers.
  */
 export interface GetVpcEndpointServiceUsersArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The Id of Vpc Endpoint Service.
@@ -91,6 +94,9 @@ export function getVpcEndpointServiceUsersOutput(args: GetVpcEndpointServiceUser
  * A collection of arguments for invoking getVpcEndpointServiceUsers.
  */
 export interface GetVpcEndpointServiceUsersOutputArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The Id of Vpc Endpoint Service.

@@ -63,6 +63,9 @@ export interface GetVpcEndpointsArgs {
      * A regex string to filter results by Vpc Endpoint name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The name of the terminal node service associated with the terminal node.
@@ -146,6 +149,9 @@ export interface GetVpcEndpointsOutputArgs {
      * A regex string to filter results by Vpc Endpoint name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The name of the terminal node service associated with the terminal node.

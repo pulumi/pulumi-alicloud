@@ -11,6 +11,94 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The log store is a unit in Log Service to collect, store, and query the log data. Each log store belongs to a project,
+// and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+//				Description: pulumi.String("created by terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewStore(ctx, "exampleStore", &log.StoreArgs{
+//				Project:            exampleProject.Name,
+//				ShardCount:         pulumi.Int(3),
+//				AutoSplit:          pulumi.Bool(true),
+//				MaxSplitShardCount: pulumi.Int(60),
+//				AppendMeta:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// Encrypt Usage
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+//				Description: pulumi.String("created by terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewStore(ctx, "exampleStore", &log.StoreArgs{
+//				Project:            exampleProject.Name,
+//				ShardCount:         pulumi.Int(3),
+//				AutoSplit:          pulumi.Bool(true),
+//				MaxSplitShardCount: pulumi.Int(60),
+//				AppendMeta:         pulumi.Bool(true),
+//				EncryptConf: &log.StoreEncryptConfArgs{
+//					Enable:      pulumi.Bool(true),
+//					EncryptType: pulumi.String("default"),
+//					UserCmkInfo: &log.StoreEncryptConfUserCmkInfoArgs{
+//						CmkKeyId: pulumi.String("your_cmk_key_id"),
+//						Arn:      pulumi.String("your_role_arn"),
+//						RegionId: pulumi.String("you_cmk_region_id"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Module Support
+//
+// You can use the existing sls module
+// to create SLS project, store and store index one-click, like ECS instances.
+//
 // ## Import
 //
 // Log store can be imported using the id, e.g.

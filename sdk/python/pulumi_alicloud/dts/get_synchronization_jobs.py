@@ -125,6 +125,7 @@ def get_synchronization_jobs(enable_details: Optional[bool] = None,
 
     :param Sequence[str] ids: A list of Synchronization Job IDs.
     :param str name_regex: A regex string to filter results by synchronization job name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
     """
     __args__ = dict()
@@ -173,6 +174,7 @@ def get_synchronization_jobs_output(enable_details: Optional[pulumi.Input[Option
 
     :param Sequence[str] ids: A list of Synchronization Job IDs.
     :param str name_regex: A regex string to filter results by synchronization job name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
     """
     ...

@@ -15,14 +15,21 @@ public final class DbInstancePlanPlanConfigPause {
      * @return The executed time of the Plan.
      * 
      */
-    private @Nullable String executeTime;
+    private final @Nullable String executeTime;
     /**
      * @return The Cron Time of the plan.
      * 
      */
-    private @Nullable String planCronTime;
+    private final @Nullable String planCronTime;
 
-    private DbInstancePlanPlanConfigPause() {}
+    @CustomType.Constructor
+    private DbInstancePlanPlanConfigPause(
+        @CustomType.Parameter("executeTime") @Nullable String executeTime,
+        @CustomType.Parameter("planCronTime") @Nullable String planCronTime) {
+        this.executeTime = executeTime;
+        this.planCronTime = planCronTime;
+    }
+
     /**
      * @return The executed time of the Plan.
      * 
@@ -45,32 +52,30 @@ public final class DbInstancePlanPlanConfigPause {
     public static Builder builder(DbInstancePlanPlanConfigPause defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String executeTime;
         private @Nullable String planCronTime;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(DbInstancePlanPlanConfigPause defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.executeTime = defaults.executeTime;
     	      this.planCronTime = defaults.planCronTime;
         }
 
-        @CustomType.Setter
         public Builder executeTime(@Nullable String executeTime) {
             this.executeTime = executeTime;
             return this;
         }
-        @CustomType.Setter
         public Builder planCronTime(@Nullable String planCronTime) {
             this.planCronTime = planCronTime;
             return this;
-        }
-        public DbInstancePlanPlanConfigPause build() {
-            final var o = new DbInstancePlanPlanConfigPause();
-            o.executeTime = executeTime;
-            o.planCronTime = planCronTime;
-            return o;
+        }        public DbInstancePlanPlanConfigPause build() {
+            return new DbInstancePlanPlanConfigPause(executeTime, planCronTime);
         }
     }
 }

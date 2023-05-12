@@ -13,54 +13,77 @@ public final class GetApplicationGroupsGroup {
      * @return The name of the Application group.
      * 
      */
-    private String applicationGroupName;
+    private final String applicationGroupName;
     /**
      * @return The name of the Application.
      * 
      */
-    private String applicationName;
+    private final String applicationName;
     /**
      * @return The ID of the cloud monitor group.
      * 
      */
-    private String cmsGroupId;
+    private final String cmsGroupId;
     /**
      * @return The Creation time of the resource.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The region ID of the deployment.
      * 
      */
-    private String deployRegionId;
+    private final String deployRegionId;
     /**
      * @return Application group description information.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the Application Group. Its value is same as Queue Name.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Label key.
      * 
      */
-    private String importTagKey;
+    private final String importTagKey;
     /**
      * @return Label value.
      * 
      */
-    private String importTagValue;
+    private final String importTagValue;
     /**
      * @return The Update time of the resource.
      * 
      */
-    private String updateTime;
+    private final String updateTime;
 
-    private GetApplicationGroupsGroup() {}
+    @CustomType.Constructor
+    private GetApplicationGroupsGroup(
+        @CustomType.Parameter("applicationGroupName") String applicationGroupName,
+        @CustomType.Parameter("applicationName") String applicationName,
+        @CustomType.Parameter("cmsGroupId") String cmsGroupId,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("deployRegionId") String deployRegionId,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("importTagKey") String importTagKey,
+        @CustomType.Parameter("importTagValue") String importTagValue,
+        @CustomType.Parameter("updateTime") String updateTime) {
+        this.applicationGroupName = applicationGroupName;
+        this.applicationName = applicationName;
+        this.cmsGroupId = cmsGroupId;
+        this.createTime = createTime;
+        this.deployRegionId = deployRegionId;
+        this.description = description;
+        this.id = id;
+        this.importTagKey = importTagKey;
+        this.importTagValue = importTagValue;
+        this.updateTime = updateTime;
+    }
+
     /**
      * @return The name of the Application group.
      * 
@@ -139,7 +162,7 @@ public final class GetApplicationGroupsGroup {
     public static Builder builder(GetApplicationGroupsGroup defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String applicationGroupName;
         private String applicationName;
@@ -151,7 +174,11 @@ public final class GetApplicationGroupsGroup {
         private String importTagKey;
         private String importTagValue;
         private String updateTime;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetApplicationGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applicationGroupName = defaults.applicationGroupName;
@@ -166,69 +193,47 @@ public final class GetApplicationGroupsGroup {
     	      this.updateTime = defaults.updateTime;
         }
 
-        @CustomType.Setter
         public Builder applicationGroupName(String applicationGroupName) {
             this.applicationGroupName = Objects.requireNonNull(applicationGroupName);
             return this;
         }
-        @CustomType.Setter
         public Builder applicationName(String applicationName) {
             this.applicationName = Objects.requireNonNull(applicationName);
             return this;
         }
-        @CustomType.Setter
         public Builder cmsGroupId(String cmsGroupId) {
             this.cmsGroupId = Objects.requireNonNull(cmsGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder deployRegionId(String deployRegionId) {
             this.deployRegionId = Objects.requireNonNull(deployRegionId);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder importTagKey(String importTagKey) {
             this.importTagKey = Objects.requireNonNull(importTagKey);
             return this;
         }
-        @CustomType.Setter
         public Builder importTagValue(String importTagValue) {
             this.importTagValue = Objects.requireNonNull(importTagValue);
             return this;
         }
-        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
-        }
-        public GetApplicationGroupsGroup build() {
-            final var o = new GetApplicationGroupsGroup();
-            o.applicationGroupName = applicationGroupName;
-            o.applicationName = applicationName;
-            o.cmsGroupId = cmsGroupId;
-            o.createTime = createTime;
-            o.deployRegionId = deployRegionId;
-            o.description = description;
-            o.id = id;
-            o.importTagKey = importTagKey;
-            o.importTagValue = importTagValue;
-            o.updateTime = updateTime;
-            return o;
+        }        public GetApplicationGroupsGroup build() {
+            return new GetApplicationGroupsGroup(applicationGroupName, applicationName, cmsGroupId, createTime, deployRegionId, description, id, importTagKey, importTagValue, updateTime);
         }
     }
 }

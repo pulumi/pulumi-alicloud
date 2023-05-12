@@ -5,13 +5,46 @@ package com.pulumi.alicloud.emrv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ClusterNodeAttributeArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterNodeAttributeArgs Empty = new ClusterNodeAttributeArgs();
+
+    /**
+     * Whether to enable data disk encryption.
+     * 
+     */
+    @Import(name="dataDiskEncrypted")
+    private @Nullable Output<Boolean> dataDiskEncrypted;
+
+    /**
+     * @return Whether to enable data disk encryption.
+     * 
+     */
+    public Optional<Output<Boolean>> dataDiskEncrypted() {
+        return Optional.ofNullable(this.dataDiskEncrypted);
+    }
+
+    /**
+     * The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
+     * 
+     */
+    @Import(name="dataDiskKmsKeyId")
+    private @Nullable Output<String> dataDiskKmsKeyId;
+
+    /**
+     * @return The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
+     * 
+     */
+    public Optional<Output<String>> dataDiskKmsKeyId() {
+        return Optional.ofNullable(this.dataDiskKmsKeyId);
+    }
 
     /**
      * The name of the key pair.
@@ -91,6 +124,8 @@ public final class ClusterNodeAttributeArgs extends com.pulumi.resources.Resourc
     private ClusterNodeAttributeArgs() {}
 
     private ClusterNodeAttributeArgs(ClusterNodeAttributeArgs $) {
+        this.dataDiskEncrypted = $.dataDiskEncrypted;
+        this.dataDiskKmsKeyId = $.dataDiskKmsKeyId;
         this.keyPairName = $.keyPairName;
         this.ramRole = $.ramRole;
         this.securityGroupId = $.securityGroupId;
@@ -114,6 +149,48 @@ public final class ClusterNodeAttributeArgs extends com.pulumi.resources.Resourc
 
         public Builder(ClusterNodeAttributeArgs defaults) {
             $ = new ClusterNodeAttributeArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param dataDiskEncrypted Whether to enable data disk encryption.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDiskEncrypted(@Nullable Output<Boolean> dataDiskEncrypted) {
+            $.dataDiskEncrypted = dataDiskEncrypted;
+            return this;
+        }
+
+        /**
+         * @param dataDiskEncrypted Whether to enable data disk encryption.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDiskEncrypted(Boolean dataDiskEncrypted) {
+            return dataDiskEncrypted(Output.of(dataDiskEncrypted));
+        }
+
+        /**
+         * @param dataDiskKmsKeyId The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDiskKmsKeyId(@Nullable Output<String> dataDiskKmsKeyId) {
+            $.dataDiskKmsKeyId = dataDiskKmsKeyId;
+            return this;
+        }
+
+        /**
+         * @param dataDiskKmsKeyId The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDiskKmsKeyId(String dataDiskKmsKeyId) {
+            return dataDiskKmsKeyId(Output.of(dataDiskKmsKeyId));
         }
 
         /**

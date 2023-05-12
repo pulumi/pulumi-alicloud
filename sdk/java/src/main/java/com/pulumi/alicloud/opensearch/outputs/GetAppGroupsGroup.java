@@ -16,130 +16,185 @@ public final class GetAppGroupsGroup {
      * @return The ID of the App Group.
      * 
      */
-    private String appGroupId;
+    private final String appGroupId;
     /**
      * @return Application Group Name.
      * 
      */
-    private String appGroupName;
+    private final String appGroupName;
     /**
      * @return Billing model. Valid values:`compute_resource` and `qps`.
      * 
      */
-    private Integer chargeWay;
+    private final Integer chargeWay;
     /**
      * @return The commodity code.
      * 
      */
-    private String commodityCode;
+    private final String commodityCode;
     /**
      * @return The time of creation.
      * 
      */
-    private Integer createTime;
+    private final Integer createTime;
     /**
      * @return The version of Application Group Name.
      * 
      */
-    private String currentVersion;
+    private final String currentVersion;
     /**
      * @return The description of the resource.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return Domain name.
      * 
      */
-    private String domain;
+    private final String domain;
     /**
      * @return Expiration Time.
      * 
      */
-    private String expireOn;
+    private final String expireOn;
     /**
      * @return Coarse deployment ID.
      * 
      */
-    private Integer firstRankAlgoDeploymentId;
+    private final Integer firstRankAlgoDeploymentId;
     /**
      * @return Whether the quota status is under approval. Valid status:
      * 
      */
-    private Integer hasPendingQuotaReviewTask;
-    private String id;
+    private final Integer hasPendingQuotaReviewTask;
+    private final String id;
     /**
      * @return The Instance ID.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return Locked state. Valid status: `Unlock`,`LockByExpiration`,`ManualLock`.
      * 
      */
-    private String lockMode;
+    private final String lockMode;
     /**
      * @return Instance is automatically locked after expiration.
      * 
      */
-    private Integer lockedByExpiration;
+    private final Integer lockedByExpiration;
     /**
      * @return The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
      * 
      */
-    private String paymentType;
+    private final String paymentType;
     /**
      * @return Refine deployment ID in deployment.
      * 
      */
-    private Integer pendingSecondRankAlgoDeploymentId;
+    private final Integer pendingSecondRankAlgoDeploymentId;
     /**
      * @return Unfinished order number.
      * 
      */
-    private String processingOrderId;
+    private final String processingOrderId;
     /**
      * @return Whether the production is completed. Valid values:
      * 
      */
-    private Integer produced;
+    private final Integer produced;
     /**
      * @return The Project ID.
      * 
      */
-    private String projectId;
+    private final String projectId;
     /**
      * @return Quota information.
      * 
      */
-    private List<GetAppGroupsGroupQuota> quotas;
+    private final List<GetAppGroupsGroupQuota> quotas;
     /**
      * @return The Resource Group ID.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return Refine deployment ID.
      * 
      */
-    private Integer secondRankAlgoDeploymentId;
+    private final Integer secondRankAlgoDeploymentId;
     /**
      * @return The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The Switched time.
      * 
      */
-    private Integer switchedTime;
+    private final Integer switchedTime;
     /**
      * @return Application type. Valid Values: `standard`, `enhanced`.
      * 
      */
-    private String type;
+    private final String type;
 
-    private GetAppGroupsGroup() {}
+    @CustomType.Constructor
+    private GetAppGroupsGroup(
+        @CustomType.Parameter("appGroupId") String appGroupId,
+        @CustomType.Parameter("appGroupName") String appGroupName,
+        @CustomType.Parameter("chargeWay") Integer chargeWay,
+        @CustomType.Parameter("commodityCode") String commodityCode,
+        @CustomType.Parameter("createTime") Integer createTime,
+        @CustomType.Parameter("currentVersion") String currentVersion,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("domain") String domain,
+        @CustomType.Parameter("expireOn") String expireOn,
+        @CustomType.Parameter("firstRankAlgoDeploymentId") Integer firstRankAlgoDeploymentId,
+        @CustomType.Parameter("hasPendingQuotaReviewTask") Integer hasPendingQuotaReviewTask,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("lockMode") String lockMode,
+        @CustomType.Parameter("lockedByExpiration") Integer lockedByExpiration,
+        @CustomType.Parameter("paymentType") String paymentType,
+        @CustomType.Parameter("pendingSecondRankAlgoDeploymentId") Integer pendingSecondRankAlgoDeploymentId,
+        @CustomType.Parameter("processingOrderId") String processingOrderId,
+        @CustomType.Parameter("produced") Integer produced,
+        @CustomType.Parameter("projectId") String projectId,
+        @CustomType.Parameter("quotas") List<GetAppGroupsGroupQuota> quotas,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("secondRankAlgoDeploymentId") Integer secondRankAlgoDeploymentId,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("switchedTime") Integer switchedTime,
+        @CustomType.Parameter("type") String type) {
+        this.appGroupId = appGroupId;
+        this.appGroupName = appGroupName;
+        this.chargeWay = chargeWay;
+        this.commodityCode = commodityCode;
+        this.createTime = createTime;
+        this.currentVersion = currentVersion;
+        this.description = description;
+        this.domain = domain;
+        this.expireOn = expireOn;
+        this.firstRankAlgoDeploymentId = firstRankAlgoDeploymentId;
+        this.hasPendingQuotaReviewTask = hasPendingQuotaReviewTask;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.lockMode = lockMode;
+        this.lockedByExpiration = lockedByExpiration;
+        this.paymentType = paymentType;
+        this.pendingSecondRankAlgoDeploymentId = pendingSecondRankAlgoDeploymentId;
+        this.processingOrderId = processingOrderId;
+        this.produced = produced;
+        this.projectId = projectId;
+        this.quotas = quotas;
+        this.resourceGroupId = resourceGroupId;
+        this.secondRankAlgoDeploymentId = secondRankAlgoDeploymentId;
+        this.status = status;
+        this.switchedTime = switchedTime;
+        this.type = type;
+    }
+
     /**
      * @return The ID of the App Group.
      * 
@@ -326,7 +381,7 @@ public final class GetAppGroupsGroup {
     public static Builder builder(GetAppGroupsGroup defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String appGroupId;
         private String appGroupName;
@@ -354,7 +409,11 @@ public final class GetAppGroupsGroup {
         private String status;
         private Integer switchedTime;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAppGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appGroupId = defaults.appGroupId;
@@ -385,107 +444,86 @@ public final class GetAppGroupsGroup {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder appGroupId(String appGroupId) {
             this.appGroupId = Objects.requireNonNull(appGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder appGroupName(String appGroupName) {
             this.appGroupName = Objects.requireNonNull(appGroupName);
             return this;
         }
-        @CustomType.Setter
         public Builder chargeWay(Integer chargeWay) {
             this.chargeWay = Objects.requireNonNull(chargeWay);
             return this;
         }
-        @CustomType.Setter
         public Builder commodityCode(String commodityCode) {
             this.commodityCode = Objects.requireNonNull(commodityCode);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(Integer createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder currentVersion(String currentVersion) {
             this.currentVersion = Objects.requireNonNull(currentVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
-        @CustomType.Setter
         public Builder expireOn(String expireOn) {
             this.expireOn = Objects.requireNonNull(expireOn);
             return this;
         }
-        @CustomType.Setter
         public Builder firstRankAlgoDeploymentId(Integer firstRankAlgoDeploymentId) {
             this.firstRankAlgoDeploymentId = Objects.requireNonNull(firstRankAlgoDeploymentId);
             return this;
         }
-        @CustomType.Setter
         public Builder hasPendingQuotaReviewTask(Integer hasPendingQuotaReviewTask) {
             this.hasPendingQuotaReviewTask = Objects.requireNonNull(hasPendingQuotaReviewTask);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder lockMode(String lockMode) {
             this.lockMode = Objects.requireNonNull(lockMode);
             return this;
         }
-        @CustomType.Setter
         public Builder lockedByExpiration(Integer lockedByExpiration) {
             this.lockedByExpiration = Objects.requireNonNull(lockedByExpiration);
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
-        @CustomType.Setter
         public Builder pendingSecondRankAlgoDeploymentId(Integer pendingSecondRankAlgoDeploymentId) {
             this.pendingSecondRankAlgoDeploymentId = Objects.requireNonNull(pendingSecondRankAlgoDeploymentId);
             return this;
         }
-        @CustomType.Setter
         public Builder processingOrderId(String processingOrderId) {
             this.processingOrderId = Objects.requireNonNull(processingOrderId);
             return this;
         }
-        @CustomType.Setter
         public Builder produced(Integer produced) {
             this.produced = Objects.requireNonNull(produced);
             return this;
         }
-        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
-        @CustomType.Setter
         public Builder quotas(List<GetAppGroupsGroupQuota> quotas) {
             this.quotas = Objects.requireNonNull(quotas);
             return this;
@@ -493,60 +531,27 @@ public final class GetAppGroupsGroup {
         public Builder quotas(GetAppGroupsGroupQuota... quotas) {
             return quotas(List.of(quotas));
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder secondRankAlgoDeploymentId(Integer secondRankAlgoDeploymentId) {
             this.secondRankAlgoDeploymentId = Objects.requireNonNull(secondRankAlgoDeploymentId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder switchedTime(Integer switchedTime) {
             this.switchedTime = Objects.requireNonNull(switchedTime);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetAppGroupsGroup build() {
-            final var o = new GetAppGroupsGroup();
-            o.appGroupId = appGroupId;
-            o.appGroupName = appGroupName;
-            o.chargeWay = chargeWay;
-            o.commodityCode = commodityCode;
-            o.createTime = createTime;
-            o.currentVersion = currentVersion;
-            o.description = description;
-            o.domain = domain;
-            o.expireOn = expireOn;
-            o.firstRankAlgoDeploymentId = firstRankAlgoDeploymentId;
-            o.hasPendingQuotaReviewTask = hasPendingQuotaReviewTask;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.lockMode = lockMode;
-            o.lockedByExpiration = lockedByExpiration;
-            o.paymentType = paymentType;
-            o.pendingSecondRankAlgoDeploymentId = pendingSecondRankAlgoDeploymentId;
-            o.processingOrderId = processingOrderId;
-            o.produced = produced;
-            o.projectId = projectId;
-            o.quotas = quotas;
-            o.resourceGroupId = resourceGroupId;
-            o.secondRankAlgoDeploymentId = secondRankAlgoDeploymentId;
-            o.status = status;
-            o.switchedTime = switchedTime;
-            o.type = type;
-            return o;
+        }        public GetAppGroupsGroup build() {
+            return new GetAppGroupsGroup(appGroupId, appGroupName, chargeWay, commodityCode, createTime, currentVersion, description, domain, expireOn, firstRankAlgoDeploymentId, hasPendingQuotaReviewTask, id, instanceId, lockMode, lockedByExpiration, paymentType, pendingSecondRankAlgoDeploymentId, processingOrderId, produced, projectId, quotas, resourceGroupId, secondRankAlgoDeploymentId, status, switchedTime, type);
         }
     }
 }

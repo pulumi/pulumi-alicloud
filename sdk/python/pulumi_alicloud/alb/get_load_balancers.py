@@ -246,6 +246,7 @@ def get_load_balancers(address_type: Optional[str] = None,
     :param Sequence[str] load_balancer_ids: The load balancer ids.
     :param str load_balancer_name: The name of the resource.
     :param str name_regex: A regex string to filter results by Load Balancer name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param str status: The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
     :param Mapping[str, Any] tags: The tag of the resource.
@@ -338,6 +339,7 @@ def get_load_balancers_output(address_type: Optional[pulumi.Input[Optional[str]]
     :param Sequence[str] load_balancer_ids: The load balancer ids.
     :param str load_balancer_name: The name of the resource.
     :param str name_regex: A regex string to filter results by Load Balancer name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param str status: The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
     :param Mapping[str, Any] tags: The tag of the resource.

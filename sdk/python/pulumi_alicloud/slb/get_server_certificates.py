@@ -145,6 +145,7 @@ def get_server_certificates(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of server certificates IDs to filter results.
     :param str name_regex: A regex string to filter results by server certificate name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the slb server certificates belongs.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
@@ -191,6 +192,7 @@ def get_server_certificates_output(ids: Optional[pulumi.Input[Optional[Sequence[
 
     :param Sequence[str] ids: A list of server certificates IDs to filter results.
     :param str name_regex: A regex string to filter results by server certificate name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the slb server certificates belongs.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """

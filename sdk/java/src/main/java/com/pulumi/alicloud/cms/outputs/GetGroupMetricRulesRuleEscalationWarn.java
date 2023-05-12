@@ -14,24 +14,35 @@ public final class GetGroupMetricRulesRuleEscalationWarn {
      * @return The comparison operator of the threshold for warn-level alerts.
      * 
      */
-    private String comparisonOperator;
+    private final String comparisonOperator;
     /**
      * @return The statistical aggregation method for warn-level alerts.
      * 
      */
-    private String statistics;
+    private final String statistics;
     /**
      * @return The threshold for warn-level alerts.
      * 
      */
-    private String threshold;
+    private final String threshold;
     /**
      * @return The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
      * 
      */
-    private Integer times;
+    private final Integer times;
 
-    private GetGroupMetricRulesRuleEscalationWarn() {}
+    @CustomType.Constructor
+    private GetGroupMetricRulesRuleEscalationWarn(
+        @CustomType.Parameter("comparisonOperator") String comparisonOperator,
+        @CustomType.Parameter("statistics") String statistics,
+        @CustomType.Parameter("threshold") String threshold,
+        @CustomType.Parameter("times") Integer times) {
+        this.comparisonOperator = comparisonOperator;
+        this.statistics = statistics;
+        this.threshold = threshold;
+        this.times = times;
+    }
+
     /**
      * @return The comparison operator of the threshold for warn-level alerts.
      * 
@@ -68,13 +79,17 @@ public final class GetGroupMetricRulesRuleEscalationWarn {
     public static Builder builder(GetGroupMetricRulesRuleEscalationWarn defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String comparisonOperator;
         private String statistics;
         private String threshold;
         private Integer times;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetGroupMetricRulesRuleEscalationWarn defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comparisonOperator = defaults.comparisonOperator;
@@ -83,33 +98,23 @@ public final class GetGroupMetricRulesRuleEscalationWarn {
     	      this.times = defaults.times;
         }
 
-        @CustomType.Setter
         public Builder comparisonOperator(String comparisonOperator) {
             this.comparisonOperator = Objects.requireNonNull(comparisonOperator);
             return this;
         }
-        @CustomType.Setter
         public Builder statistics(String statistics) {
             this.statistics = Objects.requireNonNull(statistics);
             return this;
         }
-        @CustomType.Setter
         public Builder threshold(String threshold) {
             this.threshold = Objects.requireNonNull(threshold);
             return this;
         }
-        @CustomType.Setter
         public Builder times(Integer times) {
             this.times = Objects.requireNonNull(times);
             return this;
-        }
-        public GetGroupMetricRulesRuleEscalationWarn build() {
-            final var o = new GetGroupMetricRulesRuleEscalationWarn();
-            o.comparisonOperator = comparisonOperator;
-            o.statistics = statistics;
-            o.threshold = threshold;
-            o.times = times;
-            return o;
+        }        public GetGroupMetricRulesRuleEscalationWarn build() {
+            return new GetGroupMetricRulesRuleEscalationWarn(comparisonOperator, statistics, threshold, times);
         }
     }
 }

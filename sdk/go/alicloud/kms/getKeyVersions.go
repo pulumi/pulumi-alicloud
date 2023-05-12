@@ -57,7 +57,8 @@ type GetKeyVersionsArgs struct {
 	// A list of KMS KeyVersion IDs.
 	Ids []string `pulumi:"ids"`
 	// The id of kms key.
-	KeyId      string  `pulumi:"keyId"`
+	KeyId string `pulumi:"keyId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -92,7 +93,8 @@ type GetKeyVersionsOutputArgs struct {
 	// A list of KMS KeyVersion IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The id of kms key.
-	KeyId      pulumi.StringInput    `pulumi:"keyId"`
+	KeyId pulumi.StringInput `pulumi:"keyId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

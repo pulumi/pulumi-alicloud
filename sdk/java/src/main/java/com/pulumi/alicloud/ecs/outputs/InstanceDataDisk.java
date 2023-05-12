@@ -17,47 +17,47 @@ public final class InstanceDataDisk {
      * @return The ID of the automatic snapshot policy applied to the system disk.
      * 
      */
-    private @Nullable String autoSnapshotPolicyId;
+    private final @Nullable String autoSnapshotPolicyId;
     /**
      * @return The category of the disk:
      * 
      */
-    private @Nullable String category;
+    private final @Nullable String category;
     /**
      * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_essd, cloud_ssd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param. Default value: `true`.
      * 
      */
-    private @Nullable Boolean deleteWithInstance;
+    private final @Nullable Boolean deleteWithInstance;
     /**
      * @return The description of the data disk.
      * 
      */
-    private @Nullable String description;
+    private final @Nullable String description;
     /**
      * @return The mount point of the data disk.
      * 
      */
-    private @Nullable String device;
+    private final @Nullable String device;
     /**
      * @return Encrypted the data in this disk. Default value: `false`.
      * 
      */
-    private @Nullable Boolean encrypted;
+    private final @Nullable Boolean encrypted;
     /**
      * @return The KMS key ID corresponding to the Nth data disk.
      * 
      */
-    private @Nullable String kmsKeyId;
+    private final @Nullable String kmsKeyId;
     /**
      * @return The name of the data disk.
      * 
      */
-    private @Nullable String name;
+    private final @Nullable String name;
     /**
      * @return The performance level of the ESSD used as data disk:
      * 
      */
-    private @Nullable String performanceLevel;
+    private final @Nullable String performanceLevel;
     /**
      * @return The size of the data disk.
      * - cloud：[5, 2000]
@@ -67,14 +67,39 @@ public final class InstanceDataDisk {
      * - ephemeral_ssd: [5, 800]
      * 
      */
-    private Integer size;
+    private final Integer size;
     /**
      * @return The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
      * 
      */
-    private @Nullable String snapshotId;
+    private final @Nullable String snapshotId;
 
-    private InstanceDataDisk() {}
+    @CustomType.Constructor
+    private InstanceDataDisk(
+        @CustomType.Parameter("autoSnapshotPolicyId") @Nullable String autoSnapshotPolicyId,
+        @CustomType.Parameter("category") @Nullable String category,
+        @CustomType.Parameter("deleteWithInstance") @Nullable Boolean deleteWithInstance,
+        @CustomType.Parameter("description") @Nullable String description,
+        @CustomType.Parameter("device") @Nullable String device,
+        @CustomType.Parameter("encrypted") @Nullable Boolean encrypted,
+        @CustomType.Parameter("kmsKeyId") @Nullable String kmsKeyId,
+        @CustomType.Parameter("name") @Nullable String name,
+        @CustomType.Parameter("performanceLevel") @Nullable String performanceLevel,
+        @CustomType.Parameter("size") Integer size,
+        @CustomType.Parameter("snapshotId") @Nullable String snapshotId) {
+        this.autoSnapshotPolicyId = autoSnapshotPolicyId;
+        this.category = category;
+        this.deleteWithInstance = deleteWithInstance;
+        this.description = description;
+        this.device = device;
+        this.encrypted = encrypted;
+        this.kmsKeyId = kmsKeyId;
+        this.name = name;
+        this.performanceLevel = performanceLevel;
+        this.size = size;
+        this.snapshotId = snapshotId;
+    }
+
     /**
      * @return The ID of the automatic snapshot policy applied to the system disk.
      * 
@@ -165,7 +190,7 @@ public final class InstanceDataDisk {
     public static Builder builder(InstanceDataDisk defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String autoSnapshotPolicyId;
         private @Nullable String category;
@@ -178,7 +203,11 @@ public final class InstanceDataDisk {
         private @Nullable String performanceLevel;
         private Integer size;
         private @Nullable String snapshotId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(InstanceDataDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoSnapshotPolicyId = defaults.autoSnapshotPolicyId;
@@ -194,75 +223,51 @@ public final class InstanceDataDisk {
     	      this.snapshotId = defaults.snapshotId;
         }
 
-        @CustomType.Setter
         public Builder autoSnapshotPolicyId(@Nullable String autoSnapshotPolicyId) {
             this.autoSnapshotPolicyId = autoSnapshotPolicyId;
             return this;
         }
-        @CustomType.Setter
         public Builder category(@Nullable String category) {
             this.category = category;
             return this;
         }
-        @CustomType.Setter
         public Builder deleteWithInstance(@Nullable Boolean deleteWithInstance) {
             this.deleteWithInstance = deleteWithInstance;
             return this;
         }
-        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
-        @CustomType.Setter
         public Builder device(@Nullable String device) {
             this.device = device;
             return this;
         }
-        @CustomType.Setter
         public Builder encrypted(@Nullable Boolean encrypted) {
             this.encrypted = encrypted;
             return this;
         }
-        @CustomType.Setter
         public Builder kmsKeyId(@Nullable String kmsKeyId) {
             this.kmsKeyId = kmsKeyId;
             return this;
         }
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
-        @CustomType.Setter
         public Builder performanceLevel(@Nullable String performanceLevel) {
             this.performanceLevel = performanceLevel;
             return this;
         }
-        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
-        @CustomType.Setter
         public Builder snapshotId(@Nullable String snapshotId) {
             this.snapshotId = snapshotId;
             return this;
-        }
-        public InstanceDataDisk build() {
-            final var o = new InstanceDataDisk();
-            o.autoSnapshotPolicyId = autoSnapshotPolicyId;
-            o.category = category;
-            o.deleteWithInstance = deleteWithInstance;
-            o.description = description;
-            o.device = device;
-            o.encrypted = encrypted;
-            o.kmsKeyId = kmsKeyId;
-            o.name = name;
-            o.performanceLevel = performanceLevel;
-            o.size = size;
-            o.snapshotId = snapshotId;
-            return o;
+        }        public InstanceDataDisk build() {
+            return new InstanceDataDisk(autoSnapshotPolicyId, category, deleteWithInstance, description, device, encrypted, kmsKeyId, name, performanceLevel, size, snapshotId);
         }
     }
 }

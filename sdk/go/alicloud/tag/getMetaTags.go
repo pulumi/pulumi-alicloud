@@ -54,7 +54,8 @@ func GetMetaTags(ctx *pulumi.Context, args *GetMetaTagsArgs, opts ...pulumi.Invo
 // A collection of arguments for invoking getMetaTags.
 type GetMetaTagsArgs struct {
 	// The name of the key.
-	KeyName    *string `pulumi:"keyName"`
+	KeyName *string `pulumi:"keyName"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -83,7 +84,8 @@ func GetMetaTagsOutput(ctx *pulumi.Context, args GetMetaTagsOutputArgs, opts ...
 // A collection of arguments for invoking getMetaTags.
 type GetMetaTagsOutputArgs struct {
 	// The name of the key.
-	KeyName    pulumi.StringPtrInput `pulumi:"keyName"`
+	KeyName pulumi.StringPtrInput `pulumi:"keyName"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

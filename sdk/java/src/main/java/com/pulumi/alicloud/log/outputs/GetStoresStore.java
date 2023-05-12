@@ -13,14 +13,21 @@ public final class GetStoresStore {
      * @return The ID of the store.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The name of the store.
      * 
      */
-    private String storeName;
+    private final String storeName;
 
-    private GetStoresStore() {}
+    @CustomType.Constructor
+    private GetStoresStore(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("storeName") String storeName) {
+        this.id = id;
+        this.storeName = storeName;
+    }
+
     /**
      * @return The ID of the store.
      * 
@@ -43,32 +50,30 @@ public final class GetStoresStore {
     public static Builder builder(GetStoresStore defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private String storeName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetStoresStore defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.storeName = defaults.storeName;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder storeName(String storeName) {
             this.storeName = Objects.requireNonNull(storeName);
             return this;
-        }
-        public GetStoresStore build() {
-            final var o = new GetStoresStore();
-            o.id = id;
-            o.storeName = storeName;
-            return o;
+        }        public GetStoresStore build() {
+            return new GetStoresStore(id, storeName);
         }
     }
 }

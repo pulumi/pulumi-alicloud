@@ -11,19 +11,28 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolTaint {
-    private @Nullable String effect;
+    private final @Nullable String effect;
     /**
      * @return The label key.
      * 
      */
-    private String key;
+    private final String key;
     /**
      * @return The label value.
      * 
      */
-    private @Nullable String value;
+    private final @Nullable String value;
 
-    private NodePoolTaint() {}
+    @CustomType.Constructor
+    private NodePoolTaint(
+        @CustomType.Parameter("effect") @Nullable String effect,
+        @CustomType.Parameter("key") String key,
+        @CustomType.Parameter("value") @Nullable String value) {
+        this.effect = effect;
+        this.key = key;
+        this.value = value;
+    }
+
     public Optional<String> effect() {
         return Optional.ofNullable(this.effect);
     }
@@ -49,12 +58,16 @@ public final class NodePoolTaint {
     public static Builder builder(NodePoolTaint defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String effect;
         private String key;
         private @Nullable String value;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(NodePoolTaint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.effect = defaults.effect;
@@ -62,27 +75,19 @@ public final class NodePoolTaint {
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
         public Builder effect(@Nullable String effect) {
             this.effect = effect;
             return this;
         }
-        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
-        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }
-        public NodePoolTaint build() {
-            final var o = new NodePoolTaint();
-            o.effect = effect;
-            o.key = key;
-            o.value = value;
-            return o;
+        }        public NodePoolTaint build() {
+            return new NodePoolTaint(effect, key, value);
         }
     }
 }

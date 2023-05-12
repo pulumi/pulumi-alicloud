@@ -132,6 +132,7 @@ def get_lifecycle_policies(file_system_id: Optional[str] = None,
     :param str file_system_id: The ID of the file system.
     :param Sequence[str] ids: A list of Lifecycle Policy IDs.
     :param str name_regex: A regex string to filter results by Lifecycle Policy name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['fileSystemId'] = file_system_id
@@ -185,5 +186,6 @@ def get_lifecycle_policies_output(file_system_id: Optional[pulumi.Input[str]] = 
     :param str file_system_id: The ID of the file system.
     :param Sequence[str] ids: A list of Lifecycle Policy IDs.
     :param str name_regex: A regex string to filter results by Lifecycle Policy name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

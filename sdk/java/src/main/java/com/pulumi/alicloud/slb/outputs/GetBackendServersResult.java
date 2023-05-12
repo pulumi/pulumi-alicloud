@@ -13,17 +13,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBackendServersResult {
-    private List<GetBackendServersBackendServer> backendServers;
+    private final List<GetBackendServersBackendServer> backendServers;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private String loadBalancerId;
-    private @Nullable String outputFile;
+    private final String id;
+    private final List<String> ids;
+    private final String loadBalancerId;
+    private final @Nullable String outputFile;
 
-    private GetBackendServersResult() {}
+    @CustomType.Constructor
+    private GetBackendServersResult(
+        @CustomType.Parameter("backendServers") List<GetBackendServersBackendServer> backendServers,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("loadBalancerId") String loadBalancerId,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.backendServers = backendServers;
+        this.id = id;
+        this.ids = ids;
+        this.loadBalancerId = loadBalancerId;
+        this.outputFile = outputFile;
+    }
+
     public List<GetBackendServersBackendServer> backendServers() {
         return this.backendServers;
     }
@@ -51,14 +64,18 @@ public final class GetBackendServersResult {
     public static Builder builder(GetBackendServersResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetBackendServersBackendServer> backendServers;
         private String id;
         private List<String> ids;
         private String loadBalancerId;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBackendServersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backendServers = defaults.backendServers;
@@ -68,7 +85,6 @@ public final class GetBackendServersResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder backendServers(List<GetBackendServersBackendServer> backendServers) {
             this.backendServers = Objects.requireNonNull(backendServers);
             return this;
@@ -76,12 +92,10 @@ public final class GetBackendServersResult {
         public Builder backendServers(GetBackendServersBackendServer... backendServers) {
             return backendServers(List.of(backendServers));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -89,24 +103,15 @@ public final class GetBackendServersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
             this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetBackendServersResult build() {
-            final var o = new GetBackendServersResult();
-            o.backendServers = backendServers;
-            o.id = id;
-            o.ids = ids;
-            o.loadBalancerId = loadBalancerId;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetBackendServersResult build() {
+            return new GetBackendServersResult(backendServers, id, ids, loadBalancerId, outputFile);
         }
     }
 }

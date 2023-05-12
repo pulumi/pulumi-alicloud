@@ -13,17 +13,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRealTimeLogDeliveriesResult {
-    private List<GetRealTimeLogDeliveriesDelivery> deliveries;
-    private String domain;
+    private final List<GetRealTimeLogDeliveriesDelivery> deliveries;
+    private final String domain;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private @Nullable String outputFile;
-    private @Nullable String status;
+    private final String id;
+    private final @Nullable String outputFile;
+    private final @Nullable String status;
 
-    private GetRealTimeLogDeliveriesResult() {}
+    @CustomType.Constructor
+    private GetRealTimeLogDeliveriesResult(
+        @CustomType.Parameter("deliveries") List<GetRealTimeLogDeliveriesDelivery> deliveries,
+        @CustomType.Parameter("domain") String domain,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.deliveries = deliveries;
+        this.domain = domain;
+        this.id = id;
+        this.outputFile = outputFile;
+        this.status = status;
+    }
+
     public List<GetRealTimeLogDeliveriesDelivery> deliveries() {
         return this.deliveries;
     }
@@ -51,14 +64,18 @@ public final class GetRealTimeLogDeliveriesResult {
     public static Builder builder(GetRealTimeLogDeliveriesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetRealTimeLogDeliveriesDelivery> deliveries;
         private String domain;
         private String id;
         private @Nullable String outputFile;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRealTimeLogDeliveriesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deliveries = defaults.deliveries;
@@ -68,7 +85,6 @@ public final class GetRealTimeLogDeliveriesResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder deliveries(List<GetRealTimeLogDeliveriesDelivery> deliveries) {
             this.deliveries = Objects.requireNonNull(deliveries);
             return this;
@@ -76,34 +92,23 @@ public final class GetRealTimeLogDeliveriesResult {
         public Builder deliveries(GetRealTimeLogDeliveriesDelivery... deliveries) {
             return deliveries(List.of(deliveries));
         }
-        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetRealTimeLogDeliveriesResult build() {
-            final var o = new GetRealTimeLogDeliveriesResult();
-            o.deliveries = deliveries;
-            o.domain = domain;
-            o.id = id;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+        }        public GetRealTimeLogDeliveriesResult build() {
+            return new GetRealTimeLogDeliveriesResult(deliveries, domain, id, outputFile, status);
         }
     }
 }

@@ -14,14 +14,21 @@ public final class ClusterNodeGroupSpotBidPrice {
      * @return The spot bid price of a PayAsYouGo instance.
      * 
      */
-    private Integer bidPrice;
+    private final Integer bidPrice;
     /**
      * @return Host Ecs instance type.
      * 
      */
-    private String instanceType;
+    private final String instanceType;
 
-    private ClusterNodeGroupSpotBidPrice() {}
+    @CustomType.Constructor
+    private ClusterNodeGroupSpotBidPrice(
+        @CustomType.Parameter("bidPrice") Integer bidPrice,
+        @CustomType.Parameter("instanceType") String instanceType) {
+        this.bidPrice = bidPrice;
+        this.instanceType = instanceType;
+    }
+
     /**
      * @return The spot bid price of a PayAsYouGo instance.
      * 
@@ -44,32 +51,30 @@ public final class ClusterNodeGroupSpotBidPrice {
     public static Builder builder(ClusterNodeGroupSpotBidPrice defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer bidPrice;
         private String instanceType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ClusterNodeGroupSpotBidPrice defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bidPrice = defaults.bidPrice;
     	      this.instanceType = defaults.instanceType;
         }
 
-        @CustomType.Setter
         public Builder bidPrice(Integer bidPrice) {
             this.bidPrice = Objects.requireNonNull(bidPrice);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
-        }
-        public ClusterNodeGroupSpotBidPrice build() {
-            final var o = new ClusterNodeGroupSpotBidPrice();
-            o.bidPrice = bidPrice;
-            o.instanceType = instanceType;
-            return o;
+        }        public ClusterNodeGroupSpotBidPrice build() {
+            return new ClusterNodeGroupSpotBidPrice(bidPrice, instanceType);
         }
     }
 }

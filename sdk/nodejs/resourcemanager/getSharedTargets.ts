@@ -45,6 +45,9 @@ export interface GetSharedTargetsArgs {
      * A list of Shared Target IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The resource shared ID of resource manager.
@@ -101,6 +104,9 @@ export interface GetSharedTargetsOutputArgs {
      * A list of Shared Target IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The resource shared ID of resource manager.

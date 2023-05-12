@@ -20,164 +20,231 @@ public final class GetApplicationLoadBalancersBalancer {
      * @return Service address of the SLBs.
      * 
      */
-    private String address;
+    private final String address;
     /**
      * @return The address ip version. Valid values `ipv4` and `ipv6`.
      * 
      */
-    private String addressIpVersion;
+    private final String addressIpVersion;
     /**
      * @return The address type of the SLB. Valid values `internet` and `intranet`.
      * 
      */
-    private String addressType;
+    private final String addressType;
     /**
      * @return The auto release time.
      * 
      */
-    private Integer autoReleaseTime;
+    private final Integer autoReleaseTime;
     /**
      * @return The backend servers of the SLB.
      * 
      */
-    private List<GetApplicationLoadBalancersBalancerBackendServer> backendServers;
+    private final List<GetApplicationLoadBalancersBalancerBackendServer> backendServers;
     /**
      * @return The bandwidth of the SLB.
      * 
      */
-    private Integer bandwidth;
+    private final Integer bandwidth;
     /**
      * @return The create time stamp of the SLB.
      * 
      */
-    private Integer createTimeStamp;
+    private final Integer createTimeStamp;
     /**
      * @return Whether the SLB should delete protection.
      * 
      */
-    private String deleteProtection;
+    private final String deleteProtection;
     /**
      * @return The end time of the SLB.
      * 
      */
-    private String endTime;
+    private final String endTime;
     /**
      * @return The end time stamp of the SLB.
      * 
      */
-    private Integer endTimeStamp;
+    private final Integer endTimeStamp;
     /**
      * @return ID of the SLB.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The internet charge type. Valid values `PayByBandwidth` and `PayByTraffic`.
      * 
      */
-    private String internetChargeType;
+    private final String internetChargeType;
     /**
      * @return The listener ports and protocal of the SLB.
      * 
      */
-    private List<GetApplicationLoadBalancersBalancerListenerPortsAndProtocal> listenerPortsAndProtocals;
+    private final List<GetApplicationLoadBalancersBalancerListenerPortsAndProtocal> listenerPortsAndProtocals;
     /**
      * @return The listener ports and protocol of the SLB.
      * 
      */
-    private List<GetApplicationLoadBalancersBalancerListenerPortsAndProtocol> listenerPortsAndProtocols;
+    private final List<GetApplicationLoadBalancersBalancerListenerPortsAndProtocol> listenerPortsAndProtocols;
     /**
      * @return Thd ID of the SLB.
      * 
      */
-    private String loadBalancerId;
+    private final String loadBalancerId;
     /**
      * @return The name of the SLB.
      * 
      */
-    private String loadBalancerName;
+    private final String loadBalancerName;
     /**
      * @return The specification of the SLB.
      * 
      */
-    private String loadBalancerSpec;
+    private final String loadBalancerSpec;
     /**
      * @return The master zone id of the SLB.
      * 
      */
-    private String masterZoneId;
+    private final String masterZoneId;
     /**
      * @return The reason of modification protection.
      * 
      */
-    private String modificationProtectionReason;
+    private final String modificationProtectionReason;
     /**
      * @return The status of modification protection.
      * 
      */
-    private String modificationProtectionStatus;
+    private final String modificationProtectionStatus;
     /**
      * @return Network type of the SLBs. Valid values: `vpc` and `classic`.
      * 
      */
-    private String networkType;
+    private final String networkType;
     /**
      * @return The payment type of SLB. Valid values `PayAsYouGo` and `Subscription`.
      * 
      */
-    private String paymentType;
+    private final String paymentType;
     /**
      * @return Region ID the SLB belongs to.
      * 
      */
-    private String regionIdAlias;
+    private final String regionIdAlias;
     /**
      * @return The renewal cyc unit of the SLB.
      * 
      */
-    private String renewalCycUnit;
+    private final String renewalCycUnit;
     /**
      * @return The renewal duration of the SLB.
      * 
      */
-    private Integer renewalDuration;
+    private final Integer renewalDuration;
     /**
      * @return The renewal status of the SLB.
      * 
      */
-    private String renewalStatus;
+    private final String renewalStatus;
     /**
      * @return The Id of resource group which SLB belongs.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return The slave zone id of the SLB.
      * 
      */
-    private String slaveZoneId;
+    private final String slaveZoneId;
     /**
      * @return SLB current status. Possible values: `inactive`, `active` and `locked`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
     /**
      * @return ID of the VPC linked to the SLBs.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
     /**
      * @return ID of the VSwitch linked to the SLBs.
      * 
      */
-    private String vswitchId;
+    private final String vswitchId;
 
-    private GetApplicationLoadBalancersBalancer() {}
+    @CustomType.Constructor
+    private GetApplicationLoadBalancersBalancer(
+        @CustomType.Parameter("address") String address,
+        @CustomType.Parameter("addressIpVersion") String addressIpVersion,
+        @CustomType.Parameter("addressType") String addressType,
+        @CustomType.Parameter("autoReleaseTime") Integer autoReleaseTime,
+        @CustomType.Parameter("backendServers") List<GetApplicationLoadBalancersBalancerBackendServer> backendServers,
+        @CustomType.Parameter("bandwidth") Integer bandwidth,
+        @CustomType.Parameter("createTimeStamp") Integer createTimeStamp,
+        @CustomType.Parameter("deleteProtection") String deleteProtection,
+        @CustomType.Parameter("endTime") String endTime,
+        @CustomType.Parameter("endTimeStamp") Integer endTimeStamp,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("internetChargeType") String internetChargeType,
+        @CustomType.Parameter("listenerPortsAndProtocals") List<GetApplicationLoadBalancersBalancerListenerPortsAndProtocal> listenerPortsAndProtocals,
+        @CustomType.Parameter("listenerPortsAndProtocols") List<GetApplicationLoadBalancersBalancerListenerPortsAndProtocol> listenerPortsAndProtocols,
+        @CustomType.Parameter("loadBalancerId") String loadBalancerId,
+        @CustomType.Parameter("loadBalancerName") String loadBalancerName,
+        @CustomType.Parameter("loadBalancerSpec") String loadBalancerSpec,
+        @CustomType.Parameter("masterZoneId") String masterZoneId,
+        @CustomType.Parameter("modificationProtectionReason") String modificationProtectionReason,
+        @CustomType.Parameter("modificationProtectionStatus") String modificationProtectionStatus,
+        @CustomType.Parameter("networkType") String networkType,
+        @CustomType.Parameter("paymentType") String paymentType,
+        @CustomType.Parameter("regionIdAlias") String regionIdAlias,
+        @CustomType.Parameter("renewalCycUnit") String renewalCycUnit,
+        @CustomType.Parameter("renewalDuration") Integer renewalDuration,
+        @CustomType.Parameter("renewalStatus") String renewalStatus,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("slaveZoneId") String slaveZoneId,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("tags") Map<String,Object> tags,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("vswitchId") String vswitchId) {
+        this.address = address;
+        this.addressIpVersion = addressIpVersion;
+        this.addressType = addressType;
+        this.autoReleaseTime = autoReleaseTime;
+        this.backendServers = backendServers;
+        this.bandwidth = bandwidth;
+        this.createTimeStamp = createTimeStamp;
+        this.deleteProtection = deleteProtection;
+        this.endTime = endTime;
+        this.endTimeStamp = endTimeStamp;
+        this.id = id;
+        this.internetChargeType = internetChargeType;
+        this.listenerPortsAndProtocals = listenerPortsAndProtocals;
+        this.listenerPortsAndProtocols = listenerPortsAndProtocols;
+        this.loadBalancerId = loadBalancerId;
+        this.loadBalancerName = loadBalancerName;
+        this.loadBalancerSpec = loadBalancerSpec;
+        this.masterZoneId = masterZoneId;
+        this.modificationProtectionReason = modificationProtectionReason;
+        this.modificationProtectionStatus = modificationProtectionStatus;
+        this.networkType = networkType;
+        this.paymentType = paymentType;
+        this.regionIdAlias = regionIdAlias;
+        this.renewalCycUnit = renewalCycUnit;
+        this.renewalDuration = renewalDuration;
+        this.renewalStatus = renewalStatus;
+        this.resourceGroupId = resourceGroupId;
+        this.slaveZoneId = slaveZoneId;
+        this.status = status;
+        this.tags = tags;
+        this.vpcId = vpcId;
+        this.vswitchId = vswitchId;
+    }
+
     /**
      * @return Service address of the SLBs.
      * 
@@ -410,7 +477,7 @@ public final class GetApplicationLoadBalancersBalancer {
     public static Builder builder(GetApplicationLoadBalancersBalancer defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String address;
         private String addressIpVersion;
@@ -444,7 +511,11 @@ public final class GetApplicationLoadBalancersBalancer {
         private Map<String,Object> tags;
         private String vpcId;
         private String vswitchId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetApplicationLoadBalancersBalancer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
@@ -481,27 +552,22 @@ public final class GetApplicationLoadBalancersBalancer {
     	      this.vswitchId = defaults.vswitchId;
         }
 
-        @CustomType.Setter
         public Builder address(String address) {
             this.address = Objects.requireNonNull(address);
             return this;
         }
-        @CustomType.Setter
         public Builder addressIpVersion(String addressIpVersion) {
             this.addressIpVersion = Objects.requireNonNull(addressIpVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder addressType(String addressType) {
             this.addressType = Objects.requireNonNull(addressType);
             return this;
         }
-        @CustomType.Setter
         public Builder autoReleaseTime(Integer autoReleaseTime) {
             this.autoReleaseTime = Objects.requireNonNull(autoReleaseTime);
             return this;
         }
-        @CustomType.Setter
         public Builder backendServers(List<GetApplicationLoadBalancersBalancerBackendServer> backendServers) {
             this.backendServers = Objects.requireNonNull(backendServers);
             return this;
@@ -509,42 +575,34 @@ public final class GetApplicationLoadBalancersBalancer {
         public Builder backendServers(GetApplicationLoadBalancersBalancerBackendServer... backendServers) {
             return backendServers(List.of(backendServers));
         }
-        @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
-        @CustomType.Setter
         public Builder createTimeStamp(Integer createTimeStamp) {
             this.createTimeStamp = Objects.requireNonNull(createTimeStamp);
             return this;
         }
-        @CustomType.Setter
         public Builder deleteProtection(String deleteProtection) {
             this.deleteProtection = Objects.requireNonNull(deleteProtection);
             return this;
         }
-        @CustomType.Setter
         public Builder endTime(String endTime) {
             this.endTime = Objects.requireNonNull(endTime);
             return this;
         }
-        @CustomType.Setter
         public Builder endTimeStamp(Integer endTimeStamp) {
             this.endTimeStamp = Objects.requireNonNull(endTimeStamp);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder internetChargeType(String internetChargeType) {
             this.internetChargeType = Objects.requireNonNull(internetChargeType);
             return this;
         }
-        @CustomType.Setter
         public Builder listenerPortsAndProtocals(List<GetApplicationLoadBalancersBalancerListenerPortsAndProtocal> listenerPortsAndProtocals) {
             this.listenerPortsAndProtocals = Objects.requireNonNull(listenerPortsAndProtocals);
             return this;
@@ -552,7 +610,6 @@ public final class GetApplicationLoadBalancersBalancer {
         public Builder listenerPortsAndProtocals(GetApplicationLoadBalancersBalancerListenerPortsAndProtocal... listenerPortsAndProtocals) {
             return listenerPortsAndProtocals(List.of(listenerPortsAndProtocals));
         }
-        @CustomType.Setter
         public Builder listenerPortsAndProtocols(List<GetApplicationLoadBalancersBalancerListenerPortsAndProtocol> listenerPortsAndProtocols) {
             this.listenerPortsAndProtocols = Objects.requireNonNull(listenerPortsAndProtocols);
             return this;
@@ -560,131 +617,79 @@ public final class GetApplicationLoadBalancersBalancer {
         public Builder listenerPortsAndProtocols(GetApplicationLoadBalancersBalancerListenerPortsAndProtocol... listenerPortsAndProtocols) {
             return listenerPortsAndProtocols(List.of(listenerPortsAndProtocols));
         }
-        @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
             this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
             return this;
         }
-        @CustomType.Setter
         public Builder loadBalancerName(String loadBalancerName) {
             this.loadBalancerName = Objects.requireNonNull(loadBalancerName);
             return this;
         }
-        @CustomType.Setter
         public Builder loadBalancerSpec(String loadBalancerSpec) {
             this.loadBalancerSpec = Objects.requireNonNull(loadBalancerSpec);
             return this;
         }
-        @CustomType.Setter
         public Builder masterZoneId(String masterZoneId) {
             this.masterZoneId = Objects.requireNonNull(masterZoneId);
             return this;
         }
-        @CustomType.Setter
         public Builder modificationProtectionReason(String modificationProtectionReason) {
             this.modificationProtectionReason = Objects.requireNonNull(modificationProtectionReason);
             return this;
         }
-        @CustomType.Setter
         public Builder modificationProtectionStatus(String modificationProtectionStatus) {
             this.modificationProtectionStatus = Objects.requireNonNull(modificationProtectionStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
-        @CustomType.Setter
         public Builder regionIdAlias(String regionIdAlias) {
             this.regionIdAlias = Objects.requireNonNull(regionIdAlias);
             return this;
         }
-        @CustomType.Setter
         public Builder renewalCycUnit(String renewalCycUnit) {
             this.renewalCycUnit = Objects.requireNonNull(renewalCycUnit);
             return this;
         }
-        @CustomType.Setter
         public Builder renewalDuration(Integer renewalDuration) {
             this.renewalDuration = Objects.requireNonNull(renewalDuration);
             return this;
         }
-        @CustomType.Setter
         public Builder renewalStatus(String renewalStatus) {
             this.renewalStatus = Objects.requireNonNull(renewalStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder slaveZoneId(String slaveZoneId) {
             this.slaveZoneId = Objects.requireNonNull(slaveZoneId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }
-        public GetApplicationLoadBalancersBalancer build() {
-            final var o = new GetApplicationLoadBalancersBalancer();
-            o.address = address;
-            o.addressIpVersion = addressIpVersion;
-            o.addressType = addressType;
-            o.autoReleaseTime = autoReleaseTime;
-            o.backendServers = backendServers;
-            o.bandwidth = bandwidth;
-            o.createTimeStamp = createTimeStamp;
-            o.deleteProtection = deleteProtection;
-            o.endTime = endTime;
-            o.endTimeStamp = endTimeStamp;
-            o.id = id;
-            o.internetChargeType = internetChargeType;
-            o.listenerPortsAndProtocals = listenerPortsAndProtocals;
-            o.listenerPortsAndProtocols = listenerPortsAndProtocols;
-            o.loadBalancerId = loadBalancerId;
-            o.loadBalancerName = loadBalancerName;
-            o.loadBalancerSpec = loadBalancerSpec;
-            o.masterZoneId = masterZoneId;
-            o.modificationProtectionReason = modificationProtectionReason;
-            o.modificationProtectionStatus = modificationProtectionStatus;
-            o.networkType = networkType;
-            o.paymentType = paymentType;
-            o.regionIdAlias = regionIdAlias;
-            o.renewalCycUnit = renewalCycUnit;
-            o.renewalDuration = renewalDuration;
-            o.renewalStatus = renewalStatus;
-            o.resourceGroupId = resourceGroupId;
-            o.slaveZoneId = slaveZoneId;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+        }        public GetApplicationLoadBalancersBalancer build() {
+            return new GetApplicationLoadBalancersBalancer(address, addressIpVersion, addressType, autoReleaseTime, backendServers, bandwidth, createTimeStamp, deleteProtection, endTime, endTimeStamp, id, internetChargeType, listenerPortsAndProtocals, listenerPortsAndProtocols, loadBalancerId, loadBalancerName, loadBalancerSpec, masterZoneId, modificationProtectionReason, modificationProtectionStatus, networkType, paymentType, regionIdAlias, renewalCycUnit, renewalDuration, renewalStatus, resourceGroupId, slaveZoneId, status, tags, vpcId, vswitchId);
         }
     }
 }

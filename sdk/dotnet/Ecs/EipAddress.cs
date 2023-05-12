@@ -171,7 +171,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+        /// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
         /// </summary>
         [Output("securityProtectionTypes")]
         public Output<ImmutableArray<string>> SecurityProtectionTypes { get; private set; } = null!;
@@ -347,7 +347,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _securityProtectionTypes;
 
         /// <summary>
-        /// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+        /// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
         /// </summary>
         public InputList<string> SecurityProtectionTypes
         {
@@ -494,7 +494,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _securityProtectionTypes;
 
         /// <summary>
-        /// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+        /// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
         /// </summary>
         public InputList<string> SecurityProtectionTypes
         {

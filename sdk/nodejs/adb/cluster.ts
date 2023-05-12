@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a ADB cluster resource. An ADB cluster is an isolated database
+ * environment in the cloud. An ADB cluster can contain multiple user-created
+ * databases.
+ *
+ * > **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new resource alicloud_adb_db_cluster.
+ *
+ * > **NOTE:** Available in v1.71.0+.
+ *
  * ## Example Usage
  * ### Create a ADB MySQL cluster
  *
@@ -152,6 +160,8 @@ export class Cluster extends pulumi.CustomResource {
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     *
+     * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     public readonly vpcId!: pulumi.Output<string>;
@@ -323,6 +333,8 @@ export interface ClusterState {
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     *
+     * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     vpcId?: pulumi.Input<string>;
@@ -407,6 +419,8 @@ export interface ClusterArgs {
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     *
+     * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     vpcId?: pulumi.Input<string>;

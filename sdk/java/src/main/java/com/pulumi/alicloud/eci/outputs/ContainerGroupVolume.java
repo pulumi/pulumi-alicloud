@@ -18,59 +18,86 @@ public final class ContainerGroupVolume {
      * @return ConfigFileVolumeConfigFileToPaths.
      * 
      */
-    private @Nullable List<ContainerGroupVolumeConfigFileVolumeConfigFileToPath> configFileVolumeConfigFileToPaths;
+    private final @Nullable List<ContainerGroupVolumeConfigFileVolumeConfigFileToPath> configFileVolumeConfigFileToPaths;
     /**
      * @return The ID of DiskVolume.
      * 
      */
-    private @Nullable String diskVolumeDiskId;
+    private final @Nullable String diskVolumeDiskId;
     /**
      * @return The system type of DiskVolume.
      * 
      */
-    private @Nullable String diskVolumeFsType;
+    private final @Nullable String diskVolumeFsType;
     /**
      * @return The name of the FlexVolume driver.
      * 
      */
-    private @Nullable String flexVolumeDriver;
+    private final @Nullable String flexVolumeDriver;
     /**
      * @return The type of the mounted file system. The default value is determined by the script of FlexVolume.
      * 
      */
-    private @Nullable String flexVolumeFsType;
+    private final @Nullable String flexVolumeFsType;
     /**
      * @return The list of FlexVolume objects. Each object is a key-value pair contained in a JSON string.
      * 
      */
-    private @Nullable String flexVolumeOptions;
+    private final @Nullable String flexVolumeOptions;
     /**
      * @return The name of the volume.
      * 
      */
-    private @Nullable String name;
+    private final @Nullable String name;
     /**
      * @return The path to the NFS volume.
      * 
      */
-    private @Nullable String nfsVolumePath;
+    private final @Nullable String nfsVolumePath;
     /**
      * @return The nfs volume read only. Default to `false`.
      * 
      */
-    private @Nullable Boolean nfsVolumeReadOnly;
+    private final @Nullable Boolean nfsVolumeReadOnly;
     /**
      * @return The address of the NFS server.
      * 
+     * &gt; **NOTE:** Every volumes mounted must have name and type attributes.
+     * 
      */
-    private @Nullable String nfsVolumeServer;
+    private final @Nullable String nfsVolumeServer;
     /**
      * @return The type of the volume.
      * 
      */
-    private @Nullable String type;
+    private final @Nullable String type;
 
-    private ContainerGroupVolume() {}
+    @CustomType.Constructor
+    private ContainerGroupVolume(
+        @CustomType.Parameter("configFileVolumeConfigFileToPaths") @Nullable List<ContainerGroupVolumeConfigFileVolumeConfigFileToPath> configFileVolumeConfigFileToPaths,
+        @CustomType.Parameter("diskVolumeDiskId") @Nullable String diskVolumeDiskId,
+        @CustomType.Parameter("diskVolumeFsType") @Nullable String diskVolumeFsType,
+        @CustomType.Parameter("flexVolumeDriver") @Nullable String flexVolumeDriver,
+        @CustomType.Parameter("flexVolumeFsType") @Nullable String flexVolumeFsType,
+        @CustomType.Parameter("flexVolumeOptions") @Nullable String flexVolumeOptions,
+        @CustomType.Parameter("name") @Nullable String name,
+        @CustomType.Parameter("nfsVolumePath") @Nullable String nfsVolumePath,
+        @CustomType.Parameter("nfsVolumeReadOnly") @Nullable Boolean nfsVolumeReadOnly,
+        @CustomType.Parameter("nfsVolumeServer") @Nullable String nfsVolumeServer,
+        @CustomType.Parameter("type") @Nullable String type) {
+        this.configFileVolumeConfigFileToPaths = configFileVolumeConfigFileToPaths;
+        this.diskVolumeDiskId = diskVolumeDiskId;
+        this.diskVolumeFsType = diskVolumeFsType;
+        this.flexVolumeDriver = flexVolumeDriver;
+        this.flexVolumeFsType = flexVolumeFsType;
+        this.flexVolumeOptions = flexVolumeOptions;
+        this.name = name;
+        this.nfsVolumePath = nfsVolumePath;
+        this.nfsVolumeReadOnly = nfsVolumeReadOnly;
+        this.nfsVolumeServer = nfsVolumeServer;
+        this.type = type;
+    }
+
     /**
      * @return ConfigFileVolumeConfigFileToPaths.
      * 
@@ -137,6 +164,8 @@ public final class ContainerGroupVolume {
     /**
      * @return The address of the NFS server.
      * 
+     * &gt; **NOTE:** Every volumes mounted must have name and type attributes.
+     * 
      */
     public Optional<String> nfsVolumeServer() {
         return Optional.ofNullable(this.nfsVolumeServer);
@@ -156,7 +185,7 @@ public final class ContainerGroupVolume {
     public static Builder builder(ContainerGroupVolume defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<ContainerGroupVolumeConfigFileVolumeConfigFileToPath> configFileVolumeConfigFileToPaths;
         private @Nullable String diskVolumeDiskId;
@@ -169,7 +198,11 @@ public final class ContainerGroupVolume {
         private @Nullable Boolean nfsVolumeReadOnly;
         private @Nullable String nfsVolumeServer;
         private @Nullable String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ContainerGroupVolume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configFileVolumeConfigFileToPaths = defaults.configFileVolumeConfigFileToPaths;
@@ -185,7 +218,6 @@ public final class ContainerGroupVolume {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder configFileVolumeConfigFileToPaths(@Nullable List<ContainerGroupVolumeConfigFileVolumeConfigFileToPath> configFileVolumeConfigFileToPaths) {
             this.configFileVolumeConfigFileToPaths = configFileVolumeConfigFileToPaths;
             return this;
@@ -193,70 +225,47 @@ public final class ContainerGroupVolume {
         public Builder configFileVolumeConfigFileToPaths(ContainerGroupVolumeConfigFileVolumeConfigFileToPath... configFileVolumeConfigFileToPaths) {
             return configFileVolumeConfigFileToPaths(List.of(configFileVolumeConfigFileToPaths));
         }
-        @CustomType.Setter
         public Builder diskVolumeDiskId(@Nullable String diskVolumeDiskId) {
             this.diskVolumeDiskId = diskVolumeDiskId;
             return this;
         }
-        @CustomType.Setter
         public Builder diskVolumeFsType(@Nullable String diskVolumeFsType) {
             this.diskVolumeFsType = diskVolumeFsType;
             return this;
         }
-        @CustomType.Setter
         public Builder flexVolumeDriver(@Nullable String flexVolumeDriver) {
             this.flexVolumeDriver = flexVolumeDriver;
             return this;
         }
-        @CustomType.Setter
         public Builder flexVolumeFsType(@Nullable String flexVolumeFsType) {
             this.flexVolumeFsType = flexVolumeFsType;
             return this;
         }
-        @CustomType.Setter
         public Builder flexVolumeOptions(@Nullable String flexVolumeOptions) {
             this.flexVolumeOptions = flexVolumeOptions;
             return this;
         }
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
-        @CustomType.Setter
         public Builder nfsVolumePath(@Nullable String nfsVolumePath) {
             this.nfsVolumePath = nfsVolumePath;
             return this;
         }
-        @CustomType.Setter
         public Builder nfsVolumeReadOnly(@Nullable Boolean nfsVolumeReadOnly) {
             this.nfsVolumeReadOnly = nfsVolumeReadOnly;
             return this;
         }
-        @CustomType.Setter
         public Builder nfsVolumeServer(@Nullable String nfsVolumeServer) {
             this.nfsVolumeServer = nfsVolumeServer;
             return this;
         }
-        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }
-        public ContainerGroupVolume build() {
-            final var o = new ContainerGroupVolume();
-            o.configFileVolumeConfigFileToPaths = configFileVolumeConfigFileToPaths;
-            o.diskVolumeDiskId = diskVolumeDiskId;
-            o.diskVolumeFsType = diskVolumeFsType;
-            o.flexVolumeDriver = flexVolumeDriver;
-            o.flexVolumeFsType = flexVolumeFsType;
-            o.flexVolumeOptions = flexVolumeOptions;
-            o.name = name;
-            o.nfsVolumePath = nfsVolumePath;
-            o.nfsVolumeReadOnly = nfsVolumeReadOnly;
-            o.nfsVolumeServer = nfsVolumeServer;
-            o.type = type;
-            return o;
+        }        public ContainerGroupVolume build() {
+            return new ContainerGroupVolume(configFileVolumeConfigFileToPaths, diskVolumeDiskId, diskVolumeFsType, flexVolumeDriver, flexVolumeFsType, flexVolumeOptions, name, nfsVolumePath, nfsVolumeReadOnly, nfsVolumeServer, type);
         }
     }
 }

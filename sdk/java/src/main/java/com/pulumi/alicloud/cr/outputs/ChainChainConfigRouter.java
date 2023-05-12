@@ -16,14 +16,21 @@ public final class ChainChainConfigRouter {
      * @return Source node.
      * 
      */
-    private @Nullable List<ChainChainConfigRouterFrom> froms;
+    private final @Nullable List<ChainChainConfigRouterFrom> froms;
     /**
      * @return Destination node.
      * 
      */
-    private @Nullable List<ChainChainConfigRouterTo> tos;
+    private final @Nullable List<ChainChainConfigRouterTo> tos;
 
-    private ChainChainConfigRouter() {}
+    @CustomType.Constructor
+    private ChainChainConfigRouter(
+        @CustomType.Parameter("froms") @Nullable List<ChainChainConfigRouterFrom> froms,
+        @CustomType.Parameter("tos") @Nullable List<ChainChainConfigRouterTo> tos) {
+        this.froms = froms;
+        this.tos = tos;
+    }
+
     /**
      * @return Source node.
      * 
@@ -46,18 +53,21 @@ public final class ChainChainConfigRouter {
     public static Builder builder(ChainChainConfigRouter defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<ChainChainConfigRouterFrom> froms;
         private @Nullable List<ChainChainConfigRouterTo> tos;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ChainChainConfigRouter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.froms = defaults.froms;
     	      this.tos = defaults.tos;
         }
 
-        @CustomType.Setter
         public Builder froms(@Nullable List<ChainChainConfigRouterFrom> froms) {
             this.froms = froms;
             return this;
@@ -65,19 +75,14 @@ public final class ChainChainConfigRouter {
         public Builder froms(ChainChainConfigRouterFrom... froms) {
             return froms(List.of(froms));
         }
-        @CustomType.Setter
         public Builder tos(@Nullable List<ChainChainConfigRouterTo> tos) {
             this.tos = tos;
             return this;
         }
         public Builder tos(ChainChainConfigRouterTo... tos) {
             return tos(List.of(tos));
-        }
-        public ChainChainConfigRouter build() {
-            final var o = new ChainChainConfigRouter();
-            o.froms = froms;
-            o.tos = tos;
-            return o;
+        }        public ChainChainConfigRouter build() {
+            return new ChainChainConfigRouter(froms, tos);
         }
     }
 }

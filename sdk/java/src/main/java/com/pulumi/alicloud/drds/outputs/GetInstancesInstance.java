@@ -14,54 +14,77 @@ public final class GetInstancesInstance {
      * @return (Available in 1.196.0+) The connection string of the DRDS instance.
      * 
      */
-    private String connectionString;
+    private final String connectionString;
     /**
      * @return Creation time of the instance.
      * 
      */
-    private Integer createTime;
+    private final Integer createTime;
     /**
      * @return The DRDS instance description.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The ID of the DRDS instance.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return `Classic` for public classic network or `VPC` for private network.
      * 
      */
-    private String networkType;
+    private final String networkType;
     /**
      * @return (Available in 1.196.0+) The connection port of the DRDS instance.
      * 
      */
-    private String port;
+    private final String port;
     /**
      * @return Status of the instance.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The DRDS Instance type.
      * 
      */
-    private String type;
+    private final String type;
     /**
      * @return The DRDS Instance version.
      * 
      */
-    private Integer version;
+    private final Integer version;
     /**
      * @return Zone ID the instance belongs to.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetInstancesInstance() {}
+    @CustomType.Constructor
+    private GetInstancesInstance(
+        @CustomType.Parameter("connectionString") String connectionString,
+        @CustomType.Parameter("createTime") Integer createTime,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("networkType") String networkType,
+        @CustomType.Parameter("port") String port,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("type") String type,
+        @CustomType.Parameter("version") Integer version,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.connectionString = connectionString;
+        this.createTime = createTime;
+        this.description = description;
+        this.id = id;
+        this.networkType = networkType;
+        this.port = port;
+        this.status = status;
+        this.type = type;
+        this.version = version;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return (Available in 1.196.0+) The connection string of the DRDS instance.
      * 
@@ -140,7 +163,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String connectionString;
         private Integer createTime;
@@ -152,7 +175,11 @@ public final class GetInstancesInstance {
         private String type;
         private Integer version;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectionString = defaults.connectionString;
@@ -167,69 +194,47 @@ public final class GetInstancesInstance {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder connectionString(String connectionString) {
             this.connectionString = Objects.requireNonNull(connectionString);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(Integer createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
             return this;
         }
-        @CustomType.Setter
         public Builder port(String port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
-        @CustomType.Setter
         public Builder version(Integer version) {
             this.version = Objects.requireNonNull(version);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.connectionString = connectionString;
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.networkType = networkType;
-            o.port = port;
-            o.status = status;
-            o.type = type;
-            o.version = version;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetInstancesInstance build() {
+            return new GetInstancesInstance(connectionString, createTime, description, id, networkType, port, status, type, version, zoneId);
         }
     }
 }

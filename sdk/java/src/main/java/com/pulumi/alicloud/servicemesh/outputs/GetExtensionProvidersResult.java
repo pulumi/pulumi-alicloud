@@ -17,32 +17,51 @@ public final class GetExtensionProvidersResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of Extension Provider names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
     /**
      * @return A list of Service Mesh Extension Providers. Each element contains the following attributes:
      * 
      */
-    private List<GetExtensionProvidersProvider> providers;
+    private final List<GetExtensionProvidersProvider> providers;
     /**
      * @return The ID of the Service Mesh.
      * 
      */
-    private String serviceMeshId;
+    private final String serviceMeshId;
     /**
      * @return The type of the Service Mesh Extension Provider.
      * 
      */
-    private String type;
+    private final String type;
 
-    private GetExtensionProvidersResult() {}
+    @CustomType.Constructor
+    private GetExtensionProvidersResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("providers") List<GetExtensionProvidersProvider> providers,
+        @CustomType.Parameter("serviceMeshId") String serviceMeshId,
+        @CustomType.Parameter("type") String type) {
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.providers = providers;
+        this.serviceMeshId = serviceMeshId;
+        this.type = type;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -95,7 +114,7 @@ public final class GetExtensionProvidersResult {
     public static Builder builder(GetExtensionProvidersResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -105,7 +124,11 @@ public final class GetExtensionProvidersResult {
         private List<GetExtensionProvidersProvider> providers;
         private String serviceMeshId;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetExtensionProvidersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -118,12 +141,10 @@ public final class GetExtensionProvidersResult {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -131,12 +152,10 @@ public final class GetExtensionProvidersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -144,12 +163,10 @@ public final class GetExtensionProvidersResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder providers(List<GetExtensionProvidersProvider> providers) {
             this.providers = Objects.requireNonNull(providers);
             return this;
@@ -157,27 +174,15 @@ public final class GetExtensionProvidersResult {
         public Builder providers(GetExtensionProvidersProvider... providers) {
             return providers(List.of(providers));
         }
-        @CustomType.Setter
         public Builder serviceMeshId(String serviceMeshId) {
             this.serviceMeshId = Objects.requireNonNull(serviceMeshId);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetExtensionProvidersResult build() {
-            final var o = new GetExtensionProvidersResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.providers = providers;
-            o.serviceMeshId = serviceMeshId;
-            o.type = type;
-            return o;
+        }        public GetExtensionProvidersResult build() {
+            return new GetExtensionProvidersResult(id, ids, nameRegex, names, outputFile, providers, serviceMeshId, type);
         }
     }
 }

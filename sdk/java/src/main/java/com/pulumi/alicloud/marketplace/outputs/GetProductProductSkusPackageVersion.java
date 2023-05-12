@@ -13,14 +13,21 @@ public final class GetProductProductSkusPackageVersion {
      * @return The package name of this product sku package.
      * 
      */
-    private String packageName;
+    private final String packageName;
     /**
      * @return The package version of this product sku package. Currently, the API products can return package_version, but others can not for ensure.
      * 
      */
-    private String packageVersion;
+    private final String packageVersion;
 
-    private GetProductProductSkusPackageVersion() {}
+    @CustomType.Constructor
+    private GetProductProductSkusPackageVersion(
+        @CustomType.Parameter("packageName") String packageName,
+        @CustomType.Parameter("packageVersion") String packageVersion) {
+        this.packageName = packageName;
+        this.packageVersion = packageVersion;
+    }
+
     /**
      * @return The package name of this product sku package.
      * 
@@ -43,32 +50,30 @@ public final class GetProductProductSkusPackageVersion {
     public static Builder builder(GetProductProductSkusPackageVersion defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String packageName;
         private String packageVersion;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetProductProductSkusPackageVersion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.packageName = defaults.packageName;
     	      this.packageVersion = defaults.packageVersion;
         }
 
-        @CustomType.Setter
         public Builder packageName(String packageName) {
             this.packageName = Objects.requireNonNull(packageName);
             return this;
         }
-        @CustomType.Setter
         public Builder packageVersion(String packageVersion) {
             this.packageVersion = Objects.requireNonNull(packageVersion);
             return this;
-        }
-        public GetProductProductSkusPackageVersion build() {
-            final var o = new GetProductProductSkusPackageVersion();
-            o.packageName = packageName;
-            o.packageVersion = packageVersion;
-            return o;
+        }        public GetProductProductSkusPackageVersion build() {
+            return new GetProductProductSkusPackageVersion(packageName, packageVersion);
         }
     }
 }

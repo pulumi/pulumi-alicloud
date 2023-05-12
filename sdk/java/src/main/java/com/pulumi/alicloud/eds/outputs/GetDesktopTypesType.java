@@ -14,54 +14,77 @@ public final class GetDesktopTypesType {
      * @return The CPU cores.
      * 
      */
-    private String cpuCount;
+    private final String cpuCount;
     /**
      * @return The size of the data disk. Unit: GiB.
      * 
      */
-    private String dataDiskSize;
+    private final String dataDiskSize;
     /**
      * @return Specification ID.
      * 
      */
-    private String desktopTypeId;
+    private final String desktopTypeId;
     /**
      * @return The GPU cores.
      * 
      */
-    private Double gpuCount;
+    private final Double gpuCount;
     /**
      * @return The GPU video memory.
      * 
      */
-    private String gpuSpec;
+    private final String gpuSpec;
     /**
      * @return The ID of the Desktop Type.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The Specification family.
      * 
      */
-    private String instanceTypeFamily;
+    private final String instanceTypeFamily;
     /**
      * @return The Memory size. Unit: MiB.
      * 
      */
-    private String memorySize;
+    private final String memorySize;
     /**
      * @return The status of the resource.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The size of the system disk. Unit: GiB.
      * 
      */
-    private String systemDiskSize;
+    private final String systemDiskSize;
 
-    private GetDesktopTypesType() {}
+    @CustomType.Constructor
+    private GetDesktopTypesType(
+        @CustomType.Parameter("cpuCount") String cpuCount,
+        @CustomType.Parameter("dataDiskSize") String dataDiskSize,
+        @CustomType.Parameter("desktopTypeId") String desktopTypeId,
+        @CustomType.Parameter("gpuCount") Double gpuCount,
+        @CustomType.Parameter("gpuSpec") String gpuSpec,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceTypeFamily") String instanceTypeFamily,
+        @CustomType.Parameter("memorySize") String memorySize,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("systemDiskSize") String systemDiskSize) {
+        this.cpuCount = cpuCount;
+        this.dataDiskSize = dataDiskSize;
+        this.desktopTypeId = desktopTypeId;
+        this.gpuCount = gpuCount;
+        this.gpuSpec = gpuSpec;
+        this.id = id;
+        this.instanceTypeFamily = instanceTypeFamily;
+        this.memorySize = memorySize;
+        this.status = status;
+        this.systemDiskSize = systemDiskSize;
+    }
+
     /**
      * @return The CPU cores.
      * 
@@ -140,7 +163,7 @@ public final class GetDesktopTypesType {
     public static Builder builder(GetDesktopTypesType defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String cpuCount;
         private String dataDiskSize;
@@ -152,7 +175,11 @@ public final class GetDesktopTypesType {
         private String memorySize;
         private String status;
         private String systemDiskSize;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDesktopTypesType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuCount = defaults.cpuCount;
@@ -167,69 +194,47 @@ public final class GetDesktopTypesType {
     	      this.systemDiskSize = defaults.systemDiskSize;
         }
 
-        @CustomType.Setter
         public Builder cpuCount(String cpuCount) {
             this.cpuCount = Objects.requireNonNull(cpuCount);
             return this;
         }
-        @CustomType.Setter
         public Builder dataDiskSize(String dataDiskSize) {
             this.dataDiskSize = Objects.requireNonNull(dataDiskSize);
             return this;
         }
-        @CustomType.Setter
         public Builder desktopTypeId(String desktopTypeId) {
             this.desktopTypeId = Objects.requireNonNull(desktopTypeId);
             return this;
         }
-        @CustomType.Setter
         public Builder gpuCount(Double gpuCount) {
             this.gpuCount = Objects.requireNonNull(gpuCount);
             return this;
         }
-        @CustomType.Setter
         public Builder gpuSpec(String gpuSpec) {
             this.gpuSpec = Objects.requireNonNull(gpuSpec);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceTypeFamily(String instanceTypeFamily) {
             this.instanceTypeFamily = Objects.requireNonNull(instanceTypeFamily);
             return this;
         }
-        @CustomType.Setter
         public Builder memorySize(String memorySize) {
             this.memorySize = Objects.requireNonNull(memorySize);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder systemDiskSize(String systemDiskSize) {
             this.systemDiskSize = Objects.requireNonNull(systemDiskSize);
             return this;
-        }
-        public GetDesktopTypesType build() {
-            final var o = new GetDesktopTypesType();
-            o.cpuCount = cpuCount;
-            o.dataDiskSize = dataDiskSize;
-            o.desktopTypeId = desktopTypeId;
-            o.gpuCount = gpuCount;
-            o.gpuSpec = gpuSpec;
-            o.id = id;
-            o.instanceTypeFamily = instanceTypeFamily;
-            o.memorySize = memorySize;
-            o.status = status;
-            o.systemDiskSize = systemDiskSize;
-            return o;
+        }        public GetDesktopTypesType build() {
+            return new GetDesktopTypesType(cpuCount, dataDiskSize, desktopTypeId, gpuCount, gpuSpec, id, instanceTypeFamily, memorySize, status, systemDiskSize);
         }
     }
 }

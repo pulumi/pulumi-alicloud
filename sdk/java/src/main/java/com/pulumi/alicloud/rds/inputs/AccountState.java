@@ -194,6 +194,8 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
      * - Normal: Common privilege.
      * - Super: High privilege.
      * 
+     * Default to Normal.
+     * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated from provider version 1.120.0. New field &#39;account_type&#39; instead.
      * 
@@ -206,6 +208,8 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
      * @return Privilege type of account.
      * - Normal: Common privilege.
      * - Super: High privilege.
+     * 
+     * Default to Normal.
      * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated from provider version 1.120.0. New field &#39;account_type&#39; instead.
@@ -479,6 +483,8 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
          * - Normal: Common privilege.
          * - Super: High privilege.
          * 
+         * Default to Normal.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -495,6 +501,8 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
          * @param type Privilege type of account.
          * - Normal: Common privilege.
          * - Super: High privilege.
+         * 
+         * Default to Normal.
          * 
          * @return builder
          * 

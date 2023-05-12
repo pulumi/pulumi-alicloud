@@ -159,6 +159,7 @@ def get_web_lock_configs(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Web Lock Config IDs.
     :param str lang: The language of the content within the request and the response. Valid values: `zh`, `en`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str remark: The string that allows you to search for servers in fuzzy match mode. You can enter a server name or IP address.
     :param str source_ip: The source IP address of the request.
     :param str status: The protection status of the server that you want to query. Valid values: `on`, `off`.
@@ -216,6 +217,7 @@ def get_web_lock_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str
 
     :param Sequence[str] ids: A list of Web Lock Config IDs.
     :param str lang: The language of the content within the request and the response. Valid values: `zh`, `en`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str remark: The string that allows you to search for servers in fuzzy match mode. You can enter a server name or IP address.
     :param str source_ip: The source IP address of the request.
     :param str status: The protection status of the server that you want to query. Valid values: `on`, `off`.

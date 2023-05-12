@@ -10,6 +10,39 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
+    /// Provides an elastic IP resource.
+    /// 
+    /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.126.0`. Please use new resource alicloud_eip_address.
+    /// 
+    /// &gt; **NOTE:** The resource only supports to create `PostPaid PayByTraffic`  or `PrePaid PayByBandwidth` elastic IP for international account. Otherwise, you will happened error `COMMODITY.INVALID_COMPONENT`.
+    /// Your account is international if you can use it to login in [International Web Console](https://account.alibabacloud.com/login/login.htm).
+    /// 
+    /// &gt; **NOTE:** From version 1.10.1, this resource supports creating "PrePaid" EIP. In addition, it supports setting EIP name and description.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new EIP.
+    ///     var example = new AliCloud.Ecs.Eip("example", new()
+    ///     {
+    ///         Bandwidth = "10",
+    ///         InternetChargeType = "PayByBandwidth",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Module Support
+    /// 
+    /// You can use the existing eip module
+    /// to create several EIP instances and associate them with other resources one-click, like ECS instances, SLB, Nat Gateway and so on.
+    /// 
     /// ## Import
     /// 
     /// Elastic IP address can be imported using the id, e.g.
@@ -102,6 +135,10 @@ namespace Pulumi.AliCloud.Ecs
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
+        /// <summary>
+        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        /// **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
@@ -249,6 +286,10 @@ namespace Pulumi.AliCloud.Ecs
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
+        /// <summary>
+        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        /// **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -369,6 +410,10 @@ namespace Pulumi.AliCloud.Ecs
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
+        /// <summary>
+        /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        /// **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 

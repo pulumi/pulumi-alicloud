@@ -17,64 +17,91 @@ public final class GetMonitorGroupsGroup {
      * @return The URL of the Kubernetes cluster from which the application group is synchronized.
      * 
      */
-    private String bindUrl;
+    private final String bindUrl;
     /**
      * @return The list of  alert groups that receive alert notifications for the application group.
      * 
      */
-    private List<String> contactGroups;
+    private final List<String> contactGroups;
     /**
      * @return The ID of the tag rule.
      * 
      */
-    private String dynamicTagRuleId;
+    private final String dynamicTagRuleId;
     /**
      * @return The time when the application group was created.
      * 
      */
-    private Integer gmtCreate;
+    private final Integer gmtCreate;
     /**
      * @return The time when the application group was modified.
      * 
      */
-    private Integer gmtModified;
+    private final Integer gmtModified;
     /**
      * @return The ID of the application group.
      * 
      */
-    private String groupId;
+    private final String groupId;
     /**
      * @return The ID of the Monitor Group.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The name of the application group.
      * 
      */
-    private String monitorGroupName;
+    private final String monitorGroupName;
     /**
      * @return The ID of the Alibaba Cloud service.
      * 
      */
-    private String serviceId;
+    private final String serviceId;
     /**
      * @return A map of tags assigned to the Cms Monitor Group.
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
     /**
      * @return The alert templates applied to the application group.
      * 
      */
-    private List<String> templateIds;
+    private final List<String> templateIds;
     /**
      * @return The type of the application group.
      * 
      */
-    private String type;
+    private final String type;
 
-    private GetMonitorGroupsGroup() {}
+    @CustomType.Constructor
+    private GetMonitorGroupsGroup(
+        @CustomType.Parameter("bindUrl") String bindUrl,
+        @CustomType.Parameter("contactGroups") List<String> contactGroups,
+        @CustomType.Parameter("dynamicTagRuleId") String dynamicTagRuleId,
+        @CustomType.Parameter("gmtCreate") Integer gmtCreate,
+        @CustomType.Parameter("gmtModified") Integer gmtModified,
+        @CustomType.Parameter("groupId") String groupId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("monitorGroupName") String monitorGroupName,
+        @CustomType.Parameter("serviceId") String serviceId,
+        @CustomType.Parameter("tags") Map<String,Object> tags,
+        @CustomType.Parameter("templateIds") List<String> templateIds,
+        @CustomType.Parameter("type") String type) {
+        this.bindUrl = bindUrl;
+        this.contactGroups = contactGroups;
+        this.dynamicTagRuleId = dynamicTagRuleId;
+        this.gmtCreate = gmtCreate;
+        this.gmtModified = gmtModified;
+        this.groupId = groupId;
+        this.id = id;
+        this.monitorGroupName = monitorGroupName;
+        this.serviceId = serviceId;
+        this.tags = tags;
+        this.templateIds = templateIds;
+        this.type = type;
+    }
+
     /**
      * @return The URL of the Kubernetes cluster from which the application group is synchronized.
      * 
@@ -167,7 +194,7 @@ public final class GetMonitorGroupsGroup {
     public static Builder builder(GetMonitorGroupsGroup defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String bindUrl;
         private List<String> contactGroups;
@@ -181,7 +208,11 @@ public final class GetMonitorGroupsGroup {
         private Map<String,Object> tags;
         private List<String> templateIds;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetMonitorGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bindUrl = defaults.bindUrl;
@@ -198,12 +229,10 @@ public final class GetMonitorGroupsGroup {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder bindUrl(String bindUrl) {
             this.bindUrl = Objects.requireNonNull(bindUrl);
             return this;
         }
-        @CustomType.Setter
         public Builder contactGroups(List<String> contactGroups) {
             this.contactGroups = Objects.requireNonNull(contactGroups);
             return this;
@@ -211,47 +240,38 @@ public final class GetMonitorGroupsGroup {
         public Builder contactGroups(String... contactGroups) {
             return contactGroups(List.of(contactGroups));
         }
-        @CustomType.Setter
         public Builder dynamicTagRuleId(String dynamicTagRuleId) {
             this.dynamicTagRuleId = Objects.requireNonNull(dynamicTagRuleId);
             return this;
         }
-        @CustomType.Setter
         public Builder gmtCreate(Integer gmtCreate) {
             this.gmtCreate = Objects.requireNonNull(gmtCreate);
             return this;
         }
-        @CustomType.Setter
         public Builder gmtModified(Integer gmtModified) {
             this.gmtModified = Objects.requireNonNull(gmtModified);
             return this;
         }
-        @CustomType.Setter
         public Builder groupId(String groupId) {
             this.groupId = Objects.requireNonNull(groupId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder monitorGroupName(String monitorGroupName) {
             this.monitorGroupName = Objects.requireNonNull(monitorGroupName);
             return this;
         }
-        @CustomType.Setter
         public Builder serviceId(String serviceId) {
             this.serviceId = Objects.requireNonNull(serviceId);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
-        @CustomType.Setter
         public Builder templateIds(List<String> templateIds) {
             this.templateIds = Objects.requireNonNull(templateIds);
             return this;
@@ -259,26 +279,11 @@ public final class GetMonitorGroupsGroup {
         public Builder templateIds(String... templateIds) {
             return templateIds(List.of(templateIds));
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetMonitorGroupsGroup build() {
-            final var o = new GetMonitorGroupsGroup();
-            o.bindUrl = bindUrl;
-            o.contactGroups = contactGroups;
-            o.dynamicTagRuleId = dynamicTagRuleId;
-            o.gmtCreate = gmtCreate;
-            o.gmtModified = gmtModified;
-            o.groupId = groupId;
-            o.id = id;
-            o.monitorGroupName = monitorGroupName;
-            o.serviceId = serviceId;
-            o.tags = tags;
-            o.templateIds = templateIds;
-            o.type = type;
-            return o;
+        }        public GetMonitorGroupsGroup build() {
+            return new GetMonitorGroupsGroup(bindUrl, contactGroups, dynamicTagRuleId, gmtCreate, gmtModified, groupId, id, monitorGroupName, serviceId, tags, templateIds, type);
         }
     }
 }

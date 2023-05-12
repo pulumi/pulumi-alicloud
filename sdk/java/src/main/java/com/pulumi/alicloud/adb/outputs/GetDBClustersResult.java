@@ -17,26 +17,57 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDBClustersResult {
-    private List<GetDBClustersCluster> clusters;
-    private @Nullable String description;
-    private @Nullable String descriptionRegex;
-    private List<String> descriptions;
-    private @Nullable Boolean enableDetails;
+    private final List<GetDBClustersCluster> clusters;
+    private final @Nullable String description;
+    private final @Nullable String descriptionRegex;
+    private final List<String> descriptions;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
-    private @Nullable String resourceGroupId;
-    private @Nullable String status;
-    private @Nullable Map<String,Object> tags;
-    private Integer totalCount;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
+    private final @Nullable String resourceGroupId;
+    private final @Nullable String status;
+    private final @Nullable Map<String,Object> tags;
+    private final Integer totalCount;
 
-    private GetDBClustersResult() {}
+    @CustomType.Constructor
+    private GetDBClustersResult(
+        @CustomType.Parameter("clusters") List<GetDBClustersCluster> clusters,
+        @CustomType.Parameter("description") @Nullable String description,
+        @CustomType.Parameter("descriptionRegex") @Nullable String descriptionRegex,
+        @CustomType.Parameter("descriptions") List<String> descriptions,
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
+        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
+        @CustomType.Parameter("totalCount") Integer totalCount) {
+        this.clusters = clusters;
+        this.description = description;
+        this.descriptionRegex = descriptionRegex;
+        this.descriptions = descriptions;
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+        this.resourceGroupId = resourceGroupId;
+        this.status = status;
+        this.tags = tags;
+        this.totalCount = totalCount;
+    }
+
     public List<GetDBClustersCluster> clusters() {
         return this.clusters;
     }
@@ -91,7 +122,7 @@ public final class GetDBClustersResult {
     public static Builder builder(GetDBClustersResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetDBClustersCluster> clusters;
         private @Nullable String description;
@@ -107,7 +138,11 @@ public final class GetDBClustersResult {
         private @Nullable String status;
         private @Nullable Map<String,Object> tags;
         private Integer totalCount;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDBClustersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusters = defaults.clusters;
@@ -126,7 +161,6 @@ public final class GetDBClustersResult {
     	      this.totalCount = defaults.totalCount;
         }
 
-        @CustomType.Setter
         public Builder clusters(List<GetDBClustersCluster> clusters) {
             this.clusters = Objects.requireNonNull(clusters);
             return this;
@@ -134,17 +168,14 @@ public final class GetDBClustersResult {
         public Builder clusters(GetDBClustersCluster... clusters) {
             return clusters(List.of(clusters));
         }
-        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
-        @CustomType.Setter
         public Builder descriptionRegex(@Nullable String descriptionRegex) {
             this.descriptionRegex = descriptionRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder descriptions(List<String> descriptions) {
             this.descriptions = Objects.requireNonNull(descriptions);
             return this;
@@ -152,17 +183,14 @@ public final class GetDBClustersResult {
         public Builder descriptions(String... descriptions) {
             return descriptions(List.of(descriptions));
         }
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -170,58 +198,35 @@ public final class GetDBClustersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
-        @CustomType.Setter
         public Builder totalCount(Integer totalCount) {
             this.totalCount = Objects.requireNonNull(totalCount);
             return this;
-        }
-        public GetDBClustersResult build() {
-            final var o = new GetDBClustersResult();
-            o.clusters = clusters;
-            o.description = description;
-            o.descriptionRegex = descriptionRegex;
-            o.descriptions = descriptions;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.tags = tags;
-            o.totalCount = totalCount;
-            return o;
+        }        public GetDBClustersResult build() {
+            return new GetDBClustersResult(clusters, description, descriptionRegex, descriptions, enableDetails, id, ids, outputFile, pageNumber, pageSize, resourceGroupId, status, tags, totalCount);
         }
     }
 }

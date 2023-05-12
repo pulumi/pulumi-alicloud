@@ -13,9 +13,13 @@ public final class GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigSer
      * @return The ID of the destination server group to which requests are forwarded.
      * 
      */
-    private String serverGroupId;
+    private final String serverGroupId;
 
-    private GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple() {}
+    @CustomType.Constructor
+    private GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple(@CustomType.Parameter("serverGroupId") String serverGroupId) {
+        this.serverGroupId = serverGroupId;
+    }
+
     /**
      * @return The ID of the destination server group to which requests are forwarded.
      * 
@@ -31,24 +35,24 @@ public final class GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigSer
     public static Builder builder(GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String serverGroupId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.serverGroupId = defaults.serverGroupId;
         }
 
-        @CustomType.Setter
         public Builder serverGroupId(String serverGroupId) {
             this.serverGroupId = Objects.requireNonNull(serverGroupId);
             return this;
-        }
-        public GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple build() {
-            final var o = new GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple();
-            o.serverGroupId = serverGroupId;
-            return o;
+        }        public GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple build() {
+            return new GetRulesRuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple(serverGroupId);
         }
     }
 }

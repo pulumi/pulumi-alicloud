@@ -15,12 +15,23 @@ public final class GetAlertResourceResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private @Nullable String lang;
-    private @Nullable String project;
-    private String type;
+    private final String id;
+    private final @Nullable String lang;
+    private final @Nullable String project;
+    private final String type;
 
-    private GetAlertResourceResult() {}
+    @CustomType.Constructor
+    private GetAlertResourceResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("lang") @Nullable String lang,
+        @CustomType.Parameter("project") @Nullable String project,
+        @CustomType.Parameter("type") String type) {
+        this.id = id;
+        this.lang = lang;
+        this.project = project;
+        this.type = type;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -45,13 +56,17 @@ public final class GetAlertResourceResult {
     public static Builder builder(GetAlertResourceResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private @Nullable String lang;
         private @Nullable String project;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAlertResourceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -60,33 +75,23 @@ public final class GetAlertResourceResult {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder lang(@Nullable String lang) {
             this.lang = lang;
             return this;
         }
-        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetAlertResourceResult build() {
-            final var o = new GetAlertResourceResult();
-            o.id = id;
-            o.lang = lang;
-            o.project = project;
-            o.type = type;
-            return o;
+        }        public GetAlertResourceResult build() {
+            return new GetAlertResourceResult(id, lang, project, type);
         }
     }
 }

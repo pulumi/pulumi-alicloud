@@ -14,20 +14,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDispatchRulesResult {
-    private @Nullable String dispatchRuleName;
-    private @Nullable Boolean enableDetails;
+    private final @Nullable String dispatchRuleName;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private List<GetDispatchRulesRule> rules;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final List<GetDispatchRulesRule> rules;
 
-    private GetDispatchRulesResult() {}
+    @CustomType.Constructor
+    private GetDispatchRulesResult(
+        @CustomType.Parameter("dispatchRuleName") @Nullable String dispatchRuleName,
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("rules") List<GetDispatchRulesRule> rules) {
+        this.dispatchRuleName = dispatchRuleName;
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.rules = rules;
+    }
+
     public Optional<String> dispatchRuleName() {
         return Optional.ofNullable(this.dispatchRuleName);
     }
@@ -64,7 +83,7 @@ public final class GetDispatchRulesResult {
     public static Builder builder(GetDispatchRulesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String dispatchRuleName;
         private @Nullable Boolean enableDetails;
@@ -74,7 +93,11 @@ public final class GetDispatchRulesResult {
         private List<String> names;
         private @Nullable String outputFile;
         private List<GetDispatchRulesRule> rules;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDispatchRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dispatchRuleName = defaults.dispatchRuleName;
@@ -87,22 +110,18 @@ public final class GetDispatchRulesResult {
     	      this.rules = defaults.rules;
         }
 
-        @CustomType.Setter
         public Builder dispatchRuleName(@Nullable String dispatchRuleName) {
             this.dispatchRuleName = dispatchRuleName;
             return this;
         }
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -110,12 +129,10 @@ public final class GetDispatchRulesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -123,30 +140,18 @@ public final class GetDispatchRulesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder rules(List<GetDispatchRulesRule> rules) {
             this.rules = Objects.requireNonNull(rules);
             return this;
         }
         public Builder rules(GetDispatchRulesRule... rules) {
             return rules(List.of(rules));
-        }
-        public GetDispatchRulesResult build() {
-            final var o = new GetDispatchRulesResult();
-            o.dispatchRuleName = dispatchRuleName;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.rules = rules;
-            return o;
+        }        public GetDispatchRulesResult build() {
+            return new GetDispatchRulesResult(dispatchRuleName, enableDetails, id, ids, nameRegex, names, outputFile, rules);
         }
     }
 }

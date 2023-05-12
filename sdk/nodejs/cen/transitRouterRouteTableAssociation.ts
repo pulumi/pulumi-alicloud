@@ -47,6 +47,8 @@ export class TransitRouterRouteTableAssociation extends pulumi.CustomResource {
 
     /**
      * The dry run.
+     *
+     * > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
@@ -103,6 +105,8 @@ export class TransitRouterRouteTableAssociation extends pulumi.CustomResource {
 export interface TransitRouterRouteTableAssociationState {
     /**
      * The dry run.
+     *
+     * > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -125,6 +129,8 @@ export interface TransitRouterRouteTableAssociationState {
 export interface TransitRouterRouteTableAssociationArgs {
     /**
      * The dry run.
+     *
+     * > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
      */
     dryRun?: pulumi.Input<boolean>;
     /**

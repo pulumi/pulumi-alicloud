@@ -13,29 +13,42 @@ public final class GetHostShareKeysKey {
      * @return The first ID of the resource.
      * 
      */
-    private String hostShareKeyId;
+    private final String hostShareKeyId;
     /**
      * @return The name of the host shared key.
      * 
      */
-    private String hostShareKeyName;
+    private final String hostShareKeyName;
     /**
      * @return The ID of the Host Share Key.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the Bastion instance.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return The fingerprint of the private key.
      * 
      */
-    private String privateKeyFingerPrint;
+    private final String privateKeyFingerPrint;
 
-    private GetHostShareKeysKey() {}
+    @CustomType.Constructor
+    private GetHostShareKeysKey(
+        @CustomType.Parameter("hostShareKeyId") String hostShareKeyId,
+        @CustomType.Parameter("hostShareKeyName") String hostShareKeyName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("privateKeyFingerPrint") String privateKeyFingerPrint) {
+        this.hostShareKeyId = hostShareKeyId;
+        this.hostShareKeyName = hostShareKeyName;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.privateKeyFingerPrint = privateKeyFingerPrint;
+    }
+
     /**
      * @return The first ID of the resource.
      * 
@@ -79,14 +92,18 @@ public final class GetHostShareKeysKey {
     public static Builder builder(GetHostShareKeysKey defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String hostShareKeyId;
         private String hostShareKeyName;
         private String id;
         private String instanceId;
         private String privateKeyFingerPrint;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetHostShareKeysKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hostShareKeyId = defaults.hostShareKeyId;
@@ -96,39 +113,27 @@ public final class GetHostShareKeysKey {
     	      this.privateKeyFingerPrint = defaults.privateKeyFingerPrint;
         }
 
-        @CustomType.Setter
         public Builder hostShareKeyId(String hostShareKeyId) {
             this.hostShareKeyId = Objects.requireNonNull(hostShareKeyId);
             return this;
         }
-        @CustomType.Setter
         public Builder hostShareKeyName(String hostShareKeyName) {
             this.hostShareKeyName = Objects.requireNonNull(hostShareKeyName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder privateKeyFingerPrint(String privateKeyFingerPrint) {
             this.privateKeyFingerPrint = Objects.requireNonNull(privateKeyFingerPrint);
             return this;
-        }
-        public GetHostShareKeysKey build() {
-            final var o = new GetHostShareKeysKey();
-            o.hostShareKeyId = hostShareKeyId;
-            o.hostShareKeyName = hostShareKeyName;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.privateKeyFingerPrint = privateKeyFingerPrint;
-            return o;
+        }        public GetHostShareKeysKey build() {
+            return new GetHostShareKeysKey(hostShareKeyId, hostShareKeyName, id, instanceId, privateKeyFingerPrint);
         }
     }
 }

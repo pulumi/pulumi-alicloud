@@ -126,6 +126,7 @@ def get_gateway_cache_disks(gateway_id: Optional[str] = None,
 
     :param str gateway_id: The ID of the gateway.
     :param Sequence[str] ids: A list of Gateway Cache Disk IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int status: The status of the resource.
     """
     __args__ = dict()
@@ -182,6 +183,7 @@ def get_gateway_cache_disks_output(gateway_id: Optional[pulumi.Input[str]] = Non
 
     :param str gateway_id: The ID of the gateway.
     :param Sequence[str] ids: A list of Gateway Cache Disk IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int status: The status of the resource.
     """
     ...

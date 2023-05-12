@@ -11,6 +11,149 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a ESS alarm task resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				MostRecent: pulumi.BoolRef(true),
+//				NameRegex:  pulumi.StringRef("^centos_6\\w{1,5}[64].*"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//				CpuCoreCount:     pulumi.IntRef(1),
+//				MemorySize:       pulumi.Float64Ref(2),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("tf-testAccEssAlarm_basic_foo"),
+//				VpcId:       fooNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bar, err := vpc.NewSwitch(ctx, "bar", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("tf-testAccEssAlarm_basic_bar"),
+//				VpcId:       fooNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.1.0/24"),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooScalingGroup, err := ess.NewScalingGroup(ctx, "fooScalingGroup", &ess.ScalingGroupArgs{
+//				MinSize:          pulumi.Int(1),
+//				MaxSize:          pulumi.Int(1),
+//				ScalingGroupName: pulumi.String("tf-testAccEssAlarm_basic"),
+//				RemovalPolicies: pulumi.StringArray{
+//					pulumi.String("OldestInstance"),
+//					pulumi.String("NewestInstance"),
+//				},
+//				VswitchIds: pulumi.StringArray{
+//					fooSwitch.ID(),
+//					bar.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooScalingRule, err := ess.NewScalingRule(ctx, "fooScalingRule", &ess.ScalingRuleArgs{
+//				ScalingRuleName: pulumi.String("tf-testAccEssAlarm_basic"),
+//				ScalingGroupId:  fooScalingGroup.ID(),
+//				AdjustmentType:  pulumi.String("TotalCapacity"),
+//				AdjustmentValue: pulumi.Int(2),
+//				Cooldown:        pulumi.Int(60),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ess.NewAlarm(ctx, "fooAlarm", &ess.AlarmArgs{
+//				Description: pulumi.String("Acc alarm test"),
+//				AlarmActions: pulumi.StringArray{
+//					fooScalingRule.Ari,
+//				},
+//				ScalingGroupId:     fooScalingGroup.ID(),
+//				MetricType:         pulumi.String("system"),
+//				MetricName:         pulumi.String("CpuUtilization"),
+//				Period:             pulumi.Int(300),
+//				Statistics:         pulumi.String("Average"),
+//				Threshold:          pulumi.String("200.3"),
+//				ComparisonOperator: pulumi.String(">="),
+//				EvaluationCount:    pulumi.Int(2),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Module Support
+//
+// You can use to the existing autoscaling-rule module
+// to create alarm task, different type rules and scheduled task one-click.
+//
+// ## Block metricNames_and_dimensions
+//
+// Supported metric names and dimensions :
+//
+// | MetricName         | Dimensions                   |
+// | ------------------ | ---------------------------- |
+// | CpuUtilization     | user_id,scaling_group        |
+// | ClassicInternetRx  | user_id,scaling_group        |
+// | ClassicInternetTx  | user_id,scaling_group        |
+// | VpcInternetRx      | user_id,scaling_group        |
+// | VpcInternetTx      | user_id,scaling_group        |
+// | IntranetRx         | user_id,scaling_group        |
+// | IntranetTx         | user_id,scaling_group        |
+// | LoadAverage        | user_id,scaling_group        |
+// | MemoryUtilization  | user_id,scaling_group        |
+// | SystemDiskReadBps  | user_id,scaling_group        |
+// | SystemDiskWriteBps | user_id,scaling_group        |
+// | SystemDiskReadOps  | user_id,scaling_group        |
+// | SystemDiskWriteOps | user_id,scaling_group        |
+// | PackagesNetIn      | user_id,scaling_group,device |
+// | PackagesNetOut     | user_id,scaling_group,device |
+// | TcpConnection      | user_id,scaling_group,state  |
+//
+// > **NOTE:** Dimension `userId` and `scalingGroup` is automatically filled, which means you only need to care about dimension `device` and `state` when needed.
+//
 // ## Import
 //
 // Ess alarm can be imported using the id, e.g.

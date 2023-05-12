@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Kms
     /// KMS secret can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:kms/secret:Secret default secret-foo
+    ///  $ pulumi import alicloud:kms/secret:Secret default &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:kms/secret:Secret")]
@@ -80,6 +80,12 @@ namespace Pulumi.AliCloud.Kms
         public Output<string?> EncryptionKeyId { get; private set; } = null!;
 
         /// <summary>
+        /// The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+        /// </summary>
+        [Output("extendedConfig")]
+        public Output<string?> ExtendedConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
         /// </summary>
         [Output("forceDeleteWithoutRecovery")]
@@ -104,7 +110,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<string?> RotationInterval { get; private set; } = null!;
 
         /// <summary>
-        /// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
+        /// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
         /// </summary>
         [Output("secretData")]
         public Output<string> SecretData { get; private set; } = null!;
@@ -120,6 +126,12 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         [Output("secretName")]
         public Output<string> SecretName { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the secret. Valid values:
+        /// </summary>
+        [Output("secretType")]
+        public Output<string> SecretType { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -214,6 +226,12 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? EncryptionKeyId { get; set; }
 
         /// <summary>
+        /// The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+        /// </summary>
+        [Input("extendedConfig")]
+        public Input<string>? ExtendedConfig { get; set; }
+
+        /// <summary>
         /// Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
         /// </summary>
         [Input("forceDeleteWithoutRecovery")]
@@ -235,7 +253,7 @@ namespace Pulumi.AliCloud.Kms
         private Input<string>? _secretData;
 
         /// <summary>
-        /// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
+        /// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
         /// </summary>
         public Input<string>? SecretData
         {
@@ -258,6 +276,12 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         [Input("secretName", required: true)]
         public Input<string> SecretName { get; set; } = null!;
+
+        /// <summary>
+        /// The type of the secret. Valid values:
+        /// </summary>
+        [Input("secretType")]
+        public Input<string>? SecretType { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -328,6 +352,12 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? EncryptionKeyId { get; set; }
 
         /// <summary>
+        /// The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+        /// </summary>
+        [Input("extendedConfig")]
+        public Input<string>? ExtendedConfig { get; set; }
+
+        /// <summary>
         /// Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
         /// </summary>
         [Input("forceDeleteWithoutRecovery")]
@@ -355,7 +385,7 @@ namespace Pulumi.AliCloud.Kms
         private Input<string>? _secretData;
 
         /// <summary>
-        /// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
+        /// The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
         /// </summary>
         public Input<string>? SecretData
         {
@@ -378,6 +408,12 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         [Input("secretName")]
         public Input<string>? SecretName { get; set; }
+
+        /// <summary>
+        /// The type of the secret. Valid values:
+        /// </summary>
+        [Input("secretType")]
+        public Input<string>? SecretType { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;

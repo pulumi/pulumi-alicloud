@@ -691,7 +691,7 @@ type GetInstancesInstance struct {
 	DestroyTime string `pulumi:"destroyTime"`
 	// Expiration time. Pay-As-You-Go instances are never expire.
 	EndTime string `pulumi:"endTime"`
-	// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+	// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
 	EngineVersion string `pulumi:"engineVersion"`
 	// It has been deprecated from provider version 1.101.0 and `endTime` instead.
 	ExpireTime string `pulumi:"expireTime"`
@@ -800,7 +800,7 @@ type GetInstancesInstanceArgs struct {
 	DestroyTime pulumi.StringInput `pulumi:"destroyTime"`
 	// Expiration time. Pay-As-You-Go instances are never expire.
 	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+	// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
 	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
 	// It has been deprecated from provider version 1.101.0 and `endTime` instead.
 	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
@@ -996,7 +996,7 @@ func (o GetInstancesInstanceOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
 func (o GetInstancesInstanceOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.EngineVersion }).(pulumi.StringOutput)
 }

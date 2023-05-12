@@ -153,6 +153,10 @@ def get_key_pairs(finger_print: Optional[str] = None,
                   tags: Optional[Mapping[str, Any]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeyPairsResult:
     """
+    > **DEPRECATED:** This datasource has been renamed to ecs_get_ecs_key_pairs from version 1.121.0.
+
+    This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
+
     ## Example Usage
 
     ```python
@@ -168,6 +172,7 @@ def get_key_pairs(finger_print: Optional[str] = None,
     :param str finger_print: A finger print used to retrieve specified key pair.
     :param Sequence[str] ids: A list of key pair IDs.
     :param str name_regex: A regex string to apply to the resulting key pairs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the key pair belongs.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
@@ -203,6 +208,10 @@ def get_key_pairs_output(finger_print: Optional[pulumi.Input[Optional[str]]] = N
                          tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeyPairsResult]:
     """
+    > **DEPRECATED:** This datasource has been renamed to ecs_get_ecs_key_pairs from version 1.121.0.
+
+    This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
+
     ## Example Usage
 
     ```python
@@ -218,6 +227,7 @@ def get_key_pairs_output(finger_print: Optional[pulumi.Input[Optional[str]]] = N
     :param str finger_print: A finger print used to retrieve specified key pair.
     :param Sequence[str] ids: A list of key pair IDs.
     :param str name_regex: A regex string to apply to the resulting key pairs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the key pair belongs.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """

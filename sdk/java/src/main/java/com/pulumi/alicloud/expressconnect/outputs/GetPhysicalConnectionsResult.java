@@ -14,20 +14,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPhysicalConnectionsResult {
-    private List<GetPhysicalConnectionsConnection> connections;
+    private final List<GetPhysicalConnectionsConnection> connections;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable Boolean includeReservationData;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String status;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable Boolean includeReservationData;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String status;
 
-    private GetPhysicalConnectionsResult() {}
+    @CustomType.Constructor
+    private GetPhysicalConnectionsResult(
+        @CustomType.Parameter("connections") List<GetPhysicalConnectionsConnection> connections,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("includeReservationData") @Nullable Boolean includeReservationData,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.connections = connections;
+        this.id = id;
+        this.ids = ids;
+        this.includeReservationData = includeReservationData;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.status = status;
+    }
+
     public List<GetPhysicalConnectionsConnection> connections() {
         return this.connections;
     }
@@ -64,7 +83,7 @@ public final class GetPhysicalConnectionsResult {
     public static Builder builder(GetPhysicalConnectionsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetPhysicalConnectionsConnection> connections;
         private String id;
@@ -74,7 +93,11 @@ public final class GetPhysicalConnectionsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetPhysicalConnectionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connections = defaults.connections;
@@ -87,7 +110,6 @@ public final class GetPhysicalConnectionsResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder connections(List<GetPhysicalConnectionsConnection> connections) {
             this.connections = Objects.requireNonNull(connections);
             return this;
@@ -95,12 +117,10 @@ public final class GetPhysicalConnectionsResult {
         public Builder connections(GetPhysicalConnectionsConnection... connections) {
             return connections(List.of(connections));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -108,17 +128,14 @@ public final class GetPhysicalConnectionsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder includeReservationData(@Nullable Boolean includeReservationData) {
             this.includeReservationData = includeReservationData;
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -126,27 +143,15 @@ public final class GetPhysicalConnectionsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetPhysicalConnectionsResult build() {
-            final var o = new GetPhysicalConnectionsResult();
-            o.connections = connections;
-            o.id = id;
-            o.ids = ids;
-            o.includeReservationData = includeReservationData;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+        }        public GetPhysicalConnectionsResult build() {
+            return new GetPhysicalConnectionsResult(connections, id, ids, includeReservationData, nameRegex, names, outputFile, status);
         }
     }
 }

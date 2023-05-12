@@ -15,69 +15,98 @@ public final class GetVpcEndpointsEndpoint {
      * @return The Bandwidth.
      * 
      */
-    private Integer bandwidth;
+    private final Integer bandwidth;
     /**
      * @return The status of Connection.
      * 
      */
-    private String connectionStatus;
+    private final String connectionStatus;
     /**
      * @return The status of Endpoint Business.
      * 
      */
-    private String endpointBusinessStatus;
+    private final String endpointBusinessStatus;
     /**
      * @return The description of Vpc Endpoint.
      * 
      */
-    private String endpointDescription;
+    private final String endpointDescription;
     /**
      * @return The Endpoint Domain.
      * 
      */
-    private String endpointDomain;
+    private final String endpointDomain;
     /**
      * @return The ID of the Vpc Endpoint.
      * 
      */
-    private String endpointId;
+    private final String endpointId;
     /**
      * @return The ID of the Vpc Endpoint.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The security group associated with the terminal node network card.
      * 
      */
-    private List<String> securityGroupIds;
+    private final List<String> securityGroupIds;
     /**
      * @return The terminal node service associated with the terminal node.
      * 
      */
-    private String serviceId;
+    private final String serviceId;
     /**
      * @return The name of the terminal node service associated with the terminal node.
      * 
      */
-    private String serviceName;
+    private final String serviceName;
     /**
      * @return The status of Vpc Endpoint.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The name of Vpc Endpoint.
      * 
      */
-    private String vpcEndpointName;
+    private final String vpcEndpointName;
     /**
      * @return The private network to which the terminal node belongs.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
 
-    private GetVpcEndpointsEndpoint() {}
+    @CustomType.Constructor
+    private GetVpcEndpointsEndpoint(
+        @CustomType.Parameter("bandwidth") Integer bandwidth,
+        @CustomType.Parameter("connectionStatus") String connectionStatus,
+        @CustomType.Parameter("endpointBusinessStatus") String endpointBusinessStatus,
+        @CustomType.Parameter("endpointDescription") String endpointDescription,
+        @CustomType.Parameter("endpointDomain") String endpointDomain,
+        @CustomType.Parameter("endpointId") String endpointId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("securityGroupIds") List<String> securityGroupIds,
+        @CustomType.Parameter("serviceId") String serviceId,
+        @CustomType.Parameter("serviceName") String serviceName,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("vpcEndpointName") String vpcEndpointName,
+        @CustomType.Parameter("vpcId") String vpcId) {
+        this.bandwidth = bandwidth;
+        this.connectionStatus = connectionStatus;
+        this.endpointBusinessStatus = endpointBusinessStatus;
+        this.endpointDescription = endpointDescription;
+        this.endpointDomain = endpointDomain;
+        this.endpointId = endpointId;
+        this.id = id;
+        this.securityGroupIds = securityGroupIds;
+        this.serviceId = serviceId;
+        this.serviceName = serviceName;
+        this.status = status;
+        this.vpcEndpointName = vpcEndpointName;
+        this.vpcId = vpcId;
+    }
+
     /**
      * @return The Bandwidth.
      * 
@@ -177,7 +206,7 @@ public final class GetVpcEndpointsEndpoint {
     public static Builder builder(GetVpcEndpointsEndpoint defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer bandwidth;
         private String connectionStatus;
@@ -192,7 +221,11 @@ public final class GetVpcEndpointsEndpoint {
         private String status;
         private String vpcEndpointName;
         private String vpcId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVpcEndpointsEndpoint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidth = defaults.bandwidth;
@@ -210,42 +243,34 @@ public final class GetVpcEndpointsEndpoint {
     	      this.vpcId = defaults.vpcId;
         }
 
-        @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
-        @CustomType.Setter
         public Builder connectionStatus(String connectionStatus) {
             this.connectionStatus = Objects.requireNonNull(connectionStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointBusinessStatus(String endpointBusinessStatus) {
             this.endpointBusinessStatus = Objects.requireNonNull(endpointBusinessStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointDescription(String endpointDescription) {
             this.endpointDescription = Objects.requireNonNull(endpointDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointDomain(String endpointDomain) {
             this.endpointDomain = Objects.requireNonNull(endpointDomain);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointId(String endpointId) {
             this.endpointId = Objects.requireNonNull(endpointId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder securityGroupIds(List<String> securityGroupIds) {
             this.securityGroupIds = Objects.requireNonNull(securityGroupIds);
             return this;
@@ -253,47 +278,27 @@ public final class GetVpcEndpointsEndpoint {
         public Builder securityGroupIds(String... securityGroupIds) {
             return securityGroupIds(List.of(securityGroupIds));
         }
-        @CustomType.Setter
         public Builder serviceId(String serviceId) {
             this.serviceId = Objects.requireNonNull(serviceId);
             return this;
         }
-        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcEndpointName(String vpcEndpointName) {
             this.vpcEndpointName = Objects.requireNonNull(vpcEndpointName);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }
-        public GetVpcEndpointsEndpoint build() {
-            final var o = new GetVpcEndpointsEndpoint();
-            o.bandwidth = bandwidth;
-            o.connectionStatus = connectionStatus;
-            o.endpointBusinessStatus = endpointBusinessStatus;
-            o.endpointDescription = endpointDescription;
-            o.endpointDomain = endpointDomain;
-            o.endpointId = endpointId;
-            o.id = id;
-            o.securityGroupIds = securityGroupIds;
-            o.serviceId = serviceId;
-            o.serviceName = serviceName;
-            o.status = status;
-            o.vpcEndpointName = vpcEndpointName;
-            o.vpcId = vpcId;
-            return o;
+        }        public GetVpcEndpointsEndpoint build() {
+            return new GetVpcEndpointsEndpoint(bandwidth, connectionStatus, endpointBusinessStatus, endpointDescription, endpointDomain, endpointId, id, securityGroupIds, serviceId, serviceName, status, vpcEndpointName, vpcId);
         }
     }
 }

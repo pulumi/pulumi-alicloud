@@ -14,54 +14,77 @@ public final class GetUsersUser {
      * @return Alibaba Cloud account ID.
      * 
      */
-    private String accountId;
+    private final String accountId;
     /**
      * @return An Alibaba Cloud account, Alibaba Cloud name.
      * 
      */
-    private String accountName;
+    private final String accountName;
     /**
      * @return Whether it is the administrator. Valid values: `true` and `false`.
      * 
      */
-    private Boolean adminUser;
+    private final Boolean adminUser;
     /**
      * @return Whether this is a permissions administrator. Valid values: `true` and `false`.
      * 
      */
-    private Boolean authAdminUser;
+    private final Boolean authAdminUser;
     /**
      * @return The email of the user.
      * 
      */
-    private String email;
+    private final String email;
     /**
      * @return The ID of the User.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The nickname of the user.
      * 
      */
-    private String nickName;
+    private final String nickName;
     /**
      * @return The phone number of the user.
      * 
      */
-    private String phone;
+    private final String phone;
     /**
      * @return The ID of the User.
      * 
      */
-    private String userId;
+    private final String userId;
     /**
      * @return The members of the organization of the type of role separately. Valid values: `Analyst`, `Developer` and `Visitor`.
      * 
      */
-    private String userType;
+    private final String userType;
 
-    private GetUsersUser() {}
+    @CustomType.Constructor
+    private GetUsersUser(
+        @CustomType.Parameter("accountId") String accountId,
+        @CustomType.Parameter("accountName") String accountName,
+        @CustomType.Parameter("adminUser") Boolean adminUser,
+        @CustomType.Parameter("authAdminUser") Boolean authAdminUser,
+        @CustomType.Parameter("email") String email,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("nickName") String nickName,
+        @CustomType.Parameter("phone") String phone,
+        @CustomType.Parameter("userId") String userId,
+        @CustomType.Parameter("userType") String userType) {
+        this.accountId = accountId;
+        this.accountName = accountName;
+        this.adminUser = adminUser;
+        this.authAdminUser = authAdminUser;
+        this.email = email;
+        this.id = id;
+        this.nickName = nickName;
+        this.phone = phone;
+        this.userId = userId;
+        this.userType = userType;
+    }
+
     /**
      * @return Alibaba Cloud account ID.
      * 
@@ -140,7 +163,7 @@ public final class GetUsersUser {
     public static Builder builder(GetUsersUser defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String accountId;
         private String accountName;
@@ -152,7 +175,11 @@ public final class GetUsersUser {
         private String phone;
         private String userId;
         private String userType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetUsersUser defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -167,69 +194,47 @@ public final class GetUsersUser {
     	      this.userType = defaults.userType;
         }
 
-        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
-        @CustomType.Setter
         public Builder accountName(String accountName) {
             this.accountName = Objects.requireNonNull(accountName);
             return this;
         }
-        @CustomType.Setter
         public Builder adminUser(Boolean adminUser) {
             this.adminUser = Objects.requireNonNull(adminUser);
             return this;
         }
-        @CustomType.Setter
         public Builder authAdminUser(Boolean authAdminUser) {
             this.authAdminUser = Objects.requireNonNull(authAdminUser);
             return this;
         }
-        @CustomType.Setter
         public Builder email(String email) {
             this.email = Objects.requireNonNull(email);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder nickName(String nickName) {
             this.nickName = Objects.requireNonNull(nickName);
             return this;
         }
-        @CustomType.Setter
         public Builder phone(String phone) {
             this.phone = Objects.requireNonNull(phone);
             return this;
         }
-        @CustomType.Setter
         public Builder userId(String userId) {
             this.userId = Objects.requireNonNull(userId);
             return this;
         }
-        @CustomType.Setter
         public Builder userType(String userType) {
             this.userType = Objects.requireNonNull(userType);
             return this;
-        }
-        public GetUsersUser build() {
-            final var o = new GetUsersUser();
-            o.accountId = accountId;
-            o.accountName = accountName;
-            o.adminUser = adminUser;
-            o.authAdminUser = authAdminUser;
-            o.email = email;
-            o.id = id;
-            o.nickName = nickName;
-            o.phone = phone;
-            o.userId = userId;
-            o.userType = userType;
-            return o;
+        }        public GetUsersUser build() {
+            return new GetUsersUser(accountId, accountName, adminUser, authAdminUser, email, id, nickName, phone, userId, userType);
         }
     }
 }

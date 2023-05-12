@@ -88,8 +88,9 @@ type GetStackInstancesArgs struct {
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Stack Instance IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The name of the stack group.
 	StackGroupName string `pulumi:"stackGroupName"`
 	// The account to which the stack instance belongs.
@@ -132,8 +133,9 @@ type GetStackInstancesOutputArgs struct {
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Stack Instance IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The name of the stack group.
 	StackGroupName pulumi.StringInput `pulumi:"stackGroupName"`
 	// The account to which the stack instance belongs.

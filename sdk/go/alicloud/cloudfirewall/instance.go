@@ -88,7 +88,7 @@ type Instance struct {
 	ModifyType pulumi.StringPtrOutput `pulumi:"modifyType"`
 	// The payment type of the resource. Valid values: `Subscription`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	// The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+	// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
 	Period pulumi.IntOutput `pulumi:"period"`
 	// The release time.
 	ReleaseTime pulumi.StringOutput `pulumi:"releaseTime"`
@@ -181,7 +181,7 @@ type instanceState struct {
 	ModifyType *string `pulumi:"modifyType"`
 	// The payment type of the resource. Valid values: `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
-	// The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+	// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
 	Period *int `pulumi:"period"`
 	// The release time.
 	ReleaseTime *string `pulumi:"releaseTime"`
@@ -222,7 +222,7 @@ type InstanceState struct {
 	ModifyType pulumi.StringPtrInput
 	// The payment type of the resource. Valid values: `Subscription`.
 	PaymentType pulumi.StringPtrInput
-	// The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+	// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
 	Period pulumi.IntPtrInput
 	// The release time.
 	ReleaseTime pulumi.StringPtrInput
@@ -263,7 +263,7 @@ type instanceArgs struct {
 	ModifyType *string `pulumi:"modifyType"`
 	// The payment type of the resource. Valid values: `Subscription`.
 	PaymentType string `pulumi:"paymentType"`
-	// The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+	// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
 	Period int `pulumi:"period"`
 	// Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`.
 	RenewPeriod *int `pulumi:"renewPeriod"`
@@ -295,7 +295,7 @@ type InstanceArgs struct {
 	ModifyType pulumi.StringPtrInput
 	// The payment type of the resource. Valid values: `Subscription`.
 	PaymentType pulumi.StringInput
-	// The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+	// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
 	Period pulumi.IntInput
 	// Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`.
 	RenewPeriod pulumi.IntPtrInput
@@ -452,7 +452,7 @@ func (o InstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
 func (o InstanceOutput) Period() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Period }).(pulumi.IntOutput)
 }

@@ -18,44 +18,63 @@ public final class StoreIndexFieldSearch {
      * @return The alias of one field.
      * 
      */
-    private @Nullable String alias;
+    private final @Nullable String alias;
     /**
      * @return Whether the case sensitive for the field. Default to false. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
      * 
      */
-    private @Nullable Boolean caseSensitive;
+    private final @Nullable Boolean caseSensitive;
     /**
      * @return Whether to enable field analytics. Default to true.
      * 
      */
-    private @Nullable Boolean enableAnalytics;
+    private final @Nullable Boolean enableAnalytics;
     /**
      * @return Whether includes the chinese for the field. Default to false. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
      * 
      */
-    private @Nullable Boolean includeChinese;
+    private final @Nullable Boolean includeChinese;
     /**
      * @return Use nested index when type is json
      * 
      */
-    private @Nullable List<StoreIndexFieldSearchJsonKey> jsonKeys;
+    private final @Nullable List<StoreIndexFieldSearchJsonKey> jsonKeys;
     /**
      * @return When using the json_keys field, this field is required.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The string of several split words, like &#34;\r&#34;, &#34;#&#34;. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
      * 
      */
-    private @Nullable String token;
+    private final @Nullable String token;
     /**
      * @return The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;]. Default to &#34;long&#34;
      * 
      */
-    private @Nullable String type;
+    private final @Nullable String type;
 
-    private StoreIndexFieldSearch() {}
+    @CustomType.Constructor
+    private StoreIndexFieldSearch(
+        @CustomType.Parameter("alias") @Nullable String alias,
+        @CustomType.Parameter("caseSensitive") @Nullable Boolean caseSensitive,
+        @CustomType.Parameter("enableAnalytics") @Nullable Boolean enableAnalytics,
+        @CustomType.Parameter("includeChinese") @Nullable Boolean includeChinese,
+        @CustomType.Parameter("jsonKeys") @Nullable List<StoreIndexFieldSearchJsonKey> jsonKeys,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("token") @Nullable String token,
+        @CustomType.Parameter("type") @Nullable String type) {
+        this.alias = alias;
+        this.caseSensitive = caseSensitive;
+        this.enableAnalytics = enableAnalytics;
+        this.includeChinese = includeChinese;
+        this.jsonKeys = jsonKeys;
+        this.name = name;
+        this.token = token;
+        this.type = type;
+    }
+
     /**
      * @return The alias of one field.
      * 
@@ -120,7 +139,7 @@ public final class StoreIndexFieldSearch {
     public static Builder builder(StoreIndexFieldSearch defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String alias;
         private @Nullable Boolean caseSensitive;
@@ -130,7 +149,11 @@ public final class StoreIndexFieldSearch {
         private String name;
         private @Nullable String token;
         private @Nullable String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(StoreIndexFieldSearch defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alias = defaults.alias;
@@ -143,27 +166,22 @@ public final class StoreIndexFieldSearch {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder alias(@Nullable String alias) {
             this.alias = alias;
             return this;
         }
-        @CustomType.Setter
         public Builder caseSensitive(@Nullable Boolean caseSensitive) {
             this.caseSensitive = caseSensitive;
             return this;
         }
-        @CustomType.Setter
         public Builder enableAnalytics(@Nullable Boolean enableAnalytics) {
             this.enableAnalytics = enableAnalytics;
             return this;
         }
-        @CustomType.Setter
         public Builder includeChinese(@Nullable Boolean includeChinese) {
             this.includeChinese = includeChinese;
             return this;
         }
-        @CustomType.Setter
         public Builder jsonKeys(@Nullable List<StoreIndexFieldSearchJsonKey> jsonKeys) {
             this.jsonKeys = jsonKeys;
             return this;
@@ -171,32 +189,19 @@ public final class StoreIndexFieldSearch {
         public Builder jsonKeys(StoreIndexFieldSearchJsonKey... jsonKeys) {
             return jsonKeys(List.of(jsonKeys));
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder token(@Nullable String token) {
             this.token = token;
             return this;
         }
-        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }
-        public StoreIndexFieldSearch build() {
-            final var o = new StoreIndexFieldSearch();
-            o.alias = alias;
-            o.caseSensitive = caseSensitive;
-            o.enableAnalytics = enableAnalytics;
-            o.includeChinese = includeChinese;
-            o.jsonKeys = jsonKeys;
-            o.name = name;
-            o.token = token;
-            o.type = type;
-            return o;
+        }        public StoreIndexFieldSearch build() {
+            return new StoreIndexFieldSearch(alias, caseSensitive, enableAnalytics, includeChinese, jsonKeys, name, token, type);
         }
     }
 }

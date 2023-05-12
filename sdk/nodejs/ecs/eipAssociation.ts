@@ -5,6 +5,64 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides an Alicloud EIP Association resource for associating Elastic IP to ECS Instance, SLB Instance or Nat Gateway.
+ *
+ * > **NOTE:** `alicloud.ecs.EipAssociation` is useful in scenarios where EIPs are either
+ *  pre-existing or distributed to customers or users and therefore cannot be changed.
+ *
+ * > **NOTE:** From version 1.7.1, the resource support to associate EIP to SLB Instance or Nat Gateway.
+ *
+ * > **NOTE:** One EIP can only be associated with ECS or SLB instance which in the VPC.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultZones = alicloud.getZones({});
+ * const vpc = new alicloud.vpc.Network("vpc", {cidrBlock: "10.1.0.0/21"});
+ * const vsw = new alicloud.vpc.Switch("vsw", {
+ *     vpcId: vpc.id,
+ *     cidrBlock: "10.1.1.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * }, {
+ *     dependsOn: [vpc],
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
+ * }));
+ * const defaultImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const group = new alicloud.ecs.SecurityGroup("group", {
+ *     description: "New security group",
+ *     vpcId: vpc.id,
+ * });
+ * const ecsInstance = new alicloud.ecs.Instance("ecsInstance", {
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     securityGroups: [group.id],
+ *     vswitchId: vsw.id,
+ *     instanceName: "hello",
+ *     tags: {
+ *         Name: "TerraformTest-instance",
+ *     },
+ * });
+ * const eip = new alicloud.ecs.EipAddress("eip", {});
+ * const eipAsso = new alicloud.ecs.EipAssociation("eipAsso", {
+ *     allocationId: eip.id,
+ *     instanceId: ecsInstance.id,
+ * });
+ * ```
+ * ## Module Support
+ *
+ * You can use the existing eip module
+ * to create several EIP instances and associate them with other resources one-click, like ECS instances, SLB, Nat Gateway and so on.
+ *
  * ## Import
  *
  * Elastic IP address association can be imported using the id, e.g.

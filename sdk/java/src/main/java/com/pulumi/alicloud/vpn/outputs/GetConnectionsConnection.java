@@ -16,71 +16,104 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConnectionsConnection {
-    private String createTime;
+    private final String createTime;
     /**
      * @return Use the VPN customer gateway ID as the search key.
      * 
      */
-    private String customerGatewayId;
-    private Boolean effectImmediately;
+    private final String customerGatewayId;
+    private final Boolean effectImmediately;
     /**
      * @return Specifies whether to enable the dead peer detection (DPD) feature.
      * 
      */
-    private Boolean enableDpd;
+    private final Boolean enableDpd;
     /**
      * @return Specifies whether to enable NAT traversal.
      * 
      */
-    private Boolean enableNatTraversal;
+    private final Boolean enableNatTraversal;
     /**
      * @return ID of the VPN connection.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The configurations of phase-one negotiation.
      * 
      */
-    private @Nullable List<GetConnectionsConnectionIkeConfig> ikeConfigs;
+    private final @Nullable List<GetConnectionsConnectionIkeConfig> ikeConfigs;
     /**
      * @return The configurations of phase-two negotiation.
      * 
      */
-    private @Nullable List<GetConnectionsConnectionIpsecConfig> ipsecConfigs;
+    private final @Nullable List<GetConnectionsConnectionIpsecConfig> ipsecConfigs;
     /**
      * @return The local subnet of the VPN connection.
      * 
      */
-    private String localSubnet;
+    private final String localSubnet;
     /**
      * @return The name of the VPN connection.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The remote subnet of the VPN connection.
      * 
      */
-    private String remoteSubnet;
+    private final String remoteSubnet;
     /**
      * @return The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
      * 
      */
-    private String status;
-    private @Nullable List<GetConnectionsConnectionVcoHealthCheck> vcoHealthChecks;
+    private final String status;
+    private final @Nullable List<GetConnectionsConnectionVcoHealthCheck> vcoHealthChecks;
     /**
      * @return The configuration information for BGP.
      * 
      */
-    private @Nullable List<GetConnectionsConnectionVpnBgpConfig> vpnBgpConfigs;
+    private final @Nullable List<GetConnectionsConnectionVpnBgpConfig> vpnBgpConfigs;
     /**
      * @return Use the VPN gateway ID as the search key.
      * 
      */
-    private String vpnGatewayId;
+    private final String vpnGatewayId;
 
-    private GetConnectionsConnection() {}
+    @CustomType.Constructor
+    private GetConnectionsConnection(
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("customerGatewayId") String customerGatewayId,
+        @CustomType.Parameter("effectImmediately") Boolean effectImmediately,
+        @CustomType.Parameter("enableDpd") Boolean enableDpd,
+        @CustomType.Parameter("enableNatTraversal") Boolean enableNatTraversal,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ikeConfigs") @Nullable List<GetConnectionsConnectionIkeConfig> ikeConfigs,
+        @CustomType.Parameter("ipsecConfigs") @Nullable List<GetConnectionsConnectionIpsecConfig> ipsecConfigs,
+        @CustomType.Parameter("localSubnet") String localSubnet,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("remoteSubnet") String remoteSubnet,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("vcoHealthChecks") @Nullable List<GetConnectionsConnectionVcoHealthCheck> vcoHealthChecks,
+        @CustomType.Parameter("vpnBgpConfigs") @Nullable List<GetConnectionsConnectionVpnBgpConfig> vpnBgpConfigs,
+        @CustomType.Parameter("vpnGatewayId") String vpnGatewayId) {
+        this.createTime = createTime;
+        this.customerGatewayId = customerGatewayId;
+        this.effectImmediately = effectImmediately;
+        this.enableDpd = enableDpd;
+        this.enableNatTraversal = enableNatTraversal;
+        this.id = id;
+        this.ikeConfigs = ikeConfigs;
+        this.ipsecConfigs = ipsecConfigs;
+        this.localSubnet = localSubnet;
+        this.name = name;
+        this.remoteSubnet = remoteSubnet;
+        this.status = status;
+        this.vcoHealthChecks = vcoHealthChecks;
+        this.vpnBgpConfigs = vpnBgpConfigs;
+        this.vpnGatewayId = vpnGatewayId;
+    }
+
     public String createTime() {
         return this.createTime;
     }
@@ -182,7 +215,7 @@ public final class GetConnectionsConnection {
     public static Builder builder(GetConnectionsConnection defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String createTime;
         private String customerGatewayId;
@@ -199,7 +232,11 @@ public final class GetConnectionsConnection {
         private @Nullable List<GetConnectionsConnectionVcoHealthCheck> vcoHealthChecks;
         private @Nullable List<GetConnectionsConnectionVpnBgpConfig> vpnBgpConfigs;
         private String vpnGatewayId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetConnectionsConnection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -219,37 +256,30 @@ public final class GetConnectionsConnection {
     	      this.vpnGatewayId = defaults.vpnGatewayId;
         }
 
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder customerGatewayId(String customerGatewayId) {
             this.customerGatewayId = Objects.requireNonNull(customerGatewayId);
             return this;
         }
-        @CustomType.Setter
         public Builder effectImmediately(Boolean effectImmediately) {
             this.effectImmediately = Objects.requireNonNull(effectImmediately);
             return this;
         }
-        @CustomType.Setter
         public Builder enableDpd(Boolean enableDpd) {
             this.enableDpd = Objects.requireNonNull(enableDpd);
             return this;
         }
-        @CustomType.Setter
         public Builder enableNatTraversal(Boolean enableNatTraversal) {
             this.enableNatTraversal = Objects.requireNonNull(enableNatTraversal);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ikeConfigs(@Nullable List<GetConnectionsConnectionIkeConfig> ikeConfigs) {
             this.ikeConfigs = ikeConfigs;
             return this;
@@ -257,7 +287,6 @@ public final class GetConnectionsConnection {
         public Builder ikeConfigs(GetConnectionsConnectionIkeConfig... ikeConfigs) {
             return ikeConfigs(List.of(ikeConfigs));
         }
-        @CustomType.Setter
         public Builder ipsecConfigs(@Nullable List<GetConnectionsConnectionIpsecConfig> ipsecConfigs) {
             this.ipsecConfigs = ipsecConfigs;
             return this;
@@ -265,27 +294,22 @@ public final class GetConnectionsConnection {
         public Builder ipsecConfigs(GetConnectionsConnectionIpsecConfig... ipsecConfigs) {
             return ipsecConfigs(List.of(ipsecConfigs));
         }
-        @CustomType.Setter
         public Builder localSubnet(String localSubnet) {
             this.localSubnet = Objects.requireNonNull(localSubnet);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder remoteSubnet(String remoteSubnet) {
             this.remoteSubnet = Objects.requireNonNull(remoteSubnet);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder vcoHealthChecks(@Nullable List<GetConnectionsConnectionVcoHealthCheck> vcoHealthChecks) {
             this.vcoHealthChecks = vcoHealthChecks;
             return this;
@@ -293,7 +317,6 @@ public final class GetConnectionsConnection {
         public Builder vcoHealthChecks(GetConnectionsConnectionVcoHealthCheck... vcoHealthChecks) {
             return vcoHealthChecks(List.of(vcoHealthChecks));
         }
-        @CustomType.Setter
         public Builder vpnBgpConfigs(@Nullable List<GetConnectionsConnectionVpnBgpConfig> vpnBgpConfigs) {
             this.vpnBgpConfigs = vpnBgpConfigs;
             return this;
@@ -301,29 +324,11 @@ public final class GetConnectionsConnection {
         public Builder vpnBgpConfigs(GetConnectionsConnectionVpnBgpConfig... vpnBgpConfigs) {
             return vpnBgpConfigs(List.of(vpnBgpConfigs));
         }
-        @CustomType.Setter
         public Builder vpnGatewayId(String vpnGatewayId) {
             this.vpnGatewayId = Objects.requireNonNull(vpnGatewayId);
             return this;
-        }
-        public GetConnectionsConnection build() {
-            final var o = new GetConnectionsConnection();
-            o.createTime = createTime;
-            o.customerGatewayId = customerGatewayId;
-            o.effectImmediately = effectImmediately;
-            o.enableDpd = enableDpd;
-            o.enableNatTraversal = enableNatTraversal;
-            o.id = id;
-            o.ikeConfigs = ikeConfigs;
-            o.ipsecConfigs = ipsecConfigs;
-            o.localSubnet = localSubnet;
-            o.name = name;
-            o.remoteSubnet = remoteSubnet;
-            o.status = status;
-            o.vcoHealthChecks = vcoHealthChecks;
-            o.vpnBgpConfigs = vpnBgpConfigs;
-            o.vpnGatewayId = vpnGatewayId;
-            return o;
+        }        public GetConnectionsConnection build() {
+            return new GetConnectionsConnection(createTime, customerGatewayId, effectImmediately, enableDpd, enableNatTraversal, id, ikeConfigs, ipsecConfigs, localSubnet, name, remoteSubnet, status, vcoHealthChecks, vpnBgpConfigs, vpnGatewayId);
         }
     }
 }

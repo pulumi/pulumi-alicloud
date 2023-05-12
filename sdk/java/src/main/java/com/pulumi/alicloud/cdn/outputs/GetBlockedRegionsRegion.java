@@ -13,19 +13,28 @@ public final class GetBlockedRegionsRegion {
      * @return The region to which the country belongs.
      * 
      */
-    private String continent;
+    private final String continent;
     /**
      * @return National region abbreviation.
      * 
      */
-    private String countriesAndRegions;
+    private final String countriesAndRegions;
     /**
      * @return The name of the country and region.
      * 
      */
-    private String countriesAndRegionsName;
+    private final String countriesAndRegionsName;
 
-    private GetBlockedRegionsRegion() {}
+    @CustomType.Constructor
+    private GetBlockedRegionsRegion(
+        @CustomType.Parameter("continent") String continent,
+        @CustomType.Parameter("countriesAndRegions") String countriesAndRegions,
+        @CustomType.Parameter("countriesAndRegionsName") String countriesAndRegionsName) {
+        this.continent = continent;
+        this.countriesAndRegions = countriesAndRegions;
+        this.countriesAndRegionsName = countriesAndRegionsName;
+    }
+
     /**
      * @return The region to which the country belongs.
      * 
@@ -55,12 +64,16 @@ public final class GetBlockedRegionsRegion {
     public static Builder builder(GetBlockedRegionsRegion defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String continent;
         private String countriesAndRegions;
         private String countriesAndRegionsName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBlockedRegionsRegion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.continent = defaults.continent;
@@ -68,27 +81,19 @@ public final class GetBlockedRegionsRegion {
     	      this.countriesAndRegionsName = defaults.countriesAndRegionsName;
         }
 
-        @CustomType.Setter
         public Builder continent(String continent) {
             this.continent = Objects.requireNonNull(continent);
             return this;
         }
-        @CustomType.Setter
         public Builder countriesAndRegions(String countriesAndRegions) {
             this.countriesAndRegions = Objects.requireNonNull(countriesAndRegions);
             return this;
         }
-        @CustomType.Setter
         public Builder countriesAndRegionsName(String countriesAndRegionsName) {
             this.countriesAndRegionsName = Objects.requireNonNull(countriesAndRegionsName);
             return this;
-        }
-        public GetBlockedRegionsRegion build() {
-            final var o = new GetBlockedRegionsRegion();
-            o.continent = continent;
-            o.countriesAndRegions = countriesAndRegions;
-            o.countriesAndRegionsName = countriesAndRegionsName;
-            return o;
+        }        public GetBlockedRegionsRegion build() {
+            return new GetBlockedRegionsRegion(continent, countriesAndRegions, countriesAndRegionsName);
         }
     }
 }

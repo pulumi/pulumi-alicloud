@@ -132,6 +132,10 @@ export class RouteEntry extends pulumi.CustomResource {
 
     /**
      * The destination CIDR block of the route entry to publish.
+     *
+     * ->**NOTE:** The "alicloudCenInstanceRouteEntries" resource depends on the related "alicloud.cen.InstanceAttachment" resource.
+     *
+     * ->**NOTE:** The "alicloud.cen.InstanceAttachment" resource should depend on the related "alicloud.vpc.Switch" resource.
      */
     public readonly cidrBlock!: pulumi.Output<string>;
     /**
@@ -185,6 +189,10 @@ export class RouteEntry extends pulumi.CustomResource {
 export interface RouteEntryState {
     /**
      * The destination CIDR block of the route entry to publish.
+     *
+     * ->**NOTE:** The "alicloudCenInstanceRouteEntries" resource depends on the related "alicloud.cen.InstanceAttachment" resource.
+     *
+     * ->**NOTE:** The "alicloud.cen.InstanceAttachment" resource should depend on the related "alicloud.vpc.Switch" resource.
      */
     cidrBlock?: pulumi.Input<string>;
     /**
@@ -203,6 +211,10 @@ export interface RouteEntryState {
 export interface RouteEntryArgs {
     /**
      * The destination CIDR block of the route entry to publish.
+     *
+     * ->**NOTE:** The "alicloudCenInstanceRouteEntries" resource depends on the related "alicloud.cen.InstanceAttachment" resource.
+     *
+     * ->**NOTE:** The "alicloud.cen.InstanceAttachment" resource should depend on the related "alicloud.vpc.Switch" resource.
      */
     cidrBlock: pulumi.Input<string>;
     /**

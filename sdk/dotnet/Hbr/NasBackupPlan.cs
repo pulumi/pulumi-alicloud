@@ -98,6 +98,8 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// The role name created in the original account RAM backup by the cross account managed by the current account.
+        /// 
+        /// &gt; **Note** `alicloud.hbr.NasBackupPlan` depends on the `alicloud.nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
         /// </summary>
         [Output("crossAccountRoleName")]
         public Output<string?> CrossAccountRoleName { get; private set; } = null!;
@@ -222,6 +224,8 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// The role name created in the original account RAM backup by the cross account managed by the current account.
+        /// 
+        /// &gt; **Note** `alicloud.hbr.NasBackupPlan` depends on the `alicloud.nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
         /// </summary>
         [Input("crossAccountRoleName")]
         public Input<string>? CrossAccountRoleName { get; set; }
@@ -314,6 +318,8 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// The role name created in the original account RAM backup by the cross account managed by the current account.
+        /// 
+        /// &gt; **Note** `alicloud.hbr.NasBackupPlan` depends on the `alicloud.nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
         /// </summary>
         [Input("crossAccountRoleName")]
         public Input<string>? CrossAccountRoleName { get; set; }

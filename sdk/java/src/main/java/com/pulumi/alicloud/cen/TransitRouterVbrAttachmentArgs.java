@@ -186,12 +186,16 @@ public final class TransitRouterVbrAttachmentArgs extends com.pulumi.resources.R
     /**
      * The owner id of the transit router vbr attachment.
      * 
+     * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
+     * 
      */
     @Import(name="vbrOwnerId")
     private @Nullable Output<String> vbrOwnerId;
 
     /**
      * @return The owner id of the transit router vbr attachment.
+     * 
+     * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
      * 
      */
     public Optional<Output<String>> vbrOwnerId() {
@@ -467,6 +471,8 @@ public final class TransitRouterVbrAttachmentArgs extends com.pulumi.resources.R
         /**
          * @param vbrOwnerId The owner id of the transit router vbr attachment.
          * 
+         * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
+         * 
          * @return builder
          * 
          */
@@ -477,6 +483,8 @@ public final class TransitRouterVbrAttachmentArgs extends com.pulumi.resources.R
 
         /**
          * @param vbrOwnerId The owner id of the transit router vbr attachment.
+         * 
+         * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
          * 
          * @return builder
          * 

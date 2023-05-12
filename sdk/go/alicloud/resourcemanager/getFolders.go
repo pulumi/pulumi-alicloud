@@ -58,7 +58,8 @@ type GetFoldersArgs struct {
 	// A list of resource manager folders IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by folder name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the parent folder.
 	ParentFolderId *string `pulumi:"parentFolderId"`
@@ -104,7 +105,8 @@ type GetFoldersOutputArgs struct {
 	// A list of resource manager folders IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by folder name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the parent folder.
 	ParentFolderId pulumi.StringPtrInput `pulumi:"parentFolderId"`

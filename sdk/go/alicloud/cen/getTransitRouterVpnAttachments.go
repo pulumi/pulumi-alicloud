@@ -56,9 +56,10 @@ type GetTransitRouterVpnAttachmentsArgs struct {
 	// The id of the cen.
 	CenId string `pulumi:"cenId"`
 	// A list of Transit Router Vpn Attachment IDs.
-	Ids        []string `pulumi:"ids"`
-	NameRegex  *string  `pulumi:"nameRegex"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The status of the transit router attachment.
 	Status *string `pulumi:"status"`
 	// The ID of the forwarding router instance.
@@ -97,9 +98,10 @@ type GetTransitRouterVpnAttachmentsOutputArgs struct {
 	// The id of the cen.
 	CenId pulumi.StringInput `pulumi:"cenId"`
 	// A list of Transit Router Vpn Attachment IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	NameRegex  pulumi.StringPtrInput   `pulumi:"nameRegex"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids       pulumi.StringArrayInput `pulumi:"ids"`
+	NameRegex pulumi.StringPtrInput   `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the transit router attachment.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The ID of the forwarding router instance.

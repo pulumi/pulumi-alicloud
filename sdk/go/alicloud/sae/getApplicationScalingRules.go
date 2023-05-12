@@ -60,8 +60,9 @@ type GetApplicationScalingRulesArgs struct {
 	// The ID of the Application.
 	AppId string `pulumi:"appId"`
 	// A list of Application Scaling Rule IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getApplicationScalingRules.
@@ -92,8 +93,9 @@ type GetApplicationScalingRulesOutputArgs struct {
 	// The ID of the Application.
 	AppId pulumi.StringInput `pulumi:"appId"`
 	// A list of Application Scaling Rule IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetApplicationScalingRulesOutputArgs) ElementType() reflect.Type {

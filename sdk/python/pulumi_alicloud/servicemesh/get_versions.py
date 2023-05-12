@@ -105,6 +105,7 @@ def get_versions(edition: Optional[str] = None,
 
     :param str edition: The edition of the ASM instance.
     :param Sequence[str] ids: A list of ASM versions. Its element formats as `<edition>:<version>`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['edition'] = edition
@@ -146,5 +147,6 @@ def get_versions_output(edition: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str edition: The edition of the ASM instance.
     :param Sequence[str] ids: A list of ASM versions. Its element formats as `<edition>:<version>`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

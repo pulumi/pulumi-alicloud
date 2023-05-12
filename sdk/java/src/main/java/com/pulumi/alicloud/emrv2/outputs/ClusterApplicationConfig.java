@@ -15,44 +15,63 @@ public final class ClusterApplicationConfig {
      * @return The application name of EMR cluster which has installed.
      * 
      */
-    private String applicationName;
+    private final String applicationName;
     /**
      * @return The configuration description of application installed.
      * 
      */
-    private @Nullable String configDescription;
+    private final @Nullable String configDescription;
     /**
      * @return The configuration file name of application installed.
      * 
      */
-    private String configFileName;
+    private final String configFileName;
     /**
      * @return The configuration item key of application installed.
      * 
      */
-    private String configItemKey;
+    private final String configItemKey;
     /**
      * @return The configuration item value of application installed.
      * 
      */
-    private String configItemValue;
+    private final String configItemValue;
     /**
      * @return The configuration scope of emr cluster. Supported value: CLUSTER or NODEGROUP.
      * 
      */
-    private @Nullable String configScope;
+    private final @Nullable String configScope;
     /**
      * @return The configuration effected which node group id of emr cluster.
      * 
      */
-    private @Nullable String nodeGroupId;
+    private final @Nullable String nodeGroupId;
     /**
      * @return The configuration effected which node group name of emr cluster.
      * 
      */
-    private @Nullable String nodeGroupName;
+    private final @Nullable String nodeGroupName;
 
-    private ClusterApplicationConfig() {}
+    @CustomType.Constructor
+    private ClusterApplicationConfig(
+        @CustomType.Parameter("applicationName") String applicationName,
+        @CustomType.Parameter("configDescription") @Nullable String configDescription,
+        @CustomType.Parameter("configFileName") String configFileName,
+        @CustomType.Parameter("configItemKey") String configItemKey,
+        @CustomType.Parameter("configItemValue") String configItemValue,
+        @CustomType.Parameter("configScope") @Nullable String configScope,
+        @CustomType.Parameter("nodeGroupId") @Nullable String nodeGroupId,
+        @CustomType.Parameter("nodeGroupName") @Nullable String nodeGroupName) {
+        this.applicationName = applicationName;
+        this.configDescription = configDescription;
+        this.configFileName = configFileName;
+        this.configItemKey = configItemKey;
+        this.configItemValue = configItemValue;
+        this.configScope = configScope;
+        this.nodeGroupId = nodeGroupId;
+        this.nodeGroupName = nodeGroupName;
+    }
+
     /**
      * @return The application name of EMR cluster which has installed.
      * 
@@ -117,7 +136,7 @@ public final class ClusterApplicationConfig {
     public static Builder builder(ClusterApplicationConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String applicationName;
         private @Nullable String configDescription;
@@ -127,7 +146,11 @@ public final class ClusterApplicationConfig {
         private @Nullable String configScope;
         private @Nullable String nodeGroupId;
         private @Nullable String nodeGroupName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ClusterApplicationConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applicationName = defaults.applicationName;
@@ -140,57 +163,39 @@ public final class ClusterApplicationConfig {
     	      this.nodeGroupName = defaults.nodeGroupName;
         }
 
-        @CustomType.Setter
         public Builder applicationName(String applicationName) {
             this.applicationName = Objects.requireNonNull(applicationName);
             return this;
         }
-        @CustomType.Setter
         public Builder configDescription(@Nullable String configDescription) {
             this.configDescription = configDescription;
             return this;
         }
-        @CustomType.Setter
         public Builder configFileName(String configFileName) {
             this.configFileName = Objects.requireNonNull(configFileName);
             return this;
         }
-        @CustomType.Setter
         public Builder configItemKey(String configItemKey) {
             this.configItemKey = Objects.requireNonNull(configItemKey);
             return this;
         }
-        @CustomType.Setter
         public Builder configItemValue(String configItemValue) {
             this.configItemValue = Objects.requireNonNull(configItemValue);
             return this;
         }
-        @CustomType.Setter
         public Builder configScope(@Nullable String configScope) {
             this.configScope = configScope;
             return this;
         }
-        @CustomType.Setter
         public Builder nodeGroupId(@Nullable String nodeGroupId) {
             this.nodeGroupId = nodeGroupId;
             return this;
         }
-        @CustomType.Setter
         public Builder nodeGroupName(@Nullable String nodeGroupName) {
             this.nodeGroupName = nodeGroupName;
             return this;
-        }
-        public ClusterApplicationConfig build() {
-            final var o = new ClusterApplicationConfig();
-            o.applicationName = applicationName;
-            o.configDescription = configDescription;
-            o.configFileName = configFileName;
-            o.configItemKey = configItemKey;
-            o.configItemValue = configItemValue;
-            o.configScope = configScope;
-            o.nodeGroupId = nodeGroupId;
-            o.nodeGroupName = nodeGroupName;
-            return o;
+        }        public ClusterApplicationConfig build() {
+            return new ClusterApplicationConfig(applicationName, configDescription, configFileName, configItemKey, configItemValue, configScope, nodeGroupId, nodeGroupName);
         }
     }
 }

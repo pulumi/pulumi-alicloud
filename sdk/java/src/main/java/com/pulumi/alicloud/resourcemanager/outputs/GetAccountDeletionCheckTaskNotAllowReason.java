@@ -13,19 +13,28 @@ public final class GetAccountDeletionCheckTaskNotAllowReason {
      * @return The ID of the check item.
      * 
      */
-    private String checkId;
+    private final String checkId;
     /**
      * @return The name of the cloud service to which the check item belongs.
      * 
      */
-    private String checkName;
+    private final String checkName;
     /**
      * @return The description of the check item.
      * 
      */
-    private String description;
+    private final String description;
 
-    private GetAccountDeletionCheckTaskNotAllowReason() {}
+    @CustomType.Constructor
+    private GetAccountDeletionCheckTaskNotAllowReason(
+        @CustomType.Parameter("checkId") String checkId,
+        @CustomType.Parameter("checkName") String checkName,
+        @CustomType.Parameter("description") String description) {
+        this.checkId = checkId;
+        this.checkName = checkName;
+        this.description = description;
+    }
+
     /**
      * @return The ID of the check item.
      * 
@@ -55,12 +64,16 @@ public final class GetAccountDeletionCheckTaskNotAllowReason {
     public static Builder builder(GetAccountDeletionCheckTaskNotAllowReason defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String checkId;
         private String checkName;
         private String description;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAccountDeletionCheckTaskNotAllowReason defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.checkId = defaults.checkId;
@@ -68,27 +81,19 @@ public final class GetAccountDeletionCheckTaskNotAllowReason {
     	      this.description = defaults.description;
         }
 
-        @CustomType.Setter
         public Builder checkId(String checkId) {
             this.checkId = Objects.requireNonNull(checkId);
             return this;
         }
-        @CustomType.Setter
         public Builder checkName(String checkName) {
             this.checkName = Objects.requireNonNull(checkName);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
-        }
-        public GetAccountDeletionCheckTaskNotAllowReason build() {
-            final var o = new GetAccountDeletionCheckTaskNotAllowReason();
-            o.checkId = checkId;
-            o.checkName = checkName;
-            o.description = description;
-            return o;
+        }        public GetAccountDeletionCheckTaskNotAllowReason build() {
+            return new GetAccountDeletionCheckTaskNotAllowReason(checkId, checkName, description);
         }
     }
 }

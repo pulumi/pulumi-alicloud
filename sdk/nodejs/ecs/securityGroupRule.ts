@@ -4,6 +4,37 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Provides a security group rule resource.
+ * Represents a single `ingress` or `egress` group rule, which can be added to external Security Groups.
+ *
+ * > **NOTE:**  `nicType` should set to `intranet` when security group type is `vpc` or specifying the `sourceSecurityGroupId`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = new alicloud.ecs.SecurityGroup("default", {});
+ * const allowAllTcp = new alicloud.ecs.SecurityGroupRule("allowAllTcp", {
+ *     type: "ingress",
+ *     ipProtocol: "tcp",
+ *     nicType: "internet",
+ *     policy: "accept",
+ *     portRange: "1/65535",
+ *     priority: 1,
+ *     securityGroupId: _default.id,
+ *     cidrIp: "0.0.0.0/0",
+ * });
+ * ```
+ * ## Module Support
+ *
+ * You can use the existing security-group module
+ * to create a security group and add several rules one-click.
+ */
 export class SecurityGroupRule extends pulumi.CustomResource {
     /**
      * Get an existing SecurityGroupRule resource's state with the given name, ID, and optional extra
@@ -46,6 +77,8 @@ export class SecurityGroupRule extends pulumi.CustomResource {
     public readonly ipProtocol!: pulumi.Output<string>;
     /**
      * Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
+     *
+     * > **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
      */
     public readonly ipv6CidrIp!: pulumi.Output<string | undefined>;
     /**
@@ -160,6 +193,8 @@ export interface SecurityGroupRuleState {
     ipProtocol?: pulumi.Input<string>;
     /**
      * Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
+     *
+     * > **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
      */
     ipv6CidrIp?: pulumi.Input<string>;
     /**
@@ -219,6 +254,8 @@ export interface SecurityGroupRuleArgs {
     ipProtocol: pulumi.Input<string>;
     /**
      * Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
+     *
+     * > **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
      */
     ipv6CidrIp?: pulumi.Input<string>;
     /**

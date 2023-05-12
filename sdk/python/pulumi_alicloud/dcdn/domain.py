@@ -29,6 +29,7 @@ class DomainArgs:
                  ssl_protocol: Optional[pulumi.Input[str]] = None,
                  ssl_pub: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  top_level_domain: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Domain resource.
@@ -48,6 +49,7 @@ class DomainArgs:
         :param pulumi.Input[str] ssl_protocol: Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
         :param pulumi.Input[str] ssl_pub: Indicates the public key of the certificate if the HTTPS protocol is enabled.
         :param pulumi.Input[str] status: The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] top_level_domain: The top-level domain name.
         """
         pulumi.set(__self__, "domain_name", domain_name)
@@ -74,6 +76,8 @@ class DomainArgs:
             pulumi.set(__self__, "ssl_pub", ssl_pub)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if top_level_domain is not None:
             pulumi.set(__self__, "top_level_domain", top_level_domain)
 
@@ -237,6 +241,18 @@ class DomainArgs:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="topLevelDomain")
     def top_level_domain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -266,6 +282,7 @@ class _DomainState:
                  ssl_protocol: Optional[pulumi.Input[str]] = None,
                  ssl_pub: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  top_level_domain: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
@@ -286,6 +303,7 @@ class _DomainState:
         :param pulumi.Input[str] ssl_protocol: Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
         :param pulumi.Input[str] ssl_pub: Indicates the public key of the certificate if the HTTPS protocol is enabled.
         :param pulumi.Input[str] status: The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] top_level_domain: The top-level domain name.
         """
         if cert_name is not None:
@@ -316,6 +334,8 @@ class _DomainState:
             pulumi.set(__self__, "ssl_pub", ssl_pub)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if top_level_domain is not None:
             pulumi.set(__self__, "top_level_domain", top_level_domain)
 
@@ -491,6 +511,18 @@ class _DomainState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="topLevelDomain")
     def top_level_domain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -521,6 +553,7 @@ class Domain(pulumi.CustomResource):
                  ssl_protocol: Optional[pulumi.Input[str]] = None,
                  ssl_pub: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  top_level_domain: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -558,7 +591,7 @@ class Domain(pulumi.CustomResource):
         DCDN Domain can be imported using the id or DCDN Domain name, e.g.
 
         ```sh
-         $ pulumi import alicloud:dcdn/domain:Domain example example.com
+         $ pulumi import alicloud:dcdn/domain:Domain example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -579,6 +612,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] ssl_protocol: Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
         :param pulumi.Input[str] ssl_pub: Indicates the public key of the certificate if the HTTPS protocol is enabled.
         :param pulumi.Input[str] status: The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] top_level_domain: The top-level domain name.
         """
         ...
@@ -622,7 +656,7 @@ class Domain(pulumi.CustomResource):
         DCDN Domain can be imported using the id or DCDN Domain name, e.g.
 
         ```sh
-         $ pulumi import alicloud:dcdn/domain:Domain example example.com
+         $ pulumi import alicloud:dcdn/domain:Domain example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -653,6 +687,7 @@ class Domain(pulumi.CustomResource):
                  ssl_protocol: Optional[pulumi.Input[str]] = None,
                  ssl_pub: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  top_level_domain: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -680,6 +715,7 @@ class Domain(pulumi.CustomResource):
             __props__.__dict__["ssl_protocol"] = ssl_protocol
             __props__.__dict__["ssl_pub"] = ssl_pub
             __props__.__dict__["status"] = status
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["top_level_domain"] = top_level_domain
             __props__.__dict__["cname"] = None
         super(Domain, __self__).__init__(
@@ -706,6 +742,7 @@ class Domain(pulumi.CustomResource):
             ssl_protocol: Optional[pulumi.Input[str]] = None,
             ssl_pub: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             top_level_domain: Optional[pulumi.Input[str]] = None) -> 'Domain':
         """
         Get an existing Domain resource's state with the given name, id, and optional extra
@@ -731,6 +768,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] ssl_protocol: Indicates whether the SSL certificate is enabled. Valid values: `on` enabled, `off` disabled.
         :param pulumi.Input[str] ssl_pub: Indicates the public key of the certificate if the HTTPS protocol is enabled.
         :param pulumi.Input[str] status: The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] top_level_domain: The top-level domain name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -751,6 +789,7 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["ssl_protocol"] = ssl_protocol
         __props__.__dict__["ssl_pub"] = ssl_pub
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["top_level_domain"] = top_level_domain
         return Domain(resource_name, opts=opts, __props__=__props__)
 
@@ -868,6 +907,14 @@ class Domain(pulumi.CustomResource):
         The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="topLevelDomain")

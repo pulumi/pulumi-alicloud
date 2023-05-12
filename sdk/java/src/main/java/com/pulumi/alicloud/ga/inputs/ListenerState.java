@@ -37,12 +37,16 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     /**
      * The certificates of the listener.
      * 
+     * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
+     * 
      */
     @Import(name="certificates")
     private @Nullable Output<List<ListenerCertificateArgs>> certificates;
 
     /**
      * @return The certificates of the listener.
+     * 
+     * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
      * 
      */
     public Optional<Output<List<ListenerCertificateArgs>>> certificates() {
@@ -116,12 +120,16 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     /**
      * The portRanges of the listener.
      * 
+     * &gt; **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
+     * 
      */
     @Import(name="portRanges")
     private @Nullable Output<List<ListenerPortRangeArgs>> portRanges;
 
     /**
      * @return The portRanges of the listener.
+     * 
+     * &gt; **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
      * 
      */
     public Optional<Output<List<ListenerPortRangeArgs>>> portRanges() {
@@ -131,12 +139,16 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     /**
      * Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
      * 
+     * &gt; **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
+     * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
      * @return Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
+     * 
+     * &gt; **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -250,6 +262,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param certificates The certificates of the listener.
          * 
+         * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
+         * 
          * @return builder
          * 
          */
@@ -261,6 +275,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param certificates The certificates of the listener.
          * 
+         * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
+         * 
          * @return builder
          * 
          */
@@ -270,6 +286,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param certificates The certificates of the listener.
+         * 
+         * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
          * 
          * @return builder
          * 
@@ -369,6 +387,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param portRanges The portRanges of the listener.
          * 
+         * &gt; **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
+         * 
          * @return builder
          * 
          */
@@ -380,6 +400,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param portRanges The portRanges of the listener.
          * 
+         * &gt; **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
+         * 
          * @return builder
          * 
          */
@@ -389,6 +411,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param portRanges The portRanges of the listener.
+         * 
+         * &gt; **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
          * 
          * @return builder
          * 
@@ -400,6 +424,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param protocol Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
          * 
+         * &gt; **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
+         * 
          * @return builder
          * 
          */
@@ -410,6 +436,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protocol Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
+         * 
+         * &gt; **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
          * 
          * @return builder
          * 

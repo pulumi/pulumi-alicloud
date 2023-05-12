@@ -15,19 +15,28 @@ public final class GetServerGroupsSlbServerGroup {
      * @return VServer group ID.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return VServer group name.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return ECS instances associated to the group. Each element contains the following attributes:
      * 
      */
-    private List<GetServerGroupsSlbServerGroupServer> servers;
+    private final List<GetServerGroupsSlbServerGroupServer> servers;
 
-    private GetServerGroupsSlbServerGroup() {}
+    @CustomType.Constructor
+    private GetServerGroupsSlbServerGroup(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("servers") List<GetServerGroupsSlbServerGroupServer> servers) {
+        this.id = id;
+        this.name = name;
+        this.servers = servers;
+    }
+
     /**
      * @return VServer group ID.
      * 
@@ -57,12 +66,16 @@ public final class GetServerGroupsSlbServerGroup {
     public static Builder builder(GetServerGroupsSlbServerGroup defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private String name;
         private List<GetServerGroupsSlbServerGroupServer> servers;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServerGroupsSlbServerGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -70,30 +83,22 @@ public final class GetServerGroupsSlbServerGroup {
     	      this.servers = defaults.servers;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder servers(List<GetServerGroupsSlbServerGroupServer> servers) {
             this.servers = Objects.requireNonNull(servers);
             return this;
         }
         public Builder servers(GetServerGroupsSlbServerGroupServer... servers) {
             return servers(List.of(servers));
-        }
-        public GetServerGroupsSlbServerGroup build() {
-            final var o = new GetServerGroupsSlbServerGroup();
-            o.id = id;
-            o.name = name;
-            o.servers = servers;
-            return o;
+        }        public GetServerGroupsSlbServerGroup build() {
+            return new GetServerGroupsSlbServerGroup(id, name, servers);
         }
     }
 }

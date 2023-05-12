@@ -16,22 +16,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEcsLaunchTemplatesResult {
-    private @Nullable Boolean enableDetails;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String launchTemplateName;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String templateResourceGroupId;
-    private @Nullable Map<String,Object> templateTags;
-    private List<GetEcsLaunchTemplatesTemplate> templates;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String launchTemplateName;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String templateResourceGroupId;
+    private final @Nullable Map<String,Object> templateTags;
+    private final List<GetEcsLaunchTemplatesTemplate> templates;
 
-    private GetEcsLaunchTemplatesResult() {}
+    @CustomType.Constructor
+    private GetEcsLaunchTemplatesResult(
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("launchTemplateName") @Nullable String launchTemplateName,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("templateResourceGroupId") @Nullable String templateResourceGroupId,
+        @CustomType.Parameter("templateTags") @Nullable Map<String,Object> templateTags,
+        @CustomType.Parameter("templates") List<GetEcsLaunchTemplatesTemplate> templates) {
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.launchTemplateName = launchTemplateName;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.templateResourceGroupId = templateResourceGroupId;
+        this.templateTags = templateTags;
+        this.templates = templates;
+    }
+
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -74,7 +97,7 @@ public final class GetEcsLaunchTemplatesResult {
     public static Builder builder(GetEcsLaunchTemplatesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private String id;
@@ -86,7 +109,11 @@ public final class GetEcsLaunchTemplatesResult {
         private @Nullable String templateResourceGroupId;
         private @Nullable Map<String,Object> templateTags;
         private List<GetEcsLaunchTemplatesTemplate> templates;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEcsLaunchTemplatesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -101,17 +128,14 @@ public final class GetEcsLaunchTemplatesResult {
     	      this.templates = defaults.templates;
         }
 
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -119,17 +143,14 @@ public final class GetEcsLaunchTemplatesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder launchTemplateName(@Nullable String launchTemplateName) {
             this.launchTemplateName = launchTemplateName;
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -137,42 +158,26 @@ public final class GetEcsLaunchTemplatesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder templateResourceGroupId(@Nullable String templateResourceGroupId) {
             this.templateResourceGroupId = templateResourceGroupId;
             return this;
         }
-        @CustomType.Setter
         public Builder templateTags(@Nullable Map<String,Object> templateTags) {
             this.templateTags = templateTags;
             return this;
         }
-        @CustomType.Setter
         public Builder templates(List<GetEcsLaunchTemplatesTemplate> templates) {
             this.templates = Objects.requireNonNull(templates);
             return this;
         }
         public Builder templates(GetEcsLaunchTemplatesTemplate... templates) {
             return templates(List.of(templates));
-        }
-        public GetEcsLaunchTemplatesResult build() {
-            final var o = new GetEcsLaunchTemplatesResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.launchTemplateName = launchTemplateName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.templateResourceGroupId = templateResourceGroupId;
-            o.templateTags = templateTags;
-            o.templates = templates;
-            return o;
+        }        public GetEcsLaunchTemplatesResult build() {
+            return new GetEcsLaunchTemplatesResult(enableDetails, id, ids, launchTemplateName, nameRegex, names, outputFile, templateResourceGroupId, templateTags, templates);
         }
     }
 }

@@ -70,7 +70,8 @@ type GetAccountsArgs struct {
 	// A list of Account IDs. Its element value is same as Account Name.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Account name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
 	Status *string `pulumi:"status"`
@@ -109,7 +110,8 @@ type GetAccountsOutputArgs struct {
 	// A list of Account IDs. Its element value is same as Account Name.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Account name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

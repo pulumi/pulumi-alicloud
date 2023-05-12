@@ -18,17 +18,38 @@ public final class GetDdosBgpIpsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private String instanceId;
-    private List<GetDdosBgpIpsIp> ips;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
-    private @Nullable String productName;
-    private @Nullable String status;
+    private final String id;
+    private final List<String> ids;
+    private final String instanceId;
+    private final List<GetDdosBgpIpsIp> ips;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
+    private final @Nullable String productName;
+    private final @Nullable String status;
 
-    private GetDdosBgpIpsResult() {}
+    @CustomType.Constructor
+    private GetDdosBgpIpsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("ips") List<GetDdosBgpIpsIp> ips,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
+        @CustomType.Parameter("productName") @Nullable String productName,
+        @CustomType.Parameter("status") @Nullable String status) {
+        this.id = id;
+        this.ids = ids;
+        this.instanceId = instanceId;
+        this.ips = ips;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+        this.productName = productName;
+        this.status = status;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -68,7 +89,7 @@ public final class GetDdosBgpIpsResult {
     public static Builder builder(GetDdosBgpIpsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -79,7 +100,11 @@ public final class GetDdosBgpIpsResult {
         private @Nullable Integer pageSize;
         private @Nullable String productName;
         private @Nullable String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDdosBgpIpsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -93,12 +118,10 @@ public final class GetDdosBgpIpsResult {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -106,12 +129,10 @@ public final class GetDdosBgpIpsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder ips(List<GetDdosBgpIpsIp> ips) {
             this.ips = Objects.requireNonNull(ips);
             return this;
@@ -119,43 +140,27 @@ public final class GetDdosBgpIpsResult {
         public Builder ips(GetDdosBgpIpsIp... ips) {
             return ips(List.of(ips));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
-        @CustomType.Setter
         public Builder productName(@Nullable String productName) {
             this.productName = productName;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }
-        public GetDdosBgpIpsResult build() {
-            final var o = new GetDdosBgpIpsResult();
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.ips = ips;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.productName = productName;
-            o.status = status;
-            return o;
+        }        public GetDdosBgpIpsResult build() {
+            return new GetDdosBgpIpsResult(id, ids, instanceId, ips, outputFile, pageNumber, pageSize, productName, status);
         }
     }
 }

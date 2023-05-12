@@ -54,7 +54,8 @@ func GetRealTimeLogDeliveries(ctx *pulumi.Context, args *GetRealTimeLogDeliverie
 // A collection of arguments for invoking getRealTimeLogDeliveries.
 type GetRealTimeLogDeliveriesArgs struct {
 	// Real-Time Log Service Domain.
-	Domain     string  `pulumi:"domain"`
+	Domain string `pulumi:"domain"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
 	Status *string `pulumi:"status"`
@@ -86,7 +87,8 @@ func GetRealTimeLogDeliveriesOutput(ctx *pulumi.Context, args GetRealTimeLogDeli
 // A collection of arguments for invoking getRealTimeLogDeliveries.
 type GetRealTimeLogDeliveriesOutputArgs struct {
 	// Real-Time Log Service Domain.
-	Domain     pulumi.StringInput    `pulumi:"domain"`
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

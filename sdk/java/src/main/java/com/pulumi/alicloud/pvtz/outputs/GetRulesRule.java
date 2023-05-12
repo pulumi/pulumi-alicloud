@@ -16,50 +16,73 @@ public final class GetRulesRule {
      * @return The List of the VPC. See the following `Block bind_vpcs`. **NOTE:** Available in v1.158.0+.
      * 
      */
-    private List<GetRulesRuleBindVpc> bindVpcs;
+    private final List<GetRulesRuleBindVpc> bindVpcs;
     /**
      * @return The creation time of the resource.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The ID of the Endpoint.
      * 
      */
-    private String endpointId;
+    private final String endpointId;
     /**
      * @return The Name of the Endpoint.
      * 
      */
-    private String endpointName;
-    private List<GetRulesRuleForwardIp> forwardIps;
+    private final String endpointName;
+    private final List<GetRulesRuleForwardIp> forwardIps;
     /**
      * @return The ID of the Rule.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private String ruleId;
+    private final String ruleId;
     /**
      * @return The name of the resource.
      * 
      */
-    private String ruleName;
+    private final String ruleName;
     /**
      * @return The type of the rule.
      * 
      */
-    private String type;
+    private final String type;
     /**
      * @return The name of the forwarding zone.
      * 
      */
-    private String zoneName;
+    private final String zoneName;
 
-    private GetRulesRule() {}
+    @CustomType.Constructor
+    private GetRulesRule(
+        @CustomType.Parameter("bindVpcs") List<GetRulesRuleBindVpc> bindVpcs,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("endpointId") String endpointId,
+        @CustomType.Parameter("endpointName") String endpointName,
+        @CustomType.Parameter("forwardIps") List<GetRulesRuleForwardIp> forwardIps,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ruleId") String ruleId,
+        @CustomType.Parameter("ruleName") String ruleName,
+        @CustomType.Parameter("type") String type,
+        @CustomType.Parameter("zoneName") String zoneName) {
+        this.bindVpcs = bindVpcs;
+        this.createTime = createTime;
+        this.endpointId = endpointId;
+        this.endpointName = endpointName;
+        this.forwardIps = forwardIps;
+        this.id = id;
+        this.ruleId = ruleId;
+        this.ruleName = ruleName;
+        this.type = type;
+        this.zoneName = zoneName;
+    }
+
     /**
      * @return The List of the VPC. See the following `Block bind_vpcs`. **NOTE:** Available in v1.158.0+.
      * 
@@ -134,7 +157,7 @@ public final class GetRulesRule {
     public static Builder builder(GetRulesRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetRulesRuleBindVpc> bindVpcs;
         private String createTime;
@@ -146,7 +169,11 @@ public final class GetRulesRule {
         private String ruleName;
         private String type;
         private String zoneName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bindVpcs = defaults.bindVpcs;
@@ -161,7 +188,6 @@ public final class GetRulesRule {
     	      this.zoneName = defaults.zoneName;
         }
 
-        @CustomType.Setter
         public Builder bindVpcs(List<GetRulesRuleBindVpc> bindVpcs) {
             this.bindVpcs = Objects.requireNonNull(bindVpcs);
             return this;
@@ -169,22 +195,18 @@ public final class GetRulesRule {
         public Builder bindVpcs(GetRulesRuleBindVpc... bindVpcs) {
             return bindVpcs(List.of(bindVpcs));
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointId(String endpointId) {
             this.endpointId = Objects.requireNonNull(endpointId);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointName(String endpointName) {
             this.endpointName = Objects.requireNonNull(endpointName);
             return this;
         }
-        @CustomType.Setter
         public Builder forwardIps(List<GetRulesRuleForwardIp> forwardIps) {
             this.forwardIps = Objects.requireNonNull(forwardIps);
             return this;
@@ -192,44 +214,27 @@ public final class GetRulesRule {
         public Builder forwardIps(GetRulesRuleForwardIp... forwardIps) {
             return forwardIps(List.of(forwardIps));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ruleId(String ruleId) {
             this.ruleId = Objects.requireNonNull(ruleId);
             return this;
         }
-        @CustomType.Setter
         public Builder ruleName(String ruleName) {
             this.ruleName = Objects.requireNonNull(ruleName);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneName(String zoneName) {
             this.zoneName = Objects.requireNonNull(zoneName);
             return this;
-        }
-        public GetRulesRule build() {
-            final var o = new GetRulesRule();
-            o.bindVpcs = bindVpcs;
-            o.createTime = createTime;
-            o.endpointId = endpointId;
-            o.endpointName = endpointName;
-            o.forwardIps = forwardIps;
-            o.id = id;
-            o.ruleId = ruleId;
-            o.ruleName = ruleName;
-            o.type = type;
-            o.zoneName = zoneName;
-            return o;
+        }        public GetRulesRule build() {
+            return new GetRulesRule(bindVpcs, createTime, endpointId, endpointName, forwardIps, id, ruleId, ruleName, type, zoneName);
         }
     }
 }

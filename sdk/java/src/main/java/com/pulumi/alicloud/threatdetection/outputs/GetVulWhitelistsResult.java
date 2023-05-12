@@ -18,18 +18,33 @@ public final class GetVulWhitelistsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
+    private final @Nullable Integer pageNumber;
+    private final @Nullable Integer pageSize;
     /**
      * @return A list of Vul Whitelist Entries. Each element contains the following attributes:
      * 
      */
-    private List<GetVulWhitelistsWhitelist> whitelists;
+    private final List<GetVulWhitelistsWhitelist> whitelists;
 
-    private GetVulWhitelistsResult() {}
+    @CustomType.Constructor
+    private GetVulWhitelistsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
+        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
+        @CustomType.Parameter("whitelists") List<GetVulWhitelistsWhitelist> whitelists) {
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+        this.whitelists = whitelists;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -64,7 +79,7 @@ public final class GetVulWhitelistsResult {
     public static Builder builder(GetVulWhitelistsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -72,7 +87,11 @@ public final class GetVulWhitelistsResult {
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
         private List<GetVulWhitelistsWhitelist> whitelists;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVulWhitelistsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -83,12 +102,10 @@ public final class GetVulWhitelistsResult {
     	      this.whitelists = defaults.whitelists;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -96,38 +113,26 @@ public final class GetVulWhitelistsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
-        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
-        @CustomType.Setter
         public Builder whitelists(List<GetVulWhitelistsWhitelist> whitelists) {
             this.whitelists = Objects.requireNonNull(whitelists);
             return this;
         }
         public Builder whitelists(GetVulWhitelistsWhitelist... whitelists) {
             return whitelists(List.of(whitelists));
-        }
-        public GetVulWhitelistsResult build() {
-            final var o = new GetVulWhitelistsResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.whitelists = whitelists;
-            return o;
+        }        public GetVulWhitelistsResult build() {
+            return new GetVulWhitelistsResult(id, ids, outputFile, pageNumber, pageSize, whitelists);
         }
     }
 }

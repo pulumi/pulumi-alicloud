@@ -13,14 +13,21 @@ public final class GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList {
      * @return The target network segment of the VPC.
      * 
      */
-    private String destinationCidr;
+    private final String destinationCidr;
     /**
      * @return The ID of the next hop instance in the VPC.
      * 
      */
-    private String nextHopInstanceId;
+    private final String nextHopInstanceId;
 
-    private GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList() {}
+    @CustomType.Constructor
+    private GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList(
+        @CustomType.Parameter("destinationCidr") String destinationCidr,
+        @CustomType.Parameter("nextHopInstanceId") String nextHopInstanceId) {
+        this.destinationCidr = destinationCidr;
+        this.nextHopInstanceId = nextHopInstanceId;
+    }
+
     /**
      * @return The target network segment of the VPC.
      * 
@@ -43,32 +50,30 @@ public final class GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList {
     public static Builder builder(GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String destinationCidr;
         private String nextHopInstanceId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destinationCidr = defaults.destinationCidr;
     	      this.nextHopInstanceId = defaults.nextHopInstanceId;
         }
 
-        @CustomType.Setter
         public Builder destinationCidr(String destinationCidr) {
             this.destinationCidr = Objects.requireNonNull(destinationCidr);
             return this;
         }
-        @CustomType.Setter
         public Builder nextHopInstanceId(String nextHopInstanceId) {
             this.nextHopInstanceId = Objects.requireNonNull(nextHopInstanceId);
             return this;
-        }
-        public GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList build() {
-            final var o = new GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList();
-            o.destinationCidr = destinationCidr;
-            o.nextHopInstanceId = nextHopInstanceId;
-            return o;
+        }        public GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList build() {
+            return new GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList(destinationCidr, nextHopInstanceId);
         }
     }
 }

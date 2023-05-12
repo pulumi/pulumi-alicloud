@@ -5,6 +5,103 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a ESS alarm task resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultZones = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const ecsImage = alicloud.ecs.getImages({
+ *     mostRecent: true,
+ *     nameRegex: "^centos_6\\w{1,5}[64].*",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * }));
+ * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
+ *     vswitchName: "tf-testAccEssAlarm_basic_foo",
+ *     vpcId: fooNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const bar = new alicloud.vpc.Switch("bar", {
+ *     vswitchName: "tf-testAccEssAlarm_basic_bar",
+ *     vpcId: fooNetwork.id,
+ *     cidrBlock: "172.16.1.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const fooScalingGroup = new alicloud.ess.ScalingGroup("fooScalingGroup", {
+ *     minSize: 1,
+ *     maxSize: 1,
+ *     scalingGroupName: "tf-testAccEssAlarm_basic",
+ *     removalPolicies: [
+ *         "OldestInstance",
+ *         "NewestInstance",
+ *     ],
+ *     vswitchIds: [
+ *         fooSwitch.id,
+ *         bar.id,
+ *     ],
+ * });
+ * const fooScalingRule = new alicloud.ess.ScalingRule("fooScalingRule", {
+ *     scalingRuleName: "tf-testAccEssAlarm_basic",
+ *     scalingGroupId: fooScalingGroup.id,
+ *     adjustmentType: "TotalCapacity",
+ *     adjustmentValue: 2,
+ *     cooldown: 60,
+ * });
+ * const fooAlarm = new alicloud.ess.Alarm("fooAlarm", {
+ *     description: "Acc alarm test",
+ *     alarmActions: [fooScalingRule.ari],
+ *     scalingGroupId: fooScalingGroup.id,
+ *     metricType: "system",
+ *     metricName: "CpuUtilization",
+ *     period: 300,
+ *     statistics: "Average",
+ *     threshold: "200.3",
+ *     comparisonOperator: ">=",
+ *     evaluationCount: 2,
+ * });
+ * ```
+ * ## Module Support
+ *
+ * You can use to the existing autoscaling-rule module
+ * to create alarm task, different type rules and scheduled task one-click.
+ *
+ * ## Block metricNames_and_dimensions
+ *
+ * Supported metric names and dimensions :
+ *
+ * | MetricName         | Dimensions                   |
+ * | ------------------ | ---------------------------- |
+ * | CpuUtilization     | user_id,scaling_group        |
+ * | ClassicInternetRx  | user_id,scaling_group        |
+ * | ClassicInternetTx  | user_id,scaling_group        |
+ * | VpcInternetRx      | user_id,scaling_group        |
+ * | VpcInternetTx      | user_id,scaling_group        |
+ * | IntranetRx         | user_id,scaling_group        |
+ * | IntranetTx         | user_id,scaling_group        |
+ * | LoadAverage        | user_id,scaling_group        |
+ * | MemoryUtilization  | user_id,scaling_group        |
+ * | SystemDiskReadBps  | user_id,scaling_group        |
+ * | SystemDiskWriteBps | user_id,scaling_group        |
+ * | SystemDiskReadOps  | user_id,scaling_group        |
+ * | SystemDiskWriteOps | user_id,scaling_group        |
+ * | PackagesNetIn      | user_id,scaling_group,device |
+ * | PackagesNetOut     | user_id,scaling_group,device |
+ * | TcpConnection      | user_id,scaling_group,state  |
+ *
+ * > **NOTE:** Dimension `userId` and `scalingGroup` is automatically filled, which means you only need to care about dimension `device` and `state` when needed.
+ *
  * ## Import
  *
  * Ess alarm can be imported using the id, e.g.

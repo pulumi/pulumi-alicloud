@@ -166,6 +166,7 @@ def get_host_accounts(host_account_name: Optional[str] = None,
     :param Sequence[str] ids: A list of Host Account IDs.
     :param str instance_id: Specifies the database where you want to create your hosting account's host bastion host ID of.
     :param str name_regex: A regex string to filter results by Host Account name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str protocol_name: Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
     """
     __args__ = dict()
@@ -233,6 +234,7 @@ def get_host_accounts_output(host_account_name: Optional[pulumi.Input[Optional[s
     :param Sequence[str] ids: A list of Host Account IDs.
     :param str instance_id: Specifies the database where you want to create your hosting account's host bastion host ID of.
     :param str name_regex: A regex string to filter results by Host Account name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str protocol_name: Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
     """
     ...

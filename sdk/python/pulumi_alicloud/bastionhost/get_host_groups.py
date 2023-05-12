@@ -143,6 +143,7 @@ def get_host_groups(host_group_name: Optional[str] = None,
     :param Sequence[str] ids: A list of Host Group IDs.
     :param str instance_id: Specify the New Host Group Where the Bastion Host ID of.
     :param str name_regex: A regex string to filter results by Host Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['hostGroupName'] = host_group_name
@@ -200,5 +201,6 @@ def get_host_groups_output(host_group_name: Optional[pulumi.Input[Optional[str]]
     :param Sequence[str] ids: A list of Host Group IDs.
     :param str instance_id: Specify the New Host Group Where the Bastion Host ID of.
     :param str name_regex: A regex string to filter results by Host Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

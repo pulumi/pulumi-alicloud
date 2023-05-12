@@ -17,118 +17,173 @@ public final class GetEcsSnapshotsSnapshot {
      * @return The category of the snapshot.
      * 
      */
-    private String category;
-    private String creationTime;
+    private final String category;
+    private final String creationTime;
     /**
      * @return The description of the snapshot.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The source disk id.
      * 
      */
-    private String diskId;
+    private final String diskId;
     /**
      * @return Whether the snapshot is encrypted.
      * 
      */
-    private Boolean encrypted;
+    private final Boolean encrypted;
     /**
      * @return The ID of the Snapshot.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Whether snapshot speed availability is enabled.
      * 
      */
-    private Boolean instantAccess;
+    private final Boolean instantAccess;
     /**
      * @return Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
      * 
      */
-    private Integer instantAccessRetentionDays;
-    private String name;
+    private final Integer instantAccessRetentionDays;
+    private final String name;
     /**
      * @return The product number inherited from the mirror market.
      * 
      */
-    private String productCode;
+    private final String productCode;
     /**
      * @return Snapshot creation progress, in percentage.
      * 
      */
-    private String progress;
+    private final String progress;
     /**
      * @return Remaining completion time for the snapshot being created.
      * 
      */
-    private Integer remainTime;
+    private final Integer remainTime;
     /**
      * @return The resource group id.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return Automatic snapshot retention days.
      * 
      */
-    private Integer retentionDays;
+    private final Integer retentionDays;
     /**
      * @return The snapshot id.
      * 
      */
-    private String snapshotId;
+    private final String snapshotId;
     /**
      * @return Snapshot Display Name.
      * 
      */
-    private String snapshotName;
+    private final String snapshotName;
     /**
      * @return The serial number of the snapshot.
      * 
      */
-    private String snapshotSn;
+    private final String snapshotSn;
     /**
      * @return Snapshot creation type.
      * 
      */
-    private String snapshotType;
-    private String sourceDiskId;
+    private final String snapshotType;
+    private final String sourceDiskId;
     /**
      * @return Source disk capacity.
      * 
      */
-    private String sourceDiskSize;
+    private final String sourceDiskSize;
     /**
      * @return Source disk attributes.
      * 
      */
-    private String sourceDiskType;
+    private final String sourceDiskType;
     /**
      * @return Original disk type.
      * 
      */
-    private String sourceStorageType;
+    private final String sourceStorageType;
     /**
      * @return The status of the snapshot.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The tags.
      * 
      */
-    private Map<String,Object> tags;
-    private String type;
+    private final Map<String,Object> tags;
+    private final String type;
     /**
      * @return A resource type that has a reference relationship.
      * 
      */
-    private String usage;
+    private final String usage;
 
-    private GetEcsSnapshotsSnapshot() {}
+    @CustomType.Constructor
+    private GetEcsSnapshotsSnapshot(
+        @CustomType.Parameter("category") String category,
+        @CustomType.Parameter("creationTime") String creationTime,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("diskId") String diskId,
+        @CustomType.Parameter("encrypted") Boolean encrypted,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instantAccess") Boolean instantAccess,
+        @CustomType.Parameter("instantAccessRetentionDays") Integer instantAccessRetentionDays,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("productCode") String productCode,
+        @CustomType.Parameter("progress") String progress,
+        @CustomType.Parameter("remainTime") Integer remainTime,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("retentionDays") Integer retentionDays,
+        @CustomType.Parameter("snapshotId") String snapshotId,
+        @CustomType.Parameter("snapshotName") String snapshotName,
+        @CustomType.Parameter("snapshotSn") String snapshotSn,
+        @CustomType.Parameter("snapshotType") String snapshotType,
+        @CustomType.Parameter("sourceDiskId") String sourceDiskId,
+        @CustomType.Parameter("sourceDiskSize") String sourceDiskSize,
+        @CustomType.Parameter("sourceDiskType") String sourceDiskType,
+        @CustomType.Parameter("sourceStorageType") String sourceStorageType,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("tags") Map<String,Object> tags,
+        @CustomType.Parameter("type") String type,
+        @CustomType.Parameter("usage") String usage) {
+        this.category = category;
+        this.creationTime = creationTime;
+        this.description = description;
+        this.diskId = diskId;
+        this.encrypted = encrypted;
+        this.id = id;
+        this.instantAccess = instantAccess;
+        this.instantAccessRetentionDays = instantAccessRetentionDays;
+        this.name = name;
+        this.productCode = productCode;
+        this.progress = progress;
+        this.remainTime = remainTime;
+        this.resourceGroupId = resourceGroupId;
+        this.retentionDays = retentionDays;
+        this.snapshotId = snapshotId;
+        this.snapshotName = snapshotName;
+        this.snapshotSn = snapshotSn;
+        this.snapshotType = snapshotType;
+        this.sourceDiskId = sourceDiskId;
+        this.sourceDiskSize = sourceDiskSize;
+        this.sourceDiskType = sourceDiskType;
+        this.sourceStorageType = sourceStorageType;
+        this.status = status;
+        this.tags = tags;
+        this.type = type;
+        this.usage = usage;
+    }
+
     /**
      * @return The category of the snapshot.
      * 
@@ -303,7 +358,7 @@ public final class GetEcsSnapshotsSnapshot {
     public static Builder builder(GetEcsSnapshotsSnapshot defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String category;
         private String creationTime;
@@ -331,7 +386,11 @@ public final class GetEcsSnapshotsSnapshot {
         private Map<String,Object> tags;
         private String type;
         private String usage;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEcsSnapshotsSnapshot defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -362,165 +421,111 @@ public final class GetEcsSnapshotsSnapshot {
     	      this.usage = defaults.usage;
         }
 
-        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
-        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder diskId(String diskId) {
             this.diskId = Objects.requireNonNull(diskId);
             return this;
         }
-        @CustomType.Setter
         public Builder encrypted(Boolean encrypted) {
             this.encrypted = Objects.requireNonNull(encrypted);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instantAccess(Boolean instantAccess) {
             this.instantAccess = Objects.requireNonNull(instantAccess);
             return this;
         }
-        @CustomType.Setter
         public Builder instantAccessRetentionDays(Integer instantAccessRetentionDays) {
             this.instantAccessRetentionDays = Objects.requireNonNull(instantAccessRetentionDays);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder productCode(String productCode) {
             this.productCode = Objects.requireNonNull(productCode);
             return this;
         }
-        @CustomType.Setter
         public Builder progress(String progress) {
             this.progress = Objects.requireNonNull(progress);
             return this;
         }
-        @CustomType.Setter
         public Builder remainTime(Integer remainTime) {
             this.remainTime = Objects.requireNonNull(remainTime);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder retentionDays(Integer retentionDays) {
             this.retentionDays = Objects.requireNonNull(retentionDays);
             return this;
         }
-        @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
             this.snapshotId = Objects.requireNonNull(snapshotId);
             return this;
         }
-        @CustomType.Setter
         public Builder snapshotName(String snapshotName) {
             this.snapshotName = Objects.requireNonNull(snapshotName);
             return this;
         }
-        @CustomType.Setter
         public Builder snapshotSn(String snapshotSn) {
             this.snapshotSn = Objects.requireNonNull(snapshotSn);
             return this;
         }
-        @CustomType.Setter
         public Builder snapshotType(String snapshotType) {
             this.snapshotType = Objects.requireNonNull(snapshotType);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceDiskId(String sourceDiskId) {
             this.sourceDiskId = Objects.requireNonNull(sourceDiskId);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceDiskSize(String sourceDiskSize) {
             this.sourceDiskSize = Objects.requireNonNull(sourceDiskSize);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceDiskType(String sourceDiskType) {
             this.sourceDiskType = Objects.requireNonNull(sourceDiskType);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceStorageType(String sourceStorageType) {
             this.sourceStorageType = Objects.requireNonNull(sourceStorageType);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
-        @CustomType.Setter
         public Builder usage(String usage) {
             this.usage = Objects.requireNonNull(usage);
             return this;
-        }
-        public GetEcsSnapshotsSnapshot build() {
-            final var o = new GetEcsSnapshotsSnapshot();
-            o.category = category;
-            o.creationTime = creationTime;
-            o.description = description;
-            o.diskId = diskId;
-            o.encrypted = encrypted;
-            o.id = id;
-            o.instantAccess = instantAccess;
-            o.instantAccessRetentionDays = instantAccessRetentionDays;
-            o.name = name;
-            o.productCode = productCode;
-            o.progress = progress;
-            o.remainTime = remainTime;
-            o.resourceGroupId = resourceGroupId;
-            o.retentionDays = retentionDays;
-            o.snapshotId = snapshotId;
-            o.snapshotName = snapshotName;
-            o.snapshotSn = snapshotSn;
-            o.snapshotType = snapshotType;
-            o.sourceDiskId = sourceDiskId;
-            o.sourceDiskSize = sourceDiskSize;
-            o.sourceDiskType = sourceDiskType;
-            o.sourceStorageType = sourceStorageType;
-            o.status = status;
-            o.tags = tags;
-            o.type = type;
-            o.usage = usage;
-            return o;
+        }        public GetEcsSnapshotsSnapshot build() {
+            return new GetEcsSnapshotsSnapshot(category, creationTime, description, diskId, encrypted, id, instantAccess, instantAccessRetentionDays, name, productCode, progress, remainTime, resourceGroupId, retentionDays, snapshotId, snapshotName, snapshotSn, snapshotType, sourceDiskId, sourceDiskSize, sourceDiskType, sourceStorageType, status, tags, type, usage);
         }
     }
 }

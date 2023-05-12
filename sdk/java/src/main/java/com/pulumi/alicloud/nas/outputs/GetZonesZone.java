@@ -15,14 +15,21 @@ public final class GetZonesZone {
      * @return A list of instance type information collection
      * 
      */
-    private List<GetZonesZoneInstanceType> instanceTypes;
+    private final List<GetZonesZoneInstanceType> instanceTypes;
     /**
      * @return String to filter results by zone id.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetZonesZone() {}
+    @CustomType.Constructor
+    private GetZonesZone(
+        @CustomType.Parameter("instanceTypes") List<GetZonesZoneInstanceType> instanceTypes,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.instanceTypes = instanceTypes;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return A list of instance type information collection
      * 
@@ -45,18 +52,21 @@ public final class GetZonesZone {
     public static Builder builder(GetZonesZone defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetZonesZoneInstanceType> instanceTypes;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetZonesZone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instanceTypes = defaults.instanceTypes;
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder instanceTypes(List<GetZonesZoneInstanceType> instanceTypes) {
             this.instanceTypes = Objects.requireNonNull(instanceTypes);
             return this;
@@ -64,16 +74,11 @@ public final class GetZonesZone {
         public Builder instanceTypes(GetZonesZoneInstanceType... instanceTypes) {
             return instanceTypes(List.of(instanceTypes));
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetZonesZone build() {
-            final var o = new GetZonesZone();
-            o.instanceTypes = instanceTypes;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetZonesZone build() {
+            return new GetZonesZone(instanceTypes, zoneId);
         }
     }
 }

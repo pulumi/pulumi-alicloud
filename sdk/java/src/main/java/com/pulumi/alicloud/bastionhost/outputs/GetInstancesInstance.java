@@ -18,38 +18,38 @@ public final class GetInstancesInstance {
      * @return The instance&#39;s remark.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The instance&#39;s id.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The instance&#39;s status.
      * 
      */
-    private String instanceStatus;
-    private String licenseCode;
+    private final String instanceStatus;
+    private final String licenseCode;
     /**
      * @return The instance&#39;s private domain name.
      * 
      */
-    private String privateDomain;
+    private final String privateDomain;
     /**
      * @return The instance&#39;s public domain name.
      * 
      */
-    private String publicDomain;
+    private final String publicDomain;
     /**
      * @return The instance&#39;s public network access configuration.
      * 
      */
-    private Boolean publicNetworkAccess;
+    private final Boolean publicNetworkAccess;
     /**
      * @return The instance&#39;s security group configuration.
      * 
      */
-    private List<String> securityGroupIds;
+    private final List<String> securityGroupIds;
     /**
      * @return A map of tags assigned to the bastionhost instance. It must be in the format:
      * ```java
@@ -82,14 +82,37 @@ public final class GetInstancesInstance {
      * ```
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private final @Nullable Map<String,Object> tags;
     /**
      * @return The instance&#39;s vSwitch ID.
      * 
      */
-    private String userVswitchId;
+    private final String userVswitchId;
 
-    private GetInstancesInstance() {}
+    @CustomType.Constructor
+    private GetInstancesInstance(
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceStatus") String instanceStatus,
+        @CustomType.Parameter("licenseCode") String licenseCode,
+        @CustomType.Parameter("privateDomain") String privateDomain,
+        @CustomType.Parameter("publicDomain") String publicDomain,
+        @CustomType.Parameter("publicNetworkAccess") Boolean publicNetworkAccess,
+        @CustomType.Parameter("securityGroupIds") List<String> securityGroupIds,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
+        @CustomType.Parameter("userVswitchId") String userVswitchId) {
+        this.description = description;
+        this.id = id;
+        this.instanceStatus = instanceStatus;
+        this.licenseCode = licenseCode;
+        this.privateDomain = privateDomain;
+        this.publicDomain = publicDomain;
+        this.publicNetworkAccess = publicNetworkAccess;
+        this.securityGroupIds = securityGroupIds;
+        this.tags = tags;
+        this.userVswitchId = userVswitchId;
+    }
+
     /**
      * @return The instance&#39;s remark.
      * 
@@ -192,7 +215,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String description;
         private String id;
@@ -204,7 +227,11 @@ public final class GetInstancesInstance {
         private List<String> securityGroupIds;
         private @Nullable Map<String,Object> tags;
         private String userVswitchId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -219,42 +246,34 @@ public final class GetInstancesInstance {
     	      this.userVswitchId = defaults.userVswitchId;
         }
 
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceStatus(String instanceStatus) {
             this.instanceStatus = Objects.requireNonNull(instanceStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder licenseCode(String licenseCode) {
             this.licenseCode = Objects.requireNonNull(licenseCode);
             return this;
         }
-        @CustomType.Setter
         public Builder privateDomain(String privateDomain) {
             this.privateDomain = Objects.requireNonNull(privateDomain);
             return this;
         }
-        @CustomType.Setter
         public Builder publicDomain(String publicDomain) {
             this.publicDomain = Objects.requireNonNull(publicDomain);
             return this;
         }
-        @CustomType.Setter
         public Builder publicNetworkAccess(Boolean publicNetworkAccess) {
             this.publicNetworkAccess = Objects.requireNonNull(publicNetworkAccess);
             return this;
         }
-        @CustomType.Setter
         public Builder securityGroupIds(List<String> securityGroupIds) {
             this.securityGroupIds = Objects.requireNonNull(securityGroupIds);
             return this;
@@ -262,29 +281,15 @@ public final class GetInstancesInstance {
         public Builder securityGroupIds(String... securityGroupIds) {
             return securityGroupIds(List.of(securityGroupIds));
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
-        @CustomType.Setter
         public Builder userVswitchId(String userVswitchId) {
             this.userVswitchId = Objects.requireNonNull(userVswitchId);
             return this;
-        }
-        public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.description = description;
-            o.id = id;
-            o.instanceStatus = instanceStatus;
-            o.licenseCode = licenseCode;
-            o.privateDomain = privateDomain;
-            o.publicDomain = publicDomain;
-            o.publicNetworkAccess = publicNetworkAccess;
-            o.securityGroupIds = securityGroupIds;
-            o.tags = tags;
-            o.userVswitchId = userVswitchId;
-            return o;
+        }        public GetInstancesInstance build() {
+            return new GetInstancesInstance(description, id, instanceStatus, licenseCode, privateDomain, publicDomain, publicNetworkAccess, securityGroupIds, tags, userVswitchId);
         }
     }
 }

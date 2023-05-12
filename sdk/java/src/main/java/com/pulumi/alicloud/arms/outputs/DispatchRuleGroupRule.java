@@ -13,29 +13,42 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DispatchRuleGroupRule {
-    private @Nullable Integer groupId;
+    private final @Nullable Integer groupId;
     /**
      * @return The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
      * 
      */
-    private Integer groupInterval;
+    private final Integer groupInterval;
     /**
      * @return The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
      * 
      */
-    private Integer groupWaitTime;
+    private final Integer groupWaitTime;
     /**
      * @return The fields that are used to group events. Events with the same field content are assigned to a group. Alerts with the same specified grouping field are sent to the handler in separate notifications.
      * 
      */
-    private List<String> groupingFields;
+    private final List<String> groupingFields;
     /**
      * @return The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
      * 
      */
-    private @Nullable Integer repeatInterval;
+    private final @Nullable Integer repeatInterval;
 
-    private DispatchRuleGroupRule() {}
+    @CustomType.Constructor
+    private DispatchRuleGroupRule(
+        @CustomType.Parameter("groupId") @Nullable Integer groupId,
+        @CustomType.Parameter("groupInterval") Integer groupInterval,
+        @CustomType.Parameter("groupWaitTime") Integer groupWaitTime,
+        @CustomType.Parameter("groupingFields") List<String> groupingFields,
+        @CustomType.Parameter("repeatInterval") @Nullable Integer repeatInterval) {
+        this.groupId = groupId;
+        this.groupInterval = groupInterval;
+        this.groupWaitTime = groupWaitTime;
+        this.groupingFields = groupingFields;
+        this.repeatInterval = repeatInterval;
+    }
+
     public Optional<Integer> groupId() {
         return Optional.ofNullable(this.groupId);
     }
@@ -75,14 +88,18 @@ public final class DispatchRuleGroupRule {
     public static Builder builder(DispatchRuleGroupRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Integer groupId;
         private Integer groupInterval;
         private Integer groupWaitTime;
         private List<String> groupingFields;
         private @Nullable Integer repeatInterval;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(DispatchRuleGroupRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groupId = defaults.groupId;
@@ -92,22 +109,18 @@ public final class DispatchRuleGroupRule {
     	      this.repeatInterval = defaults.repeatInterval;
         }
 
-        @CustomType.Setter
         public Builder groupId(@Nullable Integer groupId) {
             this.groupId = groupId;
             return this;
         }
-        @CustomType.Setter
         public Builder groupInterval(Integer groupInterval) {
             this.groupInterval = Objects.requireNonNull(groupInterval);
             return this;
         }
-        @CustomType.Setter
         public Builder groupWaitTime(Integer groupWaitTime) {
             this.groupWaitTime = Objects.requireNonNull(groupWaitTime);
             return this;
         }
-        @CustomType.Setter
         public Builder groupingFields(List<String> groupingFields) {
             this.groupingFields = Objects.requireNonNull(groupingFields);
             return this;
@@ -115,19 +128,11 @@ public final class DispatchRuleGroupRule {
         public Builder groupingFields(String... groupingFields) {
             return groupingFields(List.of(groupingFields));
         }
-        @CustomType.Setter
         public Builder repeatInterval(@Nullable Integer repeatInterval) {
             this.repeatInterval = repeatInterval;
             return this;
-        }
-        public DispatchRuleGroupRule build() {
-            final var o = new DispatchRuleGroupRule();
-            o.groupId = groupId;
-            o.groupInterval = groupInterval;
-            o.groupWaitTime = groupWaitTime;
-            o.groupingFields = groupingFields;
-            o.repeatInterval = repeatInterval;
-            return o;
+        }        public DispatchRuleGroupRule build() {
+            return new DispatchRuleGroupRule(groupId, groupInterval, groupWaitTime, groupingFields, repeatInterval);
         }
     }
 }

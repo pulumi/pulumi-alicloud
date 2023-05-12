@@ -31,6 +31,9 @@ export interface GetVbrHealthChecksArgs {
      * The ID of the Cloud Enterprise Network (CEN) instance.
      */
     cenId?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the VBR instance.
@@ -94,6 +97,9 @@ export interface GetVbrHealthChecksOutputArgs {
      * The ID of the Cloud Enterprise Network (CEN) instance.
      */
     cenId?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the VBR instance.

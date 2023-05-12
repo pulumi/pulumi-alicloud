@@ -156,6 +156,7 @@ def get_templates(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Template IDs.
     :param str name_regex: A regex string to filter results by Template name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str share_type: Share Type.
     :param Mapping[str, Any] tags: Tags.
     :param str template_name: The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
@@ -215,6 +216,7 @@ def get_templates_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Template IDs.
     :param str name_regex: A regex string to filter results by Template name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str share_type: Share Type.
     :param Mapping[str, Any] tags: Tags.
     :param str template_name: The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.

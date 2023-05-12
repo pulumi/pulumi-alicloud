@@ -16,19 +16,28 @@ public final class HoneypotPresetMeta {
      * @return Burp counter.
      * 
      */
-    private String burp;
+    private final String burp;
     /**
      * @return Social traceability.
      * 
      */
-    private @Nullable Boolean portraitOption;
+    private final @Nullable Boolean portraitOption;
     /**
      * @return Git countered.
      * 
      */
-    private @Nullable String trojanGit;
+    private final @Nullable String trojanGit;
 
-    private HoneypotPresetMeta() {}
+    @CustomType.Constructor
+    private HoneypotPresetMeta(
+        @CustomType.Parameter("burp") String burp,
+        @CustomType.Parameter("portraitOption") @Nullable Boolean portraitOption,
+        @CustomType.Parameter("trojanGit") @Nullable String trojanGit) {
+        this.burp = burp;
+        this.portraitOption = portraitOption;
+        this.trojanGit = trojanGit;
+    }
+
     /**
      * @return Burp counter.
      * 
@@ -58,12 +67,16 @@ public final class HoneypotPresetMeta {
     public static Builder builder(HoneypotPresetMeta defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String burp;
         private @Nullable Boolean portraitOption;
         private @Nullable String trojanGit;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(HoneypotPresetMeta defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.burp = defaults.burp;
@@ -71,27 +84,19 @@ public final class HoneypotPresetMeta {
     	      this.trojanGit = defaults.trojanGit;
         }
 
-        @CustomType.Setter
         public Builder burp(String burp) {
             this.burp = Objects.requireNonNull(burp);
             return this;
         }
-        @CustomType.Setter
         public Builder portraitOption(@Nullable Boolean portraitOption) {
             this.portraitOption = portraitOption;
             return this;
         }
-        @CustomType.Setter
         public Builder trojanGit(@Nullable String trojanGit) {
             this.trojanGit = trojanGit;
             return this;
-        }
-        public HoneypotPresetMeta build() {
-            final var o = new HoneypotPresetMeta();
-            o.burp = burp;
-            o.portraitOption = portraitOption;
-            o.trojanGit = trojanGit;
-            return o;
+        }        public HoneypotPresetMeta build() {
+            return new HoneypotPresetMeta(burp, portraitOption, trojanGit);
         }
     }
 }

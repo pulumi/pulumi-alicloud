@@ -82,6 +82,9 @@ export interface GetIpv6EgressRulesArgs {
      * A regex string to filter results by Ipv6 Egress Rule name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
@@ -173,6 +176,9 @@ export interface GetIpv6EgressRulesOutputArgs {
      * A regex string to filter results by Ipv6 Egress Rule name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.

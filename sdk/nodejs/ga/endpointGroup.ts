@@ -124,10 +124,14 @@ export class EndpointGroup extends pulumi.CustomResource {
     public readonly endpointGroupRegion!: pulumi.Output<string>;
     /**
      * The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+     *
+     * > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
      */
     public readonly endpointGroupType!: pulumi.Output<string>;
     /**
      * The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
+     *
+     * > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
      */
     public readonly endpointRequestProtocol!: pulumi.Output<string | undefined>;
     /**
@@ -156,6 +160,8 @@ export class EndpointGroup extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
+     *
+     * > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      */
     public readonly portOverrides!: pulumi.Output<outputs.ga.EndpointGroupPortOverrides | undefined>;
     /**
@@ -258,10 +264,14 @@ export interface EndpointGroupState {
     endpointGroupRegion?: pulumi.Input<string>;
     /**
      * The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+     *
+     * > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
      */
     endpointGroupType?: pulumi.Input<string>;
     /**
      * The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
+     *
+     * > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
      */
     endpointRequestProtocol?: pulumi.Input<string>;
     /**
@@ -290,6 +300,8 @@ export interface EndpointGroupState {
     name?: pulumi.Input<string>;
     /**
      * Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
+     *
+     * > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      */
     portOverrides?: pulumi.Input<inputs.ga.EndpointGroupPortOverrides>;
     /**
@@ -328,10 +340,14 @@ export interface EndpointGroupArgs {
     endpointGroupRegion: pulumi.Input<string>;
     /**
      * The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+     *
+     * > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
      */
     endpointGroupType?: pulumi.Input<string>;
     /**
      * The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
+     *
+     * > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
      */
     endpointRequestProtocol?: pulumi.Input<string>;
     /**
@@ -360,6 +376,8 @@ export interface EndpointGroupArgs {
     name?: pulumi.Input<string>;
     /**
      * Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
+     *
+     * > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      */
     portOverrides?: pulumi.Input<inputs.ga.EndpointGroupPortOverrides>;
     /**

@@ -374,6 +374,10 @@ class ClusterNodeAttribute(dict):
             suggest = "vpc_id"
         elif key == "zoneId":
             suggest = "zone_id"
+        elif key == "dataDiskEncrypted":
+            suggest = "data_disk_encrypted"
+        elif key == "dataDiskKmsKeyId":
+            suggest = "data_disk_kms_key_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodeAttribute. Access the value via the '{suggest}' property getter instead.")
@@ -391,19 +395,27 @@ class ClusterNodeAttribute(dict):
                  ram_role: str,
                  security_group_id: str,
                  vpc_id: str,
-                 zone_id: str):
+                 zone_id: str,
+                 data_disk_encrypted: Optional[bool] = None,
+                 data_disk_kms_key_id: Optional[str] = None):
         """
         :param str key_pair_name: The name of the key pair.
         :param str ram_role: Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
         :param str security_group_id: Security Group ID for Cluster.
         :param str vpc_id: Used to retrieve instances belong to specified VPC.
         :param str zone_id: Zone ID, e.g. cn-hangzhou-i
+        :param bool data_disk_encrypted: Whether to enable data disk encryption.
+        :param str data_disk_kms_key_id: The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
         """
         pulumi.set(__self__, "key_pair_name", key_pair_name)
         pulumi.set(__self__, "ram_role", ram_role)
         pulumi.set(__self__, "security_group_id", security_group_id)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "zone_id", zone_id)
+        if data_disk_encrypted is not None:
+            pulumi.set(__self__, "data_disk_encrypted", data_disk_encrypted)
+        if data_disk_kms_key_id is not None:
+            pulumi.set(__self__, "data_disk_kms_key_id", data_disk_kms_key_id)
 
     @property
     @pulumi.getter(name="keyPairName")
@@ -444,6 +456,22 @@ class ClusterNodeAttribute(dict):
         Zone ID, e.g. cn-hangzhou-i
         """
         return pulumi.get(self, "zone_id")
+
+    @property
+    @pulumi.getter(name="dataDiskEncrypted")
+    def data_disk_encrypted(self) -> Optional[bool]:
+        """
+        Whether to enable data disk encryption.
+        """
+        return pulumi.get(self, "data_disk_encrypted")
+
+    @property
+    @pulumi.getter(name="dataDiskKmsKeyId")
+    def data_disk_kms_key_id(self) -> Optional[str]:
+        """
+        The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
+        """
+        return pulumi.get(self, "data_disk_kms_key_id")
 
 
 @pulumi.output_type

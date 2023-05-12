@@ -33,12 +33,16 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The user password. The password must be 8 to 32 characters in length, and must contain at least two of the following character types: letters, special characters, and digits.
      * 
+     * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the Container Registry (CR) service that means you have read and agreed the [Container Registry (CR) Terms of Service](https://help.aliyun.com/document_detail/190602.html). The service can not closed once it is opened.
+     * 
      */
     @Import(name="password", required=true)
     private Output<String> password;
 
     /**
      * @return The user password. The password must be 8 to 32 characters in length, and must contain at least two of the following character types: letters, special characters, and digits.
+     * 
+     * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the Container Registry (CR) service that means you have read and agreed the [Container Registry (CR) Terms of Service](https://help.aliyun.com/document_detail/190602.html). The service can not closed once it is opened.
      * 
      */
     public Output<String> password() {
@@ -94,6 +98,8 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param password The user password. The password must be 8 to 32 characters in length, and must contain at least two of the following character types: letters, special characters, and digits.
          * 
+         * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the Container Registry (CR) service that means you have read and agreed the [Container Registry (CR) Terms of Service](https://help.aliyun.com/document_detail/190602.html). The service can not closed once it is opened.
+         * 
          * @return builder
          * 
          */
@@ -104,6 +110,8 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param password The user password. The password must be 8 to 32 characters in length, and must contain at least two of the following character types: letters, special characters, and digits.
+         * 
+         * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the Container Registry (CR) service that means you have read and agreed the [Container Registry (CR) Terms of Service](https://help.aliyun.com/document_detail/190602.html). The service can not closed once it is opened.
          * 
          * @return builder
          * 

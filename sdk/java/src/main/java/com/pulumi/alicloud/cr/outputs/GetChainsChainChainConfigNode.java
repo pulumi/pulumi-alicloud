@@ -16,19 +16,28 @@ public final class GetChainsChainChainConfigNode {
      * @return Whether to enable the delivery chain node. Valid values: `true`, `false`.
      * 
      */
-    private Boolean enable;
+    private final Boolean enable;
     /**
      * @return The configuration of delivery chain node.
      * 
      */
-    private List<GetChainsChainChainConfigNodeNodeConfig> nodeConfigs;
+    private final List<GetChainsChainChainConfigNodeNodeConfig> nodeConfigs;
     /**
      * @return The name of delivery chain node.
      * 
      */
-    private String nodeName;
+    private final String nodeName;
 
-    private GetChainsChainChainConfigNode() {}
+    @CustomType.Constructor
+    private GetChainsChainChainConfigNode(
+        @CustomType.Parameter("enable") Boolean enable,
+        @CustomType.Parameter("nodeConfigs") List<GetChainsChainChainConfigNodeNodeConfig> nodeConfigs,
+        @CustomType.Parameter("nodeName") String nodeName) {
+        this.enable = enable;
+        this.nodeConfigs = nodeConfigs;
+        this.nodeName = nodeName;
+    }
+
     /**
      * @return Whether to enable the delivery chain node. Valid values: `true`, `false`.
      * 
@@ -58,12 +67,16 @@ public final class GetChainsChainChainConfigNode {
     public static Builder builder(GetChainsChainChainConfigNode defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean enable;
         private List<GetChainsChainChainConfigNodeNodeConfig> nodeConfigs;
         private String nodeName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetChainsChainChainConfigNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
@@ -71,12 +84,10 @@ public final class GetChainsChainChainConfigNode {
     	      this.nodeName = defaults.nodeName;
         }
 
-        @CustomType.Setter
         public Builder enable(Boolean enable) {
             this.enable = Objects.requireNonNull(enable);
             return this;
         }
-        @CustomType.Setter
         public Builder nodeConfigs(List<GetChainsChainChainConfigNodeNodeConfig> nodeConfigs) {
             this.nodeConfigs = Objects.requireNonNull(nodeConfigs);
             return this;
@@ -84,17 +95,11 @@ public final class GetChainsChainChainConfigNode {
         public Builder nodeConfigs(GetChainsChainChainConfigNodeNodeConfig... nodeConfigs) {
             return nodeConfigs(List.of(nodeConfigs));
         }
-        @CustomType.Setter
         public Builder nodeName(String nodeName) {
             this.nodeName = Objects.requireNonNull(nodeName);
             return this;
-        }
-        public GetChainsChainChainConfigNode build() {
-            final var o = new GetChainsChainChainConfigNode();
-            o.enable = enable;
-            o.nodeConfigs = nodeConfigs;
-            o.nodeName = nodeName;
-            return o;
+        }        public GetChainsChainChainConfigNode build() {
+            return new GetChainsChainChainConfigNode(enable, nodeConfigs, nodeName);
         }
     }
 }

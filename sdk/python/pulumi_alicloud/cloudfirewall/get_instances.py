@@ -81,6 +81,9 @@ def get_instances(output_file: Optional[str] = None,
     ids = alicloud.cloudfirewall.get_instances()
     pulumi.export("cloudFirewallInstanceId1", ids.instances[0].id)
     ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
@@ -112,5 +115,8 @@ def get_instances_output(output_file: Optional[pulumi.Input[Optional[str]]] = No
     ids = alicloud.cloudfirewall.get_instances()
     pulumi.export("cloudFirewallInstanceId1", ids.instances[0].id)
     ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

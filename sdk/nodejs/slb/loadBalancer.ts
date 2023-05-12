@@ -5,6 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > **DEPRECATED:** This resource has been renamed to alicloud.slb.ApplicationLoadBalancer from version 1.123.1.
+ *
+ * Provides an Application Load Balancer resource.
+ *
+ * > **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create "paybybandwidth" instance.
+ *
+ * > **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
+ * For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -126,9 +135,19 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     public readonly paymentType!: pulumi.Output<string>;
+    /**
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+     * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * The Id of resource group which the SLB belongs.
+     *
+     * > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+     *
+     * > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+     *
+     * > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
@@ -269,9 +288,19 @@ export interface LoadBalancerState {
      */
     name?: pulumi.Input<string>;
     paymentType?: pulumi.Input<string>;
+    /**
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+     * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     period?: pulumi.Input<number>;
     /**
      * The Id of resource group which the SLB belongs.
+     *
+     * > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+     *
+     * > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+     *
+     * > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -347,9 +376,19 @@ export interface LoadBalancerArgs {
      */
     name?: pulumi.Input<string>;
     paymentType?: pulumi.Input<string>;
+    /**
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
+     * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     period?: pulumi.Input<number>;
     /**
      * The Id of resource group which the SLB belongs.
+     *
+     * > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+     *
+     * > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+     *
+     * > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**

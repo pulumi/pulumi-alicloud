@@ -17,11 +17,20 @@ public final class GetInstanceTypesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<GetInstanceTypesInstanceType> instanceTypes;
-    private @Nullable String outputFile;
+    private final String id;
+    private final List<GetInstanceTypesInstanceType> instanceTypes;
+    private final @Nullable String outputFile;
 
-    private GetInstanceTypesResult() {}
+    @CustomType.Constructor
+    private GetInstanceTypesResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceTypes") List<GetInstanceTypesInstanceType> instanceTypes,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.id = id;
+        this.instanceTypes = instanceTypes;
+        this.outputFile = outputFile;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -43,12 +52,16 @@ public final class GetInstanceTypesResult {
     public static Builder builder(GetInstanceTypesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<GetInstanceTypesInstanceType> instanceTypes;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstanceTypesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -56,12 +69,10 @@ public final class GetInstanceTypesResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceTypes(List<GetInstanceTypesInstanceType> instanceTypes) {
             this.instanceTypes = Objects.requireNonNull(instanceTypes);
             return this;
@@ -69,17 +80,11 @@ public final class GetInstanceTypesResult {
         public Builder instanceTypes(GetInstanceTypesInstanceType... instanceTypes) {
             return instanceTypes(List.of(instanceTypes));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetInstanceTypesResult build() {
-            final var o = new GetInstanceTypesResult();
-            o.id = id;
-            o.instanceTypes = instanceTypes;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetInstanceTypesResult build() {
+            return new GetInstanceTypesResult(id, instanceTypes, outputFile);
         }
     }
 }

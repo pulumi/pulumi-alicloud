@@ -291,6 +291,7 @@ def get_eip_addresses(address_name: Optional[str] = None,
     :param str isp: The Internet service provider (ISP).
     :param str lock_reason: The lock reason.
     :param str name_regex: A regex string to filter results by Address name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str payment_type: The billing method of the EIP.
     :param str resource_group_id: The ID of the resource group.
     :param str segment_instance_id: The IDs of the contiguous EIPs.
@@ -394,6 +395,7 @@ def get_eip_addresses_output(address_name: Optional[pulumi.Input[Optional[str]]]
     :param str isp: The Internet service provider (ISP).
     :param str lock_reason: The lock reason.
     :param str name_regex: A regex string to filter results by Address name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str payment_type: The billing method of the EIP.
     :param str resource_group_id: The ID of the resource group.
     :param str segment_instance_id: The IDs of the contiguous EIPs.

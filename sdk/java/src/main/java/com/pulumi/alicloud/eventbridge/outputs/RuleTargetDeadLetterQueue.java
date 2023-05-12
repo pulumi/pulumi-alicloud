@@ -15,9 +15,13 @@ public final class RuleTargetDeadLetterQueue {
      * @return The srn of the dead letter queue.
      * 
      */
-    private @Nullable String arn;
+    private final @Nullable String arn;
 
-    private RuleTargetDeadLetterQueue() {}
+    @CustomType.Constructor
+    private RuleTargetDeadLetterQueue(@CustomType.Parameter("arn") @Nullable String arn) {
+        this.arn = arn;
+    }
+
     /**
      * @return The srn of the dead letter queue.
      * 
@@ -33,24 +37,24 @@ public final class RuleTargetDeadLetterQueue {
     public static Builder builder(RuleTargetDeadLetterQueue defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String arn;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(RuleTargetDeadLetterQueue defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arn = defaults.arn;
         }
 
-        @CustomType.Setter
         public Builder arn(@Nullable String arn) {
             this.arn = arn;
             return this;
-        }
-        public RuleTargetDeadLetterQueue build() {
-            final var o = new RuleTargetDeadLetterQueue();
-            o.arn = arn;
-            return o;
+        }        public RuleTargetDeadLetterQueue build() {
+            return new RuleTargetDeadLetterQueue(arn);
         }
     }
 }

@@ -9,10 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetVpcFirewallCensCenLocalVpcEniList {
-    private String eniId;
-    private String eniPrivateIpAddress;
+    private final String eniId;
+    private final String eniPrivateIpAddress;
 
-    private GetVpcFirewallCensCenLocalVpcEniList() {}
+    @CustomType.Constructor
+    private GetVpcFirewallCensCenLocalVpcEniList(
+        @CustomType.Parameter("eniId") String eniId,
+        @CustomType.Parameter("eniPrivateIpAddress") String eniPrivateIpAddress) {
+        this.eniId = eniId;
+        this.eniPrivateIpAddress = eniPrivateIpAddress;
+    }
+
     public String eniId() {
         return this.eniId;
     }
@@ -27,32 +34,30 @@ public final class GetVpcFirewallCensCenLocalVpcEniList {
     public static Builder builder(GetVpcFirewallCensCenLocalVpcEniList defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String eniId;
         private String eniPrivateIpAddress;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVpcFirewallCensCenLocalVpcEniList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.eniId = defaults.eniId;
     	      this.eniPrivateIpAddress = defaults.eniPrivateIpAddress;
         }
 
-        @CustomType.Setter
         public Builder eniId(String eniId) {
             this.eniId = Objects.requireNonNull(eniId);
             return this;
         }
-        @CustomType.Setter
         public Builder eniPrivateIpAddress(String eniPrivateIpAddress) {
             this.eniPrivateIpAddress = Objects.requireNonNull(eniPrivateIpAddress);
             return this;
-        }
-        public GetVpcFirewallCensCenLocalVpcEniList build() {
-            final var o = new GetVpcFirewallCensCenLocalVpcEniList();
-            o.eniId = eniId;
-            o.eniPrivateIpAddress = eniPrivateIpAddress;
-            return o;
+        }        public GetVpcFirewallCensCenLocalVpcEniList build() {
+            return new GetVpcFirewallCensCenLocalVpcEniList(eniId, eniPrivateIpAddress);
         }
     }
 }

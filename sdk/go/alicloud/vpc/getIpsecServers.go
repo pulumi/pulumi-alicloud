@@ -67,7 +67,8 @@ type GetIpsecServersArgs struct {
 	// The name of the IPsec server.
 	IpsecServerName *string `pulumi:"ipsecServerName"`
 	// A regex string to filter results by Ipsec Server name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the VPN gateway.
 	VpnGatewayId *string `pulumi:"vpnGatewayId"`
@@ -106,7 +107,8 @@ type GetIpsecServersOutputArgs struct {
 	// The name of the IPsec server.
 	IpsecServerName pulumi.StringPtrInput `pulumi:"ipsecServerName"`
 	// A regex string to filter results by Ipsec Server name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the VPN gateway.
 	VpnGatewayId pulumi.StringPtrInput `pulumi:"vpnGatewayId"`

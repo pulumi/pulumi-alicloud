@@ -18,6 +18,7 @@ __all__ = [
     'GetLaunchOptionsLaunchOptionConstraintSummaryResult',
     'GetLaunchOptionsOptionResult',
     'GetLaunchOptionsOptionConstraintSummaryResult',
+    'GetPortfoliosPortfolioResult',
     'GetProductAsEndUsersUserResult',
     'GetProductVersionsProductVersionResult',
     'GetProductVersionsVersionResult',
@@ -405,6 +406,90 @@ class GetLaunchOptionsOptionConstraintSummaryResult(dict):
         Constraint description.
         """
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class GetPortfoliosPortfolioResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 description: str,
+                 id: str,
+                 portfolio_arn: str,
+                 portfolio_id: str,
+                 portfolio_name: str,
+                 provider_name: str):
+        """
+        :param str create_time: The creation time of the portfolio
+        :param str description: The description of the portfolio
+        :param str id: The ID of the portfolio
+        :param str portfolio_arn: The ARN of the portfolio
+        :param str portfolio_id: The ID of the portfolio
+        :param str portfolio_name: The name of the portfolio
+        :param str provider_name: The provider name of the portfolio
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "portfolio_arn", portfolio_arn)
+        pulumi.set(__self__, "portfolio_id", portfolio_id)
+        pulumi.set(__self__, "portfolio_name", portfolio_name)
+        pulumi.set(__self__, "provider_name", provider_name)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the portfolio
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the portfolio
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the portfolio
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="portfolioArn")
+    def portfolio_arn(self) -> str:
+        """
+        The ARN of the portfolio
+        """
+        return pulumi.get(self, "portfolio_arn")
+
+    @property
+    @pulumi.getter(name="portfolioId")
+    def portfolio_id(self) -> str:
+        """
+        The ID of the portfolio
+        """
+        return pulumi.get(self, "portfolio_id")
+
+    @property
+    @pulumi.getter(name="portfolioName")
+    def portfolio_name(self) -> str:
+        """
+        The name of the portfolio
+        """
+        return pulumi.get(self, "portfolio_name")
+
+    @property
+    @pulumi.getter(name="providerName")
+    def provider_name(self) -> str:
+        """
+        The provider name of the portfolio
+        """
+        return pulumi.get(self, "provider_name")
 
 
 @pulumi.output_type

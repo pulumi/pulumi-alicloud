@@ -10,49 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a ECS Disk resource.
-//
-// For information about ECS Disk and how to use it, see [What is Disk](https://www.alibabacloud.com/help/en/doc-detail/25513.htm).
-//
-// > **NOTE:** Available in v1.122.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ecs.NewEcsDisk(ctx, "example", &ecs.EcsDiskArgs{
-//				Category:    pulumi.String("cloud_efficiency"),
-//				Description: pulumi.String("Hello ecs disk."),
-//				DiskName:    pulumi.String("tf-test"),
-//				Encrypted:   pulumi.Bool(true),
-//				KmsKeyId:    pulumi.String("2a6767f0-a16c-4679-a60f-13bf*****"),
-//				Size:        pulumi.Int(30),
-//				Tags: pulumi.AnyMap{
-//					"Name": pulumi.Any("TerraformTest"),
-//				},
-//				ZoneId: pulumi.String("cn-beijing-b"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ECS Disk can be imported using the id, e.g.

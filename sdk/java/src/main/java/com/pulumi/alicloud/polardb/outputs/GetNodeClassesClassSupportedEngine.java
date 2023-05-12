@@ -15,14 +15,21 @@ public final class GetNodeClassesClassSupportedEngine {
      * @return A list of PolarDB node available classes.
      * 
      */
-    private List<GetNodeClassesClassSupportedEngineAvailableResource> availableResources;
+    private final List<GetNodeClassesClassSupportedEngineAvailableResource> availableResources;
     /**
      * @return In the zone, the database type supports classes in the following available_resources.
      * 
      */
-    private String engine;
+    private final String engine;
 
-    private GetNodeClassesClassSupportedEngine() {}
+    @CustomType.Constructor
+    private GetNodeClassesClassSupportedEngine(
+        @CustomType.Parameter("availableResources") List<GetNodeClassesClassSupportedEngineAvailableResource> availableResources,
+        @CustomType.Parameter("engine") String engine) {
+        this.availableResources = availableResources;
+        this.engine = engine;
+    }
+
     /**
      * @return A list of PolarDB node available classes.
      * 
@@ -45,18 +52,21 @@ public final class GetNodeClassesClassSupportedEngine {
     public static Builder builder(GetNodeClassesClassSupportedEngine defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetNodeClassesClassSupportedEngineAvailableResource> availableResources;
         private String engine;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetNodeClassesClassSupportedEngine defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availableResources = defaults.availableResources;
     	      this.engine = defaults.engine;
         }
 
-        @CustomType.Setter
         public Builder availableResources(List<GetNodeClassesClassSupportedEngineAvailableResource> availableResources) {
             this.availableResources = Objects.requireNonNull(availableResources);
             return this;
@@ -64,16 +74,11 @@ public final class GetNodeClassesClassSupportedEngine {
         public Builder availableResources(GetNodeClassesClassSupportedEngineAvailableResource... availableResources) {
             return availableResources(List.of(availableResources));
         }
-        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
-        }
-        public GetNodeClassesClassSupportedEngine build() {
-            final var o = new GetNodeClassesClassSupportedEngine();
-            o.availableResources = availableResources;
-            o.engine = engine;
-            return o;
+        }        public GetNodeClassesClassSupportedEngine build() {
+            return new GetNodeClassesClassSupportedEngine(availableResources, engine);
         }
     }
 }

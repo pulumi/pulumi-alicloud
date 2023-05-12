@@ -17,6 +17,57 @@ import (
 //
 // > **NOTE:** Available in v1.131.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dcdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			domain, err := dcdn.NewDomain(ctx, "domain", &dcdn.DomainArgs{
+//				DomainName: pulumi.String("mydomain.alicloud-provider.cn"),
+//				Scope:      pulumi.String("overseas"),
+//				Sources: dcdn.DomainSourceArray{
+//					&dcdn.DomainSourceArgs{
+//						Content:  pulumi.String("1.1.1.1"),
+//						Type:     pulumi.String("ipaddr"),
+//						Priority: pulumi.String("20"),
+//						Port:     pulumi.Int(80),
+//						Weight:   pulumi.String("15"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dcdn.NewDomainConfig(ctx, "config", &dcdn.DomainConfigArgs{
+//				DomainName:   domain.DomainName,
+//				FunctionName: pulumi.String("ip_allow_list_set"),
+//				FunctionArgs: dcdn.DomainConfigFunctionArgArray{
+//					&dcdn.DomainConfigFunctionArgArgs{
+//						ArgName:  pulumi.String("ip_list"),
+//						ArgValue: pulumi.String("110.110.110.110"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // DCDN domain config can be imported using the id, e.g.

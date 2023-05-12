@@ -11,10 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AclEntryList {
-    private @Nullable String comment;
-    private @Nullable String entry;
+    private final @Nullable String comment;
+    private final @Nullable String entry;
 
-    private AclEntryList() {}
+    @CustomType.Constructor
+    private AclEntryList(
+        @CustomType.Parameter("comment") @Nullable String comment,
+        @CustomType.Parameter("entry") @Nullable String entry) {
+        this.comment = comment;
+        this.entry = entry;
+    }
+
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
@@ -29,32 +36,30 @@ public final class AclEntryList {
     public static Builder builder(AclEntryList defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String comment;
         private @Nullable String entry;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(AclEntryList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comment = defaults.comment;
     	      this.entry = defaults.entry;
         }
 
-        @CustomType.Setter
         public Builder comment(@Nullable String comment) {
             this.comment = comment;
             return this;
         }
-        @CustomType.Setter
         public Builder entry(@Nullable String entry) {
             this.entry = entry;
             return this;
-        }
-        public AclEntryList build() {
-            final var o = new AclEntryList();
-            o.comment = comment;
-            o.entry = entry;
-            return o;
+        }        public AclEntryList build() {
+            return new AclEntryList(comment, entry);
         }
     }
 }

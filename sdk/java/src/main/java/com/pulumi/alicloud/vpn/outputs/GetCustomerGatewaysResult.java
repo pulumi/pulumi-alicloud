@@ -17,26 +17,41 @@ public final class GetCustomerGatewaysResult {
      * @return A list of VPN customer gateways. Each element contains the following attributes:
      * 
      */
-    private List<GetCustomerGatewaysGateway> gateways;
+    private final List<GetCustomerGatewaysGateway> gateways;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return IDs of VPN customer gateway.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return names of VPN customer gateway.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
 
-    private GetCustomerGatewaysResult() {}
+    @CustomType.Constructor
+    private GetCustomerGatewaysResult(
+        @CustomType.Parameter("gateways") List<GetCustomerGatewaysGateway> gateways,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.gateways = gateways;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+    }
+
     /**
      * @return A list of VPN customer gateways. Each element contains the following attributes:
      * 
@@ -79,7 +94,7 @@ public final class GetCustomerGatewaysResult {
     public static Builder builder(GetCustomerGatewaysResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetCustomerGatewaysGateway> gateways;
         private String id;
@@ -87,7 +102,11 @@ public final class GetCustomerGatewaysResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetCustomerGatewaysResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gateways = defaults.gateways;
@@ -98,7 +117,6 @@ public final class GetCustomerGatewaysResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder gateways(List<GetCustomerGatewaysGateway> gateways) {
             this.gateways = Objects.requireNonNull(gateways);
             return this;
@@ -106,12 +124,10 @@ public final class GetCustomerGatewaysResult {
         public Builder gateways(GetCustomerGatewaysGateway... gateways) {
             return gateways(List.of(gateways));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -119,12 +135,10 @@ public final class GetCustomerGatewaysResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -132,20 +146,11 @@ public final class GetCustomerGatewaysResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetCustomerGatewaysResult build() {
-            final var o = new GetCustomerGatewaysResult();
-            o.gateways = gateways;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetCustomerGatewaysResult build() {
+            return new GetCustomerGatewaysResult(gateways, id, ids, nameRegex, names, outputFile);
         }
     }
 }

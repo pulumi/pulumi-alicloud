@@ -13,135 +13,192 @@ public final class GetSnapshotsSnapshot {
      * @return The actual data volume of the snapshot. Unit byte.
      * 
      */
-    private String actualBytes;
+    private final String actualBytes;
     /**
      * @return The actual number of items in the snapshot. (Currently only file backup is available).
      * 
      */
-    private String actualItems;
+    private final String actualItems;
     /**
      * @return Backup type. Possible values: `COMPLETE` (full backup).
      * 
      */
-    private String backupType;
+    private final String backupType;
     /**
      * @return The name of OSS bucket.
      * 
      */
-    private String bucket;
+    private final String bucket;
     /**
      * @return The incremental amount of backup data. Unit byte.
      * 
      */
-    private String bytesDone;
+    private final String bytesDone;
     /**
      * @return The total amount of data sources. Unit byte.
      * 
      */
-    private String bytesTotal;
+    private final String bytesTotal;
     /**
      * @return The ID of ECS backup client.
      * 
      */
-    private String clientId;
+    private final String clientId;
     /**
      * @return The time when the snapshot completed. UNIX time in seconds.
      * 
      */
-    private String completeTime;
+    private final String completeTime;
     /**
      * @return File System Creation Time of Nas. Unix Time Seconds.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return Snapshot creation time. UNIX time in seconds.
      * 
      */
-    private String createdTime;
-    private String errorFile;
+    private final String createdTime;
+    private final String errorFile;
     /**
      * @return The ID of NAS File system.
      * 
      */
-    private String fileSystemId;
+    private final String fileSystemId;
     /**
      * @return The ID of the Snapshot.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of ECS instance.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return The number of backup items. (Currently only file backup is available).
      * 
      */
-    private String itemsDone;
+    private final String itemsDone;
     /**
      * @return The total number of data source items. (Currently only file backup is available).
      * 
      */
-    private String itemsTotal;
+    private final String itemsTotal;
     /**
      * @return The job ID of backup task.
      * 
      */
-    private String jobId;
+    private final String jobId;
     /**
      * @return The hashcode of parent backup snapshot.
      * 
      */
-    private String parentSnapshotHash;
+    private final String parentSnapshotHash;
     /**
      * @return Backup Path.
      * 
      */
-    private String path;
+    private final String path;
     /**
      * @return Backup file prefix.
      * 
      */
-    private String prefix;
+    private final String prefix;
     /**
      * @return The number of days to keep.
      * 
      */
-    private String retention;
+    private final String retention;
     /**
      * @return The hashcode of Snapshot.
      * 
      */
-    private String snapshotHash;
+    private final String snapshotHash;
     /**
      * @return The ID of the Snapshot.
      * 
      */
-    private String snapshotId;
+    private final String snapshotId;
     /**
      * @return Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
      * 
      */
-    private String sourceType;
+    private final String sourceType;
     /**
      * @return The start time of the snapshot. UNIX time in seconds.
      * 
      */
-    private String startTime;
+    private final String startTime;
     /**
      * @return The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The update time of snapshot. UNIX time in seconds.
      * 
      */
-    private String updatedTime;
+    private final String updatedTime;
 
-    private GetSnapshotsSnapshot() {}
+    @CustomType.Constructor
+    private GetSnapshotsSnapshot(
+        @CustomType.Parameter("actualBytes") String actualBytes,
+        @CustomType.Parameter("actualItems") String actualItems,
+        @CustomType.Parameter("backupType") String backupType,
+        @CustomType.Parameter("bucket") String bucket,
+        @CustomType.Parameter("bytesDone") String bytesDone,
+        @CustomType.Parameter("bytesTotal") String bytesTotal,
+        @CustomType.Parameter("clientId") String clientId,
+        @CustomType.Parameter("completeTime") String completeTime,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("createdTime") String createdTime,
+        @CustomType.Parameter("errorFile") String errorFile,
+        @CustomType.Parameter("fileSystemId") String fileSystemId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("itemsDone") String itemsDone,
+        @CustomType.Parameter("itemsTotal") String itemsTotal,
+        @CustomType.Parameter("jobId") String jobId,
+        @CustomType.Parameter("parentSnapshotHash") String parentSnapshotHash,
+        @CustomType.Parameter("path") String path,
+        @CustomType.Parameter("prefix") String prefix,
+        @CustomType.Parameter("retention") String retention,
+        @CustomType.Parameter("snapshotHash") String snapshotHash,
+        @CustomType.Parameter("snapshotId") String snapshotId,
+        @CustomType.Parameter("sourceType") String sourceType,
+        @CustomType.Parameter("startTime") String startTime,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("updatedTime") String updatedTime) {
+        this.actualBytes = actualBytes;
+        this.actualItems = actualItems;
+        this.backupType = backupType;
+        this.bucket = bucket;
+        this.bytesDone = bytesDone;
+        this.bytesTotal = bytesTotal;
+        this.clientId = clientId;
+        this.completeTime = completeTime;
+        this.createTime = createTime;
+        this.createdTime = createdTime;
+        this.errorFile = errorFile;
+        this.fileSystemId = fileSystemId;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.itemsDone = itemsDone;
+        this.itemsTotal = itemsTotal;
+        this.jobId = jobId;
+        this.parentSnapshotHash = parentSnapshotHash;
+        this.path = path;
+        this.prefix = prefix;
+        this.retention = retention;
+        this.snapshotHash = snapshotHash;
+        this.snapshotId = snapshotId;
+        this.sourceType = sourceType;
+        this.startTime = startTime;
+        this.status = status;
+        this.updatedTime = updatedTime;
+    }
+
     /**
      * @return The actual data volume of the snapshot. Unit byte.
      * 
@@ -335,7 +392,7 @@ public final class GetSnapshotsSnapshot {
     public static Builder builder(GetSnapshotsSnapshot defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String actualBytes;
         private String actualItems;
@@ -364,7 +421,11 @@ public final class GetSnapshotsSnapshot {
         private String startTime;
         private String status;
         private String updatedTime;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetSnapshotsSnapshot defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.actualBytes = defaults.actualBytes;
@@ -396,171 +457,115 @@ public final class GetSnapshotsSnapshot {
     	      this.updatedTime = defaults.updatedTime;
         }
 
-        @CustomType.Setter
         public Builder actualBytes(String actualBytes) {
             this.actualBytes = Objects.requireNonNull(actualBytes);
             return this;
         }
-        @CustomType.Setter
         public Builder actualItems(String actualItems) {
             this.actualItems = Objects.requireNonNull(actualItems);
             return this;
         }
-        @CustomType.Setter
         public Builder backupType(String backupType) {
             this.backupType = Objects.requireNonNull(backupType);
             return this;
         }
-        @CustomType.Setter
         public Builder bucket(String bucket) {
             this.bucket = Objects.requireNonNull(bucket);
             return this;
         }
-        @CustomType.Setter
         public Builder bytesDone(String bytesDone) {
             this.bytesDone = Objects.requireNonNull(bytesDone);
             return this;
         }
-        @CustomType.Setter
         public Builder bytesTotal(String bytesTotal) {
             this.bytesTotal = Objects.requireNonNull(bytesTotal);
             return this;
         }
-        @CustomType.Setter
         public Builder clientId(String clientId) {
             this.clientId = Objects.requireNonNull(clientId);
             return this;
         }
-        @CustomType.Setter
         public Builder completeTime(String completeTime) {
             this.completeTime = Objects.requireNonNull(completeTime);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder createdTime(String createdTime) {
             this.createdTime = Objects.requireNonNull(createdTime);
             return this;
         }
-        @CustomType.Setter
         public Builder errorFile(String errorFile) {
             this.errorFile = Objects.requireNonNull(errorFile);
             return this;
         }
-        @CustomType.Setter
         public Builder fileSystemId(String fileSystemId) {
             this.fileSystemId = Objects.requireNonNull(fileSystemId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder itemsDone(String itemsDone) {
             this.itemsDone = Objects.requireNonNull(itemsDone);
             return this;
         }
-        @CustomType.Setter
         public Builder itemsTotal(String itemsTotal) {
             this.itemsTotal = Objects.requireNonNull(itemsTotal);
             return this;
         }
-        @CustomType.Setter
         public Builder jobId(String jobId) {
             this.jobId = Objects.requireNonNull(jobId);
             return this;
         }
-        @CustomType.Setter
         public Builder parentSnapshotHash(String parentSnapshotHash) {
             this.parentSnapshotHash = Objects.requireNonNull(parentSnapshotHash);
             return this;
         }
-        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
-        @CustomType.Setter
         public Builder prefix(String prefix) {
             this.prefix = Objects.requireNonNull(prefix);
             return this;
         }
-        @CustomType.Setter
         public Builder retention(String retention) {
             this.retention = Objects.requireNonNull(retention);
             return this;
         }
-        @CustomType.Setter
         public Builder snapshotHash(String snapshotHash) {
             this.snapshotHash = Objects.requireNonNull(snapshotHash);
             return this;
         }
-        @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
             this.snapshotId = Objects.requireNonNull(snapshotId);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceType(String sourceType) {
             this.sourceType = Objects.requireNonNull(sourceType);
             return this;
         }
-        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder updatedTime(String updatedTime) {
             this.updatedTime = Objects.requireNonNull(updatedTime);
             return this;
-        }
-        public GetSnapshotsSnapshot build() {
-            final var o = new GetSnapshotsSnapshot();
-            o.actualBytes = actualBytes;
-            o.actualItems = actualItems;
-            o.backupType = backupType;
-            o.bucket = bucket;
-            o.bytesDone = bytesDone;
-            o.bytesTotal = bytesTotal;
-            o.clientId = clientId;
-            o.completeTime = completeTime;
-            o.createTime = createTime;
-            o.createdTime = createdTime;
-            o.errorFile = errorFile;
-            o.fileSystemId = fileSystemId;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.itemsDone = itemsDone;
-            o.itemsTotal = itemsTotal;
-            o.jobId = jobId;
-            o.parentSnapshotHash = parentSnapshotHash;
-            o.path = path;
-            o.prefix = prefix;
-            o.retention = retention;
-            o.snapshotHash = snapshotHash;
-            o.snapshotId = snapshotId;
-            o.sourceType = sourceType;
-            o.startTime = startTime;
-            o.status = status;
-            o.updatedTime = updatedTime;
-            return o;
+        }        public GetSnapshotsSnapshot build() {
+            return new GetSnapshotsSnapshot(actualBytes, actualItems, backupType, bucket, bytesDone, bytesTotal, clientId, completeTime, createTime, createdTime, errorFile, fileSystemId, id, instanceId, itemsDone, itemsTotal, jobId, parentSnapshotHash, path, prefix, retention, snapshotHash, snapshotId, sourceType, startTime, status, updatedTime);
         }
     }
 }

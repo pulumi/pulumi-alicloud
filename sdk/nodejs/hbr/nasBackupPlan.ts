@@ -94,6 +94,8 @@ export class NasBackupPlan extends pulumi.CustomResource {
     public readonly createTime!: pulumi.Output<string>;
     /**
      * The role name created in the original account RAM backup by the cross account managed by the current account.
+     *
+     * > **Note** `alicloud.hbr.NasBackupPlan` depends on the `alicloud.nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
      */
     public readonly crossAccountRoleName!: pulumi.Output<string | undefined>;
     /**
@@ -221,6 +223,8 @@ export interface NasBackupPlanState {
     createTime?: pulumi.Input<string>;
     /**
      * The role name created in the original account RAM backup by the cross account managed by the current account.
+     *
+     * > **Note** `alicloud.hbr.NasBackupPlan` depends on the `alicloud.nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
      */
     crossAccountRoleName?: pulumi.Input<string>;
     /**
@@ -281,6 +285,8 @@ export interface NasBackupPlanArgs {
     createTime?: pulumi.Input<string>;
     /**
      * The role name created in the original account RAM backup by the cross account managed by the current account.
+     *
+     * > **Note** `alicloud.hbr.NasBackupPlan` depends on the `alicloud.nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
      */
     crossAccountRoleName?: pulumi.Input<string>;
     /**

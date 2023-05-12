@@ -1720,6 +1720,10 @@ public final class DnsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:dns/getDomainTxtGuid:getDomainTxtGuid", TypeShape.of(GetDomainTxtGuidResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsDomains from version 1.95.0.
+     * 
+     * This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1757,6 +1761,10 @@ public final class DnsFunctions {
         return getDomains(GetDomainsArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsDomains from version 1.95.0.
+     * 
+     * This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1794,6 +1802,10 @@ public final class DnsFunctions {
         return getDomainsPlain(GetDomainsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsDomains from version 1.95.0.
+     * 
+     * This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1831,6 +1843,10 @@ public final class DnsFunctions {
         return getDomains(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsDomains from version 1.95.0.
+     * 
+     * This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1868,6 +1884,10 @@ public final class DnsFunctions {
         return getDomainsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsDomains from version 1.95.0.
+     * 
+     * This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1905,6 +1925,10 @@ public final class DnsFunctions {
         return Deployment.getInstance().invoke("alicloud:dns/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsDomains from version 1.95.0.
+     * 
+     * This data source provides a list of DNS Domains in an Alibaba Cloud account according to the specified filters.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -2416,6 +2440,12 @@ public final class DnsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:dns/getGtmInstances:getGtmInstances", TypeShape.of(GetGtmInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsInstances from version 1.95.0.
+     * 
+     * This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:**  Available in 1.84.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -2452,6 +2482,12 @@ public final class DnsFunctions {
         return getInstances(GetInstancesArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsInstances from version 1.95.0.
+     * 
+     * This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:**  Available in 1.84.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -2488,6 +2524,12 @@ public final class DnsFunctions {
         return getInstancesPlain(GetInstancesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsInstances from version 1.95.0.
+     * 
+     * This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:**  Available in 1.84.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -2524,6 +2566,12 @@ public final class DnsFunctions {
         return getInstances(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsInstances from version 1.95.0.
+     * 
+     * This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:**  Available in 1.84.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -2560,6 +2608,12 @@ public final class DnsFunctions {
         return getInstancesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsInstances from version 1.95.0.
+     * 
+     * This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:**  Available in 1.84.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -2596,6 +2650,12 @@ public final class DnsFunctions {
         return Deployment.getInstance().invoke("alicloud:dns/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsInstances from version 1.95.0.
+     * 
+     * This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:**  Available in 1.84.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;

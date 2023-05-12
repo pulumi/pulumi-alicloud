@@ -14,19 +14,28 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule {
      * @return Whether shrinkage is prohibited. The values are described as follows:
      * 
      */
-    private Boolean disabled;
+    private final Boolean disabled;
     /**
      * @return Expansion cooling time.
      * 
      */
-    private Integer stabilizationWindowSeconds;
+    private final Integer stabilizationWindowSeconds;
     /**
      * @return Flexible expansion step. The maximum number of instances per unit time.
      * 
      */
-    private Integer step;
+    private final Integer step;
 
-    private GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule() {}
+    @CustomType.Constructor
+    private GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule(
+        @CustomType.Parameter("disabled") Boolean disabled,
+        @CustomType.Parameter("stabilizationWindowSeconds") Integer stabilizationWindowSeconds,
+        @CustomType.Parameter("step") Integer step) {
+        this.disabled = disabled;
+        this.stabilizationWindowSeconds = stabilizationWindowSeconds;
+        this.step = step;
+    }
+
     /**
      * @return Whether shrinkage is prohibited. The values are described as follows:
      * 
@@ -56,12 +65,16 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule {
     public static Builder builder(GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean disabled;
         private Integer stabilizationWindowSeconds;
         private Integer step;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disabled = defaults.disabled;
@@ -69,27 +82,19 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule {
     	      this.step = defaults.step;
         }
 
-        @CustomType.Setter
         public Builder disabled(Boolean disabled) {
             this.disabled = Objects.requireNonNull(disabled);
             return this;
         }
-        @CustomType.Setter
         public Builder stabilizationWindowSeconds(Integer stabilizationWindowSeconds) {
             this.stabilizationWindowSeconds = Objects.requireNonNull(stabilizationWindowSeconds);
             return this;
         }
-        @CustomType.Setter
         public Builder step(Integer step) {
             this.step = Objects.requireNonNull(step);
             return this;
-        }
-        public GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule build() {
-            final var o = new GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule();
-            o.disabled = disabled;
-            o.stabilizationWindowSeconds = stabilizationWindowSeconds;
-            o.step = step;
-            return o;
+        }        public GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule build() {
+            return new GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule(disabled, stabilizationWindowSeconds, step);
         }
     }
 }

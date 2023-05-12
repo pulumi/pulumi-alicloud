@@ -50,6 +50,9 @@ export interface GetExpressSyncsArgs {
      * A regex string to filter results by Express Sync name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -104,5 +107,8 @@ export interface GetExpressSyncsOutputArgs {
      * A regex string to filter results by Express Sync name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

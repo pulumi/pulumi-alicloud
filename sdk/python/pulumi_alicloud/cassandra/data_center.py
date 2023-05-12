@@ -35,6 +35,8 @@ class DataCenterArgs:
         :param pulumi.Input[int] node_count: The node count of Cassandra dataCenter-2, default to 2.
         :param pulumi.Input[str] pay_type: The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+               
+               > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
         :param pulumi.Input[bool] auto_renew: Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
         :param pulumi.Input[int] auto_renew_period: Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
         :param pulumi.Input[str] data_center_name: Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
@@ -121,6 +123,8 @@ class DataCenterArgs:
     def vswitch_id(self) -> pulumi.Input[str]:
         """
         The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+
+        > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -264,6 +268,8 @@ class _DataCenterState:
         :param pulumi.Input[int] node_count: The node count of Cassandra dataCenter-2, default to 2.
         :param pulumi.Input[str] pay_type: The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+               
+               > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
         :param pulumi.Input[str] zone_id: The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
         if auto_renew is not None:
@@ -470,6 +476,8 @@ class _DataCenterState:
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
         The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+
+        > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -581,6 +589,8 @@ class DataCenter(pulumi.CustomResource):
         :param pulumi.Input[int] node_count: The node count of Cassandra dataCenter-2, default to 2.
         :param pulumi.Input[str] pay_type: The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+               
+               > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
         :param pulumi.Input[str] zone_id: The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
         ...
@@ -757,6 +767,8 @@ class DataCenter(pulumi.CustomResource):
         :param pulumi.Input[int] node_count: The node count of Cassandra dataCenter-2, default to 2.
         :param pulumi.Input[str] pay_type: The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
         :param pulumi.Input[str] vswitch_id: The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+               
+               > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
         :param pulumi.Input[str] zone_id: The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -891,6 +903,8 @@ class DataCenter(pulumi.CustomResource):
     def vswitch_id(self) -> pulumi.Output[str]:
         """
         The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+
+        > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
         """
         return pulumi.get(self, "vswitch_id")
 

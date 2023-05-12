@@ -17,11 +17,20 @@ public final class GetZonesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private @Nullable String outputFile;
-    private List<GetZonesZone> zones;
+    private final String id;
+    private final @Nullable String outputFile;
+    private final List<GetZonesZone> zones;
 
-    private GetZonesResult() {}
+    @CustomType.Constructor
+    private GetZonesResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("zones") List<GetZonesZone> zones) {
+        this.id = id;
+        this.outputFile = outputFile;
+        this.zones = zones;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -43,12 +52,16 @@ public final class GetZonesResult {
     public static Builder builder(GetZonesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private @Nullable String outputFile;
         private List<GetZonesZone> zones;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetZonesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -56,30 +69,22 @@ public final class GetZonesResult {
     	      this.zones = defaults.zones;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder zones(List<GetZonesZone> zones) {
             this.zones = Objects.requireNonNull(zones);
             return this;
         }
         public Builder zones(GetZonesZone... zones) {
             return zones(List.of(zones));
-        }
-        public GetZonesResult build() {
-            final var o = new GetZonesResult();
-            o.id = id;
-            o.outputFile = outputFile;
-            o.zones = zones;
-            return o;
+        }        public GetZonesResult build() {
+            return new GetZonesResult(id, outputFile, zones);
         }
     }
 }

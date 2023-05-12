@@ -14,69 +14,98 @@ public final class GetSearchIndexesIndex {
      * @return The creation time of the index.
      * 
      */
-    private Integer createTime;
+    private final Integer createTime;
     /**
      * @return Timestamp for sync phase.
      * 
      */
-    private Integer currentSyncTimestamp;
+    private final Integer currentSyncTimestamp;
     /**
      * @return The resource ID. The value is `&lt;instance_name&gt;:&lt;table_name&gt;:&lt;indexName&gt;:&lt;indexType&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The index name of the OTS Table which could not be changed.
      * 
      */
-    private String indexName;
+    private final String indexName;
     /**
      * @return The name of OTS instance.
      * 
      */
-    private String instanceName;
+    private final String instanceName;
     /**
      * @return Last update time for metering data..
      * 
      */
-    private Integer meteringLastUpdateTime;
+    private final Integer meteringLastUpdateTime;
     /**
      * @return Reserve related resources for the index.
      * 
      */
-    private Integer reservedReadCu;
+    private final Integer reservedReadCu;
     /**
      * @return The number of rows of data for index.
      * 
      */
-    private Integer rowCount;
+    private final Integer rowCount;
     /**
      * @return JSON representation of the schema of index.
      * 
      */
-    private String schema;
+    private final String schema;
     /**
      * @return Storage space occupied by index.
      * 
      */
-    private Integer storageSize;
+    private final Integer storageSize;
     /**
      * @return The synchronization state of the index.
      * 
      */
-    private String syncPhase;
+    private final String syncPhase;
     /**
      * @return The name of OTS table.
      * 
      */
-    private String tableName;
+    private final String tableName;
     /**
      * @return TTL of index.
      * 
      */
-    private Integer timeToLive;
+    private final Integer timeToLive;
 
-    private GetSearchIndexesIndex() {}
+    @CustomType.Constructor
+    private GetSearchIndexesIndex(
+        @CustomType.Parameter("createTime") Integer createTime,
+        @CustomType.Parameter("currentSyncTimestamp") Integer currentSyncTimestamp,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("indexName") String indexName,
+        @CustomType.Parameter("instanceName") String instanceName,
+        @CustomType.Parameter("meteringLastUpdateTime") Integer meteringLastUpdateTime,
+        @CustomType.Parameter("reservedReadCu") Integer reservedReadCu,
+        @CustomType.Parameter("rowCount") Integer rowCount,
+        @CustomType.Parameter("schema") String schema,
+        @CustomType.Parameter("storageSize") Integer storageSize,
+        @CustomType.Parameter("syncPhase") String syncPhase,
+        @CustomType.Parameter("tableName") String tableName,
+        @CustomType.Parameter("timeToLive") Integer timeToLive) {
+        this.createTime = createTime;
+        this.currentSyncTimestamp = currentSyncTimestamp;
+        this.id = id;
+        this.indexName = indexName;
+        this.instanceName = instanceName;
+        this.meteringLastUpdateTime = meteringLastUpdateTime;
+        this.reservedReadCu = reservedReadCu;
+        this.rowCount = rowCount;
+        this.schema = schema;
+        this.storageSize = storageSize;
+        this.syncPhase = syncPhase;
+        this.tableName = tableName;
+        this.timeToLive = timeToLive;
+    }
+
     /**
      * @return The creation time of the index.
      * 
@@ -176,7 +205,7 @@ public final class GetSearchIndexesIndex {
     public static Builder builder(GetSearchIndexesIndex defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer createTime;
         private Integer currentSyncTimestamp;
@@ -191,7 +220,11 @@ public final class GetSearchIndexesIndex {
         private String syncPhase;
         private String tableName;
         private Integer timeToLive;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetSearchIndexesIndex defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -209,87 +242,59 @@ public final class GetSearchIndexesIndex {
     	      this.timeToLive = defaults.timeToLive;
         }
 
-        @CustomType.Setter
         public Builder createTime(Integer createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder currentSyncTimestamp(Integer currentSyncTimestamp) {
             this.currentSyncTimestamp = Objects.requireNonNull(currentSyncTimestamp);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder indexName(String indexName) {
             this.indexName = Objects.requireNonNull(indexName);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
-        @CustomType.Setter
         public Builder meteringLastUpdateTime(Integer meteringLastUpdateTime) {
             this.meteringLastUpdateTime = Objects.requireNonNull(meteringLastUpdateTime);
             return this;
         }
-        @CustomType.Setter
         public Builder reservedReadCu(Integer reservedReadCu) {
             this.reservedReadCu = Objects.requireNonNull(reservedReadCu);
             return this;
         }
-        @CustomType.Setter
         public Builder rowCount(Integer rowCount) {
             this.rowCount = Objects.requireNonNull(rowCount);
             return this;
         }
-        @CustomType.Setter
         public Builder schema(String schema) {
             this.schema = Objects.requireNonNull(schema);
             return this;
         }
-        @CustomType.Setter
         public Builder storageSize(Integer storageSize) {
             this.storageSize = Objects.requireNonNull(storageSize);
             return this;
         }
-        @CustomType.Setter
         public Builder syncPhase(String syncPhase) {
             this.syncPhase = Objects.requireNonNull(syncPhase);
             return this;
         }
-        @CustomType.Setter
         public Builder tableName(String tableName) {
             this.tableName = Objects.requireNonNull(tableName);
             return this;
         }
-        @CustomType.Setter
         public Builder timeToLive(Integer timeToLive) {
             this.timeToLive = Objects.requireNonNull(timeToLive);
             return this;
-        }
-        public GetSearchIndexesIndex build() {
-            final var o = new GetSearchIndexesIndex();
-            o.createTime = createTime;
-            o.currentSyncTimestamp = currentSyncTimestamp;
-            o.id = id;
-            o.indexName = indexName;
-            o.instanceName = instanceName;
-            o.meteringLastUpdateTime = meteringLastUpdateTime;
-            o.reservedReadCu = reservedReadCu;
-            o.rowCount = rowCount;
-            o.schema = schema;
-            o.storageSize = storageSize;
-            o.syncPhase = syncPhase;
-            o.tableName = tableName;
-            o.timeToLive = timeToLive;
-            return o;
+        }        public GetSearchIndexesIndex build() {
+            return new GetSearchIndexesIndex(createTime, currentSyncTimestamp, id, indexName, instanceName, meteringLastUpdateTime, reservedReadCu, rowCount, schema, storageSize, syncPhase, tableName, timeToLive);
         }
     }
 }

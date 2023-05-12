@@ -13,19 +13,36 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHostEcsLevelInfosResult {
-    private String dbType;
+    private final String dbType;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private @Nullable String imageCategory;
-    private List<GetHostEcsLevelInfosInfo> infos;
-    private @Nullable String outputFile;
-    private String storageType;
-    private String zoneId;
+    private final String id;
+    private final @Nullable String imageCategory;
+    private final List<GetHostEcsLevelInfosInfo> infos;
+    private final @Nullable String outputFile;
+    private final String storageType;
+    private final String zoneId;
 
-    private GetHostEcsLevelInfosResult() {}
+    @CustomType.Constructor
+    private GetHostEcsLevelInfosResult(
+        @CustomType.Parameter("dbType") String dbType,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("imageCategory") @Nullable String imageCategory,
+        @CustomType.Parameter("infos") List<GetHostEcsLevelInfosInfo> infos,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("storageType") String storageType,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.dbType = dbType;
+        this.id = id;
+        this.imageCategory = imageCategory;
+        this.infos = infos;
+        this.outputFile = outputFile;
+        this.storageType = storageType;
+        this.zoneId = zoneId;
+    }
+
     public String dbType() {
         return this.dbType;
     }
@@ -59,7 +76,7 @@ public final class GetHostEcsLevelInfosResult {
     public static Builder builder(GetHostEcsLevelInfosResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String dbType;
         private String id;
@@ -68,7 +85,11 @@ public final class GetHostEcsLevelInfosResult {
         private @Nullable String outputFile;
         private String storageType;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetHostEcsLevelInfosResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbType = defaults.dbType;
@@ -80,22 +101,18 @@ public final class GetHostEcsLevelInfosResult {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder dbType(String dbType) {
             this.dbType = Objects.requireNonNull(dbType);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder imageCategory(@Nullable String imageCategory) {
             this.imageCategory = imageCategory;
             return this;
         }
-        @CustomType.Setter
         public Builder infos(List<GetHostEcsLevelInfosInfo> infos) {
             this.infos = Objects.requireNonNull(infos);
             return this;
@@ -103,31 +120,19 @@ public final class GetHostEcsLevelInfosResult {
         public Builder infos(GetHostEcsLevelInfosInfo... infos) {
             return infos(List.of(infos));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder storageType(String storageType) {
             this.storageType = Objects.requireNonNull(storageType);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetHostEcsLevelInfosResult build() {
-            final var o = new GetHostEcsLevelInfosResult();
-            o.dbType = dbType;
-            o.id = id;
-            o.imageCategory = imageCategory;
-            o.infos = infos;
-            o.outputFile = outputFile;
-            o.storageType = storageType;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetHostEcsLevelInfosResult build() {
+            return new GetHostEcsLevelInfosResult(dbType, id, imageCategory, infos, outputFile, storageType, zoneId);
         }
     }
 }

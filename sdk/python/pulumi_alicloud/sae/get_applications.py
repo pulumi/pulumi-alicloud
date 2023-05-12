@@ -208,6 +208,7 @@ def get_applications(app_name: Optional[str] = None,
     :param Sequence[str] ids: A list of Application IDs.
     :param str namespace_id: SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
     :param str order_by: The order by.Valid values:`running`,`instances`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param bool reverse: The reverse.
     :param str status: The status of the resource.
     """
@@ -305,6 +306,7 @@ def get_applications_output(app_name: Optional[pulumi.Input[Optional[str]]] = No
     :param Sequence[str] ids: A list of Application IDs.
     :param str namespace_id: SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
     :param str order_by: The order by.Valid values:`running`,`instances`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param bool reverse: The reverse.
     :param str status: The status of the resource.
     """

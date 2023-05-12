@@ -15,22 +15,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEcsImageComponentsResult {
-    private List<GetEcsImageComponentsComponent> components;
+    private final List<GetEcsImageComponentsComponent> components;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String imageComponentName;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String owner;
-    private @Nullable String resourceGroupId;
-    private @Nullable Map<String,Object> tags;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String imageComponentName;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String owner;
+    private final @Nullable String resourceGroupId;
+    private final @Nullable Map<String,Object> tags;
 
-    private GetEcsImageComponentsResult() {}
+    @CustomType.Constructor
+    private GetEcsImageComponentsResult(
+        @CustomType.Parameter("components") List<GetEcsImageComponentsComponent> components,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("imageComponentName") @Nullable String imageComponentName,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("owner") @Nullable String owner,
+        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
+        this.components = components;
+        this.id = id;
+        this.ids = ids;
+        this.imageComponentName = imageComponentName;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.owner = owner;
+        this.resourceGroupId = resourceGroupId;
+        this.tags = tags;
+    }
+
     public List<GetEcsImageComponentsComponent> components() {
         return this.components;
     }
@@ -73,7 +96,7 @@ public final class GetEcsImageComponentsResult {
     public static Builder builder(GetEcsImageComponentsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetEcsImageComponentsComponent> components;
         private String id;
@@ -85,7 +108,11 @@ public final class GetEcsImageComponentsResult {
         private @Nullable String owner;
         private @Nullable String resourceGroupId;
         private @Nullable Map<String,Object> tags;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEcsImageComponentsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.components = defaults.components;
@@ -100,7 +127,6 @@ public final class GetEcsImageComponentsResult {
     	      this.tags = defaults.tags;
         }
 
-        @CustomType.Setter
         public Builder components(List<GetEcsImageComponentsComponent> components) {
             this.components = Objects.requireNonNull(components);
             return this;
@@ -108,12 +134,10 @@ public final class GetEcsImageComponentsResult {
         public Builder components(GetEcsImageComponentsComponent... components) {
             return components(List.of(components));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -121,17 +145,14 @@ public final class GetEcsImageComponentsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder imageComponentName(@Nullable String imageComponentName) {
             this.imageComponentName = imageComponentName;
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -139,39 +160,23 @@ public final class GetEcsImageComponentsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder owner(@Nullable String owner) {
             this.owner = owner;
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }
-        public GetEcsImageComponentsResult build() {
-            final var o = new GetEcsImageComponentsResult();
-            o.components = components;
-            o.id = id;
-            o.ids = ids;
-            o.imageComponentName = imageComponentName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.owner = owner;
-            o.resourceGroupId = resourceGroupId;
-            o.tags = tags;
-            return o;
+        }        public GetEcsImageComponentsResult build() {
+            return new GetEcsImageComponentsResult(components, id, ids, imageComponentName, nameRegex, names, outputFile, owner, resourceGroupId, tags);
         }
     }
 }

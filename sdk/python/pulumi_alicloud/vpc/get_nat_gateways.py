@@ -268,6 +268,7 @@ def get_nat_gateways(dry_run: Optional[bool] = None,
     :param str name_regex: A regex string to filter nat gateways by name.
     :param str nat_gateway_name: The name of NAT gateway.
     :param str nat_type: The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str payment_type: The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
     :param str resource_group_id: The resource group id of NAT gateway.
     :param str specification: The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.
@@ -345,6 +346,7 @@ def get_nat_gateways_output(dry_run: Optional[pulumi.Input[Optional[bool]]] = No
     :param str name_regex: A regex string to filter nat gateways by name.
     :param str nat_gateway_name: The name of NAT gateway.
     :param str nat_type: The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str payment_type: The payment type of NAT gateway. Valid values `PayAsYouGo` and `Subscription`.
     :param str resource_group_id: The resource group id of NAT gateway.
     :param str specification: The specification of NAT gateway. Valid values `Middle`, `Large`, `Small` and `XLarge.1`. Default value is `Small`.

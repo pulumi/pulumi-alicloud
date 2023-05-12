@@ -17,104 +17,147 @@ public final class GetScalingConfigurationsConfiguration {
      * @return Creation time of the scaling configuration.
      * 
      */
-    private String creationTime;
+    private final String creationTime;
     /**
      * @return Performance mode of the t5 burstable instance.
      * 
      */
-    private String creditSpecification;
+    private final String creditSpecification;
     /**
      * @return Data disks of the scaling configuration.
      * 
      */
-    private List<GetScalingConfigurationsConfigurationDataDisk> dataDisks;
+    private final List<GetScalingConfigurationsConfigurationDataDisk> dataDisks;
     /**
      * @return (Optional,Available in 1.143.0+) Hostname of an ECS instance.
      * 
      */
-    private String hostName;
+    private final String hostName;
     /**
      * @return ID of the scaling rule.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Image ID of the scaling configuration.
      * 
      */
-    private String imageId;
+    private final String imageId;
     /**
      * @return (Optional,Available in 1.143.0+) InstanceName of an ECS instance.
      * 
      */
-    private String instanceName;
+    private final String instanceName;
     /**
      * @return Resource type of an ECS instance.
      * 
      */
-    private String instanceType;
+    private final String instanceType;
     /**
      * @return Internet charge type of the scaling configuration.
      * 
      */
-    private String internetChargeType;
+    private final String internetChargeType;
     /**
      * @return Internet max bandwidth in of the scaling configuration.
      * 
      */
-    private Integer internetMaxBandwidthIn;
+    private final Integer internetMaxBandwidthIn;
     /**
      * @return Internet max bandwidth of the scaling configuration.
      * 
      */
-    private Integer internetMaxBandwidthOut;
+    private final Integer internetMaxBandwidthOut;
     /**
      * @return Lifecycle state of the scaling configuration.
      * 
      */
-    private String lifecycleState;
+    private final String lifecycleState;
     /**
      * @return Name of the scaling configuration.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return Scaling group id the scaling configurations belong to.
      * 
      */
-    private String scalingGroupId;
+    private final String scalingGroupId;
     /**
      * @return Security group ID of the scaling configuration.
      * 
      */
-    private String securityGroupId;
+    private final String securityGroupId;
     /**
      * @return (Optional, Available in 1.151.0+) The maximum price hourly for instance types.
      * 
      */
-    private List<GetScalingConfigurationsConfigurationSpotPriceLimit> spotPriceLimits;
+    private final List<GetScalingConfigurationsConfigurationSpotPriceLimit> spotPriceLimits;
     /**
      * @return (Optional, Available in 1.151.0+) The spot strategy for a Pay-As-You-Go instance.
      * 
      */
-    private String spotStrategy;
+    private final String spotStrategy;
     /**
      * @return System disk category of the scaling configuration.
      * 
      */
-    private String systemDiskCategory;
+    private final String systemDiskCategory;
     /**
      * @return The performance level of the ESSD used as the system disk.
      * 
      */
-    private String systemDiskPerformanceLevel;
+    private final String systemDiskPerformanceLevel;
     /**
      * @return System disk size of the scaling configuration.
      * 
      */
-    private Integer systemDiskSize;
+    private final Integer systemDiskSize;
 
-    private GetScalingConfigurationsConfiguration() {}
+    @CustomType.Constructor
+    private GetScalingConfigurationsConfiguration(
+        @CustomType.Parameter("creationTime") String creationTime,
+        @CustomType.Parameter("creditSpecification") String creditSpecification,
+        @CustomType.Parameter("dataDisks") List<GetScalingConfigurationsConfigurationDataDisk> dataDisks,
+        @CustomType.Parameter("hostName") String hostName,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("imageId") String imageId,
+        @CustomType.Parameter("instanceName") String instanceName,
+        @CustomType.Parameter("instanceType") String instanceType,
+        @CustomType.Parameter("internetChargeType") String internetChargeType,
+        @CustomType.Parameter("internetMaxBandwidthIn") Integer internetMaxBandwidthIn,
+        @CustomType.Parameter("internetMaxBandwidthOut") Integer internetMaxBandwidthOut,
+        @CustomType.Parameter("lifecycleState") String lifecycleState,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("scalingGroupId") String scalingGroupId,
+        @CustomType.Parameter("securityGroupId") String securityGroupId,
+        @CustomType.Parameter("spotPriceLimits") List<GetScalingConfigurationsConfigurationSpotPriceLimit> spotPriceLimits,
+        @CustomType.Parameter("spotStrategy") String spotStrategy,
+        @CustomType.Parameter("systemDiskCategory") String systemDiskCategory,
+        @CustomType.Parameter("systemDiskPerformanceLevel") String systemDiskPerformanceLevel,
+        @CustomType.Parameter("systemDiskSize") Integer systemDiskSize) {
+        this.creationTime = creationTime;
+        this.creditSpecification = creditSpecification;
+        this.dataDisks = dataDisks;
+        this.hostName = hostName;
+        this.id = id;
+        this.imageId = imageId;
+        this.instanceName = instanceName;
+        this.instanceType = instanceType;
+        this.internetChargeType = internetChargeType;
+        this.internetMaxBandwidthIn = internetMaxBandwidthIn;
+        this.internetMaxBandwidthOut = internetMaxBandwidthOut;
+        this.lifecycleState = lifecycleState;
+        this.name = name;
+        this.scalingGroupId = scalingGroupId;
+        this.securityGroupId = securityGroupId;
+        this.spotPriceLimits = spotPriceLimits;
+        this.spotStrategy = spotStrategy;
+        this.systemDiskCategory = systemDiskCategory;
+        this.systemDiskPerformanceLevel = systemDiskPerformanceLevel;
+        this.systemDiskSize = systemDiskSize;
+    }
+
     /**
      * @return Creation time of the scaling configuration.
      * 
@@ -263,7 +306,7 @@ public final class GetScalingConfigurationsConfiguration {
     public static Builder builder(GetScalingConfigurationsConfiguration defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String creationTime;
         private String creditSpecification;
@@ -285,7 +328,11 @@ public final class GetScalingConfigurationsConfiguration {
         private String systemDiskCategory;
         private String systemDiskPerformanceLevel;
         private Integer systemDiskSize;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetScalingConfigurationsConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.creationTime = defaults.creationTime;
@@ -310,17 +357,14 @@ public final class GetScalingConfigurationsConfiguration {
     	      this.systemDiskSize = defaults.systemDiskSize;
         }
 
-        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
             return this;
         }
-        @CustomType.Setter
         public Builder creditSpecification(String creditSpecification) {
             this.creditSpecification = Objects.requireNonNull(creditSpecification);
             return this;
         }
-        @CustomType.Setter
         public Builder dataDisks(List<GetScalingConfigurationsConfigurationDataDisk> dataDisks) {
             this.dataDisks = Objects.requireNonNull(dataDisks);
             return this;
@@ -328,67 +372,54 @@ public final class GetScalingConfigurationsConfiguration {
         public Builder dataDisks(GetScalingConfigurationsConfigurationDataDisk... dataDisks) {
             return dataDisks(List.of(dataDisks));
         }
-        @CustomType.Setter
         public Builder hostName(String hostName) {
             this.hostName = Objects.requireNonNull(hostName);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder imageId(String imageId) {
             this.imageId = Objects.requireNonNull(imageId);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
-        @CustomType.Setter
         public Builder internetChargeType(String internetChargeType) {
             this.internetChargeType = Objects.requireNonNull(internetChargeType);
             return this;
         }
-        @CustomType.Setter
         public Builder internetMaxBandwidthIn(Integer internetMaxBandwidthIn) {
             this.internetMaxBandwidthIn = Objects.requireNonNull(internetMaxBandwidthIn);
             return this;
         }
-        @CustomType.Setter
         public Builder internetMaxBandwidthOut(Integer internetMaxBandwidthOut) {
             this.internetMaxBandwidthOut = Objects.requireNonNull(internetMaxBandwidthOut);
             return this;
         }
-        @CustomType.Setter
         public Builder lifecycleState(String lifecycleState) {
             this.lifecycleState = Objects.requireNonNull(lifecycleState);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder scalingGroupId(String scalingGroupId) {
             this.scalingGroupId = Objects.requireNonNull(scalingGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
             this.securityGroupId = Objects.requireNonNull(securityGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder spotPriceLimits(List<GetScalingConfigurationsConfigurationSpotPriceLimit> spotPriceLimits) {
             this.spotPriceLimits = Objects.requireNonNull(spotPriceLimits);
             return this;
@@ -396,49 +427,23 @@ public final class GetScalingConfigurationsConfiguration {
         public Builder spotPriceLimits(GetScalingConfigurationsConfigurationSpotPriceLimit... spotPriceLimits) {
             return spotPriceLimits(List.of(spotPriceLimits));
         }
-        @CustomType.Setter
         public Builder spotStrategy(String spotStrategy) {
             this.spotStrategy = Objects.requireNonNull(spotStrategy);
             return this;
         }
-        @CustomType.Setter
         public Builder systemDiskCategory(String systemDiskCategory) {
             this.systemDiskCategory = Objects.requireNonNull(systemDiskCategory);
             return this;
         }
-        @CustomType.Setter
         public Builder systemDiskPerformanceLevel(String systemDiskPerformanceLevel) {
             this.systemDiskPerformanceLevel = Objects.requireNonNull(systemDiskPerformanceLevel);
             return this;
         }
-        @CustomType.Setter
         public Builder systemDiskSize(Integer systemDiskSize) {
             this.systemDiskSize = Objects.requireNonNull(systemDiskSize);
             return this;
-        }
-        public GetScalingConfigurationsConfiguration build() {
-            final var o = new GetScalingConfigurationsConfiguration();
-            o.creationTime = creationTime;
-            o.creditSpecification = creditSpecification;
-            o.dataDisks = dataDisks;
-            o.hostName = hostName;
-            o.id = id;
-            o.imageId = imageId;
-            o.instanceName = instanceName;
-            o.instanceType = instanceType;
-            o.internetChargeType = internetChargeType;
-            o.internetMaxBandwidthIn = internetMaxBandwidthIn;
-            o.internetMaxBandwidthOut = internetMaxBandwidthOut;
-            o.lifecycleState = lifecycleState;
-            o.name = name;
-            o.scalingGroupId = scalingGroupId;
-            o.securityGroupId = securityGroupId;
-            o.spotPriceLimits = spotPriceLimits;
-            o.spotStrategy = spotStrategy;
-            o.systemDiskCategory = systemDiskCategory;
-            o.systemDiskPerformanceLevel = systemDiskPerformanceLevel;
-            o.systemDiskSize = systemDiskSize;
-            return o;
+        }        public GetScalingConfigurationsConfiguration build() {
+            return new GetScalingConfigurationsConfiguration(creationTime, creditSpecification, dataDisks, hostName, id, imageId, instanceName, instanceType, internetChargeType, internetMaxBandwidthIn, internetMaxBandwidthOut, lifecycleState, name, scalingGroupId, securityGroupId, spotPriceLimits, spotStrategy, systemDiskCategory, systemDiskPerformanceLevel, systemDiskSize);
         }
     }
 }

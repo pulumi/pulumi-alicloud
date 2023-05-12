@@ -17,39 +17,56 @@ public final class FirewallVpcFirewallPeerVpc {
      * @return The ID of the instance of the Eni in the local VPC.
      * 
      */
-    private @Nullable String eniId;
+    private final @Nullable String eniId;
     /**
      * @return The private IP address of the elastic network card in the local VPC.
      * 
      */
-    private @Nullable String eniPrivateIpAddress;
+    private final @Nullable String eniPrivateIpAddress;
     /**
      * @return The network segment list of the peer VPC.See the following `Block PeerVpcCidrTableList`.
      * 
      */
-    private List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableList> peerVpcCidrTableLists;
+    private final List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableList> peerVpcCidrTableLists;
     /**
      * @return The region ID of the local VPC.
      * 
      */
-    private String regionNo;
+    private final String regionNo;
     /**
      * @return The ID of the router interface in the local VPC.
      * 
      */
-    private @Nullable String routerInterfaceId;
+    private final @Nullable String routerInterfaceId;
     /**
      * @return The ID of the local VPC instance.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
     /**
      * @return The instance name of the local VPC.
      * 
      */
-    private @Nullable String vpcName;
+    private final @Nullable String vpcName;
 
-    private FirewallVpcFirewallPeerVpc() {}
+    @CustomType.Constructor
+    private FirewallVpcFirewallPeerVpc(
+        @CustomType.Parameter("eniId") @Nullable String eniId,
+        @CustomType.Parameter("eniPrivateIpAddress") @Nullable String eniPrivateIpAddress,
+        @CustomType.Parameter("peerVpcCidrTableLists") List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableList> peerVpcCidrTableLists,
+        @CustomType.Parameter("regionNo") String regionNo,
+        @CustomType.Parameter("routerInterfaceId") @Nullable String routerInterfaceId,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("vpcName") @Nullable String vpcName) {
+        this.eniId = eniId;
+        this.eniPrivateIpAddress = eniPrivateIpAddress;
+        this.peerVpcCidrTableLists = peerVpcCidrTableLists;
+        this.regionNo = regionNo;
+        this.routerInterfaceId = routerInterfaceId;
+        this.vpcId = vpcId;
+        this.vpcName = vpcName;
+    }
+
     /**
      * @return The ID of the instance of the Eni in the local VPC.
      * 
@@ -107,7 +124,7 @@ public final class FirewallVpcFirewallPeerVpc {
     public static Builder builder(FirewallVpcFirewallPeerVpc defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String eniId;
         private @Nullable String eniPrivateIpAddress;
@@ -116,7 +133,11 @@ public final class FirewallVpcFirewallPeerVpc {
         private @Nullable String routerInterfaceId;
         private String vpcId;
         private @Nullable String vpcName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(FirewallVpcFirewallPeerVpc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.eniId = defaults.eniId;
@@ -128,17 +149,14 @@ public final class FirewallVpcFirewallPeerVpc {
     	      this.vpcName = defaults.vpcName;
         }
 
-        @CustomType.Setter
         public Builder eniId(@Nullable String eniId) {
             this.eniId = eniId;
             return this;
         }
-        @CustomType.Setter
         public Builder eniPrivateIpAddress(@Nullable String eniPrivateIpAddress) {
             this.eniPrivateIpAddress = eniPrivateIpAddress;
             return this;
         }
-        @CustomType.Setter
         public Builder peerVpcCidrTableLists(List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableList> peerVpcCidrTableLists) {
             this.peerVpcCidrTableLists = Objects.requireNonNull(peerVpcCidrTableLists);
             return this;
@@ -146,36 +164,23 @@ public final class FirewallVpcFirewallPeerVpc {
         public Builder peerVpcCidrTableLists(FirewallVpcFirewallPeerVpcPeerVpcCidrTableList... peerVpcCidrTableLists) {
             return peerVpcCidrTableLists(List.of(peerVpcCidrTableLists));
         }
-        @CustomType.Setter
         public Builder regionNo(String regionNo) {
             this.regionNo = Objects.requireNonNull(regionNo);
             return this;
         }
-        @CustomType.Setter
         public Builder routerInterfaceId(@Nullable String routerInterfaceId) {
             this.routerInterfaceId = routerInterfaceId;
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcName(@Nullable String vpcName) {
             this.vpcName = vpcName;
             return this;
-        }
-        public FirewallVpcFirewallPeerVpc build() {
-            final var o = new FirewallVpcFirewallPeerVpc();
-            o.eniId = eniId;
-            o.eniPrivateIpAddress = eniPrivateIpAddress;
-            o.peerVpcCidrTableLists = peerVpcCidrTableLists;
-            o.regionNo = regionNo;
-            o.routerInterfaceId = routerInterfaceId;
-            o.vpcId = vpcId;
-            o.vpcName = vpcName;
-            return o;
+        }        public FirewallVpcFirewallPeerVpc build() {
+            return new FirewallVpcFirewallPeerVpc(eniId, eniPrivateIpAddress, peerVpcCidrTableLists, regionNo, routerInterfaceId, vpcId, vpcName);
         }
     }
 }

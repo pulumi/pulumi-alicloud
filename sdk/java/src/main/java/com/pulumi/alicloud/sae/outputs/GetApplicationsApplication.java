@@ -19,258 +19,369 @@ public final class GetApplicationsApplication {
      * @return The ARN of the RAM role required when pulling images across accounts.
      * 
      */
-    private String acrAssumeRoleArn;
+    private final String acrAssumeRoleArn;
     /**
      * @return The ID of the ACR EE instance.
      * 
      */
-    private String acrInstanceId;
+    private final String acrInstanceId;
     /**
      * @return Application description information. No more than 1024 characters.
      * 
      */
-    private String appDescription;
+    private final String appDescription;
     /**
      * @return Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
      * 
      */
-    private String appName;
+    private final String appName;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private String applicationId;
+    private final String applicationId;
     /**
      * @return Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
      * 
      */
-    private String command;
+    private final String command;
     /**
      * @return Mirror startup command parameters. The parameters required for the above start command. For example: 1d.
      * 
      */
-    private String commandArgs;
+    private final String commandArgs;
     /**
      * @return ConfigMap mount description.
      * 
      */
-    private String configMapMountDesc;
+    private final String configMapMountDesc;
     /**
      * @return The CPU required for each instance, in millicores, cannot be 0.
      * 
      */
-    private Integer cpu;
+    private final Integer cpu;
     /**
      * @return Indicates That the Application of the Creation Time.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return Custom host mapping in the container. For example: [{&#34;hostName&#34;:&#34;samplehost&#34;,&#34;ip&#34;:&#34;127.0.0.1&#34;}].
      * 
      */
-    private String customHostAlias;
+    private final String customHostAlias;
     /**
      * @return The operating environment used by the Pandora application.
      * 
      */
-    private String edasContainerVersion;
+    private final String edasContainerVersion;
     /**
      * @return The virtual switch where the elastic network card of the application instance is located. The switch must be located in the aforementioned VPC. The switch also has a binding relationship with the SAE namespace. If it is left blank, the default is the vSwitch ID bound to the namespace.
      * 
      */
-    private String envs;
+    private final String envs;
     /**
      * @return The ID of the Application.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Mirror address. Only Image type applications can configure the mirror address.
      * 
      */
-    private String imageUrl;
+    private final String imageUrl;
     /**
      * @return The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS &#34;$package_path&#34; $JarStartArgs.
      * 
      */
-    private String jarStartArgs;
+    private final String jarStartArgs;
     /**
      * @return The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS &#34;$package_path&#34; $JarStartArgs.
      * 
      */
-    private String jarStartOptions;
+    private final String jarStartOptions;
     /**
      * @return The JDK version that the deployment package depends on. Image type applications are not supported.
      * 
      */
-    private String jdk;
+    private final String jdk;
     /**
      * @return Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
      * 
      */
-    private String liveness;
+    private final String liveness;
     /**
      * @return The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU.
      * 
      */
-    private Integer memory;
+    private final Integer memory;
     /**
      * @return The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
      * 
      */
-    private Integer minReadyInstances;
+    private final Integer minReadyInstances;
     /**
      * @return Mount description information.
      * 
      */
-    private List<GetApplicationsApplicationMountDesc> mountDescs;
+    private final List<GetApplicationsApplicationMountDesc> mountDescs;
     /**
      * @return Mount point of NAS in application VPC.
      * 
      */
-    private String mountHost;
+    private final String mountHost;
     /**
      * @return SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
      * 
      */
-    private String namespaceId;
+    private final String namespaceId;
     /**
      * @return ID of the mounted NAS, Must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field is present, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
      * 
      */
-    private String nasId;
+    private final String nasId;
     /**
      * @return OSS AccessKey ID.
      * 
      */
-    private String ossAkId;
+    private final String ossAkId;
     /**
      * @return OSS  AccessKey Secret.
      * 
      */
-    private String ossAkSecret;
+    private final String ossAkSecret;
     /**
      * @return OSS mount description information.
      * 
      */
-    private String ossMountDescs;
+    private final String ossMountDescs;
     /**
      * @return The OSS mount detail.
      * 
      */
-    private List<GetApplicationsApplicationOssMountDetail> ossMountDetails;
+    private final List<GetApplicationsApplicationOssMountDetail> ossMountDetails;
     /**
      * @return Application package type. Support FatJar, War and Image.
      * 
      */
-    private String packageType;
+    private final String packageType;
     /**
      * @return Deployment package address. Only FatJar or War type applications can configure the deployment package address.
      * 
      */
-    private String packageUrl;
+    private final String packageUrl;
     /**
      * @return The version number of the deployment package. Required when the Package Type is War and FatJar.
      * 
      */
-    private String packageVersion;
+    private final String packageVersion;
     /**
      * @return The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don&#39;t need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
      * 
      */
-    private String phpArmsConfigLocation;
+    private final String phpArmsConfigLocation;
     /**
      * @return PHP configuration file content.
      * 
      */
-    private String phpConfig;
+    private final String phpConfig;
     /**
      * @return PHP application startup configuration mount path, you need to ensure that the PHP server will start using this configuration file.
      * 
      */
-    private String phpConfigLocation;
+    private final String phpConfigLocation;
     /**
      * @return Execute the script after startup, the format is like: {&#34;exec&#34;:{&#34;command&#34;:[&#34;cat&#34;,&#34;/etc/group&#34;]}}.
      * 
      */
-    private String postStart;
+    private final String postStart;
     /**
      * @return Execute the script before stopping, the format is like: {&#34;exec&#34;:{&#34;command&#34;:[&#34;cat&#34;,&#34;/etc/group&#34;]}}.
      * 
      */
-    private String preStop;
+    private final String preStop;
     /**
      * @return Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {&#34;exec&#34;:{&#34;command&#34;:[&#34;sh&#34;,&#34;-c&#34;,&#34;cat /home/admin/start.sh&#34;]},&#34;initialDelaySeconds&#34;:30,&#34;periodSeconds&#34;:30,&#34;timeoutSeconds &#34;:2}.
      * 
      */
-    private String readiness;
-    private String regionId;
+    private final String readiness;
+    private final String regionId;
     /**
      * @return Initial number of instances.
      * 
      */
-    private Integer replicas;
-    private String repoName;
-    private String repoNamespace;
-    private String repoOriginType;
+    private final Integer replicas;
+    private final String repoName;
+    private final String repoNamespace;
+    private final String repoOriginType;
     /**
      * @return Security group ID.
      * 
      */
-    private String securityGroupId;
+    private final String securityGroupId;
     /**
      * @return SLS  configuration.
      * 
      */
-    private String slsConfigs;
+    private final String slsConfigs;
     /**
      * @return The status of the resource.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private Map<String,Object> tags;
+    private final Map<String,Object> tags;
     /**
      * @return Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60.
      * 
      */
-    private Integer terminationGracePeriodSeconds;
+    private final Integer terminationGracePeriodSeconds;
     /**
      * @return Time zone, the default value is Asia/Shanghai.
      * 
      */
-    private String timezone;
+    private final String timezone;
     /**
      * @return Tomcat file configuration, set to &#34;&#34; or &#34;{}&#34; means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL.
      * 
      */
-    private String tomcatConfig;
+    private final String tomcatConfig;
     /**
      * @return The VPC corresponding to the SAE namespace. In SAE, a namespace can only correspond to one VPC and cannot be modified. Creating a SAE application in the namespace for the first time will form a binding relationship. Multiple namespaces can correspond to a VPC. If you leave it blank, it will default to the VPC ID bound to the namespace.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
     /**
      * @return The vswitch id.
      * 
      */
-    private String vswitchId;
+    private final String vswitchId;
     /**
      * @return WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;$@&#34; start.
      * 
      */
-    private String warStartOptions;
+    private final String warStartOptions;
     /**
      * @return The version of tomcat that the deployment package depends on. Image type applications are not supported.
      * 
      */
-    private String webContainer;
+    private final String webContainer;
 
-    private GetApplicationsApplication() {}
+    @CustomType.Constructor
+    private GetApplicationsApplication(
+        @CustomType.Parameter("acrAssumeRoleArn") String acrAssumeRoleArn,
+        @CustomType.Parameter("acrInstanceId") String acrInstanceId,
+        @CustomType.Parameter("appDescription") String appDescription,
+        @CustomType.Parameter("appName") String appName,
+        @CustomType.Parameter("applicationId") String applicationId,
+        @CustomType.Parameter("command") String command,
+        @CustomType.Parameter("commandArgs") String commandArgs,
+        @CustomType.Parameter("configMapMountDesc") String configMapMountDesc,
+        @CustomType.Parameter("cpu") Integer cpu,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("customHostAlias") String customHostAlias,
+        @CustomType.Parameter("edasContainerVersion") String edasContainerVersion,
+        @CustomType.Parameter("envs") String envs,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("imageUrl") String imageUrl,
+        @CustomType.Parameter("jarStartArgs") String jarStartArgs,
+        @CustomType.Parameter("jarStartOptions") String jarStartOptions,
+        @CustomType.Parameter("jdk") String jdk,
+        @CustomType.Parameter("liveness") String liveness,
+        @CustomType.Parameter("memory") Integer memory,
+        @CustomType.Parameter("minReadyInstances") Integer minReadyInstances,
+        @CustomType.Parameter("mountDescs") List<GetApplicationsApplicationMountDesc> mountDescs,
+        @CustomType.Parameter("mountHost") String mountHost,
+        @CustomType.Parameter("namespaceId") String namespaceId,
+        @CustomType.Parameter("nasId") String nasId,
+        @CustomType.Parameter("ossAkId") String ossAkId,
+        @CustomType.Parameter("ossAkSecret") String ossAkSecret,
+        @CustomType.Parameter("ossMountDescs") String ossMountDescs,
+        @CustomType.Parameter("ossMountDetails") List<GetApplicationsApplicationOssMountDetail> ossMountDetails,
+        @CustomType.Parameter("packageType") String packageType,
+        @CustomType.Parameter("packageUrl") String packageUrl,
+        @CustomType.Parameter("packageVersion") String packageVersion,
+        @CustomType.Parameter("phpArmsConfigLocation") String phpArmsConfigLocation,
+        @CustomType.Parameter("phpConfig") String phpConfig,
+        @CustomType.Parameter("phpConfigLocation") String phpConfigLocation,
+        @CustomType.Parameter("postStart") String postStart,
+        @CustomType.Parameter("preStop") String preStop,
+        @CustomType.Parameter("readiness") String readiness,
+        @CustomType.Parameter("regionId") String regionId,
+        @CustomType.Parameter("replicas") Integer replicas,
+        @CustomType.Parameter("repoName") String repoName,
+        @CustomType.Parameter("repoNamespace") String repoNamespace,
+        @CustomType.Parameter("repoOriginType") String repoOriginType,
+        @CustomType.Parameter("securityGroupId") String securityGroupId,
+        @CustomType.Parameter("slsConfigs") String slsConfigs,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("tags") Map<String,Object> tags,
+        @CustomType.Parameter("terminationGracePeriodSeconds") Integer terminationGracePeriodSeconds,
+        @CustomType.Parameter("timezone") String timezone,
+        @CustomType.Parameter("tomcatConfig") String tomcatConfig,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("vswitchId") String vswitchId,
+        @CustomType.Parameter("warStartOptions") String warStartOptions,
+        @CustomType.Parameter("webContainer") String webContainer) {
+        this.acrAssumeRoleArn = acrAssumeRoleArn;
+        this.acrInstanceId = acrInstanceId;
+        this.appDescription = appDescription;
+        this.appName = appName;
+        this.applicationId = applicationId;
+        this.command = command;
+        this.commandArgs = commandArgs;
+        this.configMapMountDesc = configMapMountDesc;
+        this.cpu = cpu;
+        this.createTime = createTime;
+        this.customHostAlias = customHostAlias;
+        this.edasContainerVersion = edasContainerVersion;
+        this.envs = envs;
+        this.id = id;
+        this.imageUrl = imageUrl;
+        this.jarStartArgs = jarStartArgs;
+        this.jarStartOptions = jarStartOptions;
+        this.jdk = jdk;
+        this.liveness = liveness;
+        this.memory = memory;
+        this.minReadyInstances = minReadyInstances;
+        this.mountDescs = mountDescs;
+        this.mountHost = mountHost;
+        this.namespaceId = namespaceId;
+        this.nasId = nasId;
+        this.ossAkId = ossAkId;
+        this.ossAkSecret = ossAkSecret;
+        this.ossMountDescs = ossMountDescs;
+        this.ossMountDetails = ossMountDetails;
+        this.packageType = packageType;
+        this.packageUrl = packageUrl;
+        this.packageVersion = packageVersion;
+        this.phpArmsConfigLocation = phpArmsConfigLocation;
+        this.phpConfig = phpConfig;
+        this.phpConfigLocation = phpConfigLocation;
+        this.postStart = postStart;
+        this.preStop = preStop;
+        this.readiness = readiness;
+        this.regionId = regionId;
+        this.replicas = replicas;
+        this.repoName = repoName;
+        this.repoNamespace = repoNamespace;
+        this.repoOriginType = repoOriginType;
+        this.securityGroupId = securityGroupId;
+        this.slsConfigs = slsConfigs;
+        this.status = status;
+        this.tags = tags;
+        this.terminationGracePeriodSeconds = terminationGracePeriodSeconds;
+        this.timezone = timezone;
+        this.tomcatConfig = tomcatConfig;
+        this.vpcId = vpcId;
+        this.vswitchId = vswitchId;
+        this.warStartOptions = warStartOptions;
+        this.webContainer = webContainer;
+    }
+
     /**
      * @return The ARN of the RAM role required when pulling images across accounts.
      * 
@@ -641,7 +752,7 @@ public final class GetApplicationsApplication {
     public static Builder builder(GetApplicationsApplication defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String acrAssumeRoleArn;
         private String acrInstanceId;
@@ -697,7 +808,11 @@ public final class GetApplicationsApplication {
         private String vswitchId;
         private String warStartOptions;
         private String webContainer;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetApplicationsApplication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acrAssumeRoleArn = defaults.acrAssumeRoleArn;
@@ -756,112 +871,90 @@ public final class GetApplicationsApplication {
     	      this.webContainer = defaults.webContainer;
         }
 
-        @CustomType.Setter
         public Builder acrAssumeRoleArn(String acrAssumeRoleArn) {
             this.acrAssumeRoleArn = Objects.requireNonNull(acrAssumeRoleArn);
             return this;
         }
-        @CustomType.Setter
         public Builder acrInstanceId(String acrInstanceId) {
             this.acrInstanceId = Objects.requireNonNull(acrInstanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder appDescription(String appDescription) {
             this.appDescription = Objects.requireNonNull(appDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder appName(String appName) {
             this.appName = Objects.requireNonNull(appName);
             return this;
         }
-        @CustomType.Setter
         public Builder applicationId(String applicationId) {
             this.applicationId = Objects.requireNonNull(applicationId);
             return this;
         }
-        @CustomType.Setter
         public Builder command(String command) {
             this.command = Objects.requireNonNull(command);
             return this;
         }
-        @CustomType.Setter
         public Builder commandArgs(String commandArgs) {
             this.commandArgs = Objects.requireNonNull(commandArgs);
             return this;
         }
-        @CustomType.Setter
         public Builder configMapMountDesc(String configMapMountDesc) {
             this.configMapMountDesc = Objects.requireNonNull(configMapMountDesc);
             return this;
         }
-        @CustomType.Setter
         public Builder cpu(Integer cpu) {
             this.cpu = Objects.requireNonNull(cpu);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder customHostAlias(String customHostAlias) {
             this.customHostAlias = Objects.requireNonNull(customHostAlias);
             return this;
         }
-        @CustomType.Setter
         public Builder edasContainerVersion(String edasContainerVersion) {
             this.edasContainerVersion = Objects.requireNonNull(edasContainerVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder envs(String envs) {
             this.envs = Objects.requireNonNull(envs);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder imageUrl(String imageUrl) {
             this.imageUrl = Objects.requireNonNull(imageUrl);
             return this;
         }
-        @CustomType.Setter
         public Builder jarStartArgs(String jarStartArgs) {
             this.jarStartArgs = Objects.requireNonNull(jarStartArgs);
             return this;
         }
-        @CustomType.Setter
         public Builder jarStartOptions(String jarStartOptions) {
             this.jarStartOptions = Objects.requireNonNull(jarStartOptions);
             return this;
         }
-        @CustomType.Setter
         public Builder jdk(String jdk) {
             this.jdk = Objects.requireNonNull(jdk);
             return this;
         }
-        @CustomType.Setter
         public Builder liveness(String liveness) {
             this.liveness = Objects.requireNonNull(liveness);
             return this;
         }
-        @CustomType.Setter
         public Builder memory(Integer memory) {
             this.memory = Objects.requireNonNull(memory);
             return this;
         }
-        @CustomType.Setter
         public Builder minReadyInstances(Integer minReadyInstances) {
             this.minReadyInstances = Objects.requireNonNull(minReadyInstances);
             return this;
         }
-        @CustomType.Setter
         public Builder mountDescs(List<GetApplicationsApplicationMountDesc> mountDescs) {
             this.mountDescs = Objects.requireNonNull(mountDescs);
             return this;
@@ -869,37 +962,30 @@ public final class GetApplicationsApplication {
         public Builder mountDescs(GetApplicationsApplicationMountDesc... mountDescs) {
             return mountDescs(List.of(mountDescs));
         }
-        @CustomType.Setter
         public Builder mountHost(String mountHost) {
             this.mountHost = Objects.requireNonNull(mountHost);
             return this;
         }
-        @CustomType.Setter
         public Builder namespaceId(String namespaceId) {
             this.namespaceId = Objects.requireNonNull(namespaceId);
             return this;
         }
-        @CustomType.Setter
         public Builder nasId(String nasId) {
             this.nasId = Objects.requireNonNull(nasId);
             return this;
         }
-        @CustomType.Setter
         public Builder ossAkId(String ossAkId) {
             this.ossAkId = Objects.requireNonNull(ossAkId);
             return this;
         }
-        @CustomType.Setter
         public Builder ossAkSecret(String ossAkSecret) {
             this.ossAkSecret = Objects.requireNonNull(ossAkSecret);
             return this;
         }
-        @CustomType.Setter
         public Builder ossMountDescs(String ossMountDescs) {
             this.ossMountDescs = Objects.requireNonNull(ossMountDescs);
             return this;
         }
-        @CustomType.Setter
         public Builder ossMountDetails(List<GetApplicationsApplicationOssMountDetail> ossMountDetails) {
             this.ossMountDetails = Objects.requireNonNull(ossMountDetails);
             return this;
@@ -907,188 +993,107 @@ public final class GetApplicationsApplication {
         public Builder ossMountDetails(GetApplicationsApplicationOssMountDetail... ossMountDetails) {
             return ossMountDetails(List.of(ossMountDetails));
         }
-        @CustomType.Setter
         public Builder packageType(String packageType) {
             this.packageType = Objects.requireNonNull(packageType);
             return this;
         }
-        @CustomType.Setter
         public Builder packageUrl(String packageUrl) {
             this.packageUrl = Objects.requireNonNull(packageUrl);
             return this;
         }
-        @CustomType.Setter
         public Builder packageVersion(String packageVersion) {
             this.packageVersion = Objects.requireNonNull(packageVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder phpArmsConfigLocation(String phpArmsConfigLocation) {
             this.phpArmsConfigLocation = Objects.requireNonNull(phpArmsConfigLocation);
             return this;
         }
-        @CustomType.Setter
         public Builder phpConfig(String phpConfig) {
             this.phpConfig = Objects.requireNonNull(phpConfig);
             return this;
         }
-        @CustomType.Setter
         public Builder phpConfigLocation(String phpConfigLocation) {
             this.phpConfigLocation = Objects.requireNonNull(phpConfigLocation);
             return this;
         }
-        @CustomType.Setter
         public Builder postStart(String postStart) {
             this.postStart = Objects.requireNonNull(postStart);
             return this;
         }
-        @CustomType.Setter
         public Builder preStop(String preStop) {
             this.preStop = Objects.requireNonNull(preStop);
             return this;
         }
-        @CustomType.Setter
         public Builder readiness(String readiness) {
             this.readiness = Objects.requireNonNull(readiness);
             return this;
         }
-        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
-        @CustomType.Setter
         public Builder replicas(Integer replicas) {
             this.replicas = Objects.requireNonNull(replicas);
             return this;
         }
-        @CustomType.Setter
         public Builder repoName(String repoName) {
             this.repoName = Objects.requireNonNull(repoName);
             return this;
         }
-        @CustomType.Setter
         public Builder repoNamespace(String repoNamespace) {
             this.repoNamespace = Objects.requireNonNull(repoNamespace);
             return this;
         }
-        @CustomType.Setter
         public Builder repoOriginType(String repoOriginType) {
             this.repoOriginType = Objects.requireNonNull(repoOriginType);
             return this;
         }
-        @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
             this.securityGroupId = Objects.requireNonNull(securityGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder slsConfigs(String slsConfigs) {
             this.slsConfigs = Objects.requireNonNull(slsConfigs);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
-        @CustomType.Setter
         public Builder terminationGracePeriodSeconds(Integer terminationGracePeriodSeconds) {
             this.terminationGracePeriodSeconds = Objects.requireNonNull(terminationGracePeriodSeconds);
             return this;
         }
-        @CustomType.Setter
         public Builder timezone(String timezone) {
             this.timezone = Objects.requireNonNull(timezone);
             return this;
         }
-        @CustomType.Setter
         public Builder tomcatConfig(String tomcatConfig) {
             this.tomcatConfig = Objects.requireNonNull(tomcatConfig);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
-        @CustomType.Setter
         public Builder warStartOptions(String warStartOptions) {
             this.warStartOptions = Objects.requireNonNull(warStartOptions);
             return this;
         }
-        @CustomType.Setter
         public Builder webContainer(String webContainer) {
             this.webContainer = Objects.requireNonNull(webContainer);
             return this;
-        }
-        public GetApplicationsApplication build() {
-            final var o = new GetApplicationsApplication();
-            o.acrAssumeRoleArn = acrAssumeRoleArn;
-            o.acrInstanceId = acrInstanceId;
-            o.appDescription = appDescription;
-            o.appName = appName;
-            o.applicationId = applicationId;
-            o.command = command;
-            o.commandArgs = commandArgs;
-            o.configMapMountDesc = configMapMountDesc;
-            o.cpu = cpu;
-            o.createTime = createTime;
-            o.customHostAlias = customHostAlias;
-            o.edasContainerVersion = edasContainerVersion;
-            o.envs = envs;
-            o.id = id;
-            o.imageUrl = imageUrl;
-            o.jarStartArgs = jarStartArgs;
-            o.jarStartOptions = jarStartOptions;
-            o.jdk = jdk;
-            o.liveness = liveness;
-            o.memory = memory;
-            o.minReadyInstances = minReadyInstances;
-            o.mountDescs = mountDescs;
-            o.mountHost = mountHost;
-            o.namespaceId = namespaceId;
-            o.nasId = nasId;
-            o.ossAkId = ossAkId;
-            o.ossAkSecret = ossAkSecret;
-            o.ossMountDescs = ossMountDescs;
-            o.ossMountDetails = ossMountDetails;
-            o.packageType = packageType;
-            o.packageUrl = packageUrl;
-            o.packageVersion = packageVersion;
-            o.phpArmsConfigLocation = phpArmsConfigLocation;
-            o.phpConfig = phpConfig;
-            o.phpConfigLocation = phpConfigLocation;
-            o.postStart = postStart;
-            o.preStop = preStop;
-            o.readiness = readiness;
-            o.regionId = regionId;
-            o.replicas = replicas;
-            o.repoName = repoName;
-            o.repoNamespace = repoNamespace;
-            o.repoOriginType = repoOriginType;
-            o.securityGroupId = securityGroupId;
-            o.slsConfigs = slsConfigs;
-            o.status = status;
-            o.tags = tags;
-            o.terminationGracePeriodSeconds = terminationGracePeriodSeconds;
-            o.timezone = timezone;
-            o.tomcatConfig = tomcatConfig;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.warStartOptions = warStartOptions;
-            o.webContainer = webContainer;
-            return o;
+        }        public GetApplicationsApplication build() {
+            return new GetApplicationsApplication(acrAssumeRoleArn, acrInstanceId, appDescription, appName, applicationId, command, commandArgs, configMapMountDesc, cpu, createTime, customHostAlias, edasContainerVersion, envs, id, imageUrl, jarStartArgs, jarStartOptions, jdk, liveness, memory, minReadyInstances, mountDescs, mountHost, namespaceId, nasId, ossAkId, ossAkSecret, ossMountDescs, ossMountDetails, packageType, packageUrl, packageVersion, phpArmsConfigLocation, phpConfig, phpConfigLocation, postStart, preStop, readiness, regionId, replicas, repoName, repoNamespace, repoOriginType, securityGroupId, slsConfigs, status, tags, terminationGracePeriodSeconds, timezone, tomcatConfig, vpcId, vswitchId, warStartOptions, webContainer);
         }
     }
 }

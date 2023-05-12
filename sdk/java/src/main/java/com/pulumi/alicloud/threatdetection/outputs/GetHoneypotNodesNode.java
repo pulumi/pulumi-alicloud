@@ -16,36 +16,55 @@ public final class GetHoneypotNodesNode {
      * @return Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
      * 
      */
-    private Boolean allowHoneypotAccessInternet;
+    private final Boolean allowHoneypotAccessInternet;
     /**
      * @return Number of probes available.
      * 
      */
-    private Integer availableProbeNum;
-    private String createTime;
+    private final Integer availableProbeNum;
+    private final String createTime;
     /**
      * @return The ID of the Honeypot management node.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Honeypot management node id.
      * 
      */
-    private String nodeId;
+    private final String nodeId;
     /**
      * @return The name of the management node.
      * 
      */
-    private String nodeName;
+    private final String nodeName;
     /**
      * @return Release the collection of network segments.
      * 
      */
-    private List<String> securityGroupProbeIpLists;
-    private Integer status;
+    private final List<String> securityGroupProbeIpLists;
+    private final Integer status;
 
-    private GetHoneypotNodesNode() {}
+    @CustomType.Constructor
+    private GetHoneypotNodesNode(
+        @CustomType.Parameter("allowHoneypotAccessInternet") Boolean allowHoneypotAccessInternet,
+        @CustomType.Parameter("availableProbeNum") Integer availableProbeNum,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("nodeId") String nodeId,
+        @CustomType.Parameter("nodeName") String nodeName,
+        @CustomType.Parameter("securityGroupProbeIpLists") List<String> securityGroupProbeIpLists,
+        @CustomType.Parameter("status") Integer status) {
+        this.allowHoneypotAccessInternet = allowHoneypotAccessInternet;
+        this.availableProbeNum = availableProbeNum;
+        this.createTime = createTime;
+        this.id = id;
+        this.nodeId = nodeId;
+        this.nodeName = nodeName;
+        this.securityGroupProbeIpLists = securityGroupProbeIpLists;
+        this.status = status;
+    }
+
     /**
      * @return Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
      * 
@@ -102,7 +121,7 @@ public final class GetHoneypotNodesNode {
     public static Builder builder(GetHoneypotNodesNode defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean allowHoneypotAccessInternet;
         private Integer availableProbeNum;
@@ -112,7 +131,11 @@ public final class GetHoneypotNodesNode {
         private String nodeName;
         private List<String> securityGroupProbeIpLists;
         private Integer status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetHoneypotNodesNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowHoneypotAccessInternet = defaults.allowHoneypotAccessInternet;
@@ -125,37 +148,30 @@ public final class GetHoneypotNodesNode {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder allowHoneypotAccessInternet(Boolean allowHoneypotAccessInternet) {
             this.allowHoneypotAccessInternet = Objects.requireNonNull(allowHoneypotAccessInternet);
             return this;
         }
-        @CustomType.Setter
         public Builder availableProbeNum(Integer availableProbeNum) {
             this.availableProbeNum = Objects.requireNonNull(availableProbeNum);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder nodeId(String nodeId) {
             this.nodeId = Objects.requireNonNull(nodeId);
             return this;
         }
-        @CustomType.Setter
         public Builder nodeName(String nodeName) {
             this.nodeName = Objects.requireNonNull(nodeName);
             return this;
         }
-        @CustomType.Setter
         public Builder securityGroupProbeIpLists(List<String> securityGroupProbeIpLists) {
             this.securityGroupProbeIpLists = Objects.requireNonNull(securityGroupProbeIpLists);
             return this;
@@ -163,22 +179,11 @@ public final class GetHoneypotNodesNode {
         public Builder securityGroupProbeIpLists(String... securityGroupProbeIpLists) {
             return securityGroupProbeIpLists(List.of(securityGroupProbeIpLists));
         }
-        @CustomType.Setter
         public Builder status(Integer status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetHoneypotNodesNode build() {
-            final var o = new GetHoneypotNodesNode();
-            o.allowHoneypotAccessInternet = allowHoneypotAccessInternet;
-            o.availableProbeNum = availableProbeNum;
-            o.createTime = createTime;
-            o.id = id;
-            o.nodeId = nodeId;
-            o.nodeName = nodeName;
-            o.securityGroupProbeIpLists = securityGroupProbeIpLists;
-            o.status = status;
-            return o;
+        }        public GetHoneypotNodesNode build() {
+            return new GetHoneypotNodesNode(allowHoneypotAccessInternet, availableProbeNum, createTime, id, nodeId, nodeName, securityGroupProbeIpLists, status);
         }
     }
 }

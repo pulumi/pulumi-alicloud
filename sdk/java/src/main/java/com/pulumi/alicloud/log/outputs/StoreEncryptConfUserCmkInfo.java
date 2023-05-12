@@ -13,19 +13,28 @@ public final class StoreEncryptConfUserCmkInfo {
      * @return role arn.
      * 
      */
-    private String arn;
+    private final String arn;
     /**
      * @return User master key id.
      * 
      */
-    private String cmkKeyId;
+    private final String cmkKeyId;
     /**
      * @return Region id where the  user master key id is located.
      * 
      */
-    private String regionId;
+    private final String regionId;
 
-    private StoreEncryptConfUserCmkInfo() {}
+    @CustomType.Constructor
+    private StoreEncryptConfUserCmkInfo(
+        @CustomType.Parameter("arn") String arn,
+        @CustomType.Parameter("cmkKeyId") String cmkKeyId,
+        @CustomType.Parameter("regionId") String regionId) {
+        this.arn = arn;
+        this.cmkKeyId = cmkKeyId;
+        this.regionId = regionId;
+    }
+
     /**
      * @return role arn.
      * 
@@ -55,12 +64,16 @@ public final class StoreEncryptConfUserCmkInfo {
     public static Builder builder(StoreEncryptConfUserCmkInfo defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String arn;
         private String cmkKeyId;
         private String regionId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(StoreEncryptConfUserCmkInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arn = defaults.arn;
@@ -68,27 +81,19 @@ public final class StoreEncryptConfUserCmkInfo {
     	      this.regionId = defaults.regionId;
         }
 
-        @CustomType.Setter
         public Builder arn(String arn) {
             this.arn = Objects.requireNonNull(arn);
             return this;
         }
-        @CustomType.Setter
         public Builder cmkKeyId(String cmkKeyId) {
             this.cmkKeyId = Objects.requireNonNull(cmkKeyId);
             return this;
         }
-        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
-        }
-        public StoreEncryptConfUserCmkInfo build() {
-            final var o = new StoreEncryptConfUserCmkInfo();
-            o.arn = arn;
-            o.cmkKeyId = cmkKeyId;
-            o.regionId = regionId;
-            return o;
+        }        public StoreEncryptConfUserCmkInfo build() {
+            return new StoreEncryptConfUserCmkInfo(arn, cmkKeyId, regionId);
         }
     }
 }

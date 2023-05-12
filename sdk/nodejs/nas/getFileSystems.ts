@@ -49,6 +49,9 @@ export interface GetFileSystemsArgs {
      * A list of FileSystemId.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The protocol type of the file system.
@@ -129,6 +132,9 @@ export interface GetFileSystemsOutputArgs {
      * A list of FileSystemId.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The protocol type of the file system.

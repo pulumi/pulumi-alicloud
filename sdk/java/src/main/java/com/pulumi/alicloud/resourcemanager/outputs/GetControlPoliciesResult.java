@@ -14,21 +14,42 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetControlPoliciesResult {
-    private @Nullable Boolean enableDetails;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String language;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private List<GetControlPoliciesPolicy> policies;
-    private @Nullable String policyType;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String language;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final List<GetControlPoliciesPolicy> policies;
+    private final @Nullable String policyType;
 
-    private GetControlPoliciesResult() {}
+    @CustomType.Constructor
+    private GetControlPoliciesResult(
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("language") @Nullable String language,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("policies") List<GetControlPoliciesPolicy> policies,
+        @CustomType.Parameter("policyType") @Nullable String policyType) {
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.language = language;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.policies = policies;
+        this.policyType = policyType;
+    }
+
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -68,7 +89,7 @@ public final class GetControlPoliciesResult {
     public static Builder builder(GetControlPoliciesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private String id;
@@ -79,7 +100,11 @@ public final class GetControlPoliciesResult {
         private @Nullable String outputFile;
         private List<GetControlPoliciesPolicy> policies;
         private @Nullable String policyType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetControlPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -93,17 +118,14 @@ public final class GetControlPoliciesResult {
     	      this.policyType = defaults.policyType;
         }
 
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -111,17 +133,14 @@ public final class GetControlPoliciesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder language(@Nullable String language) {
             this.language = language;
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -129,12 +148,10 @@ public final class GetControlPoliciesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder policies(List<GetControlPoliciesPolicy> policies) {
             this.policies = Objects.requireNonNull(policies);
             return this;
@@ -142,23 +159,11 @@ public final class GetControlPoliciesResult {
         public Builder policies(GetControlPoliciesPolicy... policies) {
             return policies(List.of(policies));
         }
-        @CustomType.Setter
         public Builder policyType(@Nullable String policyType) {
             this.policyType = policyType;
             return this;
-        }
-        public GetControlPoliciesResult build() {
-            final var o = new GetControlPoliciesResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.language = language;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.policies = policies;
-            o.policyType = policyType;
-            return o;
+        }        public GetControlPoliciesResult build() {
+            return new GetControlPoliciesResult(enableDetails, id, ids, language, nameRegex, names, outputFile, policies, policyType);
         }
     }
 }

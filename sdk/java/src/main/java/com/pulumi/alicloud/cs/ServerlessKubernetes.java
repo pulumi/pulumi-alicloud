@@ -21,6 +21,26 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * This resource will help you to manager a Serverless Kubernetes Cluster. The cluster is same as container service created by web console.
+ * 
+ * &gt; **NOTE:** Available in 1.58.0+
+ * 
+ * &gt; **NOTE:** Serverless Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
+ * A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
+ * VPC, you can set `new_nat_gateway` to &#34;true&#34; to create one automatically.
+ * 
+ * &gt; **NOTE:** Creating serverless kubernetes cluster need to install several packages and it will cost about 5 minutes. Please be patient.
+ * 
+ * &gt; **NOTE:** The provider supports to download kube config, client certificate, client key and cluster ca certificate
+ * after creating cluster successfully, and you can put them into the specified location, like &#39;~/.kube/config&#39;.
+ * 
+ * &gt; **NOTE:** If you want to manage serverless Kubernetes, you can use Kubernetes Provider.
+ * 
+ * &gt; **NOTE:** You need to activate several other products and confirm Authorization Policy used by Container Service before using this resource.
+ * Please refer to the `Authorization management` and `Cluster management` sections in the [Document Center](https://www.alibabacloud.com/help/doc-detail/86488.htm).
+ * 
+ * &gt; **NOTE:** From version 1.162.0, support for creating professional serverless cluster.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -104,7 +124,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Serverless Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
+ * Serverless Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
  * 
  * ```sh
  *  $ pulumi import alicloud:cs/serverlessKubernetes:ServerlessKubernetes main ce4273f9156874b46bb

@@ -66,6 +66,9 @@ export interface GetStudioApplicationsArgs {
      * The order type of the Application. Valid values:
      */
     orderType?: number;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the resource group.
@@ -156,6 +159,9 @@ export interface GetStudioApplicationsOutputArgs {
      * The order type of the Application. Valid values:
      */
     orderType?: pulumi.Input<number>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the resource group.

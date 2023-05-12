@@ -78,6 +78,8 @@ type InstanceAttachment struct {
 	pulumi.CustomResourceState
 
 	// The account ID to which the CEN instance belongs.
+	//
+	// ->**NOTE:** Ensure that the child instance is not used in Express Connect.
 	CenOwnerId pulumi.IntPtrOutput `pulumi:"cenOwnerId"`
 	// The ID of the child instance to attach.
 	ChildInstanceId pulumi.StringOutput `pulumi:"childInstanceId"`
@@ -135,6 +137,8 @@ func GetInstanceAttachment(ctx *pulumi.Context,
 // Input properties used for looking up and filtering InstanceAttachment resources.
 type instanceAttachmentState struct {
 	// The account ID to which the CEN instance belongs.
+	//
+	// ->**NOTE:** Ensure that the child instance is not used in Express Connect.
 	CenOwnerId *int `pulumi:"cenOwnerId"`
 	// The ID of the child instance to attach.
 	ChildInstanceId *string `pulumi:"childInstanceId"`
@@ -152,6 +156,8 @@ type instanceAttachmentState struct {
 
 type InstanceAttachmentState struct {
 	// The account ID to which the CEN instance belongs.
+	//
+	// ->**NOTE:** Ensure that the child instance is not used in Express Connect.
 	CenOwnerId pulumi.IntPtrInput
 	// The ID of the child instance to attach.
 	ChildInstanceId pulumi.StringPtrInput
@@ -173,6 +179,8 @@ func (InstanceAttachmentState) ElementType() reflect.Type {
 
 type instanceAttachmentArgs struct {
 	// The account ID to which the CEN instance belongs.
+	//
+	// ->**NOTE:** Ensure that the child instance is not used in Express Connect.
 	CenOwnerId *int `pulumi:"cenOwnerId"`
 	// The ID of the child instance to attach.
 	ChildInstanceId string `pulumi:"childInstanceId"`
@@ -189,6 +197,8 @@ type instanceAttachmentArgs struct {
 // The set of arguments for constructing a InstanceAttachment resource.
 type InstanceAttachmentArgs struct {
 	// The account ID to which the CEN instance belongs.
+	//
+	// ->**NOTE:** Ensure that the child instance is not used in Express Connect.
 	CenOwnerId pulumi.IntPtrInput
 	// The ID of the child instance to attach.
 	ChildInstanceId pulumi.StringInput
@@ -290,6 +300,8 @@ func (o InstanceAttachmentOutput) ToInstanceAttachmentOutputWithContext(ctx cont
 }
 
 // The account ID to which the CEN instance belongs.
+//
+// ->**NOTE:** Ensure that the child instance is not used in Express Connect.
 func (o InstanceAttachmentOutput) CenOwnerId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceAttachment) pulumi.IntPtrOutput { return v.CenOwnerId }).(pulumi.IntPtrOutput)
 }

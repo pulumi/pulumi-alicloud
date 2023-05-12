@@ -308,6 +308,9 @@ def get_images(action_type: Optional[str] = None,
     :param bool most_recent: If more than one result are returned, select the most recent one.
     :param str name_regex: A regex string to filter resulting images by name.
     :param str os_type: The operating system type of the image. Valid values: `windows` and `linux`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
+           
+           > **NOTE:** At least one of the `name_regex`, `most_recent` and `owners` must be set.
     :param str owners: Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
     :param str resource_group_id: The ID of the resource group to which the custom image belongs.
     :param str snapshot_id: The ID of the snapshot used to create the custom image.
@@ -416,6 +419,9 @@ def get_images_output(action_type: Optional[pulumi.Input[Optional[str]]] = None,
     :param bool most_recent: If more than one result are returned, select the most recent one.
     :param str name_regex: A regex string to filter resulting images by name.
     :param str os_type: The operating system type of the image. Valid values: `windows` and `linux`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
+           
+           > **NOTE:** At least one of the `name_regex`, `most_recent` and `owners` must be set.
     :param str owners: Filter results by a specific image owner. Valid items are `system`, `self`, `others`, `marketplace`.
     :param str resource_group_id: The ID of the resource group to which the custom image belongs.
     :param str snapshot_id: The ID of the snapshot used to create the custom image.

@@ -14,29 +14,42 @@ public final class GetTunnelsTunnelChannel {
      * @return The id of the channel.
      * 
      */
-    private String channelId;
+    private final String channelId;
     /**
      * @return The latest consumption time of the channel, unix time in nanosecond
      * 
      */
-    private Integer channelRpo;
+    private final Integer channelRpo;
     /**
      * @return The status of the channel, valid values: `WAIT`, `OPEN`, `CLOSING`, `CLOSE`, `TERMINATED`.
      * 
      */
-    private String channelStatus;
+    private final String channelStatus;
     /**
      * @return The type of the channel, valid values: `BaseData`, `Stream`.
      * 
      */
-    private String channelType;
+    private final String channelType;
     /**
      * @return The client id of the channel.
      * 
      */
-    private String clientId;
+    private final String clientId;
 
-    private GetTunnelsTunnelChannel() {}
+    @CustomType.Constructor
+    private GetTunnelsTunnelChannel(
+        @CustomType.Parameter("channelId") String channelId,
+        @CustomType.Parameter("channelRpo") Integer channelRpo,
+        @CustomType.Parameter("channelStatus") String channelStatus,
+        @CustomType.Parameter("channelType") String channelType,
+        @CustomType.Parameter("clientId") String clientId) {
+        this.channelId = channelId;
+        this.channelRpo = channelRpo;
+        this.channelStatus = channelStatus;
+        this.channelType = channelType;
+        this.clientId = clientId;
+    }
+
     /**
      * @return The id of the channel.
      * 
@@ -80,14 +93,18 @@ public final class GetTunnelsTunnelChannel {
     public static Builder builder(GetTunnelsTunnelChannel defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String channelId;
         private Integer channelRpo;
         private String channelStatus;
         private String channelType;
         private String clientId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTunnelsTunnelChannel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.channelId = defaults.channelId;
@@ -97,39 +114,27 @@ public final class GetTunnelsTunnelChannel {
     	      this.clientId = defaults.clientId;
         }
 
-        @CustomType.Setter
         public Builder channelId(String channelId) {
             this.channelId = Objects.requireNonNull(channelId);
             return this;
         }
-        @CustomType.Setter
         public Builder channelRpo(Integer channelRpo) {
             this.channelRpo = Objects.requireNonNull(channelRpo);
             return this;
         }
-        @CustomType.Setter
         public Builder channelStatus(String channelStatus) {
             this.channelStatus = Objects.requireNonNull(channelStatus);
             return this;
         }
-        @CustomType.Setter
         public Builder channelType(String channelType) {
             this.channelType = Objects.requireNonNull(channelType);
             return this;
         }
-        @CustomType.Setter
         public Builder clientId(String clientId) {
             this.clientId = Objects.requireNonNull(clientId);
             return this;
-        }
-        public GetTunnelsTunnelChannel build() {
-            final var o = new GetTunnelsTunnelChannel();
-            o.channelId = channelId;
-            o.channelRpo = channelRpo;
-            o.channelStatus = channelStatus;
-            o.channelType = channelType;
-            o.clientId = clientId;
-            return o;
+        }        public GetTunnelsTunnelChannel build() {
+            return new GetTunnelsTunnelChannel(channelId, channelRpo, channelStatus, channelType, clientId);
         }
     }
 }

@@ -18,36 +18,55 @@ public final class GetVbrHealthChecksResult {
      * @return The ID of the Cloud Enterprise Network (CEN) instance.
      * 
      */
-    private @Nullable String cenId;
+    private final @Nullable String cenId;
     /**
      * @return A list of CEN VBR Heath Checks. Each element contains the following attributes:
      * 
      */
-    private List<GetVbrHealthChecksCheck> checks;
+    private final List<GetVbrHealthChecksCheck> checks;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of the CEN VBR Heath Check IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String outputFile;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
     /**
      * @return The ID of the VBR instance.
      * 
      */
-    private @Nullable String vbrInstanceId;
-    private @Nullable Integer vbrInstanceOwnerId;
+    private final @Nullable String vbrInstanceId;
+    private final @Nullable Integer vbrInstanceOwnerId;
     /**
      * @return The ID of the region where the VBR instance is deployed.
      * 
      */
-    private String vbrInstanceRegionId;
+    private final String vbrInstanceRegionId;
 
-    private GetVbrHealthChecksResult() {}
+    @CustomType.Constructor
+    private GetVbrHealthChecksResult(
+        @CustomType.Parameter("cenId") @Nullable String cenId,
+        @CustomType.Parameter("checks") List<GetVbrHealthChecksCheck> checks,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("vbrInstanceId") @Nullable String vbrInstanceId,
+        @CustomType.Parameter("vbrInstanceOwnerId") @Nullable Integer vbrInstanceOwnerId,
+        @CustomType.Parameter("vbrInstanceRegionId") String vbrInstanceRegionId) {
+        this.cenId = cenId;
+        this.checks = checks;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.vbrInstanceId = vbrInstanceId;
+        this.vbrInstanceOwnerId = vbrInstanceOwnerId;
+        this.vbrInstanceRegionId = vbrInstanceRegionId;
+    }
+
     /**
      * @return The ID of the Cloud Enterprise Network (CEN) instance.
      * 
@@ -104,7 +123,7 @@ public final class GetVbrHealthChecksResult {
     public static Builder builder(GetVbrHealthChecksResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String cenId;
         private List<GetVbrHealthChecksCheck> checks;
@@ -114,7 +133,11 @@ public final class GetVbrHealthChecksResult {
         private @Nullable String vbrInstanceId;
         private @Nullable Integer vbrInstanceOwnerId;
         private String vbrInstanceRegionId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVbrHealthChecksResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cenId = defaults.cenId;
@@ -127,12 +150,10 @@ public final class GetVbrHealthChecksResult {
     	      this.vbrInstanceRegionId = defaults.vbrInstanceRegionId;
         }
 
-        @CustomType.Setter
         public Builder cenId(@Nullable String cenId) {
             this.cenId = cenId;
             return this;
         }
-        @CustomType.Setter
         public Builder checks(List<GetVbrHealthChecksCheck> checks) {
             this.checks = Objects.requireNonNull(checks);
             return this;
@@ -140,12 +161,10 @@ public final class GetVbrHealthChecksResult {
         public Builder checks(GetVbrHealthChecksCheck... checks) {
             return checks(List.of(checks));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -153,37 +172,23 @@ public final class GetVbrHealthChecksResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder vbrInstanceId(@Nullable String vbrInstanceId) {
             this.vbrInstanceId = vbrInstanceId;
             return this;
         }
-        @CustomType.Setter
         public Builder vbrInstanceOwnerId(@Nullable Integer vbrInstanceOwnerId) {
             this.vbrInstanceOwnerId = vbrInstanceOwnerId;
             return this;
         }
-        @CustomType.Setter
         public Builder vbrInstanceRegionId(String vbrInstanceRegionId) {
             this.vbrInstanceRegionId = Objects.requireNonNull(vbrInstanceRegionId);
             return this;
-        }
-        public GetVbrHealthChecksResult build() {
-            final var o = new GetVbrHealthChecksResult();
-            o.cenId = cenId;
-            o.checks = checks;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.vbrInstanceId = vbrInstanceId;
-            o.vbrInstanceOwnerId = vbrInstanceOwnerId;
-            o.vbrInstanceRegionId = vbrInstanceRegionId;
-            return o;
+        }        public GetVbrHealthChecksResult build() {
+            return new GetVbrHealthChecksResult(cenId, checks, id, ids, outputFile, vbrInstanceId, vbrInstanceOwnerId, vbrInstanceRegionId);
         }
     }
 }

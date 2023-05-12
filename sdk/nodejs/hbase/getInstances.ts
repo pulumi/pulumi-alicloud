@@ -53,6 +53,9 @@ export interface GetInstancesArgs {
      * A regex string to apply to the instance name.
      */
     nameRegex?: string;
+    /**
+     * The name of file that can save the collection of instances after running `pulumi preview`.
+     */
     outputFile?: string;
     /**
      * A mapping of tags to assign to the resource.
@@ -126,6 +129,9 @@ export interface GetInstancesOutputArgs {
      * A regex string to apply to the instance name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * The name of file that can save the collection of instances after running `pulumi preview`.
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.

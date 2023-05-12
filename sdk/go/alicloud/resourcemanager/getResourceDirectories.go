@@ -49,6 +49,7 @@ func GetResourceDirectories(ctx *pulumi.Context, args *GetResourceDirectoriesArg
 
 // A collection of arguments for invoking getResourceDirectories.
 type GetResourceDirectoriesArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -76,6 +77,7 @@ func GetResourceDirectoriesOutput(ctx *pulumi.Context, args GetResourceDirectori
 
 // A collection of arguments for invoking getResourceDirectories.
 type GetResourceDirectoriesOutputArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

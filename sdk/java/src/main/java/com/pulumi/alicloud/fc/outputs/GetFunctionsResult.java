@@ -17,27 +17,44 @@ public final class GetFunctionsResult {
      * @return A list of functions. Each element contains the following attributes:
      * 
      */
-    private List<GetFunctionsFunction> functions;
+    private final List<GetFunctionsFunction> functions;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of functions ids.
      * 
      */
-    private List<String> ids;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of functions names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
-    private String serviceName;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final String serviceName;
 
-    private GetFunctionsResult() {}
+    @CustomType.Constructor
+    private GetFunctionsResult(
+        @CustomType.Parameter("functions") List<GetFunctionsFunction> functions,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("serviceName") String serviceName) {
+        this.functions = functions;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.serviceName = serviceName;
+    }
+
     /**
      * @return A list of functions. Each element contains the following attributes:
      * 
@@ -83,7 +100,7 @@ public final class GetFunctionsResult {
     public static Builder builder(GetFunctionsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetFunctionsFunction> functions;
         private String id;
@@ -92,7 +109,11 @@ public final class GetFunctionsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private String serviceName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetFunctionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.functions = defaults.functions;
@@ -104,7 +125,6 @@ public final class GetFunctionsResult {
     	      this.serviceName = defaults.serviceName;
         }
 
-        @CustomType.Setter
         public Builder functions(List<GetFunctionsFunction> functions) {
             this.functions = Objects.requireNonNull(functions);
             return this;
@@ -112,12 +132,10 @@ public final class GetFunctionsResult {
         public Builder functions(GetFunctionsFunction... functions) {
             return functions(List.of(functions));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -125,12 +143,10 @@ public final class GetFunctionsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -138,26 +154,15 @@ public final class GetFunctionsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
-        }
-        public GetFunctionsResult build() {
-            final var o = new GetFunctionsResult();
-            o.functions = functions;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.serviceName = serviceName;
-            return o;
+        }        public GetFunctionsResult build() {
+            return new GetFunctionsResult(functions, id, ids, nameRegex, names, outputFile, serviceName);
         }
     }
 }

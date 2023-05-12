@@ -120,6 +120,8 @@ namespace Pulumi.AliCloud.Rds
         /// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         /// - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         /// - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+        /// 
+        /// Default to "ReadOnly".
         /// </summary>
         [Output("privilege")]
         public Output<string?> Privilege { get; private set; } = null!;
@@ -201,6 +203,8 @@ namespace Pulumi.AliCloud.Rds
         /// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         /// - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         /// - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+        /// 
+        /// Default to "ReadOnly".
         /// </summary>
         [Input("privilege")]
         public Input<string>? Privilege { get; set; }
@@ -244,6 +248,8 @@ namespace Pulumi.AliCloud.Rds
         /// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         /// - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         /// - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+        /// 
+        /// Default to "ReadOnly".
         /// </summary>
         [Input("privilege")]
         public Input<string>? Privilege { get; set; }

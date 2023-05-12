@@ -18,135 +18,192 @@ public final class GetRulesRule {
      * @return The ID of the Alicloud account.
      * 
      */
-    private String accountId;
-    private String compliancePackId;
+    private final String accountId;
+    private final String compliancePackId;
     /**
      * @return The information about the compliance evaluations based on the rule.
      * 
      */
-    private List<GetRulesRuleCompliance> compliances;
+    private final List<GetRulesRuleCompliance> compliances;
     /**
      * @return The ARN of the Config Rule.
      * 
      */
-    private String configRuleArn;
+    private final String configRuleArn;
     /**
      * @return The ID of the Config Rule.
      * 
      */
-    private String configRuleId;
+    private final String configRuleId;
     /**
      * @return Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
      * 
      */
-    private String configRuleState;
+    private final String configRuleState;
     /**
      * @return (Available in 1.124.1+) A list of trigger types of config rule.
      * 
      */
-    private String configRuleTriggerTypes;
+    private final String configRuleTriggerTypes;
     /**
      * @return The description of the Config Rule.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return Event source of the Config Rule.
      * 
      */
-    private String eventSource;
+    private final String eventSource;
     /**
      * @return (Available in 1.124.1+) The scope of exclude of resource ids.
      * 
      */
-    private String excludeResourceIdsScope;
+    private final String excludeResourceIdsScope;
     /**
      * @return The ID of the Config Rule.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The input parameters of the Config Rule.
      * 
      */
-    private Map<String,Object> inputParameters;
+    private final Map<String,Object> inputParameters;
     /**
      * @return (Available in 1.124.1+) The frequency of maximum execution.
      * 
      */
-    private String maximumExecutionFrequency;
+    private final String maximumExecutionFrequency;
     /**
      * @return the timestamp of the Config Rule modified.
      * 
      */
-    private String modifiedTimestamp;
+    private final String modifiedTimestamp;
     /**
      * @return (Available in 1.124.1+) The scope of region ids.
      * 
      */
-    private String regionIdsScope;
+    private final String regionIdsScope;
     /**
      * @return (Available in 1.124.1+) The scope of resource group ids.
      * 
      */
-    private String resourceGroupIdsScope;
+    private final String resourceGroupIdsScope;
     /**
      * @return (Available in 1.124.1+) The scope of resource types.
      * 
      */
-    private List<String> resourceTypesScopes;
+    private final List<String> resourceTypesScopes;
     /**
      * @return The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
      * 
      */
-    private Integer riskLevel;
+    private final Integer riskLevel;
     /**
      * @return The name of config rule.
      * 
      */
-    private String ruleName;
+    private final String ruleName;
     /**
      * @return The types of the resources to be evaluated against the rule.
      * 
      */
-    private List<String> scopeComplianceResourceTypes;
+    private final List<String> scopeComplianceResourceTypes;
     /**
      * @return Rule trigger mechanism.
      * 
      */
-    private String sourceDetailMessageType;
+    private final String sourceDetailMessageType;
     /**
      * @return The identifier of the managed rule or the arn of the custom function.
      * 
      */
-    private String sourceIdentifier;
+    private final String sourceIdentifier;
     /**
      * @return Rule execution cycle.
      * 
      */
-    private String sourceMaximumExecutionFrequency;
+    private final String sourceMaximumExecutionFrequency;
     /**
      * @return The source owner of the Config Rule.
      * 
      */
-    private String sourceOwner;
+    private final String sourceOwner;
     /**
      * @return The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return (Available in 1.124.1+) The scope of tag key.
      * 
      */
-    private String tagKeyScope;
+    private final String tagKeyScope;
     /**
      * @return (Available in 1.124.1+) The scope of tag value.
      * 
      */
-    private String tagValueScope;
+    private final String tagValueScope;
 
-    private GetRulesRule() {}
+    @CustomType.Constructor
+    private GetRulesRule(
+        @CustomType.Parameter("accountId") String accountId,
+        @CustomType.Parameter("compliancePackId") String compliancePackId,
+        @CustomType.Parameter("compliances") List<GetRulesRuleCompliance> compliances,
+        @CustomType.Parameter("configRuleArn") String configRuleArn,
+        @CustomType.Parameter("configRuleId") String configRuleId,
+        @CustomType.Parameter("configRuleState") String configRuleState,
+        @CustomType.Parameter("configRuleTriggerTypes") String configRuleTriggerTypes,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("eventSource") String eventSource,
+        @CustomType.Parameter("excludeResourceIdsScope") String excludeResourceIdsScope,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("inputParameters") Map<String,Object> inputParameters,
+        @CustomType.Parameter("maximumExecutionFrequency") String maximumExecutionFrequency,
+        @CustomType.Parameter("modifiedTimestamp") String modifiedTimestamp,
+        @CustomType.Parameter("regionIdsScope") String regionIdsScope,
+        @CustomType.Parameter("resourceGroupIdsScope") String resourceGroupIdsScope,
+        @CustomType.Parameter("resourceTypesScopes") List<String> resourceTypesScopes,
+        @CustomType.Parameter("riskLevel") Integer riskLevel,
+        @CustomType.Parameter("ruleName") String ruleName,
+        @CustomType.Parameter("scopeComplianceResourceTypes") List<String> scopeComplianceResourceTypes,
+        @CustomType.Parameter("sourceDetailMessageType") String sourceDetailMessageType,
+        @CustomType.Parameter("sourceIdentifier") String sourceIdentifier,
+        @CustomType.Parameter("sourceMaximumExecutionFrequency") String sourceMaximumExecutionFrequency,
+        @CustomType.Parameter("sourceOwner") String sourceOwner,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("tagKeyScope") String tagKeyScope,
+        @CustomType.Parameter("tagValueScope") String tagValueScope) {
+        this.accountId = accountId;
+        this.compliancePackId = compliancePackId;
+        this.compliances = compliances;
+        this.configRuleArn = configRuleArn;
+        this.configRuleId = configRuleId;
+        this.configRuleState = configRuleState;
+        this.configRuleTriggerTypes = configRuleTriggerTypes;
+        this.description = description;
+        this.eventSource = eventSource;
+        this.excludeResourceIdsScope = excludeResourceIdsScope;
+        this.id = id;
+        this.inputParameters = inputParameters;
+        this.maximumExecutionFrequency = maximumExecutionFrequency;
+        this.modifiedTimestamp = modifiedTimestamp;
+        this.regionIdsScope = regionIdsScope;
+        this.resourceGroupIdsScope = resourceGroupIdsScope;
+        this.resourceTypesScopes = resourceTypesScopes;
+        this.riskLevel = riskLevel;
+        this.ruleName = ruleName;
+        this.scopeComplianceResourceTypes = scopeComplianceResourceTypes;
+        this.sourceDetailMessageType = sourceDetailMessageType;
+        this.sourceIdentifier = sourceIdentifier;
+        this.sourceMaximumExecutionFrequency = sourceMaximumExecutionFrequency;
+        this.sourceOwner = sourceOwner;
+        this.status = status;
+        this.tagKeyScope = tagKeyScope;
+        this.tagValueScope = tagValueScope;
+    }
+
     /**
      * @return The ID of the Alicloud account.
      * 
@@ -340,7 +397,7 @@ public final class GetRulesRule {
     public static Builder builder(GetRulesRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String accountId;
         private String compliancePackId;
@@ -369,7 +426,11 @@ public final class GetRulesRule {
         private String status;
         private String tagKeyScope;
         private String tagValueScope;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -401,17 +462,14 @@ public final class GetRulesRule {
     	      this.tagValueScope = defaults.tagValueScope;
         }
 
-        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
-        @CustomType.Setter
         public Builder compliancePackId(String compliancePackId) {
             this.compliancePackId = Objects.requireNonNull(compliancePackId);
             return this;
         }
-        @CustomType.Setter
         public Builder compliances(List<GetRulesRuleCompliance> compliances) {
             this.compliances = Objects.requireNonNull(compliances);
             return this;
@@ -419,72 +477,58 @@ public final class GetRulesRule {
         public Builder compliances(GetRulesRuleCompliance... compliances) {
             return compliances(List.of(compliances));
         }
-        @CustomType.Setter
         public Builder configRuleArn(String configRuleArn) {
             this.configRuleArn = Objects.requireNonNull(configRuleArn);
             return this;
         }
-        @CustomType.Setter
         public Builder configRuleId(String configRuleId) {
             this.configRuleId = Objects.requireNonNull(configRuleId);
             return this;
         }
-        @CustomType.Setter
         public Builder configRuleState(String configRuleState) {
             this.configRuleState = Objects.requireNonNull(configRuleState);
             return this;
         }
-        @CustomType.Setter
         public Builder configRuleTriggerTypes(String configRuleTriggerTypes) {
             this.configRuleTriggerTypes = Objects.requireNonNull(configRuleTriggerTypes);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder eventSource(String eventSource) {
             this.eventSource = Objects.requireNonNull(eventSource);
             return this;
         }
-        @CustomType.Setter
         public Builder excludeResourceIdsScope(String excludeResourceIdsScope) {
             this.excludeResourceIdsScope = Objects.requireNonNull(excludeResourceIdsScope);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder inputParameters(Map<String,Object> inputParameters) {
             this.inputParameters = Objects.requireNonNull(inputParameters);
             return this;
         }
-        @CustomType.Setter
         public Builder maximumExecutionFrequency(String maximumExecutionFrequency) {
             this.maximumExecutionFrequency = Objects.requireNonNull(maximumExecutionFrequency);
             return this;
         }
-        @CustomType.Setter
         public Builder modifiedTimestamp(String modifiedTimestamp) {
             this.modifiedTimestamp = Objects.requireNonNull(modifiedTimestamp);
             return this;
         }
-        @CustomType.Setter
         public Builder regionIdsScope(String regionIdsScope) {
             this.regionIdsScope = Objects.requireNonNull(regionIdsScope);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupIdsScope(String resourceGroupIdsScope) {
             this.resourceGroupIdsScope = Objects.requireNonNull(resourceGroupIdsScope);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceTypesScopes(List<String> resourceTypesScopes) {
             this.resourceTypesScopes = Objects.requireNonNull(resourceTypesScopes);
             return this;
@@ -492,17 +536,14 @@ public final class GetRulesRule {
         public Builder resourceTypesScopes(String... resourceTypesScopes) {
             return resourceTypesScopes(List.of(resourceTypesScopes));
         }
-        @CustomType.Setter
         public Builder riskLevel(Integer riskLevel) {
             this.riskLevel = Objects.requireNonNull(riskLevel);
             return this;
         }
-        @CustomType.Setter
         public Builder ruleName(String ruleName) {
             this.ruleName = Objects.requireNonNull(ruleName);
             return this;
         }
-        @CustomType.Setter
         public Builder scopeComplianceResourceTypes(List<String> scopeComplianceResourceTypes) {
             this.scopeComplianceResourceTypes = Objects.requireNonNull(scopeComplianceResourceTypes);
             return this;
@@ -510,71 +551,35 @@ public final class GetRulesRule {
         public Builder scopeComplianceResourceTypes(String... scopeComplianceResourceTypes) {
             return scopeComplianceResourceTypes(List.of(scopeComplianceResourceTypes));
         }
-        @CustomType.Setter
         public Builder sourceDetailMessageType(String sourceDetailMessageType) {
             this.sourceDetailMessageType = Objects.requireNonNull(sourceDetailMessageType);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceIdentifier(String sourceIdentifier) {
             this.sourceIdentifier = Objects.requireNonNull(sourceIdentifier);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceMaximumExecutionFrequency(String sourceMaximumExecutionFrequency) {
             this.sourceMaximumExecutionFrequency = Objects.requireNonNull(sourceMaximumExecutionFrequency);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceOwner(String sourceOwner) {
             this.sourceOwner = Objects.requireNonNull(sourceOwner);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder tagKeyScope(String tagKeyScope) {
             this.tagKeyScope = Objects.requireNonNull(tagKeyScope);
             return this;
         }
-        @CustomType.Setter
         public Builder tagValueScope(String tagValueScope) {
             this.tagValueScope = Objects.requireNonNull(tagValueScope);
             return this;
-        }
-        public GetRulesRule build() {
-            final var o = new GetRulesRule();
-            o.accountId = accountId;
-            o.compliancePackId = compliancePackId;
-            o.compliances = compliances;
-            o.configRuleArn = configRuleArn;
-            o.configRuleId = configRuleId;
-            o.configRuleState = configRuleState;
-            o.configRuleTriggerTypes = configRuleTriggerTypes;
-            o.description = description;
-            o.eventSource = eventSource;
-            o.excludeResourceIdsScope = excludeResourceIdsScope;
-            o.id = id;
-            o.inputParameters = inputParameters;
-            o.maximumExecutionFrequency = maximumExecutionFrequency;
-            o.modifiedTimestamp = modifiedTimestamp;
-            o.regionIdsScope = regionIdsScope;
-            o.resourceGroupIdsScope = resourceGroupIdsScope;
-            o.resourceTypesScopes = resourceTypesScopes;
-            o.riskLevel = riskLevel;
-            o.ruleName = ruleName;
-            o.scopeComplianceResourceTypes = scopeComplianceResourceTypes;
-            o.sourceDetailMessageType = sourceDetailMessageType;
-            o.sourceIdentifier = sourceIdentifier;
-            o.sourceMaximumExecutionFrequency = sourceMaximumExecutionFrequency;
-            o.sourceOwner = sourceOwner;
-            o.status = status;
-            o.tagKeyScope = tagKeyScope;
-            o.tagValueScope = tagValueScope;
-            return o;
+        }        public GetRulesRule build() {
+            return new GetRulesRule(accountId, compliancePackId, compliances, configRuleArn, configRuleId, configRuleState, configRuleTriggerTypes, description, eventSource, excludeResourceIdsScope, id, inputParameters, maximumExecutionFrequency, modifiedTimestamp, regionIdsScope, resourceGroupIdsScope, resourceTypesScopes, riskLevel, ruleName, scopeComplianceResourceTypes, sourceDetailMessageType, sourceIdentifier, sourceMaximumExecutionFrequency, sourceOwner, status, tagKeyScope, tagValueScope);
         }
     }
 }

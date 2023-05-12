@@ -61,6 +61,9 @@ export interface GetDiskTypesArgs {
      * The ecs instance type of create emr cluster instance.
      */
     instanceType: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The Zone to create emr cluster instance.
@@ -137,6 +140,9 @@ export interface GetDiskTypesOutputArgs {
      * The ecs instance type of create emr cluster instance.
      */
     instanceType: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The Zone to create emr cluster instance.

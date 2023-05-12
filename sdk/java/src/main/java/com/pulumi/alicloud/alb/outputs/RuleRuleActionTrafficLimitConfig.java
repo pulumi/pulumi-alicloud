@@ -15,9 +15,13 @@ public final class RuleRuleActionTrafficLimitConfig {
      * @return The Number of requests per second. Value range: 1~100000.
      * 
      */
-    private @Nullable Integer qps;
+    private final @Nullable Integer qps;
 
-    private RuleRuleActionTrafficLimitConfig() {}
+    @CustomType.Constructor
+    private RuleRuleActionTrafficLimitConfig(@CustomType.Parameter("qps") @Nullable Integer qps) {
+        this.qps = qps;
+    }
+
     /**
      * @return The Number of requests per second. Value range: 1~100000.
      * 
@@ -33,24 +37,24 @@ public final class RuleRuleActionTrafficLimitConfig {
     public static Builder builder(RuleRuleActionTrafficLimitConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Integer qps;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(RuleRuleActionTrafficLimitConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.qps = defaults.qps;
         }
 
-        @CustomType.Setter
         public Builder qps(@Nullable Integer qps) {
             this.qps = qps;
             return this;
-        }
-        public RuleRuleActionTrafficLimitConfig build() {
-            final var o = new RuleRuleActionTrafficLimitConfig();
-            o.qps = qps;
-            return o;
+        }        public RuleRuleActionTrafficLimitConfig build() {
+            return new RuleRuleActionTrafficLimitConfig(qps);
         }
     }
 }

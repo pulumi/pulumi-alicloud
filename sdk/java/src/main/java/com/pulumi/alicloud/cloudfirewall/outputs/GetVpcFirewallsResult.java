@@ -17,57 +17,86 @@ public final class GetVpcFirewallsResult {
      * @return A list of Vpc Firewall Entries. Each element contains the following attributes:
      * 
      */
-    private List<GetVpcFirewallsFirewall> firewalls;
+    private final List<GetVpcFirewallsFirewall> firewalls;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of Vpc Firewall IDs.
      * 
      */
-    private List<String> ids;
-    private @Nullable String lang;
+    private final List<String> ids;
+    private final @Nullable String lang;
     /**
      * @return The UID of the Alibaba Cloud member account.
      * 
      */
-    private @Nullable String memberUid;
-    private @Nullable String nameRegex;
+    private final @Nullable String memberUid;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of name of Vpc Firewalls.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
     /**
      * @return The region ID of the peer VPC.
      * 
      */
-    private @Nullable String regionNo;
+    private final @Nullable String regionNo;
     /**
      * @return The status of the resource
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
     /**
      * @return The ID of the VPC firewall instance.
      * 
      */
-    private @Nullable String vpcFirewallId;
+    private final @Nullable String vpcFirewallId;
     /**
      * @return The name of the VPC firewall instance.
      * 
      */
-    private @Nullable String vpcFirewallName;
+    private final @Nullable String vpcFirewallName;
     /**
      * @return The ID of the peer VPC instance.
      * 
      */
-    private @Nullable String vpcId;
+    private final @Nullable String vpcId;
 
-    private GetVpcFirewallsResult() {}
+    @CustomType.Constructor
+    private GetVpcFirewallsResult(
+        @CustomType.Parameter("firewalls") List<GetVpcFirewallsFirewall> firewalls,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("lang") @Nullable String lang,
+        @CustomType.Parameter("memberUid") @Nullable String memberUid,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("regionNo") @Nullable String regionNo,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("vpcFirewallId") @Nullable String vpcFirewallId,
+        @CustomType.Parameter("vpcFirewallName") @Nullable String vpcFirewallName,
+        @CustomType.Parameter("vpcId") @Nullable String vpcId) {
+        this.firewalls = firewalls;
+        this.id = id;
+        this.ids = ids;
+        this.lang = lang;
+        this.memberUid = memberUid;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.regionNo = regionNo;
+        this.status = status;
+        this.vpcFirewallId = vpcFirewallId;
+        this.vpcFirewallName = vpcFirewallName;
+        this.vpcId = vpcId;
+    }
+
     /**
      * @return A list of Vpc Firewall Entries. Each element contains the following attributes:
      * 
@@ -155,7 +184,7 @@ public final class GetVpcFirewallsResult {
     public static Builder builder(GetVpcFirewallsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetVpcFirewallsFirewall> firewalls;
         private String id;
@@ -170,7 +199,11 @@ public final class GetVpcFirewallsResult {
         private @Nullable String vpcFirewallId;
         private @Nullable String vpcFirewallName;
         private @Nullable String vpcId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVpcFirewallsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.firewalls = defaults.firewalls;
@@ -188,7 +221,6 @@ public final class GetVpcFirewallsResult {
     	      this.vpcId = defaults.vpcId;
         }
 
-        @CustomType.Setter
         public Builder firewalls(List<GetVpcFirewallsFirewall> firewalls) {
             this.firewalls = Objects.requireNonNull(firewalls);
             return this;
@@ -196,12 +228,10 @@ public final class GetVpcFirewallsResult {
         public Builder firewalls(GetVpcFirewallsFirewall... firewalls) {
             return firewalls(List.of(firewalls));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -209,22 +239,18 @@ public final class GetVpcFirewallsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder lang(@Nullable String lang) {
             this.lang = lang;
             return this;
         }
-        @CustomType.Setter
         public Builder memberUid(@Nullable String memberUid) {
             this.memberUid = memberUid;
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -232,52 +258,31 @@ public final class GetVpcFirewallsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder regionNo(@Nullable String regionNo) {
             this.regionNo = regionNo;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder vpcFirewallId(@Nullable String vpcFirewallId) {
             this.vpcFirewallId = vpcFirewallId;
             return this;
         }
-        @CustomType.Setter
         public Builder vpcFirewallName(@Nullable String vpcFirewallName) {
             this.vpcFirewallName = vpcFirewallName;
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
-        }
-        public GetVpcFirewallsResult build() {
-            final var o = new GetVpcFirewallsResult();
-            o.firewalls = firewalls;
-            o.id = id;
-            o.ids = ids;
-            o.lang = lang;
-            o.memberUid = memberUid;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.regionNo = regionNo;
-            o.status = status;
-            o.vpcFirewallId = vpcFirewallId;
-            o.vpcFirewallName = vpcFirewallName;
-            o.vpcId = vpcId;
-            return o;
+        }        public GetVpcFirewallsResult build() {
+            return new GetVpcFirewallsResult(firewalls, id, ids, lang, memberUid, nameRegex, names, outputFile, regionNo, status, vpcFirewallId, vpcFirewallName, vpcId);
         }
     }
 }

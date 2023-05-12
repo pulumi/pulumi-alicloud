@@ -13,51 +13,76 @@ public final class GetConnectionsConnection {
      * @return The connection string of the instance.
      * 
      */
-    private String connectionString;
+    private final String connectionString;
     /**
      * @return The network type of the instance.
      * 
      */
-    private String dbInstanceNetType;
+    private final String dbInstanceNetType;
     /**
      * @return The expiration time of the classic network address.
      * 
      */
-    private String expiredTime;
-    private String id;
-    private String instanceId;
+    private final String expiredTime;
+    private final String id;
+    private final String instanceId;
     /**
      * @return The IP address of the instance.
      * 
      */
-    private String ipAddress;
+    private final String ipAddress;
     /**
      * @return The port number of the instance.
      * 
      */
-    private String port;
+    private final String port;
     /**
      * @return The remaining validity period of the endpoint of the classic network.
      * 
      */
-    private String upgradeable;
+    private final String upgradeable;
     /**
      * @return The ID of the VPC where the instance is deployed.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
     /**
      * @return The ID of the instance. It is returned only when the value of the DBInstanceNetType parameter is 2 (indicating VPC).
      * 
      */
-    private String vpcInstanceId;
+    private final String vpcInstanceId;
     /**
      * @return The ID of the VSwitch.
      * 
      */
-    private String vswitchId;
+    private final String vswitchId;
 
-    private GetConnectionsConnection() {}
+    @CustomType.Constructor
+    private GetConnectionsConnection(
+        @CustomType.Parameter("connectionString") String connectionString,
+        @CustomType.Parameter("dbInstanceNetType") String dbInstanceNetType,
+        @CustomType.Parameter("expiredTime") String expiredTime,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("ipAddress") String ipAddress,
+        @CustomType.Parameter("port") String port,
+        @CustomType.Parameter("upgradeable") String upgradeable,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("vpcInstanceId") String vpcInstanceId,
+        @CustomType.Parameter("vswitchId") String vswitchId) {
+        this.connectionString = connectionString;
+        this.dbInstanceNetType = dbInstanceNetType;
+        this.expiredTime = expiredTime;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.ipAddress = ipAddress;
+        this.port = port;
+        this.upgradeable = upgradeable;
+        this.vpcId = vpcId;
+        this.vpcInstanceId = vpcInstanceId;
+        this.vswitchId = vswitchId;
+    }
+
     /**
      * @return The connection string of the instance.
      * 
@@ -135,7 +160,7 @@ public final class GetConnectionsConnection {
     public static Builder builder(GetConnectionsConnection defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String connectionString;
         private String dbInstanceNetType;
@@ -148,7 +173,11 @@ public final class GetConnectionsConnection {
         private String vpcId;
         private String vpcInstanceId;
         private String vswitchId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetConnectionsConnection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectionString = defaults.connectionString;
@@ -164,75 +193,51 @@ public final class GetConnectionsConnection {
     	      this.vswitchId = defaults.vswitchId;
         }
 
-        @CustomType.Setter
         public Builder connectionString(String connectionString) {
             this.connectionString = Objects.requireNonNull(connectionString);
             return this;
         }
-        @CustomType.Setter
         public Builder dbInstanceNetType(String dbInstanceNetType) {
             this.dbInstanceNetType = Objects.requireNonNull(dbInstanceNetType);
             return this;
         }
-        @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
             this.ipAddress = Objects.requireNonNull(ipAddress);
             return this;
         }
-        @CustomType.Setter
         public Builder port(String port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
-        @CustomType.Setter
         public Builder upgradeable(String upgradeable) {
             this.upgradeable = Objects.requireNonNull(upgradeable);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcInstanceId(String vpcInstanceId) {
             this.vpcInstanceId = Objects.requireNonNull(vpcInstanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }
-        public GetConnectionsConnection build() {
-            final var o = new GetConnectionsConnection();
-            o.connectionString = connectionString;
-            o.dbInstanceNetType = dbInstanceNetType;
-            o.expiredTime = expiredTime;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.ipAddress = ipAddress;
-            o.port = port;
-            o.upgradeable = upgradeable;
-            o.vpcId = vpcId;
-            o.vpcInstanceId = vpcInstanceId;
-            o.vswitchId = vswitchId;
-            return o;
+        }        public GetConnectionsConnection build() {
+            return new GetConnectionsConnection(connectionString, dbInstanceNetType, expiredTime, id, instanceId, ipAddress, port, upgradeable, vpcId, vpcInstanceId, vswitchId);
         }
     }
 }

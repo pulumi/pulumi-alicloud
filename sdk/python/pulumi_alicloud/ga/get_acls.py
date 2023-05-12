@@ -148,6 +148,7 @@ def get_acls(acl_name: Optional[str] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Acl IDs.
     :param str name_regex: A regex string to filter results by Acl name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource.
     """
     __args__ = dict()
@@ -204,6 +205,7 @@ def get_acls_output(acl_name: Optional[pulumi.Input[Optional[str]]] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Acl IDs.
     :param str name_regex: A regex string to filter results by Acl name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource.
     """
     ...

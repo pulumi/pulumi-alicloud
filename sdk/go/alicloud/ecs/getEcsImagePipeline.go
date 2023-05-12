@@ -67,7 +67,8 @@ type LookupEcsImagePipelineArgs struct {
 	// The name of the image template.
 	Name *string `pulumi:"name"`
 	// A regex string to filter results by Image Pipeline name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the resource group to which the image template belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -109,7 +110,8 @@ type LookupEcsImagePipelineOutputArgs struct {
 	// The name of the image template.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// A regex string to filter results by Image Pipeline name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the resource group to which the image template belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`

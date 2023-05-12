@@ -52,6 +52,9 @@ export interface GetMountPointsArgs {
      * A list of Mount Point IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the Mount Point. Valid values: `Active`, `Inactive`.
@@ -112,6 +115,9 @@ export interface GetMountPointsOutputArgs {
      * A list of Mount Point IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the Mount Point. Valid values: `Active`, `Inactive`.

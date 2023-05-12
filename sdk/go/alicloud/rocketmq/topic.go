@@ -89,6 +89,8 @@ type Topic struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	//
+	// > **NOTE:** At least one of `topicName` and `topic` should be set.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// Replaced by `topicName` after version 1.97.0.
 	//
@@ -146,6 +148,8 @@ type topicState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	//
+	// > **NOTE:** At least one of `topicName` and `topic` should be set.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Replaced by `topicName` after version 1.97.0.
 	//
@@ -169,6 +173,8 @@ type TopicState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	//
+	// > **NOTE:** At least one of `topicName` and `topic` should be set.
 	Tags pulumi.MapInput
 	// Replaced by `topicName` after version 1.97.0.
 	//
@@ -196,6 +202,8 @@ type topicArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	//
+	// > **NOTE:** At least one of `topicName` and `topic` should be set.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Replaced by `topicName` after version 1.97.0.
 	//
@@ -220,6 +228,8 @@ type TopicArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	//
+	// > **NOTE:** At least one of `topicName` and `topic` should be set.
 	Tags pulumi.MapInput
 	// Replaced by `topicName` after version 1.97.0.
 	//
@@ -341,6 +351,8 @@ func (o TopicOutput) Remark() pulumi.StringPtrOutput {
 // A mapping of tags to assign to the resource.
 // - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 // - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+//
+// > **NOTE:** At least one of `topicName` and `topic` should be set.
 func (o TopicOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Topic) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }

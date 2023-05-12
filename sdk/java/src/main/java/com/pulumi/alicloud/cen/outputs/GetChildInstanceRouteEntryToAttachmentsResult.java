@@ -17,40 +17,59 @@ public final class GetChildInstanceRouteEntryToAttachmentsResult {
      * @return A list of Child Instance Route Entry To Attachment Entries. Each element contains the following attributes:
      * 
      */
-    private List<GetChildInstanceRouteEntryToAttachmentsAttachment> attachments;
+    private final List<GetChildInstanceRouteEntryToAttachmentsAttachment> attachments;
     /**
      * @return The ID of the CEN instance.
      * 
      */
-    private @Nullable String cenId;
+    private final @Nullable String cenId;
     /**
      * @return The first ID of the resource
      * 
      */
-    private String childInstanceRouteTableId;
+    private final String childInstanceRouteTableId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Limit search to a list of specific IDs.The value is formulated as `&lt;cen_id&gt;:&lt;child_instance_route_table_id&gt;:&lt;transit_router_attachment_id&gt;:&lt;destination_cidr_block&gt;`.
      * 
      */
-    private List<String> ids;
-    private @Nullable String outputFile;
+    private final List<String> ids;
+    private final @Nullable String outputFile;
     /**
      * @return ServiceType
      * 
      */
-    private @Nullable String serviceType;
+    private final @Nullable String serviceType;
     /**
      * @return TransitRouterAttachmentId
      * 
      */
-    private String transitRouterAttachmentId;
+    private final String transitRouterAttachmentId;
 
-    private GetChildInstanceRouteEntryToAttachmentsResult() {}
+    @CustomType.Constructor
+    private GetChildInstanceRouteEntryToAttachmentsResult(
+        @CustomType.Parameter("attachments") List<GetChildInstanceRouteEntryToAttachmentsAttachment> attachments,
+        @CustomType.Parameter("cenId") @Nullable String cenId,
+        @CustomType.Parameter("childInstanceRouteTableId") String childInstanceRouteTableId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("serviceType") @Nullable String serviceType,
+        @CustomType.Parameter("transitRouterAttachmentId") String transitRouterAttachmentId) {
+        this.attachments = attachments;
+        this.cenId = cenId;
+        this.childInstanceRouteTableId = childInstanceRouteTableId;
+        this.id = id;
+        this.ids = ids;
+        this.outputFile = outputFile;
+        this.serviceType = serviceType;
+        this.transitRouterAttachmentId = transitRouterAttachmentId;
+    }
+
     /**
      * @return A list of Child Instance Route Entry To Attachment Entries. Each element contains the following attributes:
      * 
@@ -111,7 +130,7 @@ public final class GetChildInstanceRouteEntryToAttachmentsResult {
     public static Builder builder(GetChildInstanceRouteEntryToAttachmentsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetChildInstanceRouteEntryToAttachmentsAttachment> attachments;
         private @Nullable String cenId;
@@ -121,7 +140,11 @@ public final class GetChildInstanceRouteEntryToAttachmentsResult {
         private @Nullable String outputFile;
         private @Nullable String serviceType;
         private String transitRouterAttachmentId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetChildInstanceRouteEntryToAttachmentsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attachments = defaults.attachments;
@@ -134,7 +157,6 @@ public final class GetChildInstanceRouteEntryToAttachmentsResult {
     	      this.transitRouterAttachmentId = defaults.transitRouterAttachmentId;
         }
 
-        @CustomType.Setter
         public Builder attachments(List<GetChildInstanceRouteEntryToAttachmentsAttachment> attachments) {
             this.attachments = Objects.requireNonNull(attachments);
             return this;
@@ -142,22 +164,18 @@ public final class GetChildInstanceRouteEntryToAttachmentsResult {
         public Builder attachments(GetChildInstanceRouteEntryToAttachmentsAttachment... attachments) {
             return attachments(List.of(attachments));
         }
-        @CustomType.Setter
         public Builder cenId(@Nullable String cenId) {
             this.cenId = cenId;
             return this;
         }
-        @CustomType.Setter
         public Builder childInstanceRouteTableId(String childInstanceRouteTableId) {
             this.childInstanceRouteTableId = Objects.requireNonNull(childInstanceRouteTableId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -165,32 +183,19 @@ public final class GetChildInstanceRouteEntryToAttachmentsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder serviceType(@Nullable String serviceType) {
             this.serviceType = serviceType;
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
             this.transitRouterAttachmentId = Objects.requireNonNull(transitRouterAttachmentId);
             return this;
-        }
-        public GetChildInstanceRouteEntryToAttachmentsResult build() {
-            final var o = new GetChildInstanceRouteEntryToAttachmentsResult();
-            o.attachments = attachments;
-            o.cenId = cenId;
-            o.childInstanceRouteTableId = childInstanceRouteTableId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.serviceType = serviceType;
-            o.transitRouterAttachmentId = transitRouterAttachmentId;
-            return o;
+        }        public GetChildInstanceRouteEntryToAttachmentsResult build() {
+            return new GetChildInstanceRouteEntryToAttachmentsResult(attachments, cenId, childInstanceRouteTableId, id, ids, outputFile, serviceType, transitRouterAttachmentId);
         }
     }
 }

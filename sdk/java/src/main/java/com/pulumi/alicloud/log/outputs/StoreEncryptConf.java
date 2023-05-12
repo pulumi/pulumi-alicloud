@@ -17,19 +17,51 @@ public final class StoreEncryptConf {
      * @return enable encryption. Default `false`
      * 
      */
-    private @Nullable Boolean enable;
+    private final @Nullable Boolean enable;
     /**
      * @return Supported encryption type, only supports `default(AES)`,`  m4 `
      * 
      */
-    private @Nullable String encryptType;
+    private final @Nullable String encryptType;
     /**
      * @return User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * #### Block user_cmk_info
      * 
      */
-    private @Nullable StoreEncryptConfUserCmkInfo userCmkInfo;
+    private final @Nullable StoreEncryptConfUserCmkInfo userCmkInfo;
 
-    private StoreEncryptConf() {}
+    @CustomType.Constructor
+    private StoreEncryptConf(
+        @CustomType.Parameter("enable") @Nullable Boolean enable,
+        @CustomType.Parameter("encryptType") @Nullable String encryptType,
+        @CustomType.Parameter("userCmkInfo") @Nullable StoreEncryptConfUserCmkInfo userCmkInfo) {
+        this.enable = enable;
+        this.encryptType = encryptType;
+        this.userCmkInfo = userCmkInfo;
+    }
+
     /**
      * @return enable encryption. Default `false`
      * 
@@ -46,6 +78,29 @@ public final class StoreEncryptConf {
     }
     /**
      * @return User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * #### Block user_cmk_info
      * 
      */
     public Optional<StoreEncryptConfUserCmkInfo> userCmkInfo() {
@@ -59,12 +114,16 @@ public final class StoreEncryptConf {
     public static Builder builder(StoreEncryptConf defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean enable;
         private @Nullable String encryptType;
         private @Nullable StoreEncryptConfUserCmkInfo userCmkInfo;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(StoreEncryptConf defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
@@ -72,27 +131,19 @@ public final class StoreEncryptConf {
     	      this.userCmkInfo = defaults.userCmkInfo;
         }
 
-        @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
             this.enable = enable;
             return this;
         }
-        @CustomType.Setter
         public Builder encryptType(@Nullable String encryptType) {
             this.encryptType = encryptType;
             return this;
         }
-        @CustomType.Setter
         public Builder userCmkInfo(@Nullable StoreEncryptConfUserCmkInfo userCmkInfo) {
             this.userCmkInfo = userCmkInfo;
             return this;
-        }
-        public StoreEncryptConf build() {
-            final var o = new StoreEncryptConf();
-            o.enable = enable;
-            o.encryptType = encryptType;
-            o.userCmkInfo = userCmkInfo;
-            return o;
+        }        public StoreEncryptConf build() {
+            return new StoreEncryptConf(enable, encryptType, userCmkInfo);
         }
     }
 }

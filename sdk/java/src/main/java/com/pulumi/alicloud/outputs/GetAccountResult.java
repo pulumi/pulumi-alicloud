@@ -13,9 +13,13 @@ public final class GetAccountResult {
      * @return Account ID (e.g. &#34;1239306421830812&#34;). It can be used to construct an ARN.
      * 
      */
-    private String id;
+    private final String id;
 
-    private GetAccountResult() {}
+    @CustomType.Constructor
+    private GetAccountResult(@CustomType.Parameter("id") String id) {
+        this.id = id;
+    }
+
     /**
      * @return Account ID (e.g. &#34;1239306421830812&#34;). It can be used to construct an ARN.
      * 
@@ -31,24 +35,24 @@ public final class GetAccountResult {
     public static Builder builder(GetAccountResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }
-        public GetAccountResult build() {
-            final var o = new GetAccountResult();
-            o.id = id;
-            return o;
+        }        public GetAccountResult build() {
+            return new GetAccountResult(id);
         }
     }
 }

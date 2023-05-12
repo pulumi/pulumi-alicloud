@@ -67,6 +67,10 @@ class Group(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        > **DEPRECATED:**  This resource  has been deprecated from version `1.84.0`. Please use new resource alicloud_alidns_domain_group.
+
+        Provides a DNS Group resource.
+
         ## Example Usage
 
         ```python
@@ -88,6 +92,10 @@ class Group(pulumi.CustomResource):
                  args: Optional[GroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **DEPRECATED:**  This resource  has been deprecated from version `1.84.0`. Please use new resource alicloud_alidns_domain_group.
+
+        Provides a DNS Group resource.
+
         ## Example Usage
 
         ```python

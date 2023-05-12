@@ -16,84 +16,133 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstancesResult {
-    private @Nullable String architectureType;
-    private @Nullable String editionType;
-    private @Nullable Boolean enableDetails;
+    private final @Nullable String architectureType;
+    private final @Nullable String editionType;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The engine version of the instance.
      * 
      */
-    private @Nullable String engineVersion;
-    private @Nullable String expired;
-    private @Nullable Boolean globalInstance;
+    private final @Nullable String engineVersion;
+    private final @Nullable String expired;
+    private final @Nullable Boolean globalInstance;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of KVStore Instance IDs.
      * 
      */
-    private List<String> ids;
+    private final List<String> ids;
     /**
      * @return (Optional) Type of the applied ApsaraDB for instance.
      * For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
      * 
      */
-    private @Nullable String instanceClass;
+    private final @Nullable String instanceClass;
     /**
      * @return (Optional) Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
      * 
      */
-    private @Nullable String instanceType;
+    private final @Nullable String instanceType;
     /**
      * @return A list of KVStore Instances. Its every element contains the following attributes:
      * 
      */
-    private List<GetInstancesInstance> instances;
-    private @Nullable String nameRegex;
+    private final List<GetInstancesInstance> instances;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of KVStore Instance names.
      * 
      */
-    private List<String> names;
+    private final List<String> names;
     /**
      * @return The network type of the instance.
      * 
      */
-    private @Nullable String networkType;
-    private @Nullable String outputFile;
+    private final @Nullable String networkType;
+    private final @Nullable String outputFile;
     /**
      * @return Billing method. Valid Values: `PostPaid` for  Pay-As-You-Go and `PrePaid` for subscription.
      * 
      */
-    private @Nullable String paymentType;
-    private @Nullable String resourceGroupId;
-    private @Nullable String searchKey;
+    private final @Nullable String paymentType;
+    private final @Nullable String resourceGroupId;
+    private final @Nullable String searchKey;
     /**
      * @return Status of the instance.
      * 
      */
-    private @Nullable String status;
-    private @Nullable Map<String,Object> tags;
+    private final @Nullable String status;
+    private final @Nullable Map<String,Object> tags;
     /**
      * @return VPC ID the instance belongs to.
      * 
      */
-    private @Nullable String vpcId;
+    private final @Nullable String vpcId;
     /**
      * @return VSwitch ID the instance belongs to.
      * 
      */
-    private @Nullable String vswitchId;
+    private final @Nullable String vswitchId;
     /**
      * @return The ID of zone.
      * 
      */
-    private @Nullable String zoneId;
+    private final @Nullable String zoneId;
 
-    private GetInstancesResult() {}
+    @CustomType.Constructor
+    private GetInstancesResult(
+        @CustomType.Parameter("architectureType") @Nullable String architectureType,
+        @CustomType.Parameter("editionType") @Nullable String editionType,
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("engineVersion") @Nullable String engineVersion,
+        @CustomType.Parameter("expired") @Nullable String expired,
+        @CustomType.Parameter("globalInstance") @Nullable Boolean globalInstance,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceClass") @Nullable String instanceClass,
+        @CustomType.Parameter("instanceType") @Nullable String instanceType,
+        @CustomType.Parameter("instances") List<GetInstancesInstance> instances,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("networkType") @Nullable String networkType,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("paymentType") @Nullable String paymentType,
+        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
+        @CustomType.Parameter("searchKey") @Nullable String searchKey,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
+        @CustomType.Parameter("vpcId") @Nullable String vpcId,
+        @CustomType.Parameter("vswitchId") @Nullable String vswitchId,
+        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
+        this.architectureType = architectureType;
+        this.editionType = editionType;
+        this.enableDetails = enableDetails;
+        this.engineVersion = engineVersion;
+        this.expired = expired;
+        this.globalInstance = globalInstance;
+        this.id = id;
+        this.ids = ids;
+        this.instanceClass = instanceClass;
+        this.instanceType = instanceType;
+        this.instances = instances;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.networkType = networkType;
+        this.outputFile = outputFile;
+        this.paymentType = paymentType;
+        this.resourceGroupId = resourceGroupId;
+        this.searchKey = searchKey;
+        this.status = status;
+        this.tags = tags;
+        this.vpcId = vpcId;
+        this.vswitchId = vswitchId;
+        this.zoneId = zoneId;
+    }
+
     public Optional<String> architectureType() {
         return Optional.ofNullable(this.architectureType);
     }
@@ -224,7 +273,7 @@ public final class GetInstancesResult {
     public static Builder builder(GetInstancesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String architectureType;
         private @Nullable String editionType;
@@ -249,7 +298,11 @@ public final class GetInstancesResult {
         private @Nullable String vpcId;
         private @Nullable String vswitchId;
         private @Nullable String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.architectureType = defaults.architectureType;
@@ -277,42 +330,34 @@ public final class GetInstancesResult {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder architectureType(@Nullable String architectureType) {
             this.architectureType = architectureType;
             return this;
         }
-        @CustomType.Setter
         public Builder editionType(@Nullable String editionType) {
             this.editionType = editionType;
             return this;
         }
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder engineVersion(@Nullable String engineVersion) {
             this.engineVersion = engineVersion;
             return this;
         }
-        @CustomType.Setter
         public Builder expired(@Nullable String expired) {
             this.expired = expired;
             return this;
         }
-        @CustomType.Setter
         public Builder globalInstance(@Nullable Boolean globalInstance) {
             this.globalInstance = globalInstance;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -320,17 +365,14 @@ public final class GetInstancesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceClass(@Nullable String instanceClass) {
             this.instanceClass = instanceClass;
             return this;
         }
-        @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
             this.instanceType = instanceType;
             return this;
         }
-        @CustomType.Setter
         public Builder instances(List<GetInstancesInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -338,12 +380,10 @@ public final class GetInstancesResult {
         public Builder instances(GetInstancesInstance... instances) {
             return instances(List.of(instances));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -351,82 +391,47 @@ public final class GetInstancesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder networkType(@Nullable String networkType) {
             this.networkType = networkType;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(@Nullable String paymentType) {
             this.paymentType = paymentType;
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
-        @CustomType.Setter
         public Builder searchKey(@Nullable String searchKey) {
             this.searchKey = searchKey;
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
             this.vswitchId = vswitchId;
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }
-        public GetInstancesResult build() {
-            final var o = new GetInstancesResult();
-            o.architectureType = architectureType;
-            o.editionType = editionType;
-            o.enableDetails = enableDetails;
-            o.engineVersion = engineVersion;
-            o.expired = expired;
-            o.globalInstance = globalInstance;
-            o.id = id;
-            o.ids = ids;
-            o.instanceClass = instanceClass;
-            o.instanceType = instanceType;
-            o.instances = instances;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.networkType = networkType;
-            o.outputFile = outputFile;
-            o.paymentType = paymentType;
-            o.resourceGroupId = resourceGroupId;
-            o.searchKey = searchKey;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetInstancesResult build() {
+            return new GetInstancesResult(architectureType, editionType, enableDetails, engineVersion, expired, globalInstance, id, ids, instanceClass, instanceType, instances, nameRegex, names, networkType, outputFile, paymentType, resourceGroupId, searchKey, status, tags, vpcId, vswitchId, zoneId);
         }
     }
 }

@@ -15,14 +15,21 @@ public final class NodePoolSpotPriceLimit {
      * @return Spot instance type.
      * 
      */
-    private @Nullable String instanceType;
+    private final @Nullable String instanceType;
     /**
      * @return The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
      * 
      */
-    private @Nullable String priceLimit;
+    private final @Nullable String priceLimit;
 
-    private NodePoolSpotPriceLimit() {}
+    @CustomType.Constructor
+    private NodePoolSpotPriceLimit(
+        @CustomType.Parameter("instanceType") @Nullable String instanceType,
+        @CustomType.Parameter("priceLimit") @Nullable String priceLimit) {
+        this.instanceType = instanceType;
+        this.priceLimit = priceLimit;
+    }
+
     /**
      * @return Spot instance type.
      * 
@@ -45,32 +52,30 @@ public final class NodePoolSpotPriceLimit {
     public static Builder builder(NodePoolSpotPriceLimit defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String instanceType;
         private @Nullable String priceLimit;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(NodePoolSpotPriceLimit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instanceType = defaults.instanceType;
     	      this.priceLimit = defaults.priceLimit;
         }
 
-        @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
             this.instanceType = instanceType;
             return this;
         }
-        @CustomType.Setter
         public Builder priceLimit(@Nullable String priceLimit) {
             this.priceLimit = priceLimit;
             return this;
-        }
-        public NodePoolSpotPriceLimit build() {
-            final var o = new NodePoolSpotPriceLimit();
-            o.instanceType = instanceType;
-            o.priceLimit = priceLimit;
-            return o;
+        }        public NodePoolSpotPriceLimit build() {
+            return new NodePoolSpotPriceLimit(instanceType, priceLimit);
         }
     }
 }

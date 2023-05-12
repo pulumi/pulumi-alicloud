@@ -13,34 +13,57 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNodeClassesResult {
-    private @Nullable String category;
+    private final @Nullable String category;
     /**
      * @return A list of PolarDB node classes. Each element contains the following attributes:
      * 
      */
-    private List<GetNodeClassesClass> classes;
+    private final List<GetNodeClassesClass> classes;
     /**
      * @return PolarDB node available class.
      * 
      */
-    private @Nullable String dbNodeClass;
-    private @Nullable String dbType;
-    private @Nullable String dbVersion;
+    private final @Nullable String dbNodeClass;
+    private final @Nullable String dbType;
+    private final @Nullable String dbVersion;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private @Nullable String outputFile;
-    private String payType;
-    private @Nullable String regionId;
+    private final String id;
+    private final @Nullable String outputFile;
+    private final String payType;
+    private final @Nullable String regionId;
     /**
      * @return The Zone to launch the PolarDB cluster.
      * 
      */
-    private @Nullable String zoneId;
+    private final @Nullable String zoneId;
 
-    private GetNodeClassesResult() {}
+    @CustomType.Constructor
+    private GetNodeClassesResult(
+        @CustomType.Parameter("category") @Nullable String category,
+        @CustomType.Parameter("classes") List<GetNodeClassesClass> classes,
+        @CustomType.Parameter("dbNodeClass") @Nullable String dbNodeClass,
+        @CustomType.Parameter("dbType") @Nullable String dbType,
+        @CustomType.Parameter("dbVersion") @Nullable String dbVersion,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("payType") String payType,
+        @CustomType.Parameter("regionId") @Nullable String regionId,
+        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
+        this.category = category;
+        this.classes = classes;
+        this.dbNodeClass = dbNodeClass;
+        this.dbType = dbType;
+        this.dbVersion = dbVersion;
+        this.id = id;
+        this.outputFile = outputFile;
+        this.payType = payType;
+        this.regionId = regionId;
+        this.zoneId = zoneId;
+    }
+
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
@@ -95,7 +118,7 @@ public final class GetNodeClassesResult {
     public static Builder builder(GetNodeClassesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String category;
         private List<GetNodeClassesClass> classes;
@@ -107,7 +130,11 @@ public final class GetNodeClassesResult {
         private String payType;
         private @Nullable String regionId;
         private @Nullable String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetNodeClassesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -122,12 +149,10 @@ public final class GetNodeClassesResult {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder category(@Nullable String category) {
             this.category = category;
             return this;
         }
-        @CustomType.Setter
         public Builder classes(List<GetNodeClassesClass> classes) {
             this.classes = Objects.requireNonNull(classes);
             return this;
@@ -135,59 +160,39 @@ public final class GetNodeClassesResult {
         public Builder classes(GetNodeClassesClass... classes) {
             return classes(List.of(classes));
         }
-        @CustomType.Setter
         public Builder dbNodeClass(@Nullable String dbNodeClass) {
             this.dbNodeClass = dbNodeClass;
             return this;
         }
-        @CustomType.Setter
         public Builder dbType(@Nullable String dbType) {
             this.dbType = dbType;
             return this;
         }
-        @CustomType.Setter
         public Builder dbVersion(@Nullable String dbVersion) {
             this.dbVersion = dbVersion;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder payType(String payType) {
             this.payType = Objects.requireNonNull(payType);
             return this;
         }
-        @CustomType.Setter
         public Builder regionId(@Nullable String regionId) {
             this.regionId = regionId;
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }
-        public GetNodeClassesResult build() {
-            final var o = new GetNodeClassesResult();
-            o.category = category;
-            o.classes = classes;
-            o.dbNodeClass = dbNodeClass;
-            o.dbType = dbType;
-            o.dbVersion = dbVersion;
-            o.id = id;
-            o.outputFile = outputFile;
-            o.payType = payType;
-            o.regionId = regionId;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetNodeClassesResult build() {
+            return new GetNodeClassesResult(category, classes, dbNodeClass, dbType, dbVersion, id, outputFile, payType, regionId, zoneId);
         }
     }
 }

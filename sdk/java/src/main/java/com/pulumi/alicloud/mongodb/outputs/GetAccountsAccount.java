@@ -13,34 +13,49 @@ public final class GetAccountsAccount {
      * @return The description of the account.
      * 
      */
-    private String accountDescription;
+    private final String accountDescription;
     /**
      * @return The name of the account.
      * 
      */
-    private String accountName;
+    private final String accountName;
     /**
      * @return The role of the account. Valid values: `db`, `cs`, `mongos`, `logic`, `normal`.
      * 
      */
-    private String characterType;
+    private final String characterType;
     /**
      * @return The ID of the Account. The value formats as `&lt;instance_id&gt;:&lt;account_name&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The id of the instance to which the account belongs.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return The status of the account. Valid values: `Unavailable`, `Available`.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetAccountsAccount() {}
+    @CustomType.Constructor
+    private GetAccountsAccount(
+        @CustomType.Parameter("accountDescription") String accountDescription,
+        @CustomType.Parameter("accountName") String accountName,
+        @CustomType.Parameter("characterType") String characterType,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("status") String status) {
+        this.accountDescription = accountDescription;
+        this.accountName = accountName;
+        this.characterType = characterType;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.status = status;
+    }
+
     /**
      * @return The description of the account.
      * 
@@ -91,7 +106,7 @@ public final class GetAccountsAccount {
     public static Builder builder(GetAccountsAccount defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String accountDescription;
         private String accountName;
@@ -99,7 +114,11 @@ public final class GetAccountsAccount {
         private String id;
         private String instanceId;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAccountsAccount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountDescription = defaults.accountDescription;
@@ -110,45 +129,31 @@ public final class GetAccountsAccount {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder accountDescription(String accountDescription) {
             this.accountDescription = Objects.requireNonNull(accountDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder accountName(String accountName) {
             this.accountName = Objects.requireNonNull(accountName);
             return this;
         }
-        @CustomType.Setter
         public Builder characterType(String characterType) {
             this.characterType = Objects.requireNonNull(characterType);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetAccountsAccount build() {
-            final var o = new GetAccountsAccount();
-            o.accountDescription = accountDescription;
-            o.accountName = accountName;
-            o.characterType = characterType;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.status = status;
-            return o;
+        }        public GetAccountsAccount build() {
+            return new GetAccountsAccount(accountDescription, accountName, characterType, id, instanceId, status);
         }
     }
 }

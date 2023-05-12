@@ -16,24 +16,35 @@ public final class GetProductProductSkus {
      * @return The list of custom ECS images, Each element contains the following attributes:
      * 
      */
-    private List<GetProductProductSkusImage> images;
+    private final List<GetProductProductSkusImage> images;
     /**
      * @return The list of package version details of this product sku, Each element contains the following attributes:
      * 
      */
-    private List<GetProductProductSkusPackageVersion> packageVersions;
+    private final List<GetProductProductSkusPackageVersion> packageVersions;
     /**
      * @return The sku code of this product sku.
      * 
      */
-    private String skuCode;
+    private final String skuCode;
     /**
      * @return The sku name of this product sku.
      * 
      */
-    private String skuName;
+    private final String skuName;
 
-    private GetProductProductSkus() {}
+    @CustomType.Constructor
+    private GetProductProductSkus(
+        @CustomType.Parameter("images") List<GetProductProductSkusImage> images,
+        @CustomType.Parameter("packageVersions") List<GetProductProductSkusPackageVersion> packageVersions,
+        @CustomType.Parameter("skuCode") String skuCode,
+        @CustomType.Parameter("skuName") String skuName) {
+        this.images = images;
+        this.packageVersions = packageVersions;
+        this.skuCode = skuCode;
+        this.skuName = skuName;
+    }
+
     /**
      * @return The list of custom ECS images, Each element contains the following attributes:
      * 
@@ -70,13 +81,17 @@ public final class GetProductProductSkus {
     public static Builder builder(GetProductProductSkus defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetProductProductSkusImage> images;
         private List<GetProductProductSkusPackageVersion> packageVersions;
         private String skuCode;
         private String skuName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetProductProductSkus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.images = defaults.images;
@@ -85,7 +100,6 @@ public final class GetProductProductSkus {
     	      this.skuName = defaults.skuName;
         }
 
-        @CustomType.Setter
         public Builder images(List<GetProductProductSkusImage> images) {
             this.images = Objects.requireNonNull(images);
             return this;
@@ -93,7 +107,6 @@ public final class GetProductProductSkus {
         public Builder images(GetProductProductSkusImage... images) {
             return images(List.of(images));
         }
-        @CustomType.Setter
         public Builder packageVersions(List<GetProductProductSkusPackageVersion> packageVersions) {
             this.packageVersions = Objects.requireNonNull(packageVersions);
             return this;
@@ -101,23 +114,15 @@ public final class GetProductProductSkus {
         public Builder packageVersions(GetProductProductSkusPackageVersion... packageVersions) {
             return packageVersions(List.of(packageVersions));
         }
-        @CustomType.Setter
         public Builder skuCode(String skuCode) {
             this.skuCode = Objects.requireNonNull(skuCode);
             return this;
         }
-        @CustomType.Setter
         public Builder skuName(String skuName) {
             this.skuName = Objects.requireNonNull(skuName);
             return this;
-        }
-        public GetProductProductSkus build() {
-            final var o = new GetProductProductSkus();
-            o.images = images;
-            o.packageVersions = packageVersions;
-            o.skuCode = skuCode;
-            o.skuName = skuName;
-            return o;
+        }        public GetProductProductSkus build() {
+            return new GetProductProductSkus(images, packageVersions, skuCode, skuName);
         }
     }
 }

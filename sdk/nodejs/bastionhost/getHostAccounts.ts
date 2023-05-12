@@ -74,6 +74,9 @@ export interface GetHostAccountsArgs {
      * A regex string to filter results by Host Account name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
@@ -157,6 +160,9 @@ export interface GetHostAccountsOutputArgs {
      * A regex string to filter results by Host Account name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.

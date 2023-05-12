@@ -21,69 +21,96 @@ public final class EciScalingConfigurationInitContainer {
      * @return The arguments passed to the commands.
      * 
      */
-    private @Nullable List<String> args;
+    private final @Nullable List<String> args;
     /**
      * @return The commands run by the init container.
      * 
      */
-    private @Nullable List<String> commands;
+    private final @Nullable List<String> commands;
     /**
      * @return The amount of CPU resources allocated to the container group.
      * 
      */
-    private @Nullable Double cpu;
+    private final @Nullable Double cpu;
     /**
      * @return The structure of environmentVars.
      * See Block_environment_var_in_init_container below for details.
      * See Block_environment_var_in_container below for details.
      * 
      */
-    private @Nullable List<EciScalingConfigurationInitContainerEnvironmentVar> environmentVars;
+    private final @Nullable List<EciScalingConfigurationInitContainerEnvironmentVar> environmentVars;
     /**
      * @return The number GPUs.
      * 
      */
-    private @Nullable Integer gpu;
+    private final @Nullable Integer gpu;
     /**
      * @return The image of the container.
      * 
      */
-    private @Nullable String image;
+    private final @Nullable String image;
     /**
      * @return The restart policy of the image.
      * 
      */
-    private @Nullable String imagePullPolicy;
+    private final @Nullable String imagePullPolicy;
     /**
      * @return The amount of memory resources allocated to the container group.
      * 
      */
-    private @Nullable Double memory;
+    private final @Nullable Double memory;
     /**
      * @return The name of the volume.
      * 
      */
-    private @Nullable String name;
+    private final @Nullable String name;
     /**
      * @return The structure of port. See Block_port_in_init_container below
      * for details.
      * 
      */
-    private @Nullable List<EciScalingConfigurationInitContainerPort> ports;
+    private final @Nullable List<EciScalingConfigurationInitContainerPort> ports;
     /**
      * @return The structure of volumeMounts.
      * See Block_volume_mount_in_init_container below for details.
      * See Block_volume_mount_in_container below for details.
      * 
      */
-    private @Nullable List<EciScalingConfigurationInitContainerVolumeMount> volumeMounts;
+    private final @Nullable List<EciScalingConfigurationInitContainerVolumeMount> volumeMounts;
     /**
      * @return The working directory of the container.
      * 
      */
-    private @Nullable String workingDir;
+    private final @Nullable String workingDir;
 
-    private EciScalingConfigurationInitContainer() {}
+    @CustomType.Constructor
+    private EciScalingConfigurationInitContainer(
+        @CustomType.Parameter("args") @Nullable List<String> args,
+        @CustomType.Parameter("commands") @Nullable List<String> commands,
+        @CustomType.Parameter("cpu") @Nullable Double cpu,
+        @CustomType.Parameter("environmentVars") @Nullable List<EciScalingConfigurationInitContainerEnvironmentVar> environmentVars,
+        @CustomType.Parameter("gpu") @Nullable Integer gpu,
+        @CustomType.Parameter("image") @Nullable String image,
+        @CustomType.Parameter("imagePullPolicy") @Nullable String imagePullPolicy,
+        @CustomType.Parameter("memory") @Nullable Double memory,
+        @CustomType.Parameter("name") @Nullable String name,
+        @CustomType.Parameter("ports") @Nullable List<EciScalingConfigurationInitContainerPort> ports,
+        @CustomType.Parameter("volumeMounts") @Nullable List<EciScalingConfigurationInitContainerVolumeMount> volumeMounts,
+        @CustomType.Parameter("workingDir") @Nullable String workingDir) {
+        this.args = args;
+        this.commands = commands;
+        this.cpu = cpu;
+        this.environmentVars = environmentVars;
+        this.gpu = gpu;
+        this.image = image;
+        this.imagePullPolicy = imagePullPolicy;
+        this.memory = memory;
+        this.name = name;
+        this.ports = ports;
+        this.volumeMounts = volumeMounts;
+        this.workingDir = workingDir;
+    }
+
     /**
      * @return The arguments passed to the commands.
      * 
@@ -181,7 +208,7 @@ public final class EciScalingConfigurationInitContainer {
     public static Builder builder(EciScalingConfigurationInitContainer defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<String> args;
         private @Nullable List<String> commands;
@@ -195,7 +222,11 @@ public final class EciScalingConfigurationInitContainer {
         private @Nullable List<EciScalingConfigurationInitContainerPort> ports;
         private @Nullable List<EciScalingConfigurationInitContainerVolumeMount> volumeMounts;
         private @Nullable String workingDir;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(EciScalingConfigurationInitContainer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.args = defaults.args;
@@ -212,7 +243,6 @@ public final class EciScalingConfigurationInitContainer {
     	      this.workingDir = defaults.workingDir;
         }
 
-        @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
             this.args = args;
             return this;
@@ -220,7 +250,6 @@ public final class EciScalingConfigurationInitContainer {
         public Builder args(String... args) {
             return args(List.of(args));
         }
-        @CustomType.Setter
         public Builder commands(@Nullable List<String> commands) {
             this.commands = commands;
             return this;
@@ -228,12 +257,10 @@ public final class EciScalingConfigurationInitContainer {
         public Builder commands(String... commands) {
             return commands(List.of(commands));
         }
-        @CustomType.Setter
         public Builder cpu(@Nullable Double cpu) {
             this.cpu = cpu;
             return this;
         }
-        @CustomType.Setter
         public Builder environmentVars(@Nullable List<EciScalingConfigurationInitContainerEnvironmentVar> environmentVars) {
             this.environmentVars = environmentVars;
             return this;
@@ -241,32 +268,26 @@ public final class EciScalingConfigurationInitContainer {
         public Builder environmentVars(EciScalingConfigurationInitContainerEnvironmentVar... environmentVars) {
             return environmentVars(List.of(environmentVars));
         }
-        @CustomType.Setter
         public Builder gpu(@Nullable Integer gpu) {
             this.gpu = gpu;
             return this;
         }
-        @CustomType.Setter
         public Builder image(@Nullable String image) {
             this.image = image;
             return this;
         }
-        @CustomType.Setter
         public Builder imagePullPolicy(@Nullable String imagePullPolicy) {
             this.imagePullPolicy = imagePullPolicy;
             return this;
         }
-        @CustomType.Setter
         public Builder memory(@Nullable Double memory) {
             this.memory = memory;
             return this;
         }
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
-        @CustomType.Setter
         public Builder ports(@Nullable List<EciScalingConfigurationInitContainerPort> ports) {
             this.ports = ports;
             return this;
@@ -274,7 +295,6 @@ public final class EciScalingConfigurationInitContainer {
         public Builder ports(EciScalingConfigurationInitContainerPort... ports) {
             return ports(List.of(ports));
         }
-        @CustomType.Setter
         public Builder volumeMounts(@Nullable List<EciScalingConfigurationInitContainerVolumeMount> volumeMounts) {
             this.volumeMounts = volumeMounts;
             return this;
@@ -282,26 +302,11 @@ public final class EciScalingConfigurationInitContainer {
         public Builder volumeMounts(EciScalingConfigurationInitContainerVolumeMount... volumeMounts) {
             return volumeMounts(List.of(volumeMounts));
         }
-        @CustomType.Setter
         public Builder workingDir(@Nullable String workingDir) {
             this.workingDir = workingDir;
             return this;
-        }
-        public EciScalingConfigurationInitContainer build() {
-            final var o = new EciScalingConfigurationInitContainer();
-            o.args = args;
-            o.commands = commands;
-            o.cpu = cpu;
-            o.environmentVars = environmentVars;
-            o.gpu = gpu;
-            o.image = image;
-            o.imagePullPolicy = imagePullPolicy;
-            o.memory = memory;
-            o.name = name;
-            o.ports = ports;
-            o.volumeMounts = volumeMounts;
-            o.workingDir = workingDir;
-            return o;
+        }        public EciScalingConfigurationInitContainer build() {
+            return new EciScalingConfigurationInitContainer(args, commands, cpu, environmentVars, gpu, image, imagePullPolicy, memory, name, ports, volumeMounts, workingDir);
         }
     }
 }

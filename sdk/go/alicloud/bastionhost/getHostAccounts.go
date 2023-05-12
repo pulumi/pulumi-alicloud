@@ -76,7 +76,8 @@ type GetHostAccountsArgs struct {
 	// Specifies the database where you want to create your hosting account's host bastion host ID of.
 	InstanceId string `pulumi:"instanceId"`
 	// A regex string to filter results by Host Account name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
 	ProtocolName *string `pulumi:"protocolName"`
@@ -121,7 +122,8 @@ type GetHostAccountsOutputArgs struct {
 	// Specifies the database where you want to create your hosting account's host bastion host ID of.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// A regex string to filter results by Host Account name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
 	ProtocolName pulumi.StringPtrInput `pulumi:"protocolName"`

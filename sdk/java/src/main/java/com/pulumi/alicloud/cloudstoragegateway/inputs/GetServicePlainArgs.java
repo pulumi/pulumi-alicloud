@@ -17,12 +17,16 @@ public final class GetServicePlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
      * 
+     * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the Cloud Storage Gateway service that means you have read and agreed the [Cloud Storage Gateway Terms of Service](https://help.aliyun.com/document_detail/117679.html). The service can not closed once it is opened.
+     * 
      */
     @Import(name="enable")
     private @Nullable String enable;
 
     /**
      * @return Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
+     * 
+     * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the Cloud Storage Gateway service that means you have read and agreed the [Cloud Storage Gateway Terms of Service](https://help.aliyun.com/document_detail/117679.html). The service can not closed once it is opened.
      * 
      */
     public Optional<String> enable() {
@@ -55,6 +59,8 @@ public final class GetServicePlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param enable Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
+         * 
+         * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the Cloud Storage Gateway service that means you have read and agreed the [Cloud Storage Gateway Terms of Service](https://help.aliyun.com/document_detail/117679.html). The service can not closed once it is opened.
          * 
          * @return builder
          * 

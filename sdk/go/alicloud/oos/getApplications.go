@@ -61,7 +61,8 @@ type GetApplicationsArgs struct {
 	// A list of Application IDs. Its element value is same as Application Name.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Application name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The tag of the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -97,7 +98,8 @@ type GetApplicationsOutputArgs struct {
 	// A list of Application IDs. Its element value is same as Application Name.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Application name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The tag of the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`

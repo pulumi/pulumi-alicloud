@@ -13,9 +13,13 @@ public final class GetListenersListenerCertificate {
      * @return The ID of the Certificate.
      * 
      */
-    private String certificateId;
+    private final String certificateId;
 
-    private GetListenersListenerCertificate() {}
+    @CustomType.Constructor
+    private GetListenersListenerCertificate(@CustomType.Parameter("certificateId") String certificateId) {
+        this.certificateId = certificateId;
+    }
+
     /**
      * @return The ID of the Certificate.
      * 
@@ -31,24 +35,24 @@ public final class GetListenersListenerCertificate {
     public static Builder builder(GetListenersListenerCertificate defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String certificateId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetListenersListenerCertificate defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificateId = defaults.certificateId;
         }
 
-        @CustomType.Setter
         public Builder certificateId(String certificateId) {
             this.certificateId = Objects.requireNonNull(certificateId);
             return this;
-        }
-        public GetListenersListenerCertificate build() {
-            final var o = new GetListenersListenerCertificate();
-            o.certificateId = certificateId;
-            return o;
+        }        public GetListenersListenerCertificate build() {
+            return new GetListenersListenerCertificate(certificateId);
         }
     }
 }

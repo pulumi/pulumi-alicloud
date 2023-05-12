@@ -18,28 +18,47 @@ public final class GetKubernetesClustersResult {
      * @return A list of matched Kubernetes clusters. Each element contains the following attributes:
      * 
      */
-    private List<GetKubernetesClustersCluster> clusters;
-    private @Nullable Boolean enableDetails;
+    private final List<GetKubernetesClustersCluster> clusters;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of matched Kubernetes clusters&#39; ids.
      * 
      */
-    private List<String> ids;
-    private @Nullable String kubeConfigFilePrefix;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final @Nullable String kubeConfigFilePrefix;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of matched Kubernetes clusters&#39; names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
 
-    private GetKubernetesClustersResult() {}
+    @CustomType.Constructor
+    private GetKubernetesClustersResult(
+        @CustomType.Parameter("clusters") List<GetKubernetesClustersCluster> clusters,
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("kubeConfigFilePrefix") @Nullable String kubeConfigFilePrefix,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
+        this.clusters = clusters;
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.kubeConfigFilePrefix = kubeConfigFilePrefix;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+    }
+
     /**
      * @return A list of matched Kubernetes clusters. Each element contains the following attributes:
      * 
@@ -88,7 +107,7 @@ public final class GetKubernetesClustersResult {
     public static Builder builder(GetKubernetesClustersResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetKubernetesClustersCluster> clusters;
         private @Nullable Boolean enableDetails;
@@ -98,7 +117,11 @@ public final class GetKubernetesClustersResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetKubernetesClustersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusters = defaults.clusters;
@@ -111,7 +134,6 @@ public final class GetKubernetesClustersResult {
     	      this.outputFile = defaults.outputFile;
         }
 
-        @CustomType.Setter
         public Builder clusters(List<GetKubernetesClustersCluster> clusters) {
             this.clusters = Objects.requireNonNull(clusters);
             return this;
@@ -119,17 +141,14 @@ public final class GetKubernetesClustersResult {
         public Builder clusters(GetKubernetesClustersCluster... clusters) {
             return clusters(List.of(clusters));
         }
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -137,17 +156,14 @@ public final class GetKubernetesClustersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder kubeConfigFilePrefix(@Nullable String kubeConfigFilePrefix) {
             this.kubeConfigFilePrefix = kubeConfigFilePrefix;
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -155,22 +171,11 @@ public final class GetKubernetesClustersResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }
-        public GetKubernetesClustersResult build() {
-            final var o = new GetKubernetesClustersResult();
-            o.clusters = clusters;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.kubeConfigFilePrefix = kubeConfigFilePrefix;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+        }        public GetKubernetesClustersResult build() {
+            return new GetKubernetesClustersResult(clusters, enableDetails, id, ids, kubeConfigFilePrefix, nameRegex, names, outputFile);
         }
     }
 }

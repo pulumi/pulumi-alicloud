@@ -24,6 +24,10 @@ import java.util.concurrent.CompletableFuture;
 
 public final class MnsFunctions {
     /**
+     * This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -60,6 +64,10 @@ public final class MnsFunctions {
         return getQueues(GetQueuesArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -96,6 +104,10 @@ public final class MnsFunctions {
         return getQueuesPlain(GetQueuesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -132,6 +144,10 @@ public final class MnsFunctions {
         return getQueues(args, InvokeOptions.Empty);
     }
     /**
+     * This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -168,6 +184,10 @@ public final class MnsFunctions {
         return getQueuesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -204,6 +224,10 @@ public final class MnsFunctions {
         return Deployment.getInstance().invoke("alicloud:mns/getQueues:getQueues", TypeShape.of(GetQueuesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_queues.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -498,6 +522,10 @@ public final class MnsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:mns/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -535,6 +563,10 @@ public final class MnsFunctions {
         return getTopicSubscriptions(args, InvokeOptions.Empty);
     }
     /**
+     * This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -572,6 +604,10 @@ public final class MnsFunctions {
         return getTopicSubscriptionsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -609,6 +645,10 @@ public final class MnsFunctions {
         return Deployment.getInstance().invoke("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", TypeShape.of(GetTopicSubscriptionsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -646,6 +686,10 @@ public final class MnsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:mns/getTopicSubscriptions:getTopicSubscriptions", TypeShape.of(GetTopicSubscriptionsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -682,6 +726,10 @@ public final class MnsFunctions {
         return getTopics(GetTopicsArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -718,6 +766,10 @@ public final class MnsFunctions {
         return getTopicsPlain(GetTopicsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -754,6 +806,10 @@ public final class MnsFunctions {
         return getTopics(args, InvokeOptions.Empty);
     }
     /**
+     * This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -790,6 +846,10 @@ public final class MnsFunctions {
         return getTopicsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -826,6 +886,10 @@ public final class MnsFunctions {
         return Deployment.getInstance().invoke("alicloud:mns/getTopics:getTopics", TypeShape.of(GetTopicsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;

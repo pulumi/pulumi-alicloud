@@ -13,24 +13,35 @@ public final class GetUsersUser {
      * @return Creation date of the user.
      * 
      */
-    private String createDate;
+    private final String createDate;
     /**
      * @return The original id is user name, but it is user id in 1.37.0+.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Last login date of the user. Removed from version 1.79.0.
      * 
      */
-    private String lastLoginDate;
+    private final String lastLoginDate;
     /**
      * @return Name of the user.
      * 
      */
-    private String name;
+    private final String name;
 
-    private GetUsersUser() {}
+    @CustomType.Constructor
+    private GetUsersUser(
+        @CustomType.Parameter("createDate") String createDate,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("lastLoginDate") String lastLoginDate,
+        @CustomType.Parameter("name") String name) {
+        this.createDate = createDate;
+        this.id = id;
+        this.lastLoginDate = lastLoginDate;
+        this.name = name;
+    }
+
     /**
      * @return Creation date of the user.
      * 
@@ -67,13 +78,17 @@ public final class GetUsersUser {
     public static Builder builder(GetUsersUser defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String createDate;
         private String id;
         private String lastLoginDate;
         private String name;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetUsersUser defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createDate = defaults.createDate;
@@ -82,33 +97,23 @@ public final class GetUsersUser {
     	      this.name = defaults.name;
         }
 
-        @CustomType.Setter
         public Builder createDate(String createDate) {
             this.createDate = Objects.requireNonNull(createDate);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder lastLoginDate(String lastLoginDate) {
             this.lastLoginDate = Objects.requireNonNull(lastLoginDate);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }
-        public GetUsersUser build() {
-            final var o = new GetUsersUser();
-            o.createDate = createDate;
-            o.id = id;
-            o.lastLoginDate = lastLoginDate;
-            o.name = name;
-            return o;
+        }        public GetUsersUser build() {
+            return new GetUsersUser(createDate, id, lastLoginDate, name);
         }
     }
 }

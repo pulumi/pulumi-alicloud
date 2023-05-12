@@ -16,6 +16,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Resource Manager Policy Version resource.
+ * For information about Resource Manager Policy Version and how to use it, see [What is Resource Manager Policy Version](https://www.alibabacloud.com/help/en/doc-detail/116817.htm).
+ * 
+ * &gt; **NOTE:** Available in v1.84.0+.
+ * 
+ * &gt; **NOTE:** It is not recommended to use this resource management policy version, it is recommended to directly use the policy resource to manage your policy. Please refer to the link for usage resource_manager_policy.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -88,6 +95,8 @@ public class PolicyVersion extends com.pulumi.resources.CustomResource {
     /**
      * Specifies whether to set the policy version as the default version. Default to `false`.
      * 
+     * &gt; **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
+     * 
      * @deprecated
      * Field &#39;is_default_version&#39; has been deprecated from provider version 1.90.0
      * 
@@ -98,6 +107,8 @@ public class PolicyVersion extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies whether to set the policy version as the default version. Default to `false`.
+     * 
+     * &gt; **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
      * 
      */
     public Output<Optional<Boolean>> isDefaultVersion() {

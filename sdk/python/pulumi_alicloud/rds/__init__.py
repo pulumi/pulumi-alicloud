@@ -11,6 +11,7 @@ from .backup_policy import *
 from .connection import *
 from .database import *
 from .db_instance_endpoint import *
+from .db_instance_endpoint_address import *
 from .db_node import *
 from .ddr_instance import *
 from .get_accounts import *
@@ -25,6 +26,7 @@ from .get_instances import *
 from .get_modify_parameter_logs import *
 from .get_rds_backups import *
 from .get_rds_parameter_groups import *
+from .get_slots import *
 from .get_zones import *
 from .instance import *
 from .rds_account import *

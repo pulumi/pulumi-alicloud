@@ -16,6 +16,53 @@ namespace Pulumi.AliCloud.Dcdn
     /// 
     /// &gt; **NOTE:** Available in v1.131.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new Domain config.
+    ///     var domain = new AliCloud.Dcdn.Domain("domain", new()
+    ///     {
+    ///         DomainName = "mydomain.alicloud-provider.cn",
+    ///         Scope = "overseas",
+    ///         Sources = new[]
+    ///         {
+    ///             new AliCloud.Dcdn.Inputs.DomainSourceArgs
+    ///             {
+    ///                 Content = "1.1.1.1",
+    ///                 Type = "ipaddr",
+    ///                 Priority = "20",
+    ///                 Port = 80,
+    ///                 Weight = "15",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var config = new AliCloud.Dcdn.DomainConfig("config", new()
+    ///     {
+    ///         DomainName = domain.DomainName,
+    ///         FunctionName = "ip_allow_list_set",
+    ///         FunctionArgs = new[]
+    ///         {
+    ///             new AliCloud.Dcdn.Inputs.DomainConfigFunctionArgArgs
+    ///             {
+    ///                 ArgName = "ip_list",
+    ///                 ArgValue = "110.110.110.110",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DCDN domain config can be imported using the id, e.g.

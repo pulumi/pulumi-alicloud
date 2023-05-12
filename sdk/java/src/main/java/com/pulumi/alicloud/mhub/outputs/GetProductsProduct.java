@@ -13,19 +13,28 @@ public final class GetProductsProduct {
      * @return The ID of the Product.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the Product.
      * 
      */
-    private String productId;
+    private final String productId;
     /**
      * @return The name of the Product.
      * 
      */
-    private String productName;
+    private final String productName;
 
-    private GetProductsProduct() {}
+    @CustomType.Constructor
+    private GetProductsProduct(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("productId") String productId,
+        @CustomType.Parameter("productName") String productName) {
+        this.id = id;
+        this.productId = productId;
+        this.productName = productName;
+    }
+
     /**
      * @return The ID of the Product.
      * 
@@ -55,12 +64,16 @@ public final class GetProductsProduct {
     public static Builder builder(GetProductsProduct defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private String productId;
         private String productName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetProductsProduct defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -68,27 +81,19 @@ public final class GetProductsProduct {
     	      this.productName = defaults.productName;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder productId(String productId) {
             this.productId = Objects.requireNonNull(productId);
             return this;
         }
-        @CustomType.Setter
         public Builder productName(String productName) {
             this.productName = Objects.requireNonNull(productName);
             return this;
-        }
-        public GetProductsProduct build() {
-            final var o = new GetProductsProduct();
-            o.id = id;
-            o.productId = productId;
-            o.productName = productName;
-            return o;
+        }        public GetProductsProduct build() {
+            return new GetProductsProduct(id, productId, productName);
         }
     }
 }

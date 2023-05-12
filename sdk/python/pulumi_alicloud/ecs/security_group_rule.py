@@ -35,6 +35,8 @@ class SecurityGroupRuleArgs:
         :param pulumi.Input[str] cidr_ip: The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
         :param pulumi.Input[str] description: The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
         :param pulumi.Input[str] ipv6_cidr_ip: Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+               
+               > **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
         :param pulumi.Input[str] nic_type: Network type, can be either `internet` or `intranet`, the default value is `internet`.
         :param pulumi.Input[str] policy: Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
         :param pulumi.Input[str] port_range: The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
@@ -133,6 +135,8 @@ class SecurityGroupRuleArgs:
     def ipv6_cidr_ip(self) -> Optional[pulumi.Input[str]]:
         """
         Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+
+        > **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
         """
         return pulumi.get(self, "ipv6_cidr_ip")
 
@@ -248,6 +252,8 @@ class _SecurityGroupRuleState:
         :param pulumi.Input[str] description: The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
         :param pulumi.Input[str] ip_protocol: The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
         :param pulumi.Input[str] ipv6_cidr_ip: Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+               
+               > **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
         :param pulumi.Input[str] nic_type: Network type, can be either `internet` or `intranet`, the default value is `internet`.
         :param pulumi.Input[str] policy: Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
         :param pulumi.Input[str] port_range: The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
@@ -327,6 +333,8 @@ class _SecurityGroupRuleState:
     def ipv6_cidr_ip(self) -> Optional[pulumi.Input[str]]:
         """
         Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+
+        > **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
         """
         return pulumi.get(self, "ipv6_cidr_ip")
 
@@ -464,13 +472,43 @@ class SecurityGroupRule(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a SecurityGroupRule resource with the given unique name, props, and options.
+        Provides a security group rule resource.
+        Represents a single `ingress` or `egress` group rule, which can be added to external Security Groups.
+
+        > **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.SecurityGroup("default")
+        allow_all_tcp = alicloud.ecs.SecurityGroupRule("allowAllTcp",
+            type="ingress",
+            ip_protocol="tcp",
+            nic_type="internet",
+            policy="accept",
+            port_range="1/65535",
+            priority=1,
+            security_group_id=default.id,
+            cidr_ip="0.0.0.0/0")
+        ```
+        ## Module Support
+
+        You can use the existing security-group module
+        to create a security group and add several rules one-click.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cidr_ip: The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
         :param pulumi.Input[str] description: The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
         :param pulumi.Input[str] ip_protocol: The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
         :param pulumi.Input[str] ipv6_cidr_ip: Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+               
+               > **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
         :param pulumi.Input[str] nic_type: Network type, can be either `internet` or `intranet`, the default value is `internet`.
         :param pulumi.Input[str] policy: Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
         :param pulumi.Input[str] port_range: The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
@@ -489,7 +527,35 @@ class SecurityGroupRule(pulumi.CustomResource):
                  args: SecurityGroupRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a SecurityGroupRule resource with the given unique name, props, and options.
+        Provides a security group rule resource.
+        Represents a single `ingress` or `egress` group rule, which can be added to external Security Groups.
+
+        > **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ecs.SecurityGroup("default")
+        allow_all_tcp = alicloud.ecs.SecurityGroupRule("allowAllTcp",
+            type="ingress",
+            ip_protocol="tcp",
+            nic_type="internet",
+            policy="accept",
+            port_range="1/65535",
+            priority=1,
+            security_group_id=default.id,
+            cidr_ip="0.0.0.0/0")
+        ```
+        ## Module Support
+
+        You can use the existing security-group module
+        to create a security group and add several rules one-click.
+
         :param str resource_name: The name of the resource.
         :param SecurityGroupRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -580,6 +646,8 @@ class SecurityGroupRule(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
         :param pulumi.Input[str] ip_protocol: The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
         :param pulumi.Input[str] ipv6_cidr_ip: Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+               
+               > **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
         :param pulumi.Input[str] nic_type: Network type, can be either `internet` or `intranet`, the default value is `internet`.
         :param pulumi.Input[str] policy: Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
         :param pulumi.Input[str] port_range: The range of port numbers relevant to the IP protocol. Default to "-1/-1". When the protocol is tcp or udp, each side port number range from 1 to 65535 and '-1/-1' will be invalid.
@@ -639,6 +707,8 @@ class SecurityGroupRule(pulumi.CustomResource):
     def ipv6_cidr_ip(self) -> pulumi.Output[Optional[str]]:
         """
         Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+
+        > **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
         """
         return pulumi.get(self, "ipv6_cidr_ip")
 

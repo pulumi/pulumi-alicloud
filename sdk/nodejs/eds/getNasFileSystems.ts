@@ -67,6 +67,9 @@ export interface GetNasFileSystemsArgs {
      * The ID of office site.
      */
     officeSiteId?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
@@ -142,6 +145,9 @@ export interface GetNasFileSystemsOutputArgs {
      * The ID of office site.
      */
     officeSiteId?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.

@@ -227,8 +227,14 @@ class ListenerAccessLogTracingConfig(dict):
                  tracing_type: Optional[str] = None):
         """
         :param bool tracing_enabled: Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+               
+               > **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
         :param int tracing_sample: Xtrace Sampling Rate. Value: `1` to `10000`.
+               
+               > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
         :param str tracing_type: Xtrace Type Value Is `Zipkin`.
+               
+               > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
         """
         if tracing_enabled is not None:
             pulumi.set(__self__, "tracing_enabled", tracing_enabled)
@@ -242,6 +248,8 @@ class ListenerAccessLogTracingConfig(dict):
     def tracing_enabled(self) -> Optional[bool]:
         """
         Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+
+        > **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
         """
         return pulumi.get(self, "tracing_enabled")
 
@@ -250,6 +258,8 @@ class ListenerAccessLogTracingConfig(dict):
     def tracing_sample(self) -> Optional[int]:
         """
         Xtrace Sampling Rate. Value: `1` to `10000`.
+
+        > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
         """
         return pulumi.get(self, "tracing_sample")
 
@@ -258,6 +268,8 @@ class ListenerAccessLogTracingConfig(dict):
     def tracing_type(self) -> Optional[str]:
         """
         Xtrace Type Value Is `Zipkin`.
+
+        > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
         """
         return pulumi.get(self, "tracing_type")
 
@@ -539,6 +551,8 @@ class ListenerQuicConfig(dict):
         """
         :param str quic_listener_id: There Is a Need to Correlate the QuIC Listener ID. The Https Listener, in Effect at the Time. quicupgradeenabled True When Required.
         :param bool quic_upgrade_enabled: Indicates Whether to Enable the QuIC Upgrade.
+               
+               > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
         """
         if quic_listener_id is not None:
             pulumi.set(__self__, "quic_listener_id", quic_listener_id)
@@ -558,6 +572,8 @@ class ListenerQuicConfig(dict):
     def quic_upgrade_enabled(self) -> Optional[bool]:
         """
         Indicates Whether to Enable the QuIC Upgrade.
+
+        > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
         """
         return pulumi.get(self, "quic_upgrade_enabled")
 
@@ -2842,12 +2858,16 @@ class GetListenersListenerResult(dict):
                  xforwarded_for_configs: Sequence['outputs.GetListenersListenerXforwardedForConfigResult']):
         """
         :param bool access_log_record_customized_headers_enabled: Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+               
+               > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
         :param Sequence['GetListenersListenerAccessLogTracingConfigArgs'] access_log_tracing_configs: Xtrace Configuration Information.
         :param Sequence['GetListenersListenerAclConfigArgs'] acl_configs: The configurations of the access control lists (ACLs).
         :param Sequence['GetListenersListenerCertificateArgs'] certificates: The Certificate List.
         :param Sequence['GetListenersListenerDefaultActionArgs'] default_actions: The Default Rule Action List.
         :param bool gzip_enabled: Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: `True` Or `False`. Default Value: `True`.
         :param bool http2_enabled: Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+               
+               > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
         :param str id: The ID of the Listener.
         :param int idle_timeout: Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
         :param str listener_description: Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
@@ -2860,6 +2880,8 @@ class GetListenersListenerResult(dict):
         :param Sequence['GetListenersListenerQuicConfigArgs'] quic_configs: Configuration Associated with the QuIC Listening.
         :param int request_timeout: The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: 60. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         :param str security_policy_id: Security Policy.
+               
+               > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
         :param str status: The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
         :param Sequence['GetListenersListenerXforwardedForConfigArgs'] xforwarded_for_configs: xforwardfor Related Attribute Configuration.
         """
@@ -2890,6 +2912,8 @@ class GetListenersListenerResult(dict):
     def access_log_record_customized_headers_enabled(self) -> bool:
         """
         Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+
+        > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
         """
         return pulumi.get(self, "access_log_record_customized_headers_enabled")
 
@@ -2938,6 +2962,8 @@ class GetListenersListenerResult(dict):
     def http2_enabled(self) -> bool:
         """
         Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+
+        > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
         """
         return pulumi.get(self, "http2_enabled")
 
@@ -3034,6 +3060,8 @@ class GetListenersListenerResult(dict):
     def security_policy_id(self) -> str:
         """
         Security Policy.
+
+        > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
         """
         return pulumi.get(self, "security_policy_id")
 
@@ -3062,8 +3090,14 @@ class GetListenersListenerAccessLogTracingConfigResult(dict):
                  tracing_type: str):
         """
         :param bool tracing_enabled: Xtrace Function. Value: True Or False. Default Value: False.
+               
+               > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
         :param int tracing_sample: Xtrace Sampling Rate. Value: **1~10000**.
+               
+               > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
         :param str tracing_type: Xtrace Type Value Is **Zipkin**.
+               
+               > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
         """
         pulumi.set(__self__, "tracing_enabled", tracing_enabled)
         pulumi.set(__self__, "tracing_sample", tracing_sample)
@@ -3074,6 +3108,8 @@ class GetListenersListenerAccessLogTracingConfigResult(dict):
     def tracing_enabled(self) -> bool:
         """
         Xtrace Function. Value: True Or False. Default Value: False.
+
+        > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
         """
         return pulumi.get(self, "tracing_enabled")
 
@@ -3082,6 +3118,8 @@ class GetListenersListenerAccessLogTracingConfigResult(dict):
     def tracing_sample(self) -> int:
         """
         Xtrace Sampling Rate. Value: **1~10000**.
+
+        > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
         """
         return pulumi.get(self, "tracing_sample")
 
@@ -3090,6 +3128,8 @@ class GetListenersListenerAccessLogTracingConfigResult(dict):
     def tracing_type(self) -> str:
         """
         Xtrace Type Value Is **Zipkin**.
+
+        > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
         """
         return pulumi.get(self, "tracing_type")
 

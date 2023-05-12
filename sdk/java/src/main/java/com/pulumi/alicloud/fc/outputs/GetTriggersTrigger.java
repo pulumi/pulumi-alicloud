@@ -13,44 +13,63 @@ public final class GetTriggersTrigger {
      * @return JSON-encoded trigger configuration. See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
      * 
      */
-    private String config;
+    private final String config;
     /**
      * @return FC trigger creation time.
      * 
      */
-    private String creationTime;
+    private final String creationTime;
     /**
      * @return FC trigger ID.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is &#34;acs:ram::$account-id:role/$role-name&#34;. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
      * 
      */
-    private String invocationRole;
+    private final String invocationRole;
     /**
      * @return FC trigger last modification time.
      * 
      */
-    private String lastModificationTime;
+    private final String lastModificationTime;
     /**
      * @return FC trigger name.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
      * 
      */
-    private String sourceArn;
+    private final String sourceArn;
     /**
      * @return Type of the trigger. Valid values: `oss`, `log`, `timer`, `http`, `mns_topic`, `cdn_events` and `eventbridge`.
      * 
      */
-    private String type;
+    private final String type;
 
-    private GetTriggersTrigger() {}
+    @CustomType.Constructor
+    private GetTriggersTrigger(
+        @CustomType.Parameter("config") String config,
+        @CustomType.Parameter("creationTime") String creationTime,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("invocationRole") String invocationRole,
+        @CustomType.Parameter("lastModificationTime") String lastModificationTime,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("sourceArn") String sourceArn,
+        @CustomType.Parameter("type") String type) {
+        this.config = config;
+        this.creationTime = creationTime;
+        this.id = id;
+        this.invocationRole = invocationRole;
+        this.lastModificationTime = lastModificationTime;
+        this.name = name;
+        this.sourceArn = sourceArn;
+        this.type = type;
+    }
+
     /**
      * @return JSON-encoded trigger configuration. See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
      * 
@@ -115,7 +134,7 @@ public final class GetTriggersTrigger {
     public static Builder builder(GetTriggersTrigger defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String config;
         private String creationTime;
@@ -125,7 +144,11 @@ public final class GetTriggersTrigger {
         private String name;
         private String sourceArn;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTriggersTrigger defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.config = defaults.config;
@@ -138,57 +161,39 @@ public final class GetTriggersTrigger {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder config(String config) {
             this.config = Objects.requireNonNull(config);
             return this;
         }
-        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder invocationRole(String invocationRole) {
             this.invocationRole = Objects.requireNonNull(invocationRole);
             return this;
         }
-        @CustomType.Setter
         public Builder lastModificationTime(String lastModificationTime) {
             this.lastModificationTime = Objects.requireNonNull(lastModificationTime);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceArn(String sourceArn) {
             this.sourceArn = Objects.requireNonNull(sourceArn);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetTriggersTrigger build() {
-            final var o = new GetTriggersTrigger();
-            o.config = config;
-            o.creationTime = creationTime;
-            o.id = id;
-            o.invocationRole = invocationRole;
-            o.lastModificationTime = lastModificationTime;
-            o.name = name;
-            o.sourceArn = sourceArn;
-            o.type = type;
-            return o;
+        }        public GetTriggersTrigger build() {
+            return new GetTriggersTrigger(config, creationTime, id, invocationRole, lastModificationTime, name, sourceArn, type);
         }
     }
 }

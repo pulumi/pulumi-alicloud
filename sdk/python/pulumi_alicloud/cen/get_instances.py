@@ -146,6 +146,7 @@ def get_instances(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of CEN instances IDs.
     :param str name_regex: A regex string to filter CEN instances by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
@@ -193,6 +194,7 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
 
     :param Sequence[str] ids: A list of CEN instances IDs.
     :param str name_regex: A regex string to filter CEN instances by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """

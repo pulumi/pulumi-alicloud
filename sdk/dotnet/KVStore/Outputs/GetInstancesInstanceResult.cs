@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// </summary>
         public readonly string EndTime;
         /// <summary>
-        /// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+        /// The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
         /// </summary>
         public readonly string EngineVersion;
         /// <summary>

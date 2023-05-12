@@ -126,6 +126,7 @@ def get_endpoints(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Endpoint IDs.
     :param str name_regex: A regex string to filter results by Endpoint name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
     """
     __args__ = dict()
@@ -174,6 +175,7 @@ def get_endpoints_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
 
     :param Sequence[str] ids: A list of Endpoint IDs.
     :param str name_regex: A regex string to filter results by Endpoint name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
     """
     ...

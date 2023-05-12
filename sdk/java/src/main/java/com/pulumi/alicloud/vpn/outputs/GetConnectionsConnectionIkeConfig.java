@@ -16,49 +16,70 @@ public final class GetConnectionsConnectionIkeConfig {
      * @return The authentication algorithm of phase-one negotiation.
      * 
      */
-    private @Nullable String ikeAuthAlg;
+    private final @Nullable String ikeAuthAlg;
     /**
      * @return The encryption algorithm of phase-one negotiation.
      * 
      */
-    private @Nullable String ikeEncAlg;
+    private final @Nullable String ikeEncAlg;
     /**
      * @return The SA lifecycle as the result of phase-one negotiation.
      * 
      */
-    private @Nullable Integer ikeLifetime;
+    private final @Nullable Integer ikeLifetime;
     /**
      * @return The identification of the VPN gateway.
      * 
      */
-    private @Nullable String ikeLocalId;
+    private final @Nullable String ikeLocalId;
     /**
      * @return The negotiation mode of IKE phase-one.
      * 
      */
-    private @Nullable String ikeMode;
+    private final @Nullable String ikeMode;
     /**
      * @return The Diffie-Hellman key exchange algorithm used by phase-one negotiation.
      * 
      */
-    private @Nullable String ikePfs;
+    private final @Nullable String ikePfs;
     /**
      * @return The identification of the customer gateway.
      * 
      */
-    private @Nullable String ikeRemoteId;
+    private final @Nullable String ikeRemoteId;
     /**
      * @return The version of the IKE protocol.
      * 
      */
-    private @Nullable String ikeVersion;
+    private final @Nullable String ikeVersion;
     /**
      * @return Used for authentication between the IPsec VPN gateway and the customer gateway.
      * 
      */
-    private @Nullable String psk;
+    private final @Nullable String psk;
 
-    private GetConnectionsConnectionIkeConfig() {}
+    @CustomType.Constructor
+    private GetConnectionsConnectionIkeConfig(
+        @CustomType.Parameter("ikeAuthAlg") @Nullable String ikeAuthAlg,
+        @CustomType.Parameter("ikeEncAlg") @Nullable String ikeEncAlg,
+        @CustomType.Parameter("ikeLifetime") @Nullable Integer ikeLifetime,
+        @CustomType.Parameter("ikeLocalId") @Nullable String ikeLocalId,
+        @CustomType.Parameter("ikeMode") @Nullable String ikeMode,
+        @CustomType.Parameter("ikePfs") @Nullable String ikePfs,
+        @CustomType.Parameter("ikeRemoteId") @Nullable String ikeRemoteId,
+        @CustomType.Parameter("ikeVersion") @Nullable String ikeVersion,
+        @CustomType.Parameter("psk") @Nullable String psk) {
+        this.ikeAuthAlg = ikeAuthAlg;
+        this.ikeEncAlg = ikeEncAlg;
+        this.ikeLifetime = ikeLifetime;
+        this.ikeLocalId = ikeLocalId;
+        this.ikeMode = ikeMode;
+        this.ikePfs = ikePfs;
+        this.ikeRemoteId = ikeRemoteId;
+        this.ikeVersion = ikeVersion;
+        this.psk = psk;
+    }
+
     /**
      * @return The authentication algorithm of phase-one negotiation.
      * 
@@ -130,7 +151,7 @@ public final class GetConnectionsConnectionIkeConfig {
     public static Builder builder(GetConnectionsConnectionIkeConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String ikeAuthAlg;
         private @Nullable String ikeEncAlg;
@@ -141,7 +162,11 @@ public final class GetConnectionsConnectionIkeConfig {
         private @Nullable String ikeRemoteId;
         private @Nullable String ikeVersion;
         private @Nullable String psk;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetConnectionsConnectionIkeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ikeAuthAlg = defaults.ikeAuthAlg;
@@ -155,63 +180,43 @@ public final class GetConnectionsConnectionIkeConfig {
     	      this.psk = defaults.psk;
         }
 
-        @CustomType.Setter
         public Builder ikeAuthAlg(@Nullable String ikeAuthAlg) {
             this.ikeAuthAlg = ikeAuthAlg;
             return this;
         }
-        @CustomType.Setter
         public Builder ikeEncAlg(@Nullable String ikeEncAlg) {
             this.ikeEncAlg = ikeEncAlg;
             return this;
         }
-        @CustomType.Setter
         public Builder ikeLifetime(@Nullable Integer ikeLifetime) {
             this.ikeLifetime = ikeLifetime;
             return this;
         }
-        @CustomType.Setter
         public Builder ikeLocalId(@Nullable String ikeLocalId) {
             this.ikeLocalId = ikeLocalId;
             return this;
         }
-        @CustomType.Setter
         public Builder ikeMode(@Nullable String ikeMode) {
             this.ikeMode = ikeMode;
             return this;
         }
-        @CustomType.Setter
         public Builder ikePfs(@Nullable String ikePfs) {
             this.ikePfs = ikePfs;
             return this;
         }
-        @CustomType.Setter
         public Builder ikeRemoteId(@Nullable String ikeRemoteId) {
             this.ikeRemoteId = ikeRemoteId;
             return this;
         }
-        @CustomType.Setter
         public Builder ikeVersion(@Nullable String ikeVersion) {
             this.ikeVersion = ikeVersion;
             return this;
         }
-        @CustomType.Setter
         public Builder psk(@Nullable String psk) {
             this.psk = psk;
             return this;
-        }
-        public GetConnectionsConnectionIkeConfig build() {
-            final var o = new GetConnectionsConnectionIkeConfig();
-            o.ikeAuthAlg = ikeAuthAlg;
-            o.ikeEncAlg = ikeEncAlg;
-            o.ikeLifetime = ikeLifetime;
-            o.ikeLocalId = ikeLocalId;
-            o.ikeMode = ikeMode;
-            o.ikePfs = ikePfs;
-            o.ikeRemoteId = ikeRemoteId;
-            o.ikeVersion = ikeVersion;
-            o.psk = psk;
-            return o;
+        }        public GetConnectionsConnectionIkeConfig build() {
+            return new GetConnectionsConnectionIkeConfig(ikeAuthAlg, ikeEncAlg, ikeLifetime, ikeLocalId, ikeMode, ikePfs, ikeRemoteId, ikeVersion, psk);
         }
     }
 }

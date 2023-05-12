@@ -53,6 +53,8 @@ func GetTrafficMirrorService(ctx *pulumi.Context, args *GetTrafficMirrorServiceA
 // A collection of arguments for invoking getTrafficMirrorService.
 type GetTrafficMirrorServiceArgs struct {
 	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+	//
+	// > **NOTE:** Setting `enable = "On"` to open the VPC Traffic Mirror service that means you have read and agreed the [VPC Traffic Mirror Terms of Service](https://help.aliyun.com/document_detail/325573.html). The service can not closed once it is opened.
 	Enable *string `pulumi:"enable"`
 }
 
@@ -81,6 +83,8 @@ func GetTrafficMirrorServiceOutput(ctx *pulumi.Context, args GetTrafficMirrorSer
 // A collection of arguments for invoking getTrafficMirrorService.
 type GetTrafficMirrorServiceOutputArgs struct {
 	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+	//
+	// > **NOTE:** Setting `enable = "On"` to open the VPC Traffic Mirror service that means you have read and agreed the [VPC Traffic Mirror Terms of Service](https://help.aliyun.com/document_detail/325573.html). The service can not closed once it is opened.
 	Enable pulumi.StringPtrInput `pulumi:"enable"`
 }
 

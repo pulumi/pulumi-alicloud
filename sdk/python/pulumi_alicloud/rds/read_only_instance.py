@@ -78,7 +78,11 @@ class ReadOnlyInstanceArgs:
                - 1: enables the CRL
                - 0: disables the CRL
         :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
+               
+               > **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
         :param pulumi.Input[str] db_instance_ip_array_name: The name of the IP address whitelist. Default value: Default.
+               
+               > **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
         :param pulumi.Input[str] db_instance_storage_type: The storage type of the instance. Valid values:
                - local_ssd: specifies to use local SSDs. This value is recommended.
                - cloud_ssd: specifies to use standard SSDs.
@@ -112,6 +116,8 @@ class ReadOnlyInstanceArgs:
                - 1: enables SSL encryption
                - 0: disables SSL encryption
         :param pulumi.Input[str] switch_time: The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+               
+               > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -122,6 +128,8 @@ class ReadOnlyInstanceArgs:
                - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
                - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
                - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+               
+               > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
                - false: not to upgrade
@@ -367,6 +375,8 @@ class ReadOnlyInstanceArgs:
     def db_instance_ip_array_attribute(self) -> Optional[pulumi.Input[str]]:
         """
         The attribute of the IP address whitelist. By default, this parameter is empty.
+
+        > **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
         """
         return pulumi.get(self, "db_instance_ip_array_attribute")
 
@@ -379,6 +389,8 @@ class ReadOnlyInstanceArgs:
     def db_instance_ip_array_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the IP address whitelist. Default value: Default.
+
+        > **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
         """
         return pulumi.get(self, "db_instance_ip_array_name")
 
@@ -588,6 +600,8 @@ class ReadOnlyInstanceArgs:
     def switch_time(self) -> Optional[pulumi.Input[str]]:
         """
         The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+
+        > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         """
         return pulumi.get(self, "switch_time")
 
@@ -620,6 +634,8 @@ class ReadOnlyInstanceArgs:
         - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
         - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
         - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+
+        > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         """
         return pulumi.get(self, "target_minor_version")
 
@@ -762,7 +778,11 @@ class _ReadOnlyInstanceState:
                - 0: disables the CRL
         :param pulumi.Input[str] connection_string: RDS database connection string.
         :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
+               
+               > **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
         :param pulumi.Input[str] db_instance_ip_array_name: The name of the IP address whitelist. Default value: Default.
+               
+               > **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
         :param pulumi.Input[str] db_instance_storage_type: The storage type of the instance. Valid values:
                - local_ssd: specifies to use local SSDs. This value is recommended.
                - cloud_ssd: specifies to use standard SSDs.
@@ -802,6 +822,8 @@ class _ReadOnlyInstanceState:
                - 1: enables SSL encryption
                - 0: disables SSL encryption
         :param pulumi.Input[str] switch_time: The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+               
+               > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -812,6 +834,8 @@ class _ReadOnlyInstanceState:
                - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
                - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
                - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+               
+               > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
                - false: not to upgrade
@@ -1031,6 +1055,8 @@ class _ReadOnlyInstanceState:
     def db_instance_ip_array_attribute(self) -> Optional[pulumi.Input[str]]:
         """
         The attribute of the IP address whitelist. By default, this parameter is empty.
+
+        > **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
         """
         return pulumi.get(self, "db_instance_ip_array_attribute")
 
@@ -1043,6 +1069,8 @@ class _ReadOnlyInstanceState:
     def db_instance_ip_array_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the IP address whitelist. Default value: Default.
+
+        > **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
         """
         return pulumi.get(self, "db_instance_ip_array_name")
 
@@ -1324,6 +1352,8 @@ class _ReadOnlyInstanceState:
     def switch_time(self) -> Optional[pulumi.Input[str]]:
         """
         The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+
+        > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         """
         return pulumi.get(self, "switch_time")
 
@@ -1356,6 +1386,8 @@ class _ReadOnlyInstanceState:
         - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
         - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
         - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+
+        > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         """
         return pulumi.get(self, "target_minor_version")
 
@@ -1550,7 +1582,11 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - 1: enables the CRL
                - 0: disables the CRL
         :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
+               
+               > **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
         :param pulumi.Input[str] db_instance_ip_array_name: The name of the IP address whitelist. Default value: Default.
+               
+               > **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
         :param pulumi.Input[str] db_instance_storage_type: The storage type of the instance. Valid values:
                - local_ssd: specifies to use local SSDs. This value is recommended.
                - cloud_ssd: specifies to use standard SSDs.
@@ -1588,6 +1624,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - 1: enables SSL encryption
                - 0: disables SSL encryption
         :param pulumi.Input[str] switch_time: The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+               
+               > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -1598,6 +1636,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
                - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
                - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+               
+               > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
                - false: not to upgrade
@@ -1858,7 +1898,11 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - 0: disables the CRL
         :param pulumi.Input[str] connection_string: RDS database connection string.
         :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
+               
+               > **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
         :param pulumi.Input[str] db_instance_ip_array_name: The name of the IP address whitelist. Default value: Default.
+               
+               > **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
         :param pulumi.Input[str] db_instance_storage_type: The storage type of the instance. Valid values:
                - local_ssd: specifies to use local SSDs. This value is recommended.
                - cloud_ssd: specifies to use standard SSDs.
@@ -1898,6 +1942,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - 1: enables SSL encryption
                - 0: disables SSL encryption
         :param pulumi.Input[str] switch_time: The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+               
+               > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
@@ -1908,6 +1954,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
                - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
                - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+               
+               > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         :param pulumi.Input[bool] upgrade_db_instance_kernel_version: Whether to upgrade a minor version of the kernel. Valid values:
                - true: upgrade
                - false: not to upgrade
@@ -2056,6 +2104,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
     def db_instance_ip_array_attribute(self) -> pulumi.Output[Optional[str]]:
         """
         The attribute of the IP address whitelist. By default, this parameter is empty.
+
+        > **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
         """
         return pulumi.get(self, "db_instance_ip_array_attribute")
 
@@ -2064,6 +2114,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
     def db_instance_ip_array_name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the IP address whitelist. Default value: Default.
+
+        > **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
         """
         return pulumi.get(self, "db_instance_ip_array_name")
 
@@ -2257,6 +2309,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
     def switch_time(self) -> pulumi.Output[Optional[str]]:
         """
         The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
+
+        > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         """
         return pulumi.get(self, "switch_time")
 
@@ -2281,6 +2335,8 @@ class ReadOnlyInstance(pulumi.CustomResource):
         - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
         - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
         - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+
+        > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         """
         return pulumi.get(self, "target_minor_version")
 

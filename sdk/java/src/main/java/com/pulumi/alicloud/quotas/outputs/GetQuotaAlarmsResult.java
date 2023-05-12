@@ -15,23 +15,48 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetQuotaAlarmsResult {
-    private List<GetQuotaAlarmsAlarm> alarms;
-    private @Nullable Boolean enableDetails;
+    private final List<GetQuotaAlarmsAlarm> alarms;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String productCode;
-    private @Nullable String quotaActionCode;
-    private @Nullable String quotaAlarmName;
-    private @Nullable List<GetQuotaAlarmsQuotaDimension> quotaDimensions;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String productCode;
+    private final @Nullable String quotaActionCode;
+    private final @Nullable String quotaAlarmName;
+    private final @Nullable List<GetQuotaAlarmsQuotaDimension> quotaDimensions;
 
-    private GetQuotaAlarmsResult() {}
+    @CustomType.Constructor
+    private GetQuotaAlarmsResult(
+        @CustomType.Parameter("alarms") List<GetQuotaAlarmsAlarm> alarms,
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("productCode") @Nullable String productCode,
+        @CustomType.Parameter("quotaActionCode") @Nullable String quotaActionCode,
+        @CustomType.Parameter("quotaAlarmName") @Nullable String quotaAlarmName,
+        @CustomType.Parameter("quotaDimensions") @Nullable List<GetQuotaAlarmsQuotaDimension> quotaDimensions) {
+        this.alarms = alarms;
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.productCode = productCode;
+        this.quotaActionCode = quotaActionCode;
+        this.quotaAlarmName = quotaAlarmName;
+        this.quotaDimensions = quotaDimensions;
+    }
+
     public List<GetQuotaAlarmsAlarm> alarms() {
         return this.alarms;
     }
@@ -77,7 +102,7 @@ public final class GetQuotaAlarmsResult {
     public static Builder builder(GetQuotaAlarmsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetQuotaAlarmsAlarm> alarms;
         private @Nullable Boolean enableDetails;
@@ -90,7 +115,11 @@ public final class GetQuotaAlarmsResult {
         private @Nullable String quotaActionCode;
         private @Nullable String quotaAlarmName;
         private @Nullable List<GetQuotaAlarmsQuotaDimension> quotaDimensions;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetQuotaAlarmsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alarms = defaults.alarms;
@@ -106,7 +135,6 @@ public final class GetQuotaAlarmsResult {
     	      this.quotaDimensions = defaults.quotaDimensions;
         }
 
-        @CustomType.Setter
         public Builder alarms(List<GetQuotaAlarmsAlarm> alarms) {
             this.alarms = Objects.requireNonNull(alarms);
             return this;
@@ -114,17 +142,14 @@ public final class GetQuotaAlarmsResult {
         public Builder alarms(GetQuotaAlarmsAlarm... alarms) {
             return alarms(List.of(alarms));
         }
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -132,12 +157,10 @@ public final class GetQuotaAlarmsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -145,48 +168,30 @@ public final class GetQuotaAlarmsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder productCode(@Nullable String productCode) {
             this.productCode = productCode;
             return this;
         }
-        @CustomType.Setter
         public Builder quotaActionCode(@Nullable String quotaActionCode) {
             this.quotaActionCode = quotaActionCode;
             return this;
         }
-        @CustomType.Setter
         public Builder quotaAlarmName(@Nullable String quotaAlarmName) {
             this.quotaAlarmName = quotaAlarmName;
             return this;
         }
-        @CustomType.Setter
         public Builder quotaDimensions(@Nullable List<GetQuotaAlarmsQuotaDimension> quotaDimensions) {
             this.quotaDimensions = quotaDimensions;
             return this;
         }
         public Builder quotaDimensions(GetQuotaAlarmsQuotaDimension... quotaDimensions) {
             return quotaDimensions(List.of(quotaDimensions));
-        }
-        public GetQuotaAlarmsResult build() {
-            final var o = new GetQuotaAlarmsResult();
-            o.alarms = alarms;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.productCode = productCode;
-            o.quotaActionCode = quotaActionCode;
-            o.quotaAlarmName = quotaAlarmName;
-            o.quotaDimensions = quotaDimensions;
-            return o;
+        }        public GetQuotaAlarmsResult build() {
+            return new GetQuotaAlarmsResult(alarms, enableDetails, id, ids, nameRegex, names, outputFile, productCode, quotaActionCode, quotaAlarmName, quotaDimensions);
         }
     }
 }

@@ -28,6 +28,9 @@ export interface GetConnectionsArgs {
      * A list of KVStore DBInstance ids, only support one item.
      */
     ids: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -66,5 +69,8 @@ export interface GetConnectionsOutputArgs {
      * A list of KVStore DBInstance ids, only support one item.
      */
     ids: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

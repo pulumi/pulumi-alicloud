@@ -17,27 +17,44 @@ public final class GetServerGroupsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of SLB VServer groups IDs.
      * 
      */
-    private List<String> ids;
-    private String loadBalancerId;
-    private @Nullable String nameRegex;
+    private final List<String> ids;
+    private final String loadBalancerId;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of SLB VServer groups names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
     /**
      * @return A list of SLB VServer groups. Each element contains the following attributes:
      * 
      */
-    private List<GetServerGroupsSlbServerGroup> slbServerGroups;
+    private final List<GetServerGroupsSlbServerGroup> slbServerGroups;
 
-    private GetServerGroupsResult() {}
+    @CustomType.Constructor
+    private GetServerGroupsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("loadBalancerId") String loadBalancerId,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("slbServerGroups") List<GetServerGroupsSlbServerGroup> slbServerGroups) {
+        this.id = id;
+        this.ids = ids;
+        this.loadBalancerId = loadBalancerId;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.slbServerGroups = slbServerGroups;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -83,7 +100,7 @@ public final class GetServerGroupsResult {
     public static Builder builder(GetServerGroupsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -92,7 +109,11 @@ public final class GetServerGroupsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private List<GetServerGroupsSlbServerGroup> slbServerGroups;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServerGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -104,12 +125,10 @@ public final class GetServerGroupsResult {
     	      this.slbServerGroups = defaults.slbServerGroups;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -117,17 +136,14 @@ public final class GetServerGroupsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
             this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -135,29 +151,18 @@ public final class GetServerGroupsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder slbServerGroups(List<GetServerGroupsSlbServerGroup> slbServerGroups) {
             this.slbServerGroups = Objects.requireNonNull(slbServerGroups);
             return this;
         }
         public Builder slbServerGroups(GetServerGroupsSlbServerGroup... slbServerGroups) {
             return slbServerGroups(List.of(slbServerGroups));
-        }
-        public GetServerGroupsResult build() {
-            final var o = new GetServerGroupsResult();
-            o.id = id;
-            o.ids = ids;
-            o.loadBalancerId = loadBalancerId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.slbServerGroups = slbServerGroups;
-            return o;
+        }        public GetServerGroupsResult build() {
+            return new GetServerGroupsResult(id, ids, loadBalancerId, nameRegex, names, outputFile, slbServerGroups);
         }
     }
 }

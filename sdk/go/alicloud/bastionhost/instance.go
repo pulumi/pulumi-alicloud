@@ -35,10 +35,11 @@ type Instance struct {
 	LdapAuthServers InstanceLdapAuthServerArrayOutput `pulumi:"ldapAuthServers"`
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode pulumi.StringOutput `pulumi:"licenseCode"`
-	Period      pulumi.IntPtrOutput `pulumi:"period"`
+	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The plan code of Cloud Bastionhost instance. Valid values:
-	PlanCode pulumi.StringOutput `pulumi:"planCode"`
-	// The public IP address that you want to add to the whitelist.
+	PlanCode         pulumi.StringOutput      `pulumi:"planCode"`
 	PublicWhiteLists pulumi.StringArrayOutput `pulumi:"publicWhiteLists"`
 	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
 	RenewPeriod pulumi.IntPtrOutput `pulumi:"renewPeriod"`
@@ -47,7 +48,11 @@ type Instance struct {
 	// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
 	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-	ResourceGroupId  pulumi.StringOutput      `pulumi:"resourceGroupId"`
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// security group IDs configured to Bastionhost.
+	// **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
+	// So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
+	// and you can use tolist to convert it to a list.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
 	Storage pulumi.StringOutput `pulumi:"storage"`
@@ -119,10 +124,11 @@ type instanceState struct {
 	LdapAuthServers []InstanceLdapAuthServer `pulumi:"ldapAuthServers"`
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode *string `pulumi:"licenseCode"`
-	Period      *int    `pulumi:"period"`
+	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period *int `pulumi:"period"`
 	// The plan code of Cloud Bastionhost instance. Valid values:
-	PlanCode *string `pulumi:"planCode"`
-	// The public IP address that you want to add to the whitelist.
+	PlanCode         *string  `pulumi:"planCode"`
 	PublicWhiteLists []string `pulumi:"publicWhiteLists"`
 	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
 	RenewPeriod *int `pulumi:"renewPeriod"`
@@ -131,7 +137,11 @@ type instanceState struct {
 	// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-	ResourceGroupId  *string  `pulumi:"resourceGroupId"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// security group IDs configured to Bastionhost.
+	// **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
+	// So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
+	// and you can use tolist to convert it to a list.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
 	Storage *string `pulumi:"storage"`
@@ -154,10 +164,11 @@ type InstanceState struct {
 	LdapAuthServers InstanceLdapAuthServerArrayInput
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode pulumi.StringPtrInput
-	Period      pulumi.IntPtrInput
+	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period pulumi.IntPtrInput
 	// The plan code of Cloud Bastionhost instance. Valid values:
-	PlanCode pulumi.StringPtrInput
-	// The public IP address that you want to add to the whitelist.
+	PlanCode         pulumi.StringPtrInput
 	PublicWhiteLists pulumi.StringArrayInput
 	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
 	RenewPeriod pulumi.IntPtrInput
@@ -166,7 +177,11 @@ type InstanceState struct {
 	// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
 	RenewalStatus pulumi.StringPtrInput
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-	ResourceGroupId  pulumi.StringPtrInput
+	ResourceGroupId pulumi.StringPtrInput
+	// security group IDs configured to Bastionhost.
+	// **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
+	// So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
+	// and you can use tolist to convert it to a list.
 	SecurityGroupIds pulumi.StringArrayInput
 	// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
 	Storage pulumi.StringPtrInput
@@ -193,10 +208,11 @@ type instanceArgs struct {
 	LdapAuthServers []InstanceLdapAuthServer `pulumi:"ldapAuthServers"`
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode string `pulumi:"licenseCode"`
-	Period      *int   `pulumi:"period"`
+	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period *int `pulumi:"period"`
 	// The plan code of Cloud Bastionhost instance. Valid values:
-	PlanCode string `pulumi:"planCode"`
-	// The public IP address that you want to add to the whitelist.
+	PlanCode         string   `pulumi:"planCode"`
 	PublicWhiteLists []string `pulumi:"publicWhiteLists"`
 	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
 	RenewPeriod *int `pulumi:"renewPeriod"`
@@ -205,7 +221,11 @@ type instanceArgs struct {
 	// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-	ResourceGroupId  *string  `pulumi:"resourceGroupId"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// security group IDs configured to Bastionhost.
+	// **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
+	// So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
+	// and you can use tolist to convert it to a list.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
 	Storage string `pulumi:"storage"`
@@ -229,10 +249,11 @@ type InstanceArgs struct {
 	LdapAuthServers InstanceLdapAuthServerArrayInput
 	// The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
 	LicenseCode pulumi.StringInput
-	Period      pulumi.IntPtrInput
+	// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period pulumi.IntPtrInput
 	// The plan code of Cloud Bastionhost instance. Valid values:
-	PlanCode pulumi.StringInput
-	// The public IP address that you want to add to the whitelist.
+	PlanCode         pulumi.StringInput
 	PublicWhiteLists pulumi.StringArrayInput
 	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
 	RenewPeriod pulumi.IntPtrInput
@@ -241,7 +262,11 @@ type InstanceArgs struct {
 	// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
 	RenewalStatus pulumi.StringPtrInput
 	// The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
-	ResourceGroupId  pulumi.StringPtrInput
+	ResourceGroupId pulumi.StringPtrInput
+	// security group IDs configured to Bastionhost.
+	// **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
+	// So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
+	// and you can use tolist to convert it to a list.
 	SecurityGroupIds pulumi.StringArrayInput
 	// The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
 	Storage pulumi.StringInput
@@ -368,6 +393,8 @@ func (o InstanceOutput) LicenseCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.LicenseCode }).(pulumi.StringOutput)
 }
 
+// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 func (o InstanceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
@@ -377,7 +404,6 @@ func (o InstanceOutput) PlanCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PlanCode }).(pulumi.StringOutput)
 }
 
-// The public IP address that you want to add to the whitelist.
 func (o InstanceOutput) PublicWhiteLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.PublicWhiteLists }).(pulumi.StringArrayOutput)
 }
@@ -402,6 +428,10 @@ func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
+// security group IDs configured to Bastionhost.
+// **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
+// So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
+// and you can use tolist to convert it to a list.
 func (o InstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }

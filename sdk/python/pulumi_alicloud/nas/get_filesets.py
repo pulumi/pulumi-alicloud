@@ -119,6 +119,7 @@ def get_filesets(file_system_id: Optional[str] = None,
 
     :param str file_system_id: The ID of the file system.
     :param Sequence[str] ids: A list of Fileset IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the fileset.
     """
     __args__ = dict()
@@ -168,6 +169,7 @@ def get_filesets_output(file_system_id: Optional[pulumi.Input[str]] = None,
 
     :param str file_system_id: The ID of the file system.
     :param Sequence[str] ids: A list of Fileset IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the fileset.
     """
     ...

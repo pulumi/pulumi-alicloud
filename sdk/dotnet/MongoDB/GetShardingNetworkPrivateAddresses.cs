@@ -43,6 +43,9 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("nodeId")]
         public string? NodeId { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -72,6 +75,9 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

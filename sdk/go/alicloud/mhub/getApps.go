@@ -80,7 +80,8 @@ type GetAppsArgs struct {
 	// A regex string to filter results by App name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// The os type. Valid values: `Android` and `iOS`.
-	OsType     *string `pulumi:"osType"`
+	OsType *string `pulumi:"osType"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the Product.
 	ProductId string `pulumi:"productId"`
@@ -122,7 +123,8 @@ type GetAppsOutputArgs struct {
 	// A regex string to filter results by App name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The os type. Valid values: `Android` and `iOS`.
-	OsType     pulumi.StringPtrInput `pulumi:"osType"`
+	OsType pulumi.StringPtrInput `pulumi:"osType"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the Product.
 	ProductId pulumi.StringInput `pulumi:"productId"`

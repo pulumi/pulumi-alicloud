@@ -13,14 +13,21 @@ public final class ServiceNasConfigMountPoint {
      * @return The local address where to mount your remote NAS directory.
      * 
      */
-    private String mountDir;
+    private final String mountDir;
     /**
      * @return The address of the remote NAS directory.
      * 
      */
-    private String serverAddr;
+    private final String serverAddr;
 
-    private ServiceNasConfigMountPoint() {}
+    @CustomType.Constructor
+    private ServiceNasConfigMountPoint(
+        @CustomType.Parameter("mountDir") String mountDir,
+        @CustomType.Parameter("serverAddr") String serverAddr) {
+        this.mountDir = mountDir;
+        this.serverAddr = serverAddr;
+    }
+
     /**
      * @return The local address where to mount your remote NAS directory.
      * 
@@ -43,32 +50,30 @@ public final class ServiceNasConfigMountPoint {
     public static Builder builder(ServiceNasConfigMountPoint defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String mountDir;
         private String serverAddr;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ServiceNasConfigMountPoint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mountDir = defaults.mountDir;
     	      this.serverAddr = defaults.serverAddr;
         }
 
-        @CustomType.Setter
         public Builder mountDir(String mountDir) {
             this.mountDir = Objects.requireNonNull(mountDir);
             return this;
         }
-        @CustomType.Setter
         public Builder serverAddr(String serverAddr) {
             this.serverAddr = Objects.requireNonNull(serverAddr);
             return this;
-        }
-        public ServiceNasConfigMountPoint build() {
-            final var o = new ServiceNasConfigMountPoint();
-            o.mountDir = mountDir;
-            o.serverAddr = serverAddr;
-            return o;
+        }        public ServiceNasConfigMountPoint build() {
+            return new ServiceNasConfigMountPoint(mountDir, serverAddr);
         }
     }
 }

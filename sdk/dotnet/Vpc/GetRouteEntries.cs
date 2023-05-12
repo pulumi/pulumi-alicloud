@@ -241,6 +241,9 @@ namespace Pulumi.AliCloud.Vpc
         [Input("instanceId")]
         public string? InstanceId { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -276,6 +279,9 @@ namespace Pulumi.AliCloud.Vpc
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

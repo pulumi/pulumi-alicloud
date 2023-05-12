@@ -16,19 +16,28 @@ public final class GetGroupMetricRulesRuleEscalation {
      * @return The critical level.
      * 
      */
-    private List<GetGroupMetricRulesRuleEscalationCritical> criticals;
+    private final List<GetGroupMetricRulesRuleEscalationCritical> criticals;
     /**
      * @return The info level.
      * 
      */
-    private List<GetGroupMetricRulesRuleEscalationInfo> infos;
+    private final List<GetGroupMetricRulesRuleEscalationInfo> infos;
     /**
      * @return The warn level.
      * 
      */
-    private List<GetGroupMetricRulesRuleEscalationWarn> warns;
+    private final List<GetGroupMetricRulesRuleEscalationWarn> warns;
 
-    private GetGroupMetricRulesRuleEscalation() {}
+    @CustomType.Constructor
+    private GetGroupMetricRulesRuleEscalation(
+        @CustomType.Parameter("criticals") List<GetGroupMetricRulesRuleEscalationCritical> criticals,
+        @CustomType.Parameter("infos") List<GetGroupMetricRulesRuleEscalationInfo> infos,
+        @CustomType.Parameter("warns") List<GetGroupMetricRulesRuleEscalationWarn> warns) {
+        this.criticals = criticals;
+        this.infos = infos;
+        this.warns = warns;
+    }
+
     /**
      * @return The critical level.
      * 
@@ -58,12 +67,16 @@ public final class GetGroupMetricRulesRuleEscalation {
     public static Builder builder(GetGroupMetricRulesRuleEscalation defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetGroupMetricRulesRuleEscalationCritical> criticals;
         private List<GetGroupMetricRulesRuleEscalationInfo> infos;
         private List<GetGroupMetricRulesRuleEscalationWarn> warns;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetGroupMetricRulesRuleEscalation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.criticals = defaults.criticals;
@@ -71,7 +84,6 @@ public final class GetGroupMetricRulesRuleEscalation {
     	      this.warns = defaults.warns;
         }
 
-        @CustomType.Setter
         public Builder criticals(List<GetGroupMetricRulesRuleEscalationCritical> criticals) {
             this.criticals = Objects.requireNonNull(criticals);
             return this;
@@ -79,7 +91,6 @@ public final class GetGroupMetricRulesRuleEscalation {
         public Builder criticals(GetGroupMetricRulesRuleEscalationCritical... criticals) {
             return criticals(List.of(criticals));
         }
-        @CustomType.Setter
         public Builder infos(List<GetGroupMetricRulesRuleEscalationInfo> infos) {
             this.infos = Objects.requireNonNull(infos);
             return this;
@@ -87,20 +98,14 @@ public final class GetGroupMetricRulesRuleEscalation {
         public Builder infos(GetGroupMetricRulesRuleEscalationInfo... infos) {
             return infos(List.of(infos));
         }
-        @CustomType.Setter
         public Builder warns(List<GetGroupMetricRulesRuleEscalationWarn> warns) {
             this.warns = Objects.requireNonNull(warns);
             return this;
         }
         public Builder warns(GetGroupMetricRulesRuleEscalationWarn... warns) {
             return warns(List.of(warns));
-        }
-        public GetGroupMetricRulesRuleEscalation build() {
-            final var o = new GetGroupMetricRulesRuleEscalation();
-            o.criticals = criticals;
-            o.infos = infos;
-            o.warns = warns;
-            return o;
+        }        public GetGroupMetricRulesRuleEscalation build() {
+            return new GetGroupMetricRulesRuleEscalation(criticals, infos, warns);
         }
     }
 }

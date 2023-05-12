@@ -18,59 +18,84 @@ public final class GetTopicsTopic {
      * @return whether the current topic is kafka compact topic or not.
      * 
      */
-    private Boolean compactTopic;
+    private final Boolean compactTopic;
     /**
      * @return Time of creation.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The ID of the topic, It is formatted to `&lt;instance_id&gt;:&lt;topic&gt;`.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return ID of the instance.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return whether the current topic is kafka local topic or not.
      * 
      */
-    private Boolean localTopic;
+    private final Boolean localTopic;
     /**
      * @return Partition number of the topic.
      * 
      */
-    private Integer partitionNum;
+    private final Integer partitionNum;
     /**
      * @return Remark of the topic.
      * 
      */
-    private String remark;
+    private final String remark;
     /**
      * @return The current status code of the topic. There are three values to describe the topic status: 0 stands for the topic is in service, 1 stands for freezing and 2 stands for pause.
      * 
      */
-    private Integer status;
+    private final Integer status;
     /**
      * @return The status_name of the topic.
      * 
      */
-    private String statusName;
+    private final String statusName;
     /**
      * @return A mapping of tags to assign to the topic.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private final @Nullable Map<String,Object> tags;
     /**
      * @return A topic to filter results by the topic name.
      * 
      */
-    private String topic;
+    private final String topic;
 
-    private GetTopicsTopic() {}
+    @CustomType.Constructor
+    private GetTopicsTopic(
+        @CustomType.Parameter("compactTopic") Boolean compactTopic,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("localTopic") Boolean localTopic,
+        @CustomType.Parameter("partitionNum") Integer partitionNum,
+        @CustomType.Parameter("remark") String remark,
+        @CustomType.Parameter("status") Integer status,
+        @CustomType.Parameter("statusName") String statusName,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
+        @CustomType.Parameter("topic") String topic) {
+        this.compactTopic = compactTopic;
+        this.createTime = createTime;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.localTopic = localTopic;
+        this.partitionNum = partitionNum;
+        this.remark = remark;
+        this.status = status;
+        this.statusName = statusName;
+        this.tags = tags;
+        this.topic = topic;
+    }
+
     /**
      * @return whether the current topic is kafka compact topic or not.
      * 
@@ -156,7 +181,7 @@ public final class GetTopicsTopic {
     public static Builder builder(GetTopicsTopic defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean compactTopic;
         private String createTime;
@@ -169,7 +194,11 @@ public final class GetTopicsTopic {
         private String statusName;
         private @Nullable Map<String,Object> tags;
         private String topic;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTopicsTopic defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.compactTopic = defaults.compactTopic;
@@ -185,75 +214,51 @@ public final class GetTopicsTopic {
     	      this.topic = defaults.topic;
         }
 
-        @CustomType.Setter
         public Builder compactTopic(Boolean compactTopic) {
             this.compactTopic = Objects.requireNonNull(compactTopic);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder localTopic(Boolean localTopic) {
             this.localTopic = Objects.requireNonNull(localTopic);
             return this;
         }
-        @CustomType.Setter
         public Builder partitionNum(Integer partitionNum) {
             this.partitionNum = Objects.requireNonNull(partitionNum);
             return this;
         }
-        @CustomType.Setter
         public Builder remark(String remark) {
             this.remark = Objects.requireNonNull(remark);
             return this;
         }
-        @CustomType.Setter
         public Builder status(Integer status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder statusName(String statusName) {
             this.statusName = Objects.requireNonNull(statusName);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
-        @CustomType.Setter
         public Builder topic(String topic) {
             this.topic = Objects.requireNonNull(topic);
             return this;
-        }
-        public GetTopicsTopic build() {
-            final var o = new GetTopicsTopic();
-            o.compactTopic = compactTopic;
-            o.createTime = createTime;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.localTopic = localTopic;
-            o.partitionNum = partitionNum;
-            o.remark = remark;
-            o.status = status;
-            o.statusName = statusName;
-            o.tags = tags;
-            o.topic = topic;
-            return o;
+        }        public GetTopicsTopic build() {
+            return new GetTopicsTopic(compactTopic, createTime, id, instanceId, localTopic, partitionNum, remark, status, statusName, tags, topic);
         }
     }
 }

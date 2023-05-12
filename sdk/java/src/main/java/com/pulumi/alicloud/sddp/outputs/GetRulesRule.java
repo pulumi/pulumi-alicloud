@@ -14,119 +14,168 @@ public final class GetRulesRule {
      * @return Sensitive Data Identification Rules for the Type of.
      * 
      */
-    private Integer category;
+    private final Integer category;
     /**
      * @return Sensitive Data Identification Rules Belongs Type Name.
      * 
      */
-    private String categoryName;
+    private final String categoryName;
     /**
      * @return Sensitive Data Identification Rules the Content.
      * 
      */
-    private String content;
+    private final String content;
     /**
      * @return The Content Classification.
      * 
      */
-    private String contentCategory;
+    private final String contentCategory;
     /**
      * @return Sensitive Data Identification Rules the Creation Time of the Number of Milliseconds.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
      * 
      */
-    private Integer customType;
+    private final Integer customType;
     /**
      * @return Sensitive Data Identification a Description of the Rule Information.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return Sensitive Data Identification Rules, Founder of Account Display Name.
      * 
      */
-    private String displayName;
+    private final String displayName;
     /**
      * @return Sensitive Data Identification Rules to the Modified Time of the Number of Milliseconds.
      * 
      */
-    private String gmtModified;
+    private final String gmtModified;
     /**
      * @return The ID of the Rule.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Sensitive Data Identification Rules, Founder Of Account Login.
      * 
      */
-    private String loginName;
+    private final String loginName;
     /**
      * @return The Primary Key.
      * 
      */
-    private String majorKey;
+    private final String majorKey;
     /**
      * @return The name of rule.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return Product Code.
      * 
      */
-    private String productCode;
+    private final String productCode;
     /**
      * @return Product ID.
      * 
      */
-    private String productId;
+    private final String productId;
     /**
      * @return Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
      * 
      */
-    private String riskLevelId;
+    private final String riskLevelId;
     /**
      * @return Sensitive Data Identification Rules the Risk Level of. S1: Weak Risk Level S2: Moderate Risk Level S3: High Risk Level S4: the Highest Risk Level.
      * 
      */
-    private String riskLevelName;
+    private final String riskLevelName;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private String ruleId;
+    private final String ruleId;
     /**
      * @return Triggered the Alarm Conditions.
      * 
      */
-    private String statExpress;
+    private final String statExpress;
     /**
      * @return Sensitive Data Identification Rules Detection State of.
      * 
      */
-    private Integer status;
+    private final Integer status;
     /**
      * @return The Target.
      * 
      */
-    private String target;
+    private final String target;
     /**
      * @return The User ID.
      * 
      */
-    private String userId;
+    private final String userId;
     /**
      * @return The Level of Risk.
      * 
      */
-    private Integer warnLevel;
+    private final Integer warnLevel;
 
-    private GetRulesRule() {}
+    @CustomType.Constructor
+    private GetRulesRule(
+        @CustomType.Parameter("category") Integer category,
+        @CustomType.Parameter("categoryName") String categoryName,
+        @CustomType.Parameter("content") String content,
+        @CustomType.Parameter("contentCategory") String contentCategory,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("customType") Integer customType,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("displayName") String displayName,
+        @CustomType.Parameter("gmtModified") String gmtModified,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("loginName") String loginName,
+        @CustomType.Parameter("majorKey") String majorKey,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("productCode") String productCode,
+        @CustomType.Parameter("productId") String productId,
+        @CustomType.Parameter("riskLevelId") String riskLevelId,
+        @CustomType.Parameter("riskLevelName") String riskLevelName,
+        @CustomType.Parameter("ruleId") String ruleId,
+        @CustomType.Parameter("statExpress") String statExpress,
+        @CustomType.Parameter("status") Integer status,
+        @CustomType.Parameter("target") String target,
+        @CustomType.Parameter("userId") String userId,
+        @CustomType.Parameter("warnLevel") Integer warnLevel) {
+        this.category = category;
+        this.categoryName = categoryName;
+        this.content = content;
+        this.contentCategory = contentCategory;
+        this.createTime = createTime;
+        this.customType = customType;
+        this.description = description;
+        this.displayName = displayName;
+        this.gmtModified = gmtModified;
+        this.id = id;
+        this.loginName = loginName;
+        this.majorKey = majorKey;
+        this.name = name;
+        this.productCode = productCode;
+        this.productId = productId;
+        this.riskLevelId = riskLevelId;
+        this.riskLevelName = riskLevelName;
+        this.ruleId = ruleId;
+        this.statExpress = statExpress;
+        this.status = status;
+        this.target = target;
+        this.userId = userId;
+        this.warnLevel = warnLevel;
+    }
+
     /**
      * @return Sensitive Data Identification Rules for the Type of.
      * 
@@ -296,7 +345,7 @@ public final class GetRulesRule {
     public static Builder builder(GetRulesRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer category;
         private String categoryName;
@@ -321,7 +370,11 @@ public final class GetRulesRule {
         private String target;
         private String userId;
         private Integer warnLevel;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -349,147 +402,99 @@ public final class GetRulesRule {
     	      this.warnLevel = defaults.warnLevel;
         }
 
-        @CustomType.Setter
         public Builder category(Integer category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
-        @CustomType.Setter
         public Builder categoryName(String categoryName) {
             this.categoryName = Objects.requireNonNull(categoryName);
             return this;
         }
-        @CustomType.Setter
         public Builder content(String content) {
             this.content = Objects.requireNonNull(content);
             return this;
         }
-        @CustomType.Setter
         public Builder contentCategory(String contentCategory) {
             this.contentCategory = Objects.requireNonNull(contentCategory);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder customType(Integer customType) {
             this.customType = Objects.requireNonNull(customType);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
-        @CustomType.Setter
         public Builder gmtModified(String gmtModified) {
             this.gmtModified = Objects.requireNonNull(gmtModified);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder loginName(String loginName) {
             this.loginName = Objects.requireNonNull(loginName);
             return this;
         }
-        @CustomType.Setter
         public Builder majorKey(String majorKey) {
             this.majorKey = Objects.requireNonNull(majorKey);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder productCode(String productCode) {
             this.productCode = Objects.requireNonNull(productCode);
             return this;
         }
-        @CustomType.Setter
         public Builder productId(String productId) {
             this.productId = Objects.requireNonNull(productId);
             return this;
         }
-        @CustomType.Setter
         public Builder riskLevelId(String riskLevelId) {
             this.riskLevelId = Objects.requireNonNull(riskLevelId);
             return this;
         }
-        @CustomType.Setter
         public Builder riskLevelName(String riskLevelName) {
             this.riskLevelName = Objects.requireNonNull(riskLevelName);
             return this;
         }
-        @CustomType.Setter
         public Builder ruleId(String ruleId) {
             this.ruleId = Objects.requireNonNull(ruleId);
             return this;
         }
-        @CustomType.Setter
         public Builder statExpress(String statExpress) {
             this.statExpress = Objects.requireNonNull(statExpress);
             return this;
         }
-        @CustomType.Setter
         public Builder status(Integer status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder target(String target) {
             this.target = Objects.requireNonNull(target);
             return this;
         }
-        @CustomType.Setter
         public Builder userId(String userId) {
             this.userId = Objects.requireNonNull(userId);
             return this;
         }
-        @CustomType.Setter
         public Builder warnLevel(Integer warnLevel) {
             this.warnLevel = Objects.requireNonNull(warnLevel);
             return this;
-        }
-        public GetRulesRule build() {
-            final var o = new GetRulesRule();
-            o.category = category;
-            o.categoryName = categoryName;
-            o.content = content;
-            o.contentCategory = contentCategory;
-            o.createTime = createTime;
-            o.customType = customType;
-            o.description = description;
-            o.displayName = displayName;
-            o.gmtModified = gmtModified;
-            o.id = id;
-            o.loginName = loginName;
-            o.majorKey = majorKey;
-            o.name = name;
-            o.productCode = productCode;
-            o.productId = productId;
-            o.riskLevelId = riskLevelId;
-            o.riskLevelName = riskLevelName;
-            o.ruleId = ruleId;
-            o.statExpress = statExpress;
-            o.status = status;
-            o.target = target;
-            o.userId = userId;
-            o.warnLevel = warnLevel;
-            return o;
+        }        public GetRulesRule build() {
+            return new GetRulesRule(category, categoryName, content, contentCategory, createTime, customType, description, displayName, gmtModified, id, loginName, majorKey, name, productCode, productId, riskLevelId, riskLevelName, ruleId, statExpress, status, target, userId, warnLevel);
         }
     }
 }

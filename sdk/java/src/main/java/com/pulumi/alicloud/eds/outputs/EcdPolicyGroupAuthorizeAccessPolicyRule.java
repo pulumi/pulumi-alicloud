@@ -15,14 +15,21 @@ public final class EcdPolicyGroupAuthorizeAccessPolicyRule {
      * @return The cidrip of security rules.
      * 
      */
-    private @Nullable String cidrIp;
+    private final @Nullable String cidrIp;
     /**
      * @return The description of security rules.
      * 
      */
-    private @Nullable String description;
+    private final @Nullable String description;
 
-    private EcdPolicyGroupAuthorizeAccessPolicyRule() {}
+    @CustomType.Constructor
+    private EcdPolicyGroupAuthorizeAccessPolicyRule(
+        @CustomType.Parameter("cidrIp") @Nullable String cidrIp,
+        @CustomType.Parameter("description") @Nullable String description) {
+        this.cidrIp = cidrIp;
+        this.description = description;
+    }
+
     /**
      * @return The cidrip of security rules.
      * 
@@ -45,32 +52,30 @@ public final class EcdPolicyGroupAuthorizeAccessPolicyRule {
     public static Builder builder(EcdPolicyGroupAuthorizeAccessPolicyRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String cidrIp;
         private @Nullable String description;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(EcdPolicyGroupAuthorizeAccessPolicyRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrIp = defaults.cidrIp;
     	      this.description = defaults.description;
         }
 
-        @CustomType.Setter
         public Builder cidrIp(@Nullable String cidrIp) {
             this.cidrIp = cidrIp;
             return this;
         }
-        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
-        }
-        public EcdPolicyGroupAuthorizeAccessPolicyRule build() {
-            final var o = new EcdPolicyGroupAuthorizeAccessPolicyRule();
-            o.cidrIp = cidrIp;
-            o.description = description;
-            return o;
+        }        public EcdPolicyGroupAuthorizeAccessPolicyRule build() {
+            return new EcdPolicyGroupAuthorizeAccessPolicyRule(cidrIp, description);
         }
     }
 }

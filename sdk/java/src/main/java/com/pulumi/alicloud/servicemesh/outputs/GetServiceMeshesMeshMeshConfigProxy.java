@@ -13,29 +13,42 @@ public final class GetServiceMeshesMeshMeshConfigProxy {
      * @return The domain name of the Cluster.
      * 
      */
-    private String clusterDomain;
+    private final String clusterDomain;
     /**
      * @return Sidecar injector Pods on the throttle.
      * 
      */
-    private String limitCpu;
+    private final String limitCpu;
     /**
      * @return The memory limit  of the Sidecar injector Pods.
      * 
      */
-    private String limitMemory;
+    private final String limitMemory;
     /**
      * @return The requested cpu the Sidecar injector Pods.
      * 
      */
-    private String requestCpu;
+    private final String requestCpu;
     /**
      * @return The requested memory the Sidecar injector Pods.
      * 
      */
-    private String requestMemory;
+    private final String requestMemory;
 
-    private GetServiceMeshesMeshMeshConfigProxy() {}
+    @CustomType.Constructor
+    private GetServiceMeshesMeshMeshConfigProxy(
+        @CustomType.Parameter("clusterDomain") String clusterDomain,
+        @CustomType.Parameter("limitCpu") String limitCpu,
+        @CustomType.Parameter("limitMemory") String limitMemory,
+        @CustomType.Parameter("requestCpu") String requestCpu,
+        @CustomType.Parameter("requestMemory") String requestMemory) {
+        this.clusterDomain = clusterDomain;
+        this.limitCpu = limitCpu;
+        this.limitMemory = limitMemory;
+        this.requestCpu = requestCpu;
+        this.requestMemory = requestMemory;
+    }
+
     /**
      * @return The domain name of the Cluster.
      * 
@@ -79,14 +92,18 @@ public final class GetServiceMeshesMeshMeshConfigProxy {
     public static Builder builder(GetServiceMeshesMeshMeshConfigProxy defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String clusterDomain;
         private String limitCpu;
         private String limitMemory;
         private String requestCpu;
         private String requestMemory;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetServiceMeshesMeshMeshConfigProxy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterDomain = defaults.clusterDomain;
@@ -96,39 +113,27 @@ public final class GetServiceMeshesMeshMeshConfigProxy {
     	      this.requestMemory = defaults.requestMemory;
         }
 
-        @CustomType.Setter
         public Builder clusterDomain(String clusterDomain) {
             this.clusterDomain = Objects.requireNonNull(clusterDomain);
             return this;
         }
-        @CustomType.Setter
         public Builder limitCpu(String limitCpu) {
             this.limitCpu = Objects.requireNonNull(limitCpu);
             return this;
         }
-        @CustomType.Setter
         public Builder limitMemory(String limitMemory) {
             this.limitMemory = Objects.requireNonNull(limitMemory);
             return this;
         }
-        @CustomType.Setter
         public Builder requestCpu(String requestCpu) {
             this.requestCpu = Objects.requireNonNull(requestCpu);
             return this;
         }
-        @CustomType.Setter
         public Builder requestMemory(String requestMemory) {
             this.requestMemory = Objects.requireNonNull(requestMemory);
             return this;
-        }
-        public GetServiceMeshesMeshMeshConfigProxy build() {
-            final var o = new GetServiceMeshesMeshMeshConfigProxy();
-            o.clusterDomain = clusterDomain;
-            o.limitCpu = limitCpu;
-            o.limitMemory = limitMemory;
-            o.requestCpu = requestCpu;
-            o.requestMemory = requestMemory;
-            return o;
+        }        public GetServiceMeshesMeshMeshConfigProxy build() {
+            return new GetServiceMeshesMeshMeshConfigProxy(clusterDomain, limitCpu, limitMemory, requestCpu, requestMemory);
         }
     }
 }

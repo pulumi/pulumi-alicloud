@@ -13,109 +13,154 @@ public final class GetDBClusterLakeVersionsVersion {
      * @return The name of the service.
      * 
      */
-    private String commodityCode;
+    private final String commodityCode;
     /**
      * @return The specifications of computing resources in elastic mode. The increase of resources can speed up queries.
      * 
      */
-    private String computeResource;
+    private final String computeResource;
     /**
      * @return The endpoint of the cluster.
      * 
      */
-    private String connectionString;
+    private final String connectionString;
     /**
      * @return The CreateTime of the ADB cluster.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The ID of the DBCluster.
      * 
      */
-    private String dbClusterId;
+    private final String dbClusterId;
     /**
      * @return The db cluster version.
      * 
      */
-    private String dbClusterVersion;
+    private final String dbClusterVersion;
     /**
      * @return The engine of the database.
      * 
      */
-    private String engine;
+    private final String engine;
     /**
      * @return The engine version of the database.
      * 
      */
-    private String engineVersion;
+    private final String engineVersion;
     /**
      * @return The time when the cluster expires.
      * 
      */
-    private String expireTime;
+    private final String expireTime;
     /**
      * @return Indicates whether the cluster has expired.
      * 
      */
-    private String expired;
+    private final String expired;
     /**
      * @return The ID of the DBCluster.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The lock mode of the cluster.
      * 
      */
-    private String lockMode;
+    private final String lockMode;
     /**
      * @return The reason why the cluster is locked.
      * 
      */
-    private String lockReason;
+    private final String lockReason;
     /**
      * @return The payment type of the resource.
      * 
      */
-    private String paymentType;
+    private final String paymentType;
     /**
      * @return The port that is used to access the cluster.
      * 
      */
-    private String port;
+    private final String port;
     /**
      * @return The ID of the resource group.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return The status of the resource.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The specifications of storage resources in elastic mode. The resources are used for data read and write operations.
      * 
      */
-    private String storageResource;
+    private final String storageResource;
     /**
      * @return The vpc id.
      * 
      */
-    private String vpcId;
+    private final String vpcId;
     /**
      * @return The vswitch id.
      * 
      */
-    private String vswitchId;
+    private final String vswitchId;
     /**
      * @return The zone ID  of the resource.
      * 
      */
-    private String zoneId;
+    private final String zoneId;
 
-    private GetDBClusterLakeVersionsVersion() {}
+    @CustomType.Constructor
+    private GetDBClusterLakeVersionsVersion(
+        @CustomType.Parameter("commodityCode") String commodityCode,
+        @CustomType.Parameter("computeResource") String computeResource,
+        @CustomType.Parameter("connectionString") String connectionString,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("dbClusterId") String dbClusterId,
+        @CustomType.Parameter("dbClusterVersion") String dbClusterVersion,
+        @CustomType.Parameter("engine") String engine,
+        @CustomType.Parameter("engineVersion") String engineVersion,
+        @CustomType.Parameter("expireTime") String expireTime,
+        @CustomType.Parameter("expired") String expired,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("lockMode") String lockMode,
+        @CustomType.Parameter("lockReason") String lockReason,
+        @CustomType.Parameter("paymentType") String paymentType,
+        @CustomType.Parameter("port") String port,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("storageResource") String storageResource,
+        @CustomType.Parameter("vpcId") String vpcId,
+        @CustomType.Parameter("vswitchId") String vswitchId,
+        @CustomType.Parameter("zoneId") String zoneId) {
+        this.commodityCode = commodityCode;
+        this.computeResource = computeResource;
+        this.connectionString = connectionString;
+        this.createTime = createTime;
+        this.dbClusterId = dbClusterId;
+        this.dbClusterVersion = dbClusterVersion;
+        this.engine = engine;
+        this.engineVersion = engineVersion;
+        this.expireTime = expireTime;
+        this.expired = expired;
+        this.id = id;
+        this.lockMode = lockMode;
+        this.lockReason = lockReason;
+        this.paymentType = paymentType;
+        this.port = port;
+        this.resourceGroupId = resourceGroupId;
+        this.status = status;
+        this.storageResource = storageResource;
+        this.vpcId = vpcId;
+        this.vswitchId = vswitchId;
+        this.zoneId = zoneId;
+    }
+
     /**
      * @return The name of the service.
      * 
@@ -271,7 +316,7 @@ public final class GetDBClusterLakeVersionsVersion {
     public static Builder builder(GetDBClusterLakeVersionsVersion defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String commodityCode;
         private String computeResource;
@@ -294,7 +339,11 @@ public final class GetDBClusterLakeVersionsVersion {
         private String vpcId;
         private String vswitchId;
         private String zoneId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDBClusterLakeVersionsVersion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.commodityCode = defaults.commodityCode;
@@ -320,135 +369,91 @@ public final class GetDBClusterLakeVersionsVersion {
     	      this.zoneId = defaults.zoneId;
         }
 
-        @CustomType.Setter
         public Builder commodityCode(String commodityCode) {
             this.commodityCode = Objects.requireNonNull(commodityCode);
             return this;
         }
-        @CustomType.Setter
         public Builder computeResource(String computeResource) {
             this.computeResource = Objects.requireNonNull(computeResource);
             return this;
         }
-        @CustomType.Setter
         public Builder connectionString(String connectionString) {
             this.connectionString = Objects.requireNonNull(connectionString);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder dbClusterId(String dbClusterId) {
             this.dbClusterId = Objects.requireNonNull(dbClusterId);
             return this;
         }
-        @CustomType.Setter
         public Builder dbClusterVersion(String dbClusterVersion) {
             this.dbClusterVersion = Objects.requireNonNull(dbClusterVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
         }
-        @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
             this.engineVersion = Objects.requireNonNull(engineVersion);
             return this;
         }
-        @CustomType.Setter
         public Builder expireTime(String expireTime) {
             this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
-        @CustomType.Setter
         public Builder expired(String expired) {
             this.expired = Objects.requireNonNull(expired);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder lockMode(String lockMode) {
             this.lockMode = Objects.requireNonNull(lockMode);
             return this;
         }
-        @CustomType.Setter
         public Builder lockReason(String lockReason) {
             this.lockReason = Objects.requireNonNull(lockReason);
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
-        @CustomType.Setter
         public Builder port(String port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder storageResource(String storageResource) {
             this.storageResource = Objects.requireNonNull(storageResource);
             return this;
         }
-        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
-        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
-        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }
-        public GetDBClusterLakeVersionsVersion build() {
-            final var o = new GetDBClusterLakeVersionsVersion();
-            o.commodityCode = commodityCode;
-            o.computeResource = computeResource;
-            o.connectionString = connectionString;
-            o.createTime = createTime;
-            o.dbClusterId = dbClusterId;
-            o.dbClusterVersion = dbClusterVersion;
-            o.engine = engine;
-            o.engineVersion = engineVersion;
-            o.expireTime = expireTime;
-            o.expired = expired;
-            o.id = id;
-            o.lockMode = lockMode;
-            o.lockReason = lockReason;
-            o.paymentType = paymentType;
-            o.port = port;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.storageResource = storageResource;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+        }        public GetDBClusterLakeVersionsVersion build() {
+            return new GetDBClusterLakeVersionsVersion(commodityCode, computeResource, connectionString, createTime, dbClusterId, dbClusterVersion, engine, engineVersion, expireTime, expired, id, lockMode, lockReason, paymentType, port, resourceGroupId, status, storageResource, vpcId, vswitchId, zoneId);
         }
     }
 }

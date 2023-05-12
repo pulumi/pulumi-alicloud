@@ -14,8 +14,10 @@ from .get_dispatch_rules import *
 from .get_integration_exporters import *
 from .get_prometheis import *
 from .get_prometheus_alert_rules import *
+from .get_remote_writes import *
 from .integration_exporter import *
 from .prometheus import *
 from .prometheus_alert_rule import *
+from .remote_write import *
 from ._inputs import *
 from . import outputs

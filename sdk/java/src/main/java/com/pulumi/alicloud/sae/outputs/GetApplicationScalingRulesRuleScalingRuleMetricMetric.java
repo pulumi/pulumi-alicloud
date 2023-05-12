@@ -14,14 +14,21 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetric {
      * @return The target value of the monitoring indicator.
      * 
      */
-    private Integer metricTargetAverageUtilization;
+    private final Integer metricTargetAverageUtilization;
     /**
      * @return The metric type of the Application Scaling Rule.
      * 
      */
-    private String metricType;
+    private final String metricType;
 
-    private GetApplicationScalingRulesRuleScalingRuleMetricMetric() {}
+    @CustomType.Constructor
+    private GetApplicationScalingRulesRuleScalingRuleMetricMetric(
+        @CustomType.Parameter("metricTargetAverageUtilization") Integer metricTargetAverageUtilization,
+        @CustomType.Parameter("metricType") String metricType) {
+        this.metricTargetAverageUtilization = metricTargetAverageUtilization;
+        this.metricType = metricType;
+    }
+
     /**
      * @return The target value of the monitoring indicator.
      * 
@@ -44,32 +51,30 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetric {
     public static Builder builder(GetApplicationScalingRulesRuleScalingRuleMetricMetric defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer metricTargetAverageUtilization;
         private String metricType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetApplicationScalingRulesRuleScalingRuleMetricMetric defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.metricTargetAverageUtilization = defaults.metricTargetAverageUtilization;
     	      this.metricType = defaults.metricType;
         }
 
-        @CustomType.Setter
         public Builder metricTargetAverageUtilization(Integer metricTargetAverageUtilization) {
             this.metricTargetAverageUtilization = Objects.requireNonNull(metricTargetAverageUtilization);
             return this;
         }
-        @CustomType.Setter
         public Builder metricType(String metricType) {
             this.metricType = Objects.requireNonNull(metricType);
             return this;
-        }
-        public GetApplicationScalingRulesRuleScalingRuleMetricMetric build() {
-            final var o = new GetApplicationScalingRulesRuleScalingRuleMetricMetric();
-            o.metricTargetAverageUtilization = metricTargetAverageUtilization;
-            o.metricType = metricType;
-            return o;
+        }        public GetApplicationScalingRulesRuleScalingRuleMetricMetric build() {
+            return new GetApplicationScalingRulesRuleScalingRuleMetricMetric(metricTargetAverageUtilization, metricType);
         }
     }
 }

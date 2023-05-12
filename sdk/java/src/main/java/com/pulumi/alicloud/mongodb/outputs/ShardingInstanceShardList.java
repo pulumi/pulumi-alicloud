@@ -16,25 +16,36 @@ public final class ShardingInstanceShardList {
      * @return Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      * 
      */
-    private String nodeClass;
+    private final String nodeClass;
     /**
      * @return The ID of the Config Server node.
      * 
      */
-    private @Nullable String nodeId;
+    private final @Nullable String nodeId;
     /**
      * @return - Custom storage space; value range: [10, 1,000]
      * - 10-GB increments. Unit: GB.
      * 
      */
-    private Integer nodeStorage;
+    private final Integer nodeStorage;
     /**
      * @return The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
      * 
      */
-    private @Nullable Integer readonlyReplicas;
+    private final @Nullable Integer readonlyReplicas;
 
-    private ShardingInstanceShardList() {}
+    @CustomType.Constructor
+    private ShardingInstanceShardList(
+        @CustomType.Parameter("nodeClass") String nodeClass,
+        @CustomType.Parameter("nodeId") @Nullable String nodeId,
+        @CustomType.Parameter("nodeStorage") Integer nodeStorage,
+        @CustomType.Parameter("readonlyReplicas") @Nullable Integer readonlyReplicas) {
+        this.nodeClass = nodeClass;
+        this.nodeId = nodeId;
+        this.nodeStorage = nodeStorage;
+        this.readonlyReplicas = readonlyReplicas;
+    }
+
     /**
      * @return Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      * 
@@ -72,13 +83,17 @@ public final class ShardingInstanceShardList {
     public static Builder builder(ShardingInstanceShardList defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String nodeClass;
         private @Nullable String nodeId;
         private Integer nodeStorage;
         private @Nullable Integer readonlyReplicas;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ShardingInstanceShardList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.nodeClass = defaults.nodeClass;
@@ -87,33 +102,23 @@ public final class ShardingInstanceShardList {
     	      this.readonlyReplicas = defaults.readonlyReplicas;
         }
 
-        @CustomType.Setter
         public Builder nodeClass(String nodeClass) {
             this.nodeClass = Objects.requireNonNull(nodeClass);
             return this;
         }
-        @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
             this.nodeId = nodeId;
             return this;
         }
-        @CustomType.Setter
         public Builder nodeStorage(Integer nodeStorage) {
             this.nodeStorage = Objects.requireNonNull(nodeStorage);
             return this;
         }
-        @CustomType.Setter
         public Builder readonlyReplicas(@Nullable Integer readonlyReplicas) {
             this.readonlyReplicas = readonlyReplicas;
             return this;
-        }
-        public ShardingInstanceShardList build() {
-            final var o = new ShardingInstanceShardList();
-            o.nodeClass = nodeClass;
-            o.nodeId = nodeId;
-            o.nodeStorage = nodeStorage;
-            o.readonlyReplicas = readonlyReplicas;
-            return o;
+        }        public ShardingInstanceShardList build() {
+            return new ShardingInstanceShardList(nodeClass, nodeId, nodeStorage, readonlyReplicas);
         }
     }
 }

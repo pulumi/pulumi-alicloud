@@ -142,6 +142,7 @@ def get_user_groups(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of User Group self IDs.
     :param str instance_id: Specify the New Group of the Bastion Host of Instance Id.
     :param str name_regex: A regex string to filter results by User Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str user_group_name: Specify the New Group Name. Supports up to 128 Characters.
     """
     __args__ = dict()
@@ -199,6 +200,7 @@ def get_user_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
     :param Sequence[str] ids: A list of User Group self IDs.
     :param str instance_id: Specify the New Group of the Bastion Host of Instance Id.
     :param str name_regex: A regex string to filter results by User Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str user_group_name: Specify the New Group Name. Supports up to 128 Characters.
     """
     ...

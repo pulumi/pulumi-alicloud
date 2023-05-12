@@ -14,39 +14,56 @@ public final class GetContainerGroupsGroupEvent {
      * @return The number of events.
      * 
      */
-    private Integer count;
+    private final Integer count;
     /**
      * @return The time when the event started.
      * 
      */
-    private String firstTimestamp;
+    private final String firstTimestamp;
     /**
      * @return The time when the event ended.
      * 
      */
-    private String lastTimestamp;
+    private final String lastTimestamp;
     /**
      * @return The content of the event.
      * 
      */
-    private String message;
+    private final String message;
     /**
      * @return The name of the volume.
      * 
      */
-    private String name;
+    private final String name;
     /**
      * @return The name of the event.
      * 
      */
-    private String reason;
+    private final String reason;
     /**
      * @return The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
      * 
      */
-    private String type;
+    private final String type;
 
-    private GetContainerGroupsGroupEvent() {}
+    @CustomType.Constructor
+    private GetContainerGroupsGroupEvent(
+        @CustomType.Parameter("count") Integer count,
+        @CustomType.Parameter("firstTimestamp") String firstTimestamp,
+        @CustomType.Parameter("lastTimestamp") String lastTimestamp,
+        @CustomType.Parameter("message") String message,
+        @CustomType.Parameter("name") String name,
+        @CustomType.Parameter("reason") String reason,
+        @CustomType.Parameter("type") String type) {
+        this.count = count;
+        this.firstTimestamp = firstTimestamp;
+        this.lastTimestamp = lastTimestamp;
+        this.message = message;
+        this.name = name;
+        this.reason = reason;
+        this.type = type;
+    }
+
     /**
      * @return The number of events.
      * 
@@ -104,7 +121,7 @@ public final class GetContainerGroupsGroupEvent {
     public static Builder builder(GetContainerGroupsGroupEvent defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer count;
         private String firstTimestamp;
@@ -113,7 +130,11 @@ public final class GetContainerGroupsGroupEvent {
         private String name;
         private String reason;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetContainerGroupsGroupEvent defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.count = defaults.count;
@@ -125,51 +146,35 @@ public final class GetContainerGroupsGroupEvent {
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder count(Integer count) {
             this.count = Objects.requireNonNull(count);
             return this;
         }
-        @CustomType.Setter
         public Builder firstTimestamp(String firstTimestamp) {
             this.firstTimestamp = Objects.requireNonNull(firstTimestamp);
             return this;
         }
-        @CustomType.Setter
         public Builder lastTimestamp(String lastTimestamp) {
             this.lastTimestamp = Objects.requireNonNull(lastTimestamp);
             return this;
         }
-        @CustomType.Setter
         public Builder message(String message) {
             this.message = Objects.requireNonNull(message);
             return this;
         }
-        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        @CustomType.Setter
         public Builder reason(String reason) {
             this.reason = Objects.requireNonNull(reason);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public GetContainerGroupsGroupEvent build() {
-            final var o = new GetContainerGroupsGroupEvent();
-            o.count = count;
-            o.firstTimestamp = firstTimestamp;
-            o.lastTimestamp = lastTimestamp;
-            o.message = message;
-            o.name = name;
-            o.reason = reason;
-            o.type = type;
-            return o;
+        }        public GetContainerGroupsGroupEvent build() {
+            return new GetContainerGroupsGroupEvent(count, firstTimestamp, lastTimestamp, message, name, reason, type);
         }
     }
 }

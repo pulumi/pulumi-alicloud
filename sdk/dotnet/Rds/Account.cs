@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
+    /// Provides an RDS account resource and used to manage databases.
+    /// 
+    /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.120.0`. Please use new resource alicloud_rds_account.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -133,6 +137,8 @@ namespace Pulumi.AliCloud.Rds
         /// Privilege type of account.
         /// - Normal: Common privilege.
         /// - Super: High privilege.
+        /// 
+        /// Default to Normal.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -272,6 +278,8 @@ namespace Pulumi.AliCloud.Rds
         /// Privilege type of account.
         /// - Normal: Common privilege.
         /// - Super: High privilege.
+        /// 
+        /// Default to Normal.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -371,6 +379,8 @@ namespace Pulumi.AliCloud.Rds
         /// Privilege type of account.
         /// - Normal: Common privilege.
         /// - Super: High privilege.
+        /// 
+        /// Default to Normal.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

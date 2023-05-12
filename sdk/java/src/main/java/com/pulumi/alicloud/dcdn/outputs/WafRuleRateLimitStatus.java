@@ -16,19 +16,28 @@ public final class WafRuleRateLimitStatus {
      * @return The HTTP status code returned.
      * 
      */
-    private @Nullable String code;
+    private final @Nullable String code;
     /**
      * @return The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
      * 
      */
-    private @Nullable Integer count;
+    private final @Nullable Integer count;
     /**
      * @return The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
      * 
      */
-    private @Nullable Integer ratio;
+    private final @Nullable Integer ratio;
 
-    private WafRuleRateLimitStatus() {}
+    @CustomType.Constructor
+    private WafRuleRateLimitStatus(
+        @CustomType.Parameter("code") @Nullable String code,
+        @CustomType.Parameter("count") @Nullable Integer count,
+        @CustomType.Parameter("ratio") @Nullable Integer ratio) {
+        this.code = code;
+        this.count = count;
+        this.ratio = ratio;
+    }
+
     /**
      * @return The HTTP status code returned.
      * 
@@ -58,12 +67,16 @@ public final class WafRuleRateLimitStatus {
     public static Builder builder(WafRuleRateLimitStatus defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String code;
         private @Nullable Integer count;
         private @Nullable Integer ratio;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(WafRuleRateLimitStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.code = defaults.code;
@@ -71,27 +84,19 @@ public final class WafRuleRateLimitStatus {
     	      this.ratio = defaults.ratio;
         }
 
-        @CustomType.Setter
         public Builder code(@Nullable String code) {
             this.code = code;
             return this;
         }
-        @CustomType.Setter
         public Builder count(@Nullable Integer count) {
             this.count = count;
             return this;
         }
-        @CustomType.Setter
         public Builder ratio(@Nullable Integer ratio) {
             this.ratio = ratio;
             return this;
-        }
-        public WafRuleRateLimitStatus build() {
-            final var o = new WafRuleRateLimitStatus();
-            o.code = code;
-            o.count = count;
-            o.ratio = ratio;
-            return o;
+        }        public WafRuleRateLimitStatus build() {
+            return new WafRuleRateLimitStatus(code, count, ratio);
         }
     }
 }

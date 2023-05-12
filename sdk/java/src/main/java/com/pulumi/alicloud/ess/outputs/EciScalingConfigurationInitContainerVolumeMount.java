@@ -18,19 +18,28 @@ public final class EciScalingConfigurationInitContainerVolumeMount {
      * data in the volume.
      * 
      */
-    private @Nullable String mountPath;
+    private final @Nullable String mountPath;
     /**
      * @return The name of the volume.
      * 
      */
-    private @Nullable String name;
+    private final @Nullable String name;
     /**
      * @return Default to `false`.
      * 
      */
-    private @Nullable Boolean readOnly;
+    private final @Nullable Boolean readOnly;
 
-    private EciScalingConfigurationInitContainerVolumeMount() {}
+    @CustomType.Constructor
+    private EciScalingConfigurationInitContainerVolumeMount(
+        @CustomType.Parameter("mountPath") @Nullable String mountPath,
+        @CustomType.Parameter("name") @Nullable String name,
+        @CustomType.Parameter("readOnly") @Nullable Boolean readOnly) {
+        this.mountPath = mountPath;
+        this.name = name;
+        this.readOnly = readOnly;
+    }
+
     /**
      * @return The directory of the mounted volume. Data under this directory will be overwritten by the
      * data in the volume.
@@ -62,12 +71,16 @@ public final class EciScalingConfigurationInitContainerVolumeMount {
     public static Builder builder(EciScalingConfigurationInitContainerVolumeMount defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String mountPath;
         private @Nullable String name;
         private @Nullable Boolean readOnly;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(EciScalingConfigurationInitContainerVolumeMount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mountPath = defaults.mountPath;
@@ -75,27 +88,19 @@ public final class EciScalingConfigurationInitContainerVolumeMount {
     	      this.readOnly = defaults.readOnly;
         }
 
-        @CustomType.Setter
         public Builder mountPath(@Nullable String mountPath) {
             this.mountPath = mountPath;
             return this;
         }
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
-        @CustomType.Setter
         public Builder readOnly(@Nullable Boolean readOnly) {
             this.readOnly = readOnly;
             return this;
-        }
-        public EciScalingConfigurationInitContainerVolumeMount build() {
-            final var o = new EciScalingConfigurationInitContainerVolumeMount();
-            o.mountPath = mountPath;
-            o.name = name;
-            o.readOnly = readOnly;
-            return o;
+        }        public EciScalingConfigurationInitContainerVolumeMount build() {
+            return new EciScalingConfigurationInitContainerVolumeMount(mountPath, name, readOnly);
         }
     }
 }

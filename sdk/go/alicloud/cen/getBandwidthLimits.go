@@ -53,7 +53,8 @@ func GetBandwidthLimits(ctx *pulumi.Context, args *GetBandwidthLimitsArgs, opts 
 type GetBandwidthLimitsArgs struct {
 	// A list of CEN instances IDs.
 	InstanceIds []string `pulumi:"instanceIds"`
-	OutputFile  *string  `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getBandwidthLimits.
@@ -83,7 +84,8 @@ func GetBandwidthLimitsOutput(ctx *pulumi.Context, args GetBandwidthLimitsOutput
 type GetBandwidthLimitsOutputArgs struct {
 	// A list of CEN instances IDs.
 	InstanceIds pulumi.StringArrayInput `pulumi:"instanceIds"`
-	OutputFile  pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetBandwidthLimitsOutputArgs) ElementType() reflect.Type {

@@ -134,6 +134,7 @@ def get_clusters(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: An ids string to filter results by the cluster id.
     :param str logical_region_id: ID of the namespace in EDAS.
     :param str name_regex: A regex string to filter results by the cluster name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -180,5 +181,6 @@ def get_clusters_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     :param Sequence[str] ids: An ids string to filter results by the cluster id.
     :param str logical_region_id: ID of the namespace in EDAS.
     :param str name_regex: A regex string to filter results by the cluster name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

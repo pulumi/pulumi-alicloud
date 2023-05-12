@@ -13,44 +13,63 @@ public final class GetVpdsVpd {
      * @return CIDR network segment
      * 
      */
-    private String cidr;
+    private final String cidr;
     /**
      * @return The creation time of the resource
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return Modification time
      * 
      */
-    private String gmtModified;
+    private final String gmtModified;
     /**
      * @return The id of the vpd.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The Resource group id
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The id of the vpd.
      * 
      */
-    private String vpdId;
+    private final String vpdId;
     /**
      * @return The Name of the VPD.
      * 
      */
-    private String vpdName;
+    private final String vpdName;
 
-    private GetVpdsVpd() {}
+    @CustomType.Constructor
+    private GetVpdsVpd(
+        @CustomType.Parameter("cidr") String cidr,
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("gmtModified") String gmtModified,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("vpdId") String vpdId,
+        @CustomType.Parameter("vpdName") String vpdName) {
+        this.cidr = cidr;
+        this.createTime = createTime;
+        this.gmtModified = gmtModified;
+        this.id = id;
+        this.resourceGroupId = resourceGroupId;
+        this.status = status;
+        this.vpdId = vpdId;
+        this.vpdName = vpdName;
+    }
+
     /**
      * @return CIDR network segment
      * 
@@ -115,7 +134,7 @@ public final class GetVpdsVpd {
     public static Builder builder(GetVpdsVpd defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String cidr;
         private String createTime;
@@ -125,7 +144,11 @@ public final class GetVpdsVpd {
         private String status;
         private String vpdId;
         private String vpdName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetVpdsVpd defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidr = defaults.cidr;
@@ -138,57 +161,39 @@ public final class GetVpdsVpd {
     	      this.vpdName = defaults.vpdName;
         }
 
-        @CustomType.Setter
         public Builder cidr(String cidr) {
             this.cidr = Objects.requireNonNull(cidr);
             return this;
         }
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder gmtModified(String gmtModified) {
             this.gmtModified = Objects.requireNonNull(gmtModified);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder vpdId(String vpdId) {
             this.vpdId = Objects.requireNonNull(vpdId);
             return this;
         }
-        @CustomType.Setter
         public Builder vpdName(String vpdName) {
             this.vpdName = Objects.requireNonNull(vpdName);
             return this;
-        }
-        public GetVpdsVpd build() {
-            final var o = new GetVpdsVpd();
-            o.cidr = cidr;
-            o.createTime = createTime;
-            o.gmtModified = gmtModified;
-            o.id = id;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.vpdId = vpdId;
-            o.vpdName = vpdName;
-            return o;
+        }        public GetVpdsVpd build() {
+            return new GetVpdsVpd(cidr, createTime, gmtModified, id, resourceGroupId, status, vpdId, vpdName);
         }
     }
 }

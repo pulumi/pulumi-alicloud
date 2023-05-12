@@ -16,17 +16,17 @@ public final class AppGroupQuota {
      * @return Computing resources. Unit: LCU.
      * 
      */
-    private Integer computeResource;
+    private final Integer computeResource;
     /**
      * @return Storage Size. Unit: GB.
      * 
      */
-    private Integer docSize;
+    private final Integer docSize;
     /**
      * @return Search request. Unit: times/second.
      * 
      */
-    private @Nullable Integer qps;
+    private final @Nullable Integer qps;
     /**
      * @return Specification. Valid values:
      * * `opensearch.share.junior`: Entry-level.
@@ -38,9 +38,20 @@ public final class AppGroupQuota {
      * * `opensearch.private.storage`: Exclusive storage type
      * 
      */
-    private String spec;
+    private final String spec;
 
-    private AppGroupQuota() {}
+    @CustomType.Constructor
+    private AppGroupQuota(
+        @CustomType.Parameter("computeResource") Integer computeResource,
+        @CustomType.Parameter("docSize") Integer docSize,
+        @CustomType.Parameter("qps") @Nullable Integer qps,
+        @CustomType.Parameter("spec") String spec) {
+        this.computeResource = computeResource;
+        this.docSize = docSize;
+        this.qps = qps;
+        this.spec = spec;
+    }
+
     /**
      * @return Computing resources. Unit: LCU.
      * 
@@ -84,13 +95,17 @@ public final class AppGroupQuota {
     public static Builder builder(AppGroupQuota defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer computeResource;
         private Integer docSize;
         private @Nullable Integer qps;
         private String spec;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(AppGroupQuota defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.computeResource = defaults.computeResource;
@@ -99,33 +114,23 @@ public final class AppGroupQuota {
     	      this.spec = defaults.spec;
         }
 
-        @CustomType.Setter
         public Builder computeResource(Integer computeResource) {
             this.computeResource = Objects.requireNonNull(computeResource);
             return this;
         }
-        @CustomType.Setter
         public Builder docSize(Integer docSize) {
             this.docSize = Objects.requireNonNull(docSize);
             return this;
         }
-        @CustomType.Setter
         public Builder qps(@Nullable Integer qps) {
             this.qps = qps;
             return this;
         }
-        @CustomType.Setter
         public Builder spec(String spec) {
             this.spec = Objects.requireNonNull(spec);
             return this;
-        }
-        public AppGroupQuota build() {
-            final var o = new AppGroupQuota();
-            o.computeResource = computeResource;
-            o.docSize = docSize;
-            o.qps = qps;
-            o.spec = spec;
-            return o;
+        }        public AppGroupQuota build() {
+            return new AppGroupQuota(computeResource, docSize, qps, spec);
         }
     }
 }

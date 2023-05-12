@@ -135,6 +135,7 @@ def get_nas_backup_plans(file_system_id: Optional[str] = None,
     :param str file_system_id: The File System ID of Nas.
     :param Sequence[str] ids: A list of NasBackupPlan IDs.
     :param str name_regex: A regex string to filter results by NasBackupPlan name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str vault_id: The ID of backup vault.
     """
     __args__ = dict()
@@ -185,6 +186,7 @@ def get_nas_backup_plans_output(file_system_id: Optional[pulumi.Input[Optional[s
     :param str file_system_id: The File System ID of Nas.
     :param Sequence[str] ids: A list of NasBackupPlan IDs.
     :param str name_regex: A regex string to filter results by NasBackupPlan name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str vault_id: The ID of backup vault.
     """
     ...

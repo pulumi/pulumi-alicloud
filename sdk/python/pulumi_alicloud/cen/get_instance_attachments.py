@@ -151,6 +151,7 @@ def get_instance_attachments(child_instance_region_id: Optional[str] = None,
     :param str child_instance_region_id: The region to which the network to be queried belongs.
     :param str child_instance_type: The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
     :param str instance_id: The ID of the CEN instance.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
     """
     __args__ = dict()
@@ -199,6 +200,7 @@ def get_instance_attachments_output(child_instance_region_id: Optional[pulumi.In
     :param str child_instance_region_id: The region to which the network to be queried belongs.
     :param str child_instance_type: The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
     :param str instance_id: The ID of the CEN instance.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
     """
     ...

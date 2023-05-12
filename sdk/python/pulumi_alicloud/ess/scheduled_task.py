@@ -511,6 +511,73 @@ class ScheduledTask(pulumi.CustomResource):
                  task_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        Provides a ESS schedule resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "essscheduleconfig"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=2,
+            memory_size=4)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
+            type="ingress",
+            ip_protocol="tcp",
+            nic_type="intranet",
+            policy="accept",
+            port_range="22/22",
+            priority=1,
+            security_group_id=default_security_group.id,
+            cidr_ip="172.16.0.0/24")
+        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+            min_size=1,
+            max_size=1,
+            scaling_group_name=name,
+            vswitch_ids=[default_switch.id],
+            removal_policies=[
+                "OldestInstance",
+                "NewestInstance",
+            ])
+        default_scaling_configuration = alicloud.ess.ScalingConfiguration("defaultScalingConfiguration",
+            scaling_group_id=default_scaling_group.id,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_group_id=default_security_group.id,
+            force_delete=True)
+        default_scaling_rule = alicloud.ess.ScalingRule("defaultScalingRule",
+            scaling_group_id=default_scaling_group.id,
+            adjustment_type="TotalCapacity",
+            adjustment_value=2,
+            cooldown=60)
+        default_scheduled_task = alicloud.ess.ScheduledTask("defaultScheduledTask",
+            scheduled_action=default_scaling_rule.ari,
+            launch_time="2019-05-21T11:37Z",
+            scheduled_task_name=name)
+        ```
+        ## Module Support
+
+        You can use to the existing autoscaling-rule module
+        to create scheduled task, different type rules and alarm task one-click.
+
         ## Import
 
         ESS schedule task can be imported using the id, e.g.
@@ -554,6 +621,73 @@ class ScheduledTask(pulumi.CustomResource):
                  args: Optional[ScheduledTaskArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a ESS schedule resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "essscheduleconfig"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=2,
+            memory_size=4)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
+            type="ingress",
+            ip_protocol="tcp",
+            nic_type="intranet",
+            policy="accept",
+            port_range="22/22",
+            priority=1,
+            security_group_id=default_security_group.id,
+            cidr_ip="172.16.0.0/24")
+        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+            min_size=1,
+            max_size=1,
+            scaling_group_name=name,
+            vswitch_ids=[default_switch.id],
+            removal_policies=[
+                "OldestInstance",
+                "NewestInstance",
+            ])
+        default_scaling_configuration = alicloud.ess.ScalingConfiguration("defaultScalingConfiguration",
+            scaling_group_id=default_scaling_group.id,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_group_id=default_security_group.id,
+            force_delete=True)
+        default_scaling_rule = alicloud.ess.ScalingRule("defaultScalingRule",
+            scaling_group_id=default_scaling_group.id,
+            adjustment_type="TotalCapacity",
+            adjustment_value=2,
+            cooldown=60)
+        default_scheduled_task = alicloud.ess.ScheduledTask("defaultScheduledTask",
+            scheduled_action=default_scaling_rule.ari,
+            launch_time="2019-05-21T11:37Z",
+            scheduled_task_name=name)
+        ```
+        ## Module Support
+
+        You can use to the existing autoscaling-rule module
+        to create scheduled task, different type rules and alarm task one-click.
+
         ## Import
 
         ESS schedule task can be imported using the id, e.g.

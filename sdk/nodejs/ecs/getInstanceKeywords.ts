@@ -39,6 +39,9 @@ export interface GetInstanceKeywordsArgs {
      * The type of reserved keyword to query. Valid values: `account`, `database`.
      */
     key: string;
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     */
     outputFile?: string;
 }
 
@@ -91,5 +94,8 @@ export interface GetInstanceKeywordsOutputArgs {
      * The type of reserved keyword to query. Valid values: `account`, `database`.
      */
     key: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     */
     outputFile?: pulumi.Input<string>;
 }

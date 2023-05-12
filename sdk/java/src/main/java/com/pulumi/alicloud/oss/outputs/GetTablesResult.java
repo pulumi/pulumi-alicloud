@@ -17,31 +17,48 @@ public final class GetTablesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return A list of table IDs.
      * 
      */
-    private List<String> ids;
+    private final List<String> ids;
     /**
      * @return The OTS instance name.
      * 
      */
-    private String instanceName;
-    private @Nullable String nameRegex;
+    private final String instanceName;
+    private final @Nullable String nameRegex;
     /**
      * @return A list of table names.
      * 
      */
-    private List<String> names;
-    private @Nullable String outputFile;
+    private final List<String> names;
+    private final @Nullable String outputFile;
     /**
      * @return A list of tables. Each element contains the following attributes:
      * 
      */
-    private List<GetTablesTable> tables;
+    private final List<GetTablesTable> tables;
 
-    private GetTablesResult() {}
+    @CustomType.Constructor
+    private GetTablesResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceName") String instanceName,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("tables") List<GetTablesTable> tables) {
+        this.id = id;
+        this.ids = ids;
+        this.instanceName = instanceName;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.tables = tables;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -91,7 +108,7 @@ public final class GetTablesResult {
     public static Builder builder(GetTablesResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -100,7 +117,11 @@ public final class GetTablesResult {
         private List<String> names;
         private @Nullable String outputFile;
         private List<GetTablesTable> tables;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTablesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -112,12 +133,10 @@ public final class GetTablesResult {
     	      this.tables = defaults.tables;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -125,17 +144,14 @@ public final class GetTablesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -143,29 +159,18 @@ public final class GetTablesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder tables(List<GetTablesTable> tables) {
             this.tables = Objects.requireNonNull(tables);
             return this;
         }
         public Builder tables(GetTablesTable... tables) {
             return tables(List.of(tables));
-        }
-        public GetTablesResult build() {
-            final var o = new GetTablesResult();
-            o.id = id;
-            o.ids = ids;
-            o.instanceName = instanceName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.tables = tables;
-            return o;
+        }        public GetTablesResult build() {
+            return new GetTablesResult(id, ids, instanceName, nameRegex, names, outputFile, tables);
         }
     }
 }

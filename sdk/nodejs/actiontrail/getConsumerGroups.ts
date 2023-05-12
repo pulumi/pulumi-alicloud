@@ -52,6 +52,9 @@ export interface GetConsumerGroupsArgs {
      * ID of the ALIKAFKA Instance that owns the consumer groups.
      */
     instanceId: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -119,5 +122,8 @@ export interface GetConsumerGroupsOutputArgs {
      * ID of the ALIKAFKA Instance that owns the consumer groups.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

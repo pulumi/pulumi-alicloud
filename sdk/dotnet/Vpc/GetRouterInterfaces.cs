@@ -12,6 +12,11 @@ namespace Pulumi.AliCloud.Vpc
     public static class GetRouterInterfaces
     {
         /// <summary>
+        /// This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+        /// that connect VPCs together.
+        /// 
+        /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new resource alicloud_express_connect_router_interfaces.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -43,6 +48,11 @@ namespace Pulumi.AliCloud.Vpc
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouterInterfacesResult>("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", args ?? new GetRouterInterfacesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+        /// that connect VPCs together.
+        /// 
+        /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new resource alicloud_express_connect_router_interfaces.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -107,6 +117,9 @@ namespace Pulumi.AliCloud.Vpc
         [Input("oppositeInterfaceOwnerId")]
         public string? OppositeInterfaceOwnerId { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -179,6 +192,9 @@ namespace Pulumi.AliCloud.Vpc
         [Input("oppositeInterfaceOwnerId")]
         public Input<string>? OppositeInterfaceOwnerId { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

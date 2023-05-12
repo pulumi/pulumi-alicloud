@@ -354,12 +354,16 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     /**
      * A mapping of tags to assign to the resource.
      * 
+     * &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
+     * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
      * @return A mapping of tags to assign to the resource.
+     * 
+     * &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -937,6 +941,8 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tags A mapping of tags to assign to the resource.
          * 
+         * &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
+         * 
          * @return builder
          * 
          */
@@ -947,6 +953,8 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags A mapping of tags to assign to the resource.
+         * 
+         * &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
          * 
          * @return builder
          * 

@@ -16,14 +16,21 @@ public final class RuleRuleActionTrafficMirrorConfig {
      * @return The Traffic is mirrored to the server group. See the following `Block mirror_group_config`.
      * 
      */
-    private @Nullable RuleRuleActionTrafficMirrorConfigMirrorGroupConfig mirrorGroupConfig;
+    private final @Nullable RuleRuleActionTrafficMirrorConfigMirrorGroupConfig mirrorGroupConfig;
     /**
      * @return The Mirror target type.
      * 
      */
-    private @Nullable String targetType;
+    private final @Nullable String targetType;
 
-    private RuleRuleActionTrafficMirrorConfig() {}
+    @CustomType.Constructor
+    private RuleRuleActionTrafficMirrorConfig(
+        @CustomType.Parameter("mirrorGroupConfig") @Nullable RuleRuleActionTrafficMirrorConfigMirrorGroupConfig mirrorGroupConfig,
+        @CustomType.Parameter("targetType") @Nullable String targetType) {
+        this.mirrorGroupConfig = mirrorGroupConfig;
+        this.targetType = targetType;
+    }
+
     /**
      * @return The Traffic is mirrored to the server group. See the following `Block mirror_group_config`.
      * 
@@ -46,32 +53,30 @@ public final class RuleRuleActionTrafficMirrorConfig {
     public static Builder builder(RuleRuleActionTrafficMirrorConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable RuleRuleActionTrafficMirrorConfigMirrorGroupConfig mirrorGroupConfig;
         private @Nullable String targetType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(RuleRuleActionTrafficMirrorConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mirrorGroupConfig = defaults.mirrorGroupConfig;
     	      this.targetType = defaults.targetType;
         }
 
-        @CustomType.Setter
         public Builder mirrorGroupConfig(@Nullable RuleRuleActionTrafficMirrorConfigMirrorGroupConfig mirrorGroupConfig) {
             this.mirrorGroupConfig = mirrorGroupConfig;
             return this;
         }
-        @CustomType.Setter
         public Builder targetType(@Nullable String targetType) {
             this.targetType = targetType;
             return this;
-        }
-        public RuleRuleActionTrafficMirrorConfig build() {
-            final var o = new RuleRuleActionTrafficMirrorConfig();
-            o.mirrorGroupConfig = mirrorGroupConfig;
-            o.targetType = targetType;
-            return o;
+        }        public RuleRuleActionTrafficMirrorConfig build() {
+            return new RuleRuleActionTrafficMirrorConfig(mirrorGroupConfig, targetType);
         }
     }
 }

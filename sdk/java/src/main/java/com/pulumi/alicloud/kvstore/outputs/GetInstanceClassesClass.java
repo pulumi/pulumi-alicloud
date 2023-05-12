@@ -13,10 +13,17 @@ public final class GetInstanceClassesClass {
      * @return KVStore available instance class.
      * 
      */
-    private String instanceClass;
-    private String price;
+    private final String instanceClass;
+    private final String price;
 
-    private GetInstanceClassesClass() {}
+    @CustomType.Constructor
+    private GetInstanceClassesClass(
+        @CustomType.Parameter("instanceClass") String instanceClass,
+        @CustomType.Parameter("price") String price) {
+        this.instanceClass = instanceClass;
+        this.price = price;
+    }
+
     /**
      * @return KVStore available instance class.
      * 
@@ -35,32 +42,30 @@ public final class GetInstanceClassesClass {
     public static Builder builder(GetInstanceClassesClass defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String instanceClass;
         private String price;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstanceClassesClass defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instanceClass = defaults.instanceClass;
     	      this.price = defaults.price;
         }
 
-        @CustomType.Setter
         public Builder instanceClass(String instanceClass) {
             this.instanceClass = Objects.requireNonNull(instanceClass);
             return this;
         }
-        @CustomType.Setter
         public Builder price(String price) {
             this.price = Objects.requireNonNull(price);
             return this;
-        }
-        public GetInstanceClassesClass build() {
-            final var o = new GetInstanceClassesClass();
-            o.instanceClass = instanceClass;
-            o.price = price;
-            return o;
+        }        public GetInstanceClassesClass build() {
+            return new GetInstanceClassesClass(instanceClass, price);
         }
     }
 }

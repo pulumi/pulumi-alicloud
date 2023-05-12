@@ -17,6 +17,7 @@ __all__ = [
     'CompliancePackConfigRuleArgs',
     'CompliancePackConfigRuleConfigRuleParameterArgs',
     'CompliancePackConfigRuleIdArgs',
+    'RuleComplianceArgs',
 ]
 
 @pulumi.input_type
@@ -269,5 +270,44 @@ class CompliancePackConfigRuleIdArgs:
     @config_rule_id.setter
     def config_rule_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "config_rule_id", value)
+
+
+@pulumi.input_type
+class RuleComplianceArgs:
+    def __init__(__self__, *,
+                 compliance_type: Optional[pulumi.Input[str]] = None,
+                 count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] compliance_type: The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
+        :param pulumi.Input[int] count: The count of compliance.
+        """
+        if compliance_type is not None:
+            pulumi.set(__self__, "compliance_type", compliance_type)
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+
+    @property
+    @pulumi.getter(name="complianceType")
+    def compliance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
+        """
+        return pulumi.get(self, "compliance_type")
+
+    @compliance_type.setter
+    def compliance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compliance_type", value)
+
+    @property
+    @pulumi.getter
+    def count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The count of compliance.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "count", value)
 
 

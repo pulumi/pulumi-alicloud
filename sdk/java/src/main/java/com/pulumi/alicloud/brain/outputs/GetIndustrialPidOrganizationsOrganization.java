@@ -14,29 +14,42 @@ public final class GetIndustrialPidOrganizationsOrganization {
      * @return The ID of the Pid Organization.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The parent organization id.
      * 
      */
-    private String parentPidOrganizationId;
+    private final String parentPidOrganizationId;
     /**
      * @return The organization id.
      * 
      */
-    private String pidOrganizationId;
+    private final String pidOrganizationId;
     /**
      * @return The organization level.
      * 
      */
-    private Integer pidOrganizationLevel;
+    private final Integer pidOrganizationLevel;
     /**
      * @return The organization name.
      * 
      */
-    private String pidOrganizationName;
+    private final String pidOrganizationName;
 
-    private GetIndustrialPidOrganizationsOrganization() {}
+    @CustomType.Constructor
+    private GetIndustrialPidOrganizationsOrganization(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("parentPidOrganizationId") String parentPidOrganizationId,
+        @CustomType.Parameter("pidOrganizationId") String pidOrganizationId,
+        @CustomType.Parameter("pidOrganizationLevel") Integer pidOrganizationLevel,
+        @CustomType.Parameter("pidOrganizationName") String pidOrganizationName) {
+        this.id = id;
+        this.parentPidOrganizationId = parentPidOrganizationId;
+        this.pidOrganizationId = pidOrganizationId;
+        this.pidOrganizationLevel = pidOrganizationLevel;
+        this.pidOrganizationName = pidOrganizationName;
+    }
+
     /**
      * @return The ID of the Pid Organization.
      * 
@@ -80,14 +93,18 @@ public final class GetIndustrialPidOrganizationsOrganization {
     public static Builder builder(GetIndustrialPidOrganizationsOrganization defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private String parentPidOrganizationId;
         private String pidOrganizationId;
         private Integer pidOrganizationLevel;
         private String pidOrganizationName;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetIndustrialPidOrganizationsOrganization defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -97,39 +114,27 @@ public final class GetIndustrialPidOrganizationsOrganization {
     	      this.pidOrganizationName = defaults.pidOrganizationName;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder parentPidOrganizationId(String parentPidOrganizationId) {
             this.parentPidOrganizationId = Objects.requireNonNull(parentPidOrganizationId);
             return this;
         }
-        @CustomType.Setter
         public Builder pidOrganizationId(String pidOrganizationId) {
             this.pidOrganizationId = Objects.requireNonNull(pidOrganizationId);
             return this;
         }
-        @CustomType.Setter
         public Builder pidOrganizationLevel(Integer pidOrganizationLevel) {
             this.pidOrganizationLevel = Objects.requireNonNull(pidOrganizationLevel);
             return this;
         }
-        @CustomType.Setter
         public Builder pidOrganizationName(String pidOrganizationName) {
             this.pidOrganizationName = Objects.requireNonNull(pidOrganizationName);
             return this;
-        }
-        public GetIndustrialPidOrganizationsOrganization build() {
-            final var o = new GetIndustrialPidOrganizationsOrganization();
-            o.id = id;
-            o.parentPidOrganizationId = parentPidOrganizationId;
-            o.pidOrganizationId = pidOrganizationId;
-            o.pidOrganizationLevel = pidOrganizationLevel;
-            o.pidOrganizationName = pidOrganizationName;
-            return o;
+        }        public GetIndustrialPidOrganizationsOrganization build() {
+            return new GetIndustrialPidOrganizationsOrganization(id, parentPidOrganizationId, pidOrganizationId, pidOrganizationLevel, pidOrganizationName);
         }
     }
 }

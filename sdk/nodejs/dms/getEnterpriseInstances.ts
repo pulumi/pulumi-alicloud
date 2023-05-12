@@ -73,6 +73,9 @@ export interface GetEnterpriseInstancesArgs {
      * The network type of the database instance. Valid values: CLASSIC and VPC. For more information about the valid values, see the description of the RegisterInstance operation.
      */
     netType?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The keyword used to query database instances.
@@ -184,6 +187,9 @@ export interface GetEnterpriseInstancesOutputArgs {
      * The network type of the database instance. Valid values: CLASSIC and VPC. For more information about the valid values, see the description of the RegisterInstance operation.
      */
     netType?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The keyword used to query database instances.

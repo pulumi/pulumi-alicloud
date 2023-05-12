@@ -7,4 +7,5 @@ import typing
 # Export this package's modules as members:
 from .get_meta_tags import *
 from .policy import *
+from .policy_attachment import *
 from . import outputs

@@ -112,6 +112,8 @@ export class Account extends pulumi.CustomResource {
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
+     *
+     * > **NOTE:** The member name must be unique within the resource directory.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -215,6 +217,8 @@ export interface AccountState {
     status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
+     *
+     * > **NOTE:** The member name must be unique within the resource directory.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -251,6 +255,8 @@ export interface AccountArgs {
     payerAccountId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
+     *
+     * > **NOTE:** The member name must be unique within the resource directory.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

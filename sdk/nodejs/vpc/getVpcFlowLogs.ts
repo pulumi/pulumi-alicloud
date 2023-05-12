@@ -69,6 +69,9 @@ export interface GetVpcFlowLogsArgs {
      * A regex string to filter results by Flow Log name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The project name.
@@ -162,6 +165,9 @@ export interface GetVpcFlowLogsOutputArgs {
      * A regex string to filter results by Flow Log name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The project name.

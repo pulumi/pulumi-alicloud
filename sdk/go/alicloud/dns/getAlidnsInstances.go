@@ -58,7 +58,8 @@ type GetAlidnsInstancesArgs struct {
 	// A list of instance IDs.
 	Ids []string `pulumi:"ids"`
 	// Language.
-	Lang       *string `pulumi:"lang"`
+	Lang *string `pulumi:"lang"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The IP address of the client.
 	UserClientIp *string `pulumi:"userClientIp"`
@@ -98,7 +99,8 @@ type GetAlidnsInstancesOutputArgs struct {
 	// A list of instance IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// Language.
-	Lang       pulumi.StringPtrInput `pulumi:"lang"`
+	Lang pulumi.StringPtrInput `pulumi:"lang"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrInput `pulumi:"userClientIp"`

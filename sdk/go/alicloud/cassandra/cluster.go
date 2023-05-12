@@ -109,6 +109,8 @@ type Cluster struct {
 	PeriodUnit   pulumi.StringPtrOutput   `pulumi:"periodUnit"`
 	PublicPoints pulumi.StringArrayOutput `pulumi:"publicPoints"`
 	// A list of security group ids to associate with.
+	//
+	// > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
 	Status         pulumi.StringOutput      `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -204,6 +206,8 @@ type clusterState struct {
 	PeriodUnit   *string  `pulumi:"periodUnit"`
 	PublicPoints []string `pulumi:"publicPoints"`
 	// A list of security group ids to associate with.
+	//
+	// > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
 	SecurityGroups []string `pulumi:"securityGroups"`
 	Status         *string  `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -249,6 +253,8 @@ type ClusterState struct {
 	PeriodUnit   pulumi.StringPtrInput
 	PublicPoints pulumi.StringArrayInput
 	// A list of security group ids to associate with.
+	//
+	// > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
 	SecurityGroups pulumi.StringArrayInput
 	Status         pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -297,6 +303,8 @@ type clusterArgs struct {
 	Period     *int    `pulumi:"period"`
 	PeriodUnit *string `pulumi:"periodUnit"`
 	// A list of security group ids to associate with.
+	//
+	// > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -341,6 +349,8 @@ type ClusterArgs struct {
 	Period     pulumi.IntPtrInput
 	PeriodUnit pulumi.StringPtrInput
 	// A list of security group ids to associate with.
+	//
+	// > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
 	SecurityGroups pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -525,6 +535,8 @@ func (o ClusterOutput) PublicPoints() pulumi.StringArrayOutput {
 }
 
 // A list of security group ids to associate with.
+//
+// > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
 func (o ClusterOutput) SecurityGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.SecurityGroups }).(pulumi.StringArrayOutput)
 }

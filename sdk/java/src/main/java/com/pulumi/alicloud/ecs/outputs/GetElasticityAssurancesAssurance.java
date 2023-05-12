@@ -19,84 +19,119 @@ public final class GetElasticityAssurancesAssurance {
      * @return Details of resource allocation.
      * 
      */
-    private List<GetElasticityAssurancesAssuranceAllocatedResource> allocatedResources;
+    private final List<GetElasticityAssurancesAssuranceAllocatedResource> allocatedResources;
     /**
      * @return Description of flexible guarantee service.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The first ID of the resource
      * 
      */
-    private String elasticityAssuranceId;
+    private final String elasticityAssuranceId;
     /**
      * @return Flexible guarantee service failure time.
      * 
      */
-    private String endTime;
+    private final String endTime;
     /**
      * @return ID of flexible guarantee service.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
      * 
      */
-    private String instanceChargeType;
+    private final String instanceChargeType;
     /**
      * @return The ID of the elasticity assurance.
      * 
      */
-    private String privatePoolOptionsId;
+    private final String privatePoolOptionsId;
     /**
      * @return The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
      * 
      */
-    private String privatePoolOptionsMatchCriteria;
+    private final String privatePoolOptionsMatchCriteria;
     /**
      * @return The name of the elasticity assurance.
      * 
      */
-    private String privatePoolOptionsName;
+    private final String privatePoolOptionsName;
     /**
      * @return The ID of the resource group.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return Flexible guarantee service effective time.
      * 
      */
-    private String startTime;
+    private final String startTime;
     /**
      * @return Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
      * 
      */
-    private String startTimeType;
+    private final String startTimeType;
     /**
      * @return The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The tag key-value pair information bound by the elastic guarantee service.
      * 
      */
-    private @Nullable Map<String,Object> tags;
+    private final @Nullable Map<String,Object> tags;
     /**
      * @return The total number of flexible guarantee services.
      * 
      */
-    private String totalAssuranceTimes;
+    private final String totalAssuranceTimes;
     /**
      * @return This parameter is not yet available.
      * 
      */
-    private Integer usedAssuranceTimes;
+    private final Integer usedAssuranceTimes;
 
-    private GetElasticityAssurancesAssurance() {}
+    @CustomType.Constructor
+    private GetElasticityAssurancesAssurance(
+        @CustomType.Parameter("allocatedResources") List<GetElasticityAssurancesAssuranceAllocatedResource> allocatedResources,
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("elasticityAssuranceId") String elasticityAssuranceId,
+        @CustomType.Parameter("endTime") String endTime,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceChargeType") String instanceChargeType,
+        @CustomType.Parameter("privatePoolOptionsId") String privatePoolOptionsId,
+        @CustomType.Parameter("privatePoolOptionsMatchCriteria") String privatePoolOptionsMatchCriteria,
+        @CustomType.Parameter("privatePoolOptionsName") String privatePoolOptionsName,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("startTime") String startTime,
+        @CustomType.Parameter("startTimeType") String startTimeType,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
+        @CustomType.Parameter("totalAssuranceTimes") String totalAssuranceTimes,
+        @CustomType.Parameter("usedAssuranceTimes") Integer usedAssuranceTimes) {
+        this.allocatedResources = allocatedResources;
+        this.description = description;
+        this.elasticityAssuranceId = elasticityAssuranceId;
+        this.endTime = endTime;
+        this.id = id;
+        this.instanceChargeType = instanceChargeType;
+        this.privatePoolOptionsId = privatePoolOptionsId;
+        this.privatePoolOptionsMatchCriteria = privatePoolOptionsMatchCriteria;
+        this.privatePoolOptionsName = privatePoolOptionsName;
+        this.resourceGroupId = resourceGroupId;
+        this.startTime = startTime;
+        this.startTimeType = startTimeType;
+        this.status = status;
+        this.tags = tags;
+        this.totalAssuranceTimes = totalAssuranceTimes;
+        this.usedAssuranceTimes = usedAssuranceTimes;
+    }
+
     /**
      * @return Details of resource allocation.
      * 
@@ -217,7 +252,7 @@ public final class GetElasticityAssurancesAssurance {
     public static Builder builder(GetElasticityAssurancesAssurance defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetElasticityAssurancesAssuranceAllocatedResource> allocatedResources;
         private String description;
@@ -235,7 +270,11 @@ public final class GetElasticityAssurancesAssurance {
         private @Nullable Map<String,Object> tags;
         private String totalAssuranceTimes;
         private Integer usedAssuranceTimes;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetElasticityAssurancesAssurance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allocatedResources = defaults.allocatedResources;
@@ -256,7 +295,6 @@ public final class GetElasticityAssurancesAssurance {
     	      this.usedAssuranceTimes = defaults.usedAssuranceTimes;
         }
 
-        @CustomType.Setter
         public Builder allocatedResources(List<GetElasticityAssurancesAssuranceAllocatedResource> allocatedResources) {
             this.allocatedResources = Objects.requireNonNull(allocatedResources);
             return this;
@@ -264,100 +302,67 @@ public final class GetElasticityAssurancesAssurance {
         public Builder allocatedResources(GetElasticityAssurancesAssuranceAllocatedResource... allocatedResources) {
             return allocatedResources(List.of(allocatedResources));
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder elasticityAssuranceId(String elasticityAssuranceId) {
             this.elasticityAssuranceId = Objects.requireNonNull(elasticityAssuranceId);
             return this;
         }
-        @CustomType.Setter
         public Builder endTime(String endTime) {
             this.endTime = Objects.requireNonNull(endTime);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceChargeType(String instanceChargeType) {
             this.instanceChargeType = Objects.requireNonNull(instanceChargeType);
             return this;
         }
-        @CustomType.Setter
         public Builder privatePoolOptionsId(String privatePoolOptionsId) {
             this.privatePoolOptionsId = Objects.requireNonNull(privatePoolOptionsId);
             return this;
         }
-        @CustomType.Setter
         public Builder privatePoolOptionsMatchCriteria(String privatePoolOptionsMatchCriteria) {
             this.privatePoolOptionsMatchCriteria = Objects.requireNonNull(privatePoolOptionsMatchCriteria);
             return this;
         }
-        @CustomType.Setter
         public Builder privatePoolOptionsName(String privatePoolOptionsName) {
             this.privatePoolOptionsName = Objects.requireNonNull(privatePoolOptionsName);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
         }
-        @CustomType.Setter
         public Builder startTimeType(String startTimeType) {
             this.startTimeType = Objects.requireNonNull(startTimeType);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
-        @CustomType.Setter
         public Builder totalAssuranceTimes(String totalAssuranceTimes) {
             this.totalAssuranceTimes = Objects.requireNonNull(totalAssuranceTimes);
             return this;
         }
-        @CustomType.Setter
         public Builder usedAssuranceTimes(Integer usedAssuranceTimes) {
             this.usedAssuranceTimes = Objects.requireNonNull(usedAssuranceTimes);
             return this;
-        }
-        public GetElasticityAssurancesAssurance build() {
-            final var o = new GetElasticityAssurancesAssurance();
-            o.allocatedResources = allocatedResources;
-            o.description = description;
-            o.elasticityAssuranceId = elasticityAssuranceId;
-            o.endTime = endTime;
-            o.id = id;
-            o.instanceChargeType = instanceChargeType;
-            o.privatePoolOptionsId = privatePoolOptionsId;
-            o.privatePoolOptionsMatchCriteria = privatePoolOptionsMatchCriteria;
-            o.privatePoolOptionsName = privatePoolOptionsName;
-            o.resourceGroupId = resourceGroupId;
-            o.startTime = startTime;
-            o.startTimeType = startTimeType;
-            o.status = status;
-            o.tags = tags;
-            o.totalAssuranceTimes = totalAssuranceTimes;
-            o.usedAssuranceTimes = usedAssuranceTimes;
-            return o;
+        }        public GetElasticityAssurancesAssurance build() {
+            return new GetElasticityAssurancesAssurance(allocatedResources, description, elasticityAssuranceId, endTime, id, instanceChargeType, privatePoolOptionsId, privatePoolOptionsMatchCriteria, privatePoolOptionsName, resourceGroupId, startTime, startTimeType, status, tags, totalAssuranceTimes, usedAssuranceTimes);
         }
     }
 }

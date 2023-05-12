@@ -110,6 +110,9 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
+	// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	AllowShutDown pulumi.StringPtrOutput `pulumi:"allowShutDown"`
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
 	// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
@@ -121,6 +124,8 @@ type Cluster struct {
 	CollectorStatus pulumi.StringOutput `pulumi:"collectorStatus"`
 	// (Available in 1.81.0+) PolarDB cluster connection string.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
+	// (Available in 1.204.1+) PolarDB cluster creation time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
 	// > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
 	CreationCategory pulumi.StringOutput `pulumi:"creationCategory"`
@@ -130,7 +135,7 @@ type Cluster struct {
 	// db_cluster_ip_array defines how users can send requests to your API.
 	DbClusterIpArrays ClusterDbClusterIpArrayArrayOutput `pulumi:"dbClusterIpArrays"`
 	// The dbNodeClass of cluster node.
-	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `dbNodeClass` can be set to `polar. mysql. sl. small`.
 	DbNodeClass pulumi.StringOutput `pulumi:"dbNodeClass"`
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
@@ -166,7 +171,9 @@ type Cluster struct {
 	Parameters ClusterParameterArrayOutput `pulumi:"parameters"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	PayType pulumi.StringPtrOutput `pulumi:"payType"`
-	Period  pulumi.IntPtrOutput    `pulumi:"period"`
+	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// (Available in 1.196.0+) PolarDB cluster connection port.
 	Port pulumi.StringOutput `pulumi:"port"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -175,14 +182,34 @@ type Cluster struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
 	RoleArn pulumi.StringOutput `pulumi:"roleArn"`
+	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ScaleMax pulumi.IntPtrOutput `pulumi:"scaleMax"`
+	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ScaleMin pulumi.IntPtrOutput `pulumi:"scaleMin"`
+	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ScaleRoNumMax pulumi.IntPtrOutput `pulumi:"scaleRoNumMax"`
+	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ScaleRoNumMin pulumi.IntPtrOutput `pulumi:"scaleRoNumMin"`
+	// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	SecondsUntilAutoPause pulumi.IntOutput `pulumi:"secondsUntilAutoPause"`
 	// The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
 	// Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
 	SecurityIps pulumi.StringArrayOutput `pulumi:"securityIps"`
+	// The type of the serverless cluster. Set the value to AgileServerless.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ServerlessType pulumi.StringPtrOutput `pulumi:"serverlessType"`
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
 	SourceResourceId pulumi.StringPtrOutput `pulumi:"sourceResourceId"`
+	// (Available in 1.204.1+) PolarDB cluster status.
+	Status pulumi.StringOutput `pulumi:"status"`
 	// Storage space charged by space (monthly package). Unit: GB.
 	StorageSpace pulumi.IntPtrOutput `pulumi:"storageSpace"`
 	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
@@ -248,6 +275,9 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
+	// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	AllowShutDown *string `pulumi:"allowShutDown"`
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
@@ -259,6 +289,8 @@ type clusterState struct {
 	CollectorStatus *string `pulumi:"collectorStatus"`
 	// (Available in 1.81.0+) PolarDB cluster connection string.
 	ConnectionString *string `pulumi:"connectionString"`
+	// (Available in 1.204.1+) PolarDB cluster creation time.
+	CreateTime *string `pulumi:"createTime"`
 	// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
 	// > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
 	CreationCategory *string `pulumi:"creationCategory"`
@@ -268,7 +300,7 @@ type clusterState struct {
 	// db_cluster_ip_array defines how users can send requests to your API.
 	DbClusterIpArrays []ClusterDbClusterIpArray `pulumi:"dbClusterIpArrays"`
 	// The dbNodeClass of cluster node.
-	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `dbNodeClass` can be set to `polar. mysql. sl. small`.
 	DbNodeClass *string `pulumi:"dbNodeClass"`
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
@@ -304,7 +336,9 @@ type clusterState struct {
 	Parameters []ClusterParameter `pulumi:"parameters"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	PayType *string `pulumi:"payType"`
-	Period  *int    `pulumi:"period"`
+	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period *int `pulumi:"period"`
 	// (Available in 1.196.0+) PolarDB cluster connection port.
 	Port *string `pulumi:"port"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -313,14 +347,34 @@ type clusterState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
 	RoleArn *string `pulumi:"roleArn"`
+	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ScaleMax *int `pulumi:"scaleMax"`
+	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ScaleMin *int `pulumi:"scaleMin"`
+	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ScaleRoNumMax *int `pulumi:"scaleRoNumMax"`
+	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ScaleRoNumMin *int `pulumi:"scaleRoNumMin"`
+	// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	SecondsUntilAutoPause *int `pulumi:"secondsUntilAutoPause"`
 	// The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
 	// Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
 	SecurityIps []string `pulumi:"securityIps"`
+	// The type of the serverless cluster. Set the value to AgileServerless.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ServerlessType *string `pulumi:"serverlessType"`
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
+	// (Available in 1.204.1+) PolarDB cluster status.
+	Status *string `pulumi:"status"`
 	// Storage space charged by space (monthly package). Unit: GB.
 	StorageSpace *int `pulumi:"storageSpace"`
 	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
@@ -349,6 +403,9 @@ type clusterState struct {
 }
 
 type ClusterState struct {
+	// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	AllowShutDown pulumi.StringPtrInput
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrInput
 	// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
@@ -360,6 +417,8 @@ type ClusterState struct {
 	CollectorStatus pulumi.StringPtrInput
 	// (Available in 1.81.0+) PolarDB cluster connection string.
 	ConnectionString pulumi.StringPtrInput
+	// (Available in 1.204.1+) PolarDB cluster creation time.
+	CreateTime pulumi.StringPtrInput
 	// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
 	// > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
 	CreationCategory pulumi.StringPtrInput
@@ -369,7 +428,7 @@ type ClusterState struct {
 	// db_cluster_ip_array defines how users can send requests to your API.
 	DbClusterIpArrays ClusterDbClusterIpArrayArrayInput
 	// The dbNodeClass of cluster node.
-	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `dbNodeClass` can be set to `polar. mysql. sl. small`.
 	DbNodeClass pulumi.StringPtrInput
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
@@ -405,7 +464,9 @@ type ClusterState struct {
 	Parameters ClusterParameterArrayInput
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	PayType pulumi.StringPtrInput
-	Period  pulumi.IntPtrInput
+	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period pulumi.IntPtrInput
 	// (Available in 1.196.0+) PolarDB cluster connection port.
 	Port pulumi.StringPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -414,14 +475,34 @@ type ClusterState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
 	RoleArn pulumi.StringPtrInput
+	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ScaleMax pulumi.IntPtrInput
+	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ScaleMin pulumi.IntPtrInput
+	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ScaleRoNumMax pulumi.IntPtrInput
+	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ScaleRoNumMin pulumi.IntPtrInput
+	// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	SecondsUntilAutoPause pulumi.IntPtrInput
 	// The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 	SecurityGroupIds pulumi.StringArrayInput
 	// This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
 	// Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
 	SecurityIps pulumi.StringArrayInput
+	// The type of the serverless cluster. Set the value to AgileServerless.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ServerlessType pulumi.StringPtrInput
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
 	SourceResourceId pulumi.StringPtrInput
+	// (Available in 1.204.1+) PolarDB cluster status.
+	Status pulumi.StringPtrInput
 	// Storage space charged by space (monthly package). Unit: GB.
 	StorageSpace pulumi.IntPtrInput
 	// The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`. The standard version only supports MySQL.
@@ -454,6 +535,9 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
+	// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	AllowShutDown *string `pulumi:"allowShutDown"`
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
@@ -472,7 +556,7 @@ type clusterArgs struct {
 	// db_cluster_ip_array defines how users can send requests to your API.
 	DbClusterIpArrays []ClusterDbClusterIpArray `pulumi:"dbClusterIpArrays"`
 	// The dbNodeClass of cluster node.
-	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `dbNodeClass` can be set to `polar. mysql. sl. small`.
 	DbNodeClass string `pulumi:"dbNodeClass"`
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
@@ -508,19 +592,39 @@ type clusterArgs struct {
 	Parameters []ClusterParameter `pulumi:"parameters"`
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	PayType *string `pulumi:"payType"`
-	Period  *int    `pulumi:"period"`
+	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period *int `pulumi:"period"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
 	RoleArn *string `pulumi:"roleArn"`
+	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ScaleMax *int `pulumi:"scaleMax"`
+	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ScaleMin *int `pulumi:"scaleMin"`
+	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ScaleRoNumMax *int `pulumi:"scaleRoNumMax"`
+	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ScaleRoNumMin *int `pulumi:"scaleRoNumMin"`
+	// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	SecondsUntilAutoPause *int `pulumi:"secondsUntilAutoPause"`
 	// The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
 	// Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
 	SecurityIps []string `pulumi:"securityIps"`
+	// The type of the serverless cluster. Set the value to AgileServerless.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ServerlessType *string `pulumi:"serverlessType"`
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
 	// Storage space charged by space (monthly package). Unit: GB.
@@ -548,6 +652,9 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
+	// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	AllowShutDown pulumi.StringPtrInput
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrInput
 	// The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://help.aliyun.com/document_detail/98170.html)
@@ -566,7 +673,7 @@ type ClusterArgs struct {
 	// db_cluster_ip_array defines how users can send requests to your API.
 	DbClusterIpArrays ClusterDbClusterIpArrayArrayInput
 	// The dbNodeClass of cluster node.
-	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+	// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `dbNodeClass` can be set to `polar. mysql. sl. small`.
 	DbNodeClass pulumi.StringInput
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
@@ -602,19 +709,39 @@ type ClusterArgs struct {
 	Parameters ClusterParameterArrayInput
 	// Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
 	PayType pulumi.StringPtrInput
-	Period  pulumi.IntPtrInput
+	// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period pulumi.IntPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus pulumi.StringPtrInput
 	// The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
 	RoleArn pulumi.StringPtrInput
+	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ScaleMax pulumi.IntPtrInput
+	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ScaleMin pulumi.IntPtrInput
+	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ScaleRoNumMax pulumi.IntPtrInput
+	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ScaleRoNumMin pulumi.IntPtrInput
+	// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	SecondsUntilAutoPause pulumi.IntPtrInput
 	// The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 	SecurityGroupIds pulumi.StringArrayInput
 	// This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
 	// Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
 	SecurityIps pulumi.StringArrayInput
+	// The type of the serverless cluster. Set the value to AgileServerless.
+	// > **NOTE:** This parameter is valid only for serverless clusters.
+	ServerlessType pulumi.StringPtrInput
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
 	SourceResourceId pulumi.StringPtrInput
 	// Storage space charged by space (monthly package). Unit: GB.
@@ -727,6 +854,12 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
+// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
+// > **NOTE:** This parameter is valid only for serverless clusters.
+func (o ClusterOutput) AllowShutDown() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.AllowShutDown }).(pulumi.StringPtrOutput)
+}
+
 // Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 func (o ClusterOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.AutoRenewPeriod }).(pulumi.IntPtrOutput)
@@ -753,6 +886,11 @@ func (o ClusterOutput) ConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
 }
 
+// (Available in 1.204.1+) PolarDB cluster creation time.
+func (o ClusterOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
 // > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
 func (o ClusterOutput) CreationCategory() pulumi.StringOutput {
@@ -771,7 +909,7 @@ func (o ClusterOutput) DbClusterIpArrays() ClusterDbClusterIpArrayArrayOutput {
 }
 
 // The dbNodeClass of cluster node.
-// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+// > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `dbNodeClass` can be set to `polar. mysql. sl. small`.
 func (o ClusterOutput) DbNodeClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DbNodeClass }).(pulumi.StringOutput)
 }
@@ -852,6 +990,8 @@ func (o ClusterOutput) PayType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.PayType }).(pulumi.StringPtrOutput)
 }
 
+// The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 func (o ClusterOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
@@ -876,6 +1016,36 @@ func (o ClusterOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.RoleArn }).(pulumi.StringOutput)
 }
 
+// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+// > **NOTE:** This parameter is valid only for serverless clusters.
+func (o ClusterOutput) ScaleMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.ScaleMax }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+// > **NOTE:** This parameter is valid only for serverless clusters.
+func (o ClusterOutput) ScaleMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.ScaleMin }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+// > **NOTE:** This parameter is valid only for serverless clusters.
+func (o ClusterOutput) ScaleRoNumMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.ScaleRoNumMax }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+// > **NOTE:** This parameter is valid only for serverless clusters.
+func (o ClusterOutput) ScaleRoNumMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.ScaleRoNumMin }).(pulumi.IntPtrOutput)
+}
+
+// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+// > **NOTE:** This parameter is valid only for serverless clusters.
+func (o ClusterOutput) SecondsUntilAutoPause() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.SecondsUntilAutoPause }).(pulumi.IntOutput)
+}
+
 // The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
 // > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
 func (o ClusterOutput) SecurityGroupIds() pulumi.StringArrayOutput {
@@ -888,9 +1058,20 @@ func (o ClusterOutput) SecurityIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.SecurityIps }).(pulumi.StringArrayOutput)
 }
 
+// The type of the serverless cluster. Set the value to AgileServerless.
+// > **NOTE:** This parameter is valid only for serverless clusters.
+func (o ClusterOutput) ServerlessType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ServerlessType }).(pulumi.StringPtrOutput)
+}
+
 // The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
 func (o ClusterOutput) SourceResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+// (Available in 1.204.1+) PolarDB cluster status.
+func (o ClusterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 // Storage space charged by space (monthly package). Unit: GB.

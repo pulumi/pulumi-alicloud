@@ -9,10 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTypesInstanceTypeGpu {
-    private String amount;
-    private String category;
+    private final String amount;
+    private final String category;
 
-    private GetInstanceTypesInstanceTypeGpu() {}
+    @CustomType.Constructor
+    private GetInstanceTypesInstanceTypeGpu(
+        @CustomType.Parameter("amount") String amount,
+        @CustomType.Parameter("category") String category) {
+        this.amount = amount;
+        this.category = category;
+    }
+
     public String amount() {
         return this.amount;
     }
@@ -27,32 +34,30 @@ public final class GetInstanceTypesInstanceTypeGpu {
     public static Builder builder(GetInstanceTypesInstanceTypeGpu defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String amount;
         private String category;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInstanceTypesInstanceTypeGpu defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.amount = defaults.amount;
     	      this.category = defaults.category;
         }
 
-        @CustomType.Setter
         public Builder amount(String amount) {
             this.amount = Objects.requireNonNull(amount);
             return this;
         }
-        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
-        }
-        public GetInstanceTypesInstanceTypeGpu build() {
-            final var o = new GetInstanceTypesInstanceTypeGpu();
-            o.amount = amount;
-            o.category = category;
-            return o;
+        }        public GetInstanceTypesInstanceTypeGpu build() {
+            return new GetInstanceTypesInstanceTypeGpu(amount, category);
         }
     }
 }

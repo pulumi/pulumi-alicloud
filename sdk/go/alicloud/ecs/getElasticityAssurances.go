@@ -25,8 +25,9 @@ func GetElasticityAssurances(ctx *pulumi.Context, args *GetElasticityAssurancesA
 // A collection of arguments for invoking getElasticityAssurances.
 type GetElasticityAssurancesArgs struct {
 	// A list of Elasticity Assurance IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the elastic protection service.
 	PrivatePoolOptionsIds []string `pulumi:"privatePoolOptionsIds"`
 	// The ID of the resource group.
@@ -71,8 +72,9 @@ func GetElasticityAssurancesOutput(ctx *pulumi.Context, args GetElasticityAssura
 // A collection of arguments for invoking getElasticityAssurances.
 type GetElasticityAssurancesOutputArgs struct {
 	// A list of Elasticity Assurance IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the elastic protection service.
 	PrivatePoolOptionsIds pulumi.StringArrayInput `pulumi:"privatePoolOptionsIds"`
 	// The ID of the resource group.

@@ -91,6 +91,8 @@ namespace Pulumi.AliCloud.Cdn
         /// The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
         /// It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internet_charge_type`.
         /// As a note, the updated internet charge type will be effective in the next day zero time.
+        /// 
+        /// &gt; **NOTE:** Setting `enable = "On"` to open the CDN service that means you have read and agreed the [CDN Terms of Service](https://help.aliyun.com/document_detail/27110.html). The service can not closed once it is opened.
         /// </summary>
         [Input("internetChargeType")]
         public string? InternetChargeType { get; set; }
@@ -113,6 +115,8 @@ namespace Pulumi.AliCloud.Cdn
         /// The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
         /// It is required when `enable = on`. If the CDN service has been opened and you can update its internet charge type by modifying the filed `internet_charge_type`.
         /// As a note, the updated internet charge type will be effective in the next day zero time.
+        /// 
+        /// &gt; **NOTE:** Setting `enable = "On"` to open the CDN service that means you have read and agreed the [CDN Terms of Service](https://help.aliyun.com/document_detail/27110.html). The service can not closed once it is opened.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }

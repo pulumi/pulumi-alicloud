@@ -157,6 +157,7 @@ def get_domains(enable_details: Optional[bool] = None,
     :param Sequence[str] ids: A list of WAF domain names. Each item is domain name.
     :param str instance_id: The Id of waf instance to which waf domain belongs.
     :param str name_regex: A regex string to filter results by domain name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group to which the queried domain belongs in Resource Management.
     """
     __args__ = dict()
@@ -210,6 +211,7 @@ def get_domains_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
     :param Sequence[str] ids: A list of WAF domain names. Each item is domain name.
     :param str instance_id: The Id of waf instance to which waf domain belongs.
     :param str name_regex: A regex string to filter results by domain name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group to which the queried domain belongs in Resource Management.
     """
     ...

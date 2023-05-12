@@ -59,7 +59,8 @@ type GetIndustrialPidProjectsArgs struct {
 	// A list of Pid Project IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Pid Project name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of Pid Organization.
 	PidOrganizationId *string `pulumi:"pidOrganizationId"`
@@ -98,7 +99,8 @@ type GetIndustrialPidProjectsOutputArgs struct {
 	// A list of Pid Project IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Pid Project name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of Pid Organization.
 	PidOrganizationId pulumi.StringPtrInput `pulumi:"pidOrganizationId"`

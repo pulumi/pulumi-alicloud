@@ -15,74 +15,105 @@ public final class GetTransitRouterPeerAttachmentsAttachment {
      * @return Auto publish route enabled.
      * 
      */
-    private Boolean autoPublishRouteEnabled;
+    private final Boolean autoPublishRouteEnabled;
     /**
      * @return The bandwidth of the bandwidth package.
      * 
      */
-    private Integer bandwidth;
+    private final Integer bandwidth;
     /**
      * @return ID of the CEN bandwidth package.
      * 
      */
-    private String cenBandwidthPackageId;
+    private final String cenBandwidthPackageId;
     /**
      * @return ID of the geographic.
      * 
      */
-    private String geographicSpanId;
+    private final String geographicSpanId;
     /**
      * @return The ID of CEN Transit Router peer attachments.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return ID of the peer transit router.
      * 
      */
-    private String peerTransitRouterId;
+    private final String peerTransitRouterId;
     /**
      * @return Owner ID of the peer transit router.
      * 
      */
-    private String peerTransitRouterOwnerId;
+    private final String peerTransitRouterOwnerId;
     /**
      * @return Region ID of the peer transit router.
      * 
      */
-    private String peerTransitRouterRegionId;
+    private final String peerTransitRouterRegionId;
     /**
      * @return Type of the resource.
      * 
      */
-    private String resourceType;
+    private final String resourceType;
     /**
      * @return The status of CEN Transit Router peer attachment. Valid values `Attached`, `Attaching` and `Detaching`.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The description of CEN Transit Router peer attachments.
      * 
      */
-    private String transitRouterAttachmentDescription;
+    private final String transitRouterAttachmentDescription;
     /**
      * @return The ID of CEN Transit Router peer attachments.
      * 
      */
-    private String transitRouterAttachmentId;
+    private final String transitRouterAttachmentId;
     /**
      * @return Name of the transit router attachment.
      * 
      */
-    private String transitRouterAttachmentName;
+    private final String transitRouterAttachmentName;
     /**
      * @return The ID of transit router.
      * 
      */
-    private String transitRouterId;
+    private final String transitRouterId;
 
-    private GetTransitRouterPeerAttachmentsAttachment() {}
+    @CustomType.Constructor
+    private GetTransitRouterPeerAttachmentsAttachment(
+        @CustomType.Parameter("autoPublishRouteEnabled") Boolean autoPublishRouteEnabled,
+        @CustomType.Parameter("bandwidth") Integer bandwidth,
+        @CustomType.Parameter("cenBandwidthPackageId") String cenBandwidthPackageId,
+        @CustomType.Parameter("geographicSpanId") String geographicSpanId,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("peerTransitRouterId") String peerTransitRouterId,
+        @CustomType.Parameter("peerTransitRouterOwnerId") String peerTransitRouterOwnerId,
+        @CustomType.Parameter("peerTransitRouterRegionId") String peerTransitRouterRegionId,
+        @CustomType.Parameter("resourceType") String resourceType,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("transitRouterAttachmentDescription") String transitRouterAttachmentDescription,
+        @CustomType.Parameter("transitRouterAttachmentId") String transitRouterAttachmentId,
+        @CustomType.Parameter("transitRouterAttachmentName") String transitRouterAttachmentName,
+        @CustomType.Parameter("transitRouterId") String transitRouterId) {
+        this.autoPublishRouteEnabled = autoPublishRouteEnabled;
+        this.bandwidth = bandwidth;
+        this.cenBandwidthPackageId = cenBandwidthPackageId;
+        this.geographicSpanId = geographicSpanId;
+        this.id = id;
+        this.peerTransitRouterId = peerTransitRouterId;
+        this.peerTransitRouterOwnerId = peerTransitRouterOwnerId;
+        this.peerTransitRouterRegionId = peerTransitRouterRegionId;
+        this.resourceType = resourceType;
+        this.status = status;
+        this.transitRouterAttachmentDescription = transitRouterAttachmentDescription;
+        this.transitRouterAttachmentId = transitRouterAttachmentId;
+        this.transitRouterAttachmentName = transitRouterAttachmentName;
+        this.transitRouterId = transitRouterId;
+    }
+
     /**
      * @return Auto publish route enabled.
      * 
@@ -189,7 +220,7 @@ public final class GetTransitRouterPeerAttachmentsAttachment {
     public static Builder builder(GetTransitRouterPeerAttachmentsAttachment defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Boolean autoPublishRouteEnabled;
         private Integer bandwidth;
@@ -205,7 +236,11 @@ public final class GetTransitRouterPeerAttachmentsAttachment {
         private String transitRouterAttachmentId;
         private String transitRouterAttachmentName;
         private String transitRouterId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetTransitRouterPeerAttachmentsAttachment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoPublishRouteEnabled = defaults.autoPublishRouteEnabled;
@@ -224,93 +259,63 @@ public final class GetTransitRouterPeerAttachmentsAttachment {
     	      this.transitRouterId = defaults.transitRouterId;
         }
 
-        @CustomType.Setter
         public Builder autoPublishRouteEnabled(Boolean autoPublishRouteEnabled) {
             this.autoPublishRouteEnabled = Objects.requireNonNull(autoPublishRouteEnabled);
             return this;
         }
-        @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
-        @CustomType.Setter
         public Builder cenBandwidthPackageId(String cenBandwidthPackageId) {
             this.cenBandwidthPackageId = Objects.requireNonNull(cenBandwidthPackageId);
             return this;
         }
-        @CustomType.Setter
         public Builder geographicSpanId(String geographicSpanId) {
             this.geographicSpanId = Objects.requireNonNull(geographicSpanId);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder peerTransitRouterId(String peerTransitRouterId) {
             this.peerTransitRouterId = Objects.requireNonNull(peerTransitRouterId);
             return this;
         }
-        @CustomType.Setter
         public Builder peerTransitRouterOwnerId(String peerTransitRouterOwnerId) {
             this.peerTransitRouterOwnerId = Objects.requireNonNull(peerTransitRouterOwnerId);
             return this;
         }
-        @CustomType.Setter
         public Builder peerTransitRouterRegionId(String peerTransitRouterRegionId) {
             this.peerTransitRouterRegionId = Objects.requireNonNull(peerTransitRouterRegionId);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceType(String resourceType) {
             this.resourceType = Objects.requireNonNull(resourceType);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterAttachmentDescription(String transitRouterAttachmentDescription) {
             this.transitRouterAttachmentDescription = Objects.requireNonNull(transitRouterAttachmentDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
             this.transitRouterAttachmentId = Objects.requireNonNull(transitRouterAttachmentId);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterAttachmentName(String transitRouterAttachmentName) {
             this.transitRouterAttachmentName = Objects.requireNonNull(transitRouterAttachmentName);
             return this;
         }
-        @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
             this.transitRouterId = Objects.requireNonNull(transitRouterId);
             return this;
-        }
-        public GetTransitRouterPeerAttachmentsAttachment build() {
-            final var o = new GetTransitRouterPeerAttachmentsAttachment();
-            o.autoPublishRouteEnabled = autoPublishRouteEnabled;
-            o.bandwidth = bandwidth;
-            o.cenBandwidthPackageId = cenBandwidthPackageId;
-            o.geographicSpanId = geographicSpanId;
-            o.id = id;
-            o.peerTransitRouterId = peerTransitRouterId;
-            o.peerTransitRouterOwnerId = peerTransitRouterOwnerId;
-            o.peerTransitRouterRegionId = peerTransitRouterRegionId;
-            o.resourceType = resourceType;
-            o.status = status;
-            o.transitRouterAttachmentDescription = transitRouterAttachmentDescription;
-            o.transitRouterAttachmentId = transitRouterAttachmentId;
-            o.transitRouterAttachmentName = transitRouterAttachmentName;
-            o.transitRouterId = transitRouterId;
-            return o;
+        }        public GetTransitRouterPeerAttachmentsAttachment build() {
+            return new GetTransitRouterPeerAttachmentsAttachment(autoPublishRouteEnabled, bandwidth, cenBandwidthPackageId, geographicSpanId, id, peerTransitRouterId, peerTransitRouterOwnerId, peerTransitRouterRegionId, resourceType, status, transitRouterAttachmentDescription, transitRouterAttachmentId, transitRouterAttachmentName, transitRouterId);
         }
     }
 }

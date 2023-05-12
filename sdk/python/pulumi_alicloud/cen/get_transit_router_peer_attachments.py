@@ -158,6 +158,7 @@ def get_transit_router_peer_attachments(cen_id: Optional[str] = None,
     :param str cen_id: ID of the CEN instance.
     :param Sequence[str] ids: A list of CEN Transit Router peer attachments IDs.
     :param str name_regex: A regex string to filter CEN Transit Router peer attachments by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of CEN Transit Router peer attachment. Valid values `Attached`, `Attaching` and `Detaching`.
     :param str transit_router_attachment_id: The ID of CEN Transit Router peer attachments.
     :param str transit_router_id: The ID of transit router.
@@ -204,6 +205,7 @@ def get_transit_router_peer_attachments_output(cen_id: Optional[pulumi.Input[str
     :param str cen_id: ID of the CEN instance.
     :param Sequence[str] ids: A list of CEN Transit Router peer attachments IDs.
     :param str name_regex: A regex string to filter CEN Transit Router peer attachments by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of CEN Transit Router peer attachment. Valid values `Attached`, `Attaching` and `Detaching`.
     :param str transit_router_attachment_id: The ID of CEN Transit Router peer attachments.
     :param str transit_router_id: The ID of transit router.

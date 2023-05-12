@@ -14,21 +14,42 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppsResult {
-    private List<GetAppsApp> apps;
-    private @Nullable Boolean enableDetails;
+    private final List<GetAppsApp> apps;
+    private final @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String osType;
-    private @Nullable String outputFile;
-    private String productId;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String osType;
+    private final @Nullable String outputFile;
+    private final String productId;
 
-    private GetAppsResult() {}
+    @CustomType.Constructor
+    private GetAppsResult(
+        @CustomType.Parameter("apps") List<GetAppsApp> apps,
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("osType") @Nullable String osType,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("productId") String productId) {
+        this.apps = apps;
+        this.enableDetails = enableDetails;
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.osType = osType;
+        this.outputFile = outputFile;
+        this.productId = productId;
+    }
+
     public List<GetAppsApp> apps() {
         return this.apps;
     }
@@ -68,7 +89,7 @@ public final class GetAppsResult {
     public static Builder builder(GetAppsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<GetAppsApp> apps;
         private @Nullable Boolean enableDetails;
@@ -79,7 +100,11 @@ public final class GetAppsResult {
         private @Nullable String osType;
         private @Nullable String outputFile;
         private String productId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetAppsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apps = defaults.apps;
@@ -93,7 +118,6 @@ public final class GetAppsResult {
     	      this.productId = defaults.productId;
         }
 
-        @CustomType.Setter
         public Builder apps(List<GetAppsApp> apps) {
             this.apps = Objects.requireNonNull(apps);
             return this;
@@ -101,17 +125,14 @@ public final class GetAppsResult {
         public Builder apps(GetAppsApp... apps) {
             return apps(List.of(apps));
         }
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -119,12 +140,10 @@ public final class GetAppsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -132,33 +151,19 @@ public final class GetAppsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder osType(@Nullable String osType) {
             this.osType = osType;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder productId(String productId) {
             this.productId = Objects.requireNonNull(productId);
             return this;
-        }
-        public GetAppsResult build() {
-            final var o = new GetAppsResult();
-            o.apps = apps;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.osType = osType;
-            o.outputFile = outputFile;
-            o.productId = productId;
-            return o;
+        }        public GetAppsResult build() {
+            return new GetAppsResult(apps, enableDetails, id, ids, nameRegex, names, osType, outputFile, productId);
         }
     }
 }

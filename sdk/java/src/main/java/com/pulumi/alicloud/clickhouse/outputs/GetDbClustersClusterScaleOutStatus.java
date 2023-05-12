@@ -13,14 +13,21 @@ public final class GetDbClustersClusterScaleOutStatus {
      * @return Process.
      * 
      */
-    private String progress;
+    private final String progress;
     /**
      * @return Efficiency.
      * 
      */
-    private String ratio;
+    private final String ratio;
 
-    private GetDbClustersClusterScaleOutStatus() {}
+    @CustomType.Constructor
+    private GetDbClustersClusterScaleOutStatus(
+        @CustomType.Parameter("progress") String progress,
+        @CustomType.Parameter("ratio") String ratio) {
+        this.progress = progress;
+        this.ratio = ratio;
+    }
+
     /**
      * @return Process.
      * 
@@ -43,32 +50,30 @@ public final class GetDbClustersClusterScaleOutStatus {
     public static Builder builder(GetDbClustersClusterScaleOutStatus defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String progress;
         private String ratio;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetDbClustersClusterScaleOutStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.progress = defaults.progress;
     	      this.ratio = defaults.ratio;
         }
 
-        @CustomType.Setter
         public Builder progress(String progress) {
             this.progress = Objects.requireNonNull(progress);
             return this;
         }
-        @CustomType.Setter
         public Builder ratio(String ratio) {
             this.ratio = Objects.requireNonNull(ratio);
             return this;
-        }
-        public GetDbClustersClusterScaleOutStatus build() {
-            final var o = new GetDbClustersClusterScaleOutStatus();
-            o.progress = progress;
-            o.ratio = ratio;
-            return o;
+        }        public GetDbClustersClusterScaleOutStatus build() {
+            return new GetDbClustersClusterScaleOutStatus(progress, ratio);
         }
     }
 }

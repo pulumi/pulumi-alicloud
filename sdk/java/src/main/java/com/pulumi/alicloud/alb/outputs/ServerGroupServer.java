@@ -17,17 +17,17 @@ public final class ServerGroupServer {
      * @return The description of the server.
      * 
      */
-    private @Nullable String description;
+    private final @Nullable String description;
     /**
      * @return The port that is used by the server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
      * 
      */
-    private @Nullable Integer port;
+    private final @Nullable Integer port;
     /**
      * @return Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `server_type` is set to `Ip`, this parameter is available.
      * 
      */
-    private @Nullable Boolean remoteIpEnabled;
+    private final @Nullable Boolean remoteIpEnabled;
     /**
      * @return The ID of the backend server.
      * - If `server_group_type` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
@@ -35,12 +35,12 @@ public final class ServerGroupServer {
      * - If `server_group_type` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
      * 
      */
-    private String serverId;
+    private final String serverId;
     /**
      * @return The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `server_group_type` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `server_group_type` is set to `Ip`, the value of this property is the same as the `server_id` value.
      * 
      */
-    private @Nullable String serverIp;
+    private final @Nullable String serverIp;
     /**
      * @return The type of the server. The type of the server. Valid values:
      * - Ecs: an ECS instance.
@@ -50,20 +50,39 @@ public final class ServerGroupServer {
      * - fc(Available in v1.194.0+): a function.
      * 
      */
-    private String serverType;
+    private final String serverType;
     /**
      * @return The status of the resource.
      * 
      */
-    private @Nullable String status;
+    private final @Nullable String status;
     /**
      * @return The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
      * requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
      * 
      */
-    private @Nullable Integer weight;
+    private final @Nullable Integer weight;
 
-    private ServerGroupServer() {}
+    @CustomType.Constructor
+    private ServerGroupServer(
+        @CustomType.Parameter("description") @Nullable String description,
+        @CustomType.Parameter("port") @Nullable Integer port,
+        @CustomType.Parameter("remoteIpEnabled") @Nullable Boolean remoteIpEnabled,
+        @CustomType.Parameter("serverId") String serverId,
+        @CustomType.Parameter("serverIp") @Nullable String serverIp,
+        @CustomType.Parameter("serverType") String serverType,
+        @CustomType.Parameter("status") @Nullable String status,
+        @CustomType.Parameter("weight") @Nullable Integer weight) {
+        this.description = description;
+        this.port = port;
+        this.remoteIpEnabled = remoteIpEnabled;
+        this.serverId = serverId;
+        this.serverIp = serverIp;
+        this.serverType = serverType;
+        this.status = status;
+        this.weight = weight;
+    }
+
     /**
      * @return The description of the server.
      * 
@@ -137,7 +156,7 @@ public final class ServerGroupServer {
     public static Builder builder(ServerGroupServer defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable String description;
         private @Nullable Integer port;
@@ -147,7 +166,11 @@ public final class ServerGroupServer {
         private String serverType;
         private @Nullable String status;
         private @Nullable Integer weight;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ServerGroupServer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -160,57 +183,39 @@ public final class ServerGroupServer {
     	      this.weight = defaults.weight;
         }
 
-        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
-        @CustomType.Setter
         public Builder port(@Nullable Integer port) {
             this.port = port;
             return this;
         }
-        @CustomType.Setter
         public Builder remoteIpEnabled(@Nullable Boolean remoteIpEnabled) {
             this.remoteIpEnabled = remoteIpEnabled;
             return this;
         }
-        @CustomType.Setter
         public Builder serverId(String serverId) {
             this.serverId = Objects.requireNonNull(serverId);
             return this;
         }
-        @CustomType.Setter
         public Builder serverIp(@Nullable String serverIp) {
             this.serverIp = serverIp;
             return this;
         }
-        @CustomType.Setter
         public Builder serverType(String serverType) {
             this.serverType = Objects.requireNonNull(serverType);
             return this;
         }
-        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
-        @CustomType.Setter
         public Builder weight(@Nullable Integer weight) {
             this.weight = weight;
             return this;
-        }
-        public ServerGroupServer build() {
-            final var o = new ServerGroupServer();
-            o.description = description;
-            o.port = port;
-            o.remoteIpEnabled = remoteIpEnabled;
-            o.serverId = serverId;
-            o.serverIp = serverIp;
-            o.serverType = serverType;
-            o.status = status;
-            o.weight = weight;
-            return o;
+        }        public ServerGroupServer build() {
+            return new ServerGroupServer(description, port, remoteIpEnabled, serverId, serverIp, serverType, status, weight);
         }
     }
 }

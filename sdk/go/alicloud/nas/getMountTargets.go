@@ -64,7 +64,8 @@ type GetMountTargetsArgs struct {
 	MountTargetDomain *string `pulumi:"mountTargetDomain"`
 	// Filter results by a specific NetworkType.
 	NetworkType *string `pulumi:"networkType"`
-	OutputFile  *string `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
 	Status *string `pulumi:"status"`
 	// Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.
@@ -134,7 +135,8 @@ type GetMountTargetsOutputArgs struct {
 	MountTargetDomain pulumi.StringPtrInput `pulumi:"mountTargetDomain"`
 	// Filter results by a specific NetworkType.
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
-	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Field `type` has been deprecated from provider version 1.95.0. New field `networkType` replaces it.

@@ -18,34 +18,49 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetric {
      * @return The maximum number of instances.
      * 
      */
-    private Integer maxReplicas;
+    private final Integer maxReplicas;
     /**
      * @return The auto scaling list of monitoring indicators.
      * 
      */
-    private List<GetApplicationScalingRulesRuleScalingRuleMetricMetric> metrics;
+    private final List<GetApplicationScalingRulesRuleScalingRuleMetricMetric> metrics;
     /**
      * @return Monitor indicator elasticity status.
      * 
      */
-    private List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus> metricsStatuses;
+    private final List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus> metricsStatuses;
     /**
      * @return The minimum number of instances.
      * 
      */
-    private Integer minReplicas;
+    private final Integer minReplicas;
     /**
      * @return The shrink rule.
      * 
      */
-    private List<GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule> scaleDownRules;
+    private final List<GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule> scaleDownRules;
     /**
      * @return The expansion rules.
      * 
      */
-    private List<GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule> scaleUpRules;
+    private final List<GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule> scaleUpRules;
 
-    private GetApplicationScalingRulesRuleScalingRuleMetric() {}
+    @CustomType.Constructor
+    private GetApplicationScalingRulesRuleScalingRuleMetric(
+        @CustomType.Parameter("maxReplicas") Integer maxReplicas,
+        @CustomType.Parameter("metrics") List<GetApplicationScalingRulesRuleScalingRuleMetricMetric> metrics,
+        @CustomType.Parameter("metricsStatuses") List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus> metricsStatuses,
+        @CustomType.Parameter("minReplicas") Integer minReplicas,
+        @CustomType.Parameter("scaleDownRules") List<GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule> scaleDownRules,
+        @CustomType.Parameter("scaleUpRules") List<GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule> scaleUpRules) {
+        this.maxReplicas = maxReplicas;
+        this.metrics = metrics;
+        this.metricsStatuses = metricsStatuses;
+        this.minReplicas = minReplicas;
+        this.scaleDownRules = scaleDownRules;
+        this.scaleUpRules = scaleUpRules;
+    }
+
     /**
      * @return The maximum number of instances.
      * 
@@ -96,7 +111,7 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetric {
     public static Builder builder(GetApplicationScalingRulesRuleScalingRuleMetric defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Integer maxReplicas;
         private List<GetApplicationScalingRulesRuleScalingRuleMetricMetric> metrics;
@@ -104,7 +119,11 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetric {
         private Integer minReplicas;
         private List<GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule> scaleDownRules;
         private List<GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule> scaleUpRules;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetApplicationScalingRulesRuleScalingRuleMetric defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxReplicas = defaults.maxReplicas;
@@ -115,12 +134,10 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetric {
     	      this.scaleUpRules = defaults.scaleUpRules;
         }
 
-        @CustomType.Setter
         public Builder maxReplicas(Integer maxReplicas) {
             this.maxReplicas = Objects.requireNonNull(maxReplicas);
             return this;
         }
-        @CustomType.Setter
         public Builder metrics(List<GetApplicationScalingRulesRuleScalingRuleMetricMetric> metrics) {
             this.metrics = Objects.requireNonNull(metrics);
             return this;
@@ -128,7 +145,6 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetric {
         public Builder metrics(GetApplicationScalingRulesRuleScalingRuleMetricMetric... metrics) {
             return metrics(List.of(metrics));
         }
-        @CustomType.Setter
         public Builder metricsStatuses(List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus> metricsStatuses) {
             this.metricsStatuses = Objects.requireNonNull(metricsStatuses);
             return this;
@@ -136,12 +152,10 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetric {
         public Builder metricsStatuses(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus... metricsStatuses) {
             return metricsStatuses(List.of(metricsStatuses));
         }
-        @CustomType.Setter
         public Builder minReplicas(Integer minReplicas) {
             this.minReplicas = Objects.requireNonNull(minReplicas);
             return this;
         }
-        @CustomType.Setter
         public Builder scaleDownRules(List<GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule> scaleDownRules) {
             this.scaleDownRules = Objects.requireNonNull(scaleDownRules);
             return this;
@@ -149,23 +163,14 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetric {
         public Builder scaleDownRules(GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule... scaleDownRules) {
             return scaleDownRules(List.of(scaleDownRules));
         }
-        @CustomType.Setter
         public Builder scaleUpRules(List<GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule> scaleUpRules) {
             this.scaleUpRules = Objects.requireNonNull(scaleUpRules);
             return this;
         }
         public Builder scaleUpRules(GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule... scaleUpRules) {
             return scaleUpRules(List.of(scaleUpRules));
-        }
-        public GetApplicationScalingRulesRuleScalingRuleMetric build() {
-            final var o = new GetApplicationScalingRulesRuleScalingRuleMetric();
-            o.maxReplicas = maxReplicas;
-            o.metrics = metrics;
-            o.metricsStatuses = metricsStatuses;
-            o.minReplicas = minReplicas;
-            o.scaleDownRules = scaleDownRules;
-            o.scaleUpRules = scaleUpRules;
-            return o;
+        }        public GetApplicationScalingRulesRuleScalingRuleMetric build() {
+            return new GetApplicationScalingRulesRuleScalingRuleMetric(maxReplicas, metrics, metricsStatuses, minReplicas, scaleDownRules, scaleUpRules);
         }
     }
 }

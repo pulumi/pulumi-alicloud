@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.AliKafka
     /// 
     /// ## Import
     /// 
-    /// ### Timeouts The `timeouts` block allows you to specify [timeouts](https://www.terraform.io/docs/configuration-0-11/resources.html#timeouts) for certain actions* `create` - (Defaults to 10 mins) Used when creating the topic (until it reaches the initial `Running` status).
+    /// ### Timeouts The `timeouts` block allows you to specify timeouts for certain actions* `create` - (Defaults to 10 mins) Used when creating the topic (until it reaches the initial `Running` status).
     /// </summary>
     [AliCloudResourceType("alicloud:alikafka/topic:Topic")]
     public partial class Topic : global::Pulumi.CustomResource

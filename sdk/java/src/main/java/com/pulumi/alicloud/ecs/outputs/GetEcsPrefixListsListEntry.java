@@ -9,14 +9,21 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEcsPrefixListsListEntry {
-    private String cidr;
+    private final String cidr;
     /**
      * @return The description of the prefix list.
      * 
      */
-    private String description;
+    private final String description;
 
-    private GetEcsPrefixListsListEntry() {}
+    @CustomType.Constructor
+    private GetEcsPrefixListsListEntry(
+        @CustomType.Parameter("cidr") String cidr,
+        @CustomType.Parameter("description") String description) {
+        this.cidr = cidr;
+        this.description = description;
+    }
+
     public String cidr() {
         return this.cidr;
     }
@@ -35,32 +42,30 @@ public final class GetEcsPrefixListsListEntry {
     public static Builder builder(GetEcsPrefixListsListEntry defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String cidr;
         private String description;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEcsPrefixListsListEntry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidr = defaults.cidr;
     	      this.description = defaults.description;
         }
 
-        @CustomType.Setter
         public Builder cidr(String cidr) {
             this.cidr = Objects.requireNonNull(cidr);
             return this;
         }
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
-        }
-        public GetEcsPrefixListsListEntry build() {
-            final var o = new GetEcsPrefixListsListEntry();
-            o.cidr = cidr;
-            o.description = description;
-            return o;
+        }        public GetEcsPrefixListsListEntry build() {
+            return new GetEcsPrefixListsListEntry(cidr, description);
         }
     }
 }

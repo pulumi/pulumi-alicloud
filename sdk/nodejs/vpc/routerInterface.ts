@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a VPC router interface resource aim to build a connection between two VPCs.
+ *
+ * > **DEPRECATED:**  This resource  has been deprecated from version `1.199.0`. Please use new resource alicloud_express_connect_router_interface.
+ *
+ * > **NOTE:** Only one pair of connected router interfaces can exist between two routers. Up to 5 router interfaces can be created for each router and each account.
+ *
+ * > **NOTE:** The router interface is not connected when it is created. It can be connected by means of resource alicloud_router_interface_connection.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -122,6 +130,10 @@ export class RouterInterface extends pulumi.CustomResource {
      * @deprecated Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.
      */
     public /*out*/ readonly oppositeRouterType!: pulumi.Output<string>;
+    /**
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+     * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
@@ -272,6 +284,10 @@ export interface RouterInterfaceState {
      * @deprecated Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.
      */
     oppositeRouterType?: pulumi.Input<string>;
+    /**
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+     * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     period?: pulumi.Input<number>;
     /**
      * The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
@@ -326,6 +342,10 @@ export interface RouterInterfaceArgs {
      * The Region of peer side.
      */
     oppositeRegion: pulumi.Input<string>;
+    /**
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+     * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     period?: pulumi.Input<number>;
     /**
      * The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.

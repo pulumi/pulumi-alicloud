@@ -56,8 +56,9 @@ func GetCustomProperties(ctx *pulumi.Context, args *GetCustomPropertiesArgs, opt
 // A collection of arguments for invoking getCustomProperties.
 type GetCustomPropertiesArgs struct {
 	// A list of Custom Property IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getCustomProperties.
@@ -85,8 +86,9 @@ func GetCustomPropertiesOutput(ctx *pulumi.Context, args GetCustomPropertiesOutp
 // A collection of arguments for invoking getCustomProperties.
 type GetCustomPropertiesOutputArgs struct {
 	// A list of Custom Property IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetCustomPropertiesOutputArgs) ElementType() reflect.Type {

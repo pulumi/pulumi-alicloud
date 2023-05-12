@@ -15,9 +15,13 @@ public final class OtsBackupPlanOtsDetail {
      * @return The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
      * 
      */
-    private @Nullable List<String> tableNames;
+    private final @Nullable List<String> tableNames;
 
-    private OtsBackupPlanOtsDetail() {}
+    @CustomType.Constructor
+    private OtsBackupPlanOtsDetail(@CustomType.Parameter("tableNames") @Nullable List<String> tableNames) {
+        this.tableNames = tableNames;
+    }
+
     /**
      * @return The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
      * 
@@ -33,27 +37,27 @@ public final class OtsBackupPlanOtsDetail {
     public static Builder builder(OtsBackupPlanOtsDetail defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<String> tableNames;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(OtsBackupPlanOtsDetail defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.tableNames = defaults.tableNames;
         }
 
-        @CustomType.Setter
         public Builder tableNames(@Nullable List<String> tableNames) {
             this.tableNames = tableNames;
             return this;
         }
         public Builder tableNames(String... tableNames) {
             return tableNames(List.of(tableNames));
-        }
-        public OtsBackupPlanOtsDetail build() {
-            final var o = new OtsBackupPlanOtsDetail();
-            o.tableNames = tableNames;
-            return o;
+        }        public OtsBackupPlanOtsDetail build() {
+            return new OtsBackupPlanOtsDetail(tableNames);
         }
     }
 }

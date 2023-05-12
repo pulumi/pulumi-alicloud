@@ -20,6 +20,8 @@ namespace Pulumi.AliCloud.CS.Inputs
 
         /// <summary>
         /// Disables the automatic installation of a component. Default is `false`.
+        /// 
+        /// The following example is the definition of addons block, The type of this field is list:
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }

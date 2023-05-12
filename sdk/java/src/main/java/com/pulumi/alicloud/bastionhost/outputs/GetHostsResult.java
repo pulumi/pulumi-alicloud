@@ -14,26 +14,57 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHostsResult {
-    private @Nullable Boolean enableDetails;
-    private @Nullable String hostAddress;
-    private @Nullable String hostName;
-    private List<GetHostsHost> hosts;
+    private final @Nullable Boolean enableDetails;
+    private final @Nullable String hostAddress;
+    private final @Nullable String hostName;
+    private final List<GetHostsHost> hosts;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private String instanceId;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String osType;
-    private @Nullable String outputFile;
-    private @Nullable String source;
-    private @Nullable String sourceInstanceId;
-    private @Nullable String sourceInstanceState;
+    private final String id;
+    private final List<String> ids;
+    private final String instanceId;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String osType;
+    private final @Nullable String outputFile;
+    private final @Nullable String source;
+    private final @Nullable String sourceInstanceId;
+    private final @Nullable String sourceInstanceState;
 
-    private GetHostsResult() {}
+    @CustomType.Constructor
+    private GetHostsResult(
+        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
+        @CustomType.Parameter("hostAddress") @Nullable String hostAddress,
+        @CustomType.Parameter("hostName") @Nullable String hostName,
+        @CustomType.Parameter("hosts") List<GetHostsHost> hosts,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("osType") @Nullable String osType,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("source") @Nullable String source,
+        @CustomType.Parameter("sourceInstanceId") @Nullable String sourceInstanceId,
+        @CustomType.Parameter("sourceInstanceState") @Nullable String sourceInstanceState) {
+        this.enableDetails = enableDetails;
+        this.hostAddress = hostAddress;
+        this.hostName = hostName;
+        this.hosts = hosts;
+        this.id = id;
+        this.ids = ids;
+        this.instanceId = instanceId;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.osType = osType;
+        this.outputFile = outputFile;
+        this.source = source;
+        this.sourceInstanceId = sourceInstanceId;
+        this.sourceInstanceState = sourceInstanceState;
+    }
+
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -88,7 +119,7 @@ public final class GetHostsResult {
     public static Builder builder(GetHostsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable Boolean enableDetails;
         private @Nullable String hostAddress;
@@ -104,7 +135,11 @@ public final class GetHostsResult {
         private @Nullable String source;
         private @Nullable String sourceInstanceId;
         private @Nullable String sourceInstanceState;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetHostsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDetails = defaults.enableDetails;
@@ -123,22 +158,18 @@ public final class GetHostsResult {
     	      this.sourceInstanceState = defaults.sourceInstanceState;
         }
 
-        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
-        @CustomType.Setter
         public Builder hostAddress(@Nullable String hostAddress) {
             this.hostAddress = hostAddress;
             return this;
         }
-        @CustomType.Setter
         public Builder hostName(@Nullable String hostName) {
             this.hostName = hostName;
             return this;
         }
-        @CustomType.Setter
         public Builder hosts(List<GetHostsHost> hosts) {
             this.hosts = Objects.requireNonNull(hosts);
             return this;
@@ -146,12 +177,10 @@ public final class GetHostsResult {
         public Builder hosts(GetHostsHost... hosts) {
             return hosts(List.of(hosts));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -159,17 +188,14 @@ public final class GetHostsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -177,48 +203,27 @@ public final class GetHostsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder osType(@Nullable String osType) {
             this.osType = osType;
             return this;
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder source(@Nullable String source) {
             this.source = source;
             return this;
         }
-        @CustomType.Setter
         public Builder sourceInstanceId(@Nullable String sourceInstanceId) {
             this.sourceInstanceId = sourceInstanceId;
             return this;
         }
-        @CustomType.Setter
         public Builder sourceInstanceState(@Nullable String sourceInstanceState) {
             this.sourceInstanceState = sourceInstanceState;
             return this;
-        }
-        public GetHostsResult build() {
-            final var o = new GetHostsResult();
-            o.enableDetails = enableDetails;
-            o.hostAddress = hostAddress;
-            o.hostName = hostName;
-            o.hosts = hosts;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.osType = osType;
-            o.outputFile = outputFile;
-            o.source = source;
-            o.sourceInstanceId = sourceInstanceId;
-            o.sourceInstanceState = sourceInstanceState;
-            return o;
+        }        public GetHostsResult build() {
+            return new GetHostsResult(enableDetails, hostAddress, hostName, hosts, id, ids, instanceId, nameRegex, names, osType, outputFile, source, sourceInstanceId, sourceInstanceState);
         }
     }
 }

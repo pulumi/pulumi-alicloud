@@ -67,12 +67,16 @@ public final class AccessConfigurationArgs extends com.pulumi.resources.Resource
     /**
      * This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
      * 
+     * * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
+     * 
      */
     @Import(name="forceRemovePermissionPolicies")
     private @Nullable Output<Boolean> forceRemovePermissionPolicies;
 
     /**
      * @return This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+     * 
+     * * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
      * 
      */
     public Optional<Output<Boolean>> forceRemovePermissionPolicies() {
@@ -220,6 +224,8 @@ public final class AccessConfigurationArgs extends com.pulumi.resources.Resource
         /**
          * @param forceRemovePermissionPolicies This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
          * 
+         * * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
+         * 
          * @return builder
          * 
          */
@@ -230,6 +236,8 @@ public final class AccessConfigurationArgs extends com.pulumi.resources.Resource
 
         /**
          * @param forceRemovePermissionPolicies This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+         * 
+         * * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
          * 
          * @return builder
          * 

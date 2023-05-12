@@ -22,44 +22,65 @@ public final class BucketLifecycleRule {
      * @return Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
      * 
      */
-    private @Nullable List<BucketLifecycleRuleAbortMultipartUpload> abortMultipartUploads;
+    private final @Nullable List<BucketLifecycleRuleAbortMultipartUpload> abortMultipartUploads;
     /**
      * @return Specifies lifecycle rule status.
      * 
      */
-    private Boolean enabled;
+    private final Boolean enabled;
     /**
      * @return Specifies a period in the object&#39;s expire (documented below).
      * 
      */
-    private @Nullable List<BucketLifecycleRuleExpiration> expirations;
+    private final @Nullable List<BucketLifecycleRuleExpiration> expirations;
     /**
      * @return Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
      * 
      */
-    private @Nullable String id;
+    private final @Nullable String id;
     /**
      * @return Specifies when noncurrent object versions expire (documented below).
      * 
      */
-    private @Nullable List<BucketLifecycleRuleNoncurrentVersionExpiration> noncurrentVersionExpirations;
+    private final @Nullable List<BucketLifecycleRuleNoncurrentVersionExpiration> noncurrentVersionExpirations;
     /**
      * @return Specifies when noncurrent object versions transitions (documented below).
      * 
+     * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+     * 
      */
-    private @Nullable List<BucketLifecycleRuleNoncurrentVersionTransition> noncurrentVersionTransitions;
+    private final @Nullable List<BucketLifecycleRuleNoncurrentVersionTransition> noncurrentVersionTransitions;
     /**
      * @return Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
      * 
      */
-    private @Nullable String prefix;
+    private final @Nullable String prefix;
     /**
      * @return Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
      * 
      */
-    private @Nullable List<BucketLifecycleRuleTransition> transitions;
+    private final @Nullable List<BucketLifecycleRuleTransition> transitions;
 
-    private BucketLifecycleRule() {}
+    @CustomType.Constructor
+    private BucketLifecycleRule(
+        @CustomType.Parameter("abortMultipartUploads") @Nullable List<BucketLifecycleRuleAbortMultipartUpload> abortMultipartUploads,
+        @CustomType.Parameter("enabled") Boolean enabled,
+        @CustomType.Parameter("expirations") @Nullable List<BucketLifecycleRuleExpiration> expirations,
+        @CustomType.Parameter("id") @Nullable String id,
+        @CustomType.Parameter("noncurrentVersionExpirations") @Nullable List<BucketLifecycleRuleNoncurrentVersionExpiration> noncurrentVersionExpirations,
+        @CustomType.Parameter("noncurrentVersionTransitions") @Nullable List<BucketLifecycleRuleNoncurrentVersionTransition> noncurrentVersionTransitions,
+        @CustomType.Parameter("prefix") @Nullable String prefix,
+        @CustomType.Parameter("transitions") @Nullable List<BucketLifecycleRuleTransition> transitions) {
+        this.abortMultipartUploads = abortMultipartUploads;
+        this.enabled = enabled;
+        this.expirations = expirations;
+        this.id = id;
+        this.noncurrentVersionExpirations = noncurrentVersionExpirations;
+        this.noncurrentVersionTransitions = noncurrentVersionTransitions;
+        this.prefix = prefix;
+        this.transitions = transitions;
+    }
+
     /**
      * @return Specifies the number of days after initiating a multipart upload when the multipart upload must be completed (documented below).
      * 
@@ -98,6 +119,8 @@ public final class BucketLifecycleRule {
     /**
      * @return Specifies when noncurrent object versions transitions (documented below).
      * 
+     * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+     * 
      */
     public List<BucketLifecycleRuleNoncurrentVersionTransition> noncurrentVersionTransitions() {
         return this.noncurrentVersionTransitions == null ? List.of() : this.noncurrentVersionTransitions;
@@ -124,7 +147,7 @@ public final class BucketLifecycleRule {
     public static Builder builder(BucketLifecycleRule defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<BucketLifecycleRuleAbortMultipartUpload> abortMultipartUploads;
         private Boolean enabled;
@@ -134,7 +157,11 @@ public final class BucketLifecycleRule {
         private @Nullable List<BucketLifecycleRuleNoncurrentVersionTransition> noncurrentVersionTransitions;
         private @Nullable String prefix;
         private @Nullable List<BucketLifecycleRuleTransition> transitions;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(BucketLifecycleRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.abortMultipartUploads = defaults.abortMultipartUploads;
@@ -147,7 +174,6 @@ public final class BucketLifecycleRule {
     	      this.transitions = defaults.transitions;
         }
 
-        @CustomType.Setter
         public Builder abortMultipartUploads(@Nullable List<BucketLifecycleRuleAbortMultipartUpload> abortMultipartUploads) {
             this.abortMultipartUploads = abortMultipartUploads;
             return this;
@@ -155,12 +181,10 @@ public final class BucketLifecycleRule {
         public Builder abortMultipartUploads(BucketLifecycleRuleAbortMultipartUpload... abortMultipartUploads) {
             return abortMultipartUploads(List.of(abortMultipartUploads));
         }
-        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
-        @CustomType.Setter
         public Builder expirations(@Nullable List<BucketLifecycleRuleExpiration> expirations) {
             this.expirations = expirations;
             return this;
@@ -168,12 +192,10 @@ public final class BucketLifecycleRule {
         public Builder expirations(BucketLifecycleRuleExpiration... expirations) {
             return expirations(List.of(expirations));
         }
-        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
-        @CustomType.Setter
         public Builder noncurrentVersionExpirations(@Nullable List<BucketLifecycleRuleNoncurrentVersionExpiration> noncurrentVersionExpirations) {
             this.noncurrentVersionExpirations = noncurrentVersionExpirations;
             return this;
@@ -181,7 +203,6 @@ public final class BucketLifecycleRule {
         public Builder noncurrentVersionExpirations(BucketLifecycleRuleNoncurrentVersionExpiration... noncurrentVersionExpirations) {
             return noncurrentVersionExpirations(List.of(noncurrentVersionExpirations));
         }
-        @CustomType.Setter
         public Builder noncurrentVersionTransitions(@Nullable List<BucketLifecycleRuleNoncurrentVersionTransition> noncurrentVersionTransitions) {
             this.noncurrentVersionTransitions = noncurrentVersionTransitions;
             return this;
@@ -189,30 +210,18 @@ public final class BucketLifecycleRule {
         public Builder noncurrentVersionTransitions(BucketLifecycleRuleNoncurrentVersionTransition... noncurrentVersionTransitions) {
             return noncurrentVersionTransitions(List.of(noncurrentVersionTransitions));
         }
-        @CustomType.Setter
         public Builder prefix(@Nullable String prefix) {
             this.prefix = prefix;
             return this;
         }
-        @CustomType.Setter
         public Builder transitions(@Nullable List<BucketLifecycleRuleTransition> transitions) {
             this.transitions = transitions;
             return this;
         }
         public Builder transitions(BucketLifecycleRuleTransition... transitions) {
             return transitions(List.of(transitions));
-        }
-        public BucketLifecycleRule build() {
-            final var o = new BucketLifecycleRule();
-            o.abortMultipartUploads = abortMultipartUploads;
-            o.enabled = enabled;
-            o.expirations = expirations;
-            o.id = id;
-            o.noncurrentVersionExpirations = noncurrentVersionExpirations;
-            o.noncurrentVersionTransitions = noncurrentVersionTransitions;
-            o.prefix = prefix;
-            o.transitions = transitions;
-            return o;
+        }        public BucketLifecycleRule build() {
+            return new BucketLifecycleRule(abortMultipartUploads, enabled, expirations, id, noncurrentVersionExpirations, noncurrentVersionTransitions, prefix, transitions);
         }
     }
 }

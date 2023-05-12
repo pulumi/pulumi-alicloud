@@ -46,6 +46,9 @@ export interface GetRegionsArgs {
      * Set to true to match only the region configured in the provider. Default value: `true`.
      */
     current?: boolean;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The Region ID.
@@ -99,6 +102,9 @@ export interface GetRegionsOutputArgs {
      * Set to true to match only the region configured in the provider. Default value: `true`.
      */
     current?: pulumi.Input<boolean>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The Region ID.

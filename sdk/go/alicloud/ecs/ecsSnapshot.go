@@ -90,6 +90,8 @@ type EcsSnapshot struct {
 	// The status of snapshot.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the snapshot.
+	//
+	// > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
@@ -150,6 +152,8 @@ type ecsSnapshotState struct {
 	// The status of snapshot.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the snapshot.
+	//
+	// > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
@@ -179,6 +183,8 @@ type EcsSnapshotState struct {
 	// The status of snapshot.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the snapshot.
+	//
+	// > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
 	Tags pulumi.MapInput
 }
 
@@ -210,6 +216,8 @@ type ecsSnapshotArgs struct {
 	// The name of the snapshot.
 	SnapshotName *string `pulumi:"snapshotName"`
 	// A mapping of tags to assign to the snapshot.
+	//
+	// > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
@@ -238,6 +246,8 @@ type EcsSnapshotArgs struct {
 	// The name of the snapshot.
 	SnapshotName pulumi.StringPtrInput
 	// A mapping of tags to assign to the snapshot.
+	//
+	// > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
 	Tags pulumi.MapInput
 }
 
@@ -386,6 +396,8 @@ func (o EcsSnapshotOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the snapshot.
+//
+// > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
 func (o EcsSnapshotOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *EcsSnapshot) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }

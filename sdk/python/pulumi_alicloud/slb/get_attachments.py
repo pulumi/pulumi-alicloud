@@ -104,6 +104,7 @@ def get_attachments(instance_ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] instance_ids: List of attached ECS instance IDs.
     :param str load_balancer_id: ID of the SLB with attachments.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['instanceIds'] = instance_ids
@@ -141,5 +142,6 @@ def get_attachments_output(instance_ids: Optional[pulumi.Input[Optional[Sequence
 
     :param Sequence[str] instance_ids: List of attached ECS instance IDs.
     :param str load_balancer_id: ID of the SLB with attachments.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

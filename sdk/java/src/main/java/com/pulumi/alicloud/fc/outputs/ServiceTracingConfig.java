@@ -15,14 +15,21 @@ public final class ServiceTracingConfig {
      * @return Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is &#34;endpoint&#34; and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
      * 
      */
-    private Map<String,Object> params;
+    private final Map<String,Object> params;
     /**
      * @return Tracing protocol type. Currently, only Jaeger is supported.
      * 
      */
-    private String type;
+    private final String type;
 
-    private ServiceTracingConfig() {}
+    @CustomType.Constructor
+    private ServiceTracingConfig(
+        @CustomType.Parameter("params") Map<String,Object> params,
+        @CustomType.Parameter("type") String type) {
+        this.params = params;
+        this.type = type;
+    }
+
     /**
      * @return Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is &#34;endpoint&#34; and the value is your tracing intranet endpoint. For example endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces.
      * 
@@ -45,32 +52,30 @@ public final class ServiceTracingConfig {
     public static Builder builder(ServiceTracingConfig defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private Map<String,Object> params;
         private String type;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(ServiceTracingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.params = defaults.params;
     	      this.type = defaults.type;
         }
 
-        @CustomType.Setter
         public Builder params(Map<String,Object> params) {
             this.params = Objects.requireNonNull(params);
             return this;
         }
-        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }
-        public ServiceTracingConfig build() {
-            final var o = new ServiceTracingConfig();
-            o.params = params;
-            o.type = type;
-            return o;
+        }        public ServiceTracingConfig build() {
+            return new ServiceTracingConfig(params, type);
         }
     }
 }

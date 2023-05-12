@@ -56,7 +56,8 @@ func GetSystemSecurityPolicies(ctx *pulumi.Context, args *GetSystemSecurityPolic
 // A collection of arguments for invoking getSystemSecurityPolicies.
 type GetSystemSecurityPoliciesArgs struct {
 	// A list of System Security Policy IDs.
-	Ids        []string               `pulumi:"ids"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string                `pulumi:"outputFile"`
 	Tags       map[string]interface{} `pulumi:"tags"`
 }
@@ -89,9 +90,10 @@ func GetSystemSecurityPoliciesOutput(ctx *pulumi.Context, args GetSystemSecurity
 // A collection of arguments for invoking getSystemSecurityPolicies.
 type GetSystemSecurityPoliciesOutputArgs struct {
 	// A list of System Security Policy IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
-	Tags       pulumi.MapInput         `pulumi:"tags"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	Tags       pulumi.MapInput       `pulumi:"tags"`
 }
 
 func (GetSystemSecurityPoliciesOutputArgs) ElementType() reflect.Type {

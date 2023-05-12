@@ -17,16 +17,35 @@ public final class GetIndustrialPidProjectsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private List<String> ids;
-    private @Nullable String nameRegex;
-    private List<String> names;
-    private @Nullable String outputFile;
-    private @Nullable String pidOrganizationId;
-    private @Nullable String pidProjectName;
-    private List<GetIndustrialPidProjectsProject> projects;
+    private final String id;
+    private final List<String> ids;
+    private final @Nullable String nameRegex;
+    private final List<String> names;
+    private final @Nullable String outputFile;
+    private final @Nullable String pidOrganizationId;
+    private final @Nullable String pidProjectName;
+    private final List<GetIndustrialPidProjectsProject> projects;
 
-    private GetIndustrialPidProjectsResult() {}
+    @CustomType.Constructor
+    private GetIndustrialPidProjectsResult(
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("ids") List<String> ids,
+        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
+        @CustomType.Parameter("names") List<String> names,
+        @CustomType.Parameter("outputFile") @Nullable String outputFile,
+        @CustomType.Parameter("pidOrganizationId") @Nullable String pidOrganizationId,
+        @CustomType.Parameter("pidProjectName") @Nullable String pidProjectName,
+        @CustomType.Parameter("projects") List<GetIndustrialPidProjectsProject> projects) {
+        this.id = id;
+        this.ids = ids;
+        this.nameRegex = nameRegex;
+        this.names = names;
+        this.outputFile = outputFile;
+        this.pidOrganizationId = pidOrganizationId;
+        this.pidProjectName = pidProjectName;
+        this.projects = projects;
+    }
+
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -63,7 +82,7 @@ public final class GetIndustrialPidProjectsResult {
     public static Builder builder(GetIndustrialPidProjectsResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -73,7 +92,11 @@ public final class GetIndustrialPidProjectsResult {
         private @Nullable String pidOrganizationId;
         private @Nullable String pidProjectName;
         private List<GetIndustrialPidProjectsProject> projects;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetIndustrialPidProjectsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -86,12 +109,10 @@ public final class GetIndustrialPidProjectsResult {
     	      this.projects = defaults.projects;
         }
 
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -99,12 +120,10 @@ public final class GetIndustrialPidProjectsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
-        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
-        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -112,40 +131,26 @@ public final class GetIndustrialPidProjectsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
-        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
         public Builder pidOrganizationId(@Nullable String pidOrganizationId) {
             this.pidOrganizationId = pidOrganizationId;
             return this;
         }
-        @CustomType.Setter
         public Builder pidProjectName(@Nullable String pidProjectName) {
             this.pidProjectName = pidProjectName;
             return this;
         }
-        @CustomType.Setter
         public Builder projects(List<GetIndustrialPidProjectsProject> projects) {
             this.projects = Objects.requireNonNull(projects);
             return this;
         }
         public Builder projects(GetIndustrialPidProjectsProject... projects) {
             return projects(List.of(projects));
-        }
-        public GetIndustrialPidProjectsResult build() {
-            final var o = new GetIndustrialPidProjectsResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pidOrganizationId = pidOrganizationId;
-            o.pidProjectName = pidProjectName;
-            o.projects = projects;
-            return o;
+        }        public GetIndustrialPidProjectsResult build() {
+            return new GetIndustrialPidProjectsResult(id, ids, nameRegex, names, outputFile, pidOrganizationId, pidProjectName, projects);
         }
     }
 }

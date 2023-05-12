@@ -13,29 +13,42 @@ public final class GetEndpointAclPoliciesPolicy {
      * @return The description of the entry.
      * 
      */
-    private String description;
+    private final String description;
     /**
      * @return The type of endpoint.
      * 
      */
-    private String endpointType;
+    private final String endpointType;
     /**
      * @return The IP segment that allowed to access.
      * 
      */
-    private String entry;
+    private final String entry;
     /**
      * @return The ID of the Endpoint Acl Policy.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the CR Instance.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
 
-    private GetEndpointAclPoliciesPolicy() {}
+    @CustomType.Constructor
+    private GetEndpointAclPoliciesPolicy(
+        @CustomType.Parameter("description") String description,
+        @CustomType.Parameter("endpointType") String endpointType,
+        @CustomType.Parameter("entry") String entry,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId) {
+        this.description = description;
+        this.endpointType = endpointType;
+        this.entry = entry;
+        this.id = id;
+        this.instanceId = instanceId;
+    }
+
     /**
      * @return The description of the entry.
      * 
@@ -79,14 +92,18 @@ public final class GetEndpointAclPoliciesPolicy {
     public static Builder builder(GetEndpointAclPoliciesPolicy defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String description;
         private String endpointType;
         private String entry;
         private String id;
         private String instanceId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEndpointAclPoliciesPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -96,39 +113,27 @@ public final class GetEndpointAclPoliciesPolicy {
     	      this.instanceId = defaults.instanceId;
         }
 
-        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
-        @CustomType.Setter
         public Builder endpointType(String endpointType) {
             this.endpointType = Objects.requireNonNull(endpointType);
             return this;
         }
-        @CustomType.Setter
         public Builder entry(String entry) {
             this.entry = Objects.requireNonNull(entry);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
-        }
-        public GetEndpointAclPoliciesPolicy build() {
-            final var o = new GetEndpointAclPoliciesPolicy();
-            o.description = description;
-            o.endpointType = endpointType;
-            o.entry = entry;
-            o.id = id;
-            o.instanceId = instanceId;
-            return o;
+        }        public GetEndpointAclPoliciesPolicy build() {
+            return new GetEndpointAclPoliciesPolicy(description, endpointType, entry, id, instanceId);
         }
     }
 }

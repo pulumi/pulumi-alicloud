@@ -15,40 +15,59 @@ public final class GetInterRegionTrafficQosQueuesQueue {
      * @return The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
      * 
      */
-    private List<String> dscps;
-    private String id;
+    private final List<String> dscps;
+    private final String id;
     /**
      * @return The description information of the traffic scheduling policy.
      * 
      */
-    private String interRegionTrafficQosQueueDescription;
+    private final String interRegionTrafficQosQueueDescription;
     /**
      * @return The ID of the resource.
      * 
      */
-    private String interRegionTrafficQosQueueId;
+    private final String interRegionTrafficQosQueueId;
     /**
      * @return The name of the traffic scheduling policy.
      * 
      */
-    private String interRegionTrafficQosQueueName;
+    private final String interRegionTrafficQosQueueName;
     /**
      * @return The percentage of cross-region bandwidth that the current queue can use.
      * 
      */
-    private Integer remainBandwidthPercent;
+    private final Integer remainBandwidthPercent;
     /**
      * @return The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
      * 
      */
-    private String status;
+    private final String status;
     /**
      * @return The ID of the traffic scheduling policy.
      * 
      */
-    private String trafficQosPolicyId;
+    private final String trafficQosPolicyId;
 
-    private GetInterRegionTrafficQosQueuesQueue() {}
+    @CustomType.Constructor
+    private GetInterRegionTrafficQosQueuesQueue(
+        @CustomType.Parameter("dscps") List<String> dscps,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("interRegionTrafficQosQueueDescription") String interRegionTrafficQosQueueDescription,
+        @CustomType.Parameter("interRegionTrafficQosQueueId") String interRegionTrafficQosQueueId,
+        @CustomType.Parameter("interRegionTrafficQosQueueName") String interRegionTrafficQosQueueName,
+        @CustomType.Parameter("remainBandwidthPercent") Integer remainBandwidthPercent,
+        @CustomType.Parameter("status") String status,
+        @CustomType.Parameter("trafficQosPolicyId") String trafficQosPolicyId) {
+        this.dscps = dscps;
+        this.id = id;
+        this.interRegionTrafficQosQueueDescription = interRegionTrafficQosQueueDescription;
+        this.interRegionTrafficQosQueueId = interRegionTrafficQosQueueId;
+        this.interRegionTrafficQosQueueName = interRegionTrafficQosQueueName;
+        this.remainBandwidthPercent = remainBandwidthPercent;
+        this.status = status;
+        this.trafficQosPolicyId = trafficQosPolicyId;
+    }
+
     /**
      * @return The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
      * 
@@ -109,7 +128,7 @@ public final class GetInterRegionTrafficQosQueuesQueue {
     public static Builder builder(GetInterRegionTrafficQosQueuesQueue defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private List<String> dscps;
         private String id;
@@ -119,7 +138,11 @@ public final class GetInterRegionTrafficQosQueuesQueue {
         private Integer remainBandwidthPercent;
         private String status;
         private String trafficQosPolicyId;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetInterRegionTrafficQosQueuesQueue defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dscps = defaults.dscps;
@@ -132,7 +155,6 @@ public final class GetInterRegionTrafficQosQueuesQueue {
     	      this.trafficQosPolicyId = defaults.trafficQosPolicyId;
         }
 
-        @CustomType.Setter
         public Builder dscps(List<String> dscps) {
             this.dscps = Objects.requireNonNull(dscps);
             return this;
@@ -140,52 +162,35 @@ public final class GetInterRegionTrafficQosQueuesQueue {
         public Builder dscps(String... dscps) {
             return dscps(List.of(dscps));
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder interRegionTrafficQosQueueDescription(String interRegionTrafficQosQueueDescription) {
             this.interRegionTrafficQosQueueDescription = Objects.requireNonNull(interRegionTrafficQosQueueDescription);
             return this;
         }
-        @CustomType.Setter
         public Builder interRegionTrafficQosQueueId(String interRegionTrafficQosQueueId) {
             this.interRegionTrafficQosQueueId = Objects.requireNonNull(interRegionTrafficQosQueueId);
             return this;
         }
-        @CustomType.Setter
         public Builder interRegionTrafficQosQueueName(String interRegionTrafficQosQueueName) {
             this.interRegionTrafficQosQueueName = Objects.requireNonNull(interRegionTrafficQosQueueName);
             return this;
         }
-        @CustomType.Setter
         public Builder remainBandwidthPercent(Integer remainBandwidthPercent) {
             this.remainBandwidthPercent = Objects.requireNonNull(remainBandwidthPercent);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder trafficQosPolicyId(String trafficQosPolicyId) {
             this.trafficQosPolicyId = Objects.requireNonNull(trafficQosPolicyId);
             return this;
-        }
-        public GetInterRegionTrafficQosQueuesQueue build() {
-            final var o = new GetInterRegionTrafficQosQueuesQueue();
-            o.dscps = dscps;
-            o.id = id;
-            o.interRegionTrafficQosQueueDescription = interRegionTrafficQosQueueDescription;
-            o.interRegionTrafficQosQueueId = interRegionTrafficQosQueueId;
-            o.interRegionTrafficQosQueueName = interRegionTrafficQosQueueName;
-            o.remainBandwidthPercent = remainBandwidthPercent;
-            o.status = status;
-            o.trafficQosPolicyId = trafficQosPolicyId;
-            return o;
+        }        public GetInterRegionTrafficQosQueuesQueue build() {
+            return new GetInterRegionTrafficQosQueuesQueue(dscps, id, interRegionTrafficQosQueueDescription, interRegionTrafficQosQueueId, interRegionTrafficQosQueueName, remainBandwidthPercent, status, trafficQosPolicyId);
         }
     }
 }

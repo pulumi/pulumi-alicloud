@@ -16,34 +16,49 @@ public final class KubernetesPermissionPermission {
      * @return The ID of the cluster that you want to manage.
      * 
      */
-    private String cluster;
+    private final String cluster;
     /**
      * @return Specifies whether to perform a custom authorization. To perform a custom authorization, set `role_name` to a custom cluster role.
      * 
      */
-    private @Nullable Boolean isCustom;
+    private final @Nullable Boolean isCustom;
     /**
      * @return Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `is_ram_role` must be `true`.
      * 
      */
-    private @Nullable Boolean isRamRole;
+    private final @Nullable Boolean isRamRole;
     /**
      * @return The namespace to which the permissions are scoped. This parameter is required only if you set role_type to namespace.
      * 
      */
-    private @Nullable String namespace;
+    private final @Nullable String namespace;
     /**
      * @return Specifies the predefined role that you want to assign. Valid values `admin`, `ops`, `dev`, `restricted` and the custom cluster roles.
      * 
      */
-    private String roleName;
+    private final String roleName;
     /**
      * @return The authorization type. Valid values `cluster`, `namespace`.
      * 
      */
-    private String roleType;
+    private final String roleType;
 
-    private KubernetesPermissionPermission() {}
+    @CustomType.Constructor
+    private KubernetesPermissionPermission(
+        @CustomType.Parameter("cluster") String cluster,
+        @CustomType.Parameter("isCustom") @Nullable Boolean isCustom,
+        @CustomType.Parameter("isRamRole") @Nullable Boolean isRamRole,
+        @CustomType.Parameter("namespace") @Nullable String namespace,
+        @CustomType.Parameter("roleName") String roleName,
+        @CustomType.Parameter("roleType") String roleType) {
+        this.cluster = cluster;
+        this.isCustom = isCustom;
+        this.isRamRole = isRamRole;
+        this.namespace = namespace;
+        this.roleName = roleName;
+        this.roleType = roleType;
+    }
+
     /**
      * @return The ID of the cluster that you want to manage.
      * 
@@ -94,7 +109,7 @@ public final class KubernetesPermissionPermission {
     public static Builder builder(KubernetesPermissionPermission defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String cluster;
         private @Nullable Boolean isCustom;
@@ -102,7 +117,11 @@ public final class KubernetesPermissionPermission {
         private @Nullable String namespace;
         private String roleName;
         private String roleType;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(KubernetesPermissionPermission defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cluster = defaults.cluster;
@@ -113,45 +132,31 @@ public final class KubernetesPermissionPermission {
     	      this.roleType = defaults.roleType;
         }
 
-        @CustomType.Setter
         public Builder cluster(String cluster) {
             this.cluster = Objects.requireNonNull(cluster);
             return this;
         }
-        @CustomType.Setter
         public Builder isCustom(@Nullable Boolean isCustom) {
             this.isCustom = isCustom;
             return this;
         }
-        @CustomType.Setter
         public Builder isRamRole(@Nullable Boolean isRamRole) {
             this.isRamRole = isRamRole;
             return this;
         }
-        @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
             this.namespace = namespace;
             return this;
         }
-        @CustomType.Setter
         public Builder roleName(String roleName) {
             this.roleName = Objects.requireNonNull(roleName);
             return this;
         }
-        @CustomType.Setter
         public Builder roleType(String roleType) {
             this.roleType = Objects.requireNonNull(roleType);
             return this;
-        }
-        public KubernetesPermissionPermission build() {
-            final var o = new KubernetesPermissionPermission();
-            o.cluster = cluster;
-            o.isCustom = isCustom;
-            o.isRamRole = isRamRole;
-            o.namespace = namespace;
-            o.roleName = roleName;
-            o.roleType = roleType;
-            return o;
+        }        public KubernetesPermissionPermission build() {
+            return new KubernetesPermissionPermission(cluster, isCustom, isRamRole, namespace, roleName, roleType);
         }
     }
 }

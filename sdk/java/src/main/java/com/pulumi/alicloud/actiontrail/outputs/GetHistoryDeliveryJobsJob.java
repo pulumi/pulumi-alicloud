@@ -16,50 +16,73 @@ public final class GetHistoryDeliveryJobsJob {
      * @return The time when the task was created.
      * 
      */
-    private String createTime;
+    private final String createTime;
     /**
      * @return The time when the task ended.
      * 
      */
-    private String endTime;
-    private String historyDeliveryJobId;
+    private final String endTime;
+    private final String historyDeliveryJobId;
     /**
      * @return The home region of the trail.
      * 
      */
-    private String homeRegion;
+    private final String homeRegion;
     /**
      * @return The ID of the History Delivery Job.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return Detail status of delivery job.
      * 
      */
-    private List<GetHistoryDeliveryJobsJobJobStatus> jobStatuses;
+    private final List<GetHistoryDeliveryJobsJobJobStatus> jobStatuses;
     /**
      * @return The time when the task started.
      * 
      */
-    private String startTime;
+    private final String startTime;
     /**
      * @return The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
      * 
      */
-    private Integer status;
+    private final Integer status;
     /**
      * @return The name of the trail.
      * 
      */
-    private String trailName;
+    private final String trailName;
     /**
      * @return The time when the task was updated.
      * 
      */
-    private String updatedTime;
+    private final String updatedTime;
 
-    private GetHistoryDeliveryJobsJob() {}
+    @CustomType.Constructor
+    private GetHistoryDeliveryJobsJob(
+        @CustomType.Parameter("createTime") String createTime,
+        @CustomType.Parameter("endTime") String endTime,
+        @CustomType.Parameter("historyDeliveryJobId") String historyDeliveryJobId,
+        @CustomType.Parameter("homeRegion") String homeRegion,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("jobStatuses") List<GetHistoryDeliveryJobsJobJobStatus> jobStatuses,
+        @CustomType.Parameter("startTime") String startTime,
+        @CustomType.Parameter("status") Integer status,
+        @CustomType.Parameter("trailName") String trailName,
+        @CustomType.Parameter("updatedTime") String updatedTime) {
+        this.createTime = createTime;
+        this.endTime = endTime;
+        this.historyDeliveryJobId = historyDeliveryJobId;
+        this.homeRegion = homeRegion;
+        this.id = id;
+        this.jobStatuses = jobStatuses;
+        this.startTime = startTime;
+        this.status = status;
+        this.trailName = trailName;
+        this.updatedTime = updatedTime;
+    }
+
     /**
      * @return The time when the task was created.
      * 
@@ -134,7 +157,7 @@ public final class GetHistoryDeliveryJobsJob {
     public static Builder builder(GetHistoryDeliveryJobsJob defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String createTime;
         private String endTime;
@@ -146,7 +169,11 @@ public final class GetHistoryDeliveryJobsJob {
         private Integer status;
         private String trailName;
         private String updatedTime;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetHistoryDeliveryJobsJob defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -161,32 +188,26 @@ public final class GetHistoryDeliveryJobsJob {
     	      this.updatedTime = defaults.updatedTime;
         }
 
-        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
-        @CustomType.Setter
         public Builder endTime(String endTime) {
             this.endTime = Objects.requireNonNull(endTime);
             return this;
         }
-        @CustomType.Setter
         public Builder historyDeliveryJobId(String historyDeliveryJobId) {
             this.historyDeliveryJobId = Objects.requireNonNull(historyDeliveryJobId);
             return this;
         }
-        @CustomType.Setter
         public Builder homeRegion(String homeRegion) {
             this.homeRegion = Objects.requireNonNull(homeRegion);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder jobStatuses(List<GetHistoryDeliveryJobsJobJobStatus> jobStatuses) {
             this.jobStatuses = Objects.requireNonNull(jobStatuses);
             return this;
@@ -194,39 +215,23 @@ public final class GetHistoryDeliveryJobsJob {
         public Builder jobStatuses(GetHistoryDeliveryJobsJobJobStatus... jobStatuses) {
             return jobStatuses(List.of(jobStatuses));
         }
-        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
         }
-        @CustomType.Setter
         public Builder status(Integer status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
-        @CustomType.Setter
         public Builder trailName(String trailName) {
             this.trailName = Objects.requireNonNull(trailName);
             return this;
         }
-        @CustomType.Setter
         public Builder updatedTime(String updatedTime) {
             this.updatedTime = Objects.requireNonNull(updatedTime);
             return this;
-        }
-        public GetHistoryDeliveryJobsJob build() {
-            final var o = new GetHistoryDeliveryJobsJob();
-            o.createTime = createTime;
-            o.endTime = endTime;
-            o.historyDeliveryJobId = historyDeliveryJobId;
-            o.homeRegion = homeRegion;
-            o.id = id;
-            o.jobStatuses = jobStatuses;
-            o.startTime = startTime;
-            o.status = status;
-            o.trailName = trailName;
-            o.updatedTime = updatedTime;
-            return o;
+        }        public GetHistoryDeliveryJobsJob build() {
+            return new GetHistoryDeliveryJobsJob(createTime, endTime, historyDeliveryJobId, homeRegion, id, jobStatuses, startTime, status, trailName, updatedTime);
         }
     }
 }

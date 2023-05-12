@@ -14,6 +14,8 @@ type AppTemplateConfigList struct {
 	// Configuration item key. Valid values: ["config.appCallbackAuthKey","config.appCallbackUrl","config.callbackClass.live","config.callbackClass.user","config.livePullDomain","config.livePushDomain","config.multipleClientsLogin","config.regionId","config.streamChangeCallbackUrl"].
 	Key *string `pulumi:"key"`
 	// Configuration item content.
+	//
+	// > **NOTE:**  By default, the attribute `configList` will return all of nine keys with empty value. If you want to set one or more of the key's value, you had better also set other keys, otherwise, there will be a diff.
 	Value *string `pulumi:"value"`
 }
 
@@ -32,6 +34,8 @@ type AppTemplateConfigListArgs struct {
 	// Configuration item key. Valid values: ["config.appCallbackAuthKey","config.appCallbackUrl","config.callbackClass.live","config.callbackClass.user","config.livePullDomain","config.livePushDomain","config.multipleClientsLogin","config.regionId","config.streamChangeCallbackUrl"].
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// Configuration item content.
+	//
+	// > **NOTE:**  By default, the attribute `configList` will return all of nine keys with empty value. If you want to set one or more of the key's value, you had better also set other keys, otherwise, there will be a diff.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -92,6 +96,8 @@ func (o AppTemplateConfigListOutput) Key() pulumi.StringPtrOutput {
 }
 
 // Configuration item content.
+//
+// > **NOTE:**  By default, the attribute `configList` will return all of nine keys with empty value. If you want to set one or more of the key's value, you had better also set other keys, otherwise, there will be a diff.
 func (o AppTemplateConfigListOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppTemplateConfigList) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

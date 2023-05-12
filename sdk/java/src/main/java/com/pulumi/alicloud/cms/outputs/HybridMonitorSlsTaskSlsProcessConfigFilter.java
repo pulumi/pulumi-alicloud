@@ -17,14 +17,21 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilter {
      * @return The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
      * 
      */
-    private @Nullable List<HybridMonitorSlsTaskSlsProcessConfigFilterFilter> filters;
+    private final @Nullable List<HybridMonitorSlsTaskSlsProcessConfigFilterFilter> filters;
     /**
      * @return The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
      * 
      */
-    private @Nullable String relation;
+    private final @Nullable String relation;
 
-    private HybridMonitorSlsTaskSlsProcessConfigFilter() {}
+    @CustomType.Constructor
+    private HybridMonitorSlsTaskSlsProcessConfigFilter(
+        @CustomType.Parameter("filters") @Nullable List<HybridMonitorSlsTaskSlsProcessConfigFilterFilter> filters,
+        @CustomType.Parameter("relation") @Nullable String relation) {
+        this.filters = filters;
+        this.relation = relation;
+    }
+
     /**
      * @return The conditions that are used to filter logs imported from Log Service. See the following `Block filters`.
      * 
@@ -47,18 +54,21 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilter {
     public static Builder builder(HybridMonitorSlsTaskSlsProcessConfigFilter defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private @Nullable List<HybridMonitorSlsTaskSlsProcessConfigFilterFilter> filters;
         private @Nullable String relation;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(HybridMonitorSlsTaskSlsProcessConfigFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filters = defaults.filters;
     	      this.relation = defaults.relation;
         }
 
-        @CustomType.Setter
         public Builder filters(@Nullable List<HybridMonitorSlsTaskSlsProcessConfigFilterFilter> filters) {
             this.filters = filters;
             return this;
@@ -66,16 +76,11 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilter {
         public Builder filters(HybridMonitorSlsTaskSlsProcessConfigFilterFilter... filters) {
             return filters(List.of(filters));
         }
-        @CustomType.Setter
         public Builder relation(@Nullable String relation) {
             this.relation = relation;
             return this;
-        }
-        public HybridMonitorSlsTaskSlsProcessConfigFilter build() {
-            final var o = new HybridMonitorSlsTaskSlsProcessConfigFilter();
-            o.filters = filters;
-            o.relation = relation;
-            return o;
+        }        public HybridMonitorSlsTaskSlsProcessConfigFilter build() {
+            return new HybridMonitorSlsTaskSlsProcessConfigFilter(filters, relation);
         }
     }
 }

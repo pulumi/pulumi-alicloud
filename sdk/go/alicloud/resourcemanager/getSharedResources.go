@@ -57,8 +57,9 @@ func GetSharedResources(ctx *pulumi.Context, args *GetSharedResourcesArgs, opts 
 // A collection of arguments for invoking getSharedResources.
 type GetSharedResourcesArgs struct {
 	// A list of shared resource ID.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The resource share ID of resource manager.
 	ResourceShareId *string `pulumi:"resourceShareId"`
 	// The status of shared resource.
@@ -92,8 +93,9 @@ func GetSharedResourcesOutput(ctx *pulumi.Context, args GetSharedResourcesOutput
 // A collection of arguments for invoking getSharedResources.
 type GetSharedResourcesOutputArgs struct {
 	// A list of shared resource ID.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The resource share ID of resource manager.
 	ResourceShareId pulumi.StringPtrInput `pulumi:"resourceShareId"`
 	// The status of shared resource.

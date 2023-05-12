@@ -70,7 +70,8 @@ type GetUserGroupsArgs struct {
 	// Specify the New Group of the Bastion Host of Instance Id.
 	InstanceId string `pulumi:"instanceId"`
 	// A regex string to filter results by User Group name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Specify the New Group Name. Supports up to 128 Characters.
 	UserGroupName *string `pulumi:"userGroupName"`
@@ -109,7 +110,8 @@ type GetUserGroupsOutputArgs struct {
 	// Specify the New Group of the Bastion Host of Instance Id.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// A regex string to filter results by User Group name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Specify the New Group Name. Supports up to 128 Characters.
 	UserGroupName pulumi.StringPtrInput `pulumi:"userGroupName"`

@@ -81,7 +81,8 @@ type GetSwitchesArgs struct {
 	// Indicate whether the VSwitch is created by the system.
 	IsDefault *bool `pulumi:"isDefault"`
 	// A regex string to filter results by name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The Id of resource group which VSWitch belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -159,7 +160,8 @@ type GetSwitchesOutputArgs struct {
 	// Indicate whether the VSwitch is created by the system.
 	IsDefault pulumi.BoolPtrInput `pulumi:"isDefault"`
 	// A regex string to filter results by name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The Id of resource group which VSWitch belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`

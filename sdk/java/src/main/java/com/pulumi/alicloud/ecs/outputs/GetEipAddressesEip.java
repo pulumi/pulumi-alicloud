@@ -14,45 +14,66 @@ public final class GetEipAddressesEip {
      * @return The maximum bandwidth of the EIP. Unit: Mbit/s.
      * 
      */
-    private String bandwidth;
-    private String creationTime;
+    private final String bandwidth;
+    private final String creationTime;
     /**
      * @return Indicates whether deletion protection is enabled.
      * 
      */
-    private Boolean deletionProtection;
+    private final Boolean deletionProtection;
     /**
      * @return The ID of the Address.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The ID of the instance with which the EIP is associated.
      * 
      */
-    private String instanceId;
+    private final String instanceId;
     /**
      * @return The type of the instance with which the EIP is associated.
      * 
      */
-    private String instanceType;
+    private final String instanceType;
     /**
      * @return The metering method of the EIP.
      * 
      */
-    private String internetChargeType;
+    private final String internetChargeType;
     /**
      * @return The IP address of the EIP.
      * 
      */
-    private String ipAddress;
+    private final String ipAddress;
     /**
      * @return The status of the EIP.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetEipAddressesEip() {}
+    @CustomType.Constructor
+    private GetEipAddressesEip(
+        @CustomType.Parameter("bandwidth") String bandwidth,
+        @CustomType.Parameter("creationTime") String creationTime,
+        @CustomType.Parameter("deletionProtection") Boolean deletionProtection,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceId") String instanceId,
+        @CustomType.Parameter("instanceType") String instanceType,
+        @CustomType.Parameter("internetChargeType") String internetChargeType,
+        @CustomType.Parameter("ipAddress") String ipAddress,
+        @CustomType.Parameter("status") String status) {
+        this.bandwidth = bandwidth;
+        this.creationTime = creationTime;
+        this.deletionProtection = deletionProtection;
+        this.id = id;
+        this.instanceId = instanceId;
+        this.instanceType = instanceType;
+        this.internetChargeType = internetChargeType;
+        this.ipAddress = ipAddress;
+        this.status = status;
+    }
+
     /**
      * @return The maximum bandwidth of the EIP. Unit: Mbit/s.
      * 
@@ -120,7 +141,7 @@ public final class GetEipAddressesEip {
     public static Builder builder(GetEipAddressesEip defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String bandwidth;
         private String creationTime;
@@ -131,7 +152,11 @@ public final class GetEipAddressesEip {
         private String internetChargeType;
         private String ipAddress;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetEipAddressesEip defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidth = defaults.bandwidth;
@@ -145,63 +170,43 @@ public final class GetEipAddressesEip {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder bandwidth(String bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
-        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
             return this;
         }
-        @CustomType.Setter
         public Builder deletionProtection(Boolean deletionProtection) {
             this.deletionProtection = Objects.requireNonNull(deletionProtection);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
-        @CustomType.Setter
         public Builder internetChargeType(String internetChargeType) {
             this.internetChargeType = Objects.requireNonNull(internetChargeType);
             return this;
         }
-        @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
             this.ipAddress = Objects.requireNonNull(ipAddress);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetEipAddressesEip build() {
-            final var o = new GetEipAddressesEip();
-            o.bandwidth = bandwidth;
-            o.creationTime = creationTime;
-            o.deletionProtection = deletionProtection;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.instanceType = instanceType;
-            o.internetChargeType = internetChargeType;
-            o.ipAddress = ipAddress;
-            o.status = status;
-            return o;
+        }        public GetEipAddressesEip build() {
+            return new GetEipAddressesEip(bandwidth, creationTime, deletionProtection, id, instanceId, instanceType, internetChargeType, ipAddress, status);
         }
     }
 }

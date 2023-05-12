@@ -15,139 +15,196 @@ public final class GetBackupPlansPlan {
      * @return The ID of the backup gateway.
      * 
      */
-    private String backupGatewayId;
+    private final String backupGatewayId;
     /**
      * @return The Backup method.
      * 
      */
-    private String backupMethod;
+    private final String backupMethod;
     /**
      * @return The backup object.
      * 
      */
-    private String backupObjects;
+    private final String backupObjects;
     /**
      * @return Full backup cycle.
      * 
      */
-    private String backupPeriod;
+    private final String backupPeriod;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private String backupPlanId;
+    private final String backupPlanId;
     /**
      * @return The name of the resource.
      * 
      */
-    private String backupPlanName;
+    private final String backupPlanName;
     /**
      * @return The retention time of backup data.
      * 
      */
-    private Integer backupRetentionPeriod;
+    private final Integer backupRetentionPeriod;
     /**
      * @return The start time of full Backup.
      * 
      */
-    private String backupStartTime;
+    private final String backupStartTime;
     /**
      * @return Built-in storage type.
      * 
      */
-    private String backupStorageType;
+    private final String backupStorageType;
     /**
      * @return The UID that is backed up across Alibaba cloud accounts.
      * 
      */
-    private String crossAliyunId;
+    private final String crossAliyunId;
     /**
      * @return The name of the RAM role that is backed up across Alibaba cloud accounts.
      * 
      */
-    private String crossRoleName;
+    private final String crossRoleName;
     /**
      * @return The database type.
      * 
      */
-    private String databaseType;
+    private final String databaseType;
     /**
      * @return The storage time for conversion to archive cold standby is 365 days by default.
      * 
      */
-    private Integer duplicationArchivePeriod;
+    private final Integer duplicationArchivePeriod;
     /**
      * @return The storage time is converted to low-frequency access. The default time is 180 days.
      * 
      */
-    private Integer duplicationInfrequentAccessPeriod;
+    private final Integer duplicationInfrequentAccessPeriod;
     /**
      * @return Whether to enable incremental log Backup.
      * 
      */
-    private Boolean enableBackupLog;
+    private final Boolean enableBackupLog;
     /**
      * @return The ID of the Backup Plan.
      * 
      */
-    private String id;
+    private final String id;
     /**
      * @return The Instance class.
      * 
      */
-    private String instanceClass;
+    private final String instanceClass;
     /**
      * @return The OSS Bucket name.
      * 
      */
-    private String ossBucketName;
+    private final String ossBucketName;
     /**
      * @return The payment type of the resource.
      * 
      */
-    private String paymentType;
+    private final String paymentType;
     /**
      * @return The ID of the resource group.
      * 
      */
-    private String resourceGroupId;
+    private final String resourceGroupId;
     /**
      * @return The name of the database.
      * 
      */
-    private String sourceEndpointDatabaseName;
+    private final String sourceEndpointDatabaseName;
     /**
      * @return The ID of the database instance.
      * 
      */
-    private String sourceEndpointInstanceId;
+    private final String sourceEndpointInstanceId;
     /**
      * @return The location of the database.
      * 
      */
-    private String sourceEndpointInstanceType;
+    private final String sourceEndpointInstanceType;
     /**
      * @return The region of the database.
      * 
      */
-    private String sourceEndpointRegion;
+    private final String sourceEndpointRegion;
     /**
      * @return The Oracle SID name.
      * 
      */
-    private String sourceEndpointSid;
+    private final String sourceEndpointSid;
     /**
      * @return The source endpoint username.
      * 
      */
-    private String sourceEndpointUserName;
+    private final String sourceEndpointUserName;
     /**
      * @return The status of the resource.
      * 
      */
-    private String status;
+    private final String status;
 
-    private GetBackupPlansPlan() {}
+    @CustomType.Constructor
+    private GetBackupPlansPlan(
+        @CustomType.Parameter("backupGatewayId") String backupGatewayId,
+        @CustomType.Parameter("backupMethod") String backupMethod,
+        @CustomType.Parameter("backupObjects") String backupObjects,
+        @CustomType.Parameter("backupPeriod") String backupPeriod,
+        @CustomType.Parameter("backupPlanId") String backupPlanId,
+        @CustomType.Parameter("backupPlanName") String backupPlanName,
+        @CustomType.Parameter("backupRetentionPeriod") Integer backupRetentionPeriod,
+        @CustomType.Parameter("backupStartTime") String backupStartTime,
+        @CustomType.Parameter("backupStorageType") String backupStorageType,
+        @CustomType.Parameter("crossAliyunId") String crossAliyunId,
+        @CustomType.Parameter("crossRoleName") String crossRoleName,
+        @CustomType.Parameter("databaseType") String databaseType,
+        @CustomType.Parameter("duplicationArchivePeriod") Integer duplicationArchivePeriod,
+        @CustomType.Parameter("duplicationInfrequentAccessPeriod") Integer duplicationInfrequentAccessPeriod,
+        @CustomType.Parameter("enableBackupLog") Boolean enableBackupLog,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("instanceClass") String instanceClass,
+        @CustomType.Parameter("ossBucketName") String ossBucketName,
+        @CustomType.Parameter("paymentType") String paymentType,
+        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
+        @CustomType.Parameter("sourceEndpointDatabaseName") String sourceEndpointDatabaseName,
+        @CustomType.Parameter("sourceEndpointInstanceId") String sourceEndpointInstanceId,
+        @CustomType.Parameter("sourceEndpointInstanceType") String sourceEndpointInstanceType,
+        @CustomType.Parameter("sourceEndpointRegion") String sourceEndpointRegion,
+        @CustomType.Parameter("sourceEndpointSid") String sourceEndpointSid,
+        @CustomType.Parameter("sourceEndpointUserName") String sourceEndpointUserName,
+        @CustomType.Parameter("status") String status) {
+        this.backupGatewayId = backupGatewayId;
+        this.backupMethod = backupMethod;
+        this.backupObjects = backupObjects;
+        this.backupPeriod = backupPeriod;
+        this.backupPlanId = backupPlanId;
+        this.backupPlanName = backupPlanName;
+        this.backupRetentionPeriod = backupRetentionPeriod;
+        this.backupStartTime = backupStartTime;
+        this.backupStorageType = backupStorageType;
+        this.crossAliyunId = crossAliyunId;
+        this.crossRoleName = crossRoleName;
+        this.databaseType = databaseType;
+        this.duplicationArchivePeriod = duplicationArchivePeriod;
+        this.duplicationInfrequentAccessPeriod = duplicationInfrequentAccessPeriod;
+        this.enableBackupLog = enableBackupLog;
+        this.id = id;
+        this.instanceClass = instanceClass;
+        this.ossBucketName = ossBucketName;
+        this.paymentType = paymentType;
+        this.resourceGroupId = resourceGroupId;
+        this.sourceEndpointDatabaseName = sourceEndpointDatabaseName;
+        this.sourceEndpointInstanceId = sourceEndpointInstanceId;
+        this.sourceEndpointInstanceType = sourceEndpointInstanceType;
+        this.sourceEndpointRegion = sourceEndpointRegion;
+        this.sourceEndpointSid = sourceEndpointSid;
+        this.sourceEndpointUserName = sourceEndpointUserName;
+        this.status = status;
+    }
+
     /**
      * @return The ID of the backup gateway.
      * 
@@ -345,7 +402,7 @@ public final class GetBackupPlansPlan {
     public static Builder builder(GetBackupPlansPlan defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String backupGatewayId;
         private String backupMethod;
@@ -374,7 +431,11 @@ public final class GetBackupPlansPlan {
         private String sourceEndpointSid;
         private String sourceEndpointUserName;
         private String status;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetBackupPlansPlan defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupGatewayId = defaults.backupGatewayId;
@@ -406,171 +467,115 @@ public final class GetBackupPlansPlan {
     	      this.status = defaults.status;
         }
 
-        @CustomType.Setter
         public Builder backupGatewayId(String backupGatewayId) {
             this.backupGatewayId = Objects.requireNonNull(backupGatewayId);
             return this;
         }
-        @CustomType.Setter
         public Builder backupMethod(String backupMethod) {
             this.backupMethod = Objects.requireNonNull(backupMethod);
             return this;
         }
-        @CustomType.Setter
         public Builder backupObjects(String backupObjects) {
             this.backupObjects = Objects.requireNonNull(backupObjects);
             return this;
         }
-        @CustomType.Setter
         public Builder backupPeriod(String backupPeriod) {
             this.backupPeriod = Objects.requireNonNull(backupPeriod);
             return this;
         }
-        @CustomType.Setter
         public Builder backupPlanId(String backupPlanId) {
             this.backupPlanId = Objects.requireNonNull(backupPlanId);
             return this;
         }
-        @CustomType.Setter
         public Builder backupPlanName(String backupPlanName) {
             this.backupPlanName = Objects.requireNonNull(backupPlanName);
             return this;
         }
-        @CustomType.Setter
         public Builder backupRetentionPeriod(Integer backupRetentionPeriod) {
             this.backupRetentionPeriod = Objects.requireNonNull(backupRetentionPeriod);
             return this;
         }
-        @CustomType.Setter
         public Builder backupStartTime(String backupStartTime) {
             this.backupStartTime = Objects.requireNonNull(backupStartTime);
             return this;
         }
-        @CustomType.Setter
         public Builder backupStorageType(String backupStorageType) {
             this.backupStorageType = Objects.requireNonNull(backupStorageType);
             return this;
         }
-        @CustomType.Setter
         public Builder crossAliyunId(String crossAliyunId) {
             this.crossAliyunId = Objects.requireNonNull(crossAliyunId);
             return this;
         }
-        @CustomType.Setter
         public Builder crossRoleName(String crossRoleName) {
             this.crossRoleName = Objects.requireNonNull(crossRoleName);
             return this;
         }
-        @CustomType.Setter
         public Builder databaseType(String databaseType) {
             this.databaseType = Objects.requireNonNull(databaseType);
             return this;
         }
-        @CustomType.Setter
         public Builder duplicationArchivePeriod(Integer duplicationArchivePeriod) {
             this.duplicationArchivePeriod = Objects.requireNonNull(duplicationArchivePeriod);
             return this;
         }
-        @CustomType.Setter
         public Builder duplicationInfrequentAccessPeriod(Integer duplicationInfrequentAccessPeriod) {
             this.duplicationInfrequentAccessPeriod = Objects.requireNonNull(duplicationInfrequentAccessPeriod);
             return this;
         }
-        @CustomType.Setter
         public Builder enableBackupLog(Boolean enableBackupLog) {
             this.enableBackupLog = Objects.requireNonNull(enableBackupLog);
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder instanceClass(String instanceClass) {
             this.instanceClass = Objects.requireNonNull(instanceClass);
             return this;
         }
-        @CustomType.Setter
         public Builder ossBucketName(String ossBucketName) {
             this.ossBucketName = Objects.requireNonNull(ossBucketName);
             return this;
         }
-        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
-        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceEndpointDatabaseName(String sourceEndpointDatabaseName) {
             this.sourceEndpointDatabaseName = Objects.requireNonNull(sourceEndpointDatabaseName);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceEndpointInstanceId(String sourceEndpointInstanceId) {
             this.sourceEndpointInstanceId = Objects.requireNonNull(sourceEndpointInstanceId);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceEndpointInstanceType(String sourceEndpointInstanceType) {
             this.sourceEndpointInstanceType = Objects.requireNonNull(sourceEndpointInstanceType);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceEndpointRegion(String sourceEndpointRegion) {
             this.sourceEndpointRegion = Objects.requireNonNull(sourceEndpointRegion);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceEndpointSid(String sourceEndpointSid) {
             this.sourceEndpointSid = Objects.requireNonNull(sourceEndpointSid);
             return this;
         }
-        @CustomType.Setter
         public Builder sourceEndpointUserName(String sourceEndpointUserName) {
             this.sourceEndpointUserName = Objects.requireNonNull(sourceEndpointUserName);
             return this;
         }
-        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }
-        public GetBackupPlansPlan build() {
-            final var o = new GetBackupPlansPlan();
-            o.backupGatewayId = backupGatewayId;
-            o.backupMethod = backupMethod;
-            o.backupObjects = backupObjects;
-            o.backupPeriod = backupPeriod;
-            o.backupPlanId = backupPlanId;
-            o.backupPlanName = backupPlanName;
-            o.backupRetentionPeriod = backupRetentionPeriod;
-            o.backupStartTime = backupStartTime;
-            o.backupStorageType = backupStorageType;
-            o.crossAliyunId = crossAliyunId;
-            o.crossRoleName = crossRoleName;
-            o.databaseType = databaseType;
-            o.duplicationArchivePeriod = duplicationArchivePeriod;
-            o.duplicationInfrequentAccessPeriod = duplicationInfrequentAccessPeriod;
-            o.enableBackupLog = enableBackupLog;
-            o.id = id;
-            o.instanceClass = instanceClass;
-            o.ossBucketName = ossBucketName;
-            o.paymentType = paymentType;
-            o.resourceGroupId = resourceGroupId;
-            o.sourceEndpointDatabaseName = sourceEndpointDatabaseName;
-            o.sourceEndpointInstanceId = sourceEndpointInstanceId;
-            o.sourceEndpointInstanceType = sourceEndpointInstanceType;
-            o.sourceEndpointRegion = sourceEndpointRegion;
-            o.sourceEndpointSid = sourceEndpointSid;
-            o.sourceEndpointUserName = sourceEndpointUserName;
-            o.status = status;
-            return o;
+        }        public GetBackupPlansPlan build() {
+            return new GetBackupPlansPlan(backupGatewayId, backupMethod, backupObjects, backupPeriod, backupPlanId, backupPlanName, backupRetentionPeriod, backupStartTime, backupStorageType, crossAliyunId, crossRoleName, databaseType, duplicationArchivePeriod, duplicationInfrequentAccessPeriod, enableBackupLog, id, instanceClass, ossBucketName, paymentType, resourceGroupId, sourceEndpointDatabaseName, sourceEndpointInstanceId, sourceEndpointInstanceType, sourceEndpointRegion, sourceEndpointSid, sourceEndpointUserName, status);
         }
     }
 }

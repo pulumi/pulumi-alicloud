@@ -15,17 +15,30 @@ public final class GetCiphertextResult {
      * @return The ciphertext of the data key encrypted with the primary CMK version.
      * 
      */
-    private String ciphertextBlob;
-    private @Nullable Map<String,String> encryptionContext;
+    private final String ciphertextBlob;
+    private final @Nullable Map<String,String> encryptionContext;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private String id;
-    private String keyId;
-    private String plaintext;
+    private final String id;
+    private final String keyId;
+    private final String plaintext;
 
-    private GetCiphertextResult() {}
+    @CustomType.Constructor
+    private GetCiphertextResult(
+        @CustomType.Parameter("ciphertextBlob") String ciphertextBlob,
+        @CustomType.Parameter("encryptionContext") @Nullable Map<String,String> encryptionContext,
+        @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("keyId") String keyId,
+        @CustomType.Parameter("plaintext") String plaintext) {
+        this.ciphertextBlob = ciphertextBlob;
+        this.encryptionContext = encryptionContext;
+        this.id = id;
+        this.keyId = keyId;
+        this.plaintext = plaintext;
+    }
+
     /**
      * @return The ciphertext of the data key encrypted with the primary CMK version.
      * 
@@ -57,14 +70,18 @@ public final class GetCiphertextResult {
     public static Builder builder(GetCiphertextResult defaults) {
         return new Builder(defaults);
     }
-    @CustomType.Builder
+
     public static final class Builder {
         private String ciphertextBlob;
         private @Nullable Map<String,String> encryptionContext;
         private String id;
         private String keyId;
         private String plaintext;
-        public Builder() {}
+
+        public Builder() {
+    	      // Empty
+        }
+
         public Builder(GetCiphertextResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ciphertextBlob = defaults.ciphertextBlob;
@@ -74,39 +91,27 @@ public final class GetCiphertextResult {
     	      this.plaintext = defaults.plaintext;
         }
 
-        @CustomType.Setter
         public Builder ciphertextBlob(String ciphertextBlob) {
             this.ciphertextBlob = Objects.requireNonNull(ciphertextBlob);
             return this;
         }
-        @CustomType.Setter
         public Builder encryptionContext(@Nullable Map<String,String> encryptionContext) {
             this.encryptionContext = encryptionContext;
             return this;
         }
-        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        @CustomType.Setter
         public Builder keyId(String keyId) {
             this.keyId = Objects.requireNonNull(keyId);
             return this;
         }
-        @CustomType.Setter
         public Builder plaintext(String plaintext) {
             this.plaintext = Objects.requireNonNull(plaintext);
             return this;
-        }
-        public GetCiphertextResult build() {
-            final var o = new GetCiphertextResult();
-            o.ciphertextBlob = ciphertextBlob;
-            o.encryptionContext = encryptionContext;
-            o.id = id;
-            o.keyId = keyId;
-            o.plaintext = plaintext;
-            return o;
+        }        public GetCiphertextResult build() {
+            return new GetCiphertextResult(ciphertextBlob, encryptionContext, id, keyId, plaintext);
         }
     }
 }

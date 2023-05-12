@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.KVStore
 {
     /// <summary>
+    /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.104.0`. Please use resource alicloud_kvstore_instance.
+    /// 
+    /// Provides a backup policy for ApsaraDB Redis / Memcache instance resource.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage

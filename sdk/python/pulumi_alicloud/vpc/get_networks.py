@@ -280,6 +280,7 @@ def get_networks(cidr_block: Optional[str] = None,
     :param Sequence[str] ids: A list of VPC IDs.
     :param bool is_default: Indicate whether the VPC is the default one in the specified region.
     :param str name_regex: A regex string to filter VPCs by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which VPC belongs.
     :param str status: Filter results by a specific status. Valid value are `Pending` and `Available`.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
@@ -371,6 +372,7 @@ def get_networks_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
     :param Sequence[str] ids: A list of VPC IDs.
     :param bool is_default: Indicate whether the VPC is the default one in the specified region.
     :param str name_regex: A regex string to filter VPCs by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which VPC belongs.
     :param str status: Filter results by a specific status. Valid value are `Pending` and `Available`.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
