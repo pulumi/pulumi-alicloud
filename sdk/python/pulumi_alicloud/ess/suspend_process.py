@@ -106,7 +106,7 @@ class SuspendProcess(pulumi.CustomResource):
 
         ## Import
 
-        ### Timeouts The `timeouts` block allows you to specify [timeouts](https://www.terraform.io/docs/configuration-0-11/resources.html#timeouts) for certain actions* `create` - (Defaults to 1 mins) Used when create the process. * `delete` - (Defaults to 1 mins) Used when delete the process.
+        ### Timeouts The `timeouts` block allows you to specify timeouts for certain actions* `create` - (Defaults to 1 mins) Used when create the process. * `delete` - (Defaults to 1 mins) Used when delete the process.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -128,7 +128,7 @@ class SuspendProcess(pulumi.CustomResource):
 
         ## Import
 
-        ### Timeouts The `timeouts` block allows you to specify [timeouts](https://www.terraform.io/docs/configuration-0-11/resources.html#timeouts) for certain actions* `create` - (Defaults to 1 mins) Used when create the process. * `delete` - (Defaults to 1 mins) Used when delete the process.
+        ### Timeouts The `timeouts` block allows you to specify timeouts for certain actions* `create` - (Defaults to 1 mins) Used when create the process. * `delete` - (Defaults to 1 mins) Used when delete the process.
 
         :param str resource_name: The name of the resource.
         :param SuspendProcessArgs args: The arguments to use to populate this resource's properties.

@@ -1572,6 +1572,10 @@ public final class SlbFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:slb/getListeners:getListeners", TypeShape.of(GetListenersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.slb.getApplicationLoadBalancers from version 1.123.1.
+     * 
+     * This data source provides the server load balancers of the current Alibaba Cloud user.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1611,6 +1615,10 @@ public final class SlbFunctions {
         return getLoadBalancers(GetLoadBalancersArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.slb.getApplicationLoadBalancers from version 1.123.1.
+     * 
+     * This data source provides the server load balancers of the current Alibaba Cloud user.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1650,6 +1658,10 @@ public final class SlbFunctions {
         return getLoadBalancersPlain(GetLoadBalancersPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.slb.getApplicationLoadBalancers from version 1.123.1.
+     * 
+     * This data source provides the server load balancers of the current Alibaba Cloud user.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1689,6 +1701,10 @@ public final class SlbFunctions {
         return getLoadBalancers(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.slb.getApplicationLoadBalancers from version 1.123.1.
+     * 
+     * This data source provides the server load balancers of the current Alibaba Cloud user.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1728,6 +1744,10 @@ public final class SlbFunctions {
         return getLoadBalancersPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.slb.getApplicationLoadBalancers from version 1.123.1.
+     * 
+     * This data source provides the server load balancers of the current Alibaba Cloud user.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1767,6 +1787,10 @@ public final class SlbFunctions {
         return Deployment.getInstance().invoke("alicloud:slb/getLoadBalancers:getLoadBalancers", TypeShape.of(GetLoadBalancersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:** This datasource has been renamed to alicloud.slb.getApplicationLoadBalancers from version 1.123.1.
+     * 
+     * This data source provides the server load balancers of the current Alibaba Cloud user.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;

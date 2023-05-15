@@ -67,6 +67,9 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: The security group resource of the cluster.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The id of the VPC.
+               
+               
+               > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         :param pulumi.Input[str] vswitch_id: If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
         :param pulumi.Input[str] zone_id: The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
@@ -376,6 +379,9 @@ class InstanceArgs:
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
         The id of the VPC.
+
+
+        > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -469,6 +475,9 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceUiProxyConnAddrArgs']]] ui_proxy_conn_addrs: (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
         :param pulumi.Input[str] vpc_id: The id of the VPC.
+               
+               
+               > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         :param pulumi.Input[str] vswitch_id: If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceZkConnAddrArgs']]] zk_conn_addrs: (Available in 1.105.0+) The zookeeper addresses of the cluster.
         :param pulumi.Input[str] zone_id: The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
@@ -826,6 +835,9 @@ class _InstanceState:
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
         The id of the VPC.
+
+
+        > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -971,6 +983,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: The security group resource of the cluster.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The id of the VPC.
+               
+               
+               > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         :param pulumi.Input[str] vswitch_id: If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
         :param pulumi.Input[str] zone_id: The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
@@ -1181,6 +1196,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceUiProxyConnAddrArgs']]]] ui_proxy_conn_addrs: (Available in 1.105.0+) The Web UI proxy addresses of the cluster.
         :param pulumi.Input[str] vpc_id: The id of the VPC.
+               
+               
+               > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         :param pulumi.Input[str] vswitch_id: If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceZkConnAddrArgs']]]] zk_conn_addrs: (Available in 1.105.0+) The zookeeper addresses of the cluster.
         :param pulumi.Input[str] zone_id: The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
@@ -1419,6 +1437,9 @@ class Instance(pulumi.CustomResource):
     def vpc_id(self) -> pulumi.Output[Optional[str]]:
         """
         The id of the VPC.
+
+
+        > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         """
         return pulumi.get(self, "vpc_id")
 

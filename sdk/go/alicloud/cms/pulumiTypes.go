@@ -1798,6 +1798,8 @@ type GroupMetricRuleTarget struct {
 	// The ID of the resource for which alerts are triggered.
 	Id *string `pulumi:"id"`
 	// The parameters of the alert callback. The parameters are in the JSON format.
+	//
+	// > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
 	JsonParams *string `pulumi:"jsonParams"`
 	// The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
 	Level *string `pulumi:"level"`
@@ -1820,6 +1822,8 @@ type GroupMetricRuleTargetArgs struct {
 	// The ID of the resource for which alerts are triggered.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The parameters of the alert callback. The parameters are in the JSON format.
+	//
+	// > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
 	JsonParams pulumi.StringPtrInput `pulumi:"jsonParams"`
 	// The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
 	Level pulumi.StringPtrInput `pulumi:"level"`
@@ -1887,6 +1891,8 @@ func (o GroupMetricRuleTargetOutput) Id() pulumi.StringPtrOutput {
 }
 
 // The parameters of the alert callback. The parameters are in the JSON format.
+//
+// > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
 func (o GroupMetricRuleTargetOutput) JsonParams() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupMetricRuleTarget) *string { return v.JsonParams }).(pulumi.StringPtrOutput)
 }
@@ -2960,8 +2966,12 @@ type MetricRuleTemplateAlertTemplate struct {
 	// The information about the trigger condition based on the alert level. See the following `Block escalations`.
 	Escalations *MetricRuleTemplateAlertTemplateEscalations `pulumi:"escalations"`
 	// The name of the metric.
+	//
+	// > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	MetricName string `pulumi:"metricName"`
 	// The namespace of the service.
+	//
+	// > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Namespace string `pulumi:"namespace"`
 	// The name of the alert rule.
 	RuleName string `pulumi:"ruleName"`
@@ -2986,8 +2996,12 @@ type MetricRuleTemplateAlertTemplateArgs struct {
 	// The information about the trigger condition based on the alert level. See the following `Block escalations`.
 	Escalations MetricRuleTemplateAlertTemplateEscalationsPtrInput `pulumi:"escalations"`
 	// The name of the metric.
+	//
+	// > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	MetricName pulumi.StringInput `pulumi:"metricName"`
 	// The namespace of the service.
+	//
+	// > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 	// The name of the alert rule.
 	RuleName pulumi.StringInput `pulumi:"ruleName"`
@@ -3059,11 +3073,15 @@ func (o MetricRuleTemplateAlertTemplateOutput) Escalations() MetricRuleTemplateA
 }
 
 // The name of the metric.
+//
+// > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 func (o MetricRuleTemplateAlertTemplateOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplate) string { return v.MetricName }).(pulumi.StringOutput)
 }
 
 // The namespace of the service.
+//
+// > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
 func (o MetricRuleTemplateAlertTemplateOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricRuleTemplateAlertTemplate) string { return v.Namespace }).(pulumi.StringOutput)
 }
@@ -8001,6 +8019,8 @@ type GetMetricRuleTemplatesTemplate struct {
 	// The name of the alert template.
 	MetricRuleTemplateName string `pulumi:"metricRuleTemplateName"`
 	// The version of the alert template.
+	//
+	// > **NOTE:** The version changes with the number of times that the alert template is modified.
 	RestVersion string `pulumi:"restVersion"`
 	// The ID of the alert template.
 	TemplateId string `pulumi:"templateId"`
@@ -8029,6 +8049,8 @@ type GetMetricRuleTemplatesTemplateArgs struct {
 	// The name of the alert template.
 	MetricRuleTemplateName pulumi.StringInput `pulumi:"metricRuleTemplateName"`
 	// The version of the alert template.
+	//
+	// > **NOTE:** The version changes with the number of times that the alert template is modified.
 	RestVersion pulumi.StringInput `pulumi:"restVersion"`
 	// The ID of the alert template.
 	TemplateId pulumi.StringInput `pulumi:"templateId"`
@@ -8113,6 +8135,8 @@ func (o GetMetricRuleTemplatesTemplateOutput) MetricRuleTemplateName() pulumi.St
 }
 
 // The version of the alert template.
+//
+// > **NOTE:** The version changes with the number of times that the alert template is modified.
 func (o GetMetricRuleTemplatesTemplateOutput) RestVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplate) string { return v.RestVersion }).(pulumi.StringOutput)
 }

@@ -22,6 +22,78 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a MongoDB instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
+ * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
+ * You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
+ * 
+ * &gt; **NOTE:**  Available in 1.37.0+
+ * 
+ * &gt; **NOTE:**  The following regions don&#39;t support create Classic network MongoDB instance.
+ * [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
+ * 
+ * &gt; **NOTE:**  Create MongoDB instance or change instance type and storage would cost 5~10 minutes. Please make full preparation
+ * 
+ * ## Example Usage
+ * ### Create a Mongodb instance
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.mongodb.Instance;
+ * import com.pulumi.alicloud.mongodb.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;MongoDB&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
+ *             .engineVersion(&#34;3.4&#34;)
+ *             .dbInstanceClass(&#34;dds.mongo.mid&#34;)
+ *             .dbInstanceStorage(10)
+ *             .vswitchId(defaultSwitch.id())
+ *             .securityIpLists(            
+ *                 &#34;10.168.1.12&#34;,
+ *                 &#34;100.69.7.112&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Module Support
+ * 
+ * You can use to the existing mongodb module
+ * to create a MongoDB instance resource one-click.
+ * 
  * ## Import
  * 
  * MongoDB can be imported using the id, e.g.

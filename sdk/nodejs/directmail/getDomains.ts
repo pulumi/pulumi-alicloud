@@ -69,6 +69,9 @@ export interface GetDomainsArgs {
      * A regex string to filter results by Domain name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
@@ -146,6 +149,9 @@ export interface GetDomainsOutputArgs {
      * A regex string to filter results by Domain name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.

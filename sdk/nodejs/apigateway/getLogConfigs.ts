@@ -52,6 +52,9 @@ export interface GetLogConfigsArgs {
      * The type the of log.
      */
     logType?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -107,5 +110,8 @@ export interface GetLogConfigsOutputArgs {
      * The type the of log.
      */
     logType?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

@@ -73,6 +73,8 @@ public final class SnapshotPolicyArgs extends com.pulumi.resources.ResourceArgs 
      * - -1: The automatic snapshots are retained permanently.
      * - [1, 65536]: The number of days retained.
      * 
+     * Default value: -1.
+     * 
      */
     @Import(name="retentionDays", required=true)
     private Output<Integer> retentionDays;
@@ -81,6 +83,8 @@ public final class SnapshotPolicyArgs extends com.pulumi.resources.ResourceArgs 
      * @return The snapshot retention time, and the unit of measurement is day. Optional values:
      * - -1: The automatic snapshots are retained permanently.
      * - [1, 65536]: The number of days retained.
+     * 
+     * Default value: -1.
      * 
      */
     public Output<Integer> retentionDays() {
@@ -232,6 +236,8 @@ public final class SnapshotPolicyArgs extends com.pulumi.resources.ResourceArgs 
          * - -1: The automatic snapshots are retained permanently.
          * - [1, 65536]: The number of days retained.
          * 
+         * Default value: -1.
+         * 
          * @return builder
          * 
          */
@@ -244,6 +250,8 @@ public final class SnapshotPolicyArgs extends com.pulumi.resources.ResourceArgs 
          * @param retentionDays The snapshot retention time, and the unit of measurement is day. Optional values:
          * - -1: The automatic snapshots are retained permanently.
          * - [1, 65536]: The number of days retained.
+         * 
+         * Default value: -1.
          * 
          * @return builder
          * 

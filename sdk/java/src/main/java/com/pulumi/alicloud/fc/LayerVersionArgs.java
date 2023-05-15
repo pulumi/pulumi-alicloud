@@ -110,12 +110,16 @@ public final class LayerVersionArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The ZIP package of the function code that is encoded in the Base64 format.
      * 
+     * &gt; **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
+     * 
      */
     @Import(name="zipFile")
     private @Nullable Output<String> zipFile;
 
     /**
      * @return The ZIP package of the function code that is encoded in the Base64 format.
+     * 
+     * &gt; **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
      * 
      */
     public Optional<Output<String>> zipFile() {
@@ -291,6 +295,8 @@ public final class LayerVersionArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param zipFile The ZIP package of the function code that is encoded in the Base64 format.
          * 
+         * &gt; **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
+         * 
          * @return builder
          * 
          */
@@ -301,6 +307,8 @@ public final class LayerVersionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param zipFile The ZIP package of the function code that is encoded in the Base64 format.
+         * 
+         * &gt; **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
          * 
          * @return builder
          * 

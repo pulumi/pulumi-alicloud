@@ -202,6 +202,7 @@ def get_domains(change_end_time: Optional[str] = None,
     :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list ids of DCDN Domain.
     :param str name_regex: A regex string to filter results by the DCDN Domain.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param str status: The status of DCDN Domain.
     """
@@ -263,6 +264,7 @@ def get_domains_output(change_end_time: Optional[pulumi.Input[Optional[str]]] = 
     :param bool enable_details: Default to `false`. Set it to true can output more details.
     :param Sequence[str] ids: A list ids of DCDN Domain.
     :param str name_regex: A regex string to filter results by the DCDN Domain.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param str status: The status of DCDN Domain.
     """

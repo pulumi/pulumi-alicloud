@@ -96,12 +96,18 @@ public class TransitRouterRouteEntry extends com.pulumi.resources.CustomResource
     /**
      * The dry run.
      * 
+     * &gt; **NOTE:** If transit_router_route_entry_next_hop_type is `Attachment`, transit_router_route_entry_next_hop_id is required.
+     * If transit_router_route_entry_next_hop_type is `BlackHole`, transit_router_route_entry_next_hop_id cannot be filled.
+     * 
      */
     @Export(name="dryRun", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
      * @return The dry run.
+     * 
+     * &gt; **NOTE:** If transit_router_route_entry_next_hop_type is `Attachment`, transit_router_route_entry_next_hop_id is required.
+     * If transit_router_route_entry_next_hop_type is `BlackHole`, transit_router_route_entry_next_hop_id cannot be filled.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {

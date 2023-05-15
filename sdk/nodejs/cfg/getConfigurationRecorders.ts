@@ -36,6 +36,9 @@ export function getConfigurationRecorders(args?: GetConfigurationRecordersArgs, 
  * A collection of arguments for invoking getConfigurationRecorders.
  */
 export interface GetConfigurationRecordersArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -78,5 +81,8 @@ export function getConfigurationRecordersOutput(args?: GetConfigurationRecorders
  * A collection of arguments for invoking getConfigurationRecorders.
  */
 export interface GetConfigurationRecordersOutputArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

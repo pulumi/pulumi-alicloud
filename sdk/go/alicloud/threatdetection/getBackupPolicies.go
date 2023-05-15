@@ -70,7 +70,8 @@ type GetBackupPoliciesArgs struct {
 	// The name of the anti-ransomware policy that you want to query.
 	Name *string `pulumi:"name"`
 	// A regex string to filter results by Threat Detection Backup Policies name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageSize   *int    `pulumi:"pageSize"`
 	// The status of the anti-ransomware policy. Valid Value: `enabled`, `disabled`, `closed`.
@@ -119,7 +120,8 @@ type GetBackupPoliciesOutputArgs struct {
 	// The name of the anti-ransomware policy that you want to query.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// A regex string to filter results by Threat Detection Backup Policies name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 	// The status of the anti-ransomware policy. Valid Value: `enabled`, `disabled`, `closed`.

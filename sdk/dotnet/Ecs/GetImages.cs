@@ -161,6 +161,11 @@ namespace Pulumi.AliCloud.Ecs
         [Input("osType")]
         public string? OsType { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// 
+        /// &gt; **NOTE:** At least one of the `name_regex`, `most_recent` and `owners` must be set.
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -292,6 +297,11 @@ namespace Pulumi.AliCloud.Ecs
         [Input("osType")]
         public Input<string>? OsType { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// 
+        /// &gt; **NOTE:** At least one of the `name_regex`, `most_recent` and `owners` must be set.
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

@@ -107,7 +107,7 @@ type EipAddress struct {
 	PublicIpAddressPoolId pulumi.StringPtrOutput `pulumi:"publicIpAddressPoolId"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
 	SecurityProtectionTypes pulumi.StringArrayOutput `pulumi:"securityProtectionTypes"`
 	// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -187,7 +187,7 @@ type eipAddressState struct {
 	PublicIpAddressPoolId *string `pulumi:"publicIpAddressPoolId"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
 	SecurityProtectionTypes []string `pulumi:"securityProtectionTypes"`
 	// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
 	Status *string `pulumi:"status"`
@@ -239,7 +239,7 @@ type EipAddressState struct {
 	PublicIpAddressPoolId pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
 	SecurityProtectionTypes pulumi.StringArrayInput
 	// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
 	Status pulumi.StringPtrInput
@@ -293,7 +293,7 @@ type eipAddressArgs struct {
 	PublicIpAddressPoolId *string `pulumi:"publicIpAddressPoolId"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
 	SecurityProtectionTypes []string `pulumi:"securityProtectionTypes"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -342,7 +342,7 @@ type EipAddressArgs struct {
 	PublicIpAddressPoolId pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
 	SecurityProtectionTypes pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -535,7 +535,7 @@ func (o EipAddressOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EipAddress) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
 func (o EipAddressOutput) SecurityProtectionTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EipAddress) pulumi.StringArrayOutput { return v.SecurityProtectionTypes }).(pulumi.StringArrayOutput)
 }

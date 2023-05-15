@@ -98,6 +98,9 @@ export interface GetTrafficMirrorSessionsArgs {
      * A regex string to filter results by Traffic Mirror Session name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The priority of the traffic mirror session. A smaller value indicates a higher priority.
@@ -224,6 +227,9 @@ export interface GetTrafficMirrorSessionsOutputArgs {
      * A regex string to filter results by Traffic Mirror Session name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The priority of the traffic mirror session. A smaller value indicates a higher priority.

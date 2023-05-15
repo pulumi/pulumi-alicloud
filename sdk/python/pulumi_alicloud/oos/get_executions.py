@@ -256,6 +256,7 @@ def get_executions(category: Optional[str] = None,
     :param Sequence[str] ids: A list of OOS Execution ids.
     :param bool include_child_execution: Whether to include sub-execution.
     :param str mode: The mode of OOS Execution. Valid: `Automatic`, `Debug`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str parent_execution_id: The id of parent OOS Execution.
     :param str ram_role: The role that executes the current template.
     :param str sort_field: The sort field.
@@ -353,6 +354,7 @@ def get_executions_output(category: Optional[pulumi.Input[Optional[str]]] = None
     :param Sequence[str] ids: A list of OOS Execution ids.
     :param bool include_child_execution: Whether to include sub-execution.
     :param str mode: The mode of OOS Execution. Valid: `Automatic`, `Debug`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str parent_execution_id: The id of parent OOS Execution.
     :param str ram_role: The role that executes the current template.
     :param str sort_field: The sort field.

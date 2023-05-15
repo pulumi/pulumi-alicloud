@@ -54,8 +54,9 @@ type GetBackendServersArgs struct {
 	// List of attached ECS instance IDs.
 	Ids []string `pulumi:"ids"`
 	// ID of the SLB with attachments.
-	LoadBalancerId string  `pulumi:"loadBalancerId"`
-	OutputFile     *string `pulumi:"outputFile"`
+	LoadBalancerId string `pulumi:"loadBalancerId"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getBackendServers.
@@ -86,8 +87,9 @@ type GetBackendServersOutputArgs struct {
 	// List of attached ECS instance IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// ID of the SLB with attachments.
-	LoadBalancerId pulumi.StringInput    `pulumi:"loadBalancerId"`
-	OutputFile     pulumi.StringPtrInput `pulumi:"outputFile"`
+	LoadBalancerId pulumi.StringInput `pulumi:"loadBalancerId"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetBackendServersOutputArgs) ElementType() reflect.Type {

@@ -23,6 +23,8 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         public readonly string? Operator;
         /// <summary>
         /// Set of values that are accepted for the given field.
+        /// 
+        /// &gt; **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

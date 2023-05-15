@@ -6,6 +6,11 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * > **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
+ *
+ * This data source provides a list of action trail of the current Alibaba Cloud user.
+ */
 /** @deprecated DataSource has been renamed to `getTrails` */
 export function getTrailsDeprecated(args?: GetTrailsDeprecatedArgs, opts?: pulumi.InvokeOptions): Promise<GetTrailsDeprecatedResult> {
     pulumi.log.warn("getTrailsDeprecated is deprecated: DataSource has been renamed to `getTrails`")
@@ -33,6 +38,9 @@ export interface GetTrailsDeprecatedArgs {
      * A regex string to filter results action trail name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     status?: string;
 }
@@ -63,6 +71,11 @@ export interface GetTrailsDeprecatedResult {
     readonly status?: string;
     readonly trails: outputs.actiontrail.GetTrailsDeprecatedTrail[];
 }
+/**
+ * > **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
+ *
+ * This data source provides a list of action trail of the current Alibaba Cloud user.
+ */
 /** @deprecated DataSource has been renamed to `getTrails` */
 export function getTrailsDeprecatedOutput(args?: GetTrailsDeprecatedOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrailsDeprecatedResult> {
     return pulumi.output(args).apply((a: any) => getTrailsDeprecated(a, opts))
@@ -79,6 +92,9 @@ export interface GetTrailsDeprecatedOutputArgs {
      * A regex string to filter results action trail name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     status?: pulumi.Input<string>;
 }

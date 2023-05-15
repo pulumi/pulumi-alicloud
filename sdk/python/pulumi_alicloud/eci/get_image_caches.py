@@ -162,6 +162,7 @@ def get_image_caches(ids: Optional[Sequence[str]] = None,
     :param str image: Find the mirror cache containing it according to the image name.
     :param str image_cache_name: The name of ECI Image Cache.
     :param str name_regex: A regex string to filter results by the image cache name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str snapshot_id: The id of snapshot.
     :param str status: The status of ECI Image Cache.
     """
@@ -208,6 +209,7 @@ def get_image_caches_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     :param str image: Find the mirror cache containing it according to the image name.
     :param str image_cache_name: The name of ECI Image Cache.
     :param str name_regex: A regex string to filter results by the image cache name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str snapshot_id: The id of snapshot.
     :param str status: The status of ECI Image Cache.
     """

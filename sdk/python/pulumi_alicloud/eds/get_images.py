@@ -190,6 +190,7 @@ def get_images(desktop_instance_type: Optional[str] = None,
     :param str image_type: The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
     :param str name_regex: A regex string to filter results by Image name.
     :param str os_type: The os type of the image.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
     """
     __args__ = dict()
@@ -281,6 +282,7 @@ def get_images_output(desktop_instance_type: Optional[pulumi.Input[Optional[str]
     :param str image_type: The image type of the image. Valid values: `SYSTEM`, `CUSTOM`.
     :param str name_regex: A regex string to filter results by Image name.
     :param str os_type: The os type of the image.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
     """
     ...

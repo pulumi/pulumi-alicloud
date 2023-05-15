@@ -165,6 +165,14 @@ class RuleTargetParamList(dict):
         :param str form: The format of param.  Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
         :param str resource_key: The resource key of param.  For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
         :param str template: The template of param.
+               
+               > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
+               ```python
+               import pulumi
+               ```
+               In order to fix the diff, from version 1.160.0,
+               this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
+               If you want to set `resource_key = "IsBase64Encode"`, please avoid to set `value = "false"`.
         :param str value: The value of param.
         """
         pulumi.set(__self__, "form", form)
@@ -195,6 +203,14 @@ class RuleTargetParamList(dict):
     def template(self) -> Optional[str]:
         """
         The template of param.
+
+        > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
+        ```python
+        import pulumi
+        ```
+        In order to fix the diff, from version 1.160.0,
+        this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
+        If you want to set `resource_key = "IsBase64Encode"`, please avoid to set `value = "false"`.
         """
         return pulumi.get(self, "template")
 

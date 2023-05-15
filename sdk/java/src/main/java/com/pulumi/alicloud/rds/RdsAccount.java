@@ -311,6 +311,8 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
     /**
      * The attribute has been deprecated from 1.120.0 and using `account_type` instead.
      * 
+     * &gt; **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
+     * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated from provider version 1.120.0. New field &#39;account_type&#39; instead.
      * 
@@ -321,6 +323,8 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+     * 
+     * &gt; **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
      * 
      */
     public Output<String> type() {

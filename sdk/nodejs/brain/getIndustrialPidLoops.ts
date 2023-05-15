@@ -54,6 +54,9 @@ export interface GetIndustrialPidLoopsArgs {
      * A regex string to filter results by Pid Loop name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The name of Pid Loop.
@@ -125,6 +128,9 @@ export interface GetIndustrialPidLoopsOutputArgs {
      * A regex string to filter results by Pid Loop name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The name of Pid Loop.

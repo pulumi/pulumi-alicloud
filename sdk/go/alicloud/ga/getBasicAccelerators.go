@@ -67,7 +67,8 @@ type GetBasicAcceleratorsArgs struct {
 	// A list of Global Accelerator Basic Accelerator IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Global Accelerator Basic Accelerator name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
@@ -113,7 +114,8 @@ type GetBasicAcceleratorsOutputArgs struct {
 	// A list of Global Accelerator Basic Accelerator IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Global Accelerator Basic Accelerator name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`

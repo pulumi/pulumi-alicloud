@@ -114,7 +114,7 @@ import (
 //
 // ## Import
 //
-// ### Timeouts The `timeouts` block allows you to specify [timeouts](https://www.terraform.io/docs/configuration-0-11/resources.html#timeouts) for certain actions* `delete` - (Defaults to 30 mins) Used when delete a data replication rule (until the data replication task is cleared).
+// ### Timeouts The `timeouts` block allows you to specify timeouts for certain actions* `delete` - (Defaults to 30 mins) Used when delete a data replication rule (until the data replication task is cleared).
 type BucketReplication struct {
 	pulumi.CustomResourceState
 

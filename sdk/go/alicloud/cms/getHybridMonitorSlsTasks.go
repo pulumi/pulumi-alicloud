@@ -60,7 +60,8 @@ type GetHybridMonitorSlsTasksArgs struct {
 	// The keyword that is used to search for metric import tasks.
 	Keyword *string `pulumi:"keyword"`
 	// The namespace to which the host belongs.
-	Namespace  *string `pulumi:"namespace"`
+	Namespace *string `pulumi:"namespace"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
@@ -99,7 +100,8 @@ type GetHybridMonitorSlsTasksOutputArgs struct {
 	// The keyword that is used to search for metric import tasks.
 	Keyword pulumi.StringPtrInput `pulumi:"keyword"`
 	// The namespace to which the host belongs.
-	Namespace  pulumi.StringPtrInput `pulumi:"namespace"`
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`

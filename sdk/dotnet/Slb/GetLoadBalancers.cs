@@ -12,6 +12,10 @@ namespace Pulumi.AliCloud.Slb
     public static class GetLoadBalancers
     {
         /// <summary>
+        /// &gt; **DEPRECATED:** This datasource has been renamed to alicloud.slb.getApplicationLoadBalancers from version 1.123.1.
+        /// 
+        /// This data source provides the server load balancers of the current Alibaba Cloud user.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -44,6 +48,10 @@ namespace Pulumi.AliCloud.Slb
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancersResult>("alicloud:slb/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATED:** This datasource has been renamed to alicloud.slb.getApplicationLoadBalancers from version 1.123.1.
+        /// 
+        /// This data source provides the server load balancers of the current Alibaba Cloud user.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -127,6 +135,9 @@ namespace Pulumi.AliCloud.Slb
         [Input("networkType")]
         public string? NetworkType { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -259,6 +270,9 @@ namespace Pulumi.AliCloud.Slb
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

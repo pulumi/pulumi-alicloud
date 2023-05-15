@@ -63,7 +63,8 @@ type GetEcsLaunchTemplatesArgs struct {
 	// The Launch Template Name.
 	LaunchTemplateName *string `pulumi:"launchTemplateName"`
 	// A regex string to filter results by Launch Template name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The template resource group id.
 	TemplateResourceGroupId *string `pulumi:"templateResourceGroupId"`
@@ -108,7 +109,8 @@ type GetEcsLaunchTemplatesOutputArgs struct {
 	// The Launch Template Name.
 	LaunchTemplateName pulumi.StringPtrInput `pulumi:"launchTemplateName"`
 	// A regex string to filter results by Launch Template name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The template resource group id.
 	TemplateResourceGroupId pulumi.StringPtrInput `pulumi:"templateResourceGroupId"`

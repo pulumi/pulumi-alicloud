@@ -92,6 +92,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The certificates of the listener.
+        /// 
+        /// &gt; **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
         /// </summary>
         [Output("certificates")]
         public Output<ImmutableArray<Outputs.ListenerCertificate>> Certificates { get; private set; } = null!;
@@ -124,12 +126,16 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The portRanges of the listener.
+        /// 
+        /// &gt; **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         /// </summary>
         [Output("portRanges")]
         public Output<ImmutableArray<Outputs.ListenerPortRange>> PortRanges { get; private set; } = null!;
 
         /// <summary>
         /// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
+        /// 
+        /// &gt; **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
         /// </summary>
         [Output("protocol")]
         public Output<string?> Protocol { get; private set; } = null!;
@@ -211,6 +217,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The certificates of the listener.
+        /// 
+        /// &gt; **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
         /// </summary>
         public InputList<Inputs.ListenerCertificateArgs> Certificates
         {
@@ -249,6 +257,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The portRanges of the listener.
+        /// 
+        /// &gt; **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         /// </summary>
         public InputList<Inputs.ListenerPortRangeArgs> PortRanges
         {
@@ -258,6 +268,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
+        /// 
+        /// &gt; **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -295,6 +307,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The certificates of the listener.
+        /// 
+        /// &gt; **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
         /// </summary>
         public InputList<Inputs.ListenerCertificateGetArgs> Certificates
         {
@@ -333,6 +347,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The portRanges of the listener.
+        /// 
+        /// &gt; **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
         /// </summary>
         public InputList<Inputs.ListenerPortRangeGetArgs> PortRanges
         {
@@ -342,6 +358,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
+        /// 
+        /// &gt; **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

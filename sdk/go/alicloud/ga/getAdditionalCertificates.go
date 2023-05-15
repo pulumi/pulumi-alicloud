@@ -63,7 +63,8 @@ type GetAdditionalCertificatesArgs struct {
 	// A list of Additional Certificate IDs.
 	Ids []string `pulumi:"ids"`
 	// The ID of the listener. Only HTTPS listeners support this parameter.
-	ListenerId string  `pulumi:"listenerId"`
+	ListenerId string `pulumi:"listenerId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -98,7 +99,8 @@ type GetAdditionalCertificatesOutputArgs struct {
 	// A list of Additional Certificate IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The ID of the listener. Only HTTPS listeners support this parameter.
-	ListenerId pulumi.StringInput    `pulumi:"listenerId"`
+	ListenerId pulumi.StringInput `pulumi:"listenerId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

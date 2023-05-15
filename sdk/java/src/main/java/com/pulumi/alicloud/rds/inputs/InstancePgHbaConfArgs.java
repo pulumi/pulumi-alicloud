@@ -112,6 +112,8 @@ public final class InstancePgHbaConfArgs extends com.pulumi.resources.ResourceAr
      * * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
      * * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
      * 
+     * &gt; **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
+     * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
@@ -121,6 +123,8 @@ public final class InstancePgHbaConfArgs extends com.pulumi.resources.ResourceAr
      * * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
      * * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
      * * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+     * 
+     * &gt; **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
      * 
      */
     public Output<String> type() {
@@ -305,6 +309,8 @@ public final class InstancePgHbaConfArgs extends com.pulumi.resources.ResourceAr
          * * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
          * * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
          * 
+         * &gt; **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
+         * 
          * @return builder
          * 
          */
@@ -318,6 +324,8 @@ public final class InstancePgHbaConfArgs extends com.pulumi.resources.ResourceAr
          * * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
          * * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
          * * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+         * 
+         * &gt; **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
          * 
          * @return builder
          * 

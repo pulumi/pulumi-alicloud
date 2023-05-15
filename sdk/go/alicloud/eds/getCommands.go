@@ -115,8 +115,9 @@ type GetCommandsArgs struct {
 	// The desktop id of the Desktop.
 	DesktopId *string `pulumi:"desktopId"`
 	// A list of Command IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
 	Status *string `pulumi:"status"`
 }
@@ -156,8 +157,9 @@ type GetCommandsOutputArgs struct {
 	// The desktop id of the Desktop.
 	DesktopId pulumi.StringPtrInput `pulumi:"desktopId"`
 	// A list of Command IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }

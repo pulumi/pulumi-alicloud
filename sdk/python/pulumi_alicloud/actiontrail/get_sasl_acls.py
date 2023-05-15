@@ -140,6 +140,7 @@ def get_sasl_acls(acl_resource_name: Optional[str] = None,
     :param str acl_resource_name: Get results for the specified resource name.
     :param str acl_resource_type: Get results for the specified resource type.
     :param str instance_id: ID of the ALIKAFKA Instance that owns the sasl acls.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str username: Get results for the specified username.
     """
     __args__ = dict()
@@ -191,6 +192,7 @@ def get_sasl_acls_output(acl_resource_name: Optional[pulumi.Input[str]] = None,
     :param str acl_resource_name: Get results for the specified resource name.
     :param str acl_resource_type: Get results for the specified resource type.
     :param str instance_id: ID of the ALIKAFKA Instance that owns the sasl acls.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str username: Get results for the specified username.
     """
     ...

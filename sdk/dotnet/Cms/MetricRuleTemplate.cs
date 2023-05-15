@@ -117,12 +117,16 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// The version of the alert template to be modified.
+        /// 
+        /// &gt; **NOTE:** The version changes with the number of times that the alert template is modified.
         /// </summary>
         [Output("restVersion")]
         public Output<string> RestVersion { get; private set; } = null!;
 
         /// <summary>
         /// The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
+        /// 
+        /// &gt; **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
         /// </summary>
         [Output("silenceTime")]
         public Output<int?> SilenceTime { get; private set; } = null!;
@@ -235,12 +239,16 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// The version of the alert template to be modified.
+        /// 
+        /// &gt; **NOTE:** The version changes with the number of times that the alert template is modified.
         /// </summary>
         [Input("restVersion")]
         public Input<string>? RestVersion { get; set; }
 
         /// <summary>
         /// The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
+        /// 
+        /// &gt; **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
         /// </summary>
         [Input("silenceTime")]
         public Input<int>? SilenceTime { get; set; }
@@ -315,12 +323,16 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// The version of the alert template to be modified.
+        /// 
+        /// &gt; **NOTE:** The version changes with the number of times that the alert template is modified.
         /// </summary>
         [Input("restVersion")]
         public Input<string>? RestVersion { get; set; }
 
         /// <summary>
         /// The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
+        /// 
+        /// &gt; **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
         /// </summary>
         [Input("silenceTime")]
         public Input<int>? SilenceTime { get; set; }

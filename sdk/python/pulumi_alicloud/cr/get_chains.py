@@ -176,6 +176,7 @@ def get_chains(enable_details: Optional[bool] = None,
     :param Sequence[str] ids: A list of Chain IDs.
     :param str instance_id: The ID of CR Enterprise Edition instance.
     :param str name_regex: A regex string to filter results by Chain name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str repo_name: The name of CR Enterprise Edition repository.
     :param str repo_namespace_name: The name of CR Enterprise Edition namespace.
     """
@@ -242,6 +243,7 @@ def get_chains_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
     :param Sequence[str] ids: A list of Chain IDs.
     :param str instance_id: The ID of CR Enterprise Edition instance.
     :param str name_regex: A regex string to filter results by Chain name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str repo_name: The name of CR Enterprise Edition repository.
     :param str repo_namespace_name: The name of CR Enterprise Edition namespace.
     """

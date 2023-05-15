@@ -160,6 +160,7 @@ def get_dhcp_options_sets(dhcp_options_set_name: Optional[str] = None,
            instances in the VPC network.
     :param Sequence[str] ids: A list of Dhcp Options Set IDs.
     :param str name_regex: A regex string to filter results by Dhcp Options Set name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
     """
     __args__ = dict()
@@ -228,6 +229,7 @@ def get_dhcp_options_sets_output(dhcp_options_set_name: Optional[pulumi.Input[Op
            instances in the VPC network.
     :param Sequence[str] ids: A list of Dhcp Options Set IDs.
     :param str name_regex: A regex string to filter results by Dhcp Options Set name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
     """
     ...

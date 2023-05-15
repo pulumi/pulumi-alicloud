@@ -49,6 +49,9 @@ export interface GetHoneypotImagesArgs {
      */
     nameRegex?: string;
     nodeId?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -111,5 +114,8 @@ export interface GetHoneypotImagesOutputArgs {
      */
     nameRegex?: pulumi.Input<string>;
     nodeId?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

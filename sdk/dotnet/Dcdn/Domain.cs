@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Dcdn
     /// DCDN Domain can be imported using the id or DCDN Domain name, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:dcdn/domain:Domain example example.com
+    ///  $ pulumi import alicloud:dcdn/domain:Domain example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:dcdn/domain:Domain")]
@@ -148,6 +148,12 @@ namespace Pulumi.AliCloud.Dcdn
         /// </summary>
         [Output("status")]
         public Output<string?> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The top-level domain name.
@@ -288,6 +294,18 @@ namespace Pulumi.AliCloud.Dcdn
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The top-level domain name.
         /// </summary>
@@ -394,6 +412,18 @@ namespace Pulumi.AliCloud.Dcdn
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The top-level domain name.

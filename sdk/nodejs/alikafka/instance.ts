@@ -143,6 +143,16 @@ export class Instance extends pulumi.CustomResource {
     public readonly securityGroup!: pulumi.Output<string>;
     /**
      * The zones among which you want to deploy the instance.
+     *
+     * > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
+     *
+     * | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+     * |------|-------------|:----:|:-----:|
+     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
+     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
+     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
+     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
+     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
      */
     public readonly selectedZones!: pulumi.Output<string[] | undefined>;
     /**
@@ -324,6 +334,16 @@ export interface InstanceState {
     securityGroup?: pulumi.Input<string>;
     /**
      * The zones among which you want to deploy the instance.
+     *
+     * > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
+     *
+     * | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+     * |------|-------------|:----:|:-----:|
+     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
+     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
+     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
+     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
+     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
      */
     selectedZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -425,6 +445,16 @@ export interface InstanceArgs {
     securityGroup?: pulumi.Input<string>;
     /**
      * The zones among which you want to deploy the instance.
+     *
+     * > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
+     *
+     * | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+     * |------|-------------|:----:|:-----:|
+     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
+     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
+     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
+     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
+     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
      */
     selectedZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Public Ip Address Pool resource.
+    /// Provides a Vpc Public Ip Address Pool resource.
     /// 
-    /// For information about VPC Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
+    /// For information about Vpc Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
     /// 
     /// &gt; **NOTE:** Available in v1.186.0+.
     /// 
@@ -28,11 +28,24 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var defaultRg = new AliCloud.ResourceManager.ResourceGroup("defaultRg", new()
+    ///     {
+    ///         DisplayName = "tf-test-acc-publicaddresspool-383",
+    ///         ResourceGroupName = "tf-test-acc-publicaddresspool-855",
+    ///     });
+    /// 
+    ///     var changeRg = new AliCloud.ResourceManager.ResourceGroup("changeRg", new()
+    ///     {
+    ///         DisplayName = "tf-testacc-publicaddresspool-change-368",
+    ///         ResourceGroupName = "tf-testacc-publicaddresspool-change-499",
+    ///     });
+    /// 
     ///     var @default = new AliCloud.Vpc.PublicIpAddressPool("default", new()
     ///     {
-    ///         Description = "example_value",
-    ///         Isp = "BGP_PRO",
-    ///         PublicIpAddressPoolName = "example_value",
+    ///         Description = "rdk-test",
+    ///         PublicIpAddressPoolName = "rdk-test",
+    ///         Isp = "BGP",
+    ///         ResourceGroupId = defaultRg.Id,
     ///     });
     /// 
     /// });
@@ -40,7 +53,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// VPC Public Ip Address Pool can be imported using the id, e.g.
+    /// Vpc Public Ip Address Pool can be imported using the id, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import alicloud:vpc/publicIpAddressPool:PublicIpAddressPool example &lt;id&gt;
@@ -50,16 +63,31 @@ namespace Pulumi.AliCloud.Vpc
     public partial class PublicIpAddressPool : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The description of the VPC Public IP address pool.
+        /// The creation time of the resource.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Description.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether there is a free IP address.
+        /// </summary>
+        [Output("ipAddressRemaining")]
+        public Output<bool> IpAddressRemaining { get; private set; } = null!;
 
         /// <summary>
         /// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
         /// </summary>
         [Output("isp")]
         public Output<string> Isp { get; private set; } = null!;
+
+        [Output("publicIpAddressPoolId")]
+        public Output<string> PublicIpAddressPoolId { get; private set; } = null!;
 
         /// <summary>
         /// The name of the VPC Public IP address pool.
@@ -68,10 +96,34 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> PublicIpAddressPoolName { get; private set; } = null!;
 
         /// <summary>
+        /// The resource group ID of the VPC Public IP address pool.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the VPC Public IP address pool.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The tags of PrefixList.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The total number of public IP address pools.
+        /// </summary>
+        [Output("totalIpNum")]
+        public Output<int> TotalIpNum { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of used IP addresses in the public IP address pool.
+        /// </summary>
+        [Output("usedIpNum")]
+        public Output<int> UsedIpNum { get; private set; } = null!;
 
 
         /// <summary>
@@ -120,7 +172,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class PublicIpAddressPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the VPC Public IP address pool.
+        /// Description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -136,6 +188,24 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("publicIpAddressPoolName")]
         public Input<string>? PublicIpAddressPoolName { get; set; }
+
+        /// <summary>
+        /// The resource group ID of the VPC Public IP address pool.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tags of PrefixList.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public PublicIpAddressPoolArgs()
         {
@@ -146,16 +216,31 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class PublicIpAddressPoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the VPC Public IP address pool.
+        /// The creation time of the resource.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Whether there is a free IP address.
+        /// </summary>
+        [Input("ipAddressRemaining")]
+        public Input<bool>? IpAddressRemaining { get; set; }
 
         /// <summary>
         /// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
         /// </summary>
         [Input("isp")]
         public Input<string>? Isp { get; set; }
+
+        [Input("publicIpAddressPoolId")]
+        public Input<string>? PublicIpAddressPoolId { get; set; }
 
         /// <summary>
         /// The name of the VPC Public IP address pool.
@@ -164,10 +249,40 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? PublicIpAddressPoolName { get; set; }
 
         /// <summary>
+        /// The resource group ID of the VPC Public IP address pool.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
         /// The status of the VPC Public IP address pool.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tags of PrefixList.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The total number of public IP address pools.
+        /// </summary>
+        [Input("totalIpNum")]
+        public Input<int>? TotalIpNum { get; set; }
+
+        /// <summary>
+        /// The number of used IP addresses in the public IP address pool.
+        /// </summary>
+        [Input("usedIpNum")]
+        public Input<int>? UsedIpNum { get; set; }
 
         public PublicIpAddressPoolState()
         {

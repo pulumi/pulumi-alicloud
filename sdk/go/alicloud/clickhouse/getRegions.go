@@ -59,7 +59,8 @@ func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.Invoke
 // A collection of arguments for invoking getRegions.
 type GetRegionsArgs struct {
 	// Set to true to match only the region configured in the provider. Default value: `true`.
-	Current    *bool   `pulumi:"current"`
+	Current *bool `pulumi:"current"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The Region ID.
 	RegionId *string `pulumi:"regionId"`
@@ -91,7 +92,8 @@ func GetRegionsOutput(ctx *pulumi.Context, args GetRegionsOutputArgs, opts ...pu
 // A collection of arguments for invoking getRegions.
 type GetRegionsOutputArgs struct {
 	// Set to true to match only the region configured in the provider. Default value: `true`.
-	Current    pulumi.BoolPtrInput   `pulumi:"current"`
+	Current pulumi.BoolPtrInput `pulumi:"current"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The Region ID.
 	RegionId pulumi.StringPtrInput `pulumi:"regionId"`

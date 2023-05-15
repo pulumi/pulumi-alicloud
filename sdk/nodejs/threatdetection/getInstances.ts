@@ -49,6 +49,9 @@ export interface GetInstancesArgs {
      * The first ID of the resource
      */
     instanceId?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     pageNumber?: number;
     pageSize?: number;
@@ -116,6 +119,9 @@ export interface GetInstancesOutputArgs {
      * The first ID of the resource
      */
     instanceId?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;

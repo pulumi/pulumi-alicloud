@@ -32,7 +32,8 @@ type GetPatchBaselinesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// Operating system type.
 	OperationSystem *string `pulumi:"operationSystem"`
-	OutputFile      *string `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// Patch baseline sharing type.
 	ShareType *string `pulumi:"shareType"`
 }
@@ -74,7 +75,8 @@ type GetPatchBaselinesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// Operating system type.
 	OperationSystem pulumi.StringPtrInput `pulumi:"operationSystem"`
-	OutputFile      pulumi.StringPtrInput `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Patch baseline sharing type.
 	ShareType pulumi.StringPtrInput `pulumi:"shareType"`
 }

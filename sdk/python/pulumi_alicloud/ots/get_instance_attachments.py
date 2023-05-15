@@ -133,6 +133,7 @@ def get_instance_attachments(instance_name: Optional[str] = None,
 
     :param str instance_name: The name of OTS instance.
     :param str name_regex: A regex string to filter results by vpc name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['instanceName'] = instance_name
@@ -174,5 +175,6 @@ def get_instance_attachments_output(instance_name: Optional[pulumi.Input[str]] =
 
     :param str instance_name: The name of OTS instance.
     :param str name_regex: A regex string to filter results by vpc name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

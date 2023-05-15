@@ -101,7 +101,7 @@ public final class GetInstancesInstance {
      */
     private String regionId;
     /**
-     * @return The Id of resource group which the instance belongs.
+     * @return The ID of resource group which the instance belongs.
      * 
      */
     private String resourceGroupId;
@@ -288,7 +288,7 @@ public final class GetInstancesInstance {
         return this.regionId;
     }
     /**
-     * @return The Id of resource group which the instance belongs.
+     * @return The ID of resource group which the instance belongs.
      * 
      */
     public String resourceGroupId() {

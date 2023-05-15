@@ -50,6 +50,9 @@ export interface GetMailAddressesArgs {
      * The key word about account email address.
      */
     keyWord?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Account type.
@@ -111,6 +114,9 @@ export interface GetMailAddressesOutputArgs {
      * The key word about account email address.
      */
     keyWord?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Account type.

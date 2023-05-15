@@ -129,6 +129,11 @@ namespace Pulumi.AliCloud.Rds
         [Input("orderType", required: true)]
         public string OrderType { get; set; } = null!;
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi up`).
+        /// 
+        /// &gt; **NOTE**: If you use the CommodityCode parameter to query the instance types that are available to read-only instances, you must specify the DBInstanceId parameter.
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -182,6 +187,11 @@ namespace Pulumi.AliCloud.Rds
         [Input("orderType", required: true)]
         public Input<string> OrderType { get; set; } = null!;
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi up`).
+        /// 
+        /// &gt; **NOTE**: If you use the CommodityCode parameter to query the instance types that are available to read-only instances, you must specify the DBInstanceId parameter.
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

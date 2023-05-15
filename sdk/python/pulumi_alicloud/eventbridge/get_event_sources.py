@@ -115,6 +115,7 @@ def get_event_sources(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Event Source IDs.
     :param str name_regex: A regex string to filter results by Event Source name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -158,5 +159,6 @@ def get_event_sources_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
 
     :param Sequence[str] ids: A list of Event Source IDs.
     :param str name_regex: A regex string to filter results by Event Source name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

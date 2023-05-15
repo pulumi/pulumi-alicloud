@@ -122,6 +122,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
+     * The time when the database is switched after the instance is migrated, 
+     * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+     * - Immediately (Default): The configurations are immediately changed.
+     * - MaintainTime: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
+     */
+    public readonly effectiveTime!: pulumi.Output<string | undefined>;
+    /**
      * Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
      */
     public readonly enableBackupLog!: pulumi.Output<number | undefined>;
@@ -144,7 +151,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly endTime!: pulumi.Output<string>;
     /**
-     * The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+     * The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default to "5.0".
      * **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
      */
     public readonly engineVersion!: pulumi.Output<string>;
@@ -166,6 +173,10 @@ export class Instance extends pulumi.CustomResource {
      * @deprecated Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
      */
     public readonly instanceChargeType!: pulumi.Output<string>;
+    /**
+     * Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
+     * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
+     */
     public readonly instanceClass!: pulumi.Output<string | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
@@ -259,10 +270,20 @@ export class Instance extends pulumi.CustomResource {
     public readonly restoreTime!: pulumi.Output<string | undefined>;
     /**
      * The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
+     *
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     *
+     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     *
+     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     *
+     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
      */
     public readonly roleArn!: pulumi.Output<string | undefined>;
     /**
      * The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+     *
+     * > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      */
     public readonly secondaryZoneId!: pulumi.Output<string | undefined>;
     /**
@@ -346,6 +367,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["dbInstanceName"] = state ? state.dbInstanceName : undefined;
             resourceInputs["dedicatedHostGroupId"] = state ? state.dedicatedHostGroupId : undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["effectiveTime"] = state ? state.effectiveTime : undefined;
             resourceInputs["enableBackupLog"] = state ? state.enableBackupLog : undefined;
             resourceInputs["enablePublic"] = state ? state.enablePublic : undefined;
             resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
@@ -409,6 +431,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["dbInstanceName"] = args ? args.dbInstanceName : undefined;
             resourceInputs["dedicatedHostGroupId"] = args ? args.dedicatedHostGroupId : undefined;
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
             resourceInputs["enableBackupLog"] = args ? args.enableBackupLog : undefined;
             resourceInputs["enablePublic"] = args ? args.enablePublic : undefined;
             resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
@@ -549,6 +572,13 @@ export interface InstanceState {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
+     * The time when the database is switched after the instance is migrated, 
+     * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+     * - Immediately (Default): The configurations are immediately changed.
+     * - MaintainTime: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
+     */
+    effectiveTime?: pulumi.Input<string>;
+    /**
      * Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
      */
     enableBackupLog?: pulumi.Input<number>;
@@ -571,7 +601,7 @@ export interface InstanceState {
      */
     endTime?: pulumi.Input<string>;
     /**
-     * The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+     * The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default to "5.0".
      * **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
      */
     engineVersion?: pulumi.Input<string>;
@@ -593,6 +623,10 @@ export interface InstanceState {
      * @deprecated Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
      */
     instanceChargeType?: pulumi.Input<string>;
+    /**
+     * Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
+     * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
+     */
     instanceClass?: pulumi.Input<string>;
     /**
      * It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
@@ -686,10 +720,20 @@ export interface InstanceState {
     restoreTime?: pulumi.Input<string>;
     /**
      * The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
+     *
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     *
+     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     *
+     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     *
+     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
      */
     roleArn?: pulumi.Input<string>;
     /**
      * The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+     *
+     * > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      */
     secondaryZoneId?: pulumi.Input<string>;
     /**
@@ -814,6 +858,13 @@ export interface InstanceArgs {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
+     * The time when the database is switched after the instance is migrated, 
+     * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+     * - Immediately (Default): The configurations are immediately changed.
+     * - MaintainTime: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
+     */
+    effectiveTime?: pulumi.Input<string>;
+    /**
      * Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
      */
     enableBackupLog?: pulumi.Input<number>;
@@ -832,7 +883,7 @@ export interface InstanceArgs {
      */
     encryptionName?: pulumi.Input<string>;
     /**
-     * The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+     * The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default to "5.0".
      * **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
      */
     engineVersion?: pulumi.Input<string>;
@@ -854,6 +905,10 @@ export interface InstanceArgs {
      * @deprecated Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
      */
     instanceChargeType?: pulumi.Input<string>;
+    /**
+     * Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
+     * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
+     */
     instanceClass?: pulumi.Input<string>;
     /**
      * It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
@@ -943,10 +998,20 @@ export interface InstanceArgs {
     restoreTime?: pulumi.Input<string>;
     /**
      * The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
+     *
+     * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     *
+     * > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+     *
+     * > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     *
+     * > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
      */
     roleArn?: pulumi.Input<string>;
     /**
      * The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+     *
+     * > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      */
     secondaryZoneId?: pulumi.Input<string>;
     /**

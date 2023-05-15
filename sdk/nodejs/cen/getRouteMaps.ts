@@ -62,6 +62,9 @@ export interface GetRouteMapsArgs {
      * A list of CEN route map IDs. Each item formats as `<cen_id>:<route_map_id>`.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the route map, including `Creating`, `Active` and `Deleting`.
@@ -154,6 +157,9 @@ export interface GetRouteMapsOutputArgs {
      * A list of CEN route map IDs. Each item formats as `<cen_id>:<route_map_id>`.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the route map, including `Creating`, `Active` and `Deleting`.

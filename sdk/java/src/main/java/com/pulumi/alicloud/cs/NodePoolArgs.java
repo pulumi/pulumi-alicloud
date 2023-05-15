@@ -571,7 +571,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
      * 
      * @deprecated
      * Field &#39;rollout_policy&#39; has been deprecated from provider version 1.184.0. Please use new field &#39;rolling_policy&#39; instead it to ensure the config takes effect
@@ -582,7 +582,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<NodePoolRolloutPolicyArgs> rolloutPolicy;
 
     /**
-     * @return Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+     * @return Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
      * 
      * @deprecated
      * Field &#39;rollout_policy&#39; has been deprecated from provider version 1.184.0. Please use new field &#39;rolling_policy&#39; instead it to ensure the config takes effect
@@ -1810,7 +1810,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rolloutPolicy Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+         * @param rolloutPolicy Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
          * 
          * @return builder
          * 
@@ -1825,7 +1825,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rolloutPolicy Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+         * @param rolloutPolicy Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
          * 
          * @return builder
          * 

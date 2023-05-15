@@ -35,6 +35,9 @@ export interface GetProjectsArgs {
      * A regex string to filter results by project name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of project.
@@ -78,6 +81,9 @@ export interface GetProjectsOutputArgs {
      * A regex string to filter results by project name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of project.

@@ -83,7 +83,8 @@ type GetPolicyGroupsArgs struct {
 	// A list of Policy Group IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Policy Group name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of policy.
 	Status *string `pulumi:"status"`
@@ -119,7 +120,8 @@ type GetPolicyGroupsOutputArgs struct {
 	// A list of Policy Group IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Policy Group name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of policy.
 	Status pulumi.StringPtrInput `pulumi:"status"`

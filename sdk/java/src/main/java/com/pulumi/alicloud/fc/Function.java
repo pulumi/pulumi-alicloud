@@ -20,6 +20,131 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Alicloud Function Compute Function resource. Function allows you to trigger execution of code in response to events in Alibaba Cloud. The Function itself includes source code and runtime configuration.
+ *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/doc-detail/52895.htm).
+ * 
+ * &gt; **NOTE:** The resource requires a provider field &#39;account_id&#39;. See account_id.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
+ * import com.pulumi.alicloud.ram.Role;
+ * import com.pulumi.alicloud.ram.RoleArgs;
+ * import com.pulumi.alicloud.ram.RolePolicyAttachment;
+ * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
+ * import com.pulumi.alicloud.fc.Service;
+ * import com.pulumi.alicloud.fc.ServiceArgs;
+ * import com.pulumi.alicloud.fc.inputs.ServiceLogConfigArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketObject;
+ * import com.pulumi.alicloud.oss.BucketObjectArgs;
+ * import com.pulumi.alicloud.fc.Function;
+ * import com.pulumi.alicloud.fc.FunctionArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;alicloudfcfunctionconfig&#34;);
+ *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
+ *             .description(&#34;tf unit test&#34;)
+ *             .build());
+ * 
+ *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
+ *             .project(defaultProject.name())
+ *             .retentionPeriod(&#34;3000&#34;)
+ *             .shardCount(1)
+ *             .build());
+ * 
+ *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
+ *             .document(&#34;&#34;&#34;
+ *         {
+ *           &#34;Statement&#34;: [
+ *             {
+ *               &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
+ *               &#34;Effect&#34;: &#34;Allow&#34;,
+ *               &#34;Principal&#34;: {
+ *                 &#34;Service&#34;: [
+ *                   &#34;fc.aliyuncs.com&#34;
+ *                 ]
+ *               }
+ *             }
+ *           ],
+ *           &#34;Version&#34;: &#34;1&#34;
+ *         }
+ *     
+ *             &#34;&#34;&#34;)
+ *             .description(&#34;this is a test&#34;)
+ *             .force(true)
+ *             .build());
+ * 
+ *         var defaultRolePolicyAttachment = new RolePolicyAttachment(&#34;defaultRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+ *             .roleName(defaultRole.name())
+ *             .policyName(&#34;AliyunLogFullAccess&#34;)
+ *             .policyType(&#34;System&#34;)
+ *             .build());
+ * 
+ *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
+ *             .description(&#34;tf unit test&#34;)
+ *             .logConfig(ServiceLogConfigArgs.builder()
+ *                 .project(defaultProject.name())
+ *                 .logstore(defaultStore.name())
+ *                 .build())
+ *             .role(defaultRole.arn())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(defaultRolePolicyAttachment)
+ *                 .build());
+ * 
+ *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
+ *             .bucket(name)
+ *             .build());
+ * 
+ *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
+ *             .bucket(defaultBucket.id())
+ *             .key(&#34;fc/hello.zip&#34;)
+ *             .source(&#34;./hello.zip&#34;)
+ *             .build());
+ * 
+ *         var foo = new Function(&#34;foo&#34;, FunctionArgs.builder()        
+ *             .service(defaultService.name())
+ *             .description(&#34;tf&#34;)
+ *             .ossBucket(defaultBucket.id())
+ *             .ossKey(defaultBucketObject.key())
+ *             .memorySize(&#34;512&#34;)
+ *             .runtime(&#34;python2.7&#34;)
+ *             .handler(&#34;hello.handler&#34;)
+ *             .environmentVariables(Map.of(&#34;prefix&#34;, &#34;terraform&#34;))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Module Support
+ * 
+ * You can use to the existing fc module
+ * to create a function quickly and set several triggers for it.
+ * 
  * ## Import
  * 
  * Function Compute function can be imported using the id, e.g.
@@ -46,14 +171,16 @@ public class Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.caPort);
     }
     /**
-     * The checksum (crc64) of the function code.
+     * The checksum (crc64) of the function code.Used to trigger updates.The value can be generated by data source alicloud_file_crc64_checksum.
+     * &gt; **NOTE:** For more information, see [Limits](https://www.alibabacloud.com/help/doc-detail/51907.htm).
      * 
      */
     @Export(name="codeChecksum", type=String.class, parameters={})
     private Output<String> codeChecksum;
 
     /**
-     * @return The checksum (crc64) of the function code.
+     * @return The checksum (crc64) of the function code.Used to trigger updates.The value can be generated by data source alicloud_file_crc64_checksum.
+     * &gt; **NOTE:** For more information, see [Limits](https://www.alibabacloud.com/help/doc-detail/51907.htm).
      * 
      */
     public Output<String> codeChecksum() {

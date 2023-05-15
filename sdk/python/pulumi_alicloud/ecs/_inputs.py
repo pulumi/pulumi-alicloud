@@ -887,6 +887,8 @@ class ImageImportDiskDeviceMappingArgs:
         :param pulumi.Input[str] format: Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
         :param pulumi.Input[str] oss_bucket: Save the exported OSS bucket.
         :param pulumi.Input[str] oss_object: The file name of your OSS Object.
+               
+               > **NOTE:** The disk_device_mapping is a list and it's first item will be used to system disk and other items are used to data disks.
         """
         if device is not None:
             pulumi.set(__self__, "device", device)
@@ -952,6 +954,8 @@ class ImageImportDiskDeviceMappingArgs:
     def oss_object(self) -> Optional[pulumi.Input[str]]:
         """
         The file name of your OSS Object.
+
+        > **NOTE:** The disk_device_mapping is a list and it's first item will be used to system disk and other items are used to data disks.
         """
         return pulumi.get(self, "oss_object")
 
@@ -1209,9 +1213,15 @@ class LaunchTemplateDataDiskArgs:
                - cloud_ssd: SSD cloud Disks.
                - ephemeral_ssd: local SSD Disks
                - cloud_essd: ESSD cloud Disks.
+               
+               Default to `cloud_efficiency`.
         :param pulumi.Input[bool] delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+               
+               Default to true
         :param pulumi.Input[str] description: The description of the data disk.
         :param pulumi.Input[bool] encrypted: Encrypted the data in this disk.
+               
+               Default to false
         :param pulumi.Input[str] name: The name of the data disk.
         :param pulumi.Input[int] size: The size of the data disk.
                - cloud：[5, 2000]
@@ -1248,6 +1258,8 @@ class LaunchTemplateDataDiskArgs:
         - cloud_ssd: SSD cloud Disks.
         - ephemeral_ssd: local SSD Disks
         - cloud_essd: ESSD cloud Disks.
+
+        Default to `cloud_efficiency`.
         """
         return pulumi.get(self, "category")
 
@@ -1260,6 +1272,8 @@ class LaunchTemplateDataDiskArgs:
     def delete_with_instance(self) -> Optional[pulumi.Input[bool]]:
         """
         Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+
+        Default to true
         """
         return pulumi.get(self, "delete_with_instance")
 
@@ -1284,6 +1298,8 @@ class LaunchTemplateDataDiskArgs:
     def encrypted(self) -> Optional[pulumi.Input[bool]]:
         """
         Encrypted the data in this disk.
+
+        Default to false
         """
         return pulumi.get(self, "encrypted")
 
@@ -1446,7 +1462,11 @@ class LaunchTemplateSystemDiskArgs:
                - cloud_ssd: SSD cloud Disks.
                - ephemeral_ssd: local SSD Disks
                - cloud_essd: ESSD cloud Disks.
+               
+               Default to `cloud_efficiency`.
         :param pulumi.Input[bool] delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+               
+               Default to true
         :param pulumi.Input[str] description: The description of the data disk.
         :param pulumi.Input[str] name: The name of the data disk.
         :param pulumi.Input[int] size: The size of the data disk.
@@ -1481,6 +1501,8 @@ class LaunchTemplateSystemDiskArgs:
         - cloud_ssd: SSD cloud Disks.
         - ephemeral_ssd: local SSD Disks
         - cloud_essd: ESSD cloud Disks.
+
+        Default to `cloud_efficiency`.
         """
         return pulumi.get(self, "category")
 
@@ -1493,6 +1515,8 @@ class LaunchTemplateSystemDiskArgs:
     def delete_with_instance(self) -> Optional[pulumi.Input[bool]]:
         """
         Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+
+        Default to true
         """
         return pulumi.get(self, "delete_with_instance")
 

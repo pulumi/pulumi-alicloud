@@ -158,6 +158,7 @@ def get_rules(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] listener_ids: The listener ids.
     :param Sequence[str] load_balancer_ids: The load balancer ids.
     :param str name_regex: A regex string to filter results by Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] rule_ids: The rule ids.
     :param str status: The status of the resource.
     """
@@ -218,6 +219,7 @@ def get_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None
     :param Sequence[str] listener_ids: The listener ids.
     :param Sequence[str] load_balancer_ids: The load balancer ids.
     :param str name_regex: A regex string to filter results by Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] rule_ids: The rule ids.
     :param str status: The status of the resource.
     """

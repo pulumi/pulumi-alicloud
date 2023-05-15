@@ -67,6 +67,9 @@ export interface GetMountTargetsArgs {
      * Filter results by a specific NetworkType.
      */
     networkType?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.
@@ -187,6 +190,9 @@ export interface GetMountTargetsOutputArgs {
      * Filter results by a specific NetworkType.
      */
     networkType?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Filter results by the status of mount target. Valid values: `Active`, `Inactive` and `Pending`.

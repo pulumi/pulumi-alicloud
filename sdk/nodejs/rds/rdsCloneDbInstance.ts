@@ -99,6 +99,8 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
     public readonly autoUpgradeMinorVersion!: pulumi.Output<string>;
     /**
      * The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+     *
+     * > **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instanceStorage` check. Otherwise, check.
      */
     public readonly backupId!: pulumi.Output<string | undefined>;
     /**
@@ -160,6 +162,8 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
     public readonly dbInstanceDescription!: pulumi.Output<string | undefined>;
     /**
      * The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+     *
+     * > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
      */
     public readonly dbInstanceStorage!: pulumi.Output<number>;
     /**
@@ -173,6 +177,8 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
     public readonly dbInstanceStorageType!: pulumi.Output<string>;
     /**
      * The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+     *
+     * > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      */
     public readonly dbName!: pulumi.Output<string | undefined>;
     /**
@@ -187,6 +193,8 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
      * The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
+     *
+     * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
@@ -199,6 +207,8 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
     public readonly effectiveTime!: pulumi.Output<string | undefined>;
     /**
      * The ID of the private key.
+     *
+     * > **NOTE:** This parameter is available only when the instance runs MySQL.
      */
     public readonly encryptionKey!: pulumi.Output<string | undefined>;
     /**
@@ -238,7 +248,9 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
      */
     public readonly parameters!: pulumi.Output<outputs.rds.RdsCloneDbInstanceParameter[]>;
     /**
-     * The password of the certificate.
+     * The password of the certificate. 
+     *
+     * > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
@@ -247,6 +259,8 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
     public readonly paymentType!: pulumi.Output<string>;
     /**
      * The period. Valid values: `Month`, `Year`.
+     *
+     * > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the period parameter.
      */
     public readonly period!: pulumi.Output<string | undefined>;
     /**
@@ -287,12 +301,16 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
     public readonly restoreTime!: pulumi.Output<string | undefined>;
     /**
      * The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+     *
+     * > **NOTE:** This parameter is available only when the instance runs MySQL.
      */
     public readonly roleArn!: pulumi.Output<string | undefined>;
     /**
      * The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
      * * IP address form, for example: 10.23.12.24.
      * * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+     *
+     * > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
      */
     public readonly securityIps!: pulumi.Output<string[]>;
     /**
@@ -328,6 +346,8 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
      * * **Sync**: strong synchronization
      * * **Semi-sync**: Semi-synchronous
      * * **Async**: asynchronous
+     *
+     * > **NOTE:** SQL Server 2017 cluster version is currently not supported.
      */
     public readonly syncMode!: pulumi.Output<string>;
     /**
@@ -351,18 +371,26 @@ export class RdsCloneDbInstance extends pulumi.CustomResource {
      * The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
      * * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
      * * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
+     *
+     * > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the usedTime parameter.
      */
     public readonly usedTime!: pulumi.Output<number | undefined>;
     /**
      * The ID of the VPC to which the new instance belongs.
+     *
+     * > **NOTE:** Make sure that the VPC resides in the specified region.
      */
     public readonly vpcId!: pulumi.Output<string>;
     /**
      * The ID of the vSwitch associated with the specified VPC.
+     *
+     * > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
      */
     public readonly vswitchId!: pulumi.Output<string>;
     /**
      * The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+     *
+     * > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -532,6 +560,8 @@ export interface RdsCloneDbInstanceState {
     autoUpgradeMinorVersion?: pulumi.Input<string>;
     /**
      * The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+     *
+     * > **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instanceStorage` check. Otherwise, check.
      */
     backupId?: pulumi.Input<string>;
     /**
@@ -593,6 +623,8 @@ export interface RdsCloneDbInstanceState {
     dbInstanceDescription?: pulumi.Input<string>;
     /**
      * The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+     *
+     * > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
      */
     dbInstanceStorage?: pulumi.Input<number>;
     /**
@@ -606,6 +638,8 @@ export interface RdsCloneDbInstanceState {
     dbInstanceStorageType?: pulumi.Input<string>;
     /**
      * The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+     *
+     * > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      */
     dbName?: pulumi.Input<string>;
     /**
@@ -620,6 +654,8 @@ export interface RdsCloneDbInstanceState {
      * The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
+     *
+     * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -632,6 +668,8 @@ export interface RdsCloneDbInstanceState {
     effectiveTime?: pulumi.Input<string>;
     /**
      * The ID of the private key.
+     *
+     * > **NOTE:** This parameter is available only when the instance runs MySQL.
      */
     encryptionKey?: pulumi.Input<string>;
     /**
@@ -671,7 +709,9 @@ export interface RdsCloneDbInstanceState {
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.rds.RdsCloneDbInstanceParameter>[]>;
     /**
-     * The password of the certificate.
+     * The password of the certificate. 
+     *
+     * > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      */
     password?: pulumi.Input<string>;
     /**
@@ -680,6 +720,8 @@ export interface RdsCloneDbInstanceState {
     paymentType?: pulumi.Input<string>;
     /**
      * The period. Valid values: `Month`, `Year`.
+     *
+     * > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the period parameter.
      */
     period?: pulumi.Input<string>;
     /**
@@ -720,12 +762,16 @@ export interface RdsCloneDbInstanceState {
     restoreTime?: pulumi.Input<string>;
     /**
      * The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+     *
+     * > **NOTE:** This parameter is available only when the instance runs MySQL.
      */
     roleArn?: pulumi.Input<string>;
     /**
      * The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
      * * IP address form, for example: 10.23.12.24.
      * * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+     *
+     * > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
      */
     securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -761,6 +807,8 @@ export interface RdsCloneDbInstanceState {
      * * **Sync**: strong synchronization
      * * **Semi-sync**: Semi-synchronous
      * * **Async**: asynchronous
+     *
+     * > **NOTE:** SQL Server 2017 cluster version is currently not supported.
      */
     syncMode?: pulumi.Input<string>;
     /**
@@ -784,18 +832,26 @@ export interface RdsCloneDbInstanceState {
      * The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
      * * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
      * * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
+     *
+     * > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the usedTime parameter.
      */
     usedTime?: pulumi.Input<number>;
     /**
      * The ID of the VPC to which the new instance belongs.
+     *
+     * > **NOTE:** Make sure that the VPC resides in the specified region.
      */
     vpcId?: pulumi.Input<string>;
     /**
      * The ID of the vSwitch associated with the specified VPC.
+     *
+     * > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
      */
     vswitchId?: pulumi.Input<string>;
     /**
      * The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+     *
+     * > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -816,6 +872,8 @@ export interface RdsCloneDbInstanceArgs {
     autoUpgradeMinorVersion?: pulumi.Input<string>;
     /**
      * The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+     *
+     * > **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instanceStorage` check. Otherwise, check.
      */
     backupId?: pulumi.Input<string>;
     /**
@@ -873,6 +931,8 @@ export interface RdsCloneDbInstanceArgs {
     dbInstanceDescription?: pulumi.Input<string>;
     /**
      * The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+     *
+     * > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
      */
     dbInstanceStorage?: pulumi.Input<number>;
     /**
@@ -886,6 +946,8 @@ export interface RdsCloneDbInstanceArgs {
     dbInstanceStorageType: pulumi.Input<string>;
     /**
      * The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+     *
+     * > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      */
     dbName?: pulumi.Input<string>;
     /**
@@ -900,6 +962,8 @@ export interface RdsCloneDbInstanceArgs {
      * The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
+     *
+     * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -912,6 +976,8 @@ export interface RdsCloneDbInstanceArgs {
     effectiveTime?: pulumi.Input<string>;
     /**
      * The ID of the private key.
+     *
+     * > **NOTE:** This parameter is available only when the instance runs MySQL.
      */
     encryptionKey?: pulumi.Input<string>;
     /**
@@ -951,7 +1017,9 @@ export interface RdsCloneDbInstanceArgs {
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.rds.RdsCloneDbInstanceParameter>[]>;
     /**
-     * The password of the certificate.
+     * The password of the certificate. 
+     *
+     * > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      */
     password?: pulumi.Input<string>;
     /**
@@ -960,6 +1028,8 @@ export interface RdsCloneDbInstanceArgs {
     paymentType: pulumi.Input<string>;
     /**
      * The period. Valid values: `Month`, `Year`.
+     *
+     * > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the period parameter.
      */
     period?: pulumi.Input<string>;
     /**
@@ -1000,12 +1070,16 @@ export interface RdsCloneDbInstanceArgs {
     restoreTime?: pulumi.Input<string>;
     /**
      * The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+     *
+     * > **NOTE:** This parameter is available only when the instance runs MySQL.
      */
     roleArn?: pulumi.Input<string>;
     /**
      * The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
      * * IP address form, for example: 10.23.12.24.
      * * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+     *
+     * > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
      */
     securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1041,6 +1115,8 @@ export interface RdsCloneDbInstanceArgs {
      * * **Sync**: strong synchronization
      * * **Semi-sync**: Semi-synchronous
      * * **Async**: asynchronous
+     *
+     * > **NOTE:** SQL Server 2017 cluster version is currently not supported.
      */
     syncMode?: pulumi.Input<string>;
     /**
@@ -1064,18 +1140,26 @@ export interface RdsCloneDbInstanceArgs {
      * The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
      * * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
      * * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
+     *
+     * > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the usedTime parameter.
      */
     usedTime?: pulumi.Input<number>;
     /**
      * The ID of the VPC to which the new instance belongs.
+     *
+     * > **NOTE:** Make sure that the VPC resides in the specified region.
      */
     vpcId?: pulumi.Input<string>;
     /**
      * The ID of the vSwitch associated with the specified VPC.
+     *
+     * > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
      */
     vswitchId?: pulumi.Input<string>;
     /**
      * The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+     *
+     * > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
      */
     zoneId?: pulumi.Input<string>;
 }

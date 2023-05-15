@@ -59,6 +59,9 @@ export interface GetAccessGroupsArgs {
     nameRegex?: string;
     orderBy?: string;
     orderType?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     startOffset?: number;
 }
@@ -123,6 +126,9 @@ export interface GetAccessGroupsOutputArgs {
     nameRegex?: pulumi.Input<string>;
     orderBy?: pulumi.Input<string>;
     orderType?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     startOffset?: pulumi.Input<number>;
 }

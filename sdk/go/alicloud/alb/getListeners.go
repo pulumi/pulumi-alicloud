@@ -65,7 +65,8 @@ type GetListenersArgs struct {
 	ListenerProtocol *string `pulumi:"listenerProtocol"`
 	// The load balancer ids.
 	LoadBalancerIds []string `pulumi:"loadBalancerIds"`
-	OutputFile      *string  `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
 	Status *string `pulumi:"status"`
 }
@@ -109,7 +110,8 @@ type GetListenersOutputArgs struct {
 	ListenerProtocol pulumi.StringPtrInput `pulumi:"listenerProtocol"`
 	// The load balancer ids.
 	LoadBalancerIds pulumi.StringArrayInput `pulumi:"loadBalancerIds"`
-	OutputFile      pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }

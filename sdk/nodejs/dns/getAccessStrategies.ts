@@ -69,6 +69,9 @@ export interface GetAccessStrategiesArgs {
      * A regex string to filter results by Access Strategy name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The type of the access policy.
@@ -147,6 +150,9 @@ export interface GetAccessStrategiesOutputArgs {
      * A regex string to filter results by Access Strategy name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The type of the access policy.

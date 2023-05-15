@@ -30,7 +30,8 @@ type GetListenersArgs struct {
 	ListenerProtocol *string `pulumi:"listenerProtocol"`
 	// The ID of the NLB instance. You can specify at most 20 IDs.
 	LoadBalancerIds []string `pulumi:"loadBalancerIds"`
-	OutputFile      *string  `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getListeners.
@@ -65,7 +66,8 @@ type GetListenersOutputArgs struct {
 	ListenerProtocol pulumi.StringPtrInput `pulumi:"listenerProtocol"`
 	// The ID of the NLB instance. You can specify at most 20 IDs.
 	LoadBalancerIds pulumi.StringArrayInput `pulumi:"loadBalancerIds"`
-	OutputFile      pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetListenersOutputArgs) ElementType() reflect.Type {

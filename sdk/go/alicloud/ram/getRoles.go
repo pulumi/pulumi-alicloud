@@ -55,7 +55,8 @@ type GetRolesArgs struct {
 	// A list of ram role IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by the role name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
 	PolicyName *string `pulumi:"policyName"`
@@ -97,7 +98,8 @@ type GetRolesOutputArgs struct {
 	// A list of ram role IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by the role name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
 	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`

@@ -44,6 +44,9 @@ export interface GetSystemSecurityPoliciesArgs {
      * A list of System Security Policy IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     tags?: {[key: string]: any};
 }
@@ -98,6 +101,9 @@ export interface GetSystemSecurityPoliciesOutputArgs {
      * A list of System Security Policy IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: any}>;
 }

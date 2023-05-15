@@ -178,14 +178,20 @@ export namespace alb {
     export interface ListenerAccessLogTracingConfig {
         /**
          * Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+         *
+         * > **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
          */
         tracingEnabled?: pulumi.Input<boolean>;
         /**
          * Xtrace Sampling Rate. Value: `1` to `10000`.
+         *
+         * > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
          */
         tracingSample?: pulumi.Input<number>;
         /**
          * Xtrace Type Value Is `Zipkin`.
+         *
+         * > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
          */
         tracingType?: pulumi.Input<string>;
     }
@@ -251,6 +257,8 @@ export namespace alb {
         quicListenerId?: pulumi.Input<string>;
         /**
          * Indicates Whether to Enable the QuIC Upgrade.
+         *
+         * > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
          */
         quicUpgradeEnabled?: pulumi.Input<boolean>;
     }
@@ -1386,6 +1394,16 @@ export namespace cfg {
         configRuleId?: pulumi.Input<string>;
     }
 
+    export interface RuleCompliance {
+        /**
+         * The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
+         */
+        complianceType?: pulumi.Input<string>;
+        /**
+         * The count of compliance.
+         */
+        count?: pulumi.Input<number>;
+    }
 }
 
 export namespace chatbot {
@@ -1659,6 +1677,8 @@ export namespace cloudsso {
         encodedMetadataDocument?: pulumi.Input<string>;
         /**
          * SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+         *
+         * > **NOTE:** The `samlIdentityProviderConfiguration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
          */
         ssoStatus?: pulumi.Input<string>;
     }
@@ -1862,6 +1882,8 @@ export namespace cms {
         id?: pulumi.Input<string>;
         /**
          * The parameters of the alert callback. The parameters are in the JSON format.
+         *
+         * > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
          */
         jsonParams?: pulumi.Input<string>;
         /**
@@ -1995,10 +2017,14 @@ export namespace cms {
         escalations?: pulumi.Input<inputs.cms.MetricRuleTemplateAlertTemplateEscalations>;
         /**
          * The name of the metric.
+         *
+         * > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
          */
         metricName: pulumi.Input<string>;
         /**
          * The namespace of the service.
+         *
+         * > **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
          */
         namespace: pulumi.Input<string>;
         /**
@@ -2167,6 +2193,8 @@ export namespace cr {
     export interface ChainChainConfigNodeNodeConfigDenyPolicy {
         /**
          * The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+         *
+         * > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `nodeName` are fixed. You can refer to the template given in the example for configuration.
          */
         action?: pulumi.Input<string>;
         /**
@@ -2661,6 +2689,11 @@ export namespace cs {
         maintenanceTime: pulumi.Input<string>;
         /**
          * Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+         *
+         * for example:
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         weeklyPeriod: pulumi.Input<string>;
     }
@@ -2936,6 +2969,8 @@ export namespace cs {
         config?: pulumi.Input<string>;
         /**
          * Disables the automatic installation of a component. Default is `false`.
+         *
+         * The following example is the definition of addons block, The type of this field is list:
          */
         disabled?: pulumi.Input<boolean>;
         /**
@@ -4429,6 +4464,8 @@ export namespace eci {
         nfsVolumeReadOnly?: pulumi.Input<boolean>;
         /**
          * The address of the NFS server.
+         *
+         * > **NOTE:** Every volumes mounted must have name and type attributes.
          */
         nfsVolumeServer?: pulumi.Input<string>;
         /**
@@ -4756,6 +4793,8 @@ export namespace ecs {
         ossBucket?: pulumi.Input<string>;
         /**
          * The file name of your OSS Object.
+         *
+         * > **NOTE:** The diskDeviceMapping is a list and it's first item will be used to system disk and other items are used to data disks.
          */
         ossObject?: pulumi.Input<string>;
     }
@@ -4831,10 +4870,14 @@ export namespace ecs {
          * - cloud_ssd: SSD cloud Disks.
          * - ephemeral_ssd: local SSD Disks
          * - cloud_essd: ESSD cloud Disks.
+         *
+         * Default to `cloudEfficiency`.
          */
         category?: pulumi.Input<string>;
         /**
          * Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+         *
+         * Default to true
          */
         deleteWithInstance?: pulumi.Input<boolean>;
         /**
@@ -4843,6 +4886,8 @@ export namespace ecs {
         description?: pulumi.Input<string>;
         /**
          * Encrypted the data in this disk.
+         *
+         * Default to false
          */
         encrypted?: pulumi.Input<boolean>;
         /**
@@ -4896,10 +4941,14 @@ export namespace ecs {
          * - cloud_ssd: SSD cloud Disks.
          * - ephemeral_ssd: local SSD Disks
          * - cloud_essd: ESSD cloud Disks.
+         *
+         * Default to `cloudEfficiency`.
          */
         category?: pulumi.Input<string>;
         /**
          * Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+         *
+         * Default to true
          */
         deleteWithInstance?: pulumi.Input<boolean>;
         /**
@@ -5386,6 +5435,14 @@ export namespace emrv2 {
     }
 
     export interface ClusterNodeAttribute {
+        /**
+         * Whether to enable data disk encryption.
+         */
+        dataDiskEncrypted?: pulumi.Input<boolean>;
+        /**
+         * The kms key id used to encrypt the data disk. It takes effect when dataDiskEncrypted is true.
+         */
+        dataDiskKmsKeyId?: pulumi.Input<string>;
         /**
          * The name of the key pair.
          */
@@ -5952,6 +6009,8 @@ export namespace ess {
         nfsVolumeReadOnly?: pulumi.Input<boolean>;
         /**
          * The address of the NFS server.
+         *
+         * > **NOTE:** Every volume mounted must have a name and type attributes.
          */
         nfsVolumeServer?: pulumi.Input<string>;
         /**
@@ -6067,6 +6126,14 @@ export namespace eventbridge {
         resourceKey: pulumi.Input<string>;
         /**
          * The template of param.
+         *
+         * > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         * In order to fix the diff, from version 1.160.0,
+         * this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
+         * If you want to set `resourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.
          */
         template?: pulumi.Input<string>;
         /**
@@ -6143,6 +6210,8 @@ export namespace fc {
         functionName: pulumi.Input<string>;
         /**
          * The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+         *
+         * **cert_config** includes the following arguments:
          */
         methods?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -6302,10 +6371,14 @@ export namespace ga {
         endpoint: pulumi.Input<string>;
         /**
          * The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
+         *
+         * > **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
          */
         type: pulumi.Input<string>;
         /**
          * The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
+         *
+         * > **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
          */
         weight: pulumi.Input<number>;
     }
@@ -6536,6 +6609,8 @@ export namespace hbr {
         operator?: string;
         /**
          * Set of values that are accepted for the given field.
+         *
+         * > **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
          */
         values?: string[];
     }
@@ -6551,6 +6626,8 @@ export namespace hbr {
         operator?: pulumi.Input<string>;
         /**
          * Set of values that are accepted for the given field.
+         *
+         * > **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
          */
         values?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -6669,6 +6746,8 @@ export namespace imp {
         key?: pulumi.Input<string>;
         /**
          * Configuration item content.
+         *
+         * > **NOTE:**  By default, the attribute `configList` will return all of nine keys with empty value. If you want to set one or more of the key's value, you had better also set other keys, otherwise, there will be a diff.
          */
         value?: pulumi.Input<string>;
     }
@@ -6930,6 +7009,8 @@ export namespace log {
         roleArn?: pulumi.Input<string>;
         /**
          * ETL sinks type, the default value is AliyunLOG.
+         *
+         * > **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
          */
         type?: pulumi.Input<string>;
     }
@@ -6961,6 +7042,11 @@ export namespace log {
         encryptType?: pulumi.Input<string>;
         /**
          * User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         * #### Block user_cmk_info
          */
         userCmkInfo?: pulumi.Input<inputs.log.StoreEncryptConfUserCmkInfo>;
     }
@@ -7022,6 +7108,8 @@ export namespace log {
         alias?: pulumi.Input<string>;
         /**
          * Whether to enable statistics. default to true.
+         *
+         * > **Note:** At least one of the "fullText" and "fieldSearch" should be specified.
          */
         docValue?: pulumi.Input<boolean>;
         /**
@@ -7636,6 +7724,8 @@ export namespace oss {
         noncurrentVersionExpirations?: pulumi.Input<pulumi.Input<inputs.oss.BucketLifecycleRuleNoncurrentVersionExpiration>[]>;
         /**
          * Specifies when noncurrent object versions transitions (documented below).
+         *
+         * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
          */
         noncurrentVersionTransitions?: pulumi.Input<pulumi.Input<inputs.oss.BucketLifecycleRuleNoncurrentVersionTransition>[]>;
         /**
@@ -7655,6 +7745,8 @@ export namespace oss {
         createdBeforeDate?: pulumi.Input<string>;
         /**
          * Specifies the number of days after object creation when the specific rule action takes effect.
+         *
+         * `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
          */
         days?: pulumi.Input<number>;
     }
@@ -7670,10 +7762,14 @@ export namespace oss {
         date?: pulumi.Input<string>;
         /**
          * Specifies the number of days after object creation when the specific rule action takes effect.
+         *
+         * `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
          */
         days?: pulumi.Input<number>;
         /**
          * On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
+         *
+         * `NOTE`: One and only one of "date", "days", "createdBeforeDate" and "expiredObjectDeleteMarker" can be specified in one expiration configuration.
          */
         expiredObjectDeleteMarker?: pulumi.Input<boolean>;
     }
@@ -7681,6 +7777,8 @@ export namespace oss {
     export interface BucketLifecycleRuleNoncurrentVersionExpiration {
         /**
          * Specifies the number of days after object creation when the specific rule action takes effect.
+         *
+         * `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
          */
         days: pulumi.Input<number>;
     }
@@ -7688,6 +7786,8 @@ export namespace oss {
     export interface BucketLifecycleRuleNoncurrentVersionTransition {
         /**
          * Specifies the number of days after object creation when the specific rule action takes effect.
+         *
+         * `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
          */
         days: pulumi.Input<number>;
         /**
@@ -7703,6 +7803,8 @@ export namespace oss {
         createdBeforeDate?: pulumi.Input<string>;
         /**
          * Specifies the number of days after object creation when the specific rule action takes effect.
+         *
+         * `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
          */
         days?: pulumi.Input<number>;
         /**
@@ -7741,6 +7843,8 @@ export namespace oss {
         location: pulumi.Input<string>;
         /**
          * The link used to transfer data in data replication.. Can be `internal` or `ossAcc`. Defaults to `internal`.
+         *
+         * `NOTE`: You can set transferType to ossAcc only when you create cross-region replication (CRR) rules.
          */
         transferType?: pulumi.Input<string>;
     }
@@ -7748,6 +7852,8 @@ export namespace oss {
     export interface BucketReplicationEncryptionConfiguration {
         /**
          * The CMK ID used in SSE-KMS.
+         *
+         * `NOTE`: If the status of sseKmsEncryptedObjects is set to Enabled, you must specify the replica_kms_key_id.
          */
         replicaKmsKeyId: pulumi.Input<string>;
     }
@@ -7755,6 +7861,8 @@ export namespace oss {
     export interface BucketReplicationPrefixSet {
         /**
          * The list of object key name prefix identifying one or more objects to which the rule applies.
+         *
+         * `NOTE`: The prefix must be less than or equal to 1024 characters in length.
          */
         prefixes: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -7805,6 +7913,8 @@ export namespace oss {
     export interface BucketVersioning {
         /**
          * Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
+         *
+         * `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
          */
         status: pulumi.Input<string>;
     }
@@ -8032,6 +8142,8 @@ export namespace pvtz {
     export interface ZoneAttachmentVpc {
         /**
          * The region of the vpc. If not set, the current region will instead of.
+         *
+         * Recommend to use `vpcs`.
          */
         regionId?: pulumi.Input<string>;
         /**
@@ -8319,6 +8431,8 @@ export namespace rds {
          * * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
          * * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
          * * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+         *
+         * > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
          */
         type: pulumi.Input<string>;
         /**
@@ -8489,6 +8603,8 @@ export namespace rds {
          * * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
          * * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
          * * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+         *
+         * > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
          */
         type: pulumi.Input<string>;
         /**
@@ -8555,6 +8671,8 @@ export namespace rds {
          * * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
          * * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
          * * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+         *
+         * > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
          */
         type: pulumi.Input<string>;
         /**
@@ -8640,6 +8758,8 @@ export namespace rds {
          * * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
          * * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
          * * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+         *
+         * > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
          */
         type: pulumi.Input<string>;
         /**

@@ -67,6 +67,8 @@ public final class EciScalingConfigurationVolume {
     /**
      * @return The address of the NFS server.
      * 
+     * &gt; **NOTE:** Every volume mounted must have a name and type attributes.
+     * 
      */
     private @Nullable String nfsVolumeServer;
     /**
@@ -147,6 +149,8 @@ public final class EciScalingConfigurationVolume {
     }
     /**
      * @return The address of the NFS server.
+     * 
+     * &gt; **NOTE:** Every volume mounted must have a name and type attributes.
      * 
      */
     public Optional<String> nfsVolumeServer() {

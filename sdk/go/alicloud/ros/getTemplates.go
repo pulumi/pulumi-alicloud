@@ -61,7 +61,8 @@ type GetTemplatesArgs struct {
 	// A list of Template IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Template name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Share Type.
 	ShareType *string `pulumi:"shareType"`
@@ -106,7 +107,8 @@ type GetTemplatesOutputArgs struct {
 	// A list of Template IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Template name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Share Type.
 	ShareType pulumi.StringPtrInput `pulumi:"shareType"`

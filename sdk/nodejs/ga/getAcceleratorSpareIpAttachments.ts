@@ -52,6 +52,9 @@ export interface GetAcceleratorSpareIpAttachmentsArgs {
      * A list of Accelerator Spare Ip Attachment IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
@@ -112,6 +115,9 @@ export interface GetAcceleratorSpareIpAttachmentsOutputArgs {
      * A list of Accelerator Spare Ip Attachment IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the standby CNAME IP address. Valid values: `active`, `inuse`.

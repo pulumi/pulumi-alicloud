@@ -177,6 +177,7 @@ def get_vpc_endpoints(connection_status: Optional[str] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Vpc Endpoint IDs.
     :param str name_regex: A regex string to filter results by Vpc Endpoint name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str service_name: The name of the terminal node service associated with the terminal node.
     :param str status: The status of Vpc Endpoint.
     :param str vpc_endpoint_name: The name of Vpc Endpoint.
@@ -244,6 +245,7 @@ def get_vpc_endpoints_output(connection_status: Optional[pulumi.Input[Optional[s
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Vpc Endpoint IDs.
     :param str name_regex: A regex string to filter results by Vpc Endpoint name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str service_name: The name of the terminal node service associated with the terminal node.
     :param str status: The status of Vpc Endpoint.
     :param str vpc_endpoint_name: The name of Vpc Endpoint.

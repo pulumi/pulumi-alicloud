@@ -137,6 +137,7 @@ def get_registry_enterprise_namespaces(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of ids to filter results by namespace id. Each item formats as `<instance_id>:<namespace_name>`.
     :param str instance_id: ID of Container Registry Enterprise Edition instance.
     :param str name_regex: A regex string to filter results by namespace name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -183,5 +184,6 @@ def get_registry_enterprise_namespaces_output(ids: Optional[pulumi.Input[Optiona
     :param Sequence[str] ids: A list of ids to filter results by namespace id. Each item formats as `<instance_id>:<namespace_name>`.
     :param str instance_id: ID of Container Registry Enterprise Edition instance.
     :param str name_regex: A regex string to filter results by namespace name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

@@ -139,12 +139,16 @@ public class PrivateZone extends com.pulumi.resources.CustomResource {
     /**
      * The VPC that belongs to the service region.
      * 
+     * -&gt;**NOTE:** The &#34;alicloud.cen.PrivateZone&#34; resource depends on the related &#34;alicloud.cen.InstanceAttachment&#34; resource.
+     * 
      */
     @Export(name="hostVpcId", type=String.class, parameters={})
     private Output<String> hostVpcId;
 
     /**
      * @return The VPC that belongs to the service region.
+     * 
+     * -&gt;**NOTE:** The &#34;alicloud.cen.PrivateZone&#34; resource depends on the related &#34;alicloud.cen.InstanceAttachment&#34; resource.
      * 
      */
     public Output<String> hostVpcId() {

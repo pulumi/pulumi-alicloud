@@ -71,7 +71,8 @@ type GetPrometheusAlertRulesArgs struct {
 	Ids              []string `pulumi:"ids"`
 	MatchExpressions *string  `pulumi:"matchExpressions"`
 	// A regex string to filter results by Prometheus Alert Rule name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the resource. Valid values: `0`, `1`.
 	Status *int `pulumi:"status"`
@@ -115,7 +116,8 @@ type GetPrometheusAlertRulesOutputArgs struct {
 	Ids              pulumi.StringArrayInput `pulumi:"ids"`
 	MatchExpressions pulumi.StringPtrInput   `pulumi:"matchExpressions"`
 	// A regex string to filter results by Prometheus Alert Rule name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the resource. Valid values: `0`, `1`.
 	Status pulumi.IntPtrInput `pulumi:"status"`

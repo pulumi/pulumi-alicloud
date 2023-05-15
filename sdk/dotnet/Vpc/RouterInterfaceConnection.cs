@@ -10,6 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
+    /// Provides a VPC router interface connection resource to connect two router interfaces which are in two different VPCs.
+    /// After that, all of the two router interfaces will be active.
+    /// 
+    /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.199.0`. Please use new resource alicloud_express_connect_router_interface.
+    /// 
+    /// &gt; **NOTE:** At present, Router interface does not support changing opposite router interface, the connection delete action is only deactivating it to inactive, not modifying the connection to empty.
+    /// 
+    /// &gt; **NOTE:** If you want to changing opposite router interface, you can delete router interface and re-build them.
+    /// 
+    /// &gt; **NOTE:** A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
+    /// 
+    /// &gt; **NOTE:** Please remember to add a `depends_on` clause in the router interface connection from the InitiatingSide to the AcceptingSide, because the connection from the AcceptingSide to the InitiatingSide must be done first.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -111,6 +124,9 @@ namespace Pulumi.AliCloud.Vpc
         [Output("oppositeInterfaceId")]
         public Output<string> OppositeInterfaceId { get; private set; } = null!;
 
+        /// <summary>
+        /// Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info &gt; Account Management to check the account ID. Default to Provider account_id.
+        /// </summary>
         [Output("oppositeInterfaceOwnerId")]
         public Output<string> OppositeInterfaceOwnerId { get; private set; } = null!;
 
@@ -122,6 +138,8 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
+        /// 
+        /// &gt; **NOTE:** The value of "opposite_interface_owner_id" or "account_id" must be main account and not be sub account.
         /// </summary>
         [Output("oppositeRouterType")]
         public Output<string?> OppositeRouterType { get; private set; } = null!;
@@ -184,6 +202,9 @@ namespace Pulumi.AliCloud.Vpc
         [Input("oppositeInterfaceId", required: true)]
         public Input<string> OppositeInterfaceId { get; set; } = null!;
 
+        /// <summary>
+        /// Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info &gt; Account Management to check the account ID. Default to Provider account_id.
+        /// </summary>
         [Input("oppositeInterfaceOwnerId")]
         public Input<string>? OppositeInterfaceOwnerId { get; set; }
 
@@ -195,6 +216,8 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
+        /// 
+        /// &gt; **NOTE:** The value of "opposite_interface_owner_id" or "account_id" must be main account and not be sub account.
         /// </summary>
         [Input("oppositeRouterType")]
         public Input<string>? OppositeRouterType { get; set; }
@@ -219,6 +242,9 @@ namespace Pulumi.AliCloud.Vpc
         [Input("oppositeInterfaceId")]
         public Input<string>? OppositeInterfaceId { get; set; }
 
+        /// <summary>
+        /// Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info &gt; Account Management to check the account ID. Default to Provider account_id.
+        /// </summary>
         [Input("oppositeInterfaceOwnerId")]
         public Input<string>? OppositeInterfaceOwnerId { get; set; }
 
@@ -230,6 +256,8 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
+        /// 
+        /// &gt; **NOTE:** The value of "opposite_interface_owner_id" or "account_id" must be main account and not be sub account.
         /// </summary>
         [Input("oppositeRouterType")]
         public Input<string>? OppositeRouterType { get; set; }

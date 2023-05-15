@@ -324,14 +324,14 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
      * 
      */
     @Import(name="securityProtectionTypes")
     private @Nullable Output<List<String>> securityProtectionTypes;
 
     /**
-     * @return The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+     * @return The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
      * 
      */
     public Optional<Output<List<String>>> securityProtectionTypes() {
@@ -831,7 +831,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
          * 
          * @return builder
          * 
@@ -842,7 +842,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
          * 
          * @return builder
          * 
@@ -852,7 +852,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
          * 
          * @return builder
          * 

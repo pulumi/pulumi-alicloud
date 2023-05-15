@@ -10,9 +10,38 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS
 {
     /// <summary>
+    /// This resource will help you to manage a Kubernetes Cluster in Alibaba Cloud Kubernetes Service.
+    /// 
+    /// &gt; **NOTE:** Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
+    /// A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
+    /// VPC, you can set `new_nat_gateway` to "true" to create one automatically.
+    /// 
+    /// &gt; **NOTE:** Each kubernetes cluster contains 3 master nodes and those number cannot be changed at now.
+    /// 
+    /// &gt; **NOTE:** Creating kubernetes cluster need to install several packages and it will cost about 15 minutes. Please be patient.
+    /// 
+    /// &gt; **NOTE:** From version 1.9.4, the provider supports to download kube config, client certificate, client key and cluster ca certificate
+    /// after creating cluster successfully, and you can put them into the specified location, like '~/.kube/config'.
+    /// 
+    /// &gt; **NOTE:** From version 1.16.0, the provider supports Multiple Availability Zones Kubernetes Cluster. To create a cluster of this kind, you must specify 3 or 5 items in `master_vswitch_ids` and `master_instance_types`.
+    /// 
+    /// &gt; **NOTE:** From version 1.20.0, the provider supports disabling internet load balancer for API Server by setting `false` to `slb_internet_enabled`.
+    /// 
+    /// &gt; **NOTE:** If you want to manage Kubernetes, you can use Kubernetes Provider.
+    /// 
+    /// &gt; **NOTE:** You need to activate several other products and confirm Authorization Policy used by Container Service before using this resource.
+    /// Please refer to the `Authorization management` and `Cluster management` sections in the [Document Center](https://www.alibabacloud.com/help/doc-detail/86488.htm).
+    /// 
+    /// &gt; **NOTE:** From version 1.75.0, Some parameters have been removed from resource,You can check them below and re-import the cluster if necessary.
+    /// 
+    /// &gt; **NOTE:** From version 1.101.0+, We supported the `professional managed clusters(ack-pro)`, You can create a pro cluster by setting the the value of `cluster_spec`.
+    /// 
+    /// &gt; **NOTE:** From version 1.177.0+, `exclude_autoscaler_nodes`,`worker_number`,`worker_vswitch_ids`,`worker_instance_types`,`password`,`key_name`,`kms_encrypted_password`,`kms_encryption_context`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_name_mode`,`node_port_range`,`os_type`,`platform`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id` are deprecated.
+    /// We Suggest you using resource **`alicloud.cs.NodePool`** to manage your cluster worker nodes.
+    /// 
     /// ## Import
     /// 
-    /// Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
+    /// Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
     /// 
     /// ```sh
     ///  $ pulumi import alicloud:cs/kubernetes:Kubernetes main cluster-id
@@ -353,6 +382,9 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Whether to create internet load balancer for API Server. Default to true.
+        /// 
+        /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
+        /// If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
         /// </summary>
         [Output("slbInternetEnabled")]
         public Output<bool?> SlbInternetEnabled { get; private set; } = null!;
@@ -910,6 +942,9 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Whether to create internet load balancer for API Server. Default to true.
+        /// 
+        /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
+        /// If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
         /// </summary>
         [Input("slbInternetEnabled")]
         public Input<bool>? SlbInternetEnabled { get; set; }
@@ -1477,6 +1512,9 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Whether to create internet load balancer for API Server. Default to true.
+        /// 
+        /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
+        /// If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
         /// </summary>
         [Input("slbInternetEnabled")]
         public Input<bool>? SlbInternetEnabled { get; set; }

@@ -138,6 +138,7 @@ def get_health_check_templates(health_check_template_ids: Optional[Sequence[str]
     :param str health_check_template_name: The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
     :param Sequence[str] ids: A list of Health Check Template IDs.
     :param str name_regex: A regex string to filter results by Health Check Template name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['healthCheckTemplateIds'] = health_check_template_ids
@@ -190,5 +191,6 @@ def get_health_check_templates_output(health_check_template_ids: Optional[pulumi
     :param str health_check_template_name: The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
     :param Sequence[str] ids: A list of Health Check Template IDs.
     :param str name_regex: A regex string to filter results by Health Check Template name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

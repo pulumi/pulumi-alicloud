@@ -128,6 +128,7 @@ def get_forwarding_rules(accelerator_id: Optional[str] = None,
     :param str accelerator_id: The ID of the Global Accelerator instance.
     :param Sequence[str] ids: A list of Forwarding Rule IDs.
     :param str listener_id: The ID of the listener.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the acceleration region. Valid values: `active`, `configuring`.
     """
     __args__ = dict()
@@ -179,6 +180,7 @@ def get_forwarding_rules_output(accelerator_id: Optional[pulumi.Input[str]] = No
     :param str accelerator_id: The ID of the Global Accelerator instance.
     :param Sequence[str] ids: A list of Forwarding Rule IDs.
     :param str listener_id: The ID of the listener.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the acceleration region. Valid values: `active`, `configuring`.
     """
     ...

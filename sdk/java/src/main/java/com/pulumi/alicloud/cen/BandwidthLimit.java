@@ -143,12 +143,16 @@ public class BandwidthLimit extends com.pulumi.resources.CustomResource {
     /**
      * The bandwidth configured for the interconnected regions communication.
      * 
+     * -&gt;**NOTE:** The &#34;alicloud_cen_bandwidthlimit&#34; resource depends on the related &#34;alicloud.cen.BandwidthPackageAttachment&#34; resource and &#34;alicloud.cen.InstanceAttachment&#34; resource.
+     * 
      */
     @Export(name="bandwidthLimit", type=Integer.class, parameters={})
     private Output<Integer> bandwidthLimit;
 
     /**
      * @return The bandwidth configured for the interconnected regions communication.
+     * 
+     * -&gt;**NOTE:** The &#34;alicloud_cen_bandwidthlimit&#34; resource depends on the related &#34;alicloud.cen.BandwidthPackageAttachment&#34; resource and &#34;alicloud.cen.InstanceAttachment&#34; resource.
      * 
      */
     public Output<Integer> bandwidthLimit() {

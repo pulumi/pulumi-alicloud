@@ -62,7 +62,8 @@ type GetForwardingRulesArgs struct {
 	// A list of Forwarding Rule IDs.
 	Ids []string `pulumi:"ids"`
 	// The ID of the listener.
-	ListenerId string  `pulumi:"listenerId"`
+	ListenerId string `pulumi:"listenerId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the acceleration region. Valid values: `active`, `configuring`.
 	Status *string `pulumi:"status"`
@@ -100,7 +101,8 @@ type GetForwardingRulesOutputArgs struct {
 	// A list of Forwarding Rule IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The ID of the listener.
-	ListenerId pulumi.StringInput    `pulumi:"listenerId"`
+	ListenerId pulumi.StringInput `pulumi:"listenerId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the acceleration region. Valid values: `active`, `configuring`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

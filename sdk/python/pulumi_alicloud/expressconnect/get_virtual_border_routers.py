@@ -152,6 +152,7 @@ def get_virtual_border_routers(filters: Optional[Sequence[pulumi.InputType['GetV
     :param Sequence[pulumi.InputType['GetVirtualBorderRoutersFilterArgs']] filters: Custom filter block as described below.
     :param Sequence[str] ids: A list of Virtual Border Router IDs.
     :param str name_regex: A regex string to filter results by Virtual Border Router name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The VBR state.
     """
     __args__ = dict()
@@ -218,6 +219,7 @@ def get_virtual_border_routers_output(filters: Optional[pulumi.Input[Optional[Se
     :param Sequence[pulumi.InputType['GetVirtualBorderRoutersFilterArgs']] filters: Custom filter block as described below.
     :param Sequence[str] ids: A list of Virtual Border Router IDs.
     :param str name_regex: A regex string to filter results by Virtual Border Router name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The VBR state.
     """
     ...

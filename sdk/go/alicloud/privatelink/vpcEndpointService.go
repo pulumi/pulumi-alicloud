@@ -69,6 +69,8 @@ type VpcEndpointService struct {
 	// The business status of Vpc Endpoint Service.
 	ServiceBusinessStatus pulumi.StringOutput `pulumi:"serviceBusinessStatus"`
 	// The description of the terminal node service.
+	//
+	// > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
 	ServiceDescription pulumi.StringPtrOutput `pulumi:"serviceDescription"`
 	// Service Domain.
 	ServiceDomain pulumi.StringOutput `pulumi:"serviceDomain"`
@@ -116,6 +118,8 @@ type vpcEndpointServiceState struct {
 	// The business status of Vpc Endpoint Service.
 	ServiceBusinessStatus *string `pulumi:"serviceBusinessStatus"`
 	// The description of the terminal node service.
+	//
+	// > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
 	ServiceDescription *string `pulumi:"serviceDescription"`
 	// Service Domain.
 	ServiceDomain *string `pulumi:"serviceDomain"`
@@ -135,6 +139,8 @@ type VpcEndpointServiceState struct {
 	// The business status of Vpc Endpoint Service.
 	ServiceBusinessStatus pulumi.StringPtrInput
 	// The description of the terminal node service.
+	//
+	// > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
 	ServiceDescription pulumi.StringPtrInput
 	// Service Domain.
 	ServiceDomain pulumi.StringPtrInput
@@ -156,6 +162,8 @@ type vpcEndpointServiceArgs struct {
 	// The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
 	Payer *string `pulumi:"payer"`
 	// The description of the terminal node service.
+	//
+	// > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
 	ServiceDescription *string `pulumi:"serviceDescription"`
 }
 
@@ -170,6 +178,8 @@ type VpcEndpointServiceArgs struct {
 	// The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
 	Payer pulumi.StringPtrInput
 	// The description of the terminal node service.
+	//
+	// > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
 	ServiceDescription pulumi.StringPtrInput
 }
 
@@ -286,6 +296,8 @@ func (o VpcEndpointServiceOutput) ServiceBusinessStatus() pulumi.StringOutput {
 }
 
 // The description of the terminal node service.
+//
+// > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
 func (o VpcEndpointServiceOutput) ServiceDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringPtrOutput { return v.ServiceDescription }).(pulumi.StringPtrOutput)
 }

@@ -44,6 +44,8 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
      * * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
      * * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
      * 
+     * &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
+     * 
      */
     @Import(name="commodityCode")
     private @Nullable Output<String> commodityCode;
@@ -60,6 +62,8 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
      * * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
      * * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
      * * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
+     * 
+     * &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
      * 
      */
     public Optional<Output<String>> commodityCode() {
@@ -84,12 +88,16 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
     /**
      * The ID of the instance.
      * 
+     * &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
+     * 
      */
     @Import(name="dbInstanceId")
     private @Nullable Output<String> dbInstanceId;
 
     /**
      * @return The ID of the instance.
+     * 
+     * &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
      * 
      */
     public Optional<Output<String>> dbInstanceId() {
@@ -171,9 +179,17 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
         return Optional.ofNullable(this.multiZone);
     }
 
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable Output<String> outputFile;
 
+    /**
+     * @return File name where to save data source results (after running `pulumi up`).
+     * 
+     */
     public Optional<Output<String>> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -285,6 +301,8 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
          * * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
          * * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
          * 
+         * &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
+         * 
          * @return builder
          * 
          */
@@ -305,6 +323,8 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
          * * **rds_rordspre_public_intl**: The instance is a subscription read-only instance. This value is available on the International site (alibabacloud.com).
          * * **rds_serverless_public_cn**: The instance is a subscription serverless instance. This value is available on the China site (aliyun.com).
          * * **rds_serverless_public_intl**: The instance is a subscription serverless instance. This value is available on the International site (alibabacloud.com).
+         * 
+         * &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
          * 
          * @return builder
          * 
@@ -337,6 +357,8 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
         /**
          * @param dbInstanceId The ID of the instance.
          * 
+         * &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
+         * 
          * @return builder
          * 
          */
@@ -347,6 +369,8 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
 
         /**
          * @param dbInstanceId The ID of the instance.
+         * 
+         * &gt; **NOTE**: The field `db_instance_id` will be ignored when `commodity_code` is not a read-only type.
          * 
          * @return builder
          * 
@@ -460,11 +484,23 @@ public final class GetInstanceClassesArgs extends com.pulumi.resources.InvokeArg
             return multiZone(Output.of(multiZone));
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi up`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable Output<String> outputFile) {
             $.outputFile = outputFile;
             return this;
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi up`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(String outputFile) {
             return outputFile(Output.of(outputFile));
         }

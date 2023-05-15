@@ -7,6 +7,10 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **DEPRECATED:**  This datasource has been deprecated from version `1.126.0`. Please use new datasource alicloud_eip_addresses.
+ *
+ * This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -72,6 +76,9 @@ export interface GetEipsArgs {
     isp?: string;
     lockReason?: string;
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     paymentType?: string;
     /**
@@ -143,6 +150,10 @@ export interface GetEipsResult {
     readonly tags?: {[key: string]: any};
 }
 /**
+ * > **DEPRECATED:**  This datasource has been deprecated from version `1.126.0`. Please use new datasource alicloud_eip_addresses.
+ *
+ * This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -185,6 +196,9 @@ export interface GetEipsOutputArgs {
     isp?: pulumi.Input<string>;
     lockReason?: pulumi.Input<string>;
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     paymentType?: pulumi.Input<string>;
     /**

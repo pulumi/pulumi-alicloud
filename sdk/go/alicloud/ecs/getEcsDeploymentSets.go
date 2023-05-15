@@ -67,7 +67,8 @@ type GetEcsDeploymentSetsArgs struct {
 	// A list of Deployment Set IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Deployment Set name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The deployment strategy.
 	Strategy *string `pulumi:"strategy"`
@@ -106,7 +107,8 @@ type GetEcsDeploymentSetsOutputArgs struct {
 	// A list of Deployment Set IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Deployment Set name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The deployment strategy.
 	Strategy pulumi.StringPtrInput `pulumi:"strategy"`

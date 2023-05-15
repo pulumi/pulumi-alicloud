@@ -36,6 +36,8 @@ type CustomImage struct {
 	// The ID of the instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
+	//
+	// **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// The ID of the system snapshot.
 	SystemSnapshotId pulumi.StringOutput `pulumi:"systemSnapshotId"`
@@ -86,6 +88,8 @@ type customImageState struct {
 	// The ID of the instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
+	//
+	// **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
 	Status *string `pulumi:"status"`
 	// The ID of the system snapshot.
 	SystemSnapshotId *string `pulumi:"systemSnapshotId"`
@@ -99,6 +103,8 @@ type CustomImageState struct {
 	// The ID of the instance.
 	InstanceId pulumi.StringPtrInput
 	// The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
+	//
+	// **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
 	Status pulumi.StringPtrInput
 	// The ID of the system snapshot.
 	SystemSnapshotId pulumi.StringPtrInput
@@ -116,6 +122,8 @@ type customImageArgs struct {
 	// The ID of the instance.
 	InstanceId string `pulumi:"instanceId"`
 	// The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
+	//
+	// **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
 	Status *string `pulumi:"status"`
 	// The ID of the system snapshot.
 	SystemSnapshotId string `pulumi:"systemSnapshotId"`
@@ -130,6 +138,8 @@ type CustomImageArgs struct {
 	// The ID of the instance.
 	InstanceId pulumi.StringInput
 	// The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
+	//
+	// **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
 	Status pulumi.StringPtrInput
 	// The ID of the system snapshot.
 	SystemSnapshotId pulumi.StringInput
@@ -238,6 +248,8 @@ func (o CustomImageOutput) InstanceId() pulumi.StringOutput {
 }
 
 // The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
+//
+// **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
 func (o CustomImageOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
 }

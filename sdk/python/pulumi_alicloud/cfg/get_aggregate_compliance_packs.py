@@ -157,6 +157,7 @@ def get_aggregate_compliance_packs(aggregator_id: Optional[str] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Aggregate Compliance Pack IDs.
     :param str name_regex: A regex string to filter results by Aggregate Compliance Pack name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
     """
     __args__ = dict()
@@ -213,6 +214,7 @@ def get_aggregate_compliance_packs_output(aggregator_id: Optional[pulumi.Input[s
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Aggregate Compliance Pack IDs.
     :param str name_regex: A regex string to filter results by Aggregate Compliance Pack name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
     """
     ...

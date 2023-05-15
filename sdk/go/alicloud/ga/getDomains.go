@@ -29,10 +29,11 @@ type GetDomainsArgs struct {
 	// The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
 	Domain *string `pulumi:"domain"`
 	// A list of Ga Domain IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
-	PageNumber *int     `pulumi:"pageNumber"`
-	PageSize   *int     `pulumi:"pageSize"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
 	// The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
 	Status *string `pulumi:"status"`
 }
@@ -75,10 +76,11 @@ type GetDomainsOutputArgs struct {
 	// The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
 	// A list of Ga Domain IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
-	PageNumber pulumi.IntPtrInput      `pulumi:"pageNumber"`
-	PageSize   pulumi.IntPtrInput      `pulumi:"pageSize"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 	// The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }

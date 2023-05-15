@@ -144,6 +144,7 @@ def get_secret_versions(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to false and only output `secret_name`, `version_id`, `version_stages`. Set it to true can output more details.
     :param Sequence[str] ids: A list of KMS Secret Version ids.
     :param str include_deprecated: Specifies whether to return deprecated secret versions. Default to `false`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str secret_name: The name of the secret.
     :param str version_stage: The stage of the secret version.
     """
@@ -196,6 +197,7 @@ def get_secret_versions_output(enable_details: Optional[pulumi.Input[Optional[bo
     :param bool enable_details: Default to false and only output `secret_name`, `version_id`, `version_stages`. Set it to true can output more details.
     :param Sequence[str] ids: A list of KMS Secret Version ids.
     :param str include_deprecated: Specifies whether to return deprecated secret versions. Default to `false`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str secret_name: The name of the secret.
     :param str version_stage: The stage of the secret version.
     """

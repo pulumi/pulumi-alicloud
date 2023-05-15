@@ -119,6 +119,7 @@ def get_mount_points(file_system_id: Optional[str] = None,
 
     :param str file_system_id: The ID of the File System.
     :param Sequence[str] ids: A list of Mount Point IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Mount Point. Valid values: `Active`, `Inactive`.
     """
     __args__ = dict()
@@ -168,6 +169,7 @@ def get_mount_points_output(file_system_id: Optional[pulumi.Input[str]] = None,
 
     :param str file_system_id: The ID of the File System.
     :param Sequence[str] ids: A list of Mount Point IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Mount Point. Valid values: `Active`, `Inactive`.
     """
     ...

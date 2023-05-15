@@ -58,6 +58,9 @@ export interface GetQuotaAlarmsArgs {
      * A regex string to filter results by Quota Alarm name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The Product Code.
@@ -136,6 +139,9 @@ export interface GetQuotaAlarmsOutputArgs {
      * A regex string to filter results by Quota Alarm name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The Product Code.

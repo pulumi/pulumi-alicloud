@@ -83,9 +83,23 @@ public class MscSubSubscription extends com.pulumi.resources.CustomResource {
     public Output<String> channel() {
         return this.channel;
     }
+    /**
+     * The ids of subscribed contacts.
+     * **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
+     * So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     * 
+     */
     @Export(name="contactIds", type=List.class, parameters={String.class})
     private Output<List<String>> contactIds;
 
+    /**
+     * @return The ids of subscribed contacts.
+     * **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
+     * So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     * 
+     */
     public Output<List<String>> contactIds() {
         return this.contactIds;
     }

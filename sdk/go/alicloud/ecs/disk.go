@@ -10,6 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a ECS disk resource.
+//
+// > **DEPRECATED:** This resource has been renamed to ecs.EcsDisk from version 1.122.0.
+//
+// > **NOTE:** One of `size` or `snapshotId` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshotId` represents. Currently, `ecs.Disk` doesn't resize disk.
+//
 // ## Example Usage
 //
 // ```go

@@ -15,6 +15,8 @@ namespace Pulumi.AliCloud.Alb.Outputs
     {
         /// <summary>
         /// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+        /// 
+        /// &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
         /// </summary>
         public readonly bool AccessLogRecordCustomizedHeadersEnabled;
         /// <summary>
@@ -39,6 +41,8 @@ namespace Pulumi.AliCloud.Alb.Outputs
         public readonly bool GzipEnabled;
         /// <summary>
         /// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+        /// 
+        /// &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
         /// </summary>
         public readonly bool Http2Enabled;
         /// <summary>
@@ -87,6 +91,8 @@ namespace Pulumi.AliCloud.Alb.Outputs
         public readonly int RequestTimeout;
         /// <summary>
         /// Security Policy.
+        /// 
+        /// &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
         /// </summary>
         public readonly string SecurityPolicyId;
         /// <summary>

@@ -61,12 +61,16 @@ public final class RealTimeLogDeliveryArgs extends com.pulumi.resources.Resource
     /**
      * The region where the Log Service project is deployed.
      * 
+     * &gt; **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+     * 
      */
     @Import(name="slsRegion", required=true)
     private Output<String> slsRegion;
 
     /**
      * @return The region where the Log Service project is deployed.
+     * 
+     * &gt; **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
      * 
      */
     public Output<String> slsRegion() {
@@ -166,6 +170,8 @@ public final class RealTimeLogDeliveryArgs extends com.pulumi.resources.Resource
         /**
          * @param slsRegion The region where the Log Service project is deployed.
          * 
+         * &gt; **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+         * 
          * @return builder
          * 
          */
@@ -176,6 +182,8 @@ public final class RealTimeLogDeliveryArgs extends com.pulumi.resources.Resource
 
         /**
          * @param slsRegion The region where the Log Service project is deployed.
+         * 
+         * &gt; **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
          * 
          * @return builder
          * 

@@ -54,6 +54,9 @@ export interface GetTablesArgs {
      * A regex string to filter results by table name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -124,5 +127,8 @@ export interface GetTablesOutputArgs {
      * A regex string to filter results by table name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

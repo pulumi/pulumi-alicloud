@@ -316,6 +316,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The time when the database is switched after the instance is migrated,
+     * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+     * - Immediately (Default): The configurations are immediately changed.
+     * - MaintainTime: The configurations are changed within the maintenance window. You can set `maintain_start_time` and `maintain_end_time` to change the maintenance window.
+     * 
+     */
+    @Import(name="effectiveTime")
+    private @Nullable Output<String> effectiveTime;
+
+    /**
+     * @return The time when the database is switched after the instance is migrated,
+     * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+     * - Immediately (Default): The configurations are immediately changed.
+     * - MaintainTime: The configurations are changed within the maintenance window. You can set `maintain_start_time` and `maintain_end_time` to change the maintenance window.
+     * 
+     */
+    public Optional<Output<String>> effectiveTime() {
+        return Optional.ofNullable(this.effectiveTime);
+    }
+
+    /**
      * Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
      * 
      */
@@ -399,7 +420,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The engine version of the KVStore DBInstance. Valid values: [&#34;2.8&#34;, &#34;4.0&#34;, &#34;5.0&#34;, &#34;6.0&#34;]. Default to &#34;5.0&#34;.
+     * The engine version of the KVStore DBInstance. Valid values: [&#34;2.8&#34;, &#34;4.0&#34;, &#34;5.0&#34;, &#34;6.0&#34;, &#34;7.0&#34;]. Default to &#34;5.0&#34;.
      * **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports &#34;4.0&#34;.
      * 
      */
@@ -407,7 +428,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> engineVersion;
 
     /**
-     * @return The engine version of the KVStore DBInstance. Valid values: [&#34;2.8&#34;, &#34;4.0&#34;, &#34;5.0&#34;, &#34;6.0&#34;]. Default to &#34;5.0&#34;.
+     * @return The engine version of the KVStore DBInstance. Valid values: [&#34;2.8&#34;, &#34;4.0&#34;, &#34;5.0&#34;, &#34;6.0&#34;, &#34;7.0&#34;]. Default to &#34;5.0&#34;.
      * **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports &#34;4.0&#34;.
      * 
      */
@@ -483,9 +504,19 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.instanceChargeType);
     }
 
+    /**
+     * Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
+     * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
+     * 
+     */
     @Import(name="instanceClass")
     private @Nullable Output<String> instanceClass;
 
+    /**
+     * @return Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
+     * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
+     * 
+     */
     public Optional<Output<String>> instanceClass() {
         return Optional.ofNullable(this.instanceClass);
     }
@@ -832,12 +863,28 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
      * 
+     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     * 
+     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+     * 
+     * &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     * 
+     * &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
+     * 
      */
     @Import(name="roleArn")
     private @Nullable Output<String> roleArn;
 
     /**
      * @return The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
+     * 
+     * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+     * 
+     * &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+     * 
+     * &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+     * 
+     * &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
      * 
      */
     public Optional<Output<String>> roleArn() {
@@ -847,12 +894,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
      * 
+     * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
+     * 
      */
     @Import(name="secondaryZoneId")
     private @Nullable Output<String> secondaryZoneId;
 
     /**
      * @return The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+     * 
+     * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      * 
      */
     public Optional<Output<String>> secondaryZoneId() {
@@ -1062,6 +1113,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.dbInstanceName = $.dbInstanceName;
         this.dedicatedHostGroupId = $.dedicatedHostGroupId;
         this.dryRun = $.dryRun;
+        this.effectiveTime = $.effectiveTime;
         this.enableBackupLog = $.enableBackupLog;
         this.enablePublic = $.enablePublic;
         this.encryptionKey = $.encryptionKey;
@@ -1541,6 +1593,33 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveTime The time when the database is switched after the instance is migrated,
+         * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+         * - Immediately (Default): The configurations are immediately changed.
+         * - MaintainTime: The configurations are changed within the maintenance window. You can set `maintain_start_time` and `maintain_end_time` to change the maintenance window.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveTime(@Nullable Output<String> effectiveTime) {
+            $.effectiveTime = effectiveTime;
+            return this;
+        }
+
+        /**
+         * @param effectiveTime The time when the database is switched after the instance is migrated,
+         * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+         * - Immediately (Default): The configurations are immediately changed.
+         * - MaintainTime: The configurations are changed within the maintenance window. You can set `maintain_start_time` and `maintain_end_time` to change the maintenance window.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveTime(String effectiveTime) {
+            return effectiveTime(Output.of(effectiveTime));
+        }
+
+        /**
          * @param enableBackupLog Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
          * 
          * @return builder
@@ -1654,7 +1733,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engineVersion The engine version of the KVStore DBInstance. Valid values: [&#34;2.8&#34;, &#34;4.0&#34;, &#34;5.0&#34;, &#34;6.0&#34;]. Default to &#34;5.0&#34;.
+         * @param engineVersion The engine version of the KVStore DBInstance. Valid values: [&#34;2.8&#34;, &#34;4.0&#34;, &#34;5.0&#34;, &#34;6.0&#34;, &#34;7.0&#34;]. Default to &#34;5.0&#34;.
          * **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports &#34;4.0&#34;.
          * 
          * @return builder
@@ -1666,7 +1745,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engineVersion The engine version of the KVStore DBInstance. Valid values: [&#34;2.8&#34;, &#34;4.0&#34;, &#34;5.0&#34;, &#34;6.0&#34;]. Default to &#34;5.0&#34;.
+         * @param engineVersion The engine version of the KVStore DBInstance. Valid values: [&#34;2.8&#34;, &#34;4.0&#34;, &#34;5.0&#34;, &#34;6.0&#34;, &#34;7.0&#34;]. Default to &#34;5.0&#34;.
          * **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports &#34;4.0&#34;.
          * 
          * @return builder
@@ -1768,11 +1847,25 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return instanceChargeType(Output.of(instanceChargeType));
         }
 
+        /**
+         * @param instanceClass Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
+         * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceClass(@Nullable Output<String> instanceClass) {
             $.instanceClass = instanceClass;
             return this;
         }
 
+        /**
+         * @param instanceClass Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
+         * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceClass(String instanceClass) {
             return instanceClass(Output.of(instanceClass));
         }
@@ -2259,6 +2352,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param roleArn The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
          * 
+         * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+         * 
+         * &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+         * 
+         * &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+         * 
+         * &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
+         * 
          * @return builder
          * 
          */
@@ -2270,6 +2371,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param roleArn The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
          * 
+         * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+         * 
+         * &gt; **NOTE:** You must specify at least one of the `capacity` and `instance_class` parameters when you call create instance operation.
+         * 
+         * &gt; **NOTE:** The `private_ip` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+         * 
+         * &gt; **NOTE:** If you specify the `srcdb_instance_id` parameter, you must specify the `backup_id` or `restore_time` parameter.
+         * 
          * @return builder
          * 
          */
@@ -2279,6 +2388,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param secondaryZoneId The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+         * 
+         * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
          * 
          * @return builder
          * 
@@ -2290,6 +2401,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param secondaryZoneId The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+         * 
+         * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
          * 
          * @return builder
          * 

@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides an RDS account resource and used to manage databases.
+ *
+ * > **DEPRECATED:**  This resource  has been deprecated from version `1.120.0`. Please use new resource alicloud_rds_account.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -121,6 +125,8 @@ export class Account extends pulumi.CustomResource {
      * - Normal: Common privilege.
      * - Super: High privilege.
      *
+     * Default to Normal.
+     *
      * @deprecated Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
      */
     public readonly type!: pulumi.Output<string>;
@@ -224,6 +230,8 @@ export interface AccountState {
      * - Normal: Common privilege.
      * - Super: High privilege.
      *
+     * Default to Normal.
+     *
      * @deprecated Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
      */
     type?: pulumi.Input<string>;
@@ -275,6 +283,8 @@ export interface AccountArgs {
      * Privilege type of account.
      * - Normal: Common privilege.
      * - Super: High privilege.
+     *
+     * Default to Normal.
      *
      * @deprecated Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
      */

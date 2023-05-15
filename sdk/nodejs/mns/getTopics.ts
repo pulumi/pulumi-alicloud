@@ -7,6 +7,10 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
+ *
+ * > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -37,6 +41,9 @@ export interface GetTopicsArgs {
      * A string to filter resulting topics by their name prefixs.
      */
     namePrefix?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -60,6 +67,10 @@ export interface GetTopicsResult {
     readonly topics: outputs.mns.GetTopicsTopic[];
 }
 /**
+ * This data source provides a list of MNS topics in an Alibaba Cloud account according to the specified parameters.
+ *
+ * > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_topics.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -84,5 +95,8 @@ export interface GetTopicsOutputArgs {
      * A string to filter resulting topics by their name prefixs.
      */
     namePrefix?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

@@ -49,6 +49,8 @@ namespace Pulumi.AliCloud.Kms
     {
         /// <summary>
         /// The id of the master key (CMK).
+        /// 
+        /// &gt; **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
         /// </summary>
         [Output("keyId")]
         public Output<string> KeyId { get; private set; } = null!;
@@ -107,6 +109,8 @@ namespace Pulumi.AliCloud.Kms
     {
         /// <summary>
         /// The id of the master key (CMK).
+        /// 
+        /// &gt; **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
         /// </summary>
         [Input("keyId", required: true)]
         public Input<string> KeyId { get; set; } = null!;
@@ -121,6 +125,8 @@ namespace Pulumi.AliCloud.Kms
     {
         /// <summary>
         /// The id of the master key (CMK).
+        /// 
+        /// &gt; **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
         /// </summary>
         [Input("keyId")]
         public Input<string>? KeyId { get; set; }

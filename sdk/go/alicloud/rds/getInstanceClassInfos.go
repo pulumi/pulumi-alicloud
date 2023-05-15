@@ -72,7 +72,10 @@ type GetInstanceClassInfosArgs struct {
 	// * **UPGRADE**: specifies the query orders that are used to change the specifications of instances.
 	// * **RENEW**: specifies the query orders that are used to renew instances.
 	// * **CONVERT**: specifies the query orders that are used to change the billing methods of instances.
-	OrderType  string  `pulumi:"orderType"`
+	OrderType string `pulumi:"orderType"`
+	// File name where to save data source results (after running `pulumi up`).
+	//
+	// > **NOTE**: If you use the CommodityCode parameter to query the instance types that are available to read-only instances, you must specify the DBInstanceId parameter.
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -124,7 +127,10 @@ type GetInstanceClassInfosOutputArgs struct {
 	// * **UPGRADE**: specifies the query orders that are used to change the specifications of instances.
 	// * **RENEW**: specifies the query orders that are used to renew instances.
 	// * **CONVERT**: specifies the query orders that are used to change the billing methods of instances.
-	OrderType  pulumi.StringInput    `pulumi:"orderType"`
+	OrderType pulumi.StringInput `pulumi:"orderType"`
+	// File name where to save data source results (after running `pulumi up`).
+	//
+	// > **NOTE**: If you use the CommodityCode parameter to query the instance types that are available to read-only instances, you must specify the DBInstanceId parameter.
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

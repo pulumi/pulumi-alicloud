@@ -70,6 +70,8 @@ namespace Pulumi.AliCloud.Cdn
 
         /// <summary>
         /// The region where the Log Service project is deployed.
+        /// 
+        /// &gt; **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
         /// </summary>
         [Output("slsRegion")]
         public Output<string> SlsRegion { get; private set; } = null!;
@@ -146,6 +148,8 @@ namespace Pulumi.AliCloud.Cdn
 
         /// <summary>
         /// The region where the Log Service project is deployed.
+        /// 
+        /// &gt; **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
         /// </summary>
         [Input("slsRegion", required: true)]
         public Input<string> SlsRegion { get; set; } = null!;
@@ -178,6 +182,8 @@ namespace Pulumi.AliCloud.Cdn
 
         /// <summary>
         /// The region where the Log Service project is deployed.
+        /// 
+        /// &gt; **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
         /// </summary>
         [Input("slsRegion")]
         public Input<string>? SlsRegion { get; set; }

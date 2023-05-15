@@ -73,7 +73,8 @@ type GetChainsArgs struct {
 	// The ID of CR Enterprise Edition instance.
 	InstanceId string `pulumi:"instanceId"`
 	// A regex string to filter results by Chain name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The name of CR Enterprise Edition repository.
 	RepoName *string `pulumi:"repoName"`
@@ -121,7 +122,8 @@ type GetChainsOutputArgs struct {
 	// The ID of CR Enterprise Edition instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// A regex string to filter results by Chain name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The name of CR Enterprise Edition repository.
 	RepoName pulumi.StringPtrInput `pulumi:"repoName"`

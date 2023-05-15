@@ -158,6 +158,7 @@ def get_change_sets(change_set_name: Optional[str] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Change Set IDs.
     :param str name_regex: A regex string to filter results by Change Set name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str stack_id: The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
     :param str status: The status of the change set.
     """
@@ -218,6 +219,7 @@ def get_change_sets_output(change_set_name: Optional[pulumi.Input[Optional[str]]
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Change Set IDs.
     :param str name_regex: A regex string to filter results by Change Set name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str stack_id: The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
     :param str status: The status of the change set.
     """

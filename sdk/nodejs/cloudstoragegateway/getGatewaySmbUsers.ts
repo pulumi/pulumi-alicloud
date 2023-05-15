@@ -77,6 +77,9 @@ export interface GetGatewaySmbUsersArgs {
      * A regex string to filter results by Gateway SMB username.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -158,5 +161,8 @@ export interface GetGatewaySmbUsersOutputArgs {
      * A regex string to filter results by Gateway SMB username.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

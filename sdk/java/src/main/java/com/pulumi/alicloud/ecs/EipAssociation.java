@@ -16,6 +16,106 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides an Alicloud EIP Association resource for associating Elastic IP to ECS Instance, SLB Instance or Nat Gateway.
+ * 
+ * &gt; **NOTE:** `alicloud.ecs.EipAssociation` is useful in scenarios where EIPs are either
+ *  pre-existing or distributed to customers or users and therefore cannot be changed.
+ * 
+ * &gt; **NOTE:** From version 1.7.1, the resource support to associate EIP to SLB Instance or Nat Gateway.
+ * 
+ * &gt; **NOTE:** One EIP can only be associated with ECS or SLB instance which in the VPC.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.ecs.EipAddress;
+ * import com.pulumi.alicloud.ecs.EipAssociation;
+ * import com.pulumi.alicloud.ecs.EipAssociationArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultZones = AlicloudFunctions.getZones();
+ * 
+ *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;10.1.0.0/21&#34;)
+ *             .build());
+ * 
+ *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
+ *             .vpcId(vpc.id())
+ *             .cidrBlock(&#34;10.1.1.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vpc)
+ *                 .build());
+ * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .mostRecent(true)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+ *             .description(&#34;New security group&#34;)
+ *             .vpcId(vpc.id())
+ *             .build());
+ * 
+ *         var ecsInstance = new Instance(&#34;ecsInstance&#34;, InstanceArgs.builder()        
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .securityGroups(group.id())
+ *             .vswitchId(vsw.id())
+ *             .instanceName(&#34;hello&#34;)
+ *             .tags(Map.of(&#34;Name&#34;, &#34;TerraformTest-instance&#34;))
+ *             .build());
+ * 
+ *         var eip = new EipAddress(&#34;eip&#34;);
+ * 
+ *         var eipAsso = new EipAssociation(&#34;eipAsso&#34;, EipAssociationArgs.builder()        
+ *             .allocationId(eip.id())
+ *             .instanceId(ecsInstance.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Module Support
+ * 
+ * You can use the existing eip module
+ * to create several EIP instances and associate them with other resources one-click, like ECS instances, SLB, Nat Gateway and so on.
+ * 
  * ## Import
  * 
  * Elastic IP address association can be imported using the id, e.g.

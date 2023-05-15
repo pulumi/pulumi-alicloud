@@ -10,6 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:** This datasource has been renamed to ecs.getEcsKeyPairs from version 1.121.0.
+//
+// This data source provides a list of key pairs in an Alibaba Cloud account according to the specified filters.
+//
 // ## Example Usage
 //
 // ```go
@@ -54,7 +58,8 @@ type GetKeyPairsArgs struct {
 	// A list of key pair IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to apply to the resulting key pairs.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -104,7 +109,8 @@ type GetKeyPairsOutputArgs struct {
 	// A list of key pair IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to apply to the resulting key pairs.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`

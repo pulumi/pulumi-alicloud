@@ -36,6 +36,9 @@ export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getInstanceTypes.
  */
 export interface GetInstanceTypesArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -75,5 +78,8 @@ export function getInstanceTypesOutput(args?: GetInstanceTypesOutputArgs, opts?:
  * A collection of arguments for invoking getInstanceTypes.
  */
 export interface GetInstanceTypesOutputArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

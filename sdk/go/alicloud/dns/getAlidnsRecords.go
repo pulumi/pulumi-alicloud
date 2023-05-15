@@ -71,7 +71,8 @@ type GetAlidnsRecordsArgs struct {
 	// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
 	Line *string `pulumi:"line"`
 	// Sort by. Sort from newest to oldest according to the time added by resolution.
-	OrderBy    *string `pulumi:"orderBy"`
+	OrderBy *string `pulumi:"orderBy"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
 	RrKeyWord *string `pulumi:"rrKeyWord"`
@@ -151,7 +152,8 @@ type GetAlidnsRecordsOutputArgs struct {
 	// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
 	Line pulumi.StringPtrInput `pulumi:"line"`
 	// Sort by. Sort from newest to oldest according to the time added by resolution.
-	OrderBy    pulumi.StringPtrInput `pulumi:"orderBy"`
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
 	RrKeyWord pulumi.StringPtrInput `pulumi:"rrKeyWord"`

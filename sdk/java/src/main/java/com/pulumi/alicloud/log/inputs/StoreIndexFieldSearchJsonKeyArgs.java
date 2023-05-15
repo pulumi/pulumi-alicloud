@@ -34,12 +34,16 @@ public final class StoreIndexFieldSearchJsonKeyArgs extends com.pulumi.resources
     /**
      * Whether to enable statistics. default to true.
      * 
+     * &gt; **Note:** At least one of the &#34;full_text&#34; and &#34;field_search&#34; should be specified.
+     * 
      */
     @Import(name="docValue")
     private @Nullable Output<Boolean> docValue;
 
     /**
      * @return Whether to enable statistics. default to true.
+     * 
+     * &gt; **Note:** At least one of the &#34;full_text&#34; and &#34;field_search&#34; should be specified.
      * 
      */
     public Optional<Output<Boolean>> docValue() {
@@ -127,6 +131,8 @@ public final class StoreIndexFieldSearchJsonKeyArgs extends com.pulumi.resources
         /**
          * @param docValue Whether to enable statistics. default to true.
          * 
+         * &gt; **Note:** At least one of the &#34;full_text&#34; and &#34;field_search&#34; should be specified.
+         * 
          * @return builder
          * 
          */
@@ -137,6 +143,8 @@ public final class StoreIndexFieldSearchJsonKeyArgs extends com.pulumi.resources
 
         /**
          * @param docValue Whether to enable statistics. default to true.
+         * 
+         * &gt; **Note:** At least one of the &#34;full_text&#34; and &#34;field_search&#34; should be specified.
          * 
          * @return builder
          * 

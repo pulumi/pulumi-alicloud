@@ -54,6 +54,9 @@ export interface GetNasBackupPlansArgs {
      * A regex string to filter results by NasBackupPlan name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of backup vault.
@@ -116,6 +119,9 @@ export interface GetNasBackupPlansOutputArgs {
      * A regex string to filter results by NasBackupPlan name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of backup vault.

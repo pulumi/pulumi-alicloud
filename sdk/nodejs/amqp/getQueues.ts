@@ -64,6 +64,9 @@ export interface GetQueuesArgs {
      * A regex string to filter results by Queue name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The name of the virtual host.
@@ -137,6 +140,9 @@ export interface GetQueuesOutputArgs {
      * A regex string to filter results by Queue name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The name of the virtual host.

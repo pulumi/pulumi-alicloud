@@ -65,7 +65,8 @@ type GetFlowlogsArgs struct {
 	// The name of the log store which is in the  `projectName` SLS project.
 	LogStoreName *string `pulumi:"logStoreName"`
 	// A regex string to filter CEN flow logs by name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The name of the SLS project.
 	ProjectName *string `pulumi:"projectName"`
@@ -120,7 +121,8 @@ type GetFlowlogsOutputArgs struct {
 	// The name of the log store which is in the  `projectName` SLS project.
 	LogStoreName pulumi.StringPtrInput `pulumi:"logStoreName"`
 	// A regex string to filter CEN flow logs by name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The name of the SLS project.
 	ProjectName pulumi.StringPtrInput `pulumi:"projectName"`

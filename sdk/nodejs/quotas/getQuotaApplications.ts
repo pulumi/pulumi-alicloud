@@ -59,6 +59,9 @@ export interface GetQuotaApplicationsArgs {
      */
     ids?: string[];
     keyWord?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The product code.
@@ -138,6 +141,9 @@ export interface GetQuotaApplicationsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     keyWord?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The product code.

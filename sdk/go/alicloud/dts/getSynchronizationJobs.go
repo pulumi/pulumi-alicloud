@@ -55,7 +55,8 @@ type GetSynchronizationJobsArgs struct {
 	// A list of Synchronization Job IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by synchronization job name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
 	Status *string `pulumi:"status"`
@@ -92,7 +93,8 @@ type GetSynchronizationJobsOutputArgs struct {
 	// A list of Synchronization Job IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by synchronization job name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

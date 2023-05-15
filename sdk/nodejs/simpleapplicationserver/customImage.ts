@@ -61,6 +61,8 @@ export class CustomImage extends pulumi.CustomResource {
     public readonly instanceId!: pulumi.Output<string>;
     /**
      * The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
+     *
+     * **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
      */
     public readonly status!: pulumi.Output<string | undefined>;
     /**
@@ -126,6 +128,8 @@ export interface CustomImageState {
     instanceId?: pulumi.Input<string>;
     /**
      * The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
+     *
+     * **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
      */
     status?: pulumi.Input<string>;
     /**
@@ -152,6 +156,8 @@ export interface CustomImageArgs {
     instanceId: pulumi.Input<string>;
     /**
      * The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
+     *
+     * **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
      */
     status?: pulumi.Input<string>;
     /**

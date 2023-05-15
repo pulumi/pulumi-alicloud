@@ -100,9 +100,21 @@ public final class GetInstanceClassInfosPlainArgs extends com.pulumi.resources.I
         return this.orderType;
     }
 
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     * 
+     * &gt; **NOTE**: If you use the CommodityCode parameter to query the instance types that are available to read-only instances, you must specify the DBInstanceId parameter.
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable String outputFile;
 
+    /**
+     * @return File name where to save data source results (after running `pulumi up`).
+     * 
+     * &gt; **NOTE**: If you use the CommodityCode parameter to query the instance types that are available to read-only instances, you must specify the DBInstanceId parameter.
+     * 
+     */
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -201,6 +213,14 @@ public final class GetInstanceClassInfosPlainArgs extends com.pulumi.resources.I
             return this;
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi up`).
+         * 
+         * &gt; **NOTE**: If you use the CommodityCode parameter to query the instance types that are available to read-only instances, you must specify the DBInstanceId parameter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
             return this;

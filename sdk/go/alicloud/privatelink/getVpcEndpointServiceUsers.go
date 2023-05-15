@@ -53,6 +53,7 @@ func GetVpcEndpointServiceUsers(ctx *pulumi.Context, args *GetVpcEndpointService
 
 // A collection of arguments for invoking getVpcEndpointServiceUsers.
 type GetVpcEndpointServiceUsersArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The Id of Vpc Endpoint Service.
 	ServiceId string `pulumi:"serviceId"`
@@ -86,6 +87,7 @@ func GetVpcEndpointServiceUsersOutput(ctx *pulumi.Context, args GetVpcEndpointSe
 
 // A collection of arguments for invoking getVpcEndpointServiceUsers.
 type GetVpcEndpointServiceUsersOutputArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The Id of Vpc Endpoint Service.
 	ServiceId pulumi.StringInput `pulumi:"serviceId"`

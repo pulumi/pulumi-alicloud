@@ -5,6 +5,36 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a security group resource.
+ *
+ * > **NOTE:** `alicloud.ecs.SecurityGroup` is used to build and manage a security group, and `alicloud.ecs.SecurityGroupRule` can define ingress or egress rules for it.
+ *
+ * > **NOTE:** From version 1.7.2, `alicloud.ecs.SecurityGroup` has supported to segregate different ECS instance in which the same security group.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const group = new alicloud.ecs.SecurityGroup("group", {description: "New security group"});
+ * ```
+ * Basic usage for vpc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const vpc = new alicloud.vpc.Network("vpc", {cidrBlock: "10.1.0.0/21"});
+ * const group = new alicloud.ecs.SecurityGroup("group", {vpcId: vpc.id});
+ * ```
+ * ## Module Support
+ *
+ * You can use the existing security-group module
+ * to create a security group and add several rules one-click.
+ *
  * ## Import
  *
  * Security Group can be imported using the id, e.g.
@@ -71,6 +101,8 @@ export class SecurityGroup extends pulumi.CustomResource {
     public readonly securityGroupType!: pulumi.Output<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
+     *
+     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -149,6 +181,8 @@ export interface SecurityGroupState {
     securityGroupType?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
+     *
+     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -191,6 +225,8 @@ export interface SecurityGroupArgs {
     securityGroupType?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
+     *
+     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**

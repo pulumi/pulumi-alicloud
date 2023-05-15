@@ -50,6 +50,9 @@ export interface GetVpcEndpointConnectionsArgs {
      * The endpoint owner id.
      */
     endpointOwnerId?: number;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the Vpc Endpoint Service.
@@ -113,6 +116,9 @@ export interface GetVpcEndpointConnectionsOutputArgs {
      * The endpoint owner id.
      */
     endpointOwnerId?: pulumi.Input<number>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the Vpc Endpoint Service.

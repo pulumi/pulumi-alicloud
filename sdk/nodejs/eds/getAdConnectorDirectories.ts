@@ -49,6 +49,9 @@ export interface GetAdConnectorDirectoriesArgs {
      * A regex string to filter results by Ad Connector Directory name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of directory.
@@ -106,6 +109,9 @@ export interface GetAdConnectorDirectoriesOutputArgs {
      * A regex string to filter results by Ad Connector Directory name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of directory.

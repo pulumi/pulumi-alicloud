@@ -63,6 +63,8 @@ export class DdrInstance extends pulumi.CustomResource {
      * The upgrade method to use. Valid values:
      * - Auto: Instances are automatically upgraded to a higher minor version.
      * - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
+     *
+     * See more [details and limitation](https://www.alibabacloud.com/help/doc-detail/123605.htm).
      */
     public readonly autoUpgradeMinorVersion!: pulumi.Output<string>;
     /**
@@ -103,13 +105,21 @@ export class DdrInstance extends pulumi.CustomResource {
      * RDS database connection string.
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
+    /**
+     * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix. 
+     * > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
+     */
     public readonly connectionStringPrefix!: pulumi.Output<string>;
     /**
      * The attribute of the IP address whitelist. By default, this parameter is empty.
+     *
+     * > **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
      */
     public readonly dbInstanceIpArrayAttribute!: pulumi.Output<string | undefined>;
     /**
      * The name of the IP address whitelist. Default value: Default.
+     *
+     * > **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
      */
     public readonly dbInstanceIpArrayName!: pulumi.Output<string | undefined>;
     /**
@@ -119,12 +129,16 @@ export class DdrInstance extends pulumi.CustomResource {
      * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+     *
+     * > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
      */
     public readonly dbInstanceStorageType!: pulumi.Output<string>;
     /**
      * The switch of delete protection. Valid values: 
      * - true: delete protect.
      * - false: no delete protect.
+     *
+     * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
      */
     public readonly deletionProtection!: pulumi.Output<boolean>;
     /**
@@ -139,6 +153,8 @@ export class DdrInstance extends pulumi.CustomResource {
     public readonly encryptionKey!: pulumi.Output<string | undefined>;
     /**
      * Database type. Value options: MySQL, SQLServer.
+     *
+     * > **NOTE:** When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
      */
     public readonly engine!: pulumi.Output<string>;
     /**
@@ -159,6 +175,8 @@ export class DdrInstance extends pulumi.CustomResource {
      * The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
      * - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
      * - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+     *
+     * > **NOTE:** If you set this parameter to Manual, you must specify the ManualHATime parameter.
      */
     public readonly haConfig!: pulumi.Output<string>;
     /**
@@ -167,10 +185,14 @@ export class DdrInstance extends pulumi.CustomResource {
     public readonly instanceName!: pulumi.Output<string | undefined>;
     /**
      * The storage capacity of the destination instance. Valid values: 5 to 2000. Unit: GB.
+     *
+     * This value must be a multiple of 5 GB. For more information, see Primary ApsaraDB RDS instance types.
      */
     public readonly instanceStorage!: pulumi.Output<number>;
     /**
      * DB Instance type.
+     *
+     * > **NOTE:** When `storage_auto_scale="Enable"`, do not perform `instanceStorage` check. when `storage_auto_scale="Disable"`, if the instance itself `instanceStorage`has changed. You need to manually revise the `instanceStorage` in the template value.
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
@@ -179,6 +201,8 @@ export class DdrInstance extends pulumi.CustomResource {
     public readonly maintainTime!: pulumi.Output<string>;
     /**
      * The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+     *
+     * > **NOTE:** This parameter only takes effect when the HAConfig parameter is set to Manual.
      */
     public readonly manualHaTime!: pulumi.Output<string | undefined>;
     /**
@@ -200,11 +224,18 @@ export class DdrInstance extends pulumi.CustomResource {
      * Valid values are `Subscription`, `PayAsYouGo`, Default to `PayAsYouGo`.
      */
     public readonly paymentType!: pulumi.Output<string>;
+    /**
+     * The duration that you will buy DB instance (in month). It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
      */
     public readonly pgHbaConfs!: pulumi.Output<outputs.rds.DdrInstancePgHbaConf[]>;
+    /**
+     * The private port of the database service. If you want to update public port, please use resource alicloud.rds.Connection port.
+     */
     public readonly port!: pulumi.Output<string>;
     /**
      * The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
@@ -215,6 +246,8 @@ export class DdrInstance extends pulumi.CustomResource {
      * - None: No archived backup files are retained.
      * - Lastest: Only the last archived backup file is retained.
      * - All: All the archived backup files are retained.
+     *
+     * > **NOTE:** This parameter is supported only when the instance runs the MySQL database engine.
      */
     public readonly releasedKeepPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -292,6 +325,8 @@ export class DdrInstance extends pulumi.CustomResource {
      * Automatic storage space expansion switch. Valid values:
      * - Enable
      * - Disable
+     *
+     * > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable.
      */
     public readonly storageAutoScale!: pulumi.Output<string | undefined>;
     /**
@@ -301,14 +336,20 @@ export class DdrInstance extends pulumi.CustomResource {
      * - 30
      * - 40
      * - 50
+     *
+     * > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
      */
     public readonly storageThreshold!: pulumi.Output<number | undefined>;
     /**
      * The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+     *
+     * > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      */
     public readonly storageUpperBound!: pulumi.Output<number | undefined>;
     /**
      * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+     *
+     * > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
      */
     public readonly switchTime!: pulumi.Output<string | undefined>;
     /**
@@ -325,6 +366,8 @@ export class DdrInstance extends pulumi.CustomResource {
      * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
      * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+     *
+     * > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
      */
     public readonly targetMinorVersion!: pulumi.Output<string>;
     /**
@@ -352,6 +395,8 @@ export class DdrInstance extends pulumi.CustomResource {
     public readonly upgradeTime!: pulumi.Output<string | undefined>;
     /**
      * The VPC ID of the instance.
+     *
+     * > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
      */
     public readonly vpcId!: pulumi.Output<string>;
     /**
@@ -363,6 +408,8 @@ export class DdrInstance extends pulumi.CustomResource {
      * - Classic: classic network in enhanced whitelist mode
      * - VPC: virtual private cloud (VPC) in enhanced whitelist mode
      * - MIX: standard whitelist mode
+     *
+     * > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
      */
     public readonly whitelistNetworkType!: pulumi.Output<string | undefined>;
     /**
@@ -583,6 +630,8 @@ export interface DdrInstanceState {
      * The upgrade method to use. Valid values:
      * - Auto: Instances are automatically upgraded to a higher minor version.
      * - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
+     *
+     * See more [details and limitation](https://www.alibabacloud.com/help/doc-detail/123605.htm).
      */
     autoUpgradeMinorVersion?: pulumi.Input<string>;
     /**
@@ -623,13 +672,21 @@ export interface DdrInstanceState {
      * RDS database connection string.
      */
     connectionString?: pulumi.Input<string>;
+    /**
+     * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix. 
+     * > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
+     */
     connectionStringPrefix?: pulumi.Input<string>;
     /**
      * The attribute of the IP address whitelist. By default, this parameter is empty.
+     *
+     * > **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
      */
     dbInstanceIpArrayAttribute?: pulumi.Input<string>;
     /**
      * The name of the IP address whitelist. Default value: Default.
+     *
+     * > **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
      */
     dbInstanceIpArrayName?: pulumi.Input<string>;
     /**
@@ -639,12 +696,16 @@ export interface DdrInstanceState {
      * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+     *
+     * > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
      */
     dbInstanceStorageType?: pulumi.Input<string>;
     /**
      * The switch of delete protection. Valid values: 
      * - true: delete protect.
      * - false: no delete protect.
+     *
+     * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -659,6 +720,8 @@ export interface DdrInstanceState {
     encryptionKey?: pulumi.Input<string>;
     /**
      * Database type. Value options: MySQL, SQLServer.
+     *
+     * > **NOTE:** When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
      */
     engine?: pulumi.Input<string>;
     /**
@@ -679,6 +742,8 @@ export interface DdrInstanceState {
      * The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
      * - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
      * - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+     *
+     * > **NOTE:** If you set this parameter to Manual, you must specify the ManualHATime parameter.
      */
     haConfig?: pulumi.Input<string>;
     /**
@@ -687,10 +752,14 @@ export interface DdrInstanceState {
     instanceName?: pulumi.Input<string>;
     /**
      * The storage capacity of the destination instance. Valid values: 5 to 2000. Unit: GB.
+     *
+     * This value must be a multiple of 5 GB. For more information, see Primary ApsaraDB RDS instance types.
      */
     instanceStorage?: pulumi.Input<number>;
     /**
      * DB Instance type.
+     *
+     * > **NOTE:** When `storage_auto_scale="Enable"`, do not perform `instanceStorage` check. when `storage_auto_scale="Disable"`, if the instance itself `instanceStorage`has changed. You need to manually revise the `instanceStorage` in the template value.
      */
     instanceType?: pulumi.Input<string>;
     /**
@@ -699,6 +768,8 @@ export interface DdrInstanceState {
     maintainTime?: pulumi.Input<string>;
     /**
      * The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+     *
+     * > **NOTE:** This parameter only takes effect when the HAConfig parameter is set to Manual.
      */
     manualHaTime?: pulumi.Input<string>;
     /**
@@ -720,11 +791,18 @@ export interface DdrInstanceState {
      * Valid values are `Subscription`, `PayAsYouGo`, Default to `PayAsYouGo`.
      */
     paymentType?: pulumi.Input<string>;
+    /**
+     * The duration that you will buy DB instance (in month). It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     period?: pulumi.Input<number>;
     /**
      * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
      */
     pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.DdrInstancePgHbaConf>[]>;
+    /**
+     * The private port of the database service. If you want to update public port, please use resource alicloud.rds.Connection port.
+     */
     port?: pulumi.Input<string>;
     /**
      * The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
@@ -735,6 +813,8 @@ export interface DdrInstanceState {
      * - None: No archived backup files are retained.
      * - Lastest: Only the last archived backup file is retained.
      * - All: All the archived backup files are retained.
+     *
+     * > **NOTE:** This parameter is supported only when the instance runs the MySQL database engine.
      */
     releasedKeepPolicy?: pulumi.Input<string>;
     /**
@@ -812,6 +892,8 @@ export interface DdrInstanceState {
      * Automatic storage space expansion switch. Valid values:
      * - Enable
      * - Disable
+     *
+     * > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable.
      */
     storageAutoScale?: pulumi.Input<string>;
     /**
@@ -821,14 +903,20 @@ export interface DdrInstanceState {
      * - 30
      * - 40
      * - 50
+     *
+     * > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
      */
     storageThreshold?: pulumi.Input<number>;
     /**
      * The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+     *
+     * > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      */
     storageUpperBound?: pulumi.Input<number>;
     /**
      * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+     *
+     * > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
      */
     switchTime?: pulumi.Input<string>;
     /**
@@ -845,6 +933,8 @@ export interface DdrInstanceState {
      * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
      * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+     *
+     * > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
      */
     targetMinorVersion?: pulumi.Input<string>;
     /**
@@ -872,6 +962,8 @@ export interface DdrInstanceState {
     upgradeTime?: pulumi.Input<string>;
     /**
      * The VPC ID of the instance.
+     *
+     * > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
      */
     vpcId?: pulumi.Input<string>;
     /**
@@ -883,6 +975,8 @@ export interface DdrInstanceState {
      * - Classic: classic network in enhanced whitelist mode
      * - VPC: virtual private cloud (VPC) in enhanced whitelist mode
      * - MIX: standard whitelist mode
+     *
+     * > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
      */
     whitelistNetworkType?: pulumi.Input<string>;
     /**
@@ -925,6 +1019,8 @@ export interface DdrInstanceArgs {
      * The upgrade method to use. Valid values:
      * - Auto: Instances are automatically upgraded to a higher minor version.
      * - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
+     *
+     * See more [details and limitation](https://www.alibabacloud.com/help/doc-detail/123605.htm).
      */
     autoUpgradeMinorVersion?: pulumi.Input<string>;
     /**
@@ -957,13 +1053,21 @@ export interface DdrInstanceArgs {
      * - 0: disables the CRL
      */
     clientCrlEnabled?: pulumi.Input<number>;
+    /**
+     * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix. 
+     * > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
+     */
     connectionStringPrefix?: pulumi.Input<string>;
     /**
      * The attribute of the IP address whitelist. By default, this parameter is empty.
+     *
+     * > **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
      */
     dbInstanceIpArrayAttribute?: pulumi.Input<string>;
     /**
      * The name of the IP address whitelist. Default value: Default.
+     *
+     * > **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
      */
     dbInstanceIpArrayName?: pulumi.Input<string>;
     /**
@@ -973,12 +1077,16 @@ export interface DdrInstanceArgs {
      * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+     *
+     * > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
      */
     dbInstanceStorageType?: pulumi.Input<string>;
     /**
      * The switch of delete protection. Valid values: 
      * - true: delete protect.
      * - false: no delete protect.
+     *
+     * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -993,6 +1101,8 @@ export interface DdrInstanceArgs {
     encryptionKey?: pulumi.Input<string>;
     /**
      * Database type. Value options: MySQL, SQLServer.
+     *
+     * > **NOTE:** When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
      */
     engine: pulumi.Input<string>;
     /**
@@ -1013,6 +1123,8 @@ export interface DdrInstanceArgs {
      * The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
      * - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
      * - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+     *
+     * > **NOTE:** If you set this parameter to Manual, you must specify the ManualHATime parameter.
      */
     haConfig?: pulumi.Input<string>;
     /**
@@ -1021,10 +1133,14 @@ export interface DdrInstanceArgs {
     instanceName?: pulumi.Input<string>;
     /**
      * The storage capacity of the destination instance. Valid values: 5 to 2000. Unit: GB.
+     *
+     * This value must be a multiple of 5 GB. For more information, see Primary ApsaraDB RDS instance types.
      */
     instanceStorage: pulumi.Input<number>;
     /**
      * DB Instance type.
+     *
+     * > **NOTE:** When `storage_auto_scale="Enable"`, do not perform `instanceStorage` check. when `storage_auto_scale="Disable"`, if the instance itself `instanceStorage`has changed. You need to manually revise the `instanceStorage` in the template value.
      */
     instanceType: pulumi.Input<string>;
     /**
@@ -1033,6 +1149,8 @@ export interface DdrInstanceArgs {
     maintainTime?: pulumi.Input<string>;
     /**
      * The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+     *
+     * > **NOTE:** This parameter only takes effect when the HAConfig parameter is set to Manual.
      */
     manualHaTime?: pulumi.Input<string>;
     /**
@@ -1054,11 +1172,18 @@ export interface DdrInstanceArgs {
      * Valid values are `Subscription`, `PayAsYouGo`, Default to `PayAsYouGo`.
      */
     paymentType: pulumi.Input<string>;
+    /**
+     * The duration that you will buy DB instance (in month). It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     period?: pulumi.Input<number>;
     /**
      * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
      */
     pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.DdrInstancePgHbaConf>[]>;
+    /**
+     * The private port of the database service. If you want to update public port, please use resource alicloud.rds.Connection port.
+     */
     port?: pulumi.Input<string>;
     /**
      * The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
@@ -1069,6 +1194,8 @@ export interface DdrInstanceArgs {
      * - None: No archived backup files are retained.
      * - Lastest: Only the last archived backup file is retained.
      * - All: All the archived backup files are retained.
+     *
+     * > **NOTE:** This parameter is supported only when the instance runs the MySQL database engine.
      */
     releasedKeepPolicy?: pulumi.Input<string>;
     /**
@@ -1142,6 +1269,8 @@ export interface DdrInstanceArgs {
      * Automatic storage space expansion switch. Valid values:
      * - Enable
      * - Disable
+     *
+     * > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable.
      */
     storageAutoScale?: pulumi.Input<string>;
     /**
@@ -1151,14 +1280,20 @@ export interface DdrInstanceArgs {
      * - 30
      * - 40
      * - 50
+     *
+     * > **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
      */
     storageThreshold?: pulumi.Input<number>;
     /**
      * The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+     *
+     * > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      */
     storageUpperBound?: pulumi.Input<number>;
     /**
      * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgradeDbInstanceKernelVersion = true`. The time must be in UTC.
+     *
+     * > **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
      */
     switchTime?: pulumi.Input<string>;
     /**
@@ -1175,6 +1310,8 @@ export interface DdrInstanceArgs {
      * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
      * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
+     *
+     * > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
      */
     targetMinorVersion?: pulumi.Input<string>;
     /**
@@ -1202,6 +1339,8 @@ export interface DdrInstanceArgs {
     upgradeTime?: pulumi.Input<string>;
     /**
      * The VPC ID of the instance.
+     *
+     * > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
      */
     vpcId?: pulumi.Input<string>;
     /**
@@ -1213,6 +1352,8 @@ export interface DdrInstanceArgs {
      * - Classic: classic network in enhanced whitelist mode
      * - VPC: virtual private cloud (VPC) in enhanced whitelist mode
      * - MIX: standard whitelist mode
+     *
+     * > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
      */
     whitelistNetworkType?: pulumi.Input<string>;
     /**

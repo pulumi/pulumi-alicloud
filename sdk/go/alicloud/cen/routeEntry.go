@@ -160,6 +160,10 @@ type RouteEntry struct {
 	pulumi.CustomResourceState
 
 	// The destination CIDR block of the route entry to publish.
+	//
+	// ->**NOTE:** The "alicloudCenInstanceRouteEntries" resource depends on the related "cen.InstanceAttachment" resource.
+	//
+	// ->**NOTE:** The "cen.InstanceAttachment" resource should depend on the related "vpc.Switch" resource.
 	CidrBlock pulumi.StringOutput `pulumi:"cidrBlock"`
 	// The ID of the CEN.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
@@ -206,6 +210,10 @@ func GetRouteEntry(ctx *pulumi.Context,
 // Input properties used for looking up and filtering RouteEntry resources.
 type routeEntryState struct {
 	// The destination CIDR block of the route entry to publish.
+	//
+	// ->**NOTE:** The "alicloudCenInstanceRouteEntries" resource depends on the related "cen.InstanceAttachment" resource.
+	//
+	// ->**NOTE:** The "cen.InstanceAttachment" resource should depend on the related "vpc.Switch" resource.
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// The ID of the CEN.
 	InstanceId *string `pulumi:"instanceId"`
@@ -215,6 +223,10 @@ type routeEntryState struct {
 
 type RouteEntryState struct {
 	// The destination CIDR block of the route entry to publish.
+	//
+	// ->**NOTE:** The "alicloudCenInstanceRouteEntries" resource depends on the related "cen.InstanceAttachment" resource.
+	//
+	// ->**NOTE:** The "cen.InstanceAttachment" resource should depend on the related "vpc.Switch" resource.
 	CidrBlock pulumi.StringPtrInput
 	// The ID of the CEN.
 	InstanceId pulumi.StringPtrInput
@@ -228,6 +240,10 @@ func (RouteEntryState) ElementType() reflect.Type {
 
 type routeEntryArgs struct {
 	// The destination CIDR block of the route entry to publish.
+	//
+	// ->**NOTE:** The "alicloudCenInstanceRouteEntries" resource depends on the related "cen.InstanceAttachment" resource.
+	//
+	// ->**NOTE:** The "cen.InstanceAttachment" resource should depend on the related "vpc.Switch" resource.
 	CidrBlock string `pulumi:"cidrBlock"`
 	// The ID of the CEN.
 	InstanceId string `pulumi:"instanceId"`
@@ -238,6 +254,10 @@ type routeEntryArgs struct {
 // The set of arguments for constructing a RouteEntry resource.
 type RouteEntryArgs struct {
 	// The destination CIDR block of the route entry to publish.
+	//
+	// ->**NOTE:** The "alicloudCenInstanceRouteEntries" resource depends on the related "cen.InstanceAttachment" resource.
+	//
+	// ->**NOTE:** The "cen.InstanceAttachment" resource should depend on the related "vpc.Switch" resource.
 	CidrBlock pulumi.StringInput
 	// The ID of the CEN.
 	InstanceId pulumi.StringInput
@@ -333,6 +353,10 @@ func (o RouteEntryOutput) ToRouteEntryOutputWithContext(ctx context.Context) Rou
 }
 
 // The destination CIDR block of the route entry to publish.
+//
+// ->**NOTE:** The "alicloudCenInstanceRouteEntries" resource depends on the related "cen.InstanceAttachment" resource.
+//
+// ->**NOTE:** The "cen.InstanceAttachment" resource should depend on the related "vpc.Switch" resource.
 func (o RouteEntryOutput) CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteEntry) pulumi.StringOutput { return v.CidrBlock }).(pulumi.StringOutput)
 }

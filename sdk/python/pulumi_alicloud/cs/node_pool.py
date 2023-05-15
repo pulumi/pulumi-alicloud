@@ -111,7 +111,7 @@ class NodePoolArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input['NodePoolRollingPolicyArgs'] rolling_policy: Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
-        :param pulumi.Input['NodePoolRolloutPolicyArgs'] rollout_policy: Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+        :param pulumi.Input['NodePoolRolloutPolicyArgs'] rollout_policy: Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input['NodePoolScalingConfigArgs'] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
@@ -694,7 +694,7 @@ class NodePoolArgs:
     @pulumi.getter(name="rolloutPolicy")
     def rollout_policy(self) -> Optional[pulumi.Input['NodePoolRolloutPolicyArgs']]:
         """
-        Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+        Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         """
         return pulumi.get(self, "rollout_policy")
 
@@ -1043,7 +1043,7 @@ class _NodePoolState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input['NodePoolRollingPolicyArgs'] rolling_policy: Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
-        :param pulumi.Input['NodePoolRolloutPolicyArgs'] rollout_policy: Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+        :param pulumi.Input['NodePoolRolloutPolicyArgs'] rollout_policy: Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input['NodePoolScalingConfigArgs'] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
@@ -1624,7 +1624,7 @@ class _NodePoolState:
     @pulumi.getter(name="rolloutPolicy")
     def rollout_policy(self) -> Optional[pulumi.Input['NodePoolRolloutPolicyArgs']]:
         """
-        Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+        Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         """
         return pulumi.get(self, "rollout_policy")
 
@@ -2265,7 +2265,7 @@ class NodePool(pulumi.CustomResource):
 
         ## Import
 
-        Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
+        Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `pulumi preview`.
 
         ```sh
          $ pulumi import alicloud:cs/nodePool:NodePool custom_nodepool cluster_id:nodepool_id
@@ -2308,7 +2308,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[pulumi.InputType['NodePoolRollingPolicyArgs']] rolling_policy: Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
-        :param pulumi.Input[pulumi.InputType['NodePoolRolloutPolicyArgs']] rollout_policy: Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+        :param pulumi.Input[pulumi.InputType['NodePoolRolloutPolicyArgs']] rollout_policy: Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
@@ -2630,7 +2630,7 @@ class NodePool(pulumi.CustomResource):
 
         ## Import
 
-        Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
+        Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `pulumi preview`.
 
         ```sh
          $ pulumi import alicloud:cs/nodePool:NodePool custom_nodepool cluster_id:nodepool_id
@@ -2907,7 +2907,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[pulumi.InputType['NodePoolRollingPolicyArgs']] rolling_policy: Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating.
-        :param pulumi.Input[pulumi.InputType['NodePoolRolloutPolicyArgs']] rollout_policy: Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+        :param pulumi.Input[pulumi.InputType['NodePoolRolloutPolicyArgs']] rollout_policy: Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         :param pulumi.Input[str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input[pulumi.InputType['NodePoolScalingConfigArgs']] scaling_config: Auto scaling node pool configuration. For more details, see `scaling_config`. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
@@ -3282,7 +3282,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="rolloutPolicy")
     def rollout_policy(self) -> pulumi.Output[Optional['outputs.NodePoolRolloutPolicy']]:
         """
-        Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+        Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         """
         return pulumi.get(self, "rollout_policy")
 

@@ -118,6 +118,8 @@ type DataCenter struct {
 	PublicPoints pulumi.StringArrayOutput `pulumi:"publicPoints"`
 	Status       pulumi.StringOutput      `pulumi:"status"`
 	// The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+	//
+	// > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The Zone to launch the Cassandra dataCenter-2. If vswitchId is not empty, this zoneId can be "" or consistent.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -194,6 +196,8 @@ type dataCenterState struct {
 	PublicPoints []string `pulumi:"publicPoints"`
 	Status       *string  `pulumi:"status"`
 	// The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+	//
+	// > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The Zone to launch the Cassandra dataCenter-2. If vswitchId is not empty, this zoneId can be "" or consistent.
 	ZoneId *string `pulumi:"zoneId"`
@@ -227,6 +231,8 @@ type DataCenterState struct {
 	PublicPoints pulumi.StringArrayInput
 	Status       pulumi.StringPtrInput
 	// The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+	//
+	// > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
 	VswitchId pulumi.StringPtrInput
 	// The Zone to launch the Cassandra dataCenter-2. If vswitchId is not empty, this zoneId can be "" or consistent.
 	ZoneId pulumi.StringPtrInput
@@ -261,6 +267,8 @@ type dataCenterArgs struct {
 	Period     *int    `pulumi:"period"`
 	PeriodUnit *string `pulumi:"periodUnit"`
 	// The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+	//
+	// > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
 	VswitchId string `pulumi:"vswitchId"`
 	// The Zone to launch the Cassandra dataCenter-2. If vswitchId is not empty, this zoneId can be "" or consistent.
 	ZoneId *string `pulumi:"zoneId"`
@@ -292,6 +300,8 @@ type DataCenterArgs struct {
 	Period     pulumi.IntPtrInput
 	PeriodUnit pulumi.StringPtrInput
 	// The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+	//
+	// > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
 	VswitchId pulumi.StringInput
 	// The Zone to launch the Cassandra dataCenter-2. If vswitchId is not empty, this zoneId can be "" or consistent.
 	ZoneId pulumi.StringPtrInput
@@ -456,6 +466,8 @@ func (o DataCenterOutput) Status() pulumi.StringOutput {
 }
 
 // The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+//
+// > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
 func (o DataCenterOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataCenter) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
 }

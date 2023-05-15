@@ -82,12 +82,16 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
     /**
      * The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
      * 
+     * &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+     * 
      */
     @Import(name="endpointGroupType")
     private @Nullable Output<String> endpointGroupType;
 
     /**
      * @return The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+     * 
+     * &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
      * 
      */
     public Optional<Output<String>> endpointGroupType() {
@@ -97,12 +101,16 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
     /**
      * The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
      * 
+     * &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+     * 
      */
     @Import(name="endpointRequestProtocol")
     private @Nullable Output<String> endpointRequestProtocol;
 
     /**
      * @return The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
+     * 
+     * &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
      * 
      */
     public Optional<Output<String>> endpointRequestProtocol() {
@@ -202,12 +210,16 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
     /**
      * Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
      * 
+     * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
+     * 
      */
     @Import(name="portOverrides")
     private @Nullable Output<EndpointGroupPortOverridesArgs> portOverrides;
 
     /**
      * @return Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+     * 
+     * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      * 
      */
     public Optional<Output<EndpointGroupPortOverridesArgs>> portOverrides() {
@@ -395,6 +407,8 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param endpointGroupType The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
          * 
+         * &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+         * 
          * @return builder
          * 
          */
@@ -406,6 +420,8 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param endpointGroupType The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
          * 
+         * &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+         * 
          * @return builder
          * 
          */
@@ -415,6 +431,8 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param endpointRequestProtocol The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
+         * 
+         * &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
          * 
          * @return builder
          * 
@@ -426,6 +444,8 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param endpointRequestProtocol The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
+         * 
+         * &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
          * 
          * @return builder
          * 
@@ -563,6 +583,8 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param portOverrides Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
          * 
+         * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
+         * 
          * @return builder
          * 
          */
@@ -573,6 +595,8 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param portOverrides Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+         * 
+         * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
          * 
          * @return builder
          * 

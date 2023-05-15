@@ -128,6 +128,7 @@ def get_ddos_coo_ports(frontend_port: Optional[str] = None,
     :param str frontend_protocol: The forwarding protocol.
     :param Sequence[str] ids: A list of Port IDs.
     :param str instance_id: The Ddoscoo instance ID.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['frontendPort'] = frontend_port
@@ -178,5 +179,6 @@ def get_ddos_coo_ports_output(frontend_port: Optional[pulumi.Input[Optional[str]
     :param str frontend_protocol: The forwarding protocol.
     :param Sequence[str] ids: A list of Port IDs.
     :param str instance_id: The Ddoscoo instance ID.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

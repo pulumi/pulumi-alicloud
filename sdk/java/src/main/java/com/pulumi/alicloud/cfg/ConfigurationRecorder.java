@@ -67,9 +67,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:cfg/configurationRecorder:ConfigurationRecorder")
 public class ConfigurationRecorder extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
+     * 
+     */
     @Export(name="enterpriseEdition", type=Boolean.class, parameters={})
     private Output<Boolean> enterpriseEdition;
 
+    /**
+     * @return Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
+     * 
+     */
     public Output<Boolean> enterpriseEdition() {
         return this.enterpriseEdition;
     }

@@ -38,6 +38,9 @@ export interface GetIngressesArgs {
      * The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
      */
     namespaceId: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -80,5 +83,8 @@ export interface GetIngressesOutputArgs {
      * The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
      */
     namespaceId: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

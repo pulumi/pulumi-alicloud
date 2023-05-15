@@ -80,8 +80,9 @@ type GetBgpPeersArgs struct {
 	// The ID of the BGP group.
 	BgpGroupId *string `pulumi:"bgpGroupId"`
 	// A list of Bgp Peer IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the router.
 	RouterId *string `pulumi:"routerId"`
 	// The status of the BGP peer.
@@ -118,8 +119,9 @@ type GetBgpPeersOutputArgs struct {
 	// The ID of the BGP group.
 	BgpGroupId pulumi.StringPtrInput `pulumi:"bgpGroupId"`
 	// A list of Bgp Peer IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the router.
 	RouterId pulumi.StringPtrInput `pulumi:"routerId"`
 	// The status of the BGP peer.

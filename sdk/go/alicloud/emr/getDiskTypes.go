@@ -63,8 +63,9 @@ type GetDiskTypesArgs struct {
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType string `pulumi:"instanceChargeType"`
 	// The ecs instance type of create emr cluster instance.
-	InstanceType string  `pulumi:"instanceType"`
-	OutputFile   *string `pulumi:"outputFile"`
+	InstanceType string `pulumi:"instanceType"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The Zone to create emr cluster instance.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -107,8 +108,9 @@ type GetDiskTypesOutputArgs struct {
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType pulumi.StringInput `pulumi:"instanceChargeType"`
 	// The ecs instance type of create emr cluster instance.
-	InstanceType pulumi.StringInput    `pulumi:"instanceType"`
-	OutputFile   pulumi.StringPtrInput `pulumi:"outputFile"`
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The Zone to create emr cluster instance.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }

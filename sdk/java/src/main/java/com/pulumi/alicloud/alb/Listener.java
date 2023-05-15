@@ -44,12 +44,16 @@ public class Listener extends com.pulumi.resources.CustomResource {
     /**
      * Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
      * 
+     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
+     * 
      */
     @Export(name="accessLogRecordCustomizedHeadersEnabled", type=Boolean.class, parameters={})
     private Output<Boolean> accessLogRecordCustomizedHeadersEnabled;
 
     /**
      * @return Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+     * 
+     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
      * 
      */
     public Output<Boolean> accessLogRecordCustomizedHeadersEnabled() {
@@ -146,12 +150,16 @@ public class Listener extends com.pulumi.resources.CustomResource {
     /**
      * Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
      * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+     * 
      */
     @Export(name="http2Enabled", type=Boolean.class, parameters={})
     private Output<Boolean> http2Enabled;
 
     /**
      * @return Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+     * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
      * 
      */
     public Output<Boolean> http2Enabled() {
@@ -258,12 +266,16 @@ public class Listener extends com.pulumi.resources.CustomResource {
     /**
      * Security Policy.
      * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+     * 
      */
     @Export(name="securityPolicyId", type=String.class, parameters={})
     private Output<String> securityPolicyId;
 
     /**
      * @return Security Policy.
+     * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
      * 
      */
     public Output<String> securityPolicyId() {

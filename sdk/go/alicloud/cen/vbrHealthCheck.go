@@ -96,6 +96,8 @@ type VbrHealthCheck struct {
 	// The ID of the account to which the VBR belongs.
 	VbrInstanceOwnerId pulumi.IntPtrOutput `pulumi:"vbrInstanceOwnerId"`
 	// The ID of the region to which the VBR belongs.
+	//
+	// ->**NOTE:** The `cen.VbrHealthCheck` resource depends on the related `cen.InstanceAttachment` resource.
 	VbrInstanceRegionId pulumi.StringOutput `pulumi:"vbrInstanceRegionId"`
 }
 
@@ -155,6 +157,8 @@ type vbrHealthCheckState struct {
 	// The ID of the account to which the VBR belongs.
 	VbrInstanceOwnerId *int `pulumi:"vbrInstanceOwnerId"`
 	// The ID of the region to which the VBR belongs.
+	//
+	// ->**NOTE:** The `cen.VbrHealthCheck` resource depends on the related `cen.InstanceAttachment` resource.
 	VbrInstanceRegionId *string `pulumi:"vbrInstanceRegionId"`
 }
 
@@ -174,6 +178,8 @@ type VbrHealthCheckState struct {
 	// The ID of the account to which the VBR belongs.
 	VbrInstanceOwnerId pulumi.IntPtrInput
 	// The ID of the region to which the VBR belongs.
+	//
+	// ->**NOTE:** The `cen.VbrHealthCheck` resource depends on the related `cen.InstanceAttachment` resource.
 	VbrInstanceRegionId pulumi.StringPtrInput
 }
 
@@ -197,6 +203,8 @@ type vbrHealthCheckArgs struct {
 	// The ID of the account to which the VBR belongs.
 	VbrInstanceOwnerId *int `pulumi:"vbrInstanceOwnerId"`
 	// The ID of the region to which the VBR belongs.
+	//
+	// ->**NOTE:** The `cen.VbrHealthCheck` resource depends on the related `cen.InstanceAttachment` resource.
 	VbrInstanceRegionId string `pulumi:"vbrInstanceRegionId"`
 }
 
@@ -217,6 +225,8 @@ type VbrHealthCheckArgs struct {
 	// The ID of the account to which the VBR belongs.
 	VbrInstanceOwnerId pulumi.IntPtrInput
 	// The ID of the region to which the VBR belongs.
+	//
+	// ->**NOTE:** The `cen.VbrHealthCheck` resource depends on the related `cen.InstanceAttachment` resource.
 	VbrInstanceRegionId pulumi.StringInput
 }
 
@@ -343,6 +353,8 @@ func (o VbrHealthCheckOutput) VbrInstanceOwnerId() pulumi.IntPtrOutput {
 }
 
 // The ID of the region to which the VBR belongs.
+//
+// ->**NOTE:** The `cen.VbrHealthCheck` resource depends on the related `cen.InstanceAttachment` resource.
 func (o VbrHealthCheckOutput) VbrInstanceRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VbrHealthCheck) pulumi.StringOutput { return v.VbrInstanceRegionId }).(pulumi.StringOutput)
 }

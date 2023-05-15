@@ -159,6 +159,7 @@ def get_db_instance_plans(db_instance_id: Optional[str] = None,
     :param str db_instance_id: The ID of the Database instance.
     :param Sequence[str] ids: A list of DB Instance Plan IDs.
     :param str name_regex: A regex string to filter results by DB Instance Plan name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str plan_schedule_type: Plan scheduling type. Valid values: `Postpone`, `Regular`.
     :param str plan_type: The type of the Plan. Valid values: `PauseResume`, `Resize`.
     :param str status: The Status of the Plan.
@@ -221,6 +222,7 @@ def get_db_instance_plans_output(db_instance_id: Optional[pulumi.Input[str]] = N
     :param str db_instance_id: The ID of the Database instance.
     :param Sequence[str] ids: A list of DB Instance Plan IDs.
     :param str name_regex: A regex string to filter results by DB Instance Plan name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str plan_schedule_type: Plan scheduling type. Valid values: `Postpone`, `Regular`.
     :param str plan_type: The type of the Plan. Valid values: `PauseResume`, `Resize`.
     :param str status: The Status of the Plan.

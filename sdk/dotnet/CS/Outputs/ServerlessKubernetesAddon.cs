@@ -19,6 +19,8 @@ namespace Pulumi.AliCloud.CS.Outputs
         public readonly string? Config;
         /// <summary>
         /// Disables the automatic installation of a component. Default is `false`.
+        /// 
+        /// The following example is the definition of addons block, The type of this field is list:
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>

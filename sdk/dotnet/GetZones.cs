@@ -106,12 +106,17 @@ namespace Pulumi.AliCloud
         /// <summary>
         /// Filter the results by a specific resource type.
         /// Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
+        /// 
+        /// &gt; **NOTE:** From version 1.134.0, the `available_resource_creation` value "Rds" has been deprecated.
+        /// If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
         /// </summary>
         [Input("availableResourceCreation")]
         public string? AvailableResourceCreation { get; set; }
 
         /// <summary>
         /// Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+        /// 
+        /// &gt; **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don't support it. It is recommended to use `cloud_efficiency` or `cloud_ssd`.
         /// </summary>
         [Input("availableSlbAddressIpVersion")]
         public string? AvailableSlbAddressIpVersion { get; set; }
@@ -146,6 +151,9 @@ namespace Pulumi.AliCloud
         [Input("networkType")]
         public string? NetworkType { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -178,12 +186,17 @@ namespace Pulumi.AliCloud
         /// <summary>
         /// Filter the results by a specific resource type.
         /// Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
+        /// 
+        /// &gt; **NOTE:** From version 1.134.0, the `available_resource_creation` value "Rds" has been deprecated.
+        /// If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
         /// </summary>
         [Input("availableResourceCreation")]
         public Input<string>? AvailableResourceCreation { get; set; }
 
         /// <summary>
         /// Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+        /// 
+        /// &gt; **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don't support it. It is recommended to use `cloud_efficiency` or `cloud_ssd`.
         /// </summary>
         [Input("availableSlbAddressIpVersion")]
         public Input<string>? AvailableSlbAddressIpVersion { get; set; }
@@ -218,6 +231,9 @@ namespace Pulumi.AliCloud
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

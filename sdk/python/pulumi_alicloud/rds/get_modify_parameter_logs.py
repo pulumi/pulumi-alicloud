@@ -116,6 +116,7 @@ def get_modify_parameter_logs(db_instance_id: Optional[str] = None,
 
     :param str db_instance_id: The db instance id.
     :param str end_time: The end time.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str start_time: The start time.
     """
     __args__ = dict()
@@ -162,6 +163,7 @@ def get_modify_parameter_logs_output(db_instance_id: Optional[pulumi.Input[str]]
 
     :param str db_instance_id: The db instance id.
     :param str end_time: The end time.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str start_time: The start time.
     """
     ...

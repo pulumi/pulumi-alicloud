@@ -67,7 +67,8 @@ type GetTransitRouterCidrsArgs struct {
 	// A list of Cen Transit Router Cidr IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Transit Router Cidr name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the transit router cidr.
 	TransitRouterCidrId *string `pulumi:"transitRouterCidrId"`
@@ -106,7 +107,8 @@ type GetTransitRouterCidrsOutputArgs struct {
 	// A list of Cen Transit Router Cidr IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Transit Router Cidr name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the transit router cidr.
 	TransitRouterCidrId pulumi.StringPtrInput `pulumi:"transitRouterCidrId"`

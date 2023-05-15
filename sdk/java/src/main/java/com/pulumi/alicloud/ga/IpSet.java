@@ -128,12 +128,16 @@ public class IpSet extends com.pulumi.resources.CustomResource {
     /**
      * The bandwidth allocated to the acceleration region.
      * 
+     * &gt; **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
+     * 
      */
     @Export(name="bandwidth", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> bandwidth;
 
     /**
      * @return The bandwidth allocated to the acceleration region.
+     * 
+     * &gt; **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
      * 
      */
     public Output<Optional<Integer>> bandwidth() {

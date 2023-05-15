@@ -95,6 +95,9 @@ def get_zones(output_file: Optional[str] = None,
     hbase = alicloud.hbase.Instance("hbase", zone_id=zones_ids.zones[0].id)
     # Other properties...
     ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
@@ -126,5 +129,8 @@ def get_zones_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
     hbase = alicloud.hbase.Instance("hbase", zone_id=zones_ids.zones[0].id)
     # Other properties...
     ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

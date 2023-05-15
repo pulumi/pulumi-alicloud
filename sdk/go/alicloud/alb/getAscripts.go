@@ -32,7 +32,8 @@ type GetAscriptsArgs struct {
 	// Listener ID of script attribution
 	ListenerId *string `pulumi:"listenerId"`
 	// A regex string to filter results by Group Metric Rule name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -78,7 +79,8 @@ type GetAscriptsOutputArgs struct {
 	// Listener ID of script attribution
 	ListenerId pulumi.StringPtrInput `pulumi:"listenerId"`
 	// A regex string to filter results by Group Metric Rule name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

@@ -10,6 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
+// Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+//
+// > **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
+//
+// > **NOTE:** Available in v1.71.0+.
+//
 // ## Example Usage
 //
 // ```go
@@ -54,11 +61,12 @@ type GetClustersArgs struct {
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
 	EnableDetails    *bool   `pulumi:"enableDetails"`
 	// A list of ADB cluster IDs.
-	Ids             []string `pulumi:"ids"`
-	OutputFile      *string  `pulumi:"outputFile"`
-	PageNumber      *int     `pulumi:"pageNumber"`
-	PageSize        *int     `pulumi:"pageSize"`
-	ResourceGroupId *string  `pulumi:"resourceGroupId"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile      *string `pulumi:"outputFile"`
+	PageNumber      *int    `pulumi:"pageNumber"`
+	PageSize        *int    `pulumi:"pageSize"`
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -112,11 +120,12 @@ type GetClustersOutputArgs struct {
 	DescriptionRegex pulumi.StringPtrInput `pulumi:"descriptionRegex"`
 	EnableDetails    pulumi.BoolPtrInput   `pulumi:"enableDetails"`
 	// A list of ADB cluster IDs.
-	Ids             pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile      pulumi.StringPtrInput   `pulumi:"outputFile"`
-	PageNumber      pulumi.IntPtrInput      `pulumi:"pageNumber"`
-	PageSize        pulumi.IntPtrInput      `pulumi:"pageSize"`
-	ResourceGroupId pulumi.StringPtrInput   `pulumi:"resourceGroupId"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile      pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber      pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize        pulumi.IntPtrInput    `pulumi:"pageSize"`
+	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The status of the cluster. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`. For more information, see [Cluster status](https://www.alibabacloud.com/help/doc-detail/143075.htm).
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.

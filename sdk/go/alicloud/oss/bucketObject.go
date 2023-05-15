@@ -103,6 +103,9 @@ type BucketObject struct {
 	// The name of the object once it is in the bucket.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
+	//
+	// Either `source` or `content` must be provided to specify the bucket content.
+	// These two arguments are mutually-exclusive.
 	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
 	// Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
 	ServerSideEncryption pulumi.StringPtrOutput `pulumi:"serverSideEncryption"`
@@ -172,6 +175,9 @@ type bucketObjectState struct {
 	// The name of the object once it is in the bucket.
 	Key *string `pulumi:"key"`
 	// Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
+	//
+	// Either `source` or `content` must be provided to specify the bucket content.
+	// These two arguments are mutually-exclusive.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
 	ServerSideEncryption *string `pulumi:"serverSideEncryption"`
@@ -207,6 +213,9 @@ type BucketObjectState struct {
 	// The name of the object once it is in the bucket.
 	Key pulumi.StringPtrInput
 	// Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
+	//
+	// Either `source` or `content` must be provided to specify the bucket content.
+	// These two arguments are mutually-exclusive.
 	KmsKeyId pulumi.StringPtrInput
 	// Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
 	ServerSideEncryption pulumi.StringPtrInput
@@ -242,6 +251,9 @@ type bucketObjectArgs struct {
 	// The name of the object once it is in the bucket.
 	Key string `pulumi:"key"`
 	// Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
+	//
+	// Either `source` or `content` must be provided to specify the bucket content.
+	// These two arguments are mutually-exclusive.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
 	ServerSideEncryption *string `pulumi:"serverSideEncryption"`
@@ -272,6 +284,9 @@ type BucketObjectArgs struct {
 	// The name of the object once it is in the bucket.
 	Key pulumi.StringInput
 	// Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
+	//
+	// Either `source` or `content` must be provided to specify the bucket content.
+	// These two arguments are mutually-exclusive.
 	KmsKeyId pulumi.StringPtrInput
 	// Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
 	ServerSideEncryption pulumi.StringPtrInput
@@ -427,6 +442,9 @@ func (o BucketObjectOutput) Key() pulumi.StringOutput {
 }
 
 // Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
+//
+// Either `source` or `content` must be provided to specify the bucket content.
+// These two arguments are mutually-exclusive.
 func (o BucketObjectOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }

@@ -30,6 +30,8 @@ class NetworkArgs:
         :param pulumi.Input[str] description: The VPC description. Defaults to null.
         :param pulumi.Input[bool] dry_run: Specifies whether to pre-check this request only. Valid values: `true` and `false`.
         :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+               
+               > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the VPC belongs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
@@ -105,6 +107,8 @@ class NetworkArgs:
     def enable_ipv6(self) -> Optional[pulumi.Input[bool]]:
         """
         Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+
+        > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
         """
         return pulumi.get(self, "enable_ipv6")
 
@@ -209,6 +213,8 @@ class _NetworkState:
         :param pulumi.Input[str] description: The VPC description. Defaults to null.
         :param pulumi.Input[bool] dry_run: Specifies whether to pre-check this request only. Valid values: `true` and `false`.
         :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+               
+               > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
         :param pulumi.Input[str] ipv6_cidr_block: (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the VPC belongs.
@@ -302,6 +308,8 @@ class _NetworkState:
     def enable_ipv6(self) -> Optional[pulumi.Input[bool]]:
         """
         Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+
+        > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
         """
         return pulumi.get(self, "enable_ipv6")
 
@@ -459,6 +467,23 @@ class Network(pulumi.CustomResource):
                  vpc_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        vpc = alicloud.vpc.Network("vpc",
+            cidr_block="172.16.0.0/12",
+            vpc_name="tf_test_foo")
+        ```
+        ## Module Support
+
+        You can use the existing vpc module
+        to create a VPC and several VSwitches one-click.
+
         ## Import
 
         VPC can be imported using the id, e.g.
@@ -473,6 +498,8 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] description: The VPC description. Defaults to null.
         :param pulumi.Input[bool] dry_run: Specifies whether to pre-check this request only. Valid values: `true` and `false`.
         :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+               
+               > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the VPC belongs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
@@ -487,6 +514,23 @@ class Network(pulumi.CustomResource):
                  args: Optional[NetworkArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        vpc = alicloud.vpc.Network("vpc",
+            cidr_block="172.16.0.0/12",
+            vpc_name="tf_test_foo")
+        ```
+        ## Module Support
+
+        You can use the existing vpc module
+        to create a VPC and several VSwitches one-click.
+
         ## Import
 
         VPC can be imported using the id, e.g.
@@ -586,6 +630,8 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] description: The VPC description. Defaults to null.
         :param pulumi.Input[bool] dry_run: Specifies whether to pre-check this request only. Valid values: `true` and `false`.
         :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+               
+               > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
         :param pulumi.Input[str] ipv6_cidr_block: (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the VPC belongs.
@@ -648,6 +694,8 @@ class Network(pulumi.CustomResource):
     def enable_ipv6(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
+
+        > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
         """
         return pulumi.get(self, "enable_ipv6")
 

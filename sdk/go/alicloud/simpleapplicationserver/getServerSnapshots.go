@@ -89,7 +89,8 @@ type GetServerSnapshotsArgs struct {
 	// The ID of the simple application server.
 	InstanceId *string `pulumi:"instanceId"`
 	// A regex string to filter results by Snapshot name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the snapshots. Valid values: `Progressing`, `Accomplished` and `Failed`.
 	Status *string `pulumi:"status"`
@@ -131,7 +132,8 @@ type GetServerSnapshotsOutputArgs struct {
 	// The ID of the simple application server.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
 	// A regex string to filter results by Snapshot name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the snapshots. Valid values: `Progressing`, `Accomplished` and `Failed`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

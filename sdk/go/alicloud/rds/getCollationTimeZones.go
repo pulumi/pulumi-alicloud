@@ -56,7 +56,8 @@ type GetCollationTimeZonesArgs struct {
 	// An array that consists of the character set collations and time zones that are available for
 	// use in ApsaraDB RDS.
 	CollationTimeZones []GetCollationTimeZonesCollationTimeZone `pulumi:"collationTimeZones"`
-	OutputFile         *string                                  `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi up`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getCollationTimeZones.
@@ -86,7 +87,8 @@ type GetCollationTimeZonesOutputArgs struct {
 	// An array that consists of the character set collations and time zones that are available for
 	// use in ApsaraDB RDS.
 	CollationTimeZones GetCollationTimeZonesCollationTimeZoneArrayInput `pulumi:"collationTimeZones"`
-	OutputFile         pulumi.StringPtrInput                            `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi up`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetCollationTimeZonesOutputArgs) ElementType() reflect.Type {

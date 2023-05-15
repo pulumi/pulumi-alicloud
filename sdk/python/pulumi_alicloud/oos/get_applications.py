@@ -126,6 +126,7 @@ def get_applications(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Application IDs. Its element value is same as Application Name.
     :param str name_regex: A regex string to filter results by Application name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, Any] tags: The tag of the resource.
     """
     __args__ = dict()
@@ -174,6 +175,7 @@ def get_applications_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     :param Sequence[str] ids: A list of Application IDs. Its element value is same as Application Name.
     :param str name_regex: A regex string to filter results by Application name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, Any] tags: The tag of the resource.
     """
     ...

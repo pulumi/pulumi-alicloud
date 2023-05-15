@@ -100,12 +100,16 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
     /**
      * Specifies when noncurrent object versions transitions (documented below).
      * 
+     * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+     * 
      */
     @Import(name="noncurrentVersionTransitions")
     private @Nullable Output<List<BucketLifecycleRuleNoncurrentVersionTransitionArgs>> noncurrentVersionTransitions;
 
     /**
      * @return Specifies when noncurrent object versions transitions (documented below).
+     * 
+     * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
      * 
      */
     public Optional<Output<List<BucketLifecycleRuleNoncurrentVersionTransitionArgs>>> noncurrentVersionTransitions() {
@@ -311,6 +315,8 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         /**
          * @param noncurrentVersionTransitions Specifies when noncurrent object versions transitions (documented below).
          * 
+         * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+         * 
          * @return builder
          * 
          */
@@ -322,6 +328,8 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         /**
          * @param noncurrentVersionTransitions Specifies when noncurrent object versions transitions (documented below).
          * 
+         * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+         * 
          * @return builder
          * 
          */
@@ -331,6 +339,8 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
 
         /**
          * @param noncurrentVersionTransitions Specifies when noncurrent object versions transitions (documented below).
+         * 
+         * `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
          * 
          * @return builder
          * 

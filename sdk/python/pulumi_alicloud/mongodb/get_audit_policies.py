@@ -94,6 +94,7 @@ def get_audit_policies(db_instance_id: Optional[str] = None,
 
 
     :param str db_instance_id: The ID of the instance.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['dbInstanceId'] = db_instance_id
@@ -131,5 +132,6 @@ def get_audit_policies_output(db_instance_id: Optional[pulumi.Input[str]] = None
 
 
     :param str db_instance_id: The ID of the instance.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

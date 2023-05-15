@@ -56,7 +56,8 @@ type GetVaultsArgs struct {
 	// A list of Vault IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Vault name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
 	Status *string `pulumi:"status"`
@@ -95,7 +96,8 @@ type GetVaultsOutputArgs struct {
 	// A list of Vault IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Vault name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

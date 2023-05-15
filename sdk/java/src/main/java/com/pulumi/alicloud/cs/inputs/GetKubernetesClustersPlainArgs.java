@@ -68,9 +68,17 @@ public final class GetKubernetesClustersPlainArgs extends com.pulumi.resources.I
         return Optional.ofNullable(this.nameRegex);
     }
 
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable String outputFile;
 
+    /**
+     * @return File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -151,6 +159,12 @@ public final class GetKubernetesClustersPlainArgs extends com.pulumi.resources.I
             return this;
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
             return this;

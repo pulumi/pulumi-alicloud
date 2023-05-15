@@ -61,7 +61,8 @@ type GetVpcEndpointServicesArgs struct {
 	// A list of Vpc Endpoint Service IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Vpc Endpoint Service name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The business status of the terminal node service..
 	ServiceBusinessStatus *string `pulumi:"serviceBusinessStatus"`
@@ -106,7 +107,8 @@ type GetVpcEndpointServicesOutputArgs struct {
 	// A list of Vpc Endpoint Service IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Vpc Endpoint Service name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The business status of the terminal node service..
 	ServiceBusinessStatus pulumi.StringPtrInput `pulumi:"serviceBusinessStatus"`

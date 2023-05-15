@@ -25,6 +25,10 @@ class MscSubSubscriptionArgs:
         """
         The set of arguments for constructing a MscSubSubscription resource.
         :param pulumi.Input[str] item_name: The name of the Subscription. **NOTE:**  You should use the `get_msc_sub_subscriptions` to query the available subscription item name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_ids: The ids of subscribed contacts.
+               **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
+               So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+               and you can use tolist to convert it to a list.
         :param pulumi.Input[int] email_status: The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         :param pulumi.Input[int] pmsg_status: The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         :param pulumi.Input[int] sms_status: The status of sms subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
@@ -63,6 +67,12 @@ class MscSubSubscriptionArgs:
     @property
     @pulumi.getter(name="contactIds")
     def contact_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ids of subscribed contacts.
+        **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
+        So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+        and you can use tolist to convert it to a list.
+        """
         return pulumi.get(self, "contact_ids")
 
     @contact_ids.setter
@@ -158,6 +168,10 @@ class _MscSubSubscriptionState:
         """
         Input properties used for looking up and filtering MscSubSubscription resources.
         :param pulumi.Input[str] channel: The channel the Subscription.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_ids: The ids of subscribed contacts.
+               **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
+               So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+               and you can use tolist to convert it to a list.
         :param pulumi.Input[str] description: The description of the Subscription.
         :param pulumi.Input[int] email_status: The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         :param pulumi.Input[str] item_name: The name of the Subscription. **NOTE:**  You should use the `get_msc_sub_subscriptions` to query the available subscription item name.
@@ -203,6 +217,12 @@ class _MscSubSubscriptionState:
     @property
     @pulumi.getter(name="contactIds")
     def contact_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ids of subscribed contacts.
+        **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
+        So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+        and you can use tolist to convert it to a list.
+        """
         return pulumi.get(self, "contact_ids")
 
     @contact_ids.setter
@@ -352,6 +372,10 @@ class MscSubSubscription(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_ids: The ids of subscribed contacts.
+               **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
+               So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+               and you can use tolist to convert it to a list.
         :param pulumi.Input[int] email_status: The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         :param pulumi.Input[str] item_name: The name of the Subscription. **NOTE:**  You should use the `get_msc_sub_subscriptions` to query the available subscription item name.
         :param pulumi.Input[int] pmsg_status: The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
@@ -468,6 +492,10 @@ class MscSubSubscription(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] channel: The channel the Subscription.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_ids: The ids of subscribed contacts.
+               **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
+               So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+               and you can use tolist to convert it to a list.
         :param pulumi.Input[str] description: The description of the Subscription.
         :param pulumi.Input[int] email_status: The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         :param pulumi.Input[str] item_name: The name of the Subscription. **NOTE:**  You should use the `get_msc_sub_subscriptions` to query the available subscription item name.
@@ -504,6 +532,12 @@ class MscSubSubscription(pulumi.CustomResource):
     @property
     @pulumi.getter(name="contactIds")
     def contact_ids(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The ids of subscribed contacts.
+        **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
+        So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+        and you can use tolist to convert it to a list.
+        """
         return pulumi.get(self, "contact_ids")
 
     @property

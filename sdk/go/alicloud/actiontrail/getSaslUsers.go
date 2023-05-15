@@ -56,7 +56,8 @@ type GetSaslUsersArgs struct {
 	// ID of the ALIKAFKA Instance that owns the sasl users.
 	InstanceId string `pulumi:"instanceId"`
 	// A regex string to filter results by the username.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -91,7 +92,8 @@ type GetSaslUsersOutputArgs struct {
 	// ID of the ALIKAFKA Instance that owns the sasl users.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// A regex string to filter results by the username.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

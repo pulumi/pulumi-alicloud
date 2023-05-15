@@ -166,6 +166,7 @@ def get_node_classes(category: Optional[str] = None,
     :param str db_node_class: The PolarDB node class type by the user.
     :param str db_type: Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If db_type is set, db_version also needs to be set.
     :param str db_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If db_version is set, db_type also needs to be set.
+    :param str output_file: File name where to save data source results (after running `pulumi up`).
     :param str pay_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`.
     :param str region_id: The Region to launch the PolarDB cluster.
     :param str zone_id: The Zone to launch the PolarDB cluster.
@@ -227,6 +228,7 @@ def get_node_classes_output(category: Optional[pulumi.Input[Optional[str]]] = No
     :param str db_node_class: The PolarDB node class type by the user.
     :param str db_type: Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If db_type is set, db_version also needs to be set.
     :param str db_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If db_version is set, db_type also needs to be set.
+    :param str output_file: File name where to save data source results (after running `pulumi up`).
     :param str pay_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`.
     :param str region_id: The Region to launch the PolarDB cluster.
     :param str zone_id: The Zone to launch the PolarDB cluster.

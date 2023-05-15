@@ -51,6 +51,9 @@ export interface GetEcsStorageCapacityUnitsArgs {
      * A regex string to filter results by Storage Capacity Unit name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of Storage Capacity Unit.
@@ -110,6 +113,9 @@ export interface GetEcsStorageCapacityUnitsOutputArgs {
      * A regex string to filter results by Storage Capacity Unit name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of Storage Capacity Unit.

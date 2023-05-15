@@ -169,6 +169,7 @@ def get_topics(enable_details: Optional[bool] = None,
     :param Sequence[str] ids: A list of topic IDs to filter results.
     :param str instance_id: ID of the ONS Instance that owns the topics.
     :param str name_regex: A regex string to filter results by the topic name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
     """
     __args__ = dict()
@@ -237,6 +238,7 @@ def get_topics_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
     :param Sequence[str] ids: A list of topic IDs to filter results.
     :param str instance_id: ID of the ONS Instance that owns the topics.
     :param str name_regex: A regex string to filter results by the topic name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
     """
     ...

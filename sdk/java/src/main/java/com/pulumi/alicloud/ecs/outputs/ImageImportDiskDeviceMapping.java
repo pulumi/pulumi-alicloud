@@ -35,6 +35,8 @@ public final class ImageImportDiskDeviceMapping {
     /**
      * @return The file name of your OSS Object.
      * 
+     * &gt; **NOTE:** The disk_device_mapping is a list and it&#39;s first item will be used to system disk and other items are used to data disks.
+     * 
      */
     private @Nullable String ossObject;
 
@@ -69,6 +71,8 @@ public final class ImageImportDiskDeviceMapping {
     }
     /**
      * @return The file name of your OSS Object.
+     * 
+     * &gt; **NOTE:** The disk_device_mapping is a list and it&#39;s first item will be used to system disk and other items are used to data disks.
      * 
      */
     public Optional<String> ossObject() {

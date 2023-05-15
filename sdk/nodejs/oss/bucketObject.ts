@@ -115,6 +115,9 @@ export class BucketObject extends pulumi.CustomResource {
     public readonly key!: pulumi.Output<string>;
     /**
      * Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
+     *
+     * Either `source` or `content` must be provided to specify the bucket content.
+     * These two arguments are mutually-exclusive.
      */
     public readonly kmsKeyId!: pulumi.Output<string | undefined>;
     /**
@@ -243,6 +246,9 @@ export interface BucketObjectState {
     key?: pulumi.Input<string>;
     /**
      * Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
+     *
+     * Either `source` or `content` must be provided to specify the bucket content.
+     * These two arguments are mutually-exclusive.
      */
     kmsKeyId?: pulumi.Input<string>;
     /**
@@ -305,6 +311,9 @@ export interface BucketObjectArgs {
     key: pulumi.Input<string>;
     /**
      * Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
+     *
+     * Either `source` or `content` must be provided to specify the bucket content.
+     * These two arguments are mutually-exclusive.
      */
     kmsKeyId?: pulumi.Input<string>;
     /**

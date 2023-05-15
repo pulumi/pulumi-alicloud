@@ -59,7 +59,8 @@ type GetHybridMonitorDatasArgs struct {
 	// The timestamp that specifies the end of the time range to query.
 	End string `pulumi:"end"`
 	// The name of the namespace.
-	Namespace  string  `pulumi:"namespace"`
+	Namespace string `pulumi:"namespace"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The interval at which monitoring data is collected. Unit: seconds.
 	Period *string `pulumi:"period"`
@@ -100,7 +101,8 @@ type GetHybridMonitorDatasOutputArgs struct {
 	// The timestamp that specifies the end of the time range to query.
 	End pulumi.StringInput `pulumi:"end"`
 	// The name of the namespace.
-	Namespace  pulumi.StringInput    `pulumi:"namespace"`
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The interval at which monitoring data is collected. Unit: seconds.
 	Period pulumi.StringPtrInput `pulumi:"period"`

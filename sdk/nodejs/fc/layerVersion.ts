@@ -99,6 +99,8 @@ export class LayerVersion extends pulumi.CustomResource {
     public /*out*/ readonly version!: pulumi.Output<string>;
     /**
      * The ZIP package of the function code that is encoded in the Base64 format.
+     *
+     * > **NOTE:** `zipFile` and `ossBucketName`, `ossObjectName` cannot be used together.
      */
     public readonly zipFile!: pulumi.Output<string | undefined>;
 
@@ -197,6 +199,8 @@ export interface LayerVersionState {
     version?: pulumi.Input<string>;
     /**
      * The ZIP package of the function code that is encoded in the Base64 format.
+     *
+     * > **NOTE:** `zipFile` and `ossBucketName`, `ossObjectName` cannot be used together.
      */
     zipFile?: pulumi.Input<string>;
 }
@@ -231,6 +235,8 @@ export interface LayerVersionArgs {
     skipDestroy?: pulumi.Input<boolean>;
     /**
      * The ZIP package of the function code that is encoded in the Base64 format.
+     *
+     * > **NOTE:** `zipFile` and `ossBucketName`, `ossObjectName` cannot be used together.
      */
     zipFile?: pulumi.Input<string>;
 }

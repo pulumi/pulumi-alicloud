@@ -159,6 +159,7 @@ def get_endpoint_groups(accelerator_id: Optional[str] = None,
     :param Sequence[str] ids: A list of Endpoint Group IDs.
     :param str listener_id: The ID of the listener that is associated with the endpoint group.
     :param str name_regex: A regex string to filter results by Endpoint Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the endpoint group.
     """
     __args__ = dict()
@@ -219,6 +220,7 @@ def get_endpoint_groups_output(accelerator_id: Optional[pulumi.Input[str]] = Non
     :param Sequence[str] ids: A list of Endpoint Group IDs.
     :param str listener_id: The ID of the listener that is associated with the endpoint group.
     :param str name_regex: A regex string to filter results by Endpoint Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the endpoint group.
     """
     ...

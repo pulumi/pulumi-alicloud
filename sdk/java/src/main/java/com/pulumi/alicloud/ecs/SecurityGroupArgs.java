@@ -123,12 +123,16 @@ public final class SecurityGroupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A mapping of tags to assign to the resource.
      * 
+     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
+     * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
      * @return A mapping of tags to assign to the resource.
+     * 
+     * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -322,6 +326,8 @@ public final class SecurityGroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tags A mapping of tags to assign to the resource.
          * 
+         * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
+         * 
          * @return builder
          * 
          */
@@ -332,6 +338,8 @@ public final class SecurityGroupArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags A mapping of tags to assign to the resource.
+         * 
+         * Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
          * 
          * @return builder
          * 

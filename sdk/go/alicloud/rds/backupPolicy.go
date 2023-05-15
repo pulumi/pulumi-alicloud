@@ -113,6 +113,8 @@ type BackupPolicy struct {
 	// - 360: A snapshot backup is performed once every 360 minutes.
 	// - 480: A snapshot backup is performed once every 480 minutes.
 	// - 720: A snapshot backup is performed once every 720 minutes.
+	//
+	// > **NOTE:** Currently, the SQLServer instance does not support to modify `logBackupRetentionPeriod`.
 	BackupInterval pulumi.StringOutput `pulumi:"backupInterval"`
 	// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
 	//
@@ -213,6 +215,8 @@ type backupPolicyState struct {
 	// - 360: A snapshot backup is performed once every 360 minutes.
 	// - 480: A snapshot backup is performed once every 480 minutes.
 	// - 720: A snapshot backup is performed once every 720 minutes.
+	//
+	// > **NOTE:** Currently, the SQLServer instance does not support to modify `logBackupRetentionPeriod`.
 	BackupInterval *string `pulumi:"backupInterval"`
 	// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
 	//
@@ -282,6 +286,8 @@ type BackupPolicyState struct {
 	// - 360: A snapshot backup is performed once every 360 minutes.
 	// - 480: A snapshot backup is performed once every 480 minutes.
 	// - 720: A snapshot backup is performed once every 720 minutes.
+	//
+	// > **NOTE:** Currently, the SQLServer instance does not support to modify `logBackupRetentionPeriod`.
 	BackupInterval pulumi.StringPtrInput
 	// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
 	//
@@ -355,6 +361,8 @@ type backupPolicyArgs struct {
 	// - 360: A snapshot backup is performed once every 360 minutes.
 	// - 480: A snapshot backup is performed once every 480 minutes.
 	// - 720: A snapshot backup is performed once every 720 minutes.
+	//
+	// > **NOTE:** Currently, the SQLServer instance does not support to modify `logBackupRetentionPeriod`.
 	BackupInterval *string `pulumi:"backupInterval"`
 	// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
 	//
@@ -425,6 +433,8 @@ type BackupPolicyArgs struct {
 	// - 360: A snapshot backup is performed once every 360 minutes.
 	// - 480: A snapshot backup is performed once every 480 minutes.
 	// - 720: A snapshot backup is performed once every 720 minutes.
+	//
+	// > **NOTE:** Currently, the SQLServer instance does not support to modify `logBackupRetentionPeriod`.
 	BackupInterval pulumi.StringPtrInput
 	// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
 	//
@@ -589,6 +599,8 @@ func (o BackupPolicyOutput) ArchiveBackupRetentionPeriod() pulumi.IntOutput {
 // - 360: A snapshot backup is performed once every 360 minutes.
 // - 480: A snapshot backup is performed once every 480 minutes.
 // - 720: A snapshot backup is performed once every 720 minutes.
+//
+// > **NOTE:** Currently, the SQLServer instance does not support to modify `logBackupRetentionPeriod`.
 func (o BackupPolicyOutput) BackupInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.BackupInterval }).(pulumi.StringOutput)
 }

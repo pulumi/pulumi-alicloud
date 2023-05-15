@@ -125,6 +125,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment")
 public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResource {
     /**
+     * Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+     * 
+     */
+    @Export(name="autoPublishRouteEnabled", type=Boolean.class, parameters={})
+    private Output<Boolean> autoPublishRouteEnabled;
+
+    /**
+     * @return Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+     * 
+     */
+    public Output<Boolean> autoPublishRouteEnabled() {
+        return this.autoPublishRouteEnabled;
+    }
+    /**
      * The ID of the CEN.
      * 
      */
@@ -181,6 +195,8 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.resourceType);
     }
     /**
+     * Whether to enabled route table association. The system default value is `true`. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
+     * 
      * @deprecated
      * Field &#39;route_table_association_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_association&#39; instead.
      * 
@@ -189,10 +205,16 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
     @Export(name="routeTableAssociationEnabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> routeTableAssociationEnabled;
 
+    /**
+     * @return Whether to enabled route table association. The system default value is `true`. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
+     * 
+     */
     public Output<Optional<Boolean>> routeTableAssociationEnabled() {
         return Codegen.optional(this.routeTableAssociationEnabled);
     }
     /**
+     * Whether to enabled route table propagation. The system default value is `true`. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
+     * 
      * @deprecated
      * Field &#39;route_table_propagation_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_propagation&#39; instead.
      * 
@@ -201,6 +223,10 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
     @Export(name="routeTablePropagationEnabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> routeTablePropagationEnabled;
 
+    /**
+     * @return Whether to enabled route table propagation. The system default value is `true`. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
+     * 
+     */
     public Output<Optional<Boolean>> routeTablePropagationEnabled() {
         return Codegen.optional(this.routeTablePropagationEnabled);
     }

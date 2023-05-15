@@ -26,10 +26,14 @@ public final class BucketLifecycleRuleExpiration {
     /**
      * @return Specifies the number of days after object creation when the specific rule action takes effect.
      * 
+     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one abort_multipart_upload configuration.
+     * 
      */
     private @Nullable Integer days;
     /**
      * @return On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
+     * 
+     * `NOTE`: One and only one of &#34;date&#34;, &#34;days&#34;, &#34;created_before_date&#34; and &#34;expired_object_delete_marker&#34; can be specified in one expiration configuration.
      * 
      */
     private @Nullable Boolean expiredObjectDeleteMarker;
@@ -52,12 +56,16 @@ public final class BucketLifecycleRuleExpiration {
     /**
      * @return Specifies the number of days after object creation when the specific rule action takes effect.
      * 
+     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one abort_multipart_upload configuration.
+     * 
      */
     public Optional<Integer> days() {
         return Optional.ofNullable(this.days);
     }
     /**
      * @return On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
+     * 
+     * `NOTE`: One and only one of &#34;date&#34;, &#34;days&#34;, &#34;created_before_date&#34; and &#34;expired_object_delete_marker&#34; can be specified in one expiration configuration.
      * 
      */
     public Optional<Boolean> expiredObjectDeleteMarker() {

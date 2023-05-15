@@ -199,12 +199,16 @@ public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
     /**
      * The version of the alert template to be modified.
      * 
+     * &gt; **NOTE:** The version changes with the number of times that the alert template is modified.
+     * 
      */
     @Export(name="restVersion", type=String.class, parameters={})
     private Output<String> restVersion;
 
     /**
      * @return The version of the alert template to be modified.
+     * 
+     * &gt; **NOTE:** The version changes with the number of times that the alert template is modified.
      * 
      */
     public Output<String> restVersion() {
@@ -213,12 +217,16 @@ public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
     /**
      * The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
      * 
+     * &gt; **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
+     * 
      */
     @Export(name="silenceTime", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> silenceTime;
 
     /**
      * @return The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
+     * 
+     * &gt; **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
      * 
      */
     public Output<Optional<Integer>> silenceTime() {

@@ -20,6 +20,12 @@ class AliasArgs:
         The set of arguments for constructing a Alias resource.
         :param pulumi.Input[str] alias_name: The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
         :param pulumi.Input[str] key_id: The id of the key.
+               
+               > **NOTE:** Each alias represents only one master key(CMK).
+               
+               > **NOTE:** Within an area of the same user, alias is not reproducible.
+               
+               > **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
         """
         pulumi.set(__self__, "alias_name", alias_name)
         pulumi.set(__self__, "key_id", key_id)
@@ -41,6 +47,12 @@ class AliasArgs:
     def key_id(self) -> pulumi.Input[str]:
         """
         The id of the key.
+
+        > **NOTE:** Each alias represents only one master key(CMK).
+
+        > **NOTE:** Within an area of the same user, alias is not reproducible.
+
+        > **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
         """
         return pulumi.get(self, "key_id")
 
@@ -58,6 +70,12 @@ class _AliasState:
         Input properties used for looking up and filtering Alias resources.
         :param pulumi.Input[str] alias_name: The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
         :param pulumi.Input[str] key_id: The id of the key.
+               
+               > **NOTE:** Each alias represents only one master key(CMK).
+               
+               > **NOTE:** Within an area of the same user, alias is not reproducible.
+               
+               > **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
         """
         if alias_name is not None:
             pulumi.set(__self__, "alias_name", alias_name)
@@ -81,6 +99,12 @@ class _AliasState:
     def key_id(self) -> Optional[pulumi.Input[str]]:
         """
         The id of the key.
+
+        > **NOTE:** Each alias represents only one master key(CMK).
+
+        > **NOTE:** Within an area of the same user, alias is not reproducible.
+
+        > **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
         """
         return pulumi.get(self, "key_id")
 
@@ -128,6 +152,12 @@ class Alias(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alias_name: The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
         :param pulumi.Input[str] key_id: The id of the key.
+               
+               > **NOTE:** Each alias represents only one master key(CMK).
+               
+               > **NOTE:** Within an area of the same user, alias is not reproducible.
+               
+               > **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
         """
         ...
     @overload
@@ -215,6 +245,12 @@ class Alias(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alias_name: The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
         :param pulumi.Input[str] key_id: The id of the key.
+               
+               > **NOTE:** Each alias represents only one master key(CMK).
+               
+               > **NOTE:** Within an area of the same user, alias is not reproducible.
+               
+               > **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -237,6 +273,12 @@ class Alias(pulumi.CustomResource):
     def key_id(self) -> pulumi.Output[str]:
         """
         The id of the key.
+
+        > **NOTE:** Each alias represents only one master key(CMK).
+
+        > **NOTE:** Within an area of the same user, alias is not reproducible.
+
+        > **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
         """
         return pulumi.get(self, "key_id")
 

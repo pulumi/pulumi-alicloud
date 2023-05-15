@@ -55,6 +55,9 @@ export interface GetSaslAclsArgs {
      * ID of the ALIKAFKA Instance that owns the sasl acls.
      */
     instanceId: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Get results for the specified username.
@@ -130,6 +133,9 @@ export interface GetSaslAclsOutputArgs {
      * ID of the ALIKAFKA Instance that owns the sasl acls.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Get results for the specified username.

@@ -48,6 +48,8 @@ public final class DdrInstancePgHbaConf {
      * * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
      * * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
      * 
+     * &gt; **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
+     * 
      */
     private String type;
     /**
@@ -104,6 +106,8 @@ public final class DdrInstancePgHbaConf {
      * * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
      * * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
      * * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+     * 
+     * &gt; **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
      * 
      */
     public String type() {

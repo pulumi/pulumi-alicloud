@@ -10,6 +10,91 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.FC
 {
     /// <summary>
+    /// Provides a Alicloud Function Compute Service resource. The resource is the base of launching Function and Trigger configuration.
+    ///  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/doc-detail/52895.htm).
+    /// 
+    /// &gt; **NOTE:** The resource requires a provider field 'account_id'. See account_id.
+    /// 
+    /// &gt; **NOTE:** If you happen the error "Argument 'internetAccess' is not supported", you need to log on web console and click button "Apply VPC Function"
+    /// which is in the upper of [Function Service Web Console](https://fc.console.aliyun.com/) page.
+    /// 
+    /// &gt; **NOTE:** Currently not all regions support Function Compute Service.
+    /// For more details supported regions, see [Service endpoints](https://www.alibabacloud.com/help/doc-detail/52984.htm)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testaccalicloudfcservice";
+    ///     var fooProject = new AliCloud.Log.Project("fooProject");
+    /// 
+    ///     var fooStore = new AliCloud.Log.Store("fooStore", new()
+    ///     {
+    ///         Project = fooProject.Name,
+    ///     });
+    /// 
+    ///     var role = new AliCloud.Ram.Role("role", new()
+    ///     {
+    ///         Document = @"  {
+    ///       ""Statement"": [
+    ///         {
+    ///           ""Action"": ""sts:AssumeRole"",
+    ///           ""Effect"": ""Allow"",
+    ///           ""Principal"": {
+    ///             ""Service"": [
+    ///               ""fc.aliyuncs.com""
+    ///             ]
+    ///           }
+    ///         }
+    ///       ],
+    ///       ""Version"": ""1""
+    ///   }
+    /// ",
+    ///         Description = "this is a test",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var attach = new AliCloud.Ram.RolePolicyAttachment("attach", new()
+    ///     {
+    ///         RoleName = role.Name,
+    ///         PolicyName = "AliyunLogFullAccess",
+    ///         PolicyType = "System",
+    ///     });
+    /// 
+    ///     var fooService = new AliCloud.FC.Service("fooService", new()
+    ///     {
+    ///         Description = "tf unit test",
+    ///         Role = role.Arn,
+    ///         LogConfig = new AliCloud.FC.Inputs.ServiceLogConfigArgs
+    ///         {
+    ///             Project = fooProject.Name,
+    ///             Logstore = fooStore.Name,
+    ///             EnableInstanceMetrics = true,
+    ///             EnableRequestMetrics = true,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             attach,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Module Support
+    /// 
+    /// You can use to the existing fc module to create a service and a function quickly and then set several triggers for it.
+    /// 
     /// ## Import
     /// 
     /// Function Compute Service can be imported using the id or name, e.g.

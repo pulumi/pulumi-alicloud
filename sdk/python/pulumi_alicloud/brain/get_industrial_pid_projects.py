@@ -135,6 +135,7 @@ def get_industrial_pid_projects(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Pid Project IDs.
     :param str name_regex: A regex string to filter results by Pid Project name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str pid_organization_id: The ID of Pid Organization.
     :param str pid_project_name: The name of Pid Project.
     """
@@ -186,6 +187,7 @@ def get_industrial_pid_projects_output(ids: Optional[pulumi.Input[Optional[Seque
 
     :param Sequence[str] ids: A list of Pid Project IDs.
     :param str name_regex: A regex string to filter results by Pid Project name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str pid_organization_id: The ID of Pid Organization.
     :param str pid_project_name: The name of Pid Project.
     """

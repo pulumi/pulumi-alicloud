@@ -66,9 +66,10 @@ type GetAccessGroupsArgs struct {
 	Ids   []string `pulumi:"ids"`
 	Limit *int     `pulumi:"limit"`
 	// A regex string to filter results by Access Group name.
-	NameRegex   *string `pulumi:"nameRegex"`
-	OrderBy     *string `pulumi:"orderBy"`
-	OrderType   *string `pulumi:"orderType"`
+	NameRegex *string `pulumi:"nameRegex"`
+	OrderBy   *string `pulumi:"orderBy"`
+	OrderType *string `pulumi:"orderType"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile  *string `pulumi:"outputFile"`
 	StartOffset *int    `pulumi:"startOffset"`
 }
@@ -107,9 +108,10 @@ type GetAccessGroupsOutputArgs struct {
 	Ids   pulumi.StringArrayInput `pulumi:"ids"`
 	Limit pulumi.IntPtrInput      `pulumi:"limit"`
 	// A regex string to filter results by Access Group name.
-	NameRegex   pulumi.StringPtrInput `pulumi:"nameRegex"`
-	OrderBy     pulumi.StringPtrInput `pulumi:"orderBy"`
-	OrderType   pulumi.StringPtrInput `pulumi:"orderType"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	OrderBy   pulumi.StringPtrInput `pulumi:"orderBy"`
+	OrderType pulumi.StringPtrInput `pulumi:"orderType"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
 	StartOffset pulumi.IntPtrInput    `pulumi:"startOffset"`
 }

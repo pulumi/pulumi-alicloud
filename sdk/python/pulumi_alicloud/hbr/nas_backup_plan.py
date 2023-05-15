@@ -38,6 +38,8 @@ class NasBackupPlanArgs:
         :param pulumi.Input[str] vault_id: The ID of Backup vault.
         :param pulumi.Input[str] create_time: This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
+               
+               > **Note** `hbr.NasBackupPlan` depends on the `nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
         :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
         :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
@@ -167,6 +169,8 @@ class NasBackupPlanArgs:
     def cross_account_role_name(self) -> Optional[pulumi.Input[str]]:
         """
         The role name created in the original account RAM backup by the cross account managed by the current account.
+
+        > **Note** `hbr.NasBackupPlan` depends on the `nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
         """
         return pulumi.get(self, "cross_account_role_name")
 
@@ -244,6 +248,8 @@ class _NasBackupPlanState:
         :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[str] create_time: This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
+               
+               > **Note** `hbr.NasBackupPlan` depends on the `nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
         :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
         :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
@@ -314,6 +320,8 @@ class _NasBackupPlanState:
     def cross_account_role_name(self) -> Optional[pulumi.Input[str]]:
         """
         The role name created in the original account RAM backup by the cross account managed by the current account.
+
+        > **Note** `hbr.NasBackupPlan` depends on the `nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
         """
         return pulumi.get(self, "cross_account_role_name")
 
@@ -513,6 +521,8 @@ class NasBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[str] create_time: This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
+               
+               > **Note** `hbr.NasBackupPlan` depends on the `nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
         :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
         :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
@@ -677,6 +687,8 @@ class NasBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[str] create_time: This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
+               
+               > **Note** `hbr.NasBackupPlan` depends on the `nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
         :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
         :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
@@ -728,6 +740,8 @@ class NasBackupPlan(pulumi.CustomResource):
     def cross_account_role_name(self) -> pulumi.Output[Optional[str]]:
         """
         The role name created in the original account RAM backup by the cross account managed by the current account.
+
+        > **Note** `hbr.NasBackupPlan` depends on the `nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
         """
         return pulumi.get(self, "cross_account_role_name")
 

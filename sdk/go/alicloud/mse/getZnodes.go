@@ -74,7 +74,8 @@ type GetZnodesArgs struct {
 	// A list of Znode IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Znode name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The Node path.
 	Path string `pulumi:"path"`
@@ -116,7 +117,8 @@ type GetZnodesOutputArgs struct {
 	// A list of Znode IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Znode name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The Node path.
 	Path pulumi.StringInput `pulumi:"path"`

@@ -46,9 +46,23 @@ public final class GetRegionsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     * 
+     * &gt; **NOTE:** You will get an error if you set `current` to true and `name` to a different value from the one you configured in the provider.
+     * It is better to either use `name` or `current`, but not both at the same time.
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable Output<String> outputFile;
 
+    /**
+     * @return File name where to save data source results (after running `pulumi preview`).
+     * 
+     * &gt; **NOTE:** You will get an error if you set `current` to true and `name` to a different value from the one you configured in the provider.
+     * It is better to either use `name` or `current`, but not both at the same time.
+     * 
+     */
     public Optional<Output<String>> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -121,11 +135,29 @@ public final class GetRegionsArgs extends com.pulumi.resources.InvokeArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * &gt; **NOTE:** You will get an error if you set `current` to true and `name` to a different value from the one you configured in the provider.
+         * It is better to either use `name` or `current`, but not both at the same time.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable Output<String> outputFile) {
             $.outputFile = outputFile;
             return this;
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * &gt; **NOTE:** You will get an error if you set `current` to true and `name` to a different value from the one you configured in the provider.
+         * It is better to either use `name` or `current`, but not both at the same time.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(String outputFile) {
             return outputFile(Output.of(outputFile));
         }

@@ -60,9 +60,17 @@ public final class GetInstanceEnginesArgs extends com.pulumi.resources.InvokeArg
         return Optional.ofNullable(this.instanceChargeType);
     }
 
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable Output<String> outputFile;
 
+    /**
+     * @return File name where to save data source results (after running `pulumi up`).
+     * 
+     */
     public Optional<Output<String>> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -173,11 +181,23 @@ public final class GetInstanceEnginesArgs extends com.pulumi.resources.InvokeArg
             return instanceChargeType(Output.of(instanceChargeType));
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi up`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable Output<String> outputFile) {
             $.outputFile = outputFile;
             return this;
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi up`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(String outputFile) {
             return outputFile(Output.of(outputFile));
         }

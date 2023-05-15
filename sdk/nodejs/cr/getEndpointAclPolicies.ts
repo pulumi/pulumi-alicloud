@@ -57,6 +57,9 @@ export interface GetEndpointAclPoliciesArgs {
      * The ID of the CR Instance.
      */
     instanceId: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -118,5 +121,8 @@ export interface GetEndpointAclPoliciesOutputArgs {
      * The ID of the CR Instance.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

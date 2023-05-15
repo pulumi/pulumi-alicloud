@@ -42,6 +42,9 @@ export interface GetUserTenantsArgs {
      * A list of DMS User Tenant IDs (TID).
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the user tenant.
@@ -104,6 +107,9 @@ export interface GetUserTenantsOutputArgs {
      * A list of DMS User Tenant IDs (TID).
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the user tenant.

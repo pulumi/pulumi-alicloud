@@ -19,6 +19,8 @@ namespace Pulumi.AliCloud.CloudSso.Outputs
         public readonly string? EncodedMetadataDocument;
         /// <summary>
         /// SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        /// 
+        /// &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
         /// </summary>
         public readonly string? SsoStatus;
 

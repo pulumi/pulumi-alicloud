@@ -45,6 +45,9 @@ export interface GetFunctionsArgs {
      * A regex string to filter results by function name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Name of the service that contains the functions to find.
@@ -108,6 +111,9 @@ export interface GetFunctionsOutputArgs {
      * A regex string to filter results by function name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Name of the service that contains the functions to find.

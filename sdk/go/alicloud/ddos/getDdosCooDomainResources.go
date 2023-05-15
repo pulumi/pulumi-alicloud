@@ -59,7 +59,8 @@ type GetDdosCooDomainResourcesArgs struct {
 	Ids []string `pulumi:"ids"`
 	// A list ID of instance that you want to associate.
 	InstanceIds []string `pulumi:"instanceIds"`
-	OutputFile  *string  `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// Match the pattern.
 	QueryDomainPattern *string `pulumi:"queryDomainPattern"`
 }
@@ -94,7 +95,8 @@ type GetDdosCooDomainResourcesOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A list ID of instance that you want to associate.
 	InstanceIds pulumi.StringArrayInput `pulumi:"instanceIds"`
-	OutputFile  pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Match the pattern.
 	QueryDomainPattern pulumi.StringPtrInput `pulumi:"queryDomainPattern"`
 }

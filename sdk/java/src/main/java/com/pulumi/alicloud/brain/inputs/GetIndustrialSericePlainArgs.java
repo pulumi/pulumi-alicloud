@@ -17,12 +17,16 @@ public final class GetIndustrialSericePlainArgs extends com.pulumi.resources.Inv
     /**
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
      * 
+     * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the Brain Industrial service. The service can not closed once it is opened.
+     * 
      */
     @Import(name="enable")
     private @Nullable String enable;
 
     /**
      * @return Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+     * 
+     * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the Brain Industrial service. The service can not closed once it is opened.
      * 
      */
     public Optional<String> enable() {
@@ -55,6 +59,8 @@ public final class GetIndustrialSericePlainArgs extends com.pulumi.resources.Inv
 
         /**
          * @param enable Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+         * 
+         * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the Brain Industrial service. The service can not closed once it is opened.
          * 
          * @return builder
          * 

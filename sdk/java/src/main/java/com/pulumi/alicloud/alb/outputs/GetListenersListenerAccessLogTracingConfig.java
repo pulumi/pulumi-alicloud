@@ -14,15 +14,21 @@ public final class GetListenersListenerAccessLogTracingConfig {
     /**
      * @return Xtrace Function. Value: True Or False. Default Value: False.
      * 
+     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
+     * 
      */
     private Boolean tracingEnabled;
     /**
      * @return Xtrace Sampling Rate. Value: **1~10000**.
      * 
+     * &gt; **NOTE:** This attribute is valid when **tracingenabled** is **true**.
+     * 
      */
     private Integer tracingSample;
     /**
      * @return Xtrace Type Value Is **Zipkin**.
+     * 
+     * &gt; **NOTE:** This attribute is valid when **tracingenabled** is **true**.
      * 
      */
     private String tracingType;
@@ -31,6 +37,8 @@ public final class GetListenersListenerAccessLogTracingConfig {
     /**
      * @return Xtrace Function. Value: True Or False. Default Value: False.
      * 
+     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
+     * 
      */
     public Boolean tracingEnabled() {
         return this.tracingEnabled;
@@ -38,12 +46,16 @@ public final class GetListenersListenerAccessLogTracingConfig {
     /**
      * @return Xtrace Sampling Rate. Value: **1~10000**.
      * 
+     * &gt; **NOTE:** This attribute is valid when **tracingenabled** is **true**.
+     * 
      */
     public Integer tracingSample() {
         return this.tracingSample;
     }
     /**
      * @return Xtrace Type Value Is **Zipkin**.
+     * 
+     * &gt; **NOTE:** This attribute is valid when **tracingenabled** is **true**.
      * 
      */
     public String tracingType() {

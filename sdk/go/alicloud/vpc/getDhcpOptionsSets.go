@@ -100,7 +100,8 @@ type GetDhcpOptionsSetsArgs struct {
 	// A list of Dhcp Options Set IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Dhcp Options Set name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
 	Status *string `pulumi:"status"`
@@ -146,7 +147,8 @@ type GetDhcpOptionsSetsOutputArgs struct {
 	// A list of Dhcp Options Set IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Dhcp Options Set name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
 	Status pulumi.StringPtrInput `pulumi:"status"`

@@ -116,6 +116,8 @@ export class EcsSnapshot extends pulumi.CustomResource {
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the snapshot.
+     *
+     * > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
@@ -219,6 +221,8 @@ export interface EcsSnapshotState {
     status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the snapshot.
+     *
+     * > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }
@@ -271,6 +275,8 @@ export interface EcsSnapshotArgs {
     snapshotName?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the snapshot.
+     *
+     * > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

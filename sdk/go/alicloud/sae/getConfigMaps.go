@@ -89,8 +89,9 @@ type GetConfigMapsArgs struct {
 	// A regex string to filter results by Config Map name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// The NamespaceId of Config Maps.
-	NamespaceId string  `pulumi:"namespaceId"`
-	OutputFile  *string `pulumi:"outputFile"`
+	NamespaceId string `pulumi:"namespaceId"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getConfigMaps.
@@ -125,8 +126,9 @@ type GetConfigMapsOutputArgs struct {
 	// A regex string to filter results by Config Map name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The NamespaceId of Config Maps.
-	NamespaceId pulumi.StringInput    `pulumi:"namespaceId"`
-	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
+	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetConfigMapsOutputArgs) ElementType() reflect.Type {

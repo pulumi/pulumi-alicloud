@@ -64,7 +64,8 @@ type GetChangeSetsArgs struct {
 	// A list of Change Set IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Change Set name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
 	StackId string `pulumi:"stackId"`
@@ -109,7 +110,8 @@ type GetChangeSetsOutputArgs struct {
 	// A list of Change Set IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Change Set name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
 	StackId pulumi.StringInput `pulumi:"stackId"`

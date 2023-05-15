@@ -127,6 +127,7 @@ def get_integration_exporters(cluster_id: Optional[str] = None,
     :param str cluster_id: The ID of the Prometheus instance.
     :param Sequence[str] ids: A list of Integration Exporter IDs.
     :param str integration_type: The type of prometheus integration.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -174,5 +175,6 @@ def get_integration_exporters_output(cluster_id: Optional[pulumi.Input[str]] = N
     :param str cluster_id: The ID of the Prometheus instance.
     :param Sequence[str] ids: A list of Integration Exporter IDs.
     :param str integration_type: The type of prometheus integration.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

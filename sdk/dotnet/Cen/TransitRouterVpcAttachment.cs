@@ -101,6 +101,12 @@ namespace Pulumi.AliCloud.Cen
     public partial class TransitRouterVpcAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+        /// </summary>
+        [Output("autoPublishRouteEnabled")]
+        public Output<bool> AutoPublishRouteEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the CEN.
         /// </summary>
         [Output("cenId")]
@@ -124,9 +130,15 @@ namespace Pulumi.AliCloud.Cen
         [Output("resourceType")]
         public Output<string?> ResourceType { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+        /// </summary>
         [Output("routeTableAssociationEnabled")]
         public Output<bool?> RouteTableAssociationEnabled { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+        /// </summary>
         [Output("routeTablePropagationEnabled")]
         public Output<bool?> RouteTablePropagationEnabled { get; private set; } = null!;
 
@@ -232,6 +244,12 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterVpcAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+        /// </summary>
+        [Input("autoPublishRouteEnabled")]
+        public Input<bool>? AutoPublishRouteEnabled { get; set; }
+
+        /// <summary>
         /// The ID of the CEN.
         /// </summary>
         [Input("cenId", required: true)]
@@ -255,9 +273,15 @@ namespace Pulumi.AliCloud.Cen
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
 
+        /// <summary>
+        /// Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+        /// </summary>
         [Input("routeTableAssociationEnabled")]
         public Input<bool>? RouteTableAssociationEnabled { get; set; }
 
+        /// <summary>
+        /// Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+        /// </summary>
         [Input("routeTablePropagationEnabled")]
         public Input<bool>? RouteTablePropagationEnabled { get; set; }
 
@@ -325,6 +349,12 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterVpcAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether the transit router is automatically published to the VPC instance. Default value: `false`. Valid values:
+        /// </summary>
+        [Input("autoPublishRouteEnabled")]
+        public Input<bool>? AutoPublishRouteEnabled { get; set; }
+
+        /// <summary>
         /// The ID of the CEN.
         /// </summary>
         [Input("cenId")]
@@ -348,9 +378,15 @@ namespace Pulumi.AliCloud.Cen
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
 
+        /// <summary>
+        /// Whether to enabled route table association. The system default value is `true`. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+        /// </summary>
         [Input("routeTableAssociationEnabled")]
         public Input<bool>? RouteTableAssociationEnabled { get; set; }
 
+        /// <summary>
+        /// Whether to enabled route table propagation. The system default value is `true`. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+        /// </summary>
         [Input("routeTablePropagationEnabled")]
         public Input<bool>? RouteTablePropagationEnabled { get; set; }
 

@@ -55,6 +55,9 @@ export interface GetTransitRouterCidrsArgs {
      * A regex string to filter results by Transit Router Cidr name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the transit router cidr.
@@ -123,6 +126,9 @@ export interface GetTransitRouterCidrsOutputArgs {
      * A regex string to filter results by Transit Router Cidr name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the transit router cidr.

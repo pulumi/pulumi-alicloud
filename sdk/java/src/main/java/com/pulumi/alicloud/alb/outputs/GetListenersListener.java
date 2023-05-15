@@ -21,6 +21,8 @@ public final class GetListenersListener {
     /**
      * @return Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
      * 
+     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
+     * 
      */
     private Boolean accessLogRecordCustomizedHeadersEnabled;
     /**
@@ -50,6 +52,8 @@ public final class GetListenersListener {
     private Boolean gzipEnabled;
     /**
      * @return Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+     * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
      * 
      */
     private Boolean http2Enabled;
@@ -111,6 +115,8 @@ public final class GetListenersListener {
     /**
      * @return Security Policy.
      * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
+     * 
      */
     private String securityPolicyId;
     /**
@@ -127,6 +133,8 @@ public final class GetListenersListener {
     private GetListenersListener() {}
     /**
      * @return Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+     * 
+     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
      * 
      */
     public Boolean accessLogRecordCustomizedHeadersEnabled() {
@@ -169,6 +177,8 @@ public final class GetListenersListener {
     }
     /**
      * @return Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+     * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
      * 
      */
     public Boolean http2Enabled() {
@@ -253,6 +263,8 @@ public final class GetListenersListener {
     }
     /**
      * @return Security Policy.
+     * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
      * 
      */
     public String securityPolicyId() {

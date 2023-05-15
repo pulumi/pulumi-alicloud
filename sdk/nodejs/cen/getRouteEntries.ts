@@ -45,6 +45,9 @@ export interface GetRouteEntriesArgs {
      * ID of the CEN instance.
      */
     instanceId: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * ID of the route table of the VPC or VBR.
@@ -110,6 +113,9 @@ export interface GetRouteEntriesOutputArgs {
      * ID of the CEN instance.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * ID of the route table of the VPC or VBR.

@@ -342,9 +342,19 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
     public Output<String> paymentType() {
         return this.paymentType;
     }
+    /**
+     * The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+     * 
+     */
     @Export(name="period", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> period;
 
+    /**
+     * @return The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+     * 
+     */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
@@ -423,6 +433,8 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
+     * &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
+     * 
      */
     @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> tags;
@@ -431,6 +443,8 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * @return A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
+     * 
+     * &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {

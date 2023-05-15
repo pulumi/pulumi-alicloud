@@ -116,6 +116,7 @@ def get_bucket_objects(bucket_name: Optional[str] = None,
     :param str bucket_name: Name of the bucket that contains the objects to find.
     :param str key_prefix: Filter results by the given key prefix (such as "path/to/folder/logs-").
     :param str key_regex: A regex string to filter results by key.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['bucketName'] = bucket_name
@@ -158,5 +159,6 @@ def get_bucket_objects_output(bucket_name: Optional[pulumi.Input[str]] = None,
     :param str bucket_name: Name of the bucket that contains the objects to find.
     :param str key_prefix: Filter results by the given key prefix (such as "path/to/folder/logs-").
     :param str key_regex: A regex string to filter results by key.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

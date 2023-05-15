@@ -149,6 +149,7 @@ def get_end_user_products(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of End User Product IDs.
     :param str name_regex: A regex string to filter results by product name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str sort_by: The field that is used to sort the queried data. The value is fixed as CreateTime, which specifies the creation time of products.
     :param str sort_order: The order in which you want to sort the queried data. Valid values: `Asc`, `Desc`.
     """
@@ -202,6 +203,7 @@ def get_end_user_products_output(ids: Optional[pulumi.Input[Optional[Sequence[st
 
     :param Sequence[str] ids: A list of End User Product IDs.
     :param str name_regex: A regex string to filter results by product name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str sort_by: The field that is used to sort the queried data. The value is fixed as CreateTime, which specifies the creation time of products.
     :param str sort_order: The order in which you want to sort the queried data. Valid values: `Asc`, `Desc`.
     """

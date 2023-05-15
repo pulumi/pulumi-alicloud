@@ -105,6 +105,8 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// The language type of the alarm. Valid values: `en`, `zh-cn`.
+        /// 
+        /// &gt; **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
         /// </summary>
         [Output("lang")]
         public Output<string?> Lang { get; private set; } = null!;
@@ -193,6 +195,8 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// The language type of the alarm. Valid values: `en`, `zh-cn`.
+        /// 
+        /// &gt; **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -243,6 +247,8 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// The language type of the alarm. Valid values: `en`, `zh-cn`.
+        /// 
+        /// &gt; **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }

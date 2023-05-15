@@ -12,12 +12,16 @@ public final class BucketLifecycleRuleNoncurrentVersionExpiration {
     /**
      * @return Specifies the number of days after object creation when the specific rule action takes effect.
      * 
+     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one abort_multipart_upload configuration.
+     * 
      */
     private Integer days;
 
     private BucketLifecycleRuleNoncurrentVersionExpiration() {}
     /**
      * @return Specifies the number of days after object creation when the specific rule action takes effect.
+     * 
+     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one abort_multipart_upload configuration.
      * 
      */
     public Integer days() {

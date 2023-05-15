@@ -54,7 +54,8 @@ func GetVpcEndpointZones(ctx *pulumi.Context, args *GetVpcEndpointZonesArgs, opt
 // A collection of arguments for invoking getVpcEndpointZones.
 type GetVpcEndpointZonesArgs struct {
 	// The ID of the Vpc Endpoint.
-	EndpointId string  `pulumi:"endpointId"`
+	EndpointId string `pulumi:"endpointId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The Status of Vpc Endpoint Zone..
 	Status *string `pulumi:"status"`
@@ -87,7 +88,8 @@ func GetVpcEndpointZonesOutput(ctx *pulumi.Context, args GetVpcEndpointZonesOutp
 // A collection of arguments for invoking getVpcEndpointZones.
 type GetVpcEndpointZonesOutputArgs struct {
 	// The ID of the Vpc Endpoint.
-	EndpointId pulumi.StringInput    `pulumi:"endpointId"`
+	EndpointId pulumi.StringInput `pulumi:"endpointId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The Status of Vpc Endpoint Zone..
 	Status pulumi.StringPtrInput `pulumi:"status"`

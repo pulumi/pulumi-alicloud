@@ -102,6 +102,7 @@ def get_vpc_endpoint_service_resources(output_file: Optional[str] = None,
     ```
 
 
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str service_id: The ID of Vpc Endpoint Service.
     """
     __args__ = dict()
@@ -140,6 +141,7 @@ def get_vpc_endpoint_service_resources_output(output_file: Optional[pulumi.Input
     ```
 
 
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str service_id: The ID of Vpc Endpoint Service.
     """
     ...

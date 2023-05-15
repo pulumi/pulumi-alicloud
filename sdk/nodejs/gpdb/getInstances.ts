@@ -80,6 +80,9 @@ export interface GetInstancesArgs {
      * A regex string to apply to the instance name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the enterprise resource group to which the instance belongs.
@@ -180,6 +183,9 @@ export interface GetInstancesOutputArgs {
      * A regex string to apply to the instance name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the enterprise resource group to which the instance belongs.

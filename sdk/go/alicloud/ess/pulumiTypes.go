@@ -1684,6 +1684,8 @@ type EciScalingConfigurationVolume struct {
 	// The nfs volume read only. Default to `false`.
 	NfsVolumeReadOnly *bool `pulumi:"nfsVolumeReadOnly"`
 	// The address of the NFS server.
+	//
+	// > **NOTE:** Every volume mounted must have a name and type attributes.
 	NfsVolumeServer *string `pulumi:"nfsVolumeServer"`
 	// The type of the volume.
 	Type *string `pulumi:"type"`
@@ -1724,6 +1726,8 @@ type EciScalingConfigurationVolumeArgs struct {
 	// The nfs volume read only. Default to `false`.
 	NfsVolumeReadOnly pulumi.BoolPtrInput `pulumi:"nfsVolumeReadOnly"`
 	// The address of the NFS server.
+	//
+	// > **NOTE:** Every volume mounted must have a name and type attributes.
 	NfsVolumeServer pulumi.StringPtrInput `pulumi:"nfsVolumeServer"`
 	// The type of the volume.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -1835,6 +1839,8 @@ func (o EciScalingConfigurationVolumeOutput) NfsVolumeReadOnly() pulumi.BoolPtrO
 }
 
 // The address of the NFS server.
+//
+// > **NOTE:** Every volume mounted must have a name and type attributes.
 func (o EciScalingConfigurationVolumeOutput) NfsVolumeServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationVolume) *string { return v.NfsVolumeServer }).(pulumi.StringPtrOutput)
 }

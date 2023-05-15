@@ -57,7 +57,8 @@ type GetKeyPairsArgs struct {
 	// The name of the key pair.
 	KeyPairName *string `pulumi:"keyPairName"`
 	// A regex string to filter results by Key Pair name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The version number.
 	Version string `pulumi:"version"`
@@ -94,7 +95,8 @@ type GetKeyPairsOutputArgs struct {
 	// The name of the key pair.
 	KeyPairName pulumi.StringPtrInput `pulumi:"keyPairName"`
 	// A regex string to filter results by Key Pair name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The version number.
 	Version pulumi.StringInput `pulumi:"version"`

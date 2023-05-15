@@ -37,6 +37,9 @@ export function getProtocols(args: GetProtocolsArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getProtocols.
  */
 export interface GetProtocolsArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The file system type. Valid Values: `Performance` and `Capacity`.
@@ -91,6 +94,9 @@ export function getProtocolsOutput(args: GetProtocolsOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getProtocols.
  */
 export interface GetProtocolsOutputArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The file system type. Valid Values: `Performance` and `Capacity`.

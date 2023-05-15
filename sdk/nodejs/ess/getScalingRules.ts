@@ -51,6 +51,9 @@ export interface GetScalingRulesArgs {
      * A regex string to filter resulting scaling rules by name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Scaling group id the scaling rules belong to.
@@ -129,6 +132,9 @@ export interface GetScalingRulesOutputArgs {
      * A regex string to filter resulting scaling rules by name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Scaling group id the scaling rules belong to.

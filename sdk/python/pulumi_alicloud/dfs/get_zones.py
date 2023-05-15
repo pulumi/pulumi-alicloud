@@ -80,6 +80,9 @@ def get_zones(output_file: Optional[str] = None,
 
     default = alicloud.dfs.get_zones()
     ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
@@ -110,5 +113,8 @@ def get_zones_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
 
     default = alicloud.dfs.get_zones()
     ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

@@ -11,6 +11,110 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides an Alicloud EIP Association resource for associating Elastic IP to ECS Instance, SLB Instance or Nat Gateway.
+//
+// > **NOTE:** `ecs.EipAssociation` is useful in scenarios where EIPs are either
+//
+//	pre-existing or distributed to customers or users and therefore cannot be changed.
+//
+// > **NOTE:** From version 1.7.1, the resource support to associate EIP to SLB Instance or Nat Gateway.
+//
+// > **NOTE:** One EIP can only be associated with ECS or SLB instance which in the VPC.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultZones, err := alicloud.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("10.1.0.0/21"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vsw, err := vpc.NewSwitch(ctx, "vsw", &vpc.SwitchArgs{
+//				VpcId:     vpc.ID(),
+//				CidrBlock: pulumi.String("10.1.1.0/24"),
+//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				vpc,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
+//				MostRecent: pulumi.BoolRef(true),
+//				Owners:     pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
+//				Description: pulumi.String("New security group"),
+//				VpcId:       vpc.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ecsInstance, err := ecs.NewInstance(ctx, "ecsInstance", &ecs.InstanceArgs{
+//				ImageId:          *pulumi.String(defaultImages.Images[0].Id),
+//				InstanceType:     *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+//				SecurityGroups: pulumi.StringArray{
+//					group.ID(),
+//				},
+//				VswitchId:    vsw.ID(),
+//				InstanceName: pulumi.String("hello"),
+//				Tags: pulumi.StringMap{
+//					"Name": pulumi.String("TerraformTest-instance"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			eip, err := ecs.NewEipAddress(ctx, "eip", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewEipAssociation(ctx, "eipAsso", &ecs.EipAssociationArgs{
+//				AllocationId: eip.ID(),
+//				InstanceId:   ecsInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Module Support
+//
+// You can use the existing eip module
+// to create several EIP instances and associate them with other resources one-click, like ECS instances, SLB, Nat Gateway and so on.
+//
 // ## Import
 //
 // Elastic IP address association can be imported using the id, e.g.

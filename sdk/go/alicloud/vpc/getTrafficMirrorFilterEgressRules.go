@@ -68,8 +68,9 @@ func GetTrafficMirrorFilterEgressRules(ctx *pulumi.Context, args *GetTrafficMirr
 // A collection of arguments for invoking getTrafficMirrorFilterEgressRules.
 type GetTrafficMirrorFilterEgressRulesArgs struct {
 	// A list of Traffic Mirror Filter Egress Rule IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
 	Status *string `pulumi:"status"`
 	// The ID of the filter associated with the outbound rule.
@@ -103,8 +104,9 @@ func GetTrafficMirrorFilterEgressRulesOutput(ctx *pulumi.Context, args GetTraffi
 // A collection of arguments for invoking getTrafficMirrorFilterEgressRules.
 type GetTrafficMirrorFilterEgressRulesOutputArgs struct {
 	// A list of Traffic Mirror Filter Egress Rule IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The ID of the filter associated with the outbound rule.

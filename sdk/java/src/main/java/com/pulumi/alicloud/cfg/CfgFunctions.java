@@ -1579,6 +1579,15 @@ public final class CfgFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cfg/getDeliveries:getDeliveries", TypeShape.of(GetDeliveriesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:**  This resource is based on Config&#39;s old version OpenAPI, and it has been deprecated from version `1.173.0`.
+     * Please use new datasource alicloud.cfg.getDeliveries instead.
+     * 
+     * This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:**  Available in 1.99.0+.
+     * 
+     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1616,6 +1625,15 @@ public final class CfgFunctions {
         return getDeliveryChannels(GetDeliveryChannelsArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This resource is based on Config&#39;s old version OpenAPI, and it has been deprecated from version `1.173.0`.
+     * Please use new datasource alicloud.cfg.getDeliveries instead.
+     * 
+     * This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:**  Available in 1.99.0+.
+     * 
+     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1653,6 +1671,15 @@ public final class CfgFunctions {
         return getDeliveryChannelsPlain(GetDeliveryChannelsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This resource is based on Config&#39;s old version OpenAPI, and it has been deprecated from version `1.173.0`.
+     * Please use new datasource alicloud.cfg.getDeliveries instead.
+     * 
+     * This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:**  Available in 1.99.0+.
+     * 
+     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1690,6 +1717,15 @@ public final class CfgFunctions {
         return getDeliveryChannels(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This resource is based on Config&#39;s old version OpenAPI, and it has been deprecated from version `1.173.0`.
+     * Please use new datasource alicloud.cfg.getDeliveries instead.
+     * 
+     * This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:**  Available in 1.99.0+.
+     * 
+     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1727,6 +1763,15 @@ public final class CfgFunctions {
         return getDeliveryChannelsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This resource is based on Config&#39;s old version OpenAPI, and it has been deprecated from version `1.173.0`.
+     * Please use new datasource alicloud.cfg.getDeliveries instead.
+     * 
+     * This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:**  Available in 1.99.0+.
+     * 
+     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -1764,6 +1809,15 @@ public final class CfgFunctions {
         return Deployment.getInstance().invoke("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", TypeShape.of(GetDeliveryChannelsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:**  This resource is based on Config&#39;s old version OpenAPI, and it has been deprecated from version `1.173.0`.
+     * Please use new datasource alicloud.cfg.getDeliveries instead.
+     * 
+     * This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:**  Available in 1.99.0+.
+     * 
+     * &gt; **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;

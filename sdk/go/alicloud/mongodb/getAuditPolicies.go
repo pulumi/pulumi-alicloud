@@ -54,8 +54,9 @@ func GetAuditPolicies(ctx *pulumi.Context, args *GetAuditPoliciesArgs, opts ...p
 // A collection of arguments for invoking getAuditPolicies.
 type GetAuditPoliciesArgs struct {
 	// The ID of the instance.
-	DbInstanceId string  `pulumi:"dbInstanceId"`
-	OutputFile   *string `pulumi:"outputFile"`
+	DbInstanceId string `pulumi:"dbInstanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getAuditPolicies.
@@ -83,8 +84,9 @@ func GetAuditPoliciesOutput(ctx *pulumi.Context, args GetAuditPoliciesOutputArgs
 // A collection of arguments for invoking getAuditPolicies.
 type GetAuditPoliciesOutputArgs struct {
 	// The ID of the instance.
-	DbInstanceId pulumi.StringInput    `pulumi:"dbInstanceId"`
-	OutputFile   pulumi.StringPtrInput `pulumi:"outputFile"`
+	DbInstanceId pulumi.StringInput `pulumi:"dbInstanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetAuditPoliciesOutputArgs) ElementType() reflect.Type {

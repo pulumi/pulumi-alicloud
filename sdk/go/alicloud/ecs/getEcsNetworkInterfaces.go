@@ -68,7 +68,8 @@ type GetEcsNetworkInterfacesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// The network interface name.
 	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
-	OutputFile           *string `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The primary private IP address of the ENI.
 	PrimaryIpAddress *string `pulumi:"primaryIpAddress"`
 	// The primary private IP address of the ENI.
@@ -146,7 +147,8 @@ type GetEcsNetworkInterfacesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The network interface name.
 	NetworkInterfaceName pulumi.StringPtrInput `pulumi:"networkInterfaceName"`
-	OutputFile           pulumi.StringPtrInput `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The primary private IP address of the ENI.
 	PrimaryIpAddress pulumi.StringPtrInput `pulumi:"primaryIpAddress"`
 	// The primary private IP address of the ENI.

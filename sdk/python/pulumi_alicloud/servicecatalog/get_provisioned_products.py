@@ -195,6 +195,7 @@ def get_provisioned_products(access_level_filter: Optional[str] = None,
 
     :param Sequence[str] ids: A list of Provisioned Product IDs.
     :param str name_regex: A regex string to filter results by Product name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['accessLevelFilter'] = access_level_filter
@@ -255,5 +256,6 @@ def get_provisioned_products_output(access_level_filter: Optional[pulumi.Input[O
 
     :param Sequence[str] ids: A list of Provisioned Product IDs.
     :param str name_regex: A regex string to filter results by Product name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

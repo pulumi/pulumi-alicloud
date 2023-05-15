@@ -46,6 +46,9 @@ export interface GetDomainTxtGuidArgs {
      * User language.
      */
     lang?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Txt verification function. Value:`ADD_SUB_DOMAIN`, `RETRIEVAL`.
@@ -109,6 +112,9 @@ export interface GetDomainTxtGuidOutputArgs {
      * User language.
      */
     lang?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Txt verification function. Value:`ADD_SUB_DOMAIN`, `RETRIEVAL`.

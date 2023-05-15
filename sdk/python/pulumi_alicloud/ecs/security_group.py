@@ -33,6 +33,8 @@ class SecurityGroupArgs:
                `normal`: basic security group.
                `enterprise`: advanced security group For more information.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+               
+               Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         :param pulumi.Input[str] vpc_id: The VPC ID.
         """
         if description is not None:
@@ -134,6 +136,8 @@ class SecurityGroupArgs:
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
+
+        Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         """
         return pulumi.get(self, "tags")
 
@@ -176,6 +180,8 @@ class _SecurityGroupState:
                `normal`: basic security group.
                `enterprise`: advanced security group For more information.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+               
+               Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         :param pulumi.Input[str] vpc_id: The VPC ID.
         """
         if description is not None:
@@ -277,6 +283,8 @@ class _SecurityGroupState:
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
+
+        Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         """
         return pulumi.get(self, "tags")
 
@@ -312,6 +320,36 @@ class SecurityGroup(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Provides a security group resource.
+
+        > **NOTE:** `ecs.SecurityGroup` is used to build and manage a security group, and `ecs.SecurityGroupRule` can define ingress or egress rules for it.
+
+        > **NOTE:** From version 1.7.2, `ecs.SecurityGroup` has supported to segregate different ECS instance in which the same security group.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        group = alicloud.ecs.SecurityGroup("group", description="New security group")
+        ```
+        Basic usage for vpc
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        vpc = alicloud.vpc.Network("vpc", cidr_block="10.1.0.0/21")
+        group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
+        ```
+        ## Module Support
+
+        You can use the existing security-group module
+        to create a security group and add several rules one-click.
+
         ## Import
 
         Security Group can be imported using the id, e.g.
@@ -331,6 +369,8 @@ class SecurityGroup(pulumi.CustomResource):
                `normal`: basic security group.
                `enterprise`: advanced security group For more information.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+               
+               Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         :param pulumi.Input[str] vpc_id: The VPC ID.
         """
         ...
@@ -340,6 +380,36 @@ class SecurityGroup(pulumi.CustomResource):
                  args: Optional[SecurityGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a security group resource.
+
+        > **NOTE:** `ecs.SecurityGroup` is used to build and manage a security group, and `ecs.SecurityGroupRule` can define ingress or egress rules for it.
+
+        > **NOTE:** From version 1.7.2, `ecs.SecurityGroup` has supported to segregate different ECS instance in which the same security group.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        group = alicloud.ecs.SecurityGroup("group", description="New security group")
+        ```
+        Basic usage for vpc
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        vpc = alicloud.vpc.Network("vpc", cidr_block="10.1.0.0/21")
+        group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
+        ```
+        ## Module Support
+
+        You can use the existing security-group module
+        to create a security group and add several rules one-click.
+
         ## Import
 
         Security Group can be imported using the id, e.g.
@@ -425,6 +495,8 @@ class SecurityGroup(pulumi.CustomResource):
                `normal`: basic security group.
                `enterprise`: advanced security group For more information.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+               
+               Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         :param pulumi.Input[str] vpc_id: The VPC ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -496,6 +568,8 @@ class SecurityGroup(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
+
+        Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         """
         return pulumi.get(self, "tags")
 

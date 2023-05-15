@@ -66,6 +66,9 @@ export interface GetAggregateConfigRulesArgs {
      * A regex string to filter results by Aggregate Config Rule name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
@@ -163,6 +166,9 @@ export interface GetAggregateConfigRulesOutputArgs {
      * A regex string to filter results by Aggregate Config Rule name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Optional, ForceNew) The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.

@@ -112,6 +112,8 @@ type RdsCloneDbInstance struct {
 	// * **Manual**: It is not automatically upgraded. It is only mandatory when the current version is offline.
 	AutoUpgradeMinorVersion pulumi.StringOutput `pulumi:"autoUpgradeMinorVersion"`
 	// The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+	//
+	// > **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instanceStorage` check. Otherwise, check.
 	BackupId pulumi.StringPtrOutput `pulumi:"backupId"`
 	// The type of backup that is used to restore the data of the original instance. Valid values:
 	// * **FullBackup**: full backup
@@ -147,6 +149,8 @@ type RdsCloneDbInstance struct {
 	// The db instance description.
 	DbInstanceDescription pulumi.StringPtrOutput `pulumi:"dbInstanceDescription"`
 	// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+	//
+	// > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
 	DbInstanceStorage pulumi.IntOutput `pulumi:"dbInstanceStorage"`
 	// The type of storage media that is used for the new instance. Valid values:
 	// * **local_ssd**: local SSDs
@@ -156,6 +160,8 @@ type RdsCloneDbInstance struct {
 	// * **cloud_essd3**: ESSDs of PL3
 	DbInstanceStorageType pulumi.StringOutput `pulumi:"dbInstanceStorageType"`
 	// The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+	//
+	// > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
 	DbName pulumi.StringPtrOutput `pulumi:"dbName"`
 	// The names of the databases that you want to create on the new instance.
 	DbNames pulumi.StringPtrOutput `pulumi:"dbNames"`
@@ -164,12 +170,16 @@ type RdsCloneDbInstance struct {
 	// The switch of delete protection. Valid values:
 	// - true: delete protect.
 	// - false: no delete protect.
+	//
+	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
 	Direction pulumi.StringPtrOutput `pulumi:"direction"`
 	// The effective time.
 	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
 	// The ID of the private key.
+	//
+	// > **NOTE:** This parameter is available only when the instance runs MySQL.
 	EncryptionKey pulumi.StringPtrOutput `pulumi:"encryptionKey"`
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
 	Engine pulumi.StringOutput `pulumi:"engine"`
@@ -194,10 +204,14 @@ type RdsCloneDbInstance struct {
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
 	Parameters RdsCloneDbInstanceParameterArrayOutput `pulumi:"parameters"`
 	// The password of the certificate.
+	//
+	// > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The period. Valid values: `Month`, `Year`.
+	//
+	// > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the period parameter.
 	Period pulumi.StringPtrOutput `pulumi:"period"`
 	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
 	PgHbaConfs RdsCloneDbInstancePgHbaConfArrayOutput `pulumi:"pgHbaConfs"`
@@ -218,10 +232,14 @@ type RdsCloneDbInstance struct {
 	// The point in time to which you want to restore the data of the original instance. The point in time must fall within the specified log backup retention period. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	RestoreTime pulumi.StringPtrOutput `pulumi:"restoreTime"`
 	// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+	//
+	// > **NOTE:** This parameter is available only when the instance runs MySQL.
 	RoleArn pulumi.StringPtrOutput `pulumi:"roleArn"`
 	// The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
 	// * IP address form, for example: 10.23.12.24.
 	// * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+	//
+	// > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
 	SecurityIps pulumi.StringArrayOutput `pulumi:"securityIps"`
 	// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
 	ServerCert pulumi.StringOutput `pulumi:"serverCert"`
@@ -241,6 +259,8 @@ type RdsCloneDbInstance struct {
 	// * **Sync**: strong synchronization
 	// * **Semi-sync**: Semi-synchronous
 	// * **Async**: asynchronous
+	//
+	// > **NOTE:** SQL Server 2017 cluster version is currently not supported.
 	SyncMode pulumi.StringOutput `pulumi:"syncMode"`
 	// The information about the databases and tables that you want to restore. Format:
 	// [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
@@ -256,12 +276,20 @@ type RdsCloneDbInstance struct {
 	// The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
 	// * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
 	// * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
+	//
+	// > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the usedTime parameter.
 	UsedTime pulumi.IntPtrOutput `pulumi:"usedTime"`
 	// The ID of the VPC to which the new instance belongs.
+	//
+	// > **NOTE:** Make sure that the VPC resides in the specified region.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The ID of the vSwitch associated with the specified VPC.
+	//
+	// > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+	//
+	// > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -310,6 +338,8 @@ type rdsCloneDbInstanceState struct {
 	// * **Manual**: It is not automatically upgraded. It is only mandatory when the current version is offline.
 	AutoUpgradeMinorVersion *string `pulumi:"autoUpgradeMinorVersion"`
 	// The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+	//
+	// > **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instanceStorage` check. Otherwise, check.
 	BackupId *string `pulumi:"backupId"`
 	// The type of backup that is used to restore the data of the original instance. Valid values:
 	// * **FullBackup**: full backup
@@ -345,6 +375,8 @@ type rdsCloneDbInstanceState struct {
 	// The db instance description.
 	DbInstanceDescription *string `pulumi:"dbInstanceDescription"`
 	// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+	//
+	// > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
 	DbInstanceStorage *int `pulumi:"dbInstanceStorage"`
 	// The type of storage media that is used for the new instance. Valid values:
 	// * **local_ssd**: local SSDs
@@ -354,6 +386,8 @@ type rdsCloneDbInstanceState struct {
 	// * **cloud_essd3**: ESSDs of PL3
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
 	// The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+	//
+	// > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
 	DbName *string `pulumi:"dbName"`
 	// The names of the databases that you want to create on the new instance.
 	DbNames *string `pulumi:"dbNames"`
@@ -362,12 +396,16 @@ type rdsCloneDbInstanceState struct {
 	// The switch of delete protection. Valid values:
 	// - true: delete protect.
 	// - false: no delete protect.
+	//
+	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
 	Direction *string `pulumi:"direction"`
 	// The effective time.
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// The ID of the private key.
+	//
+	// > **NOTE:** This parameter is available only when the instance runs MySQL.
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
 	Engine *string `pulumi:"engine"`
@@ -392,10 +430,14 @@ type rdsCloneDbInstanceState struct {
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
 	Parameters []RdsCloneDbInstanceParameter `pulumi:"parameters"`
 	// The password of the certificate.
+	//
+	// > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
 	Password *string `pulumi:"password"`
 	// The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The period. Valid values: `Month`, `Year`.
+	//
+	// > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the period parameter.
 	Period *string `pulumi:"period"`
 	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
 	PgHbaConfs []RdsCloneDbInstancePgHbaConf `pulumi:"pgHbaConfs"`
@@ -416,10 +458,14 @@ type rdsCloneDbInstanceState struct {
 	// The point in time to which you want to restore the data of the original instance. The point in time must fall within the specified log backup retention period. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	RestoreTime *string `pulumi:"restoreTime"`
 	// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+	//
+	// > **NOTE:** This parameter is available only when the instance runs MySQL.
 	RoleArn *string `pulumi:"roleArn"`
 	// The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
 	// * IP address form, for example: 10.23.12.24.
 	// * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+	//
+	// > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
 	SecurityIps []string `pulumi:"securityIps"`
 	// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
 	ServerCert *string `pulumi:"serverCert"`
@@ -439,6 +485,8 @@ type rdsCloneDbInstanceState struct {
 	// * **Sync**: strong synchronization
 	// * **Semi-sync**: Semi-synchronous
 	// * **Async**: asynchronous
+	//
+	// > **NOTE:** SQL Server 2017 cluster version is currently not supported.
 	SyncMode *string `pulumi:"syncMode"`
 	// The information about the databases and tables that you want to restore. Format:
 	// [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
@@ -454,12 +502,20 @@ type rdsCloneDbInstanceState struct {
 	// The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
 	// * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
 	// * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
+	//
+	// > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the usedTime parameter.
 	UsedTime *int `pulumi:"usedTime"`
 	// The ID of the VPC to which the new instance belongs.
+	//
+	// > **NOTE:** Make sure that the VPC resides in the specified region.
 	VpcId *string `pulumi:"vpcId"`
 	// The ID of the vSwitch associated with the specified VPC.
+	//
+	// > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+	//
+	// > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -471,6 +527,8 @@ type RdsCloneDbInstanceState struct {
 	// * **Manual**: It is not automatically upgraded. It is only mandatory when the current version is offline.
 	AutoUpgradeMinorVersion pulumi.StringPtrInput
 	// The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+	//
+	// > **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instanceStorage` check. Otherwise, check.
 	BackupId pulumi.StringPtrInput
 	// The type of backup that is used to restore the data of the original instance. Valid values:
 	// * **FullBackup**: full backup
@@ -506,6 +564,8 @@ type RdsCloneDbInstanceState struct {
 	// The db instance description.
 	DbInstanceDescription pulumi.StringPtrInput
 	// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+	//
+	// > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
 	DbInstanceStorage pulumi.IntPtrInput
 	// The type of storage media that is used for the new instance. Valid values:
 	// * **local_ssd**: local SSDs
@@ -515,6 +575,8 @@ type RdsCloneDbInstanceState struct {
 	// * **cloud_essd3**: ESSDs of PL3
 	DbInstanceStorageType pulumi.StringPtrInput
 	// The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+	//
+	// > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
 	DbName pulumi.StringPtrInput
 	// The names of the databases that you want to create on the new instance.
 	DbNames pulumi.StringPtrInput
@@ -523,12 +585,16 @@ type RdsCloneDbInstanceState struct {
 	// The switch of delete protection. Valid values:
 	// - true: delete protect.
 	// - false: no delete protect.
+	//
+	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection pulumi.BoolPtrInput
 	// The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
 	Direction pulumi.StringPtrInput
 	// The effective time.
 	EffectiveTime pulumi.StringPtrInput
 	// The ID of the private key.
+	//
+	// > **NOTE:** This parameter is available only when the instance runs MySQL.
 	EncryptionKey pulumi.StringPtrInput
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
 	Engine pulumi.StringPtrInput
@@ -553,10 +619,14 @@ type RdsCloneDbInstanceState struct {
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
 	Parameters RdsCloneDbInstanceParameterArrayInput
 	// The password of the certificate.
+	//
+	// > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
 	Password pulumi.StringPtrInput
 	// The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
 	PaymentType pulumi.StringPtrInput
 	// The period. Valid values: `Month`, `Year`.
+	//
+	// > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the period parameter.
 	Period pulumi.StringPtrInput
 	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
 	PgHbaConfs RdsCloneDbInstancePgHbaConfArrayInput
@@ -577,10 +647,14 @@ type RdsCloneDbInstanceState struct {
 	// The point in time to which you want to restore the data of the original instance. The point in time must fall within the specified log backup retention period. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	RestoreTime pulumi.StringPtrInput
 	// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+	//
+	// > **NOTE:** This parameter is available only when the instance runs MySQL.
 	RoleArn pulumi.StringPtrInput
 	// The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
 	// * IP address form, for example: 10.23.12.24.
 	// * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+	//
+	// > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
 	SecurityIps pulumi.StringArrayInput
 	// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
 	ServerCert pulumi.StringPtrInput
@@ -600,6 +674,8 @@ type RdsCloneDbInstanceState struct {
 	// * **Sync**: strong synchronization
 	// * **Semi-sync**: Semi-synchronous
 	// * **Async**: asynchronous
+	//
+	// > **NOTE:** SQL Server 2017 cluster version is currently not supported.
 	SyncMode pulumi.StringPtrInput
 	// The information about the databases and tables that you want to restore. Format:
 	// [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
@@ -615,12 +691,20 @@ type RdsCloneDbInstanceState struct {
 	// The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
 	// * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
 	// * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
+	//
+	// > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the usedTime parameter.
 	UsedTime pulumi.IntPtrInput
 	// The ID of the VPC to which the new instance belongs.
+	//
+	// > **NOTE:** Make sure that the VPC resides in the specified region.
 	VpcId pulumi.StringPtrInput
 	// The ID of the vSwitch associated with the specified VPC.
+	//
+	// > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
 	VswitchId pulumi.StringPtrInput
 	// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+	//
+	// > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -636,6 +720,8 @@ type rdsCloneDbInstanceArgs struct {
 	// * **Manual**: It is not automatically upgraded. It is only mandatory when the current version is offline.
 	AutoUpgradeMinorVersion *string `pulumi:"autoUpgradeMinorVersion"`
 	// The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+	//
+	// > **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instanceStorage` check. Otherwise, check.
 	BackupId *string `pulumi:"backupId"`
 	// The type of backup that is used to restore the data of the original instance. Valid values:
 	// * **FullBackup**: full backup
@@ -669,6 +755,8 @@ type rdsCloneDbInstanceArgs struct {
 	// The db instance description.
 	DbInstanceDescription *string `pulumi:"dbInstanceDescription"`
 	// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+	//
+	// > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
 	DbInstanceStorage *int `pulumi:"dbInstanceStorage"`
 	// The type of storage media that is used for the new instance. Valid values:
 	// * **local_ssd**: local SSDs
@@ -678,6 +766,8 @@ type rdsCloneDbInstanceArgs struct {
 	// * **cloud_essd3**: ESSDs of PL3
 	DbInstanceStorageType string `pulumi:"dbInstanceStorageType"`
 	// The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+	//
+	// > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
 	DbName *string `pulumi:"dbName"`
 	// The names of the databases that you want to create on the new instance.
 	DbNames *string `pulumi:"dbNames"`
@@ -686,12 +776,16 @@ type rdsCloneDbInstanceArgs struct {
 	// The switch of delete protection. Valid values:
 	// - true: delete protect.
 	// - false: no delete protect.
+	//
+	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
 	Direction *string `pulumi:"direction"`
 	// The effective time.
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// The ID of the private key.
+	//
+	// > **NOTE:** This parameter is available only when the instance runs MySQL.
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
 	Engine *string `pulumi:"engine"`
@@ -716,10 +810,14 @@ type rdsCloneDbInstanceArgs struct {
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
 	Parameters []RdsCloneDbInstanceParameter `pulumi:"parameters"`
 	// The password of the certificate.
+	//
+	// > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
 	Password *string `pulumi:"password"`
 	// The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
 	PaymentType string `pulumi:"paymentType"`
 	// The period. Valid values: `Month`, `Year`.
+	//
+	// > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the period parameter.
 	Period *string `pulumi:"period"`
 	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
 	PgHbaConfs []RdsCloneDbInstancePgHbaConf `pulumi:"pgHbaConfs"`
@@ -740,10 +838,14 @@ type rdsCloneDbInstanceArgs struct {
 	// The point in time to which you want to restore the data of the original instance. The point in time must fall within the specified log backup retention period. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	RestoreTime *string `pulumi:"restoreTime"`
 	// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+	//
+	// > **NOTE:** This parameter is available only when the instance runs MySQL.
 	RoleArn *string `pulumi:"roleArn"`
 	// The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
 	// * IP address form, for example: 10.23.12.24.
 	// * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+	//
+	// > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
 	SecurityIps []string `pulumi:"securityIps"`
 	// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
 	ServerCert *string `pulumi:"serverCert"`
@@ -763,6 +865,8 @@ type rdsCloneDbInstanceArgs struct {
 	// * **Sync**: strong synchronization
 	// * **Semi-sync**: Semi-synchronous
 	// * **Async**: asynchronous
+	//
+	// > **NOTE:** SQL Server 2017 cluster version is currently not supported.
 	SyncMode *string `pulumi:"syncMode"`
 	// The information about the databases and tables that you want to restore. Format:
 	// [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
@@ -778,12 +882,20 @@ type rdsCloneDbInstanceArgs struct {
 	// The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
 	// * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
 	// * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
+	//
+	// > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the usedTime parameter.
 	UsedTime *int `pulumi:"usedTime"`
 	// The ID of the VPC to which the new instance belongs.
+	//
+	// > **NOTE:** Make sure that the VPC resides in the specified region.
 	VpcId *string `pulumi:"vpcId"`
 	// The ID of the vSwitch associated with the specified VPC.
+	//
+	// > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+	//
+	// > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -796,6 +908,8 @@ type RdsCloneDbInstanceArgs struct {
 	// * **Manual**: It is not automatically upgraded. It is only mandatory when the current version is offline.
 	AutoUpgradeMinorVersion pulumi.StringPtrInput
 	// The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+	//
+	// > **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instanceStorage` check. Otherwise, check.
 	BackupId pulumi.StringPtrInput
 	// The type of backup that is used to restore the data of the original instance. Valid values:
 	// * **FullBackup**: full backup
@@ -829,6 +943,8 @@ type RdsCloneDbInstanceArgs struct {
 	// The db instance description.
 	DbInstanceDescription pulumi.StringPtrInput
 	// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+	//
+	// > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
 	DbInstanceStorage pulumi.IntPtrInput
 	// The type of storage media that is used for the new instance. Valid values:
 	// * **local_ssd**: local SSDs
@@ -838,6 +954,8 @@ type RdsCloneDbInstanceArgs struct {
 	// * **cloud_essd3**: ESSDs of PL3
 	DbInstanceStorageType pulumi.StringInput
 	// The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+	//
+	// > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
 	DbName pulumi.StringPtrInput
 	// The names of the databases that you want to create on the new instance.
 	DbNames pulumi.StringPtrInput
@@ -846,12 +964,16 @@ type RdsCloneDbInstanceArgs struct {
 	// The switch of delete protection. Valid values:
 	// - true: delete protect.
 	// - false: no delete protect.
+	//
+	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection pulumi.BoolPtrInput
 	// The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
 	Direction pulumi.StringPtrInput
 	// The effective time.
 	EffectiveTime pulumi.StringPtrInput
 	// The ID of the private key.
+	//
+	// > **NOTE:** This parameter is available only when the instance runs MySQL.
 	EncryptionKey pulumi.StringPtrInput
 	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
 	Engine pulumi.StringPtrInput
@@ -876,10 +998,14 @@ type RdsCloneDbInstanceArgs struct {
 	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
 	Parameters RdsCloneDbInstanceParameterArrayInput
 	// The password of the certificate.
+	//
+	// > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
 	Password pulumi.StringPtrInput
 	// The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
 	PaymentType pulumi.StringInput
 	// The period. Valid values: `Month`, `Year`.
+	//
+	// > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the period parameter.
 	Period pulumi.StringPtrInput
 	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
 	PgHbaConfs RdsCloneDbInstancePgHbaConfArrayInput
@@ -900,10 +1026,14 @@ type RdsCloneDbInstanceArgs struct {
 	// The point in time to which you want to restore the data of the original instance. The point in time must fall within the specified log backup retention period. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	RestoreTime pulumi.StringPtrInput
 	// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+	//
+	// > **NOTE:** This parameter is available only when the instance runs MySQL.
 	RoleArn pulumi.StringPtrInput
 	// The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
 	// * IP address form, for example: 10.23.12.24.
 	// * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+	//
+	// > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
 	SecurityIps pulumi.StringArrayInput
 	// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
 	ServerCert pulumi.StringPtrInput
@@ -923,6 +1053,8 @@ type RdsCloneDbInstanceArgs struct {
 	// * **Sync**: strong synchronization
 	// * **Semi-sync**: Semi-synchronous
 	// * **Async**: asynchronous
+	//
+	// > **NOTE:** SQL Server 2017 cluster version is currently not supported.
 	SyncMode pulumi.StringPtrInput
 	// The information about the databases and tables that you want to restore. Format:
 	// [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
@@ -938,12 +1070,20 @@ type RdsCloneDbInstanceArgs struct {
 	// The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
 	// * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
 	// * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
+	//
+	// > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the usedTime parameter.
 	UsedTime pulumi.IntPtrInput
 	// The ID of the VPC to which the new instance belongs.
+	//
+	// > **NOTE:** Make sure that the VPC resides in the specified region.
 	VpcId pulumi.StringPtrInput
 	// The ID of the vSwitch associated with the specified VPC.
+	//
+	// > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
 	VswitchId pulumi.StringPtrInput
 	// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+	//
+	// > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -1047,6 +1187,8 @@ func (o RdsCloneDbInstanceOutput) AutoUpgradeMinorVersion() pulumi.StringOutput 
 }
 
 // The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+//
+// > **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instanceStorage` check. Otherwise, check.
 func (o RdsCloneDbInstanceOutput) BackupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.BackupId }).(pulumi.StringPtrOutput)
 }
@@ -1121,6 +1263,8 @@ func (o RdsCloneDbInstanceOutput) DbInstanceDescription() pulumi.StringPtrOutput
 }
 
 // The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+//
+// > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
 func (o RdsCloneDbInstanceOutput) DbInstanceStorage() pulumi.IntOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.IntOutput { return v.DbInstanceStorage }).(pulumi.IntOutput)
 }
@@ -1136,6 +1280,8 @@ func (o RdsCloneDbInstanceOutput) DbInstanceStorageType() pulumi.StringOutput {
 }
 
 // The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+//
+// > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
 func (o RdsCloneDbInstanceOutput) DbName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.DbName }).(pulumi.StringPtrOutput)
 }
@@ -1153,6 +1299,8 @@ func (o RdsCloneDbInstanceOutput) DedicatedHostGroupId() pulumi.StringPtrOutput 
 // The switch of delete protection. Valid values:
 // - true: delete protect.
 // - false: no delete protect.
+//
+// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 func (o RdsCloneDbInstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -1168,6 +1316,8 @@ func (o RdsCloneDbInstanceOutput) EffectiveTime() pulumi.StringPtrOutput {
 }
 
 // The ID of the private key.
+//
+// > **NOTE:** This parameter is available only when the instance runs MySQL.
 func (o RdsCloneDbInstanceOutput) EncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.EncryptionKey }).(pulumi.StringPtrOutput)
 }
@@ -1216,6 +1366,8 @@ func (o RdsCloneDbInstanceOutput) Parameters() RdsCloneDbInstanceParameterArrayO
 }
 
 // The password of the certificate.
+//
+// > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
 func (o RdsCloneDbInstanceOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -1226,6 +1378,8 @@ func (o RdsCloneDbInstanceOutput) PaymentType() pulumi.StringOutput {
 }
 
 // The period. Valid values: `Month`, `Year`.
+//
+// > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the period parameter.
 func (o RdsCloneDbInstanceOutput) Period() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.Period }).(pulumi.StringPtrOutput)
 }
@@ -1276,6 +1430,8 @@ func (o RdsCloneDbInstanceOutput) RestoreTime() pulumi.StringPtrOutput {
 }
 
 // The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+//
+// > **NOTE:** This parameter is available only when the instance runs MySQL.
 func (o RdsCloneDbInstanceOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
@@ -1283,6 +1439,8 @@ func (o RdsCloneDbInstanceOutput) RoleArn() pulumi.StringPtrOutput {
 // The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
 // * IP address form, for example: 10.23.12.24.
 // * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+//
+// > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
 func (o RdsCloneDbInstanceOutput) SecurityIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringArrayOutput { return v.SecurityIps }).(pulumi.StringArrayOutput)
 }
@@ -1326,6 +1484,8 @@ func (o RdsCloneDbInstanceOutput) SwitchTime() pulumi.StringPtrOutput {
 // * **Sync**: strong synchronization
 // * **Semi-sync**: Semi-synchronous
 // * **Async**: asynchronous
+//
+// > **NOTE:** SQL Server 2017 cluster version is currently not supported.
 func (o RdsCloneDbInstanceOutput) SyncMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.SyncMode }).(pulumi.StringOutput)
 }
@@ -1353,21 +1513,29 @@ func (o RdsCloneDbInstanceOutput) TdeStatus() pulumi.StringPtrOutput {
 // The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
 // * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
 // * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
+//
+// > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the usedTime parameter.
 func (o RdsCloneDbInstanceOutput) UsedTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.IntPtrOutput { return v.UsedTime }).(pulumi.IntPtrOutput)
 }
 
 // The ID of the VPC to which the new instance belongs.
+//
+// > **NOTE:** Make sure that the VPC resides in the specified region.
 func (o RdsCloneDbInstanceOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
 // The ID of the vSwitch associated with the specified VPC.
+//
+// > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
 func (o RdsCloneDbInstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
 }
 
 // The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+//
+// > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
 func (o RdsCloneDbInstanceOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

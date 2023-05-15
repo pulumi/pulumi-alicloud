@@ -403,6 +403,10 @@ def get_disks(additional_attributes: Optional[Sequence[str]] = None,
               zone_id: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDisksResult:
     """
+    > **DEPRECATED:** This datasource has been renamed to ecs_get_ecs_disks from version 1.122.0.
+
+    This data source provides the disks of the current Alibaba Cloud user.
+
     ## Example Usage
 
     ```python
@@ -420,6 +424,7 @@ def get_disks(additional_attributes: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of disks IDs.
     :param str instance_id: Filter the results by the specified ECS instance ID.
     :param str name_regex: A regex string to filter results by disk name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the disk belongs.
     :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
     :param str status: Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
@@ -536,6 +541,10 @@ def get_disks_output(additional_attributes: Optional[pulumi.Input[Optional[Seque
                      zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDisksResult]:
     """
+    > **DEPRECATED:** This datasource has been renamed to ecs_get_ecs_disks from version 1.122.0.
+
+    This data source provides the disks of the current Alibaba Cloud user.
+
     ## Example Usage
 
     ```python
@@ -553,6 +562,7 @@ def get_disks_output(additional_attributes: Optional[pulumi.Input[Optional[Seque
     :param Sequence[str] ids: A list of disks IDs.
     :param str instance_id: Filter the results by the specified ECS instance ID.
     :param str name_regex: A regex string to filter results by disk name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the disk belongs.
     :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
     :param str status: Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.

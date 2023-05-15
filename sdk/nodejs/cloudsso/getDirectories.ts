@@ -59,6 +59,9 @@ export interface GetDirectoriesArgs {
      * A regex string to filter results by Directory name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -122,5 +125,8 @@ export interface GetDirectoriesOutputArgs {
      * A regex string to filter results by Directory name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

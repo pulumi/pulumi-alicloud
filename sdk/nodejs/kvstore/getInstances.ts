@@ -67,7 +67,7 @@ export interface GetInstancesArgs {
      */
     enableDetails?: boolean;
     /**
-     * The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+     * The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
      */
     engineVersion?: string;
     /**
@@ -98,6 +98,9 @@ export interface GetInstancesArgs {
      * The type of the network. Valid values: `CLASSIC`, `VPC`.
      */
     networkType?: string;
+    /**
+     * The name of file that can save the collection of instances after running `pulumi preview`.
+     */
     outputFile?: string;
     /**
      * The payment type. Valid values: `PostPaid`, `PrePaid`.
@@ -238,7 +241,7 @@ export interface GetInstancesOutputArgs {
      */
     enableDetails?: pulumi.Input<boolean>;
     /**
-     * The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+     * The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
      */
     engineVersion?: pulumi.Input<string>;
     /**
@@ -269,6 +272,9 @@ export interface GetInstancesOutputArgs {
      * The type of the network. Valid values: `CLASSIC`, `VPC`.
      */
     networkType?: pulumi.Input<string>;
+    /**
+     * The name of file that can save the collection of instances after running `pulumi preview`.
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The payment type. Valid values: `PostPaid`, `PrePaid`.

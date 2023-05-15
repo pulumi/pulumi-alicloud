@@ -29,6 +29,8 @@ namespace Pulumi.AliCloud.Hbr.Inputs
 
         /// <summary>
         /// Set of values that are accepted for the given field.
+        /// 
+        /// &gt; **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
         /// </summary>
         public List<string> Values
         {

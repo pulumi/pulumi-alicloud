@@ -224,6 +224,7 @@ def get_rules(category: Optional[int] = None,
     :param Sequence[str] ids: A list of Rule IDs.
     :param str name: The name of rule.
     :param str name_regex: A regex string to filter results by Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_id: Product ID.
     :param str risk_level_id: Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
     :param int rule_type: Rule Type.
@@ -311,6 +312,7 @@ def get_rules_output(category: Optional[pulumi.Input[Optional[int]]] = None,
     :param Sequence[str] ids: A list of Rule IDs.
     :param str name: The name of rule.
     :param str name_regex: A regex string to filter results by Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_id: Product ID.
     :param str risk_level_id: Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
     :param int rule_type: Rule Type.

@@ -64,7 +64,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:dcdn/domain:Domain example example.com
+//	$ pulumi import alicloud:dcdn/domain:Domain example <id>
 //
 // ```
 type Domain struct {
@@ -101,6 +101,8 @@ type Domain struct {
 	SslPub pulumi.StringPtrOutput `pulumi:"sslPub"`
 	// The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
 	Status pulumi.StringPtrOutput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The top-level domain name.
 	TopLevelDomain pulumi.StringPtrOutput `pulumi:"topLevelDomain"`
 }
@@ -171,6 +173,8 @@ type domainState struct {
 	SslPub *string `pulumi:"sslPub"`
 	// The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
 	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The top-level domain name.
 	TopLevelDomain *string `pulumi:"topLevelDomain"`
 }
@@ -207,6 +211,8 @@ type DomainState struct {
 	SslPub pulumi.StringPtrInput
 	// The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
 	Status pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// The top-level domain name.
 	TopLevelDomain pulumi.StringPtrInput
 }
@@ -245,6 +251,8 @@ type domainArgs struct {
 	SslPub *string `pulumi:"sslPub"`
 	// The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
 	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The top-level domain name.
 	TopLevelDomain *string `pulumi:"topLevelDomain"`
 }
@@ -280,6 +288,8 @@ type DomainArgs struct {
 	SslPub pulumi.StringPtrInput
 	// The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
 	Status pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.MapInput
 	// The top-level domain name.
 	TopLevelDomain pulumi.StringPtrInput
 }
@@ -442,6 +452,11 @@ func (o DomainOutput) SslPub() pulumi.StringPtrOutput {
 // The status of DCDN Domain. Valid values: `online`, `offline`. Default to `online`.
 func (o DomainOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o DomainOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Domain) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
 // The top-level domain name.

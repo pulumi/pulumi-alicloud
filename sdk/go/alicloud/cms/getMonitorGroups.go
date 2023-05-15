@@ -67,7 +67,8 @@ type GetMonitorGroupsArgs struct {
 	// The name of the application group.
 	MonitorGroupName *string `pulumi:"monitorGroupName"`
 	// A regex string to filter results by Monitor Group name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The select contact groups.
 	SelectContactGroups *bool `pulumi:"selectContactGroups"`
@@ -121,7 +122,8 @@ type GetMonitorGroupsOutputArgs struct {
 	// The name of the application group.
 	MonitorGroupName pulumi.StringPtrInput `pulumi:"monitorGroupName"`
 	// A regex string to filter results by Monitor Group name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The select contact groups.
 	SelectContactGroups pulumi.BoolPtrInput `pulumi:"selectContactGroups"`

@@ -153,6 +153,7 @@ def get_service_topics(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Topic IDs. Its element value is same as Topic Name.
     :param str name_regex: A regex string to filter results by Topic name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str topic_name: The name of the topic.
     """
     __args__ = dict()
@@ -205,6 +206,7 @@ def get_service_topics_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
 
     :param Sequence[str] ids: A list of Topic IDs. Its element value is same as Topic Name.
     :param str name_regex: A regex string to filter results by Topic name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str topic_name: The name of the topic.
     """
     ...

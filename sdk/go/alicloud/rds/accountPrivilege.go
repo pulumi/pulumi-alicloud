@@ -39,6 +39,8 @@ type AccountPrivilege struct {
 	// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 	// - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 	// - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+	//
+	// Default to "ReadOnly".
 	Privilege pulumi.StringPtrOutput `pulumi:"privilege"`
 }
 
@@ -92,6 +94,8 @@ type accountPrivilegeState struct {
 	// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 	// - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 	// - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+	//
+	// Default to "ReadOnly".
 	Privilege *string `pulumi:"privilege"`
 }
 
@@ -108,6 +112,8 @@ type AccountPrivilegeState struct {
 	// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 	// - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 	// - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+	//
+	// Default to "ReadOnly".
 	Privilege pulumi.StringPtrInput
 }
 
@@ -128,6 +134,8 @@ type accountPrivilegeArgs struct {
 	// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 	// - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 	// - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+	//
+	// Default to "ReadOnly".
 	Privilege *string `pulumi:"privilege"`
 }
 
@@ -145,6 +153,8 @@ type AccountPrivilegeArgs struct {
 	// - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 	// - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 	// - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+	//
+	// Default to "ReadOnly".
 	Privilege pulumi.StringPtrInput
 }
 
@@ -256,6 +266,8 @@ func (o AccountPrivilegeOutput) InstanceId() pulumi.StringOutput {
 // - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 // - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
 // - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+//
+// Default to "ReadOnly".
 func (o AccountPrivilegeOutput) Privilege() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountPrivilege) pulumi.StringPtrOutput { return v.Privilege }).(pulumi.StringPtrOutput)
 }

@@ -86,6 +86,8 @@ namespace Pulumi.AliCloud.RocketMQ
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// 
+        /// &gt; **NOTE:** At least one of `topic_name` and `topic` should be set.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -179,6 +181,8 @@ namespace Pulumi.AliCloud.RocketMQ
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// 
+        /// &gt; **NOTE:** At least one of `topic_name` and `topic` should be set.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -237,6 +241,8 @@ namespace Pulumi.AliCloud.RocketMQ
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// 
+        /// &gt; **NOTE:** At least one of `topic_name` and `topic` should be set.
         /// </summary>
         public InputMap<object> Tags
         {

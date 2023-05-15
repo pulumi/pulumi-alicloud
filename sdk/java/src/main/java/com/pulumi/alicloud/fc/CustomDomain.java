@@ -152,12 +152,16 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
     /**
      * The configuration of HTTPS certificate.
      * 
+     * **route_config** includes the following arguments:
+     * 
      */
     @Export(name="certConfig", type=CustomDomainCertConfig.class, parameters={})
     private Output</* @Nullable */ CustomDomainCertConfig> certConfig;
 
     /**
      * @return The configuration of HTTPS certificate.
+     * 
+     * **route_config** includes the following arguments:
      * 
      */
     public Output<Optional<CustomDomainCertConfig>> certConfig() {

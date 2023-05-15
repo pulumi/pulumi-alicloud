@@ -46,6 +46,9 @@ export interface GetKeyVersionsArgs {
      * The id of kms key.
      */
     keyId: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -105,5 +108,8 @@ export interface GetKeyVersionsOutputArgs {
      * The id of kms key.
      */
     keyId: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

@@ -64,8 +64,9 @@ func GetEnterpriseProxyAccesses(ctx *pulumi.Context, args *GetEnterpriseProxyAcc
 type GetEnterpriseProxyAccessesArgs struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Proxy Access IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the security agent.
 	ProxyId string `pulumi:"proxyId"`
 }
@@ -101,8 +102,9 @@ func GetEnterpriseProxyAccessesOutput(ctx *pulumi.Context, args GetEnterprisePro
 type GetEnterpriseProxyAccessesOutputArgs struct {
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Proxy Access IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the security agent.
 	ProxyId pulumi.StringInput `pulumi:"proxyId"`
 }

@@ -95,6 +95,7 @@ def get_zones(file_system_type: Optional[str] = None,
 
 
     :param str file_system_type: The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['fileSystemType'] = file_system_type
@@ -130,5 +131,6 @@ def get_zones_output(file_system_type: Optional[pulumi.Input[Optional[str]]] = N
 
 
     :param str file_system_type: The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

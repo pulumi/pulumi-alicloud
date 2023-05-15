@@ -42,6 +42,9 @@ export interface GetEnterpriseProxiesArgs {
      * A list of Proxy IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the tenant.
@@ -91,6 +94,9 @@ export interface GetEnterpriseProxiesOutputArgs {
      * A list of Proxy IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the tenant.

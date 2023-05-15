@@ -141,6 +141,7 @@ def get_auto_snap_shot_policies(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Auto Snap Shot Policy IDs.
     :param str name_regex: A regex string to filter results by Auto Snap Shot Policy name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -187,5 +188,6 @@ def get_auto_snap_shot_policies_output(ids: Optional[pulumi.Input[Optional[Seque
 
     :param Sequence[str] ids: A list of Auto Snap Shot Policy IDs.
     :param str name_regex: A regex string to filter results by Auto Snap Shot Policy name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

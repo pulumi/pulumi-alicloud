@@ -200,6 +200,7 @@ def get_custom_routing_endpoint_group_destinations(accelerator_id: Optional[str]
     :param int from_port: The start port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
     :param Sequence[str] ids: A list of Custom Routing Endpoint Group Destination IDs.
     :param str listener_id: The ID of the listener.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] protocols: The backend service protocol of the endpoint group. Valid values: `TCP`, `UDP`, `TCP, UDP`.
     :param int to_port: The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
     """
@@ -268,6 +269,7 @@ def get_custom_routing_endpoint_group_destinations_output(accelerator_id: Option
     :param int from_port: The start port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
     :param Sequence[str] ids: A list of Custom Routing Endpoint Group Destination IDs.
     :param str listener_id: The ID of the listener.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] protocols: The backend service protocol of the endpoint group. Valid values: `TCP`, `UDP`, `TCP, UDP`.
     :param int to_port: The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
     """

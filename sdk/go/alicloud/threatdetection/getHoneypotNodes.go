@@ -31,7 +31,8 @@ type GetHoneypotNodesArgs struct {
 	// Honeypot management node id.
 	NodeId *string `pulumi:"nodeId"`
 	// The name of the management node.
-	NodeName   *string `pulumi:"nodeName"`
+	NodeName *string `pulumi:"nodeName"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
@@ -79,7 +80,8 @@ type GetHoneypotNodesOutputArgs struct {
 	// Honeypot management node id.
 	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
 	// The name of the management node.
-	NodeName   pulumi.StringPtrInput `pulumi:"nodeName"`
+	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`

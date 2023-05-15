@@ -73,7 +73,8 @@ type GetCommonBandwidthPackagesArgs struct {
 	// Specifies whether to return data of orders that have not taken effect.
 	IncludeReservationData *bool `pulumi:"includeReservationData"`
 	// A regex string to filter results by name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The Id of resource group which the common bandwidth package belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -127,7 +128,8 @@ type GetCommonBandwidthPackagesOutputArgs struct {
 	// Specifies whether to return data of orders that have not taken effect.
 	IncludeReservationData pulumi.BoolPtrInput `pulumi:"includeReservationData"`
 	// A regex string to filter results by name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The Id of resource group which the common bandwidth package belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`

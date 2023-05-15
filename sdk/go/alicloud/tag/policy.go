@@ -38,7 +38,7 @@ type Policy struct {
 	// digits, and hyphens (-).
 	PolicyName pulumi.StringOutput `pulumi:"policyName"`
 	// The type of the tag policy. Valid values: `USER`, `RD`.
-	UserType pulumi.StringPtrOutput `pulumi:"userType"`
+	UserType pulumi.StringOutput `pulumi:"userType"`
 }
 
 // NewPolicy registers a new resource with the given unique name, arguments, and options.
@@ -232,8 +232,8 @@ func (o PolicyOutput) PolicyName() pulumi.StringOutput {
 }
 
 // The type of the tag policy. Valid values: `USER`, `RD`.
-func (o PolicyOutput) UserType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.UserType }).(pulumi.StringPtrOutput)
+func (o PolicyOutput) UserType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.UserType }).(pulumi.StringOutput)
 }
 
 type PolicyArrayOutput struct{ *pulumi.OutputState }

@@ -50,6 +50,9 @@ export interface GetAccountsArgs {
      */
     instanceId: string;
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of account.
@@ -110,6 +113,9 @@ export interface GetAccountsOutputArgs {
      */
     instanceId: pulumi.Input<string>;
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of account.

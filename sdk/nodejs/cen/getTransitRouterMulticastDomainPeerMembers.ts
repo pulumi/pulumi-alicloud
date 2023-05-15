@@ -45,6 +45,9 @@ export interface GetTransitRouterMulticastDomainPeerMembersArgs {
      * A list of Cen Transit Router Multicast Domain Peer Member IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The IDs of the inter-region multicast domains.
@@ -122,6 +125,9 @@ export interface GetTransitRouterMulticastDomainPeerMembersOutputArgs {
      * A list of Cen Transit Router Multicast Domain Peer Member IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The IDs of the inter-region multicast domains.

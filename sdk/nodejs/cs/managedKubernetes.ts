@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * ## Import
  *
- * Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
+ * Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
  *
  * ```sh
  *  $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes main cluster_id
@@ -283,6 +283,9 @@ export class ManagedKubernetes extends pulumi.CustomResource {
     public /*out*/ readonly slbInternet!: pulumi.Output<string>;
     /**
      * Whether to create internet load balancer for API Server. Default to true.
+     *
+     * > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `podVswitchIds` field and addons with `terway-eniip`.
+     * If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
      */
     public readonly slbInternetEnabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -846,6 +849,9 @@ export interface ManagedKubernetesState {
     slbInternet?: pulumi.Input<string>;
     /**
      * Whether to create internet load balancer for API Server. Default to true.
+     *
+     * > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `podVswitchIds` field and addons with `terway-eniip`.
+     * If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
      */
     slbInternetEnabled?: pulumi.Input<boolean>;
     /**
@@ -1206,6 +1212,9 @@ export interface ManagedKubernetesArgs {
     serviceCidr?: pulumi.Input<string>;
     /**
      * Whether to create internet load balancer for API Server. Default to true.
+     *
+     * > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `podVswitchIds` field and addons with `terway-eniip`.
+     * If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
      */
     slbInternetEnabled?: pulumi.Input<boolean>;
     /**

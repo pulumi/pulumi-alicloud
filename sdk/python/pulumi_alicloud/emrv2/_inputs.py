@@ -360,19 +360,27 @@ class ClusterNodeAttributeArgs:
                  ram_role: pulumi.Input[str],
                  security_group_id: pulumi.Input[str],
                  vpc_id: pulumi.Input[str],
-                 zone_id: pulumi.Input[str]):
+                 zone_id: pulumi.Input[str],
+                 data_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 data_disk_kms_key_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] key_pair_name: The name of the key pair.
         :param pulumi.Input[str] ram_role: Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
         :param pulumi.Input[str] security_group_id: Security Group ID for Cluster.
         :param pulumi.Input[str] vpc_id: Used to retrieve instances belong to specified VPC.
         :param pulumi.Input[str] zone_id: Zone ID, e.g. cn-hangzhou-i
+        :param pulumi.Input[bool] data_disk_encrypted: Whether to enable data disk encryption.
+        :param pulumi.Input[str] data_disk_kms_key_id: The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
         """
         pulumi.set(__self__, "key_pair_name", key_pair_name)
         pulumi.set(__self__, "ram_role", ram_role)
         pulumi.set(__self__, "security_group_id", security_group_id)
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "zone_id", zone_id)
+        if data_disk_encrypted is not None:
+            pulumi.set(__self__, "data_disk_encrypted", data_disk_encrypted)
+        if data_disk_kms_key_id is not None:
+            pulumi.set(__self__, "data_disk_kms_key_id", data_disk_kms_key_id)
 
     @property
     @pulumi.getter(name="keyPairName")
@@ -433,6 +441,30 @@ class ClusterNodeAttributeArgs:
     @zone_id.setter
     def zone_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter(name="dataDiskEncrypted")
+    def data_disk_encrypted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable data disk encryption.
+        """
+        return pulumi.get(self, "data_disk_encrypted")
+
+    @data_disk_encrypted.setter
+    def data_disk_encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "data_disk_encrypted", value)
+
+    @property
+    @pulumi.getter(name="dataDiskKmsKeyId")
+    def data_disk_kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
+        """
+        return pulumi.get(self, "data_disk_kms_key_id")
+
+    @data_disk_kms_key_id.setter
+    def data_disk_kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_disk_kms_key_id", value)
 
 
 @pulumi.input_type

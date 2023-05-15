@@ -64,8 +64,9 @@ type GetHoneyPotsArgs struct {
 	// A regex string to filter results by honey pot name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// The ID of the honeypot management node.
-	NodeId     *string `pulumi:"nodeId"`
-	NodeName   *string `pulumi:"nodeName"`
+	NodeId   *string `pulumi:"nodeId"`
+	NodeName *string `pulumi:"nodeName"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -112,8 +113,9 @@ type GetHoneyPotsOutputArgs struct {
 	// A regex string to filter results by honey pot name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The ID of the honeypot management node.
-	NodeId     pulumi.StringPtrInput `pulumi:"nodeId"`
-	NodeName   pulumi.StringPtrInput `pulumi:"nodeName"`
+	NodeId   pulumi.StringPtrInput `pulumi:"nodeId"`
+	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

@@ -51,6 +51,8 @@ namespace Pulumi.AliCloud.Eci.Outputs
         public readonly bool? NfsVolumeReadOnly;
         /// <summary>
         /// The address of the NFS server.
+        /// 
+        /// &gt; **NOTE:** Every volumes mounted must have name and type attributes.
         /// </summary>
         public readonly string? NfsVolumeServer;
         /// <summary>

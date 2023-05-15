@@ -69,6 +69,9 @@ export interface GetContainerGroupsArgs {
      * A regex string to filter results by Container Group name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
@@ -163,6 +166,9 @@ export interface GetContainerGroupsOutputArgs {
      * A regex string to filter results by Container Group name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.

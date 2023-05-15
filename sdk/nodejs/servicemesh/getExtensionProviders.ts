@@ -57,6 +57,9 @@ export interface GetExtensionProvidersArgs {
      * A regex string to filter results by Service Mesh Extension Provider name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the Service Mesh.
@@ -139,6 +142,9 @@ export interface GetExtensionProvidersOutputArgs {
      * A regex string to filter results by Service Mesh Extension Provider name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the Service Mesh.

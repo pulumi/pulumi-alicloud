@@ -67,7 +67,8 @@ type GetSlsGroupsArgs struct {
 	// The keywords of the `slsGroupName` or `slsGroupDescription` of the Sls Group.
 	Keyword *string `pulumi:"keyword"`
 	// A regex string to filter results by Sls Group name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
@@ -107,7 +108,8 @@ type GetSlsGroupsOutputArgs struct {
 	// The keywords of the `slsGroupName` or `slsGroupDescription` of the Sls Group.
 	Keyword pulumi.StringPtrInput `pulumi:"keyword"`
 	// A regex string to filter results by Sls Group name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`

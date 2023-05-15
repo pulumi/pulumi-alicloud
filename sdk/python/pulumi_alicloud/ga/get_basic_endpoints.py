@@ -190,6 +190,7 @@ def get_basic_endpoints(endpoint_group_id: Optional[str] = None,
     :param Sequence[str] ids: A list of Global Accelerator Basic Endpoints IDs.
     :param str name: The name of the Basic Endpoint.
     :param str name_regex: A regex string to filter results by Global Accelerator Basic Endpoints name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
     """
     __args__ = dict()
@@ -256,6 +257,7 @@ def get_basic_endpoints_output(endpoint_group_id: Optional[pulumi.Input[str]] = 
     :param Sequence[str] ids: A list of Global Accelerator Basic Endpoints IDs.
     :param str name: The name of the Basic Endpoint.
     :param str name_regex: A regex string to filter results by Global Accelerator Basic Endpoints name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
     """
     ...

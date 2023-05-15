@@ -178,6 +178,7 @@ def get_honeypot_probes(display_name: Optional[str] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Honeypot Probe IDs.
     :param str name_regex: A regex string to filter results by display name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str probe_type: Probe type
     """
     __args__ = dict()
@@ -253,6 +254,7 @@ def get_honeypot_probes_output(display_name: Optional[pulumi.Input[Optional[str]
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Honeypot Probe IDs.
     :param str name_regex: A regex string to filter results by display name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str probe_type: Probe type
     """
     ...

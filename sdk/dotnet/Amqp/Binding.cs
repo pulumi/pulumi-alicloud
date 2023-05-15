@@ -78,6 +78,8 @@ namespace Pulumi.AliCloud.Amqp
         /// X-match Attributes. Valid Values: 
         /// * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
         /// * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
+        /// 
+        /// **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
         /// </summary>
         [Output("argument")]
         public Output<string> Argument { get; private set; } = null!;
@@ -173,6 +175,8 @@ namespace Pulumi.AliCloud.Amqp
         /// X-match Attributes. Valid Values: 
         /// * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
         /// * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
+        /// 
+        /// **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
         /// </summary>
         [Input("argument")]
         public Input<string>? Argument { get; set; }
@@ -230,6 +234,8 @@ namespace Pulumi.AliCloud.Amqp
         /// X-match Attributes. Valid Values: 
         /// * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
         /// * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
+        /// 
+        /// **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
         /// </summary>
         [Input("argument")]
         public Input<string>? Argument { get; set; }

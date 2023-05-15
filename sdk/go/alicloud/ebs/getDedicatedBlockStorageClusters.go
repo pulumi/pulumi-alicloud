@@ -57,7 +57,8 @@ type GetDedicatedBlockStorageClustersArgs struct {
 	// A list of Dedicated Block Storage Cluster IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Group Metric Rule name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -93,7 +94,8 @@ type GetDedicatedBlockStorageClustersOutputArgs struct {
 	// A list of Dedicated Block Storage Cluster IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Group Metric Rule name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

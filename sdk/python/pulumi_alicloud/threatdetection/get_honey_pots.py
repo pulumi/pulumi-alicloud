@@ -163,6 +163,7 @@ def get_honey_pots(honeypot_id: Optional[str] = None,
     :param Sequence[str] ids: A list of Honey Pot IDs.
     :param str name_regex: A regex string to filter results by honey pot name.
     :param str node_id: The ID of the honeypot management node.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['honeypotId'] = honeypot_id
@@ -219,5 +220,6 @@ def get_honey_pots_output(honeypot_id: Optional[pulumi.Input[Optional[str]]] = N
     :param Sequence[str] ids: A list of Honey Pot IDs.
     :param str name_regex: A regex string to filter results by honey pot name.
     :param str node_id: The ID of the honeypot management node.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

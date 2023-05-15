@@ -105,6 +105,7 @@ def get_buckets(name_regex: Optional[str] = None,
 
 
     :param str name_regex: A regex string to filter results by bucket name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['nameRegex'] = name_regex
@@ -139,5 +140,6 @@ def get_buckets_output(name_regex: Optional[pulumi.Input[Optional[str]]] = None,
 
 
     :param str name_regex: A regex string to filter results by bucket name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

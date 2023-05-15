@@ -93,6 +93,7 @@ def get_regions(output_file: Optional[str] = None,
     ```
 
 
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str region_id: The ID of the region.
     """
     __args__ = dict()
@@ -130,6 +131,7 @@ def get_regions_output(output_file: Optional[pulumi.Input[Optional[str]]] = None
     ```
 
 
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str region_id: The ID of the region.
     """
     ...

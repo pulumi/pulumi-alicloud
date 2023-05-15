@@ -82,7 +82,8 @@ type GetNasFileSystemsArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// The ID of office site.
 	OfficeSiteId *string `pulumi:"officeSiteId"`
-	OutputFile   *string `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
 	Status *string `pulumi:"status"`
 }
@@ -121,7 +122,8 @@ type GetNasFileSystemsOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The ID of office site.
 	OfficeSiteId pulumi.StringPtrInput `pulumi:"officeSiteId"`
-	OutputFile   pulumi.StringPtrInput `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }

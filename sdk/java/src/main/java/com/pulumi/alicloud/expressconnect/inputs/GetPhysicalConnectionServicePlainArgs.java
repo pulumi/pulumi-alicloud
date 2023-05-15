@@ -17,12 +17,16 @@ public final class GetPhysicalConnectionServicePlainArgs extends com.pulumi.reso
     /**
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
      * 
+     * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to enable outbound traffic for an Express Connect circuit that means you have read and agreed the [Express Connect Terms of Service](https://terms.aliyun.com/legal-agreement/terms/suit_bu1_ali_cloud/suit_bu1_ali_cloud201803060947_16271.html). The service can not closed once it is opened.
+     * 
      */
     @Import(name="enable")
     private @Nullable String enable;
 
     /**
      * @return Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+     * 
+     * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to enable outbound traffic for an Express Connect circuit that means you have read and agreed the [Express Connect Terms of Service](https://terms.aliyun.com/legal-agreement/terms/suit_bu1_ali_cloud/suit_bu1_ali_cloud201803060947_16271.html). The service can not closed once it is opened.
      * 
      */
     public Optional<String> enable() {
@@ -55,6 +59,8 @@ public final class GetPhysicalConnectionServicePlainArgs extends com.pulumi.reso
 
         /**
          * @param enable Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+         * 
+         * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to enable outbound traffic for an Express Connect circuit that means you have read and agreed the [Express Connect Terms of Service](https://terms.aliyun.com/legal-agreement/terms/suit_bu1_ali_cloud/suit_bu1_ali_cloud201803060947_16271.html). The service can not closed once it is opened.
          * 
          * @return builder
          * 

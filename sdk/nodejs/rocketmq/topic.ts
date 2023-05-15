@@ -89,6 +89,8 @@ export class Topic extends pulumi.CustomResource {
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     *
+     * > **NOTE:** At least one of `topicName` and `topic` should be set.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -169,6 +171,8 @@ export interface TopicState {
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     *
+     * > **NOTE:** At least one of `topicName` and `topic` should be set.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -209,6 +213,8 @@ export interface TopicArgs {
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+     *
+     * > **NOTE:** At least one of `topicName` and `topic` should be set.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**

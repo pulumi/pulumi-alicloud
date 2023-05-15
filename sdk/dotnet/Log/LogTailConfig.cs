@@ -10,6 +10,55 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log
 {
     /// <summary>
+    /// The Logtail access service is a log collection agent provided by Log Service.
+    /// You can use Logtail to collect logs from servers such as Alibaba Cloud Elastic
+    /// Compute Service (ECS) instances in real time in the Log Service console. [Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     {
+    ///         Description = "create by terraform",
+    ///     });
+    /// 
+    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         RetentionPeriod = 3650,
+    ///         ShardCount = 3,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///     });
+    /// 
+    ///     var exampleLogTailConfig = new AliCloud.Log.LogTailConfig("exampleLogTailConfig", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         Logstore = exampleStore.Name,
+    ///         InputType = "file",
+    ///         LogSample = "test",
+    ///         OutputType = "LogService",
+    ///         InputDetail = File.ReadAllText("config.json"),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Module Support
+    /// 
+    /// You can use the existing sls-logtail module
+    /// to create logtail config, machine group, install logtail on ECS instances and join instances into machine group one-click.
+    /// 
     /// ## Import
     /// 
     /// Logtial config can be imported using the id, e.g.

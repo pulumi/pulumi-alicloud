@@ -20,6 +20,143 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a ESS alarm task resource.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ess.ScalingGroup;
+ * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+ * import com.pulumi.alicloud.ess.ScalingRule;
+ * import com.pulumi.alicloud.ess.ScalingRuleArgs;
+ * import com.pulumi.alicloud.ess.Alarm;
+ * import com.pulumi.alicloud.ess.AlarmArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var ecsImage = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .mostRecent(true)
+ *             .nameRegex(&#34;^centos_6\\w{1,5}[64].*&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cpuCoreCount(1)
+ *             .memorySize(2)
+ *             .build());
+ * 
+ *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;tf-testAccEssAlarm_basic_foo&#34;)
+ *             .vpcId(fooNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var bar = new Switch(&#34;bar&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;tf-testAccEssAlarm_basic_bar&#34;)
+ *             .vpcId(fooNetwork.id())
+ *             .cidrBlock(&#34;172.16.1.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var fooScalingGroup = new ScalingGroup(&#34;fooScalingGroup&#34;, ScalingGroupArgs.builder()        
+ *             .minSize(1)
+ *             .maxSize(1)
+ *             .scalingGroupName(&#34;tf-testAccEssAlarm_basic&#34;)
+ *             .removalPolicies(            
+ *                 &#34;OldestInstance&#34;,
+ *                 &#34;NewestInstance&#34;)
+ *             .vswitchIds(            
+ *                 fooSwitch.id(),
+ *                 bar.id())
+ *             .build());
+ * 
+ *         var fooScalingRule = new ScalingRule(&#34;fooScalingRule&#34;, ScalingRuleArgs.builder()        
+ *             .scalingRuleName(&#34;tf-testAccEssAlarm_basic&#34;)
+ *             .scalingGroupId(fooScalingGroup.id())
+ *             .adjustmentType(&#34;TotalCapacity&#34;)
+ *             .adjustmentValue(2)
+ *             .cooldown(60)
+ *             .build());
+ * 
+ *         var fooAlarm = new Alarm(&#34;fooAlarm&#34;, AlarmArgs.builder()        
+ *             .description(&#34;Acc alarm test&#34;)
+ *             .alarmActions(fooScalingRule.ari())
+ *             .scalingGroupId(fooScalingGroup.id())
+ *             .metricType(&#34;system&#34;)
+ *             .metricName(&#34;CpuUtilization&#34;)
+ *             .period(300)
+ *             .statistics(&#34;Average&#34;)
+ *             .threshold(200.3)
+ *             .comparisonOperator(&#34;&gt;=&#34;)
+ *             .evaluationCount(2)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Module Support
+ * 
+ * You can use to the existing autoscaling-rule module
+ * to create alarm task, different type rules and scheduled task one-click.
+ * 
+ * ## Block metricNames_and_dimensions
+ * 
+ * Supported metric names and dimensions :
+ * 
+ * | MetricName         | Dimensions                   |
+ * | ------------------ | ---------------------------- |
+ * | CpuUtilization     | user_id,scaling_group        |
+ * | ClassicInternetRx  | user_id,scaling_group        |
+ * | ClassicInternetTx  | user_id,scaling_group        |
+ * | VpcInternetRx      | user_id,scaling_group        |
+ * | VpcInternetTx      | user_id,scaling_group        |
+ * | IntranetRx         | user_id,scaling_group        |
+ * | IntranetTx         | user_id,scaling_group        |
+ * | LoadAverage        | user_id,scaling_group        |
+ * | MemoryUtilization  | user_id,scaling_group        |
+ * | SystemDiskReadBps  | user_id,scaling_group        |
+ * | SystemDiskWriteBps | user_id,scaling_group        |
+ * | SystemDiskReadOps  | user_id,scaling_group        |
+ * | SystemDiskWriteOps | user_id,scaling_group        |
+ * | PackagesNetIn      | user_id,scaling_group,device |
+ * | PackagesNetOut     | user_id,scaling_group,device |
+ * | TcpConnection      | user_id,scaling_group,state  |
+ * 
+ * &gt; **NOTE:** Dimension `user_id` and `scaling_group` is automatically filled, which means you only need to care about dimension `device` and `state` when needed.
+ * 
  * ## Import
  * 
  * Ess alarm can be imported using the id, e.g.

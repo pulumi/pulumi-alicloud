@@ -72,8 +72,9 @@ type GetGatewayCacheDisksArgs struct {
 	// The ID of the gateway.
 	GatewayId string `pulumi:"gatewayId"`
 	// A list of Gateway Cache Disk IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The status of the resource.
 	Status *int `pulumi:"status"`
 }
@@ -107,8 +108,9 @@ type GetGatewayCacheDisksOutputArgs struct {
 	// The ID of the gateway.
 	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
 	// A list of Gateway Cache Disk IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the resource.
 	Status pulumi.IntPtrInput `pulumi:"status"`
 }

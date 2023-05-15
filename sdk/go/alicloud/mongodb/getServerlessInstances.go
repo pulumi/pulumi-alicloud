@@ -77,7 +77,8 @@ type GetServerlessInstancesArgs struct {
 	Ids []string `pulumi:"ids"`
 	// The network type of the instance.
 	NetworkType *string `pulumi:"networkType"`
-	OutputFile  *string `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the instance.
@@ -136,7 +137,8 @@ type GetServerlessInstancesOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The network type of the instance.
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
-	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The status of the instance.

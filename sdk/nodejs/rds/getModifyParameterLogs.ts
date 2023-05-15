@@ -49,6 +49,9 @@ export interface GetModifyParameterLogsArgs {
      * The end time.
      */
     endTime: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The start time.
@@ -106,6 +109,9 @@ export interface GetModifyParameterLogsOutputArgs {
      * The end time.
      */
     endTime: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The start time.

@@ -197,6 +197,7 @@ def get_quotas(dimensions: Optional[Sequence[pulumi.InputType['GetQuotasDimensio
     :param str group_code: The group code.
     :param str key_word: The key word.
     :param str name_regex: A regex string to filter results by Quota name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_code: The product code.
     :param str quota_action_code: The quota action code.
     :param str quota_category: The category of quota. Valid Values: `FlowControl` and `CommonQuota`.
@@ -269,6 +270,7 @@ def get_quotas_output(dimensions: Optional[pulumi.Input[Optional[Sequence[pulumi
     :param str group_code: The group code.
     :param str key_word: The key word.
     :param str name_regex: A regex string to filter results by Quota name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_code: The product code.
     :param str quota_action_code: The quota action code.
     :param str quota_category: The category of quota. Valid Values: `FlowControl` and `CommonQuota`.

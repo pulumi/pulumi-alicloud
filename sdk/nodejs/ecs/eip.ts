@@ -5,6 +5,32 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides an elastic IP resource.
+ *
+ * > **DEPRECATED:**  This resource  has been deprecated from version `1.126.0`. Please use new resource alicloud_eip_address.
+ *
+ * > **NOTE:** The resource only supports to create `PostPaid PayByTraffic`  or `PrePaid PayByBandwidth` elastic IP for international account. Otherwise, you will happened error `COMMODITY.INVALID_COMPONENT`.
+ * Your account is international if you can use it to login in [International Web Console](https://account.alibabacloud.com/login/login.htm).
+ *
+ * > **NOTE:** From version 1.10.1, this resource supports creating "PrePaid" EIP. In addition, it supports setting EIP name and description.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Create a new EIP.
+ * const example = new alicloud.ecs.Eip("example", {
+ *     bandwidth: "10",
+ *     internetChargeType: "PayByBandwidth",
+ * });
+ * ```
+ * ## Module Support
+ *
+ * You can use the existing eip module
+ * to create several EIP instances and associate them with other resources one-click, like ECS instances, SLB, Nat Gateway and so on.
+ *
  * ## Import
  *
  * Elastic IP address can be imported using the id, e.g.
@@ -96,6 +122,10 @@ export class Eip extends pulumi.CustomResource {
      * The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
      */
     public readonly paymentType!: pulumi.Output<string>;
+    /**
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+     * **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     public readonly period!: pulumi.Output<number | undefined>;
     public readonly publicIpAddressPoolId!: pulumi.Output<string | undefined>;
     /**
@@ -236,6 +266,10 @@ export interface EipState {
      * The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
      */
     paymentType?: pulumi.Input<string>;
+    /**
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+     * **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     period?: pulumi.Input<number>;
     publicIpAddressPoolId?: pulumi.Input<string>;
     /**
@@ -305,6 +339,10 @@ export interface EipArgs {
      * The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
      */
     paymentType?: pulumi.Input<string>;
+    /**
+     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+     * **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     period?: pulumi.Input<number>;
     publicIpAddressPoolId?: pulumi.Input<string>;
     /**

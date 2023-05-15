@@ -60,8 +60,9 @@ type GetFilesetsArgs struct {
 	// The ID of the file system.
 	FileSystemId string `pulumi:"fileSystemId"`
 	// A list of Fileset IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The status of the fileset.
 	Status *string `pulumi:"status"`
 }
@@ -95,8 +96,9 @@ type GetFilesetsOutputArgs struct {
 	// The ID of the file system.
 	FileSystemId pulumi.StringInput `pulumi:"fileSystemId"`
 	// A list of Fileset IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the fileset.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }

@@ -66,7 +66,8 @@ type GetSecretsArgs struct {
 	// A list of KMS Secret ids. The value is same as KMS secret_name.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter the results by the KMS secret_name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -116,7 +117,8 @@ type GetSecretsOutputArgs struct {
 	// A list of KMS Secret ids. The value is same as KMS secret_name.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter the results by the KMS secret_name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`

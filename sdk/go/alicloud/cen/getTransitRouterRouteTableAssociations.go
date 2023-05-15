@@ -52,8 +52,9 @@ func GetTransitRouterRouteTableAssociations(ctx *pulumi.Context, args *GetTransi
 // A collection of arguments for invoking getTransitRouterRouteTableAssociations.
 type GetTransitRouterRouteTableAssociationsArgs struct {
 	// A list of CEN Transit Router Route Table Association IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The status of the route table, including `Active`, `Associating`, `Dissociating`.
 	Status *string `pulumi:"status"`
 	// ID of the route table of the VPC or VBR.
@@ -91,8 +92,9 @@ func GetTransitRouterRouteTableAssociationsOutput(ctx *pulumi.Context, args GetT
 // A collection of arguments for invoking getTransitRouterRouteTableAssociations.
 type GetTransitRouterRouteTableAssociationsOutputArgs struct {
 	// A list of CEN Transit Router Route Table Association IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the route table, including `Active`, `Associating`, `Dissociating`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// ID of the route table of the VPC or VBR.

@@ -105,6 +105,8 @@ type NasBackupPlan struct {
 	// Deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	//
+	// > **Note** `hbr.NasBackupPlan` depends on the `nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
 	CrossAccountRoleName pulumi.StringPtrOutput `pulumi:"crossAccountRoleName"`
 	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
 	CrossAccountType pulumi.StringOutput `pulumi:"crossAccountType"`
@@ -185,6 +187,8 @@ type nasBackupPlanState struct {
 	// Deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.
 	CreateTime *string `pulumi:"createTime"`
 	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	//
+	// > **Note** `hbr.NasBackupPlan` depends on the `nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
 	CrossAccountRoleName *string `pulumi:"crossAccountRoleName"`
 	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
 	CrossAccountType *string `pulumi:"crossAccountType"`
@@ -216,6 +220,8 @@ type NasBackupPlanState struct {
 	// Deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.
 	CreateTime pulumi.StringPtrInput
 	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	//
+	// > **Note** `hbr.NasBackupPlan` depends on the `nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
 	CrossAccountRoleName pulumi.StringPtrInput
 	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
 	CrossAccountType pulumi.StringPtrInput
@@ -251,6 +257,8 @@ type nasBackupPlanArgs struct {
 	// Deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.
 	CreateTime *string `pulumi:"createTime"`
 	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	//
+	// > **Note** `hbr.NasBackupPlan` depends on the `nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
 	CrossAccountRoleName *string `pulumi:"crossAccountRoleName"`
 	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
 	CrossAccountType *string `pulumi:"crossAccountType"`
@@ -283,6 +291,8 @@ type NasBackupPlanArgs struct {
 	// Deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.
 	CreateTime pulumi.StringPtrInput
 	// The role name created in the original account RAM backup by the cross account managed by the current account.
+	//
+	// > **Note** `hbr.NasBackupPlan` depends on the `nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
 	CrossAccountRoleName pulumi.StringPtrInput
 	// The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
 	CrossAccountType pulumi.StringPtrInput
@@ -406,6 +416,8 @@ func (o NasBackupPlanOutput) CreateTime() pulumi.StringOutput {
 }
 
 // The role name created in the original account RAM backup by the cross account managed by the current account.
+//
+// > **Note** `hbr.NasBackupPlan` depends on the `nas.FileSystem` and creates a mount point on the file system. If this dependency has not declared, the file system may not be deleted correctly.
 func (o NasBackupPlanOutput) CrossAccountRoleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NasBackupPlan) pulumi.StringPtrOutput { return v.CrossAccountRoleName }).(pulumi.StringPtrOutput)
 }

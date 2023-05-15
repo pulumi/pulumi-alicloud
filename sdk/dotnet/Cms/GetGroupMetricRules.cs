@@ -149,6 +149,9 @@ namespace Pulumi.AliCloud.Cms
         [Input("namespace")]
         public string? Namespace { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -220,6 +223,9 @@ namespace Pulumi.AliCloud.Cms
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

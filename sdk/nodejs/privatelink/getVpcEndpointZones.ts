@@ -43,6 +43,9 @@ export interface GetVpcEndpointZonesArgs {
      * The ID of the Vpc Endpoint.
      */
     endpointId: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The Status of Vpc Endpoint Zone..
@@ -95,6 +98,9 @@ export interface GetVpcEndpointZonesOutputArgs {
      * The ID of the Vpc Endpoint.
      */
     endpointId: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The Status of Vpc Endpoint Zone..

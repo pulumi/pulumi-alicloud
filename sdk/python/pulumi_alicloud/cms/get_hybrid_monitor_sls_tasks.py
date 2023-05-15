@@ -136,6 +136,7 @@ def get_hybrid_monitor_sls_tasks(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Hybrid Monitor Sls Task IDs.
     :param str keyword: The keyword that is used to search for metric import tasks.
     :param str namespace: The namespace to which the host belongs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -187,5 +188,6 @@ def get_hybrid_monitor_sls_tasks_output(ids: Optional[pulumi.Input[Optional[Sequ
     :param Sequence[str] ids: A list of Hybrid Monitor Sls Task IDs.
     :param str keyword: The keyword that is used to search for metric import tasks.
     :param str namespace: The namespace to which the host belongs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

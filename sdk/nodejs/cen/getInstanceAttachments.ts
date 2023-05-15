@@ -51,6 +51,9 @@ export interface GetInstanceAttachmentsArgs {
      * The ID of the CEN instance.
      */
     instanceId: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
@@ -129,6 +132,9 @@ export interface GetInstanceAttachmentsOutputArgs {
      * The ID of the CEN instance.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.

@@ -112,6 +112,12 @@ def get_instances(domain_type: Optional[str] = None,
                   user_client_ip: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
+    > **DEPRECATED:**  This resource has been renamed to dns_get_alidns_instances from version 1.95.0.
+
+    This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:**  Available in 1.84.0+.
+
     ## Example Usage
 
     ```python
@@ -124,6 +130,7 @@ def get_instances(domain_type: Optional[str] = None,
 
 
     :param Sequence[str] ids: A list of instance IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['domainType'] = domain_type
@@ -152,6 +159,12 @@ def get_instances_output(domain_type: Optional[pulumi.Input[Optional[str]]] = No
                          user_client_ip: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
     """
+    > **DEPRECATED:**  This resource has been renamed to dns_get_alidns_instances from version 1.95.0.
+
+    This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
+
+    > **NOTE:**  Available in 1.84.0+.
+
     ## Example Usage
 
     ```python
@@ -164,5 +177,6 @@ def get_instances_output(domain_type: Optional[pulumi.Input[Optional[str]]] = No
 
 
     :param Sequence[str] ids: A list of instance IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

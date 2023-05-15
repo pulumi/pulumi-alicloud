@@ -55,7 +55,8 @@ func GetStocks(ctx *pulumi.Context, args *GetStocksArgs, opts ...pulumi.InvokeOp
 type GetStocksArgs struct {
 	// The gateway class. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
 	GatewayClass *string `pulumi:"gatewayClass"`
-	OutputFile   *string `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getStocks.
@@ -84,7 +85,8 @@ func GetStocksOutput(ctx *pulumi.Context, args GetStocksOutputArgs, opts ...pulu
 type GetStocksOutputArgs struct {
 	// The gateway class. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
 	GatewayClass pulumi.StringPtrInput `pulumi:"gatewayClass"`
-	OutputFile   pulumi.StringPtrInput `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetStocksOutputArgs) ElementType() reflect.Type {

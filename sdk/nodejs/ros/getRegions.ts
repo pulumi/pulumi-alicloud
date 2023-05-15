@@ -36,6 +36,9 @@ export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getRegions.
  */
 export interface GetRegionsArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -75,5 +78,8 @@ export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getRegions.
  */
 export interface GetRegionsOutputArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

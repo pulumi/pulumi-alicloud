@@ -103,6 +103,7 @@ def get_backend_servers(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: List of attached ECS instance IDs.
     :param str load_balancer_id: ID of the SLB with attachments.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -142,5 +143,6 @@ def get_backend_servers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
 
     :param Sequence[str] ids: List of attached ECS instance IDs.
     :param str load_balancer_id: ID of the SLB with attachments.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

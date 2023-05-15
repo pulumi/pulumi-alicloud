@@ -20,12 +20,16 @@ public final class BandwidthLimitState extends com.pulumi.resources.ResourceArgs
     /**
      * The bandwidth configured for the interconnected regions communication.
      * 
+     * -&gt;**NOTE:** The &#34;alicloud_cen_bandwidthlimit&#34; resource depends on the related &#34;alicloud.cen.BandwidthPackageAttachment&#34; resource and &#34;alicloud.cen.InstanceAttachment&#34; resource.
+     * 
      */
     @Import(name="bandwidthLimit")
     private @Nullable Output<Integer> bandwidthLimit;
 
     /**
      * @return The bandwidth configured for the interconnected regions communication.
+     * 
+     * -&gt;**NOTE:** The &#34;alicloud_cen_bandwidthlimit&#34; resource depends on the related &#34;alicloud.cen.BandwidthPackageAttachment&#34; resource and &#34;alicloud.cen.InstanceAttachment&#34; resource.
      * 
      */
     public Optional<Output<Integer>> bandwidthLimit() {
@@ -91,6 +95,8 @@ public final class BandwidthLimitState extends com.pulumi.resources.ResourceArgs
         /**
          * @param bandwidthLimit The bandwidth configured for the interconnected regions communication.
          * 
+         * -&gt;**NOTE:** The &#34;alicloud_cen_bandwidthlimit&#34; resource depends on the related &#34;alicloud.cen.BandwidthPackageAttachment&#34; resource and &#34;alicloud.cen.InstanceAttachment&#34; resource.
+         * 
          * @return builder
          * 
          */
@@ -101,6 +107,8 @@ public final class BandwidthLimitState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param bandwidthLimit The bandwidth configured for the interconnected regions communication.
+         * 
+         * -&gt;**NOTE:** The &#34;alicloud_cen_bandwidthlimit&#34; resource depends on the related &#34;alicloud.cen.BandwidthPackageAttachment&#34; resource and &#34;alicloud.cen.InstanceAttachment&#34; resource.
          * 
          * @return builder
          * 

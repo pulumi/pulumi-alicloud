@@ -84,8 +84,7 @@ type EcsKeyPair struct {
 	PublicKey pulumi.StringPtrOutput `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
-	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags            pulumi.MapOutput       `pulumi:"tags"`
 }
 
 // NewEcsKeyPair registers a new resource with the given unique name, arguments, and options.
@@ -131,9 +130,8 @@ type ecsKeyPairState struct {
 	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey *string `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	ResourceGroupId *string                `pulumi:"resourceGroupId"`
+	Tags            map[string]interface{} `pulumi:"tags"`
 }
 
 type EcsKeyPairState struct {
@@ -152,8 +150,7 @@ type EcsKeyPairState struct {
 	PublicKey pulumi.StringPtrInput
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags            pulumi.MapInput
 }
 
 func (EcsKeyPairState) ElementType() reflect.Type {
@@ -173,9 +170,8 @@ type ecsKeyPairArgs struct {
 	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey *string `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	ResourceGroupId *string                `pulumi:"resourceGroupId"`
+	Tags            map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a EcsKeyPair resource.
@@ -193,8 +189,7 @@ type EcsKeyPairArgs struct {
 	PublicKey pulumi.StringPtrInput
 	// The Id of resource group which the key pair belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput
+	Tags            pulumi.MapInput
 }
 
 func (EcsKeyPairArgs) ElementType() reflect.Type {
@@ -320,7 +315,6 @@ func (o EcsKeyPairOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsKeyPair) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-// A mapping of tags to assign to the resource.
 func (o EcsKeyPairOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *EcsKeyPair) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }

@@ -60,7 +60,8 @@ type GetResourceSharesArgs struct {
 	// A list of Resource Share IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Resource Share name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The name of resource share.
 	ResourceShareName *string `pulumi:"resourceShareName"`
@@ -102,7 +103,8 @@ type GetResourceSharesOutputArgs struct {
 	// A list of Resource Share IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Resource Share name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The name of resource share.
 	ResourceShareName pulumi.StringPtrInput `pulumi:"resourceShareName"`

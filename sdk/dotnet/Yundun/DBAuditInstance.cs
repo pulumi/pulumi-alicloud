@@ -27,6 +27,10 @@ namespace Pulumi.AliCloud.Yundun
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Output("period")]
         public Output<int> Period { get; private set; } = null!;
 
@@ -106,6 +110,10 @@ namespace Pulumi.AliCloud.Yundun
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
+        /// <summary>
+        /// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Input("period", required: true)]
         public Input<int> Period { get; set; } = null!;
 
@@ -153,6 +161,10 @@ namespace Pulumi.AliCloud.Yundun
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 

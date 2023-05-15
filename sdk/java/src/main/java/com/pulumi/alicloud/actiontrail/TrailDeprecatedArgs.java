@@ -158,12 +158,16 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
     /**
      * The unique ARN of the Log Service role.
      * 
+     * &gt; **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
+     * 
      */
     @Import(name="slsWriteRoleArn")
     private @Nullable Output<String> slsWriteRoleArn;
 
     /**
      * @return The unique ARN of the Log Service role.
+     * 
+     * &gt; **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
      * 
      */
     public Optional<Output<String>> slsWriteRoleArn() {
@@ -415,6 +419,8 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param slsWriteRoleArn The unique ARN of the Log Service role.
          * 
+         * &gt; **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
+         * 
          * @return builder
          * 
          */
@@ -425,6 +431,8 @@ public final class TrailDeprecatedArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param slsWriteRoleArn The unique ARN of the Log Service role.
+         * 
+         * &gt; **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
          * 
          * @return builder
          * 

@@ -135,6 +135,7 @@ def get_snapshots(desktop_id: Optional[str] = None,
     :param str desktop_id: The ID of the cloud desktop to which the snapshot belongs.
     :param Sequence[str] ids: A list of Snapshot IDs.
     :param str name_regex: A regex string to filter results by Snapshot name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str snapshot_id: The ID of the snapshot.
     """
     __args__ = dict()
@@ -185,6 +186,7 @@ def get_snapshots_output(desktop_id: Optional[pulumi.Input[Optional[str]]] = Non
     :param str desktop_id: The ID of the cloud desktop to which the snapshot belongs.
     :param Sequence[str] ids: A list of Snapshot IDs.
     :param str name_regex: A regex string to filter results by Snapshot name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str snapshot_id: The ID of the snapshot.
     """
     ...

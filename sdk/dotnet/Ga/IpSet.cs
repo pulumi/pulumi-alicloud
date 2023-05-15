@@ -92,6 +92,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The bandwidth allocated to the acceleration region.
+        /// 
+        /// &gt; **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
         /// </summary>
         [Output("bandwidth")]
         public Output<int?> Bandwidth { get; private set; } = null!;
@@ -174,6 +176,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The bandwidth allocated to the acceleration region.
+        /// 
+        /// &gt; **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
@@ -206,6 +210,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The bandwidth allocated to the acceleration region.
+        /// 
+        /// &gt; **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }

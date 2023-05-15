@@ -53,6 +53,9 @@ export interface GetTransitRoutersArgs {
      * A regex string to filter CEN Transit Routers by name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
@@ -138,6 +141,9 @@ export interface GetTransitRoutersOutputArgs {
      * A regex string to filter CEN Transit Routers by name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.

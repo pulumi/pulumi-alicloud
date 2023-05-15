@@ -134,6 +134,7 @@ def get_patch_baselines(enable_details: Optional[bool] = None,
     :param Sequence[str] ids: A list of Patch Baseline IDs. Its element value is same as Patch Baseline Name.
     :param str name_regex: A regex string to filter results by Patch Baseline name.
     :param str operation_system: Operating system type.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str share_type: Patch baseline sharing type.
     """
     __args__ = dict()
@@ -176,6 +177,7 @@ def get_patch_baselines_output(enable_details: Optional[pulumi.Input[Optional[bo
     :param Sequence[str] ids: A list of Patch Baseline IDs. Its element value is same as Patch Baseline Name.
     :param str name_regex: A regex string to filter results by Patch Baseline name.
     :param str operation_system: Operating system type.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str share_type: Patch baseline sharing type.
     """
     ...

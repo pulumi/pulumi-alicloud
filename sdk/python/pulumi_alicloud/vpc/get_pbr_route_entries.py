@@ -109,6 +109,7 @@ def get_pbr_route_entries(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of VPN Pbr Route Entries IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str vpn_gateway_id: The ID of the VPN gateway.
     """
     __args__ = dict()
@@ -149,6 +150,7 @@ def get_pbr_route_entries_output(ids: Optional[pulumi.Input[Optional[Sequence[st
 
 
     :param Sequence[str] ids: A list of VPN Pbr Route Entries IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str vpn_gateway_id: The ID of the VPN gateway.
     """
     ...

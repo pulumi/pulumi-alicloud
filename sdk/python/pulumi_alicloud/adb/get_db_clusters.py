@@ -195,6 +195,7 @@ def get_db_clusters(description: Optional[str] = None,
     :param str description_regex: A regex string to filter results by DBCluster description.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of DBCluster IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param str status: The status of the resource.
     :param Mapping[str, Any] tags: The tag of the resource.
@@ -264,6 +265,7 @@ def get_db_clusters_output(description: Optional[pulumi.Input[Optional[str]]] = 
     :param str description_regex: A regex string to filter results by DBCluster description.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of DBCluster IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param str status: The status of the resource.
     :param Mapping[str, Any] tags: The tag of the resource.

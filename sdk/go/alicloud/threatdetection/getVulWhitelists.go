@@ -56,10 +56,11 @@ func GetVulWhitelists(ctx *pulumi.Context, args *GetVulWhitelistsArgs, opts ...p
 // A collection of arguments for invoking getVulWhitelists.
 type GetVulWhitelistsArgs struct {
 	// A list of Threat Detection Vul Whitelist IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
-	PageNumber *int     `pulumi:"pageNumber"`
-	PageSize   *int     `pulumi:"pageSize"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
 }
 
 // A collection of values returned by getVulWhitelists.
@@ -90,10 +91,11 @@ func GetVulWhitelistsOutput(ctx *pulumi.Context, args GetVulWhitelistsOutputArgs
 // A collection of arguments for invoking getVulWhitelists.
 type GetVulWhitelistsOutputArgs struct {
 	// A list of Threat Detection Vul Whitelist IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
-	PageNumber pulumi.IntPtrInput      `pulumi:"pageNumber"`
-	PageSize   pulumi.IntPtrInput      `pulumi:"pageSize"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 }
 
 func (GetVulWhitelistsOutputArgs) ElementType() reflect.Type {

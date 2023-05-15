@@ -67,6 +67,9 @@ export interface GetInstanceTypesArgs {
      * Filter the specific ecs instance type to create emr cluster.
      */
     instanceType?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Whether the current storage disk is local or not.
@@ -161,6 +164,9 @@ export interface GetInstanceTypesOutputArgs {
      * Filter the specific ecs instance type to create emr cluster.
      */
     instanceType?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Whether the current storage disk is local or not.

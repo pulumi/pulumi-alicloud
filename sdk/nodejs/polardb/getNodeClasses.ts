@@ -58,6 +58,9 @@ export interface GetNodeClassesArgs {
      * Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If dbVersion is set, dbType also needs to be set.
      */
     dbVersion?: string;
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     */
     outputFile?: string;
     /**
      * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`.
@@ -141,6 +144,9 @@ export interface GetNodeClassesOutputArgs {
      * Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If dbVersion is set, dbType also needs to be set.
      */
     dbVersion?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`.

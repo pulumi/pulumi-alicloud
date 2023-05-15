@@ -60,6 +60,9 @@ export interface GetDynamicTagGroupsArgs {
      * A list of Dynamic Tag Group IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the resource. Valid values: `RUNNING`, `FINISH`.
@@ -131,6 +134,9 @@ export interface GetDynamicTagGroupsOutputArgs {
      * A list of Dynamic Tag Group IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the resource. Valid values: `RUNNING`, `FINISH`.

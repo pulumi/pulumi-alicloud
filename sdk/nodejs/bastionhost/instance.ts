@@ -67,14 +67,15 @@ export class Instance extends pulumi.CustomResource {
      * The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
      */
     public readonly licenseCode!: pulumi.Output<string>;
+    /**
+     * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+     * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * The plan code of Cloud Bastionhost instance. Valid values:
      */
     public readonly planCode!: pulumi.Output<string>;
-    /**
-     * The public IP address that you want to add to the whitelist.
-     */
     public readonly publicWhiteLists!: pulumi.Output<string[] | undefined>;
     /**
      * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
@@ -92,6 +93,12 @@ export class Instance extends pulumi.CustomResource {
      * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * security group IDs configured to Bastionhost. 
+     * **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
+     * So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
      * The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
@@ -210,14 +217,15 @@ export interface InstanceState {
      * The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
      */
     licenseCode?: pulumi.Input<string>;
+    /**
+     * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+     * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     period?: pulumi.Input<number>;
     /**
      * The plan code of Cloud Bastionhost instance. Valid values:
      */
     planCode?: pulumi.Input<string>;
-    /**
-     * The public IP address that you want to add to the whitelist.
-     */
     publicWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
@@ -235,6 +243,12 @@ export interface InstanceState {
      * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * security group IDs configured to Bastionhost. 
+     * **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
+     * So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.
@@ -278,14 +292,15 @@ export interface InstanceArgs {
      * The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
      */
     licenseCode: pulumi.Input<string>;
+    /**
+     * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+     * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     period?: pulumi.Input<number>;
     /**
      * The plan code of Cloud Bastionhost instance. Valid values:
      */
     planCode: pulumi.Input<string>;
-    /**
-     * The public IP address that you want to add to the whitelist.
-     */
     publicWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
@@ -303,6 +318,12 @@ export interface InstanceArgs {
      * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * security group IDs configured to Bastionhost. 
+     * **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
+     * So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     */
     securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The storage of Cloud Bastionhost instance. Valid values: 0 to 500. Unit: TB.

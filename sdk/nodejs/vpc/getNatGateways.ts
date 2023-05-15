@@ -62,6 +62,9 @@ export interface GetNatGatewaysArgs {
      * The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
      */
     natType?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     pageNumber?: number;
     pageSize?: number;
@@ -188,6 +191,9 @@ export interface GetNatGatewaysOutputArgs {
      * The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
      */
     natType?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;

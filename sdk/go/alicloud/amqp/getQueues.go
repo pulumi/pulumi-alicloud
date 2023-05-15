@@ -72,7 +72,8 @@ type GetQueuesArgs struct {
 	// The ID of the instance.
 	InstanceId string `pulumi:"instanceId"`
 	// A regex string to filter results by Queue name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The name of the virtual host.
 	VirtualHostName string `pulumi:"virtualHostName"`
@@ -111,7 +112,8 @@ type GetQueuesOutputArgs struct {
 	// The ID of the instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// A regex string to filter results by Queue name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The name of the virtual host.
 	VirtualHostName pulumi.StringInput `pulumi:"virtualHostName"`

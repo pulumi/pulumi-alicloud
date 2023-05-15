@@ -55,6 +55,9 @@ export interface GetCustomRoutingPortMappingsArgs {
      * The ID of the listener.
      */
     listenerId?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     pageNumber?: number;
     pageSize?: number;
@@ -135,6 +138,9 @@ export interface GetCustomRoutingPortMappingsOutputArgs {
      * The ID of the listener.
      */
     listenerId?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;

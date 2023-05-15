@@ -62,7 +62,8 @@ type GetAccessGroupsArgs struct {
 	// The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
 	FileSystemType *string `pulumi:"fileSystemType"`
 	// A regex string to filter AccessGroups by name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Field `type` has been deprecated from version 1.95.0. Use `accessGroupType` instead.
 	//
@@ -122,7 +123,8 @@ type GetAccessGroupsOutputArgs struct {
 	// The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
 	FileSystemType pulumi.StringPtrInput `pulumi:"fileSystemType"`
 	// A regex string to filter AccessGroups by name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Field `type` has been deprecated from version 1.95.0. Use `accessGroupType` instead.
 	//

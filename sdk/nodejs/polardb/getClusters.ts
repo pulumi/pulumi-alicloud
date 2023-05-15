@@ -55,6 +55,9 @@ export interface GetClustersArgs {
      * A list of PolarDB cluster IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * status of the cluster.
@@ -139,6 +142,9 @@ export interface GetClustersOutputArgs {
      * A list of PolarDB cluster IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * status of the cluster.

@@ -66,7 +66,8 @@ type GetBaseInstancesArgs struct {
 	// OceanBase cluster name.
 	InstanceName *string `pulumi:"instanceName"`
 	// A regex string to filter results by Instance name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
@@ -120,7 +121,8 @@ type GetBaseInstancesOutputArgs struct {
 	// OceanBase cluster name.
 	InstanceName pulumi.StringPtrInput `pulumi:"instanceName"`
 	// A regex string to filter results by Instance name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`

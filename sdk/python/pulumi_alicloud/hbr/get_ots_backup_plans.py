@@ -144,6 +144,7 @@ def get_ots_backup_plans(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of OtsBackupPlan IDs.
     :param str name_regex: A regex string to filter results by OtsBackupPlan name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str plan_id: The ID of the backup plan.
     :param str plan_name: The ID of the backup plan.
     :param str vault_id: The ID of backup vault.
@@ -198,6 +199,7 @@ def get_ots_backup_plans_output(ids: Optional[pulumi.Input[Optional[Sequence[str
 
     :param Sequence[str] ids: A list of OtsBackupPlan IDs.
     :param str name_regex: A regex string to filter results by OtsBackupPlan name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str plan_id: The ID of the backup plan.
     :param str plan_name: The ID of the backup plan.
     :param str vault_id: The ID of backup vault.

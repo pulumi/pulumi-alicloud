@@ -19,6 +19,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a ECS disk resource.
+ * 
+ * &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsDisk from version 1.122.0.
+ * 
+ * &gt; **NOTE:** One of `size` or `snapshot_id` is required when specifying an ECS disk. If all of them be specified, `size` must more than the size of snapshot which `snapshot_id` represents. Currently, `alicloud.ecs.Disk` doesn&#39;t resize disk.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;

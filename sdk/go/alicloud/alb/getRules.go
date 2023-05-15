@@ -69,7 +69,8 @@ type GetRulesArgs struct {
 	// The load balancer ids.
 	LoadBalancerIds []string `pulumi:"loadBalancerIds"`
 	// A regex string to filter results by Rule name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The rule ids.
 	RuleIds []string `pulumi:"ruleIds"`
@@ -114,7 +115,8 @@ type GetRulesOutputArgs struct {
 	// The load balancer ids.
 	LoadBalancerIds pulumi.StringArrayInput `pulumi:"loadBalancerIds"`
 	// A regex string to filter results by Rule name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The rule ids.
 	RuleIds pulumi.StringArrayInput `pulumi:"ruleIds"`

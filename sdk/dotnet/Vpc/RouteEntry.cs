@@ -10,6 +10,104 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
+    /// Provides a route entry resource. A route entry represents a route item of one VPC route table.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 1,
+    ///         MemorySize = 2,
+    ///     });
+    /// 
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_18.*64",
+    ///         MostRecent = true,
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "RouteEntryConfig";
+    ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.1.0.0/21",
+    ///     });
+    /// 
+    ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
+    ///     {
+    ///         VpcId = fooNetwork.Id,
+    ///         CidrBlock = "10.1.1.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var tfTestFoo = new AliCloud.Ecs.SecurityGroup("tfTestFoo", new()
+    ///     {
+    ///         Description = "foo",
+    ///         VpcId = fooNetwork.Id,
+    ///     });
+    /// 
+    ///     var ingress = new AliCloud.Ecs.SecurityGroupRule("ingress", new()
+    ///     {
+    ///         Type = "ingress",
+    ///         IpProtocol = "tcp",
+    ///         NicType = "intranet",
+    ///         Policy = "accept",
+    ///         PortRange = "22/22",
+    ///         Priority = 1,
+    ///         SecurityGroupId = tfTestFoo.Id,
+    ///         CidrIp = "0.0.0.0/0",
+    ///     });
+    /// 
+    ///     var fooInstance = new AliCloud.Ecs.Instance("fooInstance", new()
+    ///     {
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             tfTestFoo.Id,
+    ///         },
+    ///         VswitchId = fooSwitch.Id,
+    ///         InstanceChargeType = "PostPaid",
+    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         InternetChargeType = "PayByTraffic",
+    ///         InternetMaxBandwidthOut = 5,
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceName = name,
+    ///     });
+    /// 
+    ///     var fooRouteEntry = new AliCloud.Vpc.RouteEntry("fooRouteEntry", new()
+    ///     {
+    ///         RouteTableId = fooNetwork.RouteTableId,
+    ///         DestinationCidrblock = "172.11.1.1/32",
+    ///         NexthopType = "Instance",
+    ///         NexthopId = fooInstance.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Module Support
+    /// 
+    /// You can use to the existing vpc module
+    /// to create a VPC, several VSwitches and add several route entries one-click.
+    /// 
     /// ## Import
     /// 
     /// Router entry can be imported using the id, e.g (formatted as&lt;route_table_id:router_id:destination_cidrblock:nexthop_type:nexthop_id&gt;).

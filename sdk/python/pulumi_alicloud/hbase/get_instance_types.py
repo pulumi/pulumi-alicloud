@@ -193,6 +193,7 @@ def get_instance_types(charge_type: Optional[str] = None,
     :param str disk_type: The disk type, `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`.
     :param str engine: The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
     :param str instance_type: The hbase instance type of create hbase cluster instance.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str region_id: The dest region id, default client region.
     :param str version: The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
     :param str zone_id: The zone id, belong to regionId.
@@ -245,6 +246,7 @@ def get_instance_types_output(charge_type: Optional[pulumi.Input[Optional[str]]]
     :param str disk_type: The disk type, `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`.
     :param str engine: The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
     :param str instance_type: The hbase instance type of create hbase cluster instance.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str region_id: The dest region id, default client region.
     :param str version: The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
     :param str zone_id: The zone id, belong to regionId.

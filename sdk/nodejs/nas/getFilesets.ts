@@ -52,6 +52,9 @@ export interface GetFilesetsArgs {
      * A list of Fileset IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the fileset.
@@ -112,6 +115,9 @@ export interface GetFilesetsOutputArgs {
      * A list of Fileset IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the fileset.

@@ -53,6 +53,7 @@ func GetProtocols(ctx *pulumi.Context, args *GetProtocolsArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getProtocols.
 type GetProtocolsArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The file system type. Valid Values: `Performance` and `Capacity`.
 	Type string `pulumi:"type"`
@@ -86,6 +87,7 @@ func GetProtocolsOutput(ctx *pulumi.Context, args GetProtocolsOutputArgs, opts .
 
 // A collection of arguments for invoking getProtocols.
 type GetProtocolsOutputArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The file system type. Valid Values: `Performance` and `Capacity`.
 	Type pulumi.StringInput `pulumi:"type"`

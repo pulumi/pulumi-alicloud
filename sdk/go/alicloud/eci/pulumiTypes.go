@@ -2939,6 +2939,8 @@ type ContainerGroupVolume struct {
 	// The nfs volume read only. Default to `false`.
 	NfsVolumeReadOnly *bool `pulumi:"nfsVolumeReadOnly"`
 	// The address of the NFS server.
+	//
+	// > **NOTE:** Every volumes mounted must have name and type attributes.
 	NfsVolumeServer *string `pulumi:"nfsVolumeServer"`
 	// The type of the volume.
 	Type *string `pulumi:"type"`
@@ -2975,6 +2977,8 @@ type ContainerGroupVolumeArgs struct {
 	// The nfs volume read only. Default to `false`.
 	NfsVolumeReadOnly pulumi.BoolPtrInput `pulumi:"nfsVolumeReadOnly"`
 	// The address of the NFS server.
+	//
+	// > **NOTE:** Every volumes mounted must have name and type attributes.
 	NfsVolumeServer pulumi.StringPtrInput `pulumi:"nfsVolumeServer"`
 	// The type of the volume.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -3079,6 +3083,8 @@ func (o ContainerGroupVolumeOutput) NfsVolumeReadOnly() pulumi.BoolPtrOutput {
 }
 
 // The address of the NFS server.
+//
+// > **NOTE:** Every volumes mounted must have name and type attributes.
 func (o ContainerGroupVolumeOutput) NfsVolumeServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerGroupVolume) *string { return v.NfsVolumeServer }).(pulumi.StringPtrOutput)
 }

@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.CS
     /// <summary>
     /// ## Import
     /// 
-    /// Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
+    /// Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
     /// 
     /// ```sh
     ///  $ pulumi import alicloud:cs/managedKubernetes:ManagedKubernetes main cluster_id
@@ -331,6 +331,9 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Whether to create internet load balancer for API Server. Default to true.
+        /// 
+        /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
+        /// If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
         /// </summary>
         [Output("slbInternetEnabled")]
         public Output<bool?> SlbInternetEnabled { get; private set; } = null!;
@@ -869,6 +872,9 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Whether to create internet load balancer for API Server. Default to true.
+        /// 
+        /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
+        /// If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
         /// </summary>
         [Input("slbInternetEnabled")]
         public Input<bool>? SlbInternetEnabled { get; set; }
@@ -1404,6 +1410,9 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Whether to create internet load balancer for API Server. Default to true.
+        /// 
+        /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
+        /// If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
         /// </summary>
         [Input("slbInternetEnabled")]
         public Input<bool>? SlbInternetEnabled { get; set; }

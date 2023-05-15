@@ -141,6 +141,7 @@ def get_ipa_domains(domain_name: Optional[str] = None,
     :param str domain_name: The accelerated domain names.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Ipa Domain IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the accelerated domain name.
     """
     __args__ = dict()
@@ -197,6 +198,7 @@ def get_ipa_domains_output(domain_name: Optional[pulumi.Input[Optional[str]]] = 
     :param str domain_name: The accelerated domain names.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Ipa Domain IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the accelerated domain name.
     """
     ...

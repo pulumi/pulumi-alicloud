@@ -190,7 +190,9 @@ type Listener struct {
 	ProxyProtocolEnabled pulumi.BoolOutput `pulumi:"proxyProtocolEnabled"`
 	// Specifies whether to enable fine-grained monitoring.
 	SecSensorEnabled pulumi.BoolOutput `pulumi:"secSensorEnabled"`
-	// The ID of the security policy. System security policies and custom security policies are supported. Valid values: `tlsCipherPolicy10` (default), `tls_cipher_policy_1_1,` `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`, and `tlsCipherPolicy12StrictWith13`.
+	// The ID of the security policy. System security policies and custom security policies are supported.
+	// System security policies valid values: `tlsCipherPolicy10` (default), `tls_cipher_policy_1_1,` `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`, and `tlsCipherPolicy12StrictWith13`.
+	// Custom security policies can be created by resource `nlb.SecurityPolicy`.
 	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
 	// The ID of the server group.
 	ServerGroupId pulumi.StringOutput `pulumi:"serverGroupId"`
@@ -271,7 +273,9 @@ type listenerState struct {
 	ProxyProtocolEnabled *bool `pulumi:"proxyProtocolEnabled"`
 	// Specifies whether to enable fine-grained monitoring.
 	SecSensorEnabled *bool `pulumi:"secSensorEnabled"`
-	// The ID of the security policy. System security policies and custom security policies are supported. Valid values: `tlsCipherPolicy10` (default), `tls_cipher_policy_1_1,` `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`, and `tlsCipherPolicy12StrictWith13`.
+	// The ID of the security policy. System security policies and custom security policies are supported.
+	// System security policies valid values: `tlsCipherPolicy10` (default), `tls_cipher_policy_1_1,` `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`, and `tlsCipherPolicy12StrictWith13`.
+	// Custom security policies can be created by resource `nlb.SecurityPolicy`.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// The ID of the server group.
 	ServerGroupId *string `pulumi:"serverGroupId"`
@@ -312,7 +316,9 @@ type ListenerState struct {
 	ProxyProtocolEnabled pulumi.BoolPtrInput
 	// Specifies whether to enable fine-grained monitoring.
 	SecSensorEnabled pulumi.BoolPtrInput
-	// The ID of the security policy. System security policies and custom security policies are supported. Valid values: `tlsCipherPolicy10` (default), `tls_cipher_policy_1_1,` `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`, and `tlsCipherPolicy12StrictWith13`.
+	// The ID of the security policy. System security policies and custom security policies are supported.
+	// System security policies valid values: `tlsCipherPolicy10` (default), `tls_cipher_policy_1_1,` `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`, and `tlsCipherPolicy12StrictWith13`.
+	// Custom security policies can be created by resource `nlb.SecurityPolicy`.
 	SecurityPolicyId pulumi.StringPtrInput
 	// The ID of the server group.
 	ServerGroupId pulumi.StringPtrInput
@@ -357,7 +363,9 @@ type listenerArgs struct {
 	ProxyProtocolEnabled *bool `pulumi:"proxyProtocolEnabled"`
 	// Specifies whether to enable fine-grained monitoring.
 	SecSensorEnabled *bool `pulumi:"secSensorEnabled"`
-	// The ID of the security policy. System security policies and custom security policies are supported. Valid values: `tlsCipherPolicy10` (default), `tls_cipher_policy_1_1,` `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`, and `tlsCipherPolicy12StrictWith13`.
+	// The ID of the security policy. System security policies and custom security policies are supported.
+	// System security policies valid values: `tlsCipherPolicy10` (default), `tls_cipher_policy_1_1,` `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`, and `tlsCipherPolicy12StrictWith13`.
+	// Custom security policies can be created by resource `nlb.SecurityPolicy`.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// The ID of the server group.
 	ServerGroupId string `pulumi:"serverGroupId"`
@@ -399,7 +407,9 @@ type ListenerArgs struct {
 	ProxyProtocolEnabled pulumi.BoolPtrInput
 	// Specifies whether to enable fine-grained monitoring.
 	SecSensorEnabled pulumi.BoolPtrInput
-	// The ID of the security policy. System security policies and custom security policies are supported. Valid values: `tlsCipherPolicy10` (default), `tls_cipher_policy_1_1,` `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`, and `tlsCipherPolicy12StrictWith13`.
+	// The ID of the security policy. System security policies and custom security policies are supported.
+	// System security policies valid values: `tlsCipherPolicy10` (default), `tls_cipher_policy_1_1,` `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`, and `tlsCipherPolicy12StrictWith13`.
+	// Custom security policies can be created by resource `nlb.SecurityPolicy`.
 	SecurityPolicyId pulumi.StringPtrInput
 	// The ID of the server group.
 	ServerGroupId pulumi.StringInput
@@ -571,7 +581,9 @@ func (o ListenerOutput) SecSensorEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Listener) pulumi.BoolOutput { return v.SecSensorEnabled }).(pulumi.BoolOutput)
 }
 
-// The ID of the security policy. System security policies and custom security policies are supported. Valid values: `tlsCipherPolicy10` (default), `tls_cipher_policy_1_1,` `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`, and `tlsCipherPolicy12StrictWith13`.
+// The ID of the security policy. System security policies and custom security policies are supported.
+// System security policies valid values: `tlsCipherPolicy10` (default), `tls_cipher_policy_1_1,` `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`, and `tlsCipherPolicy12StrictWith13`.
+// Custom security policies can be created by resource `nlb.SecurityPolicy`.
 func (o ListenerOutput) SecurityPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.SecurityPolicyId }).(pulumi.StringOutput)
 }

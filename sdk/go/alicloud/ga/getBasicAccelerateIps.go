@@ -63,7 +63,8 @@ type GetBasicAccelerateIpsArgs struct {
 	// A list of Global Accelerator Basic Accelerate IP IDs.
 	Ids []string `pulumi:"ids"`
 	// The ID of the Basic Ip Set.
-	IpSetId    string  `pulumi:"ipSetId"`
+	IpSetId string `pulumi:"ipSetId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `active`, `binding`, `bound`, `unbinding`, `deleting`.
 	Status *string `pulumi:"status"`
@@ -109,7 +110,8 @@ type GetBasicAccelerateIpsOutputArgs struct {
 	// A list of Global Accelerator Basic Accelerate IP IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The ID of the Basic Ip Set.
-	IpSetId    pulumi.StringInput    `pulumi:"ipSetId"`
+	IpSetId pulumi.StringInput `pulumi:"ipSetId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `active`, `binding`, `bound`, `unbinding`, `deleting`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

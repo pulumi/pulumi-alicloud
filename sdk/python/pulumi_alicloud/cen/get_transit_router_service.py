@@ -85,6 +85,8 @@ def get_transit_router_service(enable: Optional[str] = None,
 
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+           
+           > **NOTE:** Setting `enable = "On"` to open the CEN Transit Router Service that means you have read and agreed the [CEN Terms of Service](https://help.aliyun.com/document_detail/66667.html). The service can not closed once it is opened.
     """
     __args__ = dict()
     __args__['enable'] = enable
@@ -118,5 +120,7 @@ def get_transit_router_service_output(enable: Optional[pulumi.Input[Optional[str
 
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+           
+           > **NOTE:** Setting `enable = "On"` to open the CEN Transit Router Service that means you have read and agreed the [CEN Terms of Service](https://help.aliyun.com/document_detail/66667.html). The service can not closed once it is opened.
     """
     ...

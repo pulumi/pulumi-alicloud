@@ -16,6 +16,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Create an DNS Instance resource.
+ * 
+ * &gt; **DEPRECATED:** This resource has been renamed to alicloud.dns.AlidnsInstance from version 1.95.0.
+ * 
+ * &gt; **NOTE:** Available in v1.80.0+.
+ * 
  * ## Example Usage
  * 
  * Basic Usage

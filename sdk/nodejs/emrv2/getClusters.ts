@@ -62,6 +62,9 @@ export interface GetClustersArgs {
      * The next token is used to list clusters for next page.
      */
     nextToken?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The cluster payment types.
@@ -141,6 +144,9 @@ export interface GetClustersOutputArgs {
      * The next token is used to list clusters for next page.
      */
     nextToken?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The cluster payment types.

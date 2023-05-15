@@ -119,6 +119,7 @@ def get_traffic_mirror_filter_ingress_rules(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Traffic Mirror Filter Ingress Rule IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
     :param str traffic_mirror_filter_id: The ID of the filter associated with the inbound rule.
     """
@@ -169,6 +170,7 @@ def get_traffic_mirror_filter_ingress_rules_output(ids: Optional[pulumi.Input[Op
 
 
     :param Sequence[str] ids: A list of Traffic Mirror Filter Ingress Rule IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
     :param str traffic_mirror_filter_id: The ID of the filter associated with the inbound rule.
     """

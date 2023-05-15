@@ -150,6 +150,7 @@ def get_scaling_rules(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of scaling rule IDs.
     :param str name_regex: A regex string to filter resulting scaling rules by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str scaling_group_id: Scaling group id the scaling rules belong to.
     :param str type: Type of scaling rule.
     """
@@ -201,6 +202,7 @@ def get_scaling_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
 
     :param Sequence[str] ids: A list of scaling rule IDs.
     :param str name_regex: A regex string to filter resulting scaling rules by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str scaling_group_id: Scaling group id the scaling rules belong to.
     :param str type: Type of scaling rule.
     """

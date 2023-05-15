@@ -59,8 +59,9 @@ type GetIpSetsArgs struct {
 	// The ID of the Global Accelerator (GA) instance.
 	AcceleratorId string `pulumi:"acceleratorId"`
 	// A list of Ip Set IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The status of the acceleration region.
 	Status *string `pulumi:"status"`
 }
@@ -94,8 +95,9 @@ type GetIpSetsOutputArgs struct {
 	// The ID of the Global Accelerator (GA) instance.
 	AcceleratorId pulumi.StringInput `pulumi:"acceleratorId"`
 	// A list of Ip Set IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the acceleration region.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }

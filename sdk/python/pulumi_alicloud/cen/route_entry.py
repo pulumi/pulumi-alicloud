@@ -20,6 +20,10 @@ class RouteEntryArgs:
         """
         The set of arguments for constructing a RouteEntry resource.
         :param pulumi.Input[str] cidr_block: The destination CIDR block of the route entry to publish.
+               
+               ->**NOTE:** The "alicloud_cen_instance_route_entries" resource depends on the related "cen.InstanceAttachment" resource.
+               
+               ->**NOTE:** The "cen.InstanceAttachment" resource should depend on the related "vpc.Switch" resource.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         :param pulumi.Input[str] route_table_id: The route table of the attached VBR or VPC.
         """
@@ -32,6 +36,10 @@ class RouteEntryArgs:
     def cidr_block(self) -> pulumi.Input[str]:
         """
         The destination CIDR block of the route entry to publish.
+
+        ->**NOTE:** The "alicloud_cen_instance_route_entries" resource depends on the related "cen.InstanceAttachment" resource.
+
+        ->**NOTE:** The "cen.InstanceAttachment" resource should depend on the related "vpc.Switch" resource.
         """
         return pulumi.get(self, "cidr_block")
 
@@ -73,6 +81,10 @@ class _RouteEntryState:
         """
         Input properties used for looking up and filtering RouteEntry resources.
         :param pulumi.Input[str] cidr_block: The destination CIDR block of the route entry to publish.
+               
+               ->**NOTE:** The "alicloud_cen_instance_route_entries" resource depends on the related "cen.InstanceAttachment" resource.
+               
+               ->**NOTE:** The "cen.InstanceAttachment" resource should depend on the related "vpc.Switch" resource.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         :param pulumi.Input[str] route_table_id: The route table of the attached VBR or VPC.
         """
@@ -88,6 +100,10 @@ class _RouteEntryState:
     def cidr_block(self) -> Optional[pulumi.Input[str]]:
         """
         The destination CIDR block of the route entry to publish.
+
+        ->**NOTE:** The "alicloud_cen_instance_route_entries" resource depends on the related "cen.InstanceAttachment" resource.
+
+        ->**NOTE:** The "cen.InstanceAttachment" resource should depend on the related "vpc.Switch" resource.
         """
         return pulumi.get(self, "cidr_block")
 
@@ -212,6 +228,10 @@ class RouteEntry(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cidr_block: The destination CIDR block of the route entry to publish.
+               
+               ->**NOTE:** The "alicloud_cen_instance_route_entries" resource depends on the related "cen.InstanceAttachment" resource.
+               
+               ->**NOTE:** The "cen.InstanceAttachment" resource should depend on the related "vpc.Switch" resource.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         :param pulumi.Input[str] route_table_id: The route table of the attached VBR or VPC.
         """
@@ -358,6 +378,10 @@ class RouteEntry(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cidr_block: The destination CIDR block of the route entry to publish.
+               
+               ->**NOTE:** The "alicloud_cen_instance_route_entries" resource depends on the related "cen.InstanceAttachment" resource.
+               
+               ->**NOTE:** The "cen.InstanceAttachment" resource should depend on the related "vpc.Switch" resource.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         :param pulumi.Input[str] route_table_id: The route table of the attached VBR or VPC.
         """
@@ -375,6 +399,10 @@ class RouteEntry(pulumi.CustomResource):
     def cidr_block(self) -> pulumi.Output[str]:
         """
         The destination CIDR block of the route entry to publish.
+
+        ->**NOTE:** The "alicloud_cen_instance_route_entries" resource depends on the related "cen.InstanceAttachment" resource.
+
+        ->**NOTE:** The "cen.InstanceAttachment" resource should depend on the related "vpc.Switch" resource.
         """
         return pulumi.get(self, "cidr_block")
 

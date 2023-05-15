@@ -406,6 +406,70 @@ class Switch(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Provides a VPC switch resource.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name="tf_test_foo",
+            cidr_block="172.16.0.0/12")
+        vsw = alicloud.vpc.Switch("vsw",
+            vpc_id=vpc.id,
+            cidr_block="172.16.0.0/21",
+            zone_id="cn-beijing-b")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name="tf_test_foo",
+            cidr_block="172.16.0.0/12")
+        cidr_blocks = alicloud.vpc.Ipv4CidrBlock("cidrBlocks",
+            vpc_id=vpc.id,
+            secondary_cidr_block="192.163.0.0/16")
+        island_nat = alicloud.vpc.Switch("island-nat",
+            vpc_id=cidr_blocks.vpc_id,
+            cidr_block="172.16.0.0/21",
+            zone_id="cn-beijing-b",
+            vswitch_name="example_value",
+            tags={
+                "BuiltBy": "example_value",
+                "cnm_version": "example_value",
+                "Environment": "example_value",
+                "ManagedBy": "example_value",
+            })
+        ```
+
+        Create a switch associated with the additional network segment
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name="tf_test_foo",
+            cidr_block="172.16.0.0/12")
+        example = alicloud.vpc.Ipv4CidrBlock("example",
+            vpc_id=alicloud_vpc["default"]["id"],
+            secondary_cidr_block="192.163.0.0/16")
+        vsw = alicloud.vpc.Switch("vsw",
+            vpc_id=example.vpc_id,
+            cidr_block="192.163.0.0/24",
+            zone_id="cn-beijing-b")
+        ```
+        ## Module Support
+
+        You can use to the existing vpc module
+        to create a VPC and several VSwitches one-click.
+
         ## Import
 
         Vswitch can be imported using the id, e.g.
@@ -434,6 +498,70 @@ class Switch(pulumi.CustomResource):
                  args: SwitchArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a VPC switch resource.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name="tf_test_foo",
+            cidr_block="172.16.0.0/12")
+        vsw = alicloud.vpc.Switch("vsw",
+            vpc_id=vpc.id,
+            cidr_block="172.16.0.0/21",
+            zone_id="cn-beijing-b")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name="tf_test_foo",
+            cidr_block="172.16.0.0/12")
+        cidr_blocks = alicloud.vpc.Ipv4CidrBlock("cidrBlocks",
+            vpc_id=vpc.id,
+            secondary_cidr_block="192.163.0.0/16")
+        island_nat = alicloud.vpc.Switch("island-nat",
+            vpc_id=cidr_blocks.vpc_id,
+            cidr_block="172.16.0.0/21",
+            zone_id="cn-beijing-b",
+            vswitch_name="example_value",
+            tags={
+                "BuiltBy": "example_value",
+                "cnm_version": "example_value",
+                "Environment": "example_value",
+                "ManagedBy": "example_value",
+            })
+        ```
+
+        Create a switch associated with the additional network segment
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name="tf_test_foo",
+            cidr_block="172.16.0.0/12")
+        example = alicloud.vpc.Ipv4CidrBlock("example",
+            vpc_id=alicloud_vpc["default"]["id"],
+            secondary_cidr_block="192.163.0.0/16")
+        vsw = alicloud.vpc.Switch("vsw",
+            vpc_id=example.vpc_id,
+            cidr_block="192.163.0.0/24",
+            zone_id="cn-beijing-b")
+        ```
+        ## Module Support
+
+        You can use to the existing vpc module
+        to create a VPC and several VSwitches one-click.
+
         ## Import
 
         Vswitch can be imported using the id, e.g.

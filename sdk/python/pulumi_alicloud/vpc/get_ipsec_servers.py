@@ -137,6 +137,7 @@ def get_ipsec_servers(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Ipsec Server IDs.
     :param str ipsec_server_name: The name of the IPsec server.
     :param str name_regex: A regex string to filter results by Ipsec Server name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str vpn_gateway_id: The ID of the VPN gateway.
     """
     __args__ = dict()
@@ -189,6 +190,7 @@ def get_ipsec_servers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     :param Sequence[str] ids: A list of Ipsec Server IDs.
     :param str ipsec_server_name: The name of the IPsec server.
     :param str name_regex: A regex string to filter results by Ipsec Server name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str vpn_gateway_id: The ID of the VPN gateway.
     """
     ...

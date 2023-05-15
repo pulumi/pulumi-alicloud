@@ -188,6 +188,7 @@ def get_custom_routing_endpoint_traffic_policies(accelerator_id: Optional[str] =
     :param str endpoint_id: The ID of the endpoint to which the traffic policies belong.
     :param Sequence[str] ids: A list of Custom Routing Endpoint Traffic Policy IDs.
     :param str listener_id: The ID of the listener to which the traffic policies belong.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['acceleratorId'] = accelerator_id
@@ -252,5 +253,6 @@ def get_custom_routing_endpoint_traffic_policies_output(accelerator_id: Optional
     :param str endpoint_id: The ID of the endpoint to which the traffic policies belong.
     :param Sequence[str] ids: A list of Custom Routing Endpoint Traffic Policy IDs.
     :param str listener_id: The ID of the listener to which the traffic policies belong.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

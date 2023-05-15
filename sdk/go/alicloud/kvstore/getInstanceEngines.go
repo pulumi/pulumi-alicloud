@@ -68,7 +68,8 @@ type GetInstanceEnginesArgs struct {
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	OutputFile         *string `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi up`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The Zone to launch the KVStore instance.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -110,7 +111,8 @@ type GetInstanceEnginesOutputArgs struct {
 	EngineVersion pulumi.StringPtrInput `pulumi:"engineVersion"`
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
 	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`
-	OutputFile         pulumi.StringPtrInput `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi up`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The Zone to launch the KVStore instance.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }

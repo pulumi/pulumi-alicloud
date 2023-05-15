@@ -80,7 +80,8 @@ type GetDomainsArgs struct {
 	// domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
 	KeyWord *string `pulumi:"keyWord"`
 	// A regex string to filter results by Domain name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
 	Status *string `pulumi:"status"`
@@ -122,7 +123,8 @@ type GetDomainsOutputArgs struct {
 	// domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
 	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
 	// A regex string to filter results by Domain name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
 	Status pulumi.StringPtrInput `pulumi:"status"`

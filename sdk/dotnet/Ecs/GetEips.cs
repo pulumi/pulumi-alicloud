@@ -13,6 +13,10 @@ namespace Pulumi.AliCloud.Ecs
     public static class GetEips
     {
         /// <summary>
+        /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.126.0`. Please use new datasource alicloud_eip_addresses.
+        /// 
+        /// This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -40,6 +44,10 @@ namespace Pulumi.AliCloud.Ecs
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEipsResult>("alicloud:ecs/getEips:getEips", args ?? new GetEipsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.126.0`. Please use new datasource alicloud_eip_addresses.
+        /// 
+        /// This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -128,6 +136,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -227,6 +238,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

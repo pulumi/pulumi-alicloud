@@ -104,6 +104,10 @@ def get_topic_subscriptions(name_prefix: Optional[str] = None,
                             topic_name: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTopicSubscriptionsResult:
     """
+    This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
+
+    > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
+
     ## Example Usage
 
     ```python
@@ -117,6 +121,7 @@ def get_topic_subscriptions(name_prefix: Optional[str] = None,
 
 
     :param str name_prefix: A string to filter resulting subscriptions of the topic by their name prefixs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str topic_name: Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
     """
     __args__ = dict()
@@ -141,6 +146,10 @@ def get_topic_subscriptions_output(name_prefix: Optional[pulumi.Input[Optional[s
                                    topic_name: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTopicSubscriptionsResult]:
     """
+    This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
+
+    > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
+
     ## Example Usage
 
     ```python
@@ -154,6 +163,7 @@ def get_topic_subscriptions_output(name_prefix: Optional[pulumi.Input[Optional[s
 
 
     :param str name_prefix: A string to filter resulting subscriptions of the topic by their name prefixs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str topic_name: Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
     """
     ...

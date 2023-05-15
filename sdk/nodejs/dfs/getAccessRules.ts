@@ -51,6 +51,9 @@ export interface GetAccessRulesArgs {
      * A list of Access Rule IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -106,5 +109,8 @@ export interface GetAccessRulesOutputArgs {
      * A list of Access Rule IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

@@ -33,9 +33,19 @@ public final class DBAuditInstanceState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify &#34;period&#34;.
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
+    /**
+     * @return Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify &#34;period&#34;.
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
     }
@@ -150,11 +160,25 @@ public final class DBAuditInstanceState extends com.pulumi.resources.ResourceArg
             return description(Output.of(description));
         }
 
+        /**
+         * @param period Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify &#34;period&#34;.
+         * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder period(@Nullable Output<Integer> period) {
             $.period = period;
             return this;
         }
 
+        /**
+         * @param period Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify &#34;period&#34;.
+         * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder period(Integer period) {
             return period(Output.of(period));
         }

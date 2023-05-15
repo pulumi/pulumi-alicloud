@@ -57,6 +57,10 @@ namespace Pulumi.AliCloud.BastionHost
         [Output("licenseCode")]
         public Output<string> LicenseCode { get; private set; } = null!;
 
+        /// <summary>
+        /// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
@@ -66,9 +70,6 @@ namespace Pulumi.AliCloud.BastionHost
         [Output("planCode")]
         public Output<string> PlanCode { get; private set; } = null!;
 
-        /// <summary>
-        /// The public IP address that you want to add to the whitelist.
-        /// </summary>
         [Output("publicWhiteLists")]
         public Output<ImmutableArray<string>> PublicWhiteLists { get; private set; } = null!;
 
@@ -96,6 +97,12 @@ namespace Pulumi.AliCloud.BastionHost
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
+        /// <summary>
+        /// security group IDs configured to Bastionhost. 
+        /// **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+        /// So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+        /// and you can use tolist to convert it to a list.
+        /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
@@ -211,6 +218,10 @@ namespace Pulumi.AliCloud.BastionHost
         [Input("licenseCode", required: true)]
         public Input<string> LicenseCode { get; set; } = null!;
 
+        /// <summary>
+        /// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -222,10 +233,6 @@ namespace Pulumi.AliCloud.BastionHost
 
         [Input("publicWhiteLists")]
         private InputList<string>? _publicWhiteLists;
-
-        /// <summary>
-        /// The public IP address that you want to add to the whitelist.
-        /// </summary>
         public InputList<string> PublicWhiteLists
         {
             get => _publicWhiteLists ?? (_publicWhiteLists = new InputList<string>());
@@ -258,6 +265,13 @@ namespace Pulumi.AliCloud.BastionHost
 
         [Input("securityGroupIds", required: true)]
         private InputList<string>? _securityGroupIds;
+
+        /// <summary>
+        /// security group IDs configured to Bastionhost. 
+        /// **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+        /// So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+        /// and you can use tolist to convert it to a list.
+        /// </summary>
         public InputList<string> SecurityGroupIds
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
@@ -344,6 +358,10 @@ namespace Pulumi.AliCloud.BastionHost
         [Input("licenseCode")]
         public Input<string>? LicenseCode { get; set; }
 
+        /// <summary>
+        /// Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
+        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -355,10 +373,6 @@ namespace Pulumi.AliCloud.BastionHost
 
         [Input("publicWhiteLists")]
         private InputList<string>? _publicWhiteLists;
-
-        /// <summary>
-        /// The public IP address that you want to add to the whitelist.
-        /// </summary>
         public InputList<string> PublicWhiteLists
         {
             get => _publicWhiteLists ?? (_publicWhiteLists = new InputList<string>());
@@ -391,6 +405,13 @@ namespace Pulumi.AliCloud.BastionHost
 
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
+
+        /// <summary>
+        /// security group IDs configured to Bastionhost. 
+        /// **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+        /// So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+        /// and you can use tolist to convert it to a list.
+        /// </summary>
         public InputList<string> SecurityGroupIds
         {
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());

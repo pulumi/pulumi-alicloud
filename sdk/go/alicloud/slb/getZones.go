@@ -64,7 +64,8 @@ type GetZonesArgs struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The primary zone.
 	MasterZoneId *string `pulumi:"masterZoneId"`
-	OutputFile   *string `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The secondary zone.
 	SlaveZoneId *string `pulumi:"slaveZoneId"`
 }
@@ -116,7 +117,8 @@ type GetZonesOutputArgs struct {
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// The primary zone.
 	MasterZoneId pulumi.StringPtrInput `pulumi:"masterZoneId"`
-	OutputFile   pulumi.StringPtrInput `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The secondary zone.
 	SlaveZoneId pulumi.StringPtrInput `pulumi:"slaveZoneId"`
 }

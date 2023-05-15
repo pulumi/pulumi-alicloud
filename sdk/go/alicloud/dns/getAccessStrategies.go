@@ -68,7 +68,8 @@ type GetAccessStrategiesArgs struct {
 	// The lang.
 	Lang *string `pulumi:"lang"`
 	// A regex string to filter results by Access Strategy name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The type of the access policy.
 	StrategyMode string `pulumi:"strategyMode"`
@@ -113,7 +114,8 @@ type GetAccessStrategiesOutputArgs struct {
 	// The lang.
 	Lang pulumi.StringPtrInput `pulumi:"lang"`
 	// A regex string to filter results by Access Strategy name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The type of the access policy.
 	StrategyMode pulumi.StringInput `pulumi:"strategyMode"`

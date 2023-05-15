@@ -112,9 +112,19 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return this.licenseCode;
     }
 
+    /**
+     * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify &#34;period&#34;.
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
+    /**
+     * @return Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify &#34;period&#34;.
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
     }
@@ -134,17 +144,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return this.planCode;
     }
 
-    /**
-     * The public IP address that you want to add to the whitelist.
-     * 
-     */
     @Import(name="publicWhiteLists")
     private @Nullable Output<List<String>> publicWhiteLists;
 
-    /**
-     * @return The public IP address that you want to add to the whitelist.
-     * 
-     */
     public Optional<Output<List<String>>> publicWhiteLists() {
         return Optional.ofNullable(this.publicWhiteLists);
     }
@@ -209,9 +211,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
+    /**
+     * security group IDs configured to Bastionhost.
+     * **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+     * So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     * 
+     */
     @Import(name="securityGroupIds", required=true)
     private Output<List<String>> securityGroupIds;
 
+    /**
+     * @return security group IDs configured to Bastionhost.
+     * **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+     * So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     * 
+     */
     public Output<List<String>> securityGroupIds() {
         return this.securityGroupIds;
     }
@@ -447,11 +463,25 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             return licenseCode(Output.of(licenseCode));
         }
 
+        /**
+         * @param period Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify &#34;period&#34;.
+         * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder period(@Nullable Output<Integer> period) {
             $.period = period;
             return this;
         }
 
+        /**
+         * @param period Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify &#34;period&#34;.
+         * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder period(Integer period) {
             return period(Output.of(period));
         }
@@ -477,33 +507,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             return planCode(Output.of(planCode));
         }
 
-        /**
-         * @param publicWhiteLists The public IP address that you want to add to the whitelist.
-         * 
-         * @return builder
-         * 
-         */
         public Builder publicWhiteLists(@Nullable Output<List<String>> publicWhiteLists) {
             $.publicWhiteLists = publicWhiteLists;
             return this;
         }
 
-        /**
-         * @param publicWhiteLists The public IP address that you want to add to the whitelist.
-         * 
-         * @return builder
-         * 
-         */
         public Builder publicWhiteLists(List<String> publicWhiteLists) {
             return publicWhiteLists(Output.of(publicWhiteLists));
         }
 
-        /**
-         * @param publicWhiteLists The public IP address that you want to add to the whitelist.
-         * 
-         * @return builder
-         * 
-         */
         public Builder publicWhiteLists(String... publicWhiteLists) {
             return publicWhiteLists(List.of(publicWhiteLists));
         }
@@ -592,15 +604,42 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             return resourceGroupId(Output.of(resourceGroupId));
         }
 
+        /**
+         * @param securityGroupIds security group IDs configured to Bastionhost.
+         * **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+         * So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+         * and you can use tolist to convert it to a list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGroupIds(Output<List<String>> securityGroupIds) {
             $.securityGroupIds = securityGroupIds;
             return this;
         }
 
+        /**
+         * @param securityGroupIds security group IDs configured to Bastionhost.
+         * **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+         * So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+         * and you can use tolist to convert it to a list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGroupIds(List<String> securityGroupIds) {
             return securityGroupIds(Output.of(securityGroupIds));
         }
 
+        /**
+         * @param securityGroupIds security group IDs configured to Bastionhost.
+         * **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+         * So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+         * and you can use tolist to convert it to a list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityGroupIds(String... securityGroupIds) {
             return securityGroupIds(List.of(securityGroupIds));
         }

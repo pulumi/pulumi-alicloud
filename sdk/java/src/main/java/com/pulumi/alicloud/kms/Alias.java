@@ -82,12 +82,24 @@ public class Alias extends com.pulumi.resources.CustomResource {
     /**
      * The id of the key.
      * 
+     * &gt; **NOTE:** Each alias represents only one master key(CMK).
+     * 
+     * &gt; **NOTE:** Within an area of the same user, alias is not reproducible.
+     * 
+     * &gt; **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
+     * 
      */
     @Export(name="keyId", type=String.class, parameters={})
     private Output<String> keyId;
 
     /**
      * @return The id of the key.
+     * 
+     * &gt; **NOTE:** Each alias represents only one master key(CMK).
+     * 
+     * &gt; **NOTE:** Within an area of the same user, alias is not reproducible.
+     * 
+     * &gt; **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
      * 
      */
     public Output<String> keyId() {

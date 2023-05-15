@@ -71,7 +71,8 @@ type GetGroupMetricRulesArgs struct {
 	// A regex string to filter results by Group Metric Rule name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// The namespace of the service.
-	Namespace  *string `pulumi:"namespace"`
+	Namespace *string `pulumi:"namespace"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of Group Metric Rule..
 	Status *string `pulumi:"status"`
@@ -125,7 +126,8 @@ type GetGroupMetricRulesOutputArgs struct {
 	// A regex string to filter results by Group Metric Rule name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The namespace of the service.
-	Namespace  pulumi.StringPtrInput `pulumi:"namespace"`
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of Group Metric Rule..
 	Status pulumi.StringPtrInput `pulumi:"status"`

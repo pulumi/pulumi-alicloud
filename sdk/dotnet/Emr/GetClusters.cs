@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Emr
         /// <summary>
         /// This data source provides the Emr Clusters of the current Alibaba Cloud user.
         /// 
+        /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
+        /// 
         /// &gt; **NOTE:** Available in v1.146.0+.
         /// 
         /// {{% examples %}}
@@ -220,6 +222,8 @@ namespace Pulumi.AliCloud.Emr
 
         /// <summary>
         /// This data source provides the Emr Clusters of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
         /// 
         /// &gt; **NOTE:** Available in v1.146.0+.
         /// 
@@ -501,6 +505,9 @@ namespace Pulumi.AliCloud.Emr
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -614,6 +621,9 @@ namespace Pulumi.AliCloud.Emr
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

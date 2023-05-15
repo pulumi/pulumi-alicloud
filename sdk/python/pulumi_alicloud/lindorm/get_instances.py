@@ -157,6 +157,7 @@ def get_instances(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Instance IDs.
     :param str name_regex: A regex string to filter results by Instance name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str query_str: The query str, which can use `instance_name` keyword for fuzzy search.
     :param str status: The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
     :param int support_engine: The support engine. Valid values: `1` to `7`.
@@ -217,6 +218,7 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Instance IDs.
     :param str name_regex: A regex string to filter results by Instance name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str query_str: The query str, which can use `instance_name` keyword for fuzzy search.
     :param str status: The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
     :param int support_engine: The support engine. Valid values: `1` to `7`.

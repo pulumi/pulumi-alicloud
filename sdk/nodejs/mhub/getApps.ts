@@ -68,6 +68,9 @@ export interface GetAppsArgs {
      * The os type. Valid values: `Android` and `iOS`.
      */
     osType?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the Product.
@@ -145,6 +148,9 @@ export interface GetAppsOutputArgs {
      * The os type. Valid values: `Android` and `iOS`.
      */
     osType?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the Product.

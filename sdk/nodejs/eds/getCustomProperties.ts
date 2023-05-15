@@ -43,6 +43,9 @@ export interface GetCustomPropertiesArgs {
      * A list of Custom Property IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -89,5 +92,8 @@ export interface GetCustomPropertiesOutputArgs {
      * A list of Custom Property IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

@@ -23,6 +23,113 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a ECS instance resource.
+ * 
+ * &gt; **NOTE:** You can launch an ECS instance for a VPC network via specifying parameter `vswitch_id`. One instance can only belong to one VSwitch.
+ * 
+ * &gt; **NOTE:** If a VSwitchId is specified for creating an instance, SecurityGroupId and VSwitchId must belong to one VPC, VSwitchId Cannot be modified after creation.
+ * 
+ * &gt; **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `is_outdated` to true. For more about the upgraded instance type, refer to `alicloud.ecs.getInstanceTypes` datasource.
+ * 
+ * &gt; **NOTE:** At present, &#39;PrePaid&#39; instance cannot be deleted and must wait it to be outdated and release it automatically.
+ * 
+ * &gt; **NOTE:** The resource supports modifying instance charge type from &#39;PrePaid&#39; to &#39;PostPaid&#39; from version 1.9.6.
+ *  However, at present, this modification has some limitation about CPU core count in one month, so strongly recommand that `Don&#39;t modify instance charge type frequentlly in one month`.
+ * 
+ * &gt; **NOTE:**  There is unsupported &#39;deletion_protection&#39; attribute when the instance is spot
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.kms.Key;
+ * import com.pulumi.alicloud.kms.KeyArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.ecs.inputs.InstanceDataDiskArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;auto_provisioning_group&#34;);
+ *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+ *             .description(&#34;foo&#34;)
+ *             .vpcId(vpc.id())
+ *             .build());
+ * 
+ *         var key = new Key(&#34;key&#34;, KeyArgs.builder()        
+ *             .description(&#34;Hello KMS&#34;)
+ *             .pendingWindowInDays(&#34;7&#34;)
+ *             .status(&#34;Enabled&#34;)
+ *             .build());
+ * 
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(vpc.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .zoneId(default_.zones()[0].id())
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .availabilityZone(default_.zones()[0].id())
+ *             .securityGroups(group.stream().map(element -&gt; element.id()).collect(toList()))
+ *             .instanceType(&#34;ecs.n4.large&#34;)
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .systemDiskName(&#34;test_foo_system_disk_name&#34;)
+ *             .systemDiskDescription(&#34;test_foo_system_disk_description&#34;)
+ *             .imageId(&#34;ubuntu_18_04_64_20G_alibase_20190624.vhd&#34;)
+ *             .instanceName(&#34;test_foo&#34;)
+ *             .vswitchId(vswitch.id())
+ *             .internetMaxBandwidthOut(10)
+ *             .dataDisks(InstanceDataDiskArgs.builder()
+ *                 .name(&#34;disk2&#34;)
+ *                 .size(20)
+ *                 .category(&#34;cloud_efficiency&#34;)
+ *                 .description(&#34;disk2&#34;)
+ *                 .encrypted(true)
+ *                 .kmsKeyId(key.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Module Support
+ * 
+ * You can use the existing ecs-instance module
+ * to create several ECS instances one-click.
+ * 
  * ## Import
  * 
  * Instance can be imported using the id, e.g.
@@ -147,12 +254,40 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
      * 
+     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
+     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
+     * 
      */
     @Export(name="dedicatedHostId", type=String.class, parameters={})
     private Output</* @Nullable */ String> dedicatedHostId;
 
     /**
      * @return The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+     * 
+     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
+     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
     public Output<Optional<String>> dedicatedHostId() {
@@ -650,9 +785,23 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
+    /**
+     * The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
+     * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in &#34;Month&#34;
+     * - [1-3] when `period_unit` in &#34;Week&#34;
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     @Export(name="period", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> period;
 
+    /**
+     * @return The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
+     * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in &#34;Month&#34;
+     * - [1-3] when `period_unit` in &#34;Week&#34;
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
@@ -848,6 +997,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - SpotWithPriceLimit: A price threshold for a spot instance
      * - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
      * 
+     * Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
+     * 
      */
     @Export(name="spotStrategy", type=String.class, parameters={})
     private Output<String> spotStrategy;
@@ -857,6 +1008,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - NoSpot: A regular Pay-As-You-Go instance.
      * - SpotWithPriceLimit: A price threshold for a spot instance
      * - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
+     * 
+     * Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
      * 
      */
     public Output<String> spotStrategy() {

@@ -154,6 +154,7 @@ def get_server_disks(disk_type: Optional[str] = None,
     :param Sequence[str] ids: A list of Disk IDs.
     :param str instance_id: Alibaba Cloud simple application server instance ID.
     :param str name_regex: A regex string to filter results by Disk name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
     """
     __args__ = dict()
@@ -216,6 +217,7 @@ def get_server_disks_output(disk_type: Optional[pulumi.Input[Optional[str]]] = N
     :param Sequence[str] ids: A list of Disk IDs.
     :param str instance_id: Alibaba Cloud simple application server instance ID.
     :param str name_regex: A regex string to filter results by Disk name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
     """
     ...

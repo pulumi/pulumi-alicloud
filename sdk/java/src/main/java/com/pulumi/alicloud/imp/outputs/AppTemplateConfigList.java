@@ -19,6 +19,8 @@ public final class AppTemplateConfigList {
     /**
      * @return Configuration item content.
      * 
+     * &gt; **NOTE:**  By default, the attribute `config_list` will return all of nine keys with empty value. If you want to set one or more of the key&#39;s value, you had better also set other keys, otherwise, there will be a diff.
+     * 
      */
     private @Nullable String value;
 
@@ -32,6 +34,8 @@ public final class AppTemplateConfigList {
     }
     /**
      * @return Configuration item content.
+     * 
+     * &gt; **NOTE:**  By default, the attribute `config_list` will return all of nine keys with empty value. If you want to set one or more of the key&#39;s value, you had better also set other keys, otherwise, there will be a diff.
      * 
      */
     public Optional<String> value() {

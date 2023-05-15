@@ -67,10 +67,11 @@ type GetAssetsArgs struct {
 	// - **cloud_product**: Cloud product.
 	MachineTypes *string `pulumi:"machineTypes"`
 	// Specifies whether to internationalize the name of the default group. Default value: false
-	NoGroupTrace *bool   `pulumi:"noGroupTrace"`
-	OutputFile   *string `pulumi:"outputFile"`
-	PageNumber   *int    `pulumi:"pageNumber"`
-	PageSize     *int    `pulumi:"pageSize"`
+	NoGroupTrace *bool `pulumi:"noGroupTrace"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
 }
 
 // A collection of values returned by getAssets.
@@ -124,10 +125,11 @@ type GetAssetsOutputArgs struct {
 	// - **cloud_product**: Cloud product.
 	MachineTypes pulumi.StringPtrInput `pulumi:"machineTypes"`
 	// Specifies whether to internationalize the name of the default group. Default value: false
-	NoGroupTrace pulumi.BoolPtrInput   `pulumi:"noGroupTrace"`
-	OutputFile   pulumi.StringPtrInput `pulumi:"outputFile"`
-	PageNumber   pulumi.IntPtrInput    `pulumi:"pageNumber"`
-	PageSize     pulumi.IntPtrInput    `pulumi:"pageSize"`
+	NoGroupTrace pulumi.BoolPtrInput `pulumi:"noGroupTrace"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 }
 
 func (GetAssetsOutputArgs) ElementType() reflect.Type {

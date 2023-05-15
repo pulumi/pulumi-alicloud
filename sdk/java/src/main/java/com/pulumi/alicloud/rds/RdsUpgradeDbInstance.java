@@ -238,6 +238,8 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
      * * **Before**: ApsaraDB RDS collects the statistics of the new instance before the switchover to ensure service stability. If the original instance contains a large amount of data, the upgrade may require a long period of time.
      * * **After**: ApsaraDB RDS collects the statistics of the new instance after the switchover to accelerate the upgrade. If you access tables for which no statistics are generated, the query plans that you specify may be inaccurately executed. In addition, your database service may be unavailable during peak hours.
      * 
+     * &gt; **NOTE** If you set the SwitchOver parameter to false, the value Before specifies that ApsaraDB RDS collects the statistics of the new instance before the new instance starts to process read and write requests, and the value After specifies that ApsaraDB RDS collects the statistics of the new instance after the new instance starts to process read and write requests.
+     * 
      */
     @Export(name="collectStatMode", type=String.class, parameters={})
     private Output<String> collectStatMode;
@@ -246,6 +248,8 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
      * @return The time at which ApsaraDB RDS collects the statistics of the new instance.
      * * **Before**: ApsaraDB RDS collects the statistics of the new instance before the switchover to ensure service stability. If the original instance contains a large amount of data, the upgrade may require a long period of time.
      * * **After**: ApsaraDB RDS collects the statistics of the new instance after the switchover to accelerate the upgrade. If you access tables for which no statistics are generated, the query plans that you specify may be inaccurately executed. In addition, your database service may be unavailable during peak hours.
+     * 
+     * &gt; **NOTE** If you set the SwitchOver parameter to false, the value Before specifies that ApsaraDB RDS collects the statistics of the new instance before the new instance starts to process read and write requests, and the value After specifies that ApsaraDB RDS collects the statistics of the new instance after the new instance starts to process read and write requests.
      * 
      */
     public Output<String> collectStatMode() {
@@ -310,12 +314,16 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
     /**
      * The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
      * 
+     * &gt; **NOTE:** The default value of this parameter is the storage capacity of the original instance.
+     * 
      */
     @Export(name="dbInstanceStorage", type=Integer.class, parameters={})
     private Output<Integer> dbInstanceStorage;
 
     /**
      * @return The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+     * 
+     * &gt; **NOTE:** The default value of this parameter is the storage capacity of the original instance.
      * 
      */
     public Output<Integer> dbInstanceStorage() {
@@ -348,12 +356,16 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
     /**
      * The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
      * 
+     * &gt; **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+     * 
      */
     @Export(name="dbName", type=String.class, parameters={})
     private Output</* @Nullable */ String> dbName;
 
     /**
      * @return The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+     * 
+     * &gt; **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      * 
      */
     public Output<Optional<String>> dbName() {
@@ -378,6 +390,8 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
      * - true: delete protect.
      * - false: no delete protect.
      * 
+     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+     * 
      */
     @Export(name="deletionProtection", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> deletionProtection;
@@ -386,6 +400,8 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
      * @return The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
+     * 
+     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
      * 
      */
     public Output<Optional<Boolean>> deletionProtection() {
@@ -422,12 +438,16 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the private key.
      * 
+     * &gt; **NOTE:** This parameter is available only when the instance runs MySQL.
+     * 
      */
     @Export(name="encryptionKey", type=String.class, parameters={})
     private Output</* @Nullable */ String> encryptionKey;
 
     /**
      * @return The ID of the private key.
+     * 
+     * &gt; **NOTE:** This parameter is available only when the instance runs MySQL.
      * 
      */
     public Output<Optional<String>> encryptionKey() {
@@ -550,12 +570,16 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
     /**
      * The password of the certificate.
      * 
+     * &gt; **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
+     * 
      */
     @Export(name="password", type=String.class, parameters={})
     private Output</* @Nullable */ String> password;
 
     /**
      * @return The password of the certificate.
+     * 
+     * &gt; **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      * 
      */
     public Output<Optional<String>> password() {
@@ -676,12 +700,16 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
     /**
      * The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
      * 
+     * &gt; **NOTE:** This parameter is available only when the instance runs MySQL.
+     * 
      */
     @Export(name="roleArn", type=String.class, parameters={})
     private Output</* @Nullable */ String> roleArn;
 
     /**
      * @return The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+     * 
+     * &gt; **NOTE:** This parameter is available only when the instance runs MySQL.
      * 
      */
     public Output<Optional<String>> roleArn() {
@@ -692,6 +720,8 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
      * * IP address form, for example: 10.23.12.24.
      * * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
      * 
+     * &gt; **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
+     * 
      */
     @Export(name="securityIps", type=List.class, parameters={String.class})
     private Output<List<String>> securityIps;
@@ -700,6 +730,8 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
      * @return The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
      * * IP address form, for example: 10.23.12.24.
      * * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+     * 
+     * &gt; **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
      * 
      */
     public Output<List<String>> securityIps() {
@@ -841,6 +873,8 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
      * * **Semi-sync**: Semi-synchronous.
      * * **Async**: asynchronous.
      * 
+     * &gt; **NOTE:** SQL Server 2017 cluster version is currently not supported.
+     * 
      */
     @Export(name="syncMode", type=String.class, parameters={})
     private Output<String> syncMode;
@@ -851,6 +885,8 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
      * * **Semi-sync**: Semi-synchronous.
      * * **Async**: asynchronous.
      * 
+     * &gt; **NOTE:** SQL Server 2017 cluster version is currently not supported.
+     * 
      */
     public Output<String> syncMode() {
         return this.syncMode;
@@ -858,12 +894,16 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
     /**
      * The major engine version of the new instance. The value of this parameter must be the major engine version on which an upgrade check is performed.
      * 
+     * &gt; **NOTE** You can call the [UpgradeDBInstanceMajorVersionPrecheck](https://www.alibabacloud.com/help/doc-detail/330050.htm) operation to perform an upgrade check on a major engine version.
+     * 
      */
     @Export(name="targetMajorVersion", type=String.class, parameters={})
     private Output<String> targetMajorVersion;
 
     /**
      * @return The major engine version of the new instance. The value of this parameter must be the major engine version on which an upgrade check is performed.
+     * 
+     * &gt; **NOTE** You can call the [UpgradeDBInstanceMajorVersionPrecheck](https://www.alibabacloud.com/help/doc-detail/330050.htm) operation to perform an upgrade check on a major engine version.
      * 
      */
     public Output<String> targetMajorVersion() {
@@ -904,12 +944,16 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the VPC to which the new instance belongs.
      * 
+     * &gt; **NOTE:** Make sure that the VPC resides in the specified region.
+     * 
      */
     @Export(name="vpcId", type=String.class, parameters={})
     private Output<String> vpcId;
 
     /**
      * @return The ID of the VPC to which the new instance belongs.
+     * 
+     * &gt; **NOTE:** Make sure that the VPC resides in the specified region.
      * 
      */
     public Output<String> vpcId() {
@@ -918,12 +962,16 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the vSwitch associated with the specified VPC.
      * 
+     * &gt; **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
+     * 
      */
     @Export(name="vswitchId", type=String.class, parameters={})
     private Output<String> vswitchId;
 
     /**
      * @return The ID of the vSwitch associated with the specified VPC.
+     * 
+     * &gt; **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
      * 
      */
     public Output<String> vswitchId() {
@@ -932,12 +980,16 @@ public class RdsUpgradeDbInstance extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
      * 
+     * &gt; **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
+     * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
      * @return The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+     * 
+     * &gt; **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
      * 
      */
     public Output<String> zoneId() {

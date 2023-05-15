@@ -141,6 +141,8 @@ type BandwidthLimit struct {
 	pulumi.CustomResourceState
 
 	// The bandwidth configured for the interconnected regions communication.
+	//
+	// ->**NOTE:** The "alicloudCenBandwidthlimit" resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
 	BandwidthLimit pulumi.IntOutput `pulumi:"bandwidthLimit"`
 	// The ID of the CEN.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
@@ -187,6 +189,8 @@ func GetBandwidthLimit(ctx *pulumi.Context,
 // Input properties used for looking up and filtering BandwidthLimit resources.
 type bandwidthLimitState struct {
 	// The bandwidth configured for the interconnected regions communication.
+	//
+	// ->**NOTE:** The "alicloudCenBandwidthlimit" resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
 	BandwidthLimit *int `pulumi:"bandwidthLimit"`
 	// The ID of the CEN.
 	InstanceId *string `pulumi:"instanceId"`
@@ -196,6 +200,8 @@ type bandwidthLimitState struct {
 
 type BandwidthLimitState struct {
 	// The bandwidth configured for the interconnected regions communication.
+	//
+	// ->**NOTE:** The "alicloudCenBandwidthlimit" resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
 	BandwidthLimit pulumi.IntPtrInput
 	// The ID of the CEN.
 	InstanceId pulumi.StringPtrInput
@@ -209,6 +215,8 @@ func (BandwidthLimitState) ElementType() reflect.Type {
 
 type bandwidthLimitArgs struct {
 	// The bandwidth configured for the interconnected regions communication.
+	//
+	// ->**NOTE:** The "alicloudCenBandwidthlimit" resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
 	BandwidthLimit int `pulumi:"bandwidthLimit"`
 	// The ID of the CEN.
 	InstanceId string `pulumi:"instanceId"`
@@ -219,6 +227,8 @@ type bandwidthLimitArgs struct {
 // The set of arguments for constructing a BandwidthLimit resource.
 type BandwidthLimitArgs struct {
 	// The bandwidth configured for the interconnected regions communication.
+	//
+	// ->**NOTE:** The "alicloudCenBandwidthlimit" resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
 	BandwidthLimit pulumi.IntInput
 	// The ID of the CEN.
 	InstanceId pulumi.StringInput
@@ -314,6 +324,8 @@ func (o BandwidthLimitOutput) ToBandwidthLimitOutputWithContext(ctx context.Cont
 }
 
 // The bandwidth configured for the interconnected regions communication.
+//
+// ->**NOTE:** The "alicloudCenBandwidthlimit" resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
 func (o BandwidthLimitOutput) BandwidthLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v *BandwidthLimit) pulumi.IntOutput { return v.BandwidthLimit }).(pulumi.IntOutput)
 }

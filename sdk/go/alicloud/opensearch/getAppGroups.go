@@ -81,7 +81,8 @@ type GetAppGroupsArgs struct {
 	InstanceId *string `pulumi:"instanceId"`
 	Name       *string `pulumi:"name"`
 	// A regex string to filter results by App Group name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The Resource Group ID.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -128,7 +129,8 @@ type GetAppGroupsOutputArgs struct {
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
 	Name       pulumi.StringPtrInput `pulumi:"name"`
 	// A regex string to filter results by App Group name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The Resource Group ID.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`

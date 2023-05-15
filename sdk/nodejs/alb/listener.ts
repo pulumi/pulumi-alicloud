@@ -51,6 +51,8 @@ export class Listener extends pulumi.CustomResource {
 
     /**
      * Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+     *
+     * > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
      */
     public readonly accessLogRecordCustomizedHeadersEnabled!: pulumi.Output<boolean>;
     /**
@@ -81,6 +83,8 @@ export class Listener extends pulumi.CustomResource {
     public readonly gzipEnabled!: pulumi.Output<boolean>;
     /**
      * Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+     *
+     * > **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
      */
     public readonly http2Enabled!: pulumi.Output<boolean>;
     /**
@@ -113,6 +117,8 @@ export class Listener extends pulumi.CustomResource {
     public readonly requestTimeout!: pulumi.Output<number>;
     /**
      * Security Policy.
+     *
+     * > **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
      */
     public readonly securityPolicyId!: pulumi.Output<string>;
     /**
@@ -196,6 +202,8 @@ export class Listener extends pulumi.CustomResource {
 export interface ListenerState {
     /**
      * Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+     *
+     * > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
      */
     accessLogRecordCustomizedHeadersEnabled?: pulumi.Input<boolean>;
     /**
@@ -226,6 +234,8 @@ export interface ListenerState {
     gzipEnabled?: pulumi.Input<boolean>;
     /**
      * Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+     *
+     * > **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
      */
     http2Enabled?: pulumi.Input<boolean>;
     /**
@@ -258,6 +268,8 @@ export interface ListenerState {
     requestTimeout?: pulumi.Input<number>;
     /**
      * Security Policy.
+     *
+     * > **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
      */
     securityPolicyId?: pulumi.Input<string>;
     /**
@@ -276,6 +288,8 @@ export interface ListenerState {
 export interface ListenerArgs {
     /**
      * Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+     *
+     * > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
      */
     accessLogRecordCustomizedHeadersEnabled?: pulumi.Input<boolean>;
     /**
@@ -306,6 +320,8 @@ export interface ListenerArgs {
     gzipEnabled?: pulumi.Input<boolean>;
     /**
      * Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+     *
+     * > **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
      */
     http2Enabled?: pulumi.Input<boolean>;
     /**
@@ -338,6 +354,8 @@ export interface ListenerArgs {
     requestTimeout?: pulumi.Input<number>;
     /**
      * Security Policy.
+     *
+     * > **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
      */
     securityPolicyId?: pulumi.Input<string>;
     /**

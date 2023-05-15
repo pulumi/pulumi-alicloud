@@ -1600,6 +1600,8 @@ type EtlEtlSink struct {
 	// Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
 	RoleArn *string `pulumi:"roleArn"`
 	// ETL sinks type, the default value is AliyunLOG.
+	//
+	// > **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
 	Type *string `pulumi:"type"`
 }
 
@@ -1634,6 +1636,8 @@ type EtlEtlSinkArgs struct {
 	// Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// ETL sinks type, the default value is AliyunLOG.
+	//
+	// > **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -1734,6 +1738,8 @@ func (o EtlEtlSinkOutput) RoleArn() pulumi.StringPtrOutput {
 }
 
 // ETL sinks type, the default value is AliyunLOG.
+//
+// > **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
 func (o EtlEtlSinkOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EtlEtlSink) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1970,6 +1976,21 @@ type StoreEncryptConf struct {
 	// Supported encryption type, only supports `default(AES)`,`  m4 `
 	EncryptType *string `pulumi:"encryptType"`
 	// User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	// #### Block user_cmk_info
 	UserCmkInfo *StoreEncryptConfUserCmkInfo `pulumi:"userCmkInfo"`
 }
 
@@ -1990,6 +2011,21 @@ type StoreEncryptConfArgs struct {
 	// Supported encryption type, only supports `default(AES)`,`  m4 `
 	EncryptType pulumi.StringPtrInput `pulumi:"encryptType"`
 	// User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	// #### Block user_cmk_info
 	UserCmkInfo StoreEncryptConfUserCmkInfoPtrInput `pulumi:"userCmkInfo"`
 }
 
@@ -2081,6 +2117,24 @@ func (o StoreEncryptConfOutput) EncryptType() pulumi.StringPtrOutput {
 }
 
 // User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+// #### Block user_cmk_info
 func (o StoreEncryptConfOutput) UserCmkInfo() StoreEncryptConfUserCmkInfoPtrOutput {
 	return o.ApplyT(func(v StoreEncryptConf) *StoreEncryptConfUserCmkInfo { return v.UserCmkInfo }).(StoreEncryptConfUserCmkInfoPtrOutput)
 }
@@ -2130,6 +2184,24 @@ func (o StoreEncryptConfPtrOutput) EncryptType() pulumi.StringPtrOutput {
 }
 
 // User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+// #### Block user_cmk_info
 func (o StoreEncryptConfPtrOutput) UserCmkInfo() StoreEncryptConfUserCmkInfoPtrOutput {
 	return o.ApplyT(func(v *StoreEncryptConf) *StoreEncryptConfUserCmkInfo {
 		if v == nil {
@@ -2478,6 +2550,8 @@ type StoreIndexFieldSearchJsonKey struct {
 	// The alias of one field.
 	Alias *string `pulumi:"alias"`
 	// Whether to enable statistics. default to true.
+	//
+	// > **Note:** At least one of the "fullText" and "fieldSearch" should be specified.
 	DocValue *bool `pulumi:"docValue"`
 	// When using the jsonKeys field, this field is required.
 	Name string `pulumi:"name"`
@@ -2500,6 +2574,8 @@ type StoreIndexFieldSearchJsonKeyArgs struct {
 	// The alias of one field.
 	Alias pulumi.StringPtrInput `pulumi:"alias"`
 	// Whether to enable statistics. default to true.
+	//
+	// > **Note:** At least one of the "fullText" and "fieldSearch" should be specified.
 	DocValue pulumi.BoolPtrInput `pulumi:"docValue"`
 	// When using the jsonKeys field, this field is required.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -2564,6 +2640,8 @@ func (o StoreIndexFieldSearchJsonKeyOutput) Alias() pulumi.StringPtrOutput {
 }
 
 // Whether to enable statistics. default to true.
+//
+// > **Note:** At least one of the "fullText" and "fieldSearch" should be specified.
 func (o StoreIndexFieldSearchJsonKeyOutput) DocValue() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StoreIndexFieldSearchJsonKey) *bool { return v.DocValue }).(pulumi.BoolPtrOutput)
 }

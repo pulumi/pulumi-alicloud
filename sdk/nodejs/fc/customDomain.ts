@@ -108,6 +108,9 @@ export class CustomDomain extends pulumi.CustomResource {
     public /*out*/ readonly apiVersion!: pulumi.Output<string>;
     /**
      * The configuration of HTTPS certificate.
+     *
+     *
+     * **route_config** includes the following arguments:
      */
     public readonly certConfig!: pulumi.Output<outputs.fc.CustomDomainCertConfig | undefined>;
     /**
@@ -188,6 +191,9 @@ export interface CustomDomainState {
     apiVersion?: pulumi.Input<string>;
     /**
      * The configuration of HTTPS certificate.
+     *
+     *
+     * **route_config** includes the following arguments:
      */
     certConfig?: pulumi.Input<inputs.fc.CustomDomainCertConfig>;
     /**
@@ -218,6 +224,9 @@ export interface CustomDomainState {
 export interface CustomDomainArgs {
     /**
      * The configuration of HTTPS certificate.
+     *
+     *
+     * **route_config** includes the following arguments:
      */
     certConfig?: pulumi.Input<inputs.fc.CustomDomainCertConfig>;
     /**

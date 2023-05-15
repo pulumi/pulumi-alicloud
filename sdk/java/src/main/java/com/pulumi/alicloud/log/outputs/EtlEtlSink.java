@@ -59,6 +59,8 @@ public final class EtlEtlSink {
     /**
      * @return ETL sinks type, the default value is AliyunLOG.
      * 
+     * &gt; **Note:** `from_time` and `to_time` no modification allowed after successful creation.
+     * 
      */
     private @Nullable String type;
 
@@ -128,6 +130,8 @@ public final class EtlEtlSink {
     }
     /**
      * @return ETL sinks type, the default value is AliyunLOG.
+     * 
+     * &gt; **Note:** `from_time` and `to_time` no modification allowed after successful creation.
      * 
      */
     public Optional<String> type() {

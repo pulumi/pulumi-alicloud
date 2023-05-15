@@ -11,6 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a network acl entries resource to create ingress and egress entries.
+//
+// > **NOTE:** Available in 1.45.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
+//
+// > **NOTE:** It doesn't support concurrency and the order of the ingress and egress entries determines the priority.
+//
+// > **NOTE:** Using this resource need to open a whitelist.
+//
+// > **DEPRECATED:**  This resource  has been deprecated from version `1.122.0`. Replace by `ingressAclEntries` and `egressAclEntries` with the resource alicloud_network_acl.
+//
 // ## Example Usage
 //
 // # Basic Usage

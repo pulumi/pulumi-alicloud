@@ -61,7 +61,8 @@ type GetIndustrialPidLoopsArgs struct {
 	// A list of Pid Loop IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Pid Loop name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The name of Pid Loop.
 	PidLoopName *string `pulumi:"pidLoopName"`
@@ -105,7 +106,8 @@ type GetIndustrialPidLoopsOutputArgs struct {
 	// A list of Pid Loop IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Pid Loop name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The name of Pid Loop.
 	PidLoopName pulumi.StringPtrInput `pulumi:"pidLoopName"`

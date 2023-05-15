@@ -54,6 +54,9 @@ export interface GetZoneRecordsArgs {
      * User language.
      */
     lang?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Search mode. Value: 
@@ -145,6 +148,9 @@ export interface GetZoneRecordsOutputArgs {
      * User language.
      */
     lang?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Search mode. Value: 

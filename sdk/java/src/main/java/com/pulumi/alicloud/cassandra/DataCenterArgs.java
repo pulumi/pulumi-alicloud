@@ -180,12 +180,16 @@ public final class DataCenterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
      * 
+     * &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+     * 
      */
     @Import(name="vswitchId", required=true)
     private Output<String> vswitchId;
 
     /**
      * @return The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+     * 
+     * &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
      * 
      */
     public Output<String> vswitchId() {
@@ -467,6 +471,8 @@ public final class DataCenterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param vswitchId The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
          * 
+         * &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+         * 
          * @return builder
          * 
          */
@@ -477,6 +483,8 @@ public final class DataCenterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param vswitchId The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+         * 
+         * &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
          * 
          * @return builder
          * 

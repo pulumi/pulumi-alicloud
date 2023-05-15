@@ -237,12 +237,16 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
     /**
      * A mapping of tags to assign to the snapshot.
      * 
+     * &gt; **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+     * 
      */
     @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
      * @return A mapping of tags to assign to the snapshot.
+     * 
+     * &gt; **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {

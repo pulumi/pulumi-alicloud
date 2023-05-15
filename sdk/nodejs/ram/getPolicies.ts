@@ -57,6 +57,9 @@ export interface GetPoliciesArgs {
      * A regex string to filter resulting policies by name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Filter results by a specific role name. Returned policies are attached to the specified role.
@@ -139,6 +142,9 @@ export interface GetPoliciesOutputArgs {
      * A regex string to filter resulting policies by name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Filter results by a specific role name. Returned policies are attached to the specified role.

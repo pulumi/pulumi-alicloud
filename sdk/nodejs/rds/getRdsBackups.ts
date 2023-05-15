@@ -70,6 +70,9 @@ export interface GetRdsBackupsArgs {
      * A list of Backup IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The start time.
@@ -148,6 +151,9 @@ export interface GetRdsBackupsOutputArgs {
      * A list of Backup IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The start time.

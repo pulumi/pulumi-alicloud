@@ -53,7 +53,8 @@ func GetInstanceKeywords(ctx *pulumi.Context, args *GetInstanceKeywordsArgs, opt
 // A collection of arguments for invoking getInstanceKeywords.
 type GetInstanceKeywordsArgs struct {
 	// The type of reserved keyword to query. Valid values: `account`, `database`.
-	Key        string  `pulumi:"key"`
+	Key string `pulumi:"key"`
+	// File name where to save data source results (after running `pulumi up`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -85,7 +86,8 @@ func GetInstanceKeywordsOutput(ctx *pulumi.Context, args GetInstanceKeywordsOutp
 // A collection of arguments for invoking getInstanceKeywords.
 type GetInstanceKeywordsOutputArgs struct {
 	// The type of reserved keyword to query. Valid values: `account`, `database`.
-	Key        pulumi.StringInput    `pulumi:"key"`
+	Key pulumi.StringInput `pulumi:"key"`
+	// File name where to save data source results (after running `pulumi up`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

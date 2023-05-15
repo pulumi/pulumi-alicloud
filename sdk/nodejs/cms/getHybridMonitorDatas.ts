@@ -53,6 +53,9 @@ export interface GetHybridMonitorDatasArgs {
      * The name of the namespace.
      */
     namespace: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The interval at which monitoring data is collected. Unit: seconds.
@@ -122,6 +125,9 @@ export interface GetHybridMonitorDatasOutputArgs {
      * The name of the namespace.
      */
     namespace: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The interval at which monitoring data is collected. Unit: seconds.

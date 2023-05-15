@@ -410,6 +410,10 @@ func (o ClusterBootstrapScriptNodeSelectorOutput) NodeSelectType() pulumi.String
 }
 
 type ClusterNodeAttribute struct {
+	// Whether to enable data disk encryption.
+	DataDiskEncrypted *bool `pulumi:"dataDiskEncrypted"`
+	// The kms key id used to encrypt the data disk. It takes effect when dataDiskEncrypted is true.
+	DataDiskKmsKeyId *string `pulumi:"dataDiskKmsKeyId"`
 	// The name of the key pair.
 	KeyPairName string `pulumi:"keyPairName"`
 	// Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
@@ -434,6 +438,10 @@ type ClusterNodeAttributeInput interface {
 }
 
 type ClusterNodeAttributeArgs struct {
+	// Whether to enable data disk encryption.
+	DataDiskEncrypted pulumi.BoolPtrInput `pulumi:"dataDiskEncrypted"`
+	// The kms key id used to encrypt the data disk. It takes effect when dataDiskEncrypted is true.
+	DataDiskKmsKeyId pulumi.StringPtrInput `pulumi:"dataDiskKmsKeyId"`
 	// The name of the key pair.
 	KeyPairName pulumi.StringInput `pulumi:"keyPairName"`
 	// Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
@@ -495,6 +503,16 @@ func (o ClusterNodeAttributeOutput) ToClusterNodeAttributeOutput() ClusterNodeAt
 
 func (o ClusterNodeAttributeOutput) ToClusterNodeAttributeOutputWithContext(ctx context.Context) ClusterNodeAttributeOutput {
 	return o
+}
+
+// Whether to enable data disk encryption.
+func (o ClusterNodeAttributeOutput) DataDiskEncrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterNodeAttribute) *bool { return v.DataDiskEncrypted }).(pulumi.BoolPtrOutput)
+}
+
+// The kms key id used to encrypt the data disk. It takes effect when dataDiskEncrypted is true.
+func (o ClusterNodeAttributeOutput) DataDiskKmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeAttribute) *string { return v.DataDiskKmsKeyId }).(pulumi.StringPtrOutput)
 }
 
 // The name of the key pair.

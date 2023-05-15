@@ -55,7 +55,8 @@ type GetTransitRouterMulticastDomainMembersArgs struct {
 	Ids []string `pulumi:"ids"`
 	// The ID of the ENI.
 	NetworkInterfaceId *string `pulumi:"networkInterfaceId"`
-	OutputFile         *string `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the multicast domain to which the multicast member belongs.
 	TransitRouterMulticastDomainId string `pulumi:"transitRouterMulticastDomainId"`
 }
@@ -93,7 +94,8 @@ type GetTransitRouterMulticastDomainMembersOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The ID of the ENI.
 	NetworkInterfaceId pulumi.StringPtrInput `pulumi:"networkInterfaceId"`
-	OutputFile         pulumi.StringPtrInput `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the multicast domain to which the multicast member belongs.
 	TransitRouterMulticastDomainId pulumi.StringInput `pulumi:"transitRouterMulticastDomainId"`
 }

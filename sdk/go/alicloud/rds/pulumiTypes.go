@@ -227,6 +227,8 @@ type DdrInstancePgHbaConf struct {
 	// * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
 	// * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
 	// * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+	//
+	// > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
 	Type string `pulumi:"type"`
 	// The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
 	User string `pulumi:"user"`
@@ -260,6 +262,8 @@ type DdrInstancePgHbaConfArgs struct {
 	// * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
 	// * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
 	// * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+	//
+	// > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
 	Type pulumi.StringInput `pulumi:"type"`
 	// The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
 	User pulumi.StringInput `pulumi:"user"`
@@ -350,6 +354,8 @@ func (o DdrInstancePgHbaConfOutput) PriorityId() pulumi.IntOutput {
 // * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
 // * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
 // * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+//
+// > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
 func (o DdrInstancePgHbaConfOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v DdrInstancePgHbaConf) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -620,6 +626,8 @@ type InstancePgHbaConf struct {
 	// * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
 	// * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
 	// * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+	//
+	// > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
 	Type string `pulumi:"type"`
 	// The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
 	User string `pulumi:"user"`
@@ -653,6 +661,8 @@ type InstancePgHbaConfArgs struct {
 	// * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
 	// * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
 	// * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+	//
+	// > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
 	Type pulumi.StringInput `pulumi:"type"`
 	// The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
 	User pulumi.StringInput `pulumi:"user"`
@@ -743,6 +753,8 @@ func (o InstancePgHbaConfOutput) PriorityId() pulumi.IntOutput {
 // * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
 // * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
 // * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+//
+// > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
 func (o InstancePgHbaConfOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v InstancePgHbaConf) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1025,6 +1037,8 @@ type RdsCloneDbInstancePgHbaConf struct {
 	// * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
 	// * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
 	// * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+	//
+	// > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
 	Type string `pulumi:"type"`
 	// The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
 	User string `pulumi:"user"`
@@ -1058,6 +1072,8 @@ type RdsCloneDbInstancePgHbaConfArgs struct {
 	// * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
 	// * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
 	// * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+	//
+	// > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
 	Type pulumi.StringInput `pulumi:"type"`
 	// The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
 	User pulumi.StringInput `pulumi:"user"`
@@ -1148,6 +1164,8 @@ func (o RdsCloneDbInstancePgHbaConfOutput) PriorityId() pulumi.IntOutput {
 // * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
 // * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
 // * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+//
+// > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
 func (o RdsCloneDbInstancePgHbaConfOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RdsCloneDbInstancePgHbaConf) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1639,6 +1657,8 @@ type RdsUpgradeDbInstancePgHbaConf struct {
 	// * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
 	// * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
 	// * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+	//
+	// > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
 	Type string `pulumi:"type"`
 	// The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
 	User string `pulumi:"user"`
@@ -1672,6 +1692,8 @@ type RdsUpgradeDbInstancePgHbaConfArgs struct {
 	// * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
 	// * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
 	// * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+	//
+	// > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
 	Type pulumi.StringInput `pulumi:"type"`
 	// The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
 	User pulumi.StringInput `pulumi:"user"`
@@ -1762,6 +1784,8 @@ func (o RdsUpgradeDbInstancePgHbaConfOutput) PriorityId() pulumi.IntOutput {
 // * **host**: specifies to verify TCP/IP connections, including SSL connections and non-SSL connections.
 // * **hostssl**: specifies to verify only TCP/IP connections that are established over SSL connections.
 // * **hostnossl**: specifies to verify only TCP/IP connections that are established over non-SSL connections.
+//
+// > **NOTE:** You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see [Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/doc-detail/229518.htm).
 func (o RdsUpgradeDbInstancePgHbaConfOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RdsUpgradeDbInstancePgHbaConf) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -4901,6 +4925,157 @@ func (o GetRdsParameterGroupsGroupParamDetailArrayOutput) Index(i pulumi.IntInpu
 	}).(GetRdsParameterGroupsGroupParamDetailOutput)
 }
 
+type GetSlotsSlot struct {
+	// The name of the database where Replication Slot is located.
+	Database string `pulumi:"database"`
+	// The plugin used by Replication Slot.
+	Plugin string `pulumi:"plugin"`
+	// The Replication Slot name.
+	SlotName string `pulumi:"slotName"`
+	// The Replication Slot status.
+	SlotStatus string `pulumi:"slotStatus"`
+	// The Replication Slot type.
+	SlotType string `pulumi:"slotType"`
+	// Is the Replication Slot temporary.
+	Temporary string `pulumi:"temporary"`
+	// The amount of logs accumulated by Replication Slot.
+	WalDelay string `pulumi:"walDelay"`
+}
+
+// GetSlotsSlotInput is an input type that accepts GetSlotsSlotArgs and GetSlotsSlotOutput values.
+// You can construct a concrete instance of `GetSlotsSlotInput` via:
+//
+//	GetSlotsSlotArgs{...}
+type GetSlotsSlotInput interface {
+	pulumi.Input
+
+	ToGetSlotsSlotOutput() GetSlotsSlotOutput
+	ToGetSlotsSlotOutputWithContext(context.Context) GetSlotsSlotOutput
+}
+
+type GetSlotsSlotArgs struct {
+	// The name of the database where Replication Slot is located.
+	Database pulumi.StringInput `pulumi:"database"`
+	// The plugin used by Replication Slot.
+	Plugin pulumi.StringInput `pulumi:"plugin"`
+	// The Replication Slot name.
+	SlotName pulumi.StringInput `pulumi:"slotName"`
+	// The Replication Slot status.
+	SlotStatus pulumi.StringInput `pulumi:"slotStatus"`
+	// The Replication Slot type.
+	SlotType pulumi.StringInput `pulumi:"slotType"`
+	// Is the Replication Slot temporary.
+	Temporary pulumi.StringInput `pulumi:"temporary"`
+	// The amount of logs accumulated by Replication Slot.
+	WalDelay pulumi.StringInput `pulumi:"walDelay"`
+}
+
+func (GetSlotsSlotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSlotsSlot)(nil)).Elem()
+}
+
+func (i GetSlotsSlotArgs) ToGetSlotsSlotOutput() GetSlotsSlotOutput {
+	return i.ToGetSlotsSlotOutputWithContext(context.Background())
+}
+
+func (i GetSlotsSlotArgs) ToGetSlotsSlotOutputWithContext(ctx context.Context) GetSlotsSlotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSlotsSlotOutput)
+}
+
+// GetSlotsSlotArrayInput is an input type that accepts GetSlotsSlotArray and GetSlotsSlotArrayOutput values.
+// You can construct a concrete instance of `GetSlotsSlotArrayInput` via:
+//
+//	GetSlotsSlotArray{ GetSlotsSlotArgs{...} }
+type GetSlotsSlotArrayInput interface {
+	pulumi.Input
+
+	ToGetSlotsSlotArrayOutput() GetSlotsSlotArrayOutput
+	ToGetSlotsSlotArrayOutputWithContext(context.Context) GetSlotsSlotArrayOutput
+}
+
+type GetSlotsSlotArray []GetSlotsSlotInput
+
+func (GetSlotsSlotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSlotsSlot)(nil)).Elem()
+}
+
+func (i GetSlotsSlotArray) ToGetSlotsSlotArrayOutput() GetSlotsSlotArrayOutput {
+	return i.ToGetSlotsSlotArrayOutputWithContext(context.Background())
+}
+
+func (i GetSlotsSlotArray) ToGetSlotsSlotArrayOutputWithContext(ctx context.Context) GetSlotsSlotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSlotsSlotArrayOutput)
+}
+
+type GetSlotsSlotOutput struct{ *pulumi.OutputState }
+
+func (GetSlotsSlotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSlotsSlot)(nil)).Elem()
+}
+
+func (o GetSlotsSlotOutput) ToGetSlotsSlotOutput() GetSlotsSlotOutput {
+	return o
+}
+
+func (o GetSlotsSlotOutput) ToGetSlotsSlotOutputWithContext(ctx context.Context) GetSlotsSlotOutput {
+	return o
+}
+
+// The name of the database where Replication Slot is located.
+func (o GetSlotsSlotOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSlotsSlot) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// The plugin used by Replication Slot.
+func (o GetSlotsSlotOutput) Plugin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSlotsSlot) string { return v.Plugin }).(pulumi.StringOutput)
+}
+
+// The Replication Slot name.
+func (o GetSlotsSlotOutput) SlotName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSlotsSlot) string { return v.SlotName }).(pulumi.StringOutput)
+}
+
+// The Replication Slot status.
+func (o GetSlotsSlotOutput) SlotStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSlotsSlot) string { return v.SlotStatus }).(pulumi.StringOutput)
+}
+
+// The Replication Slot type.
+func (o GetSlotsSlotOutput) SlotType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSlotsSlot) string { return v.SlotType }).(pulumi.StringOutput)
+}
+
+// Is the Replication Slot temporary.
+func (o GetSlotsSlotOutput) Temporary() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSlotsSlot) string { return v.Temporary }).(pulumi.StringOutput)
+}
+
+// The amount of logs accumulated by Replication Slot.
+func (o GetSlotsSlotOutput) WalDelay() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSlotsSlot) string { return v.WalDelay }).(pulumi.StringOutput)
+}
+
+type GetSlotsSlotArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSlotsSlotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSlotsSlot)(nil)).Elem()
+}
+
+func (o GetSlotsSlotArrayOutput) ToGetSlotsSlotArrayOutput() GetSlotsSlotArrayOutput {
+	return o
+}
+
+func (o GetSlotsSlotArrayOutput) ToGetSlotsSlotArrayOutputWithContext(ctx context.Context) GetSlotsSlotArrayOutput {
+	return o
+}
+
+func (o GetSlotsSlotArrayOutput) Index(i pulumi.IntInput) GetSlotsSlotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSlotsSlot {
+		return vs[0].([]GetSlotsSlot)[vs[1].(int)]
+	}).(GetSlotsSlotOutput)
+}
+
 type GetZonesZone struct {
 	// ID of the zone.
 	Id string `pulumi:"id"`
@@ -5071,6 +5246,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRdsParameterGroupsGroupArrayInput)(nil)).Elem(), GetRdsParameterGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRdsParameterGroupsGroupParamDetailInput)(nil)).Elem(), GetRdsParameterGroupsGroupParamDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRdsParameterGroupsGroupParamDetailArrayInput)(nil)).Elem(), GetRdsParameterGroupsGroupParamDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSlotsSlotInput)(nil)).Elem(), GetSlotsSlotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSlotsSlotArrayInput)(nil)).Elem(), GetSlotsSlotArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(DbInstanceEndpointNodeItemOutput{})
@@ -5136,6 +5313,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRdsParameterGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetRdsParameterGroupsGroupParamDetailOutput{})
 	pulumi.RegisterOutputType(GetRdsParameterGroupsGroupParamDetailArrayOutput{})
+	pulumi.RegisterOutputType(GetSlotsSlotOutput{})
+	pulumi.RegisterOutputType(GetSlotsSlotArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

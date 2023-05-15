@@ -18,12 +18,16 @@ public final class GetTransitRouterServiceArgs extends com.pulumi.resources.Invo
     /**
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
      * 
+     * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the CEN Transit Router Service that means you have read and agreed the [CEN Terms of Service](https://help.aliyun.com/document_detail/66667.html). The service can not closed once it is opened.
+     * 
      */
     @Import(name="enable")
     private @Nullable Output<String> enable;
 
     /**
      * @return Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+     * 
+     * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the CEN Transit Router Service that means you have read and agreed the [CEN Terms of Service](https://help.aliyun.com/document_detail/66667.html). The service can not closed once it is opened.
      * 
      */
     public Optional<Output<String>> enable() {
@@ -57,6 +61,8 @@ public final class GetTransitRouterServiceArgs extends com.pulumi.resources.Invo
         /**
          * @param enable Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
          * 
+         * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the CEN Transit Router Service that means you have read and agreed the [CEN Terms of Service](https://help.aliyun.com/document_detail/66667.html). The service can not closed once it is opened.
+         * 
          * @return builder
          * 
          */
@@ -67,6 +73,8 @@ public final class GetTransitRouterServiceArgs extends com.pulumi.resources.Invo
 
         /**
          * @param enable Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+         * 
+         * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the CEN Transit Router Service that means you have read and agreed the [CEN Terms of Service](https://help.aliyun.com/document_detail/66667.html). The service can not closed once it is opened.
          * 
          * @return builder
          * 

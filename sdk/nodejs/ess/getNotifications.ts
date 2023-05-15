@@ -41,6 +41,9 @@ export interface GetNotificationsArgs {
      * A list of notification ids.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Scaling group id the notifications belong to.
@@ -99,6 +102,9 @@ export interface GetNotificationsOutputArgs {
      * A list of notification ids.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Scaling group id the notifications belong to.

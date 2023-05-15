@@ -127,6 +127,9 @@ namespace Pulumi.AliCloud.Dms
         [Input("netType")]
         public string? NetType { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -192,6 +195,9 @@ namespace Pulumi.AliCloud.Dms
         [Input("netType")]
         public Input<string>? NetType { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

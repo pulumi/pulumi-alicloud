@@ -124,12 +124,16 @@ public final class VbrHealthCheckArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The ID of the region to which the VBR belongs.
      * 
+     * -&gt;**NOTE:** The `alicloud.cen.VbrHealthCheck` resource depends on the related `alicloud.cen.InstanceAttachment` resource.
+     * 
      */
     @Import(name="vbrInstanceRegionId", required=true)
     private Output<String> vbrInstanceRegionId;
 
     /**
      * @return The ID of the region to which the VBR belongs.
+     * 
+     * -&gt;**NOTE:** The `alicloud.cen.VbrHealthCheck` resource depends on the related `alicloud.cen.InstanceAttachment` resource.
      * 
      */
     public Output<String> vbrInstanceRegionId() {
@@ -317,6 +321,8 @@ public final class VbrHealthCheckArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param vbrInstanceRegionId The ID of the region to which the VBR belongs.
          * 
+         * -&gt;**NOTE:** The `alicloud.cen.VbrHealthCheck` resource depends on the related `alicloud.cen.InstanceAttachment` resource.
+         * 
          * @return builder
          * 
          */
@@ -327,6 +333,8 @@ public final class VbrHealthCheckArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param vbrInstanceRegionId The ID of the region to which the VBR belongs.
+         * 
+         * -&gt;**NOTE:** The `alicloud.cen.VbrHealthCheck` resource depends on the related `alicloud.cen.InstanceAttachment` resource.
          * 
          * @return builder
          * 

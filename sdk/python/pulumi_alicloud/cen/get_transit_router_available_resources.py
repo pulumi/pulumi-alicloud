@@ -82,6 +82,9 @@ def get_transit_router_available_resources(output_file: Optional[str] = None,
     pulumi.export("masterId", data["alicloud_cen_transit_router_available_resources"]["default"]["resources"][0]["master_zones"])
     pulumi.export("slaveId", data["alicloud_cen_transit_router_available_resources"]["default"]["resources"][0]["slave_zones"])
     ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
@@ -114,5 +117,8 @@ def get_transit_router_available_resources_output(output_file: Optional[pulumi.I
     pulumi.export("masterId", data["alicloud_cen_transit_router_available_resources"]["default"]["resources"][0]["master_zones"])
     pulumi.export("slaveId", data["alicloud_cen_transit_router_available_resources"]["default"]["resources"][0]["slave_zones"])
     ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

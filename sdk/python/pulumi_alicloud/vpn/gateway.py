@@ -42,6 +42,8 @@ class GatewayArgs:
         :param pulumi.Input[str] network_type: The network type of the VPN gateway. Value:
                - public (default): Public VPN gateway.
                - private: Private VPN gateway.
+               
+               > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
         :param pulumi.Input[int] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         :param pulumi.Input[int] ssl_connections: The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
                This field is ignored when enable_ssl is false.
@@ -188,6 +190,8 @@ class GatewayArgs:
         The network type of the VPN gateway. Value:
         - public (default): Public VPN gateway.
         - private: Private VPN gateway.
+
+        > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
         """
         return pulumi.get(self, "network_type")
 
@@ -280,6 +284,8 @@ class _GatewayState:
         :param pulumi.Input[str] network_type: The network type of the VPN gateway. Value:
                - public (default): Public VPN gateway.
                - private: Private VPN gateway.
+               
+               > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
         :param pulumi.Input[int] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         :param pulumi.Input[int] ssl_connections: The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
                This field is ignored when enable_ssl is false.
@@ -448,6 +454,8 @@ class _GatewayState:
         The network type of the VPN gateway. Value:
         - public (default): Public VPN gateway.
         - private: Private VPN gateway.
+
+        > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
         """
         return pulumi.get(self, "network_type")
 
@@ -571,6 +579,8 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] network_type: The network type of the VPN gateway. Value:
                - public (default): Public VPN gateway.
                - private: Private VPN gateway.
+               
+               > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
         :param pulumi.Input[int] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         :param pulumi.Input[int] ssl_connections: The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
                This field is ignored when enable_ssl is false.
@@ -699,6 +709,8 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] network_type: The network type of the VPN gateway. Value:
                - public (default): Public VPN gateway.
                - private: Private VPN gateway.
+               
+               > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
         :param pulumi.Input[int] period: The filed is only required while the InstanceChargeType is PrePaid. Valid values: [1-9, 12, 24, 36]. Default to 1.
         :param pulumi.Input[int] ssl_connections: The max connections of SSL VPN. Default to 5. The number of connections supported by each account is different. 
                This field is ignored when enable_ssl is false.
@@ -815,6 +827,8 @@ class Gateway(pulumi.CustomResource):
         The network type of the VPN gateway. Value:
         - public (default): Public VPN gateway.
         - private: Private VPN gateway.
+
+        > **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
         """
         return pulumi.get(self, "network_type")
 

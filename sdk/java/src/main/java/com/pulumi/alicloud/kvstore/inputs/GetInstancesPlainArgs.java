@@ -64,14 +64,14 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+     * The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
      * 
      */
     @Import(name="engineVersion")
     private @Nullable String engineVersion;
 
     /**
-     * @return The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+     * @return The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
      * 
      */
     public Optional<String> engineVersion() {
@@ -183,9 +183,17 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.networkType);
     }
 
+    /**
+     * The name of file that can save the collection of instances after running `pulumi preview`.
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable String outputFile;
 
+    /**
+     * @return The name of file that can save the collection of instances after running `pulumi preview`.
+     * 
+     */
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -387,7 +395,7 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param engineVersion The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+         * @param engineVersion The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
          * 
          * @return builder
          * 
@@ -484,6 +492,12 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
+        /**
+         * @param outputFile The name of file that can save the collection of instances after running `pulumi preview`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
             return this;

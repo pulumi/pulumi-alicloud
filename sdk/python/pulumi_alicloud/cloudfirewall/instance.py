@@ -36,7 +36,7 @@ class InstanceArgs:
         :param pulumi.Input[bool] cfw_service: Whether to use expert service. Valid values: `true`, `false`.
         :param pulumi.Input[int] ip_number: The number of public IPs that can be protected. Valid values: 20 to 4000.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
-        :param pulumi.Input[int] period: The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+        :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
         :param pulumi.Input[str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         :param pulumi.Input[int] fw_vpc_number: The number of protected VPCs. Valid values between 2 and 500.
         :param pulumi.Input[int] instance_count: The number of assets.
@@ -142,7 +142,7 @@ class InstanceArgs:
     @pulumi.getter
     def period(self) -> pulumi.Input[int]:
         """
-        The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+        The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
         """
         return pulumi.get(self, "period")
 
@@ -271,7 +271,7 @@ class _InstanceState:
         :param pulumi.Input[str] logistics: The logistics.
         :param pulumi.Input[str] modify_type: The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
-        :param pulumi.Input[int] period: The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+        :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
         :param pulumi.Input[str] release_time: The release time.
         :param pulumi.Input[int] renew_period: Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
         :param pulumi.Input[str] renewal_duration_unit: Automatic renewal period unit. Valid values: `Month`,`Year`.
@@ -466,7 +466,7 @@ class _InstanceState:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+        The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
         """
         return pulumi.get(self, "period")
 
@@ -613,7 +613,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] logistics: The logistics.
         :param pulumi.Input[str] modify_type: The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
-        :param pulumi.Input[int] period: The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+        :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
         :param pulumi.Input[int] renew_period: Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
         :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
         :param pulumi.Input[str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
@@ -779,7 +779,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] logistics: The logistics.
         :param pulumi.Input[str] modify_type: The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
-        :param pulumi.Input[int] period: The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+        :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
         :param pulumi.Input[str] release_time: The release time.
         :param pulumi.Input[int] renew_period: Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`.
         :param pulumi.Input[str] renewal_duration_unit: Automatic renewal period unit. Valid values: `Month`,`Year`.
@@ -912,7 +912,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[int]:
         """
-        The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+        The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
         """
         return pulumi.get(self, "period")
 

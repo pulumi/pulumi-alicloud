@@ -26,6 +26,8 @@ class VpcEndpointServiceArgs:
         :param pulumi.Input[bool] dry_run: Whether to pre-check this request only. Default to: `false`
         :param pulumi.Input[str] payer: The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
         :param pulumi.Input[str] service_description: The description of the terminal node service.
+               
+               > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
         """
         if auto_accept_connection is not None:
             pulumi.set(__self__, "auto_accept_connection", auto_accept_connection)
@@ -91,6 +93,8 @@ class VpcEndpointServiceArgs:
     def service_description(self) -> Optional[pulumi.Input[str]]:
         """
         The description of the terminal node service.
+
+        > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
         """
         return pulumi.get(self, "service_description")
 
@@ -118,6 +122,8 @@ class _VpcEndpointServiceState:
         :param pulumi.Input[str] payer: The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
         :param pulumi.Input[str] service_business_status: The business status of Vpc Endpoint Service.
         :param pulumi.Input[str] service_description: The description of the terminal node service.
+               
+               > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
         :param pulumi.Input[str] service_domain: Service Domain.
         :param pulumi.Input[str] status: The status of Vpc Endpoint Service.
         """
@@ -203,6 +209,8 @@ class _VpcEndpointServiceState:
     def service_description(self) -> Optional[pulumi.Input[str]]:
         """
         The description of the terminal node service.
+
+        > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
         """
         return pulumi.get(self, "service_description")
 
@@ -282,6 +290,8 @@ class VpcEndpointService(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: Whether to pre-check this request only. Default to: `false`
         :param pulumi.Input[str] payer: The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
         :param pulumi.Input[str] service_description: The description of the terminal node service.
+               
+               > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
         """
         ...
     @overload
@@ -386,6 +396,8 @@ class VpcEndpointService(pulumi.CustomResource):
         :param pulumi.Input[str] payer: The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
         :param pulumi.Input[str] service_business_status: The business status of Vpc Endpoint Service.
         :param pulumi.Input[str] service_description: The description of the terminal node service.
+               
+               > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
         :param pulumi.Input[str] service_domain: Service Domain.
         :param pulumi.Input[str] status: The status of Vpc Endpoint Service.
         """
@@ -448,6 +460,8 @@ class VpcEndpointService(pulumi.CustomResource):
     def service_description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the terminal node service.
+
+        > **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
         """
         return pulumi.get(self, "service_description")
 

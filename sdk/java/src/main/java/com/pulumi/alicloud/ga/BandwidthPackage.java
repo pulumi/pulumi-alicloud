@@ -150,12 +150,16 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
     /**
      * The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
      * 
+     * &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
+     * 
      */
     @Export(name="bandwidthType", type=String.class, parameters={})
     private Output</* @Nullable */ String> bandwidthType;
 
     /**
      * @return The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+     * 
+     * &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
      * 
      */
     public Output<Optional<String>> bandwidthType() {

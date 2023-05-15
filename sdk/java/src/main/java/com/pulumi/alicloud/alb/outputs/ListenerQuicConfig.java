@@ -20,6 +20,8 @@ public final class ListenerQuicConfig {
     /**
      * @return Indicates Whether to Enable the QuIC Upgrade.
      * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
+     * 
      */
     private @Nullable Boolean quicUpgradeEnabled;
 
@@ -33,6 +35,8 @@ public final class ListenerQuicConfig {
     }
     /**
      * @return Indicates Whether to Enable the QuIC Upgrade.
+     * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
      * 
      */
     public Optional<Boolean> quicUpgradeEnabled() {

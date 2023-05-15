@@ -38,6 +38,8 @@ namespace Pulumi.AliCloud.Ecs.Inputs
 
         /// <summary>
         /// The file name of your OSS Object.
+        /// 
+        /// &gt; **NOTE:** The disk_device_mapping is a list and it's first item will be used to system disk and other items are used to data disks.
         /// </summary>
         [Input("ossObject")]
         public Input<string>? OssObject { get; set; }

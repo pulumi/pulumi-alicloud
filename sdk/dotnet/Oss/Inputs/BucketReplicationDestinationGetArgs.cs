@@ -23,6 +23,8 @@ namespace Pulumi.AliCloud.Oss.Inputs
 
         /// <summary>
         /// The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
+        /// 
+        /// `NOTE`: You can set transfer_type to oss_acc only when you create cross-region replication (CRR) rules.
         /// </summary>
         [Input("transferType")]
         public Input<string>? TransferType { get; set; }

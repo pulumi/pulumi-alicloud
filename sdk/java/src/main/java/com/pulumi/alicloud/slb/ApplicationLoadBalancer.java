@@ -229,9 +229,17 @@ public class ApplicationLoadBalancer extends com.pulumi.resources.CustomResource
     public Output<String> paymentType() {
         return this.paymentType;
     }
+    /**
+     * The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. This attribute is only used to create `Subscription` instance or modify the `PayAsYouGo` instance to `Subscription`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+     * 
+     */
     @Export(name="period", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> period;
 
+    /**
+     * @return The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. This attribute is only used to create `Subscription` instance or modify the `PayAsYouGo` instance to `Subscription`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+     * 
+     */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }

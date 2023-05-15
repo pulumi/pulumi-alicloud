@@ -175,12 +175,16 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     /**
      * A mapping of tags to assign to the resource.
      * 
+     * &gt; **NOTE:** The member name must be unique within the resource directory.
+     * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
      * @return A mapping of tags to assign to the resource.
+     * 
+     * &gt; **NOTE:** The member name must be unique within the resource directory.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -466,6 +470,8 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tags A mapping of tags to assign to the resource.
          * 
+         * &gt; **NOTE:** The member name must be unique within the resource directory.
+         * 
          * @return builder
          * 
          */
@@ -476,6 +482,8 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags A mapping of tags to assign to the resource.
+         * 
+         * &gt; **NOTE:** The member name must be unique within the resource directory.
          * 
          * @return builder
          * 

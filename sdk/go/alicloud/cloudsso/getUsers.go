@@ -96,7 +96,8 @@ type GetUsersArgs struct {
 	// A list of User IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by User name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// ProvisionType.
 	ProvisionType *string `pulumi:"provisionType"`
@@ -141,7 +142,8 @@ type GetUsersOutputArgs struct {
 	// A list of User IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by User name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// ProvisionType.
 	ProvisionType pulumi.StringPtrInput `pulumi:"provisionType"`

@@ -179,6 +179,7 @@ def get_products(category_id: Optional[str] = None,
     :param str category_id: The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
     :param Sequence[str] ids: A list of product code.
     :param str name_regex: A regex string to apply to the product name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_type: The type of products, Valid values: `APP`, `SERVICE`, `MIRROR`, `DOWNLOAD` and `API_SERVICE`.
     :param str search_term: Search term in this query.
     :param str sort: This field determines how to sort the filtered results, Valid values: `user_count-desc`, `created_on-desc`, `price-desc` and `score-desc`.
@@ -236,6 +237,7 @@ def get_products_output(category_id: Optional[pulumi.Input[Optional[str]]] = Non
     :param str category_id: The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
     :param Sequence[str] ids: A list of product code.
     :param str name_regex: A regex string to apply to the product name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_type: The type of products, Valid values: `APP`, `SERVICE`, `MIRROR`, `DOWNLOAD` and `API_SERVICE`.
     :param str search_term: Search term in this query.
     :param str sort: This field determines how to sort the filtered results, Valid values: `user_count-desc`, `created_on-desc`, `price-desc` and `score-desc`.

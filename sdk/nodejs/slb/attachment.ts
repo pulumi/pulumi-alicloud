@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > **DEPRECATED:** This resource has been deprecated from v1.153.0 and using alicloudBackendServer instead.
+ *
+ * Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
+ *
  * ## Example Usage
  *
  * ```typescript

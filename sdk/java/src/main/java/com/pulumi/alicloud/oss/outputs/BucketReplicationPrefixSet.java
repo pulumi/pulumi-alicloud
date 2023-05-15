@@ -13,12 +13,16 @@ public final class BucketReplicationPrefixSet {
     /**
      * @return The list of object key name prefix identifying one or more objects to which the rule applies.
      * 
+     * `NOTE`: The prefix must be less than or equal to 1024 characters in length.
+     * 
      */
     private List<String> prefixes;
 
     private BucketReplicationPrefixSet() {}
     /**
      * @return The list of object key name prefix identifying one or more objects to which the rule applies.
+     * 
+     * `NOTE`: The prefix must be less than or equal to 1024 characters in length.
      * 
      */
     public List<String> prefixes() {

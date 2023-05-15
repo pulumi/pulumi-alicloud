@@ -62,7 +62,8 @@ type GetDesktopTypesArgs struct {
 	// The Specification family.
 	InstanceTypeFamily *string `pulumi:"instanceTypeFamily"`
 	// The Memory size. Unit: MiB.
-	MemorySize *int    `pulumi:"memorySize"`
+	MemorySize *int `pulumi:"memorySize"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
@@ -106,7 +107,8 @@ type GetDesktopTypesOutputArgs struct {
 	// The Specification family.
 	InstanceTypeFamily pulumi.StringPtrInput `pulumi:"instanceTypeFamily"`
 	// The Memory size. Unit: MiB.
-	MemorySize pulumi.IntPtrInput    `pulumi:"memorySize"`
+	MemorySize pulumi.IntPtrInput `pulumi:"memorySize"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the resource.
 	Status pulumi.StringPtrInput `pulumi:"status"`

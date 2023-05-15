@@ -100,6 +100,8 @@ type RouteService struct {
 	// The region of the cloud service.
 	HostRegionId pulumi.StringOutput `pulumi:"hostRegionId"`
 	// The VPC associated with the cloud service.
+	//
+	// > **NOTE:** The values of `hostRegionId` and `accessRegionId` must be consistent.
 	HostVpcId pulumi.StringOutput `pulumi:"hostVpcId"`
 	// The status of the cloud service.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -160,6 +162,8 @@ type routeServiceState struct {
 	// The region of the cloud service.
 	HostRegionId *string `pulumi:"hostRegionId"`
 	// The VPC associated with the cloud service.
+	//
+	// > **NOTE:** The values of `hostRegionId` and `accessRegionId` must be consistent.
 	HostVpcId *string `pulumi:"hostVpcId"`
 	// The status of the cloud service.
 	Status *string `pulumi:"status"`
@@ -177,6 +181,8 @@ type RouteServiceState struct {
 	// The region of the cloud service.
 	HostRegionId pulumi.StringPtrInput
 	// The VPC associated with the cloud service.
+	//
+	// > **NOTE:** The values of `hostRegionId` and `accessRegionId` must be consistent.
 	HostVpcId pulumi.StringPtrInput
 	// The status of the cloud service.
 	Status pulumi.StringPtrInput
@@ -198,6 +204,8 @@ type routeServiceArgs struct {
 	// The region of the cloud service.
 	HostRegionId string `pulumi:"hostRegionId"`
 	// The VPC associated with the cloud service.
+	//
+	// > **NOTE:** The values of `hostRegionId` and `accessRegionId` must be consistent.
 	HostVpcId string `pulumi:"hostVpcId"`
 }
 
@@ -214,6 +222,8 @@ type RouteServiceArgs struct {
 	// The region of the cloud service.
 	HostRegionId pulumi.StringInput
 	// The VPC associated with the cloud service.
+	//
+	// > **NOTE:** The values of `hostRegionId` and `accessRegionId` must be consistent.
 	HostVpcId pulumi.StringInput
 }
 
@@ -330,6 +340,8 @@ func (o RouteServiceOutput) HostRegionId() pulumi.StringOutput {
 }
 
 // The VPC associated with the cloud service.
+//
+// > **NOTE:** The values of `hostRegionId` and `accessRegionId` must be consistent.
 func (o RouteServiceOutput) HostVpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteService) pulumi.StringOutput { return v.HostVpcId }).(pulumi.StringOutput)
 }

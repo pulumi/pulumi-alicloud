@@ -326,6 +326,8 @@ type CustomDomainRouteConfig struct {
 	// The name of the Function Compute function that requests are routed to.
 	FunctionName string `pulumi:"functionName"`
 	// The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+	//
+	// **cert_config** includes the following arguments:
 	Methods []string `pulumi:"methods"`
 	// The path that requests are routed from.
 	Path string `pulumi:"path"`
@@ -349,6 +351,8 @@ type CustomDomainRouteConfigArgs struct {
 	// The name of the Function Compute function that requests are routed to.
 	FunctionName pulumi.StringInput `pulumi:"functionName"`
 	// The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+	//
+	// **cert_config** includes the following arguments:
 	Methods pulumi.StringArrayInput `pulumi:"methods"`
 	// The path that requests are routed from.
 	Path pulumi.StringInput `pulumi:"path"`
@@ -414,6 +418,8 @@ func (o CustomDomainRouteConfigOutput) FunctionName() pulumi.StringOutput {
 }
 
 // The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
+//
+// **cert_config** includes the following arguments:
 func (o CustomDomainRouteConfigOutput) Methods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CustomDomainRouteConfig) []string { return v.Methods }).(pulumi.StringArrayOutput)
 }

@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ActionTrail
 {
     /// <summary>
+    /// &gt; **DEPRECATED:**  This resource has been renamed to alicloud.actiontrail.Trail from version 1.95.0.
+    /// 
+    /// Provides a new resource to manage [Action Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
+    /// 
+    /// &gt; **NOTE:** Available in 1.35.0+
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -91,6 +97,8 @@ namespace Pulumi.AliCloud.ActionTrail
 
         /// <summary>
         /// The unique ARN of the Log Service role.
+        /// 
+        /// &gt; **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
         /// </summary>
         [Output("slsWriteRoleArn")]
         public Output<string> SlsWriteRoleArn { get; private set; } = null!;
@@ -197,6 +205,8 @@ namespace Pulumi.AliCloud.ActionTrail
 
         /// <summary>
         /// The unique ARN of the Log Service role.
+        /// 
+        /// &gt; **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
         /// </summary>
         [Input("slsWriteRoleArn")]
         public Input<string>? SlsWriteRoleArn { get; set; }
@@ -265,6 +275,8 @@ namespace Pulumi.AliCloud.ActionTrail
 
         /// <summary>
         /// The unique ARN of the Log Service role.
+        /// 
+        /// &gt; **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
         /// </summary>
         [Input("slsWriteRoleArn")]
         public Input<string>? SlsWriteRoleArn { get; set; }

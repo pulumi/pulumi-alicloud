@@ -57,7 +57,8 @@ type GetApplicationsArgs struct {
 	// An ids string to filter results by the application id.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by the application name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -93,7 +94,8 @@ type GetApplicationsOutputArgs struct {
 	// An ids string to filter results by the application id.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by the application name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

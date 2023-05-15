@@ -141,6 +141,8 @@ type RdsAccount struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The attribute has been deprecated from 1.120.0 and using `accountType` instead.
 	//
+	// > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
+	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -223,6 +225,8 @@ type rdsAccountState struct {
 	Status *string `pulumi:"status"`
 	// The attribute has been deprecated from 1.120.0 and using `accountType` instead.
 	//
+	// > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
+	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type *string `pulumi:"type"`
 }
@@ -265,6 +269,8 @@ type RdsAccountState struct {
 	// The status of the resource. Valid values: `Available`, `Unavailable`.
 	Status pulumi.StringPtrInput
 	// The attribute has been deprecated from 1.120.0 and using `accountType` instead.
+	//
+	// > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
 	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type pulumi.StringPtrInput
@@ -311,6 +317,8 @@ type rdsAccountArgs struct {
 	ResetPermissionFlag *bool `pulumi:"resetPermissionFlag"`
 	// The attribute has been deprecated from 1.120.0 and using `accountType` instead.
 	//
+	// > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
+	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type *string `pulumi:"type"`
 }
@@ -352,6 +360,8 @@ type RdsAccountArgs struct {
 	// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
 	ResetPermissionFlag pulumi.BoolPtrInput
 	// The attribute has been deprecated from 1.120.0 and using `accountType` instead.
+	//
+	// > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
 	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type pulumi.StringPtrInput
@@ -520,6 +530,8 @@ func (o RdsAccountOutput) Status() pulumi.StringOutput {
 }
 
 // The attribute has been deprecated from 1.120.0 and using `accountType` instead.
+//
+// > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
 //
 // Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 func (o RdsAccountOutput) Type() pulumi.StringOutput {

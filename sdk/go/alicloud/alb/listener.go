@@ -30,6 +30,8 @@ type Listener struct {
 	pulumi.CustomResourceState
 
 	// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+	//
+	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 	AccessLogRecordCustomizedHeadersEnabled pulumi.BoolOutput `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
 	// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
 	AccessLogTracingConfig ListenerAccessLogTracingConfigPtrOutput `pulumi:"accessLogTracingConfig"`
@@ -46,6 +48,8 @@ type Listener struct {
 	// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
 	GzipEnabled pulumi.BoolOutput `pulumi:"gzipEnabled"`
 	// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+	//
+	// > **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 	Http2Enabled pulumi.BoolOutput `pulumi:"http2Enabled"`
 	// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
 	IdleTimeout pulumi.IntOutput `pulumi:"idleTimeout"`
@@ -62,6 +66,8 @@ type Listener struct {
 	// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout pulumi.IntOutput `pulumi:"requestTimeout"`
 	// Security Policy.
+	//
+	// > **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -108,6 +114,8 @@ func GetListener(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Listener resources.
 type listenerState struct {
 	// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+	//
+	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 	AccessLogRecordCustomizedHeadersEnabled *bool `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
 	// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
 	AccessLogTracingConfig *ListenerAccessLogTracingConfig `pulumi:"accessLogTracingConfig"`
@@ -124,6 +132,8 @@ type listenerState struct {
 	// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
 	GzipEnabled *bool `pulumi:"gzipEnabled"`
 	// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+	//
+	// > **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 	Http2Enabled *bool `pulumi:"http2Enabled"`
 	// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
 	IdleTimeout *int `pulumi:"idleTimeout"`
@@ -140,6 +150,8 @@ type listenerState struct {
 	// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout *int `pulumi:"requestTimeout"`
 	// Security Policy.
+	//
+	// > **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status *string `pulumi:"status"`
@@ -149,6 +161,8 @@ type listenerState struct {
 
 type ListenerState struct {
 	// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+	//
+	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 	AccessLogRecordCustomizedHeadersEnabled pulumi.BoolPtrInput
 	// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
 	AccessLogTracingConfig ListenerAccessLogTracingConfigPtrInput
@@ -165,6 +179,8 @@ type ListenerState struct {
 	// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
 	GzipEnabled pulumi.BoolPtrInput
 	// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+	//
+	// > **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 	Http2Enabled pulumi.BoolPtrInput
 	// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
 	IdleTimeout pulumi.IntPtrInput
@@ -181,6 +197,8 @@ type ListenerState struct {
 	// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout pulumi.IntPtrInput
 	// Security Policy.
+	//
+	// > **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 	SecurityPolicyId pulumi.StringPtrInput
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status pulumi.StringPtrInput
@@ -194,6 +212,8 @@ func (ListenerState) ElementType() reflect.Type {
 
 type listenerArgs struct {
 	// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+	//
+	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 	AccessLogRecordCustomizedHeadersEnabled *bool `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
 	// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
 	AccessLogTracingConfig *ListenerAccessLogTracingConfig `pulumi:"accessLogTracingConfig"`
@@ -210,6 +230,8 @@ type listenerArgs struct {
 	// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
 	GzipEnabled *bool `pulumi:"gzipEnabled"`
 	// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+	//
+	// > **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 	Http2Enabled *bool `pulumi:"http2Enabled"`
 	// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
 	IdleTimeout *int `pulumi:"idleTimeout"`
@@ -226,6 +248,8 @@ type listenerArgs struct {
 	// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout *int `pulumi:"requestTimeout"`
 	// Security Policy.
+	//
+	// > **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status *string `pulumi:"status"`
@@ -236,6 +260,8 @@ type listenerArgs struct {
 // The set of arguments for constructing a Listener resource.
 type ListenerArgs struct {
 	// Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+	//
+	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 	AccessLogRecordCustomizedHeadersEnabled pulumi.BoolPtrInput
 	// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
 	AccessLogTracingConfig ListenerAccessLogTracingConfigPtrInput
@@ -252,6 +278,8 @@ type ListenerArgs struct {
 	// Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid values: `false`, `true`. Default Value: `true`. .
 	GzipEnabled pulumi.BoolPtrInput
 	// Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+	//
+	// > **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 	Http2Enabled pulumi.BoolPtrInput
 	// Specify the Connection Idle Timeout Value: `1` to `60`. Unit: Seconds.
 	IdleTimeout pulumi.IntPtrInput
@@ -268,6 +296,8 @@ type ListenerArgs struct {
 	// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout pulumi.IntPtrInput
 	// Security Policy.
+	//
+	// > **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 	SecurityPolicyId pulumi.StringPtrInput
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status pulumi.StringPtrInput
@@ -363,6 +393,8 @@ func (o ListenerOutput) ToListenerOutputWithContext(ctx context.Context) Listene
 }
 
 // Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+//
+// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 func (o ListenerOutput) AccessLogRecordCustomizedHeadersEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Listener) pulumi.BoolOutput { return v.AccessLogRecordCustomizedHeadersEnabled }).(pulumi.BoolOutput)
 }
@@ -400,6 +432,8 @@ func (o ListenerOutput) GzipEnabled() pulumi.BoolOutput {
 }
 
 // Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+//
+// > **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 func (o ListenerOutput) Http2Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Listener) pulumi.BoolOutput { return v.Http2Enabled }).(pulumi.BoolOutput)
 }
@@ -440,6 +474,8 @@ func (o ListenerOutput) RequestTimeout() pulumi.IntOutput {
 }
 
 // Security Policy.
+//
+// > **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 func (o ListenerOutput) SecurityPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.SecurityPolicyId }).(pulumi.StringOutput)
 }

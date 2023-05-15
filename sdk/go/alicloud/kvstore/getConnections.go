@@ -25,7 +25,8 @@ func GetConnections(ctx *pulumi.Context, args *GetConnectionsArgs, opts ...pulum
 // A collection of arguments for invoking getConnections.
 type GetConnectionsArgs struct {
 	// A list of KVStore DBInstance ids, only support one item.
-	Ids        string  `pulumi:"ids"`
+	Ids string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -56,7 +57,8 @@ func GetConnectionsOutput(ctx *pulumi.Context, args GetConnectionsOutputArgs, op
 // A collection of arguments for invoking getConnections.
 type GetConnectionsOutputArgs struct {
 	// A list of KVStore DBInstance ids, only support one item.
-	Ids        pulumi.StringInput    `pulumi:"ids"`
+	Ids pulumi.StringInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

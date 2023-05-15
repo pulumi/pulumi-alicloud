@@ -10,6 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
+//
+// > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
+//
 // ## Example Usage
 //
 // ```go
@@ -50,6 +54,7 @@ func GetTopicSubscriptions(ctx *pulumi.Context, args *GetTopicSubscriptionsArgs,
 type GetTopicSubscriptionsArgs struct {
 	// A string to filter resulting subscriptions of the topic by their name prefixs.
 	NamePrefix *string `pulumi:"namePrefix"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
 	TopicName string `pulumi:"topicName"`
@@ -86,6 +91,7 @@ func GetTopicSubscriptionsOutput(ctx *pulumi.Context, args GetTopicSubscriptions
 type GetTopicSubscriptionsOutputArgs struct {
 	// A string to filter resulting subscriptions of the topic by their name prefixs.
 	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
 	TopicName pulumi.StringInput `pulumi:"topicName"`

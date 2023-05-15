@@ -42,6 +42,8 @@ export interface GetServiceArgs {
     enable?: string;
     /**
      * The user password. The password must be 8 to 32 characters in length, and must contain at least two of the following character types: letters, special characters, and digits.
+     *
+     * > **NOTE:** Setting `enable = "On"` to open the Container Registry (CR) service that means you have read and agreed the [Container Registry (CR) Terms of Service](https://help.aliyun.com/document_detail/190602.html). The service can not closed once it is opened.
      */
     password: string;
 }
@@ -94,6 +96,8 @@ export interface GetServiceOutputArgs {
     enable?: pulumi.Input<string>;
     /**
      * The user password. The password must be 8 to 32 characters in length, and must contain at least two of the following character types: letters, special characters, and digits.
+     *
+     * > **NOTE:** Setting `enable = "On"` to open the Container Registry (CR) service that means you have read and agreed the [Container Registry (CR) Terms of Service](https://help.aliyun.com/document_detail/190602.html). The service can not closed once it is opened.
      */
     password: pulumi.Input<string>;
 }

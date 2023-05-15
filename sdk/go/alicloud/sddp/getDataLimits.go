@@ -52,8 +52,9 @@ func GetDataLimits(ctx *pulumi.Context, args *GetDataLimitsArgs, opts ...pulumi.
 // A collection of arguments for invoking getDataLimits.
 type GetDataLimitsArgs struct {
 	// A list of Data Limit IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the data asset.
 	ParentId *string `pulumi:"parentId"`
 	// The type of the service to which the data asset belongs.
@@ -87,8 +88,9 @@ func GetDataLimitsOutput(ctx *pulumi.Context, args GetDataLimitsOutputArgs, opts
 // A collection of arguments for invoking getDataLimits.
 type GetDataLimitsOutputArgs struct {
 	// A list of Data Limit IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the data asset.
 	ParentId pulumi.StringPtrInput `pulumi:"parentId"`
 	// The type of the service to which the data asset belongs.

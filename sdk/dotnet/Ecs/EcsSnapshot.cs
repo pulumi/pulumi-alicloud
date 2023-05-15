@@ -124,6 +124,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A mapping of tags to assign to the snapshot.
+        /// 
+        /// &gt; **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -239,6 +241,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A mapping of tags to assign to the snapshot.
+        /// 
+        /// &gt; **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -325,6 +329,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A mapping of tags to assign to the snapshot.
+        /// 
+        /// &gt; **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
         /// </summary>
         public InputMap<object> Tags
         {

@@ -408,6 +408,9 @@ class GetZonesZoneResult(dict):
         :param Sequence[str] available_instance_types: Allowed instance types.
         :param Sequence[str] available_resource_creations: Filter the results by a specific resource type.
                Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
+               
+               > **NOTE:** From version 1.134.0, the `available_resource_creation` value "Rds" has been deprecated.
+               If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
         :param str id: ID of the zone.
         :param str local_name: Name of the zone in the local language.
         :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
@@ -443,6 +446,9 @@ class GetZonesZoneResult(dict):
         """
         Filter the results by a specific resource type.
         Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
+
+        > **NOTE:** From version 1.134.0, the `available_resource_creation` value "Rds" has been deprecated.
+        If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
         """
         return pulumi.get(self, "available_resource_creations")
 

@@ -148,6 +148,7 @@ def get_transit_router_multicast_domain_peer_members(ids: Optional[Sequence[str]
 
 
     :param Sequence[str] ids: A list of Cen Transit Router Multicast Domain Peer Member IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] peer_transit_router_multicast_domains: The IDs of the inter-region multicast domains.
     :param str resource_id: The ID of the resource associated with the multicast resource.
     :param str resource_type: The type of the multicast resource. Valid values:
@@ -205,6 +206,7 @@ def get_transit_router_multicast_domain_peer_members_output(ids: Optional[pulumi
 
 
     :param Sequence[str] ids: A list of Cen Transit Router Multicast Domain Peer Member IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] peer_transit_router_multicast_domains: The IDs of the inter-region multicast domains.
     :param str resource_id: The ID of the resource associated with the multicast resource.
     :param str resource_type: The type of the multicast resource. Valid values:

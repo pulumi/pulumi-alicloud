@@ -115,6 +115,7 @@ def get_ddos_coo_domain_resources(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Domain Resource IDs.
     :param Sequence[str] instance_ids: A list ID of instance that you want to associate.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str query_domain_pattern: Match the pattern.
     """
     __args__ = dict()
@@ -160,6 +161,7 @@ def get_ddos_coo_domain_resources_output(ids: Optional[pulumi.Input[Optional[Seq
 
     :param Sequence[str] ids: A list of Domain Resource IDs.
     :param Sequence[str] instance_ids: A list ID of instance that you want to associate.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str query_domain_pattern: Match the pattern.
     """
     ...

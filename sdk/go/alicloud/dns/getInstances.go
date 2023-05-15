@@ -10,6 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:**  This resource has been renamed to dns.getAlidnsInstances from version 1.95.0.
+//
+// This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
+//
+// > **NOTE:**  Available in 1.84.0+.
+//
 // ## Example Usage
 //
 // ```go
@@ -51,10 +57,11 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 type GetInstancesArgs struct {
 	DomainType *string `pulumi:"domainType"`
 	// A list of instance IDs.
-	Ids          []string `pulumi:"ids"`
-	Lang         *string  `pulumi:"lang"`
-	OutputFile   *string  `pulumi:"outputFile"`
-	UserClientIp *string  `pulumi:"userClientIp"`
+	Ids  []string `pulumi:"ids"`
+	Lang *string  `pulumi:"lang"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile   *string `pulumi:"outputFile"`
+	UserClientIp *string `pulumi:"userClientIp"`
 }
 
 // A collection of values returned by getInstances.
@@ -88,10 +95,11 @@ func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts .
 type GetInstancesOutputArgs struct {
 	DomainType pulumi.StringPtrInput `pulumi:"domainType"`
 	// A list of instance IDs.
-	Ids          pulumi.StringArrayInput `pulumi:"ids"`
-	Lang         pulumi.StringPtrInput   `pulumi:"lang"`
-	OutputFile   pulumi.StringPtrInput   `pulumi:"outputFile"`
-	UserClientIp pulumi.StringPtrInput   `pulumi:"userClientIp"`
+	Ids  pulumi.StringArrayInput `pulumi:"ids"`
+	Lang pulumi.StringPtrInput   `pulumi:"lang"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile   pulumi.StringPtrInput `pulumi:"outputFile"`
+	UserClientIp pulumi.StringPtrInput `pulumi:"userClientIp"`
 }
 
 func (GetInstancesOutputArgs) ElementType() reflect.Type {

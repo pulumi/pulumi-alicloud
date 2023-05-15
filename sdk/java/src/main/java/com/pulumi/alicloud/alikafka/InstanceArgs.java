@@ -210,12 +210,32 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The zones among which you want to deploy the instance.
      * 
+     * &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
+     * 
+     * | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+     * |------|-------------|:----:|:-----:|
+     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
+     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
+     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
+     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
+     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+     * 
      */
     @Import(name="selectedZones")
     private @Nullable Output<List<String>> selectedZones;
 
     /**
      * @return The zones among which you want to deploy the instance.
+     * 
+     * &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
+     * 
+     * | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+     * |------|-------------|:----:|:-----:|
+     * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
+     * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
+     * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
+     * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
+     * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
      * 
      */
     public Optional<Output<List<String>>> selectedZones() {
@@ -643,6 +663,16 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param selectedZones The zones among which you want to deploy the instance.
          * 
+         * &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
+         * 
+         * | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+         * |------|-------------|:----:|:-----:|
+         * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
+         * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
+         * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
+         * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
+         * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+         * 
          * @return builder
          * 
          */
@@ -654,6 +684,16 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param selectedZones The zones among which you want to deploy the instance.
          * 
+         * &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
+         * 
+         * | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+         * |------|-------------|:----:|:-----:|
+         * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
+         * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
+         * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
+         * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
+         * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
+         * 
          * @return builder
          * 
          */
@@ -663,6 +703,16 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param selectedZones The zones among which you want to deploy the instance.
+         * 
+         * &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
+         * 
+         * | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+         * |------|-------------|:----:|:-----:|
+         * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
+         * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
+         * |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
+         * |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
+         * |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
          * 
          * @return builder
          * 

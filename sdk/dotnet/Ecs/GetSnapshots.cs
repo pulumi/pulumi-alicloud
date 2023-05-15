@@ -12,6 +12,14 @@ namespace Pulumi.AliCloud.Ecs
     public static class GetSnapshots
     {
         /// <summary>
+        /// &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsSnapshots from version 1.120.0.
+        /// 
+        /// Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
+        /// 
+        /// For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+        /// 
+        /// &gt; **NOTE:**  Available in 1.40.0+.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -70,6 +78,14 @@ namespace Pulumi.AliCloud.Ecs
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotsResult>("alicloud:ecs/getSnapshots:getSnapshots", args ?? new GetSnapshotsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **DEPRECATED:** This datasource has been renamed to alicloud.ecs.getEcsSnapshots from version 1.120.0.
+        /// 
+        /// Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
+        /// 
+        /// For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+        /// 
+        /// &gt; **NOTE:**  Available in 1.40.0+.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

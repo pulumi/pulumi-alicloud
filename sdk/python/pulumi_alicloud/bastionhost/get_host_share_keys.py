@@ -143,6 +143,7 @@ def get_host_share_keys(enable_details: Optional[bool] = None,
     :param Sequence[str] ids: A list of Host Share Key IDs.
     :param str instance_id: The ID of the Bastion instance.
     :param str name_regex: A regex string to filter results by Host Share Key name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -200,5 +201,6 @@ def get_host_share_keys_output(enable_details: Optional[pulumi.Input[Optional[bo
     :param Sequence[str] ids: A list of Host Share Key IDs.
     :param str instance_id: The ID of the Bastion instance.
     :param str name_regex: A regex string to filter results by Host Share Key name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

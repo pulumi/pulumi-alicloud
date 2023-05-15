@@ -65,8 +65,9 @@ type GetRouteMapsArgs struct {
 	// A regex string to filter CEN route map by description.
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
 	// A list of CEN route map IDs. Each item formats as `<cen_id>:<route_map_id>`.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The status of the route map, including `Creating`, `Active` and `Deleting`.
 	Status *string `pulumi:"status"`
 	// The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
@@ -115,8 +116,9 @@ type GetRouteMapsOutputArgs struct {
 	// A regex string to filter CEN route map by description.
 	DescriptionRegex pulumi.StringPtrInput `pulumi:"descriptionRegex"`
 	// A list of CEN route map IDs. Each item formats as `<cen_id>:<route_map_id>`.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the route map, including `Creating`, `Active` and `Deleting`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The direction in which the route map is applied, including `RegionIn` and `RegionOut`.

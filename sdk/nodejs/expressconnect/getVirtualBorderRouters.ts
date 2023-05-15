@@ -72,6 +72,9 @@ export interface GetVirtualBorderRoutersArgs {
      * A regex string to filter results by Virtual Border Router name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The VBR state.
@@ -152,6 +155,9 @@ export interface GetVirtualBorderRoutersOutputArgs {
      * A regex string to filter results by Virtual Border Router name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The VBR state.

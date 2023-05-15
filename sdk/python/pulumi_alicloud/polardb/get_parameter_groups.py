@@ -138,6 +138,7 @@ def get_parameter_groups(db_type: Optional[str] = None,
     :param str db_version: The version number of the database engine.
     :param Sequence[str] ids: A list of Parameter Group IDs.
     :param str name_regex: A regex string to filter results by Parameter Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['dbType'] = db_type
@@ -190,5 +191,6 @@ def get_parameter_groups_output(db_type: Optional[pulumi.Input[Optional[str]]] =
     :param str db_version: The version number of the database engine.
     :param Sequence[str] ids: A list of Parameter Group IDs.
     :param str name_regex: A regex string to filter results by Parameter Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

@@ -60,9 +60,17 @@ public final class GetDataCentersPlainArgs extends com.pulumi.resources.InvokeAr
         return Optional.ofNullable(this.nameRegex);
     }
 
+    /**
+     * The name of file that can save the collection of data centers after running `pulumi preview`.
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable String outputFile;
 
+    /**
+     * @return The name of file that can save the collection of data centers after running `pulumi preview`.
+     * 
+     */
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -137,6 +145,12 @@ public final class GetDataCentersPlainArgs extends com.pulumi.resources.InvokeAr
             return this;
         }
 
+        /**
+         * @param outputFile The name of file that can save the collection of data centers after running `pulumi preview`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
             return this;

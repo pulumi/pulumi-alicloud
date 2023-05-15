@@ -378,7 +378,7 @@ class GetInstancesInstanceResult(dict):
         :param str db_instance_name: The name of the instance.
         :param str destroy_time: The time when the instance was destroyed.
         :param str end_time: Expiration time. Pay-As-You-Go instances are never expire.
-        :param str engine_version: The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+        :param str engine_version: The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
         :param str expire_time: It has been deprecated from provider version 1.101.0 and `end_time` instead.
         :param bool has_renew_change_order: Indicates whether there was an order of renewal with configuration change that had not taken effect.
         :param str id: The ID of the instance.
@@ -587,7 +587,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> str:
         """
-        The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+        The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
         """
         return pulumi.get(self, "engine_version")
 

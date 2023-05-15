@@ -79,6 +79,8 @@ namespace Pulumi.AliCloud.Rds
     {
         /// <summary>
         /// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+        /// 
+        /// &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         /// </summary>
         [Output("babelfishPort")]
         public Output<string> BabelfishPort { get; private set; } = null!;
@@ -161,6 +163,8 @@ namespace Pulumi.AliCloud.Rds
     {
         /// <summary>
         /// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+        /// 
+        /// &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         /// </summary>
         [Input("babelfishPort")]
         public Input<string>? BabelfishPort { get; set; }
@@ -193,6 +197,8 @@ namespace Pulumi.AliCloud.Rds
     {
         /// <summary>
         /// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+        /// 
+        /// &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         /// </summary>
         [Input("babelfishPort")]
         public Input<string>? BabelfishPort { get; set; }

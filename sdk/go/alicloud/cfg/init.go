@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Delivery{}
 	case "alicloud:cfg/deliveryChannel:DeliveryChannel":
 		r = &DeliveryChannel{}
+	case "alicloud:cfg/remediation:Remediation":
+		r = &Remediation{}
 	case "alicloud:cfg/rule:Rule":
 		r = &Rule{}
 	default:
@@ -90,6 +92,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cfg/deliveryChannel",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cfg/remediation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

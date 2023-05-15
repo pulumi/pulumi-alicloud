@@ -19,6 +19,8 @@ public final class PolicyVersionState extends com.pulumi.resources.ResourceArgs 
     /**
      * Specifies whether to set the policy version as the default version. Default to `false`.
      * 
+     * &gt; **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
+     * 
      * @deprecated
      * Field &#39;is_default_version&#39; has been deprecated from provider version 1.90.0
      * 
@@ -29,6 +31,8 @@ public final class PolicyVersionState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Specifies whether to set the policy version as the default version. Default to `false`.
+     * 
+     * &gt; **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
      * 
      * @deprecated
      * Field &#39;is_default_version&#39; has been deprecated from provider version 1.90.0
@@ -98,6 +102,8 @@ public final class PolicyVersionState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param isDefaultVersion Specifies whether to set the policy version as the default version. Default to `false`.
          * 
+         * &gt; **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -112,6 +118,8 @@ public final class PolicyVersionState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param isDefaultVersion Specifies whether to set the policy version as the default version. Default to `false`.
+         * 
+         * &gt; **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
          * 
          * @return builder
          * 

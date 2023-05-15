@@ -262,12 +262,18 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
     /**
      * Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
      * 
+     * Either `source` or `content` must be provided to specify the bucket content.
+     * These two arguments are mutually-exclusive.
+     * 
      */
     @Export(name="kmsKeyId", type=String.class, parameters={})
     private Output</* @Nullable */ String> kmsKeyId;
 
     /**
      * @return Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
+     * 
+     * Either `source` or `content` must be provided to specify the bucket content.
+     * These two arguments are mutually-exclusive.
      * 
      */
     public Output<Optional<String>> kmsKeyId() {

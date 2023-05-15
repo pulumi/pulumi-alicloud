@@ -129,6 +129,7 @@ def get_domain_txt_guid(domain_name: Optional[str] = None,
 
     :param str domain_name: Verified domain name.
     :param str lang: User language.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str type: Txt verification function. Value:`ADD_SUB_DOMAIN`, `RETRIEVAL`.
     """
     __args__ = dict()
@@ -175,6 +176,7 @@ def get_domain_txt_guid_output(domain_name: Optional[pulumi.Input[str]] = None,
 
     :param str domain_name: Verified domain name.
     :param str lang: User language.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str type: Txt verification function. Value:`ADD_SUB_DOMAIN`, `RETRIEVAL`.
     """
     ...

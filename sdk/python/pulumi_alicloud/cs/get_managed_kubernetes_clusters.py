@@ -146,6 +146,7 @@ def get_managed_kubernetes_clusters(enable_details: Optional[bool] = None,
     :param Sequence[str] ids: Cluster IDs to filter.
     :param str kube_config_file_prefix: The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
     :param str name_regex: A regex string to filter results by cluster name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -197,5 +198,6 @@ def get_managed_kubernetes_clusters_output(enable_details: Optional[pulumi.Input
     :param Sequence[str] ids: Cluster IDs to filter.
     :param str kube_config_file_prefix: The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
     :param str name_regex: A regex string to filter results by cluster name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

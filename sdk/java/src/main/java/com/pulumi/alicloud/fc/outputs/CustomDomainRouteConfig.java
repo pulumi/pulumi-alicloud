@@ -20,6 +20,8 @@ public final class CustomDomainRouteConfig {
     /**
      * @return The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, &#34;GET, HEAD&#34; methods indicate that only requests from GET and HEAD methods are routed.
      * 
+     * **cert_config** includes the following arguments:
+     * 
      */
     private @Nullable List<String> methods;
     /**
@@ -44,6 +46,8 @@ public final class CustomDomainRouteConfig {
     }
     /**
      * @return The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, &#34;GET, HEAD&#34; methods indicate that only requests from GET and HEAD methods are routed.
+     * 
+     * **cert_config** includes the following arguments:
      * 
      */
     public List<String> methods() {

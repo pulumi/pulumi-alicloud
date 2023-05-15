@@ -38,6 +38,9 @@ export interface GetChartNamespacesArgs {
      * A regex string to filter results by name space name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -81,5 +84,8 @@ export interface GetChartNamespacesOutputArgs {
      * A regex string to filter results by name space name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

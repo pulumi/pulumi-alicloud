@@ -30,6 +30,8 @@ class TopicArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+               
+               > **NOTE:** At least one of `topic_name` and `topic` should be set.
         :param pulumi.Input[str] topic: Replaced by `topic_name` after version 1.97.0.
         :param pulumi.Input[str] topic_name: Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
         """
@@ -107,6 +109,8 @@ class TopicArgs:
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+
+        > **NOTE:** At least one of `topic_name` and `topic` should be set.
         """
         return pulumi.get(self, "tags")
 
@@ -158,6 +162,8 @@ class _TopicState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+               
+               > **NOTE:** At least one of `topic_name` and `topic` should be set.
         :param pulumi.Input[str] topic: Replaced by `topic_name` after version 1.97.0.
         :param pulumi.Input[str] topic_name: Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
         """
@@ -237,6 +243,8 @@ class _TopicState:
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+
+        > **NOTE:** At least one of `topic_name` and `topic` should be set.
         """
         return pulumi.get(self, "tags")
 
@@ -329,6 +337,8 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+               
+               > **NOTE:** At least one of `topic_name` and `topic` should be set.
         :param pulumi.Input[str] topic: Replaced by `topic_name` after version 1.97.0.
         :param pulumi.Input[str] topic_name: Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
         """
@@ -455,6 +465,8 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+               
+               > **NOTE:** At least one of `topic_name` and `topic` should be set.
         :param pulumi.Input[str] topic: Replaced by `topic_name` after version 1.97.0.
         :param pulumi.Input[str] topic_name: Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
         """
@@ -510,6 +522,8 @@ class Topic(pulumi.CustomResource):
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+
+        > **NOTE:** At least one of `topic_name` and `topic` should be set.
         """
         return pulumi.get(self, "tags")
 

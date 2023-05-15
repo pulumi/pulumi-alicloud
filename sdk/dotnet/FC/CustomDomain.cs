@@ -115,6 +115,9 @@ namespace Pulumi.AliCloud.FC
 
         /// <summary>
         /// The configuration of HTTPS certificate.
+        /// 
+        /// 
+        /// **route_config** includes the following arguments:
         /// </summary>
         [Output("certConfig")]
         public Output<Outputs.CustomDomainCertConfig?> CertConfig { get; private set; } = null!;
@@ -197,6 +200,9 @@ namespace Pulumi.AliCloud.FC
     {
         /// <summary>
         /// The configuration of HTTPS certificate.
+        /// 
+        /// 
+        /// **route_config** includes the following arguments:
         /// </summary>
         [Input("certConfig")]
         public Input<Inputs.CustomDomainCertConfigArgs>? CertConfig { get; set; }
@@ -247,6 +253,9 @@ namespace Pulumi.AliCloud.FC
 
         /// <summary>
         /// The configuration of HTTPS certificate.
+        /// 
+        /// 
+        /// **route_config** includes the following arguments:
         /// </summary>
         [Input("certConfig")]
         public Input<Inputs.CustomDomainCertConfigGetArgs>? CertConfig { get; set; }

@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.alicloud.ecs.outputs.GetInstancesInstance;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -21,6 +22,7 @@ public final class GetInstancesResult {
      * 
      */
     private @Nullable String availabilityZone;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -90,6 +92,9 @@ public final class GetInstancesResult {
      */
     public Optional<String> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
+    }
+    public Optional<Boolean> enableDetails() {
+        return Optional.ofNullable(this.enableDetails);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -197,6 +202,7 @@ public final class GetInstancesResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String availabilityZone;
+        private @Nullable Boolean enableDetails;
         private String id;
         private List<String> ids;
         private @Nullable String imageId;
@@ -218,6 +224,7 @@ public final class GetInstancesResult {
         public Builder(GetInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityZone = defaults.availabilityZone;
+    	      this.enableDetails = defaults.enableDetails;
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
     	      this.imageId = defaults.imageId;
@@ -240,6 +247,11 @@ public final class GetInstancesResult {
         @CustomType.Setter
         public Builder availabilityZone(@Nullable String availabilityZone) {
             this.availabilityZone = availabilityZone;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableDetails(@Nullable Boolean enableDetails) {
+            this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
@@ -339,6 +351,7 @@ public final class GetInstancesResult {
         public GetInstancesResult build() {
             final var o = new GetInstancesResult();
             o.availabilityZone = availabilityZone;
+            o.enableDetails = enableDetails;
             o.id = id;
             o.ids = ids;
             o.imageId = imageId;

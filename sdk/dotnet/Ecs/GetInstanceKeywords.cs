@@ -91,6 +91,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("key", required: true)]
         public string Key { get; set; } = null!;
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi up`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -108,6 +111,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi up`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

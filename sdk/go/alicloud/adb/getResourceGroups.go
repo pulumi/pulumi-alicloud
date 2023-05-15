@@ -57,8 +57,9 @@ type GetResourceGroupsArgs struct {
 	// The name of the resource pool, which cannot exceed 64 bytes in length.
 	GroupName *string `pulumi:"groupName"`
 	// A list of AnalyticDB for MySQL (ADB) Resource Group IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getResourceGroups.
@@ -95,8 +96,9 @@ type GetResourceGroupsOutputArgs struct {
 	// The name of the resource pool, which cannot exceed 64 bytes in length.
 	GroupName pulumi.StringPtrInput `pulumi:"groupName"`
 	// A list of AnalyticDB for MySQL (ADB) Resource Group IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetResourceGroupsOutputArgs) ElementType() reflect.Type {

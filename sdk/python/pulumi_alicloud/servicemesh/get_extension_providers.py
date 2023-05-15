@@ -152,6 +152,7 @@ def get_extension_providers(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Service Mesh Extension Provider IDs.
     :param str name_regex: A regex string to filter results by Service Mesh Extension Provider name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str service_mesh_id: The ID of the Service Mesh.
     :param str type: The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
     """
@@ -208,6 +209,7 @@ def get_extension_providers_output(ids: Optional[pulumi.Input[Optional[Sequence[
 
     :param Sequence[str] ids: A list of Service Mesh Extension Provider IDs.
     :param str name_regex: A regex string to filter results by Service Mesh Extension Provider name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str service_mesh_id: The ID of the Service Mesh.
     :param str type: The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
     """

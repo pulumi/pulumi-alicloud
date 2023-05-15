@@ -7,6 +7,70 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Alicloud Function Compute Service resource. The resource is the base of launching Function and Trigger configuration.
+ *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/doc-detail/52895.htm).
+ *
+ * > **NOTE:** The resource requires a provider field 'account_id'. See account_id.
+ *
+ * > **NOTE:** If you happen the error "Argument 'internetAccess' is not supported", you need to log on web console and click button "Apply VPC Function"
+ * which is in the upper of [Function Service Web Console](https://fc.console.aliyun.com/) page.
+ *
+ * > **NOTE:** Currently not all regions support Function Compute Service.
+ * For more details supported regions, see [Service endpoints](https://www.alibabacloud.com/help/doc-detail/52984.htm)
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-testaccalicloudfcservice";
+ * const fooProject = new alicloud.log.Project("fooProject", {});
+ * const fooStore = new alicloud.log.Store("fooStore", {project: fooProject.name});
+ * const role = new alicloud.ram.Role("role", {
+ *     document: `  {
+ *       "Statement": [
+ *         {
+ *           "Action": "sts:AssumeRole",
+ *           "Effect": "Allow",
+ *           "Principal": {
+ *             "Service": [
+ *               "fc.aliyuncs.com"
+ *             ]
+ *           }
+ *         }
+ *       ],
+ *       "Version": "1"
+ *   }
+ * `,
+ *     description: "this is a test",
+ *     force: true,
+ * });
+ * const attach = new alicloud.ram.RolePolicyAttachment("attach", {
+ *     roleName: role.name,
+ *     policyName: "AliyunLogFullAccess",
+ *     policyType: "System",
+ * });
+ * const fooService = new alicloud.fc.Service("fooService", {
+ *     description: "tf unit test",
+ *     role: role.arn,
+ *     logConfig: {
+ *         project: fooProject.name,
+ *         logstore: fooStore.name,
+ *         enableInstanceMetrics: true,
+ *         enableRequestMetrics: true,
+ *     },
+ * }, {
+ *     dependsOn: [attach],
+ * });
+ * ```
+ * ## Module Support
+ *
+ * You can use to the existing fc module to create a service and a function quickly and then set several triggers for it.
+ *
  * ## Import
  *
  * Function Compute Service can be imported using the id or name, e.g.

@@ -88,6 +88,7 @@ def get_connections(ids: Optional[str] = None,
 
 
     :param str ids: A list of KVStore DBInstance ids, only support one item.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -113,5 +114,6 @@ def get_connections_output(ids: Optional[pulumi.Input[str]] = None,
 
 
     :param str ids: A list of KVStore DBInstance ids, only support one item.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

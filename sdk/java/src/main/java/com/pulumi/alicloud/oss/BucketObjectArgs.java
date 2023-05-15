@@ -168,12 +168,18 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
      * 
+     * Either `source` or `content` must be provided to specify the bucket content.
+     * These two arguments are mutually-exclusive.
+     * 
      */
     @Import(name="kmsKeyId")
     private @Nullable Output<String> kmsKeyId;
 
     /**
      * @return Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
+     * 
+     * Either `source` or `content` must be provided to specify the bucket content.
+     * These two arguments are mutually-exclusive.
      * 
      */
     public Optional<Output<String>> kmsKeyId() {
@@ -459,6 +465,9 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param kmsKeyId Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
          * 
+         * Either `source` or `content` must be provided to specify the bucket content.
+         * These two arguments are mutually-exclusive.
+         * 
          * @return builder
          * 
          */
@@ -469,6 +478,9 @@ public final class BucketObjectArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param kmsKeyId Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
+         * 
+         * Either `source` or `content` must be provided to specify the bucket content.
+         * These two arguments are mutually-exclusive.
          * 
          * @return builder
          * 

@@ -189,12 +189,16 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
     /**
      * The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
      * 
+     * &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+     * 
      */
     @Export(name="endpointGroupType", type=String.class, parameters={})
     private Output<String> endpointGroupType;
 
     /**
      * @return The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
+     * 
+     * &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
      * 
      */
     public Output<String> endpointGroupType() {
@@ -203,12 +207,16 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
     /**
      * The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
      * 
+     * &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
+     * 
      */
     @Export(name="endpointRequestProtocol", type=String.class, parameters={})
     private Output</* @Nullable */ String> endpointRequestProtocol;
 
     /**
      * @return The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
+     * 
+     * &gt; **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
      * 
      */
     public Output<Optional<String>> endpointRequestProtocol() {
@@ -301,12 +309,16 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
     /**
      * Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
      * 
+     * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
+     * 
      */
     @Export(name="portOverrides", type=EndpointGroupPortOverrides.class, parameters={})
     private Output</* @Nullable */ EndpointGroupPortOverrides> portOverrides;
 
     /**
      * @return Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+     * 
+     * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      * 
      */
     public Output<Optional<EndpointGroupPortOverrides>> portOverrides() {

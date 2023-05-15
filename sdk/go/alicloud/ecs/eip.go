@@ -10,6 +10,46 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides an elastic IP resource.
+//
+// > **DEPRECATED:**  This resource  has been deprecated from version `1.126.0`. Please use new resource alicloud_eip_address.
+//
+// > **NOTE:** The resource only supports to create `PostPaid PayByTraffic`  or `PrePaid PayByBandwidth` elastic IP for international account. Otherwise, you will happened error `COMMODITY.INVALID_COMPONENT`.
+// Your account is international if you can use it to login in [International Web Console](https://account.alibabacloud.com/login/login.htm).
+//
+// > **NOTE:** From version 1.10.1, this resource supports creating "PrePaid" EIP. In addition, it supports setting EIP name and description.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewEip(ctx, "example", &ecs.EipArgs{
+//				Bandwidth:          pulumi.String("10"),
+//				InternetChargeType: pulumi.String("PayByBandwidth"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Module Support
+//
+// You can use the existing eip module
+// to create several EIP instances and associate them with other resources one-click, like ECS instances, SLB, Nat Gateway and so on.
+//
 // ## Import
 //
 // Elastic IP address can be imported using the id, e.g.
@@ -55,7 +95,9 @@ type Eip struct {
 	Name    pulumi.StringOutput    `pulumi:"name"`
 	Netmode pulumi.StringPtrOutput `pulumi:"netmode"`
 	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
-	PaymentType           pulumi.StringOutput    `pulumi:"paymentType"`
+	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	// **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period                pulumi.IntPtrOutput    `pulumi:"period"`
 	PublicIpAddressPoolId pulumi.StringPtrOutput `pulumi:"publicIpAddressPoolId"`
 	// The Id of resource group which the eip belongs.
@@ -127,7 +169,9 @@ type eipState struct {
 	Name    *string `pulumi:"name"`
 	Netmode *string `pulumi:"netmode"`
 	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
-	PaymentType           *string `pulumi:"paymentType"`
+	PaymentType *string `pulumi:"paymentType"`
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	// **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period                *int    `pulumi:"period"`
 	PublicIpAddressPoolId *string `pulumi:"publicIpAddressPoolId"`
 	// The Id of resource group which the eip belongs.
@@ -171,7 +215,9 @@ type EipState struct {
 	Name    pulumi.StringPtrInput
 	Netmode pulumi.StringPtrInput
 	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
-	PaymentType           pulumi.StringPtrInput
+	PaymentType pulumi.StringPtrInput
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	// **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period                pulumi.IntPtrInput
 	PublicIpAddressPoolId pulumi.StringPtrInput
 	// The Id of resource group which the eip belongs.
@@ -217,7 +263,9 @@ type eipArgs struct {
 	Name    *string `pulumi:"name"`
 	Netmode *string `pulumi:"netmode"`
 	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
-	PaymentType           *string `pulumi:"paymentType"`
+	PaymentType *string `pulumi:"paymentType"`
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	// **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period                *int    `pulumi:"period"`
 	PublicIpAddressPoolId *string `pulumi:"publicIpAddressPoolId"`
 	// The Id of resource group which the eip belongs.
@@ -258,7 +306,9 @@ type EipArgs struct {
 	Name    pulumi.StringPtrInput
 	Netmode pulumi.StringPtrInput
 	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
-	PaymentType           pulumi.StringPtrInput
+	PaymentType pulumi.StringPtrInput
+	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+	// **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period                pulumi.IntPtrInput
 	PublicIpAddressPoolId pulumi.StringPtrInput
 	// The Id of resource group which the eip belongs.
@@ -435,6 +485,8 @@ func (o EipOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
+// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+// **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 func (o EipOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Eip) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }

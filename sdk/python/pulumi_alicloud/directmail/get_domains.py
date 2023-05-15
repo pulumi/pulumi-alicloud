@@ -152,6 +152,7 @@ def get_domains(enable_details: Optional[bool] = None,
     :param Sequence[str] ids: A list of Domain IDs.
     :param str key_word: domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
     :param str name_regex: A regex string to filter results by Domain name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
     """
     __args__ = dict()
@@ -212,6 +213,7 @@ def get_domains_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
     :param Sequence[str] ids: A list of Domain IDs.
     :param str key_word: domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
     :param str name_regex: A regex string to filter results by Domain name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
     """
     ...

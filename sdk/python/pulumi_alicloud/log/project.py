@@ -166,6 +166,59 @@ class Project(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
+        The project is the resource management unit in Log Service and is used to isolate and control resources.
+        You can manage all the logs and the related log sources of an application by using projects. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48873.htm).
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.log.Project("example",
+            description="created by terraform",
+            tags={
+                "test": "test",
+            })
+        ```
+
+        Project With Policy Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_policy = alicloud.log.Project("examplePolicy",
+            description="created by terraform",
+            policy=\"\"\"{
+          "Statement": [
+            {
+              "Action": [
+                "log:PostLogStoreLogs"
+              ],
+              "Condition": {
+                "StringNotLike": {
+                  "acs:SourceVpc": [
+                    "vpc-*"
+                  ]
+                }
+              },
+              "Effect": "Deny",
+              "Resource": "acs:log:*:*:project/tf-log/*"
+            }
+          ],
+          "Version": "1"
+        }
+
+        \"\"\")
+        ```
+        ## Module Support
+
+        You can use the existing sls module
+        to create SLS project, store and store index one-click, like ECS instances.
+
         ## Import
 
         Log project can be imported using the id or name, e.g.
@@ -188,6 +241,59 @@ class Project(pulumi.CustomResource):
                  args: Optional[ProjectArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The project is the resource management unit in Log Service and is used to isolate and control resources.
+        You can manage all the logs and the related log sources of an application by using projects. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48873.htm).
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.log.Project("example",
+            description="created by terraform",
+            tags={
+                "test": "test",
+            })
+        ```
+
+        Project With Policy Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_policy = alicloud.log.Project("examplePolicy",
+            description="created by terraform",
+            policy=\"\"\"{
+          "Statement": [
+            {
+              "Action": [
+                "log:PostLogStoreLogs"
+              ],
+              "Condition": {
+                "StringNotLike": {
+                  "acs:SourceVpc": [
+                    "vpc-*"
+                  ]
+                }
+              },
+              "Effect": "Deny",
+              "Resource": "acs:log:*:*:project/tf-log/*"
+            }
+          ],
+          "Version": "1"
+        }
+
+        \"\"\")
+        ```
+        ## Module Support
+
+        You can use the existing sls module
+        to create SLS project, store and store index one-click, like ECS instances.
+
         ## Import
 
         Log project can be imported using the id or name, e.g.

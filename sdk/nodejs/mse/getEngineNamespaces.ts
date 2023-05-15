@@ -53,6 +53,9 @@ export interface GetEngineNamespacesArgs {
      * A list of Engine Namespace IDs. It is formatted to `<cluster_id>:<namespace_id>`.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -110,5 +113,8 @@ export interface GetEngineNamespacesOutputArgs {
      * A list of Engine Namespace IDs. It is formatted to `<cluster_id>:<namespace_id>`.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

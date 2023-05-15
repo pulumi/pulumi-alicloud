@@ -277,9 +277,12 @@ def get_instance_types(availability_zone: Optional[str] = None,
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param str instance_type_family: Filter the results based on their family name. For example: 'ecs.n4'.
     :param bool is_outdated: If true, outdated instance types are included in the results. Default to false.
+    :param str kubernetes_node_role: Filter the result which is used to create a kubernetes cluster
+           and managed kubernetes cluster. Optional Values: `Master` and `Worker`.
     :param float memory_size: Filter the results to a specific memory size in GB.
     :param int minimum_eni_ipv6_address_quantity: The minimum number of IPv6 addresses per ENI. **Note:** If an instance type supports fewer IPv6 addresses per ENI than the specified value, information about the instance type is not queried.
     :param str network_type: Filter the results by network type. Valid values: `Classic` and `Vpc`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str spot_strategy: Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
     :param str system_disk_category: Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`. 
            **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
@@ -375,9 +378,12 @@ def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param str instance_type_family: Filter the results based on their family name. For example: 'ecs.n4'.
     :param bool is_outdated: If true, outdated instance types are included in the results. Default to false.
+    :param str kubernetes_node_role: Filter the result which is used to create a kubernetes cluster
+           and managed kubernetes cluster. Optional Values: `Master` and `Worker`.
     :param float memory_size: Filter the results to a specific memory size in GB.
     :param int minimum_eni_ipv6_address_quantity: The minimum number of IPv6 addresses per ENI. **Note:** If an instance type supports fewer IPv6 addresses per ENI than the specified value, information about the instance type is not queried.
     :param str network_type: Filter the results by network type. Valid values: `Classic` and `Vpc`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str spot_strategy: Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
     :param str system_disk_category: Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`. 
            **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.

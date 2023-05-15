@@ -45,6 +45,9 @@ export interface GetWafPoliciesArgs {
      */
     ids?: string[];
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The query conditions. The value is a string in the JSON format. Format: `{"PolicyIds":"The ID of the proteuleIds":"Thection policy","R range of protection rule IDs","PolicyNameLike":"The name of the protection policy","DomainNames":"The protected domain names","PolicyType":"default","DefenseScenes":"wafGroup","PolicyStatus":"on","OrderBy":"GmtModified","Desc":"false"}`.
@@ -102,6 +105,9 @@ export interface GetWafPoliciesOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The query conditions. The value is a string in the JSON format. Format: `{"PolicyIds":"The ID of the proteuleIds":"Thection policy","R range of protection rule IDs","PolicyNameLike":"The name of the protection policy","DomainNames":"The protected domain names","PolicyType":"default","DefenseScenes":"wafGroup","PolicyStatus":"on","OrderBy":"GmtModified","Desc":"false"}`.

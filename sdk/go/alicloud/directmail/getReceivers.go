@@ -61,7 +61,8 @@ type LookupReceiversArgs struct {
 	// The key word.
 	KeyWord *string `pulumi:"keyWord"`
 	// A regex string to filter results by Receivers name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the resource.
 	Status *int `pulumi:"status"`
@@ -100,7 +101,8 @@ type LookupReceiversOutputArgs struct {
 	// The key word.
 	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
 	// A regex string to filter results by Receivers name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the resource.
 	Status pulumi.IntPtrInput `pulumi:"status"`

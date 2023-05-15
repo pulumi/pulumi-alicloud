@@ -59,6 +59,7 @@ type GetCustomRoutingPortMappingsArgs struct {
 	EndpointGroupId *string `pulumi:"endpointGroupId"`
 	// The ID of the listener.
 	ListenerId *string `pulumi:"listenerId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
@@ -106,6 +107,7 @@ type GetCustomRoutingPortMappingsOutputArgs struct {
 	EndpointGroupId pulumi.StringPtrInput `pulumi:"endpointGroupId"`
 	// The ID of the listener.
 	ListenerId pulumi.StringPtrInput `pulumi:"listenerId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`

@@ -18,6 +18,7 @@ __all__ = [
     'CompliancePackConfigRule',
     'CompliancePackConfigRuleConfigRuleParameter',
     'CompliancePackConfigRuleId',
+    'RuleCompliance',
     'GetAggregateCompliancePacksPackResult',
     'GetAggregateCompliancePacksPackConfigRuleResult',
     'GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterResult',
@@ -365,6 +366,54 @@ class CompliancePackConfigRuleId(dict):
         The rule ID of Config Rule.
         """
         return pulumi.get(self, "config_rule_id")
+
+
+@pulumi.output_type
+class RuleCompliance(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "complianceType":
+            suggest = "compliance_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuleCompliance. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuleCompliance.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuleCompliance.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 compliance_type: Optional[str] = None,
+                 count: Optional[int] = None):
+        """
+        :param str compliance_type: The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
+        :param int count: The count of compliance.
+        """
+        if compliance_type is not None:
+            pulumi.set(__self__, "compliance_type", compliance_type)
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+
+    @property
+    @pulumi.getter(name="complianceType")
+    def compliance_type(self) -> Optional[str]:
+        """
+        The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
+        """
+        return pulumi.get(self, "compliance_type")
+
+    @property
+    @pulumi.getter
+    def count(self) -> Optional[int]:
+        """
+        The count of compliance.
+        """
+        return pulumi.get(self, "count")
 
 
 @pulumi.output_type

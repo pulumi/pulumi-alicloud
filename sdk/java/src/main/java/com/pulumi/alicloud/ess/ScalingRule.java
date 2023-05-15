@@ -20,6 +20,132 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a ESS scaling rule resource.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroupRule;
+ * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
+ * import com.pulumi.alicloud.ess.ScalingGroup;
+ * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+ * import com.pulumi.alicloud.ess.ScalingConfiguration;
+ * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
+ * import com.pulumi.alicloud.ess.ScalingRule;
+ * import com.pulumi.alicloud.ess.ScalingRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;essscalingruleconfig&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cpuCoreCount(2)
+ *             .memorySize(4)
+ *             .build());
+ * 
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .mostRecent(true)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultSecurityGroupRule = new SecurityGroupRule(&#34;defaultSecurityGroupRule&#34;, SecurityGroupRuleArgs.builder()        
+ *             .type(&#34;ingress&#34;)
+ *             .ipProtocol(&#34;tcp&#34;)
+ *             .nicType(&#34;intranet&#34;)
+ *             .policy(&#34;accept&#34;)
+ *             .portRange(&#34;22/22&#34;)
+ *             .priority(1)
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .cidrIp(&#34;172.16.0.0/24&#34;)
+ *             .build());
+ * 
+ *         var defaultScalingGroup = new ScalingGroup(&#34;defaultScalingGroup&#34;, ScalingGroupArgs.builder()        
+ *             .minSize(1)
+ *             .maxSize(1)
+ *             .scalingGroupName(name)
+ *             .vswitchIds(defaultSwitch.id())
+ *             .removalPolicies(            
+ *                 &#34;OldestInstance&#34;,
+ *                 &#34;NewestInstance&#34;)
+ *             .build());
+ * 
+ *         var defaultScalingConfiguration = new ScalingConfiguration(&#34;defaultScalingConfiguration&#34;, ScalingConfigurationArgs.builder()        
+ *             .scalingGroupId(defaultScalingGroup.id())
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .forceDelete(&#34;true&#34;)
+ *             .build());
+ * 
+ *         var defaultScalingRule = new ScalingRule(&#34;defaultScalingRule&#34;, ScalingRuleArgs.builder()        
+ *             .scalingGroupId(defaultScalingGroup.id())
+ *             .adjustmentType(&#34;TotalCapacity&#34;)
+ *             .adjustmentValue(1)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Module Support
+ * 
+ * You can use to the existing autoscaling-rule module
+ * to create different type rules, alarm task and scheduled task one-click.
+ * 
+ * ## Block stepAdjustment
+ * 
+ * The stepAdjustment mapping supports the following:
+ * 
+ * * `metric_interval_lower_bound` - (Optional) The lower bound of step.
+ * * `metric_interval_upper_bound` - (Optional) The upper bound of step.
+ * * `scaling_adjustment` - (Optional) The adjust value of step.
+ * 
  * ## Import
  * 
  * ESS scaling rule can be imported using the id, e.g.

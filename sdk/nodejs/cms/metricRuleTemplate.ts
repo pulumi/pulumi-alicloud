@@ -110,10 +110,14 @@ export class MetricRuleTemplate extends pulumi.CustomResource {
     public readonly notifyLevel!: pulumi.Output<string | undefined>;
     /**
      * The version of the alert template to be modified.
+     *
+     * > **NOTE:** The version changes with the number of times that the alert template is modified.
      */
     public readonly restVersion!: pulumi.Output<string>;
     /**
      * The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
+     *
+     * > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
      */
     public readonly silenceTime!: pulumi.Output<number | undefined>;
     /**
@@ -205,10 +209,14 @@ export interface MetricRuleTemplateState {
     notifyLevel?: pulumi.Input<string>;
     /**
      * The version of the alert template to be modified.
+     *
+     * > **NOTE:** The version changes with the number of times that the alert template is modified.
      */
     restVersion?: pulumi.Input<string>;
     /**
      * The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
+     *
+     * > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
      */
     silenceTime?: pulumi.Input<number>;
     /**
@@ -255,10 +263,14 @@ export interface MetricRuleTemplateArgs {
     notifyLevel?: pulumi.Input<string>;
     /**
      * The version of the alert template to be modified.
+     *
+     * > **NOTE:** The version changes with the number of times that the alert template is modified.
      */
     restVersion?: pulumi.Input<string>;
     /**
      * The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
+     *
+     * > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
      */
     silenceTime?: pulumi.Input<number>;
     /**

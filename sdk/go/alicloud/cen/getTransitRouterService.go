@@ -53,6 +53,8 @@ func GetTransitRouterService(ctx *pulumi.Context, args *GetTransitRouterServiceA
 // A collection of arguments for invoking getTransitRouterService.
 type GetTransitRouterServiceArgs struct {
 	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+	//
+	// > **NOTE:** Setting `enable = "On"` to open the CEN Transit Router Service that means you have read and agreed the [CEN Terms of Service](https://help.aliyun.com/document_detail/66667.html). The service can not closed once it is opened.
 	Enable *string `pulumi:"enable"`
 }
 
@@ -81,6 +83,8 @@ func GetTransitRouterServiceOutput(ctx *pulumi.Context, args GetTransitRouterSer
 // A collection of arguments for invoking getTransitRouterService.
 type GetTransitRouterServiceOutputArgs struct {
 	// Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+	//
+	// > **NOTE:** Setting `enable = "On"` to open the CEN Transit Router Service that means you have read and agreed the [CEN Terms of Service](https://help.aliyun.com/document_detail/66667.html). The service can not closed once it is opened.
 	Enable pulumi.StringPtrInput `pulumi:"enable"`
 }
 

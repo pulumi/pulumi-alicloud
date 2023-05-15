@@ -84,7 +84,8 @@ type GetVirtualBorderRoutersArgs struct {
 	// A list of Virtual Border Router IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Virtual Border Router name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The VBR state.
 	Status *string `pulumi:"status"`
@@ -123,7 +124,8 @@ type GetVirtualBorderRoutersOutputArgs struct {
 	// A list of Virtual Border Router IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Virtual Border Router name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The VBR state.
 	Status pulumi.StringPtrInput `pulumi:"status"`

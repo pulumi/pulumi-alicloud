@@ -198,14 +198,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+     * The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+     * @return The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -597,7 +597,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+         * @param period The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
          * 
          * @return builder
          * 
@@ -608,7 +608,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+         * @param period The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
          * 
          * @return builder
          * 

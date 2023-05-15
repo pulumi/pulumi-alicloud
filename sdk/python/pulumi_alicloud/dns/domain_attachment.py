@@ -98,6 +98,12 @@ class DomainAttachment(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Provides bind the domain name to the DNS instance resource.
+
+        > **NOTE:** Available in v1.80.0+.
+
+        > **DEPRECATED:**  This resource has been deprecated from version `1.99.0`. Please use new resource alicloud_alidns_domain_attachment.
+
         ## Example Usage
 
         ```python
@@ -132,6 +138,12 @@ class DomainAttachment(pulumi.CustomResource):
                  args: DomainAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides bind the domain name to the DNS instance resource.
+
+        > **NOTE:** Available in v1.80.0+.
+
+        > **DEPRECATED:**  This resource has been deprecated from version `1.99.0`. Please use new resource alicloud_alidns_domain_attachment.
+
         ## Example Usage
 
         ```python

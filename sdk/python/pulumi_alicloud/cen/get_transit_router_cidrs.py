@@ -138,6 +138,7 @@ def get_transit_router_cidrs(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Cen Transit Router Cidr IDs.
     :param str name_regex: A regex string to filter results by Transit Router Cidr name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str transit_router_cidr_id: The ID of the transit router cidr.
     :param str transit_router_id: The ID of the transit router.
     """
@@ -192,6 +193,7 @@ def get_transit_router_cidrs_output(ids: Optional[pulumi.Input[Optional[Sequence
 
     :param Sequence[str] ids: A list of Cen Transit Router Cidr IDs.
     :param str name_regex: A regex string to filter results by Transit Router Cidr name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str transit_router_cidr_id: The ID of the transit router cidr.
     :param str transit_router_id: The ID of the transit router.
     """

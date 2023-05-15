@@ -179,6 +179,7 @@ def get_app_groups(enable_details: Optional[bool] = None,
     :param Sequence[str] ids: A list of App Group IDs. Its element value is same as App Group Name.
     :param str instance_id: The Instance ID.
     :param str name_regex: A regex string to filter results by App Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Resource Group ID.
     :param str type: Application type. Valid Values: `standard`, `enhanced`.
     """
@@ -253,6 +254,7 @@ def get_app_groups_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
     :param Sequence[str] ids: A list of App Group IDs. Its element value is same as App Group Name.
     :param str instance_id: The Instance ID.
     :param str name_regex: A regex string to filter results by App Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Resource Group ID.
     :param str type: Application type. Valid Values: `standard`, `enhanced`.
     """

@@ -66,7 +66,8 @@ type GetEndpointGroupsArgs struct {
 	// The ID of the listener that is associated with the endpoint group.
 	ListenerId *string `pulumi:"listenerId"`
 	// A regex string to filter results by Endpoint Group name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the endpoint group.
 	Status *string `pulumi:"status"`
@@ -111,7 +112,8 @@ type GetEndpointGroupsOutputArgs struct {
 	// The ID of the listener that is associated with the endpoint group.
 	ListenerId pulumi.StringPtrInput `pulumi:"listenerId"`
 	// A regex string to filter results by Endpoint Group name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the endpoint group.
 	Status pulumi.StringPtrInput `pulumi:"status"`

@@ -182,6 +182,7 @@ def get_groups(group_id_regex: Optional[str] = None,
     :param str group_type: Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
     :param Sequence[str] ids: A list of group names.
     :param str instance_id: ID of the ONS Instance that owns the groups.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
     """
     __args__ = dict()
@@ -253,6 +254,7 @@ def get_groups_output(group_id_regex: Optional[pulumi.Input[Optional[str]]] = No
     :param str group_type: Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
     :param Sequence[str] ids: A list of group names.
     :param str instance_id: ID of the ONS Instance that owns the groups.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
     """
     ...

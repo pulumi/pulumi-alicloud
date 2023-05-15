@@ -67,7 +67,8 @@ type GetCommandsArgs struct {
 	// The name of the command
 	Name *string `pulumi:"name"`
 	// A regex string to filter results by Command name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The command type.
 	Type *string `pulumi:"type"`
@@ -115,7 +116,8 @@ type GetCommandsOutputArgs struct {
 	// The name of the command
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// A regex string to filter results by Command name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The command type.
 	Type pulumi.StringPtrInput `pulumi:"type"`

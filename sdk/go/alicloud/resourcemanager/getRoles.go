@@ -56,7 +56,8 @@ type GetRolesArgs struct {
 	// A list of Resource Manager Role IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by role name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -95,7 +96,8 @@ type GetRolesOutputArgs struct {
 	// A list of Resource Manager Role IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by role name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

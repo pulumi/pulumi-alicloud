@@ -142,6 +142,7 @@ def get_instances(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Instance IDs.
     :param str instance_id: The first ID of the resource
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str renew_status: The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
     """
     __args__ = dict()
@@ -191,6 +192,7 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
 
     :param Sequence[str] ids: A list of Instance IDs.
     :param str instance_id: The first ID of the resource
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str renew_status: The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
     """
     ...

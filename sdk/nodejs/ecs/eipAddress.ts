@@ -150,7 +150,7 @@ export class EipAddress extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
      */
     public readonly securityProtectionTypes!: pulumi.Output<string[] | undefined>;
     /**
@@ -313,7 +313,7 @@ export interface EipAddressState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
      */
     securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -408,7 +408,7 @@ export interface EipAddressArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used.
+     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
      */
     securityProtectionTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**

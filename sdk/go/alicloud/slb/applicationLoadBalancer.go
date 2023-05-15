@@ -55,7 +55,8 @@ type ApplicationLoadBalancer struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	Period      pulumi.IntPtrOutput `pulumi:"period"`
+	// The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. This attribute is only used to create `Subscription` instance or modify the `PayAsYouGo` instance to `Subscription`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The id of resource group which the SLB belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
@@ -134,7 +135,8 @@ type applicationLoadBalancerState struct {
 	Name *string `pulumi:"name"`
 	// The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
-	Period      *int    `pulumi:"period"`
+	// The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. This attribute is only used to create `Subscription` instance or modify the `PayAsYouGo` instance to `Subscription`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+	Period *int `pulumi:"period"`
 	// The id of resource group which the SLB belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
@@ -185,7 +187,8 @@ type ApplicationLoadBalancerState struct {
 	Name pulumi.StringPtrInput
 	// The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
-	Period      pulumi.IntPtrInput
+	// The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. This attribute is only used to create `Subscription` instance or modify the `PayAsYouGo` instance to `Subscription`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+	Period pulumi.IntPtrInput
 	// The id of resource group which the SLB belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
@@ -240,7 +243,8 @@ type applicationLoadBalancerArgs struct {
 	Name *string `pulumi:"name"`
 	// The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
-	Period      *int    `pulumi:"period"`
+	// The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. This attribute is only used to create `Subscription` instance or modify the `PayAsYouGo` instance to `Subscription`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+	Period *int `pulumi:"period"`
 	// The id of resource group which the SLB belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
@@ -292,7 +296,8 @@ type ApplicationLoadBalancerArgs struct {
 	Name pulumi.StringPtrInput
 	// The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
-	Period      pulumi.IntPtrInput
+	// The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. This attribute is only used to create `Subscription` instance or modify the `PayAsYouGo` instance to `Subscription`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+	Period pulumi.IntPtrInput
 	// The id of resource group which the SLB belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
@@ -471,6 +476,7 @@ func (o ApplicationLoadBalancerOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationLoadBalancer) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
+// The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. This attribute is only used to create `Subscription` instance or modify the `PayAsYouGo` instance to `Subscription`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
 func (o ApplicationLoadBalancerOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationLoadBalancer) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }

@@ -43,6 +43,9 @@ export interface GetDataLimitsArgs {
      * A list of Data Limit IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the data asset.
@@ -97,6 +100,9 @@ export interface GetDataLimitsOutputArgs {
      * A list of Data Limit IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the data asset.

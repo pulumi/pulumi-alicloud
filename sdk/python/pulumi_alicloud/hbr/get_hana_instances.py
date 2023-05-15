@@ -154,6 +154,7 @@ def get_hana_instances(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Hana Instance IDs.
     :param str name_regex: A regex string to filter results by Hana Instance name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the SAP HANA instance.
     :param str vault_id: The ID of the backup vault.
     """
@@ -210,6 +211,7 @@ def get_hana_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
 
     :param Sequence[str] ids: A list of Hana Instance IDs.
     :param str name_regex: A regex string to filter results by Hana Instance name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the SAP HANA instance.
     :param str vault_id: The ID of the backup vault.
     """

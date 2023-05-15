@@ -249,6 +249,14 @@ def get_snapshots(category: Optional[str] = None,
                   usage: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnapshotsResult:
     """
+    > **DEPRECATED:** This datasource has been renamed to ecs_get_ecs_snapshots from version 1.120.0.
+
+    Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
+
+    For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+
+    > **NOTE:**  Available in 1.40.0+.
+
     ## Example Usage
 
     ```python
@@ -356,6 +364,14 @@ def get_snapshots_output(category: Optional[pulumi.Input[Optional[str]]] = None,
                          usage: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotsResult]:
     """
+    > **DEPRECATED:** This datasource has been renamed to ecs_get_ecs_snapshots from version 1.120.0.
+
+    Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
+
+    For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+
+    > **NOTE:**  Available in 1.40.0+.
+
     ## Example Usage
 
     ```python

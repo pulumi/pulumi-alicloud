@@ -140,6 +140,7 @@ def get_search_indexes(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of search index IDs.
     :param str instance_name: The name of OTS instance.
     :param str name_regex: A regex string to filter results by search index name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str table_name: The name of OTS table.
     """
     __args__ = dict()
@@ -180,6 +181,7 @@ def get_search_indexes_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     :param Sequence[str] ids: A list of search index IDs.
     :param str instance_name: The name of OTS instance.
     :param str name_regex: A regex string to filter results by search index name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str table_name: The name of OTS table.
     """
     ...

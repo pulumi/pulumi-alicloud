@@ -69,7 +69,8 @@ type GetExtensionProvidersArgs struct {
 	// A list of Service Mesh Extension Provider IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Service Mesh Extension Provider name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the Service Mesh.
 	ServiceMeshId string `pulumi:"serviceMeshId"`
@@ -112,7 +113,8 @@ type GetExtensionProvidersOutputArgs struct {
 	// A list of Service Mesh Extension Provider IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Service Mesh Extension Provider name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the Service Mesh.
 	ServiceMeshId pulumi.StringInput `pulumi:"serviceMeshId"`

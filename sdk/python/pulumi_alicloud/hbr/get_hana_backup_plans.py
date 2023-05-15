@@ -170,6 +170,7 @@ def get_hana_backup_plans(cluster_id: Optional[str] = None,
     :param str database_name: The name of the database.
     :param Sequence[str] ids: A list of Hana Backup Plan IDs.
     :param str name_regex: A regex string to filter results by Hana Backup Plan name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str vault_id: The ID of the backup vault.
     """
     __args__ = dict()
@@ -234,6 +235,7 @@ def get_hana_backup_plans_output(cluster_id: Optional[pulumi.Input[str]] = None,
     :param str database_name: The name of the database.
     :param Sequence[str] ids: A list of Hana Backup Plan IDs.
     :param str name_regex: A regex string to filter results by Hana Backup Plan name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str vault_id: The ID of the backup vault.
     """
     ...

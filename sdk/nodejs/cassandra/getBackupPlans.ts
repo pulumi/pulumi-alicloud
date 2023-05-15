@@ -42,6 +42,9 @@ export interface GetBackupPlansArgs {
      * The ID of the cluster for the backup.
      */
     clusterId: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -89,5 +92,8 @@ export interface GetBackupPlansOutputArgs {
      * The ID of the cluster for the backup.
      */
     clusterId: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

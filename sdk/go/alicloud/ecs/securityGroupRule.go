@@ -11,6 +11,53 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a security group rule resource.
+// Represents a single `ingress` or `egress` group rule, which can be added to external Security Groups.
+//
+// > **NOTE:**  `nicType` should set to `intranet` when security group type is `vpc` or specifying the `sourceSecurityGroupId`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ecs.NewSecurityGroup(ctx, "default", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewSecurityGroupRule(ctx, "allowAllTcp", &ecs.SecurityGroupRuleArgs{
+//				Type:            pulumi.String("ingress"),
+//				IpProtocol:      pulumi.String("tcp"),
+//				NicType:         pulumi.String("internet"),
+//				Policy:          pulumi.String("accept"),
+//				PortRange:       pulumi.String("1/65535"),
+//				Priority:        pulumi.Int(1),
+//				SecurityGroupId: _default.ID(),
+//				CidrIp:          pulumi.String("0.0.0.0/0"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Module Support
+//
+// You can use the existing security-group module
+// to create a security group and add several rules one-click.
 type SecurityGroupRule struct {
 	pulumi.CustomResourceState
 
@@ -21,6 +68,8 @@ type SecurityGroupRule struct {
 	// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
 	IpProtocol pulumi.StringOutput `pulumi:"ipProtocol"`
 	// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
+	//
+	// > **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
 	Ipv6CidrIp pulumi.StringPtrOutput `pulumi:"ipv6CidrIp"`
 	// Network type, can be either `internet` or `intranet`, the default value is `internet`.
 	NicType pulumi.StringOutput `pulumi:"nicType"`
@@ -88,6 +137,8 @@ type securityGroupRuleState struct {
 	// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
+	//
+	// > **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
 	Ipv6CidrIp *string `pulumi:"ipv6CidrIp"`
 	// Network type, can be either `internet` or `intranet`, the default value is `internet`.
 	NicType *string `pulumi:"nicType"`
@@ -118,6 +169,8 @@ type SecurityGroupRuleState struct {
 	// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
 	IpProtocol pulumi.StringPtrInput
 	// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
+	//
+	// > **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
 	Ipv6CidrIp pulumi.StringPtrInput
 	// Network type, can be either `internet` or `intranet`, the default value is `internet`.
 	NicType pulumi.StringPtrInput
@@ -152,6 +205,8 @@ type securityGroupRuleArgs struct {
 	// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
 	IpProtocol string `pulumi:"ipProtocol"`
 	// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
+	//
+	// > **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
 	Ipv6CidrIp *string `pulumi:"ipv6CidrIp"`
 	// Network type, can be either `internet` or `intranet`, the default value is `internet`.
 	NicType *string `pulumi:"nicType"`
@@ -183,6 +238,8 @@ type SecurityGroupRuleArgs struct {
 	// The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
 	IpProtocol pulumi.StringInput
 	// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
+	//
+	// > **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
 	Ipv6CidrIp pulumi.StringPtrInput
 	// Network type, can be either `internet` or `intranet`, the default value is `internet`.
 	NicType pulumi.StringPtrInput
@@ -308,6 +365,8 @@ func (o SecurityGroupRuleOutput) IpProtocol() pulumi.StringOutput {
 }
 
 // Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
+//
+// > **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
 func (o SecurityGroupRuleOutput) Ipv6CidrIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.Ipv6CidrIp }).(pulumi.StringPtrOutput)
 }

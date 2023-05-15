@@ -61,9 +61,10 @@ type GetQuotaApplicationsArgs struct {
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Application Info IDs.
-	Ids        []string `pulumi:"ids"`
-	KeyWord    *string  `pulumi:"keyWord"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids     []string `pulumi:"ids"`
+	KeyWord *string  `pulumi:"keyWord"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The product code.
 	ProductCode string `pulumi:"productCode"`
 	// The ID of quota action..
@@ -110,9 +111,10 @@ type GetQuotaApplicationsOutputArgs struct {
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Application Info IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	KeyWord    pulumi.StringPtrInput   `pulumi:"keyWord"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids     pulumi.StringArrayInput `pulumi:"ids"`
+	KeyWord pulumi.StringPtrInput   `pulumi:"keyWord"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The product code.
 	ProductCode pulumi.StringInput `pulumi:"productCode"`
 	// The ID of quota action..

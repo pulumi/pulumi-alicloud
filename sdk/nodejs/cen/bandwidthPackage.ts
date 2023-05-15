@@ -47,6 +47,10 @@ export class BandwidthPackage extends pulumi.CustomResource {
     public readonly bandwidth!: pulumi.Output<number>;
     /**
      * The name of the bandwidth package. Defaults to null.
+     *
+     * ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+     *
+     * ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
      */
     public readonly cenBandwidthPackageName!: pulumi.Output<string>;
     /**
@@ -87,6 +91,10 @@ export class BandwidthPackage extends pulumi.CustomResource {
      * The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
      */
     public readonly paymentType!: pulumi.Output<string>;
+    /**
+     * The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+     * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * The association status of the bandwidth package.
@@ -151,6 +159,10 @@ export interface BandwidthPackageState {
     bandwidth?: pulumi.Input<number>;
     /**
      * The name of the bandwidth package. Defaults to null.
+     *
+     * ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+     *
+     * ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
      */
     cenBandwidthPackageName?: pulumi.Input<string>;
     /**
@@ -191,6 +203,10 @@ export interface BandwidthPackageState {
      * The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
      */
     paymentType?: pulumi.Input<string>;
+    /**
+     * The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+     * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     period?: pulumi.Input<number>;
     /**
      * The association status of the bandwidth package.
@@ -208,6 +224,10 @@ export interface BandwidthPackageArgs {
     bandwidth: pulumi.Input<number>;
     /**
      * The name of the bandwidth package. Defaults to null.
+     *
+     * ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+     *
+     * ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
      */
     cenBandwidthPackageName?: pulumi.Input<string>;
     /**
@@ -244,5 +264,9 @@ export interface BandwidthPackageArgs {
      * The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
      */
     paymentType?: pulumi.Input<string>;
+    /**
+     * The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+     * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     */
     period?: pulumi.Input<number>;
 }

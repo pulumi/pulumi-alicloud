@@ -55,6 +55,8 @@ namespace Pulumi.AliCloud.CloudSso
 
         /// <summary>
         /// This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+        /// 
+        /// * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         /// </summary>
         [Output("forceRemovePermissionPolicies")]
         public Output<bool?> ForceRemovePermissionPolicies { get; private set; } = null!;
@@ -143,6 +145,8 @@ namespace Pulumi.AliCloud.CloudSso
 
         /// <summary>
         /// This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+        /// 
+        /// * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         /// </summary>
         [Input("forceRemovePermissionPolicies")]
         public Input<bool>? ForceRemovePermissionPolicies { get; set; }
@@ -205,6 +209,8 @@ namespace Pulumi.AliCloud.CloudSso
 
         /// <summary>
         /// This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+        /// 
+        /// * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         /// </summary>
         [Input("forceRemovePermissionPolicies")]
         public Input<bool>? ForceRemovePermissionPolicies { get; set; }

@@ -201,7 +201,9 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly secSensorEnabled!: pulumi.Output<boolean>;
     /**
-     * The ID of the security policy. System security policies and custom security policies are supported. Valid values: `tlsCipherPolicy10` (default), `tls_cipher_policy_1_1,` `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`, and `tlsCipherPolicy12StrictWith13`.
+     * The ID of the security policy. System security policies and custom security policies are supported. 
+     * System security policies valid values: `tlsCipherPolicy10` (default), `tls_cipher_policy_1_1,` `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`, and `tlsCipherPolicy12StrictWith13`.
+     * Custom security policies can be created by resource `alicloud.nlb.SecurityPolicy`.
      */
     public readonly securityPolicyId!: pulumi.Output<string>;
     /**
@@ -353,7 +355,9 @@ export interface ListenerState {
      */
     secSensorEnabled?: pulumi.Input<boolean>;
     /**
-     * The ID of the security policy. System security policies and custom security policies are supported. Valid values: `tlsCipherPolicy10` (default), `tls_cipher_policy_1_1,` `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`, and `tlsCipherPolicy12StrictWith13`.
+     * The ID of the security policy. System security policies and custom security policies are supported. 
+     * System security policies valid values: `tlsCipherPolicy10` (default), `tls_cipher_policy_1_1,` `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`, and `tlsCipherPolicy12StrictWith13`.
+     * Custom security policies can be created by resource `alicloud.nlb.SecurityPolicy`.
      */
     securityPolicyId?: pulumi.Input<string>;
     /**
@@ -435,7 +439,9 @@ export interface ListenerArgs {
      */
     secSensorEnabled?: pulumi.Input<boolean>;
     /**
-     * The ID of the security policy. System security policies and custom security policies are supported. Valid values: `tlsCipherPolicy10` (default), `tls_cipher_policy_1_1,` `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`, and `tlsCipherPolicy12StrictWith13`.
+     * The ID of the security policy. System security policies and custom security policies are supported. 
+     * System security policies valid values: `tlsCipherPolicy10` (default), `tls_cipher_policy_1_1,` `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`, and `tlsCipherPolicy12StrictWith13`.
+     * Custom security policies can be created by resource `alicloud.nlb.SecurityPolicy`.
      */
     securityPolicyId?: pulumi.Input<string>;
     /**

@@ -140,6 +140,7 @@ def get_instances(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Instance IDs.
     :param str name_regex: A regex string to filter results by Instance name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource.
     """
     __args__ = dict()
@@ -195,6 +196,7 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Instance IDs.
     :param str name_regex: A regex string to filter results by Instance name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource.
     """
     ...

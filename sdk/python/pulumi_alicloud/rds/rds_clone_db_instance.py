@@ -90,6 +90,8 @@ class RdsCloneDbInstanceArgs:
                * **Auto**: automatically upgrade the minor version.
                * **Manual**: It is not automatically upgraded. It is only mandatory when the current version is offline.
         :param pulumi.Input[str] backup_id: The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+               
+               > **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         :param pulumi.Input[str] backup_type: The type of backup that is used to restore the data of the original instance. Valid values:
                * **FullBackup**: full backup
                * **IncrementalBackup**: incremental backup
@@ -111,15 +113,23 @@ class RdsCloneDbInstanceArgs:
         :param pulumi.Input[str] db_instance_class: The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
         :param pulumi.Input[str] db_instance_description: The db instance description.
         :param pulumi.Input[int] db_instance_storage: The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+               
+               > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
         :param pulumi.Input[str] db_name: The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+               
+               > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[str] db_names: The names of the databases that you want to create on the new instance.
         :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
+               
+               > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
         :param pulumi.Input[str] direction: The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
         :param pulumi.Input[str] effective_time: The effective time.
         :param pulumi.Input[str] encryption_key: The ID of the private key.
+               
+               > **NOTE:** This parameter is available only when the instance runs MySQL.
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
         :param pulumi.Input[str] engine_version: Database version. Value:
                * MySQL:**5.5/5.6/5.7/8.0**
@@ -135,8 +145,12 @@ class RdsCloneDbInstanceArgs:
                * **VPC**: VPC.
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
         :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
-        :param pulumi.Input[str] password: The password of the certificate.
+        :param pulumi.Input[str] password: The password of the certificate. 
+               
+               > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[str] period: The period. Valid values: `Month`, `Year`.
+               
+               > **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
         :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
@@ -147,9 +161,13 @@ class RdsCloneDbInstanceArgs:
         :param pulumi.Input[str] restore_table: Specifies whether to restore only the databases and tables that you specify. The value 1 specifies to restore only the specified databases and tables. If you do not want to restore only the specified databases or tables, you can choose not to specify this parameter.
         :param pulumi.Input[str] restore_time: The point in time to which you want to restore the data of the original instance. The point in time must fall within the specified log backup retention period. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+               
+               > **NOTE:** This parameter is available only when the instance runs MySQL.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
                * IP address form, for example: 10.23.12.24.
                * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+               
+               > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
         :param pulumi.Input[str] server_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
         :param pulumi.Input[str] server_key: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
         :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceServerlessConfigArgs']]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
@@ -160,6 +178,8 @@ class RdsCloneDbInstanceArgs:
                * **Sync**: strong synchronization
                * **Semi-sync**: Semi-synchronous
                * **Async**: asynchronous
+               
+               > **NOTE:** SQL Server 2017 cluster version is currently not supported.
         :param pulumi.Input[str] table_meta: The information about the databases and tables that you want to restore. Format:
                [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
         :param pulumi.Input[str] tcp_connection_type: The availability check method of the instance. Valid values:
@@ -171,9 +191,17 @@ class RdsCloneDbInstanceArgs:
         :param pulumi.Input[int] used_time: The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
                * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
                * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
+               
+               > **NOTE:** If you set the payment_type parameter to Subscription, you must specify the used_time parameter.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the new instance belongs.
+               
+               > **NOTE:** Make sure that the VPC resides in the specified region.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch associated with the specified VPC.
+               
+               > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         :param pulumi.Input[str] zone_id: The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+               
+               > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         """
         pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
         pulumi.set(__self__, "payment_type", payment_type)
@@ -363,6 +391,8 @@ class RdsCloneDbInstanceArgs:
     def backup_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+
+        > **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         """
         return pulumi.get(self, "backup_id")
 
@@ -516,6 +546,8 @@ class RdsCloneDbInstanceArgs:
     def db_instance_storage(self) -> Optional[pulumi.Input[int]]:
         """
         The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+
+        > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
         """
         return pulumi.get(self, "db_instance_storage")
 
@@ -528,6 +560,8 @@ class RdsCloneDbInstanceArgs:
     def db_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+
+        > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         """
         return pulumi.get(self, "db_name")
 
@@ -566,6 +600,8 @@ class RdsCloneDbInstanceArgs:
         The switch of delete protection. Valid values:
         - true: delete protect.
         - false: no delete protect.
+
+        > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -602,6 +638,8 @@ class RdsCloneDbInstanceArgs:
     def encryption_key(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the private key.
+
+        > **NOTE:** This parameter is available only when the instance runs MySQL.
         """
         return pulumi.get(self, "encryption_key")
 
@@ -705,7 +743,9 @@ class RdsCloneDbInstanceArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the certificate.
+        The password of the certificate. 
+
+        > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         """
         return pulumi.get(self, "password")
 
@@ -718,6 +758,8 @@ class RdsCloneDbInstanceArgs:
     def period(self) -> Optional[pulumi.Input[str]]:
         """
         The period. Valid values: `Month`, `Year`.
+
+        > **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
         """
         return pulumi.get(self, "period")
 
@@ -838,6 +880,8 @@ class RdsCloneDbInstanceArgs:
     def role_arn(self) -> Optional[pulumi.Input[str]]:
         """
         The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+
+        > **NOTE:** This parameter is available only when the instance runs MySQL.
         """
         return pulumi.get(self, "role_arn")
 
@@ -852,6 +896,8 @@ class RdsCloneDbInstanceArgs:
         The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
         * IP address form, for example: 10.23.12.24.
         * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+
+        > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
         """
         return pulumi.get(self, "security_ips")
 
@@ -939,6 +985,8 @@ class RdsCloneDbInstanceArgs:
         * **Sync**: strong synchronization
         * **Semi-sync**: Semi-synchronous
         * **Async**: asynchronous
+
+        > **NOTE:** SQL Server 2017 cluster version is currently not supported.
         """
         return pulumi.get(self, "sync_mode")
 
@@ -994,6 +1042,8 @@ class RdsCloneDbInstanceArgs:
         The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
         * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
         * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
+
+        > **NOTE:** If you set the payment_type parameter to Subscription, you must specify the used_time parameter.
         """
         return pulumi.get(self, "used_time")
 
@@ -1006,6 +1056,8 @@ class RdsCloneDbInstanceArgs:
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the VPC to which the new instance belongs.
+
+        > **NOTE:** Make sure that the VPC resides in the specified region.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -1018,6 +1070,8 @@ class RdsCloneDbInstanceArgs:
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the vSwitch associated with the specified VPC.
+
+        > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -1030,6 +1084,8 @@ class RdsCloneDbInstanceArgs:
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+
+        > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         """
         return pulumi.get(self, "zone_id")
 
@@ -1108,6 +1164,8 @@ class _RdsCloneDbInstanceState:
                * **Auto**: automatically upgrade the minor version.
                * **Manual**: It is not automatically upgraded. It is only mandatory when the current version is offline.
         :param pulumi.Input[str] backup_id: The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+               
+               > **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         :param pulumi.Input[str] backup_type: The type of backup that is used to restore the data of the original instance. Valid values:
                * **FullBackup**: full backup
                * **IncrementalBackup**: incremental backup
@@ -1130,6 +1188,8 @@ class _RdsCloneDbInstanceState:
         :param pulumi.Input[str] db_instance_class: The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
         :param pulumi.Input[str] db_instance_description: The db instance description.
         :param pulumi.Input[int] db_instance_storage: The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+               
+               > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
         :param pulumi.Input[str] db_instance_storage_type: The type of storage media that is used for the new instance. Valid values:
                * **local_ssd**: local SSDs
                * **cloud_ssd**: standard SSDs
@@ -1137,14 +1197,20 @@ class _RdsCloneDbInstanceState:
                * **cloud_essd2**: ESSDs of PL2
                * **cloud_essd3**: ESSDs of PL3
         :param pulumi.Input[str] db_name: The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+               
+               > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[str] db_names: The names of the databases that you want to create on the new instance.
         :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
+               
+               > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
         :param pulumi.Input[str] direction: The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
         :param pulumi.Input[str] effective_time: The effective time.
         :param pulumi.Input[str] encryption_key: The ID of the private key.
+               
+               > **NOTE:** This parameter is available only when the instance runs MySQL.
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
         :param pulumi.Input[str] engine_version: Database version. Value:
                * MySQL:**5.5/5.6/5.7/8.0**
@@ -1160,9 +1226,13 @@ class _RdsCloneDbInstanceState:
                * **VPC**: VPC.
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
         :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
-        :param pulumi.Input[str] password: The password of the certificate.
+        :param pulumi.Input[str] password: The password of the certificate. 
+               
+               > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
         :param pulumi.Input[str] period: The period. Valid values: `Month`, `Year`.
+               
+               > **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
         :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
@@ -1173,9 +1243,13 @@ class _RdsCloneDbInstanceState:
         :param pulumi.Input[str] restore_table: Specifies whether to restore only the databases and tables that you specify. The value 1 specifies to restore only the specified databases and tables. If you do not want to restore only the specified databases or tables, you can choose not to specify this parameter.
         :param pulumi.Input[str] restore_time: The point in time to which you want to restore the data of the original instance. The point in time must fall within the specified log backup retention period. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+               
+               > **NOTE:** This parameter is available only when the instance runs MySQL.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
                * IP address form, for example: 10.23.12.24.
                * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+               
+               > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
         :param pulumi.Input[str] server_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
         :param pulumi.Input[str] server_key: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
         :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceServerlessConfigArgs']]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
@@ -1187,6 +1261,8 @@ class _RdsCloneDbInstanceState:
                * **Sync**: strong synchronization
                * **Semi-sync**: Semi-synchronous
                * **Async**: asynchronous
+               
+               > **NOTE:** SQL Server 2017 cluster version is currently not supported.
         :param pulumi.Input[str] table_meta: The information about the databases and tables that you want to restore. Format:
                [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
         :param pulumi.Input[str] tcp_connection_type: The availability check method of the instance. Valid values:
@@ -1198,9 +1274,17 @@ class _RdsCloneDbInstanceState:
         :param pulumi.Input[int] used_time: The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
                * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
                * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
+               
+               > **NOTE:** If you set the payment_type parameter to Subscription, you must specify the used_time parameter.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the new instance belongs.
+               
+               > **NOTE:** Make sure that the VPC resides in the specified region.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch associated with the specified VPC.
+               
+               > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         :param pulumi.Input[str] zone_id: The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+               
+               > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         """
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
@@ -1354,6 +1438,8 @@ class _RdsCloneDbInstanceState:
     def backup_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+
+        > **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         """
         return pulumi.get(self, "backup_id")
 
@@ -1519,6 +1605,8 @@ class _RdsCloneDbInstanceState:
     def db_instance_storage(self) -> Optional[pulumi.Input[int]]:
         """
         The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+
+        > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
         """
         return pulumi.get(self, "db_instance_storage")
 
@@ -1548,6 +1636,8 @@ class _RdsCloneDbInstanceState:
     def db_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+
+        > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         """
         return pulumi.get(self, "db_name")
 
@@ -1586,6 +1676,8 @@ class _RdsCloneDbInstanceState:
         The switch of delete protection. Valid values:
         - true: delete protect.
         - false: no delete protect.
+
+        > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -1622,6 +1714,8 @@ class _RdsCloneDbInstanceState:
     def encryption_key(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the private key.
+
+        > **NOTE:** This parameter is available only when the instance runs MySQL.
         """
         return pulumi.get(self, "encryption_key")
 
@@ -1725,7 +1819,9 @@ class _RdsCloneDbInstanceState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the certificate.
+        The password of the certificate. 
+
+        > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         """
         return pulumi.get(self, "password")
 
@@ -1750,6 +1846,8 @@ class _RdsCloneDbInstanceState:
     def period(self) -> Optional[pulumi.Input[str]]:
         """
         The period. Valid values: `Month`, `Year`.
+
+        > **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
         """
         return pulumi.get(self, "period")
 
@@ -1870,6 +1968,8 @@ class _RdsCloneDbInstanceState:
     def role_arn(self) -> Optional[pulumi.Input[str]]:
         """
         The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+
+        > **NOTE:** This parameter is available only when the instance runs MySQL.
         """
         return pulumi.get(self, "role_arn")
 
@@ -1884,6 +1984,8 @@ class _RdsCloneDbInstanceState:
         The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
         * IP address form, for example: 10.23.12.24.
         * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+
+        > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
         """
         return pulumi.get(self, "security_ips")
 
@@ -1983,6 +2085,8 @@ class _RdsCloneDbInstanceState:
         * **Sync**: strong synchronization
         * **Semi-sync**: Semi-synchronous
         * **Async**: asynchronous
+
+        > **NOTE:** SQL Server 2017 cluster version is currently not supported.
         """
         return pulumi.get(self, "sync_mode")
 
@@ -2038,6 +2142,8 @@ class _RdsCloneDbInstanceState:
         The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
         * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
         * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
+
+        > **NOTE:** If you set the payment_type parameter to Subscription, you must specify the used_time parameter.
         """
         return pulumi.get(self, "used_time")
 
@@ -2050,6 +2156,8 @@ class _RdsCloneDbInstanceState:
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the VPC to which the new instance belongs.
+
+        > **NOTE:** Make sure that the VPC resides in the specified region.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -2062,6 +2170,8 @@ class _RdsCloneDbInstanceState:
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the vSwitch associated with the specified VPC.
+
+        > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -2074,6 +2184,8 @@ class _RdsCloneDbInstanceState:
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+
+        > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         """
         return pulumi.get(self, "zone_id")
 
@@ -2206,6 +2318,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **Auto**: automatically upgrade the minor version.
                * **Manual**: It is not automatically upgraded. It is only mandatory when the current version is offline.
         :param pulumi.Input[str] backup_id: The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+               
+               > **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         :param pulumi.Input[str] backup_type: The type of backup that is used to restore the data of the original instance. Valid values:
                * **FullBackup**: full backup
                * **IncrementalBackup**: incremental backup
@@ -2227,6 +2341,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] db_instance_class: The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
         :param pulumi.Input[str] db_instance_description: The db instance description.
         :param pulumi.Input[int] db_instance_storage: The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+               
+               > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
         :param pulumi.Input[str] db_instance_storage_type: The type of storage media that is used for the new instance. Valid values:
                * **local_ssd**: local SSDs
                * **cloud_ssd**: standard SSDs
@@ -2234,14 +2350,20 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **cloud_essd2**: ESSDs of PL2
                * **cloud_essd3**: ESSDs of PL3
         :param pulumi.Input[str] db_name: The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+               
+               > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[str] db_names: The names of the databases that you want to create on the new instance.
         :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
+               
+               > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
         :param pulumi.Input[str] direction: The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
         :param pulumi.Input[str] effective_time: The effective time.
         :param pulumi.Input[str] encryption_key: The ID of the private key.
+               
+               > **NOTE:** This parameter is available only when the instance runs MySQL.
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
         :param pulumi.Input[str] engine_version: Database version. Value:
                * MySQL:**5.5/5.6/5.7/8.0**
@@ -2257,9 +2379,13 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **VPC**: VPC.
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
-        :param pulumi.Input[str] password: The password of the certificate.
+        :param pulumi.Input[str] password: The password of the certificate. 
+               
+               > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
         :param pulumi.Input[str] period: The period. Valid values: `Month`, `Year`.
+               
+               > **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
@@ -2270,9 +2396,13 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] restore_table: Specifies whether to restore only the databases and tables that you specify. The value 1 specifies to restore only the specified databases and tables. If you do not want to restore only the specified databases or tables, you can choose not to specify this parameter.
         :param pulumi.Input[str] restore_time: The point in time to which you want to restore the data of the original instance. The point in time must fall within the specified log backup retention period. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+               
+               > **NOTE:** This parameter is available only when the instance runs MySQL.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
                * IP address form, for example: 10.23.12.24.
                * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+               
+               > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
         :param pulumi.Input[str] server_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
         :param pulumi.Input[str] server_key: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceServerlessConfigArgs']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
@@ -2284,6 +2414,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **Sync**: strong synchronization
                * **Semi-sync**: Semi-synchronous
                * **Async**: asynchronous
+               
+               > **NOTE:** SQL Server 2017 cluster version is currently not supported.
         :param pulumi.Input[str] table_meta: The information about the databases and tables that you want to restore. Format:
                [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
         :param pulumi.Input[str] tcp_connection_type: The availability check method of the instance. Valid values:
@@ -2295,9 +2427,17 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         :param pulumi.Input[int] used_time: The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
                * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
                * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
+               
+               > **NOTE:** If you set the payment_type parameter to Subscription, you must specify the used_time parameter.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the new instance belongs.
+               
+               > **NOTE:** Make sure that the VPC resides in the specified region.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch associated with the specified VPC.
+               
+               > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         :param pulumi.Input[str] zone_id: The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+               
+               > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         """
         ...
     @overload
@@ -2588,6 +2728,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **Auto**: automatically upgrade the minor version.
                * **Manual**: It is not automatically upgraded. It is only mandatory when the current version is offline.
         :param pulumi.Input[str] backup_id: The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+               
+               > **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         :param pulumi.Input[str] backup_type: The type of backup that is used to restore the data of the original instance. Valid values:
                * **FullBackup**: full backup
                * **IncrementalBackup**: incremental backup
@@ -2610,6 +2752,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] db_instance_class: The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
         :param pulumi.Input[str] db_instance_description: The db instance description.
         :param pulumi.Input[int] db_instance_storage: The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+               
+               > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
         :param pulumi.Input[str] db_instance_storage_type: The type of storage media that is used for the new instance. Valid values:
                * **local_ssd**: local SSDs
                * **cloud_ssd**: standard SSDs
@@ -2617,14 +2761,20 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **cloud_essd2**: ESSDs of PL2
                * **cloud_essd3**: ESSDs of PL3
         :param pulumi.Input[str] db_name: The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+               
+               > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[str] db_names: The names of the databases that you want to create on the new instance.
         :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
         :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
+               
+               > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
         :param pulumi.Input[str] direction: The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
         :param pulumi.Input[str] effective_time: The effective time.
         :param pulumi.Input[str] encryption_key: The ID of the private key.
+               
+               > **NOTE:** This parameter is available only when the instance runs MySQL.
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
         :param pulumi.Input[str] engine_version: Database version. Value:
                * MySQL:**5.5/5.6/5.7/8.0**
@@ -2640,9 +2790,13 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **VPC**: VPC.
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
-        :param pulumi.Input[str] password: The password of the certificate.
+        :param pulumi.Input[str] password: The password of the certificate. 
+               
+               > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
         :param pulumi.Input[str] period: The period. Valid values: `Month`, `Year`.
+               
+               > **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
@@ -2653,9 +2807,13 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] restore_table: Specifies whether to restore only the databases and tables that you specify. The value 1 specifies to restore only the specified databases and tables. If you do not want to restore only the specified databases or tables, you can choose not to specify this parameter.
         :param pulumi.Input[str] restore_time: The point in time to which you want to restore the data of the original instance. The point in time must fall within the specified log backup retention period. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+               
+               > **NOTE:** This parameter is available only when the instance runs MySQL.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
                * IP address form, for example: 10.23.12.24.
                * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+               
+               > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
         :param pulumi.Input[str] server_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
         :param pulumi.Input[str] server_key: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceServerlessConfigArgs']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
@@ -2667,6 +2825,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **Sync**: strong synchronization
                * **Semi-sync**: Semi-synchronous
                * **Async**: asynchronous
+               
+               > **NOTE:** SQL Server 2017 cluster version is currently not supported.
         :param pulumi.Input[str] table_meta: The information about the databases and tables that you want to restore. Format:
                [{"type":"db","name":"The original name of Database 1","newname":"The new name of Database 1","tables":[{"type":"table","name":"The original name of Table 1 in Database 1","newname":"The new name of Table 1 in Database 1"},{"type":"table","name":"The original name of Table 2 in Database 1","newname":"The new name of Table 2 in Database 1"}]},{"type":"db","name":"The original name of Database 2","newname":"The new name of Database 2","tables":[{"type":"table","name":"The original name of Table 1 in Database 2","newname":"The new name of Table 1 in Database 2"},{"type":"table","name":"The original name of Table 2 in Database 2","newname":"The new name of Table 2 in Database 2"}]}]
         :param pulumi.Input[str] tcp_connection_type: The availability check method of the instance. Valid values:
@@ -2678,9 +2838,17 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         :param pulumi.Input[int] used_time: The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
                * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
                * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
+               
+               > **NOTE:** If you set the payment_type parameter to Subscription, you must specify the used_time parameter.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the new instance belongs.
+               
+               > **NOTE:** Make sure that the VPC resides in the specified region.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch associated with the specified VPC.
+               
+               > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         :param pulumi.Input[str] zone_id: The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+               
+               > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2771,6 +2939,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
     def backup_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+
+        > **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         """
         return pulumi.get(self, "backup_id")
 
@@ -2884,6 +3054,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
     def db_instance_storage(self) -> pulumi.Output[int]:
         """
         The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+
+        > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
         """
         return pulumi.get(self, "db_instance_storage")
 
@@ -2905,6 +3077,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
     def db_name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+
+        > **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         """
         return pulumi.get(self, "db_name")
 
@@ -2931,6 +3105,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         The switch of delete protection. Valid values:
         - true: delete protect.
         - false: no delete protect.
+
+        > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -2955,6 +3131,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
     def encryption_key(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the private key.
+
+        > **NOTE:** This parameter is available only when the instance runs MySQL.
         """
         return pulumi.get(self, "encryption_key")
 
@@ -3026,7 +3204,9 @@ class RdsCloneDbInstance(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[str]]:
         """
-        The password of the certificate.
+        The password of the certificate. 
+
+        > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         """
         return pulumi.get(self, "password")
 
@@ -3043,6 +3223,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
     def period(self) -> pulumi.Output[Optional[str]]:
         """
         The period. Valid values: `Month`, `Year`.
+
+        > **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
         """
         return pulumi.get(self, "period")
 
@@ -3123,6 +3305,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
     def role_arn(self) -> pulumi.Output[Optional[str]]:
         """
         The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+
+        > **NOTE:** This parameter is available only when the instance runs MySQL.
         """
         return pulumi.get(self, "role_arn")
 
@@ -3133,6 +3317,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
         * IP address form, for example: 10.23.12.24.
         * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+
+        > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
         """
         return pulumi.get(self, "security_ips")
 
@@ -3200,6 +3386,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         * **Sync**: strong synchronization
         * **Semi-sync**: Semi-synchronous
         * **Async**: asynchronous
+
+        > **NOTE:** SQL Server 2017 cluster version is currently not supported.
         """
         return pulumi.get(self, "sync_mode")
 
@@ -3239,6 +3427,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
         * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
         * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
+
+        > **NOTE:** If you set the payment_type parameter to Subscription, you must specify the used_time parameter.
         """
         return pulumi.get(self, "used_time")
 
@@ -3247,6 +3437,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
     def vpc_id(self) -> pulumi.Output[str]:
         """
         The ID of the VPC to which the new instance belongs.
+
+        > **NOTE:** Make sure that the VPC resides in the specified region.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -3255,6 +3447,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
     def vswitch_id(self) -> pulumi.Output[str]:
         """
         The ID of the vSwitch associated with the specified VPC.
+
+        > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -3263,6 +3457,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
     def zone_id(self) -> pulumi.Output[str]:
         """
         The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+
+        > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         """
         return pulumi.get(self, "zone_id")
 

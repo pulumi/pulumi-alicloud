@@ -15,12 +15,16 @@ public final class GetServicePlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Setting the value to `On` to enable the service. Valid values: `On` or `Off`.
      * 
+     * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the Cloud Sso service that means you have read and agreed the [Cloud Sso Terms of Service](https://help.aliyun.com/document_detail/299998.html). When there is no directory in Cloud SSO, you can set `enable = &#34;Off&#34;` to turn off Cloud SSO as needed. After it is closed, you can also open it at any time.
+     * 
      */
     @Import(name="enable", required=true)
     private String enable;
 
     /**
      * @return Setting the value to `On` to enable the service. Valid values: `On` or `Off`.
+     * 
+     * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the Cloud Sso service that means you have read and agreed the [Cloud Sso Terms of Service](https://help.aliyun.com/document_detail/299998.html). When there is no directory in Cloud SSO, you can set `enable = &#34;Off&#34;` to turn off Cloud SSO as needed. After it is closed, you can also open it at any time.
      * 
      */
     public String enable() {
@@ -53,6 +57,8 @@ public final class GetServicePlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param enable Setting the value to `On` to enable the service. Valid values: `On` or `Off`.
+         * 
+         * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the Cloud Sso service that means you have read and agreed the [Cloud Sso Terms of Service](https://help.aliyun.com/document_detail/299998.html). When there is no directory in Cloud SSO, you can set `enable = &#34;Off&#34;` to turn off Cloud SSO as needed. After it is closed, you can also open it at any time.
          * 
          * @return builder
          * 

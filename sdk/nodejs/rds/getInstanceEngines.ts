@@ -70,6 +70,9 @@ export interface GetInstanceEnginesArgs {
      * Whether to show multi available zone. Default false to not show multi availability zone.
      */
     multiZone?: boolean;
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     */
     outputFile?: string;
     /**
      * The Zone to launch the DB instance.
@@ -163,6 +166,9 @@ export interface GetInstanceEnginesOutputArgs {
      * Whether to show multi available zone. Default false to not show multi availability zone.
      */
     multiZone?: pulumi.Input<boolean>;
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The Zone to launch the DB instance.

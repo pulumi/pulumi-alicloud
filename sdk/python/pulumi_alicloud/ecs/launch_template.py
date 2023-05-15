@@ -71,6 +71,8 @@ class LaunchTemplateArgs:
         :param pulumi.Input[str] instance_charge_type: Billing methods. Optional values:
                - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
                - PostPaid: Pay-As-You-Go.
+               
+               Default value: PostPaid.
         :param pulumi.Input[str] instance_name: The name of the instance. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[str] instance_type: Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
         :param pulumi.Input[str] internet_charge_type: Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
@@ -312,6 +314,8 @@ class LaunchTemplateArgs:
         Billing methods. Optional values:
         - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
         - PostPaid: Pay-As-You-Go.
+
+        Default value: PostPaid.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -785,6 +789,8 @@ class _LaunchTemplateState:
         :param pulumi.Input[str] instance_charge_type: Billing methods. Optional values:
                - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
                - PostPaid: Pay-As-You-Go.
+               
+               Default value: PostPaid.
         :param pulumi.Input[str] instance_name: The name of the instance. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[str] instance_type: Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
         :param pulumi.Input[str] internet_charge_type: Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
@@ -1026,6 +1032,8 @@ class _LaunchTemplateState:
         Billing methods. Optional values:
         - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
         - PostPaid: Pay-As-You-Go.
+
+        Default value: PostPaid.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -1493,6 +1501,12 @@ class LaunchTemplate(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Provides an ECS Launch Template resource.
+
+        For information about Launch Template and how to use it, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html).
+
+        > **DEPRECATED:**  This resource  has been deprecated from version `1.120.0`. Please use new resource alicloud_ecs_launch_template.
+
         ## Example Usage
 
         ```python
@@ -1569,6 +1583,8 @@ class LaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] instance_charge_type: Billing methods. Optional values:
                - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
                - PostPaid: Pay-As-You-Go.
+               
+               Default value: PostPaid.
         :param pulumi.Input[str] instance_name: The name of the instance. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[str] instance_type: Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
         :param pulumi.Input[str] internet_charge_type: Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
@@ -1614,6 +1630,12 @@ class LaunchTemplate(pulumi.CustomResource):
                  args: Optional[LaunchTemplateArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides an ECS Launch Template resource.
+
+        For information about Launch Template and how to use it, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html).
+
+        > **DEPRECATED:**  This resource  has been deprecated from version `1.120.0`. Please use new resource alicloud_ecs_launch_template.
+
         ## Example Usage
 
         ```python
@@ -1882,6 +1904,8 @@ class LaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] instance_charge_type: Billing methods. Optional values:
                - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
                - PostPaid: Pay-As-You-Go.
+               
+               Default value: PostPaid.
         :param pulumi.Input[str] instance_name: The name of the instance. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         :param pulumi.Input[str] instance_type: Instance type. For more information, call resource_alicloud_instances to obtain the latest instance type list.
         :param pulumi.Input[str] internet_charge_type: Internet bandwidth billing method. Optional values: `PayByTraffic` | `PayByBandwidth`.
@@ -2033,6 +2057,8 @@ class LaunchTemplate(pulumi.CustomResource):
         Billing methods. Optional values:
         - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
         - PostPaid: Pay-As-You-Go.
+
+        Default value: PostPaid.
         """
         return pulumi.get(self, "instance_charge_type")
 

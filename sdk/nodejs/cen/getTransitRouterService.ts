@@ -37,6 +37,8 @@ export function getTransitRouterService(args?: GetTransitRouterServiceArgs, opts
 export interface GetTransitRouterServiceArgs {
     /**
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+     *
+     * > **NOTE:** Setting `enable = "On"` to open the CEN Transit Router Service that means you have read and agreed the [CEN Terms of Service](https://help.aliyun.com/document_detail/66667.html). The service can not closed once it is opened.
      */
     enable?: string;
 }
@@ -83,6 +85,8 @@ export function getTransitRouterServiceOutput(args?: GetTransitRouterServiceOutp
 export interface GetTransitRouterServiceOutputArgs {
     /**
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+     *
+     * > **NOTE:** Setting `enable = "On"` to open the CEN Transit Router Service that means you have read and agreed the [CEN Terms of Service](https://help.aliyun.com/document_detail/66667.html). The service can not closed once it is opened.
      */
     enable?: pulumi.Input<string>;
 }

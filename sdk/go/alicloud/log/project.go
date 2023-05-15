@@ -10,6 +10,71 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The project is the resource management unit in Log Service and is used to isolate and control resources.
+// You can manage all the logs and the related log sources of an application by using projects. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48873.htm).
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := log.NewProject(ctx, "example", &log.ProjectArgs{
+//				Description: pulumi.String("created by terraform"),
+//				Tags: pulumi.AnyMap{
+//					"test": pulumi.Any("test"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// # Project With Policy Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := log.NewProject(ctx, "examplePolicy", &log.ProjectArgs{
+//				Description: pulumi.String("created by terraform"),
+//				Policy:      pulumi.String("{\n  \"Statement\": [\n    {\n      \"Action\": [\n        \"log:PostLogStoreLogs\"\n      ],\n      \"Condition\": {\n        \"StringNotLike\": {\n          \"acs:SourceVpc\": [\n            \"vpc-*\"\n          ]\n        }\n      },\n      \"Effect\": \"Deny\",\n      \"Resource\": \"acs:log:*:*:project/tf-log/*\"\n    }\n  ],\n  \"Version\": \"1\"\n}\n\n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Module Support
+//
+// You can use the existing sls module
+// to create SLS project, store and store index one-click, like ECS instances.
+//
 // ## Import
 //
 // Log project can be imported using the id or name, e.g.

@@ -68,7 +68,8 @@ type GetInstanceTypesArgs struct {
 	InstanceChargeType string `pulumi:"instanceChargeType"`
 	// Filter the specific ecs instance type to create emr cluster.
 	InstanceType *string `pulumi:"instanceType"`
-	OutputFile   *string `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// Whether the current storage disk is local or not.
 	SupportLocalStorage *bool `pulumi:"supportLocalStorage"`
 	// The specific supported node type list.
@@ -120,7 +121,8 @@ type GetInstanceTypesOutputArgs struct {
 	InstanceChargeType pulumi.StringInput `pulumi:"instanceChargeType"`
 	// Filter the specific ecs instance type to create emr cluster.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
-	OutputFile   pulumi.StringPtrInput `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Whether the current storage disk is local or not.
 	SupportLocalStorage pulumi.BoolPtrInput `pulumi:"supportLocalStorage"`
 	// The specific supported node type list.

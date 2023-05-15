@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Express Connect Router Interface resource.
+//
+// For information about Express Connect Router Interface and how to use it, see What is Router Interface.
+//
+// > **NOTE:** Available in v1.199.0+.
+//
 // ## Example Usage
 //
 // # Basic Usage

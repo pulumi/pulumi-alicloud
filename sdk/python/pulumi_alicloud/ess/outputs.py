@@ -1175,6 +1175,8 @@ class EciScalingConfigurationVolume(dict):
         :param str nfs_volume_path: The path to the NFS volume.
         :param bool nfs_volume_read_only: The nfs volume read only. Default to `false`.
         :param str nfs_volume_server: The address of the NFS server.
+               
+               > **NOTE:** Every volume mounted must have a name and type attributes.
         :param str type: The type of the volume.
         """
         if config_file_volume_config_file_to_paths is not None:
@@ -1287,6 +1289,8 @@ class EciScalingConfigurationVolume(dict):
     def nfs_volume_server(self) -> Optional[str]:
         """
         The address of the NFS server.
+
+        > **NOTE:** Every volume mounted must have a name and type attributes.
         """
         return pulumi.get(self, "nfs_volume_server")
 

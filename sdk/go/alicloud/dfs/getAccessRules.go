@@ -60,8 +60,9 @@ type GetAccessRulesArgs struct {
 	// The resource ID of the Access Group.
 	AccessGroupId string `pulumi:"accessGroupId"`
 	// A list of Access Rule IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 }
 
 // A collection of values returned by getAccessRules.
@@ -92,8 +93,9 @@ type GetAccessRulesOutputArgs struct {
 	// The resource ID of the Access Group.
 	AccessGroupId pulumi.StringInput `pulumi:"accessGroupId"`
 	// A list of Access Rule IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
 func (GetAccessRulesOutputArgs) ElementType() reflect.Type {

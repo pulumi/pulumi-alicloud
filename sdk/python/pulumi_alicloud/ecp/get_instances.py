@@ -196,6 +196,7 @@ def get_instances(enable_details: Optional[bool] = None,
     :param str instance_type: Instance Type.
     :param str key_pair_name: The Key Name.
     :param str name_regex: A regex string to filter results by mobile phone name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str payment_type: The payment type.Valid values: `PayAsYouGo`,`Subscription`
     :param str resolution: Resolution.
     :param str status: Instance Status.
@@ -260,6 +261,7 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     :param str instance_type: Instance Type.
     :param str key_pair_name: The Key Name.
     :param str name_regex: A regex string to filter results by mobile phone name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str payment_type: The payment type.Valid values: `PayAsYouGo`,`Subscription`
     :param str resolution: Resolution.
     :param str status: Instance Status.

@@ -57,8 +57,9 @@ type GetChildInstanceRouteEntryToAttachmentsArgs struct {
 	// The first ID of the resource
 	ChildInstanceRouteTableId string `pulumi:"childInstanceRouteTableId"`
 	// Limit search to a list of specific IDs.The value is formulated as `<cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>`.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// ServiceType
 	ServiceType *string `pulumi:"serviceType"`
 	// TransitRouterAttachmentId
@@ -104,8 +105,9 @@ type GetChildInstanceRouteEntryToAttachmentsOutputArgs struct {
 	// The first ID of the resource
 	ChildInstanceRouteTableId pulumi.StringInput `pulumi:"childInstanceRouteTableId"`
 	// Limit search to a list of specific IDs.The value is formulated as `<cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>`.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// ServiceType
 	ServiceType pulumi.StringPtrInput `pulumi:"serviceType"`
 	// TransitRouterAttachmentId

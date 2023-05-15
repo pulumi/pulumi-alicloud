@@ -62,6 +62,9 @@ export interface GetUserGroupsArgs {
      * A regex string to filter results by User Group name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Specify the New Group Name. Supports up to 128 Characters.
@@ -133,6 +136,9 @@ export interface GetUserGroupsOutputArgs {
      * A regex string to filter results by User Group name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Specify the New Group Name. Supports up to 128 Characters.

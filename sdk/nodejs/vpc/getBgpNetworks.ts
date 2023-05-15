@@ -53,6 +53,9 @@ export interface GetBgpNetworksArgs {
      * A list of Bgp Network IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the vRouter.
@@ -117,6 +120,9 @@ export interface GetBgpNetworksOutputArgs {
      * A list of Bgp Network IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the vRouter.

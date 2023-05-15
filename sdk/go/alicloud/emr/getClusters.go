@@ -12,6 +12,8 @@ import (
 
 // This data source provides the Emr Clusters of the current Alibaba Cloud user.
 //
+// > **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
+//
 // > **NOTE:** Available in v1.146.0+.
 func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.InvokeOption) (*GetClustersResult, error) {
 	var rv GetClustersResult
@@ -43,7 +45,8 @@ type GetClustersArgs struct {
 	// The host type of the cluster. The default is ECS.
 	MachineType *string `pulumi:"machineType"`
 	// A regex string to filter results by Cluster name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
@@ -114,7 +117,8 @@ type GetClustersOutputArgs struct {
 	// The host type of the cluster. The default is ECS.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// A regex string to filter results by Cluster name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`

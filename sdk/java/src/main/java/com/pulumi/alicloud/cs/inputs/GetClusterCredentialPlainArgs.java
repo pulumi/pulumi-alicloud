@@ -30,9 +30,17 @@ public final class GetClusterCredentialPlainArgs extends com.pulumi.resources.In
         return this.clusterId;
     }
 
+    /**
+     * File name where to save the returned KubeConfig (after running `pulumi preview`).
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable String outputFile;
 
+    /**
+     * @return File name where to save the returned KubeConfig (after running `pulumi preview`).
+     * 
+     */
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -89,6 +97,12 @@ public final class GetClusterCredentialPlainArgs extends com.pulumi.resources.In
             return this;
         }
 
+        /**
+         * @param outputFile File name where to save the returned KubeConfig (after running `pulumi preview`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
             return this;

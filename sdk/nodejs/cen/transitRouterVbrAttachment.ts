@@ -99,6 +99,8 @@ export class TransitRouterVbrAttachment extends pulumi.CustomResource {
     public readonly vbrId!: pulumi.Output<string>;
     /**
      * The owner id of the transit router vbr attachment.
+     *
+     * ->**NOTE:** Ensure that the vbr is not used in Express Connect.
      */
     public readonly vbrOwnerId!: pulumi.Output<string>;
 
@@ -215,6 +217,8 @@ export interface TransitRouterVbrAttachmentState {
     vbrId?: pulumi.Input<string>;
     /**
      * The owner id of the transit router vbr attachment.
+     *
+     * ->**NOTE:** Ensure that the vbr is not used in Express Connect.
      */
     vbrOwnerId?: pulumi.Input<string>;
 }
@@ -269,6 +273,8 @@ export interface TransitRouterVbrAttachmentArgs {
     vbrId: pulumi.Input<string>;
     /**
      * The owner id of the transit router vbr attachment.
+     *
+     * ->**NOTE:** Ensure that the vbr is not used in Express Connect.
      */
     vbrOwnerId?: pulumi.Input<string>;
 }

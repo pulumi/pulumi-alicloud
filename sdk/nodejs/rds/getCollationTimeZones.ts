@@ -44,6 +44,9 @@ export interface GetCollationTimeZonesArgs {
      * use in ApsaraDB RDS.
      */
     collationTimeZones?: inputs.rds.GetCollationTimeZonesCollationTimeZone[];
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     */
     outputFile?: string;
 }
 
@@ -91,5 +94,8 @@ export interface GetCollationTimeZonesOutputArgs {
      * use in ApsaraDB RDS.
      */
     collationTimeZones?: pulumi.Input<pulumi.Input<inputs.rds.GetCollationTimeZonesCollationTimeZoneArgs>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     */
     outputFile?: pulumi.Input<string>;
 }

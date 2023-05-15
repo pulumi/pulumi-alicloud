@@ -64,6 +64,9 @@ export interface GetExchangesArgs {
      * A regex string to filter results by Exchange name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The name of virtual host where an exchange resides.
@@ -137,6 +140,9 @@ export interface GetExchangesOutputArgs {
      * A regex string to filter results by Exchange name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The name of virtual host where an exchange resides.

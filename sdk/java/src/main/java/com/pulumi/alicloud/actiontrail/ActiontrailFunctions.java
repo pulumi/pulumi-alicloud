@@ -1924,6 +1924,9 @@ public final class ActiontrailFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:actiontrail/getTrails:getTrails", TypeShape.of(GetTrailsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
+     * 
+     * This data source provides a list of action trail of the current Alibaba Cloud user.
      * 
      * @deprecated
      * DataSource has been renamed to `getTrails`
@@ -1934,6 +1937,9 @@ public final class ActiontrailFunctions {
         return getTrailsDeprecated(GetTrailsDeprecatedArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
+     * 
+     * This data source provides a list of action trail of the current Alibaba Cloud user.
      * 
      * @deprecated
      * DataSource has been renamed to `getTrails`
@@ -1944,6 +1950,9 @@ public final class ActiontrailFunctions {
         return getTrailsDeprecatedPlain(GetTrailsDeprecatedPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
+     * 
+     * This data source provides a list of action trail of the current Alibaba Cloud user.
      * 
      * @deprecated
      * DataSource has been renamed to `getTrails`
@@ -1954,6 +1963,9 @@ public final class ActiontrailFunctions {
         return getTrailsDeprecated(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
+     * 
+     * This data source provides a list of action trail of the current Alibaba Cloud user.
      * 
      * @deprecated
      * DataSource has been renamed to `getTrails`
@@ -1964,6 +1976,9 @@ public final class ActiontrailFunctions {
         return getTrailsDeprecatedPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
+     * 
+     * This data source provides a list of action trail of the current Alibaba Cloud user.
      * 
      * @deprecated
      * DataSource has been renamed to `getTrails`
@@ -1974,6 +1989,9 @@ public final class ActiontrailFunctions {
         return Deployment.getInstance().invoke("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", TypeShape.of(GetTrailsDeprecatedResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
+     * 
+     * This data source provides a list of action trail of the current Alibaba Cloud user.
      * 
      * @deprecated
      * DataSource has been renamed to `getTrails`

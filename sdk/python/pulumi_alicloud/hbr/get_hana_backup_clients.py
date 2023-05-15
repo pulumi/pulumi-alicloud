@@ -172,6 +172,7 @@ def get_hana_backup_clients(client_id: Optional[str] = None,
     :param str client_id: The ID of the backup client.
     :param str cluster_id: The ID of the SAP HANA instance.
     :param Sequence[str] ids: A list of Hana Backup Client IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Hana Backup Client. Valid Values: `REGISTERED`, `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `UPGRADING`, `UPGRADE_FAILED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `STOPPED`, `UNKNOWN`.
     :param str vault_id: The ID of the backup vault.
     """
@@ -232,6 +233,7 @@ def get_hana_backup_clients_output(client_id: Optional[pulumi.Input[Optional[str
     :param str client_id: The ID of the backup client.
     :param str cluster_id: The ID of the SAP HANA instance.
     :param Sequence[str] ids: A list of Hana Backup Client IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Hana Backup Client. Valid Values: `REGISTERED`, `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `UPGRADING`, `UPGRADE_FAILED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `STOPPED`, `UNKNOWN`.
     :param str vault_id: The ID of the backup vault.
     """

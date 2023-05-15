@@ -72,7 +72,8 @@ type GetAddressPoolsArgs struct {
 	// The id of the instance.
 	InstanceId string `pulumi:"instanceId"`
 	// A regex string to filter results by Address Pool name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -111,7 +112,8 @@ type GetAddressPoolsOutputArgs struct {
 	// The id of the instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// A regex string to filter results by Address Pool name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

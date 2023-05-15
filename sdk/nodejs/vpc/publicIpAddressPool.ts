@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPC Public Ip Address Pool resource.
+ * Provides a Vpc Public Ip Address Pool resource.
  *
- * For information about VPC Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
+ * For information about Vpc Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
  *
  * > **NOTE:** Available in v1.186.0+.
  *
@@ -19,16 +19,25 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const defaultRg = new alicloud.resourcemanager.ResourceGroup("defaultRg", {
+ *     displayName: "tf-test-acc-publicaddresspool-383",
+ *     resourceGroupName: "tf-test-acc-publicaddresspool-855",
+ * });
+ * const changeRg = new alicloud.resourcemanager.ResourceGroup("changeRg", {
+ *     displayName: "tf-testacc-publicaddresspool-change-368",
+ *     resourceGroupName: "tf-testacc-publicaddresspool-change-499",
+ * });
  * const _default = new alicloud.vpc.PublicIpAddressPool("default", {
- *     description: "example_value",
- *     isp: "BGP_PRO",
- *     publicIpAddressPoolName: "example_value",
+ *     description: "rdk-test",
+ *     publicIpAddressPoolName: "rdk-test",
+ *     isp: "BGP",
+ *     resourceGroupId: defaultRg.id,
  * });
  * ```
  *
  * ## Import
  *
- * VPC Public Ip Address Pool can be imported using the id, e.g.
+ * Vpc Public Ip Address Pool can be imported using the id, e.g.
  *
  * ```sh
  *  $ pulumi import alicloud:vpc/publicIpAddressPool:PublicIpAddressPool example <id>
@@ -63,21 +72,46 @@ export class PublicIpAddressPool extends pulumi.CustomResource {
     }
 
     /**
-     * The description of the VPC Public IP address pool.
+     * The creation time of the resource.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Description.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Whether there is a free IP address.
+     */
+    public /*out*/ readonly ipAddressRemaining!: pulumi.Output<boolean>;
     /**
      * The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
      */
     public readonly isp!: pulumi.Output<string>;
+    public /*out*/ readonly publicIpAddressPoolId!: pulumi.Output<string>;
     /**
      * The name of the VPC Public IP address pool.
      */
     public readonly publicIpAddressPoolName!: pulumi.Output<string | undefined>;
     /**
+     * The resource group ID of the VPC Public IP address pool.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
      * The status of the VPC Public IP address pool.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The tags of PrefixList.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * The total number of public IP address pools.
+     */
+    public /*out*/ readonly totalIpNum!: pulumi.Output<number>;
+    /**
+     * The number of used IP addresses in the public IP address pool.
+     */
+    public /*out*/ readonly usedIpNum!: pulumi.Output<number>;
 
     /**
      * Create a PublicIpAddressPool resource with the given unique name, arguments, and options.
@@ -92,16 +126,30 @@ export class PublicIpAddressPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PublicIpAddressPoolState | undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["ipAddressRemaining"] = state ? state.ipAddressRemaining : undefined;
             resourceInputs["isp"] = state ? state.isp : undefined;
+            resourceInputs["publicIpAddressPoolId"] = state ? state.publicIpAddressPoolId : undefined;
             resourceInputs["publicIpAddressPoolName"] = state ? state.publicIpAddressPoolName : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["totalIpNum"] = state ? state.totalIpNum : undefined;
+            resourceInputs["usedIpNum"] = state ? state.usedIpNum : undefined;
         } else {
             const args = argsOrState as PublicIpAddressPoolArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["isp"] = args ? args.isp : undefined;
             resourceInputs["publicIpAddressPoolName"] = args ? args.publicIpAddressPoolName : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["ipAddressRemaining"] = undefined /*out*/;
+            resourceInputs["publicIpAddressPoolId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["totalIpNum"] = undefined /*out*/;
+            resourceInputs["usedIpNum"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PublicIpAddressPool.__pulumiType, name, resourceInputs, opts);
@@ -113,21 +161,46 @@ export class PublicIpAddressPool extends pulumi.CustomResource {
  */
 export interface PublicIpAddressPoolState {
     /**
-     * The description of the VPC Public IP address pool.
+     * The creation time of the resource.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Description.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Whether there is a free IP address.
+     */
+    ipAddressRemaining?: pulumi.Input<boolean>;
     /**
      * The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
      */
     isp?: pulumi.Input<string>;
+    publicIpAddressPoolId?: pulumi.Input<string>;
     /**
      * The name of the VPC Public IP address pool.
      */
     publicIpAddressPoolName?: pulumi.Input<string>;
     /**
+     * The resource group ID of the VPC Public IP address pool.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
      * The status of the VPC Public IP address pool.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The tags of PrefixList.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The total number of public IP address pools.
+     */
+    totalIpNum?: pulumi.Input<number>;
+    /**
+     * The number of used IP addresses in the public IP address pool.
+     */
+    usedIpNum?: pulumi.Input<number>;
 }
 
 /**
@@ -135,7 +208,7 @@ export interface PublicIpAddressPoolState {
  */
 export interface PublicIpAddressPoolArgs {
     /**
-     * The description of the VPC Public IP address pool.
+     * Description.
      */
     description?: pulumi.Input<string>;
     /**
@@ -146,4 +219,12 @@ export interface PublicIpAddressPoolArgs {
      * The name of the VPC Public IP address pool.
      */
     publicIpAddressPoolName?: pulumi.Input<string>;
+    /**
+     * The resource group ID of the VPC Public IP address pool.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The tags of PrefixList.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

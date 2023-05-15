@@ -57,8 +57,9 @@ func GetTransitRouterMulticastDomainAssociations(ctx *pulumi.Context, args *GetT
 // A collection of arguments for invoking getTransitRouterMulticastDomainAssociations.
 type GetTransitRouterMulticastDomainAssociationsArgs struct {
 	// A list of Transit Router Multicast Domain Association IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the resource associated with the multicast domain.
 	ResourceId *string `pulumi:"resourceId"`
 	// The type of resource associated with the multicast domain. Valid Value: `VPC`.
@@ -111,8 +112,9 @@ func GetTransitRouterMulticastDomainAssociationsOutput(ctx *pulumi.Context, args
 // A collection of arguments for invoking getTransitRouterMulticastDomainAssociations.
 type GetTransitRouterMulticastDomainAssociationsOutputArgs struct {
 	// A list of Transit Router Multicast Domain Association IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the resource associated with the multicast domain.
 	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
 	// The type of resource associated with the multicast domain. Valid Value: `VPC`.

@@ -51,7 +51,9 @@ class ListenerArgs:
         :param pulumi.Input[int] mss: The maximum size of a TCP segment. Unit: bytes. Valid values: 0 to 1500. 0 specifies that the maximum segment size remains unchanged. **Note:** This parameter is supported only by listeners that use SSL over TCP.
         :param pulumi.Input[bool] proxy_protocol_enabled: Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers.
         :param pulumi.Input[bool] sec_sensor_enabled: Specifies whether to enable fine-grained monitoring.
-        :param pulumi.Input[str] security_policy_id: The ID of the security policy. System security policies and custom security policies are supported. Valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
+        :param pulumi.Input[str] security_policy_id: The ID of the security policy. System security policies and custom security policies are supported. 
+               System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
+               Custom security policies can be created by resource `nlb.SecurityPolicy`.
         :param pulumi.Input[int] start_port: Full Port listens to the starting port. Valid values: `0` ~ `65535`.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`, `Stopped`.
         """
@@ -286,7 +288,9 @@ class ListenerArgs:
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the security policy. System security policies and custom security policies are supported. Valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
+        The ID of the security policy. System security policies and custom security policies are supported. 
+        System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
+        Custom security policies can be created by resource `nlb.SecurityPolicy`.
         """
         return pulumi.get(self, "security_policy_id")
 
@@ -358,7 +362,9 @@ class _ListenerState:
         :param pulumi.Input[int] mss: The maximum size of a TCP segment. Unit: bytes. Valid values: 0 to 1500. 0 specifies that the maximum segment size remains unchanged. **Note:** This parameter is supported only by listeners that use SSL over TCP.
         :param pulumi.Input[bool] proxy_protocol_enabled: Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers.
         :param pulumi.Input[bool] sec_sensor_enabled: Specifies whether to enable fine-grained monitoring.
-        :param pulumi.Input[str] security_policy_id: The ID of the security policy. System security policies and custom security policies are supported. Valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
+        :param pulumi.Input[str] security_policy_id: The ID of the security policy. System security policies and custom security policies are supported. 
+               System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
+               Custom security policies can be created by resource `nlb.SecurityPolicy`.
         :param pulumi.Input[str] server_group_id: The ID of the server group.
         :param pulumi.Input[int] start_port: Full Port listens to the starting port. Valid values: `0` ~ `65535`.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`, `Stopped`.
@@ -586,7 +592,9 @@ class _ListenerState:
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the security policy. System security policies and custom security policies are supported. Valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
+        The ID of the security policy. System security policies and custom security policies are supported. 
+        System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
+        Custom security policies can be created by resource `nlb.SecurityPolicy`.
         """
         return pulumi.get(self, "security_policy_id")
 
@@ -772,7 +780,9 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[int] mss: The maximum size of a TCP segment. Unit: bytes. Valid values: 0 to 1500. 0 specifies that the maximum segment size remains unchanged. **Note:** This parameter is supported only by listeners that use SSL over TCP.
         :param pulumi.Input[bool] proxy_protocol_enabled: Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers.
         :param pulumi.Input[bool] sec_sensor_enabled: Specifies whether to enable fine-grained monitoring.
-        :param pulumi.Input[str] security_policy_id: The ID of the security policy. System security policies and custom security policies are supported. Valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
+        :param pulumi.Input[str] security_policy_id: The ID of the security policy. System security policies and custom security policies are supported. 
+               System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
+               Custom security policies can be created by resource `nlb.SecurityPolicy`.
         :param pulumi.Input[str] server_group_id: The ID of the server group.
         :param pulumi.Input[int] start_port: Full Port listens to the starting port. Valid values: `0` ~ `65535`.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`, `Stopped`.
@@ -1003,7 +1013,9 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[int] mss: The maximum size of a TCP segment. Unit: bytes. Valid values: 0 to 1500. 0 specifies that the maximum segment size remains unchanged. **Note:** This parameter is supported only by listeners that use SSL over TCP.
         :param pulumi.Input[bool] proxy_protocol_enabled: Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers.
         :param pulumi.Input[bool] sec_sensor_enabled: Specifies whether to enable fine-grained monitoring.
-        :param pulumi.Input[str] security_policy_id: The ID of the security policy. System security policies and custom security policies are supported. Valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
+        :param pulumi.Input[str] security_policy_id: The ID of the security policy. System security policies and custom security policies are supported. 
+               System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
+               Custom security policies can be created by resource `nlb.SecurityPolicy`.
         :param pulumi.Input[str] server_group_id: The ID of the server group.
         :param pulumi.Input[int] start_port: Full Port listens to the starting port. Valid values: `0` ~ `65535`.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`, `Stopped`.
@@ -1157,7 +1169,9 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="securityPolicyId")
     def security_policy_id(self) -> pulumi.Output[str]:
         """
-        The ID of the security policy. System security policies and custom security policies are supported. Valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
+        The ID of the security policy. System security policies and custom security policies are supported. 
+        System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
+        Custom security policies can be created by resource `nlb.SecurityPolicy`.
         """
         return pulumi.get(self, "security_policy_id")
 

@@ -180,6 +180,7 @@ def get_assets(criteria: Optional[str] = None,
            - **ecs**: server.
            - **cloud_product**: Cloud product.
     :param bool no_group_trace: Specifies whether to internationalize the name of the default group. Default value: false
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['criteria'] = criteria
@@ -248,5 +249,6 @@ def get_assets_output(criteria: Optional[pulumi.Input[Optional[str]]] = None,
            - **ecs**: server.
            - **cloud_product**: Cloud product.
     :param bool no_group_trace: Specifies whether to internationalize the name of the default group. Default value: false
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

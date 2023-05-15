@@ -35,7 +35,8 @@ type GetNatGatewaysArgs struct {
 	// The name of NAT gateway.
 	NatGatewayName *string `pulumi:"natGatewayName"`
 	// The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
-	NatType    *string `pulumi:"natType"`
+	NatType *string `pulumi:"natType"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
@@ -114,7 +115,8 @@ type GetNatGatewaysOutputArgs struct {
 	// The name of NAT gateway.
 	NatGatewayName pulumi.StringPtrInput `pulumi:"natGatewayName"`
 	// The nat type of NAT gateway. Valid values `Enhanced` and `Normal`.
-	NatType    pulumi.StringPtrInput `pulumi:"natType"`
+	NatType pulumi.StringPtrInput `pulumi:"natType"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`

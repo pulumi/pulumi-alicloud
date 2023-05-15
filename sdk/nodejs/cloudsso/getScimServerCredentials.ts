@@ -54,6 +54,9 @@ export interface GetScimServerCredentialsArgs {
      * A list of SCIM Server Credential IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The Status of the resource. Valid values: `Disabled`, `Enabled`.
@@ -116,6 +119,9 @@ export interface GetScimServerCredentialsOutputArgs {
      * A list of SCIM Server Credential IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The Status of the resource. Valid values: `Disabled`, `Enabled`.

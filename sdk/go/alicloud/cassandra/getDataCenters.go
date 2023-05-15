@@ -57,7 +57,8 @@ type GetDataCentersArgs struct {
 	// The list of Cassandra data center ids.
 	Ids []string `pulumi:"ids"`
 	// A regex string to apply to the cluster name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// The name of file that can save the collection of data centers after running `pulumi preview`.
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -97,7 +98,8 @@ type GetDataCentersOutputArgs struct {
 	// The list of Cassandra data center ids.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to apply to the cluster name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// The name of file that can save the collection of data centers after running `pulumi preview`.
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

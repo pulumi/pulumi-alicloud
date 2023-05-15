@@ -26,6 +26,10 @@ type BandwidthPackage struct {
 	// The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// The name of the bandwidth package. Defaults to null.
+	//
+	// ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+	//
+	// ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
 	CenBandwidthPackageName pulumi.StringOutput `pulumi:"cenBandwidthPackageName"`
 	// Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
 	//
@@ -49,7 +53,9 @@ type BandwidthPackage struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	Period      pulumi.IntPtrOutput `pulumi:"period"`
+	// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The association status of the bandwidth package.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
@@ -89,6 +95,10 @@ type bandwidthPackageState struct {
 	// The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
 	Bandwidth *int `pulumi:"bandwidth"`
 	// The name of the bandwidth package. Defaults to null.
+	//
+	// ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+	//
+	// ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
 	CenBandwidthPackageName *string `pulumi:"cenBandwidthPackageName"`
 	// Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
 	//
@@ -112,7 +122,9 @@ type bandwidthPackageState struct {
 	Name *string `pulumi:"name"`
 	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	PaymentType *string `pulumi:"paymentType"`
-	Period      *int    `pulumi:"period"`
+	// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period *int `pulumi:"period"`
 	// The association status of the bandwidth package.
 	Status *string `pulumi:"status"`
 }
@@ -121,6 +133,10 @@ type BandwidthPackageState struct {
 	// The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
 	Bandwidth pulumi.IntPtrInput
 	// The name of the bandwidth package. Defaults to null.
+	//
+	// ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+	//
+	// ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
 	CenBandwidthPackageName pulumi.StringPtrInput
 	// Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
 	//
@@ -144,7 +160,9 @@ type BandwidthPackageState struct {
 	Name pulumi.StringPtrInput
 	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	PaymentType pulumi.StringPtrInput
-	Period      pulumi.IntPtrInput
+	// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period pulumi.IntPtrInput
 	// The association status of the bandwidth package.
 	Status pulumi.StringPtrInput
 }
@@ -157,6 +175,10 @@ type bandwidthPackageArgs struct {
 	// The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
 	Bandwidth int `pulumi:"bandwidth"`
 	// The name of the bandwidth package. Defaults to null.
+	//
+	// ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+	//
+	// ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
 	CenBandwidthPackageName *string `pulumi:"cenBandwidthPackageName"`
 	// Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
 	//
@@ -178,7 +200,9 @@ type bandwidthPackageArgs struct {
 	Name *string `pulumi:"name"`
 	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	PaymentType *string `pulumi:"paymentType"`
-	Period      *int    `pulumi:"period"`
+	// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period *int `pulumi:"period"`
 }
 
 // The set of arguments for constructing a BandwidthPackage resource.
@@ -186,6 +210,10 @@ type BandwidthPackageArgs struct {
 	// The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
 	Bandwidth pulumi.IntInput
 	// The name of the bandwidth package. Defaults to null.
+	//
+	// ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+	//
+	// ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
 	CenBandwidthPackageName pulumi.StringPtrInput
 	// Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
 	//
@@ -207,7 +235,9 @@ type BandwidthPackageArgs struct {
 	Name pulumi.StringPtrInput
 	// The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
 	PaymentType pulumi.StringPtrInput
-	Period      pulumi.IntPtrInput
+	// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	Period pulumi.IntPtrInput
 }
 
 func (BandwidthPackageArgs) ElementType() reflect.Type {
@@ -303,6 +333,10 @@ func (o BandwidthPackageOutput) Bandwidth() pulumi.IntOutput {
 }
 
 // The name of the bandwidth package. Defaults to null.
+//
+// ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+//
+// ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
 func (o BandwidthPackageOutput) CenBandwidthPackageName() pulumi.StringOutput {
 	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.CenBandwidthPackageName }).(pulumi.StringOutput)
 }
@@ -353,6 +387,8 @@ func (o BandwidthPackageOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
+// The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 func (o BandwidthPackageOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BandwidthPackage) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }

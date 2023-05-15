@@ -27,7 +27,8 @@ type GetShardingNetworkPrivateAddressesArgs struct {
 	// The db instance id.
 	DbInstanceId string `pulumi:"dbInstanceId"`
 	// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
-	NodeId     *string `pulumi:"nodeId"`
+	NodeId *string `pulumi:"nodeId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The role of the node.
 	Role *string `pulumi:"role"`
@@ -62,7 +63,8 @@ type GetShardingNetworkPrivateAddressesOutputArgs struct {
 	// The db instance id.
 	DbInstanceId pulumi.StringInput `pulumi:"dbInstanceId"`
 	// The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
-	NodeId     pulumi.StringPtrInput `pulumi:"nodeId"`
+	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The role of the node.
 	Role pulumi.StringPtrInput `pulumi:"role"`

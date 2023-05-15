@@ -36,6 +36,9 @@ export function getReplicationVaultRegions(args?: GetReplicationVaultRegionsArgs
  * A collection of arguments for invoking getReplicationVaultRegions.
  */
 export interface GetReplicationVaultRegionsArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -75,5 +78,8 @@ export function getReplicationVaultRegionsOutput(args?: GetReplicationVaultRegio
  * A collection of arguments for invoking getReplicationVaultRegions.
  */
 export interface GetReplicationVaultRegionsOutputArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

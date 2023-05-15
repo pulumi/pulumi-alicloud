@@ -107,6 +107,9 @@ export interface GetApplicationsArgs {
      * The order by.Valid values:`running`,`instances`.
      */
     orderBy?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The reverse.
@@ -225,6 +228,9 @@ export interface GetApplicationsOutputArgs {
      * The order by.Valid values:`running`,`instances`.
      */
     orderBy?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The reverse.

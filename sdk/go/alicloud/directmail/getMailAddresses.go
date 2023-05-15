@@ -58,7 +58,8 @@ type GetMailAddressesArgs struct {
 	// A list of Mail Address IDs.
 	Ids []string `pulumi:"ids"`
 	// The key word about account email address.
-	KeyWord    *string `pulumi:"keyWord"`
+	KeyWord *string `pulumi:"keyWord"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Account type.
 	Sendtype *string `pulumi:"sendtype"`
@@ -96,7 +97,8 @@ type GetMailAddressesOutputArgs struct {
 	// A list of Mail Address IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The key word about account email address.
-	KeyWord    pulumi.StringPtrInput `pulumi:"keyWord"`
+	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Account type.
 	Sendtype pulumi.StringPtrInput `pulumi:"sendtype"`

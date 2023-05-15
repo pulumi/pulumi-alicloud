@@ -133,6 +133,7 @@ def get_registry_enterprise_instances(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to `true`. Set it to true can output instance authorization token.
     :param Sequence[str] ids: A list of ids to filter results by instance id.
     :param str name_regex: A regex string to filter results by instance name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -178,5 +179,6 @@ def get_registry_enterprise_instances_output(enable_details: Optional[pulumi.Inp
     :param bool enable_details: Default to `true`. Set it to true can output instance authorization token.
     :param Sequence[str] ids: A list of ids to filter results by instance id.
     :param str name_regex: A regex string to filter results by instance name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

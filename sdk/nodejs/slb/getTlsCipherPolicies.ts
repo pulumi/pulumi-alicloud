@@ -62,6 +62,9 @@ export interface GetTlsCipherPoliciesArgs {
      * A regex string to filter results by Tls Cipher Policy name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * TLS policy instance state.
@@ -136,6 +139,9 @@ export interface GetTlsCipherPoliciesOutputArgs {
      * A regex string to filter results by Tls Cipher Policy name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * TLS policy instance state.

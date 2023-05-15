@@ -16,6 +16,86 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a ESS lifecycle hook resource. More about Ess lifecycle hook, see [LifecycleHook](https://www.alibabacloud.com/help/doc-detail/73839.htm).
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ess.ScalingGroup;
+ * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+ * import com.pulumi.alicloud.ess.LifecycleHook;
+ * import com.pulumi.alicloud.ess.LifecycleHookArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(fooNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var bar = new Switch(&#34;bar&#34;, SwitchArgs.builder()        
+ *             .vpcId(fooNetwork.id())
+ *             .cidrBlock(&#34;172.16.1.0/24&#34;)
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var fooScalingGroup = new ScalingGroup(&#34;fooScalingGroup&#34;, ScalingGroupArgs.builder()        
+ *             .minSize(1)
+ *             .maxSize(1)
+ *             .scalingGroupName(&#34;testAccEssScaling_group&#34;)
+ *             .removalPolicies(            
+ *                 &#34;OldestInstance&#34;,
+ *                 &#34;NewestInstance&#34;)
+ *             .vswitchIds(            
+ *                 fooSwitch.id(),
+ *                 bar.id())
+ *             .build());
+ * 
+ *         var fooLifecycleHook = new LifecycleHook(&#34;fooLifecycleHook&#34;, LifecycleHookArgs.builder()        
+ *             .scalingGroupId(fooScalingGroup.id())
+ *             .lifecycleTransition(&#34;SCALE_OUT&#34;)
+ *             .heartbeatTimeout(400)
+ *             .notificationMetadata(&#34;helloworld&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Module Support
+ * 
+ * You can use to the existing autoscaling module
+ * to create a lifecycle hook, scaling group and configuration one-click.
+ * 
  * ## Import
  * 
  * Ess lifecycle hook can be imported using the id, e.g.

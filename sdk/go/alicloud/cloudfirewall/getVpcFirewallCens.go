@@ -34,9 +34,10 @@ type GetVpcFirewallCensArgs struct {
 	MemberUid *string `pulumi:"memberUid"`
 	// The ID of the VPC instance that created the VPC firewall.
 	NetworkInstanceId *string `pulumi:"networkInstanceId"`
-	OutputFile        *string `pulumi:"outputFile"`
-	PageNumber        *int    `pulumi:"pageNumber"`
-	PageSize          *int    `pulumi:"pageSize"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
 	// Firewall switch status
 	Status *string `pulumi:"status"`
 	// VPC firewall ID
@@ -96,9 +97,10 @@ type GetVpcFirewallCensOutputArgs struct {
 	MemberUid pulumi.StringPtrInput `pulumi:"memberUid"`
 	// The ID of the VPC instance that created the VPC firewall.
 	NetworkInstanceId pulumi.StringPtrInput `pulumi:"networkInstanceId"`
-	OutputFile        pulumi.StringPtrInput `pulumi:"outputFile"`
-	PageNumber        pulumi.IntPtrInput    `pulumi:"pageNumber"`
-	PageSize          pulumi.IntPtrInput    `pulumi:"pageSize"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 	// Firewall switch status
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// VPC firewall ID

@@ -172,6 +172,7 @@ def get_trails(ids: Optional[Sequence[str]] = None,
     :param bool include_organization_trail: Whether to show organization tracking. Default to `false`.
     :param bool include_shadow_trails: Whether to show shadow tracking. Default to `false`.
     :param str name_regex: A regex string to filter results by trail name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
     """
     __args__ = dict()
@@ -225,6 +226,7 @@ def get_trails_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
     :param bool include_organization_trail: Whether to show organization tracking. Default to `false`.
     :param bool include_shadow_trails: Whether to show shadow tracking. Default to `false`.
     :param str name_regex: A regex string to filter results by trail name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
     """
     ...

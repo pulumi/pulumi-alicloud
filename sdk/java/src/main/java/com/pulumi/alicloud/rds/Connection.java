@@ -101,12 +101,16 @@ public class Connection extends com.pulumi.resources.CustomResource {
     /**
      * The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
      * 
+     * &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
+     * 
      */
     @Export(name="babelfishPort", type=String.class, parameters={})
     private Output<String> babelfishPort;
 
     /**
      * @return The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+     * 
+     * &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
      * 
      */
     public Output<String> babelfishPort() {

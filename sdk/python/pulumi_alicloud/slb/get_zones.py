@@ -163,6 +163,7 @@ def get_zones(available_slb_address_ip_version: Optional[str] = None,
            * classic_intranet: an internal SLB instance that is deployed in a classic network.
     :param bool enable_details: Default to false and only output `id` in the `zones` block. Set it to true can output more details.
     :param str master_zone_id: The primary zone.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str slave_zone_id: The secondary zone.
     """
     __args__ = dict()
@@ -218,6 +219,7 @@ def get_zones_output(available_slb_address_ip_version: Optional[pulumi.Input[Opt
            * classic_intranet: an internal SLB instance that is deployed in a classic network.
     :param bool enable_details: Default to false and only output `id` in the `zones` block. Set it to true can output more details.
     :param str master_zone_id: The primary zone.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str slave_zone_id: The secondary zone.
     """
     ...

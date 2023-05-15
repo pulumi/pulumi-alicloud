@@ -241,7 +241,9 @@ namespace Pulumi.AliCloud.Nlb
         public Output<bool> SecSensorEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the security policy. System security policies and custom security policies are supported. Valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
+        /// The ID of the security policy. System security policies and custom security policies are supported. 
+        /// System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
+        /// Custom security policies can be created by resource `alicloud.nlb.SecurityPolicy`.
         /// </summary>
         [Output("securityPolicyId")]
         public Output<string> SecurityPolicyId { get; private set; } = null!;
@@ -413,7 +415,9 @@ namespace Pulumi.AliCloud.Nlb
         public Input<bool>? SecSensorEnabled { get; set; }
 
         /// <summary>
-        /// The ID of the security policy. System security policies and custom security policies are supported. Valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
+        /// The ID of the security policy. System security policies and custom security policies are supported. 
+        /// System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
+        /// Custom security policies can be created by resource `alicloud.nlb.SecurityPolicy`.
         /// </summary>
         [Input("securityPolicyId")]
         public Input<string>? SecurityPolicyId { get; set; }
@@ -547,7 +551,9 @@ namespace Pulumi.AliCloud.Nlb
         public Input<bool>? SecSensorEnabled { get; set; }
 
         /// <summary>
-        /// The ID of the security policy. System security policies and custom security policies are supported. Valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
+        /// The ID of the security policy. System security policies and custom security policies are supported. 
+        /// System security policies valid values: `tls_cipher_policy_1_0` (default), `tls_cipher_policy_1_1,` `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`, and `tls_cipher_policy_1_2_strict_with_1_3`.
+        /// Custom security policies can be created by resource `alicloud.nlb.SecurityPolicy`.
         /// </summary>
         [Input("securityPolicyId")]
         public Input<string>? SecurityPolicyId { get; set; }

@@ -952,6 +952,8 @@ class ImageImportDiskDeviceMapping(dict):
         :param str format: Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
         :param str oss_bucket: Save the exported OSS bucket.
         :param str oss_object: The file name of your OSS Object.
+               
+               > **NOTE:** The disk_device_mapping is a list and it's first item will be used to system disk and other items are used to data disks.
         """
         if device is not None:
             pulumi.set(__self__, "device", device)
@@ -1001,6 +1003,8 @@ class ImageImportDiskDeviceMapping(dict):
     def oss_object(self) -> Optional[str]:
         """
         The file name of your OSS Object.
+
+        > **NOTE:** The disk_device_mapping is a list and it's first item will be used to system disk and other items are used to data disks.
         """
         return pulumi.get(self, "oss_object")
 
@@ -1267,9 +1271,15 @@ class LaunchTemplateDataDisk(dict):
                - cloud_ssd: SSD cloud Disks.
                - ephemeral_ssd: local SSD Disks
                - cloud_essd: ESSD cloud Disks.
+               
+               Default to `cloud_efficiency`.
         :param bool delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+               
+               Default to true
         :param str description: The description of the data disk.
         :param bool encrypted: Encrypted the data in this disk.
+               
+               Default to false
         :param str name: The name of the data disk.
         :param int size: The size of the data disk.
                - cloud：[5, 2000]
@@ -1306,6 +1316,8 @@ class LaunchTemplateDataDisk(dict):
         - cloud_ssd: SSD cloud Disks.
         - ephemeral_ssd: local SSD Disks
         - cloud_essd: ESSD cloud Disks.
+
+        Default to `cloud_efficiency`.
         """
         return pulumi.get(self, "category")
 
@@ -1314,6 +1326,8 @@ class LaunchTemplateDataDisk(dict):
     def delete_with_instance(self) -> Optional[bool]:
         """
         Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+
+        Default to true
         """
         return pulumi.get(self, "delete_with_instance")
 
@@ -1330,6 +1344,8 @@ class LaunchTemplateDataDisk(dict):
     def encrypted(self) -> Optional[bool]:
         """
         Encrypted the data in this disk.
+
+        Default to false
         """
         return pulumi.get(self, "encrypted")
 
@@ -1492,7 +1508,11 @@ class LaunchTemplateSystemDisk(dict):
                - cloud_ssd: SSD cloud Disks.
                - ephemeral_ssd: local SSD Disks
                - cloud_essd: ESSD cloud Disks.
+               
+               Default to `cloud_efficiency`.
         :param bool delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+               
+               Default to true
         :param str description: The description of the data disk.
         :param str name: The name of the data disk.
         :param int size: The size of the data disk.
@@ -1527,6 +1547,8 @@ class LaunchTemplateSystemDisk(dict):
         - cloud_ssd: SSD cloud Disks.
         - ephemeral_ssd: local SSD Disks
         - cloud_essd: ESSD cloud Disks.
+
+        Default to `cloud_efficiency`.
         """
         return pulumi.get(self, "category")
 
@@ -1535,6 +1557,8 @@ class LaunchTemplateSystemDisk(dict):
     def delete_with_instance(self) -> Optional[bool]:
         """
         Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+
+        Default to true
         """
         return pulumi.get(self, "delete_with_instance")
 
@@ -8451,7 +8475,7 @@ class GetInstancesInstanceResult(dict):
         :param str public_ip: Instance public IP address.
         :param str ram_role_name: The RAM role name which the instance attaches.
         :param str region_id: Region ID the instance belongs to.
-        :param str resource_group_id: The Id of resource group which the instance belongs.
+        :param str resource_group_id: The ID of resource group which the instance belongs.
         :param Sequence[str] security_groups: List of security group IDs the instance belongs to.
         :param str spot_strategy: Spot strategy the instance is using.
         :param str status: Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
@@ -8634,7 +8658,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> str:
         """
-        The Id of resource group which the instance belongs.
+        The ID of resource group which the instance belongs.
         """
         return pulumi.get(self, "resource_group_id")
 

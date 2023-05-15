@@ -103,6 +103,7 @@ def get_backup_plans(cluster_id: Optional[str] = None,
 
 
     :param str cluster_id: The ID of the cluster for the backup.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -141,5 +142,6 @@ def get_backup_plans_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
 
     :param str cluster_id: The ID of the cluster for the backup.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

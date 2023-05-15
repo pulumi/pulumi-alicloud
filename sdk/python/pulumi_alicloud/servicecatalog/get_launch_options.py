@@ -129,6 +129,7 @@ def get_launch_options(ids: Optional[Sequence[str]] = None,
 
 
     :param str name_regex: A regex string to filter results by portfolio name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_id: Product ID.
     """
     __args__ = dict()
@@ -173,6 +174,7 @@ def get_launch_options_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
 
 
     :param str name_regex: A regex string to filter results by portfolio name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_id: Product ID.
     """
     ...

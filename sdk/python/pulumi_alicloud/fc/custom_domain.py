@@ -25,6 +25,9 @@ class CustomDomainArgs:
         :param pulumi.Input[str] domain_name: The custom domain name. For example, "example.com".
         :param pulumi.Input[str] protocol: The protocol, `HTTP` or `HTTP,HTTPS`.
         :param pulumi.Input['CustomDomainCertConfigArgs'] cert_config: The configuration of HTTPS certificate.
+               
+               
+               **route_config** includes the following arguments:
         :param pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]] route_configs: The configuration of domain route, mapping the path and Function Compute function.
         """
         pulumi.set(__self__, "domain_name", domain_name)
@@ -63,6 +66,9 @@ class CustomDomainArgs:
     def cert_config(self) -> Optional[pulumi.Input['CustomDomainCertConfigArgs']]:
         """
         The configuration of HTTPS certificate.
+
+
+        **route_config** includes the following arguments:
         """
         return pulumi.get(self, "cert_config")
 
@@ -99,6 +105,9 @@ class _CustomDomainState:
         :param pulumi.Input[str] account_id: The account id.
         :param pulumi.Input[str] api_version: The api version of Function Compute.
         :param pulumi.Input['CustomDomainCertConfigArgs'] cert_config: The configuration of HTTPS certificate.
+               
+               
+               **route_config** includes the following arguments:
         :param pulumi.Input[str] created_time: The date this resource was created.
         :param pulumi.Input[str] domain_name: The custom domain name. For example, "example.com".
         :param pulumi.Input[str] last_modified_time: The date this resource was last modified.
@@ -151,6 +160,9 @@ class _CustomDomainState:
     def cert_config(self) -> Optional[pulumi.Input['CustomDomainCertConfigArgs']]:
         """
         The configuration of HTTPS certificate.
+
+
+        **route_config** includes the following arguments:
         """
         return pulumi.get(self, "cert_config")
 
@@ -295,6 +307,9 @@ class CustomDomain(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['CustomDomainCertConfigArgs']] cert_config: The configuration of HTTPS certificate.
+               
+               
+               **route_config** includes the following arguments:
         :param pulumi.Input[str] domain_name: The custom domain name. For example, "example.com".
         :param pulumi.Input[str] protocol: The protocol, `HTTP` or `HTTP,HTTPS`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDomainRouteConfigArgs']]]] route_configs: The configuration of domain route, mapping the path and Function Compute function.
@@ -436,6 +451,9 @@ class CustomDomain(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account id.
         :param pulumi.Input[str] api_version: The api version of Function Compute.
         :param pulumi.Input[pulumi.InputType['CustomDomainCertConfigArgs']] cert_config: The configuration of HTTPS certificate.
+               
+               
+               **route_config** includes the following arguments:
         :param pulumi.Input[str] created_time: The date this resource was created.
         :param pulumi.Input[str] domain_name: The custom domain name. For example, "example.com".
         :param pulumi.Input[str] last_modified_time: The date this resource was last modified.
@@ -477,6 +495,9 @@ class CustomDomain(pulumi.CustomResource):
     def cert_config(self) -> pulumi.Output[Optional['outputs.CustomDomainCertConfig']]:
         """
         The configuration of HTTPS certificate.
+
+
+        **route_config** includes the following arguments:
         """
         return pulumi.get(self, "cert_config")
 

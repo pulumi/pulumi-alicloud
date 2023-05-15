@@ -52,6 +52,9 @@ export interface GetEnterpriseUsersArgs {
      * A regex string to filter the results by the DMS Enterprise User nick_name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The role of the user to query.
@@ -136,6 +139,9 @@ export interface GetEnterpriseUsersOutputArgs {
      * A regex string to filter the results by the DMS Enterprise User nick_name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The role of the user to query.

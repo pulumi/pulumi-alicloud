@@ -59,6 +59,8 @@ export class KeyVersion extends pulumi.CustomResource {
 
     /**
      * The id of the master key (CMK).
+     *
+     * > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
      */
     public readonly keyId!: pulumi.Output<string>;
     /**
@@ -100,6 +102,8 @@ export class KeyVersion extends pulumi.CustomResource {
 export interface KeyVersionState {
     /**
      * The id of the master key (CMK).
+     *
+     * > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
      */
     keyId?: pulumi.Input<string>;
     /**
@@ -114,6 +118,8 @@ export interface KeyVersionState {
 export interface KeyVersionArgs {
     /**
      * The id of the master key (CMK).
+     *
+     * > **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
      */
     keyId: pulumi.Input<string>;
 }

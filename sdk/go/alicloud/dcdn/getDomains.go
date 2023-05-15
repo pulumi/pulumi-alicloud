@@ -37,7 +37,8 @@ type GetDomainsArgs struct {
 	// A list ids of DCDN Domain.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by the DCDN Domain.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -98,7 +99,8 @@ type GetDomainsOutputArgs struct {
 	// A list ids of DCDN Domain.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by the DCDN Domain.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`

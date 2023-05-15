@@ -63,7 +63,8 @@ type GetResolutionLinesArgs struct {
 	// A list of line display names.
 	LineDisplayNames []string `pulumi:"lineDisplayNames"`
 	LineNames        []string `pulumi:"lineNames"`
-	OutputFile       *string  `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The ip of user client.
 	UserClientIp *string `pulumi:"userClientIp"`
 }
@@ -109,7 +110,8 @@ type GetResolutionLinesOutputArgs struct {
 	// A list of line display names.
 	LineDisplayNames pulumi.StringArrayInput `pulumi:"lineDisplayNames"`
 	LineNames        pulumi.StringArrayInput `pulumi:"lineNames"`
-	OutputFile       pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ip of user client.
 	UserClientIp pulumi.StringPtrInput `pulumi:"userClientIp"`
 }

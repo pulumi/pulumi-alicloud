@@ -37,6 +37,9 @@ export function getTransitRouterAvailableResources(args?: GetTransitRouterAvaila
  * A collection of arguments for invoking getTransitRouterAvailableResources.
  */
 export interface GetTransitRouterAvailableResourcesArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -77,5 +80,8 @@ export function getTransitRouterAvailableResourcesOutput(args?: GetTransitRouter
  * A collection of arguments for invoking getTransitRouterAvailableResources.
  */
 export interface GetTransitRouterAvailableResourcesOutputArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

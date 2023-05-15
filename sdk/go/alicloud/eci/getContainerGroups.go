@@ -64,7 +64,8 @@ type GetContainerGroupsArgs struct {
 	// The maximum number of resources returned in the response. Default value is `20`. Maximum value: `20`. The number of returned results is no greater than the specified number.
 	Limit *int `pulumi:"limit"`
 	// A regex string to filter results by Container Group name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -123,7 +124,8 @@ type GetContainerGroupsOutputArgs struct {
 	// The maximum number of resources returned in the response. Default value is `20`. Maximum value: `20`. The number of returned results is no greater than the specified number.
 	Limit pulumi.IntPtrInput `pulumi:"limit"`
 	// A regex string to filter results by Container Group name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`

@@ -23,6 +23,8 @@ class IpSetArgs:
         :param pulumi.Input[str] accelerate_region_id: The ID of an acceleration region.
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator (GA) instance.
         :param pulumi.Input[int] bandwidth: The bandwidth allocated to the acceleration region.
+               
+               > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
         :param pulumi.Input[str] ip_version: The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
         """
         pulumi.set(__self__, "accelerate_region_id", accelerate_region_id)
@@ -61,6 +63,8 @@ class IpSetArgs:
     def bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
         The bandwidth allocated to the acceleration region.
+
+        > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -95,6 +99,8 @@ class _IpSetState:
         :param pulumi.Input[str] accelerate_region_id: The ID of an acceleration region.
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator (GA) instance.
         :param pulumi.Input[int] bandwidth: The bandwidth allocated to the acceleration region.
+               
+               > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_address_lists: The list of accelerated IP addresses in the acceleration region.
         :param pulumi.Input[str] ip_version: The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
         :param pulumi.Input[str] status: The status of the acceleration region.
@@ -141,6 +147,8 @@ class _IpSetState:
     def bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
         The bandwidth allocated to the acceleration region.
+
+        > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -244,6 +252,8 @@ class IpSet(pulumi.CustomResource):
         :param pulumi.Input[str] accelerate_region_id: The ID of an acceleration region.
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator (GA) instance.
         :param pulumi.Input[int] bandwidth: The bandwidth allocated to the acceleration region.
+               
+               > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
         :param pulumi.Input[str] ip_version: The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
         """
         ...
@@ -360,6 +370,8 @@ class IpSet(pulumi.CustomResource):
         :param pulumi.Input[str] accelerate_region_id: The ID of an acceleration region.
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator (GA) instance.
         :param pulumi.Input[int] bandwidth: The bandwidth allocated to the acceleration region.
+               
+               > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_address_lists: The list of accelerated IP addresses in the acceleration region.
         :param pulumi.Input[str] ip_version: The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
         :param pulumi.Input[str] status: The status of the acceleration region.
@@ -397,6 +409,8 @@ class IpSet(pulumi.CustomResource):
     def bandwidth(self) -> pulumi.Output[Optional[int]]:
         """
         The bandwidth allocated to the acceleration region.
+
+        > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
         """
         return pulumi.get(self, "bandwidth")
 

@@ -113,6 +113,7 @@ def get_bindings(instance_id: Optional[str] = None,
 
 
     :param str instance_id: Instance Id.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str virtual_host_name: Virtualhost Name.
     """
     __args__ = dict()
@@ -155,6 +156,7 @@ def get_bindings_output(instance_id: Optional[pulumi.Input[str]] = None,
 
 
     :param str instance_id: Instance Id.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str virtual_host_name: Virtualhost Name.
     """
     ...

@@ -82,6 +82,9 @@ def get_resource_directories(output_file: Optional[str] = None,
     default = alicloud.resourcemanager.get_resource_directories()
     pulumi.export("resourceDirectoryId", default.directories[0].id)
     ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
@@ -111,5 +114,8 @@ def get_resource_directories_output(output_file: Optional[pulumi.Input[Optional[
     default = alicloud.resourcemanager.get_resource_directories()
     pulumi.export("resourceDirectoryId", default.directories[0].id)
     ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

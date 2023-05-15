@@ -219,12 +219,16 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
      * 
+     * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+     * 
      */
     @Import(name="loadBalancerSpec")
     private @Nullable Output<String> loadBalancerSpec;
 
     /**
      * @return The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     * 
+     * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
      * 
      */
     public Optional<Output<String>> loadBalancerSpec() {
@@ -968,6 +972,8 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param loadBalancerSpec The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
          * 
+         * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+         * 
          * @return builder
          * 
          */
@@ -978,6 +984,8 @@ public final class EdgeKubernetesArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param loadBalancerSpec The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+         * 
+         * -&gt;NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
          * 
          * @return builder
          * 

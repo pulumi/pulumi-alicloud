@@ -10,6 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides an ECS Launch Template resource.
+//
+// For information about Launch Template and how to use it, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html).
+//
+// > **DEPRECATED:**  This resource  has been deprecated from version `1.120.0`. Please use new resource alicloud_ecs_launch_template.
+//
 // ## Example Usage
 //
 // ```go
@@ -120,6 +126,8 @@ type LaunchTemplate struct {
 	// Billing methods. Optional values:
 	// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
 	// - PostPaid: Pay-As-You-Go.
+	//
+	// Default value: PostPaid.
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
 	// The name of the instance. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
 	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
@@ -253,6 +261,8 @@ type launchTemplateState struct {
 	// Billing methods. Optional values:
 	// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
 	// - PostPaid: Pay-As-You-Go.
+	//
+	// Default value: PostPaid.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The name of the instance. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
 	InstanceName *string `pulumi:"instanceName"`
@@ -358,6 +368,8 @@ type LaunchTemplateState struct {
 	// Billing methods. Optional values:
 	// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
 	// - PostPaid: Pay-As-You-Go.
+	//
+	// Default value: PostPaid.
 	InstanceChargeType pulumi.StringPtrInput
 	// The name of the instance. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
 	InstanceName pulumi.StringPtrInput
@@ -467,6 +479,8 @@ type launchTemplateArgs struct {
 	// Billing methods. Optional values:
 	// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
 	// - PostPaid: Pay-As-You-Go.
+	//
+	// Default value: PostPaid.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The name of the instance. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
 	InstanceName *string `pulumi:"instanceName"`
@@ -573,6 +587,8 @@ type LaunchTemplateArgs struct {
 	// Billing methods. Optional values:
 	// - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
 	// - PostPaid: Pay-As-You-Go.
+	//
+	// Default value: PostPaid.
 	InstanceChargeType pulumi.StringPtrInput
 	// The name of the instance. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
 	InstanceName pulumi.StringPtrInput
@@ -788,6 +804,8 @@ func (o LaunchTemplateOutput) ImageOwnerAlias() pulumi.StringPtrOutput {
 // Billing methods. Optional values:
 // - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
 // - PostPaid: Pay-As-You-Go.
+//
+// Default value: PostPaid.
 func (o LaunchTemplateOutput) InstanceChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
 }

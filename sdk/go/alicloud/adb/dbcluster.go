@@ -145,7 +145,9 @@ type DBCluster struct {
 	PayType pulumi.StringOutput `pulumi:"payType"`
 	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	Period      pulumi.IntPtrOutput `pulumi:"period"`
+	// The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// (Available in 1.196.0+) The connection port of the ADB cluster.
 	Port pulumi.StringOutput `pulumi:"port"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -159,6 +161,8 @@ type DBCluster struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	//
+	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The vpc ID of the resource.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
@@ -239,7 +243,9 @@ type dbclusterState struct {
 	PayType *string `pulumi:"payType"`
 	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType *string `pulumi:"paymentType"`
-	Period      *int    `pulumi:"period"`
+	// The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+	Period *int `pulumi:"period"`
 	// (Available in 1.196.0+) The connection port of the ADB cluster.
 	Port *string `pulumi:"port"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -253,6 +259,8 @@ type dbclusterState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	//
+	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The vpc ID of the resource.
 	VpcId *string `pulumi:"vpcId"`
@@ -299,7 +307,9 @@ type DBClusterState struct {
 	PayType pulumi.StringPtrInput
 	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType pulumi.StringPtrInput
-	Period      pulumi.IntPtrInput
+	// The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+	Period pulumi.IntPtrInput
 	// (Available in 1.196.0+) The connection port of the ADB cluster.
 	Port pulumi.StringPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -313,6 +323,8 @@ type DBClusterState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	//
+	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
 	Tags pulumi.MapInput
 	// The vpc ID of the resource.
 	VpcId pulumi.StringPtrInput
@@ -361,7 +373,9 @@ type dbclusterArgs struct {
 	PayType *string `pulumi:"payType"`
 	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType *string `pulumi:"paymentType"`
-	Period      *int    `pulumi:"period"`
+	// The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+	Period *int `pulumi:"period"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The ID of the resource group.
@@ -371,6 +385,8 @@ type dbclusterArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	//
+	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The vpc ID of the resource.
 	VpcId *string `pulumi:"vpcId"`
@@ -416,7 +432,9 @@ type DBClusterArgs struct {
 	PayType pulumi.StringPtrInput
 	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType pulumi.StringPtrInput
-	Period      pulumi.IntPtrInput
+	// The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+	Period pulumi.IntPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus pulumi.StringPtrInput
 	// The ID of the resource group.
@@ -426,6 +444,8 @@ type DBClusterArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	//
+	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
 	Tags pulumi.MapInput
 	// The vpc ID of the resource.
 	VpcId pulumi.StringPtrInput
@@ -606,6 +626,8 @@ func (o DBClusterOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
+// The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
 func (o DBClusterOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
@@ -638,6 +660,8 @@ func (o DBClusterOutput) Status() pulumi.StringOutput {
 // A mapping of tags to assign to the resource.
 // - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 // - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+//
+// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
 func (o DBClusterOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }

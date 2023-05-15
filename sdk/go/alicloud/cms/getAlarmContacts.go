@@ -62,7 +62,10 @@ type GetAlarmContactsArgs struct {
 	// A list of alarm contact IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by alarm contact name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
+	//
+	// > **NOTE:** Specify at least one of the following alarm notification targets: phone number, email address, webhook URL of the DingTalk chatbot, and TradeManager ID.
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -104,7 +107,10 @@ type GetAlarmContactsOutputArgs struct {
 	// A list of alarm contact IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by alarm contact name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
+	//
+	// > **NOTE:** Specify at least one of the following alarm notification targets: phone number, email address, webhook URL of the DingTalk chatbot, and TradeManager ID.
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

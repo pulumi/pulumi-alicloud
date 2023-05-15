@@ -43,6 +43,9 @@ export interface GetStocksArgs {
      * The gateway class. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
      */
     gatewayClass?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -89,5 +92,8 @@ export interface GetStocksOutputArgs {
      * The gateway class. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
      */
     gatewayClass?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

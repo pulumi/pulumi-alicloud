@@ -7,6 +7,12 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsInstances from version 1.95.0.
+ *
+ * This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:**  Available in 1.84.0+.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -42,6 +48,9 @@ export interface GetInstancesArgs {
      */
     ids?: string[];
     lang?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     userClientIp?: string;
 }
@@ -68,6 +77,12 @@ export interface GetInstancesResult {
     readonly userClientIp?: string;
 }
 /**
+ * > **DEPRECATED:**  This resource has been renamed to alicloud.dns.getAlidnsInstances from version 1.95.0.
+ *
+ * This data source provides a list of DNS instances in an Alibaba Cloud account according to the specified filters.
+ *
+ * > **NOTE:**  Available in 1.84.0+.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -94,6 +109,9 @@ export interface GetInstancesOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     lang?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     userClientIp?: pulumi.Input<string>;
 }

@@ -40,6 +40,8 @@ class TransitRouterVbrAttachmentArgs:
         :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vbr_owner_id: The owner id of the transit router vbr attachment.
+               
+               ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         """
         pulumi.set(__self__, "cen_id", cen_id)
         pulumi.set(__self__, "vbr_id", vbr_id)
@@ -201,6 +203,8 @@ class TransitRouterVbrAttachmentArgs:
     def vbr_owner_id(self) -> Optional[pulumi.Input[str]]:
         """
         The owner id of the transit router vbr attachment.
+
+        ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         """
         return pulumi.get(self, "vbr_owner_id")
 
@@ -242,6 +246,8 @@ class _TransitRouterVbrAttachmentState:
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vbr_id: The ID of the VBR.
         :param pulumi.Input[str] vbr_owner_id: The owner id of the transit router vbr attachment.
+               
+               ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         """
         if auto_publish_route_enabled is not None:
             pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
@@ -433,6 +439,8 @@ class _TransitRouterVbrAttachmentState:
     def vbr_owner_id(self) -> Optional[pulumi.Input[str]]:
         """
         The owner id of the transit router vbr attachment.
+
+        ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         """
         return pulumi.get(self, "vbr_owner_id")
 
@@ -486,6 +494,8 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vbr_id: The ID of the VBR.
         :param pulumi.Input[str] vbr_owner_id: The owner id of the transit router vbr attachment.
+               
+               ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         """
         ...
     @overload
@@ -605,6 +615,8 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vbr_id: The ID of the VBR.
         :param pulumi.Input[str] vbr_owner_id: The owner id of the transit router vbr attachment.
+               
+               ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -735,6 +747,8 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
     def vbr_owner_id(self) -> pulumi.Output[str]:
         """
         The owner id of the transit router vbr attachment.
+
+        ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         """
         return pulumi.get(self, "vbr_owner_id")
 

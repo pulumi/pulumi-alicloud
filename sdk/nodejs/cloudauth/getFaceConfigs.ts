@@ -53,6 +53,9 @@ export interface GetFaceConfigsArgs {
      * A regex string to filter results by biz_name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -110,5 +113,8 @@ export interface GetFaceConfigsOutputArgs {
      * A regex string to filter results by biz_name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

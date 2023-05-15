@@ -871,33 +871,6 @@ class EcsDisk(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a ECS Disk resource.
-
-        For information about ECS Disk and how to use it, see [What is Disk](https://www.alibabacloud.com/help/en/doc-detail/25513.htm).
-
-        > **NOTE:** Available in v1.122.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ecs.EcsDisk("example",
-            category="cloud_efficiency",
-            description="Hello ecs disk.",
-            disk_name="tf-test",
-            encrypted=True,
-            kms_key_id="2a6767f0-a16c-4679-a60f-13bf*****",
-            size=30,
-            tags={
-                "Name": "TerraformTest",
-            },
-            zone_id="cn-beijing-b")
-        ```
-
         ## Import
 
         ECS Disk can be imported using the id, e.g.
@@ -940,33 +913,6 @@ class EcsDisk(pulumi.CustomResource):
                  args: Optional[EcsDiskArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a ECS Disk resource.
-
-        For information about ECS Disk and how to use it, see [What is Disk](https://www.alibabacloud.com/help/en/doc-detail/25513.htm).
-
-        > **NOTE:** Available in v1.122.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ecs.EcsDisk("example",
-            category="cloud_efficiency",
-            description="Hello ecs disk.",
-            disk_name="tf-test",
-            encrypted=True,
-            kms_key_id="2a6767f0-a16c-4679-a60f-13bf*****",
-            size=30,
-            tags={
-                "Name": "TerraformTest",
-            },
-            zone_id="cn-beijing-b")
-        ```
-
         ## Import
 
         ECS Disk can be imported using the id, e.g.

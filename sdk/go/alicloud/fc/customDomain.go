@@ -120,6 +120,8 @@ type CustomDomain struct {
 	// The api version of Function Compute.
 	ApiVersion pulumi.StringOutput `pulumi:"apiVersion"`
 	// The configuration of HTTPS certificate.
+	//
+	// **route_config** includes the following arguments:
 	CertConfig CustomDomainCertConfigPtrOutput `pulumi:"certConfig"`
 	// The date this resource was created.
 	CreatedTime pulumi.StringOutput `pulumi:"createdTime"`
@@ -173,6 +175,8 @@ type customDomainState struct {
 	// The api version of Function Compute.
 	ApiVersion *string `pulumi:"apiVersion"`
 	// The configuration of HTTPS certificate.
+	//
+	// **route_config** includes the following arguments:
 	CertConfig *CustomDomainCertConfig `pulumi:"certConfig"`
 	// The date this resource was created.
 	CreatedTime *string `pulumi:"createdTime"`
@@ -192,6 +196,8 @@ type CustomDomainState struct {
 	// The api version of Function Compute.
 	ApiVersion pulumi.StringPtrInput
 	// The configuration of HTTPS certificate.
+	//
+	// **route_config** includes the following arguments:
 	CertConfig CustomDomainCertConfigPtrInput
 	// The date this resource was created.
 	CreatedTime pulumi.StringPtrInput
@@ -211,6 +217,8 @@ func (CustomDomainState) ElementType() reflect.Type {
 
 type customDomainArgs struct {
 	// The configuration of HTTPS certificate.
+	//
+	// **route_config** includes the following arguments:
 	CertConfig *CustomDomainCertConfig `pulumi:"certConfig"`
 	// The custom domain name. For example, "example.com".
 	DomainName string `pulumi:"domainName"`
@@ -223,6 +231,8 @@ type customDomainArgs struct {
 // The set of arguments for constructing a CustomDomain resource.
 type CustomDomainArgs struct {
 	// The configuration of HTTPS certificate.
+	//
+	// **route_config** includes the following arguments:
 	CertConfig CustomDomainCertConfigPtrInput
 	// The custom domain name. For example, "example.com".
 	DomainName pulumi.StringInput
@@ -330,6 +340,8 @@ func (o CustomDomainOutput) ApiVersion() pulumi.StringOutput {
 }
 
 // The configuration of HTTPS certificate.
+//
+// **route_config** includes the following arguments:
 func (o CustomDomainOutput) CertConfig() CustomDomainCertConfigPtrOutput {
 	return o.ApplyT(func(v *CustomDomain) CustomDomainCertConfigPtrOutput { return v.CertConfig }).(CustomDomainCertConfigPtrOutput)
 }

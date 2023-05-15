@@ -132,6 +132,10 @@ class BackupPolicy(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        > **DEPRECATED:**  This resource  has been deprecated from version `1.104.0`. Please use resource alicloud_kvstore_instance.
+
+        Provides a backup policy for ApsaraDB Redis / Memcache instance resource.
+
         ## Example Usage
 
         Basic Usage
@@ -194,6 +198,10 @@ class BackupPolicy(pulumi.CustomResource):
                  args: BackupPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **DEPRECATED:**  This resource  has been deprecated from version `1.104.0`. Please use resource alicloud_kvstore_instance.
+
+        Provides a backup policy for ApsaraDB Redis / Memcache instance resource.
+
         ## Example Usage
 
         Basic Usage

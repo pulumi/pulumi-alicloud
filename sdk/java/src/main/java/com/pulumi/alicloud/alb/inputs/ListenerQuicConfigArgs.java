@@ -34,12 +34,16 @@ public final class ListenerQuicConfigArgs extends com.pulumi.resources.ResourceA
     /**
      * Indicates Whether to Enable the QuIC Upgrade.
      * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
+     * 
      */
     @Import(name="quicUpgradeEnabled")
     private @Nullable Output<Boolean> quicUpgradeEnabled;
 
     /**
      * @return Indicates Whether to Enable the QuIC Upgrade.
+     * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
      * 
      */
     public Optional<Output<Boolean>> quicUpgradeEnabled() {
@@ -95,6 +99,8 @@ public final class ListenerQuicConfigArgs extends com.pulumi.resources.ResourceA
         /**
          * @param quicUpgradeEnabled Indicates Whether to Enable the QuIC Upgrade.
          * 
+         * &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
+         * 
          * @return builder
          * 
          */
@@ -105,6 +111,8 @@ public final class ListenerQuicConfigArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param quicUpgradeEnabled Indicates Whether to Enable the QuIC Upgrade.
+         * 
+         * &gt; **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
          * 
          * @return builder
          * 

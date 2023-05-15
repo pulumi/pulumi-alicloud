@@ -63,7 +63,8 @@ type GetCustomLinesArgs struct {
 	// The lang.
 	Lang *string `pulumi:"lang"`
 	// A regex string to filter results by Custom Line name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -105,7 +106,8 @@ type GetCustomLinesOutputArgs struct {
 	// The lang.
 	Lang pulumi.StringPtrInput `pulumi:"lang"`
 	// A regex string to filter results by Custom Line name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

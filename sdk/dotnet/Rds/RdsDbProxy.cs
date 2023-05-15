@@ -152,6 +152,8 @@ namespace Pulumi.AliCloud.Rds
         /// The read and write attributes of the proxy terminal. Valid values:
         /// - ReadWrite: The proxy terminal connects to the primary instance and can receive both read and write requests.
         /// - ReadOnly: The proxy terminal does not connect to the primary instance and can receive only read requests. This is the default value.
+        /// 
+        /// &gt; **NOTE:** Note This setting causes your instance to restart. Proceed with caution.
         /// </summary>
         [Output("dbProxyEndpointReadWriteMode")]
         public Output<string> DbProxyEndpointReadWriteMode { get; private set; } = null!;
@@ -164,6 +166,8 @@ namespace Pulumi.AliCloud.Rds
         /// Valid status values:
         /// - 1: enabled.
         /// - 0: disabled.
+        /// 
+        /// &gt; **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
         /// </summary>
         [Output("dbProxyFeatures")]
         public Output<string> DbProxyFeatures { get; private set; } = null!;
@@ -194,6 +198,8 @@ namespace Pulumi.AliCloud.Rds
         /// - Immediate: ApsaraDB RDS immediately applies the new settings.
         /// - MaintainTime: ApsaraDB RDS applies the new settings during the maintenance window that you specified. For more information, see Modify the maintenance window.
         /// - SpecificTime: ApsaraDB RDS applies the new settings at a specified point in time.
+        /// 
+        /// &gt; **NOTE:** Note If you set the EffectiveTime parameter to SpecificTime, you must specify the EffectiveSpecificTime parameter.
         /// </summary>
         [Output("effectiveTime")]
         public Output<string> EffectiveTime { get; private set; } = null!;
@@ -220,12 +226,16 @@ namespace Pulumi.AliCloud.Rds
         /// The policy that is used to allocate read weights. Valid values:
         /// - Standard: ApsaraDB RDS automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
         /// - Custom: You must manually allocate read weights to the instance and its read-only instances.
+        /// 
+        /// &gt; **NOTE:** Note If you set the ReadOnlyInstanceDistributionType parameter to Custom, you must specify the ReadOnlyInstanceWeight parameter.
         /// </summary>
         [Output("readOnlyInstanceDistributionType")]
         public Output<string> ReadOnlyInstanceDistributionType { get; private set; } = null!;
 
         /// <summary>
         /// The maximum latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, ApsaraDB RDS no longer forwards read requests to the read-only instance. If you do not specify this parameter, the default value of this parameter is retained. Unit: seconds. Valid values: 0 to 3600.
+        /// 
+        /// &gt; **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
         /// </summary>
         [Output("readOnlyInstanceMaxDelayTime")]
         public Output<int> ReadOnlyInstanceMaxDelayTime { get; private set; } = null!;
@@ -337,6 +347,8 @@ namespace Pulumi.AliCloud.Rds
         /// The read and write attributes of the proxy terminal. Valid values:
         /// - ReadWrite: The proxy terminal connects to the primary instance and can receive both read and write requests.
         /// - ReadOnly: The proxy terminal does not connect to the primary instance and can receive only read requests. This is the default value.
+        /// 
+        /// &gt; **NOTE:** Note This setting causes your instance to restart. Proceed with caution.
         /// </summary>
         [Input("dbProxyEndpointReadWriteMode")]
         public Input<string>? DbProxyEndpointReadWriteMode { get; set; }
@@ -349,6 +361,8 @@ namespace Pulumi.AliCloud.Rds
         /// Valid status values:
         /// - 1: enabled.
         /// - 0: disabled.
+        /// 
+        /// &gt; **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
         /// </summary>
         [Input("dbProxyFeatures")]
         public Input<string>? DbProxyFeatures { get; set; }
@@ -379,6 +393,8 @@ namespace Pulumi.AliCloud.Rds
         /// - Immediate: ApsaraDB RDS immediately applies the new settings.
         /// - MaintainTime: ApsaraDB RDS applies the new settings during the maintenance window that you specified. For more information, see Modify the maintenance window.
         /// - SpecificTime: ApsaraDB RDS applies the new settings at a specified point in time.
+        /// 
+        /// &gt; **NOTE:** Note If you set the EffectiveTime parameter to SpecificTime, you must specify the EffectiveSpecificTime parameter.
         /// </summary>
         [Input("effectiveTime")]
         public Input<string>? EffectiveTime { get; set; }
@@ -399,12 +415,16 @@ namespace Pulumi.AliCloud.Rds
         /// The policy that is used to allocate read weights. Valid values:
         /// - Standard: ApsaraDB RDS automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
         /// - Custom: You must manually allocate read weights to the instance and its read-only instances.
+        /// 
+        /// &gt; **NOTE:** Note If you set the ReadOnlyInstanceDistributionType parameter to Custom, you must specify the ReadOnlyInstanceWeight parameter.
         /// </summary>
         [Input("readOnlyInstanceDistributionType")]
         public Input<string>? ReadOnlyInstanceDistributionType { get; set; }
 
         /// <summary>
         /// The maximum latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, ApsaraDB RDS no longer forwards read requests to the read-only instance. If you do not specify this parameter, the default value of this parameter is retained. Unit: seconds. Valid values: 0 to 3600.
+        /// 
+        /// &gt; **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
         /// </summary>
         [Input("readOnlyInstanceMaxDelayTime")]
         public Input<int>? ReadOnlyInstanceMaxDelayTime { get; set; }
@@ -496,6 +516,8 @@ namespace Pulumi.AliCloud.Rds
         /// The read and write attributes of the proxy terminal. Valid values:
         /// - ReadWrite: The proxy terminal connects to the primary instance and can receive both read and write requests.
         /// - ReadOnly: The proxy terminal does not connect to the primary instance and can receive only read requests. This is the default value.
+        /// 
+        /// &gt; **NOTE:** Note This setting causes your instance to restart. Proceed with caution.
         /// </summary>
         [Input("dbProxyEndpointReadWriteMode")]
         public Input<string>? DbProxyEndpointReadWriteMode { get; set; }
@@ -508,6 +530,8 @@ namespace Pulumi.AliCloud.Rds
         /// Valid status values:
         /// - 1: enabled.
         /// - 0: disabled.
+        /// 
+        /// &gt; **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
         /// </summary>
         [Input("dbProxyFeatures")]
         public Input<string>? DbProxyFeatures { get; set; }
@@ -538,6 +562,8 @@ namespace Pulumi.AliCloud.Rds
         /// - Immediate: ApsaraDB RDS immediately applies the new settings.
         /// - MaintainTime: ApsaraDB RDS applies the new settings during the maintenance window that you specified. For more information, see Modify the maintenance window.
         /// - SpecificTime: ApsaraDB RDS applies the new settings at a specified point in time.
+        /// 
+        /// &gt; **NOTE:** Note If you set the EffectiveTime parameter to SpecificTime, you must specify the EffectiveSpecificTime parameter.
         /// </summary>
         [Input("effectiveTime")]
         public Input<string>? EffectiveTime { get; set; }
@@ -564,12 +590,16 @@ namespace Pulumi.AliCloud.Rds
         /// The policy that is used to allocate read weights. Valid values:
         /// - Standard: ApsaraDB RDS automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
         /// - Custom: You must manually allocate read weights to the instance and its read-only instances.
+        /// 
+        /// &gt; **NOTE:** Note If you set the ReadOnlyInstanceDistributionType parameter to Custom, you must specify the ReadOnlyInstanceWeight parameter.
         /// </summary>
         [Input("readOnlyInstanceDistributionType")]
         public Input<string>? ReadOnlyInstanceDistributionType { get; set; }
 
         /// <summary>
         /// The maximum latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, ApsaraDB RDS no longer forwards read requests to the read-only instance. If you do not specify this parameter, the default value of this parameter is retained. Unit: seconds. Valid values: 0 to 3600.
+        /// 
+        /// &gt; **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
         /// </summary>
         [Input("readOnlyInstanceMaxDelayTime")]
         public Input<int>? ReadOnlyInstanceMaxDelayTime { get; set; }

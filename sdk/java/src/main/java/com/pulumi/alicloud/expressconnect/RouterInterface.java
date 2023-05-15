@@ -17,6 +17,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Express Connect Router Interface resource.
+ * 
+ * For information about Express Connect Router Interface and how to use it, see What is Router Interface.
+ * 
+ * &gt; **NOTE:** Available in v1.199.0+.
+ * 
  * ## Example Usage
  * 
  * Basic Usage

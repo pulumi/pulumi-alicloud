@@ -81,6 +81,9 @@ def get_replication_vault_regions(output_file: Optional[str] = None,
     default = alicloud.hbr.get_replication_vault_regions()
     pulumi.export("hbrReplicationVaultRegionRegionId1", default.regions[0].replication_region_id)
     ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
@@ -112,5 +115,8 @@ def get_replication_vault_regions_output(output_file: Optional[pulumi.Input[Opti
     default = alicloud.hbr.get_replication_vault_regions()
     pulumi.export("hbrReplicationVaultRegionRegionId1", default.regions[0].replication_region_id)
     ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

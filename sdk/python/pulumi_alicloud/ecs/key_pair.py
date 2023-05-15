@@ -259,6 +259,10 @@ class KeyPair(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
+        > **DEPRECATED:** This resource has been renamed to ecs.EcsKeyPair from version 1.121.0.
+
+        Provides a key pair resource.
+
         ## Example Usage
 
         Basic Usage
@@ -298,6 +302,10 @@ class KeyPair(pulumi.CustomResource):
                  args: Optional[KeyPairArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **DEPRECATED:** This resource has been renamed to ecs.EcsKeyPair from version 1.121.0.
+
+        Provides a key pair resource.
+
         ## Example Usage
 
         Basic Usage

@@ -173,6 +173,7 @@ def get_policies(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to `true`. Set it to true can output more details.
     :param str group_name: Filter results by a specific group name. Returned policies are attached to the specified group.
     :param str name_regex: A regex string to filter resulting policies by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str role_name: Filter results by a specific role name. Returned policies are attached to the specified role.
     :param str type: Filter results by a specific policy type. Valid values are `Custom` and `System`.
     :param str user_name: Filter results by a specific user name. Returned policies are attached to the specified user.
@@ -233,6 +234,7 @@ def get_policies_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
     :param bool enable_details: Default to `true`. Set it to true can output more details.
     :param str group_name: Filter results by a specific group name. Returned policies are attached to the specified group.
     :param str name_regex: A regex string to filter resulting policies by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str role_name: Filter results by a specific role name. Returned policies are attached to the specified role.
     :param str type: Filter results by a specific policy type. Valid values are `Custom` and `System`.
     :param str user_name: Filter results by a specific user name. Returned policies are attached to the specified user.

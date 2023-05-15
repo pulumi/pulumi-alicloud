@@ -41,6 +41,9 @@ namespace Pulumi.AliCloud.CS
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// File name where to save the returned KubeConfig (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -64,6 +67,9 @@ namespace Pulumi.AliCloud.CS
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
+        /// <summary>
+        /// File name where to save the returned KubeConfig (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

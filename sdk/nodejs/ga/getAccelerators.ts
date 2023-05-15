@@ -50,6 +50,9 @@ export interface GetAcceleratorsArgs {
      * A regex string to filter results by Accelerator name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the GA instance.
@@ -108,6 +111,9 @@ export interface GetAcceleratorsOutputArgs {
      * A regex string to filter results by Accelerator name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the GA instance.

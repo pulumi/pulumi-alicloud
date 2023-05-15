@@ -32,7 +32,8 @@ type GetRegistryEnterpriseSyncRulesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// Name of Container Registry Enterprise Edition local namespace.
 	NamespaceName *string `pulumi:"namespaceName"`
-	OutputFile    *string `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// Name of Container Registry Enterprise Edition local repo.
 	RepoName *string `pulumi:"repoName"`
 	// ID of Container Registry Enterprise Edition target instance.
@@ -84,7 +85,8 @@ type GetRegistryEnterpriseSyncRulesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// Name of Container Registry Enterprise Edition local namespace.
 	NamespaceName pulumi.StringPtrInput `pulumi:"namespaceName"`
-	OutputFile    pulumi.StringPtrInput `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Name of Container Registry Enterprise Edition local repo.
 	RepoName pulumi.StringPtrInput `pulumi:"repoName"`
 	// ID of Container Registry Enterprise Edition target instance.

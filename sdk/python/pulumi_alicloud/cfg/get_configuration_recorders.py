@@ -84,6 +84,9 @@ def get_configuration_recorders(output_file: Optional[str] = None,
     example = alicloud.cfg.get_configuration_recorders()
     pulumi.export("listOfResourceTypes", data["alicloud_config_configuration_recorders"]["this"]["recorders"][0]["resource_types"])
     ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
@@ -115,5 +118,8 @@ def get_configuration_recorders_output(output_file: Optional[pulumi.Input[Option
     example = alicloud.cfg.get_configuration_recorders()
     pulumi.export("listOfResourceTypes", data["alicloud_config_configuration_recorders"]["this"]["recorders"][0]["resource_types"])
     ```
+
+
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

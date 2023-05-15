@@ -57,6 +57,9 @@ export interface GetTrailsArgs {
      * A regex string to filter results by trail name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
@@ -140,6 +143,9 @@ export interface GetTrailsOutputArgs {
      * A regex string to filter results by trail name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.

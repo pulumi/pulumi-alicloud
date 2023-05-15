@@ -74,6 +74,9 @@ export interface GetStackInstancesArgs {
      * A list of Stack Instance IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The name of the stack group.
@@ -168,6 +171,9 @@ export interface GetStackInstancesOutputArgs {
      * A list of Stack Instance IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The name of the stack group.

@@ -143,6 +143,7 @@ def get_consumer_groups(consumer_id_regex: Optional[str] = None,
     :param str consumer_id_regex: A regex string to filter results by the consumer group id.
     :param Sequence[str] ids: A list of ALIKAFKA Consumer Groups IDs, It is formatted to `<instance_id>:<consumer_id>`.
     :param str instance_id: ID of the ALIKAFKA Instance that owns the consumer groups.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['consumerIdRegex'] = consumer_id_regex
@@ -190,5 +191,6 @@ def get_consumer_groups_output(consumer_id_regex: Optional[pulumi.Input[Optional
     :param str consumer_id_regex: A regex string to filter results by the consumer group id.
     :param Sequence[str] ids: A list of ALIKAFKA Consumer Groups IDs, It is formatted to `<instance_id>:<consumer_id>`.
     :param str instance_id: ID of the ALIKAFKA Instance that owns the consumer groups.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

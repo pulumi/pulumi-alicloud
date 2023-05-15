@@ -124,6 +124,7 @@ def get_route_entries(cidr_block: Optional[str] = None,
 
     :param str cidr_block: The destination CIDR block of the route entry to query.
     :param str instance_id: ID of the CEN instance.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str route_table_id: ID of the route table of the VPC or VBR.
     """
     __args__ = dict()
@@ -166,6 +167,7 @@ def get_route_entries_output(cidr_block: Optional[pulumi.Input[Optional[str]]] =
 
     :param str cidr_block: The destination CIDR block of the route entry to query.
     :param str instance_id: ID of the CEN instance.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str route_table_id: ID of the route table of the VPC or VBR.
     """
     ...

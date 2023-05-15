@@ -9,6 +9,13 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
+    /// <summary>
+    /// &gt; **DEPRECATED:** This resource has been renamed to alicloud.ecs.EcsKeyPairAttachment from version 1.121.0.
+    /// 
+    /// Provides a key pair attachment resource to bind key pair for several ECS instances.
+    /// 
+    /// &gt; **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
+    /// </summary>
     [AliCloudResourceType("alicloud:ecs/keyPairAttachment:KeyPairAttachment")]
     public partial class KeyPairAttachment : global::Pulumi.CustomResource
     {

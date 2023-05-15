@@ -176,6 +176,7 @@ def get_topics(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of ALIKAFKA Topics IDs, It is formatted to `<instance_id>:<topic>`.
     :param str instance_id: ID of the instance.
     :param str name_regex: A regex string to filter results by the topic name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str topic: A topic to filter results by the topic name.
     """
     __args__ = dict()
@@ -233,6 +234,7 @@ def get_topics_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
     :param Sequence[str] ids: A list of ALIKAFKA Topics IDs, It is formatted to `<instance_id>:<topic>`.
     :param str instance_id: ID of the instance.
     :param str name_regex: A regex string to filter results by the topic name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str topic: A topic to filter results by the topic name.
     """
     ...

@@ -121,14 +121,14 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="userType", type=String.class, parameters={})
-    private Output</* @Nullable */ String> userType;
+    private Output<String> userType;
 
     /**
      * @return The type of the tag policy. Valid values: `USER`, `RD`.
      * 
      */
-    public Output<Optional<String>> userType() {
-        return Codegen.optional(this.userType);
+    public Output<String> userType() {
+        return this.userType;
     }
 
     /**

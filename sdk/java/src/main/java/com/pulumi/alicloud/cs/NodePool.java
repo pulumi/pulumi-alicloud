@@ -599,7 +599,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
+ * Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `pulumi preview`.
  * 
  * ```sh
  *  $ pulumi import alicloud:cs/nodePool:NodePool custom_nodepool cluster_id:nodepool_id
@@ -1107,7 +1107,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rollingPolicy);
     }
     /**
-     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
      * 
      * @deprecated
      * Field &#39;rollout_policy&#39; has been deprecated from provider version 1.184.0. Please use new field &#39;rolling_policy&#39; instead it to ensure the config takes effect
@@ -1118,7 +1118,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ NodePoolRolloutPolicy> rolloutPolicy;
 
     /**
-     * @return Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
+     * @return Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
      * 
      */
     public Output<Optional<NodePoolRolloutPolicy>> rolloutPolicy() {

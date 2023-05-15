@@ -176,6 +176,7 @@ def get_transit_router_multicast_domain_associations(ids: Optional[Sequence[str]
 
 
     :param Sequence[str] ids: A list of Transit Router Multicast Domain Association IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_id: The ID of the resource associated with the multicast domain.
     :param str resource_type: The type of resource associated with the multicast domain. Valid Value: `VPC`.
     :param str status: The status of the associated resource. Valid Value: `Associated`, `Associating`, `Dissociating`.
@@ -238,6 +239,7 @@ def get_transit_router_multicast_domain_associations_output(ids: Optional[pulumi
 
 
     :param Sequence[str] ids: A list of Transit Router Multicast Domain Association IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_id: The ID of the resource associated with the multicast domain.
     :param str resource_type: The type of resource associated with the multicast domain. Valid Value: `VPC`.
     :param str status: The status of the associated resource. Valid Value: `Associated`, `Associating`, `Dissociating`.

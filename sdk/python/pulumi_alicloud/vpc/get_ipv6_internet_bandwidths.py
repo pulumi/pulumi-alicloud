@@ -132,6 +132,7 @@ def get_ipv6_internet_bandwidths(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Ipv6 Internet Bandwidth IDs.
     :param str ipv6_address_id: The ID of the IPv6 address.
     :param str ipv6_internet_bandwidth_id: The ID of the Ipv6 Internet Bandwidth.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
     """
     __args__ = dict()
@@ -187,6 +188,7 @@ def get_ipv6_internet_bandwidths_output(ids: Optional[pulumi.Input[Optional[Sequ
     :param Sequence[str] ids: A list of Ipv6 Internet Bandwidth IDs.
     :param str ipv6_address_id: The ID of the IPv6 address.
     :param str ipv6_internet_bandwidth_id: The ID of the Ipv6 Internet Bandwidth.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
     """
     ...

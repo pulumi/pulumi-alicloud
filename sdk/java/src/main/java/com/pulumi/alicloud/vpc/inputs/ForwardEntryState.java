@@ -162,12 +162,16 @@ public final class ForwardEntryState extends com.pulumi.resources.ResourceArgs {
     /**
      * Specifies whether to remove limits on the port range. Default value is `false`.
      * 
+     * &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
+     * 
      */
     @Import(name="portBreak")
     private @Nullable Output<Boolean> portBreak;
 
     /**
      * @return Specifies whether to remove limits on the port range. Default value is `false`.
+     * 
+     * &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
      * 
      */
     public Optional<Output<Boolean>> portBreak() {
@@ -423,6 +427,8 @@ public final class ForwardEntryState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param portBreak Specifies whether to remove limits on the port range. Default value is `false`.
          * 
+         * &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
+         * 
          * @return builder
          * 
          */
@@ -433,6 +439,8 @@ public final class ForwardEntryState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param portBreak Specifies whether to remove limits on the port range. Default value is `false`.
+         * 
+         * &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
          * 
          * @return builder
          * 

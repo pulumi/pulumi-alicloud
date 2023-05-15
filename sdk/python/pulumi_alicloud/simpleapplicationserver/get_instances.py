@@ -136,6 +136,7 @@ def get_instances(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Instance IDs.
     :param str name_regex: A regex string to filter results by Instance name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str payment_type: The billing method of the simple application server.
     :param str status: The status of the resource.
     """
@@ -188,6 +189,7 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
 
     :param Sequence[str] ids: A list of Instance IDs.
     :param str name_regex: A regex string to filter results by Instance name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str payment_type: The billing method of the simple application server.
     :param str status: The status of the resource.
     """

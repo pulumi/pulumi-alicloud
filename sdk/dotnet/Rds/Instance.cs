@@ -47,18 +47,24 @@ namespace Pulumi.AliCloud.Rds
         /// The upgrade method to use. Valid values:
         /// - Auto: Instances are automatically upgraded to a higher minor version.
         /// - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
+        /// 
+        /// See more [details and limitation](https://www.alibabacloud.com/help/doc-detail/123605.htm).
         /// </summary>
         [Output("autoUpgradeMinorVersion")]
         public Output<string> AutoUpgradeMinorVersion { get; private set; } = null!;
 
         /// <summary>
         /// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        /// 
+        /// &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         /// </summary>
         [Output("babelfishConfigs")]
         public Output<ImmutableArray<Outputs.InstanceBabelfishConfig>> BabelfishConfigs { get; private set; } = null!;
 
         /// <summary>
         /// The TDS port of the instance for which Babelfish is enabled.
+        /// 
+        /// &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         /// </summary>
         [Output("babelfishPort")]
         public Output<string> BabelfishPort { get; private set; } = null!;
@@ -77,8 +83,10 @@ namespace Pulumi.AliCloud.Rds
         /// * **HighAvailability**: High-availability Edition.
         /// * **AlwaysOn**: Cluster Edition.
         /// * **Finance**: Enterprise Edition.
-        /// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-        /// * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
+        /// * **cluster**: MySQL Cluster Edition. (Available in 1.202.0+)
+        /// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
+        /// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
+        /// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
         /// </summary>
         [Output("category")]
         public Output<string> Category { get; private set; } = null!;
@@ -117,17 +125,31 @@ namespace Pulumi.AliCloud.Rds
         [Output("connectionString")]
         public Output<string> ConnectionString { get; private set; } = null!;
 
+        /// <summary>
+        /// The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix. 
+        /// &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:'",&lt;&gt;/?
+        /// </summary>
         [Output("connectionStringPrefix")]
         public Output<string> ConnectionStringPrefix { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in 1.204.1+) The creation time of db instance.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// The attribute of the IP address whitelist. By default, this parameter is empty.
+        /// 
+        /// &gt; **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
         /// </summary>
         [Output("dbInstanceIpArrayAttribute")]
         public Output<string?> DbInstanceIpArrayAttribute { get; private set; } = null!;
 
         /// <summary>
         /// The name of the IP address whitelist. Default value: Default.
+        /// 
+        /// &gt; **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
         /// </summary>
         [Output("dbInstanceIpArrayName")]
         public Output<string?> DbInstanceIpArrayName { get; private set; } = null!;
@@ -163,6 +185,10 @@ namespace Pulumi.AliCloud.Rds
         /// - If you set the `Engine` parameter to PostgreSQL.
         /// - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
         /// - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+        /// 
+        /// &gt; **NOTE:**
+        /// - You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
+        /// - If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
         /// </summary>
         [Output("dbTimeZone")]
         public Output<string> DbTimeZone { get; private set; } = null!;
@@ -171,6 +197,8 @@ namespace Pulumi.AliCloud.Rds
         /// The switch of delete protection. Valid values: 
         /// - true: delete protect.
         /// - false: no delete protect.
+        /// 
+        /// &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
@@ -191,6 +219,10 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
+        /// 
+        /// &gt; **NOTE:**
+        /// - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
+        /// - Available in 1.200.0+. Create a serverless instance, you must set this parameter to 8.0.
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -219,6 +251,8 @@ namespace Pulumi.AliCloud.Rds
         /// The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
         /// - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
         /// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+        /// 
+        /// &gt; **NOTE:** If you set this parameter to Manual, you must specify the ManualHATime parameter.
         /// </summary>
         [Output("haConfig")]
         public Output<string> HaConfig { get; private set; } = null!;
@@ -249,6 +283,10 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        /// 
+        /// &gt; **NOTE:**
+        /// - When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
+        /// - When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -261,6 +299,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        /// 
+        /// &gt; **NOTE:** This parameter only takes effect when the HAConfig parameter is set to Manual.
         /// </summary>
         [Output("manualHaTime")]
         public Output<string?> ManualHaTime { get; private set; } = null!;
@@ -275,7 +315,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> ModifyMode { get; private set; } = null!;
 
         /// <summary>
-        /// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
+        /// The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
         /// </summary>
         [Output("monitoringPeriod")]
         public Output<int> MonitoringPeriod { get; private set; } = null!;
@@ -286,6 +326,10 @@ namespace Pulumi.AliCloud.Rds
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.InstanceParameter>> Parameters { get; private set; } = null!;
 
+        /// <summary>
+        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
@@ -295,6 +339,9 @@ namespace Pulumi.AliCloud.Rds
         [Output("pgHbaConfs")]
         public Output<ImmutableArray<Outputs.InstancePgHbaConf>> PgHbaConfs { get; private set; } = null!;
 
+        /// <summary>
+        /// The private port of the database service. If you want to update public port, please use resource alicloud.rds.Connection port.
+        /// </summary>
         [Output("port")]
         public Output<string> Port { get; private set; } = null!;
 
@@ -309,6 +356,8 @@ namespace Pulumi.AliCloud.Rds
         /// - None: No archived backup files are retained.
         /// - Lastest: Only the last archived backup file is retained.
         /// - All: All the archived backup files are retained.
+        /// 
+        /// &gt; **NOTE:** This parameter is supported only when the instance runs the MySQL database engine.
         /// </summary>
         [Output("releasedKeepPolicy")]
         public Output<string?> ReleasedKeepPolicy { get; private set; } = null!;
@@ -408,9 +457,17 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> SslStatus { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in 1.204.1+) The status of db instance.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
         /// Automatic storage space expansion switch. Valid values:
         /// - Enable
         /// - Disable
+        /// 
+        /// &gt; **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable.
         /// </summary>
         [Output("storageAutoScale")]
         public Output<string?> StorageAutoScale { get; private set; } = null!;
@@ -422,18 +479,24 @@ namespace Pulumi.AliCloud.Rds
         /// - 30
         /// - 40
         /// - 50
+        /// 
+        /// &gt; **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
         /// </summary>
         [Output("storageThreshold")]
         public Output<int?> StorageThreshold { get; private set; } = null!;
 
         /// <summary>
         /// The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+        /// 
+        /// &gt; **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         /// </summary>
         [Output("storageUpperBound")]
         public Output<int?> StorageUpperBound { get; private set; } = null!;
 
         /// <summary>
         /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `target_minor_version` is changed. The time must be in UTC.
+        /// 
+        /// &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         /// </summary>
         [Output("switchTime")]
         public Output<string?> SwitchTime { get; private set; } = null!;
@@ -442,6 +505,8 @@ namespace Pulumi.AliCloud.Rds
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// 
+        /// Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -454,6 +519,8 @@ namespace Pulumi.AliCloud.Rds
         /// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
         /// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
         /// - SQLServer: &lt;Minor engine version&gt;. Example: 15.0.4073.23.
+        /// 
+        /// &gt; **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         /// </summary>
         [Output("targetMinorVersion")]
         public Output<string> TargetMinorVersion { get; private set; } = null!;
@@ -462,6 +529,9 @@ namespace Pulumi.AliCloud.Rds
         /// The availability check method of the instance. Valid values:
         /// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
         /// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        /// 
+        /// 
+        /// &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = "zone-a" and `zone_id_slave_a` = "zone-c", `zone_id_slave_b` = "zone-b", then the `vswitch_id` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zone_id` = "zone-a" and `zone_id_slave_a` = "Auto",`zone_id_slave_b` = "Auto", then the `vswitch_id` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
         /// </summary>
         [Output("tcpConnectionType")]
         public Output<string> TcpConnectionType { get; private set; } = null!;
@@ -491,6 +561,9 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The VPC ID of the instance.
+        /// 
+        /// 
+        /// &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
@@ -506,6 +579,8 @@ namespace Pulumi.AliCloud.Rds
         /// - Classic: classic network in enhanced whitelist mode
         /// - VPC: virtual private cloud (VPC) in enhanced whitelist mode
         /// - MIX: standard whitelist mode
+        /// 
+        /// &gt; **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         /// </summary>
         [Output("whitelistNetworkType")]
         public Output<string?> WhitelistNetworkType { get; private set; } = null!;
@@ -602,6 +677,8 @@ namespace Pulumi.AliCloud.Rds
         /// The upgrade method to use. Valid values:
         /// - Auto: Instances are automatically upgraded to a higher minor version.
         /// - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
+        /// 
+        /// See more [details and limitation](https://www.alibabacloud.com/help/doc-detail/123605.htm).
         /// </summary>
         [Input("autoUpgradeMinorVersion")]
         public Input<string>? AutoUpgradeMinorVersion { get; set; }
@@ -611,6 +688,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        /// 
+        /// &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         /// </summary>
         public InputList<Inputs.InstanceBabelfishConfigArgs> BabelfishConfigs
         {
@@ -620,6 +699,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The TDS port of the instance for which Babelfish is enabled.
+        /// 
+        /// &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         /// </summary>
         [Input("babelfishPort")]
         public Input<string>? BabelfishPort { get; set; }
@@ -638,8 +719,10 @@ namespace Pulumi.AliCloud.Rds
         /// * **HighAvailability**: High-availability Edition.
         /// * **AlwaysOn**: Cluster Edition.
         /// * **Finance**: Enterprise Edition.
-        /// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-        /// * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
+        /// * **cluster**: MySQL Cluster Edition. (Available in 1.202.0+)
+        /// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
+        /// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
+        /// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -672,17 +755,25 @@ namespace Pulumi.AliCloud.Rds
         [Input("clientCrlEnabled")]
         public Input<int>? ClientCrlEnabled { get; set; }
 
+        /// <summary>
+        /// The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix. 
+        /// &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:'",&lt;&gt;/?
+        /// </summary>
         [Input("connectionStringPrefix")]
         public Input<string>? ConnectionStringPrefix { get; set; }
 
         /// <summary>
         /// The attribute of the IP address whitelist. By default, this parameter is empty.
+        /// 
+        /// &gt; **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
         /// </summary>
         [Input("dbInstanceIpArrayAttribute")]
         public Input<string>? DbInstanceIpArrayAttribute { get; set; }
 
         /// <summary>
         /// The name of the IP address whitelist. Default value: Default.
+        /// 
+        /// &gt; **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
         /// </summary>
         [Input("dbInstanceIpArrayName")]
         public Input<string>? DbInstanceIpArrayName { get; set; }
@@ -712,6 +803,10 @@ namespace Pulumi.AliCloud.Rds
         /// - If you set the `Engine` parameter to PostgreSQL.
         /// - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
         /// - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+        /// 
+        /// &gt; **NOTE:**
+        /// - You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
+        /// - If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
         /// </summary>
         [Input("dbTimeZone")]
         public Input<string>? DbTimeZone { get; set; }
@@ -720,6 +815,8 @@ namespace Pulumi.AliCloud.Rds
         /// The switch of delete protection. Valid values: 
         /// - true: delete protect.
         /// - false: no delete protect.
+        /// 
+        /// &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -740,6 +837,10 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
+        /// 
+        /// &gt; **NOTE:**
+        /// - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
+        /// - Available in 1.200.0+. Create a serverless instance, you must set this parameter to 8.0.
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
@@ -768,6 +869,8 @@ namespace Pulumi.AliCloud.Rds
         /// The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
         /// - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
         /// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+        /// 
+        /// &gt; **NOTE:** If you set this parameter to Manual, you must specify the ManualHATime parameter.
         /// </summary>
         [Input("haConfig")]
         public Input<string>? HaConfig { get; set; }
@@ -798,6 +901,10 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        /// 
+        /// &gt; **NOTE:**
+        /// - When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
+        /// - When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
@@ -810,6 +917,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        /// 
+        /// &gt; **NOTE:** This parameter only takes effect when the HAConfig parameter is set to Manual.
         /// </summary>
         [Input("manualHaTime")]
         public Input<string>? ManualHaTime { get; set; }
@@ -824,7 +933,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? ModifyMode { get; set; }
 
         /// <summary>
-        /// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
+        /// The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
         /// </summary>
         [Input("monitoringPeriod")]
         public Input<int>? MonitoringPeriod { get; set; }
@@ -841,6 +950,10 @@ namespace Pulumi.AliCloud.Rds
             set => _parameters = value;
         }
 
+        /// <summary>
+        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -856,6 +969,9 @@ namespace Pulumi.AliCloud.Rds
             set => _pgHbaConfs = value;
         }
 
+        /// <summary>
+        /// The private port of the database service. If you want to update public port, please use resource alicloud.rds.Connection port.
+        /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
@@ -870,6 +986,8 @@ namespace Pulumi.AliCloud.Rds
         /// - None: No archived backup files are retained.
         /// - Lastest: Only the last archived backup file is retained.
         /// - All: All the archived backup files are retained.
+        /// 
+        /// &gt; **NOTE:** This parameter is supported only when the instance runs the MySQL database engine.
         /// </summary>
         [Input("releasedKeepPolicy")]
         public Input<string>? ReleasedKeepPolicy { get; set; }
@@ -984,6 +1102,8 @@ namespace Pulumi.AliCloud.Rds
         /// Automatic storage space expansion switch. Valid values:
         /// - Enable
         /// - Disable
+        /// 
+        /// &gt; **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable.
         /// </summary>
         [Input("storageAutoScale")]
         public Input<string>? StorageAutoScale { get; set; }
@@ -995,18 +1115,24 @@ namespace Pulumi.AliCloud.Rds
         /// - 30
         /// - 40
         /// - 50
+        /// 
+        /// &gt; **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
         /// </summary>
         [Input("storageThreshold")]
         public Input<int>? StorageThreshold { get; set; }
 
         /// <summary>
         /// The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+        /// 
+        /// &gt; **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         /// </summary>
         [Input("storageUpperBound")]
         public Input<int>? StorageUpperBound { get; set; }
 
         /// <summary>
         /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `target_minor_version` is changed. The time must be in UTC.
+        /// 
+        /// &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         /// </summary>
         [Input("switchTime")]
         public Input<string>? SwitchTime { get; set; }
@@ -1018,6 +1144,8 @@ namespace Pulumi.AliCloud.Rds
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// 
+        /// Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -1033,6 +1161,8 @@ namespace Pulumi.AliCloud.Rds
         /// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
         /// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
         /// - SQLServer: &lt;Minor engine version&gt;. Example: 15.0.4073.23.
+        /// 
+        /// &gt; **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         /// </summary>
         [Input("targetMinorVersion")]
         public Input<string>? TargetMinorVersion { get; set; }
@@ -1041,6 +1171,9 @@ namespace Pulumi.AliCloud.Rds
         /// The availability check method of the instance. Valid values:
         /// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
         /// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        /// 
+        /// 
+        /// &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = "zone-a" and `zone_id_slave_a` = "zone-c", `zone_id_slave_b` = "zone-b", then the `vswitch_id` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zone_id` = "zone-a" and `zone_id_slave_a` = "Auto",`zone_id_slave_b` = "Auto", then the `vswitch_id` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
         /// </summary>
         [Input("tcpConnectionType")]
         public Input<string>? TcpConnectionType { get; set; }
@@ -1070,6 +1203,9 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The VPC ID of the instance.
+        /// 
+        /// 
+        /// &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -1085,6 +1221,8 @@ namespace Pulumi.AliCloud.Rds
         /// - Classic: classic network in enhanced whitelist mode
         /// - VPC: virtual private cloud (VPC) in enhanced whitelist mode
         /// - MIX: standard whitelist mode
+        /// 
+        /// &gt; **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         /// </summary>
         [Input("whitelistNetworkType")]
         public Input<string>? WhitelistNetworkType { get; set; }
@@ -1143,6 +1281,8 @@ namespace Pulumi.AliCloud.Rds
         /// The upgrade method to use. Valid values:
         /// - Auto: Instances are automatically upgraded to a higher minor version.
         /// - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
+        /// 
+        /// See more [details and limitation](https://www.alibabacloud.com/help/doc-detail/123605.htm).
         /// </summary>
         [Input("autoUpgradeMinorVersion")]
         public Input<string>? AutoUpgradeMinorVersion { get; set; }
@@ -1152,6 +1292,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        /// 
+        /// &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         /// </summary>
         public InputList<Inputs.InstanceBabelfishConfigGetArgs> BabelfishConfigs
         {
@@ -1161,6 +1303,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The TDS port of the instance for which Babelfish is enabled.
+        /// 
+        /// &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         /// </summary>
         [Input("babelfishPort")]
         public Input<string>? BabelfishPort { get; set; }
@@ -1179,8 +1323,10 @@ namespace Pulumi.AliCloud.Rds
         /// * **HighAvailability**: High-availability Edition.
         /// * **AlwaysOn**: Cluster Edition.
         /// * **Finance**: Enterprise Edition.
-        /// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-        /// * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
+        /// * **cluster**: MySQL Cluster Edition. (Available in 1.202.0+)
+        /// * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
+        /// * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
+        /// * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -1219,17 +1365,31 @@ namespace Pulumi.AliCloud.Rds
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }
 
+        /// <summary>
+        /// The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix. 
+        /// &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:'",&lt;&gt;/?
+        /// </summary>
         [Input("connectionStringPrefix")]
         public Input<string>? ConnectionStringPrefix { get; set; }
 
         /// <summary>
+        /// (Available in 1.204.1+) The creation time of db instance.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
         /// The attribute of the IP address whitelist. By default, this parameter is empty.
+        /// 
+        /// &gt; **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
         /// </summary>
         [Input("dbInstanceIpArrayAttribute")]
         public Input<string>? DbInstanceIpArrayAttribute { get; set; }
 
         /// <summary>
         /// The name of the IP address whitelist. Default value: Default.
+        /// 
+        /// &gt; **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
         /// </summary>
         [Input("dbInstanceIpArrayName")]
         public Input<string>? DbInstanceIpArrayName { get; set; }
@@ -1265,6 +1425,10 @@ namespace Pulumi.AliCloud.Rds
         /// - If you set the `Engine` parameter to PostgreSQL.
         /// - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
         /// - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+        /// 
+        /// &gt; **NOTE:**
+        /// - You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
+        /// - If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
         /// </summary>
         [Input("dbTimeZone")]
         public Input<string>? DbTimeZone { get; set; }
@@ -1273,6 +1437,8 @@ namespace Pulumi.AliCloud.Rds
         /// The switch of delete protection. Valid values: 
         /// - true: delete protect.
         /// - false: no delete protect.
+        /// 
+        /// &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -1293,6 +1459,10 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
+        /// 
+        /// &gt; **NOTE:**
+        /// - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
+        /// - Available in 1.200.0+. Create a serverless instance, you must set this parameter to 8.0.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -1321,6 +1491,8 @@ namespace Pulumi.AliCloud.Rds
         /// The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
         /// - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
         /// - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+        /// 
+        /// &gt; **NOTE:** If you set this parameter to Manual, you must specify the ManualHATime parameter.
         /// </summary>
         [Input("haConfig")]
         public Input<string>? HaConfig { get; set; }
@@ -1351,6 +1523,10 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        /// 
+        /// &gt; **NOTE:**
+        /// - When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
+        /// - When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -1363,6 +1539,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        /// 
+        /// &gt; **NOTE:** This parameter only takes effect when the HAConfig parameter is set to Manual.
         /// </summary>
         [Input("manualHaTime")]
         public Input<string>? ManualHaTime { get; set; }
@@ -1377,7 +1555,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? ModifyMode { get; set; }
 
         /// <summary>
-        /// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
+        /// The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
         /// </summary>
         [Input("monitoringPeriod")]
         public Input<int>? MonitoringPeriod { get; set; }
@@ -1394,6 +1572,10 @@ namespace Pulumi.AliCloud.Rds
             set => _parameters = value;
         }
 
+        /// <summary>
+        /// The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -1409,6 +1591,9 @@ namespace Pulumi.AliCloud.Rds
             set => _pgHbaConfs = value;
         }
 
+        /// <summary>
+        /// The private port of the database service. If you want to update public port, please use resource alicloud.rds.Connection port.
+        /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
@@ -1423,6 +1608,8 @@ namespace Pulumi.AliCloud.Rds
         /// - None: No archived backup files are retained.
         /// - Lastest: Only the last archived backup file is retained.
         /// - All: All the archived backup files are retained.
+        /// 
+        /// &gt; **NOTE:** This parameter is supported only when the instance runs the MySQL database engine.
         /// </summary>
         [Input("releasedKeepPolicy")]
         public Input<string>? ReleasedKeepPolicy { get; set; }
@@ -1540,9 +1727,17 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? SslStatus { get; set; }
 
         /// <summary>
+        /// (Available in 1.204.1+) The status of db instance.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
         /// Automatic storage space expansion switch. Valid values:
         /// - Enable
         /// - Disable
+        /// 
+        /// &gt; **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable.
         /// </summary>
         [Input("storageAutoScale")]
         public Input<string>? StorageAutoScale { get; set; }
@@ -1554,18 +1749,24 @@ namespace Pulumi.AliCloud.Rds
         /// - 30
         /// - 40
         /// - 50
+        /// 
+        /// &gt; **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
         /// </summary>
         [Input("storageThreshold")]
         public Input<int>? StorageThreshold { get; set; }
 
         /// <summary>
         /// The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+        /// 
+        /// &gt; **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         /// </summary>
         [Input("storageUpperBound")]
         public Input<int>? StorageUpperBound { get; set; }
 
         /// <summary>
         /// The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `target_minor_version` is changed. The time must be in UTC.
+        /// 
+        /// &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
         /// </summary>
         [Input("switchTime")]
         public Input<string>? SwitchTime { get; set; }
@@ -1577,6 +1778,8 @@ namespace Pulumi.AliCloud.Rds
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// 
+        /// Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -1592,6 +1795,8 @@ namespace Pulumi.AliCloud.Rds
         /// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
         /// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
         /// - SQLServer: &lt;Minor engine version&gt;. Example: 15.0.4073.23.
+        /// 
+        /// &gt; **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
         /// </summary>
         [Input("targetMinorVersion")]
         public Input<string>? TargetMinorVersion { get; set; }
@@ -1600,6 +1805,9 @@ namespace Pulumi.AliCloud.Rds
         /// The availability check method of the instance. Valid values:
         /// - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
         /// - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+        /// 
+        /// 
+        /// &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = "zone-a" and `zone_id_slave_a` = "zone-c", `zone_id_slave_b` = "zone-b", then the `vswitch_id` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zone_id` = "zone-a" and `zone_id_slave_a` = "Auto",`zone_id_slave_b` = "Auto", then the `vswitch_id` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
         /// </summary>
         [Input("tcpConnectionType")]
         public Input<string>? TcpConnectionType { get; set; }
@@ -1629,6 +1837,9 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The VPC ID of the instance.
+        /// 
+        /// 
+        /// &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -1644,6 +1855,8 @@ namespace Pulumi.AliCloud.Rds
         /// - Classic: classic network in enhanced whitelist mode
         /// - VPC: virtual private cloud (VPC) in enhanced whitelist mode
         /// - MIX: standard whitelist mode
+        /// 
+        /// &gt; **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         /// </summary>
         [Input("whitelistNetworkType")]
         public Input<string>? WhitelistNetworkType { get; set; }

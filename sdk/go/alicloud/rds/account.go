@@ -10,6 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides an RDS account resource and used to manage databases.
+//
+// > **DEPRECATED:**  This resource  has been deprecated from version `1.120.0`. Please use new resource alicloud_rds_account.
+//
 // ## Example Usage
 //
 // ```go
@@ -125,6 +129,8 @@ type Account struct {
 	// - Normal: Common privilege.
 	// - Super: High privilege.
 	//
+	// Default to Normal.
+	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -200,6 +206,8 @@ type accountState struct {
 	// - Normal: Common privilege.
 	// - Super: High privilege.
 	//
+	// Default to Normal.
+	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type *string `pulumi:"type"`
 }
@@ -235,6 +243,8 @@ type AccountState struct {
 	// Privilege type of account.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
+	//
+	// Default to Normal.
 	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type pulumi.StringPtrInput
@@ -275,6 +285,8 @@ type accountArgs struct {
 	// - Normal: Common privilege.
 	// - Super: High privilege.
 	//
+	// Default to Normal.
+	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type *string `pulumi:"type"`
 }
@@ -310,6 +322,8 @@ type AccountArgs struct {
 	// Privilege type of account.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
+	//
+	// Default to Normal.
 	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 	Type pulumi.StringPtrInput
@@ -471,6 +485,8 @@ func (o AccountOutput) Status() pulumi.StringOutput {
 // Privilege type of account.
 // - Normal: Common privilege.
 // - Super: High privilege.
+//
+// Default to Normal.
 //
 // Deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
 func (o AccountOutput) Type() pulumi.StringOutput {

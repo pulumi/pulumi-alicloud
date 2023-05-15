@@ -7,6 +7,10 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
+ *
+ * > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -38,6 +42,9 @@ export interface GetTopicSubscriptionsArgs {
      * A string to filter resulting subscriptions of the topic by their name prefixs.
      */
     namePrefix?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
@@ -69,6 +76,10 @@ export interface GetTopicSubscriptionsResult {
     readonly topicName: string;
 }
 /**
+ * This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
+ *
+ * > **DEPRECATED:**  This datasource has been deprecated from version `1.188.0`. Please use new datasource message_service_subscriptions.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -94,6 +105,9 @@ export interface GetTopicSubscriptionsOutputArgs {
      * A string to filter resulting subscriptions of the topic by their name prefixs.
      */
     namePrefix?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.

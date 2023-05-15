@@ -46,6 +46,9 @@ export interface GetSharedResourcesArgs {
      * A list of shared resource ID.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The resource share ID of resource manager.
@@ -103,6 +106,9 @@ export interface GetSharedResourcesOutputArgs {
      * A list of shared resource ID.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The resource share ID of resource manager.

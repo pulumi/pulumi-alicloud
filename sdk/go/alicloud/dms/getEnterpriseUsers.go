@@ -58,7 +58,8 @@ type GetEnterpriseUsersArgs struct {
 	// A list of DMS Enterprise User IDs (UID).
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter the results by the DMS Enterprise User nick_name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The role of the user to query.
 	Role *string `pulumi:"role"`
@@ -107,7 +108,8 @@ type GetEnterpriseUsersOutputArgs struct {
 	// A list of DMS Enterprise User IDs (UID).
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter the results by the DMS Enterprise User nick_name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The role of the user to query.
 	Role pulumi.StringPtrInput `pulumi:"role"`

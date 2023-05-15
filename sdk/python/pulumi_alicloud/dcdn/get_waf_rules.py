@@ -125,6 +125,7 @@ def get_waf_rules(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Waf Rule IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str query_args: The query conditions. The value is a string in the JSON format.
     """
     __args__ = dict()
@@ -170,6 +171,7 @@ def get_waf_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
 
 
     :param Sequence[str] ids: A list of Waf Rule IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str query_args: The query conditions. The value is a string in the JSON format.
     """
     ...

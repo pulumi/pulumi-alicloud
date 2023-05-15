@@ -508,6 +508,92 @@ class Alarm(pulumi.CustomResource):
                  threshold: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Provides a ESS alarm task resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        ecs_image = alicloud.ecs.get_images(most_recent=True,
+            name_regex="^centos_6\\\\w{1,5}[64].*")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/16")
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vswitch_name="tf-testAccEssAlarm_basic_foo",
+            vpc_id=foo_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id)
+        bar = alicloud.vpc.Switch("bar",
+            vswitch_name="tf-testAccEssAlarm_basic_bar",
+            vpc_id=foo_network.id,
+            cidr_block="172.16.1.0/24",
+            zone_id=default_zones.zones[0].id)
+        foo_scaling_group = alicloud.ess.ScalingGroup("fooScalingGroup",
+            min_size=1,
+            max_size=1,
+            scaling_group_name="tf-testAccEssAlarm_basic",
+            removal_policies=[
+                "OldestInstance",
+                "NewestInstance",
+            ],
+            vswitch_ids=[
+                foo_switch.id,
+                bar.id,
+            ])
+        foo_scaling_rule = alicloud.ess.ScalingRule("fooScalingRule",
+            scaling_rule_name="tf-testAccEssAlarm_basic",
+            scaling_group_id=foo_scaling_group.id,
+            adjustment_type="TotalCapacity",
+            adjustment_value=2,
+            cooldown=60)
+        foo_alarm = alicloud.ess.Alarm("fooAlarm",
+            description="Acc alarm test",
+            alarm_actions=[foo_scaling_rule.ari],
+            scaling_group_id=foo_scaling_group.id,
+            metric_type="system",
+            metric_name="CpuUtilization",
+            period=300,
+            statistics="Average",
+            threshold="200.3",
+            comparison_operator=">=",
+            evaluation_count=2)
+        ```
+        ## Module Support
+
+        You can use to the existing autoscaling-rule module
+        to create alarm task, different type rules and scheduled task one-click.
+
+        ## Block metricNames_and_dimensions
+
+        Supported metric names and dimensions :
+
+        | MetricName         | Dimensions                   |
+        | ------------------ | ---------------------------- |
+        | CpuUtilization     | user_id,scaling_group        |
+        | ClassicInternetRx  | user_id,scaling_group        |
+        | ClassicInternetTx  | user_id,scaling_group        |
+        | VpcInternetRx      | user_id,scaling_group        |
+        | VpcInternetTx      | user_id,scaling_group        |
+        | IntranetRx         | user_id,scaling_group        |
+        | IntranetTx         | user_id,scaling_group        |
+        | LoadAverage        | user_id,scaling_group        |
+        | MemoryUtilization  | user_id,scaling_group        |
+        | SystemDiskReadBps  | user_id,scaling_group        |
+        | SystemDiskWriteBps | user_id,scaling_group        |
+        | SystemDiskReadOps  | user_id,scaling_group        |
+        | SystemDiskWriteOps | user_id,scaling_group        |
+        | PackagesNetIn      | user_id,scaling_group,device |
+        | PackagesNetOut     | user_id,scaling_group,device |
+        | TcpConnection      | user_id,scaling_group,state  |
+
+        > **NOTE:** Dimension `user_id` and `scaling_group` is automatically filled, which means you only need to care about dimension `device` and `state` when needed.
+
         ## Import
 
         Ess alarm can be imported using the id, e.g.
@@ -540,6 +626,92 @@ class Alarm(pulumi.CustomResource):
                  args: AlarmArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a ESS alarm task resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        ecs_image = alicloud.ecs.get_images(most_recent=True,
+            name_regex="^centos_6\\\\w{1,5}[64].*")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/16")
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vswitch_name="tf-testAccEssAlarm_basic_foo",
+            vpc_id=foo_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id)
+        bar = alicloud.vpc.Switch("bar",
+            vswitch_name="tf-testAccEssAlarm_basic_bar",
+            vpc_id=foo_network.id,
+            cidr_block="172.16.1.0/24",
+            zone_id=default_zones.zones[0].id)
+        foo_scaling_group = alicloud.ess.ScalingGroup("fooScalingGroup",
+            min_size=1,
+            max_size=1,
+            scaling_group_name="tf-testAccEssAlarm_basic",
+            removal_policies=[
+                "OldestInstance",
+                "NewestInstance",
+            ],
+            vswitch_ids=[
+                foo_switch.id,
+                bar.id,
+            ])
+        foo_scaling_rule = alicloud.ess.ScalingRule("fooScalingRule",
+            scaling_rule_name="tf-testAccEssAlarm_basic",
+            scaling_group_id=foo_scaling_group.id,
+            adjustment_type="TotalCapacity",
+            adjustment_value=2,
+            cooldown=60)
+        foo_alarm = alicloud.ess.Alarm("fooAlarm",
+            description="Acc alarm test",
+            alarm_actions=[foo_scaling_rule.ari],
+            scaling_group_id=foo_scaling_group.id,
+            metric_type="system",
+            metric_name="CpuUtilization",
+            period=300,
+            statistics="Average",
+            threshold="200.3",
+            comparison_operator=">=",
+            evaluation_count=2)
+        ```
+        ## Module Support
+
+        You can use to the existing autoscaling-rule module
+        to create alarm task, different type rules and scheduled task one-click.
+
+        ## Block metricNames_and_dimensions
+
+        Supported metric names and dimensions :
+
+        | MetricName         | Dimensions                   |
+        | ------------------ | ---------------------------- |
+        | CpuUtilization     | user_id,scaling_group        |
+        | ClassicInternetRx  | user_id,scaling_group        |
+        | ClassicInternetTx  | user_id,scaling_group        |
+        | VpcInternetRx      | user_id,scaling_group        |
+        | VpcInternetTx      | user_id,scaling_group        |
+        | IntranetRx         | user_id,scaling_group        |
+        | IntranetTx         | user_id,scaling_group        |
+        | LoadAverage        | user_id,scaling_group        |
+        | MemoryUtilization  | user_id,scaling_group        |
+        | SystemDiskReadBps  | user_id,scaling_group        |
+        | SystemDiskWriteBps | user_id,scaling_group        |
+        | SystemDiskReadOps  | user_id,scaling_group        |
+        | SystemDiskWriteOps | user_id,scaling_group        |
+        | PackagesNetIn      | user_id,scaling_group,device |
+        | PackagesNetOut     | user_id,scaling_group,device |
+        | TcpConnection      | user_id,scaling_group,state  |
+
+        > **NOTE:** Dimension `user_id` and `scaling_group` is automatically filled, which means you only need to care about dimension `device` and `state` when needed.
+
         ## Import
 
         Ess alarm can be imported using the id, e.g.

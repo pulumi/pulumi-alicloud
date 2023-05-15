@@ -51,6 +51,8 @@ class BackupPolicyArgs:
                - 360: A snapshot backup is performed once every 360 minutes.
                - 480: A snapshot backup is performed once every 480 minutes.
                - 720: A snapshot backup is performed once every 720 minutes.
+               
+               > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         :param pulumi.Input[int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
         :param pulumi.Input[str] backup_time: It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
@@ -193,6 +195,8 @@ class BackupPolicyArgs:
         - 360: A snapshot backup is performed once every 360 minutes.
         - 480: A snapshot backup is performed once every 480 minutes.
         - 720: A snapshot backup is performed once every 720 minutes.
+
+        > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         """
         return pulumi.get(self, "backup_interval")
 
@@ -448,6 +452,8 @@ class _BackupPolicyState:
                - 360: A snapshot backup is performed once every 360 minutes.
                - 480: A snapshot backup is performed once every 480 minutes.
                - 720: A snapshot backup is performed once every 720 minutes.
+               
+               > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         :param pulumi.Input[int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
         :param pulumi.Input[str] backup_time: It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
@@ -580,6 +586,8 @@ class _BackupPolicyState:
         - 360: A snapshot backup is performed once every 360 minutes.
         - 480: A snapshot backup is performed once every 480 minutes.
         - 720: A snapshot backup is performed once every 720 minutes.
+
+        > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         """
         return pulumi.get(self, "backup_interval")
 
@@ -895,6 +903,8 @@ class BackupPolicy(pulumi.CustomResource):
                - 360: A snapshot backup is performed once every 360 minutes.
                - 480: A snapshot backup is performed once every 480 minutes.
                - 720: A snapshot backup is performed once every 720 minutes.
+               
+               > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         :param pulumi.Input[int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
         :param pulumi.Input[str] backup_time: It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
@@ -1105,6 +1115,8 @@ class BackupPolicy(pulumi.CustomResource):
                - 360: A snapshot backup is performed once every 360 minutes.
                - 480: A snapshot backup is performed once every 480 minutes.
                - 720: A snapshot backup is performed once every 720 minutes.
+               
+               > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         :param pulumi.Input[int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
         :param pulumi.Input[str] backup_time: It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
@@ -1193,6 +1205,8 @@ class BackupPolicy(pulumi.CustomResource):
         - 360: A snapshot backup is performed once every 360 minutes.
         - 480: A snapshot backup is performed once every 480 minutes.
         - 720: A snapshot backup is performed once every 720 minutes.
+
+        > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         """
         return pulumi.get(self, "backup_interval")
 

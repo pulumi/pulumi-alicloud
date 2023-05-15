@@ -64,7 +64,7 @@ export class Policy extends pulumi.CustomResource {
     /**
      * The type of the tag policy. Valid values: `USER`, `RD`.
      */
-    public readonly userType!: pulumi.Output<string | undefined>;
+    public readonly userType!: pulumi.Output<string>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.

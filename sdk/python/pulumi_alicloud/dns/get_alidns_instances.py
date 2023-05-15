@@ -130,6 +130,7 @@ def get_alidns_instances(domain_type: Optional[str] = None,
     :param str domain_type: The type of domain.
     :param Sequence[str] ids: A list of instance IDs.
     :param str lang: Language.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str user_client_ip: The IP address of the client.
     """
     __args__ = dict()
@@ -177,6 +178,7 @@ def get_alidns_instances_output(domain_type: Optional[pulumi.Input[Optional[str]
     :param str domain_type: The type of domain.
     :param Sequence[str] ids: A list of instance IDs.
     :param str lang: Language.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str user_client_ip: The IP address of the client.
     """
     ...

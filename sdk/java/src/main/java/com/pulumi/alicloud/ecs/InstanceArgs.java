@@ -132,12 +132,40 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
      * 
+     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
+     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
+     * 
      */
     @Import(name="dedicatedHostId")
     private @Nullable Output<String> dedicatedHostId;
 
     /**
      * @return The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+     * 
+     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
+     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
     public Optional<Output<String>> dedicatedHostId() {
@@ -618,9 +646,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.password);
     }
 
+    /**
+     * The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
+     * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in &#34;Month&#34;
+     * - [1-3] when `period_unit` in &#34;Week&#34;
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
+    /**
+     * @return The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
+     * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in &#34;Month&#34;
+     * - [1-3] when `period_unit` in &#34;Week&#34;
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
     }
@@ -800,6 +842,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * - SpotWithPriceLimit: A price threshold for a spot instance
      * - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
      * 
+     * Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
+     * 
      */
     @Import(name="spotStrategy")
     private @Nullable Output<String> spotStrategy;
@@ -809,6 +853,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * - NoSpot: A regular Pay-As-You-Go instance.
      * - SpotWithPriceLimit: A price threshold for a spot instance
      * - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
+     * 
+     * Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
      * 
      */
     public Optional<Output<String>> spotStrategy() {
@@ -1333,6 +1379,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param dedicatedHostId The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
          * 
+         * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+         * 
+         * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
+         * 
+         * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
+         * 
+         * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+         * 
+         * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
+         * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+         * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
+         * 
+         * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
+         * 
          * @return builder
          * 
          */
@@ -1343,6 +1403,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dedicatedHostId The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+         * 
+         * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+         * 
+         * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
+         * 
+         * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
+         * 
+         * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+         * 
+         * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
+         * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+         * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
+         * 
+         * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
          * 
          * @return builder
          * 
@@ -2011,11 +2085,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
             return password(Output.of(password));
         }
 
+        /**
+         * @param period The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
+         * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in &#34;Month&#34;
+         * - [1-3] when `period_unit` in &#34;Week&#34;
+         * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder period(@Nullable Output<Integer> period) {
             $.period = period;
             return this;
         }
 
+        /**
+         * @param period The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
+         * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in &#34;Month&#34;
+         * - [1-3] when `period_unit` in &#34;Week&#34;
+         * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder period(Integer period) {
             return period(Output.of(period));
         }
@@ -2281,6 +2373,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * - SpotWithPriceLimit: A price threshold for a spot instance
          * - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
          * 
+         * Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
+         * 
          * @return builder
          * 
          */
@@ -2294,6 +2388,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * - NoSpot: A regular Pay-As-You-Go instance.
          * - SpotWithPriceLimit: A price threshold for a spot instance
          * - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
+         * 
+         * Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
          * 
          * @return builder
          * 

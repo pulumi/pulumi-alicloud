@@ -168,6 +168,8 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
      * - public (default): Public VPN gateway.
      * - private: Private VPN gateway.
      * 
+     * &gt; **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
+     * 
      */
     @Import(name="networkType")
     private @Nullable Output<String> networkType;
@@ -176,6 +178,8 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
      * @return The network type of the VPN gateway. Value:
      * - public (default): Public VPN gateway.
      * - private: Private VPN gateway.
+     * 
+     * &gt; **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
      * 
      */
     public Optional<Output<String>> networkType() {
@@ -519,6 +523,8 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
          * - public (default): Public VPN gateway.
          * - private: Private VPN gateway.
          * 
+         * &gt; **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
+         * 
          * @return builder
          * 
          */
@@ -531,6 +537,8 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
          * @param networkType The network type of the VPN gateway. Value:
          * - public (default): Public VPN gateway.
          * - private: Private VPN gateway.
+         * 
+         * &gt; **NOTE:** Private VPN gateway can only be purchased by white list users, and the bandwidth only supports 200M or 1000M; In addition, SSL is not supported.
          * 
          * @return builder
          * 

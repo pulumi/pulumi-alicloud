@@ -56,6 +56,9 @@ export interface GetBandwidthPackagesArgs {
      * A regex string to filter CEN Bandwidth Package by name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
@@ -135,6 +138,9 @@ export interface GetBandwidthPackagesOutputArgs {
      * A regex string to filter CEN Bandwidth Package by name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.

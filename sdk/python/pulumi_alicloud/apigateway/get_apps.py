@@ -129,6 +129,7 @@ def get_apps(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of app IDs.
     :param str name_regex: A regex string to filter apps by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
@@ -171,6 +172,7 @@ def get_apps_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
 
     :param Sequence[str] ids: A list of app IDs.
     :param str name_regex: A regex string to filter apps by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     ...

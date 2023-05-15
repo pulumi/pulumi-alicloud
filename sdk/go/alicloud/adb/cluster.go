@@ -11,6 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a ADB cluster resource. An ADB cluster is an isolated database
+// environment in the cloud. An ADB cluster can contain multiple user-created
+// databases.
+//
+// > **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new resource alicloud_adb_db_cluster.
+//
+// > **NOTE:** Available in v1.71.0+.
+//
 // ## Example Usage
 // ### Create a ADB MySQL cluster
 //
@@ -134,6 +142,8 @@ type Cluster struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	//
+	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
 	Tags  pulumi.MapOutput    `pulumi:"tags"`
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
@@ -220,6 +230,8 @@ type clusterState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	//
+	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
 	Tags  map[string]interface{} `pulumi:"tags"`
 	VpcId *string                `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
@@ -272,6 +284,8 @@ type ClusterState struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	//
+	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
 	Tags  pulumi.MapInput
 	VpcId pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
@@ -323,6 +337,8 @@ type clusterArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	//
+	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
 	Tags  map[string]interface{} `pulumi:"tags"`
 	VpcId *string                `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
@@ -371,6 +387,8 @@ type ClusterArgs struct {
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+	//
+	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
 	Tags  pulumi.MapInput
 	VpcId pulumi.StringPtrInput
 	// The virtual switch ID to launch DB instances in one VPC.
@@ -575,6 +593,8 @@ func (o ClusterOutput) Status() pulumi.StringOutput {
 // A mapping of tags to assign to the resource.
 // - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 // - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+//
+// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
 func (o ClusterOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }

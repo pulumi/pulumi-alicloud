@@ -61,7 +61,8 @@ type GetStacksArgs struct {
 	// A list of Stack IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Stack name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Parent Stack Id.
 	ParentStackId *string `pulumi:"parentStackId"`
@@ -112,7 +113,8 @@ type GetStacksOutputArgs struct {
 	// A list of Stack IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Stack name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Parent Stack Id.
 	ParentStackId pulumi.StringPtrInput `pulumi:"parentStackId"`

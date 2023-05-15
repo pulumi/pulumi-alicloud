@@ -210,6 +210,7 @@ def get_serverless_instances(db_instance_class: Optional[str] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Serverless Instance IDs.
     :param str network_type: The network type of the instance.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param str status: The status of the instance.
     :param Mapping[str, Any] tags: The tag of the resource.
@@ -299,6 +300,7 @@ def get_serverless_instances_output(db_instance_class: Optional[pulumi.Input[Opt
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Serverless Instance IDs.
     :param str network_type: The network type of the instance.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param str status: The status of the instance.
     :param Mapping[str, Any] tags: The tag of the resource.

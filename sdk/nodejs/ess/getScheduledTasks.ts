@@ -49,6 +49,9 @@ export interface GetScheduledTasksArgs {
      * A regex string to filter resulting scheduled tasks by name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The operation to be performed when a scheduled task is triggered.
@@ -122,6 +125,9 @@ export interface GetScheduledTasksOutputArgs {
      * A regex string to filter resulting scheduled tasks by name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The operation to be performed when a scheduled task is triggered.

@@ -27,6 +27,13 @@ import java.util.concurrent.CompletableFuture;
 
 public final class AdbFunctions {
     /**
+     * The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
+     * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+     * 
+     * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
+     * 
+     * &gt; **NOTE:** Available in v1.71.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -64,6 +71,13 @@ public final class AdbFunctions {
         return getClusters(GetClustersArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
+     * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+     * 
+     * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
+     * 
+     * &gt; **NOTE:** Available in v1.71.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -101,6 +115,13 @@ public final class AdbFunctions {
         return getClustersPlain(GetClustersPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
+     * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+     * 
+     * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
+     * 
+     * &gt; **NOTE:** Available in v1.71.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -138,6 +159,13 @@ public final class AdbFunctions {
         return getClusters(args, InvokeOptions.Empty);
     }
     /**
+     * The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
+     * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+     * 
+     * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
+     * 
+     * &gt; **NOTE:** Available in v1.71.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -175,6 +203,13 @@ public final class AdbFunctions {
         return getClustersPlain(args, InvokeOptions.Empty);
     }
     /**
+     * The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
+     * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+     * 
+     * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
+     * 
+     * &gt; **NOTE:** Available in v1.71.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -212,6 +247,13 @@ public final class AdbFunctions {
         return Deployment.getInstance().invoke("alicloud:adb/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
+     * Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+     * 
+     * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
+     * 
+     * &gt; **NOTE:** Available in v1.71.0+.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;

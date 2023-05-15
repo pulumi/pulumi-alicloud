@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -32,6 +33,21 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
      */
     public Optional<Output<String>> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
+    }
+
+    /**
+     * Default to `true`. If false, the attributes `ram_role_name` and `disk_device_mappings` will not be fetched and output.
+     * 
+     */
+    @Import(name="enableDetails")
+    private @Nullable Output<Boolean> enableDetails;
+
+    /**
+     * @return Default to `true`. If false, the attributes `ram_role_name` and `disk_device_mappings` will not be fetched and output.
+     * 
+     */
+    public Optional<Output<Boolean>> enableDetails() {
+        return Optional.ofNullable(this.enableDetails);
     }
 
     /**
@@ -94,9 +110,17 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.nameRegex);
     }
 
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable Output<String> outputFile;
 
+    /**
+     * @return File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     public Optional<Output<String>> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -131,14 +155,14 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The Id of resource group which the instance belongs.
+     * The ID of resource group which the instance belongs.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the instance belongs.
+     * @return The ID of resource group which the instance belongs.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -271,6 +295,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetInstancesArgs(GetInstancesArgs $) {
         this.availabilityZone = $.availabilityZone;
+        this.enableDetails = $.enableDetails;
         this.ids = $.ids;
         this.imageId = $.imageId;
         this.instanceName = $.instanceName;
@@ -323,6 +348,27 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder availabilityZone(String availabilityZone) {
             return availabilityZone(Output.of(availabilityZone));
+        }
+
+        /**
+         * @param enableDetails Default to `true`. If false, the attributes `ram_role_name` and `disk_device_mappings` will not be fetched and output.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDetails(@Nullable Output<Boolean> enableDetails) {
+            $.enableDetails = enableDetails;
+            return this;
+        }
+
+        /**
+         * @param enableDetails Default to `true`. If false, the attributes `ram_role_name` and `disk_device_mappings` will not be fetched and output.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDetails(Boolean enableDetails) {
+            return enableDetails(Output.of(enableDetails));
         }
 
         /**
@@ -419,11 +465,23 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
             return nameRegex(Output.of(nameRegex));
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable Output<String> outputFile) {
             $.outputFile = outputFile;
             return this;
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(String outputFile) {
             return outputFile(Output.of(outputFile));
         }
@@ -468,7 +526,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the instance belongs.
+         * @param resourceGroupId The ID of resource group which the instance belongs.
          * 
          * @return builder
          * 
@@ -479,7 +537,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceGroupId The Id of resource group which the instance belongs.
+         * @param resourceGroupId The ID of resource group which the instance belongs.
          * 
          * @return builder
          * 

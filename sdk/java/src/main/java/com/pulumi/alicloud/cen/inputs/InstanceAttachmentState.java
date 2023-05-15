@@ -19,12 +19,16 @@ public final class InstanceAttachmentState extends com.pulumi.resources.Resource
     /**
      * The account ID to which the CEN instance belongs.
      * 
+     * -&gt;**NOTE:** Ensure that the child instance is not used in Express Connect.
+     * 
      */
     @Import(name="cenOwnerId")
     private @Nullable Output<Integer> cenOwnerId;
 
     /**
      * @return The account ID to which the CEN instance belongs.
+     * 
+     * -&gt;**NOTE:** Ensure that the child instance is not used in Express Connect.
      * 
      */
     public Optional<Output<Integer>> cenOwnerId() {
@@ -154,6 +158,8 @@ public final class InstanceAttachmentState extends com.pulumi.resources.Resource
         /**
          * @param cenOwnerId The account ID to which the CEN instance belongs.
          * 
+         * -&gt;**NOTE:** Ensure that the child instance is not used in Express Connect.
+         * 
          * @return builder
          * 
          */
@@ -164,6 +170,8 @@ public final class InstanceAttachmentState extends com.pulumi.resources.Resource
 
         /**
          * @param cenOwnerId The account ID to which the CEN instance belongs.
+         * 
+         * -&gt;**NOTE:** Ensure that the child instance is not used in Express Connect.
          * 
          * @return builder
          * 

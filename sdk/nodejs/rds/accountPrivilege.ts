@@ -114,6 +114,8 @@ export class AccountPrivilege extends pulumi.CustomResource {
      * - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+     *
+     * Default to "ReadOnly".
      */
     public readonly privilege!: pulumi.Output<string | undefined>;
 
@@ -178,6 +180,8 @@ export interface AccountPrivilegeState {
      * - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+     *
+     * Default to "ReadOnly".
      */
     privilege?: pulumi.Input<string>;
 }
@@ -205,6 +209,8 @@ export interface AccountPrivilegeArgs {
      * - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
+     *
+     * Default to "ReadOnly".
      */
     privilege?: pulumi.Input<string>;
 }

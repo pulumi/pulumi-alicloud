@@ -63,7 +63,8 @@ type GetControlPoliciesArgs struct {
 	// The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`.
 	Language *string `pulumi:"language"`
 	// A regex string to filter results by Control Policy name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The type of policy.
 	PolicyType *string `pulumi:"policyType"`
@@ -105,7 +106,8 @@ type GetControlPoliciesOutputArgs struct {
 	// The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`.
 	Language pulumi.StringPtrInput `pulumi:"language"`
 	// A regex string to filter results by Control Policy name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The type of policy.
 	PolicyType pulumi.StringPtrInput `pulumi:"policyType"`

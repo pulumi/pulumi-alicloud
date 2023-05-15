@@ -66,6 +66,9 @@ export interface GetApplicationGroupsArgs {
      * A regex string to filter results by Application Group name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -137,5 +140,8 @@ export interface GetApplicationGroupsOutputArgs {
      * A regex string to filter results by Application Group name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

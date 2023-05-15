@@ -125,6 +125,7 @@ def get_namespaces(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Namespace IDs.
     :param str keyword: The keywords of the `namespace` or `description` of the namespace.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -172,5 +173,6 @@ def get_namespaces_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
 
     :param Sequence[str] ids: A list of Namespace IDs.
     :param str keyword: The keywords of the `namespace` or `description` of the namespace.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

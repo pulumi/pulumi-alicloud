@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ram
 {
     /// <summary>
+    /// Provides a RAM Role resource.
+    /// 
+    /// &gt; **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

@@ -224,6 +224,7 @@ def get_vpc_firewall_control_policies(acl_action: Optional[str] = None,
     :param Sequence[str] ids: A list of Vpc Firewall Control Policy IDs.
     :param str lang: The language of the content within the request and response. Valid values: `zh`, `en`.
     :param str member_uid: The UID of the member account of the current Alibaba cloud account.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str proto: Access control over VPC firewalls strategy access traffic of the protocol type.
     :param bool release: The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
     :param str source: Access control over VPC firewalls strategy in the source address.
@@ -311,6 +312,7 @@ def get_vpc_firewall_control_policies_output(acl_action: Optional[pulumi.Input[O
     :param Sequence[str] ids: A list of Vpc Firewall Control Policy IDs.
     :param str lang: The language of the content within the request and response. Valid values: `zh`, `en`.
     :param str member_uid: The UID of the member account of the current Alibaba cloud account.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str proto: Access control over VPC firewalls strategy access traffic of the protocol type.
     :param bool release: The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
     :param str source: Access control over VPC firewalls strategy in the source address.

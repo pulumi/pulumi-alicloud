@@ -7,6 +7,12 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides an ECS Launch Template resource.
+ *
+ * For information about Launch Template and how to use it, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html).
+ *
+ * > **DEPRECATED:**  This resource  has been deprecated from version `1.120.0`. Please use new resource alicloud_ecs_launch_template.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -131,6 +137,8 @@ export class LaunchTemplate extends pulumi.CustomResource {
      * Billing methods. Optional values:
      * - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
      * - PostPaid: Pay-As-You-Go.
+     *
+     * Default value: PostPaid.
      */
     public readonly instanceChargeType!: pulumi.Output<string | undefined>;
     /**
@@ -407,6 +415,8 @@ export interface LaunchTemplateState {
      * Billing methods. Optional values:
      * - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
      * - PostPaid: Pay-As-You-Go.
+     *
+     * Default value: PostPaid.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
@@ -573,6 +583,8 @@ export interface LaunchTemplateArgs {
      * Billing methods. Optional values:
      * - PrePaid: Monthly, or annual subscription. Make sure that your registered credit card is invalid or you have insufficient balance in your PayPal account. Otherwise, InvalidPayMethod error may occur.
      * - PostPaid: Pay-As-You-Go.
+     *
+     * Default value: PostPaid.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**

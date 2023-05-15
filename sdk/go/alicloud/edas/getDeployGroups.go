@@ -27,7 +27,8 @@ type GetDeployGroupsArgs struct {
 	// ID of the EDAS application.
 	AppId string `pulumi:"appId"`
 	// A regex string to filter results by the deploy group name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -63,7 +64,8 @@ type GetDeployGroupsOutputArgs struct {
 	// ID of the EDAS application.
 	AppId pulumi.StringInput `pulumi:"appId"`
 	// A regex string to filter results by the deploy group name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

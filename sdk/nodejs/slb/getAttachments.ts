@@ -43,6 +43,9 @@ export interface GetAttachmentsArgs {
      * ID of the SLB with attachments.
      */
     loadBalancerId: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -93,5 +96,8 @@ export interface GetAttachmentsOutputArgs {
      * ID of the SLB with attachments.
      */
     loadBalancerId: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

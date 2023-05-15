@@ -76,7 +76,11 @@ type DomainResource struct {
 	// The domain name of the website that you want to add to the instance.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-	HttpsExt    pulumi.StringOutput      `pulumi:"httpsExt"`
+	HttpsExt pulumi.StringOutput `pulumi:"httpsExt"`
+	// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+	// **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite.
+	// So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`,
+	// and you can use tolist to convert it to a list.
 	InstanceIds pulumi.StringArrayOutput `pulumi:"instanceIds"`
 	// Protocol type and port number information.
 	ProxyTypes DomainResourceProxyTypeArrayOutput `pulumi:"proxyTypes"`
@@ -133,7 +137,11 @@ type domainResourceState struct {
 	// The domain name of the website that you want to add to the instance.
 	Domain *string `pulumi:"domain"`
 	// The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-	HttpsExt    *string  `pulumi:"httpsExt"`
+	HttpsExt *string `pulumi:"httpsExt"`
+	// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+	// **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite.
+	// So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`,
+	// and you can use tolist to convert it to a list.
 	InstanceIds []string `pulumi:"instanceIds"`
 	// Protocol type and port number information.
 	ProxyTypes []DomainResourceProxyType `pulumi:"proxyTypes"`
@@ -147,7 +155,11 @@ type DomainResourceState struct {
 	// The domain name of the website that you want to add to the instance.
 	Domain pulumi.StringPtrInput
 	// The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-	HttpsExt    pulumi.StringPtrInput
+	HttpsExt pulumi.StringPtrInput
+	// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+	// **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite.
+	// So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`,
+	// and you can use tolist to convert it to a list.
 	InstanceIds pulumi.StringArrayInput
 	// Protocol type and port number information.
 	ProxyTypes DomainResourceProxyTypeArrayInput
@@ -165,7 +177,11 @@ type domainResourceArgs struct {
 	// The domain name of the website that you want to add to the instance.
 	Domain string `pulumi:"domain"`
 	// The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-	HttpsExt    *string  `pulumi:"httpsExt"`
+	HttpsExt *string `pulumi:"httpsExt"`
+	// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+	// **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite.
+	// So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`,
+	// and you can use tolist to convert it to a list.
 	InstanceIds []string `pulumi:"instanceIds"`
 	// Protocol type and port number information.
 	ProxyTypes []DomainResourceProxyType `pulumi:"proxyTypes"`
@@ -180,7 +196,11 @@ type DomainResourceArgs struct {
 	// The domain name of the website that you want to add to the instance.
 	Domain pulumi.StringInput
 	// The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-	HttpsExt    pulumi.StringPtrInput
+	HttpsExt pulumi.StringPtrInput
+	// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+	// **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite.
+	// So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`,
+	// and you can use tolist to convert it to a list.
 	InstanceIds pulumi.StringArrayInput
 	// Protocol type and port number information.
 	ProxyTypes DomainResourceProxyTypeArrayInput
@@ -287,6 +307,10 @@ func (o DomainResourceOutput) HttpsExt() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainResource) pulumi.StringOutput { return v.HttpsExt }).(pulumi.StringOutput)
 }
 
+// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+// **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite.
+// So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`,
+// and you can use tolist to convert it to a list.
 func (o DomainResourceOutput) InstanceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DomainResource) pulumi.StringArrayOutput { return v.InstanceIds }).(pulumi.StringArrayOutput)
 }

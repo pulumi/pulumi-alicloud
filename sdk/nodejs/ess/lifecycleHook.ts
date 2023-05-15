@@ -5,6 +5,54 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a ESS lifecycle hook resource. More about Ess lifecycle hook, see [LifecycleHook](https://www.alibabacloud.com/help/doc-detail/73839.htm).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
+ *     vpcId: fooNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const bar = new alicloud.vpc.Switch("bar", {
+ *     vpcId: fooNetwork.id,
+ *     cidrBlock: "172.16.1.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const fooScalingGroup = new alicloud.ess.ScalingGroup("fooScalingGroup", {
+ *     minSize: 1,
+ *     maxSize: 1,
+ *     scalingGroupName: "testAccEssScaling_group",
+ *     removalPolicies: [
+ *         "OldestInstance",
+ *         "NewestInstance",
+ *     ],
+ *     vswitchIds: [
+ *         fooSwitch.id,
+ *         bar.id,
+ *     ],
+ * });
+ * const fooLifecycleHook = new alicloud.ess.LifecycleHook("fooLifecycleHook", {
+ *     scalingGroupId: fooScalingGroup.id,
+ *     lifecycleTransition: "SCALE_OUT",
+ *     heartbeatTimeout: 400,
+ *     notificationMetadata: "helloworld",
+ * });
+ * ```
+ * ## Module Support
+ *
+ * You can use to the existing autoscaling module
+ * to create a lifecycle hook, scaling group and configuration one-click.
+ *
  * ## Import
  *
  * Ess lifecycle hook can be imported using the id, e.g.

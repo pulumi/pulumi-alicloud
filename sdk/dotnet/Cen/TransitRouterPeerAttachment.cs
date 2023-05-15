@@ -66,26 +66,18 @@ namespace Pulumi.AliCloud.Cen
     /// 
     ///     var cnTransitRouter = new AliCloud.Cen.TransitRouter("cnTransitRouter", new()
     ///     {
-    ///         CenId = defaultInstance.Id,
+    ///         CenId = defaultBandwidthPackageAttachment.InstanceId,
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = alicloud.Cn,
-    ///         DependsOn = new[]
-    ///         {
-    ///             defaultBandwidthPackageAttachment,
-    ///         },
     ///     });
     /// 
     ///     var usTransitRouter = new AliCloud.Cen.TransitRouter("usTransitRouter", new()
     ///     {
-    ///         CenId = defaultInstance.Id,
+    ///         CenId = cnTransitRouter.Id,
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = alicloud.Us,
-    ///         DependsOn = new[]
-    ///         {
-    ///             alicloud_cen_transit_router.Default_0,
-    ///         },
     ///     });
     /// 
     ///     var defaultTransitRouterPeerAttachment = new AliCloud.Cen.TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", new()

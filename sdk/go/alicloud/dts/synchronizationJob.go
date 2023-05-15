@@ -174,6 +174,10 @@ type SynchronizationJob struct {
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	SourceEndpointUserName pulumi.StringPtrOutput `pulumi:"sourceEndpointUserName"`
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+	//
+	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+	//
+	// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
 	StructureInitialization pulumi.BoolOutput `pulumi:"structureInitialization"`
@@ -317,6 +321,10 @@ type synchronizationJobState struct {
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	SourceEndpointUserName *string `pulumi:"sourceEndpointUserName"`
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+	//
+	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+	//
+	// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
 	Status *string `pulumi:"status"`
 	// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
 	StructureInitialization *bool `pulumi:"structureInitialization"`
@@ -402,6 +410,10 @@ type SynchronizationJobState struct {
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	SourceEndpointUserName pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+	//
+	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+	//
+	// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
 	Status pulumi.StringPtrInput
 	// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
 	StructureInitialization pulumi.BoolPtrInput
@@ -491,6 +503,10 @@ type synchronizationJobArgs struct {
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	SourceEndpointUserName *string `pulumi:"sourceEndpointUserName"`
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+	//
+	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+	//
+	// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
 	Status *string `pulumi:"status"`
 	// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
 	StructureInitialization bool `pulumi:"structureInitialization"`
@@ -577,6 +593,10 @@ type SynchronizationJobArgs struct {
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	SourceEndpointUserName pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+	//
+	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+	//
+	// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
 	Status pulumi.StringPtrInput
 	// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
 	StructureInitialization pulumi.BoolInput
@@ -853,6 +873,10 @@ func (o SynchronizationJobOutput) SourceEndpointUserName() pulumi.StringPtrOutpu
 }
 
 // The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+//
+// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
+//
+// > **NOTE:** If you want to upgrade the synchronization job specifications by the property `instanceClass`, you must also modify the property `instanceClass` of it's instance to keep them consistent.
 func (o SynchronizationJobOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

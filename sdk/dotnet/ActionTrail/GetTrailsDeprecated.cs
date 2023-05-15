@@ -12,9 +12,19 @@ namespace Pulumi.AliCloud.ActionTrail
     [Obsolete(@"DataSource has been renamed to `getTrails`")]
     public static class GetTrailsDeprecated
     {
+        /// <summary>
+        /// &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
+        /// 
+        /// This data source provides a list of action trail of the current Alibaba Cloud user.
+        /// </summary>
         public static Task<GetTrailsDeprecatedResult> InvokeAsync(GetTrailsDeprecatedArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTrailsDeprecatedResult>("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", args ?? new GetTrailsDeprecatedArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
+        /// 
+        /// This data source provides a list of action trail of the current Alibaba Cloud user.
+        /// </summary>
         public static Output<GetTrailsDeprecatedResult> Invoke(GetTrailsDeprecatedInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTrailsDeprecatedResult>("alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated", args ?? new GetTrailsDeprecatedInvokeArgs(), options.WithDefaults());
     }
@@ -42,6 +52,9 @@ namespace Pulumi.AliCloud.ActionTrail
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -76,6 +89,9 @@ namespace Pulumi.AliCloud.ActionTrail
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

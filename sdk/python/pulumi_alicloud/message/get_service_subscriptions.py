@@ -167,6 +167,7 @@ def get_service_subscriptions(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Subscription IDs.
     :param str name_regex: A regex string to filter results by Subscription name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str subscription_name: The name of the subscription.
     :param str topic_name: The name of the topic.
     """
@@ -224,6 +225,7 @@ def get_service_subscriptions_output(ids: Optional[pulumi.Input[Optional[Sequenc
 
     :param Sequence[str] ids: A list of Subscription IDs.
     :param str name_regex: A regex string to filter results by Subscription name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str subscription_name: The name of the subscription.
     :param str topic_name: The name of the topic.
     """

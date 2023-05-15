@@ -7,6 +7,54 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * The log store is a unit in Log Service to collect, store, and query the log data. Each log store belongs to a project,
+ * and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "created by terraform"});
+ * const exampleStore = new alicloud.log.Store("exampleStore", {
+ *     project: exampleProject.name,
+ *     shardCount: 3,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     appendMeta: true,
+ * });
+ * ```
+ * Encrypt Usage
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "created by terraform"});
+ * const exampleStore = new alicloud.log.Store("exampleStore", {
+ *     project: exampleProject.name,
+ *     shardCount: 3,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     appendMeta: true,
+ *     encryptConf: {
+ *         enable: true,
+ *         encryptType: "default",
+ *         userCmkInfo: {
+ *             cmkKeyId: "your_cmk_key_id",
+ *             arn: "your_role_arn",
+ *             regionId: "you_cmk_region_id",
+ *         },
+ *     },
+ * });
+ * ```
+ * ## Module Support
+ *
+ * You can use the existing sls module
+ * to create SLS project, store and store index one-click, like ECS instances.
+ *
  * ## Import
  *
  * Log store can be imported using the id, e.g.

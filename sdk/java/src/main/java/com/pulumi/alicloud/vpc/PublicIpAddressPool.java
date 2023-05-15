@@ -10,14 +10,18 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
+import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Public Ip Address Pool resource.
+ * Provides a Vpc Public Ip Address Pool resource.
  * 
- * For information about VPC Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
+ * For information about Vpc Public Ip Address Pool and how to use it, see [What is Public Ip Address Pool](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createpublicipaddresspool).
  * 
  * &gt; **NOTE:** Available in v1.186.0+.
  * 
@@ -30,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourceGroup;
+ * import com.pulumi.alicloud.resourcemanager.ResourceGroupArgs;
  * import com.pulumi.alicloud.vpc.PublicIpAddressPool;
  * import com.pulumi.alicloud.vpc.PublicIpAddressPoolArgs;
  * import java.util.List;
@@ -45,10 +51,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var defaultRg = new ResourceGroup(&#34;defaultRg&#34;, ResourceGroupArgs.builder()        
+ *             .displayName(&#34;tf-test-acc-publicaddresspool-383&#34;)
+ *             .resourceGroupName(&#34;tf-test-acc-publicaddresspool-855&#34;)
+ *             .build());
+ * 
+ *         var changeRg = new ResourceGroup(&#34;changeRg&#34;, ResourceGroupArgs.builder()        
+ *             .displayName(&#34;tf-testacc-publicaddresspool-change-368&#34;)
+ *             .resourceGroupName(&#34;tf-testacc-publicaddresspool-change-499&#34;)
+ *             .build());
+ * 
  *         var default_ = new PublicIpAddressPool(&#34;default&#34;, PublicIpAddressPoolArgs.builder()        
- *             .description(&#34;example_value&#34;)
- *             .isp(&#34;BGP_PRO&#34;)
- *             .publicIpAddressPoolName(&#34;example_value&#34;)
+ *             .description(&#34;rdk-test&#34;)
+ *             .publicIpAddressPoolName(&#34;rdk-test&#34;)
+ *             .isp(&#34;BGP&#34;)
+ *             .resourceGroupId(defaultRg.id())
  *             .build());
  * 
  *     }
@@ -57,7 +74,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * VPC Public Ip Address Pool can be imported using the id, e.g.
+ * Vpc Public Ip Address Pool can be imported using the id, e.g.
  * 
  * ```sh
  *  $ pulumi import alicloud:vpc/publicIpAddressPool:PublicIpAddressPool example &lt;id&gt;
@@ -67,18 +84,46 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/publicIpAddressPool:PublicIpAddressPool")
 public class PublicIpAddressPool extends com.pulumi.resources.CustomResource {
     /**
-     * The description of the VPC Public IP address pool.
+     * The creation time of the resource.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Description.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the VPC Public IP address pool.
+     * @return Description.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Whether there is a free IP address.
+     * 
+     */
+    @Export(name="ipAddressRemaining", type=Boolean.class, parameters={})
+    private Output<Boolean> ipAddressRemaining;
+
+    /**
+     * @return Whether there is a free IP address.
+     * 
+     */
+    public Output<Boolean> ipAddressRemaining() {
+        return this.ipAddressRemaining;
     }
     /**
      * The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
@@ -93,6 +138,12 @@ public class PublicIpAddressPool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> isp() {
         return this.isp;
+    }
+    @Export(name="publicIpAddressPoolId", type=String.class, parameters={})
+    private Output<String> publicIpAddressPoolId;
+
+    public Output<String> publicIpAddressPoolId() {
+        return this.publicIpAddressPoolId;
     }
     /**
      * The name of the VPC Public IP address pool.
@@ -109,6 +160,20 @@ public class PublicIpAddressPool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.publicIpAddressPoolName);
     }
     /**
+     * The resource group ID of the VPC Public IP address pool.
+     * 
+     */
+    @Export(name="resourceGroupId", type=String.class, parameters={})
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The resource group ID of the VPC Public IP address pool.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
      * The status of the VPC Public IP address pool.
      * 
      */
@@ -121,6 +186,48 @@ public class PublicIpAddressPool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The tags of PrefixList.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return The tags of PrefixList.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * The total number of public IP address pools.
+     * 
+     */
+    @Export(name="totalIpNum", type=Integer.class, parameters={})
+    private Output<Integer> totalIpNum;
+
+    /**
+     * @return The total number of public IP address pools.
+     * 
+     */
+    public Output<Integer> totalIpNum() {
+        return this.totalIpNum;
+    }
+    /**
+     * The number of used IP addresses in the public IP address pool.
+     * 
+     */
+    @Export(name="usedIpNum", type=Integer.class, parameters={})
+    private Output<Integer> usedIpNum;
+
+    /**
+     * @return The number of used IP addresses in the public IP address pool.
+     * 
+     */
+    public Output<Integer> usedIpNum() {
+        return this.usedIpNum;
     }
 
     /**

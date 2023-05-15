@@ -160,6 +160,7 @@ def get_gateways(enable_details: Optional[bool] = None,
     :param str gateway_name: The name of the Gateway.
     :param Sequence[str] ids: A list of Gateway IDs.
     :param str name_regex: A regex string to filter results by Gateway name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the gateway.
     :param str vpc_id: The ID of the vpc.
     """
@@ -222,6 +223,7 @@ def get_gateways_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
     :param str gateway_name: The name of the Gateway.
     :param Sequence[str] ids: A list of Gateway IDs.
     :param str name_regex: A regex string to filter results by Gateway name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the gateway.
     :param str vpc_id: The ID of the vpc.
     """

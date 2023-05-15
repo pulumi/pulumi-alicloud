@@ -20,6 +20,8 @@ namespace Pulumi.AliCloud.Log.Inputs
 
         /// <summary>
         /// Whether to enable statistics. default to true.
+        /// 
+        /// &gt; **Note:** At least one of the "full_text" and "field_search" should be specified.
         /// </summary>
         [Input("docValue")]
         public Input<bool>? DocValue { get; set; }

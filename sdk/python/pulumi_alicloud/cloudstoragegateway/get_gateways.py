@@ -165,6 +165,7 @@ def get_gateways(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Gateway IDs.
     :param str name_regex: A regex string to filter results by Gateway name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: gateway status.
     :param str storage_bundle_id: storage bundle id.
     """
@@ -224,6 +225,7 @@ def get_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
 
     :param Sequence[str] ids: A list of Gateway IDs.
     :param str name_regex: A regex string to filter results by Gateway name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: gateway status.
     :param str storage_bundle_id: storage bundle id.
     """

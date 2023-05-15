@@ -228,8 +228,12 @@ type EndpointGroupEndpointConfiguration struct {
 	// The IP address or domain name of Endpoint N in the endpoint group.
 	Endpoint string `pulumi:"endpoint"`
 	// The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
+	//
+	// > **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
 	Type string `pulumi:"type"`
 	// The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
+	//
+	// > **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
 	Weight int `pulumi:"weight"`
 }
 
@@ -250,8 +254,12 @@ type EndpointGroupEndpointConfigurationArgs struct {
 	// The IP address or domain name of Endpoint N in the endpoint group.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 	// The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
+	//
+	// > **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
+	//
+	// > **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
 	Weight pulumi.IntInput `pulumi:"weight"`
 }
 
@@ -317,11 +325,15 @@ func (o EndpointGroupEndpointConfigurationOutput) Endpoint() pulumi.StringOutput
 }
 
 // The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
+//
+// > **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
 func (o EndpointGroupEndpointConfigurationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
+//
+// > **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
 func (o EndpointGroupEndpointConfigurationOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) int { return v.Weight }).(pulumi.IntOutput)
 }

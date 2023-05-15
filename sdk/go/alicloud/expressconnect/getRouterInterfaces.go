@@ -30,7 +30,8 @@ type GetRouterInterfacesArgs struct {
 	// Does it contain renewal data. Valid values: `true`, `false`.
 	IncludeReservationData *string `pulumi:"includeReservationData"`
 	// A regex string to filter results by Group Metric Rule name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
@@ -75,7 +76,8 @@ type GetRouterInterfacesOutputArgs struct {
 	// Does it contain renewal data. Valid values: `true`, `false`.
 	IncludeReservationData pulumi.StringPtrInput `pulumi:"includeReservationData"`
 	// A regex string to filter results by Group Metric Rule name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`

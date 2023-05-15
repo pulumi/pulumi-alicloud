@@ -129,6 +129,7 @@ def get_dynamic_tag_groups(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Dynamic Tag Group IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values: `RUNNING`, `FINISH`.
     :param str tag_key: The tag key of the tag.
     """
@@ -189,6 +190,7 @@ def get_dynamic_tag_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[s
 
 
     :param Sequence[str] ids: A list of Dynamic Tag Group IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values: `RUNNING`, `FINISH`.
     :param str tag_key: The tag key of the tag.
     """

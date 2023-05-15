@@ -187,6 +187,8 @@ namespace Pulumi.AliCloud.Kms
         /// For example, you can use either 7d or 604800s to specify a seven-day interval.
         /// The interval can range from 7 days to 730 days.
         /// **NOTE**: It is Required when `automatic_rotation = "Enabled"`
+        /// 
+        /// &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
         /// </summary>
         [Output("rotationInterval")]
         public Output<string?> RotationInterval { get; private set; } = null!;
@@ -338,6 +340,8 @@ namespace Pulumi.AliCloud.Kms
         /// For example, you can use either 7d or 604800s to specify a seven-day interval.
         /// The interval can range from 7 days to 730 days.
         /// **NOTE**: It is Required when `automatic_rotation = "Enabled"`
+        /// 
+        /// &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
         /// </summary>
         [Input("rotationInterval")]
         public Input<string>? RotationInterval { get; set; }
@@ -499,6 +503,8 @@ namespace Pulumi.AliCloud.Kms
         /// For example, you can use either 7d or 604800s to specify a seven-day interval.
         /// The interval can range from 7 days to 730 days.
         /// **NOTE**: It is Required when `automatic_rotation = "Enabled"`
+        /// 
+        /// &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
         /// </summary>
         [Input("rotationInterval")]
         public Input<string>? RotationInterval { get; set; }

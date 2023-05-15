@@ -37,6 +37,8 @@ export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): 
 export interface GetServiceArgs {
     /**
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+     *
+     * > **NOTE:** Setting `enable = "On"` to open the DataWorks service that means you have read and agreed the [DataWorks Terms of Service](https://help.aliyun.com/document_detail/131538.html). The service can not closed once it is opened.
      */
     enable?: string;
 }
@@ -83,6 +85,8 @@ export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.Invo
 export interface GetServiceOutputArgs {
     /**
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
+     *
+     * > **NOTE:** Setting `enable = "On"` to open the DataWorks service that means you have read and agreed the [DataWorks Terms of Service](https://help.aliyun.com/document_detail/131538.html). The service can not closed once it is opened.
      */
     enable?: pulumi.Input<string>;
 }

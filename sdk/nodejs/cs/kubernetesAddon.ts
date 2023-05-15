@@ -100,7 +100,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Cluster addon can be imported by cluster id and addon name. Then write the addon.tf file according to the result of `terraform plan`.
+ * Cluster addon can be imported by cluster id and addon name. Then write the addon.tf file according to the result of `pulumi preview`.
  *
  * ```sh
  *  $ pulumi import alicloud:cs/kubernetesAddon:KubernetesAddon my_addon <cluster_id>:<addon_name>
@@ -145,7 +145,7 @@ export class KubernetesAddon extends pulumi.CustomResource {
     /**
      * The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `alicloud.cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `alicloud.cs.getKubernetesAddons`.
      */
-    public readonly config!: pulumi.Output<string | undefined>;
+    public readonly config!: pulumi.Output<string>;
     /**
      * The name of addon.
      */

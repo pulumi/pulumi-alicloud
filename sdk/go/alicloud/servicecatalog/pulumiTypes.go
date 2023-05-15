@@ -862,6 +862,157 @@ func (o GetLaunchOptionsOptionConstraintSummaryArrayOutput) Index(i pulumi.IntIn
 	}).(GetLaunchOptionsOptionConstraintSummaryOutput)
 }
 
+type GetPortfoliosPortfolio struct {
+	// The creation time of the portfolio
+	CreateTime string `pulumi:"createTime"`
+	// The description of the portfolio
+	Description string `pulumi:"description"`
+	// The ID of the portfolio
+	Id string `pulumi:"id"`
+	// The ARN of the portfolio
+	PortfolioArn string `pulumi:"portfolioArn"`
+	// The ID of the portfolio
+	PortfolioId string `pulumi:"portfolioId"`
+	// The name of the portfolio
+	PortfolioName string `pulumi:"portfolioName"`
+	// The provider name of the portfolio
+	ProviderName string `pulumi:"providerName"`
+}
+
+// GetPortfoliosPortfolioInput is an input type that accepts GetPortfoliosPortfolioArgs and GetPortfoliosPortfolioOutput values.
+// You can construct a concrete instance of `GetPortfoliosPortfolioInput` via:
+//
+//	GetPortfoliosPortfolioArgs{...}
+type GetPortfoliosPortfolioInput interface {
+	pulumi.Input
+
+	ToGetPortfoliosPortfolioOutput() GetPortfoliosPortfolioOutput
+	ToGetPortfoliosPortfolioOutputWithContext(context.Context) GetPortfoliosPortfolioOutput
+}
+
+type GetPortfoliosPortfolioArgs struct {
+	// The creation time of the portfolio
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the portfolio
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the portfolio
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ARN of the portfolio
+	PortfolioArn pulumi.StringInput `pulumi:"portfolioArn"`
+	// The ID of the portfolio
+	PortfolioId pulumi.StringInput `pulumi:"portfolioId"`
+	// The name of the portfolio
+	PortfolioName pulumi.StringInput `pulumi:"portfolioName"`
+	// The provider name of the portfolio
+	ProviderName pulumi.StringInput `pulumi:"providerName"`
+}
+
+func (GetPortfoliosPortfolioArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortfoliosPortfolio)(nil)).Elem()
+}
+
+func (i GetPortfoliosPortfolioArgs) ToGetPortfoliosPortfolioOutput() GetPortfoliosPortfolioOutput {
+	return i.ToGetPortfoliosPortfolioOutputWithContext(context.Background())
+}
+
+func (i GetPortfoliosPortfolioArgs) ToGetPortfoliosPortfolioOutputWithContext(ctx context.Context) GetPortfoliosPortfolioOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortfoliosPortfolioOutput)
+}
+
+// GetPortfoliosPortfolioArrayInput is an input type that accepts GetPortfoliosPortfolioArray and GetPortfoliosPortfolioArrayOutput values.
+// You can construct a concrete instance of `GetPortfoliosPortfolioArrayInput` via:
+//
+//	GetPortfoliosPortfolioArray{ GetPortfoliosPortfolioArgs{...} }
+type GetPortfoliosPortfolioArrayInput interface {
+	pulumi.Input
+
+	ToGetPortfoliosPortfolioArrayOutput() GetPortfoliosPortfolioArrayOutput
+	ToGetPortfoliosPortfolioArrayOutputWithContext(context.Context) GetPortfoliosPortfolioArrayOutput
+}
+
+type GetPortfoliosPortfolioArray []GetPortfoliosPortfolioInput
+
+func (GetPortfoliosPortfolioArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortfoliosPortfolio)(nil)).Elem()
+}
+
+func (i GetPortfoliosPortfolioArray) ToGetPortfoliosPortfolioArrayOutput() GetPortfoliosPortfolioArrayOutput {
+	return i.ToGetPortfoliosPortfolioArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortfoliosPortfolioArray) ToGetPortfoliosPortfolioArrayOutputWithContext(ctx context.Context) GetPortfoliosPortfolioArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortfoliosPortfolioArrayOutput)
+}
+
+type GetPortfoliosPortfolioOutput struct{ *pulumi.OutputState }
+
+func (GetPortfoliosPortfolioOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortfoliosPortfolio)(nil)).Elem()
+}
+
+func (o GetPortfoliosPortfolioOutput) ToGetPortfoliosPortfolioOutput() GetPortfoliosPortfolioOutput {
+	return o
+}
+
+func (o GetPortfoliosPortfolioOutput) ToGetPortfoliosPortfolioOutputWithContext(ctx context.Context) GetPortfoliosPortfolioOutput {
+	return o
+}
+
+// The creation time of the portfolio
+func (o GetPortfoliosPortfolioOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortfoliosPortfolio) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the portfolio
+func (o GetPortfoliosPortfolioOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortfoliosPortfolio) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the portfolio
+func (o GetPortfoliosPortfolioOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortfoliosPortfolio) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ARN of the portfolio
+func (o GetPortfoliosPortfolioOutput) PortfolioArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortfoliosPortfolio) string { return v.PortfolioArn }).(pulumi.StringOutput)
+}
+
+// The ID of the portfolio
+func (o GetPortfoliosPortfolioOutput) PortfolioId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortfoliosPortfolio) string { return v.PortfolioId }).(pulumi.StringOutput)
+}
+
+// The name of the portfolio
+func (o GetPortfoliosPortfolioOutput) PortfolioName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortfoliosPortfolio) string { return v.PortfolioName }).(pulumi.StringOutput)
+}
+
+// The provider name of the portfolio
+func (o GetPortfoliosPortfolioOutput) ProviderName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortfoliosPortfolio) string { return v.ProviderName }).(pulumi.StringOutput)
+}
+
+type GetPortfoliosPortfolioArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortfoliosPortfolioArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortfoliosPortfolio)(nil)).Elem()
+}
+
+func (o GetPortfoliosPortfolioArrayOutput) ToGetPortfoliosPortfolioArrayOutput() GetPortfoliosPortfolioArrayOutput {
+	return o
+}
+
+func (o GetPortfoliosPortfolioArrayOutput) ToGetPortfoliosPortfolioArrayOutputWithContext(ctx context.Context) GetPortfoliosPortfolioArrayOutput {
+	return o
+}
+
+func (o GetPortfoliosPortfolioArrayOutput) Index(i pulumi.IntInput) GetPortfoliosPortfolioOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortfoliosPortfolio {
+		return vs[0].([]GetPortfoliosPortfolio)[vs[1].(int)]
+	}).(GetPortfoliosPortfolioOutput)
+}
+
 type GetProductAsEndUsersUser struct {
 	// Product creation time.According to ISO8601 standard, UTC time is used in the format: YYYY-MM-DDThh:mm:ssZ.
 	CreateTime string `pulumi:"createTime"`
@@ -2384,6 +2535,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLaunchOptionsOptionArrayInput)(nil)).Elem(), GetLaunchOptionsOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLaunchOptionsOptionConstraintSummaryInput)(nil)).Elem(), GetLaunchOptionsOptionConstraintSummaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLaunchOptionsOptionConstraintSummaryArrayInput)(nil)).Elem(), GetLaunchOptionsOptionConstraintSummaryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortfoliosPortfolioInput)(nil)).Elem(), GetPortfoliosPortfolioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortfoliosPortfolioArrayInput)(nil)).Elem(), GetPortfoliosPortfolioArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProductAsEndUsersUserInput)(nil)).Elem(), GetProductAsEndUsersUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProductAsEndUsersUserArrayInput)(nil)).Elem(), GetProductAsEndUsersUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProductVersionsProductVersionInput)(nil)).Elem(), GetProductVersionsProductVersionArgs{})
@@ -2416,6 +2569,8 @@ func init() {
 	pulumi.RegisterOutputType(GetLaunchOptionsOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetLaunchOptionsOptionConstraintSummaryOutput{})
 	pulumi.RegisterOutputType(GetLaunchOptionsOptionConstraintSummaryArrayOutput{})
+	pulumi.RegisterOutputType(GetPortfoliosPortfolioOutput{})
+	pulumi.RegisterOutputType(GetPortfoliosPortfolioArrayOutput{})
 	pulumi.RegisterOutputType(GetProductAsEndUsersUserOutput{})
 	pulumi.RegisterOutputType(GetProductAsEndUsersUserArrayOutput{})
 	pulumi.RegisterOutputType(GetProductVersionsProductVersionOutput{})

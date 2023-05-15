@@ -56,6 +56,12 @@ namespace Pulumi.AliCloud
         [Output("channel")]
         public Output<string> Channel { get; private set; } = null!;
 
+        /// <summary>
+        /// The ids of subscribed contacts.
+        /// **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
+        /// So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+        /// and you can use tolist to convert it to a list.
+        /// </summary>
         [Output("contactIds")]
         public Output<ImmutableArray<string>> ContactIds { get; private set; } = null!;
 
@@ -155,6 +161,13 @@ namespace Pulumi.AliCloud
     {
         [Input("contactIds")]
         private InputList<string>? _contactIds;
+
+        /// <summary>
+        /// The ids of subscribed contacts.
+        /// **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
+        /// So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+        /// and you can use tolist to convert it to a list.
+        /// </summary>
         public InputList<string> ContactIds
         {
             get => _contactIds ?? (_contactIds = new InputList<string>());
@@ -225,6 +238,13 @@ namespace Pulumi.AliCloud
 
         [Input("contactIds")]
         private InputList<string>? _contactIds;
+
+        /// <summary>
+        /// The ids of subscribed contacts.
+        /// **NOTE:** There is a potential diff error because of the order of `contact_ids` values indefinite.
+        /// So, from version 1.161.0, `contact_ids` type has been updated as `set` from `list`,
+        /// and you can use tolist to convert it to a list.
+        /// </summary>
         public InputList<string> ContactIds
         {
             get => _contactIds ?? (_contactIds = new InputList<string>());

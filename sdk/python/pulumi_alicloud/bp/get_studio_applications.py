@@ -180,6 +180,7 @@ def get_studio_applications(ids: Optional[Sequence[str]] = None,
     :param str keyword: The keyword of the Application.
     :param str name_regex: A regex string to filter results by Application name.
     :param int order_type: The order type of the Application. Valid values:
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param str status: The status of the Application. Valid values: `success`, `release`.
     """
@@ -243,6 +244,7 @@ def get_studio_applications_output(ids: Optional[pulumi.Input[Optional[Sequence[
     :param str keyword: The keyword of the Application.
     :param str name_regex: A regex string to filter results by Application name.
     :param int order_type: The order type of the Application. Valid values:
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param str status: The status of the Application. Valid values: `success`, `release`.
     """

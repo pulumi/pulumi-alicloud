@@ -127,6 +127,7 @@ def get_enterprise_proxy_accesses(enable_details: Optional[bool] = None,
 
 
     :param Sequence[str] ids: A list of Proxy Access IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str proxy_id: The ID of the security agent.
     """
     __args__ = dict()
@@ -175,6 +176,7 @@ def get_enterprise_proxy_accesses_output(enable_details: Optional[pulumi.Input[O
 
 
     :param Sequence[str] ids: A list of Proxy Access IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str proxy_id: The ID of the security agent.
     """
     ...

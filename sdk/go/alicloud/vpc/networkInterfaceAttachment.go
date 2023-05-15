@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:** This resource has been renamed to ecs.EcsNetworkInterfaceAttachment from version 1.123.1.
+//
+// Provides an Alicloud ECS Elastic Network Interface Attachment as a resource to attach ENI to or detach ENI from ECS Instances.
+//
+// For information about Elastic Network Interface and how to use it, see [Elastic Network Interface](https://www.alibabacloud.com/help/doc-detail/58496.html).
+//
 // ## Import
 //
 // Network Interfaces Attachment resource can be imported using the id, e.g.

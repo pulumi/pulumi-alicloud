@@ -183,6 +183,7 @@ def get_security_group_rules(direction: Optional[str] = None,
     :param str group_id: The ID of the security group that owns the rules.
     :param str ip_protocol: The IP protocol. Valid values are: `tcp`, `udp`, `icmp`, `gre` and `all`.
     :param str nic_type: Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str policy: Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
     """
     __args__ = dict()
@@ -245,6 +246,7 @@ def get_security_group_rules_output(direction: Optional[pulumi.Input[Optional[st
     :param str group_id: The ID of the security group that owns the rules.
     :param str ip_protocol: The IP protocol. Valid values are: `tcp`, `udp`, `icmp`, `gre` and `all`.
     :param str nic_type: Refers to the network type. Can be either `internet` or `intranet`. The default value is `internet`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str policy: Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
     """
     ...

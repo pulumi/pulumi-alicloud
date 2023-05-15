@@ -16,6 +16,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.104.0`. Please use resource alicloud_kvstore_instance.
+ * 
+ * Provides a backup policy for ApsaraDB Redis / Memcache instance resource.
+ * 
  * ## Example Usage
  * 
  * Basic Usage

@@ -150,6 +150,7 @@ def get_tls_cipher_policies(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Tls Cipher Policy IDs.
     :param bool include_listener: The include listener.
     :param str name_regex: A regex string to filter results by Tls Cipher Policy name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: TLS policy instance state.
     :param str tls_cipher_policy_name: TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
     """
@@ -209,6 +210,7 @@ def get_tls_cipher_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[
     :param Sequence[str] ids: A list of Tls Cipher Policy IDs.
     :param bool include_listener: The include listener.
     :param str name_regex: A regex string to filter results by Tls Cipher Policy name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: TLS policy instance state.
     :param str tls_cipher_policy_name: TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
     """

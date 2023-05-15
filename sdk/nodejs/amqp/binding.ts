@@ -85,6 +85,8 @@ export class Binding extends pulumi.CustomResource {
      * X-match Attributes. Valid Values: 
      * * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
      * * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
+     *
+     * **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
      */
     public readonly argument!: pulumi.Output<string>;
     /**
@@ -178,6 +180,8 @@ export interface BindingState {
      * X-match Attributes. Valid Values: 
      * * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
      * * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
+     *
+     * **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
      */
     argument?: pulumi.Input<string>;
     /**
@@ -219,6 +223,8 @@ export interface BindingArgs {
      * X-match Attributes. Valid Values: 
      * * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
      * * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
+     *
+     * **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
      */
     argument?: pulumi.Input<string>;
     /**

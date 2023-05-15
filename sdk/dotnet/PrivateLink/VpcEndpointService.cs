@@ -81,6 +81,8 @@ namespace Pulumi.AliCloud.PrivateLink
 
         /// <summary>
         /// The description of the terminal node service.
+        /// 
+        /// &gt; **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
         /// </summary>
         [Output("serviceDescription")]
         public Output<string?> ServiceDescription { get; private set; } = null!;
@@ -169,6 +171,8 @@ namespace Pulumi.AliCloud.PrivateLink
 
         /// <summary>
         /// The description of the terminal node service.
+        /// 
+        /// &gt; **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
         /// </summary>
         [Input("serviceDescription")]
         public Input<string>? ServiceDescription { get; set; }
@@ -213,6 +217,8 @@ namespace Pulumi.AliCloud.PrivateLink
 
         /// <summary>
         /// The description of the terminal node service.
+        /// 
+        /// &gt; **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
         /// </summary>
         [Input("serviceDescription")]
         public Input<string>? ServiceDescription { get; set; }

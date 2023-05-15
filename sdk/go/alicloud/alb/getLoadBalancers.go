@@ -75,7 +75,8 @@ type GetLoadBalancersArgs struct {
 	// The name of the resource.
 	LoadBalancerName *string `pulumi:"loadBalancerName"`
 	// A regex string to filter results by Load Balancer name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -147,7 +148,8 @@ type GetLoadBalancersOutputArgs struct {
 	// The name of the resource.
 	LoadBalancerName pulumi.StringPtrInput `pulumi:"loadBalancerName"`
 	// A regex string to filter results by Load Balancer name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`

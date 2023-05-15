@@ -249,6 +249,7 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Route Tables IDs.
     :param str name_regex: A regex string to filter route tables by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which route tables belongs.
     :param str route_table_name: The route table name.
     :param str router_id: The router ID.
@@ -335,6 +336,7 @@ def get_route_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     :param Sequence[str] ids: A list of Route Tables IDs.
     :param str name_regex: A regex string to filter route tables by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which route tables belongs.
     :param str route_table_name: The route table name.
     :param str router_id: The router ID.

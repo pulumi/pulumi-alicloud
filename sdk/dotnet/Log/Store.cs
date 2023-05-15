@@ -10,6 +10,78 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log
 {
     /// <summary>
+    /// The log store is a unit in Log Service to collect, store, and query the log data. Each log store belongs to a project,
+    /// and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     {
+    ///         Description = "created by terraform",
+    ///     });
+    /// 
+    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         ShardCount = 3,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// Encrypt Usage
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     {
+    ///         Description = "created by terraform",
+    ///     });
+    /// 
+    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         ShardCount = 3,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///         EncryptConf = new AliCloud.Log.Inputs.StoreEncryptConfArgs
+    ///         {
+    ///             Enable = true,
+    ///             EncryptType = "default",
+    ///             UserCmkInfo = new AliCloud.Log.Inputs.StoreEncryptConfUserCmkInfoArgs
+    ///             {
+    ///                 CmkKeyId = "your_cmk_key_id",
+    ///                 Arn = "your_role_arn",
+    ///                 RegionId = "you_cmk_region_id",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Module Support
+    /// 
+    /// You can use the existing sls module
+    /// to create SLS project, store and store index one-click, like ECS instances.
+    /// 
     /// ## Import
     /// 
     /// Log store can be imported using the id, e.g.

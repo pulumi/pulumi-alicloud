@@ -28,6 +28,8 @@ import com.pulumi.alicloud.rds.inputs.GetRdsBackupsArgs;
 import com.pulumi.alicloud.rds.inputs.GetRdsBackupsPlainArgs;
 import com.pulumi.alicloud.rds.inputs.GetRdsParameterGroupsArgs;
 import com.pulumi.alicloud.rds.inputs.GetRdsParameterGroupsPlainArgs;
+import com.pulumi.alicloud.rds.inputs.GetSlotsArgs;
+import com.pulumi.alicloud.rds.inputs.GetSlotsPlainArgs;
 import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
 import com.pulumi.alicloud.rds.inputs.GetZonesPlainArgs;
 import com.pulumi.alicloud.rds.outputs.GetAccountsResult;
@@ -42,6 +44,7 @@ import com.pulumi.alicloud.rds.outputs.GetInstancesResult;
 import com.pulumi.alicloud.rds.outputs.GetModifyParameterLogsResult;
 import com.pulumi.alicloud.rds.outputs.GetRdsBackupsResult;
 import com.pulumi.alicloud.rds.outputs.GetRdsParameterGroupsResult;
+import com.pulumi.alicloud.rds.outputs.GetSlotsResult;
 import com.pulumi.alicloud.rds.outputs.GetZonesResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -2343,6 +2346,174 @@ public final class RdsFunctions {
     }
     public static CompletableFuture<GetRdsParameterGroupsResult> getRdsParameterGroupsPlain(GetRdsParameterGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", TypeShape.of(GetRdsParameterGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.204.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetSlotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getSlots(GetSlotsArgs.builder()
+     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRdsSlotsName&#34;, example.applyValue(getSlotsResult -&gt; getSlotsResult.slots()[0].slotName()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSlotsResult> getSlots(GetSlotsArgs args) {
+        return getSlots(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.204.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetSlotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getSlots(GetSlotsArgs.builder()
+     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRdsSlotsName&#34;, example.applyValue(getSlotsResult -&gt; getSlotsResult.slots()[0].slotName()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSlotsResult> getSlotsPlain(GetSlotsPlainArgs args) {
+        return getSlotsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.204.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetSlotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getSlots(GetSlotsArgs.builder()
+     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRdsSlotsName&#34;, example.applyValue(getSlotsResult -&gt; getSlotsResult.slots()[0].slotName()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSlotsResult> getSlots(GetSlotsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:rds/getSlots:getSlots", TypeShape.of(GetSlotsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.204.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetSlotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getSlots(GetSlotsArgs.builder()
+     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstRdsSlotsName&#34;, example.applyValue(getSlotsResult -&gt; getSlotsResult.slots()[0].slotName()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSlotsResult> getSlotsPlain(GetSlotsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:rds/getSlots:getSlots", TypeShape.of(GetSlotsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides availability zones for RDS that can be accessed by an Alibaba Cloud account within the region configured in the provider.

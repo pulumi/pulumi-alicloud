@@ -145,6 +145,10 @@ namespace Pulumi.AliCloud.Ecs
         [Input("isOutdated")]
         public bool? IsOutdated { get; set; }
 
+        /// <summary>
+        /// Filter the result which is used to create a kubernetes cluster
+        /// and managed kubernetes cluster. Optional Values: `Master` and `Worker`.
+        /// </summary>
         [Input("kubernetesNodeRole")]
         public string? KubernetesNodeRole { get; set; }
 
@@ -166,6 +170,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("networkType")]
         public string? NetworkType { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -247,6 +254,10 @@ namespace Pulumi.AliCloud.Ecs
         [Input("isOutdated")]
         public Input<bool>? IsOutdated { get; set; }
 
+        /// <summary>
+        /// Filter the result which is used to create a kubernetes cluster
+        /// and managed kubernetes cluster. Optional Values: `Master` and `Worker`.
+        /// </summary>
         [Input("kubernetesNodeRole")]
         public Input<string>? KubernetesNodeRole { get; set; }
 
@@ -268,6 +279,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

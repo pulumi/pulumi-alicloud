@@ -67,7 +67,8 @@ type GetEcsSnapshotsArgs struct {
 	// The kms key id.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// A regex string to filter results by Snapshot name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The resource group id.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -138,7 +139,8 @@ type GetEcsSnapshotsOutputArgs struct {
 	// The kms key id.
 	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// A regex string to filter results by Snapshot name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The resource group id.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`

@@ -58,7 +58,8 @@ type GetPoliciesArgs struct {
 	GroupName *string  `pulumi:"groupName"`
 	Ids       []string `pulumi:"ids"`
 	// A regex string to filter resulting policies by name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Filter results by a specific role name. Returned policies are attached to the specified role.
 	RoleName *string `pulumi:"roleName"`
@@ -108,7 +109,8 @@ type GetPoliciesOutputArgs struct {
 	GroupName pulumi.StringPtrInput   `pulumi:"groupName"`
 	Ids       pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter resulting policies by name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Filter results by a specific role name. Returned policies are attached to the specified role.
 	RoleName pulumi.StringPtrInput `pulumi:"roleName"`

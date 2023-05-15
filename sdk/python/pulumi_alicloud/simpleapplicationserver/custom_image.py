@@ -26,6 +26,8 @@ class CustomImageArgs:
         :param pulumi.Input[str] system_snapshot_id: The ID of the system snapshot.
         :param pulumi.Input[str] description: The description of the Custom Image.
         :param pulumi.Input[str] status: The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
+               
+               **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
         """
         pulumi.set(__self__, "custom_image_name", custom_image_name)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -88,6 +90,8 @@ class CustomImageArgs:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
+
+        **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
         """
         return pulumi.get(self, "status")
 
@@ -110,6 +114,8 @@ class _CustomImageState:
         :param pulumi.Input[str] description: The description of the Custom Image.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] status: The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
+               
+               **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
         :param pulumi.Input[str] system_snapshot_id: The ID of the system snapshot.
         """
         if custom_image_name is not None:
@@ -164,6 +170,8 @@ class _CustomImageState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
+
+        **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
         """
         return pulumi.get(self, "status")
 
@@ -216,6 +224,8 @@ class CustomImage(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the Custom Image.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] status: The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
+               
+               **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
         :param pulumi.Input[str] system_snapshot_id: The ID of the system snapshot.
         """
         ...
@@ -305,6 +315,8 @@ class CustomImage(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the Custom Image.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] status: The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
+               
+               **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
         :param pulumi.Input[str] system_snapshot_id: The ID of the system snapshot.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -347,6 +359,8 @@ class CustomImage(pulumi.CustomResource):
     def status(self) -> pulumi.Output[Optional[str]]:
         """
         The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
+
+        **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
         """
         return pulumi.get(self, "status")
 

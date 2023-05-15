@@ -116,7 +116,8 @@ type GetDedicatedHostsArgs struct {
 	// A list of Dedicated Host IDs.
 	Ids []string `pulumi:"ids"`
 	// The ID of the order.
-	OrderId    *string `pulumi:"orderId"`
+	OrderId *string `pulumi:"orderId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The state of the host.
 	Status *string `pulumi:"status"`
@@ -169,7 +170,8 @@ type GetDedicatedHostsOutputArgs struct {
 	// A list of Dedicated Host IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The ID of the order.
-	OrderId    pulumi.StringPtrInput `pulumi:"orderId"`
+	OrderId pulumi.StringPtrInput `pulumi:"orderId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The state of the host.
 	Status pulumi.StringPtrInput `pulumi:"status"`

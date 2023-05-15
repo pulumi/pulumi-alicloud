@@ -29,6 +29,7 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:ecs/getInstances:getInstances", {
         "availabilityZone": args.availabilityZone,
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
         "imageId": args.imageId,
         "instanceName": args.instanceName,
@@ -54,6 +55,10 @@ export interface GetInstancesArgs {
      */
     availabilityZone?: string;
     /**
+     * Default to `true`. If false, the attributes `ramRoleName` and `diskDeviceMappings` will not be fetched and output.
+     */
+    enableDetails?: boolean;
+    /**
      * A list of ECS instance IDs.
      */
     ids?: string[];
@@ -69,6 +74,9 @@ export interface GetInstancesArgs {
      * A regex string to filter results by instance name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     pageNumber?: number;
     pageSize?: number;
@@ -77,7 +85,7 @@ export interface GetInstancesArgs {
      */
     ramRoleName?: string;
     /**
-     * The Id of resource group which the instance belongs.
+     * The ID of resource group which the instance belongs.
      */
     resourceGroupId?: string;
     /**
@@ -117,6 +125,7 @@ export interface GetInstancesResult {
      * Availability zone the instance belongs to.
      */
     readonly availabilityZone?: string;
+    readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -198,6 +207,10 @@ export interface GetInstancesOutputArgs {
      */
     availabilityZone?: pulumi.Input<string>;
     /**
+     * Default to `true`. If false, the attributes `ramRoleName` and `diskDeviceMappings` will not be fetched and output.
+     */
+    enableDetails?: pulumi.Input<boolean>;
+    /**
      * A list of ECS instance IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
@@ -213,6 +226,9 @@ export interface GetInstancesOutputArgs {
      * A regex string to filter results by instance name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;
@@ -221,7 +237,7 @@ export interface GetInstancesOutputArgs {
      */
     ramRoleName?: pulumi.Input<string>;
     /**
-     * The Id of resource group which the instance belongs.
+     * The ID of resource group which the instance belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**

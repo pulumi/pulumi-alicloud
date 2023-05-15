@@ -118,6 +118,7 @@ def get_ecs_backup_clients(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Ecs Backup Client IDs.
     :param Sequence[str] instance_ids: A list of ECS Instance IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource.
     """
     __args__ = dict()
@@ -166,6 +167,7 @@ def get_ecs_backup_clients_output(ids: Optional[pulumi.Input[Optional[Sequence[s
 
     :param Sequence[str] ids: A list of Ecs Backup Client IDs.
     :param Sequence[str] instance_ids: A list of ECS Instance IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource.
     """
     ...

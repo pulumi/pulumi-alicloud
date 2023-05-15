@@ -118,6 +118,7 @@ def get_bgp_networks(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Bgp Network IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str router_id: The ID of the vRouter.
     :param str status: The state of the advertised BGP network.
     """
@@ -167,6 +168,7 @@ def get_bgp_networks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
 
     :param Sequence[str] ids: A list of Bgp Network IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str router_id: The ID of the vRouter.
     :param str status: The state of the advertised BGP network.
     """

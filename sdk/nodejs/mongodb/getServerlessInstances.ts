@@ -81,6 +81,9 @@ export interface GetServerlessInstancesArgs {
      * The network type of the instance.
      */
     networkType?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the resource group.
@@ -189,6 +192,9 @@ export interface GetServerlessInstancesOutputArgs {
      * The network type of the instance.
      */
     networkType?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the resource group.

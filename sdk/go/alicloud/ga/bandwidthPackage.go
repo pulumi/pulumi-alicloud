@@ -77,6 +77,8 @@ type BandwidthPackage struct {
 	// The name of the bandwidth packet.
 	BandwidthPackageName pulumi.StringPtrOutput `pulumi:"bandwidthPackageName"`
 	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+	//
+	// > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
 	BandwidthType pulumi.StringPtrOutput `pulumi:"bandwidthType"`
 	// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
 	BillingType pulumi.StringPtrOutput `pulumi:"billingType"`
@@ -148,6 +150,8 @@ type bandwidthPackageState struct {
 	// The name of the bandwidth packet.
 	BandwidthPackageName *string `pulumi:"bandwidthPackageName"`
 	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+	//
+	// > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
 	BandwidthType *string `pulumi:"bandwidthType"`
 	// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
 	BillingType *string `pulumi:"billingType"`
@@ -185,6 +189,8 @@ type BandwidthPackageState struct {
 	// The name of the bandwidth packet.
 	BandwidthPackageName pulumi.StringPtrInput
 	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+	//
+	// > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
 	BandwidthType pulumi.StringPtrInput
 	// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
 	BillingType pulumi.StringPtrInput
@@ -226,6 +232,8 @@ type bandwidthPackageArgs struct {
 	// The name of the bandwidth packet.
 	BandwidthPackageName *string `pulumi:"bandwidthPackageName"`
 	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+	//
+	// > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
 	BandwidthType *string `pulumi:"bandwidthType"`
 	// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
 	BillingType *string `pulumi:"billingType"`
@@ -262,6 +270,8 @@ type BandwidthPackageArgs struct {
 	// The name of the bandwidth packet.
 	BandwidthPackageName pulumi.StringPtrInput
 	// The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+	//
+	// > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
 	BandwidthType pulumi.StringPtrInput
 	// The billing type. Valid values: `PayBy95`, `PayByTraffic`.
 	BillingType pulumi.StringPtrInput
@@ -398,6 +408,8 @@ func (o BandwidthPackageOutput) BandwidthPackageName() pulumi.StringPtrOutput {
 }
 
 // The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
+//
+// > **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
 func (o BandwidthPackageOutput) BandwidthType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringPtrOutput { return v.BandwidthType }).(pulumi.StringPtrOutput)
 }

@@ -198,6 +198,7 @@ def get_base_instances(enable_details: Optional[bool] = None,
     :param str instance_id: OceanBase cluster ID.
     :param str instance_name: OceanBase cluster name.
     :param str name_regex: A regex string to filter results by Instance name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the enterprise resource group to which the instance resides.
     :param str search_key: The filter keyword for the query list.
     :param str status: The status of the resource.
@@ -271,6 +272,7 @@ def get_base_instances_output(enable_details: Optional[pulumi.Input[Optional[boo
     :param str instance_id: OceanBase cluster ID.
     :param str instance_name: OceanBase cluster name.
     :param str name_regex: A regex string to filter results by Instance name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the enterprise resource group to which the instance resides.
     :param str search_key: The filter keyword for the query list.
     :param str status: The status of the resource.

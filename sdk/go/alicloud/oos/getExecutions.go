@@ -68,7 +68,8 @@ type GetExecutionsArgs struct {
 	// Whether to include sub-execution.
 	IncludeChildExecution *bool `pulumi:"includeChildExecution"`
 	// The mode of OOS Execution. Valid: `Automatic`, `Debug`.
-	Mode       *string `pulumi:"mode"`
+	Mode *string `pulumi:"mode"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The id of parent OOS Execution.
 	ParentExecutionId *string `pulumi:"parentExecutionId"`
@@ -144,7 +145,8 @@ type GetExecutionsOutputArgs struct {
 	// Whether to include sub-execution.
 	IncludeChildExecution pulumi.BoolPtrInput `pulumi:"includeChildExecution"`
 	// The mode of OOS Execution. Valid: `Automatic`, `Debug`.
-	Mode       pulumi.StringPtrInput `pulumi:"mode"`
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The id of parent OOS Execution.
 	ParentExecutionId pulumi.StringPtrInput `pulumi:"parentExecutionId"`

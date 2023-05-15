@@ -62,6 +62,9 @@ export interface GetIpaDomainsArgs {
      * A list of Ipa Domain IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the accelerated domain name.
@@ -132,6 +135,9 @@ export interface GetIpaDomainsOutputArgs {
      * A list of Ipa Domain IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the accelerated domain name.

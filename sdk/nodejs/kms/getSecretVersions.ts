@@ -53,6 +53,9 @@ export interface GetSecretVersionsArgs {
      * Specifies whether to return deprecated secret versions. Default to `false`.
      */
     includeDeprecated?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The name of the secret.
@@ -127,6 +130,9 @@ export interface GetSecretVersionsOutputArgs {
      * Specifies whether to return deprecated secret versions. Default to `false`.
      */
     includeDeprecated?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The name of the secret.

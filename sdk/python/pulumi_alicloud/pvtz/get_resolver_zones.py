@@ -93,6 +93,7 @@ def get_resolver_zones(output_file: Optional[str] = None,
     ```
 
 
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Zone.
     """
     __args__ = dict()
@@ -130,6 +131,7 @@ def get_resolver_zones_output(output_file: Optional[pulumi.Input[Optional[str]]]
     ```
 
 
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Zone.
     """
     ...

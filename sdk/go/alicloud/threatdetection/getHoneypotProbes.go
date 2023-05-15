@@ -90,7 +90,8 @@ type GetHoneypotProbesArgs struct {
 	// A list of Honeypot Probe IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by display name.
-	NameRegex   *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile  *string `pulumi:"outputFile"`
 	ProbeStatus *string `pulumi:"probeStatus"`
 	// Probe type
@@ -137,7 +138,8 @@ type GetHoneypotProbesOutputArgs struct {
 	// A list of Honeypot Probe IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by display name.
-	NameRegex   pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
 	ProbeStatus pulumi.StringPtrInput `pulumi:"probeStatus"`
 	// Probe type

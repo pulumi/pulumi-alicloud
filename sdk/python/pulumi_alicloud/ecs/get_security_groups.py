@@ -201,6 +201,7 @@ def get_security_groups(enable_details: Optional[bool] = None,
 
     :param Sequence[str] ids: A list of Security Group IDs.
     :param str name_regex: A regex string to filter the resulting security groups by their names.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the security_group belongs.
     :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
            ```python
@@ -274,6 +275,7 @@ def get_security_groups_output(enable_details: Optional[pulumi.Input[Optional[bo
 
     :param Sequence[str] ids: A list of Security Group IDs.
     :param str name_regex: A regex string to filter the resulting security groups by their names.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the security_group belongs.
     :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
            ```python

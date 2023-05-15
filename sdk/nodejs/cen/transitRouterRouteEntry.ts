@@ -47,6 +47,9 @@ export class TransitRouterRouteEntry extends pulumi.CustomResource {
 
     /**
      * The dry run.
+     *
+     * > **NOTE:** If transitRouterRouteEntryNextHopType is `Attachment`, transitRouterRouteEntryNextHopId is required.
+     * If transitRouterRouteEntryNextHopType is `BlackHole`, transitRouterRouteEntryNextHopId cannot be filled.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
@@ -136,6 +139,9 @@ export class TransitRouterRouteEntry extends pulumi.CustomResource {
 export interface TransitRouterRouteEntryState {
     /**
      * The dry run.
+     *
+     * > **NOTE:** If transitRouterRouteEntryNextHopType is `Attachment`, transitRouterRouteEntryNextHopId is required.
+     * If transitRouterRouteEntryNextHopType is `BlackHole`, transitRouterRouteEntryNextHopId cannot be filled.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -178,6 +184,9 @@ export interface TransitRouterRouteEntryState {
 export interface TransitRouterRouteEntryArgs {
     /**
      * The dry run.
+     *
+     * > **NOTE:** If transitRouterRouteEntryNextHopType is `Attachment`, transitRouterRouteEntryNextHopId is required.
+     * If transitRouterRouteEntryNextHopType is `BlackHole`, transitRouterRouteEntryNextHopId cannot be filled.
      */
     dryRun?: pulumi.Input<boolean>;
     /**

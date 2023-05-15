@@ -62,6 +62,9 @@ export interface GetRegistryEnterpriseReposArgs {
      * Name of Container Registry Enterprise Edition namespace where the repositories are located in.
      */
     namespace?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -144,5 +147,8 @@ export interface GetRegistryEnterpriseReposOutputArgs {
      * Name of Container Registry Enterprise Edition namespace where the repositories are located in.
      */
     namespace?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

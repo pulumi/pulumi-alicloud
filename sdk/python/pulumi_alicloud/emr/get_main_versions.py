@@ -128,6 +128,7 @@ def get_main_versions(cluster_types: Optional[Sequence[str]] = None,
     :param Sequence[str] cluster_types: The supported clusterType of this emr version.
            Possible values may be any one or combination of these: ["HADOOP", "DRUID", "KAFKA", "ZOOKEEPER", "FLINK", "CLICKHOUSE"]
     :param str emr_version: The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['clusterTypes'] = cluster_types
@@ -175,5 +176,6 @@ def get_main_versions_output(cluster_types: Optional[pulumi.Input[Optional[Seque
     :param Sequence[str] cluster_types: The supported clusterType of this emr version.
            Possible values may be any one or combination of these: ["HADOOP", "DRUID", "KAFKA", "ZOOKEEPER", "FLINK", "CLICKHOUSE"]
     :param str emr_version: The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

@@ -60,7 +60,8 @@ type GetClustersArgs struct {
 	// A list of MSE Cluster ids.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter the results by the cluster alias name.
-	NameRegex   *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile  *string `pulumi:"outputFile"`
 	RequestPars *string `pulumi:"requestPars"`
 	// The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`
@@ -107,7 +108,8 @@ type GetClustersOutputArgs struct {
 	// A list of MSE Cluster ids.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter the results by the cluster alias name.
-	NameRegex   pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
 	RequestPars pulumi.StringPtrInput `pulumi:"requestPars"`
 	// The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`

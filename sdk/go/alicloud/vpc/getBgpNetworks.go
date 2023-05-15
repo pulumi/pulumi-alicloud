@@ -70,8 +70,9 @@ func GetBgpNetworks(ctx *pulumi.Context, args *GetBgpNetworksArgs, opts ...pulum
 // A collection of arguments for invoking getBgpNetworks.
 type GetBgpNetworksArgs struct {
 	// A list of Bgp Network IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the vRouter.
 	RouterId *string `pulumi:"routerId"`
 	// The state of the advertised BGP network.
@@ -105,8 +106,9 @@ func GetBgpNetworksOutput(ctx *pulumi.Context, args GetBgpNetworksOutputArgs, op
 // A collection of arguments for invoking getBgpNetworks.
 type GetBgpNetworksOutputArgs struct {
 	// A list of Bgp Network IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the vRouter.
 	RouterId pulumi.StringPtrInput `pulumi:"routerId"`
 	// The state of the advertised BGP network.

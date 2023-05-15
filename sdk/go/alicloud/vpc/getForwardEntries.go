@@ -128,7 +128,8 @@ type GetForwardEntriesArgs struct {
 	// The ip protocol. Valid values: `any`,`tcp` and `udp`.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// A regex string to filter results by forward entry name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
 	Status *string `pulumi:"status"`
@@ -195,7 +196,8 @@ type GetForwardEntriesOutputArgs struct {
 	// The ip protocol. Valid values: `any`,`tcp` and `udp`.
 	IpProtocol pulumi.StringPtrInput `pulumi:"ipProtocol"`
 	// A regex string to filter results by forward entry name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

@@ -56,7 +56,8 @@ func GetOpenApiPricingModules(ctx *pulumi.Context, args *GetOpenApiPricingModule
 type GetOpenApiPricingModulesArgs struct {
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Property name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The product code.
 	ProductCode string `pulumi:"productCode"`
@@ -101,7 +102,8 @@ func GetOpenApiPricingModulesOutput(ctx *pulumi.Context, args GetOpenApiPricingM
 type GetOpenApiPricingModulesOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Property name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The product code.
 	ProductCode pulumi.StringInput `pulumi:"productCode"`

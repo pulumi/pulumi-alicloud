@@ -69,6 +69,11 @@ export interface GetInstanceClassInfosArgs {
      * * **CONVERT**: specifies the query orders that are used to change the billing methods of instances.
      */
     orderType: string;
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     *
+     * > **NOTE**: If you use the CommodityCode parameter to query the instance types that are available to read-only instances, you must specify the DBInstanceId parameter.
+     */
     outputFile?: string;
 }
 
@@ -148,5 +153,10 @@ export interface GetInstanceClassInfosOutputArgs {
      * * **CONVERT**: specifies the query orders that are used to change the billing methods of instances.
      */
     orderType: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     *
+     * > **NOTE**: If you use the CommodityCode parameter to query the instance types that are available to read-only instances, you must specify the DBInstanceId parameter.
+     */
     outputFile?: pulumi.Input<string>;
 }

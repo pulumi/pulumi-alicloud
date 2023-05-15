@@ -97,9 +97,17 @@ public final class GetNatIpsPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.natIpNames);
     }
 
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable String outputFile;
 
+    /**
+     * @return File name where to save data source results (after running `pulumi preview`).
+     * 
+     */
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -234,6 +242,12 @@ public final class GetNatIpsPlainArgs extends com.pulumi.resources.InvokeArgs {
             return natIpNames(List.of(natIpNames));
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
             return this;

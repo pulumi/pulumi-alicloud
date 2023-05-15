@@ -52,8 +52,9 @@ func GetNotifications(ctx *pulumi.Context, args *GetNotificationsArgs, opts ...p
 // A collection of arguments for invoking getNotifications.
 type GetNotificationsArgs struct {
 	// A list of notification ids.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// Scaling group id the notifications belong to.
 	ScalingGroupId string `pulumi:"scalingGroupId"`
 }
@@ -87,8 +88,9 @@ func GetNotificationsOutput(ctx *pulumi.Context, args GetNotificationsOutputArgs
 // A collection of arguments for invoking getNotifications.
 type GetNotificationsOutputArgs struct {
 	// A list of notification ids.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Scaling group id the notifications belong to.
 	ScalingGroupId pulumi.StringInput `pulumi:"scalingGroupId"`
 }

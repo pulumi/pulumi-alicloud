@@ -27,6 +27,9 @@ class TransitRouterRouteEntryArgs:
         :param pulumi.Input[str] transit_router_route_entry_next_hop_type: The Type of the transit router route entry next hop,Valid values `Attachment` and `BlackHole`.
         :param pulumi.Input[str] transit_router_route_table_id: The ID of the transit router route table.
         :param pulumi.Input[bool] dry_run: The dry run.
+               
+               > **NOTE:** If transit_router_route_entry_next_hop_type is `Attachment`, transit_router_route_entry_next_hop_id is required.
+               If transit_router_route_entry_next_hop_type is `BlackHole`, transit_router_route_entry_next_hop_id cannot be filled.
         :param pulumi.Input[str] transit_router_route_entry_description: The description of the transit router route entry.
         :param pulumi.Input[str] transit_router_route_entry_name: The name of the transit router route entry.
         :param pulumi.Input[str] transit_router_route_entry_next_hop_id: The ID of the transit router route entry next hop.
@@ -84,6 +87,9 @@ class TransitRouterRouteEntryArgs:
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
         The dry run.
+
+        > **NOTE:** If transit_router_route_entry_next_hop_type is `Attachment`, transit_router_route_entry_next_hop_id is required.
+        If transit_router_route_entry_next_hop_type is `BlackHole`, transit_router_route_entry_next_hop_id cannot be filled.
         """
         return pulumi.get(self, "dry_run")
 
@@ -143,6 +149,9 @@ class _TransitRouterRouteEntryState:
         """
         Input properties used for looking up and filtering TransitRouterRouteEntry resources.
         :param pulumi.Input[bool] dry_run: The dry run.
+               
+               > **NOTE:** If transit_router_route_entry_next_hop_type is `Attachment`, transit_router_route_entry_next_hop_id is required.
+               If transit_router_route_entry_next_hop_type is `BlackHole`, transit_router_route_entry_next_hop_id cannot be filled.
         :param pulumi.Input[str] status: The associating status of the Transit Router.
         :param pulumi.Input[str] transit_router_route_entry_description: The description of the transit router route entry.
         :param pulumi.Input[str] transit_router_route_entry_destination_cidr_block: The CIDR of the transit router route entry.
@@ -176,6 +185,9 @@ class _TransitRouterRouteEntryState:
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
         The dry run.
+
+        > **NOTE:** If transit_router_route_entry_next_hop_type is `Attachment`, transit_router_route_entry_next_hop_id is required.
+        If transit_router_route_entry_next_hop_type is `BlackHole`, transit_router_route_entry_next_hop_id cannot be filled.
         """
         return pulumi.get(self, "dry_run")
 
@@ -309,6 +321,9 @@ class TransitRouterRouteEntry(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] dry_run: The dry run.
+               
+               > **NOTE:** If transit_router_route_entry_next_hop_type is `Attachment`, transit_router_route_entry_next_hop_id is required.
+               If transit_router_route_entry_next_hop_type is `BlackHole`, transit_router_route_entry_next_hop_id cannot be filled.
         :param pulumi.Input[str] transit_router_route_entry_description: The description of the transit router route entry.
         :param pulumi.Input[str] transit_router_route_entry_destination_cidr_block: The CIDR of the transit router route entry.
         :param pulumi.Input[str] transit_router_route_entry_name: The name of the transit router route entry.
@@ -408,6 +423,9 @@ class TransitRouterRouteEntry(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] dry_run: The dry run.
+               
+               > **NOTE:** If transit_router_route_entry_next_hop_type is `Attachment`, transit_router_route_entry_next_hop_id is required.
+               If transit_router_route_entry_next_hop_type is `BlackHole`, transit_router_route_entry_next_hop_id cannot be filled.
         :param pulumi.Input[str] status: The associating status of the Transit Router.
         :param pulumi.Input[str] transit_router_route_entry_description: The description of the transit router route entry.
         :param pulumi.Input[str] transit_router_route_entry_destination_cidr_block: The CIDR of the transit router route entry.
@@ -437,6 +455,9 @@ class TransitRouterRouteEntry(pulumi.CustomResource):
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
         The dry run.
+
+        > **NOTE:** If transit_router_route_entry_next_hop_type is `Attachment`, transit_router_route_entry_next_hop_id is required.
+        If transit_router_route_entry_next_hop_type is `BlackHole`, transit_router_route_entry_next_hop_id cannot be filled.
         """
         return pulumi.get(self, "dry_run")
 

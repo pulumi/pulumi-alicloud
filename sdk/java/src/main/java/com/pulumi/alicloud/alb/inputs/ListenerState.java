@@ -27,12 +27,16 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     /**
      * Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
      * 
+     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
+     * 
      */
     @Import(name="accessLogRecordCustomizedHeadersEnabled")
     private @Nullable Output<Boolean> accessLogRecordCustomizedHeadersEnabled;
 
     /**
      * @return Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+     * 
+     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
      * 
      */
     public Optional<Output<Boolean>> accessLogRecordCustomizedHeadersEnabled() {
@@ -140,12 +144,16 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     /**
      * Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
      * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+     * 
      */
     @Import(name="http2Enabled")
     private @Nullable Output<Boolean> http2Enabled;
 
     /**
      * @return Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+     * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
      * 
      */
     public Optional<Output<Boolean>> http2Enabled() {
@@ -260,12 +268,16 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     /**
      * Security Policy.
      * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+     * 
      */
     @Import(name="securityPolicyId")
     private @Nullable Output<String> securityPolicyId;
 
     /**
      * @return Security Policy.
+     * 
+     * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
      * 
      */
     public Optional<Output<String>> securityPolicyId() {
@@ -346,6 +358,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param accessLogRecordCustomizedHeadersEnabled Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
          * 
+         * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
+         * 
          * @return builder
          * 
          */
@@ -356,6 +370,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param accessLogRecordCustomizedHeadersEnabled Indicates whether the access log has a custom header field. Valid values: true and false. Default value: false.
+         * 
+         * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
          * 
          * @return builder
          * 
@@ -511,6 +527,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param http2Enabled Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
          * 
+         * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+         * 
          * @return builder
          * 
          */
@@ -521,6 +539,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param http2Enabled Whether to Enable HTTP/2 Features. Valid Values: `True` Or `False`. Default Value: `True`.
+         * 
+         * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
          * 
          * @return builder
          * 
@@ -679,6 +699,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param securityPolicyId Security Policy.
          * 
+         * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
+         * 
          * @return builder
          * 
          */
@@ -689,6 +711,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param securityPolicyId Security Policy.
+         * 
+         * &gt; **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
          * 
          * @return builder
          * 

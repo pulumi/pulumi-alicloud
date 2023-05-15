@@ -65,7 +65,8 @@ type GetRulesArgs struct {
 	// A list of Config Rule IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by rule name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
 	RiskLevel *int `pulumi:"riskLevel"`
@@ -124,7 +125,8 @@ type GetRulesOutputArgs struct {
 	// A list of Config Rule IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by rule name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
 	RiskLevel pulumi.IntPtrInput `pulumi:"riskLevel"`

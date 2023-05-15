@@ -156,6 +156,8 @@ namespace Pulumi.AliCloud.Cassandra
 
         /// <summary>
         /// The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+        /// 
+        /// &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
         /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
@@ -279,6 +281,8 @@ namespace Pulumi.AliCloud.Cassandra
 
         /// <summary>
         /// The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+        /// 
+        /// &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
         /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
@@ -378,6 +382,8 @@ namespace Pulumi.AliCloud.Cassandra
 
         /// <summary>
         /// The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+        /// 
+        /// &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

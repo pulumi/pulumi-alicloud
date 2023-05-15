@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > **DEPRECATED:**  This resource has been renamed to alicloud.actiontrail.Trail from version 1.95.0.
+ *
+ * Provides a new resource to manage [Action Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
+ *
+ * > **NOTE:** Available in 1.35.0+
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -95,6 +101,8 @@ export class TrailDeprecated extends pulumi.CustomResource {
     public readonly slsProjectArn!: pulumi.Output<string | undefined>;
     /**
      * The unique ARN of the Log Service role.
+     *
+     * > **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
      */
     public readonly slsWriteRoleArn!: pulumi.Output<string>;
     public readonly status!: pulumi.Output<string | undefined>;
@@ -191,6 +199,8 @@ export interface TrailDeprecatedState {
     slsProjectArn?: pulumi.Input<string>;
     /**
      * The unique ARN of the Log Service role.
+     *
+     * > **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
      */
     slsWriteRoleArn?: pulumi.Input<string>;
     status?: pulumi.Input<string>;
@@ -238,6 +248,8 @@ export interface TrailDeprecatedArgs {
     slsProjectArn?: pulumi.Input<string>;
     /**
      * The unique ARN of the Log Service role.
+     *
+     * > **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
      */
     slsWriteRoleArn?: pulumi.Input<string>;
     status?: pulumi.Input<string>;

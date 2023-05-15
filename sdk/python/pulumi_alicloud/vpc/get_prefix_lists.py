@@ -137,6 +137,7 @@ def get_prefix_lists(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to `true`. Set it to `false` can hide the `entrys` to output.
     :param Sequence[str] ids: A list of Prefix List IDs.
     :param str name_regex: A regex string to filter results by Prefix List name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str prefix_list_name: The name of the prefix list.
     """
     __args__ = dict()
@@ -189,6 +190,7 @@ def get_prefix_lists_output(enable_details: Optional[pulumi.Input[Optional[bool]
     :param bool enable_details: Default to `true`. Set it to `false` can hide the `entrys` to output.
     :param Sequence[str] ids: A list of Prefix List IDs.
     :param str name_regex: A regex string to filter results by Prefix List name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str prefix_list_name: The name of the prefix list.
     """
     ...

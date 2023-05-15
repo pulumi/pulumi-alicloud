@@ -33,6 +33,9 @@ export interface GetDeployGroupsArgs {
      * A regex string to filter results by the deploy group name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -80,5 +83,8 @@ export interface GetDeployGroupsOutputArgs {
      * A regex string to filter results by the deploy group name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

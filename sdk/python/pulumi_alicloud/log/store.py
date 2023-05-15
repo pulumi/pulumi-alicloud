@@ -447,6 +447,52 @@ class Store(pulumi.CustomResource):
                  telemetry_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        The log store is a unit in Log Service to collect, store, and query the log data. Each log store belongs to a project,
+        and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_project = alicloud.log.Project("exampleProject", description="created by terraform")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        ```
+        Encrypt Usage
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_project = alicloud.log.Project("exampleProject", description="created by terraform")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True,
+            encrypt_conf=alicloud.log.StoreEncryptConfArgs(
+                enable=True,
+                encrypt_type="default",
+                user_cmk_info=alicloud.log.StoreEncryptConfUserCmkInfoArgs(
+                    cmk_key_id="your_cmk_key_id",
+                    arn="your_role_arn",
+                    region_id="you_cmk_region_id",
+                ),
+            ))
+        ```
+        ## Module Support
+
+        You can use the existing sls module
+        to create SLS project, store and store index one-click, like ECS instances.
+
         ## Import
 
         Log store can be imported using the id, e.g.
@@ -477,6 +523,52 @@ class Store(pulumi.CustomResource):
                  args: StoreArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The log store is a unit in Log Service to collect, store, and query the log data. Each log store belongs to a project,
+        and each project can create multiple Logstores. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48874.htm)
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_project = alicloud.log.Project("exampleProject", description="created by terraform")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        ```
+        Encrypt Usage
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_project = alicloud.log.Project("exampleProject", description="created by terraform")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True,
+            encrypt_conf=alicloud.log.StoreEncryptConfArgs(
+                enable=True,
+                encrypt_type="default",
+                user_cmk_info=alicloud.log.StoreEncryptConfUserCmkInfoArgs(
+                    cmk_key_id="your_cmk_key_id",
+                    arn="your_role_arn",
+                    region_id="you_cmk_region_id",
+                ),
+            ))
+        ```
+        ## Module Support
+
+        You can use the existing sls module
+        to create SLS project, store and store index one-click, like ECS instances.
+
         ## Import
 
         Log store can be imported using the id, e.g.

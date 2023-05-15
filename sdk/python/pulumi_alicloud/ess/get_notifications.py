@@ -111,6 +111,7 @@ def get_notifications(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of notification ids.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str scaling_group_id: Scaling group id the notifications belong to.
     """
     __args__ = dict()
@@ -150,6 +151,7 @@ def get_notifications_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
 
 
     :param Sequence[str] ids: A list of notification ids.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str scaling_group_id: Scaling group id the notifications belong to.
     """
     ...

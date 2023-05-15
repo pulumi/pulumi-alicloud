@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides bind the domain name to the DNS instance resource.
+ *
+ * > **NOTE:** Available in v1.80.0+.
+ *
+ * > **DEPRECATED:**  This resource has been deprecated from version `1.99.0`. Please use new resource alicloud_alidns_domain_attachment.
+ *
  * ## Example Usage
  *
  * ```typescript

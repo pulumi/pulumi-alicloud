@@ -123,6 +123,8 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
         /// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
         /// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
+        /// 
+        /// **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
         /// </summary>
         [Output("portType")]
         public Output<string?> PortType { get; private set; } = null!;
@@ -248,6 +250,8 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
         /// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
         /// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
+        /// 
+        /// **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
         /// </summary>
         [Input("portType")]
         public Input<string>? PortType { get; set; }
@@ -335,6 +339,8 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
         /// * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
         /// * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
+        /// 
+        /// **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
         /// </summary>
         [Input("portType")]
         public Input<string>? PortType { get; set; }

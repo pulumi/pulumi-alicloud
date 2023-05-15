@@ -55,7 +55,8 @@ type GetZoneRecordsArgs struct {
 	// Keyword for record rr and value.
 	Keyword *string `pulumi:"keyword"`
 	// User language.
-	Lang       *string `pulumi:"lang"`
+	Lang *string `pulumi:"lang"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Search mode. Value:
 	// - LIKE: fuzzy search.
@@ -112,7 +113,8 @@ type GetZoneRecordsOutputArgs struct {
 	// Keyword for record rr and value.
 	Keyword pulumi.StringPtrInput `pulumi:"keyword"`
 	// User language.
-	Lang       pulumi.StringPtrInput `pulumi:"lang"`
+	Lang pulumi.StringPtrInput `pulumi:"lang"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Search mode. Value:
 	// - LIKE: fuzzy search.

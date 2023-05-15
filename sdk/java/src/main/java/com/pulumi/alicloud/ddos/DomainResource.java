@@ -103,9 +103,23 @@ public class DomainResource extends com.pulumi.resources.CustomResource {
     public Output<String> httpsExt() {
         return this.httpsExt;
     }
+    /**
+     * A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+     * **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
+     * So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     * 
+     */
     @Export(name="instanceIds", type=List.class, parameters={String.class})
     private Output<List<String>> instanceIds;
 
+    /**
+     * @return A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+     * **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
+     * So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     * 
+     */
     public Output<List<String>> instanceIds() {
         return this.instanceIds;
     }

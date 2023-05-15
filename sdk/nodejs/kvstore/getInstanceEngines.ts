@@ -58,6 +58,9 @@ export interface GetInstanceEnginesArgs {
      * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
      */
     instanceChargeType?: string;
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     */
     outputFile?: string;
     /**
      * The Zone to launch the KVStore instance.
@@ -136,6 +139,9 @@ export interface GetInstanceEnginesOutputArgs {
      * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
      */
     instanceChargeType?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The Zone to launch the KVStore instance.

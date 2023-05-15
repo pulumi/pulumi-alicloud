@@ -25,6 +25,8 @@ public final class GetBackupJobsFilter {
     /**
      * @return Set of values that are accepted for the given field.
      * 
+     * &gt; **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
+     * 
      */
     private @Nullable List<String> values;
 
@@ -45,6 +47,8 @@ public final class GetBackupJobsFilter {
     }
     /**
      * @return Set of values that are accepted for the given field.
+     * 
+     * &gt; **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
      * 
      */
     public List<String> values() {

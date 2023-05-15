@@ -126,6 +126,7 @@ def get_ad_connector_office_sites(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Ad Connector Office Site IDs.
     :param str name_regex: A regex string to filter results by Ad Connector Office Site name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The workspace status.
     """
     __args__ = dict()
@@ -174,6 +175,7 @@ def get_ad_connector_office_sites_output(ids: Optional[pulumi.Input[Optional[Seq
 
     :param Sequence[str] ids: A list of Ad Connector Office Site IDs.
     :param str name_regex: A regex string to filter results by Ad Connector Office Site name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The workspace status.
     """
     ...

@@ -61,6 +61,9 @@ export interface GetInstancesArgs {
      * A list of Instance IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The query str.
@@ -137,6 +140,9 @@ export interface GetInstancesOutputArgs {
      * A list of Instance IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The query str.

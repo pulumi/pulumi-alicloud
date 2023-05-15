@@ -102,6 +102,8 @@ type Connection struct {
 	pulumi.CustomResourceState
 
 	// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+	//
+	// > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
 	BabelfishPort pulumi.StringOutput `pulumi:"babelfishPort"`
 	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
 	ConnectionPrefix pulumi.StringOutput `pulumi:"connectionPrefix"`
@@ -148,6 +150,8 @@ func GetConnection(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
 	// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+	//
+	// > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
 	BabelfishPort *string `pulumi:"babelfishPort"`
 	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
 	ConnectionPrefix *string `pulumi:"connectionPrefix"`
@@ -163,6 +167,8 @@ type connectionState struct {
 
 type ConnectionState struct {
 	// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+	//
+	// > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
 	BabelfishPort pulumi.StringPtrInput
 	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
 	ConnectionPrefix pulumi.StringPtrInput
@@ -182,6 +188,8 @@ func (ConnectionState) ElementType() reflect.Type {
 
 type connectionArgs struct {
 	// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+	//
+	// > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
 	BabelfishPort *string `pulumi:"babelfishPort"`
 	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
 	ConnectionPrefix *string `pulumi:"connectionPrefix"`
@@ -194,6 +202,8 @@ type connectionArgs struct {
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
 	// The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+	//
+	// > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
 	BabelfishPort pulumi.StringPtrInput
 	// Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
 	ConnectionPrefix pulumi.StringPtrInput
@@ -291,6 +301,8 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 }
 
 // The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+//
+// > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
 func (o ConnectionOutput) BabelfishPort() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.BabelfishPort }).(pulumi.StringOutput)
 }

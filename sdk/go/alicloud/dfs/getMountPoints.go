@@ -60,8 +60,9 @@ type GetMountPointsArgs struct {
 	// The ID of the File System.
 	FileSystemId string `pulumi:"fileSystemId"`
 	// A list of Mount Point IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The status of the Mount Point. Valid values: `Active`, `Inactive`.
 	Status *string `pulumi:"status"`
 }
@@ -95,8 +96,9 @@ type GetMountPointsOutputArgs struct {
 	// The ID of the File System.
 	FileSystemId pulumi.StringInput `pulumi:"fileSystemId"`
 	// A list of Mount Point IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the Mount Point. Valid values: `Active`, `Inactive`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }

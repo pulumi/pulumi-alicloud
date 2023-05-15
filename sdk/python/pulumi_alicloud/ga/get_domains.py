@@ -146,6 +146,7 @@ def get_domains(accelerator_id: Optional[str] = None,
     :param str accelerator_id: The ID of the global acceleration instance.
     :param str domain: The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
     :param Sequence[str] ids: A list of Ga Domain IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
     """
     __args__ = dict()
@@ -189,6 +190,7 @@ def get_domains_output(accelerator_id: Optional[pulumi.Input[Optional[str]]] = N
     :param str accelerator_id: The ID of the global acceleration instance.
     :param str domain: The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
     :param Sequence[str] ids: A list of Ga Domain IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
     """
     ...

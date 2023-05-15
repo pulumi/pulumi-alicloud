@@ -11,6 +11,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a VPC router interface connection resource to connect two router interfaces which are in two different VPCs.
+// After that, all of the two router interfaces will be active.
+//
+// > **DEPRECATED:**  This resource  has been deprecated from version `1.199.0`. Please use new resource alicloud_express_connect_router_interface.
+//
+// > **NOTE:** At present, Router interface does not support changing opposite router interface, the connection delete action is only deactivating it to inactive, not modifying the connection to empty.
+//
+// > **NOTE:** If you want to changing opposite router interface, you can delete router interface and re-build them.
+//
+// > **NOTE:** A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
+//
+// > **NOTE:** Please remember to add a `dependsOn` clause in the router interface connection from the InitiatingSide to the AcceptingSide, because the connection from the AcceptingSide to the InitiatingSide must be done first.
+//
 // ## Example Usage
 //
 // ```go
@@ -111,11 +124,14 @@ type RouterInterfaceConnection struct {
 	// One side router interface ID.
 	InterfaceId pulumi.StringOutput `pulumi:"interfaceId"`
 	// Another side router interface ID. It must belong the specified "oppositeInterfaceOwnerId" account.
-	OppositeInterfaceId      pulumi.StringOutput `pulumi:"oppositeInterfaceId"`
+	OppositeInterfaceId pulumi.StringOutput `pulumi:"oppositeInterfaceId"`
+	// Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info > Account Management to check the account ID. Default to Provider account_id.
 	OppositeInterfaceOwnerId pulumi.StringOutput `pulumi:"oppositeInterfaceOwnerId"`
 	// Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
 	OppositeRouterId pulumi.StringOutput `pulumi:"oppositeRouterId"`
 	// Another side router Type. Optional value: VRouter, VBR. It is valid when field "oppositeInterfaceOwnerId" is specified.
+	//
+	// > **NOTE:** The value of "oppositeInterfaceOwnerId" or "accountId" must be main account and not be sub account.
 	OppositeRouterType pulumi.StringPtrOutput `pulumi:"oppositeRouterType"`
 }
 
@@ -157,11 +173,14 @@ type routerInterfaceConnectionState struct {
 	// One side router interface ID.
 	InterfaceId *string `pulumi:"interfaceId"`
 	// Another side router interface ID. It must belong the specified "oppositeInterfaceOwnerId" account.
-	OppositeInterfaceId      *string `pulumi:"oppositeInterfaceId"`
+	OppositeInterfaceId *string `pulumi:"oppositeInterfaceId"`
+	// Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info > Account Management to check the account ID. Default to Provider account_id.
 	OppositeInterfaceOwnerId *string `pulumi:"oppositeInterfaceOwnerId"`
 	// Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
 	OppositeRouterId *string `pulumi:"oppositeRouterId"`
 	// Another side router Type. Optional value: VRouter, VBR. It is valid when field "oppositeInterfaceOwnerId" is specified.
+	//
+	// > **NOTE:** The value of "oppositeInterfaceOwnerId" or "accountId" must be main account and not be sub account.
 	OppositeRouterType *string `pulumi:"oppositeRouterType"`
 }
 
@@ -169,11 +188,14 @@ type RouterInterfaceConnectionState struct {
 	// One side router interface ID.
 	InterfaceId pulumi.StringPtrInput
 	// Another side router interface ID. It must belong the specified "oppositeInterfaceOwnerId" account.
-	OppositeInterfaceId      pulumi.StringPtrInput
+	OppositeInterfaceId pulumi.StringPtrInput
+	// Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info > Account Management to check the account ID. Default to Provider account_id.
 	OppositeInterfaceOwnerId pulumi.StringPtrInput
 	// Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
 	OppositeRouterId pulumi.StringPtrInput
 	// Another side router Type. Optional value: VRouter, VBR. It is valid when field "oppositeInterfaceOwnerId" is specified.
+	//
+	// > **NOTE:** The value of "oppositeInterfaceOwnerId" or "accountId" must be main account and not be sub account.
 	OppositeRouterType pulumi.StringPtrInput
 }
 
@@ -185,11 +207,14 @@ type routerInterfaceConnectionArgs struct {
 	// One side router interface ID.
 	InterfaceId string `pulumi:"interfaceId"`
 	// Another side router interface ID. It must belong the specified "oppositeInterfaceOwnerId" account.
-	OppositeInterfaceId      string  `pulumi:"oppositeInterfaceId"`
+	OppositeInterfaceId string `pulumi:"oppositeInterfaceId"`
+	// Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info > Account Management to check the account ID. Default to Provider account_id.
 	OppositeInterfaceOwnerId *string `pulumi:"oppositeInterfaceOwnerId"`
 	// Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
 	OppositeRouterId *string `pulumi:"oppositeRouterId"`
 	// Another side router Type. Optional value: VRouter, VBR. It is valid when field "oppositeInterfaceOwnerId" is specified.
+	//
+	// > **NOTE:** The value of "oppositeInterfaceOwnerId" or "accountId" must be main account and not be sub account.
 	OppositeRouterType *string `pulumi:"oppositeRouterType"`
 }
 
@@ -198,11 +223,14 @@ type RouterInterfaceConnectionArgs struct {
 	// One side router interface ID.
 	InterfaceId pulumi.StringInput
 	// Another side router interface ID. It must belong the specified "oppositeInterfaceOwnerId" account.
-	OppositeInterfaceId      pulumi.StringInput
+	OppositeInterfaceId pulumi.StringInput
+	// Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info > Account Management to check the account ID. Default to Provider account_id.
 	OppositeInterfaceOwnerId pulumi.StringPtrInput
 	// Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
 	OppositeRouterId pulumi.StringPtrInput
 	// Another side router Type. Optional value: VRouter, VBR. It is valid when field "oppositeInterfaceOwnerId" is specified.
+	//
+	// > **NOTE:** The value of "oppositeInterfaceOwnerId" or "accountId" must be main account and not be sub account.
 	OppositeRouterType pulumi.StringPtrInput
 }
 
@@ -303,6 +331,7 @@ func (o RouterInterfaceConnectionOutput) OppositeInterfaceId() pulumi.StringOutp
 	return o.ApplyT(func(v *RouterInterfaceConnection) pulumi.StringOutput { return v.OppositeInterfaceId }).(pulumi.StringOutput)
 }
 
+// Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info > Account Management to check the account ID. Default to Provider account_id.
 func (o RouterInterfaceConnectionOutput) OppositeInterfaceOwnerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterfaceConnection) pulumi.StringOutput { return v.OppositeInterfaceOwnerId }).(pulumi.StringOutput)
 }
@@ -313,6 +342,8 @@ func (o RouterInterfaceConnectionOutput) OppositeRouterId() pulumi.StringOutput 
 }
 
 // Another side router Type. Optional value: VRouter, VBR. It is valid when field "oppositeInterfaceOwnerId" is specified.
+//
+// > **NOTE:** The value of "oppositeInterfaceOwnerId" or "accountId" must be main account and not be sub account.
 func (o RouterInterfaceConnectionOutput) OppositeRouterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterInterfaceConnection) pulumi.StringPtrOutput { return v.OppositeRouterType }).(pulumi.StringPtrOutput)
 }

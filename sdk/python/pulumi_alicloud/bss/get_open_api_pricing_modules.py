@@ -150,6 +150,7 @@ def get_open_api_pricing_modules(ids: Optional[Sequence[str]] = None,
 
 
     :param str name_regex: A regex string to filter results by Property name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_code: The product code.
     :param str product_type: The product type.
     :param str subscription_type: Subscription type. Value:
@@ -206,6 +207,7 @@ def get_open_api_pricing_modules_output(ids: Optional[pulumi.Input[Optional[Sequ
 
 
     :param str name_regex: A regex string to filter results by Property name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_code: The product code.
     :param str product_type: The product type.
     :param str subscription_type: Subscription type. Value:

@@ -148,6 +148,7 @@ def get_prometheis(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Prometheus IDs.
     :param str name_regex: A regex string to filter results by Prometheus name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
@@ -200,6 +201,7 @@ def get_prometheis_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
 
     :param Sequence[str] ids: A list of Prometheus IDs.
     :param str name_regex: A regex string to filter results by Prometheus name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """

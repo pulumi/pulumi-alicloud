@@ -42,6 +42,9 @@ export interface GetAuditPoliciesArgs {
      * The ID of the instance.
      */
     dbInstanceId: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -88,5 +91,8 @@ export interface GetAuditPoliciesOutputArgs {
      * The ID of the instance.
      */
     dbInstanceId: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

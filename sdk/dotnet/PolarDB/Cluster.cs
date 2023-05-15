@@ -94,6 +94,13 @@ namespace Pulumi.AliCloud.PolarDB
     public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
+        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Output("allowShutDown")]
+        public Output<string?> AllowShutDown { get; private set; } = null!;
+
+        /// <summary>
         /// Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         /// </summary>
         [Output("autoRenewPeriod")]
@@ -125,6 +132,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> ConnectionString { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in 1.204.1+) PolarDB cluster creation time.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
         /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
         /// </summary>
@@ -146,7 +159,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The db_node_class of cluster node.
-        /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+        /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
         /// </summary>
         [Output("dbNodeClass")]
         public Output<string> DbNodeClass { get; private set; } = null!;
@@ -241,6 +254,10 @@ namespace Pulumi.AliCloud.PolarDB
         [Output("payType")]
         public Output<string?> PayType { get; private set; } = null!;
 
+        /// <summary>
+        /// The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
@@ -269,6 +286,41 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> RoleArn { get; private set; } = null!;
 
         /// <summary>
+        /// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Output("scaleMax")]
+        public Output<int?> ScaleMax { get; private set; } = null!;
+
+        /// <summary>
+        /// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Output("scaleMin")]
+        public Output<int?> ScaleMin { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Output("scaleRoNumMax")]
+        public Output<int?> ScaleRoNumMax { get; private set; } = null!;
+
+        /// <summary>
+        /// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Output("scaleRoNumMin")]
+        public Output<int?> ScaleRoNumMin { get; private set; } = null!;
+
+        /// <summary>
+        /// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Output("secondsUntilAutoPause")]
+        public Output<int> SecondsUntilAutoPause { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
         /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         /// </summary>
@@ -283,10 +335,23 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<ImmutableArray<string>> SecurityIps { get; private set; } = null!;
 
         /// <summary>
+        /// The type of the serverless cluster. Set the value to AgileServerless.
+        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Output("serverlessType")]
+        public Output<string?> ServerlessType { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
         /// </summary>
         [Output("sourceResourceId")]
         public Output<string?> SourceResourceId { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available in 1.204.1+) PolarDB cluster status.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// Storage space charged by space (monthly package). Unit: GB.
@@ -396,6 +461,13 @@ namespace Pulumi.AliCloud.PolarDB
     public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
+        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Input("allowShutDown")]
+        public Input<string>? AllowShutDown { get; set; }
+
+        /// <summary>
         /// Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         /// </summary>
         [Input("autoRenewPeriod")]
@@ -448,7 +520,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The db_node_class of cluster node.
-        /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+        /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
         /// </summary>
         [Input("dbNodeClass", required: true)]
         public Input<string> DbNodeClass { get; set; } = null!;
@@ -549,6 +621,10 @@ namespace Pulumi.AliCloud.PolarDB
         [Input("payType")]
         public Input<string>? PayType { get; set; }
 
+        /// <summary>
+        /// The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -569,6 +645,41 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
+
+        /// <summary>
+        /// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Input("scaleMax")]
+        public Input<int>? ScaleMax { get; set; }
+
+        /// <summary>
+        /// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Input("scaleMin")]
+        public Input<int>? ScaleMin { get; set; }
+
+        /// <summary>
+        /// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Input("scaleRoNumMax")]
+        public Input<int>? ScaleRoNumMax { get; set; }
+
+        /// <summary>
+        /// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Input("scaleRoNumMin")]
+        public Input<int>? ScaleRoNumMin { get; set; }
+
+        /// <summary>
+        /// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Input("secondsUntilAutoPause")]
+        public Input<int>? SecondsUntilAutoPause { get; set; }
 
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
@@ -595,6 +706,13 @@ namespace Pulumi.AliCloud.PolarDB
             get => _securityIps ?? (_securityIps = new InputList<string>());
             set => _securityIps = value;
         }
+
+        /// <summary>
+        /// The type of the serverless cluster. Set the value to AgileServerless.
+        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Input("serverlessType")]
+        public Input<string>? ServerlessType { get; set; }
 
         /// <summary>
         /// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
@@ -670,6 +788,13 @@ namespace Pulumi.AliCloud.PolarDB
     public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
+        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Input("allowShutDown")]
+        public Input<string>? AllowShutDown { get; set; }
+
+        /// <summary>
         /// Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         /// </summary>
         [Input("autoRenewPeriod")]
@@ -701,6 +826,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? ConnectionString { get; set; }
 
         /// <summary>
+        /// (Available in 1.204.1+) PolarDB cluster creation time.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
         /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
         /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
         /// </summary>
@@ -728,7 +859,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The db_node_class of cluster node.
-        /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+        /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
         /// </summary>
         [Input("dbNodeClass")]
         public Input<string>? DbNodeClass { get; set; }
@@ -829,6 +960,10 @@ namespace Pulumi.AliCloud.PolarDB
         [Input("payType")]
         public Input<string>? PayType { get; set; }
 
+        /// <summary>
+        /// The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -855,6 +990,41 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
+
+        /// <summary>
+        /// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Input("scaleMax")]
+        public Input<int>? ScaleMax { get; set; }
+
+        /// <summary>
+        /// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Input("scaleMin")]
+        public Input<int>? ScaleMin { get; set; }
+
+        /// <summary>
+        /// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Input("scaleRoNumMax")]
+        public Input<int>? ScaleRoNumMax { get; set; }
+
+        /// <summary>
+        /// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Input("scaleRoNumMin")]
+        public Input<int>? ScaleRoNumMin { get; set; }
+
+        /// <summary>
+        /// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Input("secondsUntilAutoPause")]
+        public Input<int>? SecondsUntilAutoPause { get; set; }
 
         [Input("securityGroupIds")]
         private InputList<string>? _securityGroupIds;
@@ -883,10 +1053,23 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
+        /// The type of the serverless cluster. Set the value to AgileServerless.
+        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// </summary>
+        [Input("serverlessType")]
+        public Input<string>? ServerlessType { get; set; }
+
+        /// <summary>
         /// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
         /// </summary>
         [Input("sourceResourceId")]
         public Input<string>? SourceResourceId { get; set; }
+
+        /// <summary>
+        /// (Available in 1.204.1+) PolarDB cluster status.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         /// <summary>
         /// Storage space charged by space (monthly package). Unit: GB.

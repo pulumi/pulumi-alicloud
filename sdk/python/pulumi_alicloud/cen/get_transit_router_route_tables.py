@@ -163,6 +163,7 @@ def get_transit_router_route_tables(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of CEN Transit Router Route Table IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str transit_router_id: ID of the CEN Transit Router Route Table.
     :param Sequence[str] transit_router_route_table_ids: A list of ID of the CEN Transit Router Route Table.
     :param Sequence[str] transit_router_route_table_names: A list of name of the CEN Transit Router Route Table.
@@ -211,6 +212,7 @@ def get_transit_router_route_tables_output(ids: Optional[pulumi.Input[Optional[S
 
 
     :param Sequence[str] ids: A list of CEN Transit Router Route Table IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str transit_router_id: ID of the CEN Transit Router Route Table.
     :param Sequence[str] transit_router_route_table_ids: A list of ID of the CEN Transit Router Route Table.
     :param Sequence[str] transit_router_route_table_names: A list of name of the CEN Transit Router Route Table.

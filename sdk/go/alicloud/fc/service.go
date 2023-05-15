@@ -10,6 +10,92 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Alicloud Function Compute Service resource. The resource is the base of launching Function and Trigger configuration.
+//
+//	For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/doc-detail/52895.htm).
+//
+// > **NOTE:** The resource requires a provider field 'account_id'. See account_id.
+//
+// > **NOTE:** If you happen the error "Argument 'internetAccess' is not supported", you need to log on web console and click button "Apply VPC Function"
+// which is in the upper of [Function Service Web Console](https://fc.console.aliyun.com/) page.
+//
+// > **NOTE:** Currently not all regions support Function Compute Service.
+// For more details supported regions, see [Service endpoints](https://www.alibabacloud.com/help/doc-detail/52984.htm)
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-testaccalicloudfcservice"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			fooProject, err := log.NewProject(ctx, "fooProject", nil)
+//			if err != nil {
+//				return err
+//			}
+//			fooStore, err := log.NewStore(ctx, "fooStore", &log.StoreArgs{
+//				Project: fooProject.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
+//				Document:    pulumi.String("  {\n      \"Statement\": [\n        {\n          \"Action\": \"sts:AssumeRole\",\n          \"Effect\": \"Allow\",\n          \"Principal\": {\n            \"Service\": [\n              \"fc.aliyuncs.com\"\n            ]\n          }\n        }\n      ],\n      \"Version\": \"1\"\n  }\n"),
+//				Description: pulumi.String("this is a test"),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			attach, err := ram.NewRolePolicyAttachment(ctx, "attach", &ram.RolePolicyAttachmentArgs{
+//				RoleName:   role.Name,
+//				PolicyName: pulumi.String("AliyunLogFullAccess"),
+//				PolicyType: pulumi.String("System"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fc.NewService(ctx, "fooService", &fc.ServiceArgs{
+//				Description: pulumi.String("tf unit test"),
+//				Role:        role.Arn,
+//				LogConfig: &fc.ServiceLogConfigArgs{
+//					Project:               fooProject.Name,
+//					Logstore:              fooStore.Name,
+//					EnableInstanceMetrics: pulumi.Bool(true),
+//					EnableRequestMetrics:  pulumi.Bool(true),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				attach,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Module Support
+//
+// You can use to the existing fc module to create a service and a function quickly and then set several triggers for it.
+//
 // ## Import
 //
 // Function Compute Service can be imported using the id or name, e.g.

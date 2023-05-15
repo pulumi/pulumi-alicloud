@@ -98,6 +98,8 @@ export class PrivateZone extends pulumi.CustomResource {
     public readonly hostRegionId!: pulumi.Output<string>;
     /**
      * The VPC that belongs to the service region.
+     *
+     * ->**NOTE:** The "alicloud.cen.PrivateZone" resource depends on the related "alicloud.cen.InstanceAttachment" resource.
      */
     public readonly hostVpcId!: pulumi.Output<string>;
     /**
@@ -166,6 +168,8 @@ export interface PrivateZoneState {
     hostRegionId?: pulumi.Input<string>;
     /**
      * The VPC that belongs to the service region.
+     *
+     * ->**NOTE:** The "alicloud.cen.PrivateZone" resource depends on the related "alicloud.cen.InstanceAttachment" resource.
      */
     hostVpcId?: pulumi.Input<string>;
     /**
@@ -192,6 +196,8 @@ export interface PrivateZoneArgs {
     hostRegionId: pulumi.Input<string>;
     /**
      * The VPC that belongs to the service region.
+     *
+     * ->**NOTE:** The "alicloud.cen.PrivateZone" resource depends on the related "alicloud.cen.InstanceAttachment" resource.
      */
     hostVpcId: pulumi.Input<string>;
 }

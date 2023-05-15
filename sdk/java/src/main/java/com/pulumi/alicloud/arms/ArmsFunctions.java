@@ -16,12 +16,15 @@ import com.pulumi.alicloud.arms.inputs.GetPrometheisArgs;
 import com.pulumi.alicloud.arms.inputs.GetPrometheisPlainArgs;
 import com.pulumi.alicloud.arms.inputs.GetPrometheusAlertRulesArgs;
 import com.pulumi.alicloud.arms.inputs.GetPrometheusAlertRulesPlainArgs;
+import com.pulumi.alicloud.arms.inputs.GetRemoteWritesArgs;
+import com.pulumi.alicloud.arms.inputs.GetRemoteWritesPlainArgs;
 import com.pulumi.alicloud.arms.outputs.GetAlertContactGroupsResult;
 import com.pulumi.alicloud.arms.outputs.GetAlertContactsResult;
 import com.pulumi.alicloud.arms.outputs.GetDispatchRulesResult;
 import com.pulumi.alicloud.arms.outputs.GetIntegrationExportersResult;
 import com.pulumi.alicloud.arms.outputs.GetPrometheisResult;
 import com.pulumi.alicloud.arms.outputs.GetPrometheusAlertRulesResult;
+import com.pulumi.alicloud.arms.outputs.GetRemoteWritesResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
@@ -1482,5 +1485,201 @@ public final class ArmsFunctions {
      */
     public static CompletableFuture<GetPrometheusAlertRulesResult> getPrometheusAlertRulesPlain(GetPrometheusAlertRulesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", TypeShape.of(GetPrometheusAlertRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Remote Writes of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.204.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetRemoteWritesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsRemoteWritesId1&#34;, ids.applyValue(getRemoteWritesResult -&gt; getRemoteWritesResult.remoteWrites()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsRemoteWritesId2&#34;, nameRegex.applyValue(getRemoteWritesResult -&gt; getRemoteWritesResult.remoteWrites()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRemoteWritesResult> getRemoteWrites(GetRemoteWritesArgs args) {
+        return getRemoteWrites(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Arms Remote Writes of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.204.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetRemoteWritesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsRemoteWritesId1&#34;, ids.applyValue(getRemoteWritesResult -&gt; getRemoteWritesResult.remoteWrites()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsRemoteWritesId2&#34;, nameRegex.applyValue(getRemoteWritesResult -&gt; getRemoteWritesResult.remoteWrites()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRemoteWritesResult> getRemoteWritesPlain(GetRemoteWritesPlainArgs args) {
+        return getRemoteWritesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Arms Remote Writes of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.204.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetRemoteWritesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsRemoteWritesId1&#34;, ids.applyValue(getRemoteWritesResult -&gt; getRemoteWritesResult.remoteWrites()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsRemoteWritesId2&#34;, nameRegex.applyValue(getRemoteWritesResult -&gt; getRemoteWritesResult.remoteWrites()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRemoteWritesResult> getRemoteWrites(GetRemoteWritesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getRemoteWrites:getRemoteWrites", TypeShape.of(GetRemoteWritesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Remote Writes of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available in v1.204.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetRemoteWritesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
+     *             .ids(&#34;example_id&#34;)
+     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsRemoteWritesId1&#34;, ids.applyValue(getRemoteWritesResult -&gt; getRemoteWritesResult.remoteWrites()[0].id()));
+     *         final var nameRegex = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
+     *             .nameRegex(&#34;tf-example&#34;)
+     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;armsRemoteWritesId2&#34;, nameRegex.applyValue(getRemoteWritesResult -&gt; getRemoteWritesResult.remoteWrites()[0].id()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRemoteWritesResult> getRemoteWritesPlain(GetRemoteWritesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:arms/getRemoteWrites:getRemoteWrites", TypeShape.of(GetRemoteWritesResult.class), args, Utilities.withVersion(options));
     }
 }

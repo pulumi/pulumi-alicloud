@@ -233,6 +233,10 @@ type Listener struct {
 	// The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+	//
+	// > **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
+	//
+	// > **NOTE:** Advantanced feature such as `tlsCipherPolicy`, can not be updated when load balancer instance is "Shared-Performance". More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
 	ProxyProtocolV2Enabled pulumi.BoolOutput `pulumi:"proxyProtocolV2Enabled"`
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout pulumi.IntPtrOutput `pulumi:"requestTimeout"`
@@ -366,6 +370,10 @@ type listenerState struct {
 	// The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
 	Protocol *string `pulumi:"protocol"`
 	// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+	//
+	// > **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
+	//
+	// > **NOTE:** Advantanced feature such as `tlsCipherPolicy`, can not be updated when load balancer instance is "Shared-Performance". More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
 	ProxyProtocolV2Enabled *bool `pulumi:"proxyProtocolV2Enabled"`
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout *int `pulumi:"requestTimeout"`
@@ -462,6 +470,10 @@ type ListenerState struct {
 	// The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
 	Protocol pulumi.StringPtrInput
 	// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+	//
+	// > **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
+	//
+	// > **NOTE:** Advantanced feature such as `tlsCipherPolicy`, can not be updated when load balancer instance is "Shared-Performance". More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
 	ProxyProtocolV2Enabled pulumi.BoolPtrInput
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout pulumi.IntPtrInput
@@ -562,6 +574,10 @@ type listenerArgs struct {
 	// The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
 	Protocol string `pulumi:"protocol"`
 	// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+	//
+	// > **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
+	//
+	// > **NOTE:** Advantanced feature such as `tlsCipherPolicy`, can not be updated when load balancer instance is "Shared-Performance". More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
 	ProxyProtocolV2Enabled *bool `pulumi:"proxyProtocolV2Enabled"`
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout *int `pulumi:"requestTimeout"`
@@ -659,6 +675,10 @@ type ListenerArgs struct {
 	// The protocol to listen on. Valid values are [`http`, `https`, `tcp`, `udp`].
 	Protocol pulumi.StringInput
 	// Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+	//
+	// > **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
+	//
+	// > **NOTE:** Advantanced feature such as `tlsCipherPolicy`, can not be updated when load balancer instance is "Shared-Performance". More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
 	ProxyProtocolV2Enabled pulumi.BoolPtrInput
 	// Timeout of http or https listener request (which does not get response from backend) timeout. Valid value range: [1-180] in seconds. Default to 60.
 	RequestTimeout pulumi.IntPtrInput
@@ -943,6 +963,10 @@ func (o ListenerOutput) Protocol() pulumi.StringOutput {
 }
 
 // Whether to support carrying the client source address to the backend server through the Proxy Protocol. Valid values are `true` and `false`. Default to `false`.
+//
+// > **NOTE:** Once enable the http redirect to https function, any parameters excepted forward_port,listener_forward,load_balancer_id,frontend_port,protocol will be ignored. More info, please refer to [Redirect http to https](https://www.alibabacloud.com/help/doc-detail/89151.htm?spm=a2c63.p38356.b99.186.42f66384mpjUTB).
+//
+// > **NOTE:** Advantanced feature such as `tlsCipherPolicy`, can not be updated when load balancer instance is "Shared-Performance". More info, please refer to [Configure a HTTPS Listener](https://www.alibabacloud.com/help/doc-detail/27593.htm).
 func (o ListenerOutput) ProxyProtocolV2Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Listener) pulumi.BoolOutput { return v.ProxyProtocolV2Enabled }).(pulumi.BoolOutput)
 }

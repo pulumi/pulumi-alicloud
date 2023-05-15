@@ -15,6 +15,59 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Provides a security group rule resource.
+ * Represents a single `ingress` or `egress` group rule, which can be added to external Security Groups.
+ * 
+ * &gt; **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupRule;
+ * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new SecurityGroup(&#34;default&#34;);
+ * 
+ *         var allowAllTcp = new SecurityGroupRule(&#34;allowAllTcp&#34;, SecurityGroupRuleArgs.builder()        
+ *             .type(&#34;ingress&#34;)
+ *             .ipProtocol(&#34;tcp&#34;)
+ *             .nicType(&#34;internet&#34;)
+ *             .policy(&#34;accept&#34;)
+ *             .portRange(&#34;1/65535&#34;)
+ *             .priority(1)
+ *             .securityGroupId(default_.id())
+ *             .cidrIp(&#34;0.0.0.0/0&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Module Support
+ * 
+ * You can use the existing security-group module
+ * to create a security group and add several rules one-click.
+ * 
+ */
 @ResourceType(type="alicloud:ecs/securityGroupRule:SecurityGroupRule")
 public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
     /**
@@ -62,12 +115,16 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
     /**
      * Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
      * 
+     * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
+     * 
      */
     @Export(name="ipv6CidrIp", type=String.class, parameters={})
     private Output</* @Nullable */ String> ipv6CidrIp;
 
     /**
      * @return Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+     * 
+     * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
      * 
      */
     public Output<Optional<String>> ipv6CidrIp() {

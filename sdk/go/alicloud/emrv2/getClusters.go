@@ -37,7 +37,8 @@ type GetClustersArgs struct {
 	// A regex string to filter results by Cluster name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// The next token is used to list clusters for next page.
-	NextToken  *string `pulumi:"nextToken"`
+	NextToken *string `pulumi:"nextToken"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The cluster payment types.
 	PaymentTypes []string `pulumi:"paymentTypes"`
@@ -95,7 +96,8 @@ type GetClustersOutputArgs struct {
 	// A regex string to filter results by Cluster name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The next token is used to list clusters for next page.
-	NextToken  pulumi.StringPtrInput `pulumi:"nextToken"`
+	NextToken pulumi.StringPtrInput `pulumi:"nextToken"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The cluster payment types.
 	PaymentTypes pulumi.StringArrayInput `pulumi:"paymentTypes"`

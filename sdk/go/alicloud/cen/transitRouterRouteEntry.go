@@ -28,6 +28,9 @@ type TransitRouterRouteEntry struct {
 	pulumi.CustomResourceState
 
 	// The dry run.
+	//
+	// > **NOTE:** If transitRouterRouteEntryNextHopType is `Attachment`, transitRouterRouteEntryNextHopId is required.
+	// If transitRouterRouteEntryNextHopType is `BlackHole`, transitRouterRouteEntryNextHopId cannot be filled.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The associating status of the Transit Router.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -86,6 +89,9 @@ func GetTransitRouterRouteEntry(ctx *pulumi.Context,
 // Input properties used for looking up and filtering TransitRouterRouteEntry resources.
 type transitRouterRouteEntryState struct {
 	// The dry run.
+	//
+	// > **NOTE:** If transitRouterRouteEntryNextHopType is `Attachment`, transitRouterRouteEntryNextHopId is required.
+	// If transitRouterRouteEntryNextHopType is `BlackHole`, transitRouterRouteEntryNextHopId cannot be filled.
 	DryRun *bool `pulumi:"dryRun"`
 	// The associating status of the Transit Router.
 	Status *string `pulumi:"status"`
@@ -107,6 +113,9 @@ type transitRouterRouteEntryState struct {
 
 type TransitRouterRouteEntryState struct {
 	// The dry run.
+	//
+	// > **NOTE:** If transitRouterRouteEntryNextHopType is `Attachment`, transitRouterRouteEntryNextHopId is required.
+	// If transitRouterRouteEntryNextHopType is `BlackHole`, transitRouterRouteEntryNextHopId cannot be filled.
 	DryRun pulumi.BoolPtrInput
 	// The associating status of the Transit Router.
 	Status pulumi.StringPtrInput
@@ -132,6 +141,9 @@ func (TransitRouterRouteEntryState) ElementType() reflect.Type {
 
 type transitRouterRouteEntryArgs struct {
 	// The dry run.
+	//
+	// > **NOTE:** If transitRouterRouteEntryNextHopType is `Attachment`, transitRouterRouteEntryNextHopId is required.
+	// If transitRouterRouteEntryNextHopType is `BlackHole`, transitRouterRouteEntryNextHopId cannot be filled.
 	DryRun *bool `pulumi:"dryRun"`
 	// The description of the transit router route entry.
 	TransitRouterRouteEntryDescription *string `pulumi:"transitRouterRouteEntryDescription"`
@@ -150,6 +162,9 @@ type transitRouterRouteEntryArgs struct {
 // The set of arguments for constructing a TransitRouterRouteEntry resource.
 type TransitRouterRouteEntryArgs struct {
 	// The dry run.
+	//
+	// > **NOTE:** If transitRouterRouteEntryNextHopType is `Attachment`, transitRouterRouteEntryNextHopId is required.
+	// If transitRouterRouteEntryNextHopType is `BlackHole`, transitRouterRouteEntryNextHopId cannot be filled.
 	DryRun pulumi.BoolPtrInput
 	// The description of the transit router route entry.
 	TransitRouterRouteEntryDescription pulumi.StringPtrInput
@@ -253,6 +268,9 @@ func (o TransitRouterRouteEntryOutput) ToTransitRouterRouteEntryOutputWithContex
 }
 
 // The dry run.
+//
+// > **NOTE:** If transitRouterRouteEntryNextHopType is `Attachment`, transitRouterRouteEntryNextHopId is required.
+// If transitRouterRouteEntryNextHopType is `BlackHole`, transitRouterRouteEntryNextHopId cannot be filled.
 func (o TransitRouterRouteEntryOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TransitRouterRouteEntry) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }

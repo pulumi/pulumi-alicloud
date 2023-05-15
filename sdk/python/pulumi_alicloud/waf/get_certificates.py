@@ -138,6 +138,7 @@ def get_certificates(domain: Optional[str] = None,
     :param Sequence[str] ids: A list of Certificate IDs.
     :param str instance_id: WAF instance ID.
     :param str name_regex: A regex string to filter results by Certificate name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['domain'] = domain
@@ -190,5 +191,6 @@ def get_certificates_output(domain: Optional[pulumi.Input[Optional[str]]] = None
     :param Sequence[str] ids: A list of Certificate IDs.
     :param str instance_id: WAF instance ID.
     :param str name_regex: A regex string to filter results by Certificate name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

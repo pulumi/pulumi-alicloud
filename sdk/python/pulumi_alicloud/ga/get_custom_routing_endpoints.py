@@ -160,6 +160,7 @@ def get_custom_routing_endpoints(accelerator_id: Optional[str] = None,
     :param str endpoint_group_id: The ID of the endpoint group.
     :param Sequence[str] ids: A list of Custom Routing Endpoint IDs.
     :param str listener_id: The ID of the custom routing listener.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['acceleratorId'] = accelerator_id
@@ -216,5 +217,6 @@ def get_custom_routing_endpoints_output(accelerator_id: Optional[pulumi.Input[st
     :param str endpoint_group_id: The ID of the endpoint group.
     :param Sequence[str] ids: A list of Custom Routing Endpoint IDs.
     :param str listener_id: The ID of the custom routing listener.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

@@ -48,9 +48,23 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.httpsExt);
     }
 
+    /**
+     * A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+     * **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
+     * So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     * 
+     */
     @Import(name="instanceIds")
     private @Nullable Output<List<String>> instanceIds;
 
+    /**
+     * @return A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+     * **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
+     * So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     * 
+     */
     public Optional<Output<List<String>>> instanceIds() {
         return Optional.ofNullable(this.instanceIds);
     }
@@ -171,15 +185,42 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
             return httpsExt(Output.of(httpsExt));
         }
 
+        /**
+         * @param instanceIds A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+         * **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
+         * So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
+         * and you can use tolist to convert it to a list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceIds(@Nullable Output<List<String>> instanceIds) {
             $.instanceIds = instanceIds;
             return this;
         }
 
+        /**
+         * @param instanceIds A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+         * **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
+         * So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
+         * and you can use tolist to convert it to a list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceIds(List<String> instanceIds) {
             return instanceIds(Output.of(instanceIds));
         }
 
+        /**
+         * @param instanceIds A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+         * **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
+         * So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
+         * and you can use tolist to convert it to a list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceIds(String... instanceIds) {
             return instanceIds(List.of(instanceIds));
         }

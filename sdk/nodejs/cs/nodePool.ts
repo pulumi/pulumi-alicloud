@@ -316,7 +316,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `terraform plan`.
+ * Cluster nodepool can be imported using the id, e.g. Then complete the nodepool.tf accords to the result of `pulumi preview`.
  *
  * ```sh
  *  $ pulumi import alicloud:cs/nodePool:NodePool custom_nodepool cluster_id:nodepool_id
@@ -495,7 +495,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly rollingPolicy!: pulumi.Output<outputs.cs.NodePoolRollingPolicy | undefined>;
     /**
-     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
      *
      * @deprecated Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
      */
@@ -895,7 +895,7 @@ export interface NodePoolState {
      */
     rollingPolicy?: pulumi.Input<inputs.cs.NodePoolRollingPolicy>;
     /**
-     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
      *
      * @deprecated Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
      */
@@ -1146,7 +1146,7 @@ export interface NodePoolArgs {
      */
     rollingPolicy?: pulumi.Input<inputs.cs.NodePoolRollingPolicy>;
     /**
-     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
+     * Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rollingPolicy` to instead it from provider version 1.185.0.
      *
      * @deprecated Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect
      */

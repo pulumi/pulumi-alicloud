@@ -124,6 +124,7 @@ def get_transit_router_route_table_associations(ids: Optional[Sequence[str]] = N
 
 
     :param Sequence[str] ids: A list of CEN Transit Router Route Table Association IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the route table, including `Active`, `Associating`, `Dissociating`.
     :param str transit_router_route_table_id: ID of the route table of the VPC or VBR.
     """
@@ -167,6 +168,7 @@ def get_transit_router_route_table_associations_output(ids: Optional[pulumi.Inpu
 
 
     :param Sequence[str] ids: A list of CEN Transit Router Route Table Association IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the route table, including `Active`, `Associating`, `Dissociating`.
     :param str transit_router_route_table_id: ID of the route table of the VPC or VBR.
     """

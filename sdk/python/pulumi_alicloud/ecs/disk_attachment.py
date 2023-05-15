@@ -210,6 +210,10 @@ class DiskAttachment(pulumi.CustomResource):
                  password: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        > **DEPRECATED:** This resource has been renamed to ecs.EcsDiskAttachment from version 1.122.0.
+
+        Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
+
         ## Example Usage
 
         Basic usage
@@ -261,6 +265,10 @@ class DiskAttachment(pulumi.CustomResource):
                  args: DiskAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **DEPRECATED:** This resource has been renamed to ecs.EcsDiskAttachment from version 1.122.0.
+
+        Provides an Alicloud ECS Disk Attachment as a resource, to attach and detach disks from ECS Instances.
+
         ## Example Usage
 
         Basic usage

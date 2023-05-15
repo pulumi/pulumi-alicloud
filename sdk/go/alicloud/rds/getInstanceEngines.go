@@ -65,7 +65,8 @@ type GetInstanceEnginesArgs struct {
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Whether to show multi available zone. Default false to not show multi availability zone.
-	MultiZone  *bool   `pulumi:"multiZone"`
+	MultiZone *bool `pulumi:"multiZone"`
+	// File name where to save data source results (after running `pulumi up`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The Zone to launch the DB instance.
 	ZoneId *string `pulumi:"zoneId"`
@@ -118,7 +119,8 @@ type GetInstanceEnginesOutputArgs struct {
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`
 	// Whether to show multi available zone. Default false to not show multi availability zone.
-	MultiZone  pulumi.BoolPtrInput   `pulumi:"multiZone"`
+	MultiZone pulumi.BoolPtrInput `pulumi:"multiZone"`
+	// File name where to save data source results (after running `pulumi up`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The Zone to launch the DB instance.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`

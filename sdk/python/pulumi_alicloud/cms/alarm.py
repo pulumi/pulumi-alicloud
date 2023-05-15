@@ -60,6 +60,8 @@ class AlarmArgs:
         :param pulumi.Input[int] start_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         :param pulumi.Input[str] statistics: It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+               
+               > **NOTE:** Each resource supports the creation of one of the following three levels.
         :param pulumi.Input[str] threshold: It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
         :param pulumi.Input[int] triggered_count: It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
@@ -349,6 +351,8 @@ class AlarmArgs:
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
+
+        > **NOTE:** Each resource supports the creation of one of the following three levels.
         """
         return pulumi.get(self, "tags")
 
@@ -442,6 +446,8 @@ class _AlarmState:
         :param pulumi.Input[str] statistics: It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
         :param pulumi.Input[str] status: The current alarm rule status.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+               
+               > **NOTE:** Each resource supports the creation of one of the following three levels.
         :param pulumi.Input[str] threshold: It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
         :param pulumi.Input[int] triggered_count: It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
@@ -748,6 +754,8 @@ class _AlarmState:
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
+
+        > **NOTE:** Each resource supports the creation of one of the following three levels.
         """
         return pulumi.get(self, "tags")
 
@@ -877,6 +885,8 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[int] start_time: It has been deprecated from provider version 1.50.0 and 'effective_interval' instead.
         :param pulumi.Input[str] statistics: It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+               
+               > **NOTE:** Each resource supports the creation of one of the following three levels.
         :param pulumi.Input[str] threshold: It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
         :param pulumi.Input[int] triggered_count: It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
@@ -1079,6 +1089,8 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[str] statistics: It has been deprecated from provider version 1.94.0 and 'escalations_critical.statistics' instead.
         :param pulumi.Input[str] status: The current alarm rule status.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+               
+               > **NOTE:** Each resource supports the creation of one of the following three levels.
         :param pulumi.Input[str] threshold: It has been deprecated from provider version 1.94.0 and 'escalations_critical.threshold' instead.
         :param pulumi.Input[int] triggered_count: It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
@@ -1270,6 +1282,8 @@ class Alarm(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A mapping of tags to assign to the resource.
+
+        > **NOTE:** Each resource supports the creation of one of the following three levels.
         """
         return pulumi.get(self, "tags")
 

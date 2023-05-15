@@ -20,6 +20,8 @@ class BandwidthLimitArgs:
         """
         The set of arguments for constructing a BandwidthLimit resource.
         :param pulumi.Input[int] bandwidth_limit: The bandwidth configured for the interconnected regions communication.
+               
+               ->**NOTE:** The "alicloud_cen_bandwidthlimit" resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: List of the two regions to interconnect. Must be two different regions.
         """
@@ -32,6 +34,8 @@ class BandwidthLimitArgs:
     def bandwidth_limit(self) -> pulumi.Input[int]:
         """
         The bandwidth configured for the interconnected regions communication.
+
+        ->**NOTE:** The "alicloud_cen_bandwidthlimit" resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
         """
         return pulumi.get(self, "bandwidth_limit")
 
@@ -73,6 +77,8 @@ class _BandwidthLimitState:
         """
         Input properties used for looking up and filtering BandwidthLimit resources.
         :param pulumi.Input[int] bandwidth_limit: The bandwidth configured for the interconnected regions communication.
+               
+               ->**NOTE:** The "alicloud_cen_bandwidthlimit" resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: List of the two regions to interconnect. Must be two different regions.
         """
@@ -88,6 +94,8 @@ class _BandwidthLimitState:
     def bandwidth_limit(self) -> Optional[pulumi.Input[int]]:
         """
         The bandwidth configured for the interconnected regions communication.
+
+        ->**NOTE:** The "alicloud_cen_bandwidthlimit" resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
         """
         return pulumi.get(self, "bandwidth_limit")
 
@@ -201,6 +209,8 @@ class BandwidthLimit(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bandwidth_limit: The bandwidth configured for the interconnected regions communication.
+               
+               ->**NOTE:** The "alicloud_cen_bandwidthlimit" resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: List of the two regions to interconnect. Must be two different regions.
         """
@@ -336,6 +346,8 @@ class BandwidthLimit(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bandwidth_limit: The bandwidth configured for the interconnected regions communication.
+               
+               ->**NOTE:** The "alicloud_cen_bandwidthlimit" resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: List of the two regions to interconnect. Must be two different regions.
         """
@@ -353,6 +365,8 @@ class BandwidthLimit(pulumi.CustomResource):
     def bandwidth_limit(self) -> pulumi.Output[int]:
         """
         The bandwidth configured for the interconnected regions communication.
+
+        ->**NOTE:** The "alicloud_cen_bandwidthlimit" resource depends on the related "cen.BandwidthPackageAttachment" resource and "cen.InstanceAttachment" resource.
         """
         return pulumi.get(self, "bandwidth_limit")
 

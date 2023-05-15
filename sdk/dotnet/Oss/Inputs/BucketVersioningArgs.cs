@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Oss.Inputs
     {
         /// <summary>
         /// Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
+        /// 
+        /// `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
         /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;

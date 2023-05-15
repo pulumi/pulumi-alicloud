@@ -100,6 +100,8 @@ export class RouteService extends pulumi.CustomResource {
     public readonly hostRegionId!: pulumi.Output<string>;
     /**
      * The VPC associated with the cloud service.
+     *
+     * > **NOTE:** The values of `hostRegionId` and `accessRegionId` must be consistent.
      */
     public readonly hostVpcId!: pulumi.Output<string>;
     /**
@@ -183,6 +185,8 @@ export interface RouteServiceState {
     hostRegionId?: pulumi.Input<string>;
     /**
      * The VPC associated with the cloud service.
+     *
+     * > **NOTE:** The values of `hostRegionId` and `accessRegionId` must be consistent.
      */
     hostVpcId?: pulumi.Input<string>;
     /**
@@ -217,6 +221,8 @@ export interface RouteServiceArgs {
     hostRegionId: pulumi.Input<string>;
     /**
      * The VPC associated with the cloud service.
+     *
+     * > **NOTE:** The values of `hostRegionId` and `accessRegionId` must be consistent.
      */
     hostVpcId: pulumi.Input<string>;
 }

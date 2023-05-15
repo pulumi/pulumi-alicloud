@@ -97,7 +97,8 @@ type GetServerGroupsArgs struct {
 	// ID of the SLB.
 	LoadBalancerId string `pulumi:"loadBalancerId"`
 	// A regex string to filter results by VServer group name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -136,7 +137,8 @@ type GetServerGroupsOutputArgs struct {
 	// ID of the SLB.
 	LoadBalancerId pulumi.StringInput `pulumi:"loadBalancerId"`
 	// A regex string to filter results by VServer group name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

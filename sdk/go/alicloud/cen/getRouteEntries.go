@@ -53,7 +53,8 @@ type GetRouteEntriesArgs struct {
 	// The destination CIDR block of the route entry to query.
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// ID of the CEN instance.
-	InstanceId string  `pulumi:"instanceId"`
+	InstanceId string `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// ID of the route table of the VPC or VBR.
 	RouteTableId string `pulumi:"routeTableId"`
@@ -92,7 +93,8 @@ type GetRouteEntriesOutputArgs struct {
 	// The destination CIDR block of the route entry to query.
 	CidrBlock pulumi.StringPtrInput `pulumi:"cidrBlock"`
 	// ID of the CEN instance.
-	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// ID of the route table of the VPC or VBR.
 	RouteTableId pulumi.StringInput `pulumi:"routeTableId"`

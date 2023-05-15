@@ -17,6 +17,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a DNS Record resource.
+ * 
+ * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.85.0`. Please use new resource alicloud_alidns_record.
+ * 
+ * &gt; **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;

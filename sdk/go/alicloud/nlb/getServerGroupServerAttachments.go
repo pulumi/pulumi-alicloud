@@ -56,8 +56,9 @@ func GetServerGroupServerAttachments(ctx *pulumi.Context, args *GetServerGroupSe
 // A collection of arguments for invoking getServerGroupServerAttachments.
 type GetServerGroupServerAttachmentsArgs struct {
 	// A list of Server Group Server Attachment IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the server group.
 	ServerGroupId *string `pulumi:"serverGroupId"`
 	// The IDs of the servers. You can specify at most 40 server IDs in each call.
@@ -94,8 +95,9 @@ func GetServerGroupServerAttachmentsOutput(ctx *pulumi.Context, args GetServerGr
 // A collection of arguments for invoking getServerGroupServerAttachments.
 type GetServerGroupServerAttachmentsOutputArgs struct {
 	// A list of Server Group Server Attachment IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the server group.
 	ServerGroupId pulumi.StringPtrInput `pulumi:"serverGroupId"`
 	// The IDs of the servers. You can specify at most 40 server IDs in each call.

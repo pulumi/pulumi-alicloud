@@ -91,6 +91,20 @@ class ScalingConfigurationArgs:
         :param pulumi.Input[str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]] spot_price_limits: Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+               
+               > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+               
+               > **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+               
+               > **NOTE:** Restrictions on attaching ECS instances:
+               
+               - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+               - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+               - The attached ECS instances must in the running state.
+               - The attached ECS instances has not been attached to other scaling groups.
+               - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+               
+               > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input[str] substitute: The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
@@ -560,6 +574,20 @@ class ScalingConfigurationArgs:
     def spot_price_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]]:
         """
         Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+
+        > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+
+        > **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+
+        > **NOTE:** Restrictions on attaching ECS instances:
+
+        - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+        - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+        - The attached ECS instances must in the running state.
+        - The attached ECS instances has not been attached to other scaling groups.
+        - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+
+        > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
         """
         return pulumi.get(self, "spot_price_limits")
 
@@ -780,6 +808,20 @@ class _ScalingConfigurationState:
         :param pulumi.Input[str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]] spot_price_limits: Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+               
+               > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+               
+               > **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+               
+               > **NOTE:** Restrictions on attaching ECS instances:
+               
+               - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+               - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+               - The attached ECS instances must in the running state.
+               - The attached ECS instances has not been attached to other scaling groups.
+               - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+               
+               > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input[str] substitute: The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
@@ -1250,6 +1292,20 @@ class _ScalingConfigurationState:
     def spot_price_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]]:
         """
         Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+
+        > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+
+        > **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+
+        > **NOTE:** Restrictions on attaching ECS instances:
+
+        - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+        - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+        - The attached ECS instances must in the running state.
+        - The attached ECS instances has not been attached to other scaling groups.
+        - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+
+        > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
         """
         return pulumi.get(self, "spot_price_limits")
 
@@ -1441,6 +1497,98 @@ class ScalingConfiguration(pulumi.CustomResource):
                  user_data: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Provides a ESS scaling configuration resource.
+
+        > **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `is_outdated` to true. For more about the upgraded instance type, refer to `ecs_get_instance_types` datasource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "essscalingconfiguration"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=2,
+            memory_size=4)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
+            type="ingress",
+            ip_protocol="tcp",
+            nic_type="intranet",
+            policy="accept",
+            port_range="22/22",
+            priority=1,
+            security_group_id=default_security_group.id,
+            cidr_ip="172.16.0.0/24")
+        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+            min_size=1,
+            max_size=1,
+            scaling_group_name=name,
+            removal_policies=[
+                "OldestInstance",
+                "NewestInstance",
+            ],
+            vswitch_ids=[default_switch.id])
+        default_scaling_configuration = alicloud.ess.ScalingConfiguration("defaultScalingConfiguration",
+            scaling_group_id=default_scaling_group.id,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_group_id=default_security_group.id,
+            force_delete=True,
+            active=True)
+        ```
+        ## Module Support
+
+        You can use to the existing autoscaling module
+        to create a configuration, scaling group and lifecycle hook one-click.
+
+        ## Block datadisk
+
+        The datadisk mapping supports the following:
+
+        * `size` - (Optional) Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
+        * `device` - (Optional, Available in 1.92.0+) The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
+        * `category` - (Optional) Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` and `cloud`.
+        * `snapshot_id` - (Optional) Snapshot used for creating the data disk. If this parameter is specified, the size parameter is neglected, and the size of the created disk is the size of the snapshot.
+        * `delete_with_instance` - (Optional) Whether to delete data disks attached on ecs when release ecs instance. Optional value: `true` or `false`, default to `true`.
+        * `encrypted` - (Optional, Available in 1.92.0+) Specifies whether data disk N is to be encrypted. Valid values of N: 1 to 16. Valid values: `true`: encrypted, `false`: not encrypted. Default value: `false`.
+        * `kms_key_id` - (Optional, Available in 1.92.0+) The CMK ID for data disk N. Valid values of N: 1 to 16.
+        * `name` - (Optional, Available in 1.92.0+) The name of data disk N. Valid values of N: 1 to 16. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+        * `description` - (Optional, Available in 1.92.0+) The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        * `auto_snapshot_policy_id` - (Optional, Available in 1.92.0+) The id of auto snapshot policy for data disk.
+        * `performance_level` - (Optional, Available in 1.124.3+) The performance level of the ESSD used as data disk.
+
+        ## Block instancePatternInfo
+
+        The instancePatternInfo mapping supports the following:
+
+        * `cores` - (Optional) The number of vCPUs that are specified for an instance type in instancePatternInfo.
+        * `instance_family_level` - (Optional) The instance family level in instancePatternInfo.
+        * `max_price` - (Optional) The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+        * `memory` - (Optional) The memory size that is specified for an instance type in instancePatternInfo.
+
+        ## Block spotPriceLimit
+
+        The spotPriceLimit mapping supports the following:
+
+        * `instance_type` - (Optional, Available in 1.151.0+) Resource type of an ECS instance.
+        * `price_limit` - (Optional, Available in 1.151.0+) Price limit hourly of instance type, 2 decimals is allowed at most.
+
         ## Import
 
         ESS scaling configuration can be imported using the id, e.g.
@@ -1482,6 +1630,20 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationSpotPriceLimitArgs']]]] spot_price_limits: Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+               
+               > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+               
+               > **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+               
+               > **NOTE:** Restrictions on attaching ECS instances:
+               
+               - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+               - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+               - The attached ECS instances must in the running state.
+               - The attached ECS instances has not been attached to other scaling groups.
+               - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+               
+               > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input[str] substitute: The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
@@ -1503,6 +1665,98 @@ class ScalingConfiguration(pulumi.CustomResource):
                  args: ScalingConfigurationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a ESS scaling configuration resource.
+
+        > **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `is_outdated` to true. For more about the upgraded instance type, refer to `ecs_get_instance_types` datasource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "essscalingconfiguration"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=2,
+            memory_size=4)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
+            type="ingress",
+            ip_protocol="tcp",
+            nic_type="intranet",
+            policy="accept",
+            port_range="22/22",
+            priority=1,
+            security_group_id=default_security_group.id,
+            cidr_ip="172.16.0.0/24")
+        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+            min_size=1,
+            max_size=1,
+            scaling_group_name=name,
+            removal_policies=[
+                "OldestInstance",
+                "NewestInstance",
+            ],
+            vswitch_ids=[default_switch.id])
+        default_scaling_configuration = alicloud.ess.ScalingConfiguration("defaultScalingConfiguration",
+            scaling_group_id=default_scaling_group.id,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_group_id=default_security_group.id,
+            force_delete=True,
+            active=True)
+        ```
+        ## Module Support
+
+        You can use to the existing autoscaling module
+        to create a configuration, scaling group and lifecycle hook one-click.
+
+        ## Block datadisk
+
+        The datadisk mapping supports the following:
+
+        * `size` - (Optional) Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
+        * `device` - (Optional, Available in 1.92.0+) The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
+        * `category` - (Optional) Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` and `cloud`.
+        * `snapshot_id` - (Optional) Snapshot used for creating the data disk. If this parameter is specified, the size parameter is neglected, and the size of the created disk is the size of the snapshot.
+        * `delete_with_instance` - (Optional) Whether to delete data disks attached on ecs when release ecs instance. Optional value: `true` or `false`, default to `true`.
+        * `encrypted` - (Optional, Available in 1.92.0+) Specifies whether data disk N is to be encrypted. Valid values of N: 1 to 16. Valid values: `true`: encrypted, `false`: not encrypted. Default value: `false`.
+        * `kms_key_id` - (Optional, Available in 1.92.0+) The CMK ID for data disk N. Valid values of N: 1 to 16.
+        * `name` - (Optional, Available in 1.92.0+) The name of data disk N. Valid values of N: 1 to 16. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+        * `description` - (Optional, Available in 1.92.0+) The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        * `auto_snapshot_policy_id` - (Optional, Available in 1.92.0+) The id of auto snapshot policy for data disk.
+        * `performance_level` - (Optional, Available in 1.124.3+) The performance level of the ESSD used as data disk.
+
+        ## Block instancePatternInfo
+
+        The instancePatternInfo mapping supports the following:
+
+        * `cores` - (Optional) The number of vCPUs that are specified for an instance type in instancePatternInfo.
+        * `instance_family_level` - (Optional) The instance family level in instancePatternInfo.
+        * `max_price` - (Optional) The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+        * `memory` - (Optional) The memory size that is specified for an instance type in instancePatternInfo.
+
+        ## Block spotPriceLimit
+
+        The spotPriceLimit mapping supports the following:
+
+        * `instance_type` - (Optional, Available in 1.151.0+) Resource type of an ECS instance.
+        * `price_limit` - (Optional, Available in 1.151.0+) Price limit hourly of instance type, 2 decimals is allowed at most.
+
         ## Import
 
         ESS scaling configuration can be imported using the id, e.g.
@@ -1717,6 +1971,20 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationSpotPriceLimitArgs']]]] spot_price_limits: Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+               
+               > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+               
+               > **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+               
+               > **NOTE:** Restrictions on attaching ECS instances:
+               
+               - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+               - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+               - The attached ECS instances must in the running state.
+               - The attached ECS instances has not been attached to other scaling groups.
+               - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+               
+               > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input[str] substitute: The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
@@ -2024,6 +2292,20 @@ class ScalingConfiguration(pulumi.CustomResource):
     def spot_price_limits(self) -> pulumi.Output[Optional[Sequence['outputs.ScalingConfigurationSpotPriceLimit']]]:
         """
         Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+
+        > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+
+        > **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+
+        > **NOTE:** Restrictions on attaching ECS instances:
+
+        - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+        - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+        - The attached ECS instances must in the running state.
+        - The attached ECS instances has not been attached to other scaling groups.
+        - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+
+        > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
         """
         return pulumi.get(self, "spot_price_limits")
 

@@ -169,17 +169,9 @@ public class EcsKeyPair extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> resourceGroupId() {
         return Codegen.optional(this.resourceGroupId);
     }
-    /**
-     * A mapping of tags to assign to the resource.
-     * 
-     */
     @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> tags;
 
-    /**
-     * @return A mapping of tags to assign to the resource.
-     * 
-     */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }

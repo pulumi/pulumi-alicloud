@@ -138,6 +138,7 @@ def get_hybrid_monitor_datas(end: Optional[str] = None,
 
     :param str end: The timestamp that specifies the end of the time range to query.
     :param str namespace: The name of the namespace.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str period: The interval at which monitoring data is collected. Unit: seconds.
     :param str prom_sql: The name of the metric. Note PromQL statements are supported.
     :param str start: The timestamp that specifies the beginning of the time range to query.
@@ -194,6 +195,7 @@ def get_hybrid_monitor_datas_output(end: Optional[pulumi.Input[str]] = None,
 
     :param str end: The timestamp that specifies the end of the time range to query.
     :param str namespace: The name of the namespace.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str period: The interval at which monitoring data is collected. Unit: seconds.
     :param str prom_sql: The name of the metric. Note PromQL statements are supported.
     :param str start: The timestamp that specifies the beginning of the time range to query.

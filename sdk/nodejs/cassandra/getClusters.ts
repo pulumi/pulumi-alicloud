@@ -47,6 +47,9 @@ export interface GetClustersArgs {
      * A regex string to apply to the cluster name.
      */
     nameRegex?: string;
+    /**
+     * The name of file that can save the collection of clusters after running `pulumi preview`.
+     */
     outputFile?: string;
     /**
      * A mapping of tags to assign to the resource.
@@ -114,6 +117,9 @@ export interface GetClustersOutputArgs {
      * A regex string to apply to the cluster name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * The name of file that can save the collection of clusters after running `pulumi preview`.
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.

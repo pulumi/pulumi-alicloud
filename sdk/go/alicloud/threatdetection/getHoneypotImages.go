@@ -57,8 +57,9 @@ type GetHoneypotImagesArgs struct {
 	// A list of Honeypot Image IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Honeypot mirror nam.
-	NameRegex  *string `pulumi:"nameRegex"`
-	NodeId     *string `pulumi:"nodeId"`
+	NameRegex *string `pulumi:"nameRegex"`
+	NodeId    *string `pulumi:"nodeId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -95,8 +96,9 @@ type GetHoneypotImagesOutputArgs struct {
 	// A list of Honeypot Image IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Honeypot mirror nam.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
-	NodeId     pulumi.StringPtrInput `pulumi:"nodeId"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NodeId    pulumi.StringPtrInput `pulumi:"nodeId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

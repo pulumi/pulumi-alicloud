@@ -10,6 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:**  This resource  has been deprecated from version `1.84.0`. Please use new resource alicloud_alidns_domain_group.
+//
+// Provides a DNS Group resource.
+//
 // ## Example Usage
 //
 // ```go

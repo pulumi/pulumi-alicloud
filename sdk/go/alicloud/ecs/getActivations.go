@@ -55,9 +55,10 @@ type GetActivationsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// The default prefix of the instance name.
 	InstanceName *string `pulumi:"instanceName"`
-	OutputFile   *string `pulumi:"outputFile"`
-	PageNumber   *int    `pulumi:"pageNumber"`
-	PageSize     *int    `pulumi:"pageSize"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
 }
 
 // A collection of values returned by getActivations.
@@ -92,9 +93,10 @@ type GetActivationsOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The default prefix of the instance name.
 	InstanceName pulumi.StringPtrInput `pulumi:"instanceName"`
-	OutputFile   pulumi.StringPtrInput `pulumi:"outputFile"`
-	PageNumber   pulumi.IntPtrInput    `pulumi:"pageNumber"`
-	PageSize     pulumi.IntPtrInput    `pulumi:"pageSize"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 }
 
 func (GetActivationsOutputArgs) ElementType() reflect.Type {

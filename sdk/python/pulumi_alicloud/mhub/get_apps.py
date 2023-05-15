@@ -157,6 +157,7 @@ def get_apps(enable_details: Optional[bool] = None,
     :param Sequence[str] ids: A list of App IDs. The value formats as `<product_id>:<app_key>`
     :param str name_regex: A regex string to filter results by App name.
     :param str os_type: The os type. Valid values: `Android` and `iOS`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_id: The ID of the Product.
     """
     __args__ = dict()
@@ -222,6 +223,7 @@ def get_apps_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = Non
     :param Sequence[str] ids: A list of App IDs. The value formats as `<product_id>:<app_key>`
     :param str name_regex: A regex string to filter results by App name.
     :param str os_type: The os type. Valid values: `Android` and `iOS`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_id: The ID of the Product.
     """
     ...

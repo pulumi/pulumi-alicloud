@@ -20,6 +20,105 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Alicloud Function Compute Service resource. The resource is the base of launching Function and Trigger configuration.
+ *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/doc-detail/52895.htm).
+ * 
+ * &gt; **NOTE:** The resource requires a provider field &#39;account_id&#39;. See account_id.
+ * 
+ * &gt; **NOTE:** If you happen the error &#34;Argument &#39;internetAccess&#39; is not supported&#34;, you need to log on web console and click button &#34;Apply VPC Function&#34;
+ * which is in the upper of [Function Service Web Console](https://fc.console.aliyun.com/) page.
+ * 
+ * &gt; **NOTE:** Currently not all regions support Function Compute Service.
+ * For more details supported regions, see [Service endpoints](https://www.alibabacloud.com/help/doc-detail/52984.htm)
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
+ * import com.pulumi.alicloud.ram.Role;
+ * import com.pulumi.alicloud.ram.RoleArgs;
+ * import com.pulumi.alicloud.ram.RolePolicyAttachment;
+ * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
+ * import com.pulumi.alicloud.fc.Service;
+ * import com.pulumi.alicloud.fc.ServiceArgs;
+ * import com.pulumi.alicloud.fc.inputs.ServiceLogConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testaccalicloudfcservice&#34;);
+ *         var fooProject = new Project(&#34;fooProject&#34;);
+ * 
+ *         var fooStore = new Store(&#34;fooStore&#34;, StoreArgs.builder()        
+ *             .project(fooProject.name())
+ *             .build());
+ * 
+ *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+ *             .document(&#34;&#34;&#34;
+ *   {
+ *       &#34;Statement&#34;: [
+ *         {
+ *           &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
+ *           &#34;Effect&#34;: &#34;Allow&#34;,
+ *           &#34;Principal&#34;: {
+ *             &#34;Service&#34;: [
+ *               &#34;fc.aliyuncs.com&#34;
+ *             ]
+ *           }
+ *         }
+ *       ],
+ *       &#34;Version&#34;: &#34;1&#34;
+ *   }
+ *             &#34;&#34;&#34;)
+ *             .description(&#34;this is a test&#34;)
+ *             .force(true)
+ *             .build());
+ * 
+ *         var attach = new RolePolicyAttachment(&#34;attach&#34;, RolePolicyAttachmentArgs.builder()        
+ *             .roleName(role.name())
+ *             .policyName(&#34;AliyunLogFullAccess&#34;)
+ *             .policyType(&#34;System&#34;)
+ *             .build());
+ * 
+ *         var fooService = new Service(&#34;fooService&#34;, ServiceArgs.builder()        
+ *             .description(&#34;tf unit test&#34;)
+ *             .role(role.arn())
+ *             .logConfig(ServiceLogConfigArgs.builder()
+ *                 .project(fooProject.name())
+ *                 .logstore(fooStore.name())
+ *                 .enableInstanceMetrics(true)
+ *                 .enableRequestMetrics(true)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(attach)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Module Support
+ * 
+ * You can use to the existing fc module to create a service and a function quickly and then set several triggers for it.
+ * 
  * ## Import
  * 
  * Function Compute Service can be imported using the id or name, e.g.

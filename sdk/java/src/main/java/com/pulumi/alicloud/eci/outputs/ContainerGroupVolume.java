@@ -62,6 +62,8 @@ public final class ContainerGroupVolume {
     /**
      * @return The address of the NFS server.
      * 
+     * &gt; **NOTE:** Every volumes mounted must have name and type attributes.
+     * 
      */
     private @Nullable String nfsVolumeServer;
     /**
@@ -136,6 +138,8 @@ public final class ContainerGroupVolume {
     }
     /**
      * @return The address of the NFS server.
+     * 
+     * &gt; **NOTE:** Every volumes mounted must have name and type attributes.
      * 
      */
     public Optional<String> nfsVolumeServer() {

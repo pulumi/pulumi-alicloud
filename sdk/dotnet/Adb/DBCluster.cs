@@ -185,6 +185,10 @@ namespace Pulumi.AliCloud.Adb
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
+        /// <summary>
+        /// The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
@@ -222,6 +226,8 @@ namespace Pulumi.AliCloud.Adb
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// 
+        /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -380,6 +386,10 @@ namespace Pulumi.AliCloud.Adb
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
+        /// <summary>
+        /// The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -414,6 +424,8 @@ namespace Pulumi.AliCloud.Adb
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// 
+        /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -543,6 +555,10 @@ namespace Pulumi.AliCloud.Adb
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
+        /// <summary>
+        /// The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
+        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -589,6 +605,8 @@ namespace Pulumi.AliCloud.Adb
         /// A mapping of tags to assign to the resource.
         /// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
         /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
+        /// 
+        /// &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
         /// </summary>
         public InputMap<object> Tags
         {

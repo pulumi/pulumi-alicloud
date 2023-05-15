@@ -55,6 +55,9 @@ export interface GetKeyPairsArgs {
      * A regex string to filter results by Key Pair name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -114,5 +117,8 @@ export interface GetKeyPairsOutputArgs {
      * A regex string to filter results by Key Pair name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

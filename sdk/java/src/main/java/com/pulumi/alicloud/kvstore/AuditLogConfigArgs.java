@@ -22,6 +22,8 @@ public final class AuditLogConfigArgs extends com.pulumi.resources.ResourceArgs 
      * * true: Default Value, Open.
      * * false: Closed.
      * 
+     * Note: When the Instance for the Cluster Architecture Or Read/Write Split Architecture, at the Same Time to Open Or Close the Data Node and the Proxy Node of the Audit Log Doesn&#39;t Support Separate Open.
+     * 
      */
     @Import(name="dbAudit")
     private @Nullable Output<Boolean> dbAudit;
@@ -30,6 +32,8 @@ public final class AuditLogConfigArgs extends com.pulumi.resources.ResourceArgs 
      * @return Indicates Whether to Enable the Audit Log.  Valid value:
      * * true: Default Value, Open.
      * * false: Closed.
+     * 
+     * Note: When the Instance for the Cluster Architecture Or Read/Write Split Architecture, at the Same Time to Open Or Close the Data Node and the Proxy Node of the Audit Log Doesn&#39;t Support Separate Open.
      * 
      */
     public Optional<Output<Boolean>> dbAudit() {
@@ -54,12 +58,16 @@ public final class AuditLogConfigArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * Audit Log Retention Period Value: 1~365.
      * 
+     * &gt; **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
+     * 
      */
     @Import(name="retention")
     private @Nullable Output<Integer> retention;
 
     /**
      * @return Audit Log Retention Period Value: 1~365.
+     * 
+     * &gt; **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
      * 
      */
     public Optional<Output<Integer>> retention() {
@@ -97,6 +105,8 @@ public final class AuditLogConfigArgs extends com.pulumi.resources.ResourceArgs 
          * * true: Default Value, Open.
          * * false: Closed.
          * 
+         * Note: When the Instance for the Cluster Architecture Or Read/Write Split Architecture, at the Same Time to Open Or Close the Data Node and the Proxy Node of the Audit Log Doesn&#39;t Support Separate Open.
+         * 
          * @return builder
          * 
          */
@@ -109,6 +119,8 @@ public final class AuditLogConfigArgs extends com.pulumi.resources.ResourceArgs 
          * @param dbAudit Indicates Whether to Enable the Audit Log.  Valid value:
          * * true: Default Value, Open.
          * * false: Closed.
+         * 
+         * Note: When the Instance for the Cluster Architecture Or Read/Write Split Architecture, at the Same Time to Open Or Close the Data Node and the Proxy Node of the Audit Log Doesn&#39;t Support Separate Open.
          * 
          * @return builder
          * 
@@ -141,6 +153,8 @@ public final class AuditLogConfigArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param retention Audit Log Retention Period Value: 1~365.
          * 
+         * &gt; **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
+         * 
          * @return builder
          * 
          */
@@ -151,6 +165,8 @@ public final class AuditLogConfigArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param retention Audit Log Retention Period Value: 1~365.
+         * 
+         * &gt; **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
          * 
          * @return builder
          * 

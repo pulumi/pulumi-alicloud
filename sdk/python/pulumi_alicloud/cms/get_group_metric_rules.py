@@ -191,6 +191,7 @@ def get_group_metric_rules(dimensions: Optional[str] = None,
     :param str metric_name: The name of the metric.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
     :param str namespace: The namespace of the service.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of Group Metric Rule..
     """
     __args__ = dict()
@@ -262,6 +263,7 @@ def get_group_metric_rules_output(dimensions: Optional[pulumi.Input[Optional[str
     :param str metric_name: The name of the metric.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
     :param str namespace: The namespace of the service.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of Group Metric Rule..
     """
     ...

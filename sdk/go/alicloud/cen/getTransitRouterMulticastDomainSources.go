@@ -51,8 +51,9 @@ func GetTransitRouterMulticastDomainSources(ctx *pulumi.Context, args *GetTransi
 
 // A collection of arguments for invoking getTransitRouterMulticastDomainSources.
 type GetTransitRouterMulticastDomainSourcesArgs struct {
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the multicast domain to which the multicast source belongs.
 	TransitRouterMulticastDomainId string `pulumi:"transitRouterMulticastDomainId"`
 }
@@ -84,8 +85,9 @@ func GetTransitRouterMulticastDomainSourcesOutput(ctx *pulumi.Context, args GetT
 
 // A collection of arguments for invoking getTransitRouterMulticastDomainSources.
 type GetTransitRouterMulticastDomainSourcesOutputArgs struct {
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the multicast domain to which the multicast source belongs.
 	TransitRouterMulticastDomainId pulumi.StringInput `pulumi:"transitRouterMulticastDomainId"`
 }

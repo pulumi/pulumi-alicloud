@@ -49,6 +49,9 @@ export interface GetIpSetsArgs {
      * A list of Ip Set IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the acceleration region.
@@ -106,6 +109,9 @@ export interface GetIpSetsOutputArgs {
      * A list of Ip Set IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the acceleration region.

@@ -66,7 +66,8 @@ type GetInstancesArgs struct {
 	// The network type of the instance.
 	InstanceNetworkType *string `pulumi:"instanceNetworkType"`
 	// A regex string to apply to the instance name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -129,7 +130,8 @@ type GetInstancesOutputArgs struct {
 	// The network type of the instance.
 	InstanceNetworkType pulumi.StringPtrInput `pulumi:"instanceNetworkType"`
 	// A regex string to apply to the instance name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`

@@ -182,6 +182,7 @@ def get_instance_types(cluster_type: Optional[str] = None,
     :param str destination_resource: The destination resource of emr cluster instance
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param str instance_type: Filter the specific ecs instance type to create emr cluster.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param bool support_local_storage: Whether the current storage disk is local or not.
     :param Sequence[str] support_node_types: The specific supported node type list.
            Possible values may be any one or combination of these: ["MASTER", "CORE", "TASK", "GATEWAY"]
@@ -252,6 +253,7 @@ def get_instance_types_output(cluster_type: Optional[pulumi.Input[str]] = None,
     :param str destination_resource: The destination resource of emr cluster instance
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param str instance_type: Filter the specific ecs instance type to create emr cluster.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param bool support_local_storage: Whether the current storage disk is local or not.
     :param Sequence[str] support_node_types: The specific supported node type list.
            Possible values may be any one or combination of these: ["MASTER", "CORE", "TASK", "GATEWAY"]

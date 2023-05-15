@@ -65,7 +65,8 @@ type GetVpcFlowLogsArgs struct {
 	// The log store name.
 	LogStoreName *string `pulumi:"logStoreName"`
 	// A regex string to filter results by Flow Log name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The project name.
 	ProjectName *string `pulumi:"projectName"`
@@ -122,7 +123,8 @@ type GetVpcFlowLogsOutputArgs struct {
 	// The log store name.
 	LogStoreName pulumi.StringPtrInput `pulumi:"logStoreName"`
 	// A regex string to filter results by Flow Log name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The project name.
 	ProjectName pulumi.StringPtrInput `pulumi:"projectName"`

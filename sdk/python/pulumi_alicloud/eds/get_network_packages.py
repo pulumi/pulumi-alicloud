@@ -111,6 +111,7 @@ def get_network_packages(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Network Package IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
     """
     __args__ = dict()
@@ -159,6 +160,7 @@ def get_network_packages_output(ids: Optional[pulumi.Input[Optional[Sequence[str
 
 
     :param Sequence[str] ids: A list of Network Package IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
     """
     ...

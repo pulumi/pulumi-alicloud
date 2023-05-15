@@ -189,6 +189,7 @@ def get_monitor_groups(dynamic_tag_rule_id: Optional[str] = None,
     :param str keyword: The keyword to be matched.
     :param str monitor_group_name: The name of the application group.
     :param str name_regex: A regex string to filter results by Monitor Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param bool select_contact_groups: The select contact groups.
     :param Mapping[str, Any] tags: A map of tags assigned to the Cms Monitor Group.
     :param str type: The type of the application group.
@@ -260,6 +261,7 @@ def get_monitor_groups_output(dynamic_tag_rule_id: Optional[pulumi.Input[Optiona
     :param str keyword: The keyword to be matched.
     :param str monitor_group_name: The name of the application group.
     :param str name_regex: A regex string to filter results by Monitor Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param bool select_contact_groups: The select contact groups.
     :param Mapping[str, Any] tags: A map of tags assigned to the Cms Monitor Group.
     :param str type: The type of the application group.

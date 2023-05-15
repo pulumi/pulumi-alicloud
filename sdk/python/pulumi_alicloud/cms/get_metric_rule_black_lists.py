@@ -195,6 +195,7 @@ def get_metric_rule_black_lists(category: Optional[str] = None,
     :param str metric_rule_black_list_id: The first ID of the resource
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
     :param str namespace: The data namespace of the cloud service.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['category'] = category
@@ -258,5 +259,6 @@ def get_metric_rule_black_lists_output(category: Optional[pulumi.Input[Optional[
     :param str metric_rule_black_list_id: The first ID of the resource
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
     :param str namespace: The data namespace of the cloud service.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

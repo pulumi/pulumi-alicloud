@@ -31,6 +31,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly string? OssBucket;
         /// <summary>
         /// The file name of your OSS Object.
+        /// 
+        /// &gt; **NOTE:** The disk_device_mapping is a list and it's first item will be used to system disk and other items are used to data disks.
         /// </summary>
         public readonly string? OssObject;
 

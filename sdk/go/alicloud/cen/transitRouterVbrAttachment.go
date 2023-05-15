@@ -54,6 +54,8 @@ type TransitRouterVbrAttachment struct {
 	// The ID of the VBR.
 	VbrId pulumi.StringOutput `pulumi:"vbrId"`
 	// The owner id of the transit router vbr attachment.
+	//
+	// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
 	VbrOwnerId pulumi.StringOutput `pulumi:"vbrOwnerId"`
 }
 
@@ -119,6 +121,8 @@ type transitRouterVbrAttachmentState struct {
 	// The ID of the VBR.
 	VbrId *string `pulumi:"vbrId"`
 	// The owner id of the transit router vbr attachment.
+	//
+	// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
 	VbrOwnerId *string `pulumi:"vbrOwnerId"`
 }
 
@@ -150,6 +154,8 @@ type TransitRouterVbrAttachmentState struct {
 	// The ID of the VBR.
 	VbrId pulumi.StringPtrInput
 	// The owner id of the transit router vbr attachment.
+	//
+	// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
 	VbrOwnerId pulumi.StringPtrInput
 }
 
@@ -181,6 +187,8 @@ type transitRouterVbrAttachmentArgs struct {
 	// The ID of the VBR.
 	VbrId string `pulumi:"vbrId"`
 	// The owner id of the transit router vbr attachment.
+	//
+	// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
 	VbrOwnerId *string `pulumi:"vbrOwnerId"`
 }
 
@@ -209,6 +217,8 @@ type TransitRouterVbrAttachmentArgs struct {
 	// The ID of the VBR.
 	VbrId pulumi.StringInput
 	// The owner id of the transit router vbr attachment.
+	//
+	// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
 	VbrOwnerId pulumi.StringPtrInput
 }
 
@@ -367,6 +377,8 @@ func (o TransitRouterVbrAttachmentOutput) VbrId() pulumi.StringOutput {
 }
 
 // The owner id of the transit router vbr attachment.
+//
+// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
 func (o TransitRouterVbrAttachmentOutput) VbrOwnerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.StringOutput { return v.VbrOwnerId }).(pulumi.StringOutput)
 }

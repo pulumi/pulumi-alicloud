@@ -25,6 +25,8 @@ class TopicArgs:
         The set of arguments for constructing a Topic resource.
         :param pulumi.Input[str] project_name: The name of the datahub project that this topic belongs to. It is case-insensitive.
         :param pulumi.Input[str] comment: Comment of the datahub topic. It cannot be longer than 255 characters.
+               
+               **Notes:** Currently `life_cycle` can not be modified and it will be supported in the next future.
         :param pulumi.Input[int] life_cycle: How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
         :param pulumi.Input[str] name: The name of the datahub topic. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
         :param pulumi.Input[Mapping[str, Any]] record_schema: Schema of this topic, required only for TUPLE topic. Supported data types (case-insensitive) are:
@@ -67,6 +69,8 @@ class TopicArgs:
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
         Comment of the datahub topic. It cannot be longer than 255 characters.
+
+        **Notes:** Currently `life_cycle` can not be modified and it will be supported in the next future.
         """
         return pulumi.get(self, "comment")
 
@@ -155,6 +159,8 @@ class _TopicState:
         """
         Input properties used for looking up and filtering Topic resources.
         :param pulumi.Input[str] comment: Comment of the datahub topic. It cannot be longer than 255 characters.
+               
+               **Notes:** Currently `life_cycle` can not be modified and it will be supported in the next future.
         :param pulumi.Input[str] create_time: Create time of the datahub topic. It is a human-readable string rather than 64-bits UTC.
         :param pulumi.Input[str] last_modify_time: Last modify time of the datahub topic. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
         :param pulumi.Input[int] life_cycle: How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
@@ -193,6 +199,8 @@ class _TopicState:
     def comment(self) -> Optional[pulumi.Input[str]]:
         """
         Comment of the datahub topic. It cannot be longer than 255 characters.
+
+        **Notes:** Currently `life_cycle` can not be modified and it will be supported in the next future.
         """
         return pulumi.get(self, "comment")
 
@@ -367,6 +375,8 @@ class Topic(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Comment of the datahub topic. It cannot be longer than 255 characters.
+               
+               **Notes:** Currently `life_cycle` can not be modified and it will be supported in the next future.
         :param pulumi.Input[int] life_cycle: How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
         :param pulumi.Input[str] name: The name of the datahub topic. Its length is limited to 1-128 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
         :param pulumi.Input[str] project_name: The name of the datahub project that this topic belongs to. It is case-insensitive.
@@ -503,6 +513,8 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] comment: Comment of the datahub topic. It cannot be longer than 255 characters.
+               
+               **Notes:** Currently `life_cycle` can not be modified and it will be supported in the next future.
         :param pulumi.Input[str] create_time: Create time of the datahub topic. It is a human-readable string rather than 64-bits UTC.
         :param pulumi.Input[str] last_modify_time: Last modify time of the datahub topic. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
         :param pulumi.Input[int] life_cycle: How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
@@ -537,6 +549,8 @@ class Topic(pulumi.CustomResource):
     def comment(self) -> pulumi.Output[Optional[str]]:
         """
         Comment of the datahub topic. It cannot be longer than 255 characters.
+
+        **Notes:** Currently `life_cycle` can not be modified and it will be supported in the next future.
         """
         return pulumi.get(self, "comment")
 

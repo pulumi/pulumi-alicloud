@@ -38,8 +38,10 @@ class ScalingGroupArgs:
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ScalingGroup resource.
-        :param pulumi.Input[int] max_size: Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
-        :param pulumi.Input[int] min_size: Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+        :param pulumi.Input[int] max_size: Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+               **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
+        :param pulumi.Input[int] min_size: Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+               **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] db_instance_ids: If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
                - The specified RDS instance must be in running status.
                - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -60,6 +62,12 @@ class ScalingGroupArgs:
         :param pulumi.Input[int] on_demand_base_capacity: The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
         :param pulumi.Input[int] on_demand_percentage_above_base_capacity: Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] protected_instances: Set or unset instances within group into protected status.
+               
+               > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+               
+               > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+               
+               > **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] removal_policies: RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
                - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
                - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
@@ -124,7 +132,8 @@ class ScalingGroupArgs:
     @pulumi.getter(name="maxSize")
     def max_size(self) -> pulumi.Input[int]:
         """
-        Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+        Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+        **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
         """
         return pulumi.get(self, "max_size")
 
@@ -136,7 +145,8 @@ class ScalingGroupArgs:
     @pulumi.getter(name="minSize")
     def min_size(self) -> pulumi.Input[int]:
         """
-        Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+        Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+        **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
         """
         return pulumi.get(self, "min_size")
 
@@ -300,6 +310,12 @@ class ScalingGroupArgs:
     def protected_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Set or unset instances within group into protected status.
+
+        > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+
+        > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+
+        > **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
         """
         return pulumi.get(self, "protected_instances")
 
@@ -441,12 +457,20 @@ class _ScalingGroupState:
                targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
                - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
                - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
-        :param pulumi.Input[int] max_size: Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
-        :param pulumi.Input[int] min_size: Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+        :param pulumi.Input[int] max_size: Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+               **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
+        :param pulumi.Input[int] min_size: Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+               **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
         :param pulumi.Input[str] multi_az_policy: Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
         :param pulumi.Input[int] on_demand_base_capacity: The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
         :param pulumi.Input[int] on_demand_percentage_above_base_capacity: Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] protected_instances: Set or unset instances within group into protected status.
+               
+               > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+               
+               > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+               
+               > **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] removal_policies: RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
                - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
                - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
@@ -628,7 +652,8 @@ class _ScalingGroupState:
     @pulumi.getter(name="maxSize")
     def max_size(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+        Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+        **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
         """
         return pulumi.get(self, "max_size")
 
@@ -640,7 +665,8 @@ class _ScalingGroupState:
     @pulumi.getter(name="minSize")
     def min_size(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+        Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+        **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
         """
         return pulumi.get(self, "min_size")
 
@@ -689,6 +715,12 @@ class _ScalingGroupState:
     def protected_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Set or unset instances within group into protected status.
+
+        > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+
+        > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+
+        > **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
         """
         return pulumi.get(self, "protected_instances")
 
@@ -816,6 +848,72 @@ class ScalingGroup(pulumi.CustomResource):
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
+        Provides a ESS scaling group resource which is a collection of ECS instances with the same application scenarios.
+
+        It defines the maximum and minimum numbers of ECS instances in the group, and their associated Server Load Balancer instances, RDS instances, and other attributes.
+
+        > **NOTE:** You can launch an ESS scaling group for a VPC network via specifying parameter `vswitch_ids`.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "essscalinggroupconfig"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=2,
+            memory_size=4)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
+            type="ingress",
+            ip_protocol="tcp",
+            nic_type="intranet",
+            policy="accept",
+            port_range="22/22",
+            priority=1,
+            security_group_id=default_security_group.id,
+            cidr_ip="172.16.0.0/24")
+        default2 = alicloud.vpc.Switch("default2",
+            vpc_id=default_network.id,
+            cidr_block="172.16.1.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=f"{name}-bar")
+        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+            min_size=1,
+            max_size=1,
+            scaling_group_name=name,
+            default_cooldown=20,
+            vswitch_ids=[
+                default_switch.id,
+                default2.id,
+            ],
+            removal_policies=[
+                "OldestInstance",
+                "NewestInstance",
+            ])
+        ```
+        ## Module Support
+
+        You can use to the existing autoscaling module
+        to create a scaling group, configuration and lifecycle hook one-click.
+
         ## Import
 
         ESS scaling group can be imported using the id, e.g.
@@ -842,12 +940,20 @@ class ScalingGroup(pulumi.CustomResource):
                targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
                - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
                - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
-        :param pulumi.Input[int] max_size: Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
-        :param pulumi.Input[int] min_size: Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+        :param pulumi.Input[int] max_size: Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+               **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
+        :param pulumi.Input[int] min_size: Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+               **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
         :param pulumi.Input[str] multi_az_policy: Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
         :param pulumi.Input[int] on_demand_base_capacity: The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
         :param pulumi.Input[int] on_demand_percentage_above_base_capacity: Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] protected_instances: Set or unset instances within group into protected status.
+               
+               > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+               
+               > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+               
+               > **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] removal_policies: RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
                - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
                - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
@@ -869,6 +975,72 @@ class ScalingGroup(pulumi.CustomResource):
                  args: ScalingGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a ESS scaling group resource which is a collection of ECS instances with the same application scenarios.
+
+        It defines the maximum and minimum numbers of ECS instances in the group, and their associated Server Load Balancer instances, RDS instances, and other attributes.
+
+        > **NOTE:** You can launch an ESS scaling group for a VPC network via specifying parameter `vswitch_ids`.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "essscalinggroupconfig"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=2,
+            memory_size=4)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
+            type="ingress",
+            ip_protocol="tcp",
+            nic_type="intranet",
+            policy="accept",
+            port_range="22/22",
+            priority=1,
+            security_group_id=default_security_group.id,
+            cidr_ip="172.16.0.0/24")
+        default2 = alicloud.vpc.Switch("default2",
+            vpc_id=default_network.id,
+            cidr_block="172.16.1.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=f"{name}-bar")
+        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+            min_size=1,
+            max_size=1,
+            scaling_group_name=name,
+            default_cooldown=20,
+            vswitch_ids=[
+                default_switch.id,
+                default2.id,
+            ],
+            removal_policies=[
+                "OldestInstance",
+                "NewestInstance",
+            ])
+        ```
+        ## Module Support
+
+        You can use to the existing autoscaling module
+        to create a scaling group, configuration and lifecycle hook one-click.
+
         ## Import
 
         ESS scaling group can be imported using the id, e.g.
@@ -1007,12 +1179,20 @@ class ScalingGroup(pulumi.CustomResource):
                targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
                - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
                - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
-        :param pulumi.Input[int] max_size: Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
-        :param pulumi.Input[int] min_size: Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+        :param pulumi.Input[int] max_size: Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+               **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
+        :param pulumi.Input[int] min_size: Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+               **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
         :param pulumi.Input[str] multi_az_policy: Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
         :param pulumi.Input[int] on_demand_base_capacity: The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
         :param pulumi.Input[int] on_demand_percentage_above_base_capacity: Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] protected_instances: Set or unset instances within group into protected status.
+               
+               > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+               
+               > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+               
+               > **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] removal_policies: RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
                - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
                - NewestInstance: removes the ECS instance that is added to the scaling group at the latest point in time.
@@ -1138,7 +1318,8 @@ class ScalingGroup(pulumi.CustomResource):
     @pulumi.getter(name="maxSize")
     def max_size(self) -> pulumi.Output[int]:
         """
-        Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+        Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+        **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
         """
         return pulumi.get(self, "max_size")
 
@@ -1146,7 +1327,8 @@ class ScalingGroup(pulumi.CustomResource):
     @pulumi.getter(name="minSize")
     def min_size(self) -> pulumi.Output[int]:
         """
-        Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+        Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+        **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
         """
         return pulumi.get(self, "min_size")
 
@@ -1179,6 +1361,12 @@ class ScalingGroup(pulumi.CustomResource):
     def protected_instances(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Set or unset instances within group into protected status.
+
+        > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+
+        > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+
+        > **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
         """
         return pulumi.get(self, "protected_instances")
 

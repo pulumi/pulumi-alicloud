@@ -20,6 +20,8 @@ public final class StoreIndexFieldSearchJsonKey {
     /**
      * @return Whether to enable statistics. default to true.
      * 
+     * &gt; **Note:** At least one of the &#34;full_text&#34; and &#34;field_search&#34; should be specified.
+     * 
      */
     private @Nullable Boolean docValue;
     /**
@@ -43,6 +45,8 @@ public final class StoreIndexFieldSearchJsonKey {
     }
     /**
      * @return Whether to enable statistics. default to true.
+     * 
+     * &gt; **Note:** At least one of the &#34;full_text&#34; and &#34;field_search&#34; should be specified.
      * 
      */
     public Optional<Boolean> docValue() {

@@ -107,6 +107,7 @@ def get_log_configs(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Log Config IDs.
     :param str log_type: The type the of log.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -150,5 +151,6 @@ def get_log_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
 
     :param Sequence[str] ids: A list of Log Config IDs.
     :param str log_type: The type the of log.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

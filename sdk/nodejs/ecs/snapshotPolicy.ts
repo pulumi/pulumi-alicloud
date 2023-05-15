@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > **DEPRECATED:** This resource has been renamed to alicloud.ecs.AutoSnapshotPolicy from version 1.117.0.
+ *
+ * Provides an ECS snapshot policy resource.
+ *
+ * For information about snapshot policy and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+ *
+ * > **NOTE:** Available in 1.42.0+.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -78,6 +86,8 @@ export class SnapshotPolicy extends pulumi.CustomResource {
      * The snapshot retention time, and the unit of measurement is day. Optional values:
      * - -1: The automatic snapshots are retained permanently.
      * - [1, 65536]: The number of days retained.
+     *
+     * Default value: -1.
      */
     public readonly retentionDays!: pulumi.Output<number>;
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -158,6 +168,8 @@ export interface SnapshotPolicyState {
      * The snapshot retention time, and the unit of measurement is day. Optional values:
      * - -1: The automatic snapshots are retained permanently.
      * - [1, 65536]: The number of days retained.
+     *
+     * Default value: -1.
      */
     retentionDays?: pulumi.Input<number>;
     status?: pulumi.Input<string>;
@@ -191,6 +203,8 @@ export interface SnapshotPolicyArgs {
      * The snapshot retention time, and the unit of measurement is day. Optional values:
      * - -1: The automatic snapshots are retained permanently.
      * - [1, 65536]: The number of days retained.
+     *
+     * Default value: -1.
      */
     retentionDays: pulumi.Input<number>;
     tags?: pulumi.Input<{[key: string]: any}>;

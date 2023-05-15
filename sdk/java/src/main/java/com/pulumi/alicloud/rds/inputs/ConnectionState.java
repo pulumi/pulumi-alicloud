@@ -18,12 +18,16 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     /**
      * The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
      * 
+     * &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
+     * 
      */
     @Import(name="babelfishPort")
     private @Nullable Output<String> babelfishPort;
 
     /**
      * @return The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+     * 
+     * &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
      * 
      */
     public Optional<Output<String>> babelfishPort() {
@@ -137,6 +141,8 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param babelfishPort The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
          * 
+         * &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
+         * 
          * @return builder
          * 
          */
@@ -147,6 +153,8 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param babelfishPort The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
+         * 
+         * &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
          * 
          * @return builder
          * 

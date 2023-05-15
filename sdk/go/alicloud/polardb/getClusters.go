@@ -58,8 +58,9 @@ type GetClustersArgs struct {
 	// A regex string to filter results by cluster description.
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
 	// A list of PolarDB cluster IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// status of the cluster.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -107,8 +108,9 @@ type GetClustersOutputArgs struct {
 	// A regex string to filter results by cluster description.
 	DescriptionRegex pulumi.StringPtrInput `pulumi:"descriptionRegex"`
 	// A list of PolarDB cluster IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// status of the cluster.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.

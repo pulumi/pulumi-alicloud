@@ -70,7 +70,8 @@ type GetStudioApplicationsArgs struct {
 	// A regex string to filter results by Application name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// The order type of the Application. Valid values:
-	OrderType  *int    `pulumi:"orderType"`
+	OrderType *int `pulumi:"orderType"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -121,7 +122,8 @@ type GetStudioApplicationsOutputArgs struct {
 	// A regex string to filter results by Application name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The order type of the Application. Valid values:
-	OrderType  pulumi.IntPtrInput    `pulumi:"orderType"`
+	OrderType pulumi.IntPtrInput `pulumi:"orderType"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`

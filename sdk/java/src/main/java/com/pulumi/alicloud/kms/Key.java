@@ -391,6 +391,8 @@ public class Key extends com.pulumi.resources.CustomResource {
      * The interval can range from 7 days to 730 days.
      * **NOTE**: It is Required when `automatic_rotation = &#34;Enabled&#34;`
      * 
+     * &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
+     * 
      */
     @Export(name="rotationInterval", type=String.class, parameters={})
     private Output</* @Nullable */ String> rotationInterval;
@@ -401,6 +403,8 @@ public class Key extends com.pulumi.resources.CustomResource {
      * For example, you can use either 7d or 604800s to specify a seven-day interval.
      * The interval can range from 7 days to 730 days.
      * **NOTE**: It is Required when `automatic_rotation = &#34;Enabled&#34;`
+     * 
+     * &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
      * 
      */
     public Output<Optional<String>> rotationInterval() {

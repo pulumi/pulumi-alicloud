@@ -62,7 +62,8 @@ type GetRouteServicesArgs struct {
 	// The region of the cloud service.
 	HostRegionId *string `pulumi:"hostRegionId"`
 	// The VPC associated with the cloud service.
-	HostVpcId  *string `pulumi:"hostVpcId"`
+	HostVpcId *string `pulumi:"hostVpcId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
 	Status *string `pulumi:"status"`
@@ -115,7 +116,8 @@ type GetRouteServicesOutputArgs struct {
 	// The region of the cloud service.
 	HostRegionId pulumi.StringPtrInput `pulumi:"hostRegionId"`
 	// The VPC associated with the cloud service.
-	HostVpcId  pulumi.StringPtrInput `pulumi:"hostVpcId"`
+	HostVpcId pulumi.StringPtrInput `pulumi:"hostVpcId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

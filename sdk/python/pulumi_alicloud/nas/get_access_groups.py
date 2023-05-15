@@ -201,6 +201,7 @@ def get_access_groups(access_group_name: Optional[str] = None,
     :param str description: Filter results by a specific Description.
     :param str file_system_type: The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
     :param str name_regex: A regex string to filter AccessGroups by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str type: Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
     :param bool useutc_date_time: Specifies whether the time to return is in UTC. Valid values: true and false.
     """
@@ -264,6 +265,7 @@ def get_access_groups_output(access_group_name: Optional[pulumi.Input[Optional[s
     :param str description: Filter results by a specific Description.
     :param str file_system_type: The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
     :param str name_regex: A regex string to filter AccessGroups by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str type: Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
     :param bool useutc_date_time: Specifies whether the time to return is in UTC. Valid values: true and false.
     """

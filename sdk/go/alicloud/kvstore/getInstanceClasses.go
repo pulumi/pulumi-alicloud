@@ -73,7 +73,8 @@ type GetInstanceClassesArgs struct {
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The KVStore instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
-	NodeType   *string `pulumi:"nodeType"`
+	NodeType *string `pulumi:"nodeType"`
+	// File name where to save data source results (after running `pulumi up`).
 	OutputFile *string `pulumi:"outputFile"`
 	// It has been deprecated from 1.68.0.
 	//
@@ -154,7 +155,8 @@ type GetInstanceClassesOutputArgs struct {
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
 	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`
 	// The KVStore instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
-	NodeType   pulumi.StringPtrInput `pulumi:"nodeType"`
+	NodeType pulumi.StringPtrInput `pulumi:"nodeType"`
+	// File name where to save data source results (after running `pulumi up`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// It has been deprecated from 1.68.0.
 	//

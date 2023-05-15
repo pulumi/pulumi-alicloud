@@ -69,7 +69,8 @@ type GetDbInstancePlansArgs struct {
 	// A list of DB Instance Plan IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by DB Instance Plan name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Plan scheduling type. Valid values: `Postpone`, `Regular`.
 	PlanScheduleType *string `pulumi:"planScheduleType"`
@@ -114,7 +115,8 @@ type GetDbInstancePlansOutputArgs struct {
 	// A list of DB Instance Plan IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by DB Instance Plan name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Plan scheduling type. Valid values: `Postpone`, `Regular`.
 	PlanScheduleType pulumi.StringPtrInput `pulumi:"planScheduleType"`

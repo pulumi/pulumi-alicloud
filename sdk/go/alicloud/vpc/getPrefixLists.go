@@ -63,7 +63,8 @@ type GetPrefixListsArgs struct {
 	// A list of Prefix List IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Prefix List name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The name of the prefix list.
 	PrefixListName *string `pulumi:"prefixListName"`
@@ -102,7 +103,8 @@ type GetPrefixListsOutputArgs struct {
 	// A list of Prefix List IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Prefix List name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The name of the prefix list.
 	PrefixListName pulumi.StringPtrInput `pulumi:"prefixListName"`

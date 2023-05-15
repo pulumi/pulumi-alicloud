@@ -155,6 +155,8 @@ type BucketLifecycleRule struct {
 	// Specifies when noncurrent object versions expire (documented below).
 	NoncurrentVersionExpirations []BucketLifecycleRuleNoncurrentVersionExpiration `pulumi:"noncurrentVersionExpirations"`
 	// Specifies when noncurrent object versions transitions (documented below).
+	//
+	// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
 	NoncurrentVersionTransitions []BucketLifecycleRuleNoncurrentVersionTransition `pulumi:"noncurrentVersionTransitions"`
 	// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
 	Prefix *string `pulumi:"prefix"`
@@ -185,6 +187,8 @@ type BucketLifecycleRuleArgs struct {
 	// Specifies when noncurrent object versions expire (documented below).
 	NoncurrentVersionExpirations BucketLifecycleRuleNoncurrentVersionExpirationArrayInput `pulumi:"noncurrentVersionExpirations"`
 	// Specifies when noncurrent object versions transitions (documented below).
+	//
+	// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
 	NoncurrentVersionTransitions BucketLifecycleRuleNoncurrentVersionTransitionArrayInput `pulumi:"noncurrentVersionTransitions"`
 	// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
@@ -271,6 +275,8 @@ func (o BucketLifecycleRuleOutput) NoncurrentVersionExpirations() BucketLifecycl
 }
 
 // Specifies when noncurrent object versions transitions (documented below).
+//
+// `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrentVersionExpiration and noncurrentVersionTransition should be configured.
 func (o BucketLifecycleRuleOutput) NoncurrentVersionTransitions() BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput {
 	return o.ApplyT(func(v BucketLifecycleRule) []BucketLifecycleRuleNoncurrentVersionTransition {
 		return v.NoncurrentVersionTransitions
@@ -311,6 +317,8 @@ type BucketLifecycleRuleAbortMultipartUpload struct {
 	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
 	CreatedBeforeDate *string `pulumi:"createdBeforeDate"`
 	// Specifies the number of days after object creation when the specific rule action takes effect.
+	//
+	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
 	Days *int `pulumi:"days"`
 }
 
@@ -329,6 +337,8 @@ type BucketLifecycleRuleAbortMultipartUploadArgs struct {
 	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
 	CreatedBeforeDate pulumi.StringPtrInput `pulumi:"createdBeforeDate"`
 	// Specifies the number of days after object creation when the specific rule action takes effect.
+	//
+	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
 	Days pulumi.IntPtrInput `pulumi:"days"`
 }
 
@@ -389,6 +399,8 @@ func (o BucketLifecycleRuleAbortMultipartUploadOutput) CreatedBeforeDate() pulum
 }
 
 // Specifies the number of days after object creation when the specific rule action takes effect.
+//
+// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
 func (o BucketLifecycleRuleAbortMultipartUploadOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleAbortMultipartUpload) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
@@ -419,8 +431,12 @@ type BucketLifecycleRuleExpiration struct {
 	// Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
 	Date *string `pulumi:"date"`
 	// Specifies the number of days after object creation when the specific rule action takes effect.
+	//
+	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
 	Days *int `pulumi:"days"`
 	// On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
+	//
+	// `NOTE`: One and only one of "date", "days", "createdBeforeDate" and "expiredObjectDeleteMarker" can be specified in one expiration configuration.
 	ExpiredObjectDeleteMarker *bool `pulumi:"expiredObjectDeleteMarker"`
 }
 
@@ -441,8 +457,12 @@ type BucketLifecycleRuleExpirationArgs struct {
 	// Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
 	Date pulumi.StringPtrInput `pulumi:"date"`
 	// Specifies the number of days after object creation when the specific rule action takes effect.
+	//
+	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
 	Days pulumi.IntPtrInput `pulumi:"days"`
 	// On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
+	//
+	// `NOTE`: One and only one of "date", "days", "createdBeforeDate" and "expiredObjectDeleteMarker" can be specified in one expiration configuration.
 	ExpiredObjectDeleteMarker pulumi.BoolPtrInput `pulumi:"expiredObjectDeleteMarker"`
 }
 
@@ -508,11 +528,15 @@ func (o BucketLifecycleRuleExpirationOutput) Date() pulumi.StringPtrOutput {
 }
 
 // Specifies the number of days after object creation when the specific rule action takes effect.
+//
+// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
 func (o BucketLifecycleRuleExpirationOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
 
 // On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
+//
+// `NOTE`: One and only one of "date", "days", "createdBeforeDate" and "expiredObjectDeleteMarker" can be specified in one expiration configuration.
 func (o BucketLifecycleRuleExpirationOutput) ExpiredObjectDeleteMarker() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *bool { return v.ExpiredObjectDeleteMarker }).(pulumi.BoolPtrOutput)
 }
@@ -539,6 +563,8 @@ func (o BucketLifecycleRuleExpirationArrayOutput) Index(i pulumi.IntInput) Bucke
 
 type BucketLifecycleRuleNoncurrentVersionExpiration struct {
 	// Specifies the number of days after object creation when the specific rule action takes effect.
+	//
+	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
 	Days int `pulumi:"days"`
 }
 
@@ -555,6 +581,8 @@ type BucketLifecycleRuleNoncurrentVersionExpirationInput interface {
 
 type BucketLifecycleRuleNoncurrentVersionExpirationArgs struct {
 	// Specifies the number of days after object creation when the specific rule action takes effect.
+	//
+	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
 	Days pulumi.IntInput `pulumi:"days"`
 }
 
@@ -610,6 +638,8 @@ func (o BucketLifecycleRuleNoncurrentVersionExpirationOutput) ToBucketLifecycleR
 }
 
 // Specifies the number of days after object creation when the specific rule action takes effect.
+//
+// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
 func (o BucketLifecycleRuleNoncurrentVersionExpirationOutput) Days() pulumi.IntOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionExpiration) int { return v.Days }).(pulumi.IntOutput)
 }
@@ -636,6 +666,8 @@ func (o BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput) Index(i pulum
 
 type BucketLifecycleRuleNoncurrentVersionTransition struct {
 	// Specifies the number of days after object creation when the specific rule action takes effect.
+	//
+	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
 	Days int `pulumi:"days"`
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
 	StorageClass string `pulumi:"storageClass"`
@@ -654,6 +686,8 @@ type BucketLifecycleRuleNoncurrentVersionTransitionInput interface {
 
 type BucketLifecycleRuleNoncurrentVersionTransitionArgs struct {
 	// Specifies the number of days after object creation when the specific rule action takes effect.
+	//
+	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
 	Days pulumi.IntInput `pulumi:"days"`
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
@@ -711,6 +745,8 @@ func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) ToBucketLifecycleR
 }
 
 // Specifies the number of days after object creation when the specific rule action takes effect.
+//
+// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
 func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) Days() pulumi.IntOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionTransition) int { return v.Days }).(pulumi.IntOutput)
 }
@@ -744,6 +780,8 @@ type BucketLifecycleRuleTransition struct {
 	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
 	CreatedBeforeDate *string `pulumi:"createdBeforeDate"`
 	// Specifies the number of days after object creation when the specific rule action takes effect.
+	//
+	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
 	Days *int `pulumi:"days"`
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
 	StorageClass *string `pulumi:"storageClass"`
@@ -764,6 +802,8 @@ type BucketLifecycleRuleTransitionArgs struct {
 	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
 	CreatedBeforeDate pulumi.StringPtrInput `pulumi:"createdBeforeDate"`
 	// Specifies the number of days after object creation when the specific rule action takes effect.
+	//
+	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
 	Days pulumi.IntPtrInput `pulumi:"days"`
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
 	StorageClass pulumi.StringPtrInput `pulumi:"storageClass"`
@@ -826,6 +866,8 @@ func (o BucketLifecycleRuleTransitionOutput) CreatedBeforeDate() pulumi.StringPt
 }
 
 // Specifies the number of days after object creation when the specific rule action takes effect.
+//
+// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
 func (o BucketLifecycleRuleTransitionOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
@@ -1172,6 +1214,8 @@ type BucketReplicationDestination struct {
 	Bucket   string `pulumi:"bucket"`
 	Location string `pulumi:"location"`
 	// The link used to transfer data in data replication.. Can be `internal` or `ossAcc`. Defaults to `internal`.
+	//
+	// `NOTE`: You can set transferType to ossAcc only when you create cross-region replication (CRR) rules.
 	TransferType *string `pulumi:"transferType"`
 }
 
@@ -1191,6 +1235,8 @@ type BucketReplicationDestinationArgs struct {
 	Bucket   pulumi.StringInput `pulumi:"bucket"`
 	Location pulumi.StringInput `pulumi:"location"`
 	// The link used to transfer data in data replication.. Can be `internal` or `ossAcc`. Defaults to `internal`.
+	//
+	// `NOTE`: You can set transferType to ossAcc only when you create cross-region replication (CRR) rules.
 	TransferType pulumi.StringPtrInput `pulumi:"transferType"`
 }
 
@@ -1281,6 +1327,8 @@ func (o BucketReplicationDestinationOutput) Location() pulumi.StringOutput {
 }
 
 // The link used to transfer data in data replication.. Can be `internal` or `ossAcc`. Defaults to `internal`.
+//
+// `NOTE`: You can set transferType to ossAcc only when you create cross-region replication (CRR) rules.
 func (o BucketReplicationDestinationOutput) TransferType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketReplicationDestination) *string { return v.TransferType }).(pulumi.StringPtrOutput)
 }
@@ -1329,6 +1377,8 @@ func (o BucketReplicationDestinationPtrOutput) Location() pulumi.StringPtrOutput
 }
 
 // The link used to transfer data in data replication.. Can be `internal` or `ossAcc`. Defaults to `internal`.
+//
+// `NOTE`: You can set transferType to ossAcc only when you create cross-region replication (CRR) rules.
 func (o BucketReplicationDestinationPtrOutput) TransferType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketReplicationDestination) *string {
 		if v == nil {
@@ -1340,6 +1390,8 @@ func (o BucketReplicationDestinationPtrOutput) TransferType() pulumi.StringPtrOu
 
 type BucketReplicationEncryptionConfiguration struct {
 	// The CMK ID used in SSE-KMS.
+	//
+	// `NOTE`: If the status of sseKmsEncryptedObjects is set to Enabled, you must specify the replica_kms_key_id.
 	ReplicaKmsKeyId string `pulumi:"replicaKmsKeyId"`
 }
 
@@ -1356,6 +1408,8 @@ type BucketReplicationEncryptionConfigurationInput interface {
 
 type BucketReplicationEncryptionConfigurationArgs struct {
 	// The CMK ID used in SSE-KMS.
+	//
+	// `NOTE`: If the status of sseKmsEncryptedObjects is set to Enabled, you must specify the replica_kms_key_id.
 	ReplicaKmsKeyId pulumi.StringInput `pulumi:"replicaKmsKeyId"`
 }
 
@@ -1437,6 +1491,8 @@ func (o BucketReplicationEncryptionConfigurationOutput) ToBucketReplicationEncry
 }
 
 // The CMK ID used in SSE-KMS.
+//
+// `NOTE`: If the status of sseKmsEncryptedObjects is set to Enabled, you must specify the replica_kms_key_id.
 func (o BucketReplicationEncryptionConfigurationOutput) ReplicaKmsKeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketReplicationEncryptionConfiguration) string { return v.ReplicaKmsKeyId }).(pulumi.StringOutput)
 }
@@ -1466,6 +1522,8 @@ func (o BucketReplicationEncryptionConfigurationPtrOutput) Elem() BucketReplicat
 }
 
 // The CMK ID used in SSE-KMS.
+//
+// `NOTE`: If the status of sseKmsEncryptedObjects is set to Enabled, you must specify the replica_kms_key_id.
 func (o BucketReplicationEncryptionConfigurationPtrOutput) ReplicaKmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketReplicationEncryptionConfiguration) *string {
 		if v == nil {
@@ -1477,6 +1535,8 @@ func (o BucketReplicationEncryptionConfigurationPtrOutput) ReplicaKmsKeyId() pul
 
 type BucketReplicationPrefixSet struct {
 	// The list of object key name prefix identifying one or more objects to which the rule applies.
+	//
+	// `NOTE`: The prefix must be less than or equal to 1024 characters in length.
 	Prefixes []string `pulumi:"prefixes"`
 }
 
@@ -1493,6 +1553,8 @@ type BucketReplicationPrefixSetInput interface {
 
 type BucketReplicationPrefixSetArgs struct {
 	// The list of object key name prefix identifying one or more objects to which the rule applies.
+	//
+	// `NOTE`: The prefix must be less than or equal to 1024 characters in length.
 	Prefixes pulumi.StringArrayInput `pulumi:"prefixes"`
 }
 
@@ -1574,6 +1636,8 @@ func (o BucketReplicationPrefixSetOutput) ToBucketReplicationPrefixSetPtrOutputW
 }
 
 // The list of object key name prefix identifying one or more objects to which the rule applies.
+//
+// `NOTE`: The prefix must be less than or equal to 1024 characters in length.
 func (o BucketReplicationPrefixSetOutput) Prefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BucketReplicationPrefixSet) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
 }
@@ -1603,6 +1667,8 @@ func (o BucketReplicationPrefixSetPtrOutput) Elem() BucketReplicationPrefixSetOu
 }
 
 // The list of object key name prefix identifying one or more objects to which the rule applies.
+//
+// `NOTE`: The prefix must be less than or equal to 1024 characters in length.
 func (o BucketReplicationPrefixSetPtrOutput) Prefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BucketReplicationPrefixSet) []string {
 		if v == nil {
@@ -2339,6 +2405,8 @@ func (o BucketTransferAccelerationPtrOutput) Enabled() pulumi.BoolPtrOutput {
 
 type BucketVersioning struct {
 	// Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
+	//
+	// `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
 	Status string `pulumi:"status"`
 }
 
@@ -2355,6 +2423,8 @@ type BucketVersioningInput interface {
 
 type BucketVersioningArgs struct {
 	// Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
+	//
+	// `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -2436,6 +2506,8 @@ func (o BucketVersioningOutput) ToBucketVersioningPtrOutputWithContext(ctx conte
 }
 
 // Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
+//
+// `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
 func (o BucketVersioningOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketVersioning) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2465,6 +2537,8 @@ func (o BucketVersioningPtrOutput) Elem() BucketVersioningOutput {
 }
 
 // Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
+//
+// `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
 func (o BucketVersioningPtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketVersioning) *string {
 		if v == nil {

@@ -70,6 +70,9 @@ export interface GetVpcFirewallCensArgs {
      * The ID of the VPC instance that created the VPC firewall.
      */
     networkInstanceId?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     pageNumber?: number;
     pageSize?: number;
@@ -181,6 +184,9 @@ export interface GetVpcFirewallCensOutputArgs {
      * The ID of the VPC instance that created the VPC firewall.
      */
     networkInstanceId?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;

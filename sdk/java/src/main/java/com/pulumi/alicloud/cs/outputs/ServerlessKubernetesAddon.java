@@ -20,6 +20,8 @@ public final class ServerlessKubernetesAddon {
     /**
      * @return Disables the automatic installation of a component. Default is `false`.
      * 
+     * The following example is the definition of addons block, The type of this field is list:
+     * 
      */
     private @Nullable Boolean disabled;
     /**
@@ -38,6 +40,8 @@ public final class ServerlessKubernetesAddon {
     }
     /**
      * @return Disables the automatic installation of a component. Default is `false`.
+     * 
+     * The following example is the definition of addons block, The type of this field is list:
      * 
      */
     public Optional<Boolean> disabled() {

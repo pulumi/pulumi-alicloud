@@ -64,7 +64,8 @@ type GetCertificatesArgs struct {
 	// WAF instance ID.
 	InstanceId string `pulumi:"instanceId"`
 	// A regex string to filter results by Certificate name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -103,7 +104,8 @@ type GetCertificatesOutputArgs struct {
 	// WAF instance ID.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// A regex string to filter results by Certificate name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

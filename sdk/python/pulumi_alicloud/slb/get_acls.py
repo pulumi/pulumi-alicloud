@@ -160,6 +160,7 @@ def get_acls(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of acls IDs to filter results.
     :param str name_regex: A regex string to filter results by acl name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which acl belongs.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
@@ -221,6 +222,7 @@ def get_acls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
 
     :param Sequence[str] ids: A list of acls IDs to filter results.
     :param str name_regex: A regex string to filter results by acl name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which acl belongs.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """

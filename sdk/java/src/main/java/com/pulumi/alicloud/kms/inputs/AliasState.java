@@ -33,12 +33,24 @@ public final class AliasState extends com.pulumi.resources.ResourceArgs {
     /**
      * The id of the key.
      * 
+     * &gt; **NOTE:** Each alias represents only one master key(CMK).
+     * 
+     * &gt; **NOTE:** Within an area of the same user, alias is not reproducible.
+     * 
+     * &gt; **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
+     * 
      */
     @Import(name="keyId")
     private @Nullable Output<String> keyId;
 
     /**
      * @return The id of the key.
+     * 
+     * &gt; **NOTE:** Each alias represents only one master key(CMK).
+     * 
+     * &gt; **NOTE:** Within an area of the same user, alias is not reproducible.
+     * 
+     * &gt; **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
      * 
      */
     public Optional<Output<String>> keyId() {
@@ -94,6 +106,12 @@ public final class AliasState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param keyId The id of the key.
          * 
+         * &gt; **NOTE:** Each alias represents only one master key(CMK).
+         * 
+         * &gt; **NOTE:** Within an area of the same user, alias is not reproducible.
+         * 
+         * &gt; **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
+         * 
          * @return builder
          * 
          */
@@ -104,6 +122,12 @@ public final class AliasState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param keyId The id of the key.
+         * 
+         * &gt; **NOTE:** Each alias represents only one master key(CMK).
+         * 
+         * &gt; **NOTE:** Within an area of the same user, alias is not reproducible.
+         * 
+         * &gt; **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
          * 
          * @return builder
          * 

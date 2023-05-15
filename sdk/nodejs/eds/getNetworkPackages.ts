@@ -53,6 +53,9 @@ export interface GetNetworkPackagesArgs {
      * A list of Network Package IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
@@ -113,6 +116,9 @@ export interface GetNetworkPackagesOutputArgs {
      * A list of Network Package IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.

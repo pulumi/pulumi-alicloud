@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ### Timeouts The `timeouts` block allows you to specify [timeouts](https://www.terraform.io/docs/configuration-0-11/resources.html#timeouts) for certain actions* `create` - (Defaults to 10 mins) Used when creating the topic (until it reaches the initial `Running` status).
+ * ### Timeouts The `timeouts` block allows you to specify timeouts for certain actions* `create` - (Defaults to 10 mins) Used when creating the topic (until it reaches the initial `Running` status).
  * 
  */
 @ResourceType(type="alicloud:alikafka/topic:Topic")

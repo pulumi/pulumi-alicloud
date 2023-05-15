@@ -98,6 +98,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+        /// 
+        /// &gt; **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         /// </summary>
         [Output("backupId")]
         public Output<string?> BackupId { get; private set; } = null!;
@@ -185,6 +187,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+        /// 
+        /// &gt; **NOTE:** The default value of this parameter is the storage capacity of the original instance.
         /// </summary>
         [Output("dbInstanceStorage")]
         public Output<int> DbInstanceStorage { get; private set; } = null!;
@@ -202,6 +206,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+        /// 
+        /// &gt; **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         /// </summary>
         [Output("dbName")]
         public Output<string?> DbName { get; private set; } = null!;
@@ -222,6 +228,8 @@ namespace Pulumi.AliCloud.Rds
         /// The switch of delete protection. Valid values:
         /// - true: delete protect.
         /// - false: no delete protect.
+        /// 
+        /// &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
@@ -240,6 +248,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The ID of the private key.
+        /// 
+        /// &gt; **NOTE:** This parameter is available only when the instance runs MySQL.
         /// </summary>
         [Output("encryptionKey")]
         public Output<string?> EncryptionKey { get; private set; } = null!;
@@ -295,7 +305,9 @@ namespace Pulumi.AliCloud.Rds
         public Output<ImmutableArray<Outputs.RdsCloneDbInstanceParameter>> Parameters { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the certificate.
+        /// The password of the certificate. 
+        /// 
+        /// &gt; **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -308,6 +320,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The period. Valid values: `Month`, `Year`.
+        /// 
+        /// &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
         /// </summary>
         [Output("period")]
         public Output<string?> Period { get; private set; } = null!;
@@ -368,6 +382,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+        /// 
+        /// &gt; **NOTE:** This parameter is available only when the instance runs MySQL.
         /// </summary>
         [Output("roleArn")]
         public Output<string?> RoleArn { get; private set; } = null!;
@@ -376,6 +392,8 @@ namespace Pulumi.AliCloud.Rds
         /// The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
         /// * IP address form, for example: 10.23.12.24.
         /// * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+        /// 
+        /// &gt; **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
         /// </summary>
         [Output("securityIps")]
         public Output<ImmutableArray<string>> SecurityIps { get; private set; } = null!;
@@ -427,6 +445,8 @@ namespace Pulumi.AliCloud.Rds
         /// * **Sync**: strong synchronization
         /// * **Semi-sync**: Semi-synchronous
         /// * **Async**: asynchronous
+        /// 
+        /// &gt; **NOTE:** SQL Server 2017 cluster version is currently not supported.
         /// </summary>
         [Output("syncMode")]
         public Output<string> SyncMode { get; private set; } = null!;
@@ -458,24 +478,32 @@ namespace Pulumi.AliCloud.Rds
         /// The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
         /// * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
         /// * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
+        /// 
+        /// &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the used_time parameter.
         /// </summary>
         [Output("usedTime")]
         public Output<int?> UsedTime { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the VPC to which the new instance belongs.
+        /// 
+        /// &gt; **NOTE:** Make sure that the VPC resides in the specified region.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the vSwitch associated with the specified VPC.
+        /// 
+        /// &gt; **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+        /// 
+        /// &gt; **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -542,6 +570,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+        /// 
+        /// &gt; **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         /// </summary>
         [Input("backupId")]
         public Input<string>? BackupId { get; set; }
@@ -623,6 +653,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+        /// 
+        /// &gt; **NOTE:** The default value of this parameter is the storage capacity of the original instance.
         /// </summary>
         [Input("dbInstanceStorage")]
         public Input<int>? DbInstanceStorage { get; set; }
@@ -640,6 +672,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+        /// 
+        /// &gt; **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         /// </summary>
         [Input("dbName")]
         public Input<string>? DbName { get; set; }
@@ -660,6 +694,8 @@ namespace Pulumi.AliCloud.Rds
         /// The switch of delete protection. Valid values:
         /// - true: delete protect.
         /// - false: no delete protect.
+        /// 
+        /// &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -678,6 +714,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The ID of the private key.
+        /// 
+        /// &gt; **NOTE:** This parameter is available only when the instance runs MySQL.
         /// </summary>
         [Input("encryptionKey")]
         public Input<string>? EncryptionKey { get; set; }
@@ -739,7 +777,9 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The password of the certificate.
+        /// The password of the certificate. 
+        /// 
+        /// &gt; **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -752,6 +792,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The period. Valid values: `Month`, `Year`.
+        /// 
+        /// &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
@@ -818,6 +860,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+        /// 
+        /// &gt; **NOTE:** This parameter is available only when the instance runs MySQL.
         /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
@@ -829,6 +873,8 @@ namespace Pulumi.AliCloud.Rds
         /// The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
         /// * IP address form, for example: 10.23.12.24.
         /// * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+        /// 
+        /// &gt; **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
         /// </summary>
         public InputList<string> SecurityIps
         {
@@ -889,6 +935,8 @@ namespace Pulumi.AliCloud.Rds
         /// * **Sync**: strong synchronization
         /// * **Semi-sync**: Semi-synchronous
         /// * **Async**: asynchronous
+        /// 
+        /// &gt; **NOTE:** SQL Server 2017 cluster version is currently not supported.
         /// </summary>
         [Input("syncMode")]
         public Input<string>? SyncMode { get; set; }
@@ -920,24 +968,32 @@ namespace Pulumi.AliCloud.Rds
         /// The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
         /// * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
         /// * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
+        /// 
+        /// &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the used_time parameter.
         /// </summary>
         [Input("usedTime")]
         public Input<int>? UsedTime { get; set; }
 
         /// <summary>
         /// The ID of the VPC to which the new instance belongs.
+        /// 
+        /// &gt; **NOTE:** Make sure that the VPC resides in the specified region.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The ID of the vSwitch associated with the specified VPC.
+        /// 
+        /// &gt; **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
         /// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+        /// 
+        /// &gt; **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -966,6 +1022,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The ID of the data backup file you want to use. You can call the DescribeBackups operation to query the most recent data backup file list.
+        /// 
+        /// &gt; **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type="Serverless"` and when modifying, do not perform `instance_storage` check. Otherwise, check.
         /// </summary>
         [Input("backupId")]
         public Input<string>? BackupId { get; set; }
@@ -1053,6 +1111,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+        /// 
+        /// &gt; **NOTE:** The default value of this parameter is the storage capacity of the original instance.
         /// </summary>
         [Input("dbInstanceStorage")]
         public Input<int>? DbInstanceStorage { get; set; }
@@ -1070,6 +1130,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The name of the database for which you want to enable TDE. Up to 50 names can be entered in a single request. If you specify multiple names, separate these names with commas (,).
+        /// 
+        /// &gt; **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         /// </summary>
         [Input("dbName")]
         public Input<string>? DbName { get; set; }
@@ -1090,6 +1152,8 @@ namespace Pulumi.AliCloud.Rds
         /// The switch of delete protection. Valid values:
         /// - true: delete protect.
         /// - false: no delete protect.
+        /// 
+        /// &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -1108,6 +1172,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The ID of the private key.
+        /// 
+        /// &gt; **NOTE:** This parameter is available only when the instance runs MySQL.
         /// </summary>
         [Input("encryptionKey")]
         public Input<string>? EncryptionKey { get; set; }
@@ -1169,7 +1235,9 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The password of the certificate.
+        /// The password of the certificate. 
+        /// 
+        /// &gt; **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -1182,6 +1250,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The period. Valid values: `Month`, `Year`.
+        /// 
+        /// &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
@@ -1248,6 +1318,8 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+        /// 
+        /// &gt; **NOTE:** This parameter is available only when the instance runs MySQL.
         /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
@@ -1259,6 +1331,8 @@ namespace Pulumi.AliCloud.Rds
         /// The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
         /// * IP address form, for example: 10.23.12.24.
         /// * CIDR format, for example, 10.23.12.0/24 (no Inter-Domain Routing, 24 indicates the length of the prefix in the address, ranging from 1 to 32).
+        /// 
+        /// &gt; **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
         /// </summary>
         public InputList<string> SecurityIps
         {
@@ -1319,6 +1393,8 @@ namespace Pulumi.AliCloud.Rds
         /// * **Sync**: strong synchronization
         /// * **Semi-sync**: Semi-synchronous
         /// * **Async**: asynchronous
+        /// 
+        /// &gt; **NOTE:** SQL Server 2017 cluster version is currently not supported.
         /// </summary>
         [Input("syncMode")]
         public Input<string>? SyncMode { get; set; }
@@ -1350,24 +1426,32 @@ namespace Pulumi.AliCloud.Rds
         /// The subscription period of the new instance. This parameter takes effect only when you select the subscription billing method for the new instance. Valid values:
         /// * If you set the `Period` parameter to Year, the value of the UsedTime parameter ranges from 1 to 3.
         /// * If you set the `Period` parameter to Month, the value of the UsedTime parameter ranges from 1 to 9.
+        /// 
+        /// &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the used_time parameter.
         /// </summary>
         [Input("usedTime")]
         public Input<int>? UsedTime { get; set; }
 
         /// <summary>
         /// The ID of the VPC to which the new instance belongs.
+        /// 
+        /// &gt; **NOTE:** Make sure that the VPC resides in the specified region.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The ID of the vSwitch associated with the specified VPC.
+        /// 
+        /// &gt; **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
         /// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+        /// 
+        /// &gt; **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

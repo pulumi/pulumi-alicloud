@@ -99,6 +99,20 @@ class InstanceArgs:
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: The list of data disks created with instance.
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+               
+               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+               
+               > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+               
+               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+               
+               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+               
+               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+               
+               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -134,6 +148,10 @@ class InstanceArgs:
         :param pulumi.Input['InstanceMaintenanceTimeArgs'] maintenance_time: The time of maintenance. See the following `Block maintenance_time`.
         :param pulumi.Input[str] operator_type: The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         :param pulumi.Input[str] password: Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
+               - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
+               - [1-3] when `period_unit` in "Week"
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
@@ -150,6 +168,8 @@ class InstanceArgs:
                - NoSpot: A regular Pay-As-You-Go instance.
                - SpotWithPriceLimit: A price threshold for a spot instance
                - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
+               
+               Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
         :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
@@ -435,6 +455,20 @@ class InstanceArgs:
     def dedicated_host_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+
+        > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+
+        > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+
+        > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+
+        > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+
+        > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+        Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+
+        > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "dedicated_host_id")
 
@@ -786,6 +820,12 @@ class InstanceArgs:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
+        - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
+        - [1-3] when `period_unit` in "Week"
+        > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -922,6 +962,8 @@ class InstanceArgs:
         - NoSpot: A regular Pay-As-You-Go instance.
         - SpotWithPriceLimit: A price threshold for a spot instance
         - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
+
+        Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
         """
         return pulumi.get(self, "spot_strategy")
 
@@ -1229,6 +1271,20 @@ class _InstanceState:
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: The list of data disks created with instance.
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+               
+               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+               
+               > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+               
+               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+               
+               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+               
+               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+               
+               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -1270,6 +1326,10 @@ class _InstanceState:
         :param pulumi.Input[str] os_name: The name of the operating system of the instance.
         :param pulumi.Input[str] os_type: The type of the operating system of the instance.
         :param pulumi.Input[str] password: Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
+               - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
+               - [1-3] when `period_unit` in "Week"
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[str] primary_ip_address: The primary private IP address of the ENI.
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
@@ -1289,6 +1349,8 @@ class _InstanceState:
                - NoSpot: A regular Pay-As-You-Go instance.
                - SpotWithPriceLimit: A price threshold for a spot instance
                - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
+               
+               Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
         :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
@@ -1567,6 +1629,20 @@ class _InstanceState:
     def dedicated_host_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+
+        > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+
+        > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+
+        > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+
+        > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+
+        > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+        Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+
+        > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "dedicated_host_id")
 
@@ -1990,6 +2066,12 @@ class _InstanceState:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
+        - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
+        - [1-3] when `period_unit` in "Week"
+        > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -2162,6 +2244,8 @@ class _InstanceState:
         - NoSpot: A regular Pay-As-You-Go instance.
         - SpotWithPriceLimit: A price threshold for a spot instance
         - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
+
+        Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
         """
         return pulumi.get(self, "spot_strategy")
 
@@ -2452,6 +2536,75 @@ class Instance(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Provides a ECS instance resource.
+
+        > **NOTE:** You can launch an ECS instance for a VPC network via specifying parameter `vswitch_id`. One instance can only belong to one VSwitch.
+
+        > **NOTE:** If a VSwitchId is specified for creating an instance, SecurityGroupId and VSwitchId must belong to one VPC, VSwitchId Cannot be modified after creation.
+
+        > **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `is_outdated` to true. For more about the upgraded instance type, refer to `ecs_get_instance_types` datasource.
+
+        > **NOTE:** At present, 'PrePaid' instance cannot be deleted and must wait it to be outdated and release it automatically.
+
+        > **NOTE:** The resource supports modifying instance charge type from 'PrePaid' to 'PostPaid' from version 1.9.6.
+         However, at present, this modification has some limitation about CPU core count in one month, so strongly recommand that `Don't modify instance charge type frequentlly in one month`.
+
+        > **NOTE:**  There is unsupported 'deletion_protection' attribute when the instance is spot
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "auto_provisioning_group"
+        # Create a new ECS instance for VPC
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        # Create a new ECS instance for a VPC
+        group = alicloud.ecs.SecurityGroup("group",
+            description="foo",
+            vpc_id=vpc.id)
+        key = alicloud.kms.Key("key",
+            description="Hello KMS",
+            pending_window_in_days=7,
+            status="Enabled")
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        vswitch = alicloud.vpc.Switch("vswitch",
+            vpc_id=vpc.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default.zones[0].id,
+            vswitch_name=name)
+        instance = alicloud.ecs.Instance("instance",
+            availability_zone=default.zones[0].id,
+            security_groups=[__item.id for __item in [group]],
+            instance_type="ecs.n4.large",
+            system_disk_category="cloud_efficiency",
+            system_disk_name="test_foo_system_disk_name",
+            system_disk_description="test_foo_system_disk_description",
+            image_id="ubuntu_18_04_64_20G_alibase_20190624.vhd",
+            instance_name="test_foo",
+            vswitch_id=vswitch.id,
+            internet_max_bandwidth_out=10,
+            data_disks=[alicloud.ecs.InstanceDataDiskArgs(
+                name="disk2",
+                size=20,
+                category="cloud_efficiency",
+                description="disk2",
+                encrypted=True,
+                kms_key_id=key.id,
+            )])
+        ```
+        ## Module Support
+
+        You can use the existing ecs-instance module
+        to create several ECS instances one-click.
+
         ## Import
 
         Instance can be imported using the id, e.g.
@@ -2473,6 +2626,20 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]] data_disks: The list of data disks created with instance.
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+               
+               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+               
+               > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+               
+               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+               
+               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+               
+               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+               
+               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -2510,6 +2677,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceMaintenanceTimeArgs']] maintenance_time: The time of maintenance. See the following `Block maintenance_time`.
         :param pulumi.Input[str] operator_type: The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         :param pulumi.Input[str] password: Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
+               - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
+               - [1-3] when `period_unit` in "Week"
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
@@ -2527,6 +2698,8 @@ class Instance(pulumi.CustomResource):
                - NoSpot: A regular Pay-As-You-Go instance.
                - SpotWithPriceLimit: A price threshold for a spot instance
                - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
+               
+               Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
         :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
@@ -2558,6 +2731,75 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a ECS instance resource.
+
+        > **NOTE:** You can launch an ECS instance for a VPC network via specifying parameter `vswitch_id`. One instance can only belong to one VSwitch.
+
+        > **NOTE:** If a VSwitchId is specified for creating an instance, SecurityGroupId and VSwitchId must belong to one VPC, VSwitchId Cannot be modified after creation.
+
+        > **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `is_outdated` to true. For more about the upgraded instance type, refer to `ecs_get_instance_types` datasource.
+
+        > **NOTE:** At present, 'PrePaid' instance cannot be deleted and must wait it to be outdated and release it automatically.
+
+        > **NOTE:** The resource supports modifying instance charge type from 'PrePaid' to 'PostPaid' from version 1.9.6.
+         However, at present, this modification has some limitation about CPU core count in one month, so strongly recommand that `Don't modify instance charge type frequentlly in one month`.
+
+        > **NOTE:**  There is unsupported 'deletion_protection' attribute when the instance is spot
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "auto_provisioning_group"
+        # Create a new ECS instance for VPC
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        # Create a new ECS instance for a VPC
+        group = alicloud.ecs.SecurityGroup("group",
+            description="foo",
+            vpc_id=vpc.id)
+        key = alicloud.kms.Key("key",
+            description="Hello KMS",
+            pending_window_in_days=7,
+            status="Enabled")
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        vswitch = alicloud.vpc.Switch("vswitch",
+            vpc_id=vpc.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default.zones[0].id,
+            vswitch_name=name)
+        instance = alicloud.ecs.Instance("instance",
+            availability_zone=default.zones[0].id,
+            security_groups=[__item.id for __item in [group]],
+            instance_type="ecs.n4.large",
+            system_disk_category="cloud_efficiency",
+            system_disk_name="test_foo_system_disk_name",
+            system_disk_description="test_foo_system_disk_description",
+            image_id="ubuntu_18_04_64_20G_alibase_20190624.vhd",
+            instance_name="test_foo",
+            vswitch_id=vswitch.id,
+            internet_max_bandwidth_out=10,
+            data_disks=[alicloud.ecs.InstanceDataDiskArgs(
+                name="disk2",
+                size=20,
+                category="cloud_efficiency",
+                description="disk2",
+                encrypted=True,
+                kms_key_id=key.id,
+            )])
+        ```
+        ## Module Support
+
+        You can use the existing ecs-instance module
+        to create several ECS instances one-click.
+
         ## Import
 
         Instance can be imported using the id, e.g.
@@ -2854,6 +3096,20 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceDataDiskArgs']]]] data_disks: The list of data disks created with instance.
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+               
+               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+               
+               > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+               
+               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+               
+               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+               
+               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+               
+               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -2895,6 +3151,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] os_name: The name of the operating system of the instance.
         :param pulumi.Input[str] os_type: The type of the operating system of the instance.
         :param pulumi.Input[str] password: Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
+               - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
+               - [1-3] when `period_unit` in "Week"
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[str] primary_ip_address: The primary private IP address of the ENI.
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
@@ -2914,6 +3174,8 @@ class Instance(pulumi.CustomResource):
                - NoSpot: A regular Pay-As-You-Go instance.
                - SpotWithPriceLimit: A price threshold for a spot instance
                - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
+               
+               Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
         :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
@@ -3083,6 +3345,20 @@ class Instance(pulumi.CustomResource):
     def dedicated_host_id(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
+
+        > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+
+        > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+
+        > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+
+        > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+
+        > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+        Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+
+        > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "dedicated_host_id")
 
@@ -3366,6 +3642,12 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
+        """
+        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
+        - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
+        - [1-3] when `period_unit` in "Week"
+        > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        """
         return pulumi.get(self, "period")
 
     @property
@@ -3482,6 +3764,8 @@ class Instance(pulumi.CustomResource):
         - NoSpot: A regular Pay-As-You-Go instance.
         - SpotWithPriceLimit: A price threshold for a spot instance
         - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
+
+        Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
         """
         return pulumi.get(self, "spot_strategy")
 

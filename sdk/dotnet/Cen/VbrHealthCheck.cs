@@ -118,6 +118,8 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The ID of the region to which the VBR belongs.
+        /// 
+        /// -&gt;**NOTE:** The `alicloud.cen.VbrHealthCheck` resource depends on the related `alicloud.cen.InstanceAttachment` resource.
         /// </summary>
         [Output("vbrInstanceRegionId")]
         public Output<string> VbrInstanceRegionId { get; private set; } = null!;
@@ -212,6 +214,8 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The ID of the region to which the VBR belongs.
+        /// 
+        /// -&gt;**NOTE:** The `alicloud.cen.VbrHealthCheck` resource depends on the related `alicloud.cen.InstanceAttachment` resource.
         /// </summary>
         [Input("vbrInstanceRegionId", required: true)]
         public Input<string> VbrInstanceRegionId { get; set; } = null!;
@@ -268,6 +272,8 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The ID of the region to which the VBR belongs.
+        /// 
+        /// -&gt;**NOTE:** The `alicloud.cen.VbrHealthCheck` resource depends on the related `alicloud.cen.InstanceAttachment` resource.
         /// </summary>
         [Input("vbrInstanceRegionId")]
         public Input<string>? VbrInstanceRegionId { get; set; }

@@ -2828,6 +2828,130 @@ func (o GetPrometheusAlertRulesRuleLabelArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetPrometheusAlertRulesRuleLabelOutput)
 }
 
+type GetRemoteWritesRemoteWrite struct {
+	// The ID of the Prometheus instance.
+	ClusterId string `pulumi:"clusterId"`
+	// The ID of the Remote Write. It formats as `<cluster_id>:<remote_write_name>`.
+	Id string `pulumi:"id"`
+	// The name of the Remote Write configuration item.
+	RemoteWriteName string `pulumi:"remoteWriteName"`
+	// The details of the Remote Write configuration item. The value is in the YAML format.
+	RemoteWriteYaml string `pulumi:"remoteWriteYaml"`
+}
+
+// GetRemoteWritesRemoteWriteInput is an input type that accepts GetRemoteWritesRemoteWriteArgs and GetRemoteWritesRemoteWriteOutput values.
+// You can construct a concrete instance of `GetRemoteWritesRemoteWriteInput` via:
+//
+//	GetRemoteWritesRemoteWriteArgs{...}
+type GetRemoteWritesRemoteWriteInput interface {
+	pulumi.Input
+
+	ToGetRemoteWritesRemoteWriteOutput() GetRemoteWritesRemoteWriteOutput
+	ToGetRemoteWritesRemoteWriteOutputWithContext(context.Context) GetRemoteWritesRemoteWriteOutput
+}
+
+type GetRemoteWritesRemoteWriteArgs struct {
+	// The ID of the Prometheus instance.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The ID of the Remote Write. It formats as `<cluster_id>:<remote_write_name>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the Remote Write configuration item.
+	RemoteWriteName pulumi.StringInput `pulumi:"remoteWriteName"`
+	// The details of the Remote Write configuration item. The value is in the YAML format.
+	RemoteWriteYaml pulumi.StringInput `pulumi:"remoteWriteYaml"`
+}
+
+func (GetRemoteWritesRemoteWriteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRemoteWritesRemoteWrite)(nil)).Elem()
+}
+
+func (i GetRemoteWritesRemoteWriteArgs) ToGetRemoteWritesRemoteWriteOutput() GetRemoteWritesRemoteWriteOutput {
+	return i.ToGetRemoteWritesRemoteWriteOutputWithContext(context.Background())
+}
+
+func (i GetRemoteWritesRemoteWriteArgs) ToGetRemoteWritesRemoteWriteOutputWithContext(ctx context.Context) GetRemoteWritesRemoteWriteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRemoteWritesRemoteWriteOutput)
+}
+
+// GetRemoteWritesRemoteWriteArrayInput is an input type that accepts GetRemoteWritesRemoteWriteArray and GetRemoteWritesRemoteWriteArrayOutput values.
+// You can construct a concrete instance of `GetRemoteWritesRemoteWriteArrayInput` via:
+//
+//	GetRemoteWritesRemoteWriteArray{ GetRemoteWritesRemoteWriteArgs{...} }
+type GetRemoteWritesRemoteWriteArrayInput interface {
+	pulumi.Input
+
+	ToGetRemoteWritesRemoteWriteArrayOutput() GetRemoteWritesRemoteWriteArrayOutput
+	ToGetRemoteWritesRemoteWriteArrayOutputWithContext(context.Context) GetRemoteWritesRemoteWriteArrayOutput
+}
+
+type GetRemoteWritesRemoteWriteArray []GetRemoteWritesRemoteWriteInput
+
+func (GetRemoteWritesRemoteWriteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRemoteWritesRemoteWrite)(nil)).Elem()
+}
+
+func (i GetRemoteWritesRemoteWriteArray) ToGetRemoteWritesRemoteWriteArrayOutput() GetRemoteWritesRemoteWriteArrayOutput {
+	return i.ToGetRemoteWritesRemoteWriteArrayOutputWithContext(context.Background())
+}
+
+func (i GetRemoteWritesRemoteWriteArray) ToGetRemoteWritesRemoteWriteArrayOutputWithContext(ctx context.Context) GetRemoteWritesRemoteWriteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRemoteWritesRemoteWriteArrayOutput)
+}
+
+type GetRemoteWritesRemoteWriteOutput struct{ *pulumi.OutputState }
+
+func (GetRemoteWritesRemoteWriteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRemoteWritesRemoteWrite)(nil)).Elem()
+}
+
+func (o GetRemoteWritesRemoteWriteOutput) ToGetRemoteWritesRemoteWriteOutput() GetRemoteWritesRemoteWriteOutput {
+	return o
+}
+
+func (o GetRemoteWritesRemoteWriteOutput) ToGetRemoteWritesRemoteWriteOutputWithContext(ctx context.Context) GetRemoteWritesRemoteWriteOutput {
+	return o
+}
+
+// The ID of the Prometheus instance.
+func (o GetRemoteWritesRemoteWriteOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRemoteWritesRemoteWrite) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The ID of the Remote Write. It formats as `<cluster_id>:<remote_write_name>`.
+func (o GetRemoteWritesRemoteWriteOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRemoteWritesRemoteWrite) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the Remote Write configuration item.
+func (o GetRemoteWritesRemoteWriteOutput) RemoteWriteName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRemoteWritesRemoteWrite) string { return v.RemoteWriteName }).(pulumi.StringOutput)
+}
+
+// The details of the Remote Write configuration item. The value is in the YAML format.
+func (o GetRemoteWritesRemoteWriteOutput) RemoteWriteYaml() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRemoteWritesRemoteWrite) string { return v.RemoteWriteYaml }).(pulumi.StringOutput)
+}
+
+type GetRemoteWritesRemoteWriteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRemoteWritesRemoteWriteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRemoteWritesRemoteWrite)(nil)).Elem()
+}
+
+func (o GetRemoteWritesRemoteWriteArrayOutput) ToGetRemoteWritesRemoteWriteArrayOutput() GetRemoteWritesRemoteWriteArrayOutput {
+	return o
+}
+
+func (o GetRemoteWritesRemoteWriteArrayOutput) ToGetRemoteWritesRemoteWriteArrayOutputWithContext(ctx context.Context) GetRemoteWritesRemoteWriteArrayOutput {
+	return o
+}
+
+func (o GetRemoteWritesRemoteWriteArrayOutput) Index(i pulumi.IntInput) GetRemoteWritesRemoteWriteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRemoteWritesRemoteWrite {
+		return vs[0].([]GetRemoteWritesRemoteWrite)[vs[1].(int)]
+	}).(GetRemoteWritesRemoteWriteOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DispatchRuleGroupRuleInput)(nil)).Elem(), DispatchRuleGroupRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DispatchRuleGroupRuleArrayInput)(nil)).Elem(), DispatchRuleGroupRuleArray{})
@@ -2873,6 +2997,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusAlertRulesRuleAnnotationArrayInput)(nil)).Elem(), GetPrometheusAlertRulesRuleAnnotationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusAlertRulesRuleLabelInput)(nil)).Elem(), GetPrometheusAlertRulesRuleLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrometheusAlertRulesRuleLabelArrayInput)(nil)).Elem(), GetPrometheusAlertRulesRuleLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRemoteWritesRemoteWriteInput)(nil)).Elem(), GetRemoteWritesRemoteWriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRemoteWritesRemoteWriteArrayInput)(nil)).Elem(), GetRemoteWritesRemoteWriteArray{})
 	pulumi.RegisterOutputType(DispatchRuleGroupRuleOutput{})
 	pulumi.RegisterOutputType(DispatchRuleGroupRuleArrayOutput{})
 	pulumi.RegisterOutputType(DispatchRuleLabelMatchExpressionGridOutput{})
@@ -2917,4 +3043,6 @@ func init() {
 	pulumi.RegisterOutputType(GetPrometheusAlertRulesRuleAnnotationArrayOutput{})
 	pulumi.RegisterOutputType(GetPrometheusAlertRulesRuleLabelOutput{})
 	pulumi.RegisterOutputType(GetPrometheusAlertRulesRuleLabelArrayOutput{})
+	pulumi.RegisterOutputType(GetRemoteWritesRemoteWriteOutput{})
+	pulumi.RegisterOutputType(GetRemoteWritesRemoteWriteArrayOutput{})
 }

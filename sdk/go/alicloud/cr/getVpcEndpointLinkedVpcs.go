@@ -62,7 +62,8 @@ type GetVpcEndpointLinkedVpcsArgs struct {
 	// The ID of the instance.
 	InstanceId string `pulumi:"instanceId"`
 	// The name of the module that you want to access. Valid Values:
-	ModuleName string  `pulumi:"moduleName"`
+	ModuleName string `pulumi:"moduleName"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
 	Status *string `pulumi:"status"`
@@ -104,7 +105,8 @@ type GetVpcEndpointLinkedVpcsOutputArgs struct {
 	// The ID of the instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// The name of the module that you want to access. Valid Values:
-	ModuleName pulumi.StringInput    `pulumi:"moduleName"`
+	ModuleName pulumi.StringInput `pulumi:"moduleName"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

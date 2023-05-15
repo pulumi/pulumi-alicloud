@@ -24,6 +24,9 @@ namespace Pulumi.AliCloud.Outputs
         /// <summary>
         /// Filter the results by a specific resource type.
         /// Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
+        /// 
+        /// &gt; **NOTE:** From version 1.134.0, the `available_resource_creation` value "Rds" has been deprecated.
+        /// If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
         /// </summary>
         public readonly ImmutableArray<string> AvailableResourceCreations;
         /// <summary>

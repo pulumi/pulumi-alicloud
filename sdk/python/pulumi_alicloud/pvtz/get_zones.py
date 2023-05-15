@@ -194,6 +194,7 @@ def get_zones(enable_details: Optional[bool] = None,
     :param Sequence[str] ids: A list of zone IDs.
     :param str keyword: keyword for zone name.
     :param str lang: User language.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str query_region_id: query_region_id for zone regionId.
     :param str query_vpc_id: query_vpc_id for zone vpcId.
     :param str resource_group_id: resource_group_id for zone resourceGroupId.
@@ -261,6 +262,7 @@ def get_zones_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
     :param Sequence[str] ids: A list of zone IDs.
     :param str keyword: keyword for zone name.
     :param str lang: User language.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str query_region_id: query_region_id for zone regionId.
     :param str query_vpc_id: query_vpc_id for zone vpcId.
     :param str resource_group_id: resource_group_id for zone resourceGroupId.

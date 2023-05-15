@@ -77,7 +77,8 @@ type GetIpv6AddressesArgs struct {
 	// The ID of the instance that is assigned the IPv6 address.
 	AssociatedInstanceId *string  `pulumi:"associatedInstanceId"`
 	Ids                  []string `pulumi:"ids"`
-	OutputFile           *string  `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The status of the IPv6 address. Valid values:`Pending` or `Available`.
 	Status *string `pulumi:"status"`
 	// The ID of the VPC to which the IPv6 address belongs.
@@ -118,7 +119,8 @@ type GetIpv6AddressesOutputArgs struct {
 	// The ID of the instance that is assigned the IPv6 address.
 	AssociatedInstanceId pulumi.StringPtrInput   `pulumi:"associatedInstanceId"`
 	Ids                  pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile           pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the IPv6 address. Valid values:`Pending` or `Available`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The ID of the VPC to which the IPv6 address belongs.

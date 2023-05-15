@@ -58,7 +58,8 @@ type GetTablesArgs struct {
 	// The name of OTS instance.
 	InstanceName string `pulumi:"instanceName"`
 	// A regex string to filter results by table name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -98,7 +99,8 @@ type GetTablesOutputArgs struct {
 	// The name of OTS instance.
 	InstanceName pulumi.StringInput `pulumi:"instanceName"`
 	// A regex string to filter results by table name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

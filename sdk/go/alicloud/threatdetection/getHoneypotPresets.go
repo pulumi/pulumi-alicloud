@@ -33,8 +33,9 @@ type GetHoneypotPresetsArgs struct {
 	Ids  []string `pulumi:"ids"`
 	Lang *string  `pulumi:"lang"`
 	// Unique id of management node
-	NodeId     *string `pulumi:"nodeId"`
-	NodeName   *string `pulumi:"nodeName"`
+	NodeId   *string `pulumi:"nodeId"`
+	NodeName *string `pulumi:"nodeName"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
@@ -89,8 +90,9 @@ type GetHoneypotPresetsOutputArgs struct {
 	Ids  pulumi.StringArrayInput `pulumi:"ids"`
 	Lang pulumi.StringPtrInput   `pulumi:"lang"`
 	// Unique id of management node
-	NodeId     pulumi.StringPtrInput `pulumi:"nodeId"`
-	NodeName   pulumi.StringPtrInput `pulumi:"nodeName"`
+	NodeId   pulumi.StringPtrInput `pulumi:"nodeId"`
+	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`

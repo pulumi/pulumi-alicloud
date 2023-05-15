@@ -76,7 +76,9 @@ type GetInstanceTypesArgs struct {
 	// Filter the results based on their family name. For example: 'ecs.n4'.
 	InstanceTypeFamily *string `pulumi:"instanceTypeFamily"`
 	// If true, outdated instance types are included in the results. Default to false.
-	IsOutdated         *bool   `pulumi:"isOutdated"`
+	IsOutdated *bool `pulumi:"isOutdated"`
+	// Filter the result which is used to create a kubernetes cluster
+	// and managed kubernetes cluster. Optional Values: `Master` and `Worker`.
 	KubernetesNodeRole *string `pulumi:"kubernetesNodeRole"`
 	// Filter the results to a specific memory size in GB.
 	MemorySize *float64 `pulumi:"memorySize"`
@@ -84,8 +86,9 @@ type GetInstanceTypesArgs struct {
 	MinimumEniIpv6AddressQuantity *int `pulumi:"minimumEniIpv6AddressQuantity"`
 	// Filter the results by network type. Valid values: `Classic` and `Vpc`.
 	NetworkType *string `pulumi:"networkType"`
-	OutputFile  *string `pulumi:"outputFile"`
-	SortedBy    *string `pulumi:"sortedBy"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
+	SortedBy   *string `pulumi:"sortedBy"`
 	// Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`.
@@ -155,7 +158,9 @@ type GetInstanceTypesOutputArgs struct {
 	// Filter the results based on their family name. For example: 'ecs.n4'.
 	InstanceTypeFamily pulumi.StringPtrInput `pulumi:"instanceTypeFamily"`
 	// If true, outdated instance types are included in the results. Default to false.
-	IsOutdated         pulumi.BoolPtrInput   `pulumi:"isOutdated"`
+	IsOutdated pulumi.BoolPtrInput `pulumi:"isOutdated"`
+	// Filter the result which is used to create a kubernetes cluster
+	// and managed kubernetes cluster. Optional Values: `Master` and `Worker`.
 	KubernetesNodeRole pulumi.StringPtrInput `pulumi:"kubernetesNodeRole"`
 	// Filter the results to a specific memory size in GB.
 	MemorySize pulumi.Float64PtrInput `pulumi:"memorySize"`
@@ -163,8 +168,9 @@ type GetInstanceTypesOutputArgs struct {
 	MinimumEniIpv6AddressQuantity pulumi.IntPtrInput `pulumi:"minimumEniIpv6AddressQuantity"`
 	// Filter the results by network type. Valid values: `Classic` and `Vpc`.
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
-	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
-	SortedBy    pulumi.StringPtrInput `pulumi:"sortedBy"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	SortedBy   pulumi.StringPtrInput `pulumi:"sortedBy"`
 	// Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
 	SpotStrategy pulumi.StringPtrInput `pulumi:"spotStrategy"`
 	// Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`.

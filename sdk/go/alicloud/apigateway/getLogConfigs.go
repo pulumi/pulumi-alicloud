@@ -65,7 +65,8 @@ type GetLogConfigsArgs struct {
 	// A list of Log Config IDs.
 	Ids []string `pulumi:"ids"`
 	// The type the of log.
-	LogType    *string `pulumi:"logType"`
+	LogType *string `pulumi:"logType"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -97,7 +98,8 @@ type GetLogConfigsOutputArgs struct {
 	// A list of Log Config IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The type the of log.
-	LogType    pulumi.StringPtrInput `pulumi:"logType"`
+	LogType pulumi.StringPtrInput `pulumi:"logType"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

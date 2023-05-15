@@ -10,6 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:** This datasource has been renamed to ecs.getEcsSnapshots from version 1.120.0.
+//
+// Use this data source to get a list of snapshot according to the specified filters in an Alibaba Cloud account.
+//
+// For information about snapshot and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+//
+// > **NOTE:**  Available in 1.40.0+.
+//
 // ## Example Usage
 //
 // ```go

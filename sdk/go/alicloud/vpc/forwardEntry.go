@@ -132,6 +132,8 @@ type ForwardEntry struct {
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies whether to remove limits on the port range. Default value is `false`.
+	//
+	// > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
 	PortBreak pulumi.BoolPtrOutput `pulumi:"portBreak"`
 	// (Available in 1.119.1+) The status of forward entry.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -205,6 +207,8 @@ type forwardEntryState struct {
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
 	Name *string `pulumi:"name"`
 	// Specifies whether to remove limits on the port range. Default value is `false`.
+	//
+	// > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
 	PortBreak *bool `pulumi:"portBreak"`
 	// (Available in 1.119.1+) The status of forward entry.
 	Status *string `pulumi:"status"`
@@ -232,6 +236,8 @@ type ForwardEntryState struct {
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
 	Name pulumi.StringPtrInput
 	// Specifies whether to remove limits on the port range. Default value is `false`.
+	//
+	// > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
 	PortBreak pulumi.BoolPtrInput
 	// (Available in 1.119.1+) The status of forward entry.
 	Status pulumi.StringPtrInput
@@ -261,6 +267,8 @@ type forwardEntryArgs struct {
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
 	Name *string `pulumi:"name"`
 	// Specifies whether to remove limits on the port range. Default value is `false`.
+	//
+	// > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
 	PortBreak *bool `pulumi:"portBreak"`
 }
 
@@ -285,6 +293,8 @@ type ForwardEntryArgs struct {
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.
 	Name pulumi.StringPtrInput
 	// Specifies whether to remove limits on the port range. Default value is `false`.
+	//
+	// > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
 	PortBreak pulumi.BoolPtrInput
 }
 
@@ -423,6 +433,8 @@ func (o ForwardEntryOutput) Name() pulumi.StringOutput {
 }
 
 // Specifies whether to remove limits on the port range. Default value is `false`.
+//
+// > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
 func (o ForwardEntryOutput) PortBreak() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ForwardEntry) pulumi.BoolPtrOutput { return v.PortBreak }).(pulumi.BoolPtrOutput)
 }

@@ -125,6 +125,7 @@ def get_industrial_pid_organizations(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Pid Organization IDs.
     :param str name_regex: A regex string to filter results by Pid Organization name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str parent_organization_id: The parent organization id.
     """
     __args__ = dict()
@@ -172,6 +173,7 @@ def get_industrial_pid_organizations_output(ids: Optional[pulumi.Input[Optional[
 
     :param Sequence[str] ids: A list of Pid Organization IDs.
     :param str name_regex: A regex string to filter results by Pid Organization name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str parent_organization_id: The parent organization id.
     """
     ...

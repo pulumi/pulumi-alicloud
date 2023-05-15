@@ -104,6 +104,7 @@ def get_regions(current: Optional[bool] = None,
 
 
     :param bool current: Set to true to match only the region configured in the provider. Default value: `true`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str region_id: The Region ID.
     """
     __args__ = dict()
@@ -145,6 +146,7 @@ def get_regions_output(current: Optional[pulumi.Input[Optional[bool]]] = None,
 
 
     :param bool current: Set to true to match only the region configured in the provider. Default value: `true`.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str region_id: The Region ID.
     """
     ...

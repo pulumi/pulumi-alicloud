@@ -12,12 +12,16 @@ public final class BucketReplicationEncryptionConfiguration {
     /**
      * @return The CMK ID used in SSE-KMS.
      * 
+     * `NOTE`: If the status of sse_kms_encrypted_objects is set to Enabled, you must specify the replica_kms_key_id.
+     * 
      */
     private String replicaKmsKeyId;
 
     private BucketReplicationEncryptionConfiguration() {}
     /**
      * @return The CMK ID used in SSE-KMS.
+     * 
+     * `NOTE`: If the status of sse_kms_encrypted_objects is set to Enabled, you must specify the replica_kms_key_id.
      * 
      */
     public String replicaKmsKeyId() {

@@ -49,7 +49,8 @@ func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOpti
 // A collection of arguments for invoking getZones.
 type GetZonesArgs struct {
 	// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Elasticsearch instances.
-	Multi      *bool   `pulumi:"multi"`
+	Multi *bool `pulumi:"multi"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -81,7 +82,8 @@ func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi
 // A collection of arguments for invoking getZones.
 type GetZonesOutputArgs struct {
 	// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Elasticsearch instances.
-	Multi      pulumi.BoolPtrInput   `pulumi:"multi"`
+	Multi pulumi.BoolPtrInput `pulumi:"multi"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

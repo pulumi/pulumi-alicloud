@@ -55,6 +55,8 @@ func GetLogShipper(ctx *pulumi.Context, args *GetLogShipperArgs, opts ...pulumi.
 // A collection of arguments for invoking getLogShipper.
 type GetLogShipperArgs struct {
 	// Setting the value to `On` to enable the service. Valid values: `On` or `Off`. Default to `Off`.
+	//
+	// > **NOTE:** Setting `enable = "On"` to open the Threat Detection Log Shipper that means you have read and agreed the [Threat Detection Log Shipper Terms of Service](https://help.aliyun.com/document_detail/170157.html). The service can not closed once it is opened.
 	Enable *string `pulumi:"enable"`
 }
 
@@ -93,6 +95,8 @@ func GetLogShipperOutput(ctx *pulumi.Context, args GetLogShipperOutputArgs, opts
 // A collection of arguments for invoking getLogShipper.
 type GetLogShipperOutputArgs struct {
 	// Setting the value to `On` to enable the service. Valid values: `On` or `Off`. Default to `Off`.
+	//
+	// > **NOTE:** Setting `enable = "On"` to open the Threat Detection Log Shipper that means you have read and agreed the [Threat Detection Log Shipper Terms of Service](https://help.aliyun.com/document_detail/170157.html). The service can not closed once it is opened.
 	Enable pulumi.StringPtrInput `pulumi:"enable"`
 }
 

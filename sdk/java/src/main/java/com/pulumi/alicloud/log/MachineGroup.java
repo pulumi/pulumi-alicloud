@@ -16,6 +16,56 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Log Service manages all the ECS instances whose logs need to be collected by using the Logtail client in the form of machine groups.
+ *  [Refer to details](https://www.alibabacloud.com/help/doc-detail/28966.htm)
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import com.pulumi.alicloud.log.MachineGroup;
+ * import com.pulumi.alicloud.log.MachineGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
+ *             .description(&#34;created by terraform&#34;)
+ *             .build());
+ * 
+ *         var exampleMachineGroup = new MachineGroup(&#34;exampleMachineGroup&#34;, MachineGroupArgs.builder()        
+ *             .project(exampleProject.name())
+ *             .identifyType(&#34;ip&#34;)
+ *             .topic(&#34;terraform&#34;)
+ *             .identifyLists(            
+ *                 &#34;10.0.0.1&#34;,
+ *                 &#34;10.0.0.2&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Module Support
+ * 
+ * You can use the existing sls-logtail module
+ * to create logtail config, machine group, install logtail on ECS instances and join instances into machine group one-click.
+ * 
  * ## Import
  * 
  * Log machine group can be imported using the id, e.g.

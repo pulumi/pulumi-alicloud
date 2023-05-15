@@ -68,7 +68,8 @@ type GetServerPlansArgs struct {
 	// A list of Instance Plan IDs.
 	Ids []string `pulumi:"ids"`
 	// The memory size. Unit: GB.
-	Memory     *int    `pulumi:"memory"`
+	Memory *int `pulumi:"memory"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The platform of Plan supported. Valid values: ["Linux", "Windows"].
 	Platform *string `pulumi:"platform"`
@@ -115,7 +116,8 @@ type GetServerPlansOutputArgs struct {
 	// A list of Instance Plan IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The memory size. Unit: GB.
-	Memory     pulumi.IntPtrInput    `pulumi:"memory"`
+	Memory pulumi.IntPtrInput `pulumi:"memory"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The platform of Plan supported. Valid values: ["Linux", "Windows"].
 	Platform pulumi.StringPtrInput `pulumi:"platform"`

@@ -122,6 +122,7 @@ def get_aliases(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of KMS aliases IDs. The value is same as KMS alias_name.
     :param str name_regex: A regex string to filter the results by the KMS alias name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -163,5 +164,6 @@ def get_aliases_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
 
     :param Sequence[str] ids: A list of KMS aliases IDs. The value is same as KMS alias_name.
     :param str name_regex: A regex string to filter the results by the KMS alias name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

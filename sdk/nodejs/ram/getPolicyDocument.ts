@@ -206,6 +206,9 @@ export function getPolicyDocument(args?: GetPolicyDocumentArgs, opts?: pulumi.In
  * A collection of arguments for invoking getPolicyDocument.
  */
 export interface GetPolicyDocumentArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Statement of the RAM policy document. See the following `Block statement`.
@@ -426,6 +429,9 @@ export function getPolicyDocumentOutput(args?: GetPolicyDocumentOutputArgs, opts
  * A collection of arguments for invoking getPolicyDocument.
  */
 export interface GetPolicyDocumentOutputArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Statement of the RAM policy document. See the following `Block statement`.

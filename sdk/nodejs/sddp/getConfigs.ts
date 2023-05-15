@@ -50,6 +50,9 @@ export interface GetConfigsArgs {
      */
     ids?: string[];
     lang?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -103,5 +106,8 @@ export interface GetConfigsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     lang?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

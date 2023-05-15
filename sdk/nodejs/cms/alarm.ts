@@ -159,6 +159,8 @@ export class Alarm extends pulumi.CustomResource {
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
+     *
+     * > **NOTE:** Each resource supports the creation of one of the following three levels.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -347,6 +349,8 @@ export interface AlarmState {
     status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
+     *
+     * > **NOTE:** Each resource supports the creation of one of the following three levels.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -456,6 +460,8 @@ export interface AlarmArgs {
     statistics?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
+     *
+     * > **NOTE:** Each resource supports the creation of one of the following three levels.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**

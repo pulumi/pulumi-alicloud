@@ -168,6 +168,7 @@ def get_quota_applications(dimensions: Optional[Sequence[pulumi.InputType['GetQu
     :param Sequence[pulumi.InputType['GetQuotaApplicationsDimensionArgs']] dimensions: The quota dimensions.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Application Info IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_code: The product code.
     :param str quota_action_code: The ID of quota action..
     :param str quota_category: The quota category. Valid values: `CommonQuota`, `FlowControl`.
@@ -233,6 +234,7 @@ def get_quota_applications_output(dimensions: Optional[pulumi.Input[Optional[Seq
     :param Sequence[pulumi.InputType['GetQuotaApplicationsDimensionArgs']] dimensions: The quota dimensions.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Application Info IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_code: The product code.
     :param str quota_action_code: The ID of quota action..
     :param str quota_category: The quota category. Valid values: `CommonQuota`, `FlowControl`.

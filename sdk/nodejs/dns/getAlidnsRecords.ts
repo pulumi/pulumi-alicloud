@@ -86,6 +86,9 @@ export interface GetAlidnsRecordsArgs {
      * Sort by. Sort from newest to oldest according to the time added by resolution.
      */
     orderBy?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
@@ -226,6 +229,9 @@ export interface GetAlidnsRecordsOutputArgs {
      * Sort by. Sort from newest to oldest according to the time added by resolution.
      */
     orderBy?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.

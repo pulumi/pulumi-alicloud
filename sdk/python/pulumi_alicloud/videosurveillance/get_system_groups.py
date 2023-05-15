@@ -152,6 +152,7 @@ def get_system_groups(ids: Optional[Sequence[str]] = None,
     :param str in_protocol: The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
     :param str name: The name.
     :param str name_regex: A regex string to filter results by Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status. Valid values: `on`,`off`.
     """
     __args__ = dict()
@@ -212,6 +213,7 @@ def get_system_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     :param str in_protocol: The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
     :param str name: The name.
     :param str name_regex: A regex string to filter results by Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status. Valid values: `on`,`off`.
     """
     ...

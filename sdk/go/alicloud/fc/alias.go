@@ -70,6 +70,8 @@ type Alias struct {
 	// Description of the alias.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The Function Compute alias' route configuration settings. Fields documented below.
+	//
+	// **routing_config** includes the following arguments:
 	RoutingConfig AliasRoutingConfigPtrOutput `pulumi:"routingConfig"`
 	// The Function Compute service name.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -120,6 +122,8 @@ type aliasState struct {
 	// Description of the alias.
 	Description *string `pulumi:"description"`
 	// The Function Compute alias' route configuration settings. Fields documented below.
+	//
+	// **routing_config** includes the following arguments:
 	RoutingConfig *AliasRoutingConfig `pulumi:"routingConfig"`
 	// The Function Compute service name.
 	ServiceName *string `pulumi:"serviceName"`
@@ -133,6 +137,8 @@ type AliasState struct {
 	// Description of the alias.
 	Description pulumi.StringPtrInput
 	// The Function Compute alias' route configuration settings. Fields documented below.
+	//
+	// **routing_config** includes the following arguments:
 	RoutingConfig AliasRoutingConfigPtrInput
 	// The Function Compute service name.
 	ServiceName pulumi.StringPtrInput
@@ -150,6 +156,8 @@ type aliasArgs struct {
 	// Description of the alias.
 	Description *string `pulumi:"description"`
 	// The Function Compute alias' route configuration settings. Fields documented below.
+	//
+	// **routing_config** includes the following arguments:
 	RoutingConfig *AliasRoutingConfig `pulumi:"routingConfig"`
 	// The Function Compute service name.
 	ServiceName string `pulumi:"serviceName"`
@@ -164,6 +172,8 @@ type AliasArgs struct {
 	// Description of the alias.
 	Description pulumi.StringPtrInput
 	// The Function Compute alias' route configuration settings. Fields documented below.
+	//
+	// **routing_config** includes the following arguments:
 	RoutingConfig AliasRoutingConfigPtrInput
 	// The Function Compute service name.
 	ServiceName pulumi.StringInput
@@ -269,6 +279,8 @@ func (o AliasOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The Function Compute alias' route configuration settings. Fields documented below.
+//
+// **routing_config** includes the following arguments:
 func (o AliasOutput) RoutingConfig() AliasRoutingConfigPtrOutput {
 	return o.ApplyT(func(v *Alias) AliasRoutingConfigPtrOutput { return v.RoutingConfig }).(AliasRoutingConfigPtrOutput)
 }

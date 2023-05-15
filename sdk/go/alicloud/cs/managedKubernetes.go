@@ -13,7 +13,7 @@ import (
 
 // ## Import
 //
-// Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
+// Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
 //
 // ```sh
 //
@@ -162,6 +162,9 @@ type ManagedKubernetes struct {
 	// The public ip of load balancer.
 	SlbInternet pulumi.StringOutput `pulumi:"slbInternet"`
 	// Whether to create internet load balancer for API Server. Default to true.
+	//
+	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `podVswitchIds` field and addons with `terway-eniip`.
+	// If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
 	SlbInternetEnabled pulumi.BoolPtrOutput `pulumi:"slbInternetEnabled"`
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet pulumi.StringOutput `pulumi:"slbIntranet"`
@@ -427,6 +430,9 @@ type managedKubernetesState struct {
 	// The public ip of load balancer.
 	SlbInternet *string `pulumi:"slbInternet"`
 	// Whether to create internet load balancer for API Server. Default to true.
+	//
+	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `podVswitchIds` field and addons with `terway-eniip`.
+	// If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet *string `pulumi:"slbIntranet"`
@@ -654,6 +660,9 @@ type ManagedKubernetesState struct {
 	// The public ip of load balancer.
 	SlbInternet pulumi.StringPtrInput
 	// Whether to create internet load balancer for API Server. Default to true.
+	//
+	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `podVswitchIds` field and addons with `terway-eniip`.
+	// If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
 	SlbInternetEnabled pulumi.BoolPtrInput
 	// The ID of private load balancer where the current cluster master node is located.
 	SlbIntranet pulumi.StringPtrInput
@@ -873,6 +882,9 @@ type managedKubernetesArgs struct {
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr *string `pulumi:"serviceCidr"`
 	// Whether to create internet load balancer for API Server. Default to true.
+	//
+	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `podVswitchIds` field and addons with `terway-eniip`.
+	// If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. Detailed below.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -1079,6 +1091,9 @@ type ManagedKubernetesArgs struct {
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrInput
 	// Whether to create internet load balancer for API Server. Default to true.
+	//
+	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `podVswitchIds` field and addons with `terway-eniip`.
+	// If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
 	SlbInternetEnabled pulumi.BoolPtrInput
 	// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. Detailed below.
 	Tags pulumi.MapInput
@@ -1538,6 +1553,9 @@ func (o ManagedKubernetesOutput) SlbInternet() pulumi.StringOutput {
 }
 
 // Whether to create internet load balancer for API Server. Default to true.
+//
+// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `podVswitchIds` field and addons with `terway-eniip`.
+// If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
 func (o ManagedKubernetesOutput) SlbInternetEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.BoolPtrOutput { return v.SlbInternetEnabled }).(pulumi.BoolPtrOutput)
 }

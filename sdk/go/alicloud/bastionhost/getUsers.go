@@ -74,7 +74,8 @@ type GetUsersArgs struct {
 	// Specify the New of the User That Created a Different Mobile Phone Number from Your.
 	Mobile *string `pulumi:"mobile"`
 	// A regex string to filter results by User name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
 	Source *string `pulumi:"source"`
@@ -128,7 +129,8 @@ type GetUsersOutputArgs struct {
 	// Specify the New of the User That Created a Different Mobile Phone Number from Your.
 	Mobile pulumi.StringPtrInput `pulumi:"mobile"`
 	// A regex string to filter results by User name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
 	Source pulumi.StringPtrInput `pulumi:"source"`

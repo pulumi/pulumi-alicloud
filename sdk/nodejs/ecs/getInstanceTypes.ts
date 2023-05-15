@@ -91,6 +91,10 @@ export interface GetInstanceTypesArgs {
      * If true, outdated instance types are included in the results. Default to false.
      */
     isOutdated?: boolean;
+    /**
+     * Filter the result which is used to create a kubernetes cluster
+     * and managed kubernetes cluster. Optional Values: `Master` and `Worker`.
+     */
     kubernetesNodeRole?: string;
     /**
      * Filter the results to a specific memory size in GB.
@@ -104,6 +108,9 @@ export interface GetInstanceTypesArgs {
      * Filter the results by network type. Valid values: `Classic` and `Vpc`.
      */
     networkType?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     sortedBy?: string;
     /**
@@ -224,6 +231,10 @@ export interface GetInstanceTypesOutputArgs {
      * If true, outdated instance types are included in the results. Default to false.
      */
     isOutdated?: pulumi.Input<boolean>;
+    /**
+     * Filter the result which is used to create a kubernetes cluster
+     * and managed kubernetes cluster. Optional Values: `Master` and `Worker`.
+     */
     kubernetesNodeRole?: pulumi.Input<string>;
     /**
      * Filter the results to a specific memory size in GB.
@@ -237,6 +248,9 @@ export interface GetInstanceTypesOutputArgs {
      * Filter the results by network type. Valid values: `Classic` and `Vpc`.
      */
     networkType?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     sortedBy?: pulumi.Input<string>;
     /**

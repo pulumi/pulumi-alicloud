@@ -153,6 +153,7 @@ def get_basic_accelerate_ips(accelerate_ip_address: Optional[str] = None,
     :param str accelerate_ip_id: The id of the Basic Accelerate IP.
     :param Sequence[str] ids: A list of Global Accelerator Basic Accelerate IP IDs.
     :param str ip_set_id: The ID of the Basic Ip Set.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `active`, `binding`, `bound`, `unbinding`, `deleting`.
     """
     __args__ = dict()
@@ -207,6 +208,7 @@ def get_basic_accelerate_ips_output(accelerate_ip_address: Optional[pulumi.Input
     :param str accelerate_ip_id: The id of the Basic Accelerate IP.
     :param Sequence[str] ids: A list of Global Accelerator Basic Accelerate IP IDs.
     :param str ip_set_id: The ID of the Basic Ip Set.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `active`, `binding`, `bound`, `unbinding`, `deleting`.
     """
     ...

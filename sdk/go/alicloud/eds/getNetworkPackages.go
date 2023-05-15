@@ -70,8 +70,9 @@ func GetNetworkPackages(ctx *pulumi.Context, args *GetNetworkPackagesArgs, opts 
 // A collection of arguments for invoking getNetworkPackages.
 type GetNetworkPackagesArgs struct {
 	// A list of Network Package IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
 	Status *string `pulumi:"status"`
 }
@@ -102,8 +103,9 @@ func GetNetworkPackagesOutput(ctx *pulumi.Context, args GetNetworkPackagesOutput
 // A collection of arguments for invoking getNetworkPackages.
 type GetNetworkPackagesOutputArgs struct {
 	// A list of Network Package IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }

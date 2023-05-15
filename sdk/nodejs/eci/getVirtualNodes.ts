@@ -61,6 +61,9 @@ export interface GetVirtualNodesArgs {
      * A regex string to filter results by Virtual Node name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The resource group ID.
@@ -150,6 +153,9 @@ export interface GetVirtualNodesOutputArgs {
      * A regex string to filter results by Virtual Node name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The resource group ID.

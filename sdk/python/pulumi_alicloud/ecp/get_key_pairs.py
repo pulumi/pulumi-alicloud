@@ -127,6 +127,7 @@ def get_key_pairs(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Key Pair IDs. Its element value is same as Key Pair Name.
     :param str key_pair_finger_print: The Private Key of the Fingerprint.
     :param str name_regex: A regex string to filter results by Key Pair name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -175,5 +176,6 @@ def get_key_pairs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     :param Sequence[str] ids: A list of Key Pair IDs. Its element value is same as Key Pair Name.
     :param str key_pair_finger_print: The Private Key of the Fingerprint.
     :param str name_regex: A regex string to filter results by Key Pair name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

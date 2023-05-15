@@ -51,6 +51,7 @@ func GetMscSubSubscriptions(ctx *pulumi.Context, args *GetMscSubSubscriptionsArg
 
 // A collection of arguments for invoking getMscSubSubscriptions.
 type GetMscSubSubscriptionsArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -77,6 +78,7 @@ func GetMscSubSubscriptionsOutput(ctx *pulumi.Context, args GetMscSubSubscriptio
 
 // A collection of arguments for invoking getMscSubSubscriptions.
 type GetMscSubSubscriptionsOutputArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

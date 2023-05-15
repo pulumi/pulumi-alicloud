@@ -10,6 +10,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:**  This resource is based on Config's old version OpenAPI, and it has been deprecated from version `1.173.0`.
+// Please use new datasource cfg.getDeliveries instead.
+//
+// This data source provides the Config Delivery Channels of the current Alibaba Cloud user.
+//
+// > **NOTE:**  Available in 1.99.0+.
+//
+// > **NOTE:** The Cloud Config region only support `cn-shanghai` and `ap-southeast-1`.
+//
 // ## Example Usage
 //
 // ```go
@@ -53,7 +62,8 @@ type GetDeliveryChannelsArgs struct {
 	// A list of Config Delivery Channel IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by delivery channel name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
 	Status *int `pulumi:"status"`
@@ -93,7 +103,8 @@ type GetDeliveryChannelsOutputArgs struct {
 	// A list of Config Delivery Channel IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by delivery channel name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
 	Status pulumi.IntPtrInput `pulumi:"status"`

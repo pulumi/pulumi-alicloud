@@ -158,6 +158,7 @@ def get_bandwidth_packages(ids: Optional[Sequence[str]] = None,
     :param bool include_reservation_data: Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
     :param str instance_id: ID of a CEN instance.
     :param str name_regex: A regex string to filter CEN Bandwidth Package by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
     """
     __args__ = dict()
@@ -209,6 +210,7 @@ def get_bandwidth_packages_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     :param bool include_reservation_data: Indicates whether to include renewal data. Valid values: `true`: Return renewal data in the response. `false`: Do not return renewal data in the response.
     :param str instance_id: ID of a CEN instance.
     :param str name_regex: A regex string to filter CEN Bandwidth Package by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
     """
     ...

@@ -79,12 +79,16 @@ public final class ImageImportDiskDeviceMappingArgs extends com.pulumi.resources
     /**
      * The file name of your OSS Object.
      * 
+     * &gt; **NOTE:** The disk_device_mapping is a list and it&#39;s first item will be used to system disk and other items are used to data disks.
+     * 
      */
     @Import(name="ossObject")
     private @Nullable Output<String> ossObject;
 
     /**
      * @return The file name of your OSS Object.
+     * 
+     * &gt; **NOTE:** The disk_device_mapping is a list and it&#39;s first item will be used to system disk and other items are used to data disks.
      * 
      */
     public Optional<Output<String>> ossObject() {
@@ -206,6 +210,8 @@ public final class ImageImportDiskDeviceMappingArgs extends com.pulumi.resources
         /**
          * @param ossObject The file name of your OSS Object.
          * 
+         * &gt; **NOTE:** The disk_device_mapping is a list and it&#39;s first item will be used to system disk and other items are used to data disks.
+         * 
          * @return builder
          * 
          */
@@ -216,6 +222,8 @@ public final class ImageImportDiskDeviceMappingArgs extends com.pulumi.resources
 
         /**
          * @param ossObject The file name of your OSS Object.
+         * 
+         * &gt; **NOTE:** The disk_device_mapping is a list and it&#39;s first item will be used to system disk and other items are used to data disks.
          * 
          * @return builder
          * 

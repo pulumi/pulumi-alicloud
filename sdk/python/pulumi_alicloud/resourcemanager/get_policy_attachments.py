@@ -172,6 +172,7 @@ def get_policy_attachments(language: Optional[str] = None,
 
 
     :param str language: The language that is used to return the description of the system policy. Valid values:`en`: English, `zh-CN`: Chinese, `ja`: Japanese.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str policy_name: The name of the policy. The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
     :param str policy_type: The type of the policy. Valid values: `Custom` and `System`.
     :param str principal_name: The name of the object to which the policy is attached.
@@ -228,6 +229,7 @@ def get_policy_attachments_output(language: Optional[pulumi.Input[Optional[str]]
 
 
     :param str language: The language that is used to return the description of the system policy. Valid values:`en`: English, `zh-CN`: Chinese, `ja`: Japanese.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str policy_name: The name of the policy. The name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
     :param str policy_type: The type of the policy. Valid values: `Custom` and `System`.
     :param str principal_name: The name of the object to which the policy is attached.

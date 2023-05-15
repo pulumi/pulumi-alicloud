@@ -69,8 +69,9 @@ type GetRdsBackupsArgs struct {
 	// The end time.
 	EndTime *string `pulumi:"endTime"`
 	// A list of Backup IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The start time.
 	StartTime *string `pulumi:"startTime"`
 }
@@ -120,8 +121,9 @@ type GetRdsBackupsOutputArgs struct {
 	// The end time.
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
 	// A list of Backup IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The start time.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 }

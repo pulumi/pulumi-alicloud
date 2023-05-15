@@ -1583,6 +1583,8 @@ type ImageImportDiskDeviceMapping struct {
 	// Save the exported OSS bucket.
 	OssBucket *string `pulumi:"ossBucket"`
 	// The file name of your OSS Object.
+	//
+	// > **NOTE:** The diskDeviceMapping is a list and it's first item will be used to system disk and other items are used to data disks.
 	OssObject *string `pulumi:"ossObject"`
 }
 
@@ -1607,6 +1609,8 @@ type ImageImportDiskDeviceMappingArgs struct {
 	// Save the exported OSS bucket.
 	OssBucket pulumi.StringPtrInput `pulumi:"ossBucket"`
 	// The file name of your OSS Object.
+	//
+	// > **NOTE:** The diskDeviceMapping is a list and it's first item will be used to system disk and other items are used to data disks.
 	OssObject pulumi.StringPtrInput `pulumi:"ossObject"`
 }
 
@@ -1682,6 +1686,8 @@ func (o ImageImportDiskDeviceMappingOutput) OssBucket() pulumi.StringPtrOutput {
 }
 
 // The file name of your OSS Object.
+//
+// > **NOTE:** The diskDeviceMapping is a list and it's first item will be used to system disk and other items are used to data disks.
 func (o ImageImportDiskDeviceMappingOutput) OssObject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageImportDiskDeviceMapping) *string { return v.OssObject }).(pulumi.StringPtrOutput)
 }
@@ -2071,12 +2077,18 @@ type LaunchTemplateDataDisk struct {
 	// - cloud_ssd: SSD cloud Disks.
 	// - ephemeral_ssd: local SSD Disks
 	// - cloud_essd: ESSD cloud Disks.
+	//
+	// Default to `cloudEfficiency`.
 	Category *string `pulumi:"category"`
 	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+	//
+	// Default to true
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description *string `pulumi:"description"`
 	// Encrypted the data in this disk.
+	//
+	// Default to false
 	Encrypted *bool `pulumi:"encrypted"`
 	// The name of the data disk.
 	Name             *string `pulumi:"name"`
@@ -2110,12 +2122,18 @@ type LaunchTemplateDataDiskArgs struct {
 	// - cloud_ssd: SSD cloud Disks.
 	// - ephemeral_ssd: local SSD Disks
 	// - cloud_essd: ESSD cloud Disks.
+	//
+	// Default to `cloudEfficiency`.
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+	//
+	// Default to true
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Encrypted the data in this disk.
+	//
+	// Default to false
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
 	// The name of the data disk.
 	Name             pulumi.StringPtrInput `pulumi:"name"`
@@ -2188,11 +2206,15 @@ func (o LaunchTemplateDataDiskOutput) ToLaunchTemplateDataDiskOutputWithContext(
 // - cloud_ssd: SSD cloud Disks.
 // - ephemeral_ssd: local SSD Disks
 // - cloud_essd: ESSD cloud Disks.
+//
+// Default to `cloudEfficiency`.
 func (o LaunchTemplateDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
 // Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+//
+// Default to true
 func (o LaunchTemplateDataDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateDataDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
 }
@@ -2203,6 +2225,8 @@ func (o LaunchTemplateDataDiskOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Encrypted the data in this disk.
+//
+// Default to false
 func (o LaunchTemplateDataDiskOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateDataDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
@@ -2471,8 +2495,12 @@ type LaunchTemplateSystemDisk struct {
 	// - cloud_ssd: SSD cloud Disks.
 	// - ephemeral_ssd: local SSD Disks
 	// - cloud_essd: ESSD cloud Disks.
+	//
+	// Default to `cloudEfficiency`.
 	Category *string `pulumi:"category"`
 	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+	//
+	// Default to true
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description *string `pulumi:"description"`
@@ -2507,8 +2535,12 @@ type LaunchTemplateSystemDiskArgs struct {
 	// - cloud_ssd: SSD cloud Disks.
 	// - ephemeral_ssd: local SSD Disks
 	// - cloud_essd: ESSD cloud Disks.
+	//
+	// Default to `cloudEfficiency`.
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+	//
+	// Default to true
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
 	// The description of the data disk.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -2608,11 +2640,15 @@ func (o LaunchTemplateSystemDiskOutput) ToLaunchTemplateSystemDiskPtrOutputWithC
 // - cloud_ssd: SSD cloud Disks.
 // - ephemeral_ssd: local SSD Disks
 // - cloud_essd: ESSD cloud Disks.
+//
+// Default to `cloudEfficiency`.
 func (o LaunchTemplateSystemDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateSystemDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
 // Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+//
+// Default to true
 func (o LaunchTemplateSystemDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LaunchTemplateSystemDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
 }
@@ -2675,6 +2711,8 @@ func (o LaunchTemplateSystemDiskPtrOutput) Elem() LaunchTemplateSystemDiskOutput
 // - cloud_ssd: SSD cloud Disks.
 // - ephemeral_ssd: local SSD Disks
 // - cloud_essd: ESSD cloud Disks.
+//
+// Default to `cloudEfficiency`.
 func (o LaunchTemplateSystemDiskPtrOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplateSystemDisk) *string {
 		if v == nil {
@@ -2685,6 +2723,8 @@ func (o LaunchTemplateSystemDiskPtrOutput) Category() pulumi.StringPtrOutput {
 }
 
 // Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
+//
+// Default to true
 func (o LaunchTemplateSystemDiskPtrOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplateSystemDisk) *bool {
 		if v == nil {
@@ -12950,7 +12990,7 @@ type GetInstancesInstance struct {
 	RamRoleName string `pulumi:"ramRoleName"`
 	// Region ID the instance belongs to.
 	RegionId string `pulumi:"regionId"`
-	// The Id of resource group which the instance belongs.
+	// The ID of resource group which the instance belongs.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// List of security group IDs the instance belongs to.
 	SecurityGroups []string `pulumi:"securityGroups"`
@@ -13035,7 +13075,7 @@ type GetInstancesInstanceArgs struct {
 	RamRoleName pulumi.StringInput `pulumi:"ramRoleName"`
 	// Region ID the instance belongs to.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
-	// The Id of resource group which the instance belongs.
+	// The ID of resource group which the instance belongs.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// List of security group IDs the instance belongs to.
 	SecurityGroups pulumi.StringArrayInput `pulumi:"securityGroups"`
@@ -13210,7 +13250,7 @@ func (o GetInstancesInstanceOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// The Id of resource group which the instance belongs.
+// The ID of resource group which the instance belongs.
 func (o GetInstancesInstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }

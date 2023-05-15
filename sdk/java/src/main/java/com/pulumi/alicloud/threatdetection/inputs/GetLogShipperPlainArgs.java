@@ -17,12 +17,16 @@ public final class GetLogShipperPlainArgs extends com.pulumi.resources.InvokeArg
     /**
      * Setting the value to `On` to enable the service. Valid values: `On` or `Off`. Default to `Off`.
      * 
+     * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the Threat Detection Log Shipper that means you have read and agreed the [Threat Detection Log Shipper Terms of Service](https://help.aliyun.com/document_detail/170157.html). The service can not closed once it is opened.
+     * 
      */
     @Import(name="enable")
     private @Nullable String enable;
 
     /**
      * @return Setting the value to `On` to enable the service. Valid values: `On` or `Off`. Default to `Off`.
+     * 
+     * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the Threat Detection Log Shipper that means you have read and agreed the [Threat Detection Log Shipper Terms of Service](https://help.aliyun.com/document_detail/170157.html). The service can not closed once it is opened.
      * 
      */
     public Optional<String> enable() {
@@ -55,6 +59,8 @@ public final class GetLogShipperPlainArgs extends com.pulumi.resources.InvokeArg
 
         /**
          * @param enable Setting the value to `On` to enable the service. Valid values: `On` or `Off`. Default to `Off`.
+         * 
+         * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the Threat Detection Log Shipper that means you have read and agreed the [Threat Detection Log Shipper Terms of Service](https://help.aliyun.com/document_detail/170157.html). The service can not closed once it is opened.
          * 
          * @return builder
          * 

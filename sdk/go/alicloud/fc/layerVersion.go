@@ -77,6 +77,8 @@ type LayerVersion struct {
 	// The version of Layer Version.
 	Version pulumi.StringOutput `pulumi:"version"`
 	// The ZIP package of the function code that is encoded in the Base64 format.
+	//
+	// > **NOTE:** `zipFile` and `ossBucketName`, `ossObjectName` cannot be used together.
 	ZipFile pulumi.StringPtrOutput `pulumi:"zipFile"`
 }
 
@@ -136,6 +138,8 @@ type layerVersionState struct {
 	// The version of Layer Version.
 	Version *string `pulumi:"version"`
 	// The ZIP package of the function code that is encoded in the Base64 format.
+	//
+	// > **NOTE:** `zipFile` and `ossBucketName`, `ossObjectName` cannot be used together.
 	ZipFile *string `pulumi:"zipFile"`
 }
 
@@ -161,6 +165,8 @@ type LayerVersionState struct {
 	// The version of Layer Version.
 	Version pulumi.StringPtrInput
 	// The ZIP package of the function code that is encoded in the Base64 format.
+	//
+	// > **NOTE:** `zipFile` and `ossBucketName`, `ossObjectName` cannot be used together.
 	ZipFile pulumi.StringPtrInput
 }
 
@@ -182,6 +188,8 @@ type layerVersionArgs struct {
 	// Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatibleRuntimes`, `description`, `layerName`, `ossBucketName`,  `ossObjectName`, or `zipFile` forces deletion of the existing layer version and creation of a new layer version.
 	SkipDestroy *bool `pulumi:"skipDestroy"`
 	// The ZIP package of the function code that is encoded in the Base64 format.
+	//
+	// > **NOTE:** `zipFile` and `ossBucketName`, `ossObjectName` cannot be used together.
 	ZipFile *string `pulumi:"zipFile"`
 }
 
@@ -200,6 +208,8 @@ type LayerVersionArgs struct {
 	// Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatibleRuntimes`, `description`, `layerName`, `ossBucketName`,  `ossObjectName`, or `zipFile` forces deletion of the existing layer version and creation of a new layer version.
 	SkipDestroy pulumi.BoolPtrInput
 	// The ZIP package of the function code that is encoded in the Base64 format.
+	//
+	// > **NOTE:** `zipFile` and `ossBucketName`, `ossObjectName` cannot be used together.
 	ZipFile pulumi.StringPtrInput
 }
 
@@ -341,6 +351,8 @@ func (o LayerVersionOutput) Version() pulumi.StringOutput {
 }
 
 // The ZIP package of the function code that is encoded in the Base64 format.
+//
+// > **NOTE:** `zipFile` and `ossBucketName`, `ossObjectName` cannot be used together.
 func (o LayerVersionOutput) ZipFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LayerVersion) pulumi.StringPtrOutput { return v.ZipFile }).(pulumi.StringPtrOutput)
 }

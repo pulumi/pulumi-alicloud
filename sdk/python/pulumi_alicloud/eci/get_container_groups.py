@@ -207,6 +207,7 @@ def get_container_groups(container_group_name: Optional[str] = None,
     :param Sequence[str] ids: A list of Container Group IDs.
     :param int limit: The maximum number of resources returned in the response. Default value is `20`. Maximum value: `20`. The number of returned results is no greater than the specified number.
     :param str name_regex: A regex string to filter results by Container Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
     :param str status: The status of container.
     :param Mapping[str, Any] tags: The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
@@ -284,6 +285,7 @@ def get_container_groups_output(container_group_name: Optional[pulumi.Input[Opti
     :param Sequence[str] ids: A list of Container Group IDs.
     :param int limit: The maximum number of resources returned in the response. Default value is `20`. Maximum value: `20`. The number of returned results is no greater than the specified number.
     :param str name_regex: A regex string to filter results by Container Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
     :param str status: The status of container.
     :param Mapping[str, Any] tags: The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.

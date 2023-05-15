@@ -32,6 +32,9 @@ export function getAccountAliases(args?: GetAccountAliasesArgs, opts?: pulumi.In
  * A collection of arguments for invoking getAccountAliases.
  */
 export interface GetAccountAliasesArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -72,5 +75,8 @@ export function getAccountAliasesOutput(args?: GetAccountAliasesOutputArgs, opts
  * A collection of arguments for invoking getAccountAliases.
  */
 export interface GetAccountAliasesOutputArgs {
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

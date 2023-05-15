@@ -213,6 +213,7 @@ def get_capacity_reservations(capacity_reservation_ids: Optional[Sequence[str]] 
     :param Sequence[str] ids: A list of Capacity Reservation IDs.
     :param str instance_type: Instance type. Currently, you can only set the capacity reservation service for one instance type.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str payment_type: The payment type of the resource. value range `PostPaid`, `PrePaid`.
     :param str platform: platform of the capacity reservation , value range `windows`, `linux`, `all`.
     :param str resource_group_id: The resource group id.
@@ -283,6 +284,7 @@ def get_capacity_reservations_output(capacity_reservation_ids: Optional[pulumi.I
     :param Sequence[str] ids: A list of Capacity Reservation IDs.
     :param str instance_type: Instance type. Currently, you can only set the capacity reservation service for one instance type.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str payment_type: The payment type of the resource. value range `PostPaid`, `PrePaid`.
     :param str platform: platform of the capacity reservation , value range `windows`, `linux`, `all`.
     :param str resource_group_id: The resource group id.

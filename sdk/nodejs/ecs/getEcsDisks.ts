@@ -138,6 +138,9 @@ export interface GetEcsDisksArgs {
      */
     nameRegex?: string;
     operationLocks?: inputs.ecs.GetEcsDisksOperationLock[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     pageNumber?: number;
     pageSize?: number;
@@ -323,6 +326,9 @@ export interface GetEcsDisksOutputArgs {
      */
     nameRegex?: pulumi.Input<string>;
     operationLocks?: pulumi.Input<pulumi.Input<inputs.ecs.GetEcsDisksOperationLockArgs>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;

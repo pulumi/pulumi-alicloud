@@ -136,6 +136,16 @@ type Instance struct {
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringOutput `pulumi:"securityGroup"`
 	// The zones among which you want to deploy the instance.
+	//
+	// > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
+	//
+	// | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+	// |------|-------------|:----:|:-----:|
+	// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
+	// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
+	// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
+	// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
+	// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
 	SelectedZones pulumi.StringArrayOutput `pulumi:"selectedZones"`
 	// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
 	ServiceVersion pulumi.StringOutput `pulumi:"serviceVersion"`
@@ -234,6 +244,16 @@ type instanceState struct {
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup *string `pulumi:"securityGroup"`
 	// The zones among which you want to deploy the instance.
+	//
+	// > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
+	//
+	// | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+	// |------|-------------|:----:|:-----:|
+	// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
+	// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
+	// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
+	// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
+	// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
 	SelectedZones []string `pulumi:"selectedZones"`
 	// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
 	ServiceVersion *string `pulumi:"serviceVersion"`
@@ -292,6 +312,16 @@ type InstanceState struct {
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringPtrInput
 	// The zones among which you want to deploy the instance.
+	//
+	// > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
+	//
+	// | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+	// |------|-------------|:----:|:-----:|
+	// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
+	// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
+	// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
+	// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
+	// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
 	SelectedZones pulumi.StringArrayInput
 	// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
 	ServiceVersion pulumi.StringPtrInput
@@ -352,6 +382,16 @@ type instanceArgs struct {
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup *string `pulumi:"securityGroup"`
 	// The zones among which you want to deploy the instance.
+	//
+	// > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
+	//
+	// | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+	// |------|-------------|:----:|:-----:|
+	// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
+	// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
+	// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
+	// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
+	// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
 	SelectedZones []string `pulumi:"selectedZones"`
 	// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
 	ServiceVersion *string `pulumi:"serviceVersion"`
@@ -403,6 +443,16 @@ type InstanceArgs struct {
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringPtrInput
 	// The zones among which you want to deploy the instance.
+	//
+	// > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
+	//
+	// | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+	// |------|-------------|:----:|:-----:|
+	// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
+	// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
+	// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
+	// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
+	// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
 	SelectedZones pulumi.StringArrayInput
 	// The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
 	ServiceVersion pulumi.StringPtrInput
@@ -580,6 +630,16 @@ func (o InstanceOutput) SecurityGroup() pulumi.StringOutput {
 }
 
 // The zones among which you want to deploy the instance.
+//
+// > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
+//
+// | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+// |------|-------------|:----:|:-----:|
+// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
+// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
+// |60          |  1400-6100:100  |   80-450:1  |    1-500:1  |
+// |90          |  2100-6100:100  |   100-450:1 |    1-500:1  |
+// |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
 func (o InstanceOutput) SelectedZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SelectedZones }).(pulumi.StringArrayOutput)
 }

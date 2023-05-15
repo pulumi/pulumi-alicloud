@@ -17,6 +17,98 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The project is the resource management unit in Log Service and is used to isolate and control resources.
+ * You can manage all the logs and the related log sources of an application by using projects. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48873.htm).
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
+ *             .description(&#34;created by terraform&#34;)
+ *             .tags(Map.of(&#34;test&#34;, &#34;test&#34;))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Project With Policy Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var examplePolicy = new Project(&#34;examplePolicy&#34;, ProjectArgs.builder()        
+ *             .description(&#34;created by terraform&#34;)
+ *             .policy(&#34;&#34;&#34;
+ * {
+ *   &#34;Statement&#34;: [
+ *     {
+ *       &#34;Action&#34;: [
+ *         &#34;log:PostLogStoreLogs&#34;
+ *       ],
+ *       &#34;Condition&#34;: {
+ *         &#34;StringNotLike&#34;: {
+ *           &#34;acs:SourceVpc&#34;: [
+ *             &#34;vpc-*&#34;
+ *           ]
+ *         }
+ *       },
+ *       &#34;Effect&#34;: &#34;Deny&#34;,
+ *       &#34;Resource&#34;: &#34;acs:log:*:*:project/tf-log/*&#34;
+ *     }
+ *   ],
+ *   &#34;Version&#34;: &#34;1&#34;
+ * }
+ * 
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Module Support
+ * 
+ * You can use the existing sls module
+ * to create SLS project, store and store index one-click, like ECS instances.
+ * 
  * ## Import
  * 
  * Log project can be imported using the id or name, e.g.

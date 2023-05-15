@@ -113,6 +113,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("networkInterfaceId", required: true)]
         public string NetworkInterfaceId { get; set; } = null!;
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -154,6 +157,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("networkInterfaceId", required: true)]
         public Input<string> NetworkInterfaceId { get; set; } = null!;
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

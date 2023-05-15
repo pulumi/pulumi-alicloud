@@ -373,6 +373,8 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
      * The interval can range from 7 days to 730 days.
      * **NOTE**: It is Required when `automatic_rotation = &#34;Enabled&#34;`
      * 
+     * &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
+     * 
      */
     @Import(name="rotationInterval")
     private @Nullable Output<String> rotationInterval;
@@ -383,6 +385,8 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
      * For example, you can use either 7d or 604800s to specify a seven-day interval.
      * The interval can range from 7 days to 730 days.
      * **NOTE**: It is Required when `automatic_rotation = &#34;Enabled&#34;`
+     * 
+     * &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
      * 
      */
     public Optional<Output<String>> rotationInterval() {
@@ -924,6 +928,8 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
          * The interval can range from 7 days to 730 days.
          * **NOTE**: It is Required when `automatic_rotation = &#34;Enabled&#34;`
          * 
+         * &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
+         * 
          * @return builder
          * 
          */
@@ -938,6 +944,8 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
          * For example, you can use either 7d or 604800s to specify a seven-day interval.
          * The interval can range from 7 days to 730 days.
          * **NOTE**: It is Required when `automatic_rotation = &#34;Enabled&#34;`
+         * 
+         * &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
          * 
          * @return builder
          * 

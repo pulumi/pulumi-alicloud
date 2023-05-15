@@ -53,6 +53,7 @@ func GetResolverZones(ctx *pulumi.Context, args *GetResolverZonesArgs, opts ...p
 
 // A collection of arguments for invoking getResolverZones.
 type GetResolverZonesArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the Zone.
 	Status *string `pulumi:"status"`
@@ -82,6 +83,7 @@ func GetResolverZonesOutput(ctx *pulumi.Context, args GetResolverZonesOutputArgs
 
 // A collection of arguments for invoking getResolverZones.
 type GetResolverZonesOutputArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the Zone.
 	Status pulumi.StringPtrInput `pulumi:"status"`

@@ -61,7 +61,8 @@ type GetQuotasArgs struct {
 	// The key word.
 	KeyWord *string `pulumi:"keyWord"`
 	// A regex string to filter results by Quota name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The product code.
 	ProductCode string `pulumi:"productCode"`
@@ -116,7 +117,8 @@ type GetQuotasOutputArgs struct {
 	// The key word.
 	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
 	// A regex string to filter results by Quota name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The product code.
 	ProductCode pulumi.StringInput `pulumi:"productCode"`

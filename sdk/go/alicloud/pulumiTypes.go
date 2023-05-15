@@ -1688,6 +1688,9 @@ type GetZonesZone struct {
 	AvailableInstanceTypes []string `pulumi:"availableInstanceTypes"`
 	// Filter the results by a specific resource type.
 	// Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
+	//
+	// > **NOTE:** From version 1.134.0, the `availableResourceCreation` value "Rds" has been deprecated.
+	// If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
 	AvailableResourceCreations []string `pulumi:"availableResourceCreations"`
 	// ID of the zone.
 	Id string `pulumi:"id"`
@@ -1717,6 +1720,9 @@ type GetZonesZoneArgs struct {
 	AvailableInstanceTypes pulumi.StringArrayInput `pulumi:"availableInstanceTypes"`
 	// Filter the results by a specific resource type.
 	// Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
+	//
+	// > **NOTE:** From version 1.134.0, the `availableResourceCreation` value "Rds" has been deprecated.
+	// If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
 	AvailableResourceCreations pulumi.StringArrayInput `pulumi:"availableResourceCreations"`
 	// ID of the zone.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -1791,6 +1797,9 @@ func (o GetZonesZoneOutput) AvailableInstanceTypes() pulumi.StringArrayOutput {
 
 // Filter the results by a specific resource type.
 // Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
+//
+// > **NOTE:** From version 1.134.0, the `availableResourceCreation` value "Rds" has been deprecated.
+// If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
 func (o GetZonesZoneOutput) AvailableResourceCreations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetZonesZone) []string { return v.AvailableResourceCreations }).(pulumi.StringArrayOutput)
 }

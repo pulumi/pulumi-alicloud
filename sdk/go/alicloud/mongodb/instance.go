@@ -11,6 +11,77 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a MongoDB instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
+// It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
+// You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
+//
+// > **NOTE:**  Available in 1.37.0+
+//
+// > **NOTE:**  The following regions don't support create Classic network MongoDB instance.
+// [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
+//
+// > **NOTE:**  Create MongoDB instance or change instance type and storage would cost 5~10 minutes. Please make full preparation
+//
+// ## Example Usage
+// ### Create a Mongodb instance
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("MongoDB"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:     defaultNetwork.ID(),
+//				CidrBlock: pulumi.String("172.16.0.0/24"),
+//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = mongodb.NewInstance(ctx, "example", &mongodb.InstanceArgs{
+//				EngineVersion:     pulumi.String("3.4"),
+//				DbInstanceClass:   pulumi.String("dds.mongo.mid"),
+//				DbInstanceStorage: pulumi.Int(10),
+//				VswitchId:         defaultSwitch.ID(),
+//				SecurityIpLists: pulumi.StringArray{
+//					pulumi.String("10.168.1.12"),
+//					pulumi.String("100.69.7.112"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Module Support
+//
+// You can use to the existing mongodb module
+// to create a MongoDB instance resource one-click.
+//
 // ## Import
 //
 // MongoDB can be imported using the id, e.g.

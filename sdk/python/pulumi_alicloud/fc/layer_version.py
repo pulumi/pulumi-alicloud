@@ -30,6 +30,8 @@ class LayerVersionArgs:
         :param pulumi.Input[str] oss_object_name: The name of the OSS object (ZIP package) that contains the function code.
         :param pulumi.Input[bool] skip_destroy: Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_runtimes`, `description`, `layer_name`, `oss_bucket_name`,  `oss_object_name`, or `zip_file` forces deletion of the existing layer version and creation of a new layer version.
         :param pulumi.Input[str] zip_file: The ZIP package of the function code that is encoded in the Base64 format.
+               
+               > **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
         """
         pulumi.set(__self__, "compatible_runtimes", compatible_runtimes)
         pulumi.set(__self__, "layer_name", layer_name)
@@ -121,6 +123,8 @@ class LayerVersionArgs:
     def zip_file(self) -> Optional[pulumi.Input[str]]:
         """
         The ZIP package of the function code that is encoded in the Base64 format.
+
+        > **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
         """
         return pulumi.get(self, "zip_file")
 
@@ -156,6 +160,8 @@ class _LayerVersionState:
         :param pulumi.Input[bool] skip_destroy: Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_runtimes`, `description`, `layer_name`, `oss_bucket_name`,  `oss_object_name`, or `zip_file` forces deletion of the existing layer version and creation of a new layer version.
         :param pulumi.Input[str] version: The version of Layer Version.
         :param pulumi.Input[str] zip_file: The ZIP package of the function code that is encoded in the Base64 format.
+               
+               > **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
         """
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
@@ -305,6 +311,8 @@ class _LayerVersionState:
     def zip_file(self) -> Optional[pulumi.Input[str]]:
         """
         The ZIP package of the function code that is encoded in the Base64 format.
+
+        > **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
         """
         return pulumi.get(self, "zip_file")
 
@@ -359,6 +367,8 @@ class LayerVersion(pulumi.CustomResource):
         :param pulumi.Input[str] oss_object_name: The name of the OSS object (ZIP package) that contains the function code.
         :param pulumi.Input[bool] skip_destroy: Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_runtimes`, `description`, `layer_name`, `oss_bucket_name`,  `oss_object_name`, or `zip_file` forces deletion of the existing layer version and creation of a new layer version.
         :param pulumi.Input[str] zip_file: The ZIP package of the function code that is encoded in the Base64 format.
+               
+               > **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
         """
         ...
     @overload
@@ -475,6 +485,8 @@ class LayerVersion(pulumi.CustomResource):
         :param pulumi.Input[bool] skip_destroy: Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`. When this is not set to `true`, changing any of `compatible_runtimes`, `description`, `layer_name`, `oss_bucket_name`,  `oss_object_name`, or `zip_file` forces deletion of the existing layer version and creation of a new layer version.
         :param pulumi.Input[str] version: The version of Layer Version.
         :param pulumi.Input[str] zip_file: The ZIP package of the function code that is encoded in the Base64 format.
+               
+               > **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -578,6 +590,8 @@ class LayerVersion(pulumi.CustomResource):
     def zip_file(self) -> pulumi.Output[Optional[str]]:
         """
         The ZIP package of the function code that is encoded in the Base64 format.
+
+        > **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
         """
         return pulumi.get(self, "zip_file")
 

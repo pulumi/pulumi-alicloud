@@ -50,6 +50,9 @@ export interface GetGrantRuleToCensArgs {
      * The ID of the VBR.
      */
     instanceId: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     pageNumber?: number;
     pageSize?: number;
@@ -109,6 +112,9 @@ export interface GetGrantRuleToCensOutputArgs {
      * The ID of the VBR.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;

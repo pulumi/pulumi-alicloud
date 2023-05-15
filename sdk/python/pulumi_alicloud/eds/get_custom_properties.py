@@ -94,6 +94,7 @@ def get_custom_properties(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Custom Property IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -131,5 +132,6 @@ def get_custom_properties_output(ids: Optional[pulumi.Input[Optional[Sequence[st
 
 
     :param Sequence[str] ids: A list of Custom Property IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

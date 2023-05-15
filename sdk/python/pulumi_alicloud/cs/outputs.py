@@ -1419,6 +1419,11 @@ class ManagedKubernetesMaintenanceWindow(dict):
         :param bool enable: Whether to open the maintenance window. The following parameters take effect only `enable = true`.
         :param str maintenance_time: Initial maintenance time, For example:"03:00:00Z".
         :param str weekly_period: Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+               
+               for example:
+               ```python
+               import pulumi
+               ```
         """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "enable", enable)
@@ -1454,6 +1459,11 @@ class ManagedKubernetesMaintenanceWindow(dict):
     def weekly_period(self) -> str:
         """
         Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+
+        for example:
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "weekly_period")
 
@@ -2500,6 +2510,8 @@ class ServerlessKubernetesAddon(dict):
         """
         :param str config: The ACK add-on configurations.
         :param bool disabled: Disables the automatic installation of a component. Default is `false`.
+               
+               The following example is the definition of addons block, The type of this field is list:
         :param str name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         """
         if config is not None:
@@ -2522,6 +2534,8 @@ class ServerlessKubernetesAddon(dict):
     def disabled(self) -> Optional[bool]:
         """
         Disables the automatic installation of a component. Default is `false`.
+
+        The following example is the definition of addons block, The type of this field is list:
         """
         return pulumi.get(self, "disabled")
 

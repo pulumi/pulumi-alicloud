@@ -30,6 +30,8 @@ class SnapshotPolicyArgs:
         :param pulumi.Input[int] retention_days: The snapshot retention time, and the unit of measurement is day. Optional values:
                - -1: The automatic snapshots are retained permanently.
                - [1, 65536]: The number of days retained.
+               
+               Default value: -1.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
                - A maximum of 24 time points can be selected.
                - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
@@ -70,6 +72,8 @@ class SnapshotPolicyArgs:
         The snapshot retention time, and the unit of measurement is day. Optional values:
         - -1: The automatic snapshots are retained permanently.
         - [1, 65536]: The number of days retained.
+
+        Default value: -1.
         """
         return pulumi.get(self, "retention_days")
 
@@ -161,6 +165,8 @@ class _SnapshotPolicyState:
         :param pulumi.Input[int] retention_days: The snapshot retention time, and the unit of measurement is day. Optional values:
                - -1: The automatic snapshots are retained permanently.
                - [1, 65536]: The number of days retained.
+               
+               Default value: -1.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
                - A maximum of 24 time points can be selected.
                - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
@@ -235,6 +241,8 @@ class _SnapshotPolicyState:
         The snapshot retention time, and the unit of measurement is day. Optional values:
         - -1: The automatic snapshots are retained permanently.
         - [1, 65536]: The number of days retained.
+
+        Default value: -1.
         """
         return pulumi.get(self, "retention_days")
 
@@ -299,6 +307,14 @@ class SnapshotPolicy(pulumi.CustomResource):
                  time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
+        > **DEPRECATED:** This resource has been renamed to ecs.AutoSnapshotPolicy from version 1.117.0.
+
+        Provides an ECS snapshot policy resource.
+
+        For information about snapshot policy and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+
+        > **NOTE:** Available in 1.42.0+.
+
         ## Example Usage
 
         ```python
@@ -336,6 +352,8 @@ class SnapshotPolicy(pulumi.CustomResource):
         :param pulumi.Input[int] retention_days: The snapshot retention time, and the unit of measurement is day. Optional values:
                - -1: The automatic snapshots are retained permanently.
                - [1, 65536]: The number of days retained.
+               
+               Default value: -1.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
                - A maximum of 24 time points can be selected.
                - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
@@ -347,6 +365,14 @@ class SnapshotPolicy(pulumi.CustomResource):
                  args: SnapshotPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **DEPRECATED:** This resource has been renamed to ecs.AutoSnapshotPolicy from version 1.117.0.
+
+        Provides an ECS snapshot policy resource.
+
+        For information about snapshot policy and how to use it, see [Snapshot](https://www.alibabacloud.com/help/doc-detail/25460.html).
+
+        > **NOTE:** Available in 1.42.0+.
+
         ## Example Usage
 
         ```python
@@ -455,6 +481,8 @@ class SnapshotPolicy(pulumi.CustomResource):
         :param pulumi.Input[int] retention_days: The snapshot retention time, and the unit of measurement is day. Optional values:
                - -1: The automatic snapshots are retained permanently.
                - [1, 65536]: The number of days retained.
+               
+               Default value: -1.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
                - A maximum of 24 time points can be selected.
                - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
@@ -509,6 +537,8 @@ class SnapshotPolicy(pulumi.CustomResource):
         The snapshot retention time, and the unit of measurement is day. Optional values:
         - -1: The automatic snapshots are retained permanently.
         - [1, 65536]: The number of days retained.
+
+        Default value: -1.
         """
         return pulumi.get(self, "retention_days")
 

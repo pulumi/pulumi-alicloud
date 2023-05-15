@@ -176,6 +176,8 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
+        /// &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -377,6 +379,8 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
+        /// &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -549,6 +553,8 @@ namespace Pulumi.AliCloud.Cms
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
+        /// &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
         /// </summary>
         public InputMap<object> Tags
         {

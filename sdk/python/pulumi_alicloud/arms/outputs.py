@@ -33,6 +33,7 @@ __all__ = [
     'GetPrometheusAlertRulesRuleResult',
     'GetPrometheusAlertRulesRuleAnnotationResult',
     'GetPrometheusAlertRulesRuleLabelResult',
+    'GetRemoteWritesRemoteWriteResult',
 ]
 
 @pulumi.output_type
@@ -1321,5 +1322,56 @@ class GetPrometheusAlertRulesRuleLabelResult(dict):
         The value of the label.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetRemoteWritesRemoteWriteResult(dict):
+    def __init__(__self__, *,
+                 cluster_id: str,
+                 id: str,
+                 remote_write_name: str,
+                 remote_write_yaml: str):
+        """
+        :param str cluster_id: The ID of the Prometheus instance.
+        :param str id: The ID of the Remote Write. It formats as `<cluster_id>:<remote_write_name>`.
+        :param str remote_write_name: The name of the Remote Write configuration item.
+        :param str remote_write_yaml: The details of the Remote Write configuration item. The value is in the YAML format.
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "remote_write_name", remote_write_name)
+        pulumi.set(__self__, "remote_write_yaml", remote_write_yaml)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The ID of the Prometheus instance.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Remote Write. It formats as `<cluster_id>:<remote_write_name>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="remoteWriteName")
+    def remote_write_name(self) -> str:
+        """
+        The name of the Remote Write configuration item.
+        """
+        return pulumi.get(self, "remote_write_name")
+
+    @property
+    @pulumi.getter(name="remoteWriteYaml")
+    def remote_write_yaml(self) -> str:
+        """
+        The details of the Remote Write configuration item. The value is in the YAML format.
+        """
+        return pulumi.get(self, "remote_write_yaml")
 
 

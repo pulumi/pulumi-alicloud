@@ -138,6 +138,7 @@ def get_access_rules(access_group_name: Optional[str] = None,
 
     :param str access_group_name: Filter results by a specific AccessGroupName.
     :param Sequence[str] ids: A list of rule IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str rw_access: Filter results by a specific RWAccess.
     :param str source_cidr_ip: Filter results by a specific SourceCidrIp.
     :param str user_access: Filter results by a specific UserAccess.
@@ -179,6 +180,7 @@ def get_access_rules_output(access_group_name: Optional[pulumi.Input[str]] = Non
 
     :param str access_group_name: Filter results by a specific AccessGroupName.
     :param Sequence[str] ids: A list of rule IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str rw_access: Filter results by a specific RWAccess.
     :param str source_cidr_ip: Filter results by a specific SourceCidrIp.
     :param str user_access: Filter results by a specific UserAccess.

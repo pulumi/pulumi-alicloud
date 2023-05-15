@@ -87,7 +87,7 @@ public final class GetInstancesInstance {
      */
     private String endTime;
     /**
-     * @return The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+     * @return The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
      * 
      */
     private String engineVersion;
@@ -342,7 +342,7 @@ public final class GetInstancesInstance {
         return this.endTime;
     }
     /**
-     * @return The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+     * @return The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
      * 
      */
     public String engineVersion() {

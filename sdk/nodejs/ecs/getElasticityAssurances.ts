@@ -45,6 +45,9 @@ export interface GetElasticityAssurancesArgs {
      * A list of Elasticity Assurance IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the elastic protection service.
@@ -124,6 +127,9 @@ export interface GetElasticityAssurancesOutputArgs {
      * A list of Elasticity Assurance IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the elastic protection service.

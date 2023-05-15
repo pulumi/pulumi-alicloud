@@ -79,8 +79,9 @@ type GetListenersArgs struct {
 	// Filter listeners by the specified frontend port.
 	FrontendPort *int `pulumi:"frontendPort"`
 	// ID of the SLB with listeners.
-	LoadBalancerId string  `pulumi:"loadBalancerId"`
-	OutputFile     *string `pulumi:"outputFile"`
+	LoadBalancerId string `pulumi:"loadBalancerId"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
 	Protocol *string `pulumi:"protocol"`
 }
@@ -120,8 +121,9 @@ type GetListenersOutputArgs struct {
 	// Filter listeners by the specified frontend port.
 	FrontendPort pulumi.IntPtrInput `pulumi:"frontendPort"`
 	// ID of the SLB with listeners.
-	LoadBalancerId pulumi.StringInput    `pulumi:"loadBalancerId"`
-	OutputFile     pulumi.StringPtrInput `pulumi:"outputFile"`
+	LoadBalancerId pulumi.StringInput `pulumi:"loadBalancerId"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 }

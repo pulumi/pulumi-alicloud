@@ -173,6 +173,7 @@ def get_users(directory_id: Optional[str] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of User IDs.
     :param str name_regex: A regex string to filter results by User name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str provision_type: ProvisionType.
     :param str status: User status. Valid values: `Enabled` and `Disabled`.
     """
@@ -248,6 +249,7 @@ def get_users_output(directory_id: Optional[pulumi.Input[str]] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of User IDs.
     :param str name_regex: A regex string to filter results by User name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str provision_type: ProvisionType.
     :param str status: User status. Valid values: `Enabled` and `Disabled`.
     """

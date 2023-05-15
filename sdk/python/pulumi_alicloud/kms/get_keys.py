@@ -143,6 +143,7 @@ def get_keys(description_regex: Optional[str] = None,
     :param str filters: The CMK filter. The filter consists of one or more key-value pairs. 
            You can specify a maximum of 10 key-value pairs. More details see API [ListKeys](https://www.alibabacloud.com/help/en/key-management-service/latest/listkeys).
     :param Sequence[str] ids: A list of KMS key IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
     """
     __args__ = dict()
@@ -193,6 +194,7 @@ def get_keys_output(description_regex: Optional[pulumi.Input[Optional[str]]] = N
     :param str filters: The CMK filter. The filter consists of one or more key-value pairs. 
            You can specify a maximum of 10 key-value pairs. More details see API [ListKeys](https://www.alibabacloud.com/help/en/key-management-service/latest/listkeys).
     :param Sequence[str] ids: A list of KMS key IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
     """
     ...

@@ -20,6 +20,121 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a ESS scaling group resource which is a collection of ECS instances with the same application scenarios.
+ * 
+ * It defines the maximum and minimum numbers of ECS instances in the group, and their associated Server Load Balancer instances, RDS instances, and other attributes.
+ * 
+ * &gt; **NOTE:** You can launch an ESS scaling group for a VPC network via specifying parameter `vswitch_ids`.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroupRule;
+ * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
+ * import com.pulumi.alicloud.ess.ScalingGroup;
+ * import com.pulumi.alicloud.ess.ScalingGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;essscalinggroupconfig&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cpuCoreCount(2)
+ *             .memorySize(4)
+ *             .build());
+ * 
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .mostRecent(true)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultSecurityGroupRule = new SecurityGroupRule(&#34;defaultSecurityGroupRule&#34;, SecurityGroupRuleArgs.builder()        
+ *             .type(&#34;ingress&#34;)
+ *             .ipProtocol(&#34;tcp&#34;)
+ *             .nicType(&#34;intranet&#34;)
+ *             .policy(&#34;accept&#34;)
+ *             .portRange(&#34;22/22&#34;)
+ *             .priority(1)
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .cidrIp(&#34;172.16.0.0/24&#34;)
+ *             .build());
+ * 
+ *         var default2 = new Switch(&#34;default2&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.1.0/24&#34;)
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(String.format(&#34;%s-bar&#34;, name))
+ *             .build());
+ * 
+ *         var defaultScalingGroup = new ScalingGroup(&#34;defaultScalingGroup&#34;, ScalingGroupArgs.builder()        
+ *             .minSize(1)
+ *             .maxSize(1)
+ *             .scalingGroupName(name)
+ *             .defaultCooldown(20)
+ *             .vswitchIds(            
+ *                 defaultSwitch.id(),
+ *                 default2.id())
+ *             .removalPolicies(            
+ *                 &#34;OldestInstance&#34;,
+ *                 &#34;NewestInstance&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Module Support
+ * 
+ * You can use to the existing autoscaling module
+ * to create a scaling group, configuration and lifecycle hook one-click.
+ * 
  * ## Import
  * 
  * ESS scaling group can be imported using the id, e.g.
@@ -172,28 +287,32 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.loadbalancerIds);
     }
     /**
-     * Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+     * Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+     * **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
      * 
      */
     @Export(name="maxSize", type=Integer.class, parameters={})
     private Output<Integer> maxSize;
 
     /**
-     * @return Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+     * @return Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+     * **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
      * 
      */
     public Output<Integer> maxSize() {
         return this.maxSize;
     }
     /**
-     * Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+     * Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+     * **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
      * 
      */
     @Export(name="minSize", type=Integer.class, parameters={})
     private Output<Integer> minSize;
 
     /**
-     * @return Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+     * @return Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+     * **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
      * 
      */
     public Output<Integer> minSize() {
@@ -244,12 +363,24 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
     /**
      * Set or unset instances within group into protected status.
      * 
+     * &gt; **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer&#39;s `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer&#39;s `Default Server Group`.
+     * 
+     * &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance&#39;s `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance&#39;s `WhiteList`.
+     * 
+     * &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is &#39;COST_OPTIMIZED&#39;.
+     * 
      */
     @Export(name="protectedInstances", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> protectedInstances;
 
     /**
      * @return Set or unset instances within group into protected status.
+     * 
+     * &gt; **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer&#39;s `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer&#39;s `Default Server Group`.
+     * 
+     * &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance&#39;s `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance&#39;s `WhiteList`.
+     * 
+     * &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is &#39;COST_OPTIMIZED&#39;.
      * 
      */
     public Output<Optional<List<String>>> protectedInstances() {

@@ -26,10 +26,11 @@ func GetInstanceMembers(ctx *pulumi.Context, args *GetInstanceMembersArgs, opts 
 type GetInstanceMembersArgs struct {
 	CurrentPage *string `pulumi:"currentPage"`
 	// A list of Instance Member IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
-	PageNumber *int     `pulumi:"pageNumber"`
-	PageSize   *int     `pulumi:"pageSize"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
 }
 
 // A collection of values returned by getInstanceMembers.
@@ -63,10 +64,11 @@ func GetInstanceMembersOutput(ctx *pulumi.Context, args GetInstanceMembersOutput
 type GetInstanceMembersOutputArgs struct {
 	CurrentPage pulumi.StringPtrInput `pulumi:"currentPage"`
 	// A list of Instance Member IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
-	PageNumber pulumi.IntPtrInput      `pulumi:"pageNumber"`
-	PageSize   pulumi.IntPtrInput      `pulumi:"pageSize"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 }
 
 func (GetInstanceMembersOutputArgs) ElementType() reflect.Type {

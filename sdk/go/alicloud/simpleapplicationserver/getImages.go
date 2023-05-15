@@ -10,6 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
+//
+// > **NOTE:** Available in v1.135.0+.
 func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOption) (*GetImagesResult, error) {
 	var rv GetImagesResult
 	err := ctx.Invoke("alicloud:simpleapplicationserver/getImages:getImages", args, &rv, opts...)

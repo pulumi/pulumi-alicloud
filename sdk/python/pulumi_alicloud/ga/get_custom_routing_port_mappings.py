@@ -161,6 +161,7 @@ def get_custom_routing_port_mappings(accelerator_id: Optional[str] = None,
     :param str accelerator_id: The ID of the GA instance.
     :param str endpoint_group_id: The ID of the endpoint group.
     :param str listener_id: The ID of the listener.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The access policy of traffic for the backend instance. Valid Values: `allow`, `deny`.
     """
     __args__ = dict()
@@ -216,6 +217,7 @@ def get_custom_routing_port_mappings_output(accelerator_id: Optional[pulumi.Inpu
     :param str accelerator_id: The ID of the GA instance.
     :param str endpoint_group_id: The ID of the endpoint group.
     :param str listener_id: The ID of the listener.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The access policy of traffic for the backend instance. Valid Values: `allow`, `deny`.
     """
     ...

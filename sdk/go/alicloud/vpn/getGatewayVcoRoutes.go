@@ -147,10 +147,11 @@ func GetGatewayVcoRoutes(ctx *pulumi.Context, args *GetGatewayVcoRoutesArgs, opt
 // A collection of arguments for invoking getGatewayVcoRoutes.
 type GetGatewayVcoRoutesArgs struct {
 	// A list of Vco Route IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
-	PageNumber *int     `pulumi:"pageNumber"`
-	PageSize   *int     `pulumi:"pageSize"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
+	PageNumber *int    `pulumi:"pageNumber"`
+	PageSize   *int    `pulumi:"pageSize"`
 	// The Routing input type. Valid values: `custom`, `bgp`.
 	RouteEntryType *string `pulumi:"routeEntryType"`
 	// The status of the vpn route entry.
@@ -189,10 +190,11 @@ func GetGatewayVcoRoutesOutput(ctx *pulumi.Context, args GetGatewayVcoRoutesOutp
 // A collection of arguments for invoking getGatewayVcoRoutes.
 type GetGatewayVcoRoutesOutputArgs struct {
 	// A list of Vco Route IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
-	PageNumber pulumi.IntPtrInput      `pulumi:"pageNumber"`
-	PageSize   pulumi.IntPtrInput      `pulumi:"pageSize"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 	// The Routing input type. Valid values: `custom`, `bgp`.
 	RouteEntryType pulumi.StringPtrInput `pulumi:"routeEntryType"`
 	// The status of the vpn route entry.

@@ -120,6 +120,8 @@ export class PhysicalConnection extends pulumi.CustomResource {
      * * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
      * * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
      * * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
+     *
+     * **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
      */
     public readonly portType!: pulumi.Output<string | undefined>;
     /**
@@ -231,6 +233,8 @@ export interface PhysicalConnectionState {
      * * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
      * * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
      * * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
+     *
+     * **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
      */
     portType?: pulumi.Input<string>;
     /**
@@ -294,6 +298,8 @@ export interface PhysicalConnectionArgs {
      * * 10GBase-LR: Gigabit Singlemode Optical Ports (10Km).
      * * 40GBase-LR: 40 Gigabit Singlemode Optical Ports.
      * * 100GBase-LR: One hundred thousand Gigabit Singlemode Optical Ports.
+     *
+     * **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
      */
     portType?: pulumi.Input<string>;
     /**

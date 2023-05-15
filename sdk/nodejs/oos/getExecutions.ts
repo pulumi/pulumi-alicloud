@@ -82,6 +82,9 @@ export interface GetExecutionsArgs {
      * The mode of OOS Execution. Valid: `Automatic`, `Debug`.
      */
     mode?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The id of parent OOS Execution.
@@ -209,6 +212,9 @@ export interface GetExecutionsOutputArgs {
      * The mode of OOS Execution. Valid: `Automatic`, `Debug`.
      */
     mode?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The id of parent OOS Execution.

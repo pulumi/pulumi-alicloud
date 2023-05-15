@@ -10,6 +10,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:** It has been deprecated from version `1.197.0`.
+// Please use new datasource servicecatalog.getEndUserProducts instead.
+//
+// This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+//
+// > **NOTE:** Available in 1.196.0+
+//
 // ## Example Usage
 //
 // ```go
@@ -50,7 +57,8 @@ type GetProductAsEndUsersArgs struct {
 	// A list of Product As End User IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by product name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	SortBy     *string `pulumi:"sortBy"`
 	SortOrder  *string `pulumi:"sortOrder"`
@@ -88,7 +96,8 @@ type GetProductAsEndUsersOutputArgs struct {
 	// A list of Product As End User IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by product name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	SortBy     pulumi.StringPtrInput `pulumi:"sortBy"`
 	SortOrder  pulumi.StringPtrInput `pulumi:"sortOrder"`

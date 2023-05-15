@@ -125,6 +125,7 @@ def get_address_books(group_type: Optional[str] = None,
     :param str group_type: The type of the Address Book.
     :param Sequence[str] ids: A list of Address Book IDs.
     :param str name_regex: A regex string to filter results Address Book name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['groupType'] = group_type
@@ -171,5 +172,6 @@ def get_address_books_output(group_type: Optional[pulumi.Input[Optional[str]]] =
     :param str group_type: The type of the Address Book.
     :param Sequence[str] ids: A list of Address Book IDs.
     :param str name_regex: A regex string to filter results Address Book name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

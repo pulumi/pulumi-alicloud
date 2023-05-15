@@ -15,6 +15,8 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
     {
         /// <summary>
         /// The region of the vpc. If not set, the current region will instead of.
+        /// 
+        /// Recommend to use `vpcs`.
         /// </summary>
         public readonly string? RegionId;
         /// <summary>

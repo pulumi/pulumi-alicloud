@@ -149,6 +149,7 @@ def get_ipv6_addresses(associated_instance_id: Optional[str] = None,
 
 
     :param str associated_instance_id: The ID of the instance that is assigned the IPv6 address.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the IPv6 address. Valid values:`Pending` or `Available`.
     :param str vpc_id: The ID of the VPC to which the IPv6 address belongs.
     :param str vswitch_id: The ID of the vSwitch to which the IPv6 address belongs.
@@ -208,6 +209,7 @@ def get_ipv6_addresses_output(associated_instance_id: Optional[pulumi.Input[Opti
 
 
     :param str associated_instance_id: The ID of the instance that is assigned the IPv6 address.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the IPv6 address. Valid values:`Pending` or `Available`.
     :param str vpc_id: The ID of the VPC to which the IPv6 address belongs.
     :param str vswitch_id: The ID of the vSwitch to which the IPv6 address belongs.

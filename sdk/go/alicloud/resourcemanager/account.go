@@ -92,6 +92,8 @@ type Account struct {
 	// Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
+	//
+	// > **NOTE:** The member name must be unique within the resource directory.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// Member type. The value of `ResourceAccount` indicates the resource account.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -152,6 +154,8 @@ type accountState struct {
 	// Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
+	//
+	// > **NOTE:** The member name must be unique within the resource directory.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Member type. The value of `ResourceAccount` indicates the resource account.
 	Type *string `pulumi:"type"`
@@ -181,6 +185,8 @@ type AccountState struct {
 	// Member joining status. Valid values: `CreateSuccess`,`CreateVerifying`,`CreateFailed`,`CreateExpired`,`CreateCancelled`,`PromoteVerifying`,`PromoteFailed`,`PromoteExpired`,`PromoteCancelled`,`PromoteSuccess`,`InviteSuccess`,`Removed`.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
+	//
+	// > **NOTE:** The member name must be unique within the resource directory.
 	Tags pulumi.MapInput
 	// Member type. The value of `ResourceAccount` indicates the resource account.
 	Type pulumi.StringPtrInput
@@ -204,6 +210,8 @@ type accountArgs struct {
 	// The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
 	PayerAccountId *string `pulumi:"payerAccountId"`
 	// A mapping of tags to assign to the resource.
+	//
+	// > **NOTE:** The member name must be unique within the resource directory.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
@@ -222,6 +230,8 @@ type AccountArgs struct {
 	// The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
 	PayerAccountId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
+	//
+	// > **NOTE:** The member name must be unique within the resource directory.
 	Tags pulumi.MapInput
 }
 
@@ -365,6 +375,8 @@ func (o AccountOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
+//
+// > **NOTE:** The member name must be unique within the resource directory.
 func (o AccountOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Account) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }

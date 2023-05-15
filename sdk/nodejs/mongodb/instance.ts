@@ -7,6 +7,49 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a MongoDB instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
+ * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
+ * You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
+ *
+ * > **NOTE:**  Available in 1.37.0+
+ *
+ * > **NOTE:**  The following regions don't support create Classic network MongoDB instance.
+ * [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
+ *
+ * > **NOTE:**  Create MongoDB instance or change instance type and storage would cost 5~10 minutes. Please make full preparation
+ *
+ * ## Example Usage
+ * ### Create a Mongodb instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "MongoDB",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const example = new alicloud.mongodb.Instance("example", {
+ *     engineVersion: "3.4",
+ *     dbInstanceClass: "dds.mongo.mid",
+ *     dbInstanceStorage: 10,
+ *     vswitchId: defaultSwitch.id,
+ *     securityIpLists: [
+ *         "10.168.1.12",
+ *         "100.69.7.112",
+ *     ],
+ * });
+ * ```
+ * ## Module Support
+ *
+ * You can use to the existing mongodb module
+ * to create a MongoDB instance resource one-click.
+ *
  * ## Import
  *
  * MongoDB can be imported using the id, e.g.

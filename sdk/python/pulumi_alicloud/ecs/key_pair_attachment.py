@@ -163,7 +163,12 @@ class KeyPairAttachment(pulumi.CustomResource):
                  key_pair_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a KeyPairAttachment resource with the given unique name, props, and options.
+        > **DEPRECATED:** This resource has been renamed to ecs.EcsKeyPairAttachment from version 1.121.0.
+
+        Provides a key pair attachment resource to bind key pair for several ECS instances.
+
+        > **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
@@ -177,7 +182,12 @@ class KeyPairAttachment(pulumi.CustomResource):
                  args: KeyPairAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a KeyPairAttachment resource with the given unique name, props, and options.
+        > **DEPRECATED:** This resource has been renamed to ecs.EcsKeyPairAttachment from version 1.121.0.
+
+        Provides a key pair attachment resource to bind key pair for several ECS instances.
+
+        > **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
+
         :param str resource_name: The name of the resource.
         :param KeyPairAttachmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

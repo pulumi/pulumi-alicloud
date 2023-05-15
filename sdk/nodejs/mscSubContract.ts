@@ -75,6 +75,8 @@ export class MscSubContract extends pulumi.CustomResource {
     public readonly mobile!: pulumi.Output<string>;
     /**
      * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+     *
+     * > **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
      */
     public readonly position!: pulumi.Output<string>;
 
@@ -137,6 +139,8 @@ export interface MscSubContractState {
     mobile?: pulumi.Input<string>;
     /**
      * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+     *
+     * > **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
      */
     position?: pulumi.Input<string>;
 }
@@ -159,6 +163,8 @@ export interface MscSubContractArgs {
     mobile: pulumi.Input<string>;
     /**
      * The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
+     *
+     * > **NOTE:** When the user creates a contact, the user should use `alicloud.getMscSubContactVerificationMessage` to receive the verification message and confirm it.
      */
     position: pulumi.Input<string>;
 }

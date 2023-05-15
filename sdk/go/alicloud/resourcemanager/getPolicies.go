@@ -27,7 +27,8 @@ type GetPoliciesArgs struct {
 	// A list of Resource Manager Policy IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by policy name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
 	PolicyType *string `pulumi:"policyType"`
@@ -67,7 +68,8 @@ type GetPoliciesOutputArgs struct {
 	// A list of Resource Manager Policy IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by policy name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
 	PolicyType pulumi.StringPtrInput `pulumi:"policyType"`

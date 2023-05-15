@@ -28,6 +28,8 @@ class VbrHealthCheckArgs:
         :param pulumi.Input[str] health_check_target_ip: The destination IP address of health checks.
         :param pulumi.Input[str] vbr_instance_id: The ID of the VBR.
         :param pulumi.Input[str] vbr_instance_region_id: The ID of the region to which the VBR belongs.
+               
+               ->**NOTE:** The `cen.VbrHealthCheck` resource depends on the related `cen.InstanceAttachment` resource.
         :param pulumi.Input[int] health_check_interval: Specifies the interval at which the health check sends continuous detection packets. Default value: 2. Value range: 2 to 3.
         :param pulumi.Input[str] health_check_source_ip: The source IP address of health checks.
         :param pulumi.Input[int] healthy_threshold: Specifies the number of probe messages sent by the health check. Default value: 8. Value range: 3 to 8.
@@ -87,6 +89,8 @@ class VbrHealthCheckArgs:
     def vbr_instance_region_id(self) -> pulumi.Input[str]:
         """
         The ID of the region to which the VBR belongs.
+
+        ->**NOTE:** The `cen.VbrHealthCheck` resource depends on the related `cen.InstanceAttachment` resource.
         """
         return pulumi.get(self, "vbr_instance_region_id")
 
@@ -164,6 +168,8 @@ class _VbrHealthCheckState:
         :param pulumi.Input[str] vbr_instance_id: The ID of the VBR.
         :param pulumi.Input[int] vbr_instance_owner_id: The ID of the account to which the VBR belongs.
         :param pulumi.Input[str] vbr_instance_region_id: The ID of the region to which the VBR belongs.
+               
+               ->**NOTE:** The `cen.VbrHealthCheck` resource depends on the related `cen.InstanceAttachment` resource.
         """
         if cen_id is not None:
             pulumi.set(__self__, "cen_id", cen_id)
@@ -271,6 +277,8 @@ class _VbrHealthCheckState:
     def vbr_instance_region_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the region to which the VBR belongs.
+
+        ->**NOTE:** The `cen.VbrHealthCheck` resource depends on the related `cen.InstanceAttachment` resource.
         """
         return pulumi.get(self, "vbr_instance_region_id")
 
@@ -345,6 +353,8 @@ class VbrHealthCheck(pulumi.CustomResource):
         :param pulumi.Input[str] vbr_instance_id: The ID of the VBR.
         :param pulumi.Input[int] vbr_instance_owner_id: The ID of the account to which the VBR belongs.
         :param pulumi.Input[str] vbr_instance_region_id: The ID of the region to which the VBR belongs.
+               
+               ->**NOTE:** The `cen.VbrHealthCheck` resource depends on the related `cen.InstanceAttachment` resource.
         """
         ...
     @overload
@@ -475,6 +485,8 @@ class VbrHealthCheck(pulumi.CustomResource):
         :param pulumi.Input[str] vbr_instance_id: The ID of the VBR.
         :param pulumi.Input[int] vbr_instance_owner_id: The ID of the account to which the VBR belongs.
         :param pulumi.Input[str] vbr_instance_region_id: The ID of the region to which the VBR belongs.
+               
+               ->**NOTE:** The `cen.VbrHealthCheck` resource depends on the related `cen.InstanceAttachment` resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -551,6 +563,8 @@ class VbrHealthCheck(pulumi.CustomResource):
     def vbr_instance_region_id(self) -> pulumi.Output[str]:
         """
         The ID of the region to which the VBR belongs.
+
+        ->**NOTE:** The `cen.VbrHealthCheck` resource depends on the related `cen.InstanceAttachment` resource.
         """
         return pulumi.get(self, "vbr_instance_region_id")
 

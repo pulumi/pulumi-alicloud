@@ -36,6 +36,8 @@ class TrailDeprecatedArgs:
         :param pulumi.Input[str] role_name: The RAM role in ActionTrail permitted by the user.
         :param pulumi.Input[str] sls_project_arn: The unique ARN of the Log Service project.
         :param pulumi.Input[str] sls_write_role_arn: The unique ARN of the Log Service role.
+               
+               > **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
         """
         if event_rw is not None:
             pulumi.set(__self__, "event_rw", event_rw)
@@ -177,6 +179,8 @@ class TrailDeprecatedArgs:
     def sls_write_role_arn(self) -> Optional[pulumi.Input[str]]:
         """
         The unique ARN of the Log Service role.
+
+        > **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
         """
         return pulumi.get(self, "sls_write_role_arn")
 
@@ -237,6 +241,8 @@ class _TrailDeprecatedState:
         :param pulumi.Input[str] role_name: The RAM role in ActionTrail permitted by the user.
         :param pulumi.Input[str] sls_project_arn: The unique ARN of the Log Service project.
         :param pulumi.Input[str] sls_write_role_arn: The unique ARN of the Log Service role.
+               
+               > **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
         """
         if event_rw is not None:
             pulumi.set(__self__, "event_rw", event_rw)
@@ -378,6 +384,8 @@ class _TrailDeprecatedState:
     def sls_write_role_arn(self) -> Optional[pulumi.Input[str]]:
         """
         The unique ARN of the Log Service role.
+
+        > **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
         """
         return pulumi.get(self, "sls_write_role_arn")
 
@@ -438,6 +446,12 @@ class TrailDeprecated(pulumi.CustomResource):
                  trail_region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        > **DEPRECATED:**  This resource has been renamed to actiontrail.Trail from version 1.95.0.
+
+        Provides a new resource to manage [Action Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
+
+        > **NOTE:** Available in 1.35.0+
+
         ## Example Usage
 
         ```python
@@ -469,6 +483,8 @@ class TrailDeprecated(pulumi.CustomResource):
         :param pulumi.Input[str] role_name: The RAM role in ActionTrail permitted by the user.
         :param pulumi.Input[str] sls_project_arn: The unique ARN of the Log Service project.
         :param pulumi.Input[str] sls_write_role_arn: The unique ARN of the Log Service role.
+               
+               > **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
         """
         ...
     @overload
@@ -477,6 +493,12 @@ class TrailDeprecated(pulumi.CustomResource):
                  args: Optional[TrailDeprecatedArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **DEPRECATED:**  This resource has been renamed to actiontrail.Trail from version 1.95.0.
+
+        Provides a new resource to manage [Action Trail](https://www.alibabacloud.com/help/doc-detail/28804.htm).
+
+        > **NOTE:** Available in 1.35.0+
+
         ## Example Usage
 
         ```python
@@ -596,6 +618,8 @@ class TrailDeprecated(pulumi.CustomResource):
         :param pulumi.Input[str] role_name: The RAM role in ActionTrail permitted by the user.
         :param pulumi.Input[str] sls_project_arn: The unique ARN of the Log Service project.
         :param pulumi.Input[str] sls_write_role_arn: The unique ARN of the Log Service role.
+               
+               > **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -684,6 +708,8 @@ class TrailDeprecated(pulumi.CustomResource):
     def sls_write_role_arn(self) -> pulumi.Output[str]:
         """
         The unique ARN of the Log Service role.
+
+        > **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
         """
         return pulumi.get(self, "sls_write_role_arn")
 

@@ -115,6 +115,7 @@ def get_waf_domains(enable_details: Optional[bool] = None,
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Waf Domain IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str query_args: The query conditions. You can filter domain names by name. Fuzzy match is supported `QueryArgs={"DomainName":"Accelerated domain name"}`.
     """
     __args__ = dict()
@@ -160,6 +161,7 @@ def get_waf_domains_output(enable_details: Optional[pulumi.Input[Optional[bool]]
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Waf Domain IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str query_args: The query conditions. You can filter domain names by name. Fuzzy match is supported `QueryArgs={"DomainName":"Accelerated domain name"}`.
     """
     ...

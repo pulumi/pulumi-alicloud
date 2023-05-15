@@ -198,6 +198,7 @@ def get_vpc_flow_logs(description: Optional[str] = None,
     :param Sequence[str] ids: A list of Flow Log IDs.
     :param str log_store_name: The log store name.
     :param str name_regex: A regex string to filter results by Flow Log name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str project_name: The project name.
     :param str resource_id: The resource id.
     :param str resource_type: The resource type.
@@ -273,6 +274,7 @@ def get_vpc_flow_logs_output(description: Optional[pulumi.Input[Optional[str]]] 
     :param Sequence[str] ids: A list of Flow Log IDs.
     :param str log_store_name: The log store name.
     :param str name_regex: A regex string to filter results by Flow Log name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str project_name: The project name.
     :param str resource_id: The resource id.
     :param str resource_type: The resource type.

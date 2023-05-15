@@ -49,6 +49,9 @@ export interface GetStoresArgs {
      * A regex string to filter results by store name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     project: string;
 }
@@ -104,6 +107,9 @@ export interface GetStoresOutputArgs {
      * A regex string to filter results by store name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     project: pulumi.Input<string>;
 }

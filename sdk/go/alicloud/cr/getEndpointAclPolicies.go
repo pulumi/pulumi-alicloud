@@ -63,7 +63,8 @@ type GetEndpointAclPoliciesArgs struct {
 	// A list of Endpoint Acl Policy IDs.
 	Ids []string `pulumi:"ids"`
 	// The ID of the CR Instance.
-	InstanceId string  `pulumi:"instanceId"`
+	InstanceId string `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -98,7 +99,8 @@ type GetEndpointAclPoliciesOutputArgs struct {
 	// A list of Endpoint Acl Policy IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The ID of the CR Instance.
-	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

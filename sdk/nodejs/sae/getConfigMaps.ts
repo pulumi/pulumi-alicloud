@@ -67,6 +67,9 @@ export interface GetConfigMapsArgs {
      * The NamespaceId of Config Maps.
      */
     namespaceId: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -139,5 +142,8 @@ export interface GetConfigMapsOutputArgs {
      * The NamespaceId of Config Maps.
      */
     namespaceId: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

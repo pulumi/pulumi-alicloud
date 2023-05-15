@@ -47,6 +47,8 @@ class EipArgs:
         :param pulumi.Input[str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
         :param pulumi.Input[str] name: It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+               **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the eip belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -264,6 +266,10 @@ class EipArgs:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -352,6 +358,8 @@ class _EipState:
         :param pulumi.Input[str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
         :param pulumi.Input[str] name: It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+               **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the eip belongs.
         :param pulumi.Input[str] status: The EIP current status.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -586,6 +594,10 @@ class _EipState:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -679,6 +691,31 @@ class Eip(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
+        Provides an elastic IP resource.
+
+        > **DEPRECATED:**  This resource  has been deprecated from version `1.126.0`. Please use new resource alicloud_eip_address.
+
+        > **NOTE:** The resource only supports to create `PostPaid PayByTraffic`  or `PrePaid PayByBandwidth` elastic IP for international account. Otherwise, you will happened error `COMMODITY.INVALID_COMPONENT`.
+        Your account is international if you can use it to login in [International Web Console](https://account.alibabacloud.com/login/login.htm).
+
+        > **NOTE:** From version 1.10.1, this resource supports creating "PrePaid" EIP. In addition, it supports setting EIP name and description.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new EIP.
+        example = alicloud.ecs.Eip("example",
+            bandwidth="10",
+            internet_charge_type="PayByBandwidth")
+        ```
+        ## Module Support
+
+        You can use the existing eip module
+        to create several EIP instances and associate them with other resources one-click, like ECS instances, SLB, Nat Gateway and so on.
+
         ## Import
 
         Elastic IP address can be imported using the id, e.g.
@@ -700,6 +737,8 @@ class Eip(pulumi.CustomResource):
         :param pulumi.Input[str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
         :param pulumi.Input[str] name: It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+               **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the eip belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -710,6 +749,31 @@ class Eip(pulumi.CustomResource):
                  args: Optional[EipArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides an elastic IP resource.
+
+        > **DEPRECATED:**  This resource  has been deprecated from version `1.126.0`. Please use new resource alicloud_eip_address.
+
+        > **NOTE:** The resource only supports to create `PostPaid PayByTraffic`  or `PrePaid PayByBandwidth` elastic IP for international account. Otherwise, you will happened error `COMMODITY.INVALID_COMPONENT`.
+        Your account is international if you can use it to login in [International Web Console](https://account.alibabacloud.com/login/login.htm).
+
+        > **NOTE:** From version 1.10.1, this resource supports creating "PrePaid" EIP. In addition, it supports setting EIP name and description.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new EIP.
+        example = alicloud.ecs.Eip("example",
+            bandwidth="10",
+            internet_charge_type="PayByBandwidth")
+        ```
+        ## Module Support
+
+        You can use the existing eip module
+        to create several EIP instances and associate them with other resources one-click, like ECS instances, SLB, Nat Gateway and so on.
+
         ## Import
 
         Elastic IP address can be imported using the id, e.g.
@@ -842,6 +906,8 @@ class Eip(pulumi.CustomResource):
         :param pulumi.Input[str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
         :param pulumi.Input[str] name: It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+               **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the eip belongs.
         :param pulumi.Input[str] status: The EIP current status.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -989,6 +1055,10 @@ class Eip(pulumi.CustomResource):
     @property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
+        """
+        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        """
         return pulumi.get(self, "period")
 
     @property

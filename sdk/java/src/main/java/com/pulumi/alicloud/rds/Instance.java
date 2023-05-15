@@ -90,6 +90,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - Auto: Instances are automatically upgraded to a higher minor version.
      * - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
      * 
+     * See more [details and limitation](https://www.alibabacloud.com/help/doc-detail/123605.htm).
+     * 
      */
     @Export(name="autoUpgradeMinorVersion", type=String.class, parameters={})
     private Output<String> autoUpgradeMinorVersion;
@@ -99,12 +101,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - Auto: Instances are automatically upgraded to a higher minor version.
      * - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
      * 
+     * See more [details and limitation](https://www.alibabacloud.com/help/doc-detail/123605.htm).
+     * 
      */
     public Output<String> autoUpgradeMinorVersion() {
         return this.autoUpgradeMinorVersion;
     }
     /**
      * The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+     * 
+     * &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
      * 
      */
     @Export(name="babelfishConfigs", type=List.class, parameters={InstanceBabelfishConfig.class})
@@ -113,6 +119,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
      * 
+     * &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
+     * 
      */
     public Output<List<InstanceBabelfishConfig>> babelfishConfigs() {
         return this.babelfishConfigs;
@@ -120,12 +128,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The TDS port of the instance for which Babelfish is enabled.
      * 
+     * &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
+     * 
      */
     @Export(name="babelfishPort", type=String.class, parameters={})
     private Output<String> babelfishPort;
 
     /**
      * @return The TDS port of the instance for which Babelfish is enabled.
+     * 
+     * &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
      * 
      */
     public Output<String> babelfishPort() {
@@ -155,8 +167,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * * **HighAvailability**: High-availability Edition.
      * * **AlwaysOn**: Cluster Edition.
      * * **Finance**: Enterprise Edition.
-     * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-     * * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
+     * * **cluster**: MySQL Cluster Edition. (Available in 1.202.0+)
+     * * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
+     * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
+     * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
      * 
      */
     @Export(name="category", type=String.class, parameters={})
@@ -168,8 +182,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * * **HighAvailability**: High-availability Edition.
      * * **AlwaysOn**: Cluster Edition.
      * * **Finance**: Enterprise Edition.
-     * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
-     * * **category**: MySQL Cluster Edition. (Available in 1.202.0+)
+     * * **cluster**: MySQL Cluster Edition. (Available in 1.202.0+)
+     * * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
+     * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
+     * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
      * 
      */
     public Output<String> category() {
@@ -253,14 +269,40 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<String> connectionString() {
         return this.connectionString;
     }
+    /**
+     * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
+     * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
+     * 
+     */
     @Export(name="connectionStringPrefix", type=String.class, parameters={})
     private Output<String> connectionStringPrefix;
 
+    /**
+     * @return The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
+     * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
+     * 
+     */
     public Output<String> connectionStringPrefix() {
         return this.connectionStringPrefix;
     }
     /**
+     * (Available in 1.204.1+) The creation time of db instance.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return (Available in 1.204.1+) The creation time of db instance.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
      * The attribute of the IP address whitelist. By default, this parameter is empty.
+     * 
+     * &gt; **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
      * 
      */
     @Export(name="dbInstanceIpArrayAttribute", type=String.class, parameters={})
@@ -269,6 +311,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return The attribute of the IP address whitelist. By default, this parameter is empty.
      * 
+     * &gt; **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
+     * 
      */
     public Output<Optional<String>> dbInstanceIpArrayAttribute() {
         return Codegen.optional(this.dbInstanceIpArrayAttribute);
@@ -276,12 +320,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The name of the IP address whitelist. Default value: Default.
      * 
+     * &gt; **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
+     * 
      */
     @Export(name="dbInstanceIpArrayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> dbInstanceIpArrayName;
 
     /**
      * @return The name of the IP address whitelist. Default value: Default.
+     * 
+     * &gt; **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
      * 
      */
     public Output<Optional<String>> dbInstanceIpArrayName() {
@@ -348,6 +396,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
      * - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
      * 
+     * &gt; **NOTE:**
+     * - You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
+     * - If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
+     * 
      */
     @Export(name="dbTimeZone", type=String.class, parameters={})
     private Output<String> dbTimeZone;
@@ -361,6 +413,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
      * - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
      * 
+     * &gt; **NOTE:**
+     * - You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
+     * - If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
+     * 
      */
     public Output<String> dbTimeZone() {
         return this.dbTimeZone;
@@ -370,6 +426,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - true: delete protect.
      * - false: no delete protect.
      * 
+     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+     * 
      */
     @Export(name="deletionProtection", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> deletionProtection;
@@ -378,6 +436,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
+     * 
+     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
      * 
      */
     public Output<Optional<Boolean>> deletionProtection() {
@@ -418,12 +478,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
      * 
+     * &gt; **NOTE:**
+     * - Available in 1.191.0+. When the &#39;EngineVersion&#39; changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
+     * - Available in 1.200.0+. Create a serverless instance, you must set this parameter to 8.0.
+     * 
      */
     @Export(name="engine", type=String.class, parameters={})
     private Output<String> engine;
 
     /**
      * @return Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
+     * 
+     * &gt; **NOTE:**
+     * - Available in 1.191.0+. When the &#39;EngineVersion&#39; changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
+     * - Available in 1.200.0+. Create a serverless instance, you must set this parameter to 8.0.
      * 
      */
     public Output<String> engine() {
@@ -480,6 +548,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
      * - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
      * 
+     * &gt; **NOTE:** If you set this parameter to Manual, you must specify the ManualHATime parameter.
+     * 
      */
     @Export(name="haConfig", type=String.class, parameters={})
     private Output<String> haConfig;
@@ -488,6 +558,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return The primary/secondary switchover mode of the instance. Default value: Auto. Valid values:
      * - Auto: The system automatically switches over services from the primary to secondary instances in the event of a fault.
      * - Manual: You must manually switch over services from the primary to secondary instances in the event of a fault.
+     * 
+     * &gt; **NOTE:** If you set this parameter to Manual, you must specify the ManualHATime parameter.
      * 
      */
     public Output<String> haConfig() {
@@ -550,12 +622,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
      * 
+     * &gt; **NOTE:**
+     * - When `storage_auto_scale=&#34;Enable&#34;`, do not perform `instance_storage` check. when `storage_auto_scale=&#34;Disable&#34;`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
+     * - When `payment_type=&#34;Serverless&#34;` and when modifying, do not perform `instance_storage` check. Otherwise, check.
+     * 
      */
     @Export(name="instanceType", type=String.class, parameters={})
     private Output<String> instanceType;
 
     /**
      * @return DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+     * 
+     * &gt; **NOTE:**
+     * - When `storage_auto_scale=&#34;Enable&#34;`, do not perform `instance_storage` check. when `storage_auto_scale=&#34;Disable&#34;`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
+     * - When `payment_type=&#34;Serverless&#34;` and when modifying, do not perform `instance_storage` check. Otherwise, check.
      * 
      */
     public Output<String> instanceType() {
@@ -578,12 +658,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      * 
+     * &gt; **NOTE:** This parameter only takes effect when the HAConfig parameter is set to Manual.
+     * 
      */
     @Export(name="manualHaTime", type=String.class, parameters={})
     private Output</* @Nullable */ String> manualHaTime;
 
     /**
      * @return The time after when you want to enable automatic primary/secondary switchover. At most, you can set this parameter to 23:59:59 seven days later. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+     * 
+     * &gt; **NOTE:** This parameter only takes effect when the HAConfig parameter is set to Manual.
      * 
      */
     public Output<Optional<String>> manualHaTime() {
@@ -610,14 +694,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.modifyMode);
     }
     /**
-     * The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
+     * The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
      * 
      */
     @Export(name="monitoringPeriod", type=Integer.class, parameters={})
     private Output<Integer> monitoringPeriod;
 
     /**
-     * @return The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
+     * @return The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
      * 
      */
     public Output<Integer> monitoringPeriod() {
@@ -637,9 +721,19 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<List<InstanceParameter>> parameters() {
         return this.parameters;
     }
+    /**
+     * The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     @Export(name="period", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> period;
 
+    /**
+     * @return The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
@@ -657,9 +751,17 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<List<InstancePgHbaConf>> pgHbaConfs() {
         return this.pgHbaConfs;
     }
+    /**
+     * The private port of the database service. If you want to update public port, please use resource alicloud.rds.Connection port.
+     * 
+     */
     @Export(name="port", type=String.class, parameters={})
     private Output<String> port;
 
+    /**
+     * @return The private port of the database service. If you want to update public port, please use resource alicloud.rds.Connection port.
+     * 
+     */
     public Output<String> port() {
         return this.port;
     }
@@ -683,6 +785,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - Lastest: Only the last archived backup file is retained.
      * - All: All the archived backup files are retained.
      * 
+     * &gt; **NOTE:** This parameter is supported only when the instance runs the MySQL database engine.
+     * 
      */
     @Export(name="releasedKeepPolicy", type=String.class, parameters={})
     private Output</* @Nullable */ String> releasedKeepPolicy;
@@ -692,6 +796,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - None: No archived backup files are retained.
      * - Lastest: Only the last archived backup file is retained.
      * - All: All the archived backup files are retained.
+     * 
+     * &gt; **NOTE:** This parameter is supported only when the instance runs the MySQL database engine.
      * 
      */
     public Output<Optional<String>> releasedKeepPolicy() {
@@ -920,9 +1026,25 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.sslStatus;
     }
     /**
+     * (Available in 1.204.1+) The status of db instance.
+     * 
+     */
+    @Export(name="status", type=String.class, parameters={})
+    private Output<String> status;
+
+    /**
+     * @return (Available in 1.204.1+) The status of db instance.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
+    }
+    /**
      * Automatic storage space expansion switch. Valid values:
      * - Enable
      * - Disable
+     * 
+     * &gt; **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable.
      * 
      */
     @Export(name="storageAutoScale", type=String.class, parameters={})
@@ -932,6 +1054,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return Automatic storage space expansion switch. Valid values:
      * - Enable
      * - Disable
+     * 
+     * &gt; **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable.
      * 
      */
     public Output<Optional<String>> storageAutoScale() {
@@ -945,6 +1069,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - 40
      * - 50
      * 
+     * &gt; **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
+     * 
      */
     @Export(name="storageThreshold", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> storageThreshold;
@@ -957,12 +1083,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - 40
      * - 50
      * 
+     * &gt; **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
+     * 
      */
     public Output<Optional<Integer>> storageThreshold() {
         return Codegen.optional(this.storageThreshold);
     }
     /**
      * The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
+     * 
+     * &gt; **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      * 
      */
     @Export(name="storageUpperBound", type=Integer.class, parameters={})
@@ -971,6 +1101,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return The upper limit of the total storage space for automatic expansion of the storage space, that is, automatic expansion will not cause the total storage space of the instance to exceed this value. Unit: GB. The value must be ≥0.
      * 
+     * &gt; **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+     * 
      */
     public Output<Optional<Integer>> storageUpperBound() {
         return Codegen.optional(this.storageUpperBound);
@@ -978,12 +1110,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `target_minor_version` is changed. The time must be in UTC.
      * 
+     * &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
+     * 
      */
     @Export(name="switchTime", type=String.class, parameters={})
     private Output</* @Nullable */ String> switchTime;
 
     /**
      * @return The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `target_minor_version` is changed. The time must be in UTC.
+     * 
+     * &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
      * 
      */
     public Output<Optional<String>> switchTime() {
@@ -994,6 +1130,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
+     * Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
+     * 
      */
     @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> tags;
@@ -1002,6 +1140,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
+     * 
+     * Note: From 1.63.0, the tag key and value are case sensitive. Before that, they are not case sensitive.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {
@@ -1016,6 +1156,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: &lt;Minor engine version&gt;. Example: 15.0.4073.23.
      * 
+     * &gt; **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
+     * 
      */
     @Export(name="targetMinorVersion", type=String.class, parameters={})
     private Output<String> targetMinorVersion;
@@ -1029,6 +1171,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: &lt;Minor engine version&gt;. Example: 15.0.4073.23.
      * 
+     * &gt; **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
+     * 
      */
     public Output<String> targetMinorVersion() {
         return this.targetMinorVersion;
@@ -1038,6 +1182,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
      * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
      * 
+     * &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;zone-c&#34;, `zone_id_slave_b` = &#34;zone-b&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;Auto&#34;,`zone_id_slave_b` = &#34;Auto&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
+     * 
      */
     @Export(name="tcpConnectionType", type=String.class, parameters={})
     private Output<String> tcpConnectionType;
@@ -1046,6 +1192,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return The availability check method of the instance. Valid values:
      * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
      * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
+     * 
+     * &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;zone-c&#34;, `zone_id_slave_b` = &#34;zone-b&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;Auto&#34;,`zone_id_slave_b` = &#34;Auto&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
      * 
      */
     public Output<String> tcpConnectionType() {
@@ -1110,12 +1258,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The VPC ID of the instance.
      * 
+     * &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
+     * 
      */
     @Export(name="vpcId", type=String.class, parameters={})
     private Output<String> vpcId;
 
     /**
      * @return The VPC ID of the instance.
+     * 
+     * &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
      * 
      */
     public Output<String> vpcId() {
@@ -1141,6 +1293,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - VPC: virtual private cloud (VPC) in enhanced whitelist mode
      * - MIX: standard whitelist mode
      * 
+     * &gt; **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
+     * 
      */
     @Export(name="whitelistNetworkType", type=String.class, parameters={})
     private Output</* @Nullable */ String> whitelistNetworkType;
@@ -1150,6 +1304,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - Classic: classic network in enhanced whitelist mode
      * - VPC: virtual private cloud (VPC) in enhanced whitelist mode
      * - MIX: standard whitelist mode
+     * 
+     * &gt; **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
      * 
      */
     public Output<Optional<String>> whitelistNetworkType() {

@@ -41,6 +41,9 @@ export interface GetTransitRouterPeerAttachmentsArgs {
      * A regex string to filter CEN Transit Router peer attachments by name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of CEN Transit Router peer attachment. Valid values `Attached`, `Attaching` and `Detaching`.
@@ -114,6 +117,9 @@ export interface GetTransitRouterPeerAttachmentsOutputArgs {
      * A regex string to filter CEN Transit Router peer attachments by name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of CEN Transit Router peer attachment. Valid values `Attached`, `Attaching` and `Detaching`.

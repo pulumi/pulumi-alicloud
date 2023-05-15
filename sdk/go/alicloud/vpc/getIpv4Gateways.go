@@ -63,7 +63,8 @@ type GetIpv4GatewaysArgs struct {
 	// The name of the IPv4 gateway.
 	Ipv4GatewayName *string `pulumi:"ipv4GatewayName"`
 	// A regex string to filter results by Ipv4 Gateway name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
@@ -105,7 +106,8 @@ type GetIpv4GatewaysOutputArgs struct {
 	// The name of the IPv4 gateway.
 	Ipv4GatewayName pulumi.StringPtrInput `pulumi:"ipv4GatewayName"`
 	// A regex string to filter results by Ipv4 Gateway name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the resource.
 	Status pulumi.StringPtrInput `pulumi:"status"`

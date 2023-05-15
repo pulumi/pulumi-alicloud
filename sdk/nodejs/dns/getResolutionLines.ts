@@ -60,6 +60,9 @@ export interface GetResolutionLinesArgs {
      */
     lineDisplayNames?: string[];
     lineNames?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ip of user client.
@@ -136,6 +139,9 @@ export interface GetResolutionLinesOutputArgs {
      */
     lineDisplayNames?: pulumi.Input<pulumi.Input<string>[]>;
     lineNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ip of user client.

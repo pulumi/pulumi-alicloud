@@ -80,6 +80,12 @@ namespace Pulumi.AliCloud.Ddos
         [Output("httpsExt")]
         public Output<string> HttpsExt { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+        /// **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
+        /// So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
+        /// and you can use tolist to convert it to a list.
+        /// </summary>
         [Output("instanceIds")]
         public Output<ImmutableArray<string>> InstanceIds { get; private set; } = null!;
 
@@ -161,6 +167,13 @@ namespace Pulumi.AliCloud.Ddos
 
         [Input("instanceIds", required: true)]
         private InputList<string>? _instanceIds;
+
+        /// <summary>
+        /// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+        /// **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
+        /// So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
+        /// and you can use tolist to convert it to a list.
+        /// </summary>
         public InputList<string> InstanceIds
         {
             get => _instanceIds ?? (_instanceIds = new InputList<string>());
@@ -219,6 +232,13 @@ namespace Pulumi.AliCloud.Ddos
 
         [Input("instanceIds")]
         private InputList<string>? _instanceIds;
+
+        /// <summary>
+        /// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
+        /// **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
+        /// So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
+        /// and you can use tolist to convert it to a list.
+        /// </summary>
         public InputList<string> InstanceIds
         {
             get => _instanceIds ?? (_instanceIds = new InputList<string>());

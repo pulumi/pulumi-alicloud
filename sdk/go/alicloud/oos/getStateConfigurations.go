@@ -52,8 +52,9 @@ func GetStateConfigurations(ctx *pulumi.Context, args *GetStateConfigurationsArg
 // A collection of arguments for invoking getStateConfigurations.
 type GetStateConfigurationsArgs struct {
 	// A list of State Configuration IDs.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tag of the resource.
@@ -87,8 +88,9 @@ func GetStateConfigurationsOutput(ctx *pulumi.Context, args GetStateConfiguratio
 // A collection of arguments for invoking getStateConfigurations.
 type GetStateConfigurationsOutputArgs struct {
 	// A list of State Configuration IDs.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The tag of the resource.

@@ -147,6 +147,7 @@ def get_sls_groups(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Sls Group IDs. Its element value is same as Sls Group Name.
     :param str keyword: The keywords of the `sls_group_name` or `sls_group_description` of the Sls Group.
     :param str name_regex: A regex string to filter results by Sls Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -201,5 +202,6 @@ def get_sls_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
     :param Sequence[str] ids: A list of Sls Group IDs. Its element value is same as Sls Group Name.
     :param str keyword: The keywords of the `sls_group_name` or `sls_group_description` of the Sls Group.
     :param str name_regex: A regex string to filter results by Sls Group name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

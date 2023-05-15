@@ -11,6 +11,26 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource will help you to manager a Serverless Kubernetes Cluster. The cluster is same as container service created by web console.
+//
+// > **NOTE:** Available in 1.58.0+
+//
+// > **NOTE:** Serverless Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
+// A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
+// VPC, you can set `newNatGateway` to "true" to create one automatically.
+//
+// > **NOTE:** Creating serverless kubernetes cluster need to install several packages and it will cost about 5 minutes. Please be patient.
+//
+// > **NOTE:** The provider supports to download kube config, client certificate, client key and cluster ca certificate
+// after creating cluster successfully, and you can put them into the specified location, like '~/.kube/config'.
+//
+// > **NOTE:** If you want to manage serverless Kubernetes, you can use Kubernetes Provider.
+//
+// > **NOTE:** You need to activate several other products and confirm Authorization Policy used by Container Service before using this resource.
+// Please refer to the `Authorization management` and `Cluster management` sections in the [Document Center](https://www.alibabacloud.com/help/doc-detail/86488.htm).
+//
+// > **NOTE:** From version 1.162.0, support for creating professional serverless cluster.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -100,7 +120,7 @@ import (
 //
 // ## Import
 //
-// Serverless Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `terraform plan`.
+// Serverless Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
 //
 // ```sh
 //

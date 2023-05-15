@@ -20,6 +20,50 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides an elastic IP resource.
+ * 
+ * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.126.0`. Please use new resource alicloud_eip_address.
+ * 
+ * &gt; **NOTE:** The resource only supports to create `PostPaid PayByTraffic`  or `PrePaid PayByBandwidth` elastic IP for international account. Otherwise, you will happened error `COMMODITY.INVALID_COMPONENT`.
+ * Your account is international if you can use it to login in [International Web Console](https://account.alibabacloud.com/login/login.htm).
+ * 
+ * &gt; **NOTE:** From version 1.10.1, this resource supports creating &#34;PrePaid&#34; EIP. In addition, it supports setting EIP name and description.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.Eip;
+ * import com.pulumi.alicloud.ecs.EipArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Eip(&#34;example&#34;, EipArgs.builder()        
+ *             .bandwidth(&#34;10&#34;)
+ *             .internetChargeType(&#34;PayByBandwidth&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Module Support
+ * 
+ * You can use the existing eip module
+ * to create several EIP instances and associate them with other resources one-click, like ECS instances, SLB, Nat Gateway and so on.
+ * 
  * ## Import
  * 
  * Elastic IP address can be imported using the id, e.g.
@@ -223,9 +267,19 @@ public class Eip extends com.pulumi.resources.CustomResource {
     public Output<String> paymentType() {
         return this.paymentType;
     }
+    /**
+     * The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
+     * **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     @Export(name="period", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> period;
 
+    /**
+     * @return The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
+     * **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }

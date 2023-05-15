@@ -124,6 +124,7 @@ def get_resource_groups(db_cluster_id: Optional[str] = None,
     :param str db_cluster_id: DBClusterId
     :param str group_name: The name of the resource pool, which cannot exceed 64 bytes in length.
     :param Sequence[str] ids: A list of AnalyticDB for MySQL (ADB) Resource Group IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['dbClusterId'] = db_cluster_id
@@ -168,5 +169,6 @@ def get_resource_groups_output(db_cluster_id: Optional[pulumi.Input[str]] = None
     :param str db_cluster_id: DBClusterId
     :param str group_name: The name of the resource pool, which cannot exceed 64 bytes in length.
     :param Sequence[str] ids: A list of AnalyticDB for MySQL (ADB) Resource Group IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

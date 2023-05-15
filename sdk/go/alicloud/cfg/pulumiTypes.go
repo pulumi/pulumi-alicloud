@@ -747,6 +747,162 @@ func (o CompliancePackConfigRuleIdArrayOutput) Index(i pulumi.IntInput) Complian
 	}).(CompliancePackConfigRuleIdOutput)
 }
 
+type RuleCompliance struct {
+	// The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
+	ComplianceType *string `pulumi:"complianceType"`
+	// The count of compliance.
+	Count *int `pulumi:"count"`
+}
+
+// RuleComplianceInput is an input type that accepts RuleComplianceArgs and RuleComplianceOutput values.
+// You can construct a concrete instance of `RuleComplianceInput` via:
+//
+//	RuleComplianceArgs{...}
+type RuleComplianceInput interface {
+	pulumi.Input
+
+	ToRuleComplianceOutput() RuleComplianceOutput
+	ToRuleComplianceOutputWithContext(context.Context) RuleComplianceOutput
+}
+
+type RuleComplianceArgs struct {
+	// The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
+	ComplianceType pulumi.StringPtrInput `pulumi:"complianceType"`
+	// The count of compliance.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+}
+
+func (RuleComplianceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleCompliance)(nil)).Elem()
+}
+
+func (i RuleComplianceArgs) ToRuleComplianceOutput() RuleComplianceOutput {
+	return i.ToRuleComplianceOutputWithContext(context.Background())
+}
+
+func (i RuleComplianceArgs) ToRuleComplianceOutputWithContext(ctx context.Context) RuleComplianceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleComplianceOutput)
+}
+
+func (i RuleComplianceArgs) ToRuleCompliancePtrOutput() RuleCompliancePtrOutput {
+	return i.ToRuleCompliancePtrOutputWithContext(context.Background())
+}
+
+func (i RuleComplianceArgs) ToRuleCompliancePtrOutputWithContext(ctx context.Context) RuleCompliancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleComplianceOutput).ToRuleCompliancePtrOutputWithContext(ctx)
+}
+
+// RuleCompliancePtrInput is an input type that accepts RuleComplianceArgs, RuleCompliancePtr and RuleCompliancePtrOutput values.
+// You can construct a concrete instance of `RuleCompliancePtrInput` via:
+//
+//	        RuleComplianceArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuleCompliancePtrInput interface {
+	pulumi.Input
+
+	ToRuleCompliancePtrOutput() RuleCompliancePtrOutput
+	ToRuleCompliancePtrOutputWithContext(context.Context) RuleCompliancePtrOutput
+}
+
+type ruleCompliancePtrType RuleComplianceArgs
+
+func RuleCompliancePtr(v *RuleComplianceArgs) RuleCompliancePtrInput {
+	return (*ruleCompliancePtrType)(v)
+}
+
+func (*ruleCompliancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleCompliance)(nil)).Elem()
+}
+
+func (i *ruleCompliancePtrType) ToRuleCompliancePtrOutput() RuleCompliancePtrOutput {
+	return i.ToRuleCompliancePtrOutputWithContext(context.Background())
+}
+
+func (i *ruleCompliancePtrType) ToRuleCompliancePtrOutputWithContext(ctx context.Context) RuleCompliancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleCompliancePtrOutput)
+}
+
+type RuleComplianceOutput struct{ *pulumi.OutputState }
+
+func (RuleComplianceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleCompliance)(nil)).Elem()
+}
+
+func (o RuleComplianceOutput) ToRuleComplianceOutput() RuleComplianceOutput {
+	return o
+}
+
+func (o RuleComplianceOutput) ToRuleComplianceOutputWithContext(ctx context.Context) RuleComplianceOutput {
+	return o
+}
+
+func (o RuleComplianceOutput) ToRuleCompliancePtrOutput() RuleCompliancePtrOutput {
+	return o.ToRuleCompliancePtrOutputWithContext(context.Background())
+}
+
+func (o RuleComplianceOutput) ToRuleCompliancePtrOutputWithContext(ctx context.Context) RuleCompliancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleCompliance) *RuleCompliance {
+		return &v
+	}).(RuleCompliancePtrOutput)
+}
+
+// The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
+func (o RuleComplianceOutput) ComplianceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleCompliance) *string { return v.ComplianceType }).(pulumi.StringPtrOutput)
+}
+
+// The count of compliance.
+func (o RuleComplianceOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleCompliance) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+type RuleCompliancePtrOutput struct{ *pulumi.OutputState }
+
+func (RuleCompliancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleCompliance)(nil)).Elem()
+}
+
+func (o RuleCompliancePtrOutput) ToRuleCompliancePtrOutput() RuleCompliancePtrOutput {
+	return o
+}
+
+func (o RuleCompliancePtrOutput) ToRuleCompliancePtrOutputWithContext(ctx context.Context) RuleCompliancePtrOutput {
+	return o
+}
+
+func (o RuleCompliancePtrOutput) Elem() RuleComplianceOutput {
+	return o.ApplyT(func(v *RuleCompliance) RuleCompliance {
+		if v != nil {
+			return *v
+		}
+		var ret RuleCompliance
+		return ret
+	}).(RuleComplianceOutput)
+}
+
+// The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
+func (o RuleCompliancePtrOutput) ComplianceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleCompliance) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComplianceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The count of compliance.
+func (o RuleCompliancePtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuleCompliance) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.IntPtrOutput)
+}
+
 type GetAggregateCompliancePacksPack struct {
 	// The Aliyun User Id.
 	AccountId string `pulumi:"accountId"`
@@ -3432,6 +3588,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CompliancePackConfigRuleConfigRuleParameterArrayInput)(nil)).Elem(), CompliancePackConfigRuleConfigRuleParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CompliancePackConfigRuleIdInput)(nil)).Elem(), CompliancePackConfigRuleIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CompliancePackConfigRuleIdArrayInput)(nil)).Elem(), CompliancePackConfigRuleIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleComplianceInput)(nil)).Elem(), RuleComplianceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleCompliancePtrInput)(nil)).Elem(), RuleComplianceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAggregateCompliancePacksPackInput)(nil)).Elem(), GetAggregateCompliancePacksPackArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAggregateCompliancePacksPackArrayInput)(nil)).Elem(), GetAggregateCompliancePacksPackArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAggregateCompliancePacksPackConfigRuleInput)(nil)).Elem(), GetAggregateCompliancePacksPackConfigRuleArgs{})
@@ -3478,6 +3636,8 @@ func init() {
 	pulumi.RegisterOutputType(CompliancePackConfigRuleConfigRuleParameterArrayOutput{})
 	pulumi.RegisterOutputType(CompliancePackConfigRuleIdOutput{})
 	pulumi.RegisterOutputType(CompliancePackConfigRuleIdArrayOutput{})
+	pulumi.RegisterOutputType(RuleComplianceOutput{})
+	pulumi.RegisterOutputType(RuleCompliancePtrOutput{})
 	pulumi.RegisterOutputType(GetAggregateCompliancePacksPackOutput{})
 	pulumi.RegisterOutputType(GetAggregateCompliancePacksPackArrayOutput{})
 	pulumi.RegisterOutputType(GetAggregateCompliancePacksPackConfigRuleOutput{})

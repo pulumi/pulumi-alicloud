@@ -24,6 +24,33 @@ public final class RuleTargetParamList {
     /**
      * @return The template of param.
      * 
+     * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * In order to fix the diff, from version 1.160.0,
+     * this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
+     * If you want to set `resource_key = &#34;IsBase64Encode&#34;`, please avoid to set `value = &#34;false&#34;`.
+     * 
      */
     private @Nullable String template;
     /**
@@ -49,6 +76,33 @@ public final class RuleTargetParamList {
     }
     /**
      * @return The template of param.
+     * 
+     * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * In order to fix the diff, from version 1.160.0,
+     * this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
+     * If you want to set `resource_key = &#34;IsBase64Encode&#34;`, please avoid to set `value = &#34;false&#34;`.
      * 
      */
     public Optional<String> template() {

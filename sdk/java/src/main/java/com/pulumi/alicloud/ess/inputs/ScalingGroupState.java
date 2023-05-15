@@ -170,14 +170,16 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+     * Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+     * **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
      * 
      */
     @Import(name="maxSize")
     private @Nullable Output<Integer> maxSize;
 
     /**
-     * @return Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+     * @return Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+     * **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
      * 
      */
     public Optional<Output<Integer>> maxSize() {
@@ -185,14 +187,16 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+     * Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+     * **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
      * 
      */
     @Import(name="minSize")
     private @Nullable Output<Integer> minSize;
 
     /**
-     * @return Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+     * @return Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+     * **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
      * 
      */
     public Optional<Output<Integer>> minSize() {
@@ -247,12 +251,24 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
     /**
      * Set or unset instances within group into protected status.
      * 
+     * &gt; **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer&#39;s `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer&#39;s `Default Server Group`.
+     * 
+     * &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance&#39;s `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance&#39;s `WhiteList`.
+     * 
+     * &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is &#39;COST_OPTIMIZED&#39;.
+     * 
      */
     @Import(name="protectedInstances")
     private @Nullable Output<List<String>> protectedInstances;
 
     /**
      * @return Set or unset instances within group into protected status.
+     * 
+     * &gt; **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer&#39;s `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer&#39;s `Default Server Group`.
+     * 
+     * &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance&#39;s `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance&#39;s `WhiteList`.
+     * 
+     * &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is &#39;COST_OPTIMIZED&#39;.
      * 
      */
     public Optional<Output<List<String>>> protectedInstances() {
@@ -660,7 +676,8 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxSize Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+         * @param maxSize Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+         * **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
          * 
          * @return builder
          * 
@@ -671,7 +688,8 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxSize Maximum number of ECS instances in the scaling group. Value range: [0, 1000].
+         * @param maxSize Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
+         * **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
          * 
          * @return builder
          * 
@@ -681,7 +699,8 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minSize Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+         * @param minSize Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+         * **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
          * 
          * @return builder
          * 
@@ -692,7 +711,8 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minSize Minimum number of ECS instances in the scaling group. Value range: [0, 1000].
+         * @param minSize Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
+         * **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
          * 
          * @return builder
          * 
@@ -767,6 +787,12 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param protectedInstances Set or unset instances within group into protected status.
          * 
+         * &gt; **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer&#39;s `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer&#39;s `Default Server Group`.
+         * 
+         * &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance&#39;s `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance&#39;s `WhiteList`.
+         * 
+         * &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is &#39;COST_OPTIMIZED&#39;.
+         * 
          * @return builder
          * 
          */
@@ -778,6 +804,12 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param protectedInstances Set or unset instances within group into protected status.
          * 
+         * &gt; **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer&#39;s `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer&#39;s `Default Server Group`.
+         * 
+         * &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance&#39;s `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance&#39;s `WhiteList`.
+         * 
+         * &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is &#39;COST_OPTIMIZED&#39;.
+         * 
          * @return builder
          * 
          */
@@ -787,6 +819,12 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param protectedInstances Set or unset instances within group into protected status.
+         * 
+         * &gt; **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer&#39;s `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer&#39;s `Default Server Group`.
+         * 
+         * &gt; **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance&#39;s `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance&#39;s `WhiteList`.
+         * 
+         * &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is &#39;COST_OPTIMIZED&#39;.
          * 
          * @return builder
          * 

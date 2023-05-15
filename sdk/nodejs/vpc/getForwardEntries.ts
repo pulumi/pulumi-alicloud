@@ -115,6 +115,9 @@ export interface GetForwardEntriesArgs {
      * A regex string to filter results by forward entry name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
@@ -269,6 +272,9 @@ export interface GetForwardEntriesOutputArgs {
      * A regex string to filter results by forward entry name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.

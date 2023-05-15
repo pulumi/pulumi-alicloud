@@ -191,7 +191,7 @@ import (
 //
 // ## Import
 //
-// Cluster addon can be imported by cluster id and addon name. Then write the addon.tf file according to the result of `terraform plan`.
+// Cluster addon can be imported by cluster id and addon name. Then write the addon.tf file according to the result of `pulumi preview`.
 //
 // ```sh
 //
@@ -206,7 +206,7 @@ type KubernetesAddon struct {
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.getKubernetesAddons`.
-	Config pulumi.StringPtrOutput `pulumi:"config"`
+	Config pulumi.StringOutput `pulumi:"config"`
 	// The name of addon.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The version which addon can be upgraded to.
@@ -410,8 +410,8 @@ func (o KubernetesAddonOutput) ClusterId() pulumi.StringOutput {
 }
 
 // The custom configuration of addon. You can checkout the customizable configuration of the addon through datasource `cs.getKubernetesAddonMetadata`, the returned format is the standard json schema. If return empty, it means that the addon does not support custom configuration yet. You can also checkout the current custom configuration through the data source `cs.getKubernetesAddons`.
-func (o KubernetesAddonOutput) Config() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KubernetesAddon) pulumi.StringPtrOutput { return v.Config }).(pulumi.StringPtrOutput)
+func (o KubernetesAddonOutput) Config() pulumi.StringOutput {
+	return o.ApplyT(func(v *KubernetesAddon) pulumi.StringOutput { return v.Config }).(pulumi.StringOutput)
 }
 
 // The name of addon.

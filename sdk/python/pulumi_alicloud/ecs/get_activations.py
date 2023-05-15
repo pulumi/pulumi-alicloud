@@ -134,6 +134,7 @@ def get_activations(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Activation IDs.
     :param str instance_name: The default prefix of the instance name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -182,5 +183,6 @@ def get_activations_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
 
     :param Sequence[str] ids: A list of Activation IDs.
     :param str instance_name: The default prefix of the instance name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

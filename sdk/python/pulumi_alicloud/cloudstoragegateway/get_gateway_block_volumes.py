@@ -142,6 +142,7 @@ def get_gateway_block_volumes(gateway_id: Optional[str] = None,
     :param str gateway_id: The Gateway ID.
     :param Sequence[str] ids: A list of Gateway Block Volume IDs.
     :param str name_regex: A regex string to filter results by Gateway Block Volume name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int status: The status of volume.
     """
     __args__ = dict()
@@ -199,6 +200,7 @@ def get_gateway_block_volumes_output(gateway_id: Optional[pulumi.Input[str]] = N
     :param str gateway_id: The Gateway ID.
     :param Sequence[str] ids: A list of Gateway Block Volume IDs.
     :param str name_regex: A regex string to filter results by Gateway Block Volume name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int status: The status of volume.
     """
     ...

@@ -166,6 +166,7 @@ def get_basic_accelerators(accelerator_id: Optional[str] = None,
     :param str accelerator_id: The ID of the Global Accelerator Basic Accelerator instance.
     :param Sequence[str] ids: A list of Global Accelerator Basic Accelerator IDs.
     :param str name_regex: A regex string to filter results by Global Accelerator Basic Accelerator name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Global Accelerator Basic Accelerator instance. Valid Value: `init`, `active`, `configuring`, `binding`, `unbinding`, `deleting`, `finacialLocked`.
     """
     __args__ = dict()
@@ -224,6 +225,7 @@ def get_basic_accelerators_output(accelerator_id: Optional[pulumi.Input[Optional
     :param str accelerator_id: The ID of the Global Accelerator Basic Accelerator instance.
     :param Sequence[str] ids: A list of Global Accelerator Basic Accelerator IDs.
     :param str name_regex: A regex string to filter results by Global Accelerator Basic Accelerator name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Global Accelerator Basic Accelerator instance. Valid Value: `init`, `active`, `configuring`, `binding`, `unbinding`, `deleting`, `finacialLocked`.
     """
     ...

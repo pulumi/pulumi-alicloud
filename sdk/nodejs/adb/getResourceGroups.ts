@@ -51,6 +51,9 @@ export interface GetResourceGroupsArgs {
      * A list of AnalyticDB for MySQL (ADB) Resource Group IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -115,5 +118,8 @@ export interface GetResourceGroupsOutputArgs {
      * A list of AnalyticDB for MySQL (ADB) Resource Group IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

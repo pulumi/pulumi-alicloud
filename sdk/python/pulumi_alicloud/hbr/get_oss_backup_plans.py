@@ -135,6 +135,7 @@ def get_oss_backup_plans(bucket: Optional[str] = None,
     :param str bucket: The name of OSS bucket.
     :param Sequence[str] ids: A list of OssBackupPlan IDs.
     :param str name_regex: A regex string to filter results by OssBackupPlan name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str vault_id: The ID of backup vault.
     """
     __args__ = dict()
@@ -185,6 +186,7 @@ def get_oss_backup_plans_output(bucket: Optional[pulumi.Input[Optional[str]]] = 
     :param str bucket: The name of OSS bucket.
     :param Sequence[str] ids: A list of OssBackupPlan IDs.
     :param str name_regex: A regex string to filter results by OssBackupPlan name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str vault_id: The ID of backup vault.
     """
     ...

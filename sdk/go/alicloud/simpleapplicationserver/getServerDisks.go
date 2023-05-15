@@ -90,7 +90,8 @@ type GetServerDisksArgs struct {
 	// Alibaba Cloud simple application server instance ID.
 	InstanceId *string `pulumi:"instanceId"`
 	// A regex string to filter results by Disk name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
 	Status *string `pulumi:"status"`
@@ -132,7 +133,8 @@ type GetServerDisksOutputArgs struct {
 	// Alibaba Cloud simple application server instance ID.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
 	// A regex string to filter results by Disk name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

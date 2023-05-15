@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Create an DNS Instance resource.
+ *
+ * > **DEPRECATED:** This resource has been renamed to alicloud.dns.AlidnsInstance from version 1.95.0.
+ *
+ * > **NOTE:** Available in v1.80.0+.
+ *
  * ## Example Usage
  *
  * Basic Usage

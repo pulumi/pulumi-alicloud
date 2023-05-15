@@ -291,6 +291,14 @@ class DnsDomain(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
+        Provides a DNS domain resource.
+
+        > **DEPRECATED:** This resource has been renamed to dns.AlidnsDomain from version 1.95.0.
+
+        > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
+
+        > **NOTE:** Available in v1.81.0+.
+
         ## Example Usage
 
         ```python
@@ -333,6 +341,14 @@ class DnsDomain(pulumi.CustomResource):
                  args: DnsDomainArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a DNS domain resource.
+
+        > **DEPRECATED:** This resource has been renamed to dns.AlidnsDomain from version 1.95.0.
+
+        > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
+
+        > **NOTE:** Available in v1.81.0+.
+
         ## Example Usage
 
         ```python

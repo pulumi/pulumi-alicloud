@@ -5,7 +5,9 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,14 +18,14 @@ public final class PublicIpAddressPoolArgs extends com.pulumi.resources.Resource
     public static final PublicIpAddressPoolArgs Empty = new PublicIpAddressPoolArgs();
 
     /**
-     * The description of the VPC Public IP address pool.
+     * Description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the VPC Public IP address pool.
+     * @return Description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -60,12 +62,44 @@ public final class PublicIpAddressPoolArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.publicIpAddressPoolName);
     }
 
+    /**
+     * The resource group ID of the VPC Public IP address pool.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The resource group ID of the VPC Public IP address pool.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The tags of PrefixList.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return The tags of PrefixList.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private PublicIpAddressPoolArgs() {}
 
     private PublicIpAddressPoolArgs(PublicIpAddressPoolArgs $) {
         this.description = $.description;
         this.isp = $.isp;
         this.publicIpAddressPoolName = $.publicIpAddressPoolName;
+        this.resourceGroupId = $.resourceGroupId;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -87,7 +121,7 @@ public final class PublicIpAddressPoolArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description The description of the VPC Public IP address pool.
+         * @param description Description.
          * 
          * @return builder
          * 
@@ -98,7 +132,7 @@ public final class PublicIpAddressPoolArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description The description of the VPC Public IP address pool.
+         * @param description Description.
          * 
          * @return builder
          * 
@@ -147,6 +181,48 @@ public final class PublicIpAddressPoolArgs extends com.pulumi.resources.Resource
          */
         public Builder publicIpAddressPoolName(String publicIpAddressPoolName) {
             return publicIpAddressPoolName(Output.of(publicIpAddressPoolName));
+        }
+
+        /**
+         * @param resourceGroupId The resource group ID of the VPC Public IP address pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The resource group ID of the VPC Public IP address pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param tags The tags of PrefixList.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tags of PrefixList.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         public PublicIpAddressPoolArgs build() {

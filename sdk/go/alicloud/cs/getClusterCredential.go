@@ -27,7 +27,8 @@ func GetClusterCredential(ctx *pulumi.Context, args *GetClusterCredentialArgs, o
 // A collection of arguments for invoking getClusterCredential.
 type GetClusterCredentialArgs struct {
 	// The id of target cluster.
-	ClusterId  string  `pulumi:"clusterId"`
+	ClusterId string `pulumi:"clusterId"`
+	// File name where to save the returned KubeConfig (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Automatic expiration time of the returned credential. The valid value between `15` and `4320`, in minutes. When this field is omitted, the expiration time will be determined by the system automatically and the result will be in the attributed field `expiration`.
 	TemporaryDurationMinutes *int `pulumi:"temporaryDurationMinutes"`
@@ -67,7 +68,8 @@ func GetClusterCredentialOutput(ctx *pulumi.Context, args GetClusterCredentialOu
 // A collection of arguments for invoking getClusterCredential.
 type GetClusterCredentialOutputArgs struct {
 	// The id of target cluster.
-	ClusterId  pulumi.StringInput    `pulumi:"clusterId"`
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// File name where to save the returned KubeConfig (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Automatic expiration time of the returned credential. The valid value between `15` and `4320`, in minutes. When this field is omitted, the expiration time will be determined by the system automatically and the result will be in the attributed field `expiration`.
 	TemporaryDurationMinutes pulumi.IntPtrInput `pulumi:"temporaryDurationMinutes"`

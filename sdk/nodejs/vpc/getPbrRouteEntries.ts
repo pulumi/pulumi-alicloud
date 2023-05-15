@@ -42,6 +42,9 @@ export interface GetPbrRouteEntriesArgs {
      * A list of VPN Pbr Route Entries IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the VPN gateway.
@@ -98,6 +101,9 @@ export interface GetPbrRouteEntriesOutputArgs {
      * A list of VPN Pbr Route Entries IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the VPN gateway.

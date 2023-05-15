@@ -7,6 +7,14 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Log Service provides the LogSearch/Analytics function to query and analyze large amounts of logs in real time.
+ * You can use this function by enabling the index and field statistics. [Refer to details](https://www.alibabacloud.com/help/doc-detail/43772.htm)
+ *
+ * ## Module Support
+ *
+ * You can use the existing sls module
+ * to create SLS project, store and store index one-click, like ECS instances.
+ *
  * ## Import
  *
  * Log store index can be imported using the id, e.g.

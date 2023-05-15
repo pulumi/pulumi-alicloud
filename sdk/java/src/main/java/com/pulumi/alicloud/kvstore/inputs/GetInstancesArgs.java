@@ -65,14 +65,14 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+     * The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
      * 
      */
     @Import(name="engineVersion")
     private @Nullable Output<String> engineVersion;
 
     /**
-     * @return The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+     * @return The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
      * 
      */
     public Optional<Output<String>> engineVersion() {
@@ -184,9 +184,17 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.networkType);
     }
 
+    /**
+     * The name of file that can save the collection of instances after running `pulumi preview`.
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable Output<String> outputFile;
 
+    /**
+     * @return The name of file that can save the collection of instances after running `pulumi preview`.
+     * 
+     */
     public Optional<Output<String>> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -418,7 +426,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param engineVersion The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+         * @param engineVersion The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
          * 
          * @return builder
          * 
@@ -429,7 +437,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param engineVersion The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`.
+         * @param engineVersion The engine version. Valid values: `2.8`, `4.0`, `5.0`, `6.0`, `7.0`.
          * 
          * @return builder
          * 
@@ -595,11 +603,23 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
             return networkType(Output.of(networkType));
         }
 
+        /**
+         * @param outputFile The name of file that can save the collection of instances after running `pulumi preview`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable Output<String> outputFile) {
             $.outputFile = outputFile;
             return this;
         }
 
+        /**
+         * @param outputFile The name of file that can save the collection of instances after running `pulumi preview`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(String outputFile) {
             return outputFile(Output.of(outputFile));
         }

@@ -99,6 +99,8 @@ export class AlarmContact extends pulumi.CustomResource {
     public readonly describe!: pulumi.Output<string>;
     /**
      * The language type of the alarm. Valid values: `en`, `zh-cn`.
+     *
+     * > **NOTE:** Specify at least one of the following alarm notification targets: `channelsAliim`, `channelsDingWebHook`, `channelsMail`, `channelsSms`.
      */
     public readonly lang!: pulumi.Output<string | undefined>;
 
@@ -173,6 +175,8 @@ export interface AlarmContactState {
     describe?: pulumi.Input<string>;
     /**
      * The language type of the alarm. Valid values: `en`, `zh-cn`.
+     *
+     * > **NOTE:** Specify at least one of the following alarm notification targets: `channelsAliim`, `channelsDingWebHook`, `channelsMail`, `channelsSms`.
      */
     lang?: pulumi.Input<string>;
 }
@@ -207,6 +211,8 @@ export interface AlarmContactArgs {
     describe: pulumi.Input<string>;
     /**
      * The language type of the alarm. Valid values: `en`, `zh-cn`.
+     *
+     * > **NOTE:** Specify at least one of the following alarm notification targets: `channelsAliim`, `channelsDingWebHook`, `channelsMail`, `channelsSms`.
      */
     lang?: pulumi.Input<string>;
 }

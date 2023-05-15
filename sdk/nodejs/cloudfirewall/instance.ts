@@ -116,7 +116,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
-     * The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+     * The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
      */
     public readonly period!: pulumi.Output<number>;
     /**
@@ -280,7 +280,7 @@ export interface InstanceState {
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+     * The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
      */
     period?: pulumi.Input<number>;
     /**
@@ -354,7 +354,7 @@ export interface InstanceArgs {
      */
     paymentType: pulumi.Input<string>;
     /**
-     * The prepaid period. Valid values: `6`, `12`, `24`, `36`.
+     * The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
      */
     period: pulumi.Input<number>;
     /**

@@ -58,6 +58,9 @@ export interface GetTemplateScratchesArgs {
      * A list of Template Scratch IDs.
      */
     ids?: string[];
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the resource.
@@ -127,6 +130,9 @@ export interface GetTemplateScratchesOutputArgs {
      * A list of Template Scratch IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the resource.

@@ -81,7 +81,8 @@ type GetDomainsArgs struct {
 	// A list of Domain IDs. Its element value is same as Domain Name.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Domain name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
@@ -123,7 +124,8 @@ type GetDomainsOutputArgs struct {
 	// A list of Domain IDs. Its element value is same as Domain Name.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Domain name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the resource.
 	Status pulumi.StringPtrInput `pulumi:"status"`

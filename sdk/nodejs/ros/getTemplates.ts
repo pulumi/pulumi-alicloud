@@ -57,6 +57,9 @@ export interface GetTemplatesArgs {
      * A regex string to filter results by Template name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Share Type.
@@ -130,6 +133,9 @@ export interface GetTemplatesOutputArgs {
      * A regex string to filter results by Template name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Share Type.

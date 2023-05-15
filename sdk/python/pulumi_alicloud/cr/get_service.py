@@ -97,6 +97,8 @@ def get_service(enable: Optional[str] = None,
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
     :param str password: The user password. The password must be 8 to 32 characters in length, and must contain at least two of the following character types: letters, special characters, and digits.
+           
+           > **NOTE:** Setting `enable = "On"` to open the Container Registry (CR) service that means you have read and agreed the [Container Registry (CR) Terms of Service](https://help.aliyun.com/document_detail/190602.html). The service can not closed once it is opened.
     """
     __args__ = dict()
     __args__['enable'] = enable
@@ -135,5 +137,7 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
     :param str password: The user password. The password must be 8 to 32 characters in length, and must contain at least two of the following character types: letters, special characters, and digits.
+           
+           > **NOTE:** Setting `enable = "On"` to open the Container Registry (CR) service that means you have read and agreed the [Container Registry (CR) Terms of Service](https://help.aliyun.com/document_detail/190602.html). The service can not closed once it is opened.
     """
     ...

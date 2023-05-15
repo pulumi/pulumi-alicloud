@@ -22,6 +22,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     public static final ClusterState Empty = new ClusterState();
 
     /**
+     * Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
+     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * 
+     */
+    @Import(name="allowShutDown")
+    private @Nullable Output<String> allowShutDown;
+
+    /**
+     * @return Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
+     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * 
+     */
+    public Optional<Output<String>> allowShutDown() {
+        return Optional.ofNullable(this.allowShutDown);
+    }
+
+    /**
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      * 
      */
@@ -99,6 +116,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available in 1.204.1+) PolarDB cluster creation time.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return (Available in 1.204.1+) PolarDB cluster creation time.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
      * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
      * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
      * 
@@ -149,7 +181,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The db_node_class of cluster node.
-     * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
+     * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
      * 
      */
     @Import(name="dbNodeClass")
@@ -157,7 +189,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The db_node_class of cluster node.
-     * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
+     * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
      * 
      */
     public Optional<Output<String>> dbNodeClass() {
@@ -386,9 +418,19 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.payType);
     }
 
+    /**
+     * The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
+    /**
+     * @return The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
     }
@@ -454,6 +496,91 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * 
+     */
+    @Import(name="scaleMax")
+    private @Nullable Output<Integer> scaleMax;
+
+    /**
+     * @return The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * 
+     */
+    public Optional<Output<Integer>> scaleMax() {
+        return Optional.ofNullable(this.scaleMax);
+    }
+
+    /**
+     * The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * 
+     */
+    @Import(name="scaleMin")
+    private @Nullable Output<Integer> scaleMin;
+
+    /**
+     * @return The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * 
+     */
+    public Optional<Output<Integer>> scaleMin() {
+        return Optional.ofNullable(this.scaleMin);
+    }
+
+    /**
+     * The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * 
+     */
+    @Import(name="scaleRoNumMax")
+    private @Nullable Output<Integer> scaleRoNumMax;
+
+    /**
+     * @return The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * 
+     */
+    public Optional<Output<Integer>> scaleRoNumMax() {
+        return Optional.ofNullable(this.scaleRoNumMax);
+    }
+
+    /**
+     * The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * 
+     */
+    @Import(name="scaleRoNumMin")
+    private @Nullable Output<Integer> scaleRoNumMin;
+
+    /**
+     * @return The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * 
+     */
+    public Optional<Output<Integer>> scaleRoNumMin() {
+        return Optional.ofNullable(this.scaleRoNumMin);
+    }
+
+    /**
+     * The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * 
+     */
+    @Import(name="secondsUntilAutoPause")
+    private @Nullable Output<Integer> secondsUntilAutoPause;
+
+    /**
+     * @return The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * 
+     */
+    public Optional<Output<Integer>> secondsUntilAutoPause() {
+        return Optional.ofNullable(this.secondsUntilAutoPause);
+    }
+
+    /**
      * The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
      * &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      * 
@@ -488,6 +615,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The type of the serverless cluster. Set the value to AgileServerless.
+     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * 
+     */
+    @Import(name="serverlessType")
+    private @Nullable Output<String> serverlessType;
+
+    /**
+     * @return The type of the serverless cluster. Set the value to AgileServerless.
+     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * 
+     */
+    public Optional<Output<String>> serverlessType() {
+        return Optional.ofNullable(this.serverlessType);
+    }
+
+    /**
      * The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
      * 
      */
@@ -500,6 +644,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> sourceResourceId() {
         return Optional.ofNullable(this.sourceResourceId);
+    }
+
+    /**
+     * (Available in 1.204.1+) PolarDB cluster status.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return (Available in 1.204.1+) PolarDB cluster status.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
     }
 
     /**
@@ -654,11 +813,13 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private ClusterState() {}
 
     private ClusterState(ClusterState $) {
+        this.allowShutDown = $.allowShutDown;
         this.autoRenewPeriod = $.autoRenewPeriod;
         this.backupRetentionPolicyOnClusterDeletion = $.backupRetentionPolicyOnClusterDeletion;
         this.cloneDataPoint = $.cloneDataPoint;
         this.collectorStatus = $.collectorStatus;
         this.connectionString = $.connectionString;
+        this.createTime = $.createTime;
         this.creationCategory = $.creationCategory;
         this.creationOption = $.creationOption;
         this.dbClusterIpArrays = $.dbClusterIpArrays;
@@ -682,9 +843,16 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.renewalStatus = $.renewalStatus;
         this.resourceGroupId = $.resourceGroupId;
         this.roleArn = $.roleArn;
+        this.scaleMax = $.scaleMax;
+        this.scaleMin = $.scaleMin;
+        this.scaleRoNumMax = $.scaleRoNumMax;
+        this.scaleRoNumMin = $.scaleRoNumMin;
+        this.secondsUntilAutoPause = $.secondsUntilAutoPause;
         this.securityGroupIds = $.securityGroupIds;
         this.securityIps = $.securityIps;
+        this.serverlessType = $.serverlessType;
         this.sourceResourceId = $.sourceResourceId;
+        this.status = $.status;
         this.storageSpace = $.storageSpace;
         this.storageType = $.storageType;
         this.subCategory = $.subCategory;
@@ -712,6 +880,29 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ClusterState defaults) {
             $ = new ClusterState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowShutDown Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
+         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowShutDown(@Nullable Output<String> allowShutDown) {
+            $.allowShutDown = allowShutDown;
+            return this;
+        }
+
+        /**
+         * @param allowShutDown Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
+         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowShutDown(String allowShutDown) {
+            return allowShutDown(Output.of(allowShutDown));
         }
 
         /**
@@ -822,6 +1013,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param createTime (Available in 1.204.1+) PolarDB cluster creation time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Available in 1.204.1+) PolarDB cluster creation time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
          * @param creationCategory The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `CreationCategory`.
          * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
          * 
@@ -900,7 +1112,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dbNodeClass The db_node_class of cluster node.
-         * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
+         * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
          * 
          * @return builder
          * 
@@ -912,7 +1124,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dbNodeClass The db_node_class of cluster node.
-         * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
+         * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
          * 
          * @return builder
          * 
@@ -1237,11 +1449,25 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             return payType(Output.of(payType));
         }
 
+        /**
+         * @param period The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+         * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder period(@Nullable Output<Integer> period) {
             $.period = period;
             return this;
         }
 
+        /**
+         * @param period The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
+         * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder period(Integer period) {
             return period(Output.of(period));
         }
@@ -1331,6 +1557,121 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param scaleMax The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleMax(@Nullable Output<Integer> scaleMax) {
+            $.scaleMax = scaleMax;
+            return this;
+        }
+
+        /**
+         * @param scaleMax The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleMax(Integer scaleMax) {
+            return scaleMax(Output.of(scaleMax));
+        }
+
+        /**
+         * @param scaleMin The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleMin(@Nullable Output<Integer> scaleMin) {
+            $.scaleMin = scaleMin;
+            return this;
+        }
+
+        /**
+         * @param scaleMin The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleMin(Integer scaleMin) {
+            return scaleMin(Output.of(scaleMin));
+        }
+
+        /**
+         * @param scaleRoNumMax The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleRoNumMax(@Nullable Output<Integer> scaleRoNumMax) {
+            $.scaleRoNumMax = scaleRoNumMax;
+            return this;
+        }
+
+        /**
+         * @param scaleRoNumMax The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleRoNumMax(Integer scaleRoNumMax) {
+            return scaleRoNumMax(Output.of(scaleRoNumMax));
+        }
+
+        /**
+         * @param scaleRoNumMin The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleRoNumMin(@Nullable Output<Integer> scaleRoNumMin) {
+            $.scaleRoNumMin = scaleRoNumMin;
+            return this;
+        }
+
+        /**
+         * @param scaleRoNumMin The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleRoNumMin(Integer scaleRoNumMin) {
+            return scaleRoNumMin(Output.of(scaleRoNumMin));
+        }
+
+        /**
+         * @param secondsUntilAutoPause The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondsUntilAutoPause(@Nullable Output<Integer> secondsUntilAutoPause) {
+            $.secondsUntilAutoPause = secondsUntilAutoPause;
+            return this;
+        }
+
+        /**
+         * @param secondsUntilAutoPause The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
+         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondsUntilAutoPause(Integer secondsUntilAutoPause) {
+            return secondsUntilAutoPause(Output.of(secondsUntilAutoPause));
+        }
+
+        /**
          * @param securityGroupIds The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
          * &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
          * 
@@ -1399,6 +1740,29 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param serverlessType The type of the serverless cluster. Set the value to AgileServerless.
+         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessType(@Nullable Output<String> serverlessType) {
+            $.serverlessType = serverlessType;
+            return this;
+        }
+
+        /**
+         * @param serverlessType The type of the serverless cluster. Set the value to AgileServerless.
+         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessType(String serverlessType) {
+            return serverlessType(Output.of(serverlessType));
+        }
+
+        /**
          * @param sourceResourceId The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `SourceResourceId`.
          * 
          * @return builder
@@ -1417,6 +1781,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sourceResourceId(String sourceResourceId) {
             return sourceResourceId(Output.of(sourceResourceId));
+        }
+
+        /**
+         * @param status (Available in 1.204.1+) PolarDB cluster status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status (Available in 1.204.1+) PolarDB cluster status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         /**

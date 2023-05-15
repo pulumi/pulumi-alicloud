@@ -157,6 +157,7 @@ def get_public_ip_address_pools(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Vpc Public Ip Address Pool IDs.
     :param str isp: The Internet service provider.
     :param str name_regex: A regex string to filter results by Vpc Public Ip Address Pool name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] public_ip_address_pool_ids: The IDs of the Vpc Public IP address pools.
     :param str public_ip_address_pool_name: The name of the Vpc Public Ip Address Pool.
     :param str status: The status of the Vpc Public Ip Address Pool.
@@ -217,6 +218,7 @@ def get_public_ip_address_pools_output(ids: Optional[pulumi.Input[Optional[Seque
     :param Sequence[str] ids: A list of Vpc Public Ip Address Pool IDs.
     :param str isp: The Internet service provider.
     :param str name_regex: A regex string to filter results by Vpc Public Ip Address Pool name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] public_ip_address_pool_ids: The IDs of the Vpc Public IP address pools.
     :param str public_ip_address_pool_name: The name of the Vpc Public Ip Address Pool.
     :param str status: The status of the Vpc Public Ip Address Pool.

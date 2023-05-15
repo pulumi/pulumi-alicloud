@@ -146,6 +146,7 @@ def get_bandwidth_packages(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Bandwidth Package IDs.
     :param str name_regex: A regex string to filter results by Bandwidth Package name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the bandwidth plan.
     :param str type: The type of the bandwidth packet. China station only supports return to basic.
     """
@@ -201,6 +202,7 @@ def get_bandwidth_packages_output(enable_details: Optional[pulumi.Input[Optional
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Bandwidth Package IDs.
     :param str name_regex: A regex string to filter results by Bandwidth Package name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the bandwidth plan.
     :param str type: The type of the bandwidth packet. China station only supports return to basic.
     """

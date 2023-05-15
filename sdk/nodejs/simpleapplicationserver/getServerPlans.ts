@@ -73,6 +73,9 @@ export interface GetServerPlansArgs {
      * The memory size. Unit: GB.
      */
     memory?: number;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The platform of Plan supported. Valid values: ["Linux", "Windows"].
@@ -153,6 +156,9 @@ export interface GetServerPlansOutputArgs {
      * The memory size. Unit: GB.
      */
     memory?: pulumi.Input<number>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The platform of Plan supported. Valid values: ["Linux", "Windows"].

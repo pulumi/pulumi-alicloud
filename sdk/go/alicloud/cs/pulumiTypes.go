@@ -3169,6 +3169,21 @@ type ManagedKubernetesMaintenanceWindow struct {
 	// Initial maintenance time, For example:"03:00:00Z".
 	MaintenanceTime string `pulumi:"maintenanceTime"`
 	// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+	//
+	// for example:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	WeeklyPeriod string `pulumi:"weeklyPeriod"`
 }
 
@@ -3191,6 +3206,21 @@ type ManagedKubernetesMaintenanceWindowArgs struct {
 	// Initial maintenance time, For example:"03:00:00Z".
 	MaintenanceTime pulumi.StringInput `pulumi:"maintenanceTime"`
 	// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+	//
+	// for example:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	WeeklyPeriod pulumi.StringInput `pulumi:"weeklyPeriod"`
 }
 
@@ -3287,6 +3317,24 @@ func (o ManagedKubernetesMaintenanceWindowOutput) MaintenanceTime() pulumi.Strin
 }
 
 // Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+//
+// for example:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ManagedKubernetesMaintenanceWindowOutput) WeeklyPeriod() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedKubernetesMaintenanceWindow) string { return v.WeeklyPeriod }).(pulumi.StringOutput)
 }
@@ -3346,6 +3394,24 @@ func (o ManagedKubernetesMaintenanceWindowPtrOutput) MaintenanceTime() pulumi.St
 }
 
 // Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+//
+// for example:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ManagedKubernetesMaintenanceWindowPtrOutput) WeeklyPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetesMaintenanceWindow) *string {
 		if v == nil {
@@ -5658,6 +5724,8 @@ type ServerlessKubernetesAddon struct {
 	// The ACK add-on configurations.
 	Config *string `pulumi:"config"`
 	// Disables the automatic installation of a component. Default is `false`.
+	//
+	// The following example is the definition of addons block, The type of this field is list:
 	Disabled *bool `pulumi:"disabled"`
 	// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 	Name *string `pulumi:"name"`
@@ -5678,6 +5746,8 @@ type ServerlessKubernetesAddonArgs struct {
 	// The ACK add-on configurations.
 	Config pulumi.StringPtrInput `pulumi:"config"`
 	// Disables the automatic installation of a component. Default is `false`.
+	//
+	// The following example is the definition of addons block, The type of this field is list:
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -5740,6 +5810,8 @@ func (o ServerlessKubernetesAddonOutput) Config() pulumi.StringPtrOutput {
 }
 
 // Disables the automatic installation of a component. Default is `false`.
+//
+// The following example is the definition of addons block, The type of this field is list:
 func (o ServerlessKubernetesAddonOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServerlessKubernetesAddon) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }

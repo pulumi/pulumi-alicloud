@@ -28,6 +28,7 @@ type GetInstancesArgs struct {
 	Ids []string `pulumi:"ids"`
 	// The first ID of the resource
 	InstanceId *string `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
@@ -70,6 +71,7 @@ type GetInstancesOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The first ID of the resource
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`

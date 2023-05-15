@@ -10,6 +10,45 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Log
 {
     /// <summary>
+    /// Log Service manages all the ECS instances whose logs need to be collected by using the Logtail client in the form of machine groups.
+    ///  [Refer to details](https://www.alibabacloud.com/help/doc-detail/28966.htm)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     {
+    ///         Description = "created by terraform",
+    ///     });
+    /// 
+    ///     var exampleMachineGroup = new AliCloud.Log.MachineGroup("exampleMachineGroup", new()
+    ///     {
+    ///         Project = exampleProject.Name,
+    ///         IdentifyType = "ip",
+    ///         Topic = "terraform",
+    ///         IdentifyLists = new[]
+    ///         {
+    ///             "10.0.0.1",
+    ///             "10.0.0.2",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Module Support
+    /// 
+    /// You can use the existing sls-logtail module
+    /// to create logtail config, machine group, install logtail on ECS instances and join instances into machine group one-click.
+    /// 
     /// ## Import
     /// 
     /// Log machine group can be imported using the id, e.g.

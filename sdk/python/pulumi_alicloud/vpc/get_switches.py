@@ -271,6 +271,7 @@ def get_switches(cidr_block: Optional[str] = None,
     :param Sequence[str] ids: A list of VSwitch IDs.
     :param bool is_default: Indicate whether the VSwitch is created by the system.
     :param str name_regex: A regex string to filter results by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which VSWitch belongs.
     :param str route_table_id: The route table ID of the VSwitch.
     :param str status: The status of the VSwitch. Valid values: `Available` and `Pending`.
@@ -365,6 +366,7 @@ def get_switches_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
     :param Sequence[str] ids: A list of VSwitch IDs.
     :param bool is_default: Indicate whether the VSwitch is created by the system.
     :param str name_regex: A regex string to filter results by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which VSWitch belongs.
     :param str route_table_id: The route table ID of the VSwitch.
     :param str status: The status of the VSwitch. Valid values: `Available` and `Pending`.

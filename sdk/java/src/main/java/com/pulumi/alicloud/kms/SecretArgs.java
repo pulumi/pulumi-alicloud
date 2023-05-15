@@ -81,6 +81,21 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+     * 
+     */
+    @Import(name="extendedConfig")
+    private @Nullable Output<String> extendedConfig;
+
+    /**
+     * @return The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+     * 
+     */
+    public Optional<Output<String>> extendedConfig() {
+        return Optional.ofNullable(this.extendedConfig);
+    }
+
+    /**
      * Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
      * 
      */
@@ -126,14 +141,14 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
+     * The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
      * 
      */
     @Import(name="secretData", required=true)
     private Output<String> secretData;
 
     /**
-     * @return The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
+     * @return The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
      * 
      */
     public Output<String> secretData() {
@@ -168,6 +183,21 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> secretName() {
         return this.secretName;
+    }
+
+    /**
+     * The type of the secret. Valid values:
+     * 
+     */
+    @Import(name="secretType")
+    private @Nullable Output<String> secretType;
+
+    /**
+     * @return The type of the secret. Valid values:
+     * 
+     */
+    public Optional<Output<String>> secretType() {
+        return Optional.ofNullable(this.secretType);
     }
 
     /**
@@ -222,12 +252,14 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         this.dkmsInstanceId = $.dkmsInstanceId;
         this.enableAutomaticRotation = $.enableAutomaticRotation;
         this.encryptionKeyId = $.encryptionKeyId;
+        this.extendedConfig = $.extendedConfig;
         this.forceDeleteWithoutRecovery = $.forceDeleteWithoutRecovery;
         this.recoveryWindowInDays = $.recoveryWindowInDays;
         this.rotationInterval = $.rotationInterval;
         this.secretData = $.secretData;
         this.secretDataType = $.secretDataType;
         this.secretName = $.secretName;
+        this.secretType = $.secretType;
         this.tags = $.tags;
         this.versionId = $.versionId;
         this.versionStages = $.versionStages;
@@ -336,6 +368,27 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param extendedConfig The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extendedConfig(@Nullable Output<String> extendedConfig) {
+            $.extendedConfig = extendedConfig;
+            return this;
+        }
+
+        /**
+         * @param extendedConfig The extended configuration of the secret. This parameter specifies the properties of the secret of the specific type. The description can be up to 1,024 characters in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extendedConfig(String extendedConfig) {
+            return extendedConfig(Output.of(extendedConfig));
+        }
+
+        /**
          * @param forceDeleteWithoutRecovery Specifies whether to forcibly delete the secret. If this parameter is set to true, the secret cannot be recovered. Valid values: true, false. Default to: false.
          * 
          * @return builder
@@ -399,7 +452,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretData The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
+         * @param secretData The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
          * 
          * @return builder
          * 
@@ -410,7 +463,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretData The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version.
+         * @param secretData The value of the secret that you want to create. Secrets Manager encrypts the secret value and stores it in the initial version. **NOTE:** From version 1.204.1, attribute `secret_data` updating diff will be ignored when `secret_type` is not Generic.
          * 
          * @return builder
          * 
@@ -459,6 +512,27 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder secretName(String secretName) {
             return secretName(Output.of(secretName));
+        }
+
+        /**
+         * @param secretType The type of the secret. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretType(@Nullable Output<String> secretType) {
+            $.secretType = secretType;
+            return this;
+        }
+
+        /**
+         * @param secretType The type of the secret. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretType(String secretType) {
+            return secretType(Output.of(secretType));
         }
 
         /**

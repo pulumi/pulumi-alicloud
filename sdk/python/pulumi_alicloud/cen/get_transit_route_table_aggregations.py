@@ -163,6 +163,7 @@ def get_transit_route_table_aggregations(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Transit Route Table Aggregation IDs.
     :param str name_regex: A regex string to filter results by Transit Route Table Aggregation name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of Transit Route Table Aggregation. Valid Values: `AllConfigured`, `Configuring`, `ConfigFailed`, `PartialConfigured`, `Deleting`.
     :param str transit_route_table_aggregation_cidr: The destination CIDR block of the aggregate route.
     :param str transit_route_table_id: The ID of the route table of the Enterprise Edition transit router.
@@ -221,6 +222,7 @@ def get_transit_route_table_aggregations_output(ids: Optional[pulumi.Input[Optio
 
     :param Sequence[str] ids: A list of Transit Route Table Aggregation IDs.
     :param str name_regex: A regex string to filter results by Transit Route Table Aggregation name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of Transit Route Table Aggregation. Valid Values: `AllConfigured`, `Configuring`, `ConfigFailed`, `PartialConfigured`, `Deleting`.
     :param str transit_route_table_aggregation_cidr: The destination CIDR block of the aggregate route.
     :param str transit_route_table_id: The ID of the route table of the Enterprise Edition transit router.

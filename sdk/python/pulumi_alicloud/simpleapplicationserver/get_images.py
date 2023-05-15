@@ -115,7 +115,10 @@ def get_images(ids: Optional[Sequence[str]] = None,
                platform: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImagesResult:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.135.0+.
+
 
     :param str image_type: The type of the image. Valid values: `app`, `custom`, `system`.
     :param str platform: The platform of Plan supported.
@@ -148,7 +151,10 @@ def get_images_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
                       platform: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImagesResult]:
     """
-    Use this data source to access information about an existing resource.
+    This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
+
+    > **NOTE:** Available in v1.135.0+.
+
 
     :param str image_type: The type of the image. Valid values: `app`, `custom`, `system`.
     :param str platform: The platform of Plan supported.

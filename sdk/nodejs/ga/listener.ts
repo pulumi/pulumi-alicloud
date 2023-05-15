@@ -91,6 +91,8 @@ export class Listener extends pulumi.CustomResource {
     public readonly acceleratorId!: pulumi.Output<string>;
     /**
      * The certificates of the listener.
+     *
+     * > **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
      */
     public readonly certificates!: pulumi.Output<outputs.ga.ListenerCertificate[] | undefined>;
     /**
@@ -113,10 +115,14 @@ export class Listener extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The portRanges of the listener.
+     *
+     * > **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
      */
     public readonly portRanges!: pulumi.Output<outputs.ga.ListenerPortRange[]>;
     /**
      * Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
+     *
+     * > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
      */
     public readonly protocol!: pulumi.Output<string | undefined>;
     /**
@@ -193,6 +199,8 @@ export interface ListenerState {
     acceleratorId?: pulumi.Input<string>;
     /**
      * The certificates of the listener.
+     *
+     * > **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
      */
     certificates?: pulumi.Input<pulumi.Input<inputs.ga.ListenerCertificate>[]>;
     /**
@@ -215,10 +223,14 @@ export interface ListenerState {
     name?: pulumi.Input<string>;
     /**
      * The portRanges of the listener.
+     *
+     * > **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
      */
     portRanges?: pulumi.Input<pulumi.Input<inputs.ga.ListenerPortRange>[]>;
     /**
      * Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
+     *
+     * > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
      */
     protocol?: pulumi.Input<string>;
     /**
@@ -247,6 +259,8 @@ export interface ListenerArgs {
     acceleratorId: pulumi.Input<string>;
     /**
      * The certificates of the listener.
+     *
+     * > **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
      */
     certificates?: pulumi.Input<pulumi.Input<inputs.ga.ListenerCertificate>[]>;
     /**
@@ -269,10 +283,14 @@ export interface ListenerArgs {
     name?: pulumi.Input<string>;
     /**
      * The portRanges of the listener.
+     *
+     * > **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
      */
     portRanges: pulumi.Input<pulumi.Input<inputs.ga.ListenerPortRange>[]>;
     /**
      * Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
+     *
+     * > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
      */
     protocol?: pulumi.Input<string>;
     /**

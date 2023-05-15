@@ -51,6 +51,9 @@ export interface GetRolesArgs {
      * A regex string to filter results by role name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -115,5 +118,8 @@ export interface GetRolesOutputArgs {
      * A regex string to filter results by role name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

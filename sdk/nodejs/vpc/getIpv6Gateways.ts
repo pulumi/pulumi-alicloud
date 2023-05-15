@@ -69,6 +69,9 @@ export interface GetIpv6GatewaysArgs {
      * A regex string to filter results by Ipv6 Gateway name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
@@ -150,6 +153,9 @@ export interface GetIpv6GatewaysOutputArgs {
      * A regex string to filter results by Ipv6 Gateway name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.

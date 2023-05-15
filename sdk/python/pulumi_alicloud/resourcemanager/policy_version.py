@@ -21,7 +21,9 @@ class PolicyVersionArgs:
         The set of arguments for constructing a PolicyVersion resource.
         :param pulumi.Input[str] policy_document: The content of the policy. The content must be 1 to 2,048 characters in length.
         :param pulumi.Input[str] policy_name: The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
-        :param pulumi.Input[bool] is_default_version: Specifies whether to set the policy version as the default version. Default to `false`.
+        :param pulumi.Input[bool] is_default_version: Specifies whether to set the policy version as the default version. Default to `false`. 
+               
+               > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
         """
         pulumi.set(__self__, "policy_document", policy_document)
         pulumi.set(__self__, "policy_name", policy_name)
@@ -59,7 +61,9 @@ class PolicyVersionArgs:
     @pulumi.getter(name="isDefaultVersion")
     def is_default_version(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to set the policy version as the default version. Default to `false`.
+        Specifies whether to set the policy version as the default version. Default to `false`. 
+
+        > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
         """
         return pulumi.get(self, "is_default_version")
 
@@ -76,7 +80,9 @@ class _PolicyVersionState:
                  policy_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PolicyVersion resources.
-        :param pulumi.Input[bool] is_default_version: Specifies whether to set the policy version as the default version. Default to `false`.
+        :param pulumi.Input[bool] is_default_version: Specifies whether to set the policy version as the default version. Default to `false`. 
+               
+               > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
         :param pulumi.Input[str] policy_document: The content of the policy. The content must be 1 to 2,048 characters in length.
         :param pulumi.Input[str] policy_name: The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         """
@@ -94,7 +100,9 @@ class _PolicyVersionState:
     @pulumi.getter(name="isDefaultVersion")
     def is_default_version(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to set the policy version as the default version. Default to `false`.
+        Specifies whether to set the policy version as the default version. Default to `false`. 
+
+        > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
         """
         return pulumi.get(self, "is_default_version")
 
@@ -137,6 +145,13 @@ class PolicyVersion(pulumi.CustomResource):
                  policy_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Provides a Resource Manager Policy Version resource.
+        For information about Resource Manager Policy Version and how to use it, see [What is Resource Manager Policy Version](https://www.alibabacloud.com/help/en/doc-detail/116817.htm).
+
+        > **NOTE:** Available in v1.84.0+.
+
+        > **NOTE:** It is not recommended to use this resource management policy version, it is recommended to directly use the policy resource to manage your policy. Please refer to the link for usage resource_manager_policy.
+
         ## Example Usage
 
         Basic Usage
@@ -179,7 +194,9 @@ class PolicyVersion(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] is_default_version: Specifies whether to set the policy version as the default version. Default to `false`.
+        :param pulumi.Input[bool] is_default_version: Specifies whether to set the policy version as the default version. Default to `false`. 
+               
+               > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
         :param pulumi.Input[str] policy_document: The content of the policy. The content must be 1 to 2,048 characters in length.
         :param pulumi.Input[str] policy_name: The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         """
@@ -190,6 +207,13 @@ class PolicyVersion(pulumi.CustomResource):
                  args: PolicyVersionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Resource Manager Policy Version resource.
+        For information about Resource Manager Policy Version and how to use it, see [What is Resource Manager Policy Version](https://www.alibabacloud.com/help/en/doc-detail/116817.htm).
+
+        > **NOTE:** Available in v1.84.0+.
+
+        > **NOTE:** It is not recommended to use this resource management policy version, it is recommended to directly use the policy resource to manage your policy. Please refer to the link for usage resource_manager_policy.
+
         ## Example Usage
 
         Basic Usage
@@ -287,7 +311,9 @@ class PolicyVersion(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] is_default_version: Specifies whether to set the policy version as the default version. Default to `false`.
+        :param pulumi.Input[bool] is_default_version: Specifies whether to set the policy version as the default version. Default to `false`. 
+               
+               > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
         :param pulumi.Input[str] policy_document: The content of the policy. The content must be 1 to 2,048 characters in length.
         :param pulumi.Input[str] policy_name: The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         """
@@ -304,7 +330,9 @@ class PolicyVersion(pulumi.CustomResource):
     @pulumi.getter(name="isDefaultVersion")
     def is_default_version(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specifies whether to set the policy version as the default version. Default to `false`.
+        Specifies whether to set the policy version as the default version. Default to `false`. 
+
+        > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
         """
         return pulumi.get(self, "is_default_version")
 

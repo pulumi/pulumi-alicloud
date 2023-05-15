@@ -10,6 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:** This datasource has been renamed to slb.getApplicationLoadBalancers from version 1.123.1.
+//
+// This data source provides the server load balancers of the current Alibaba Cloud user.
+//
 // ## Example Usage
 //
 // ```go
@@ -65,6 +69,7 @@ type GetLoadBalancersArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// Network type of the SLBs. Valid values: `vpc` and `classic`.
 	NetworkType *string `pulumi:"networkType"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile  *string `pulumi:"outputFile"`
 	PageNumber  *int    `pulumi:"pageNumber"`
 	PageSize    *int    `pulumi:"pageSize"`
@@ -179,6 +184,7 @@ type GetLoadBalancersOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// Network type of the SLBs. Valid values: `vpc` and `classic`.
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber  pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize    pulumi.IntPtrInput    `pulumi:"pageSize"`

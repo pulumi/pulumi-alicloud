@@ -71,7 +71,8 @@ type GetSystemGroupsArgs struct {
 	// The name.
 	Name *string `pulumi:"name"`
 	// A regex string to filter results by Group name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status. Valid values: `on`,`off`.
 	Status *string `pulumi:"status"`
@@ -113,7 +114,8 @@ type GetSystemGroupsOutputArgs struct {
 	// The name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// A regex string to filter results by Group name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status. Valid values: `on`,`off`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

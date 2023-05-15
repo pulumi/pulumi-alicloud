@@ -137,6 +137,7 @@ def get_groups(name_regex: Optional[str] = None,
 
 
     :param str name_regex: A regex string to filter the returned groups by their names.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str policy_name: Filter the results by a specific policy name. If you set this parameter without setting `policy_type`, it will be automatically set to `System`.
     :param str policy_type: Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
     :param str user_name: Filter the results by a specific the user name.
@@ -185,6 +186,7 @@ def get_groups_output(name_regex: Optional[pulumi.Input[Optional[str]]] = None,
 
 
     :param str name_regex: A regex string to filter the returned groups by their names.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str policy_name: Filter the results by a specific policy name. If you set this parameter without setting `policy_type`, it will be automatically set to `System`.
     :param str policy_type: Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
     :param str user_name: Filter the results by a specific the user name.

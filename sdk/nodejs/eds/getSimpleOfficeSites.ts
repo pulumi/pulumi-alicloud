@@ -50,6 +50,9 @@ export interface GetSimpleOfficeSitesArgs {
      * A regex string to filter results by Simple Office Site name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
@@ -108,6 +111,9 @@ export interface GetSimpleOfficeSitesOutputArgs {
      * A regex string to filter results by Simple Office Site name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Workspace State. Possible Values: Registering: Registered in the Registered: Registered.

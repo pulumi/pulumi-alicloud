@@ -148,6 +148,7 @@ def get_apis(api_id: Optional[str] = None,
     :param str group_id: ID of the specified group.
     :param Sequence[str] ids: A list of api IDs.
     :param str name_regex: A regex string to filter api gateway apis by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['apiId'] = api_id
@@ -194,5 +195,6 @@ def get_apis_output(api_id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str group_id: ID of the specified group.
     :param Sequence[str] ids: A list of api IDs.
     :param str name_regex: A regex string to filter api gateway apis by name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

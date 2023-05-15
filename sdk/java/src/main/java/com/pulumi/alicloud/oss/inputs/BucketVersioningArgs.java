@@ -16,12 +16,16 @@ public final class BucketVersioningArgs extends com.pulumi.resources.ResourceArg
     /**
      * Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
      * 
+     * `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
+     * 
      */
     @Import(name="status", required=true)
     private Output<String> status;
 
     /**
      * @return Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
+     * 
+     * `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
      * 
      */
     public Output<String> status() {
@@ -55,6 +59,8 @@ public final class BucketVersioningArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param status Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
          * 
+         * `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
+         * 
          * @return builder
          * 
          */
@@ -65,6 +71,8 @@ public final class BucketVersioningArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param status Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
+         * 
+         * `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
          * 
          * @return builder
          * 

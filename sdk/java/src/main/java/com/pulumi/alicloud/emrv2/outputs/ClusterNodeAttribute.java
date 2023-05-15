@@ -4,11 +4,24 @@
 package com.pulumi.alicloud.emrv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodeAttribute {
+    /**
+     * @return Whether to enable data disk encryption.
+     * 
+     */
+    private @Nullable Boolean dataDiskEncrypted;
+    /**
+     * @return The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
+     * 
+     */
+    private @Nullable String dataDiskKmsKeyId;
     /**
      * @return The name of the key pair.
      * 
@@ -36,6 +49,20 @@ public final class ClusterNodeAttribute {
     private String zoneId;
 
     private ClusterNodeAttribute() {}
+    /**
+     * @return Whether to enable data disk encryption.
+     * 
+     */
+    public Optional<Boolean> dataDiskEncrypted() {
+        return Optional.ofNullable(this.dataDiskEncrypted);
+    }
+    /**
+     * @return The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
+     * 
+     */
+    public Optional<String> dataDiskKmsKeyId() {
+        return Optional.ofNullable(this.dataDiskKmsKeyId);
+    }
     /**
      * @return The name of the key pair.
      * 
@@ -81,6 +108,8 @@ public final class ClusterNodeAttribute {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean dataDiskEncrypted;
+        private @Nullable String dataDiskKmsKeyId;
         private String keyPairName;
         private String ramRole;
         private String securityGroupId;
@@ -89,6 +118,8 @@ public final class ClusterNodeAttribute {
         public Builder() {}
         public Builder(ClusterNodeAttribute defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.dataDiskEncrypted = defaults.dataDiskEncrypted;
+    	      this.dataDiskKmsKeyId = defaults.dataDiskKmsKeyId;
     	      this.keyPairName = defaults.keyPairName;
     	      this.ramRole = defaults.ramRole;
     	      this.securityGroupId = defaults.securityGroupId;
@@ -96,6 +127,16 @@ public final class ClusterNodeAttribute {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
+        public Builder dataDiskEncrypted(@Nullable Boolean dataDiskEncrypted) {
+            this.dataDiskEncrypted = dataDiskEncrypted;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dataDiskKmsKeyId(@Nullable String dataDiskKmsKeyId) {
+            this.dataDiskKmsKeyId = dataDiskKmsKeyId;
+            return this;
+        }
         @CustomType.Setter
         public Builder keyPairName(String keyPairName) {
             this.keyPairName = Objects.requireNonNull(keyPairName);
@@ -123,6 +164,8 @@ public final class ClusterNodeAttribute {
         }
         public ClusterNodeAttribute build() {
             final var o = new ClusterNodeAttribute();
+            o.dataDiskEncrypted = dataDiskEncrypted;
+            o.dataDiskKmsKeyId = dataDiskKmsKeyId;
             o.keyPairName = keyPairName;
             o.ramRole = ramRole;
             o.securityGroupId = securityGroupId;

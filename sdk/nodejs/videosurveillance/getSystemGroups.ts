@@ -66,6 +66,9 @@ export interface GetSystemGroupsArgs {
      * A regex string to filter results by Group name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status. Valid values: `on`,`off`.
@@ -140,6 +143,9 @@ export interface GetSystemGroupsOutputArgs {
      * A regex string to filter results by Group name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status. Valid values: `on`,`off`.

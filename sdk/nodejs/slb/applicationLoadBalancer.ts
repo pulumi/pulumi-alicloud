@@ -100,6 +100,9 @@ export class ApplicationLoadBalancer extends pulumi.CustomResource {
      * The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
      */
     public readonly paymentType!: pulumi.Output<string>;
+    /**
+     * The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. This attribute is only used to create `Subscription` instance or modify the `PayAsYouGo` instance to `Subscription`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+     */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
      * The id of resource group which the SLB belongs.
@@ -254,6 +257,9 @@ export interface ApplicationLoadBalancerState {
      * The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
      */
     paymentType?: pulumi.Input<string>;
+    /**
+     * The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. This attribute is only used to create `Subscription` instance or modify the `PayAsYouGo` instance to `Subscription`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+     */
     period?: pulumi.Input<number>;
     /**
      * The id of resource group which the SLB belongs.
@@ -346,6 +352,9 @@ export interface ApplicationLoadBalancerArgs {
      * The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
      */
     paymentType?: pulumi.Input<string>;
+    /**
+     * The duration that you will buy the resource, in month. It is valid when `PaymentType` is `Subscription`. Default to 1. Valid values: [1-9, 12, 24, 36]. This attribute is only used to create `Subscription` instance or modify the `PayAsYouGo` instance to `Subscription`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
+     */
     period?: pulumi.Input<number>;
     /**
      * The id of resource group which the SLB belongs.

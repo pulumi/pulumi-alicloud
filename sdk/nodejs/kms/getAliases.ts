@@ -47,6 +47,9 @@ export interface GetAliasesArgs {
      * A regex string to filter the results by the KMS alias name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -107,5 +110,8 @@ export interface GetAliasesOutputArgs {
      * A regex string to filter the results by the KMS alias name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

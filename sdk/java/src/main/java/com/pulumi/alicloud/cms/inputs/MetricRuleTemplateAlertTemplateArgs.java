@@ -49,12 +49,16 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
     /**
      * The name of the metric.
      * 
+     * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * 
      */
     @Import(name="metricName", required=true)
     private Output<String> metricName;
 
     /**
      * @return The name of the metric.
+     * 
+     * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * 
      */
     public Output<String> metricName() {
@@ -64,12 +68,16 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
     /**
      * The namespace of the service.
      * 
+     * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * 
      */
     @Import(name="namespace", required=true)
     private Output<String> namespace;
 
     /**
      * @return The namespace of the service.
+     * 
+     * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * 
      */
     public Output<String> namespace() {
@@ -180,6 +188,8 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
         /**
          * @param metricName The name of the metric.
          * 
+         * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+         * 
          * @return builder
          * 
          */
@@ -191,6 +201,8 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
         /**
          * @param metricName The name of the metric.
          * 
+         * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+         * 
          * @return builder
          * 
          */
@@ -200,6 +212,8 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
 
         /**
          * @param namespace The namespace of the service.
+         * 
+         * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
          * 
          * @return builder
          * 
@@ -211,6 +225,8 @@ public final class MetricRuleTemplateAlertTemplateArgs extends com.pulumi.resour
 
         /**
          * @param namespace The namespace of the service.
+         * 
+         * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
          * 
          * @return builder
          * 

@@ -79,6 +79,8 @@ export class Alias extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The Function Compute alias' route configuration settings. Fields documented below.
+     *
+     * **routing_config** includes the following arguments:
      */
     public readonly routingConfig!: pulumi.Output<outputs.fc.AliasRoutingConfig | undefined>;
     /**
@@ -144,6 +146,8 @@ export interface AliasState {
     description?: pulumi.Input<string>;
     /**
      * The Function Compute alias' route configuration settings. Fields documented below.
+     *
+     * **routing_config** includes the following arguments:
      */
     routingConfig?: pulumi.Input<inputs.fc.AliasRoutingConfig>;
     /**
@@ -170,6 +174,8 @@ export interface AliasArgs {
     description?: pulumi.Input<string>;
     /**
      * The Function Compute alias' route configuration settings. Fields documented below.
+     *
+     * **routing_config** includes the following arguments:
      */
     routingConfig?: pulumi.Input<inputs.fc.AliasRoutingConfig>;
     /**

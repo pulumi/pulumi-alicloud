@@ -68,7 +68,8 @@ type GetTlsCipherPoliciesArgs struct {
 	// The include listener.
 	IncludeListener *bool `pulumi:"includeListener"`
 	// A regex string to filter results by Tls Cipher Policy name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// TLS policy instance state.
 	Status *string `pulumi:"status"`
@@ -110,7 +111,8 @@ type GetTlsCipherPoliciesOutputArgs struct {
 	// The include listener.
 	IncludeListener pulumi.BoolPtrInput `pulumi:"includeListener"`
 	// A regex string to filter results by Tls Cipher Policy name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// TLS policy instance state.
 	Status pulumi.StringPtrInput `pulumi:"status"`

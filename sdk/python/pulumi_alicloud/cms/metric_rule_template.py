@@ -38,7 +38,11 @@ class MetricRuleTemplateArgs:
         :param pulumi.Input[str] group_id: The ID of the application group.
         :param pulumi.Input[str] notify_level: The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
         :param pulumi.Input[str] rest_version: The version of the alert template to be modified.
+               
+               > **NOTE:** The version changes with the number of times that the alert template is modified.
         :param pulumi.Input[int] silence_time: The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
+               
+               > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
         :param pulumi.Input[str] webhook: The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
         """
         pulumi.set(__self__, "metric_rule_template_name", metric_rule_template_name)
@@ -164,6 +168,8 @@ class MetricRuleTemplateArgs:
     def rest_version(self) -> Optional[pulumi.Input[str]]:
         """
         The version of the alert template to be modified.
+
+        > **NOTE:** The version changes with the number of times that the alert template is modified.
         """
         return pulumi.get(self, "rest_version")
 
@@ -176,6 +182,8 @@ class MetricRuleTemplateArgs:
     def silence_time(self) -> Optional[pulumi.Input[int]]:
         """
         The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
+
+        > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
         """
         return pulumi.get(self, "silence_time")
 
@@ -221,7 +229,11 @@ class _MetricRuleTemplateState:
         :param pulumi.Input[str] metric_rule_template_name: The name of the alert template.
         :param pulumi.Input[str] notify_level: The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
         :param pulumi.Input[str] rest_version: The version of the alert template to be modified.
+               
+               > **NOTE:** The version changes with the number of times that the alert template is modified.
         :param pulumi.Input[int] silence_time: The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
+               
+               > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
         :param pulumi.Input[str] webhook: The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
         """
         if alert_templates is not None:
@@ -348,6 +360,8 @@ class _MetricRuleTemplateState:
     def rest_version(self) -> Optional[pulumi.Input[str]]:
         """
         The version of the alert template to be modified.
+
+        > **NOTE:** The version changes with the number of times that the alert template is modified.
         """
         return pulumi.get(self, "rest_version")
 
@@ -360,6 +374,8 @@ class _MetricRuleTemplateState:
     def silence_time(self) -> Optional[pulumi.Input[int]]:
         """
         The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
+
+        > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
         """
         return pulumi.get(self, "silence_time")
 
@@ -449,7 +465,11 @@ class MetricRuleTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] metric_rule_template_name: The name of the alert template.
         :param pulumi.Input[str] notify_level: The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
         :param pulumi.Input[str] rest_version: The version of the alert template to be modified.
+               
+               > **NOTE:** The version changes with the number of times that the alert template is modified.
         :param pulumi.Input[int] silence_time: The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
+               
+               > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
         :param pulumi.Input[str] webhook: The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
         """
         ...
@@ -584,7 +604,11 @@ class MetricRuleTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] metric_rule_template_name: The name of the alert template.
         :param pulumi.Input[str] notify_level: The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
         :param pulumi.Input[str] rest_version: The version of the alert template to be modified.
+               
+               > **NOTE:** The version changes with the number of times that the alert template is modified.
         :param pulumi.Input[int] silence_time: The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
+               
+               > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
         :param pulumi.Input[str] webhook: The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -673,6 +697,8 @@ class MetricRuleTemplate(pulumi.CustomResource):
     def rest_version(self) -> pulumi.Output[str]:
         """
         The version of the alert template to be modified.
+
+        > **NOTE:** The version changes with the number of times that the alert template is modified.
         """
         return pulumi.get(self, "rest_version")
 
@@ -681,6 +707,8 @@ class MetricRuleTemplate(pulumi.CustomResource):
     def silence_time(self) -> pulumi.Output[Optional[int]]:
         """
         The mute period during which notifications are not repeatedly sent for an alert.Valid values: 0 to 86400. Unit: seconds. Default value: `86400`.
+
+        > **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
         """
         return pulumi.get(self, "silence_time")
 

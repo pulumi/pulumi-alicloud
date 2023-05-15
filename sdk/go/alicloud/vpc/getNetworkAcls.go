@@ -62,7 +62,8 @@ type GetNetworkAclsArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// The name of the network ACL.
 	NetworkAclName *string `pulumi:"networkAclName"`
-	OutputFile     *string `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the associated resource.
 	ResourceId *string `pulumi:"resourceId"`
 	// The type of the associated resource.
@@ -110,7 +111,8 @@ type GetNetworkAclsOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The name of the network ACL.
 	NetworkAclName pulumi.StringPtrInput `pulumi:"networkAclName"`
-	OutputFile     pulumi.StringPtrInput `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the associated resource.
 	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
 	// The type of the associated resource.

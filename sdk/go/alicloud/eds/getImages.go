@@ -127,7 +127,8 @@ type GetImagesArgs struct {
 	// A regex string to filter results by Image name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// The os type of the image.
-	OsType     *string `pulumi:"osType"`
+	OsType *string `pulumi:"osType"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
 	Status *string `pulumi:"status"`
@@ -172,7 +173,8 @@ type GetImagesOutputArgs struct {
 	// A regex string to filter results by Image name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The os type of the image.
-	OsType     pulumi.StringPtrInput `pulumi:"osType"`
+	OsType pulumi.StringPtrInput `pulumi:"osType"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

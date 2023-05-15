@@ -51,9 +51,10 @@ func GetOtsSnapshots(ctx *pulumi.Context, args *GetOtsSnapshotsArgs, opts ...pul
 // A collection of arguments for invoking getOtsSnapshots.
 type GetOtsSnapshotsArgs struct {
 	// The end time of the backup. This value must be a UNIX timestamp. Unit: milliseconds
-	EndTime    *string  `pulumi:"endTime"`
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	EndTime *string  `pulumi:"endTime"`
+	Ids     []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
 	StartTime *string `pulumi:"startTime"`
 }
@@ -85,9 +86,10 @@ func GetOtsSnapshotsOutput(ctx *pulumi.Context, args GetOtsSnapshotsOutputArgs, 
 // A collection of arguments for invoking getOtsSnapshots.
 type GetOtsSnapshotsOutputArgs struct {
 	// The end time of the backup. This value must be a UNIX timestamp. Unit: milliseconds
-	EndTime    pulumi.StringPtrInput   `pulumi:"endTime"`
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	EndTime pulumi.StringPtrInput   `pulumi:"endTime"`
+	Ids     pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 }

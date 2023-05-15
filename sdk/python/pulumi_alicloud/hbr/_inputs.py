@@ -326,6 +326,8 @@ class GetBackupJobsFilterArgs:
         :param str key: The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
         :param str operator: The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
         :param Sequence[str] values: Set of values that are accepted for the given field.
+               
+               > **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -363,6 +365,8 @@ class GetBackupJobsFilterArgs:
     def values(self) -> Optional[Sequence[str]]:
         """
         Set of values that are accepted for the given field.
+
+        > **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
         """
         return pulumi.get(self, "values")
 

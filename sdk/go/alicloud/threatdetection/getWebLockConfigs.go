@@ -27,7 +27,8 @@ type GetWebLockConfigsArgs struct {
 	// A list of Web Lock Config IDs.
 	Ids []string `pulumi:"ids"`
 	// The language of the content within the request and the response. Valid values: `zh`, `en`.
-	Lang       *string `pulumi:"lang"`
+	Lang *string `pulumi:"lang"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
@@ -74,7 +75,8 @@ type GetWebLockConfigsOutputArgs struct {
 	// A list of Web Lock Config IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The language of the content within the request and the response. Valid values: `zh`, `en`.
-	Lang       pulumi.StringPtrInput `pulumi:"lang"`
+	Lang pulumi.StringPtrInput `pulumi:"lang"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`

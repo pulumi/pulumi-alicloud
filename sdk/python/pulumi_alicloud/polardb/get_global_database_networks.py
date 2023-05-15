@@ -159,6 +159,7 @@ def get_global_database_networks(db_cluster_id: Optional[str] = None,
     :param str description: The description of the Global Database Network.
     :param str gdn_id: The ID of the Global Database Network.
     :param Sequence[str] ids: A list of Global Database Network IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Global Database Network.
     """
     __args__ = dict()
@@ -220,6 +221,7 @@ def get_global_database_networks_output(db_cluster_id: Optional[pulumi.Input[Opt
     :param str description: The description of the Global Database Network.
     :param str gdn_id: The ID of the Global Database Network.
     :param Sequence[str] ids: A list of Global Database Network IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Global Database Network.
     """
     ...

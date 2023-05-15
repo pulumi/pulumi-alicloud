@@ -155,6 +155,7 @@ def get_znodes(accept_language: Optional[str] = None,
     :param str cluster_id: The ID of the Cluster.
     :param Sequence[str] ids: A list of Znode IDs.
     :param str name_regex: A regex string to filter results by Znode name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str path: The Node path.
     """
     __args__ = dict()
@@ -218,6 +219,7 @@ def get_znodes_output(accept_language: Optional[pulumi.Input[Optional[str]]] = N
     :param str cluster_id: The ID of the Cluster.
     :param Sequence[str] ids: A list of Znode IDs.
     :param str name_regex: A regex string to filter results by Znode name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str path: The Node path.
     """
     ...

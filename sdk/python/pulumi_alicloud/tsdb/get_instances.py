@@ -157,6 +157,7 @@ def get_instances(app_key: Optional[str] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param str engine_type: The engine type of instance. Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
     :param Sequence[str] ids: A list of Instance IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str query_str: The query str.
     :param str status: Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
     :param str status_list: The status list.
@@ -218,6 +219,7 @@ def get_instances_output(app_key: Optional[pulumi.Input[Optional[str]]] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param str engine_type: The engine type of instance. Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
     :param Sequence[str] ids: A list of Instance IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str query_str: The query str.
     :param str status: Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
     :param str status_list: The status list.

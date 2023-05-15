@@ -87,7 +87,8 @@ type GetIpv6GatewaysArgs struct {
 	// The name of the IPv6 gateway.
 	Ipv6GatewayName *string `pulumi:"ipv6GatewayName"`
 	// A regex string to filter results by Ipv6 Gateway name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
 	Status *string `pulumi:"status"`
@@ -129,7 +130,8 @@ type GetIpv6GatewaysOutputArgs struct {
 	// The name of the IPv6 gateway.
 	Ipv6GatewayName pulumi.StringPtrInput `pulumi:"ipv6GatewayName"`
 	// A regex string to filter results by Ipv6 Gateway name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
 	Status pulumi.StringPtrInput `pulumi:"status"`

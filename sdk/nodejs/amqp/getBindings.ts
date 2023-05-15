@@ -43,6 +43,9 @@ export interface GetBindingsArgs {
      * Instance Id.
      */
     instanceId: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Virtualhost Name.
@@ -95,6 +98,9 @@ export interface GetBindingsOutputArgs {
      * Instance Id.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Virtualhost Name.

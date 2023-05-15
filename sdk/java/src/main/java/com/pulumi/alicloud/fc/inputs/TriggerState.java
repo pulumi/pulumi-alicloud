@@ -168,12 +168,20 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
     /**
      * The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mns_topic&#34;, &#34;cdn_events&#34;, &#34;eventbridge&#34;].
      * 
+     * &gt; **NOTE:** Config does not support modification when type is mns_topic.
+     * **NOTE:** type = cdn_events, available in 1.47.0+.
+     * **NOTE:** type = eventbridge, available in 1.173.0+.
+     * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
      * @return The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mns_topic&#34;, &#34;cdn_events&#34;, &#34;eventbridge&#34;].
+     * 
+     * &gt; **NOTE:** Config does not support modification when type is mns_topic.
+     * **NOTE:** type = cdn_events, available in 1.47.0+.
+     * **NOTE:** type = eventbridge, available in 1.173.0+.
      * 
      */
     public Optional<Output<String>> type() {
@@ -427,6 +435,10 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mns_topic&#34;, &#34;cdn_events&#34;, &#34;eventbridge&#34;].
          * 
+         * &gt; **NOTE:** Config does not support modification when type is mns_topic.
+         * **NOTE:** type = cdn_events, available in 1.47.0+.
+         * **NOTE:** type = eventbridge, available in 1.173.0+.
+         * 
          * @return builder
          * 
          */
@@ -437,6 +449,10 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The Type of the trigger. Valid values: [&#34;oss&#34;, &#34;log&#34;, &#34;timer&#34;, &#34;http&#34;, &#34;mns_topic&#34;, &#34;cdn_events&#34;, &#34;eventbridge&#34;].
+         * 
+         * &gt; **NOTE:** Config does not support modification when type is mns_topic.
+         * **NOTE:** type = cdn_events, available in 1.47.0+.
+         * **NOTE:** type = eventbridge, available in 1.173.0+.
          * 
          * @return builder
          * 

@@ -117,9 +117,19 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<String> licenseCode() {
         return this.licenseCode;
     }
+    /**
+     * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify &#34;period&#34;.
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     @Export(name="period", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> period;
 
+    /**
+     * @return Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify &#34;period&#34;.
+     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     * 
+     */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
@@ -137,17 +147,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<String> planCode() {
         return this.planCode;
     }
-    /**
-     * The public IP address that you want to add to the whitelist.
-     * 
-     */
     @Export(name="publicWhiteLists", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> publicWhiteLists;
 
-    /**
-     * @return The public IP address that you want to add to the whitelist.
-     * 
-     */
     public Output<Optional<List<String>>> publicWhiteLists() {
         return Codegen.optional(this.publicWhiteLists);
     }
@@ -207,9 +209,23 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
+    /**
+     * security group IDs configured to Bastionhost.
+     * **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+     * So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     * 
+     */
     @Export(name="securityGroupIds", type=List.class, parameters={String.class})
     private Output<List<String>> securityGroupIds;
 
+    /**
+     * @return security group IDs configured to Bastionhost.
+     * **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
+     * So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
+     * and you can use tolist to convert it to a list.
+     * 
+     */
     public Output<List<String>> securityGroupIds() {
         return this.securityGroupIds;
     }

@@ -57,7 +57,8 @@ type GetScalingConfigurationsArgs struct {
 	// A list of scaling configuration IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter resulting scaling configurations by name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Scaling group id the scaling configurations belong to.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
@@ -97,7 +98,8 @@ type GetScalingConfigurationsOutputArgs struct {
 	// A list of scaling configuration IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter resulting scaling configurations by name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Scaling group id the scaling configurations belong to.
 	ScalingGroupId pulumi.StringPtrInput `pulumi:"scalingGroupId"`

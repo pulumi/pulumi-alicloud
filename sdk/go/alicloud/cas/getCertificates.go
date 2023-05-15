@@ -10,6 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
+//
+// This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
+//
 // ## Example Usage
 //
 // ```go
@@ -57,7 +61,8 @@ type GetCertificatesArgs struct {
 	Ids  []string `pulumi:"ids"`
 	Lang *string  `pulumi:"lang"`
 	// A regex string to filter results by the certificate name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -97,7 +102,8 @@ type GetCertificatesOutputArgs struct {
 	Ids  pulumi.StringArrayInput `pulumi:"ids"`
 	Lang pulumi.StringPtrInput   `pulumi:"lang"`
 	// A regex string to filter results by the certificate name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 

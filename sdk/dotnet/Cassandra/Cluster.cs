@@ -162,6 +162,8 @@ namespace Pulumi.AliCloud.Cassandra
 
         /// <summary>
         /// A list of security group ids to associate with.
+        /// 
+        /// &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
         /// </summary>
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
@@ -343,6 +345,8 @@ namespace Pulumi.AliCloud.Cassandra
 
         /// <summary>
         /// A list of security group ids to associate with.
+        /// 
+        /// &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
         /// </summary>
         public InputList<string> SecurityGroups
         {
@@ -496,6 +500,8 @@ namespace Pulumi.AliCloud.Cassandra
 
         /// <summary>
         /// A list of security group ids to associate with.
+        /// 
+        /// &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
         /// </summary>
         public InputList<string> SecurityGroups
         {

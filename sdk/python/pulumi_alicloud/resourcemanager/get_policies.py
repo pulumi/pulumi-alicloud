@@ -124,6 +124,7 @@ def get_policies(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Resource Manager Policy IDs.
     :param str name_regex: A regex string to filter results by policy name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str policy_type: The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
     """
     __args__ = dict()
@@ -158,6 +159,7 @@ def get_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
 
     :param Sequence[str] ids: A list of Resource Manager Policy IDs.
     :param str name_regex: A regex string to filter results by policy name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str policy_type: The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
     """
     ...

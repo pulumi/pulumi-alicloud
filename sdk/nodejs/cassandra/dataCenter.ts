@@ -137,6 +137,8 @@ export class DataCenter extends pulumi.CustomResource {
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+     *
+     * > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
      */
     public readonly vswitchId!: pulumi.Output<string>;
     /**
@@ -264,6 +266,8 @@ export interface DataCenterState {
     status?: pulumi.Input<string>;
     /**
      * The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+     *
+     * > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
      */
     vswitchId?: pulumi.Input<string>;
     /**
@@ -319,6 +323,8 @@ export interface DataCenterArgs {
     periodUnit?: pulumi.Input<string>;
     /**
      * The vswitchId of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+     *
+     * > **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
      */
     vswitchId: pulumi.Input<string>;
     /**

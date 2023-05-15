@@ -116,6 +116,7 @@ def get_users(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of User IDs.
     :param str keyword: The keywords of the nicknames or usernames of the members of the organization.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -161,5 +162,6 @@ def get_users_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of User IDs.
     :param str keyword: The keywords of the nicknames or usernames of the members of the organization.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

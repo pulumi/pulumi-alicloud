@@ -61,6 +61,9 @@ export interface GetRegistryEnterpriseSyncRulesArgs {
      * Name of Container Registry Enterprise Edition local namespace.
      */
     namespaceName?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Name of Container Registry Enterprise Edition local repo.
@@ -156,6 +159,9 @@ export interface GetRegistryEnterpriseSyncRulesOutputArgs {
      * Name of Container Registry Enterprise Edition local namespace.
      */
     namespaceName?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Name of Container Registry Enterprise Edition local repo.

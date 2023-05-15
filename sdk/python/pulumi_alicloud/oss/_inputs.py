@@ -134,6 +134,8 @@ class BucketLifecycleRuleArgs:
         :param pulumi.Input[str] id: Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
         :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionExpirationArgs']]] noncurrent_version_expirations: Specifies when noncurrent object versions expire (documented below).
         :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionTransitionArgs']]] noncurrent_version_transitions: Specifies when noncurrent object versions transitions (documented below).
+               
+               `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
         :param pulumi.Input[str] prefix: Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
         :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleTransitionArgs']]] transitions: Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. (documented below).
         """
@@ -218,6 +220,8 @@ class BucketLifecycleRuleArgs:
     def noncurrent_version_transitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionTransitionArgs']]]]:
         """
         Specifies when noncurrent object versions transitions (documented below).
+
+        `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
         """
         return pulumi.get(self, "noncurrent_version_transitions")
 
@@ -258,6 +262,8 @@ class BucketLifecycleRuleAbortMultipartUploadArgs:
         """
         :param pulumi.Input[str] created_before_date: Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
         :param pulumi.Input[int] days: Specifies the number of days after object creation when the specific rule action takes effect.
+               
+               `NOTE`: One and only one of "created_before_date" and "days" can be specified in one abort_multipart_upload configuration.
         """
         if created_before_date is not None:
             pulumi.set(__self__, "created_before_date", created_before_date)
@@ -281,6 +287,8 @@ class BucketLifecycleRuleAbortMultipartUploadArgs:
     def days(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the number of days after object creation when the specific rule action takes effect.
+
+        `NOTE`: One and only one of "created_before_date" and "days" can be specified in one abort_multipart_upload configuration.
         """
         return pulumi.get(self, "days")
 
@@ -300,7 +308,11 @@ class BucketLifecycleRuleExpirationArgs:
         :param pulumi.Input[str] created_before_date: Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
         :param pulumi.Input[str] date: Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
         :param pulumi.Input[int] days: Specifies the number of days after object creation when the specific rule action takes effect.
+               
+               `NOTE`: One and only one of "created_before_date" and "days" can be specified in one abort_multipart_upload configuration.
         :param pulumi.Input[bool] expired_object_delete_marker: On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
+               
+               `NOTE`: One and only one of "date", "days", "created_before_date" and "expired_object_delete_marker" can be specified in one expiration configuration.
         """
         if created_before_date is not None:
             pulumi.set(__self__, "created_before_date", created_before_date)
@@ -340,6 +352,8 @@ class BucketLifecycleRuleExpirationArgs:
     def days(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the number of days after object creation when the specific rule action takes effect.
+
+        `NOTE`: One and only one of "created_before_date" and "days" can be specified in one abort_multipart_upload configuration.
         """
         return pulumi.get(self, "days")
 
@@ -352,6 +366,8 @@ class BucketLifecycleRuleExpirationArgs:
     def expired_object_delete_marker(self) -> Optional[pulumi.Input[bool]]:
         """
         On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
+
+        `NOTE`: One and only one of "date", "days", "created_before_date" and "expired_object_delete_marker" can be specified in one expiration configuration.
         """
         return pulumi.get(self, "expired_object_delete_marker")
 
@@ -366,6 +382,8 @@ class BucketLifecycleRuleNoncurrentVersionExpirationArgs:
                  days: pulumi.Input[int]):
         """
         :param pulumi.Input[int] days: Specifies the number of days after object creation when the specific rule action takes effect.
+               
+               `NOTE`: One and only one of "created_before_date" and "days" can be specified in one abort_multipart_upload configuration.
         """
         pulumi.set(__self__, "days", days)
 
@@ -374,6 +392,8 @@ class BucketLifecycleRuleNoncurrentVersionExpirationArgs:
     def days(self) -> pulumi.Input[int]:
         """
         Specifies the number of days after object creation when the specific rule action takes effect.
+
+        `NOTE`: One and only one of "created_before_date" and "days" can be specified in one abort_multipart_upload configuration.
         """
         return pulumi.get(self, "days")
 
@@ -389,6 +409,8 @@ class BucketLifecycleRuleNoncurrentVersionTransitionArgs:
                  storage_class: pulumi.Input[str]):
         """
         :param pulumi.Input[int] days: Specifies the number of days after object creation when the specific rule action takes effect.
+               
+               `NOTE`: One and only one of "created_before_date" and "days" can be specified in one abort_multipart_upload configuration.
         :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
         """
         pulumi.set(__self__, "days", days)
@@ -399,6 +421,8 @@ class BucketLifecycleRuleNoncurrentVersionTransitionArgs:
     def days(self) -> pulumi.Input[int]:
         """
         Specifies the number of days after object creation when the specific rule action takes effect.
+
+        `NOTE`: One and only one of "created_before_date" and "days" can be specified in one abort_multipart_upload configuration.
         """
         return pulumi.get(self, "days")
 
@@ -428,6 +452,8 @@ class BucketLifecycleRuleTransitionArgs:
         """
         :param pulumi.Input[str] created_before_date: Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
         :param pulumi.Input[int] days: Specifies the number of days after object creation when the specific rule action takes effect.
+               
+               `NOTE`: One and only one of "created_before_date" and "days" can be specified in one abort_multipart_upload configuration.
         :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive" and "ColdArchive". Defaults to "Standard". "ColdArchive" is available in 1.203.0+.
         """
         if created_before_date is not None:
@@ -454,6 +480,8 @@ class BucketLifecycleRuleTransitionArgs:
     def days(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the number of days after object creation when the specific rule action takes effect.
+
+        `NOTE`: One and only one of "created_before_date" and "days" can be specified in one abort_multipart_upload configuration.
         """
         return pulumi.get(self, "days")
 
@@ -559,6 +587,8 @@ class BucketReplicationDestinationArgs:
         """
         :param pulumi.Input[str] bucket: The destination bucket to which the data is replicated.
         :param pulumi.Input[str] transfer_type: The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
+               
+               `NOTE`: You can set transfer_type to oss_acc only when you create cross-region replication (CRR) rules.
         """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "location", location)
@@ -591,6 +621,8 @@ class BucketReplicationDestinationArgs:
     def transfer_type(self) -> Optional[pulumi.Input[str]]:
         """
         The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
+
+        `NOTE`: You can set transfer_type to oss_acc only when you create cross-region replication (CRR) rules.
         """
         return pulumi.get(self, "transfer_type")
 
@@ -605,6 +637,8 @@ class BucketReplicationEncryptionConfigurationArgs:
                  replica_kms_key_id: pulumi.Input[str]):
         """
         :param pulumi.Input[str] replica_kms_key_id: The CMK ID used in SSE-KMS.
+               
+               `NOTE`: If the status of sse_kms_encrypted_objects is set to Enabled, you must specify the replica_kms_key_id.
         """
         pulumi.set(__self__, "replica_kms_key_id", replica_kms_key_id)
 
@@ -613,6 +647,8 @@ class BucketReplicationEncryptionConfigurationArgs:
     def replica_kms_key_id(self) -> pulumi.Input[str]:
         """
         The CMK ID used in SSE-KMS.
+
+        `NOTE`: If the status of sse_kms_encrypted_objects is set to Enabled, you must specify the replica_kms_key_id.
         """
         return pulumi.get(self, "replica_kms_key_id")
 
@@ -627,6 +663,8 @@ class BucketReplicationPrefixSetArgs:
                  prefixes: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] prefixes: The list of object key name prefix identifying one or more objects to which the rule applies.
+               
+               `NOTE`: The prefix must be less than or equal to 1024 characters in length.
         """
         pulumi.set(__self__, "prefixes", prefixes)
 
@@ -635,6 +673,8 @@ class BucketReplicationPrefixSetArgs:
     def prefixes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The list of object key name prefix identifying one or more objects to which the rule applies.
+
+        `NOTE`: The prefix must be less than or equal to 1024 characters in length.
         """
         return pulumi.get(self, "prefixes")
 
@@ -794,6 +834,8 @@ class BucketVersioningArgs:
                  status: pulumi.Input[str]):
         """
         :param pulumi.Input[str] status: Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
+               
+               `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
         """
         pulumi.set(__self__, "status", status)
 
@@ -802,6 +844,8 @@ class BucketVersioningArgs:
     def status(self) -> pulumi.Input[str]:
         """
         Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
+
+        `NOTE`: Currently, the `versioning` feature is only available in ap-south-1 and with white list. If you want to use it, please contact us.
         """
         return pulumi.get(self, "status")
 

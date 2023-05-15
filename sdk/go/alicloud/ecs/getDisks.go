@@ -10,6 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:** This datasource has been renamed to ecs.getEcsDisks from version 1.122.0.
+//
+// This data source provides the disks of the current Alibaba Cloud user.
+//
 // ## Example Usage
 //
 // ```go
@@ -73,11 +77,12 @@ type GetDisksArgs struct {
 	// A regex string to filter results by disk name.
 	NameRegex      *string                 `pulumi:"nameRegex"`
 	OperationLocks []GetDisksOperationLock `pulumi:"operationLocks"`
-	OutputFile     *string                 `pulumi:"outputFile"`
-	PageNumber     *int                    `pulumi:"pageNumber"`
-	PageSize       *int                    `pulumi:"pageSize"`
-	PaymentType    *string                 `pulumi:"paymentType"`
-	Portable       *bool                   `pulumi:"portable"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile  *string `pulumi:"outputFile"`
+	PageNumber  *int    `pulumi:"pageNumber"`
+	PageSize    *int    `pulumi:"pageSize"`
+	PaymentType *string `pulumi:"paymentType"`
+	Portable    *bool   `pulumi:"portable"`
 	// The Id of resource group which the disk belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
@@ -209,11 +214,12 @@ type GetDisksOutputArgs struct {
 	// A regex string to filter results by disk name.
 	NameRegex      pulumi.StringPtrInput           `pulumi:"nameRegex"`
 	OperationLocks GetDisksOperationLockArrayInput `pulumi:"operationLocks"`
-	OutputFile     pulumi.StringPtrInput           `pulumi:"outputFile"`
-	PageNumber     pulumi.IntPtrInput              `pulumi:"pageNumber"`
-	PageSize       pulumi.IntPtrInput              `pulumi:"pageSize"`
-	PaymentType    pulumi.StringPtrInput           `pulumi:"paymentType"`
-	Portable       pulumi.BoolPtrInput             `pulumi:"portable"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
+	PageNumber  pulumi.IntPtrInput    `pulumi:"pageNumber"`
+	PageSize    pulumi.IntPtrInput    `pulumi:"pageSize"`
+	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
+	Portable    pulumi.BoolPtrInput   `pulumi:"portable"`
 	// The Id of resource group which the disk belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.

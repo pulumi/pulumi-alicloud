@@ -136,6 +136,7 @@ def get_cluster_credential(cluster_id: Optional[str] = None,
 
 
     :param str cluster_id: The id of target cluster.
+    :param str output_file: File name where to save the returned KubeConfig (after running `pulumi preview`).
     :param int temporary_duration_minutes: Automatic expiration time of the returned credential. The valid value between `15` and `4320`, in minutes. When this field is omitted, the expiration time will be determined by the system automatically and the result will be in the attributed field `expiration`.
     """
     __args__ = dict()
@@ -170,6 +171,7 @@ def get_cluster_credential_output(cluster_id: Optional[pulumi.Input[str]] = None
 
 
     :param str cluster_id: The id of target cluster.
+    :param str output_file: File name where to save the returned KubeConfig (after running `pulumi preview`).
     :param int temporary_duration_minutes: Automatic expiration time of the returned credential. The valid value between `15` and `4320`, in minutes. When this field is omitted, the expiration time will be determined by the system automatically and the result will be in the attributed field `expiration`.
     """
     ...

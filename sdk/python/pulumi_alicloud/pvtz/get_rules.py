@@ -127,6 +127,7 @@ def get_rules(endpoint_id: Optional[str] = None,
     :param str endpoint_id: The ID of the Endpoint.
     :param Sequence[str] ids: A list of Rule IDs.
     :param str name_regex: A regex string to filter results by Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['endpointId'] = endpoint_id
@@ -175,5 +176,6 @@ def get_rules_output(endpoint_id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str endpoint_id: The ID of the Endpoint.
     :param Sequence[str] ids: A list of Rule IDs.
     :param str name_regex: A regex string to filter results by Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

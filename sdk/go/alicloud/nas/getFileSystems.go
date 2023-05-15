@@ -55,8 +55,9 @@ type GetFileSystemsArgs struct {
 	// A regex string to filter the results by the ：FileSystem description.
 	DescriptionRegex *string `pulumi:"descriptionRegex"`
 	// A list of FileSystemId.
-	Ids        []string `pulumi:"ids"`
-	OutputFile *string  `pulumi:"outputFile"`
+	Ids []string `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The protocol type of the file system.
 	// Valid values:
 	// `NFS`,
@@ -103,8 +104,9 @@ type GetFileSystemsOutputArgs struct {
 	// A regex string to filter the results by the ：FileSystem description.
 	DescriptionRegex pulumi.StringPtrInput `pulumi:"descriptionRegex"`
 	// A list of FileSystemId.
-	Ids        pulumi.StringArrayInput `pulumi:"ids"`
-	OutputFile pulumi.StringPtrInput   `pulumi:"outputFile"`
+	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The protocol type of the file system.
 	// Valid values:
 	// `NFS`,

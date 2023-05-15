@@ -159,6 +159,9 @@ namespace Pulumi.AliCloud.BastionHost
         [Input("osType")]
         public string? OsType { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -236,6 +239,9 @@ namespace Pulumi.AliCloud.BastionHost
         [Input("osType")]
         public Input<string>? OsType { get; set; }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

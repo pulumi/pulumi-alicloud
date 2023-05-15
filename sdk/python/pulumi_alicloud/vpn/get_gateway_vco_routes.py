@@ -209,6 +209,7 @@ def get_gateway_vco_routes(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Vco Route IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str route_entry_type: The Routing input type. Valid values: `custom`, `bgp`.
     :param str status: The status of the vpn route entry.
     :param str vpn_connection_id: The id of the vpn connection.
@@ -329,6 +330,7 @@ def get_gateway_vco_routes_output(ids: Optional[pulumi.Input[Optional[Sequence[s
 
 
     :param Sequence[str] ids: A list of Vco Route IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str route_entry_type: The Routing input type. Valid values: `custom`, `bgp`.
     :param str status: The status of the vpn route entry.
     :param str vpn_connection_id: The id of the vpn connection.

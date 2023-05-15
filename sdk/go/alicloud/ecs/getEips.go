@@ -10,6 +10,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **DEPRECATED:**  This datasource has been deprecated from version `1.126.0`. Please use new datasource alicloud_eip_addresses.
+//
+// This data source provides a list of EIPs (Elastic IP address) owned by an Alibaba Cloud account.
+//
 // ## Example Usage
 //
 // ```go
@@ -64,8 +68,9 @@ type GetEipsArgs struct {
 	Isp         *string  `pulumi:"isp"`
 	LockReason  *string  `pulumi:"lockReason"`
 	NameRegex   *string  `pulumi:"nameRegex"`
-	OutputFile  *string  `pulumi:"outputFile"`
-	PaymentType *string  `pulumi:"paymentType"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile  *string `pulumi:"outputFile"`
+	PaymentType *string `pulumi:"paymentType"`
 	// The Id of resource group which the eips belongs.
 	ResourceGroupId   *string `pulumi:"resourceGroupId"`
 	SegmentInstanceId *string `pulumi:"segmentInstanceId"`
@@ -143,8 +148,9 @@ type GetEipsOutputArgs struct {
 	Isp         pulumi.StringPtrInput   `pulumi:"isp"`
 	LockReason  pulumi.StringPtrInput   `pulumi:"lockReason"`
 	NameRegex   pulumi.StringPtrInput   `pulumi:"nameRegex"`
-	OutputFile  pulumi.StringPtrInput   `pulumi:"outputFile"`
-	PaymentType pulumi.StringPtrInput   `pulumi:"paymentType"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
+	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
 	// The Id of resource group which the eips belongs.
 	ResourceGroupId   pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	SegmentInstanceId pulumi.StringPtrInput `pulumi:"segmentInstanceId"`

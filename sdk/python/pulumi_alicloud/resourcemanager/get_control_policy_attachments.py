@@ -123,6 +123,7 @@ def get_control_policy_attachments(language: Optional[str] = None,
 
 
     :param str language: The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str policy_type: The type of policy.
     :param str target_id: The Id of target.
     """
@@ -169,6 +170,7 @@ def get_control_policy_attachments_output(language: Optional[pulumi.Input[Option
 
 
     :param str language: The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str policy_type: The type of policy.
     :param str target_id: The Id of target.
     """

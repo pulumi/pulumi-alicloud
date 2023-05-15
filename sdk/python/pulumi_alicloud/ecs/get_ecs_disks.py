@@ -408,6 +408,7 @@ def get_ecs_disks(additional_attributes: Optional[Sequence[str]] = None,
     :param str instance_id: The instance ID of the disk mount.
     :param str kms_key_id: The kms key id.
     :param str name_regex: A regex string to filter results by Disk name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str payment_type: Payment method for disk.
     :param bool portable: Whether the disk is unmountable.
     :param str resource_group_id: The Id of resource group.
@@ -553,6 +554,7 @@ def get_ecs_disks_output(additional_attributes: Optional[pulumi.Input[Optional[S
     :param str instance_id: The instance ID of the disk mount.
     :param str kms_key_id: The kms key id.
     :param str name_regex: A regex string to filter results by Disk name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str payment_type: Payment method for disk.
     :param bool portable: Whether the disk is unmountable.
     :param str resource_group_id: The Id of resource group.

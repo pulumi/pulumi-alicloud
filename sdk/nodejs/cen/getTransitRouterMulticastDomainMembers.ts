@@ -46,6 +46,9 @@ export interface GetTransitRouterMulticastDomainMembersArgs {
      * The ID of the ENI.
      */
     networkInterfaceId?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The ID of the multicast domain to which the multicast member belongs.
@@ -109,6 +112,9 @@ export interface GetTransitRouterMulticastDomainMembersOutputArgs {
      * The ID of the ENI.
      */
     networkInterfaceId?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The ID of the multicast domain to which the multicast member belongs.

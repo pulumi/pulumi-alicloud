@@ -146,6 +146,9 @@ def get_instance_class_infos(commodity_code: Optional[str] = None,
            * **UPGRADE**: specifies the query orders that are used to change the specifications of instances.
            * **RENEW**: specifies the query orders that are used to renew instances.
            * **CONVERT**: specifies the query orders that are used to change the billing methods of instances.
+    :param str output_file: File name where to save data source results (after running `pulumi up`).
+           
+           > **NOTE**: If you use the CommodityCode parameter to query the instance types that are available to read-only instances, you must specify the DBInstanceId parameter.
     """
     __args__ = dict()
     __args__['commodityCode'] = commodity_code
@@ -207,5 +210,8 @@ def get_instance_class_infos_output(commodity_code: Optional[pulumi.Input[str]] 
            * **UPGRADE**: specifies the query orders that are used to change the specifications of instances.
            * **RENEW**: specifies the query orders that are used to renew instances.
            * **CONVERT**: specifies the query orders that are used to change the billing methods of instances.
+    :param str output_file: File name where to save data source results (after running `pulumi up`).
+           
+           > **NOTE**: If you use the CommodityCode parameter to query the instance types that are available to read-only instances, you must specify the DBInstanceId parameter.
     """
     ...

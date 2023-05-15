@@ -163,6 +163,7 @@ def get_transit_router_multicast_domains(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Transit Router Multicast Domain IDs.
     :param str name_regex: A regex string to filter results by Transit Router Multicast Domain name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the multicast domain. Valid Value: `Active`.
     :param str transit_router_id: The ID of the transit router.
     :param str transit_router_multicast_domain_id: The ID of the multicast domain.
@@ -221,6 +222,7 @@ def get_transit_router_multicast_domains_output(ids: Optional[pulumi.Input[Optio
 
     :param Sequence[str] ids: A list of Transit Router Multicast Domain IDs.
     :param str name_regex: A regex string to filter results by Transit Router Multicast Domain name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the multicast domain. Valid Value: `Active`.
     :param str transit_router_id: The ID of the transit router.
     :param str transit_router_multicast_domain_id: The ID of the multicast domain.

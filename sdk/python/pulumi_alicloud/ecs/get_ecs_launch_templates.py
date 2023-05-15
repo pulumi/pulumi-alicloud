@@ -157,6 +157,7 @@ def get_ecs_launch_templates(enable_details: Optional[bool] = None,
     :param Sequence[str] ids: A list of Launch Template IDs.
     :param str launch_template_name: The Launch Template Name.
     :param str name_regex: A regex string to filter results by Launch Template name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str template_resource_group_id: The template resource group id.
     :param Mapping[str, Any] template_tags: The template tags.
     """
@@ -216,6 +217,7 @@ def get_ecs_launch_templates_output(enable_details: Optional[pulumi.Input[Option
     :param Sequence[str] ids: A list of Launch Template IDs.
     :param str launch_template_name: The Launch Template Name.
     :param str name_regex: A regex string to filter results by Launch Template name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str template_resource_group_id: The template resource group id.
     :param Mapping[str, Any] template_tags: The template tags.
     """

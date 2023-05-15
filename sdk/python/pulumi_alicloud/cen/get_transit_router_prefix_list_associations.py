@@ -165,6 +165,7 @@ def get_transit_router_prefix_list_associations(ids: Optional[Sequence[str]] = N
 
 
     :param Sequence[str] ids: A list of Cen Transit Router Prefix List Association IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int owner_uid: The ID of the Alibaba Cloud account to which the prefix list belongs.
     :param str prefix_list_id: The ID of the prefix list.
     :param str status: The status of the prefix list.
@@ -229,6 +230,7 @@ def get_transit_router_prefix_list_associations_output(ids: Optional[pulumi.Inpu
 
 
     :param Sequence[str] ids: A list of Cen Transit Router Prefix List Association IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int owner_uid: The ID of the Alibaba Cloud account to which the prefix list belongs.
     :param str prefix_list_id: The ID of the prefix list.
     :param str status: The status of the prefix list.

@@ -25,10 +25,14 @@ public final class MetricRuleTemplateAlertTemplate {
     /**
      * @return The name of the metric.
      * 
+     * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * 
      */
     private String metricName;
     /**
      * @return The namespace of the service.
+     * 
+     * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * 
      */
     private String namespace;
@@ -61,12 +65,16 @@ public final class MetricRuleTemplateAlertTemplate {
     /**
      * @return The name of the metric.
      * 
+     * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
+     * 
      */
     public String metricName() {
         return this.metricName;
     }
     /**
      * @return The namespace of the service.
+     * 
+     * &gt; **NOTE:** For more information, see [DescribeMetricMetaList](https://www.alibabacloud.com/help/doc-detail/98846.htm) or [Appendix 1: Metrics](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * 
      */
     public String namespace() {

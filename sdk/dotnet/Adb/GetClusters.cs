@@ -12,6 +12,13 @@ namespace Pulumi.AliCloud.Adb
     public static class GetClusters
     {
         /// <summary>
+        /// The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
+        /// Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+        /// 
+        /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
+        /// 
+        /// &gt; **NOTE:** Available in v1.71.0+.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -43,6 +50,13 @@ namespace Pulumi.AliCloud.Adb
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:adb/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
 
         /// <summary>
+        /// The `alicloud.adb.getClusters` data source provides a collection of ADB clusters available in Alibaba Cloud account.
+        /// Filters support regular expression for the cluster description, searches by tags, and other filters which are listed below.
+        /// 
+        /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.121.0`. Please use new datasource alicloud_adb_db_clusters.
+        /// 
+        /// &gt; **NOTE:** Available in v1.71.0+.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -104,6 +118,9 @@ namespace Pulumi.AliCloud.Adb
             set => _ids = value;
         }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
@@ -171,6 +188,9 @@ namespace Pulumi.AliCloud.Adb
             set => _ids = value;
         }
 
+        /// <summary>
+        /// File name where to save data source results (after running `pulumi preview`).
+        /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 

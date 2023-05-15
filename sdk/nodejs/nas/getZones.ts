@@ -39,6 +39,9 @@ export interface GetZonesArgs {
      * The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
      */
     fileSystemType?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -84,5 +87,8 @@ export interface GetZonesOutputArgs {
      * The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
      */
     fileSystemType?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

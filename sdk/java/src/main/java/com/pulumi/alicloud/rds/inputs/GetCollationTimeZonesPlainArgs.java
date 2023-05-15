@@ -33,9 +33,17 @@ public final class GetCollationTimeZonesPlainArgs extends com.pulumi.resources.I
         return Optional.ofNullable(this.collationTimeZones);
     }
 
+    /**
+     * File name where to save data source results (after running `pulumi up`).
+     * 
+     */
     @Import(name="outputFile")
     private @Nullable String outputFile;
 
+    /**
+     * @return File name where to save data source results (after running `pulumi up`).
+     * 
+     */
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
@@ -88,6 +96,12 @@ public final class GetCollationTimeZonesPlainArgs extends com.pulumi.resources.I
             return collationTimeZones(List.of(collationTimeZones));
         }
 
+        /**
+         * @param outputFile File name where to save data source results (after running `pulumi up`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
             return this;

@@ -63,6 +63,9 @@ export interface GetRouteServicesArgs {
      * The VPC associated with the cloud service.
      */
     hostVpcId?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
@@ -159,6 +162,9 @@ export interface GetRouteServicesOutputArgs {
      * The VPC associated with the cloud service.
      */
     hostVpcId?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.

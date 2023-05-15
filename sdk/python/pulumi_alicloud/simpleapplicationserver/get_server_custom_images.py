@@ -116,6 +116,7 @@ def get_server_custom_images(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Custom Image IDs.
     :param str name_regex: A regex string to filter results by Custom Image name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -160,5 +161,6 @@ def get_server_custom_images_output(ids: Optional[pulumi.Input[Optional[Sequence
 
     :param Sequence[str] ids: A list of Custom Image IDs.
     :param str name_regex: A regex string to filter results by Custom Image name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

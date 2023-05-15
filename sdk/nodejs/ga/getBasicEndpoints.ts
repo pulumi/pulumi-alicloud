@@ -74,6 +74,9 @@ export interface GetBasicEndpointsArgs {
      * A regex string to filter results by Global Accelerator Basic Endpoints name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
@@ -175,6 +178,9 @@ export interface GetBasicEndpointsOutputArgs {
      * A regex string to filter results by Global Accelerator Basic Endpoints name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.

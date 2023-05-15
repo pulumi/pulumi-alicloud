@@ -145,6 +145,7 @@ def get_repos(enable_details: Optional[bool] = None,
     :param bool enable_details: Boolean, false by default, only repository attributes are exported. Set to true if domain list and tags belong to this repository are needed. See `tags` in attributes.
     :param str name_regex: A regex string to filter results by repository name.
     :param str namespace: Name of container registry namespace where the repositories are located in.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -191,5 +192,6 @@ def get_repos_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
     :param bool enable_details: Boolean, false by default, only repository attributes are exported. Set to true if domain list and tags belong to this repository are needed. See `tags` in attributes.
     :param str name_regex: A regex string to filter results by repository name.
     :param str namespace: Name of container registry namespace where the repositories are located in.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

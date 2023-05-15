@@ -24,6 +24,8 @@ class PrivateZoneArgs:
         :param pulumi.Input[str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[str] host_region_id: The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
         :param pulumi.Input[str] host_vpc_id: The VPC that belongs to the service region.
+               
+               ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
         """
         pulumi.set(__self__, "access_region_id", access_region_id)
         pulumi.set(__self__, "cen_id", cen_id)
@@ -71,6 +73,8 @@ class PrivateZoneArgs:
     def host_vpc_id(self) -> pulumi.Input[str]:
         """
         The VPC that belongs to the service region.
+
+        ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
         """
         return pulumi.get(self, "host_vpc_id")
 
@@ -93,6 +97,8 @@ class _PrivateZoneState:
         :param pulumi.Input[str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[str] host_region_id: The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
         :param pulumi.Input[str] host_vpc_id: The VPC that belongs to the service region.
+               
+               ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
         :param pulumi.Input[str] status: The status of the PrivateZone service. Valid values: ["Creating", "Active", "Deleting"].
         """
         if access_region_id is not None:
@@ -147,6 +153,8 @@ class _PrivateZoneState:
     def host_vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
         The VPC that belongs to the service region.
+
+        ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
         """
         return pulumi.get(self, "host_vpc_id")
 
@@ -230,6 +238,8 @@ class PrivateZone(pulumi.CustomResource):
         :param pulumi.Input[str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[str] host_region_id: The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
         :param pulumi.Input[str] host_vpc_id: The VPC that belongs to the service region.
+               
+               ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
         """
         ...
     @overload
@@ -351,6 +361,8 @@ class PrivateZone(pulumi.CustomResource):
         :param pulumi.Input[str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[str] host_region_id: The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
         :param pulumi.Input[str] host_vpc_id: The VPC that belongs to the service region.
+               
+               ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
         :param pulumi.Input[str] status: The status of the PrivateZone service. Valid values: ["Creating", "Active", "Deleting"].
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -393,6 +405,8 @@ class PrivateZone(pulumi.CustomResource):
     def host_vpc_id(self) -> pulumi.Output[str]:
         """
         The VPC that belongs to the service region.
+
+        ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
         """
         return pulumi.get(self, "host_vpc_id")
 

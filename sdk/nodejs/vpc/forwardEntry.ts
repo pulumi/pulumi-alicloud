@@ -128,6 +128,8 @@ export class ForwardEntry extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * Specifies whether to remove limits on the port range. Default value is `false`.
+     *
+     * > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
      */
     public readonly portBreak!: pulumi.Output<boolean | undefined>;
     /**
@@ -240,6 +242,8 @@ export interface ForwardEntryState {
     name?: pulumi.Input<string>;
     /**
      * Specifies whether to remove limits on the port range. Default value is `false`.
+     *
+     * > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
      */
     portBreak?: pulumi.Input<boolean>;
     /**
@@ -288,6 +292,8 @@ export interface ForwardEntryArgs {
     name?: pulumi.Input<string>;
     /**
      * Specifies whether to remove limits on the port range. Default value is `false`.
+     *
+     * > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `portBreak` to true.
      */
     portBreak?: pulumi.Input<boolean>;
 }

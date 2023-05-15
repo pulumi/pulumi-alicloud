@@ -111,6 +111,9 @@ export interface GetMasterSlaveServerGroupsArgs {
      * A regex string to filter results by master slave server group name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -236,5 +239,8 @@ export interface GetMasterSlaveServerGroupsOutputArgs {
      * A regex string to filter results by master slave server group name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

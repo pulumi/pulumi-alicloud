@@ -22,6 +22,8 @@ class TransitRouterRouteTablePropagationArgs:
         :param pulumi.Input[str] transit_router_attachment_id: The ID the transit router attachment.
         :param pulumi.Input[str] transit_router_route_table_id: The ID of the transit router route table.
         :param pulumi.Input[bool] dry_run: The dry run.
+               
+               > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         """
         pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
         pulumi.set(__self__, "transit_router_route_table_id", transit_router_route_table_id)
@@ -57,6 +59,8 @@ class TransitRouterRouteTablePropagationArgs:
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
         The dry run.
+
+        > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         """
         return pulumi.get(self, "dry_run")
 
@@ -75,6 +79,8 @@ class _TransitRouterRouteTablePropagationState:
         """
         Input properties used for looking up and filtering TransitRouterRouteTablePropagation resources.
         :param pulumi.Input[bool] dry_run: The dry run.
+               
+               > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         :param pulumi.Input[str] status: The associating status of the network.
         :param pulumi.Input[str] transit_router_attachment_id: The ID the transit router attachment.
         :param pulumi.Input[str] transit_router_route_table_id: The ID of the transit router route table.
@@ -93,6 +99,8 @@ class _TransitRouterRouteTablePropagationState:
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
         The dry run.
+
+        > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         """
         return pulumi.get(self, "dry_run")
 
@@ -162,6 +170,8 @@ class TransitRouterRouteTablePropagation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] dry_run: The dry run.
+               
+               > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         :param pulumi.Input[str] transit_router_attachment_id: The ID the transit router attachment.
         :param pulumi.Input[str] transit_router_route_table_id: The ID of the transit router route table.
         """
@@ -241,6 +251,8 @@ class TransitRouterRouteTablePropagation(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] dry_run: The dry run.
+               
+               > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         :param pulumi.Input[str] status: The associating status of the network.
         :param pulumi.Input[str] transit_router_attachment_id: The ID the transit router attachment.
         :param pulumi.Input[str] transit_router_route_table_id: The ID of the transit router route table.
@@ -260,6 +272,8 @@ class TransitRouterRouteTablePropagation(pulumi.CustomResource):
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
         The dry run.
+
+        > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         """
         return pulumi.get(self, "dry_run")
 

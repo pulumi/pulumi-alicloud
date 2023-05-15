@@ -9,6 +9,45 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Ecs
 {
+    /// <summary>
+    /// Provides a security group rule resource.
+    /// Represents a single `ingress` or `egress` group rule, which can be added to external Security Groups.
+    /// 
+    /// &gt; **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new AliCloud.Ecs.SecurityGroup("default");
+    /// 
+    ///     var allowAllTcp = new AliCloud.Ecs.SecurityGroupRule("allowAllTcp", new()
+    ///     {
+    ///         Type = "ingress",
+    ///         IpProtocol = "tcp",
+    ///         NicType = "internet",
+    ///         Policy = "accept",
+    ///         PortRange = "1/65535",
+    ///         Priority = 1,
+    ///         SecurityGroupId = @default.Id,
+    ///         CidrIp = "0.0.0.0/0",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Module Support
+    /// 
+    /// You can use the existing security-group module
+    /// to create a security group and add several rules one-click.
+    /// </summary>
     [AliCloudResourceType("alicloud:ecs/securityGroupRule:SecurityGroupRule")]
     public partial class SecurityGroupRule : global::Pulumi.CustomResource
     {
@@ -32,6 +71,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+        /// 
+        /// &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
         /// </summary>
         [Output("ipv6CidrIp")]
         public Output<string?> Ipv6CidrIp { get; private set; } = null!;
@@ -157,6 +198,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+        /// 
+        /// &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
         /// </summary>
         [Input("ipv6CidrIp")]
         public Input<string>? Ipv6CidrIp { get; set; }
@@ -244,6 +287,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
+        /// 
+        /// &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
         /// </summary>
         [Input("ipv6CidrIp")]
         public Input<string>? Ipv6CidrIp { get; set; }

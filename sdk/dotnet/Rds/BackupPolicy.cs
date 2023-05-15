@@ -103,6 +103,8 @@ namespace Pulumi.AliCloud.Rds
         /// - 360: A snapshot backup is performed once every 360 minutes.
         /// - 480: A snapshot backup is performed once every 480 minutes.
         /// - 720: A snapshot backup is performed once every 720 minutes.
+        /// 
+        /// &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         /// </summary>
         [Output("backupInterval")]
         public Output<string> BackupInterval { get; private set; } = null!;
@@ -293,6 +295,8 @@ namespace Pulumi.AliCloud.Rds
         /// - 360: A snapshot backup is performed once every 360 minutes.
         /// - 480: A snapshot backup is performed once every 480 minutes.
         /// - 720: A snapshot backup is performed once every 720 minutes.
+        /// 
+        /// &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         /// </summary>
         [Input("backupInterval")]
         public Input<string>? BackupInterval { get; set; }
@@ -458,6 +462,8 @@ namespace Pulumi.AliCloud.Rds
         /// - 360: A snapshot backup is performed once every 360 minutes.
         /// - 480: A snapshot backup is performed once every 480 minutes.
         /// - 720: A snapshot backup is performed once every 720 minutes.
+        /// 
+        /// &gt; **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         /// </summary>
         [Input("backupInterval")]
         public Input<string>? BackupInterval { get; set; }

@@ -257,12 +257,16 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * A list of security group ids to associate with.
      * 
+     * &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+     * 
      */
     @Import(name="securityGroups")
     private @Nullable Output<List<String>> securityGroups;
 
     /**
      * @return A list of security group ids to associate with.
+     * 
+     * &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
      * 
      */
     public Optional<Output<List<String>>> securityGroups() {
@@ -696,6 +700,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param securityGroups A list of security group ids to associate with.
          * 
+         * &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+         * 
          * @return builder
          * 
          */
@@ -707,6 +713,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param securityGroups A list of security group ids to associate with.
          * 
+         * &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+         * 
          * @return builder
          * 
          */
@@ -716,6 +724,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param securityGroups A list of security group ids to associate with.
+         * 
+         * &gt; **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
          * 
          * @return builder
          * 

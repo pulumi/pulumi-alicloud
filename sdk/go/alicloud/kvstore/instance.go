@@ -64,6 +64,11 @@ type Instance struct {
 	// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
 	// * false: checks the request. After the request passes the check, an instance is created.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
+	// The time when the database is switched after the instance is migrated,
+	// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+	// - Immediately (Default): The configurations are immediately changed.
+	// - MaintainTime: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
+	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
 	EnableBackupLog pulumi.IntPtrOutput `pulumi:"enableBackupLog"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -76,7 +81,7 @@ type Instance struct {
 	EncryptionName pulumi.StringOutput `pulumi:"encryptionName"`
 	// The expiration time of the prepaid instance.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
-	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default to "5.0".
 	// **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// Specifies whether to forcibly change the type. Default to: `true`.
@@ -88,8 +93,10 @@ type Instance struct {
 	// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
-	InstanceChargeType pulumi.StringOutput    `pulumi:"instanceChargeType"`
-	InstanceClass      pulumi.StringPtrOutput `pulumi:"instanceClass"`
+	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
+	// Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore.getInstanceClasses`
+	// or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
+	InstanceClass pulumi.StringPtrOutput `pulumi:"instanceClass"`
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	//
 	// Deprecated: Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.
@@ -139,8 +146,18 @@ type Instance struct {
 	// The point in time of a backup file.
 	RestoreTime pulumi.StringPtrOutput `pulumi:"restoreTime"`
 	// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
+	//
+	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+	//
+	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+	//
+	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+	//
+	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	RoleArn pulumi.StringPtrOutput `pulumi:"roleArn"`
 	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+	//
+	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId pulumi.StringPtrOutput `pulumi:"secondaryZoneId"`
 	// The ID of security groups.
 	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
@@ -247,6 +264,11 @@ type instanceState struct {
 	// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
 	// * false: checks the request. After the request passes the check, an instance is created.
 	DryRun *bool `pulumi:"dryRun"`
+	// The time when the database is switched after the instance is migrated,
+	// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+	// - Immediately (Default): The configurations are immediately changed.
+	// - MaintainTime: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
+	EffectiveTime *string `pulumi:"effectiveTime"`
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
 	EnableBackupLog *int `pulumi:"enableBackupLog"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -259,7 +281,7 @@ type instanceState struct {
 	EncryptionName *string `pulumi:"encryptionName"`
 	// The expiration time of the prepaid instance.
 	EndTime *string `pulumi:"endTime"`
-	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default to "5.0".
 	// **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Specifies whether to forcibly change the type. Default to: `true`.
@@ -272,7 +294,9 @@ type instanceState struct {
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	InstanceClass      *string `pulumi:"instanceClass"`
+	// Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore.getInstanceClasses`
+	// or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
+	InstanceClass *string `pulumi:"instanceClass"`
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	//
 	// Deprecated: Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.
@@ -322,8 +346,18 @@ type instanceState struct {
 	// The point in time of a backup file.
 	RestoreTime *string `pulumi:"restoreTime"`
 	// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
+	//
+	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+	//
+	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+	//
+	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+	//
+	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	RoleArn *string `pulumi:"roleArn"`
 	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+	//
+	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The ID of security groups.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -395,6 +429,11 @@ type InstanceState struct {
 	// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
 	// * false: checks the request. After the request passes the check, an instance is created.
 	DryRun pulumi.BoolPtrInput
+	// The time when the database is switched after the instance is migrated,
+	// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+	// - Immediately (Default): The configurations are immediately changed.
+	// - MaintainTime: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
+	EffectiveTime pulumi.StringPtrInput
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
 	EnableBackupLog pulumi.IntPtrInput
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -407,7 +446,7 @@ type InstanceState struct {
 	EncryptionName pulumi.StringPtrInput
 	// The expiration time of the prepaid instance.
 	EndTime pulumi.StringPtrInput
-	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default to "5.0".
 	// **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
 	EngineVersion pulumi.StringPtrInput
 	// Specifies whether to forcibly change the type. Default to: `true`.
@@ -420,7 +459,9 @@ type InstanceState struct {
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
-	InstanceClass      pulumi.StringPtrInput
+	// Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore.getInstanceClasses`
+	// or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
+	InstanceClass pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	//
 	// Deprecated: Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.
@@ -470,8 +511,18 @@ type InstanceState struct {
 	// The point in time of a backup file.
 	RestoreTime pulumi.StringPtrInput
 	// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
+	//
+	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+	//
+	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+	//
+	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+	//
+	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	RoleArn pulumi.StringPtrInput
 	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+	//
+	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId pulumi.StringPtrInput
 	// The ID of security groups.
 	SecurityGroupId pulumi.StringPtrInput
@@ -541,6 +592,11 @@ type instanceArgs struct {
 	// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
 	// * false: checks the request. After the request passes the check, an instance is created.
 	DryRun *bool `pulumi:"dryRun"`
+	// The time when the database is switched after the instance is migrated,
+	// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+	// - Immediately (Default): The configurations are immediately changed.
+	// - MaintainTime: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
+	EffectiveTime *string `pulumi:"effectiveTime"`
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
 	EnableBackupLog *int `pulumi:"enableBackupLog"`
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -551,7 +607,7 @@ type instanceArgs struct {
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// The Encryption algorithm, default AES-CTR-256.Note that this parameter is only available when the TDEStatus parameter is Enabled.
 	EncryptionName *string `pulumi:"encryptionName"`
-	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default to "5.0".
 	// **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Specifies whether to forcibly change the type. Default to: `true`.
@@ -564,7 +620,9 @@ type instanceArgs struct {
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	InstanceClass      *string `pulumi:"instanceClass"`
+	// Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore.getInstanceClasses`
+	// or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
+	InstanceClass *string `pulumi:"instanceClass"`
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	//
 	// Deprecated: Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.
@@ -612,8 +670,18 @@ type instanceArgs struct {
 	// The point in time of a backup file.
 	RestoreTime *string `pulumi:"restoreTime"`
 	// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
+	//
+	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+	//
+	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+	//
+	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+	//
+	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	RoleArn *string `pulumi:"roleArn"`
 	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+	//
+	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The ID of security groups.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -678,6 +746,11 @@ type InstanceArgs struct {
 	// * true: prechecks the request without creating an instance. The system prechecks the required parameters, request format, service limits, and available resources. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the DryRunOperation error code is returned.
 	// * false: checks the request. After the request passes the check, an instance is created.
 	DryRun pulumi.BoolPtrInput
+	// The time when the database is switched after the instance is migrated,
+	// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+	// - Immediately (Default): The configurations are immediately changed.
+	// - MaintainTime: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
+	EffectiveTime pulumi.StringPtrInput
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
 	EnableBackupLog pulumi.IntPtrInput
 	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
@@ -688,7 +761,7 @@ type InstanceArgs struct {
 	EncryptionKey pulumi.StringPtrInput
 	// The Encryption algorithm, default AES-CTR-256.Note that this parameter is only available when the TDEStatus parameter is Enabled.
 	EncryptionName pulumi.StringPtrInput
-	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+	// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default to "5.0".
 	// **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
 	EngineVersion pulumi.StringPtrInput
 	// Specifies whether to forcibly change the type. Default to: `true`.
@@ -701,7 +774,9 @@ type InstanceArgs struct {
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
-	InstanceClass      pulumi.StringPtrInput
+	// Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore.getInstanceClasses`
+	// or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
+	InstanceClass pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	//
 	// Deprecated: Field 'instance_name' has been deprecated from version 1.101.0. Use 'db_instance_name' instead.
@@ -749,8 +824,18 @@ type InstanceArgs struct {
 	// The point in time of a backup file.
 	RestoreTime pulumi.StringPtrInput
 	// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
+	//
+	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+	//
+	// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+	//
+	// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+	//
+	// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 	RoleArn pulumi.StringPtrInput
 	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+	//
+	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId pulumi.StringPtrInput
 	// The ID of security groups.
 	SecurityGroupId pulumi.StringPtrInput
@@ -960,6 +1045,14 @@ func (o InstanceOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
+// The time when the database is switched after the instance is migrated,
+// or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+// - Immediately (Default): The configurations are immediately changed.
+// - MaintainTime: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
+func (o InstanceOutput) EffectiveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.EffectiveTime }).(pulumi.StringPtrOutput)
+}
+
 // Turn on or off incremental backup. Valid values: `1`, `0`. Default to `0`
 func (o InstanceOutput) EnableBackupLog() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.EnableBackupLog }).(pulumi.IntPtrOutput)
@@ -987,7 +1080,7 @@ func (o InstanceOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0"]. Default to "5.0".
+// The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default to "5.0".
 // **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
 func (o InstanceOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
@@ -1015,6 +1108,8 @@ func (o InstanceOutput) InstanceChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
 }
 
+// Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore.getInstanceClasses`
+// or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
 func (o InstanceOutput) InstanceClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceClass }).(pulumi.StringPtrOutput)
 }
@@ -1131,11 +1226,21 @@ func (o InstanceOutput) RestoreTime() pulumi.StringPtrOutput {
 }
 
 // The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
+//
+// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
+//
+// > **NOTE:** You must specify at least one of the `capacity` and `instanceClass` parameters when you call create instance operation.
+//
+// > **NOTE:** The `privateIp` must be in the Classless Inter-Domain Routing (CIDR) block of the VSwitch to which the instance belongs.
+//
+// > **NOTE:** If you specify the `srcdbInstanceId` parameter, you must specify the `backupId` or `restoreTime` parameter.
 func (o InstanceOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+//
+// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 func (o InstanceOutput) SecondaryZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SecondaryZoneId }).(pulumi.StringPtrOutput)
 }

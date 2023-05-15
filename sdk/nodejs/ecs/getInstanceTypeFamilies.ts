@@ -49,6 +49,9 @@ export interface GetInstanceTypeFamiliesArgs {
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
      */
     instanceChargeType?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
@@ -116,6 +119,9 @@ export interface GetInstanceTypeFamiliesOutputArgs {
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
      */
     instanceChargeType?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.

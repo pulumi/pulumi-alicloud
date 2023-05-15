@@ -62,6 +62,9 @@ export interface GetAccountsArgs {
      * A regex string to filter results by Account name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
@@ -133,6 +136,9 @@ export interface GetAccountsOutputArgs {
      * A regex string to filter results by Account name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The status of the account. Valid values: `Active`, `Creating` and `Deleting`.

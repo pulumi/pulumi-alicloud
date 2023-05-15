@@ -200,6 +200,7 @@ def get_anycast_eip_addresses(anycast_eip_address_name: Optional[str] = None,
     :param str internet_charge_type: The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic.
     :param str ip_address: Anycast EIP instance IP address.
     :param str name_regex: A regex string to filter results by Anycast Eip Address name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str payment_type: The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
     :param str service_location: Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
     :param str status: IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
@@ -275,6 +276,7 @@ def get_anycast_eip_addresses_output(anycast_eip_address_name: Optional[pulumi.I
     :param str internet_charge_type: The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic.
     :param str ip_address: Anycast EIP instance IP address.
     :param str name_regex: A regex string to filter results by Anycast Eip Address name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str payment_type: The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
     :param str service_location: Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
     :param str status: IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.

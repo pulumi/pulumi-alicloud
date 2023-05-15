@@ -120,7 +120,8 @@ type GetApplicationsArgs struct {
 	// SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
 	NamespaceId *string `pulumi:"namespaceId"`
 	// The order by.Valid values:`running`,`instances`.
-	OrderBy    *string `pulumi:"orderBy"`
+	OrderBy *string `pulumi:"orderBy"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The reverse.
 	Reverse *bool `pulumi:"reverse"`
@@ -173,7 +174,8 @@ type GetApplicationsOutputArgs struct {
 	// SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
 	NamespaceId pulumi.StringPtrInput `pulumi:"namespaceId"`
 	// The order by.Valid values:`running`,`instances`.
-	OrderBy    pulumi.StringPtrInput `pulumi:"orderBy"`
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The reverse.
 	Reverse pulumi.BoolPtrInput `pulumi:"reverse"`

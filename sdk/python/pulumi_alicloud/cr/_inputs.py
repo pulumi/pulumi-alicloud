@@ -146,6 +146,8 @@ class ChainChainConfigNodeNodeConfigDenyPolicyArgs:
                  logic: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] action: The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+               
+               > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
         :param pulumi.Input[str] issue_count: The count of scanning vulnerabilities that triggers blocking.
         :param pulumi.Input[str] issue_level: The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
         :param pulumi.Input[str] logic: The logic of trigger blocking. Valid values: `AND`, `OR`.
@@ -164,6 +166,8 @@ class ChainChainConfigNodeNodeConfigDenyPolicyArgs:
     def action(self) -> Optional[pulumi.Input[str]]:
         """
         The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+
+        > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
         """
         return pulumi.get(self, "action")
 

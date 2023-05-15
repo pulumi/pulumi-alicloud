@@ -174,6 +174,7 @@ def get_instances(availability_zone: Optional[str] = None,
     :param str instance_class: Sizing of the instance to be queried.
     :param str instance_type: Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
     :param str name_regex: A regex string to apply to the instance name.
+    :param str output_file: The name of file that can save the collection of instances after running `pulumi preview`.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
@@ -231,6 +232,7 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
     :param str instance_class: Sizing of the instance to be queried.
     :param str instance_type: Type of the instance to be queried. If it is set to `sharding`, the sharded cluster instances are listed. If it is set to `replicate`, replica set instances are listed. Default value `replicate`.
     :param str name_regex: A regex string to apply to the instance name.
+    :param str output_file: The name of file that can save the collection of instances after running `pulumi preview`.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     ...

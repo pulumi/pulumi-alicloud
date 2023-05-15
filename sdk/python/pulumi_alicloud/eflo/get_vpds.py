@@ -206,6 +206,7 @@ def get_vpds(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Vpd IDs.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Resource group id
     :param str status: The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
     :param str vpd_id: The id of the vpd.
@@ -274,6 +275,7 @@ def get_vpds_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = Non
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Vpd IDs.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Resource group id
     :param str status: The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
     :param str vpd_id: The id of the vpd.

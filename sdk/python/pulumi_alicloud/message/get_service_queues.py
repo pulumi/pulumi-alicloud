@@ -153,6 +153,7 @@ def get_service_queues(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Queue IDs. Its element value is same as Queue Name.
     :param str name_regex: A regex string to filter results by Queue name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str queue_name: The name of the queue.
     """
     __args__ = dict()
@@ -205,6 +206,7 @@ def get_service_queues_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
 
     :param Sequence[str] ids: A list of Queue IDs. Its element value is same as Queue Name.
     :param str name_regex: A regex string to filter results by Queue name.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str queue_name: The name of the queue.
     """
     ...

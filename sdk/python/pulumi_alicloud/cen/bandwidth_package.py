@@ -28,6 +28,10 @@ class BandwidthPackageArgs:
         The set of arguments for constructing a BandwidthPackage resource.
         :param pulumi.Input[int] bandwidth: The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
         :param pulumi.Input[str] cen_bandwidth_package_name: The name of the bandwidth package. Defaults to null.
+               
+               ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+               
+               ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
         :param pulumi.Input[str] charge_type: Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         :param pulumi.Input[str] description: The description of the bandwidth package. Default to null.
         :param pulumi.Input[str] geographic_region_a_id: The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
@@ -35,6 +39,8 @@ class BandwidthPackageArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] geographic_region_ids: Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         :param pulumi.Input[str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+        :param pulumi.Input[int] period: The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         if cen_bandwidth_package_name is not None:
@@ -82,6 +88,10 @@ class BandwidthPackageArgs:
     def cen_bandwidth_package_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the bandwidth package. Defaults to null.
+
+        ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+
+        ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
         """
         return pulumi.get(self, "cen_bandwidth_package_name")
 
@@ -176,6 +186,10 @@ class BandwidthPackageArgs:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+        > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -202,6 +216,10 @@ class _BandwidthPackageState:
         Input properties used for looking up and filtering BandwidthPackage resources.
         :param pulumi.Input[int] bandwidth: The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
         :param pulumi.Input[str] cen_bandwidth_package_name: The name of the bandwidth package. Defaults to null.
+               
+               ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+               
+               ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
         :param pulumi.Input[str] charge_type: Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         :param pulumi.Input[str] description: The description of the bandwidth package. Default to null.
         :param pulumi.Input[str] expired_time: The time of the bandwidth package to expire.
@@ -210,6 +228,8 @@ class _BandwidthPackageState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] geographic_region_ids: Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         :param pulumi.Input[str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+        :param pulumi.Input[int] period: The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] status: The association status of the bandwidth package.
         """
         if bandwidth is not None:
@@ -263,6 +283,10 @@ class _BandwidthPackageState:
     def cen_bandwidth_package_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the bandwidth package. Defaults to null.
+
+        ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+
+        ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
         """
         return pulumi.get(self, "cen_bandwidth_package_name")
 
@@ -369,6 +393,10 @@ class _BandwidthPackageState:
     @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+        > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -417,6 +445,10 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bandwidth: The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
         :param pulumi.Input[str] cen_bandwidth_package_name: The name of the bandwidth package. Defaults to null.
+               
+               ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+               
+               ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
         :param pulumi.Input[str] charge_type: Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         :param pulumi.Input[str] description: The description of the bandwidth package. Default to null.
         :param pulumi.Input[str] geographic_region_a_id: The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
@@ -424,6 +456,8 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] geographic_region_ids: Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         :param pulumi.Input[str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+        :param pulumi.Input[int] period: The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         ...
     @overload
@@ -528,6 +562,10 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bandwidth: The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
         :param pulumi.Input[str] cen_bandwidth_package_name: The name of the bandwidth package. Defaults to null.
+               
+               ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+               
+               ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
         :param pulumi.Input[str] charge_type: Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         :param pulumi.Input[str] description: The description of the bandwidth package. Default to null.
         :param pulumi.Input[str] expired_time: The time of the bandwidth package to expire.
@@ -536,6 +574,8 @@ class BandwidthPackage(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] geographic_region_ids: Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         :param pulumi.Input[str] payment_type: The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
+        :param pulumi.Input[int] period: The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] status: The association status of the bandwidth package.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -569,6 +609,10 @@ class BandwidthPackage(pulumi.CustomResource):
     def cen_bandwidth_package_name(self) -> pulumi.Output[str]:
         """
         The name of the bandwidth package. Defaults to null.
+
+        ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+
+        ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
         """
         return pulumi.get(self, "cen_bandwidth_package_name")
 
@@ -639,6 +683,10 @@ class BandwidthPackage(pulumi.CustomResource):
     @property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
+        """
+        The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
+        > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        """
         return pulumi.get(self, "period")
 
     @property

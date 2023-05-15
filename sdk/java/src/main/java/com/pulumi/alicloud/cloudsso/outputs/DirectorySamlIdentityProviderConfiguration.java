@@ -19,6 +19,8 @@ public final class DirectorySamlIdentityProviderConfiguration {
     /**
      * @return SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
      * 
+     * &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
+     * 
      */
     private @Nullable String ssoStatus;
 
@@ -32,6 +34,8 @@ public final class DirectorySamlIdentityProviderConfiguration {
     }
     /**
      * @return SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+     * 
+     * &gt; **NOTE:** The `saml_identity_provider_configuration` will be removed automatically when the resource is deleted, please operate with caution. If there are left more configuration in the directory, please remove them before deleting the directory.
      * 
      */
     public Optional<String> ssoStatus() {

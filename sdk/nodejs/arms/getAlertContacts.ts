@@ -61,6 +61,9 @@ export interface GetAlertContactsArgs {
      * A regex string to filter results by Alert Contact name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
     /**
      * The mobile number of the alert contact.
@@ -130,6 +133,9 @@ export interface GetAlertContactsOutputArgs {
      * A regex string to filter results by Alert Contact name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
     /**
      * The mobile number of the alert contact.

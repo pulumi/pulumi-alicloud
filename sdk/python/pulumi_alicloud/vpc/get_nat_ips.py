@@ -190,6 +190,7 @@ def get_nat_ips(ids: Optional[Sequence[str]] = None,
     :param str nat_gateway_id: The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
     :param str nat_ip_cidr: The CIDR block to which the NAT IP address belongs.
     :param Sequence[str] nat_ip_names: The name of the NAT IP address.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
     """
     __args__ = dict()
@@ -274,6 +275,7 @@ def get_nat_ips_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
     :param str nat_gateway_id: The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
     :param str nat_ip_cidr: The CIDR block to which the NAT IP address belongs.
     :param Sequence[str] nat_ip_names: The name of the NAT IP address.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
     """
     ...

@@ -56,6 +56,12 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// The id of the key.
+        /// 
+        /// &gt; **NOTE:** Each alias represents only one master key(CMK).
+        /// 
+        /// &gt; **NOTE:** Within an area of the same user, alias is not reproducible.
+        /// 
+        /// &gt; **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
         /// </summary>
         [Output("keyId")]
         public Output<string> KeyId { get; private set; } = null!;
@@ -114,6 +120,12 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// The id of the key.
+        /// 
+        /// &gt; **NOTE:** Each alias represents only one master key(CMK).
+        /// 
+        /// &gt; **NOTE:** Within an area of the same user, alias is not reproducible.
+        /// 
+        /// &gt; **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
         /// </summary>
         [Input("keyId", required: true)]
         public Input<string> KeyId { get; set; } = null!;
@@ -134,6 +146,12 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// The id of the key.
+        /// 
+        /// &gt; **NOTE:** Each alias represents only one master key(CMK).
+        /// 
+        /// &gt; **NOTE:** Within an area of the same user, alias is not reproducible.
+        /// 
+        /// &gt; **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
         /// </summary>
         [Input("keyId")]
         public Input<string>? KeyId { get; set; }

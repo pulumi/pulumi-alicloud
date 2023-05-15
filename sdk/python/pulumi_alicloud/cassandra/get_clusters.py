@@ -134,6 +134,7 @@ def get_clusters(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: The list of Cassandra cluster ids.
     :param str name_regex: A regex string to apply to the cluster name.
+    :param str output_file: The name of file that can save the collection of clusters after running `pulumi preview`.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
@@ -178,6 +179,7 @@ def get_clusters_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
 
     :param Sequence[str] ids: The list of Cassandra cluster ids.
     :param str name_regex: A regex string to apply to the cluster name.
+    :param str output_file: The name of file that can save the collection of clusters after running `pulumi preview`.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     ...

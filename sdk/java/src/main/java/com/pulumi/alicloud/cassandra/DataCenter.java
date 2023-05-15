@@ -270,12 +270,16 @@ public class DataCenter extends com.pulumi.resources.CustomResource {
     /**
      * The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
      * 
+     * &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
+     * 
      */
     @Export(name="vswitchId", type=String.class, parameters={})
     private Output<String> vswitchId;
 
     /**
      * @return The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
+     * 
+     * &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
      * 
      */
     public Output<String> vswitchId() {

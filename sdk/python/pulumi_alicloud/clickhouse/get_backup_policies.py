@@ -94,6 +94,7 @@ def get_backup_policies(db_cluster_id: Optional[str] = None,
 
 
     :param str db_cluster_id: The db cluster id.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['dbClusterId'] = db_cluster_id
@@ -131,5 +132,6 @@ def get_backup_policies_output(db_cluster_id: Optional[pulumi.Input[str]] = None
 
 
     :param str db_cluster_id: The db cluster id.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

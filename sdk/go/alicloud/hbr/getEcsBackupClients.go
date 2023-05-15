@@ -28,7 +28,8 @@ type GetEcsBackupClientsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// A list of ECS Instance IDs.
 	InstanceIds []string `pulumi:"instanceIds"`
-	OutputFile  *string  `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile *string `pulumi:"outputFile"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 }
@@ -63,7 +64,8 @@ type GetEcsBackupClientsOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A list of ECS Instance IDs.
 	InstanceIds pulumi.StringArrayInput `pulumi:"instanceIds"`
-	OutputFile  pulumi.StringPtrInput   `pulumi:"outputFile"`
+	// File name where to save data source results (after running `pulumi preview`).
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the resource.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }

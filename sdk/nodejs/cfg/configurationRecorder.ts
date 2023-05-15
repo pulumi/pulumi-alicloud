@@ -60,6 +60,9 @@ export class ConfigurationRecorder extends pulumi.CustomResource {
         return obj['__pulumiType'] === ConfigurationRecorder.__pulumiType;
     }
 
+    /**
+     * Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
+     */
     public readonly enterpriseEdition!: pulumi.Output<boolean>;
     /**
      * Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
@@ -115,6 +118,9 @@ export class ConfigurationRecorder extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ConfigurationRecorder resources.
  */
 export interface ConfigurationRecorderState {
+    /**
+     * Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
+     */
     enterpriseEdition?: pulumi.Input<boolean>;
     /**
      * Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
@@ -140,6 +146,9 @@ export interface ConfigurationRecorderState {
  * The set of arguments for constructing a ConfigurationRecorder resource.
  */
 export interface ConfigurationRecorderArgs {
+    /**
+     * Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
+     */
     enterpriseEdition?: pulumi.Input<boolean>;
     /**
      * A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)

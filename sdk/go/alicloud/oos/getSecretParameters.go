@@ -29,7 +29,8 @@ type GetSecretParametersArgs struct {
 	// A list of Secret Parameter IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Secret Parameter name.
-	NameRegex  *string `pulumi:"nameRegex"`
+	NameRegex *string `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the Resource Group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -78,7 +79,8 @@ type GetSecretParametersOutputArgs struct {
 	// A list of Secret Parameter IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Secret Parameter name.
-	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`

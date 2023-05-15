@@ -20,12 +20,16 @@ public final class ListenerAccessLogTracingConfigArgs extends com.pulumi.resourc
     /**
      * Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
      * 
+     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
+     * 
      */
     @Import(name="tracingEnabled")
     private @Nullable Output<Boolean> tracingEnabled;
 
     /**
      * @return Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
+     * 
+     * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
      * 
      */
     public Optional<Output<Boolean>> tracingEnabled() {
@@ -35,12 +39,16 @@ public final class ListenerAccessLogTracingConfigArgs extends com.pulumi.resourc
     /**
      * Xtrace Sampling Rate. Value: `1` to `10000`.
      * 
+     * &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+     * 
      */
     @Import(name="tracingSample")
     private @Nullable Output<Integer> tracingSample;
 
     /**
      * @return Xtrace Sampling Rate. Value: `1` to `10000`.
+     * 
+     * &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
      * 
      */
     public Optional<Output<Integer>> tracingSample() {
@@ -50,12 +58,16 @@ public final class ListenerAccessLogTracingConfigArgs extends com.pulumi.resourc
     /**
      * Xtrace Type Value Is `Zipkin`.
      * 
+     * &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+     * 
      */
     @Import(name="tracingType")
     private @Nullable Output<String> tracingType;
 
     /**
      * @return Xtrace Type Value Is `Zipkin`.
+     * 
+     * &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
      * 
      */
     public Optional<Output<String>> tracingType() {
@@ -91,6 +103,8 @@ public final class ListenerAccessLogTracingConfigArgs extends com.pulumi.resourc
         /**
          * @param tracingEnabled Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
          * 
+         * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
+         * 
          * @return builder
          * 
          */
@@ -102,6 +116,8 @@ public final class ListenerAccessLogTracingConfigArgs extends com.pulumi.resourc
         /**
          * @param tracingEnabled Xtrace Function. Value: `True` Or `False` . Default Value: `False`.
          * 
+         * &gt; **NOTE:** Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `True`.
+         * 
          * @return builder
          * 
          */
@@ -111,6 +127,8 @@ public final class ListenerAccessLogTracingConfigArgs extends com.pulumi.resourc
 
         /**
          * @param tracingSample Xtrace Sampling Rate. Value: `1` to `10000`.
+         * 
+         * &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
          * 
          * @return builder
          * 
@@ -123,6 +141,8 @@ public final class ListenerAccessLogTracingConfigArgs extends com.pulumi.resourc
         /**
          * @param tracingSample Xtrace Sampling Rate. Value: `1` to `10000`.
          * 
+         * &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
+         * 
          * @return builder
          * 
          */
@@ -132,6 +152,8 @@ public final class ListenerAccessLogTracingConfigArgs extends com.pulumi.resourc
 
         /**
          * @param tracingType Xtrace Type Value Is `Zipkin`.
+         * 
+         * &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
          * 
          * @return builder
          * 
@@ -143,6 +165,8 @@ public final class ListenerAccessLogTracingConfigArgs extends com.pulumi.resourc
 
         /**
          * @param tracingType Xtrace Type Value Is `Zipkin`.
+         * 
+         * &gt; **NOTE:** This attribute is valid when `tracingenabled` is `true`.
          * 
          * @return builder
          * 

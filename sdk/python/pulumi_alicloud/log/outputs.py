@@ -759,6 +759,8 @@ class EtlEtlSink(dict):
         :param str kms_encrypted_access_key_secret: An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
         :param str role_arn: Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
         :param str type: ETL sinks type, the default value is AliyunLOG.
+               
+               > **Note:** `from_time` and `to_time` no modification allowed after successful creation.
         """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "logstore", logstore)
@@ -854,6 +856,8 @@ class EtlEtlSink(dict):
     def type(self) -> Optional[str]:
         """
         ETL sinks type, the default value is AliyunLOG.
+
+        > **Note:** `from_time` and `to_time` no modification allowed after successful creation.
         """
         return pulumi.get(self, "type")
 
@@ -935,6 +939,11 @@ class StoreEncryptConf(dict):
         :param bool enable: enable encryption. Default `false`
         :param str encrypt_type: Supported encryption type, only supports `default(AES)`,` m4`
         :param 'StoreEncryptConfUserCmkInfoArgs' user_cmk_info: User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
+               
+               ```python
+               import pulumi
+               ```
+               #### Block user_cmk_info
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
@@ -964,6 +973,11 @@ class StoreEncryptConf(dict):
     def user_cmk_info(self) -> Optional['outputs.StoreEncryptConfUserCmkInfo']:
         """
         User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
+
+        ```python
+        import pulumi
+        ```
+        #### Block user_cmk_info
         """
         return pulumi.get(self, "user_cmk_info")
 
@@ -1180,6 +1194,8 @@ class StoreIndexFieldSearchJsonKey(dict):
         :param str name: When using the json_keys field, this field is required.
         :param str alias: The alias of one field.
         :param bool doc_value: Whether to enable statistics. default to true.
+               
+               > **Note:** At least one of the "full_text" and "field_search" should be specified.
         :param str type: The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
         """
         pulumi.set(__self__, "name", name)
@@ -1211,6 +1227,8 @@ class StoreIndexFieldSearchJsonKey(dict):
     def doc_value(self) -> Optional[bool]:
         """
         Whether to enable statistics. default to true.
+
+        > **Note:** At least one of the "full_text" and "field_search" should be specified.
         """
         return pulumi.get(self, "doc_value")
 

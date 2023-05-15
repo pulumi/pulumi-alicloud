@@ -139,6 +139,8 @@ export class Cluster extends pulumi.CustomResource {
     public /*out*/ readonly publicPoints!: pulumi.Output<string[]>;
     /**
      * A list of security group ids to associate with.
+     *
+     * > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
      */
     public readonly securityGroups!: pulumi.Output<string[]>;
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -304,6 +306,8 @@ export interface ClusterState {
     publicPoints?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of security group ids to associate with.
+     *
+     * > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
      */
     securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     status?: pulumi.Input<string>;
@@ -385,6 +389,8 @@ export interface ClusterArgs {
     periodUnit?: pulumi.Input<string>;
     /**
      * A list of security group ids to associate with.
+     *
+     * > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
      */
     securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**

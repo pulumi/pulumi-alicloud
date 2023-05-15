@@ -153,12 +153,16 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * ETL sinks type, the default value is AliyunLOG.
      * 
+     * &gt; **Note:** `from_time` and `to_time` no modification allowed after successful creation.
+     * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
      * @return ETL sinks type, the default value is AliyunLOG.
+     * 
+     * &gt; **Note:** `from_time` and `to_time` no modification allowed after successful creation.
      * 
      */
     public Optional<Output<String>> type() {
@@ -390,6 +394,8 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type ETL sinks type, the default value is AliyunLOG.
          * 
+         * &gt; **Note:** `from_time` and `to_time` no modification allowed after successful creation.
+         * 
          * @return builder
          * 
          */
@@ -400,6 +406,8 @@ public final class EtlEtlSinkArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type ETL sinks type, the default value is AliyunLOG.
+         * 
+         * &gt; **Note:** `from_time` and `to_time` no modification allowed after successful creation.
          * 
          * @return builder
          * 

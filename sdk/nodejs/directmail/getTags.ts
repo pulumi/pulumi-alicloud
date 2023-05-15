@@ -52,6 +52,9 @@ export interface GetTagsArgs {
      * A regex string to filter results by Tag name.
      */
     nameRegex?: string;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: string;
 }
 
@@ -108,5 +111,8 @@ export interface GetTagsOutputArgs {
      * A regex string to filter results by Tag name.
      */
     nameRegex?: pulumi.Input<string>;
+    /**
+     * File name where to save data source results (after running `pulumi preview`).
+     */
     outputFile?: pulumi.Input<string>;
 }

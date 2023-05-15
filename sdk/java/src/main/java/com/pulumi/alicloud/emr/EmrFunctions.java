@@ -26,6 +26,8 @@ public final class EmrFunctions {
     /**
      * This data source provides the Emr Clusters of the current Alibaba Cloud user.
      * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
+     * 
      * &gt; **NOTE:** Available in v1.146.0+.
      * 
      * ## Example Usage
@@ -207,6 +209,8 @@ public final class EmrFunctions {
     }
     /**
      * This data source provides the Emr Clusters of the current Alibaba Cloud user.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
      * 
      * &gt; **NOTE:** Available in v1.146.0+.
      * 
@@ -390,6 +394,8 @@ public final class EmrFunctions {
     /**
      * This data source provides the Emr Clusters of the current Alibaba Cloud user.
      * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
+     * 
      * &gt; **NOTE:** Available in v1.146.0+.
      * 
      * ## Example Usage
@@ -571,6 +577,8 @@ public final class EmrFunctions {
     }
     /**
      * This data source provides the Emr Clusters of the current Alibaba Cloud user.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
      * 
      * &gt; **NOTE:** Available in v1.146.0+.
      * 
@@ -754,6 +762,8 @@ public final class EmrFunctions {
     /**
      * This data source provides the Emr Clusters of the current Alibaba Cloud user.
      * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
+     * 
      * &gt; **NOTE:** Available in v1.146.0+.
      * 
      * ## Example Usage
@@ -935,6 +945,8 @@ public final class EmrFunctions {
     }
     /**
      * This data source provides the Emr Clusters of the current Alibaba Cloud user.
+     * 
+     * &gt; **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
      * 
      * &gt; **NOTE:** Available in v1.146.0+.
      * 

@@ -135,6 +135,7 @@ def get_gateway_smb_users(gateway_id: Optional[str] = None,
     :param str gateway_id: The Gateway ID.
     :param Sequence[str] ids: A list of Gateway SMB User IDs.
     :param str name_regex: A regex string to filter results by Gateway SMB username.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['gatewayId'] = gateway_id
@@ -199,5 +200,6 @@ def get_gateway_smb_users_output(gateway_id: Optional[pulumi.Input[str]] = None,
     :param str gateway_id: The Gateway ID.
     :param Sequence[str] ids: A list of Gateway SMB User IDs.
     :param str name_regex: A regex string to filter results by Gateway SMB username.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

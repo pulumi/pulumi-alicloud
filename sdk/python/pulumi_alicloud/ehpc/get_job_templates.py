@@ -97,6 +97,7 @@ def get_job_templates(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Job Template IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -137,5 +138,6 @@ def get_job_templates_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
 
 
     :param Sequence[str] ids: A list of Job Template IDs.
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

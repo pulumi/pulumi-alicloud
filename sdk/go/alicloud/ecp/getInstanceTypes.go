@@ -51,6 +51,7 @@ func GetInstanceTypes(ctx *pulumi.Context, args *GetInstanceTypesArgs, opts ...p
 
 // A collection of arguments for invoking getInstanceTypes.
 type GetInstanceTypesArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 }
 
@@ -77,6 +78,7 @@ func GetInstanceTypesOutput(ctx *pulumi.Context, args GetInstanceTypesOutputArgs
 
 // A collection of arguments for invoking getInstanceTypes.
 type GetInstanceTypesOutputArgs struct {
+	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 }
 
